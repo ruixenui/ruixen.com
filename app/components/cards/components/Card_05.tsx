@@ -109,7 +109,7 @@ function CardDetails({
                 <div className="space-y-4">
                     <div className="flex items-center justify-between">
                         <h4 className="flex items-center gap-2 text-sm font-medium text-zinc-700 dark:text-zinc-300">
-                            <Target className="w-4 h-4" /> Today's Goals
+                            <Target className="w-4 h-4" /> Today&apos;s Goals
                         </h4>
                         <button onClick={onAddGoal} className="p-1.5 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">
                             <Plus className="w-4 h-4 text-zinc-500 dark:text-zinc-400" />
@@ -337,7 +337,7 @@ function CardDetails({
                     <div className="flex items-center justify-between">
                         <h4 className="flex items-center gap-2 text-sm font-medium text-zinc-700 dark:text-zinc-300">
                             <Target className="w-4 h-4" />
-                            Today's Goals
+                            Today&apos;s Goals
                         </h4>
                         <button
                             type="button"

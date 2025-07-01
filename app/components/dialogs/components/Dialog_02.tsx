@@ -295,11 +295,14 @@ export default function Dialog_02() {
 
               {/* Image */}
               <div className="w-full h-60 bg-gray-100 dark:bg-neutral-900 rounded-lg flex items-center justify-center">
-                <img
+                <Image
                   src="https://raw.githubusercontent.com/ruixenui/RUIXEN_ASSESTS/refs/heads/main/component_assests/tour.png"
                   alt="Step Visual"
+                  width={500} // Adjust width based on design
+                  height={500} // Adjust height based on design
                   className="h-full object-contain rounded-lg border-4 border-gray-200 dark:border-neutral-800"
                 />
+
               </div>
             </div>
 

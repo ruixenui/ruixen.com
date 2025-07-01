@@ -6,6 +6,7 @@ import {
   Link as LinkIcon,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 interface CardProps {
   id?: string;
@@ -224,15 +225,18 @@ export default function Card_01({
 }: CardProps) {
   return (
     <div className="w-full max-w-lg mx-auto rounded-3xl bg-white/80 dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-700 shadow-xl backdrop-blur-lg transition-all">
-      
+
       {/* Header */}
       <div className="flex items-center justify-between px-5 pt-4">
         <div className="flex items-center gap-3">
-          <img
-            src={author?.avatar}
-            alt={author?.name}
+          <Image
+            src={author?.avatar || "/placeholder.png"} // Fallback if avatar is undefined
+            alt={author?.name || "User Avatar"}
+            width={44}
+            height={44}
             className="w-11 h-11 rounded-full border border-zinc-300 dark:border-zinc-600 object-cover"
           />
+
           <div>
             <p className="text-sm font-semibold text-zinc-900 dark:text-white">{author?.name}</p>
             <p className="text-xs text-zinc-500 dark:text-zinc-400">@{author?.username} · {author?.timeAgo}</p>

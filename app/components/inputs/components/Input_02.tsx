@@ -4,6 +4,7 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { ImagePlus, X, FileText } from "lucide-react";
 import { useFileInput } from "@/hooks/use-file-input";
+import Image from "next/image";
 
 export const codeStringInput_02 = `
 "use client";
@@ -261,10 +262,12 @@ export default function Input_02() {
         <div className="relative flex items-center justify-center bg-zinc-100 dark:bg-zinc-800">
           {preview ? (
             <>
-              <img
+              <Image
                 src={preview}
                 alt="Preview"
-                className="object-cover w-full h-full transition-opacity duration-300"
+                fill
+                className="object-cover w-full h-full transition-opacity duration-300 rounded-none"
+                sizes="(max-width: 640px) 100vw, 50vw"
               />
               {uploadProgress < 100 && (
                 <div className="absolute bottom-0 left-0 right-0 h-2 bg-zinc-300 dark:bg-zinc-700">
@@ -280,6 +283,7 @@ export default function Input_02() {
               <ImagePlus className="w-16 h-16" />
             </div>
           )}
+
         </div>
 
         {/* Right - File Info or Placeholder */}

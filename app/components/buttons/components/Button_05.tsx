@@ -95,9 +95,10 @@ export default function Input_05() {
           ))}
         </div>
 
-        <p className="text-xs text-center text-zinc-500 dark:text-zinc-400">
-          Didn't receive the code? <button className="text-indigo-600 hover:underline">Resend</button>
-        </p>
+<p className="text-xs text-center text-zinc-500 dark:text-zinc-400">
+  Didn&apos;t receive the code? <button className="text-indigo-600 hover:underline">Resend</button>
+</p>
+
       </div>
     </div>
   );
@@ -186,9 +187,10 @@ export default function Input_05() {
           ))}
         </div>
 
-        <p className="text-xs text-center text-zinc-500 dark:text-zinc-400">
-          Didn't receive the code? <button className="text-indigo-600 hover:underline">Resend</button>
-        </p>
+<p className="text-xs text-center text-zinc-500 dark:text-zinc-400">
+  Didn&apos;t receive the code? <button className="text-indigo-600 hover:underline">Resend</button>
+</p>
+
       </div>
     </div>
   );

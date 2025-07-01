@@ -68,7 +68,9 @@ export default function Accordion_02() {
                   Do you offer refunds?
                 </AccordionTrigger>
                 <AccordionContent>
-                  Yes, we offer a 7-day refund policy. If you're unsatisfied, just contact our support within that time frame.
+                  <AccordionContent>
+  Yes, we offer a 7-day refund policy. If you&apos;re unsatisfied, just contact our support within that time frame.
+</AccordionContent>y. If you&apos;re unsatisfied, just contact our support within that time frame.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="bill-2">
@@ -120,7 +122,7 @@ export default function Accordion_02() {
         <div className="md:w-1/2">
           <h2 className="text-4xl font-bold mb-4">Have questions?</h2>
           <p className="text-muted-foreground text-lg">
-            We're here to help you understand how everything works. If you still have
+            We&apos;re here to help you understand how everything works. If you still have
             doubts, feel free to{" "}
             <a href="/contact" className="underline">
               reach out to our team
@@ -165,7 +167,9 @@ export default function Accordion_02() {
                   Do you offer refunds?
                 </AccordionTrigger>
                 <AccordionContent>
-                  Yes, we offer a 7-day refund policy. If you're unsatisfied, just contact our support within that time frame.
+                  <AccordionContent>
+                    Yes, we offer a 7-day refund policy. If you&apos;re unsatisfied, just contact our support within that time frame.
+                  </AccordionContent>y. If you&apos;re unsatisfied, just contact our support within that time frame.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="bill-2">
