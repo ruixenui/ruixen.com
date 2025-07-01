@@ -7,3 +7,6 @@ compatibility_date = "2024-07-01"
 
 # Uncomment this after domain is linked
 # routes = ["https://ruixen.com/*"]
+
+[assets]
+directory = "./out"

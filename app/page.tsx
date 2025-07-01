@@ -1,5 +1,6 @@
 "use client";
 
+// npx next build
 
 import Link from "next/link";
 import React, { useState, useEffect, Suspense, lazy } from "react";
