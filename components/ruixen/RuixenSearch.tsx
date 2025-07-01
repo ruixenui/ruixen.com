@@ -1,0 +1,133 @@
+'use client';
+import React, { useState, ChangeEvent, useEffect, ReactNode, useRef } from 'react';
+import { motion } from 'framer-motion';
+import { Inter } from 'next/font/google';
+import { IoMdSearch } from 'react-icons/io';
+import Link from 'next/link';
+
+const inter = Inter({ subsets: ['latin'], weight: '500' });
+
+interface Page {
+  title: string;
+  url: string;
+  icon?: ReactNode;
+}
+
+interface SearchModalProps {
+  pages: Page[];
+  mode?: 'light' | 'dark';
+}
+
+const RuixenSearch: React.FC<SearchModalProps> = ({ pages, mode = 'dark' }) => {
+  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const filteredPages = pages.filter(page =>
+    page.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && isOpen) {
+        closeModal();
+      } else if (event.key === '/' && !isOpen) {
+        event.preventDefault();
+        openModal();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+      inputRef.current?.focus();
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isOpen]);
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 z-[100] flex items-center justify-center">
+      {/* Background Overlay */}
+      <div className="absolute inset-0 bg-black/10 backdrop-blur"></div>
+
+      {/* Modal */}
+      <div className={`${inter.className} ${mode === 'dark' ? 'bg-black border-zinc-900' : 'bg-white border-zinc-200'} w-full max-w-lg h-auto max-h-[500px]  border shadow-xl  flex flex-col z-50 mx-4`}>
+        {/* Searchbar */}
+        <div className={`px-5 py-3 border-b border-zinc-900 ${mode === 'dark' ? 'bg-black' : 'bg-white'} ${filteredPages.length < 1 && mode === 'dark' ? 'border-b border-zinc-900' : ''} ${filteredPages.length < 1 && mode === 'light' && 'border-b border-zinc-200'}`}>
+          <div className="relative flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke={mode === 'dark' ? '#A1A1AA' : '#71717A'} className="w-5 h-5 mr-3">
+              <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+            </svg>
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={handleSearchChange}
+              ref={inputRef}
+              placeholder="Search"
+              className={`${mode === 'dark' ? 'bg-black text-white placeholder-zinc-400' : 'bg-zinc-100 text-black placeholder-zinc-500'} rounded  w-full px-2 py-2 focus:outline-none`}
+            />
+             <span onClick={closeModal} className="ml-3 bg-gradient-to-tr from-zinc-500 to-zinc-700  border-b-2 border-zinc-400 text-white px-2 py-1 rounded-lg text-xs cursor-pointer">
+                Esc
+            </span>
+          </div>
+        </div>
+        <div className="flex-1 overflow-y-auto custom-scrollbar pl-2 pr-1 mt-2">
+          {filteredPages.length > 0 ? (
+            filteredPages.map((page, index) => (
+              <motion.div
+                key={index}
+                className={`${mode === 'dark' ? 'bg-gradient-to-tr from-zinc-900 to-zinc-950' : 'bg-zinc-100 hover:bg-zinc-200'} rounded mb-2 p-3 transition-all duration-200 ease-in-out`}
+              >
+                <Link onClick={closeModal} href={page.url} className={`${mode === 'dark' ? 'text-white' : 'text-black'} text-sm flex items-center`}>
+                  {page.icon && <span className="mr-2">{page.icon}</span>}
+                  {page.title}
+                </Link>
+              </motion.div>
+            ))
+          ) : (
+           <div className='flex justify-center items-center gap-1 '>
+                <IoMdSearch className={`${mode === 'dark' ? 'text-zinc-300' : 'text-zinc-600'}`} size={20} />
+                <p className={`${mode === 'dark' ? 'text-zinc-300' : 'text-zinc-600'} text-center py-10`}>No results found</p>
+            </div>
+          )}
+        </div>
+      </div>
+      {/* Scrollbar Styles */}
+      <style jsx>{`
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background-color: ${mode === 'dark' ? '#27272A' : '#D1D5DB'};
+          border-radius: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background-color: ${mode === 'dark' ? '#5555' : '#9ca3af9f'};
+        }
+      `}</style>
+    </div>
+  );
+};
+
+export default RuixenSearch;
