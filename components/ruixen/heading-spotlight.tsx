@@ -7,7 +7,7 @@ interface HeadingSpotlightProps {
 export default function HeadingSpotlight({ title }: HeadingSpotlightProps) {
   return (
     <div className="h-[12rem] w-full dark:bg-black bg-white flex flex-col items-center justify-center overflow-hidden rounded-md">
-      <h1 className="font-medium text-center text-gray-800 dark:text-gray-100 text-6xl relative z-20">
+      <h1 className="font-medium text-center text-gray-800 dark:text-gray-100 text-4xl relative z-20">
         {title}
       </h1>
       <div className="w-[40rem] h-40 relative">

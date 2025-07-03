@@ -1,5 +1,7 @@
+"use client"
+
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { FaGithub } from "react-icons/fa";
 import { SiDiscord } from "react-icons/si";
 import { RiTwitterXLine } from "react-icons/ri";
@@ -9,10 +11,20 @@ import HamburgurNavbar from "./HamburgerNavbar";
 import { Inter } from "next/font/google";
 import CommandSearch from "./CommandSearch";
 import ThemeSwitch from "../ui/theme-switch";
+import { gsap } from "gsap";
 
 const inter = Inter({ subsets: ["latin"], weight: "500" });
 
 function Navbar() {
+  const logoRef = useRef(null);
+
+  useEffect(() => {
+    gsap.fromTo(
+      logoRef.current,
+      { x: -50, opacity: 0 },
+      { x: 0, opacity: 1, duration: 1, ease: "power2.out" }
+    );
+  }, []);
   return (
     <div
       className={`navbar-container fixed top-0 left-0 right-0 flex justify-between items-center backdrop-blur-xl border-b h-auto sm:py-3 py-4 px-3 text-sm z-50 ${inter.className} 
@@ -20,13 +32,28 @@ function Navbar() {
     >
       <span className="flex items-center">
         <Link href={"/"} className="flex justify-center items-center">
-          <Image src="/ruixen.png" alt="RuixenLogo" width={40} height={40} className="rounded-full"/>
-          <span className="hidden sm:flex sm:text-lg pr-20 pl-1 text-zinc-900 dark:text-white">
-            Ruixen UI
-          </span>
+          <div ref={logoRef} className="flex items-center space-x-3">
+            <Image
+              src="/ruixen_dark.png"
+              alt="Ruixen Logo"
+              width={40}
+              height={40}
+              className="rounded-full h-10 w-10 block dark:hidden"
+            />
+            <Image
+              src="/ruixen_light.png"
+              alt="Ruixen Logo"
+              width={40}
+              height={40}
+              className="rounded-full h-10 w-10 hidden dark:block"
+            />
+            <span className="font-medium text-[0.96rem] bg-gradient-to-r from-black via-gray-800 to-gray-600 dark:from-white dark:via-gray-300 dark:to-gray-100 bg-clip-text text-transparent">
+              Ruixen UI
+            </span>
+          </div>
         </Link>
 
-        <div className="items-center flex space-x-6 text-zinc-600 dark:text-[#ABAFB4]">
+        <div className="items-center flex space-x-6 text-zinc-600 dark:text-[#ABAFB4] ml-10">
           <Link href="/components">
             <span className="hover:text-zinc-800 dark:hover:text-zinc-300 cursor-pointer hidden sm:flex ml-10 md:ml-0">
               Components
