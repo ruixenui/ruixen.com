@@ -10,6 +10,7 @@ type ComponentInfo = {
   imageLight: string;
   code: string;
   installCommand: string;
+  preview: React.ReactNode;
 };
 
 interface Column<T> {
@@ -41,6 +42,7 @@ export const tableComponents: ComponentInfo[] = [
       imageLight: "/components/tables/light/table-01.png",
       code: codeStringTable_01,
       installCommand: 'npm install @ruixen/ui',
+      preview: <Table_01 />
     },
     {
       name: 'Table 02',
@@ -50,6 +52,7 @@ export const tableComponents: ComponentInfo[] = [
       imageLight: "/components/tables/light/table-02.png",
       code: codeStringTable_02,
       installCommand: 'npm install @ruixen/ui',
+      preview: <Table_02 columns={columns} data={data} />
     },
     {
       name: 'Table 03',
@@ -59,6 +62,7 @@ export const tableComponents: ComponentInfo[] = [
       imageLight: "/components/tables/light/table-03.png",
       code: codeStringTable_03,
       installCommand: 'npm install @ruixen/ui',
+      preview: <Table_03 columns={columns} data={data} pageSize={5} searchable />
     },
   ];
   

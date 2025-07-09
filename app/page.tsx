@@ -7,12 +7,17 @@ import { Inter } from "next/font/google";
 import { AnimatedGroup } from "@/components/ui/animated-group";
 import { Button } from "@/components/ui/button";
 import Footer from "@/components/ruixen/Footer";
-import HeroTabsSection from "@/components/ruixen/HeroTabsSection";
 import HeroAbout from "@/components/ruixen/HeroAbout";
 import Explore from "@/components/ruixen/Explore";
 import FaqAccordion from "@/components/ruixen/faq-accordion";
 
-const inter = Inter({ subsets: ["latin"], weight: "500" });
+import { Poppins } from "next/font/google";
+import Image from "next/image";
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"], 
+});
 
 const ruixenFaqData = [
     {
@@ -63,7 +68,7 @@ function Home() {
         <section>
             <HomeNav />
             <div className="flex justify-center items-center m-auto pt-10 px-20 bg-white dark:bg-black text-black dark:text-white transition-all duration-300">
-                <div className={`${inter.className} relative min-h-screen bg-black overflow-hidden bg-white dark:bg-black text-black dark:text-white`}>
+                <div className={`${poppins.className} relative min-h-screen bg-black overflow-hidden bg-white dark:bg-black text-black dark:text-white`}>
 
                     {/* Borders */}
                     <div className="absolute top-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-zinc-500 to-transparent" />
@@ -86,7 +91,9 @@ function Home() {
 
                                         {/* Floating 3D image behind "uixen" */}
                                         <span className="relative z-10 inline-block">
-                                            <img
+                                            <Image
+                                                width={40}
+                                                height={40}
                                                 src="/3d-model.png"
                                                 alt="3D Element"
                                                 className="absolute -top-20 left-1/2 -translate-x-1/2 w-[300px] sm:w-[380px] z-10 pointer-events-none animate-floating"

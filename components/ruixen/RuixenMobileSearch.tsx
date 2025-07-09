@@ -7,11 +7,9 @@ import React, {
   useRef,
 } from "react";
 import { motion } from "framer-motion";
-import { Inter } from "next/font/google";
 import { IoMdSearch } from "react-icons/io";
 import Link from "next/link";
 
-const inter = Inter({ subsets: ["latin"], weight: "500" });
 
 interface Page {
   title: string;
@@ -110,7 +108,7 @@ const RuixenMobileSearch: React.FC<SearchModalProps> = ({
         exit={{ scale: 0.7, opacity: 0 }}
         transition={{ duration: 0.2, ease: "easeInOut" }}
         onAnimationComplete={handleAnimationComplete}
-        className={`${inter.className} ${
+        className={`${
           mode === "dark"
             ? "bg-black border-zinc-900"
             : "bg-white border-zinc-300"

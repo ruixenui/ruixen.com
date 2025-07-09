@@ -11,6 +11,7 @@ type ComponentInfo = {
   imageLight: string;
   code: string;
   installCommand: string;
+  preview: React.ReactNode;
 };
 
 export const dialogComponents: ComponentInfo[] = [
@@ -22,6 +23,7 @@ export const dialogComponents: ComponentInfo[] = [
       imageLight: "/components/dialogs/light/dialog-01.png",
       code: codeStringDialog_01,
       installCommand: 'npm install @ruixen/ui',
+      preview: <Dialog_01 />
     },
     {
       name: 'Dialog 02',
@@ -31,6 +33,7 @@ export const dialogComponents: ComponentInfo[] = [
       imageLight: "/components/dialogs/light/dialog-02.png",
       code: codeStringDialog_02,
       installCommand: 'npm install @ruixen/ui',
+      preview: <Dialog_02 />
     },
     {
       name: 'Dialog 03',
@@ -40,6 +43,7 @@ export const dialogComponents: ComponentInfo[] = [
       imageLight: "/components/dialogs/light/dialog-03.png",
       code: codeStringDialog_03,
       installCommand: 'npm install @ruixen/ui',
+      preview: <Dialog_03 />
     },
     {
       name: 'Dialog 04',
@@ -49,6 +53,7 @@ export const dialogComponents: ComponentInfo[] = [
       imageLight: "/components/dialogs/light/dialog-04.png",
       code: codeStringDialog_04,
       installCommand: 'npm install @ruixen/ui',
+      preview: <Dialog_04 />
     } 
   ];
   

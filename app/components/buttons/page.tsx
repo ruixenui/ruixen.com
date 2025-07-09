@@ -1,19 +1,20 @@
 'use client'
 
-import React, { useState } from 'react';
-import { Code } from 'lucide-react';
-import SnippetSidebar from '@/components/snippet-sidebar';
+import React, { useEffect, useRef, useState } from 'react';
 import HeadingSpotlight from '@/components/ruixen/heading-spotlight';
 import ImageCardToggle from '@/components/ruixen/ImageCardToggle';
 import { buttonComponents } from './ButtonComponentsExport';
+import TemplateShowcasePage from '@/components/ruixen/PreviewCard';
 
 export default function Page() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const [activeTab, setActiveTab] = useState<string>('code');
+  const showcaseRef = useRef<HTMLDivElement>(null); 
 
-  const copyToClipboard = (text?: string) => {
-    if (text) navigator.clipboard.writeText(text);
-  };
+  useEffect(() => {
+    if (openIndex !== null && showcaseRef.current) {
+      showcaseRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [openIndex]);
 
   return (
     <div className="dark:bg-black bg-white w-full min-h-screen flex flex-col items-start p-2 pt-24">
@@ -32,27 +33,16 @@ export default function Page() {
           </React.Fragment>
         ))}
       </div>
-      <SnippetSidebar
-        open={openIndex !== null}
-        title={openIndex !== null ? buttonComponents[openIndex].name : ''}
-        installCommand={buttonComponents[openIndex!]?.installCommand}
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-        copyToClipboard={copyToClipboard}
-        onClose={() => setOpenIndex(null)}
-        tabs={[
-          {
-            id: 'code',
-            label: 'Code',
-            icon: <Code size={14} />,
-            content: (
-              <pre className="text-sm whitespace-pre-wrap break-words text-gray-700 dark:text-gray-300 bg-gray-200 dark:bg-black rounded-xl p-4">
-                {buttonComponents[openIndex!]?.code}
-              </pre>
-            ),
-          },
-        ]}
-      />
+             {openIndex !== null && (
+               <div ref={showcaseRef} className="w-full mt-12">
+                 <TemplateShowcasePage
+                   title={buttonComponents[openIndex].name}
+                   description={buttonComponents[openIndex].description}
+                   preview={buttonComponents[openIndex].preview}
+                   code={buttonComponents[openIndex].code}
+                 />
+               </div>
+             )} 
     </div>
   );
 }

@@ -6,8 +6,15 @@ import { usePathname } from 'next/navigation';
 import { GeistSans } from 'geist/font/sans';
 
 const sections_and_blocks = [
+  { name: 'Navbar', url: '/sections/navbar' },
   { name: 'Hero Sections', url: '/sections/hero-sections' },
   { name: 'Client Label', url: '/sections/client-labels' },
+  { name: 'Feature Sections', url: '/sections/feature-sections' },
+  { name: 'Faq Sections', url: '/components/accordion' },
+  { name: 'Testimonials', url: '/sections/testimonials' },
+  { name: 'Pricing', url: '/sections/pricing' },
+  { name: 'CTA', url: '/sections/cta' },
+  {name: 'Footer', url: '/sections/footer'},
 ];
 
 const additionalComponentsList = [

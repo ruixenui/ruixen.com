@@ -11,6 +11,7 @@ type ComponentInfo = {
   imageLight: string;
   code: string;
   installCommand: string;
+  preview?: React.ReactNode;
 };
 
 export const heroComponents: ComponentInfo[] = [
@@ -22,6 +23,7 @@ export const heroComponents: ComponentInfo[] = [
       imageLight: "/sections/hero-sections/light/hero-section-01.png",
       code: codeStringHero_01,
       installCommand: 'npm install @ruixen/ui',
+      preview: <HeroSection_01 />
     },
     {
       name: 'Hero Section 02',
@@ -31,6 +33,7 @@ export const heroComponents: ComponentInfo[] = [
       imageLight: "/sections/hero-sections/light/hero-section-02.png",
       code: codeStringHero_02,
       installCommand: 'npm install @ruixen/ui',
+      preview: <HeroSection_02 />
     },
     // {
     //   name: 'Hero Section 03',
@@ -49,5 +52,6 @@ export const heroComponents: ComponentInfo[] = [
       imageLight: "/sections/hero-sections/light/hero-section-04.png",
       code: codeStringHero_04,
       installCommand: 'npm install @ruixen/ui',
+      preview: <HeroSection_04 />
     }
   ];

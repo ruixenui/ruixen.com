@@ -17,6 +17,7 @@ type ComponentInfo = {
   imageLight: string;
   code: string;
   installCommand: string;
+  preview: React.ReactNode;
 };
 
 export const cardComponents: ComponentInfo[] = [
@@ -27,7 +28,8 @@ export const cardComponents: ComponentInfo[] = [
       imageDark: "/components/cards/dark/card-01.png",
       imageLight: "/components/cards/light/card-01.png",
       code: codeStringCard_01,
-      installCommand: 'npm install @ruixen/ui',
+      installCommand: 'npm install @ruixen/ui', 
+      preview: <Card_01 />
     },
     {
       name: 'Card 02',
@@ -37,6 +39,7 @@ export const cardComponents: ComponentInfo[] = [
       imageLight: "/components/cards/light/card-02.png",
       code: codeStringCard_02,
       installCommand: 'npm install @ruixen/ui',
+      preview: <Card_02 />
     },
     {
       name: 'Card 03',
@@ -46,6 +49,7 @@ export const cardComponents: ComponentInfo[] = [
       imageLight: "/components/cards/light/card-03.png",
       code: codeStringCard_03,
       installCommand: 'npm install @ruixen/ui',
+      preview: <Card_03 />
     },
     {
       name: 'Card 04',
@@ -55,6 +59,7 @@ export const cardComponents: ComponentInfo[] = [
       imageLight: "/components/cards/light/card-04.png",
       code: codeStringCard_04,
       installCommand: 'npm install @ruixen/ui',
+      preview: <Card_04 />
     },
     {
       name: 'Card 05',
@@ -64,6 +69,7 @@ export const cardComponents: ComponentInfo[] = [
       imageLight: "/components/cards/light/card-05.png",
       code: codeStringCard_05,
       installCommand: 'npm install @ruixen/ui',
+      preview: <Card_05 />
     },
     {
       name: 'Card 06',
@@ -73,6 +79,7 @@ export const cardComponents: ComponentInfo[] = [
       imageLight: "/components/cards/light/card-06.png",
       code: codeStringCard_06,
       installCommand: 'npm install @ruixen/ui',
+      preview: <Card_06 />
     },
     {
       name: 'Card 07',
@@ -82,6 +89,7 @@ export const cardComponents: ComponentInfo[] = [
       imageLight: "/components/cards/light/card-07.png",
       code: codeStringCard_07,
       installCommand: 'npm install @ruixen/ui',
+      preview: <Card_07 />
     },
     {
       name: 'Card 08',
@@ -91,6 +99,7 @@ export const cardComponents: ComponentInfo[] = [
       imageLight: "/components/cards/light/card-08.png",
       code: codeStringCard_08,
       installCommand: 'npm install @ruixen/ui',
+      preview: <Card_08 />
     },
     {
       name: 'Card 09',
@@ -100,6 +109,7 @@ export const cardComponents: ComponentInfo[] = [
       imageLight: "/components/cards/light/card-09.png",
       code: codeStringCard_09,
       installCommand: 'npm install @ruixen/ui',
+      preview: <Card_09 />
     },
     {
       name: 'Card 10',
@@ -109,5 +119,6 @@ export const cardComponents: ComponentInfo[] = [
       imageLight: "/components/cards/light/card-10.png",
       code: codeStringCard_10,
       installCommand: 'npm install @ruixen/ui',
+      preview: <Card_10 />
     }
   ];

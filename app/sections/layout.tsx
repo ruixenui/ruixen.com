@@ -2,7 +2,11 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import SideBar from "@/components/ruixen/SideBar";
 import Navbar from "@/components/ruixen/Navbar";
-const poppin = Poppins({ subsets: ["latin"], weight: "500" });
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"], 
+});
 
 export const metadata: Metadata = {
   title: "Components",
@@ -14,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-      <div className={`${poppin.className}`}>
+      <div className={`${poppins.className}`}>
         <Navbar />
         <div className="inner-container flex dark:text-white text-black bg-white dark:bg-black">
           <div className="fixed top-20 w-64">

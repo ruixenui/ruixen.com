@@ -10,6 +10,7 @@ type ComponentInfo = {
   imageLight: string;
   code: string;
   installCommand: string;
+  preview?: React.ReactNode;
 };
 
 export const accordionComponents: ComponentInfo[] = [
@@ -21,6 +22,7 @@ export const accordionComponents: ComponentInfo[] = [
       imageLight: "/components/accordions/light/accordion-01.png",
       code: codeStringAccordion_01,
       installCommand: 'npm install @ruixen/ui',
+      preview: <Accordion_01 />
     },
     {
       name: 'Accordion 02',
@@ -30,6 +32,7 @@ export const accordionComponents: ComponentInfo[] = [
       imageLight: "/components/accordions/light/accordion-02.png",
       code: codeStringAccordion_02,
       installCommand: 'npm install @ruixen/ui',
+      preview: <Accordion_02 />
     },
     {
       name: 'Accordion 03',
@@ -39,6 +42,7 @@ export const accordionComponents: ComponentInfo[] = [
       imageLight: "/components/accordions/light/accordion-03.png",
       code: codeStringAccordion_03,
       installCommand: 'npm install @ruixen/ui',
+      preview: <Accordion_03 />
     }
   ];
   

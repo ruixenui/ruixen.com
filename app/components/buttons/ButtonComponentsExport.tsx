@@ -10,6 +10,7 @@ type ComponentInfo = {
   imageLight: string;
   code: string;
   installCommand: string; 
+  preview: React.ReactNode;
 };
 
 export const buttonComponents: ComponentInfo[] = [
@@ -21,6 +22,7 @@ export const buttonComponents: ComponentInfo[] = [
       imageLight: "/components/buttons/light/button-01.png",
       code: codeStringButton_01,
       installCommand: 'npm install @ruixen/ui',
+      preview: <Button_01 />
     },
     {
       name: 'Button 02',
@@ -30,6 +32,7 @@ export const buttonComponents: ComponentInfo[] = [
       imageLight: "/components/buttons/light/button-02.png",
       code: codeStringButton_02,
       installCommand: 'npm install @ruixen/ui',
+      preview: <Button_02 />
     },
     {
       name: 'Button 03',
@@ -39,6 +42,7 @@ export const buttonComponents: ComponentInfo[] = [
       imageLight: "/components/buttons/light/button-03.png",
       code: codeStringButton_03,
       installCommand: 'npm install @ruixen/ui',
+      preview: <Button_03 />
     }
   ];
   

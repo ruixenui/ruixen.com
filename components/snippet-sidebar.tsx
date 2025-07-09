@@ -2,12 +2,11 @@
 
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { motion, AnimatePresence } from 'framer-motion';
-import React from 'react';
+import React, { useState } from 'react';
+import { Monitor, Tablet, Smartphone, Code2 } from 'lucide-react';
 
 type TabItem = {
     id: string;
-    label: string;
-    icon?: React.ReactNode;
     content: React.ReactNode;
 };
 
@@ -20,9 +19,10 @@ type SnippetSidebarProps = {
     setActiveTab: (tabId: string) => void;
     onClose: () => void;
     copyToClipboard: (text: string) => void;
+    preview?: React.ReactNode;
 };
 
-export default function SnippetSidebar({
+export default function SnippetDialog({
     open,
     title,
     installCommand,
@@ -31,12 +31,18 @@ export default function SnippetSidebar({
     setActiveTab,
     onClose,
     copyToClipboard,
+    preview
 }: SnippetSidebarProps) {
+
+    const [device, setDevice] = useState<'mobile' | 'tablet' | 'system'>('system');
+    const [showCode, setShowCode] = useState(false);
+
+    const deviceWidth = device === 'mobile' ? 'w-[375px]' : device === 'tablet' ? 'w-[768px]' : 'w-[1280px]';
 
     return (
         <AnimatePresence>
             {open && (
-                <div className="z-40 flex items-start justify-end">
+                <div className="z-40 flex items-end justify-center">
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 0.5 }}
@@ -47,15 +53,43 @@ export default function SnippetSidebar({
                     />
 
                     <motion.div
-                        key="sidebar"
-                        initial={{ x: '100%' }}
-                        animate={{ x: 0 }}
-                        exit={{ x: '100%' }}
+                        key="dialog"
+                        initial={{ y: '100%' }}
+                        animate={{ y: 0 }}
+                        exit={{ y: '100%' }}
                         transition={{ duration: 0.4, ease: 'easeInOut' }}
-                        className="fixed h-[calc(100vh-5.5rem)] inset-y-0 right-0 my-[5rem] rounded-xl w-full sm:w-[450px] bg-gray-200 dark:bg-black z-40 shadow-lg flex flex-col"
+                        className={`fixed left-0 bottom-0 right-0 ${deviceWidth} mx-auto bg-[#f5f5f5] dark:bg-black backdrop-blur-xl z-40 shadow-lg flex flex-col dark:bg-black`}
                     >
-
-                        <div className="p-3 rounded-xl">
+                        <div className="p-4 border-b border-gray-300 dark:border-gray-700 flex items-center justify-between">
+                            <h2 className="text-lg font-semibold text-zinc-900 dark:text-white">{title}</h2>
+                            <div className="flex gap-2">
+                                <button
+                                    className={`p-1 rounded ${device === 'mobile' ? 'bg-zinc-900 text-white' : 'bg-zinc-200 dark:bg-zinc-800'}`}
+                                    onClick={() => setDevice('mobile')}
+                                >
+                                    <Smartphone size={16} />
+                                </button>
+                                <button
+                                    className={`p-1 rounded ${device === 'tablet' ? 'bg-zinc-900 text-white' : 'bg-zinc-200 dark:bg-zinc-800'}`}
+                                    onClick={() => setDevice('tablet')}
+                                >
+                                    <Tablet size={16} />
+                                </button>
+                                <button
+                                    className={`p-1 rounded ${device === 'system' ? 'bg-zinc-900 text-white' : 'bg-zinc-200 dark:bg-zinc-800'}`}
+                                    onClick={() => setDevice('system')}
+                                >
+                                    <Monitor size={16} />
+                                </button>
+                                <button
+                                    className={`p-1 rounded ${showCode ? 'bg-zinc-900 text-white' : 'bg-zinc-200 dark:bg-zinc-800'}`}
+                                    onClick={() => setShowCode(!showCode)}
+                                >
+                                    <Code2 size={16} />
+                                </button>
+                            </div>
+                        </div>
+                        <div className="p-3">
                             <div className="flex items-center bg-zinc-900 text-white rounded px-3 py-2 text-sm relative">
                                 <span className="flex-1 break-all">{installCommand}</span>
                                 <button
@@ -70,27 +104,17 @@ export default function SnippetSidebar({
                             </div>
                         </div>
 
-                        <div className="px-2 py-1">
+                        <div className="px-4 pb-4">
                             <Tabs value={activeTab} onValueChange={(val) => setActiveTab(val)} className="w-full">
-                                <TabsList className="w-full justify-start flex-wrap">
-                                    {tabs.map((tab) => (
-                                        <TabsTrigger
-                                            key={tab.id}
-                                            value={tab.id}
-                                            className="flex items-center gap-2 w-fit"
-                                        >
-                                            {tab.icon}
-                                            {tab.label}
-                                        </TabsTrigger>
-                                    ))}
+                                <TabsList className="w-full justify-center flex-wrap gap-2">
                                 </TabsList>
                                 {tabs.map((tab) => (
                                     <TabsContent
                                         key={tab.id}
                                         value={tab.id}
-                                        className="text-sm text-muted-foreground p-4 h-[calc(100vh-13rem)] overflow-y-auto"
+                                        className="text-sm text-muted-foreground p-4 max-h-[73vh] overflow-y-auto"
                                     >
-                                        {tab.content}
+                                        {showCode ? tab.content : <div className="py-10 flex items-center justify-center">{preview}</div>}
                                     </TabsContent>
                                 ))}
                             </Tabs>

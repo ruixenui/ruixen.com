@@ -1,26 +1,27 @@
 'use client'
 
-import React, { useState } from 'react';
-import { Code } from 'lucide-react';
-import SnippetSidebar from '@/components/snippet-sidebar';
+import React, { useEffect, useRef, useState } from 'react';
 import HeadingSpotlight from '@/components/ruixen/heading-spotlight';
 import ImageCardToggle from '@/components/ruixen/ImageCardToggle';
 import { clientLabelComponents } from './ClientLabelsComponentsExport';
+import TemplateShowcasePage from '@/components/ruixen/PreviewCard';
 
 export default function Page() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const [activeTab, setActiveTab] = useState<string>('code');
+  const showcaseRef = useRef<HTMLDivElement>(null);
 
-  const copyToClipboard = (text?: string) => {
-    if (text) navigator.clipboard.writeText(text);
-  };
+  useEffect(() => {
+    if (openIndex !== null && showcaseRef.current) {
+      showcaseRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [openIndex]);
 
   return (
     <div className="dark:bg-black bg-white w-full min-h-screen flex flex-col items-start p-2 pt-24">
       <HeadingSpotlight
         title="Client Label"
       />
-      <div className="w-full mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 relative inner-container">
+      <div className="w-full mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 relative inner-container">
         {clientLabelComponents.map((item, index) => (
           <React.Fragment key={index}>
             <ImageCardToggle
@@ -32,27 +33,16 @@ export default function Page() {
           </React.Fragment>
         ))}
       </div>
-      <SnippetSidebar
-        open={openIndex !== null}
-        title={openIndex !== null ? clientLabelComponents[openIndex].name : ''}
-        installCommand={clientLabelComponents[openIndex!]?.installCommand}
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-        copyToClipboard={copyToClipboard}
-        onClose={() => setOpenIndex(null)}
-        tabs={[
-          {
-            id: 'code',
-            label: 'Code',
-            icon: <Code size={14} />,
-            content: (
-              <pre className="text-sm whitespace-pre-wrap break-words text-gray-700 dark:text-gray-300 bg-gray-200 dark:bg-black rounded-xl p-4">
-                {clientLabelComponents[openIndex!]?.code}
-              </pre>
-            ),
-          },
-        ]}
-      />
+      {openIndex !== null && (
+        <div ref={showcaseRef} className="w-full mt-12">
+          <TemplateShowcasePage
+            title={clientLabelComponents[openIndex].name}
+            description={clientLabelComponents[openIndex].description}
+            preview={clientLabelComponents[openIndex].preview}
+            code={clientLabelComponents[openIndex].code}
+          />
+        </div>
+      )}
     </div>
   );
 }

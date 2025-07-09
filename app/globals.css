@@ -2,11 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Pixel Font Example */
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap');
 
-.font-pixel {
-  font-family: 'Press Start 2P', cursive;
+.font-heading {
+  font-family: 'Poppins', sans-serif;
+}
+
+.font-body {
+  font-family: 'Inter', sans-serif;
 }
 
 /* Gradient Background Animation */
@@ -24,7 +27,6 @@
 .inner-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 1rem 2rem;
   width: 100%;
   box-sizing: border-box;
 }
@@ -33,7 +35,6 @@
 @media (min-width: 1400px) {
   .inner-container {
     max-width: 1400px;
-    padding: 1.5rem 3rem;
   }
 }
 
@@ -56,7 +57,6 @@
 /* Tablet */
 @media (max-width: 992px) {
   .inner-container {
-    padding: 1rem 1.5rem;
     max-width: 900px;
   }
 }
@@ -64,7 +64,6 @@
 /* Mobile */
 @media (max-width: 768px) {
   .inner-container {
-    padding: 1rem;
     max-width: 100%;
   }
 }
@@ -1314,4 +1313,21 @@
 
 .animate-floating {
   animation: floating 4s ease-in-out infinite;
+}
+
+
+@keyframes spin-slow {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 4s linear infinite;
 }

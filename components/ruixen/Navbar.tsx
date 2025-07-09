@@ -8,12 +8,16 @@ import { RiTwitterXLine } from "react-icons/ri";
 import Image from "next/image";
 import Search from "./Search";
 import HamburgurNavbar from "./HamburgerNavbar";
-import { Inter } from "next/font/google";
 import CommandSearch from "./CommandSearch";
 import ThemeSwitch from "../ui/theme-switch";
 import { gsap } from "gsap";
 
-const inter = Inter({ subsets: ["latin"], weight: "500" });
+import { Poppins } from "next/font/google";
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"], 
+});
 
 function Navbar() {
   const logoRef = useRef(null);
@@ -27,7 +31,7 @@ function Navbar() {
   }, []);
   return (
     <div
-      className={`navbar-container fixed top-0 left-0 right-0 flex justify-between items-center backdrop-blur-xl border-b h-auto sm:py-3 py-4 px-3 text-sm z-50 ${inter.className} 
+      className={`navbar-container fixed top-0 left-0 right-0 flex justify-between items-center backdrop-blur-xl border-b h-auto sm:py-3 py-4 px-3 text-sm z-50 ${poppins.className} 
       bg-white/60 dark:bg-zinc-950 border-zinc-200 dark:border-zinc-900`}
     >
       <span className="flex items-center">
@@ -83,7 +87,7 @@ function Navbar() {
             <ThemeSwitch className="mr-2" />
           </div>
           <Link href="https://github.com/ruixenui" target="_blank">
-            <FaGithub className="text-zinc-900 dark:text-white" size={18} />
+            <FaGithub className="text-zinc-900 dark:text-white" size={24} />
           </Link>
           {/* <Link href="https://x.com/ruixen_ui" target="_blank">
             <SiDiscord className="text-zinc-900 dark:text-white" size={18} />
@@ -92,7 +96,7 @@ function Navbar() {
             href="https://x.com/ruixen_ui"
             target="_blank"
           >
-            <RiTwitterXLine className="text-zinc-900 dark:text-white" size={18} />
+            <RiTwitterXLine className="text-zinc-900 dark:text-white" size={24} />
           </Link>
         </div>
 

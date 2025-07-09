@@ -3,6 +3,12 @@ import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
 import RuixenSearch from "@/components/ruixen/RuixenSearch";
+import { Poppins } from "next/font/google";
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"], 
+});
 
 export const metadata: Metadata = {
   title:
@@ -118,7 +124,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="flex flex-col min-h-screen bg-white dark:bg-black text-black dark:text-white">
+      <body className={`${poppins.className} flex flex-col min-h-screen bg-white dark:bg-black text-black dark:text-white`}>
         <div className="hidden sm:flex">
           <RuixenSearch pages={pages} mode="dark" />
         </div>

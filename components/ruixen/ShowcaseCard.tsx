@@ -3,9 +3,12 @@ import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
-import { Inter } from 'next/font/google';
+import { Poppins } from "next/font/google";
 
-const inter = Inter({ subsets: ['latin'], weight: '500' });
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"], 
+});
 
 interface Project {
   imageUrl: StaticImageData;
@@ -20,7 +23,7 @@ interface ShowcaseCardProps {
 
 const ShowcaseCard: React.FC<ShowcaseCardProps> = ({ ShowcaseCardContent }) => {
   return (
-    <div className={`${inter.className} grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10 sm:p-5`}>
+    <div className={`${poppins.className} grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10 sm:p-5`}>
       {ShowcaseCardContent.map((project, index) => (
         <IndividualShowcaseCard key={index} project={project} />
       ))}

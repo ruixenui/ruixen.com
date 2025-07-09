@@ -10,6 +10,7 @@ type ComponentInfo = {
   imageLight: string;
   code: string;
   installCommand: string;
+  preview: React.ReactNode;
 };
 
 export const profileComponents: ComponentInfo[] = [
@@ -21,6 +22,7 @@ export const profileComponents: ComponentInfo[] = [
       imageLight: "/components/profiles/light/profile-01.png",
       code: codeStringProfile_01,
       installCommand: 'npm install @ruixen/ui',
+      preview: <Profile_01 />
     },
     {
       name: 'Profile 02',
@@ -30,6 +32,7 @@ export const profileComponents: ComponentInfo[] = [
       imageLight: "/components/profiles/light/profile-02.png",
       code: codeStringProfile_02,
       installCommand: 'npm install @ruixen/ui',
+      preview: <Profile_02 />
     },
     {
       name: 'Profile 03',
@@ -39,6 +42,7 @@ export const profileComponents: ComponentInfo[] = [
       imageLight: "/components/profiles/light/profile-03.png",
       code: codeStringProfile_03,
       installCommand: 'npm install @ruixen/ui',
+      preview: <Profile_03 />
     },
   ];
   

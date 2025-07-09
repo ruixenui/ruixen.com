@@ -2,9 +2,9 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaArrowRight } from 'react-icons/fa'; 
-import { Inter } from 'next/font/google';
+import { Poppins } from 'next/font/google';
 
-const inter = Inter({ subsets: ["latin"], weight: "500" });
+const poppins = Poppins({ subsets: ["latin"], weight: "500" });
 
 export const codeStringInput_01 = `
 'use client';
@@ -180,7 +180,7 @@ export default function Input_01 () {
             onChange={(e) => setMessage(e.target.value)}
             onKeyDown={handleKeyPress}
             placeholder="Type your message..."
-            className={`${inter.className} w-full p-3 pr-12 pl-5 rounded-full backdrop-blur-lg focus:outline-none transition-all border ${
+            className={`${poppins.className} w-full p-3 pr-12 pl-5 rounded-full backdrop-blur-lg focus:outline-none transition-all border ${
               isSending ? "opacity-50 cursor-not-allowed" : ""
             } bg-white/70 text-gray-900 placeholder:text-gray-500 border-gray-300 focus:ring-2 focus:ring-indigo-500 dark:bg-zinc-800/70 dark:text-gray-100 dark:border-zinc-700 dark:placeholder:text-zinc-400 dark:focus:ring-indigo-500`}
             disabled={isSending}

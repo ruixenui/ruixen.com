@@ -13,6 +13,7 @@ type ComponentInfo = {
   imageLight: string;
   code: string;
   installCommand: string;
+  preview: React.ReactNode;
 };
 
 export const inputComponents: ComponentInfo[] = [
@@ -24,6 +25,7 @@ export const inputComponents: ComponentInfo[] = [
       imageLight: "/components/inputs/light/input-01.png",
       code: codeStringInput_01,
       installCommand: 'npm install @ruixen/ui',
+      preview: <Input_01 />
     },
     {
       name: 'Input 02',
@@ -33,6 +35,7 @@ export const inputComponents: ComponentInfo[] = [
       imageLight: "/components/inputs/light/input-02.png",
       code: codeStringInput_02,
       installCommand: 'npm install @ruixen/ui',
+      preview: <Input_02 />
     },
     {
       name: 'Input 03',
@@ -42,6 +45,7 @@ export const inputComponents: ComponentInfo[] = [
       imageLight: "/components/inputs/light/input-03.png",
       code: codeStringInput_03,
       installCommand: 'npm install @ruixen/ui',
+      preview: <Input_03 />
     },
     {
       name: 'Input 04',
@@ -51,6 +55,7 @@ export const inputComponents: ComponentInfo[] = [
       imageLight: "/components/inputs/light/input-04.png",
       code: codeStringInput_04,
       installCommand: 'npm install @ruixen/ui',
+      preview: <Input_04 />
     },
     {
       name: 'Input 05',
@@ -60,6 +65,7 @@ export const inputComponents: ComponentInfo[] = [
       imageLight: "/components/inputs/light/input-05.png",
       code: codeStringInput_05,
       installCommand: 'npm install @ruixen/ui',
+      preview: <Input_05 />
     },
     {
       name: 'Input 06',
@@ -69,5 +75,6 @@ export const inputComponents: ComponentInfo[] = [
       imageLight: "/components/inputs/light/input-06.png",
       code: codeStringInput_06,
       installCommand: 'npm install @ruixen/ui',
+      preview: <Input_06 />
     },
   ];

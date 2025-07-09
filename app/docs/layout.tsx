@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/ruixen/Navbar";
 import SideBar from "@/components/ruixen/SideBar";
-import { Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"], weight: "500" });
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"], 
+});
 
 export const metadata: Metadata = {
   title: "Docs",
@@ -15,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className={`${inter.className}`}>
+    <div className={`${poppins.className}`}>
     <Navbar />
     <div className="inner-container flex">
       <div className="fixed top-20 w-64">
