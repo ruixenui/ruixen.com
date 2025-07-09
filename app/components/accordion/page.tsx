@@ -1,8 +1,6 @@
 'use client'
 
 import React, { useState, useEffect } from 'react';
-import { Code } from 'lucide-react';
-import SnippetSidebar from '@/components/snippet-sidebar';
 import HeadingSpotlight from '@/components/ruixen/heading-spotlight';
 import ImageCardToggle from '@/components/ruixen/ImageCardToggle';
 import { accordionComponents } from './AccordionComponentsExport';
