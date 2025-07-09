@@ -84,7 +84,7 @@ const NotificationPopup = () => {
                   </motion.button>
                 </Link>
                 <a
-                  href="https://ayushmxxn.gumroad.com/l/saas-template/t0bwno0"
+                  href="https://ruixen.gumroad.com/l/saas-template/t0bwno0"
                   target="blank"
                 >
                   <motion.button
