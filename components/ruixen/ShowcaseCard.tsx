@@ -3,11 +3,11 @@ import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
-import { Poppins } from "next/font/google";
+import { Roboto } from "next/font/google";
 
-const poppins = Poppins({
+const roboto = Roboto({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"], 
+  weight: ["300", "400", "500", "700"],
 });
 
 interface Project {
@@ -23,7 +23,7 @@ interface ShowcaseCardProps {
 
 const ShowcaseCard: React.FC<ShowcaseCardProps> = ({ ShowcaseCardContent }) => {
   return (
-    <div className={`${poppins.className} grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10 sm:p-5`}>
+    <div className={`${roboto.className} grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10 sm:p-5`}>
       {ShowcaseCardContent.map((project, index) => (
         <IndividualShowcaseCard key={index} project={project} />
       ))}

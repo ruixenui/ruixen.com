@@ -1,7 +1,7 @@
 export default function Page() {
     return (
-        <div>
-            <h1>Test</h1>
+        <div className="flex items-center justify-center mt-64">
+            test
         </div>
     );
 }

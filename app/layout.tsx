@@ -3,11 +3,11 @@ import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
 import RuixenSearch from "@/components/ruixen/RuixenSearch";
-import { Poppins } from "next/font/google";
+import { Roboto } from "next/font/google";
 
-const poppins = Poppins({
+const roboto = Roboto({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500", "700"],
 });
 
 export const metadata: Metadata = {
@@ -133,7 +133,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${poppins.className} flex flex-col min-h-screen bg-white dark:bg-black text-black dark:text-white`}>
+      <body className={`${roboto.className} flex flex-col min-h-screen bg-white dark:bg-black text-black dark:text-white`}>
         <div className="hidden sm:flex">
           <RuixenSearch pages={pages} mode="dark" />
         </div>

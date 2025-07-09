@@ -231,7 +231,7 @@ export default function TemplateShowcasePage({
             <pre className="text-xs font-mono whitespace-pre-wrap">{code}</pre>
           </ScrollArea>
         ) : (
-          <div className={cn(deviceWidth, "transition-all duration-300")}>
+          <div className={cn(deviceWidth, "transition-all duration-300 min-h-[70vh] flex justify-center items-center")}>
             {preview}
           </div>
         )}

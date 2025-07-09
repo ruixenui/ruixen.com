@@ -12,11 +12,11 @@ import CommandSearch from "./CommandSearch";
 import ThemeSwitch from "../ui/theme-switch";
 import { gsap } from "gsap";
 
-import { Poppins } from "next/font/google";
+import { Roboto } from "next/font/google";
 
-const poppins = Poppins({
+const roboto = Roboto({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"], 
+  weight: ["300", "400", "500", "700"],
 });
 
 function Navbar() {
@@ -31,7 +31,7 @@ function Navbar() {
   }, []);
   return (
     <div
-      className={`navbar-container fixed top-0 left-0 right-0 flex justify-between items-center backdrop-blur-xl border-b h-auto sm:py-3 py-4 px-3 text-sm z-50 ${poppins.className} 
+      className={`navbar-container fixed top-0 left-0 right-0 flex justify-between items-center backdrop-blur-xl border-b h-auto sm:py-3 py-4 px-3 text-sm z-1000 ${roboto.className} 
       bg-white/60 dark:bg-zinc-950 border-zinc-200 dark:border-zinc-900`}
     >
       <span className="flex items-center">

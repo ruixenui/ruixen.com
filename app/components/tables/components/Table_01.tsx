@@ -454,7 +454,7 @@ const data: Project[] = [
     },
     {
       id: "9",
-      title: "OpenCV Blog Engine",
+      title: "Ruixen UI Docs",
       repo: "https://github.com/ruixenui/ruixen-buttons",
       status: "Active",
       team: "Platform",

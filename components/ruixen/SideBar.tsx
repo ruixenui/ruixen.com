@@ -25,6 +25,9 @@ const additionalComponentsList = [
   { name: 'Dialogs', url: '/components/dialogs' },
   { name: 'Tables', url: '/components/tables' },
   { name: 'Profiles', url: '/components/profiles' },
+  { name: 'Dropdowns', url: '/components/dropdowns' },
+  { name: 'Forms', url: '/components/forms' },
+  { name: 'Sidebars', url: '/components/sidebars' },
 ];
 
 const SideBar: React.FC = () => {

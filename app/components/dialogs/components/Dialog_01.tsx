@@ -122,7 +122,7 @@ export default function Dialog_01() {
               </div>
               <div className="flex-1 space-y-1.5">
                 <Label htmlFor={\`\${id}-company\`}>Company</Label>
-                <Input id={\`\${id}-company\`} defaultValue="OpenCV University" />
+                <Input id={\`\${id}-company\`} defaultValue="Ruixen UI" />
               </div>
             </div>
 
@@ -252,7 +252,7 @@ export default function Dialog_01() {
               </div>
               <div className="flex-1 space-y-1.5">
                 <Label htmlFor={`${id}-company`}>Company</Label>
-                <Input id={`${id}-company`} defaultValue="OpenCV University" />
+                <Input id={`${id}-company`} defaultValue="Ruixen UI" />
               </div>
             </div>
 

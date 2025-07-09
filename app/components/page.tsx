@@ -24,13 +24,12 @@ import FlipCard3D from '@/app/images/thumbnails/FlipCard3DThumbnail.png';
 import Link from "next/link";
 
 import { BrandButton } from "@/components/ruixen/BrandButton";
-import { Poppins } from "next/font/google";
+import { Roboto } from "next/font/google";
 
-const poppins = Poppins({
+const roboto = Roboto({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"], 
+  weight: ["300", "400", "500", "700"],
 });
-
 
 const ShowcaseCardContent = [
 
@@ -39,7 +38,7 @@ const ShowcaseCardContent = [
 
 function ComponentsPage() {
   return (
-   <div className={`${poppins.className} text-black bg-white dark:bg-black dark:text-white dark:backdrop-blur-md w-full h-full pt-28 overflow-auto p-5`}>
+   <div className={`${roboto.className} text-black bg-white dark:bg-black dark:text-white dark:backdrop-blur-md w-full h-full pt-28 overflow-auto p-5`}>
       <div className='container mx-auto'>
         <h1 className={`text-4xl font-bold text-center `}>Popular Components</h1>
         <div className='flex  justify-center mt-5 '>

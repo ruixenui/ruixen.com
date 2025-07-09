@@ -3,21 +3,13 @@
 import Link from "next/link";
 import React from "react";
 import HomeNav from "@/components/ruixen/HomeNav";
-import { Inter } from "next/font/google";
 import { AnimatedGroup } from "@/components/ui/animated-group";
 import { Button } from "@/components/ui/button";
 import Footer from "@/components/ruixen/Footer";
 import HeroAbout from "@/components/ruixen/HeroAbout";
 import Explore from "@/components/ruixen/Explore";
 import FaqAccordion from "@/components/ruixen/faq-accordion";
-
-import { Poppins } from "next/font/google";
 import Image from "next/image";
-
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"], 
-});
 
 const ruixenFaqData = [
     {
@@ -68,7 +60,7 @@ function Home() {
         <section>
             <HomeNav />
             <div className="flex justify-center items-center m-auto pt-10 px-20 bg-white dark:bg-black text-black dark:text-white transition-all duration-300">
-                <div className={`${poppins.className} relative min-h-screen bg-black overflow-hidden bg-white dark:bg-black text-black dark:text-white`}>
+                <div className={`relative min-h-screen bg-black overflow-hidden bg-white dark:bg-black text-black dark:text-white`}>
 
                     {/* Borders */}
                     <div className="absolute top-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-zinc-500 to-transparent" />
@@ -84,7 +76,7 @@ function Home() {
                     <div className="text-left mx-auto container bg-white dark:bg-black text-black dark:text-white flex flex-col md:flex-row gap-10 items-center">
                         <div className="flex-1">
                             <AnimatedGroup variants={transitionVariants} className="mt-40 bg-white dark:bg-black text-black dark:text-white">
-                                <h1 className="relative mt-8 text-left text-[3.5rem] sm:text-[5rem] md:text-[6rem] xl:text-[7.5rem] font-extrabold leading-[1.1]">
+                                <h1 className="relative mt-8 text-left text-[3.5rem] sm:text-[5rem] md:text-[6rem] xl:text-[7.5rem] font-semibold leading-[1.1]">
                                     Build Stunning UIs with <br />
                                     <span className="inline-block whitespace-nowrap relative z-10">
                                         <span className="ruixen-gradient-text relative z-30">R</span>
