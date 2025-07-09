@@ -86,14 +86,11 @@ const HomeNav: React.FC = () => {
 
           <div className="hidden sm:flex space-x-4 mr-2">
             <ThemeSwitch className="mr-2" />
-            <Link href="https://github.com/ayushmxxn" target="_blank" className="flex items-center hover:text-black dark:hover:text-zinc-300">
+            <Link href="https://github.com/ruixenui" target="_blank" className="flex items-center hover:text-black dark:hover:text-zinc-300">
               <FaGithub className="text-black dark:text-white" size={24} />
             </Link>
-            <Link href="https://discord.gg/kzk6uWey3g" target="_blank" className="flex items-center hover:text-black dark:hover:text-zinc-300">
-              <SiDiscord className="text-black dark:text-white" size={24} />
-            </Link>
             <Link
-              href="https://twitter.com/messages/compose?recipient_id=YOUR_TWITTER_ID"
+              href="https://x.com/ruixen_ui"
               target="_blank"
               className="flex items-center hover:text-black dark:hover:text-zinc-300"
             >
