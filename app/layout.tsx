@@ -20,11 +20,11 @@ export const metadata: Metadata = {
     title: "Ruixen",
     description:
       "Collection of customizable and open source components made with Next.js, Tailwind, Typescript, and Framer Motion.",
-    url: "https://www.ruixen.com/",
+    url: "https://ruixen.com/",
     siteName: "Ruixen",
     images: [
       {
-        url: "https://www.ruixen.com/ruixen_light.png", // absolute URL
+        url: "https://ruixen.com/ruixen_light.png", // absolute URL
         width: 1200,
         height: 630,
         alt: "Ruixen",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
       "Collection of customizable and open source components made with Next.js, Tailwind, Typescript, and Framer Motion.",
     images: [
       {
-        url: "https://www.ruixen.com/ruixen_light.png", // absolute URL
+        url: "https://ruixen.com/ruixen_light.png", // absolute URL
         width: 1200,
         height: 630,
         alt: "Ruixen",
