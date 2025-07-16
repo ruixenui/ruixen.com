@@ -65,6 +65,7 @@
     "react-typewriter-effect": "^1.1.0",
     "react-use-measure": "^2.1.1",
     "sharp": "^0.33.4",
+    "shiki": "^3.8.0",
     "sonner": "^2.0.6",
     "styled-components": "^6.1.12",
     "tailwind-merge": "^2.6.0",
