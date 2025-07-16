@@ -90,7 +90,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "WebSite",
               name: "Ruixen",
-              url: "https://www.ruixen.com",
+              url: "https://ruixen.com",
               author: {
                 "@type": "Person",
                 name: "Srinath",
