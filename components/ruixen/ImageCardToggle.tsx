@@ -26,7 +26,7 @@ export default function ImageCardToggle({
   return (
     <div className="relative flex flex-col max-w-[17rem] rounded-3xl overflow-hidden">
       <div
-        className="absolute top-3 right-3 flex items-center cursor-pointer z-20"
+        className="absolute top-3 right-3 flex items-center cursor-pointer z-10"
         onClick={() => setOpenIndex(index)}
       >
         <div

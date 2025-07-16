@@ -32,7 +32,7 @@ export default function FaqAccordion({
   const [openItem, setOpenItem] = React.useState<string | null>(null);
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-black">
+    <section className="min-h-screen flex items-center justify-center bg-white dark:bg-black">
       <div className={cn("container mx-auto px-4 flex flex-col md:flex-row gap-10 items-start justify-between", className)}>
 
         {/* LEFT TEXT BLOCK */}
@@ -120,7 +120,7 @@ export default function FaqAccordion({
                   <div className="ml-24 mt-1 rounded-3xl border border-gray-200 dark:border-white/20 bg-black backdrop-blur-md shadow-md dark:bg-white dark:border-white/20 shadow-white/20">
                     <div
                       className={cn(
-                        "relative max-w-xs px-4 py-2 !text-white dark:!text-black font-semibold text-base md:text-lg",
+                        "relative max-w-xs px-4 py-2 !text-white dark:!text-black font-medium text-base md:text-lg",
                         answerClassName
                       )}
                     >
@@ -135,6 +135,5 @@ export default function FaqAccordion({
         </div>
       </div>
     </section>
-
   );
 }

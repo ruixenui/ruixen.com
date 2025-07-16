@@ -5,7 +5,11 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { GeistSans } from 'geist/font/sans';
 
-const sections_and_blocks = [
+const blocks = [
+  { name: 'Sliders', url: '/blocks/sliders' },
+]
+
+const sections = [
   { name: 'Navbar', url: '/sections/navbar' },
   { name: 'Hero Sections', url: '/sections/hero-sections' },
   { name: 'Client Label', url: '/sections/client-labels' },
@@ -49,7 +53,14 @@ const SideBar: React.FC = () => {
           </div>
 
           <h2 className="mt-8 mb-2 text-sm font-semibold text-gray-900 dark:text-gray-200 flex items-center">Sections & Blocks</h2>
-          {sections_and_blocks.map(({ name, url }) => (
+          {sections.map(({ name, url }) => (
+            <Link key={name} href={url} className={`flex items-center justify-between text-sm py-1 hover:text-gray-900 ${pathname !== url ? 'text-gray-600 dark:text-gray-400' : 'text-gray-600 dark:text-gray-400'}`}>
+              <span>{name}</span>
+            </Link>
+          ))}
+
+          <h2 className="mt-6 mb-2 text-sm font-medium text-gray-900 dark:text-gray-200">Blocks</h2>
+          {blocks.map(({ name, url }) => (
             <Link key={name} href={url} className={`flex items-center justify-between text-sm py-1 hover:text-gray-900 ${pathname !== url ? 'text-gray-600 dark:text-gray-400' : 'text-gray-600 dark:text-gray-400'}`}>
               <span>{name}</span>
             </Link>

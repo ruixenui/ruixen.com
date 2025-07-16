@@ -1,9 +1,68 @@
 import Image from "next/image";
-import { ChevronRight } from "lucide-react";
+
+const footerSections = [
+  {
+    heading: "Components",
+    links: [
+      { label: "Buttons", href: "/components/buttons" },
+      { label: "Cards", href: "/components/cards" },
+      { label: "Forms", href: "/components/forms" },
+      { label: "Modals", href: "/components/modals" },
+      { label: "Tables", href: "/components/tables" },
+      { label: "Tabs", href: "/components/tabs" },
+      { label: "Tooltips", href: "/components/tooltips" },
+      { label: "Avatars", href: "/components/avatars" },
+    ],
+  },
+  {
+    heading: "Templates",
+    links: [
+      { label: "Landing Pages", href: "/templates/landing-pages" },
+      { label: "Dashboards", href: "/templates/dashboards" },
+      { label: "Portfolio Sites", href: "/templates/portfolio" },
+      { label: "Marketing Pages", href: "/templates/marketing" },
+      { label: "AI SaaS Templates", href: "/templates/ai-saas" },
+      { label: "Startup Kits", href: "/templates/startup-kits" },
+    ],
+  },
+  {
+    heading: "Resources",
+    links: [
+      { label: "Documentation", href: "/docs" },
+      { label: "Theme Customization", href: "/docs/theme" },
+      { label: "Changelog", href: "/changelog" },
+      { label: "Framer Motion Guide", href: "/guides/framer-motion" },
+      { label: "Tailwind CSS Tips", href: "/guides/tailwind" },
+      { label: "Accessibility", href: "/guides/accessibility" },
+    ],
+  },
+  {
+    heading: "Company",
+    links: [
+      { label: "About Us", href: "/about" },
+      { label: "Careers", href: "/careers" },
+      { label: "Blog", href: "/blog" },
+      { label: "Community", href: "/community" },
+      { label: "Contact", href: "/contact" },
+      { label: "Terms & Conditions", href: "/terms" },
+    ],
+  },
+  {
+    heading: "More",
+    links: [
+      { label: "Affiliate Program", href: "/affiliate" },
+      { label: "Refund Policy", href: "/refund-policy" },
+      { label: "Licensing", href: "/licensing" },
+      { label: "Studio Access", href: "/studio" },
+      { label: "Discord Server", href: "https://discord.gg/ruixen" },
+      { label: "Twitter", href: "https://twitter.com/ruixen" },
+    ],
+  },
+];
 
 export default function Footer() {
   return (
-    <footer className="relative bg-black pt-24 pb-12 overflow-hidden text-sm text-white dark:text-gray-100">
+    <footer className="relative bg-black pt-24 pb-12 overflow-hidden text-sm text-white dark:text-gray-100 rounded-t-[3%]">
       <div className="relative max-w-7xl mx-auto px-4 md:px-6 z-10">
         <div className="mb-12">
           <div className="flex items-center space-x-3">
@@ -24,23 +83,17 @@ export default function Footer() {
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 mb-12">
-          {[
-            ["Components", ["Buttons", "Cards", "Forms", "Modals", "Tables", "Tabs", "Tooltips", "Avatars"]],
-            ["Templates", ["Landing Pages", "Dashboards", "Portfolio Sites", "Marketing Pages", "AI SaaS Templates", "Startup Kits"]],
-            ["Resources", ["Documentation", "Theme Customization", "Changelog", "Framer Motion Guide", "Tailwind CSS Tips", "Accessibility"]],
-            ["Company", ["About Us", "Careers", "Blog", "Community", "Contact", "Terms & Conditions"]],
-            ["More", ["Affiliate Program", "Refund Policy", "Licensing", "Studio Access", "Discord Server", "Twitter"]],
-          ].map(([heading, links], i) => (
+          {footerSections.map((section, i) => (
             <div key={i}>
-              <h4 className="font-medium mb-4">{heading}</h4>
+              <h4 className="font-medium mb-4">{section.heading}</h4>
               <ul className="space-y-4">
-                {(links as string[]).map((item, j) => (
+                {section.links.map((link, j) => (
                   <li key={j}>
                     <a
-                      href="#"
+                      href={link.href}
                       className="flex items-center hover:text-gray-400 dark:hover:text-gray-500 transition"
                     >
-                      {item}
+                      {link.label}
                     </a>
                   </li>
                 ))}

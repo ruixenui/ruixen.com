@@ -11,16 +11,12 @@ export default function Page() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const showcaseRef = useRef<HTMLDivElement>(null);
 
-  const copyToClipboard = (text?: string) => {
-    if (text) navigator.clipboard.writeText(text);
-  };
-
   return (
     <div className="dark:bg-black bg-white w-full min-h-screen flex flex-col items-start p-2 pt-24">
       <HeadingSpotlight
         title="Inputs"
       />
-      <div className="w-full mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 relative inner-container">
+      <div className="w-full mt-8 grid grid-cols-1 sm:grid-cols-4 gap-4 relative inner-container">
         {inputComponents.map((item, index) => (
           <React.Fragment key={index}>
             <ImageCardToggle

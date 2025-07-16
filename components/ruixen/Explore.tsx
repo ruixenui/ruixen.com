@@ -31,10 +31,10 @@ const items = [
 
 export default function Explore() {
   return (
-    <section className="bg-zinc-50 py-16 dark:bg-transparent">
-      <div className="mx-auto container px-4">
-        <div className="mb-12 max-w-2xl mr-auto text-left">
-          <h2 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-4">
+    <section className="bg-white dark:bg-black dark:bg-transparent  border border-gray-200 dark:border-gray-800">
+      <div className="mx-auto container  border border-gray-200 dark:border-gray-800 p-0 border-t-0">
+        <div className="mb-12 max-w-2xl mr-auto text-left px-6 pt-12">
+          <h2 className="text-4xl md:text-6xl font-bold text-black dark:text-white mb-4">
             Built for performance. Designed for flexibility.
           </h2>
           <p className="text-gray-600 dark:text-gray-400 text-lg">

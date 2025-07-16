@@ -3,7 +3,6 @@
 import Link from "next/link";
 import React, { useEffect, useRef } from "react";
 import { FaGithub } from "react-icons/fa";
-import { SiDiscord } from "react-icons/si";
 import { RiTwitterXLine } from "react-icons/ri";
 import Image from "next/image";
 import Search from "./Search";
@@ -31,7 +30,7 @@ function Navbar() {
   }, []);
   return (
     <div
-      className={`navbar-container fixed top-0 left-0 right-0 flex justify-between items-center backdrop-blur-xl border-b h-auto sm:py-3 py-4 px-3 text-sm z-1000 ${roboto.className} 
+      className={`navbar-container fixed top-0 left-0 right-0 flex justify-between items-center backdrop-blur-xl border-b h-auto sm:py-3 py-4 px-3 text-sm z-50 ${roboto.className} 
       bg-white/60 dark:bg-zinc-950 border-zinc-200 dark:border-zinc-900`}
     >
       <span className="flex items-center">

@@ -10,13 +10,16 @@ import HeroAbout from "@/components/ruixen/HeroAbout";
 import Explore from "@/components/ruixen/Explore";
 import FaqAccordion from "@/components/ruixen/faq-accordion";
 import Image from "next/image";
+import HomeComponentsAd from "@/components/ruixen/HomeComponentsAd";
+import WhosOnRuixen from "@/components/ruixen/WhosOnRuixen";
+import ShowcaseCard from "@/components/ruixen/ShowcaseCard";
 
 const ruixenFaqData = [
     {
       id: 1,
       question: "Is Ruixen UI production-ready?",
       answer: "Absolutely. Every component is optimized for real-world apps — fast, responsive, and battle-tested.",
-      icon: "🚀",
+    //   icon: "",
     },
     {
       id: 2,
@@ -27,7 +30,7 @@ const ruixenFaqData = [
       id: 3,
       question: "Can I customize the components?",
       answer: "Yes! All components are fully customizable to match your brand and style guides.",
-      icon: "🎨",
+    //   icon: "",
     },
     {
       id: 4,
@@ -38,7 +41,7 @@ const ruixenFaqData = [
       id: 5,
       question: "Will Ruixen UI slow down my website?",
       answer: "Not a chance. Performance is at the core of every component — smooth, lightweight, and optimized.",
-      icon: "⚡",
+    //   icon: "⚡",
     },
   ];
   
@@ -59,18 +62,18 @@ function Home() {
     return (
         <section>
             <HomeNav />
-            <div className="flex justify-center items-center m-auto pt-10 px-20 bg-white dark:bg-black text-black dark:text-white transition-all duration-300">
-                <div className={`relative min-h-screen bg-black overflow-hidden bg-white dark:bg-black text-black dark:text-white`}>
+            <div className="flex justify-center items-center mx-auto bg-white dark:bg-black text-black dark:text-white transition-all duration-300">
+                <div className={`relative min-h-screen bg-black bg-white dark:bg-black text-black dark:text-white`}>
 
                     {/* Borders */}
                     <div className="absolute top-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-zinc-500 to-transparent" />
                     <div className="absolute bottom-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-zinc-500 to-transparent" />
                     <div className="absolute top-0 left-0 h-full w-px bg-gradient-to-b from-transparent via-zinc-500 to-transparent" />
                     <div className="absolute top-0 right-0 h-full w-px bg-gradient-to-b from-transparent via-zinc-500 to-transparent" />
-                    {/* <div className="absolute left-0 top-0 h-2 w-2 rounded-full bg-zinc-500" />
+                    <div className="absolute left-0 top-0 h-2 w-2 rounded-full bg-zinc-500" />
                     <div className="absolute right-0 top-0 h-2 w-2 rounded-full bg-zinc-500" />
-                    <div className="absolute left-0 bottom-0 h-2 w-2 rounded-full bg-zinc-500" />
-                    <div className="absolute right-0 bottom-0 h-2 w-2 rounded-full bg-zinc-500" /> */}
+                    <div className="absolute -left-1 -bottom-1 h-2 w-2 rounded-full bg-zinc-500" />
+                    <div className="absolute -right-1 -bottom-1 h-2 w-2 rounded-full bg-zinc-500" />
 
                     {/* Main Content */}
                     <div className="text-left mx-auto container bg-white dark:bg-black text-black dark:text-white flex flex-col md:flex-row gap-10 items-center">
@@ -109,26 +112,30 @@ function Home() {
                                 }}
                                 className="mt-10 flex flex-col sm:flex-row items-start gap-3 mb-10"
                             >
-                                <div className="bg-white dark:bg-black text-black dark:text-white rounded-[14px] border p-0.5">
+                                <div className="bg-white dark:bg-black text-black dark:text-white rounded-[14px]">
                                     <Button asChild size="lg" className="rounded-xl px-5 text-base">
                                         <Link href="/docs">
                                             <span className="text-nowrap">Get Started</span>
                                         </Link>
                                     </Button>
                                 </div>
-                                <Button asChild size="lg" variant="ghost" className="h-10.5 rounded-xl px-5">
-                                    <Link href="/docs/sections/hero/hero-section">
-                                        <span className="text-nowrap">Explore Components</span>
-                                    </Link>
-                                </Button>
+                                <div className="bg-white dark:bg-black text-black dark:text-white rounded-[14px]">
+                                    <Button asChild size="lg" className="rounded-xl px-5 text-base bg-white dark:bg-black text-black dark:text-white rounded-[14px] border">
+                                        <Link href="/templates">
+                                            <span className="text-nowrap">Get Templates</span>
+                                        </Link>
+                                    </Button>
+                                </div>
                             </AnimatedGroup>
+                            <WhosOnRuixen/>
                         </div>
                     </div>
                 </div>
             </div>
             {/* <HeroTabsSection /> */}
+            <HomeComponentsAd/>
             <HeroAbout />
-            <Explore />
+            {/* <Explore /> */}
             <FaqAccordion data={ruixenFaqData} className=""
                 questionClassName="bg-secondary hover:bg-secondary/80"
                 answerClassName="bg-secondary text-secondary-foreground"

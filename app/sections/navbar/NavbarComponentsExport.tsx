@@ -20,7 +20,6 @@ export const navbarComponents: ComponentInfo[] = [
       imageLight: "/sections/navbar/light/navbar-01.png",
       code: codeStringNavbar_01,
       installCommand: 'npm install @ruixen/ui',
-      preview: <Navbar_01  />
+      preview: <Navbar_01 />
     }
   ];
-  

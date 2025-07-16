@@ -17,10 +17,6 @@ export default function Page() {
     }
   }, [openIndex]);
 
-  const copyToClipboard = (text?: string) => {
-    if (text) navigator.clipboard.writeText(text);
-  };
-
   return (
     <div className="dark:bg-black bg-white w-full min-h-screen flex flex-col items-start p-2 pt-24">
       <HeadingSpotlight

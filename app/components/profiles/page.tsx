@@ -20,7 +20,7 @@ export default function Page() {
       <HeadingSpotlight
         title="Profile"
       />
-      <div className="w-full mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 relative inner-container">
+      <div className="w-full mt-8 grid grid-cols-1 sm:grid-cols-4 gap-4 relative inner-container">
         {profileComponents.map((item, index) => (
           <React.Fragment key={index}>
             <ImageCardToggle
