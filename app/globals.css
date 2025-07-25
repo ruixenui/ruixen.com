@@ -3,6 +3,13 @@
 @tailwind utilities;
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jersey+15&display=swap');
+
+.jersey-15-regular {
+  font-family: "Jersey 15", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
 
 .font-heading {
   font-family: 'Poppins', sans-serif;
@@ -1330,4 +1337,30 @@
 
 .animate-spin-slow {
   animation: spin-slow 4s linear infinite;
+}
+
+@keyframes rainbow-glow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-rainbow-glow {
+  background: linear-gradient(
+    270deg,
+    #fca5a5,  /* light red */
+    #c4b5fd,  /* soft purple */
+    #99f6e4,  /* aqua */
+    #93c5fd,  /* light blue */
+    #fdba74   /* soft orange */
+  );
+  background-size: 200% 200%;
+  animation: rainbow-glow 6s ease infinite;
+  opacity: 0.6;
 }

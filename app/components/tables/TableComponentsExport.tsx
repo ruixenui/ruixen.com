@@ -1,6 +1,8 @@
 import Table_01, { codeStringTable_01 } from './components/Table_01';
-import  Table_02, { codeStringTable_02 } from './components/Table_02';
+import Table_02, { codeStringTable_02 } from './components/Table_02';
 import Table_03, { codeStringTable_03 } from './components/Table_03';
+import Table_04, { codeStringTable_04 } from './components/Table_04';
+import Table_05, { codeStringTable_05 } from './components/Table_05';
 
 type ComponentInfo = {
   name: string;
@@ -64,5 +66,24 @@ export const tableComponents: ComponentInfo[] = [
       installCommand: 'npm install @ruixen/ui',
       preview: <Table_03 columns={columns} data={data} pageSize={5} searchable />
     },
+    {
+      name: 'Table 04',
+      component: <Table_04 />,
+      description: 'A responsive FAQ section with categorized accordions, designed to guide users and provide quick answers.',
+      imageDark: "/components/tables/dark/table-04.png",
+      imageLight: "/components/tables/light/table-04.png",
+      code: codeStringTable_04,
+      installCommand: 'npm install @ruixen/ui',
+      preview: <Table_04 />
+    },
+    {
+      name: 'Table 05',
+      component: <Table_05 />,
+      description: 'A responsive FAQ section with categorized accordions, designed to guide users and provide quick answers.',
+      imageDark: "/components/tables/dark/table-05.png",
+      imageLight: "/components/tables/light/table-05.png",
+      code: codeStringTable_05,
+      installCommand: 'npm install @ruixen/ui',
+      preview: <Table_05 />
+    },
   ];
-  

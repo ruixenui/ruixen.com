@@ -1,12 +1,13 @@
 'use client'
 
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { GeistSans } from 'geist/font/sans';
 
 const blocks = [
   { name: 'Sliders', url: '/blocks/sliders' },
+  { name: 'Screens', url: '/blocks/screens' },
 ]
 
 const sections = [
@@ -32,13 +33,11 @@ const additionalComponentsList = [
   { name: 'Dropdowns', url: '/components/dropdowns' },
   { name: 'Forms', url: '/components/forms' },
   { name: 'Sidebars', url: '/components/sidebars' },
+  { name: 'Popovers', url: '/components/popovers' },
 ];
 
 const SideBar: React.FC = () => {
-  const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const pathname = usePathname();
-
-  const toggleSection = (name: string) => setExpandedSection(expandedSection === name ? null : name);
 
   return (
     <aside className={`${GeistSans.className} fixed bg-white dark:bg-black backdrop-blur-lg p-4 rounded-2xl text-black dark:text-white hidden md:flex flex-col h-[calc(100vh-6rem)] sticky top-0 left-0 z-40 overflow-hidden`}>
@@ -52,7 +51,7 @@ const SideBar: React.FC = () => {
             <Link href="/docs/installation" className={`flex items-center space-x-2 hover:text-gray-300 py-1 text-sm ${pathname === '/docs/installation' ? 'text-gray-800 dark:text-gray-200' : 'text-gray-600 dark:text-gray-400'}`}><span>Installation</span></Link>
           </div>
 
-          <h2 className="mt-8 mb-2 text-sm font-semibold text-gray-900 dark:text-gray-200 flex items-center">Sections & Blocks</h2>
+          <h2 className="mt-8 mb-2 text-sm font-semibold text-gray-900 dark:text-gray-200 flex items-center">Sections</h2>
           {sections.map(({ name, url }) => (
             <Link key={name} href={url} className={`flex items-center justify-between text-sm py-1 hover:text-gray-900 ${pathname !== url ? 'text-gray-600 dark:text-gray-400' : 'text-gray-600 dark:text-gray-400'}`}>
               <span>{name}</span>
@@ -66,7 +65,7 @@ const SideBar: React.FC = () => {
             </Link>
           ))}
 
-          <h2 className="mt-6 mb-2 text-sm font-medium text-gray-900 dark:text-gray-200">Other Components</h2>
+          <h2 className="mt-6 mb-2 text-sm font-medium text-gray-900 dark:text-gray-200">Components</h2>
           {additionalComponentsList.map(({ name, url }) => (
             <Link key={name} href={url} className={`flex items-center justify-between text-sm py-1 hover:text-gray-900 ${pathname !== url ? 'text-gray-600 dark:text-gray-400' : 'text-gray-600 dark:text-gray-400'}`}>
               <span>{name}</span>

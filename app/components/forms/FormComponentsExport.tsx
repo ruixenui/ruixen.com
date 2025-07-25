@@ -1,4 +1,5 @@
 import Form_01, { codeStringForm_01 } from "./components/Form_01";
+import Form_02, { codeStringForm_02 } from "./components/Form_02";
 
   
 type ComponentInfo = {
@@ -22,5 +23,15 @@ export const formComponents: ComponentInfo[] = [
       code: codeStringForm_01,
       installCommand: 'npm install @ruixen/ui',
       preview:<Form_01 />
+    },
+    {
+      name: 'Form 02',
+      component: <Form_02 />,
+      description: 'A minimal, single-open dropdown with icons and smooth transitions, ideal for clean, focused FAQ ',
+      imageDark: "/components/forms/dark/form-02.png",
+      imageLight: "/components/forms/light/form-02.png",
+      code: codeStringForm_02,
+      installCommand: 'npm install @ruixen/ui',
+      preview:<Form_02 />
     }
   ];

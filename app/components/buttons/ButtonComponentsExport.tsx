@@ -1,6 +1,7 @@
 import Button_01, { codeStringButton_01 } from './components/Button_01';
 import Button_02, { codeStringButton_02 } from './components/Button_02';
 import Button_03, { codeStringButton_03 } from './components/Button_03';
+import Button_07, { codeStringButton_07 } from './components/Button_07';
 
 type ComponentInfo = {
   name: string;
@@ -43,6 +44,16 @@ export const buttonComponents: ComponentInfo[] = [
       code: codeStringButton_03,
       installCommand: 'npm install @ruixen/ui',
       preview: <Button_03 />
-    }
+    },
+    {
+      name: 'Button 07',
+      component: <Button_07 />,
+      description: 'Interactive circular numeric input with animated progress ring, increment/decrement controls',
+      imageDark: "/components/buttons/dark/button-07.png",
+      imageLight: "/components/buttons/light/button-07.png",
+      code: codeStringButton_07,
+      installCommand: 'npm install @ruixen/ui',
+      preview: <Button_07 />
+    },
   ];
   

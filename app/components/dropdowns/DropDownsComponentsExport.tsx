@@ -1,6 +1,6 @@
 import DropDown_01, { codeStringDropDown_01 } from "./components/DropDown_01";
 import DropDown_02, { codeStringDropDown_02 } from "./components/DropDown_02";
-
+import DropDown_03, { codeStringDropDown_03 } from "./components/DropDown_03";
   
 type ComponentInfo = {
   name: string;
@@ -33,6 +33,16 @@ export const dropdownComponents: ComponentInfo[] = [
       code: codeStringDropDown_02,
       installCommand: 'npm install @ruixen/ui',
       preview:<DropDown_02 />
+    },
+    {
+      name: 'Dropdown 03',
+      component: <DropDown_03 />,
+      description: 'A minimal, single-open dropdown with icons and smooth transitions, ideal for clean, focused FAQ ',
+      imageDark: "/components/dropdowns/dark/dropdown-03.png",
+      imageLight: "/components/dropdowns/light/dropdown-03.png",
+      code: codeStringDropDown_03,
+      installCommand: 'npm install @ruixen/ui',
+      preview:<DropDown_03 />
     },
   ];
   

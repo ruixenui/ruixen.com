@@ -1,5 +1,6 @@
 import Pricing_01, { codeStringPricing_01 } from "./components/Pricing_01";
 import Pricing_02, { codeStringPricing_02 } from "./components/Pricing_02";
+import Pricing_03, { codeStringPricing_03 } from "./components/Pricing_03";
 
 type ComponentInfo = {
   name: string;
@@ -32,6 +33,16 @@ export const pricingComponents: ComponentInfo[] = [
       code: codeStringPricing_02,
       installCommand: 'npm install @ruixen/ui',
       preview: <Pricing_02  />
+    },
+    {
+      name: 'Pricing 03',
+      component: <Pricing_03 />,
+      description: 'A minimal, single-open client label with icons and smooth transitions, ideal for clean, focused FAQ ',
+      imageDark: "/sections/pricing/dark/pricing-03.png",
+      imageLight: "/sections/pricing/light/pricing-03.png",
+      code: codeStringPricing_03,
+      installCommand: 'npm install @ruixen/ui',
+      preview: <Pricing_03  />
     }
   ];
   
