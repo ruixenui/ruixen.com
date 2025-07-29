@@ -3,6 +3,7 @@ import HeroSection_02, { codeStringHero_02 } from './components/HeroSection_02';
 import HeroSection_03, { codeStringHero_03 } from './components/HeroSection_03';
 import HeroSection_04, { codeStringHero_04 } from './components/HeroSection_04';
 import HeroSection_05, { codeStringHero_05 } from './components/HeroSection_05';
+import HeroSection_06, { codeStringHero_06 } from './components/HeroSection_06';
 
 type ComponentInfo = {
   name: string;
@@ -64,5 +65,15 @@ export const heroComponents: ComponentInfo[] = [
       code: codeStringHero_05,
       installCommand: 'npm install @ruixen/ui',
       preview: <HeroSection_05 />
+    },
+    {
+      name: 'Hero Section 06',
+      component: <HeroSection_06 />,
+      description: 'A minimal, single-open hero section with icons and smooth transitions, ideal for clean, focused FAQ ',
+      imageDark: "/sections/hero-sections/dark/hero-section-06.png",
+      imageLight: "/sections/hero-sections/light/hero-section-06.png",
+      code: codeStringHero_06,
+      installCommand: 'npm install @ruixen/ui',
+      preview: <HeroSection_06 />
     }
   ];
