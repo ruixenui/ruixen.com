@@ -1,0 +1,256 @@
+{
+    "name": "ruixen-ui",
+    "description": "A collection of modern, accessible React components built with TypeScript, Tailwind CSS, and Framer Motion",
+    "version": "1.0.0",
+    "components": {
+      "cta-01": {
+        "name": "CTA_01",
+        "description": "Modern call-to-action section with animated background, badge, buttons, and interactive card with logo display",
+        "category": "marketing",
+        "files": [
+          {
+            "name": "CTA_01.tsx",
+            "path": "app/sections/cta/components/CTA_01.tsx",
+            "type": "component"
+          }
+        ],
+        "dependencies": {
+          "react": "^18.0.0",
+          "next": "^14.0.0",
+          "framer-motion": "^10.0.0",
+          "lucide-react": "^0.263.0",
+          "tailwindcss": "^3.3.0",
+          "@radix-ui/react-slot": "^1.0.0",
+          "class-variance-authority": "^0.7.0",
+          "clsx": "^2.0.0",
+          "tailwind-merge": "^2.0.0"
+        },
+        "exports": ["CTA_01"],
+        "props": {
+          "CTA_01": []
+        },
+        "variants": [],
+        "sizes": [],
+        "features": [
+          "framer-motion-animations",
+          "responsive-design",
+          "dark-mode",
+          "interactive-hover-effects",
+          "gradient-backgrounds",
+          "image-optimization",
+          "accessibility",
+          "client-component"
+        ],
+        "requiredAssets": [
+          "/ruixen_dark.png",
+          "/ruixen_light.png"
+        ],
+        "notes": "Requires Button and Badge components from @/components/ui. Also needs logo assets in public folder."
+      },
+      "accordion-01": {
+        "name": "Accordion_01",
+        "description": "Enhanced accordion component with icons, custom styling, and smooth animations. Perfect for FAQs and content organization",
+        "category": "layout",
+        "files": [
+          {
+            "name": "Accordion_01.tsx",
+            "path": "app/components/accordion/components/Accordion_01.tsx",
+            "type": "component"
+          }
+        ],
+        "dependencies": {
+          "react": "^18.0.0",
+          "@radix-ui/react-accordion": "^1.1.0",
+          "lucide-react": "^0.263.0",
+          "tailwindcss": "^3.3.0",
+          "class-variance-authority": "^0.7.0",
+          "clsx": "^2.0.0",
+          "tailwind-merge": "^2.0.0"
+        },
+        "exports": ["Accordion_01"],
+        "props": {
+          "Accordion_01": []
+        },
+        "variants": [],
+        "sizes": [],
+        "features": [
+          "radix-ui-based",
+          "keyboard-navigation",
+          "accessibility",
+          "dark-mode",
+          "icon-support",
+          "smooth-animations",
+          "custom-styling",
+          "responsive-design",
+          "client-component"
+        ],
+        "notes": "Requires Accordion, AccordionContent, AccordionItem, and AccordionTrigger components from @/components/ui/accordion. Uses Lucide React icons."
+      },
+      "button": {
+        "name": "Button",
+        "description": "Versatile button component with multiple variants, sizes, and states",
+        "category": "form",
+        "files": [
+          {
+            "name": "button.tsx",
+            "path": "components/ui/button.tsx",
+            "type": "component"
+          }
+        ],
+        "dependencies": {
+          "react": "^18.0.0",
+          "@radix-ui/react-slot": "^1.0.0",
+          "class-variance-authority": "^0.7.0",
+          "clsx": "^2.0.0",
+          "tailwind-merge": "^2.0.0"
+        },
+        "exports": ["Button", "buttonVariants"],
+        "props": {
+          "Button": [
+            "children",
+            "variant",
+            "size",
+            "asChild",
+            "className",
+            "disabled"
+          ]
+        },
+        "variants": [
+          "default",
+          "destructive",
+          "outline",
+          "secondary",
+          "ghost",
+          "link"
+        ],
+        "sizes": ["default", "sm", "lg", "icon"],
+        "features": [
+          "radix-slot-support",
+          "focus-ring",
+          "disabled-state",
+          "dark-mode",
+          "hover-effects",
+          "accessibility"
+        ]
+      },
+      "badge": {
+        "name": "Badge",
+        "description": "Badge component for displaying status, counts, or labels",
+        "category": "data-display",
+        "files": [
+          {
+            "name": "badge.tsx",
+            "path": "components/ui/badge.tsx",
+            "type": "component"
+          }
+        ],
+        "dependencies": {
+          "react": "^18.0.0",
+          "class-variance-authority": "^0.7.0",
+          "clsx": "^2.0.0",
+          "tailwind-merge": "^2.0.0"
+        },
+        "exports": ["Badge", "badgeVariants"],
+        "props": {
+          "Badge": ["children", "variant", "className"]
+        },
+        "variants": [
+          "default",
+          "secondary",
+          "destructive",
+          "outline"
+        ],
+        "sizes": [],
+        "features": [
+          "hover-effects",
+          "dark-mode",
+          "accessible"
+        ]
+      },
+      "accordion": {
+        "name": "Accordion",
+        "description": "Base accordion component built on Radix UI with full keyboard navigation and accessibility",
+        "category": "layout",
+        "files": [
+          {
+            "name": "accordion.tsx",
+            "path": "components/ui/accordion.tsx",
+            "type": "component"
+          }
+        ],
+        "dependencies": {
+          "react": "^18.0.0",
+          "@radix-ui/react-accordion": "^1.1.0",
+          "lucide-react": "^0.263.0",
+          "class-variance-authority": "^0.7.0",
+          "clsx": "^2.0.0",
+          "tailwind-merge": "^2.0.0"
+        },
+        "exports": [
+          "Accordion",
+          "AccordionItem",
+          "AccordionTrigger",
+          "AccordionContent"
+        ],
+        "props": {
+          "Accordion": [
+            "children",
+            "type",
+            "collapsible",
+            "defaultValue",
+            "value",
+            "onValueChange",
+            "className"
+          ],
+          "AccordionItem": ["children", "value", "disabled", "className"],
+          "AccordionTrigger": ["children", "className"],
+          "AccordionContent": ["children", "className"]
+        },
+        "types": ["single", "multiple"],
+        "variants": [],
+        "sizes": [],
+        "features": [
+          "keyboard-navigation",
+          "focus-management",
+          "controlled-uncontrolled",
+          "single-multiple-mode",
+          "dark-mode",
+          "accessibility",
+          "composable",
+          "radix-ui-based"
+        ]
+      }
+    },
+    "categories": {
+      "marketing": {
+        "name": "Marketing",
+        "description": "Components for marketing pages and call-to-action sections",
+        "components": ["cta-01"]
+      },
+      "layout": {
+        "name": "Layout",
+        "description": "Components for organizing and structuring content",
+        "components": ["accordion-01", "accordion"]
+      },
+      "form": {
+        "name": "Form",
+        "description": "Form controls and input components",
+        "components": ["button"]
+      },
+      "data-display": {
+        "name": "Data Display",
+        "description": "Components for displaying data and information",
+        "components": ["badge"]
+      }
+    },
+    "metadata": {
+      "framework": "next.js",
+      "styling": "tailwindcss",
+      "animations": "framer-motion",
+      "icons": "lucide-react",
+      "accessibility": "radix-ui",
+      "typescript": true,
+      "darkMode": true
+    }
+  }
+  
