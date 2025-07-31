@@ -1,4 +1,5 @@
-import CTA_01, { codeStringCTA_01 } from "./components/CTA_01";
+import CTA_01 from "./components/CTA_01";
+import { codeStringCTA_01 } from "./CodeSnippets";
 
 type ComponentInfo = {
   name: string;

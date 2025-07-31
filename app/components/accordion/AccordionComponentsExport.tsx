@@ -1,6 +1,7 @@
-import Accordion_01, { codeStringAccordion_01 } from './components/Accordion_01';
-import Accordion_02, { codeStringAccordion_02 } from './components/Accordion_02';
-import Accordion_03, { codeStringAccordion_03 } from './components/Accordion_03';
+import Accordion_01 from './components/Accordion_01';
+import Accordion_02 from './components/Accordion_02';
+import Accordion_03 from './components/Accordion_03';
+import { codeStringAccordion_01, codeStringAccordion_02, codeStringAccordion_03 } from './CodeSnippets';
 
 type ComponentInfo = {
   name: string;

@@ -1,5 +1,6 @@
 import Featured_01, { codeStringFeatured_01 } from "./components/Featured_01";
 import Featured_02, { codeStringFeatured_02 } from "./components/Featured_02";
+import Featured_03, { codeStringFeatured_03 } from "./components/Featured_03";
 
 type ComponentInfo = {
   name: string;
@@ -32,6 +33,16 @@ export const featuredComponents: ComponentInfo[] = [
       code: codeStringFeatured_02,
       installCommand: 'npm install @ruixen/ui',
       preview: <Featured_02  />
+    },
+    {
+      name: 'Featured 03',
+      component: <Featured_03 />,
+      description: 'A minimal, single-open client label with icons and smooth transitions, ideal for clean, focused FAQ ',
+      imageDark: "/sections/featured-sections/dark/featured-section-03.png",
+      imageLight: "/sections/featured-sections/light/featured-section-03.png",
+      code: codeStringFeatured_03,
+      installCommand: 'npm install @ruixen/ui',
+      preview: <Featured_03  />
     }
   ];
   

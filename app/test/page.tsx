@@ -1,195 +1,165 @@
-"use client"
+"use client";
 
-import { DotLottieCommonPlayer } from "@dotlottie/react-player"
-import { ComponentPropsWithoutRef, useEffect, useRef, useState } from "react"
-import {
-  animate,
-  motion,
-  useMotionTemplate,
-  useMotionValue,
-} from "framer-motion"
-import {
-  LayoutDashboard,
-  Rocket,
-  Lightbulb,
+import React from "react";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { 
+  Star, 
+  Zap, 
+  Shield, 
+  Sparkles, 
+  Rocket, 
+  Globe,
+  CheckCircle,
+  TrendingUp
 } from "lucide-react";
 
-const tabs = [
-  {
-    icon: LayoutDashboard,
-    title: "Dashboard Overview",
-    description: "A centralized space to monitor your site’s SEO health, traffic, and performance trends in real-time.",
-    isNew: false,
-    backgroundPositionX: 0,
-    backgroundPositionY: 0,
-    backgroundSizeX: 150,
-  },
-  {
-    icon: Rocket,
-    title: "Boost with One Click",
-    description: "Easily apply SEO best practices like lazy loading, alt-text fixes, and meta updates without writing code.",
-    isNew: false,
-    backgroundPositionX: 80,
-    backgroundPositionY: 90,
-    backgroundSizeX: 135,
-  },
-  {
-    icon: Lightbulb,
-    title: "AI Keyword Suggestions",
-    description: "Discover trending, high-intent keywords tailored to your content niche using Ruixen’s smart AI engine.",
-    isNew: false,
-    backgroundPositionX: 120,
-    backgroundPositionY: 30,
-    backgroundSizeX: 170,
-  },
-];
-
-
-const FeatureTab = (
-  props: (typeof tabs)[number] &
-    ComponentPropsWithoutRef<"div"> & { selected: boolean }
-) => {
-  const tabRef = useRef<HTMLDivElement>(null)
-
-  //since we need to animate or alter to values ie X an Y % hence we will ned to motion value
-  const xPercent = useMotionValue(100)
-  const yPercent = useMotionValue(0)
-  //we are alterning the x and y % using  useMotionValue
-  const maskImage = useMotionTemplate`radial-gradient(100px 50px at ${xPercent}% ${yPercent}%, black, transparent)`
-  //useeffect to animate the values
-  useEffect(() => {
-    //to ensure tht the time interval is smooth as the x distance is way  more than the y distance for mask image
-    if (!tabRef.current || !props.selected) return
-
-    xPercent.set(0)
-    yPercent.set(0)
-    const { height, width } = tabRef.current?.getBoundingClientRect()
-    const circumference = height * 2 + width * 2
-    const times = [
-      0,
-      width / circumference,
-      (width + height) / circumference,
-      (width * 2 + height) / circumference,
-      1,
-    ]
-    //duration
-    animate(xPercent, [0, 100, 100, 0, 0], {
-      duration: 4,
-      times,
-      ease: "linear",
-      repeat: Infinity,
-      repeatType: "loop",
-    })
-    animate(yPercent, [0, 0, 100, 100, 0], {
-      times,
-      duration: 4,
-      ease: "linear",
-      repeat: Infinity,
-      repeatType: "loop",
-    })
-  }, [props.selected])
-
-  return (
-    <div
-      ref={tabRef}
-      className="border border-gray-200 dark:border-gray-800 rounded-lg flex items-center gap-1 pr-4 py-1 relative border"
-      onClick={props.onClick}
-    >
-      {props.selected && (
-        <motion.div
-          style={{
-            maskImage,
-          }}
-          className="absolute inset-0 -m-px border border-[#A369FF] rounded-lg"
-        ></motion.div>
-      )}
-
-      <div className="h-8 w-8 px-2 py-1 rounded-lg ml-3 inline-flex items-center justify-center ">
-        <props.icon />
-      </div>
-      <div className="text-sm font-normal">{props.title}</div>
-      {props.isNew && (
-        <div className="bg-purple-400 rounded-lg text-black p-2 font-semibold text-xs">
-          new
-        </div>
-      )}
-    </div>
-  )
+interface BentoItem {
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+  status?: string;
+  image?: string;
+  colSpan?: string;
+  rowSpan?: string;
+  featured?: boolean;
 }
 
-export default function Features() {
-  //0 is the index no of the tab.
-  const [selectedTab, setSelectedTab] = useState(0)
-
-  //Getting the coordinates to crop grom tabs object
-  const backgroundPositionX = useMotionValue(tabs[0].backgroundPositionX)
-  const backgroundPositionY = useMotionValue(tabs[0].backgroundPositionY)
-  const backgroundSizeX = useMotionValue(tabs[0].backgroundSizeX)
-
-  //we cannot use useMotionvalue as a no so we need to conver it into percentage so usinh useMotiontemplate
-  const backgroundPosition = useMotionTemplate`${backgroundPositionX}% ${backgroundPositionY}%`
-  const backgroundSize = useMotionTemplate`${backgroundSizeX}% auto`
-
-  const handleSelecttab = (index: number) => {
-    setSelectedTab(index)
-
-    animate(
-      backgroundSizeX,
-      [backgroundSizeX.get(), 100, tabs[index].backgroundSizeX],
-      {
-        duration: 2,
-        ease: "easeInOut",
-      }
-    )
-    animate(
-      backgroundPositionX,
-      [backgroundPositionX.get(), 100, tabs[index].backgroundPositionX],
-      {
-        duration: 2,
-        ease: "easeInOut",
-      }
-    )
-    animate(
-      backgroundPositionY,
-      [backgroundPositionY.get(), 100, tabs[index].backgroundPositionY],
-      {
-        duration: 2,
-        ease: "easeInOut",
-      }
-    )
+const bentoItems: BentoItem[] = [
+  {
+    title: "AI-Powered Analytics",
+    description: "Get real-time insights with our advanced machine learning algorithms that adapt to your business needs.",
+    icon: <TrendingUp className="w-5 h-5 text-blue-500" />,
+    status: "Live",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
+    colSpan: "md:col-span-2",
+    rowSpan: "md:row-span-2",
+    featured: true
+  },
+  {
+    title: "Lightning Fast",
+    description: "Optimized performance with sub-second response times across all features.",
+    icon: <Zap className="w-5 h-5 text-yellow-500" />,
+    status: "Active",
+    image: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=600&h=400&fit=crop",
+    colSpan: "md:col-span-1",
+    rowSpan: "md:row-span-1"
+  },
+  {
+    title: "Enterprise Security",
+    description: "Bank-grade security with end-to-end encryption and compliance certifications.",
+    icon: <Shield className="w-5 h-5 text-green-500" />,
+    status: "Secure",
+    colSpan: "md:col-span-1",
+    rowSpan: "md:row-span-1"
+  },
+  {
+    title: "Smart Automation",
+    description: "Automate repetitive tasks and workflows with intelligent process optimization.",
+    icon: <Sparkles className="w-5 h-5 text-purple-500" />,
+    status: "Beta",
+    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&h=400&fit=crop",
+    colSpan: "md:col-span-2",
+    rowSpan: "md:row-span-1"
+  },
+  {
+    title: "Global Scale",
+    description: "Deploy worldwide with our distributed infrastructure and edge computing network.",
+    icon: <Globe className="w-5 h-5 text-cyan-500" />,
+    status: "Available",
+    colSpan: "md:col-span-1",
+    rowSpan: "md:row-span-1"
   }
+];
+
+function BentoGrid() {
   return (
-    <section className="py-20 md:py-28">
-      <div className="container">
-        <h2 className="text-5xl lg:text-7xl font-medium text-center tracking-tighter">
-          Supercharge your content with Ruixen UI.
-        </h2>
-        <p className="text-gray-500 text-lg md:text-xl text-center tracking-tight mt-5 max-w-3xl mx-auto">
-          Ruixen UI helps you craft, plan, and publish content effortlessly—powered by AI and built for scale.
-        </p>
-        <div className="relative mt-10 flex justify-center">
-          <div className="flex flex-col lg:flex-row gap-5">
-            {tabs.map((tab, tabIndex) => (
-              <FeatureTab
-                {...tab}
-                selected={selectedTab === tabIndex}
-                onClick={() => handleSelecttab(tabIndex)}
-                key={tab.title}
-              />
-            ))}
-          </div>
+    <section className="bg-background py-16 md:py-24">
+      <div className="container mx-auto px-4 max-w-7xl">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4 tracking-tight">
+            Featured Solutions
+          </h2>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            Discover our comprehensive suite of tools designed to accelerate your business growth and streamline operations.
+          </p>
         </div>
-        <div className="border-2 border-gray-200 dark:border-gray-800 rounded-2xl p-2.5 mt-10">
-          <motion.div
-            className="aspect-video bg-cover border border-gray-200 dark:border-gray-800 rounded-lg"
-            style={{
-              backgroundPosition,
-              backgroundSize,
-              backgroundImage: `url(/dashboard-01-dark.png)`,
-            }}
-          ></motion.div>
+
+        {/* Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-auto">
+          {bentoItems.map((item, index) => (
+            <Card
+              key={index}
+              className={`
+                group relative overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1
+                border-border bg-card text-card-foreground
+                ${item.colSpan || "md:col-span-1"}
+                ${item.rowSpan || "md:row-span-1"}
+                ${item.featured ? "md:min-h-[400px]" : "md:min-h-[200px]"}
+              `}
+            >
+              {/* Background Image */}
+              {item.image && (
+                <div className="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity duration-300">
+                  <img
+                    src={item.image}
+                    alt=""
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
+                </div>
+              )}
+
+              {/* Status Badge */}
+              <div className="absolute top-4 right-4 z-10">
+                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-muted text-muted-foreground border border-border">
+                  <div className="w-1.5 h-1.5 bg-green-500 rounded-full mr-1.5 animate-pulse" />
+                  {item.status}
+                </span>
+              </div>
+
+              <CardHeader className="relative z-10 pb-2">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="p-2 rounded-lg bg-muted/50 group-hover:bg-muted transition-colors duration-200">
+                    {item.icon}
+                  </div>
+                </div>
+                <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors duration-200">
+                  {item.title}
+                </h3>
+              </CardHeader>
+
+              <CardContent className="relative z-10">
+                <p className="text-muted-foreground leading-relaxed">
+                  {item.description}
+                </p>
+                
+                {item.featured && (
+                  <div className="mt-6 pt-4 border-t border-border">
+                    <div className="flex items-center text-sm text-muted-foreground">
+                      <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                      <span>Enterprise Ready</span>
+                    </div>
+                  </div>
+                )}
+              </CardContent>
+
+              {/* Hover Effect Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+            </Card>
+          ))}
+        </div>
+
+        {/* Call to Action */}
+        <div className="text-center mt-12">
+          <div className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors duration-200 cursor-pointer">
+            <Rocket className="w-4 h-4" />
+            <span className="font-medium">Explore All Features</span>
+          </div>
         </div>
       </div>
     </section>
-  )
+  );
 }
+
+export default BentoGrid;

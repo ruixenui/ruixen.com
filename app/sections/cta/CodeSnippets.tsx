@@ -1,4 +1,5 @@
-"use client";
+
+export const codeStringCTA_01 = `"use client";
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -6,10 +7,10 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 
-
 export default function CTA_01() {
   return (
     <section className="relative py-24 px-6 sm:px-10 bg-background overflow-hidden text-foreground">
+      {/* Blurred glow in background */}
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 0.2, scale: 1 }}
@@ -71,3 +72,4 @@ export default function CTA_01() {
     </section>
   );
 }
+`;

@@ -28,6 +28,7 @@ function Navbar() {
       { x: 0, opacity: 1, duration: 1, ease: "power2.out" }
     );
   }, []);
+
   return (
     <div
       className={`navbar-container fixed top-0 left-0 right-0 flex justify-between items-center backdrop-blur-xl border-b h-auto sm:py-3 py-4 px-3 text-sm z-50 ${roboto.className} 
