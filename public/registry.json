@@ -12,6 +12,16 @@
           "name": "CTA_01.tsx",
           "path": "app/sections/cta/components/CTA_01.tsx",
           "type": "component"
+        },
+        {
+          "name": "button.tsx",
+          "path": "components/ui/button.tsx",
+          "type": "dependency"
+        },
+        {
+          "name": "badge.tsx",
+          "path": "components/ui/badge.tsx",
+          "type": "dependency"
         }
       ],
       "dependencies": {
@@ -56,6 +66,11 @@
           "name": "Accordion_01.tsx",
           "path": "app/components/accordion/components/Accordion_01.tsx",
           "type": "component"
+        },
+        {
+          "name": "accordion.tsx",
+          "path": "components/ui/accordion.tsx",
+          "type": "dependency"
         }
       ],
       "dependencies": {
