@@ -106,4 +106,4 @@ Visit [https://ruixen.com/docs/installation](https://ruixen.com/docs/installatio
 
 ## License
 
-Licensed under the [MIT license](https://github.com/ruixenui/ruixen-ui/blob/main/LICENSE.md).
+Licensed under the [MIT license](https://github.com/ruixenui/ruixen.com/blob/main/LICENSE.md).

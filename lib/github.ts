@@ -43,7 +43,7 @@ export function getGitHubIssueUrl(params: GitHubIssueUrlParams): string {
 }
 
 export function getGithubFileUrl(slug: string) {
-  return `https://github.com/ruixenui/ruixen-ui/blob/main/content${
+  return `https://github.com/ruixenui/ruixen.com/blob/main/content${
     slug === "/docs" ? "/docs/index" : slug
   }.mdx`;
 }

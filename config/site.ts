@@ -7,7 +7,7 @@ export const siteConfig = {
   links: {
     twitter: "https://twitter.com/ruixenui",
     discord: "https://discord.gg/j9fVZm2D",
-    github: "https://github.com/ruixenui/ruixen-ui",
+    github: "https://github.com/ruixenui/ruixen.com",
     instagram: "https://instagram.com/ruixenui/",
   },
   keywords: [

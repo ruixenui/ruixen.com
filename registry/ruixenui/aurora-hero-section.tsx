@@ -27,7 +27,7 @@ type AuroraHeroSectionProps = {
 export default function AuroraHeroSection({
   title = "Build Exceptional Interfaces with Ease",
   description = "Use our component library powered by Shadcn UI & Tailwind CSS to craft beautiful, fast, and accessible UIs.",
-  githubLink = "https://github.com/ruixenui/ruixen-ui-free-components",
+  githubLink = "https://github.com/ruixenui/ruixen.com-free-components",
   githubLabel = "Ruixen UI",
   primaryButton = {
     label: "Get Started",
