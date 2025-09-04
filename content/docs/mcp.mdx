@@ -1,0 +1,106 @@
+---
+title: Ruixen UI MCP Server
+description: Learn how to use the Model Context Protocol with Ruixen UI.
+date: 2025-04-16
+---
+
+Ruixen UI now has an official MCP server 🎉.
+
+[MCP](https://modelcontextprotocol.com/) is an open protocol that standardizes how applications provide context to LLMs.
+
+This is useful for Ruixen UI because you can now give your AI-assisted IDE direct access to all Ruixen UI components so that it can generate code with minimal errors.
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+<Steps>
+
+<Step>Installation</Step>
+
+<Tabs defaultValue="cursor">
+  <TabsList>
+    <TabsTrigger value="cursor">Cursor</TabsTrigger>
+    <TabsTrigger value="windsurf">Windsurf</TabsTrigger>
+    <TabsTrigger value="claude">Claude</TabsTrigger>
+    <TabsTrigger value="cline">Cline</TabsTrigger>
+    <TabsTrigger value="roo-cline">Roo-Cline</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cursor">
+
+    ```bash
+    npx @ruixenui/cli@latest install cursor
+    ```
+
+  </TabsContent>
+  <TabsContent value="windsurf">
+  
+    ```bash
+    npx @ruixenui/cli@latest install windsurf
+    ```
+
+  </TabsContent>
+  <TabsContent value="claude">
+
+    ```bash
+    npx @ruixenui/cli@latest install claude
+    ```
+
+  </TabsContent>
+  <TabsContent value="cline">
+
+    ```bash
+    npx @ruixenui/cli@latest install cline
+    ```
+
+  </TabsContent>
+  <TabsContent value="roo-cline">
+  
+    ```bash
+    npx @ruixenui/cli@latest install roo-cline
+    ```
+
+  </TabsContent>
+</Tabs>
+
+<Step>Restart your IDE</Step>
+
+</Steps>
+
+</TabsContent>
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Add the following to your MCP config file:</Step>
+
+```json
+{
+  "mcpServers": {
+    "@ruixenui/mcp": {
+      "command": "npx",
+      "args": ["-y", "@ruixenui/mcp@latest"]
+    }
+  }
+}
+```
+
+<Step>Restart your IDE</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+You can now ask your IDE to use any Ruixen UI component. Here are some examples:
+
+- "Add a blur fade text animation"
+- "Add a grid background"

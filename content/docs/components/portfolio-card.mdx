@@ -1,0 +1,52 @@
+---
+title: Portfolio Card
+date: 2024-06-01
+description: A professional portfolio card component showcasing skills and profile
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="portfolio-card-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/portfolio-card"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="portfolio-card" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop        | Type      | Default                           | Description                       |
+| ----------- | --------- | --------------------------------- | --------------------------------- |
+| `name`      | `string`  | `"Ruixen"`                        | Name of the person                |
+| `role`      | `string`  | `"Software Developer Engineer"`   | Professional role or title        |
+| `image`     | `string`  | -                                 | Profile image URL                 |
+| `status`    | `string`  | `"Available for Remote Projects"` | Current availability status       |
+| `skills`    | `Skill[]` | -                                 | Array of skills with levels (1-5) |
+| `portfolio` | `string`  | -                                 | Portfolio or website URL          |

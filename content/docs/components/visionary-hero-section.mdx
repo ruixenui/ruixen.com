@@ -1,0 +1,51 @@
+---
+title: Visionary Hero Section
+date: 2024-08-24
+description: A visionary hero section with elegant design and smooth animations
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="visionary-hero-section-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/visionary-hero-section"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="visionary-hero-section" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop          | Type     | Default                                          | Description                                               |
+| ------------- | -------- | ------------------------------------------------ | --------------------------------------------------------- |
+| `title`       | `string` | `"Ruixen: Design Systems for the Visionary Web"` | The main heading text                                     |
+| `description` | `string` | `"Whether you're designing interfaces..."`       | The description text                                      |
+| `buttons`     | `array`  | `[...]`                                          | Array of button objects with label, href, and variant     |
+| `images`      | `array`  | `[...]`                                          | Array of image objects with src, alt, and dark properties |
+| `brands`      | `array`  | `[...]`                                          | Array of brand objects with name and logo properties      |

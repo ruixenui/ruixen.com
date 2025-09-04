@@ -1,0 +1,68 @@
+---
+title: Better Time Picker
+date: 2025-08-24
+description: A customizable time picker with separate hour and minute dropdowns
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="better-time-picker-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/better-time-picker"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="better-time-picker" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Ensure you have the Lucide React icons installed</Step>
+
+```bash
+npm install lucide-react
+# or
+yarn add lucide-react
+# or
+pnpm add lucide-react
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+The Better Time Picker component provides a more intuitive way to select time with separate dropdowns for hours and minutes. It features a clean design with 5-minute increments for the minutes dropdown to make selection faster.
+
+```tsx
+<BetterTimePicker />
+```
+
+## Features
+
+- Separate hour and minute dropdowns
+- 24-hour format for hours
+- 5-minute increments for minutes
+- Clock icon for better visual indication
+- Dark mode support
+- Accessible dropdown menus

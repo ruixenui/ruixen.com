@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature-tabs-showcase-demo",
+  "type": "registry:example",
+  "title": "Feature Tabs Showcase Demo",
+  "description": "Example of interactive tabs with animated background",
+  "registryDependencies": [
+    "feature-tabs-showcase"
+  ],
+  "files": [
+    {
+      "path": "registry/example/feature-tabs-showcase-demo.tsx",
+      "content": "\"use client\";\n\nimport FeatureTabsShowcase, {\n  FeatureTabItem,\n} from \"../ruixenui/feature-tabs-showcase\";\nimport { Zap, ShieldCheck, BarChart } from \"lucide-react\";\n\nconst demoTabs: FeatureTabItem[] = [\n  {\n    icon: Zap,\n    title: \"Lightning Performance\",\n    description:\n      \"Optimize your app for blazing fast load times with one click.\",\n    backgroundPositionX: 30,\n    backgroundPositionY: 50,\n    backgroundSizeX: 160,\n  },\n  {\n    icon: ShieldCheck,\n    title: \"Enterprise Security\",\n    description:\n      \"Keep your platform safe with robust, enterprise-grade security features.\",\n    backgroundPositionX: 70,\n    backgroundPositionY: 70,\n    backgroundSizeX: 140,\n  },\n  {\n    icon: BarChart,\n    title: \"Analytics Dashboard\",\n    description: \"Track KPIs and insights with real-time analytics dashboards.\",\n    isNew: true,\n    backgroundPositionX: 100,\n    backgroundPositionY: 20,\n    backgroundSizeX: 170,\n  },\n];\n\nexport default function DemoPage() {\n  return (\n    <FeatureTabsShowcase\n      heading=\"Next-Gen Features for Teams\"\n      subtitle=\"Empower your workflow with speed, security, and insights.\"\n      tabs={demoTabs}\n      backgroundImage=\"/demo-dashboard.png\"\n    />\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/feature-tabs-showcase-demo.tsx"
+    }
+  ]
+}

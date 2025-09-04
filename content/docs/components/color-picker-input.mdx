@@ -1,0 +1,92 @@
+---
+title: Color Picker Input
+date: 2025-08-24
+description: A color picker with swatches, opacity control, and hex code display
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="color-picker-input-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/color-picker-input"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="color-picker-input" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Ensure you have the Lucide React icons and md5 installed</Step>
+
+```bash
+npm install lucide-react md5
+# or
+yarn add lucide-react md5
+# or
+pnpm add lucide-react md5
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop             | Type                                       | Default              | Description                               |
+| ---------------- | ------------------------------------------ | -------------------- | ----------------------------------------- |
+| `colors`         | `string[]`                                 | `[12 preset colors]` | Array of hex color codes for the swatches |
+| `initialColor`   | `string`                                   | `"#3B82F6"`          | Initial selected color                    |
+| `initialOpacity` | `number`                                   | `100`                | Initial opacity percentage (0-100)        |
+| `onChange`       | `(color: string, opacity: number) => void` | -                    | Callback when color or opacity changes    |
+
+## Examples
+
+### Custom Initial Values
+
+```tsx
+<ColorPickerInput
+  initialColor="#EC4899"
+  initialOpacity={80}
+  onChange={handleColorChange}
+/>
+```
+
+### With Custom Colors
+
+```tsx
+const customColors = [
+  "#000000",
+  "#FFFFFF",
+  "#FF0000",
+  "#00FF00",
+  "#0000FF",
+  "#FFFF00",
+  "#FF00FF",
+  "#00FFFF",
+];
+
+<ColorPickerInput
+  colors={customColors}
+  onChange={(color, opacity) => console.log(color, opacity)}
+/>;
+```

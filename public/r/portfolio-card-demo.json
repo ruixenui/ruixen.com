@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "portfolio-card-demo",
+  "type": "registry:example",
+  "title": "Portfolio Card Demo",
+  "description": "Example showing a professional portfolio card component showcasing skills and profile.",
+  "registryDependencies": [
+    "portfolio-card"
+  ],
+  "files": [
+    {
+      "path": "registry/example/portfolio-card-demo.tsx",
+      "content": "import PortfolioCard from \"../ruixenui/portfolio-card\";\n\nexport default function PortfolioCardDemo() {\n  return (\n    <div className=\"flex items-center justify-center h-screen\">\n      <PortfolioCard\n        name=\"Ruixen\"\n        role=\"Software Developer Engineer\"\n        image=\"https://github.com/shadcn.png\"\n        status=\"Available for Remote Projects\"\n        skills={[\n          { name: \"TypeScript\", level: 5 },\n          { name: \"Node.js\", level: 4 },\n          { name: \"AWS\", level: 3 },\n        ]}\n        portfolio=\"https://github.com/ruixenui\"\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/portfolio-card-demo.tsx"
+    }
+  ]
+}

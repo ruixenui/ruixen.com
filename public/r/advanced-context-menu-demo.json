@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "advanced-context-menu-demo",
+  "type": "registry:example",
+  "title": "Advanced Context Menu Demo",
+  "description": "Example showing an advanced context menu component with nested items and keyboard navigation.",
+  "registryDependencies": [
+    "advanced-context-menu"
+  ],
+  "files": [
+    {
+      "path": "registry/example/advanced-context-menu-demo.tsx",
+      "content": "import AdvancedContextMenu from \"../ruixenui/advanced-context-menu\";\n\nexport default function AdvancedContextMenuDemo() {\n  return <AdvancedContextMenu />;\n}\n",
+      "type": "registry:example",
+      "target": "components/advanced-context-menu-demo.tsx"
+    }
+  ]
+}

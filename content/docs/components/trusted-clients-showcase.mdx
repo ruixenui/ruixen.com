@@ -1,0 +1,55 @@
+---
+title: Trusted Clients Showcase
+date: 2024-08-24
+description: Showcase trusted clients with logos in a clean grid layout
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="trusted-clients-showcase-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/trusted-clients-showcase"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="trusted-clients-showcase" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop      | Type       | Default                         | Description             |
+| --------- | ---------- | ------------------------------- | ----------------------- |
+| `title`   | `string`   | `"Trusted by industry leaders"` | Main heading text       |
+| `clients` | `Client[]` | `defaultClients`                | Array of client objects |
+
+## Client Interface
+
+| Prop   | Type     | Description           |
+| ------ | -------- | --------------------- |
+| `name` | `string` | Client company name   |
+| `logo` | `string` | Client logo image URL |

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "environment-card-demo",
+  "type": "registry:example",
+  "title": "Environment Card Demo",
+  "description": "Example showing a smart home environment control card with device management.",
+  "registryDependencies": [
+    "environment-card"
+  ],
+  "files": [
+    {
+      "path": "registry/example/environment-card-demo.tsx",
+      "content": "\"use client\";\n\nimport { Sun, Moon, Wind } from \"lucide-react\";\nimport EnvironmentCard from \"../ruixenui/environment-card\";\n\nexport default function EnvironmentCardDemo() {\n  return (\n    <div className=\"flex flex-col gap-6 p-6\">\n      <EnvironmentCard\n        roomName=\"Living Room\"\n        temperature={22.5}\n        devices={[\n          {\n            id: \"1\",\n            name: \"Main Light\",\n            status: \"on\",\n            value: 80,\n            unit: \"%\",\n            icon: <Sun className=\"w-4 h-4\" />,\n          },\n          {\n            id: \"2\",\n            name: \"AC\",\n            status: \"off\",\n            value: 22,\n            unit: \"°C\",\n            icon: <Wind className=\"w-4 h-4\" />,\n          },\n        ]}\n        scenes={[\n          {\n            id: \"1\",\n            name: \"Day\",\n            icon: <Sun className=\"w-4 h-4\" />,\n            isActive: false,\n          },\n          {\n            id: \"2\",\n            name: \"Night\",\n            icon: <Moon className=\"w-4 h-4\" />,\n            isActive: true,\n          },\n        ]}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/environment-card-demo.tsx"
+    }
+  ]
+}

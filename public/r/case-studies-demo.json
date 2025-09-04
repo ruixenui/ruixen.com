@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "case-studies-demo",
+  "type": "registry:example",
+  "title": "Case Studies Demo",
+  "description": "Example of customer case studies with metrics and testimonials",
+  "registryDependencies": [
+    "case-studies"
+  ],
+  "files": [
+    {
+      "path": "registry/example/case-studies-demo.tsx",
+      "content": "\"use client\";\n\nimport Casestudies from \"../ruixenui/case-studies\";\n\nexport default function DemoRuixenDashboardStats() {\n  return (\n    <main className=\"bg-background flex flex-col items-center justify-center w-full\">\n      <Casestudies />\n    </main>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/case-studies-demo.tsx"
+    }
+  ]
+}

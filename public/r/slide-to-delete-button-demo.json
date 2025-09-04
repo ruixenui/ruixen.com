@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "slide-to-delete-button-demo",
+  "type": "registry:example",
+  "title": "Slide To Delete Button Demo",
+  "description": "Example showing a draggable button that requires sliding to confirm deletion action.",
+  "registryDependencies": [
+    "slide-to-delete-button"
+  ],
+  "files": [
+    {
+      "path": "registry/example/slide-to-delete-button-demo.tsx",
+      "content": "\"use client\";\n\nimport SlideToDeleteButton from \"../ruixenui/slide-to-delete-button\";\n\nexport default function DemoSlideToDelete() {\n  return (\n    <main className=\"flex flex-col items-center justify-center min-h-screen gap-8 p-6\">\n      <SlideToDeleteButton\n        label=\"Remove Item\"\n        deletedLabel=\"Removed!\"\n        onClick={() => alert(\"Item deleted\")}\n      />\n\n      <SlideToDeleteButton\n        className=\"bg-yellow-100 text-yellow-700 hover:bg-yellow-200\"\n        label=\"Slide to Archive\"\n        deletedLabel=\"Archived\"\n      />\n    </main>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/slide-to-delete-button-demo.tsx"
+    }
+  ]
+}

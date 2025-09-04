@@ -1,0 +1,57 @@
+---
+title: Featured Highlights
+date: 2024-08-24
+description: Interactive feature showcase with image preview and hover effects
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="featured-highlights-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/featured-highlights"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="featured-highlights" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop       | Type            | Default                                           | Description                       |
+| ---------- | --------------- | ------------------------------------------------- | --------------------------------- |
+| `heading`  | `string`        | `"Powerful Features to Accelerate Your Workflow"` | Main heading text                 |
+| `features` | `FeatureItem[]` | `defaultFeatures`                                 | Array of feature items to display |
+
+## FeatureItem Interface
+
+| Prop          | Type     | Description               |
+| ------------- | -------- | ------------------------- |
+| `id`          | `number` | Unique identifier         |
+| `title`       | `string` | Feature title             |
+| `image`       | `string` | Feature preview image URL |
+| `description` | `string` | Feature description text  |

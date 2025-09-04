@@ -1,0 +1,58 @@
+---
+title: Inline Copy Input
+date: 2025-08-24
+description: A read-only input field with an inline copy button
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="inline-copy-input-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/inline-copy-input"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="inline-copy-input" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+The Inline Copy Input component provides a clean, user-friendly way to display text that users might want to copy, such as commands, URLs, or tokens. It features a built-in copy button that provides visual feedback when clicked.
+
+```tsx
+<InlineCopyInput />
+```
+
+## Features
+
+- Read-only input field with predefined content
+- Inline copy button with feedback
+- Success state with color change
+- Dark mode support
+- Simple, clean design
+- Accessible button for copying content

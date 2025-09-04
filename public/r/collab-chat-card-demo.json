@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "collab-chat-card-demo",
+  "type": "registry:example",
+  "title": "Collab Chat Card Demo",
+  "description": "Example showing a collaborative chat interface card with participant filtering.",
+  "registryDependencies": [
+    "collab-chat-card"
+  ],
+  "files": [
+    {
+      "path": "registry/example/collab-chat-card-demo.tsx",
+      "content": "import CollabChatCard from \"../ruixenui/collab-chat-card\";\n\nexport default function CollabChatCardDemo() {\n  return <CollabChatCard />;\n}\n",
+      "type": "registry:example",
+      "target": "components/collab-chat-card-demo.tsx"
+    }
+  ]
+}

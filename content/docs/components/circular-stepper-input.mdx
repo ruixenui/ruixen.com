@@ -1,0 +1,77 @@
+---
+title: Circular Stepper Input
+date: 2025-08-24
+description: A circular numeric input with increment and decrement buttons
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="circular-stepper-input-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/circular-stepper-input"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="circular-stepper-input" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop           | Type                      | Default | Description                      |
+| -------------- | ------------------------- | ------- | -------------------------------- |
+| `min`          | `number`                  | `0`     | Minimum allowed value            |
+| `max`          | `number`                  | `100`   | Maximum allowed value            |
+| `step`         | `number`                  | `1`     | Step increment/decrement value   |
+| `defaultValue` | `number`                  | `50`    | Initial value                    |
+| `size`         | `number`                  | `120`   | Diameter of the circle in pixels |
+| `onChange`     | `(value: number) => void` | -       | Callback when value changes      |
+
+## Examples
+
+### Custom Range and Step
+
+```tsx
+<CircularStepperInput
+  min={10}
+  max={200}
+  step={5}
+  defaultValue={50}
+  size={150}
+/>
+```
+
+### With Change Handler
+
+```tsx
+const handleChange = (value: number) => {
+  console.log("Current value:", value);
+  // Process the value
+};
+
+<CircularStepperInput onChange={handleChange} />;
+```

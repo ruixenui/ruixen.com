@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gradient-hero-showcase-demo",
+  "type": "registry:example",
+  "title": "Gradient Hero Showcase Demo",
+  "description": "Example showing a modern hero section with animated gradient background",
+  "registryDependencies": [
+    "gradient-hero-showcase"
+  ],
+  "files": [
+    {
+      "path": "registry/example/gradient-hero-showcase-demo.tsx",
+      "content": "\"use client\";\n\nimport GradientHeroShowcase from \"../ruixenui/gradient-hero-showcase\";\n\nexport default function DemoPage() {\n  return (\n    <GradientHeroShowcase\n      title=\"Revolutionize Your Workflow\"\n      description=\"Seamlessly integrate AI and automation to accelerate your business.\"\n      buttons={[\n        { label: \"Get Started\", href: \"/start\", variant: \"default\" },\n        { label: \"Book a Demo\", href: \"/demo\", variant: \"gradient\" },\n      ]}\n      images={[\n        { src: \"/demo-dark.png\", alt: \"Dark Mode Preview\" },\n        { src: \"/demo-light.png\", alt: \"Light Mode Preview\" },\n      ]}\n    />\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/gradient-hero-showcase-demo.tsx"
+    }
+  ]
+}

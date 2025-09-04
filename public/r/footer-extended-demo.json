@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "footer-extended-demo",
+  "type": "registry:example",
+  "title": "Footer Extended Demo",
+  "description": "Example of an extended footer with multiple sections",
+  "registryDependencies": [
+    "footer-extended"
+  ],
+  "files": [
+    {
+      "path": "registry/example/footer-extended-demo.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport { FooterExtended } from \"../ruixenui/footer-extended\";\n\nexport default function FooterExtendedDemo() {\n  return (\n    <main className=\"min-h-screen bg-gray-50 dark:bg-gray-900\">\n      <div className=\"text-center py-20\">\n        <h1 className=\"text-4xl font-bold text-gray-900 dark:text-white\">\n          Footer Extended Demo\n        </h1>\n      </div>\n\n      {/* Default Footer */}\n      <FooterExtended />\n\n      {/* Custom Footer */}\n      <div className=\"mt-20\">\n        <FooterExtended\n          logo={{\n            src: \"/custom_logo.png\",\n            alt: \"Custom Logo\",\n            title: \"MyCompany\",\n            href: \"/\",\n          }}\n          description=\"Custom description: UI components made for modern startups.\"\n          socialIcons={[\n            {\n              name: \"Twitter\",\n              href: \"https://twitter.com/mycompany\",\n              icon: \"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/twitter/twitter-original.svg\",\n            },\n            {\n              name: \"GitHub\",\n              href: \"https://github.com/mycompany\",\n              icon: \"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg\",\n            },\n          ]}\n        />\n      </div>\n    </main>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/footer-extended-demo.tsx"
+    }
+  ]
+}

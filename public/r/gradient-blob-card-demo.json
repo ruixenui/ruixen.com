@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gradient-blob-card-demo",
+  "type": "registry:example",
+  "title": "Gradient Blob Card Demo",
+  "description": "Example showing an animated gradient blob card with glassmorphism effects.",
+  "registryDependencies": [
+    "gradient-blob-card"
+  ],
+  "files": [
+    {
+      "path": "registry/example/gradient-blob-card-demo.tsx",
+      "content": "import GradientBlobCard from \"../ruixenui/gradient-blob-card\";\n\nexport default function GradientBlobCardDemo() {\n  return <GradientBlobCard />;\n}\n",
+      "type": "registry:example",
+      "target": "components/gradient-blob-card-demo.tsx"
+    }
+  ]
+}

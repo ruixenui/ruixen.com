@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "clean-tag-input",
+  "type": "registry:ui",
+  "title": "Clean Tag Input",
+  "description": "A clean and minimal tag input component for adding multiple values.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/clean-tag-input.tsx",
+      "content": "\"use client\";\n\nimport { useState, useRef, KeyboardEvent } from \"react\";\nimport { Label } from \"@/components/ui/label\";\nimport { cn } from \"@/lib/utils\";\nimport { X } from \"lucide-react\";\n\ninterface Tag {\n  id: string;\n  text: string;\n}\n\nexport default function CleanTagInput() {\n  const [tags, setTags] = useState<Tag[]>([]);\n  const [inputValue, setInputValue] = useState(\"\");\n  const inputRef = useRef<HTMLInputElement>(null);\n\n  const addTag = (text: string) => {\n    if (!text.trim()) return;\n    setTags([...tags, { id: Date.now().toString(), text: text.trim() }]);\n    setInputValue(\"\");\n  };\n\n  const removeTag = (id: string) => {\n    setTags(tags.filter((tag) => tag.id !== id));\n  };\n\n  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {\n    if (e.key === \"Enter\") {\n      e.preventDefault();\n      addTag(inputValue);\n    } else if (e.key === \"Backspace\" && inputValue === \"\" && tags.length) {\n      e.preventDefault();\n      setTags(tags.slice(0, -1));\n    }\n  };\n\n  return (\n    <div className=\"w-full max-w-md mx-auto space-y-2\">\n      <Label className=\"text-sm font-normal text-black dark:text-white\">\n        Add tags\n      </Label>\n\n      <div\n        className={cn(\n          \"flex flex-wrap items-center gap-2 px-2 py-2 border rounded-lg focus-within:ring-2 focus-within:ring-black/30 dark:focus-within:ring-white/30\",\n          \"border-gray-200 dark:border-gray-800 bg-transparent\",\n        )}\n      >\n        {tags.map((tag) => (\n          <div\n            key={tag.id}\n            className=\"flex items-center gap-1 bg-transparent border border-gray-200 dark:border-gray-800 rounded-xl px-3 py-1 text-sm text-black dark:text-white transition-colors hover:bg-black/10 dark:hover:bg-white/10\"\n          >\n            {tag.text}\n            <button\n              onClick={() => removeTag(tag.id)}\n              className=\"text-black/50 dark:text-white/50 hover:text-black dark:hover:text-white rounded-full p-0.5 transition-colors focus:outline-none\"\n              type=\"button\"\n            >\n              <X className=\"w-3 h-3 ml-1\" />\n            </button>\n          </div>\n        ))}\n\n        <input\n          ref={inputRef}\n          value={inputValue}\n          onChange={(e) => setInputValue(e.target.value)}\n          onKeyDown={handleKeyDown}\n          placeholder=\"Type and press enter\"\n          className=\"flex-1 min-w-[80px] h-8 bg-transparent outline-none text-black dark:text-white text-sm px-2\"\n        />\n      </div>\n\n      <p className=\"text-xs text-black/50 dark:text-white/50\">\n        Add multiple tags. Press Enter to add, Backspace to remove last.\n      </p>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/clean-tag-input.tsx"
+    }
+  ]
+}

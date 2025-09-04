@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "video-hero-showcase-demo",
+  "type": "registry:example",
+  "title": "Video Hero Showcase Demo",
+  "description": "Example showing a dynamic hero section with video backgrounds",
+  "registryDependencies": [
+    "video-hero-showcase"
+  ],
+  "files": [
+    {
+      "path": "registry/example/video-hero-showcase-demo.tsx",
+      "content": "\"use client\";\n\nimport VideoHeroShowcase from \"../ruixenui/video-hero-showcase\";\n\nexport default function DemoPage() {\n  return (\n    <VideoHeroShowcase\n      badgeText=\"Discover Ocean Life\"\n      badgeLink=\"https://oceanworld.com\"\n      title=\"Dive into the Depths of Innovation\"\n      primaryButtonText=\"Start Exploring\"\n      primaryButtonHref=\"/explore\"\n      secondaryButtonText=\"Watch Demo\"\n      secondaryButtonHref=\"/demo\"\n      videoSrc=\"https://videos.pexels.com/video-files/26772138/12003967_1920_1080_30fps.mp4\"\n      videoPoster=\"https://videos.pexels.com/video-files/26772138/12003967_1920_1080_30fps.jpg\"\n    />\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/video-hero-showcase-demo.tsx"
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+---
+title: Feature Tabs Showcase
+date: 2024-08-24
+description: Interactive tabs with animated background and feature showcase
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="feature-tabs-showcase-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/feature-tabs-showcase"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="feature-tabs-showcase" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop              | Type               | Default                                      | Description          |
+| ----------------- | ------------------ | -------------------------------------------- | -------------------- |
+| `heading`         | `string`           | `"Supercharge your content with Ruixen UI."` | Main heading text    |
+| `subtitle`        | `string`           | `"Ruixen UI helps you craft..."`             | Subtitle description |
+| `tabs`            | `FeatureTabItem[]` | `defaultTabs`                                | Array of tab items   |
+| `backgroundImage` | `string`           | `"/dashboard-01-dark.png"`                   | Background image URL |
+
+## FeatureTabItem Interface
+
+| Prop                  | Type         | Description           |
+| --------------------- | ------------ | --------------------- |
+| `icon`                | `LucideIcon` | Lucide icon component |
+| `title`               | `string`     | Tab title             |
+| `description`         | `string`     | Tab description       |
+| `isNew`               | `boolean`    | Show "new" badge      |
+| `backgroundPositionX` | `number`     | Background X position |
+| `backgroundPositionY` | `number`     | Background Y position |
+| `backgroundSizeX`     | `number`     | Background size X     |

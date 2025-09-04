@@ -1,0 +1,55 @@
+---
+title: Doctor Profile Card
+date: 2024-06-01
+description: A doctor profile card component for healthcare applications
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="doctor-profile-card-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/doctor-profile-card"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="doctor-profile-card" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop             | Type       | Default                             | Description                     |
+| ---------------- | ---------- | ----------------------------------- | ------------------------------- |
+| `name`           | `string`   | `"Dr. Sarah Johnson"`               | Doctor's name                   |
+| `image`          | `string`   | -                                   | Profile image URL               |
+| `specialization` | `string`   | `"Pediatric Specialist"`            | Medical specialization          |
+| `status`         | `string`   | `"Online"`                          | Current availability status     |
+| `rating`         | `number`   | `4.8`                               | Doctor's rating                 |
+| `chats`          | `number`   | `231`                               | Number of completed chats       |
+| `available`      | `string`   | `"Available Today · Until 7:00 PM"` | Availability information        |
+| `onJoinChat`     | `function` | -                                   | Callback for joining chat       |
+| `onBookmark`     | `function` | -                                   | Callback for bookmarking doctor |

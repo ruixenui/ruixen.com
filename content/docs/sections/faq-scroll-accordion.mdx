@@ -1,0 +1,189 @@
+---
+title: FAQ Scroll Accordion
+date: 2024-06-01
+description: A scroll-triggered FAQ accordion component with smooth GSAP animations and auto-expanding items
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="faq-scroll-accordion-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/faq-scroll-accordion"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the required dependencies:</Step>
+
+```bash
+npm install framer-motion @radix-ui/react-accordion lucide-react gsap @gsap/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="faq-scroll-accordion" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import FAQScrollAccordion from "@/components/ruixen/faq-scroll-accordion";
+
+const faqData = [
+  {
+    id: 1,
+    question: "What is Next.js?",
+    answer:
+      "Next.js is a React framework for building fast and scalable web applications.",
+    icon: "🚀",
+    iconPosition: "left",
+  },
+  {
+    id: 2,
+    question: "Does it support TypeScript?",
+    answer: "Yes, Next.js has built-in support for TypeScript.",
+    icon: "📝",
+    iconPosition: "right",
+  },
+];
+
+export default function MyFAQ() {
+  return <FAQScrollAccordion data={faqData} />;
+}
+```
+
+## Props
+
+| Prop                | Type        | Default       | Description                                 |
+| ------------------- | ----------- | ------------- | ------------------------------------------- |
+| `data`              | `FAQItem[]` | `defaultData` | Array of FAQ items to display               |
+| `className`         | `string`    | -             | Additional CSS classes for the container    |
+| `questionClassName` | `string`    | -             | Additional CSS classes for question styling |
+| `answerClassName`   | `string`    | -             | Additional CSS classes for answer styling   |
+
+## FAQ Item Structure
+
+Each FAQ item should have the following structure:
+
+```tsx
+interface FAQItem {
+  id: number; // Unique identifier for the FAQ item
+  question: string; // The question text
+  answer: string; // The answer text
+  icon?: string; // Optional icon (emoji or text)
+  iconPosition?: "left" | "right"; // Position of the icon
+}
+```
+
+## Features
+
+- **Scroll-Triggered Animation**: Uses GSAP ScrollTrigger to automatically expand items as you scroll
+- **Smooth Animations**: Powered by Framer Motion for smooth expand/collapse transitions
+- **Interactive**: Click to manually expand/collapse items
+- **Customizable Icons**: Add optional icons with left or right positioning
+- **Responsive Design**: Adapts to different screen sizes
+- **Accessible**: Built on Radix UI Accordion for proper accessibility
+- **Dark Mode**: Supports both light and dark themes
+
+## Examples
+
+### Basic Usage
+
+```tsx
+<FAQScrollAccordion />
+```
+
+### With Custom Data
+
+```tsx
+const customFAQ = [
+  {
+    id: 1,
+    question: "How does scroll triggering work?",
+    answer:
+      "The component uses GSAP ScrollTrigger to automatically expand FAQ items as you scroll through the page.",
+    icon: "⚡",
+    iconPosition: "left",
+  },
+  {
+    id: 2,
+    question: "Can I customize the styling?",
+    answer:
+      "Yes, you can use the className props to customize the appearance of questions and answers.",
+    icon: "🎨",
+    iconPosition: "right",
+  },
+];
+
+<FAQScrollAccordion data={customFAQ} />;
+```
+
+### With Custom Styling
+
+```tsx
+<FAQScrollAccordion
+  data={faqData}
+  className="bg-gradient-to-b from-blue-50 to-white"
+  questionClassName="bg-blue-100 hover:bg-blue-200"
+  answerClassName="bg-green-400 text-white"
+/>
+```
+
+### Without Icons
+
+```tsx
+const simpleData = [
+  {
+    id: 1,
+    question: "Simple question without icon",
+    answer: "This FAQ item doesn't have an icon.",
+  },
+];
+
+<FAQScrollAccordion data={simpleData} />;
+```
+
+## Animation Details
+
+The component creates a scroll-triggered timeline that:
+
+1. **Pins the container** during scroll
+2. **Auto-expands items** sequentially as you scroll
+3. **Smooth transitions** using Framer Motion
+4. **Manual interaction** remains available at any time
+
+The scroll trigger is configured with:
+
+- `scrub: 0.3` for smooth scroll-linked animation
+- Dynamic end point based on number of FAQ items
+- Automatic cleanup on component unmount
+
+## Dependencies
+
+- `framer-motion` - For smooth animations
+- `@radix-ui/react-accordion` - For accessible accordion functionality
+- `lucide-react` - For plus/minus icons
+- `gsap` - For scroll-triggered animations
+- `@gsap/react` - React integration for GSAP

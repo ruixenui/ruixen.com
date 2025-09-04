@@ -1,0 +1,48 @@
+---
+title: Schedule Card
+date: 2024-06-01
+description: A schedule card component displaying daily events and meetings
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="schedule-card-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/schedule-card"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="schedule-card" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop     | Type      | Default                | Description                  |
+| -------- | --------- | ---------------------- | ---------------------------- |
+| `date`   | `string`  | `"Today, December 14"` | Date string for the schedule |
+| `events` | `Event[]` | -                      | Array of scheduled events    |

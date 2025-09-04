@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "bottom-drawers-demo",
+  "type": "registry:example",
+  "title": "Bottom Drawers Demo",
+  "description": "Example showing a bottom drawer component that slides up from the bottom of the screen.",
+  "registryDependencies": [
+    "bottom-drawers"
+  ],
+  "files": [
+    {
+      "path": "registry/example/bottom-drawers-demo.tsx",
+      "content": "import BottomDrawers from \"../ruixenui/bottom-drawers\";\n\nexport default function BottomDrawersDemo() {\n  return <BottomDrawers />;\n}\n",
+      "type": "registry:example",
+      "target": "components/bottom-drawers-demo.tsx"
+    }
+  ]
+}

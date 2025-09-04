@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "drawer-inner-content-demo",
+  "type": "registry:example",
+  "title": "Drawer Inner Content Demo",
+  "description": "Example showing a drawer component with customizable inner content layout.",
+  "registryDependencies": [
+    "drawer-inner-content"
+  ],
+  "files": [
+    {
+      "path": "registry/example/drawer-inner-content-demo.tsx",
+      "content": "\"use client\";\n\nimport DrawerInnerContent from \"../ruixenui/drawer-inner-content\";\n\nexport default function DemoDrawerInnerContent() {\n  return <DrawerInnerContent />;\n}\n",
+      "type": "registry:example",
+      "target": "components/drawer-inner-content-demo.tsx"
+    }
+  ]
+}

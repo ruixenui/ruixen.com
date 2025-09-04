@@ -1,0 +1,52 @@
+---
+title: Showcase Card
+date: 2024-06-01
+description: A showcase card component for displaying projects and portfolios
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="showcase-card-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/showcase-card"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="showcase-card" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop       | Type     | Default                              | Description                |
+| ---------- | -------- | ------------------------------------ | -------------------------- |
+| `title`    | `string` | `"Build Stunning Interfaces"`        | Title of the showcase item |
+| `subtitle` | `string` | `"Harness the power of elegant..."`  | Subtitle or description    |
+| `image`    | `string` | `"/ruixenui-bg.png"`                 | Image URL for the showcase |
+| `badge`    | `object` | `{ text: "New", variant: "orange" }` | Badge configuration        |
+| `href`     | `string` | `"#"`                                | Link URL                   |
+| `id`       | `string` | -                                    | Unique identifier          |

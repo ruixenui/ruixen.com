@@ -1,0 +1,68 @@
+---
+title: Clean Tag Input
+date: 2025-08-24
+description: A clean, minimal tag input component for adding multiple tags
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="clean-tag-input-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/clean-tag-input"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="clean-tag-input" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Ensure you have the Lucide React icons installed</Step>
+
+```bash
+npm install lucide-react
+# or
+yarn add lucide-react
+# or
+pnpm add lucide-react
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+The Clean Tag Input component provides an elegant way to input multiple tags or keywords. Users can type text and press Enter to add a tag, or press Backspace when the input is empty to remove the last tag.
+
+```tsx
+<CleanTagInput />
+```
+
+## Features
+
+- Add tags by pressing Enter
+- Remove tags by clicking the X button or pressing Backspace when input is empty
+- Clean, minimal design with subtle hover effects
+- Dark mode support
+- Accessible tag removal
+- Flexible layout that adapts to container width

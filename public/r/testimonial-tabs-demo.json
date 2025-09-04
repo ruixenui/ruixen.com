@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "testimonial-tabs-demo",
+  "type": "registry:example",
+  "title": "Testimonial Tabs Demo",
+  "description": "Example of interactive testimonial component with tabs",
+  "registryDependencies": [
+    "testimonial-tabs"
+  ],
+  "files": [
+    {
+      "path": "registry/example/testimonial-tabs-demo.tsx",
+      "content": "\"use client\";\n\nimport TestimonialTabs, { TestimonialTab } from \"../ruixenui/testimonial-tabs\";\n\nexport default function TestimonialTabsDemo() {\n  const customTestimonials: TestimonialTab[] = [\n    {\n      id: \"john\",\n      name: \"John Appleseed\",\n      title: \"CEO\",\n      company: \"InnovateX\",\n      quote: \"InnovateX transformed our workflow. Highly recommended!\",\n      image: \"https://github.com/shadcn.png\",\n    },\n    {\n      id: \"lisa\",\n      name: \"Lisa Wong\",\n      title: \"CTO\",\n      company: \"TechNova\",\n      quote: \"TechNova adopted the best CRM experience thanks to this tool.\",\n      image: \"https://github.com/shadcn.png\",\n    },\n    {\n      id: \"mark\",\n      name: \"Mark Spencer\",\n      title: \"Head of Marketing\",\n      company: \"Startify\",\n      quote: \"Startify saw a 50% increase in efficiency using this system.\",\n      image: \"https://github.com/shadcn.png\",\n    },\n  ];\n\n  return (\n    <main className=\"min-h-screen bg-gray-50 dark:bg-gray-900\">\n      <div className=\"text-center py-20\">\n        <h1 className=\"text-4xl font-bold text-gray-900 dark:text-white\">\n          TestimonialTabs Demo\n        </h1>\n        <p className=\"mt-4 text-gray-600 dark:text-gray-300\">\n          Default tabs and custom tabs below.\n        </p>\n      </div>\n\n      {/* Default Tabs */}\n      <TestimonialTabs />\n\n      {/* Custom Tabs */}\n      <div className=\"mt-20\">\n        <TestimonialTabs testimonials={customTestimonials} />\n      </div>\n    </main>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/testimonial-tabs-demo.tsx"
+    }
+  ]
+}

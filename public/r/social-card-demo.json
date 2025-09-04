@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "social-card-demo",
+  "type": "registry:example",
+  "title": "Social Card Demo",
+  "description": "Example showing a social media style card component with engagement features.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/social-card"
+  ],
+  "files": [
+    {
+      "path": "registry/example/social-card-demo.tsx",
+      "content": "\"use client\";\n\nimport SocialCard from \"../ruixenui/social-card\";\nimport { LinkIcon } from \"lucide-react\";\n\nexport default function SocialCardDemo() {\n  return (\n    <SocialCard\n      author={{\n        name: \"Dorian Baffier\",\n        username: \"dorian_baffier\",\n        avatar: \"https://github.com/shadcn.png\",\n        timeAgo: \"2h ago\",\n      }}\n      content={{\n        text: \"Just launched Ruixen UI! Check out the documentation and let me know what you think 🎨\",\n        link: {\n          title: \"Ruixen UI Documentation\",\n          description: \"A comprehensive guide to Ruixen UI\",\n          icon: <LinkIcon className=\"w-5 h-5 text-blue-500\" />,\n        },\n      }}\n      engagement={{\n        likes: 128,\n        comments: 32,\n        shares: 24,\n        isLiked: false,\n        isBookmarked: false,\n      }}\n      onLike={() => {}}\n      onComment={() => {}}\n      onShare={() => {}}\n      onBookmark={() => {}}\n    />\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/social-card-demo.tsx"
+    }
+  ]
+}

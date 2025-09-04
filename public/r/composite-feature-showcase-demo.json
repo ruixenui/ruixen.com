@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "composite-feature-showcase-demo",
+  "type": "registry:example",
+  "title": "Composite Feature Showcase Demo",
+  "description": "Example of complex dashboard layout with map and charts",
+  "registryDependencies": [
+    "composite-feature-showcase"
+  ],
+  "files": [
+    {
+      "path": "registry/example/composite-feature-showcase-demo.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport CompositeFeatureShowcase from \"@/components/ruixen-featured-message-card\";\n\nexport default function DemoPage() {\n  return (\n    <main className=\"min-h-screen flex items-center justify-center bg-gray-100 p-10\">\n      <div className=\"max-w-md w-full\">\n        <CompositeFeatureShowcase />\n      </div>\n    </main>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/composite-feature-showcase-demo.tsx"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+---
+title: Nested Dashboard Menu
+date: 2024-06-01
+description: A nested navigation menu component for dashboard layouts
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="nested-dashboard-menu-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/nested-dashboard-menu"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="nested-dashboard-menu" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop          | Type             | Default | Description                                 |
+| ------------- | ---------------- | ------- | ------------------------------------------- |
+| `menuItems`   | `MenuItemType[]` | `[]`    | Array of menu items with nested structure   |
+| `collapsed`   | `boolean`        | `false` | Whether the menu is collapsed               |
+| `onItemClick` | `function`       | -       | Callback function when menu item is clicked |

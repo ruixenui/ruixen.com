@@ -1,0 +1,67 @@
+---
+title: Glow Link Button
+date: 2025-08-24
+description: A button with a glowing effect that links to external or internal pages
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="glow-link-button-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/glow-link-button"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="glow-link-button" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop        | Type     | Default        | Description                        |
+| ----------- | -------- | -------------- | ---------------------------------- |
+| `label`     | `string` | `"Learn More"` | The text displayed on the button   |
+| `href`      | `string` | `"#"`          | The URL the button links to        |
+| `className` | `string` | -              | Additional CSS classes for styling |
+
+## Examples
+
+### Custom Label and Link
+
+```tsx
+<GlowLinkButton label="Visit Docs" href="https://docs.ruixenui.com" />
+```
+
+### Custom Styling
+
+```tsx
+<GlowLinkButton
+  className="bg-blue-600 text-white border-blue-700 hover:shadow-lg"
+  label="Get Started"
+  href="https://ruixenui.com/get-started"
+/>
+```

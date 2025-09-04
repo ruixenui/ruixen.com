@@ -1,0 +1,58 @@
+---
+title: Feature Grid Section
+date: 2024-08-24
+description: Grid layout showcasing features with icons and descriptions
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="feature-grid-section-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/feature-grid-section"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="feature-grid-section" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop       | Type                | Default                         | Description            |
+| ---------- | ------------------- | ------------------------------- | ---------------------- |
+| `heading`  | `string`            | `"Key Platform Features"`       | Main heading text      |
+| `subtitle` | `string`            | `"Explore how our platform..."` | Subtitle description   |
+| `features` | `FeatureGridItem[]` | `defaultFeatures`               | Array of feature items |
+
+## FeatureGridItem Interface
+
+| Prop          | Type     | Description                   |
+| ------------- | -------- | ----------------------------- |
+| `title`       | `string` | Feature title                 |
+| `description` | `string` | Feature description           |
+| `iconLight`   | `string` | Optional light theme icon URL |
+| `iconDark`    | `string` | Optional dark theme icon URL  |

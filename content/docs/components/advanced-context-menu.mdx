@@ -1,0 +1,49 @@
+---
+title: Advanced Context Menu
+date: 2024-06-01
+description: An advanced context menu component with nested items and keyboard navigation
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="advanced-context-menu-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/advanced-context-menu"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="advanced-context-menu" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop           | Type         | Default | Description                                  |
+| -------------- | ------------ | ------- | -------------------------------------------- |
+| `items`        | `MenuItem[]` | `[]`    | Array of menu items                          |
+| `trigger`      | `ReactNode`  | -       | Element that triggers the context menu       |
+| `onItemSelect` | `function`   | -       | Callback function when menu item is selected |

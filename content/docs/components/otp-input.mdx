@@ -1,0 +1,76 @@
+---
+title: OTP Input
+date: 2025-08-24
+description: A one-time password input field with auto-focus and paste support
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="otp-input-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/otp-input"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="otp-input" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop          | Type                      | Default | Description                               |
+| ------------- | ------------------------- | ------- | ----------------------------------------- |
+| `length`      | `number`                  | `6`     | Number of input fields                    |
+| `onChange`    | `(value: string) => void` | -       | Callback when value changes               |
+| `placeholder` | `string`                  | `""`    | Placeholder character for empty fields    |
+| `autoFocus`   | `boolean`                 | `true`  | Whether to focus the first field on mount |
+
+## Examples
+
+### Custom Length and Placeholder
+
+```tsx
+<OTPInput
+  length={4}
+  placeholder="•"
+  onChange={(val) => console.log("OTP:", val)}
+/>
+```
+
+### With Change Handler
+
+```tsx
+const [otp, setOtp] = useState("");
+
+<OTPInput
+  length={6}
+  onChange={(val) => setOtp(val)}
+  placeholder="•"
+/>
+
+<p>Current OTP: {otp}</p>
+```

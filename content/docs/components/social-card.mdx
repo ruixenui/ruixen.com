@@ -1,0 +1,53 @@
+---
+title: Social Card
+date: 2024-06-01
+description: A social media style card component with engagement features
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="social-card-demo" category="cards" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/social-card"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="social-card" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop         | Type       | Default | Description                                   |
+| ------------ | ---------- | ------- | --------------------------------------------- |
+| `author`     | `object`   | -       | Author information (name, username, avatar)   |
+| `content`    | `object`   | -       | Content with text and optional link           |
+| `engagement` | `object`   | -       | Engagement metrics (likes, comments, shares)  |
+| `onLike`     | `function` | -       | Callback function when like button is clicked |
+| `onComment`  | `function` | -       | Callback function when comment is clicked     |
+| `onShare`    | `function` | -       | Callback function when share is clicked       |
+| `onBookmark` | `function` | -       | Callback function when bookmark is clicked    |

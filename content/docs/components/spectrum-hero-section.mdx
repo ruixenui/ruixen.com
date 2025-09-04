@@ -1,0 +1,50 @@
+---
+title: Spectrum Hero Section
+date: 2024-08-24
+description: A vibrant hero section with spectrum color effects and dynamic animations
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="spectrum-hero-section-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/spectrum-hero-section"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="spectrum-hero-section" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop          | Type     | Default                                       | Description                                           |
+| ------------- | -------- | --------------------------------------------- | ----------------------------------------------------- |
+| `title`       | `string` | `"Experience the Spectrum"`                   | The main heading text                                 |
+| `description` | `string` | `"Discover a full range of possibilities..."` | The description text                                  |
+| `buttons`     | `array`  | `[...]`                                       | Array of button objects with label, href, and variant |
+| `colorScheme` | `string` | `"rainbow"`                                   | Color scheme for the spectrum effect                  |

@@ -1,0 +1,87 @@
+---
+title: Slide To Delete Button
+date: 2025-08-24
+description: A draggable button that confirms deletion when fully slid
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="slide-to-delete-button-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/slide-to-delete-button"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="slide-to-delete-button" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Make sure you have Framer Motion installed</Step>
+
+```bash
+npm install framer-motion
+# or
+yarn add framer-motion
+# or
+pnpm add framer-motion
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop           | Type        | Default                          | Description                                         |
+| -------------- | ----------- | -------------------------------- | --------------------------------------------------- |
+| `label`        | `string`    | `"Slide to Delete"`              | The text displayed on the button                    |
+| `deletedLabel` | `string`    | `"Deleted"`                      | The text displayed after successful deletion        |
+| `icon`         | `ReactNode` | `<Trash2 className="w-4 h-4" />` | The icon displayed in the drag handle               |
+| `dragLimit`    | `number`    | `140`                            | The distance in pixels required to trigger deletion |
+| `className`    | `string`    | -                                | Additional CSS classes for styling                  |
+| `onClick`      | `function`  | -                                | Function called when deletion is confirmed          |
+
+## Examples
+
+### Custom Colors
+
+You can customize the button's appearance using the `className` prop:
+
+```tsx
+<SlideToDeleteButton
+  className="bg-yellow-100 text-yellow-700 hover:bg-yellow-200"
+  label="Slide to Archive"
+  deletedLabel="Archived"
+/>
+```
+
+### Custom Action
+
+Use the `onClick` prop to handle the deletion action:
+
+```tsx
+<SlideToDeleteButton
+  label="Remove Item"
+  onClick={() => handleItemRemoval(itemId)}
+/>
+```

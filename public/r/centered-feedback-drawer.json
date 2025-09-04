@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "centered-feedback-drawer",
+  "type": "registry:ui",
+  "title": "Centered Feedback Drawer",
+  "description": "A centered drawer component designed for feedback collection.",
+  "dependencies": [
+    "@radix-ui/react-dialog",
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/centered-feedback-drawer.tsx",
+      "content": "\"use client\";\n\nimport {\n  Drawer,\n  DrawerContent,\n  DrawerHeader,\n  DrawerTitle,\n  DrawerDescription,\n  DrawerFooter,\n  DrawerTrigger,\n  DrawerClose,\n} from \"@/components/ui/drawer\";\nimport { Button } from \"@/components/ui/button\";\nimport { Input } from \"@/components/ui/input\";\nimport { Label } from \"@/components/ui/label\";\nimport { Star } from \"lucide-react\";\nimport { useState } from \"react\";\nimport { Textarea } from \"@/components/ui/textarea\";\n\nexport default function CenteredFeedbackDrawer() {\n  const [rating, setRating] = useState(0);\n\n  return (\n    <Drawer>\n      <DrawerTrigger asChild>\n        <Button variant=\"default\">Give Feedback</Button>\n      </DrawerTrigger>\n\n      <DrawerContent>\n        <div className=\"flex flex-col items-center justify-center text-center py-8 px-4\">\n          <DrawerHeader className=\"max-w-md space-y-2\">\n            <DrawerTitle className=\"text-xl font-bold\">\n              We Value Your Feedback\n            </DrawerTitle>\n            <DrawerDescription>\n              Help us improve by sharing your thoughts.\n            </DrawerDescription>\n          </DrawerHeader>\n\n          {/* Form area */}\n          <div className=\"w-full max-w-md space-y-4 mt-4\">\n            {/* Name */}\n            <div className=\"grid gap-2 text-left\">\n              <Label htmlFor=\"name\">Name</Label>\n              <Input id=\"name\" type=\"text\" placeholder=\"Your name\" />\n            </div>\n\n            {/* Email */}\n            <div className=\"grid gap-2 text-left\">\n              <Label htmlFor=\"email\">Email</Label>\n              <Input id=\"email\" type=\"email\" placeholder=\"you@example.com\" />\n            </div>\n\n            {/* Rating */}\n            <div className=\"grid gap-2 text-left\">\n              <Label>Rate your experience</Label>\n              <div className=\"flex justify-center gap-2\">\n                {[1, 2, 3, 4, 5].map((star) => (\n                  <Star\n                    key={star}\n                    className={`h-6 w-6 cursor-pointer ${\n                      rating >= star\n                        ? \"text-yellow-500 fill-yellow-500\"\n                        : \"text-gray-400\"\n                    }`}\n                    onClick={() => setRating(star)}\n                  />\n                ))}\n              </div>\n            </div>\n\n            {/* Message */}\n            <div className=\"grid gap-2 text-left\">\n              <Label htmlFor=\"message\">Message</Label>\n              <Textarea\n                id=\"message\"\n                placeholder=\"Tell us about your experience...\"\n                className=\"min-h-[100px]\"\n              />\n            </div>\n          </div>\n\n          {/* Footer */}\n          <DrawerFooter className=\"flex flex-col sm:flex-row gap-3 w-full max-w-md mt-6\">\n            <Button className=\"w-full\">Submit Feedback</Button>\n            <DrawerClose asChild>\n              <Button variant=\"outline\" className=\"w-full\">\n                Cancel\n              </Button>\n            </DrawerClose>\n          </DrawerFooter>\n        </div>\n      </DrawerContent>\n    </Drawer>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/centered-feedback-drawer.tsx"
+    }
+  ]
+}

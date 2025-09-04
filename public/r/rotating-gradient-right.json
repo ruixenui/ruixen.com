@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "rotating-gradient-right",
+  "type": "registry:ui",
+  "title": "Rotating Gradient Right",
+  "description": "Rotating conic gradient animation with centered card content",
+  "files": [
+    {
+      "path": "registry/ruixenui/rotating-gradient-right.tsx",
+      "content": "\"use client\";\n\nimport { Card, CardContent } from \"@/components/ui/card\";\nimport { Button } from \"@/components/ui/button\";\nimport { ArrowRight } from \"lucide-react\";\n\nexport default function RotatingGradientRight() {\n  return (\n    <section className=\"min-h-screen w-full bg-white dark:bg-black text-black dark:text-white px-8 py-16 md:px-16\">\n      <div className=\"mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-2\">\n        {/* LEFT: Text */}\n        <div className=\"relative mx-auto flex h-[40rem] w-full max-w-[60rem] items-center justify-center overflow-hidden rounded-3xl\">\n          {/* Rotating conic gradient glow */}\n          <div className=\"absolute -inset-10 flex items-center justify-center\">\n            <div\n              className=\"\n                h-[120%] w-[120%] rounded-[36px] blur-3xl opacity-80\n                bg-[conic-gradient(from_0deg,theme(colors.emerald.400),theme(colors.cyan.400),theme(colors.blue.500),theme(colors.violet.600),theme(colors.red.500),theme(colors.emerald.400))]\n                animate-[spin_8s_linear_infinite]\n              \"\n            />\n          </div>\n\n          {/* Black card inside the glow */}\n          <Card className=\"w-[340px] z-10 rounded-2xl border border-white/10 bg-black/85 shadow-2xl backdrop-blur-xl\">\n            <CardContent className=\"p-5\">\n              <div className=\"mb-3 flex items-center justify-between\">\n                <span className=\"text-sm font-medium\">Ruixen UI</span>\n                <span className=\"text-xs text-zinc-400\">99 / 99</span>\n              </div>\n\n              {/* Progress bar */}\n              <div className=\"mb-3 h-1.5 w-full overflow-hidden rounded-full bg-white/10\">\n                <div\n                  className=\"h-full w-[92%] rounded-full\n                                bg-[linear-gradient(90deg,theme(colors.cyan.400),theme(colors.sky.400),theme(colors.emerald.400))]\"\n                />\n              </div>\n\n              <p className=\"text-xs text-zinc-400\">\n                Building components… please keep the project open until the\n                process is complete.\n              </p>\n\n              <Button\n                variant=\"secondary\"\n                className=\"mt-4 w-full rounded-lg bg-zinc-800 text-zinc-100 hover:bg-zinc-700\"\n              >\n                Cancel\n              </Button>\n            </CardContent>\n          </Card>\n        </div>\n\n        {/* RIGHT: Rotating gradient with black card */}\n        <div className=\"space-y-4\">\n          <h2 className=\"text-lg sm:text-xl lg:text-3xl font-normal text-gray-900 dark:text-white leading-relaxed\">\n            Ruixen UI{\" \"}\n            <span className=\"text-gray-500 dark:text-gray-400 text-sm sm:text-base lg:text-3xl\">\n              Build beautiful, modern interfaces with our comprehensive\n              component library. No setup, no configuration needed.\n            </span>\n          </h2>\n          <Button variant=\"link\" className=\"px-0 text-black dark:text-white\">\n            Try Ruixen UI <ArrowRight />\n          </Button>\n        </div>\n      </div>\n    </section>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/rotating-gradient-right.tsx"
+    }
+  ],
+  "css": {
+    "@keyframes spin": {
+      "from": {
+        "transform": "rotate(0deg)"
+      },
+      "to": {
+        "transform": "rotate(360deg)"
+      }
+    }
+  }
+}

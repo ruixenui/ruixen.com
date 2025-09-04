@@ -1,0 +1,68 @@
+---
+title: Tech Orbit Showcase
+date: 2024-08-24
+description: Animated orbital showcase with rotating tech icons and call-to-action
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="tech-orbit-showcase-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/tech-orbit-showcase"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="tech-orbit-showcase" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Install required dependencies</Step>
+
+```bash
+npm install react-icons
+```
+
+<Step>Add the required CSS animations</Step>
+
+```css title="app/globals.css" {1-6}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Features
+
+- Multiple orbital rings with different rotation speeds
+- Tech stack icons with brand colors
+- Responsive design with mobile optimization
+- Call-to-action buttons
+- Center focal point with main technology

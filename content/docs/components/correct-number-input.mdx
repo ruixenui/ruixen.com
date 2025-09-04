@@ -1,0 +1,67 @@
+---
+title: Correct Number Input
+date: 2025-08-24
+description: A number input with floating label and custom increment/decrement buttons
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="correct-number-input-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/correct-number-input"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="correct-number-input" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Ensure you have the Lucide React icons installed</Step>
+
+```bash
+npm install lucide-react
+# or
+yarn add lucide-react
+# or
+pnpm add lucide-react
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+The Correct Number Input component provides a user-friendly way to input numeric values with increment and decrement buttons. It features a floating label that moves up when the input is focused or has a value, and custom chevron buttons for adjusting the value.
+
+```tsx
+<CorrectNumberInput />
+```
+
+## Features
+
+- Floating label design
+- Custom increment/decrement buttons
+- Zero value shown as empty to avoid label overlap
+- Input validation for numeric values only
+- Responsive design with dark mode support

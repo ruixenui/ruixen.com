@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "color-picker-input-demo",
+  "type": "registry:example",
+  "title": "Color Picker Input Demo",
+  "description": "Example showing a color picker component with opacity control and copy functionality.",
+  "registryDependencies": [
+    "color-picker-input"
+  ],
+  "files": [
+    {
+      "path": "registry/example/color-picker-input-demo.tsx",
+      "content": "\"use client\";\n\nimport ColorPickerInput from \"../ruixenui/color-picker-input\";\n\nexport default function DemoColorPicker() {\n  const handleColorChange = (color: string, opacity: number) => {\n    console.log(\"Selected:\", color, \"Opacity:\", opacity);\n  };\n\n  return (\n    <div className=\"min-h-screen flex items-center justify-center p-6\">\n      <ColorPickerInput\n        initialColor=\"#EC4899\"\n        initialOpacity={80}\n        onChange={handleColorChange}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/color-picker-input-demo.tsx"
+    }
+  ]
+}

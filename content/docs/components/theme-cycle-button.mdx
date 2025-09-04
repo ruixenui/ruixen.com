@@ -1,0 +1,80 @@
+---
+title: Theme Cycle Button
+date: 2025-08-24
+description: A button that cycles through light, dark, and system theme modes
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="theme-cycle-button-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/theme-cycle-button"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="theme-cycle-button" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Ensure you have the Lucide React icons installed</Step>
+
+```bash
+npm install lucide-react
+# or
+yarn add lucide-react
+# or
+pnpm add lucide-react
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop           | Type                             | Default     | Description                                     |
+| -------------- | -------------------------------- | ----------- | ----------------------------------------------- |
+| `variant`      | `"pill" \| "minimal" \| "ghost"` | `"minimal"` | The visual style of the button                  |
+| `size`         | `"sm" \| "default" \| "lg"`      | `"default"` | The size of the button                          |
+| `showLabel`    | `boolean`                        | `true`      | Whether to show the text label next to the icon |
+| `defaultMode`  | `"light" \| "dark" \| "system"`  | `"system"`  | The initial theme mode                          |
+| `onModeChange` | `(mode: ThemeMode) => void`      | -           | Callback function when theme changes            |
+| `className`    | `string`                         | -           | Additional CSS classes for styling              |
+
+## Examples
+
+### Pill Variant with Hidden Label
+
+```tsx
+<ThemeCycleButton variant="pill" showLabel={false} />
+```
+
+### Ghost Variant with Mode Change Callback
+
+```tsx
+<ThemeCycleButton
+  variant="ghost"
+  size="lg"
+  onModeChange={(mode) => console.log("Theme changed to:", mode)}
+/>
+```

@@ -1,0 +1,52 @@
+---
+title: Footer Pro
+date: 2024-08-24
+description: A professional footer component with logo, description, contact info, social links, and organized column sections.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="footer-pro-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/footer-pro"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="footer-pro" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop          | Type                                                            | Default     | Description                                |
+| ------------- | --------------------------------------------------------------- | ----------- | ------------------------------------------ |
+| `description` | `string`                                                        | `undefined` | Footer description text                    |
+| `logo`        | `{ dark: string; light: string }`                               | `undefined` | Logo URLs for dark and light themes        |
+| `contact`     | `{ email: string; phone: string }`                              | `undefined` | Contact information                        |
+| `socials`     | `{ icon: any; href: string }[]`                                 | `undefined` | Social media links with icons              |
+| `columns`     | `{ title: string; links: { label: string; href: string }[] }[]` | `undefined` | Footer column groups with navigation links |
+| `copyright`   | `string`                                                        | `undefined` | Copyright text                             |

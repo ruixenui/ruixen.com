@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "footer-pro-demo",
+  "type": "registry:example",
+  "title": "Footer Pro Demo",
+  "description": "Example of a professional footer with comprehensive sections",
+  "registryDependencies": [
+    "footer-pro"
+  ],
+  "files": [
+    {
+      "path": "registry/example/footer-pro-demo.tsx",
+      "content": "\"use client\";\n\nimport FooterPro from \"../ruixenui/footer-pro\";\nimport { Github, Twitter } from \"lucide-react\";\n\nexport default function FooterProDemo() {\n  return (\n    <main className=\"min-h-screen bg-gray-50 dark:bg-gray-900\">\n      <div className=\"text-center py-20\">\n        <h1 className=\"text-4xl font-bold text-gray-900 dark:text-white\">\n          FooterPro Demo\n        </h1>\n        <p className=\"mt-4 text-gray-600 dark:text-gray-300\">\n          Demonstration of FooterPro with default and custom props.\n        </p>\n      </div>\n\n      {/* --- Default FooterPro --- */}\n      {/* <FooterPro /> */}\n\n      {/* --- Custom FooterPro --- */}\n      <div className=\"mt-20\">\n        <FooterPro\n          description=\"Custom FooterPro for enterprise apps with extra sections and links.\"\n          columns={[\n            {\n              title: \"Solutions\",\n              links: [\n                { label: \"Startups\", href: \"#\" },\n                { label: \"Enterprise\", href: \"#\" },\n              ],\n            },\n            {\n              title: \"Resources\",\n              links: [\n                { label: \"Documentation\", href: \"#\" },\n                { label: \"API Guides\", href: \"#\" },\n              ],\n            },\n          ]}\n          socials={[\n            { icon: Github, href: \"#\" },\n            { icon: Twitter, href: \"#\" },\n          ]}\n          copyright=\"© 2025 CustomCorp. All rights reserved.\"\n        />\n      </div>\n    </main>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/footer-pro-demo.tsx"
+    }
+  ]
+}

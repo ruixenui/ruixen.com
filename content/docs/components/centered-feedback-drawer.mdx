@@ -1,0 +1,50 @@
+---
+title: Centered Feedback Drawer
+date: 2024-06-01
+description: A centered drawer component designed for feedback collection
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="centered-feedback-drawer-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/centered-feedback-drawer"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="centered-feedback-drawer" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop       | Type       | Default      | Description                                  |
+| ---------- | ---------- | ------------ | -------------------------------------------- |
+| `isOpen`   | `boolean`  | `false`      | Whether the drawer is open                   |
+| `onClose`  | `function` | -            | Callback function when drawer is closed      |
+| `onSubmit` | `function` | -            | Callback function when feedback is submitted |
+| `title`    | `string`   | `"Feedback"` | Title of the feedback drawer                 |

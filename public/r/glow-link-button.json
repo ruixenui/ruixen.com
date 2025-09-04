@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glow-link-button",
+  "type": "registry:ui",
+  "title": "Glow Link Button",
+  "description": "A button with a subtle glow effect and animated arrow on hover.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/glow-link-button.tsx",
+      "content": "\"use client\";\n\nimport { ArrowUpRight } from \"lucide-react\";\nimport { Button } from \"@/components/ui/button\";\nimport { cn } from \"@/lib/utils\";\nimport { useState } from \"react\";\n\ninterface GlowLinkButtonProps\n  extends React.ButtonHTMLAttributes<HTMLButtonElement> {\n  label?: string;\n  href?: string;\n}\n\nexport default function GlowLinkButton({\n  className,\n  label = \"Explore on GitHub\",\n  href = \"https://github.com/ruixenui\",\n  ...props\n}: GlowLinkButtonProps) {\n  const [hovered, setHovered] = useState(false);\n\n  return (\n    <a href={href} target=\"_blank\" rel=\"noopener noreferrer\">\n      <Button\n        onMouseEnter={() => setHovered(true)}\n        onMouseLeave={() => setHovered(false)}\n        className={cn(\n          \"relative group px-5 h-11 rounded-full overflow-hidden\",\n          \"bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800\",\n          \"text-zinc-800 dark:text-zinc-100\",\n          \"transition-all duration-300 ease-out hover:shadow-md\",\n          className,\n        )}\n        {...props}\n      >\n        {/* Soft glow on hover */}\n        <span className=\"absolute inset-0 bg-gradient-to-tr from-transparent via-zinc-100 to-transparent dark:via-zinc-800 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm pointer-events-none rounded-full\" />\n\n        {/* Button Content */}\n        <div className=\"relative flex items-center gap-2 font-medium\">\n          <span>{label}</span>\n          <ArrowUpRight\n            className={cn(\n              \"w-4 h-4 transition-transform duration-300\",\n              hovered\n                ? \"translate-x-1 -translate-y-1\"\n                : \"translate-x-0 translate-y-0\",\n            )}\n          />\n        </div>\n      </Button>\n    </a>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/glow-link-button.tsx"
+    }
+  ]
+}

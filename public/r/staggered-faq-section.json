@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "staggered-faq-section",
+  "type": "registry:ui",
+  "title": "StaggeredFAQSection",
+  "description": "A responsive FAQ component with animated text reveals and customizable content.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/staggered-faq-section.tsx",
+      "content": "\"use client\";\n\nimport {\n  Accordion,\n  AccordionContent,\n  AccordionItem,\n  AccordionTrigger,\n} from \"@/components/ui/accordion\";\nimport { BlurredStagger } from \"@/components/ui/blurred-stagger-text\";\nimport Link from \"next/link\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface FAQItem {\n  id: string;\n  question: string;\n  answer: string;\n}\n\nexport interface StaggeredFAQProps {\n  title?: string;\n  subtitle?: string;\n  supportText?: string;\n  supportLink?: string;\n  supportLinkText?: string;\n  faqItems: FAQItem[];\n  className?: string;\n  hideSupport?: boolean;\n}\n\nexport default function StaggeredFAQSection({\n  title = \"StaggeredFAQ\",\n  subtitle = \"Everything you need to know about Ruixen UI\",\n  supportText = \"Can't find what you're looking for? Reach out to our\",\n  supportLink = \"#\",\n  supportLinkText = \"Ruixen UI support team\",\n  faqItems,\n  className,\n  hideSupport = false,\n}: StaggeredFAQProps) {\n  return (\n    <section className={cn(\"py-16 md:py-24\", className)}>\n      <div className=\"mx-auto max-w-5xl px-6\">\n        <div className=\"grid gap-8 md:grid-cols-5 md:gap-12\">\n          <div className=\"md:col-span-2\">\n            <h2 className=\"text-foreground text-4xl font-semibold\">{title}</h2>\n            <p className=\"text-muted-foreground mt-4 text-balance text-lg\">\n              {subtitle}\n            </p>\n            {!hideSupport && (\n              <p className=\"text-muted-foreground mt-6 hidden md:block\">\n                {supportText}{\" \"}\n                <Link\n                  href={supportLink}\n                  className=\"text-primary font-medium hover:underline\"\n                >\n                  {supportLinkText}\n                </Link>{\" \"}\n                for assistance.\n              </p>\n            )}\n          </div>\n\n          <div className=\"md:col-span-3\">\n            <Accordion type=\"single\" collapsible>\n              {faqItems.map((item) => (\n                <AccordionItem\n                  key={item.id}\n                  value={item.id}\n                  className=\"border-b border-gray-200 dark:border-gray-600\"\n                >\n                  <AccordionTrigger className=\"cursor-pointer text-base font-medium hover:no-underline\">\n                    {item.question}\n                  </AccordionTrigger>\n                  <AccordionContent>\n                    <BlurredStagger text={item.answer} />\n                  </AccordionContent>\n                </AccordionItem>\n              ))}\n            </Accordion>\n          </div>\n\n          {!hideSupport && (\n            <p className=\"text-muted-foreground mt-6 md:hidden\">\n              {supportText}{\" \"}\n              <Link\n                href={supportLink}\n                className=\"text-primary font-medium hover:underline\"\n              >\n                {supportLinkText}\n              </Link>\n            </p>\n          )}\n        </div>\n      </div>\n    </section>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/staggered-faq-section.tsx"
+    }
+  ]
+}

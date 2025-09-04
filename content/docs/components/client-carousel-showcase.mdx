@@ -1,0 +1,69 @@
+---
+title: Client Carousel Showcase
+date: 2024-08-24
+description: Interactive carousel showcasing client logos with navigation controls
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="client-carousel-showcase-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/client-carousel-showcase"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="client-carousel-showcase" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Install required dependencies</Step>
+
+```bash
+npm install embla-carousel-react
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop      | Type       | Default                         | Description             |
+| --------- | ---------- | ------------------------------- | ----------------------- |
+| `title`   | `string`   | `"Trusted by industry leaders"` | Main heading text       |
+| `clients` | `Client[]` | `defaultClients`                | Array of client objects |
+
+## Client Interface
+
+| Prop   | Type     | Description           |
+| ------ | -------- | --------------------- |
+| `name` | `string` | Client company name   |
+| `logo` | `string` | Client logo image URL |
+
+## Features
+
+- Interactive carousel with navigation controls
+- Responsive design with mobile optimization
+- Smooth transitions and hover effects
+- Auto-play functionality
+- Customizable client logos and branding

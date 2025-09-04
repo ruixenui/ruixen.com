@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gradient-blob-card",
+  "type": "registry:ui",
+  "title": "Gradient Blob Card",
+  "description": "An animated gradient blob card with glassmorphism effects.",
+  "files": [
+    {
+      "path": "registry/ruixenui/gradient-blob-card.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\n\nconst GradientBlobCard: React.FC = () => {\n  return (\n    <div className=\"flex items-center justify-center min-h-screen bg-gray-100 dark:bg-black\">\n      <div\n        className=\"relative w-[200px] h-[250px] rounded-[14px] flex flex-col items-center justify-center\n                      shadow-[20px_20px_60px_#bebebe,-20px_-20px_60px_#ffffff] dark:shadow-[20px_20px_60px_#111,-20px_-20px_60px_#222]\n                      overflow-hidden\"\n      >\n        {/* Glassy Background */}\n        <div\n          className=\"absolute top-[5px] left-[5px] w-[190px] h-[240px] bg-white/95 dark:bg-black/70 backdrop-blur-[24px]\n                        rounded-[10px] outline outline-2 outline-white dark:outline-gray-700 z-10\"\n        ></div>\n\n        {/* Animated Gradient Blob (same bold colors for light & dark mode) */}\n        <div\n          className=\"absolute top-1/2 left-1/2 w-[150px] h-[150px] rounded-full opacity-100\n                        filter blur-[12px] z-0 animate-blob \n                        bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500\"\n        ></div>\n\n        {/* Inline keyframes animation */}\n        <style>\n          {`\n            @keyframes blob {\n              0% {\n                transform: translate(-100%, -100%);\n              }\n              25% {\n                transform: translate(0%, -100%);\n              }\n              50% {\n                transform: translate(0%, 0%);\n              }\n              75% {\n                transform: translate(-100%, 0%);\n              }\n              100% {\n                transform: translate(-100%, -100%);\n              }\n            }\n\n            .animate-blob {\n              animation: blob 5s linear infinite;\n            }\n          `}\n        </style>\n      </div>\n    </div>\n  );\n};\n\nexport default GradientBlobCard;\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/gradient-blob-card.tsx"
+    }
+  ]
+}

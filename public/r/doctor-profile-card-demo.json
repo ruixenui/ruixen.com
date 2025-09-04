@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "doctor-profile-card-demo",
+  "type": "registry:example",
+  "title": "Doctor Profile Card Demo",
+  "description": "Example showing a doctor profile card component for healthcare applications.",
+  "registryDependencies": [
+    "doctor-profile-card"
+  ],
+  "files": [
+    {
+      "path": "registry/example/doctor-profile-card-demo.tsx",
+      "content": "import DoctorProfileCard from \"../ruixenui/doctor-profile-card\";\n\nexport default function DoctorProfileCardDemo() {\n  return (\n    <DoctorProfileCard\n      name=\"Dr. Sarah Johnson\"\n      image=\"https://github.com/shadcn.png\"\n      specialization=\"Pediatric Specialist\"\n      status=\"Online\"\n      rating={4.8}\n      chats={231}\n      available=\"Available Today · Until 7:00 PM\"\n      onJoinChat={() => console.log(\"Joining chat\")}\n      onBookmark={() => console.log(\"Bookmarking doctor\")}\n    />\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/doctor-profile-card-demo.tsx"
+    }
+  ]
+}

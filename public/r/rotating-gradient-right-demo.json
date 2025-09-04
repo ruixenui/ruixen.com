@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "rotating-gradient-right-demo",
+  "type": "registry:example",
+  "title": "Rotating Gradient Right Demo",
+  "description": "Example of rotating conic gradient animation with centered card",
+  "registryDependencies": [
+    "rotating-gradient-right"
+  ],
+  "files": [
+    {
+      "path": "registry/example/rotating-gradient-right-demo.tsx",
+      "content": "\"use client\";\n\nimport RotatingGradientRight from \"../ruixenui/rotating-gradient-right\";\n\nexport default function DemoRotatingGradientRight() {\n  return (\n    <main className=\"bg-background flex flex-col items-center justify-center w-full\">\n      <RotatingGradientRight />\n    </main>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/rotating-gradient-right-demo.tsx"
+    }
+  ]
+}

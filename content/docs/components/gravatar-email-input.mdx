@@ -1,0 +1,81 @@
+---
+title: Gravatar Email Input
+date: 2025-08-24
+description: An email input that displays the user's Gravatar avatar in real-time
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="gravatar-email-input-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/gravatar-email-input"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="gravatar-email-input" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Install the md5 package for Gravatar hash generation</Step>
+
+```bash
+npm install md5
+# or
+yarn add md5
+# or
+pnpm add md5
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop           | Type                      | Default              | Description                          |
+| -------------- | ------------------------- | -------------------- | ------------------------------------ |
+| `label`        | `string`                  | `"Enter your email"` | Label text for the input field       |
+| `placeholder`  | `string`                  | `"you@example.com"`  | Placeholder text for the input field |
+| `initialValue` | `string`                  | `""`                 | Initial email value                  |
+| `onChange`     | `(email: string) => void` | -                    | Callback when email changes          |
+
+## Examples
+
+### With Initial Value
+
+```tsx
+<GravatarEmailInput
+  initialValue="test@example.com"
+  onChange={handleEmailChange}
+/>
+```
+
+### Custom Label and Placeholder
+
+```tsx
+<GravatarEmailInput
+  label="Your Email Address"
+  placeholder="email@domain.com"
+  onChange={(email) => console.log("Email:", email)}
+/>
+```

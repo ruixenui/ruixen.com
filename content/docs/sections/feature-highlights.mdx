@@ -1,0 +1,123 @@
+---
+title: FeatureHighlights
+date: 2024-06-01
+description: A responsive feature highlights component with expandable accordion sections and images
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="feature-highlights-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/feature-highlights"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="feature-highlights" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import FeatureHighlights from "@/components/ruixen/feature-highlights";
+
+const features = [
+  {
+    id: "item-1",
+    title: "AI-Powered Automation",
+    count: 24,
+    image:
+      "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/dashboard-02.png",
+    description: "Streamline workflows with cutting-edge AI solutions.",
+  },
+  // Add more feature items...
+];
+
+export default function MyFeatures() {
+  return <FeatureHighlights features={features} />;
+}
+```
+
+## Props
+
+| Prop       | Type            | Default | Description                       |
+| ---------- | --------------- | ------- | --------------------------------- |
+| `features` | `FeatureItem[]` | -       | Array of feature items to display |
+
+## Feature Item Structure
+
+Each feature item should have the following structure:
+
+```tsx
+interface FeatureItem {
+  id: string; // Unique identifier for the feature item
+  title: string; // The feature title
+  count: number; // Count or metric associated with the feature
+  image: string; // URL of the feature image
+  description: string; // Description text for the feature
+}
+```
+
+## Features
+
+- **Responsive Design**: Adapts to different screen sizes with a mobile-first approach
+- **Accordion Interface**: Built on shadcn/ui Accordion component for smooth expand/collapse
+- **Image Display**: Shows thumbnail images that expand to full size when opened
+- **Customizable**: All content, images, and styling can be customized
+- **Accessible**: Follows accessibility best practices with proper ARIA attributes
+- **Dark Mode**: Supports both light and dark themes
+
+## Examples
+
+### Basic Usage
+
+```tsx
+<FeatureHighlights features={features} />
+```
+
+### With Custom Features
+
+```tsx
+const customFeatures = [
+  {
+    id: "feature-1",
+    title: "Real-Time Analytics",
+    count: 12,
+    image: "/path/to/analytics-image.png",
+    description: "Monitor metrics live and make instant decisions.",
+  },
+  {
+    id: "feature-2",
+    title: "Seamless Integrations",
+    count: 18,
+    image: "/path/to/integrations-image.png",
+    description: "Connect with tools you already use effortlessly.",
+  },
+];
+
+<FeatureHighlights features={customFeatures} />;
+```
