@@ -5,7 +5,7 @@
   "title": "Card Carousel Hero Demo",
   "description": "Example showing an interactive hero section with card carousel",
   "registryDependencies": [
-    "card-carousel-hero"
+    "https://www.ruixen.com/r/card-carousel-hero"
   ],
   "files": [
     {

@@ -5,7 +5,7 @@
   "title": "Pricing Comparison Demo",
   "description": "Example of a detailed pricing comparison table",
   "registryDependencies": [
-    "pricing-comparison"
+    "https://www.ruixen.com/r/pricing-comparison"
   ],
   "files": [
     {

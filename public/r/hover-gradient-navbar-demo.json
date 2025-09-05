@@ -5,7 +5,7 @@
   "title": "Hover Gradient Navbar Demo",
   "description": "Example of a navigation bar with gradient hover effects",
   "registryDependencies": [
-    "hover-gradient-navbar"
+    "https://www.ruixen.com/r/hover-gradient-navbar"
   ],
   "files": [
     {

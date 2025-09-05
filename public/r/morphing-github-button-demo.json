@@ -5,7 +5,7 @@
   "title": "Morphing Github Button Demo",
   "description": "Example showing a GitHub button that morphs between different states with animations.",
   "registryDependencies": [
-    "morphing-github-button"
+    "https://www.ruixen.com/r/morphing-github-button"
   ],
   "files": [
     {

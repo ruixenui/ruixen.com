@@ -5,7 +5,7 @@
   "title": "Advanced Context Menu Demo",
   "description": "Example showing an advanced context menu component with nested items and keyboard navigation.",
   "registryDependencies": [
-    "advanced-context-menu"
+    "https://www.ruixen.com/r/advanced-context-menu"
   ],
   "files": [
     {

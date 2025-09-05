@@ -5,7 +5,7 @@
   "title": "Footer Mega Demo",
   "description": "Example of a mega footer with extensive navigation",
   "registryDependencies": [
-    "footer-mega"
+    "https://www.ruixen.com/r/footer-mega"
   ],
   "files": [
     {

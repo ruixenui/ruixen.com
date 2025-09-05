@@ -5,7 +5,7 @@
   "title": "Luma Bar Demo",
   "description": "Example of a Luma-inspired navigation bar",
   "registryDependencies": [
-    "luma-bar"
+    "https://www.ruixen.com/r/luma-bar"
   ],
   "files": [
     {

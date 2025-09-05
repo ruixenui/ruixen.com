@@ -5,7 +5,7 @@
   "title": "Auto Scrolling Client Carousel Demo",
   "description": "Example of automatically scrolling carousel with client logos",
   "registryDependencies": [
-    "auto-scrolling-client-carousel"
+    "https://www.ruixen.com/r/auto-scrolling-client-carousel"
   ],
   "files": [
     {

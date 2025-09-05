@@ -5,7 +5,7 @@
   "title": "Team Project Card Demo",
   "description": "Example showing a collaborative project card with team members and milestones.",
   "registryDependencies": [
-    "team-project-card"
+    "https://www.ruixen.com/r/team-project-card"
   ],
   "files": [
     {

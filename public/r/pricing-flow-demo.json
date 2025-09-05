@@ -5,7 +5,7 @@
   "title": "Pricing Flow Demo",
   "description": "Example of interactive pricing flow with billing toggles",
   "registryDependencies": [
-    "pricing-flow"
+    "https://www.ruixen.com/r/pricing-flow"
   ],
   "files": [
     {

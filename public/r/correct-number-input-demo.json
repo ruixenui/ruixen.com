@@ -5,7 +5,7 @@
   "title": "Correct Number Input Demo",
   "description": "Example showing a number input with validation and correction features.",
   "registryDependencies": [
-    "correct-number-input"
+    "https://www.ruixen.com/r/correct-number-input"
   ],
   "files": [
     {

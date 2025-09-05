@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Templates",
@@ -158,14 +159,19 @@ function TemplateCard({ template }: { template: Template }) {
               src={template.video}
             />
           ) : (
-            <img
+            <Image
               src={template.image}
               alt={template.title}
+              width={800}
+              height={600}
               className="w-full h-full rounded-lg object-cover"
             />
           )}
           <div className="absolute top-4 right-4">
-            <Badge variant={template.price === "free" ? "secondary" : "default"} className="bg-[#bef853]">
+            <Badge
+              variant={template.price === "free" ? "secondary" : "default"}
+              className="bg-[#bef853]"
+            >
               {template.price === "free" ? "Free" : "Pro"}
             </Badge>
           </div>
@@ -186,15 +192,20 @@ export default function TemplatesPage() {
           </h1>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
             Beautiful, responsive templates built with modern web technologies.
-            Perfect for developers and designers looking to jumpstart their projects.
+            Perfect for developers and designers looking to jumpstart their
+            projects.
           </p>
         </div>
 
         {/* Stats */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
           <div className="text-center space-y-2">
-            <div className="text-2xl font-bold text-primary">{templates.length}</div>
-            <div className="text-sm text-muted-foreground">Templates Available</div>
+            <div className="text-2xl font-bold text-primary">
+              {templates.length}
+            </div>
+            <div className="text-sm text-muted-foreground">
+              Templates Available
+            </div>
           </div>
           <div className="text-center space-y-2">
             <div className="text-2xl font-bold text-primary">
@@ -204,7 +215,9 @@ export default function TemplatesPage() {
           </div>
           <div className="text-center space-y-2">
             <div className="text-2xl font-bold text-primary">100%</div>
-            <div className="text-sm text-muted-foreground">Mobile Responsive</div>
+            <div className="text-sm text-muted-foreground">
+              Mobile Responsive
+            </div>
           </div>
         </div>
 
@@ -219,7 +232,7 @@ export default function TemplatesPage() {
         <div className="text-center space-y-4 py-12 border-t">
           <h2 className="text-2xl font-bold">More Templates Coming Soon</h2>
           <p className="text-muted-foreground max-w-md mx-auto">
-            We're working on more amazing templates. Stay tuned for updates!
+            We&apos;re working on more amazing templates. Stay tuned for updates!
           </p>
           <Link
             href="https://github.com/ruixenui/ruixen-ui"

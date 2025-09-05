@@ -5,7 +5,7 @@
   "title": "Footer Extended Demo",
   "description": "Example of an extended footer with multiple sections",
   "registryDependencies": [
-    "footer-extended"
+    "https://www.ruixen.com/r/footer-extended"
   ],
   "files": [
     {

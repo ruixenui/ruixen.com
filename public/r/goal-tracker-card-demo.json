@@ -5,7 +5,7 @@
   "title": "Goal Tracker Card Demo",
   "description": "Example showing an activity and goal tracking card with progress visualization.",
   "registryDependencies": [
-    "goal-tracker-card"
+    "https://www.ruixen.com/r/goal-tracker-card"
   ],
   "files": [
     {

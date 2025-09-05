@@ -5,7 +5,7 @@
   "title": "Ruixen Dashboard Stats Demo",
   "description": "Example of dashboard stats with animated counter and chart",
   "registryDependencies": [
-    "ruixen-dashboard-stats"
+    "https://www.ruixen.com/r/ruixen-dashboard-stats"
   ],
   "files": [
     {

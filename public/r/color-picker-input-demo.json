@@ -5,7 +5,7 @@
   "title": "Color Picker Input Demo",
   "description": "Example showing a color picker component with opacity control and copy functionality.",
   "registryDependencies": [
-    "color-picker-input"
+    "https://www.ruixen.com/r/color-picker-input"
   ],
   "files": [
     {

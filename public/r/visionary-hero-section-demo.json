@@ -5,7 +5,7 @@
   "title": "Visionary Hero Section Demo",
   "description": "Example showing a visionary hero section with elegant design",
   "registryDependencies": [
-    "visionary-hero-section"
+    "https://www.ruixen.com/r/visionary-hero-section"
   ],
   "files": [
     {

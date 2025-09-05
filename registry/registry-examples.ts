@@ -226,7 +226,9 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Composite Feature Showcase Demo",
     description: "Example of complex dashboard layout with map and charts",
-    registryDependencies: ["https://www.ruixen.com/r/composite-feature-showcase"],
+    registryDependencies: [
+      "https://www.ruixen.com/r/composite-feature-showcase",
+    ],
     files: [
       {
         path: "registry/example/composite-feature-showcase-demo.tsx",
@@ -240,7 +242,9 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Integration And Stats Section Demo",
     description: "Example of integration showcase with testimonials and stats",
-    registryDependencies: ["https://www.ruixen.com/r/integration-and-stats-section"],
+    registryDependencies: [
+      "https://www.ruixen.com/r/integration-and-stats-section",
+    ],
     files: [
       {
         path: "registry/example/integration-and-stats-section-demo.tsx",
@@ -269,7 +273,9 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Partner Integrations Grid Demo",
     description: "Example of grid showcase with partner integrations",
-    registryDependencies: ["https://www.ruixen.com/r/partner-integrations-grid"],
+    registryDependencies: [
+      "https://www.ruixen.com/r/partner-integrations-grid",
+    ],
     files: [
       {
         path: "registry/example/partner-integrations-grid-demo.tsx",
@@ -283,7 +289,9 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Analytics Dashboard Stats Demo",
     description: "Example of analytics dashboard with statistics and charts",
-    registryDependencies: ["https://www.ruixen.com/r/analytics-dashboard-stats"],
+    registryDependencies: [
+      "https://www.ruixen.com/r/analytics-dashboard-stats",
+    ],
     files: [
       {
         path: "registry/example/analytics-dashboard-stats-demo.tsx",
@@ -429,7 +437,9 @@ export const examples: Registry["items"] = [
     title: "Auto Scrolling Client Carousel Demo",
     description:
       "Example of automatically scrolling carousel with client logos",
-    registryDependencies: ["https://www.ruixen.com/r/auto-scrolling-client-carousel"],
+    registryDependencies: [
+      "https://www.ruixen.com/r/auto-scrolling-client-carousel",
+    ],
     files: [
       {
         path: "registry/example/auto-scrolling-client-carousel-demo.tsx",
@@ -625,7 +635,9 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Pricing with User Scaling Demo",
     description: "Example of pricing component with user-based scaling",
-    registryDependencies: ["https://www.ruixen.com/r/pricing-with-user-scaling"],
+    registryDependencies: [
+      "https://www.ruixen.com/r/pricing-with-user-scaling",
+    ],
     files: [
       {
         path: "registry/example/pricing-with-user-scaling-demo.tsx",

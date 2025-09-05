@@ -5,7 +5,7 @@
   "title": "Doctor Profile Card Demo",
   "description": "Example showing a doctor profile card component for healthcare applications.",
   "registryDependencies": [
-    "doctor-profile-card"
+    "https://www.ruixen.com/r/doctor-profile-card"
   ],
   "files": [
     {

@@ -5,7 +5,7 @@
   "title": "Client Carousel Showcase Demo",
   "description": "Example of interactive carousel showcasing client logos",
   "registryDependencies": [
-    "client-carousel-showcase"
+    "https://www.ruixen.com/r/client-carousel-showcase"
   ],
   "files": [
     {

@@ -5,7 +5,7 @@
   "title": "Featured Highlights Demo",
   "description": "Example of interactive feature showcase with image preview",
   "registryDependencies": [
-    "featured-highlights"
+    "https://www.ruixen.com/r/featured-highlights"
   ],
   "files": [
     {

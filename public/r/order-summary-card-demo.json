@@ -5,7 +5,7 @@
   "title": "Order Summary Card Demo",
   "description": "Example showing an order summary card component for e-commerce checkout flows.",
   "registryDependencies": [
-    "order-summary-card"
+    "https://www.ruixen.com/r/order-summary-card"
   ],
   "files": [
     {

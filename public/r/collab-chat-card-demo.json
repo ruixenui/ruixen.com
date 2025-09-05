@@ -5,7 +5,7 @@
   "title": "Collab Chat Card Demo",
   "description": "Example showing a collaborative chat interface card with participant filtering.",
   "registryDependencies": [
-    "collab-chat-card"
+    "https://www.ruixen.com/r/collab-chat-card"
   ],
   "files": [
     {

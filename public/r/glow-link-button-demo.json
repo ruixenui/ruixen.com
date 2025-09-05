@@ -5,7 +5,7 @@
   "title": "Glow Link Button Demo",
   "description": "Example showing a button with a subtle glow effect and animated arrow on hover.",
   "registryDependencies": [
-    "glow-link-button"
+    "https://www.ruixen.com/r/glow-link-button"
   ],
   "files": [
     {

@@ -5,7 +5,7 @@
   "title": "Environment Card Demo",
   "description": "Example showing a smart home environment control card with device management.",
   "registryDependencies": [
-    "environment-card"
+    "https://www.ruixen.com/r/environment-card"
   ],
   "files": [
     {

@@ -5,7 +5,7 @@
   "title": "Feature Tabs Showcase Demo",
   "description": "Example of interactive tabs with animated background",
   "registryDependencies": [
-    "feature-tabs-showcase"
+    "https://www.ruixen.com/r/feature-tabs-showcase"
   ],
   "files": [
     {

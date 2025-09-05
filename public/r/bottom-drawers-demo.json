@@ -5,7 +5,7 @@
   "title": "Bottom Drawers Demo",
   "description": "Example showing a bottom drawer component that slides up from the bottom of the screen.",
   "registryDependencies": [
-    "bottom-drawers"
+    "https://www.ruixen.com/r/bottom-drawers"
   ],
   "files": [
     {

@@ -5,7 +5,7 @@
   "title": "Gravatar Email Input Demo",
   "description": "Example showing an email input that displays Gravatar avatar preview.",
   "registryDependencies": [
-    "gravatar-email-input"
+    "https://www.ruixen.com/r/gravatar-email-input"
   ],
   "files": [
     {

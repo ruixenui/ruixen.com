@@ -5,7 +5,7 @@
   "title": "Integration And Stats Section Demo",
   "description": "Example of integration showcase with testimonials and stats",
   "registryDependencies": [
-    "integration-and-stats-section"
+    "https://www.ruixen.com/r/integration-and-stats-section"
   ],
   "files": [
     {

@@ -5,7 +5,7 @@
   "title": "Aurora Hero Section Demo",
   "description": "Example showing a beautiful hero section with aurora-style background effects",
   "registryDependencies": [
-    "aurora-hero-section"
+    "https://www.ruixen.com/r/aurora-hero-section"
   ],
   "files": [
     {

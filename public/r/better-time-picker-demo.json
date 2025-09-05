@@ -5,7 +5,7 @@
   "title": "Better Time Picker Demo",
   "description": "Example showing an enhanced time picker with improved user experience.",
   "registryDependencies": [
-    "better-time-picker"
+    "https://www.ruixen.com/r/better-time-picker"
   ],
   "files": [
     {

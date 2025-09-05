@@ -5,7 +5,7 @@
   "title": "Clean Tag Input Demo",
   "description": "Example showing a clean and minimal tag input component for adding multiple values.",
   "registryDependencies": [
-    "clean-tag-input"
+    "https://www.ruixen.com/r/clean-tag-input"
   ],
   "files": [
     {

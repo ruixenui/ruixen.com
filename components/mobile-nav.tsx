@@ -98,9 +98,7 @@ export function MobileNav() {
                     </span>
                   )}
                 </h4>
-                {item.items && (
-                  <MobileSidebarNavItems items={item.items} />
-                )}
+                {item.items && <MobileSidebarNavItems items={item.items} />}
               </div>
             ))}
           </div>
@@ -115,7 +113,9 @@ interface MobileSidebarNavItemsProps {
 }
 
 function MobileSidebarNavItems({ items }: MobileSidebarNavItemsProps) {
-  const [expandedItems, setExpandedItems] = React.useState<Record<string, boolean>>({});
+  const [expandedItems, setExpandedItems] = React.useState<
+    Record<string, boolean>
+  >({});
   const pathname = usePathname();
 
   const toggleExpanded = (itemTitle: string) => {
@@ -181,7 +181,8 @@ function MobileSidebarNavItems({ items }: MobileSidebarNavItemsProps) {
               className={cn(
                 "flex justify-between text-muted-foreground px-2 py-1.5",
                 item.disabled && "cursor-not-allowed opacity-60",
-                pathname === item.href && "bg-accent font-medium text-accent-foreground rounded-md",
+                pathname === item.href &&
+                  "bg-accent font-medium text-accent-foreground rounded-md",
               )}
             >
               <span>{item.title}</span>

@@ -5,7 +5,7 @@
   "title": "CRM Insights Panel Demo",
   "description": "Example of CRM dashboard with video preview and feature grid",
   "registryDependencies": [
-    "crm-insights-panel"
+    "https://www.ruixen.com/r/crm-insights-panel"
   ],
   "files": [
     {

@@ -5,7 +5,7 @@
   "title": "Centered Feedback Drawer Demo",
   "description": "Example showing a centered drawer component designed for feedback collection.",
   "registryDependencies": [
-    "centered-feedback-drawer"
+    "https://www.ruixen.com/r/centered-feedback-drawer"
   ],
   "files": [
     {

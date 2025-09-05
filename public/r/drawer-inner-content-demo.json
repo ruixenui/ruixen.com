@@ -5,7 +5,7 @@
   "title": "Drawer Inner Content Demo",
   "description": "Example showing a drawer component with customizable inner content layout.",
   "registryDependencies": [
-    "drawer-inner-content"
+    "https://www.ruixen.com/r/drawer-inner-content"
   ],
   "files": [
     {

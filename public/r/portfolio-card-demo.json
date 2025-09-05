@@ -5,7 +5,7 @@
   "title": "Portfolio Card Demo",
   "description": "Example showing a professional portfolio card component showcasing skills and profile.",
   "registryDependencies": [
-    "portfolio-card"
+    "https://www.ruixen.com/r/portfolio-card"
   ],
   "files": [
     {

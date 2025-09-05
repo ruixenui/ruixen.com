@@ -5,7 +5,7 @@
   "title": "Promote Header Demo",
   "description": "Example of a promotional header component",
   "registryDependencies": [
-    "promote-header"
+    "https://www.ruixen.com/r/promote-header"
   ],
   "files": [
     {

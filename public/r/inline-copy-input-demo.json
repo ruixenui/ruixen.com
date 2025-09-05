@@ -5,7 +5,7 @@
   "title": "Inline Copy Input Demo",
   "description": "Example showing an input field with inline copy-to-clipboard functionality.",
   "registryDependencies": [
-    "inline-copy-input"
+    "https://www.ruixen.com/r/inline-copy-input"
   ],
   "files": [
     {

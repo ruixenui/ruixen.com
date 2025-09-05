@@ -5,7 +5,7 @@
   "title": "Feature Carousel Demo",
   "description": "Example of interactive carousel showcasing dashboard features",
   "registryDependencies": [
-    "feature-carousel"
+    "https://www.ruixen.com/r/feature-carousel"
   ],
   "files": [
     {

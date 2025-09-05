@@ -5,7 +5,7 @@
   "title": "Corporate Footer Demo",
   "description": "Example of a corporate-style footer component",
   "registryDependencies": [
-    "corporate-footer"
+    "https://www.ruixen.com/r/corporate-footer"
   ],
   "files": [
     {

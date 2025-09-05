@@ -5,7 +5,7 @@
   "title": "Analytics Dashboard Stats Demo",
   "description": "Example of analytics dashboard with statistics and charts",
   "registryDependencies": [
-    "analytics-dashboard-stats"
+    "https://www.ruixen.com/r/analytics-dashboard-stats"
   ],
   "files": [
     {

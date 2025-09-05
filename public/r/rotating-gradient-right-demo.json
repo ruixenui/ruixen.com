@@ -5,7 +5,7 @@
   "title": "Rotating Gradient Right Demo",
   "description": "Example of rotating conic gradient animation with centered card",
   "registryDependencies": [
-    "rotating-gradient-right"
+    "https://www.ruixen.com/r/rotating-gradient-right"
   ],
   "files": [
     {

@@ -5,7 +5,7 @@
   "title": "Partner Integrations Grid Demo",
   "description": "Example of grid showcase with partner integrations",
   "registryDependencies": [
-    "partner-integrations-grid"
+    "https://www.ruixen.com/r/partner-integrations-grid"
   ],
   "files": [
     {

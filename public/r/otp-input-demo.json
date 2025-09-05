@@ -5,7 +5,7 @@
   "title": "OTP Input Demo",
   "description": "Example showing a one-time password input component with individual digit fields.",
   "registryDependencies": [
-    "otp-input"
+    "https://www.ruixen.com/r/otp-input"
   ],
   "files": [
     {

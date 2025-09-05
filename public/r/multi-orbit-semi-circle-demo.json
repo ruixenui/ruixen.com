@@ -5,7 +5,7 @@
   "title": "Multi Orbit Semi Circle Demo",
   "description": "Example of multi-layered semi-circular orbit animation",
   "registryDependencies": [
-    "multi-orbit-semi-circle"
+    "https://www.ruixen.com/r/multi-orbit-semi-circle"
   ],
   "files": [
     {

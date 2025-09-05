@@ -5,7 +5,7 @@
   "title": "Theme Cycle Button Demo",
   "description": "Example showing a button that cycles through different theme modes with smooth transitions.",
   "registryDependencies": [
-    "theme-cycle-button"
+    "https://www.ruixen.com/r/theme-cycle-button"
   ],
   "files": [
     {

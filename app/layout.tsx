@@ -13,7 +13,8 @@ import type { Viewport } from "next";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Ruixen - Beautifully crafted UI components to elevate your web projects.",
+  title:
+    "Ruixen - Beautifully crafted UI components to elevate your web projects.",
   description:
     "Collection of customizable and open source components made with Next.js, Tailwind, Typescript, and Framer Motion.",
   authors: [{ name: "Srinath" }],

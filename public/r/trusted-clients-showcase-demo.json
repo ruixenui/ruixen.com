@@ -5,7 +5,7 @@
   "title": "Trusted Clients Showcase Demo",
   "description": "Example of trusted clients showcase with logos in grid layout",
   "registryDependencies": [
-    "trusted-clients-showcase"
+    "https://www.ruixen.com/r/trusted-clients-showcase"
   ],
   "files": [
     {

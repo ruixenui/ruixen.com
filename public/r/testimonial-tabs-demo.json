@@ -5,7 +5,7 @@
   "title": "Testimonial Tabs Demo",
   "description": "Example of interactive testimonial component with tabs",
   "registryDependencies": [
-    "testimonial-tabs"
+    "https://www.ruixen.com/r/testimonial-tabs"
   ],
   "files": [
     {

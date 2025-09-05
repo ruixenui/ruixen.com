@@ -5,7 +5,7 @@
   "title": "Gradient Hero Showcase Demo",
   "description": "Example showing a modern hero section with animated gradient background",
   "registryDependencies": [
-    "gradient-hero-showcase"
+    "https://www.ruixen.com/r/gradient-hero-showcase"
   ],
   "files": [
     {

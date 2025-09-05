@@ -5,7 +5,7 @@
   "title": "Spectrum Hero Section Demo",
   "description": "Example showing a vibrant hero section with spectrum color effects",
   "registryDependencies": [
-    "spectrum-hero-section"
+    "https://www.ruixen.com/r/spectrum-hero-section"
   ],
   "files": [
     {

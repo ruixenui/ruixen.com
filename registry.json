@@ -1416,7 +1416,7 @@
       "title": "Aurora Hero Section Demo",
       "description": "Example showing a beautiful hero section with aurora-style background effects",
       "registryDependencies": [
-        "aurora-hero-section"
+        "https://www.ruixen.com/r/aurora-hero-section"
       ],
       "files": [
         {
@@ -1432,7 +1432,7 @@
       "title": "Card Carousel Hero Demo",
       "description": "Example showing an interactive hero section with card carousel",
       "registryDependencies": [
-        "card-carousel-hero"
+        "https://www.ruixen.com/r/card-carousel-hero"
       ],
       "files": [
         {
@@ -1448,7 +1448,7 @@
       "title": "Gradient Hero Showcase Demo",
       "description": "Example showing a modern hero section with animated gradient background",
       "registryDependencies": [
-        "gradient-hero-showcase"
+        "https://www.ruixen.com/r/gradient-hero-showcase"
       ],
       "files": [
         {
@@ -1464,7 +1464,7 @@
       "title": "Spectrum Hero Section Demo",
       "description": "Example showing a vibrant hero section with spectrum color effects",
       "registryDependencies": [
-        "spectrum-hero-section"
+        "https://www.ruixen.com/r/spectrum-hero-section"
       ],
       "files": [
         {
@@ -1480,7 +1480,7 @@
       "title": "Video Hero Showcase Demo",
       "description": "Example showing a dynamic hero section with video backgrounds",
       "registryDependencies": [
-        "video-hero-showcase"
+        "https://www.ruixen.com/r/video-hero-showcase"
       ],
       "files": [
         {
@@ -1496,7 +1496,7 @@
       "title": "Visionary Hero Section Demo",
       "description": "Example showing a visionary hero section with elegant design",
       "registryDependencies": [
-        "visionary-hero-section"
+        "https://www.ruixen.com/r/visionary-hero-section"
       ],
       "files": [
         {
@@ -1512,7 +1512,7 @@
       "title": "Featured Highlights Demo",
       "description": "Example of interactive feature showcase with image preview",
       "registryDependencies": [
-        "featured-highlights"
+        "https://www.ruixen.com/r/featured-highlights"
       ],
       "files": [
         {
@@ -1528,7 +1528,7 @@
       "title": "Feature Grid Section Demo",
       "description": "Example of grid layout showcasing features with icons",
       "registryDependencies": [
-        "feature-grid-section"
+        "https://www.ruixen.com/r/feature-grid-section"
       ],
       "files": [
         {
@@ -1544,7 +1544,7 @@
       "title": "Feature Tabs Showcase Demo",
       "description": "Example of interactive tabs with animated background",
       "registryDependencies": [
-        "feature-tabs-showcase"
+        "https://www.ruixen.com/r/feature-tabs-showcase"
       ],
       "files": [
         {
@@ -1560,7 +1560,7 @@
       "title": "Composite Feature Showcase Demo",
       "description": "Example of complex dashboard layout with map and charts",
       "registryDependencies": [
-        "composite-feature-showcase"
+        "https://www.ruixen.com/r/composite-feature-showcase"
       ],
       "files": [
         {
@@ -1576,7 +1576,7 @@
       "title": "Integration And Stats Section Demo",
       "description": "Example of integration showcase with testimonials and stats",
       "registryDependencies": [
-        "integration-and-stats-section"
+        "https://www.ruixen.com/r/integration-and-stats-section"
       ],
       "files": [
         {
@@ -1592,7 +1592,7 @@
       "title": "Tech Orbit Showcase Demo",
       "description": "Example of animated orbital showcase with rotating tech icons",
       "registryDependencies": [
-        "tech-orbit-showcase"
+        "https://www.ruixen.com/r/tech-orbit-showcase"
       ],
       "files": [
         {
@@ -1608,7 +1608,7 @@
       "title": "Partner Integrations Grid Demo",
       "description": "Example of grid showcase with partner integrations",
       "registryDependencies": [
-        "partner-integrations-grid"
+        "https://www.ruixen.com/r/partner-integrations-grid"
       ],
       "files": [
         {
@@ -1624,7 +1624,7 @@
       "title": "Analytics Dashboard Stats Demo",
       "description": "Example of analytics dashboard with statistics and charts",
       "registryDependencies": [
-        "analytics-dashboard-stats"
+        "https://www.ruixen.com/r/analytics-dashboard-stats"
       ],
       "files": [
         {
@@ -1640,7 +1640,7 @@
       "title": "Ruixen Dashboard Stats Demo",
       "description": "Example of dashboard stats with animated counter and chart",
       "registryDependencies": [
-        "ruixen-dashboard-stats"
+        "https://www.ruixen.com/r/ruixen-dashboard-stats"
       ],
       "files": [
         {
@@ -1656,7 +1656,7 @@
       "title": "Feature Carousel Demo",
       "description": "Example of interactive carousel showcasing dashboard features",
       "registryDependencies": [
-        "feature-carousel"
+        "https://www.ruixen.com/r/feature-carousel"
       ],
       "files": [
         {
@@ -1672,7 +1672,7 @@
       "title": "CRM Insights Panel Demo",
       "description": "Example of CRM dashboard with video preview and feature grid",
       "registryDependencies": [
-        "crm-insights-panel"
+        "https://www.ruixen.com/r/crm-insights-panel"
       ],
       "files": [
         {
@@ -1688,7 +1688,7 @@
       "title": "Multi Orbit Semi Circle Demo",
       "description": "Example of multi-layered semi-circular orbit animation",
       "registryDependencies": [
-        "multi-orbit-semi-circle"
+        "https://www.ruixen.com/r/multi-orbit-semi-circle"
       ],
       "files": [
         {
@@ -1704,7 +1704,7 @@
       "title": "Rotating Gradient Right Demo",
       "description": "Example of rotating conic gradient animation with centered card",
       "registryDependencies": [
-        "rotating-gradient-right"
+        "https://www.ruixen.com/r/rotating-gradient-right"
       ],
       "files": [
         {
@@ -1720,7 +1720,7 @@
       "title": "Automated Tasks Panel Demo",
       "description": "Example of animated task panel with scrolling automation features",
       "registryDependencies": [
-        "automated-tasks-panel"
+        "https://www.ruixen.com/r/automated-tasks-panel"
       ],
       "files": [
         {
@@ -1736,7 +1736,7 @@
       "title": "Case Studies Demo",
       "description": "Example of customer case studies with metrics and testimonials",
       "registryDependencies": [
-        "case-studies"
+        "https://www.ruixen.com/r/case-studies"
       ],
       "files": [
         {
@@ -1752,7 +1752,7 @@
       "title": "Trusted Clients Showcase Demo",
       "description": "Example of trusted clients showcase with logos in grid layout",
       "registryDependencies": [
-        "trusted-clients-showcase"
+        "https://www.ruixen.com/r/trusted-clients-showcase"
       ],
       "files": [
         {
@@ -1768,7 +1768,7 @@
       "title": "Client Carousel Showcase Demo",
       "description": "Example of interactive carousel showcasing client logos",
       "registryDependencies": [
-        "client-carousel-showcase"
+        "https://www.ruixen.com/r/client-carousel-showcase"
       ],
       "files": [
         {
@@ -1784,7 +1784,7 @@
       "title": "Auto Scrolling Client Carousel Demo",
       "description": "Example of automatically scrolling carousel with client logos",
       "registryDependencies": [
-        "auto-scrolling-client-carousel"
+        "https://www.ruixen.com/r/auto-scrolling-client-carousel"
       ],
       "files": [
         {
@@ -1800,7 +1800,7 @@
       "title": "Footer Pro Demo",
       "description": "Example of a professional footer with comprehensive sections",
       "registryDependencies": [
-        "footer-pro"
+        "https://www.ruixen.com/r/footer-pro"
       ],
       "files": [
         {
@@ -1816,7 +1816,7 @@
       "title": "Corporate Footer Demo",
       "description": "Example of a corporate-style footer component",
       "registryDependencies": [
-        "corporate-footer"
+        "https://www.ruixen.com/r/corporate-footer"
       ],
       "files": [
         {
@@ -1832,7 +1832,7 @@
       "title": "Footer Extended Demo",
       "description": "Example of an extended footer with multiple sections",
       "registryDependencies": [
-        "footer-extended"
+        "https://www.ruixen.com/r/footer-extended"
       ],
       "files": [
         {
@@ -1848,7 +1848,7 @@
       "title": "Footer Enterprise Demo",
       "description": "Example of an enterprise-grade footer component",
       "registryDependencies": [
-        "footer-enterprise"
+        "https://www.ruixen.com/r/footer-enterprise"
       ],
       "files": [
         {
@@ -1864,7 +1864,7 @@
       "title": "Footer Mega Demo",
       "description": "Example of a mega footer with extensive navigation",
       "registryDependencies": [
-        "footer-mega"
+        "https://www.ruixen.com/r/footer-mega"
       ],
       "files": [
         {
@@ -1880,7 +1880,7 @@
       "title": "Hover Gradient Navbar Demo",
       "description": "Example of a navigation bar with gradient hover effects",
       "registryDependencies": [
-        "hover-gradient-navbar"
+        "https://www.ruixen.com/r/hover-gradient-navbar"
       ],
       "files": [
         {
@@ -1896,7 +1896,7 @@
       "title": "Floating Navbar Demo",
       "description": "Example of a floating navigation bar with scroll animations",
       "registryDependencies": [
-        "floating-navbar"
+        "https://www.ruixen.com/r/floating-navbar"
       ],
       "files": [
         {
@@ -1912,7 +1912,7 @@
       "title": "Luma Bar Demo",
       "description": "Example of a Luma-inspired navigation bar",
       "registryDependencies": [
-        "luma-bar"
+        "https://www.ruixen.com/r/luma-bar"
       ],
       "files": [
         {
@@ -1928,7 +1928,7 @@
       "title": "Promote Header Demo",
       "description": "Example of a promotional header component",
       "registryDependencies": [
-        "promote-header"
+        "https://www.ruixen.com/r/promote-header"
       ],
       "files": [
         {
@@ -1944,7 +1944,7 @@
       "title": "Pricing Plans Demo",
       "description": "Example of comprehensive pricing plans with multiple tiers",
       "registryDependencies": [
-        "pricing-plans"
+        "https://www.ruixen.com/r/pricing-plans"
       ],
       "files": [
         {
@@ -1960,7 +1960,7 @@
       "title": "Pricing Comparison Demo",
       "description": "Example of a detailed pricing comparison table",
       "registryDependencies": [
-        "pricing-comparison"
+        "https://www.ruixen.com/r/pricing-comparison"
       ],
       "files": [
         {
@@ -1976,7 +1976,7 @@
       "title": "Subscription Plans Demo",
       "description": "Example of subscription-focused pricing component",
       "registryDependencies": [
-        "subscription-plans"
+        "https://www.ruixen.com/r/subscription-plans"
       ],
       "files": [
         {
@@ -1992,7 +1992,7 @@
       "title": "Pricing Flow Demo",
       "description": "Example of interactive pricing flow with billing toggles",
       "registryDependencies": [
-        "pricing-flow"
+        "https://www.ruixen.com/r/pricing-flow"
       ],
       "files": [
         {
@@ -2008,7 +2008,7 @@
       "title": "Pricing with User Scaling Demo",
       "description": "Example of pricing component with user-based scaling",
       "registryDependencies": [
-        "pricing-with-user-scaling"
+        "https://www.ruixen.com/r/pricing-with-user-scaling"
       ],
       "files": [
         {
@@ -2024,7 +2024,7 @@
       "title": "Testimonial Tabs Demo",
       "description": "Example of interactive testimonial component with tabs",
       "registryDependencies": [
-        "testimonial-tabs"
+        "https://www.ruixen.com/r/testimonial-tabs"
       ],
       "files": [
         {
@@ -2040,7 +2040,7 @@
       "title": "Slide To Delete Button Demo",
       "description": "Example showing a draggable button that requires sliding to confirm deletion action.",
       "registryDependencies": [
-        "slide-to-delete-button"
+        "https://www.ruixen.com/r/slide-to-delete-button"
       ],
       "files": [
         {
@@ -2056,7 +2056,7 @@
       "title": "Glow Link Button Demo",
       "description": "Example showing a button with a subtle glow effect and animated arrow on hover.",
       "registryDependencies": [
-        "glow-link-button"
+        "https://www.ruixen.com/r/glow-link-button"
       ],
       "files": [
         {
@@ -2072,7 +2072,7 @@
       "title": "Theme Cycle Button Demo",
       "description": "Example showing a button that cycles through different theme modes with smooth transitions.",
       "registryDependencies": [
-        "theme-cycle-button"
+        "https://www.ruixen.com/r/theme-cycle-button"
       ],
       "files": [
         {
@@ -2088,7 +2088,7 @@
       "title": "Morphing Github Button Demo",
       "description": "Example showing a GitHub button that morphs between different states with animations.",
       "registryDependencies": [
-        "morphing-github-button"
+        "https://www.ruixen.com/r/morphing-github-button"
       ],
       "files": [
         {
@@ -2104,7 +2104,7 @@
       "title": "Circular Stepper Input Demo",
       "description": "Example showing a circular input component with increment/decrement functionality.",
       "registryDependencies": [
-        "circular-stepper-input"
+        "https://www.ruixen.com/r/circular-stepper-input"
       ],
       "files": [
         {
@@ -2120,7 +2120,7 @@
       "title": "Password Strength Input Demo",
       "description": "Example showing a password input with real-time strength validation and visual feedback.",
       "registryDependencies": [
-        "password-strength-input"
+        "https://www.ruixen.com/r/password-strength-input"
       ],
       "files": [
         {
@@ -2136,7 +2136,7 @@
       "title": "OTP Input Demo",
       "description": "Example showing a one-time password input component with individual digit fields.",
       "registryDependencies": [
-        "otp-input"
+        "https://www.ruixen.com/r/otp-input"
       ],
       "files": [
         {
@@ -2152,7 +2152,7 @@
       "title": "Color Picker Input Demo",
       "description": "Example showing a color picker component with opacity control and copy functionality.",
       "registryDependencies": [
-        "color-picker-input"
+        "https://www.ruixen.com/r/color-picker-input"
       ],
       "files": [
         {
@@ -2168,7 +2168,7 @@
       "title": "Gravatar Email Input Demo",
       "description": "Example showing an email input that displays Gravatar avatar preview.",
       "registryDependencies": [
-        "gravatar-email-input"
+        "https://www.ruixen.com/r/gravatar-email-input"
       ],
       "files": [
         {
@@ -2184,7 +2184,7 @@
       "title": "Correct Number Input Demo",
       "description": "Example showing a number input with validation and correction features.",
       "registryDependencies": [
-        "correct-number-input"
+        "https://www.ruixen.com/r/correct-number-input"
       ],
       "files": [
         {
@@ -2200,7 +2200,7 @@
       "title": "Better Time Picker Demo",
       "description": "Example showing an enhanced time picker with improved user experience.",
       "registryDependencies": [
-        "better-time-picker"
+        "https://www.ruixen.com/r/better-time-picker"
       ],
       "files": [
         {
@@ -2216,7 +2216,7 @@
       "title": "Inline Copy Input Demo",
       "description": "Example showing an input field with inline copy-to-clipboard functionality.",
       "registryDependencies": [
-        "inline-copy-input"
+        "https://www.ruixen.com/r/inline-copy-input"
       ],
       "files": [
         {
@@ -2232,7 +2232,7 @@
       "title": "Clean Tag Input Demo",
       "description": "Example showing a clean and minimal tag input component for adding multiple values.",
       "registryDependencies": [
-        "clean-tag-input"
+        "https://www.ruixen.com/r/clean-tag-input"
       ],
       "files": [
         {
@@ -2248,7 +2248,7 @@
       "title": "Search With Category Demo",
       "description": "Example showing a search input component with category filtering functionality.",
       "registryDependencies": [
-        "search-with-category"
+        "https://www.ruixen.com/r/search-with-category"
       ],
       "files": [
         {
@@ -2264,7 +2264,7 @@
       "title": "Advanced Context Menu Demo",
       "description": "Example showing an advanced context menu component with nested items and keyboard navigation.",
       "registryDependencies": [
-        "advanced-context-menu"
+        "https://www.ruixen.com/r/advanced-context-menu"
       ],
       "files": [
         {
@@ -2280,7 +2280,7 @@
       "title": "Nested Dashboard Menu Demo",
       "description": "Example showing a nested navigation menu component for dashboard layouts.",
       "registryDependencies": [
-        "nested-dashboard-menu"
+        "https://www.ruixen.com/r/nested-dashboard-menu"
       ],
       "files": [
         {
@@ -2296,7 +2296,7 @@
       "title": "Drawer Inner Content Demo",
       "description": "Example showing a drawer component with customizable inner content layout.",
       "registryDependencies": [
-        "drawer-inner-content"
+        "https://www.ruixen.com/r/drawer-inner-content"
       ],
       "files": [
         {
@@ -2312,7 +2312,7 @@
       "title": "Centered Feedback Drawer Demo",
       "description": "Example showing a centered drawer component designed for feedback collection.",
       "registryDependencies": [
-        "centered-feedback-drawer"
+        "https://www.ruixen.com/r/centered-feedback-drawer"
       ],
       "files": [
         {
@@ -2328,7 +2328,7 @@
       "title": "Bottom Drawers Demo",
       "description": "Example showing a bottom drawer component that slides up from the bottom of the screen.",
       "registryDependencies": [
-        "bottom-drawers"
+        "https://www.ruixen.com/r/bottom-drawers"
       ],
       "files": [
         {
@@ -2344,7 +2344,7 @@
       "title": "Social Card Demo",
       "description": "Example showing a social media style card component with engagement features.",
       "registryDependencies": [
-        "social-card"
+        "https://www.ruixen.com/r/social-card"
       ],
       "files": [
         {
@@ -2360,7 +2360,7 @@
       "title": "Portfolio Card Demo",
       "description": "Example showing a professional portfolio card component showcasing skills and profile.",
       "registryDependencies": [
-        "portfolio-card"
+        "https://www.ruixen.com/r/portfolio-card"
       ],
       "files": [
         {
@@ -2376,7 +2376,7 @@
       "title": "Team Project Card Demo",
       "description": "Example showing a collaborative project card with team members and milestones.",
       "registryDependencies": [
-        "team-project-card"
+        "https://www.ruixen.com/r/team-project-card"
       ],
       "files": [
         {
@@ -2392,7 +2392,7 @@
       "title": "Collab Chat Card Demo",
       "description": "Example showing a collaborative chat interface card with participant filtering.",
       "registryDependencies": [
-        "collab-chat-card"
+        "https://www.ruixen.com/r/collab-chat-card"
       ],
       "files": [
         {
@@ -2408,7 +2408,7 @@
       "title": "Goal Tracker Card Demo",
       "description": "Example showing an activity and goal tracking card with progress visualization.",
       "registryDependencies": [
-        "goal-tracker-card"
+        "https://www.ruixen.com/r/goal-tracker-card"
       ],
       "files": [
         {
@@ -2424,7 +2424,7 @@
       "title": "Environment Card Demo",
       "description": "Example showing a smart home environment control card with device management.",
       "registryDependencies": [
-        "environment-card"
+        "https://www.ruixen.com/r/environment-card"
       ],
       "files": [
         {
@@ -2440,7 +2440,7 @@
       "title": "Schedule Card Demo",
       "description": "Example showing a schedule card component displaying daily events and meetings.",
       "registryDependencies": [
-        "schedule-card"
+        "https://www.ruixen.com/r/schedule-card"
       ],
       "files": [
         {
@@ -2456,7 +2456,7 @@
       "title": "Showcase Card Demo",
       "description": "Example showing a showcase card component for displaying projects and portfolios.",
       "registryDependencies": [
-        "showcase-card"
+        "https://www.ruixen.com/r/showcase-card"
       ],
       "files": [
         {
@@ -2472,7 +2472,7 @@
       "title": "Order Summary Card Demo",
       "description": "Example showing an order summary card component for e-commerce checkout flows.",
       "registryDependencies": [
-        "order-summary-card"
+        "https://www.ruixen.com/r/order-summary-card"
       ],
       "files": [
         {
@@ -2488,7 +2488,7 @@
       "title": "Doctor Profile Card Demo",
       "description": "Example showing a doctor profile card component for healthcare applications.",
       "registryDependencies": [
-        "doctor-profile-card"
+        "https://www.ruixen.com/r/doctor-profile-card"
       ],
       "files": [
         {
@@ -2504,7 +2504,7 @@
       "title": "Gradient Blob Card Demo",
       "description": "Example showing an animated gradient blob card with glassmorphism effects.",
       "registryDependencies": [
-        "gradient-blob-card"
+        "https://www.ruixen.com/r/gradient-blob-card"
       ],
       "files": [
         {
@@ -2520,7 +2520,7 @@
       "title": "Idea Generator Card Demo",
       "description": "Example showing an AI-powered idea generator card with input and action buttons.",
       "registryDependencies": [
-        "idea-generator-card"
+        "https://www.ruixen.com/r/idea-generator-card"
       ],
       "files": [
         {

@@ -5,7 +5,7 @@
   "title": "Floating Navbar Demo",
   "description": "Example of a floating navigation bar with scroll animations",
   "registryDependencies": [
-    "floating-navbar"
+    "https://www.ruixen.com/r/floating-navbar"
   ],
   "files": [
     {

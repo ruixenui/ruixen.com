@@ -5,7 +5,7 @@
   "title": "Gradient Blob Card Demo",
   "description": "Example showing an animated gradient blob card with glassmorphism effects.",
   "registryDependencies": [
-    "gradient-blob-card"
+    "https://www.ruixen.com/r/gradient-blob-card"
   ],
   "files": [
     {

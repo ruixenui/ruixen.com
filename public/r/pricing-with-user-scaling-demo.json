@@ -5,7 +5,7 @@
   "title": "Pricing with User Scaling Demo",
   "description": "Example of pricing component with user-based scaling",
   "registryDependencies": [
-    "pricing-with-user-scaling"
+    "https://www.ruixen.com/r/pricing-with-user-scaling"
   ],
   "files": [
     {

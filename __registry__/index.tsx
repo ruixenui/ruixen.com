@@ -2018,7 +2018,7 @@ export const Index: Record<string, any> = {
     description:
       "Example showing a beautiful hero section with aurora-style background effects",
     type: "registry:example",
-    registryDependencies: ["aurora-hero-section"],
+    registryDependencies: ["https://www.ruixen.com/r/aurora-hero-section"],
     files: [
       {
         path: "registry/example/aurora-hero-section-demo.tsx",
@@ -2044,7 +2044,7 @@ export const Index: Record<string, any> = {
     description:
       "Example showing an interactive hero section with card carousel",
     type: "registry:example",
-    registryDependencies: ["card-carousel-hero"],
+    registryDependencies: ["https://www.ruixen.com/r/card-carousel-hero"],
     files: [
       {
         path: "registry/example/card-carousel-hero-demo.tsx",
@@ -2070,7 +2070,7 @@ export const Index: Record<string, any> = {
     description:
       "Example showing a modern hero section with animated gradient background",
     type: "registry:example",
-    registryDependencies: ["gradient-hero-showcase"],
+    registryDependencies: ["https://www.ruixen.com/r/gradient-hero-showcase"],
     files: [
       {
         path: "registry/example/gradient-hero-showcase-demo.tsx",
@@ -2096,7 +2096,7 @@ export const Index: Record<string, any> = {
     description:
       "Example showing a vibrant hero section with spectrum color effects",
     type: "registry:example",
-    registryDependencies: ["spectrum-hero-section"],
+    registryDependencies: ["https://www.ruixen.com/r/spectrum-hero-section"],
     files: [
       {
         path: "registry/example/spectrum-hero-section-demo.tsx",
@@ -2122,7 +2122,7 @@ export const Index: Record<string, any> = {
     description:
       "Example showing a dynamic hero section with video backgrounds",
     type: "registry:example",
-    registryDependencies: ["video-hero-showcase"],
+    registryDependencies: ["https://www.ruixen.com/r/video-hero-showcase"],
     files: [
       {
         path: "registry/example/video-hero-showcase-demo.tsx",
@@ -2147,7 +2147,7 @@ export const Index: Record<string, any> = {
     name: "visionary-hero-section-demo",
     description: "Example showing a visionary hero section with elegant design",
     type: "registry:example",
-    registryDependencies: ["visionary-hero-section"],
+    registryDependencies: ["https://www.ruixen.com/r/visionary-hero-section"],
     files: [
       {
         path: "registry/example/visionary-hero-section-demo.tsx",
@@ -2172,7 +2172,7 @@ export const Index: Record<string, any> = {
     name: "featured-highlights-demo",
     description: "Example of interactive feature showcase with image preview",
     type: "registry:example",
-    registryDependencies: ["featured-highlights"],
+    registryDependencies: ["https://www.ruixen.com/r/featured-highlights"],
     files: [
       {
         path: "registry/example/featured-highlights-demo.tsx",
@@ -2197,7 +2197,7 @@ export const Index: Record<string, any> = {
     name: "feature-grid-section-demo",
     description: "Example of grid layout showcasing features with icons",
     type: "registry:example",
-    registryDependencies: ["feature-grid-section"],
+    registryDependencies: ["https://www.ruixen.com/r/feature-grid-section"],
     files: [
       {
         path: "registry/example/feature-grid-section-demo.tsx",
@@ -2222,7 +2222,7 @@ export const Index: Record<string, any> = {
     name: "feature-tabs-showcase-demo",
     description: "Example of interactive tabs with animated background",
     type: "registry:example",
-    registryDependencies: ["feature-tabs-showcase"],
+    registryDependencies: ["https://www.ruixen.com/r/feature-tabs-showcase"],
     files: [
       {
         path: "registry/example/feature-tabs-showcase-demo.tsx",
@@ -2247,7 +2247,9 @@ export const Index: Record<string, any> = {
     name: "composite-feature-showcase-demo",
     description: "Example of complex dashboard layout with map and charts",
     type: "registry:example",
-    registryDependencies: ["composite-feature-showcase"],
+    registryDependencies: [
+      "https://www.ruixen.com/r/composite-feature-showcase",
+    ],
     files: [
       {
         path: "registry/example/composite-feature-showcase-demo.tsx",
@@ -2272,7 +2274,9 @@ export const Index: Record<string, any> = {
     name: "integration-and-stats-section-demo",
     description: "Example of integration showcase with testimonials and stats",
     type: "registry:example",
-    registryDependencies: ["integration-and-stats-section"],
+    registryDependencies: [
+      "https://www.ruixen.com/r/integration-and-stats-section",
+    ],
     files: [
       {
         path: "registry/example/integration-and-stats-section-demo.tsx",
@@ -2298,7 +2302,7 @@ export const Index: Record<string, any> = {
     description:
       "Example of animated orbital showcase with rotating tech icons",
     type: "registry:example",
-    registryDependencies: ["tech-orbit-showcase"],
+    registryDependencies: ["https://www.ruixen.com/r/tech-orbit-showcase"],
     files: [
       {
         path: "registry/example/tech-orbit-showcase-demo.tsx",
@@ -2323,7 +2327,9 @@ export const Index: Record<string, any> = {
     name: "partner-integrations-grid-demo",
     description: "Example of grid showcase with partner integrations",
     type: "registry:example",
-    registryDependencies: ["partner-integrations-grid"],
+    registryDependencies: [
+      "https://www.ruixen.com/r/partner-integrations-grid",
+    ],
     files: [
       {
         path: "registry/example/partner-integrations-grid-demo.tsx",
@@ -2348,7 +2354,9 @@ export const Index: Record<string, any> = {
     name: "analytics-dashboard-stats-demo",
     description: "Example of analytics dashboard with statistics and charts",
     type: "registry:example",
-    registryDependencies: ["analytics-dashboard-stats"],
+    registryDependencies: [
+      "https://www.ruixen.com/r/analytics-dashboard-stats",
+    ],
     files: [
       {
         path: "registry/example/analytics-dashboard-stats-demo.tsx",
@@ -2373,7 +2381,7 @@ export const Index: Record<string, any> = {
     name: "ruixen-dashboard-stats-demo",
     description: "Example of dashboard stats with animated counter and chart",
     type: "registry:example",
-    registryDependencies: ["ruixen-dashboard-stats"],
+    registryDependencies: ["https://www.ruixen.com/r/ruixen-dashboard-stats"],
     files: [
       {
         path: "registry/example/ruixen-dashboard-stats-demo.tsx",
@@ -2399,7 +2407,7 @@ export const Index: Record<string, any> = {
     description:
       "Example of interactive carousel showcasing dashboard features",
     type: "registry:example",
-    registryDependencies: ["feature-carousel"],
+    registryDependencies: ["https://www.ruixen.com/r/feature-carousel"],
     files: [
       {
         path: "registry/example/feature-carousel-demo.tsx",
@@ -2422,7 +2430,7 @@ export const Index: Record<string, any> = {
     name: "crm-insights-panel-demo",
     description: "Example of CRM dashboard with video preview and feature grid",
     type: "registry:example",
-    registryDependencies: ["crm-insights-panel"],
+    registryDependencies: ["https://www.ruixen.com/r/crm-insights-panel"],
     files: [
       {
         path: "registry/example/crm-insights-panel-demo.tsx",
@@ -2447,7 +2455,7 @@ export const Index: Record<string, any> = {
     name: "multi-orbit-semi-circle-demo",
     description: "Example of multi-layered semi-circular orbit animation",
     type: "registry:example",
-    registryDependencies: ["multi-orbit-semi-circle"],
+    registryDependencies: ["https://www.ruixen.com/r/multi-orbit-semi-circle"],
     files: [
       {
         path: "registry/example/multi-orbit-semi-circle-demo.tsx",
@@ -2473,7 +2481,7 @@ export const Index: Record<string, any> = {
     description:
       "Example of rotating conic gradient animation with centered card",
     type: "registry:example",
-    registryDependencies: ["rotating-gradient-right"],
+    registryDependencies: ["https://www.ruixen.com/r/rotating-gradient-right"],
     files: [
       {
         path: "registry/example/rotating-gradient-right-demo.tsx",
@@ -2499,7 +2507,7 @@ export const Index: Record<string, any> = {
     description:
       "Example of animated task panel with scrolling automation features",
     type: "registry:example",
-    registryDependencies: ["automated-tasks-panel"],
+    registryDependencies: ["https://www.ruixen.com/r/automated-tasks-panel"],
     files: [
       {
         path: "registry/example/automated-tasks-panel-demo.tsx",
@@ -2525,7 +2533,7 @@ export const Index: Record<string, any> = {
     description:
       "Example of customer case studies with metrics and testimonials",
     type: "registry:example",
-    registryDependencies: ["case-studies"],
+    registryDependencies: ["https://www.ruixen.com/r/case-studies"],
     files: [
       {
         path: "registry/example/case-studies-demo.tsx",
@@ -2549,7 +2557,7 @@ export const Index: Record<string, any> = {
     description:
       "Example of trusted clients showcase with logos in grid layout",
     type: "registry:example",
-    registryDependencies: ["trusted-clients-showcase"],
+    registryDependencies: ["https://www.ruixen.com/r/trusted-clients-showcase"],
     files: [
       {
         path: "registry/example/trusted-clients-showcase-demo.tsx",
@@ -2574,7 +2582,7 @@ export const Index: Record<string, any> = {
     name: "client-carousel-showcase-demo",
     description: "Example of interactive carousel showcasing client logos",
     type: "registry:example",
-    registryDependencies: ["client-carousel-showcase"],
+    registryDependencies: ["https://www.ruixen.com/r/client-carousel-showcase"],
     files: [
       {
         path: "registry/example/client-carousel-showcase-demo.tsx",
@@ -2600,7 +2608,9 @@ export const Index: Record<string, any> = {
     description:
       "Example of automatically scrolling carousel with client logos",
     type: "registry:example",
-    registryDependencies: ["auto-scrolling-client-carousel"],
+    registryDependencies: [
+      "https://www.ruixen.com/r/auto-scrolling-client-carousel",
+    ],
     files: [
       {
         path: "registry/example/auto-scrolling-client-carousel-demo.tsx",
@@ -2625,7 +2635,7 @@ export const Index: Record<string, any> = {
     name: "footer-pro-demo",
     description: "Example of a professional footer with comprehensive sections",
     type: "registry:example",
-    registryDependencies: ["footer-pro"],
+    registryDependencies: ["https://www.ruixen.com/r/footer-pro"],
     files: [
       {
         path: "registry/example/footer-pro-demo.tsx",
@@ -2648,7 +2658,7 @@ export const Index: Record<string, any> = {
     name: "corporate-footer-demo",
     description: "Example of a corporate-style footer component",
     type: "registry:example",
-    registryDependencies: ["corporate-footer"],
+    registryDependencies: ["https://www.ruixen.com/r/corporate-footer"],
     files: [
       {
         path: "registry/example/corporate-footer-demo.tsx",
@@ -2671,7 +2681,7 @@ export const Index: Record<string, any> = {
     name: "footer-extended-demo",
     description: "Example of an extended footer with multiple sections",
     type: "registry:example",
-    registryDependencies: ["footer-extended"],
+    registryDependencies: ["https://www.ruixen.com/r/footer-extended"],
     files: [
       {
         path: "registry/example/footer-extended-demo.tsx",
@@ -2694,7 +2704,7 @@ export const Index: Record<string, any> = {
     name: "footer-enterprise-demo",
     description: "Example of an enterprise-grade footer component",
     type: "registry:example",
-    registryDependencies: ["footer-enterprise"],
+    registryDependencies: ["https://www.ruixen.com/r/footer-enterprise"],
     files: [
       {
         path: "registry/example/footer-enterprise-demo.tsx",
@@ -2717,7 +2727,7 @@ export const Index: Record<string, any> = {
     name: "footer-mega-demo",
     description: "Example of a mega footer with extensive navigation",
     type: "registry:example",
-    registryDependencies: ["footer-mega"],
+    registryDependencies: ["https://www.ruixen.com/r/footer-mega"],
     files: [
       {
         path: "registry/example/footer-mega-demo.tsx",
@@ -2740,7 +2750,7 @@ export const Index: Record<string, any> = {
     name: "hover-gradient-navbar-demo",
     description: "Example of a navigation bar with gradient hover effects",
     type: "registry:example",
-    registryDependencies: ["hover-gradient-navbar"],
+    registryDependencies: ["https://www.ruixen.com/r/hover-gradient-navbar"],
     files: [
       {
         path: "registry/example/hover-gradient-navbar-demo.tsx",
@@ -2765,7 +2775,7 @@ export const Index: Record<string, any> = {
     name: "floating-navbar-demo",
     description: "Example of a floating navigation bar with scroll animations",
     type: "registry:example",
-    registryDependencies: ["floating-navbar"],
+    registryDependencies: ["https://www.ruixen.com/r/floating-navbar"],
     files: [
       {
         path: "registry/example/floating-navbar-demo.tsx",
@@ -2788,7 +2798,7 @@ export const Index: Record<string, any> = {
     name: "luma-bar-demo",
     description: "Example of a Luma-inspired navigation bar",
     type: "registry:example",
-    registryDependencies: ["luma-bar"],
+    registryDependencies: ["https://www.ruixen.com/r/luma-bar"],
     files: [
       {
         path: "registry/example/luma-bar-demo.tsx",
@@ -2811,7 +2821,7 @@ export const Index: Record<string, any> = {
     name: "promote-header-demo",
     description: "Example of a promotional header component",
     type: "registry:example",
-    registryDependencies: ["promote-header"],
+    registryDependencies: ["https://www.ruixen.com/r/promote-header"],
     files: [
       {
         path: "registry/example/promote-header-demo.tsx",
@@ -2834,7 +2844,7 @@ export const Index: Record<string, any> = {
     name: "pricing-plans-demo",
     description: "Example of comprehensive pricing plans with multiple tiers",
     type: "registry:example",
-    registryDependencies: ["pricing-plans"],
+    registryDependencies: ["https://www.ruixen.com/r/pricing-plans"],
     files: [
       {
         path: "registry/example/pricing-plans-demo.tsx",
@@ -2857,7 +2867,7 @@ export const Index: Record<string, any> = {
     name: "pricing-comparison-demo",
     description: "Example of a detailed pricing comparison table",
     type: "registry:example",
-    registryDependencies: ["pricing-comparison"],
+    registryDependencies: ["https://www.ruixen.com/r/pricing-comparison"],
     files: [
       {
         path: "registry/example/pricing-comparison-demo.tsx",
@@ -2882,7 +2892,7 @@ export const Index: Record<string, any> = {
     name: "subscription-plans-demo",
     description: "Example of subscription-focused pricing component",
     type: "registry:example",
-    registryDependencies: ["subscription-plans"],
+    registryDependencies: ["https://www.ruixen.com/r/subscription-plans"],
     files: [
       {
         path: "registry/example/subscription-plans-demo.tsx",
@@ -2907,7 +2917,7 @@ export const Index: Record<string, any> = {
     name: "pricing-flow-demo",
     description: "Example of interactive pricing flow with billing toggles",
     type: "registry:example",
-    registryDependencies: ["pricing-flow"],
+    registryDependencies: ["https://www.ruixen.com/r/pricing-flow"],
     files: [
       {
         path: "registry/example/pricing-flow-demo.tsx",
@@ -2930,7 +2940,9 @@ export const Index: Record<string, any> = {
     name: "pricing-with-user-scaling-demo",
     description: "Example of pricing component with user-based scaling",
     type: "registry:example",
-    registryDependencies: ["pricing-with-user-scaling"],
+    registryDependencies: [
+      "https://www.ruixen.com/r/pricing-with-user-scaling",
+    ],
     files: [
       {
         path: "registry/example/pricing-with-user-scaling-demo.tsx",
@@ -2955,7 +2967,7 @@ export const Index: Record<string, any> = {
     name: "testimonial-tabs-demo",
     description: "Example of interactive testimonial component with tabs",
     type: "registry:example",
-    registryDependencies: ["testimonial-tabs"],
+    registryDependencies: ["https://www.ruixen.com/r/testimonial-tabs"],
     files: [
       {
         path: "registry/example/testimonial-tabs-demo.tsx",
@@ -2979,7 +2991,7 @@ export const Index: Record<string, any> = {
     description:
       "Example showing a draggable button that requires sliding to confirm deletion action.",
     type: "registry:example",
-    registryDependencies: ["slide-to-delete-button"],
+    registryDependencies: ["https://www.ruixen.com/r/slide-to-delete-button"],
     files: [
       {
         path: "registry/example/slide-to-delete-button-demo.tsx",
@@ -3005,7 +3017,7 @@ export const Index: Record<string, any> = {
     description:
       "Example showing a button with a subtle glow effect and animated arrow on hover.",
     type: "registry:example",
-    registryDependencies: ["glow-link-button"],
+    registryDependencies: ["https://www.ruixen.com/r/glow-link-button"],
     files: [
       {
         path: "registry/example/glow-link-button-demo.tsx",
@@ -3029,7 +3041,7 @@ export const Index: Record<string, any> = {
     description:
       "Example showing a button that cycles through different theme modes with smooth transitions.",
     type: "registry:example",
-    registryDependencies: ["theme-cycle-button"],
+    registryDependencies: ["https://www.ruixen.com/r/theme-cycle-button"],
     files: [
       {
         path: "registry/example/theme-cycle-button-demo.tsx",
@@ -3055,7 +3067,7 @@ export const Index: Record<string, any> = {
     description:
       "Example showing a GitHub button that morphs between different states with animations.",
     type: "registry:example",
-    registryDependencies: ["morphing-github-button"],
+    registryDependencies: ["https://www.ruixen.com/r/morphing-github-button"],
     files: [
       {
         path: "registry/example/morphing-github-button-demo.tsx",
@@ -3081,7 +3093,7 @@ export const Index: Record<string, any> = {
     description:
       "Example showing a circular input component with increment/decrement functionality.",
     type: "registry:example",
-    registryDependencies: ["circular-stepper-input"],
+    registryDependencies: ["https://www.ruixen.com/r/circular-stepper-input"],
     files: [
       {
         path: "registry/example/circular-stepper-input-demo.tsx",
@@ -3107,7 +3119,7 @@ export const Index: Record<string, any> = {
     description:
       "Example showing a password input with real-time strength validation and visual feedback.",
     type: "registry:example",
-    registryDependencies: ["password-strength-input"],
+    registryDependencies: ["https://www.ruixen.com/r/password-strength-input"],
     files: [
       {
         path: "registry/example/password-strength-input-demo.tsx",
@@ -3133,7 +3145,7 @@ export const Index: Record<string, any> = {
     description:
       "Example showing a one-time password input component with individual digit fields.",
     type: "registry:example",
-    registryDependencies: ["otp-input"],
+    registryDependencies: ["https://www.ruixen.com/r/otp-input"],
     files: [
       {
         path: "registry/example/otp-input-demo.tsx",
@@ -3157,7 +3169,7 @@ export const Index: Record<string, any> = {
     description:
       "Example showing a color picker component with opacity control and copy functionality.",
     type: "registry:example",
-    registryDependencies: ["color-picker-input"],
+    registryDependencies: ["https://www.ruixen.com/r/color-picker-input"],
     files: [
       {
         path: "registry/example/color-picker-input-demo.tsx",
@@ -3183,7 +3195,7 @@ export const Index: Record<string, any> = {
     description:
       "Example showing an email input that displays Gravatar avatar preview.",
     type: "registry:example",
-    registryDependencies: ["gravatar-email-input"],
+    registryDependencies: ["https://www.ruixen.com/r/gravatar-email-input"],
     files: [
       {
         path: "registry/example/gravatar-email-input-demo.tsx",
@@ -3209,7 +3221,7 @@ export const Index: Record<string, any> = {
     description:
       "Example showing a number input with validation and correction features.",
     type: "registry:example",
-    registryDependencies: ["correct-number-input"],
+    registryDependencies: ["https://www.ruixen.com/r/correct-number-input"],
     files: [
       {
         path: "registry/example/correct-number-input-demo.tsx",
@@ -3235,7 +3247,7 @@ export const Index: Record<string, any> = {
     description:
       "Example showing an enhanced time picker with improved user experience.",
     type: "registry:example",
-    registryDependencies: ["better-time-picker"],
+    registryDependencies: ["https://www.ruixen.com/r/better-time-picker"],
     files: [
       {
         path: "registry/example/better-time-picker-demo.tsx",
@@ -3261,7 +3273,7 @@ export const Index: Record<string, any> = {
     description:
       "Example showing an input field with inline copy-to-clipboard functionality.",
     type: "registry:example",
-    registryDependencies: ["inline-copy-input"],
+    registryDependencies: ["https://www.ruixen.com/r/inline-copy-input"],
     files: [
       {
         path: "registry/example/inline-copy-input-demo.tsx",
@@ -3285,7 +3297,7 @@ export const Index: Record<string, any> = {
     description:
       "Example showing a clean and minimal tag input component for adding multiple values.",
     type: "registry:example",
-    registryDependencies: ["clean-tag-input"],
+    registryDependencies: ["https://www.ruixen.com/r/clean-tag-input"],
     files: [
       {
         path: "registry/example/clean-tag-input-demo.tsx",
@@ -3309,7 +3321,7 @@ export const Index: Record<string, any> = {
     description:
       "Example showing a search input component with category filtering functionality.",
     type: "registry:example",
-    registryDependencies: ["search-with-category"],
+    registryDependencies: ["https://www.ruixen.com/r/search-with-category"],
     files: [
       {
         path: "registry/example/search-with-category-demo.tsx",
@@ -3335,7 +3347,7 @@ export const Index: Record<string, any> = {
     description:
       "Example showing an advanced context menu component with nested items and keyboard navigation.",
     type: "registry:example",
-    registryDependencies: ["advanced-context-menu"],
+    registryDependencies: ["https://www.ruixen.com/r/advanced-context-menu"],
     files: [
       {
         path: "registry/example/advanced-context-menu-demo.tsx",
@@ -3361,7 +3373,7 @@ export const Index: Record<string, any> = {
     description:
       "Example showing a nested navigation menu component for dashboard layouts.",
     type: "registry:example",
-    registryDependencies: ["nested-dashboard-menu"],
+    registryDependencies: ["https://www.ruixen.com/r/nested-dashboard-menu"],
     files: [
       {
         path: "registry/example/nested-dashboard-menu-demo.tsx",
@@ -3387,7 +3399,7 @@ export const Index: Record<string, any> = {
     description:
       "Example showing a drawer component with customizable inner content layout.",
     type: "registry:example",
-    registryDependencies: ["drawer-inner-content"],
+    registryDependencies: ["https://www.ruixen.com/r/drawer-inner-content"],
     files: [
       {
         path: "registry/example/drawer-inner-content-demo.tsx",
@@ -3413,7 +3425,7 @@ export const Index: Record<string, any> = {
     description:
       "Example showing a centered drawer component designed for feedback collection.",
     type: "registry:example",
-    registryDependencies: ["centered-feedback-drawer"],
+    registryDependencies: ["https://www.ruixen.com/r/centered-feedback-drawer"],
     files: [
       {
         path: "registry/example/centered-feedback-drawer-demo.tsx",
@@ -3439,7 +3451,7 @@ export const Index: Record<string, any> = {
     description:
       "Example showing a bottom drawer component that slides up from the bottom of the screen.",
     type: "registry:example",
-    registryDependencies: ["bottom-drawers"],
+    registryDependencies: ["https://www.ruixen.com/r/bottom-drawers"],
     files: [
       {
         path: "registry/example/bottom-drawers-demo.tsx",
@@ -3463,7 +3475,7 @@ export const Index: Record<string, any> = {
     description:
       "Example showing a social media style card component with engagement features.",
     type: "registry:example",
-    registryDependencies: ["social-card"],
+    registryDependencies: ["https://www.ruixen.com/r/social-card"],
     files: [
       {
         path: "registry/example/social-card-demo.tsx",
@@ -3487,7 +3499,7 @@ export const Index: Record<string, any> = {
     description:
       "Example showing a professional portfolio card component showcasing skills and profile.",
     type: "registry:example",
-    registryDependencies: ["portfolio-card"],
+    registryDependencies: ["https://www.ruixen.com/r/portfolio-card"],
     files: [
       {
         path: "registry/example/portfolio-card-demo.tsx",
@@ -3511,7 +3523,7 @@ export const Index: Record<string, any> = {
     description:
       "Example showing a collaborative project card with team members and milestones.",
     type: "registry:example",
-    registryDependencies: ["team-project-card"],
+    registryDependencies: ["https://www.ruixen.com/r/team-project-card"],
     files: [
       {
         path: "registry/example/team-project-card-demo.tsx",
@@ -3535,7 +3547,7 @@ export const Index: Record<string, any> = {
     description:
       "Example showing a collaborative chat interface card with participant filtering.",
     type: "registry:example",
-    registryDependencies: ["collab-chat-card"],
+    registryDependencies: ["https://www.ruixen.com/r/collab-chat-card"],
     files: [
       {
         path: "registry/example/collab-chat-card-demo.tsx",
@@ -3559,7 +3571,7 @@ export const Index: Record<string, any> = {
     description:
       "Example showing an activity and goal tracking card with progress visualization.",
     type: "registry:example",
-    registryDependencies: ["goal-tracker-card"],
+    registryDependencies: ["https://www.ruixen.com/r/goal-tracker-card"],
     files: [
       {
         path: "registry/example/goal-tracker-card-demo.tsx",
@@ -3583,7 +3595,7 @@ export const Index: Record<string, any> = {
     description:
       "Example showing a smart home environment control card with device management.",
     type: "registry:example",
-    registryDependencies: ["environment-card"],
+    registryDependencies: ["https://www.ruixen.com/r/environment-card"],
     files: [
       {
         path: "registry/example/environment-card-demo.tsx",
@@ -3607,7 +3619,7 @@ export const Index: Record<string, any> = {
     description:
       "Example showing a schedule card component displaying daily events and meetings.",
     type: "registry:example",
-    registryDependencies: ["schedule-card"],
+    registryDependencies: ["https://www.ruixen.com/r/schedule-card"],
     files: [
       {
         path: "registry/example/schedule-card-demo.tsx",
@@ -3631,7 +3643,7 @@ export const Index: Record<string, any> = {
     description:
       "Example showing a showcase card component for displaying projects and portfolios.",
     type: "registry:example",
-    registryDependencies: ["showcase-card"],
+    registryDependencies: ["https://www.ruixen.com/r/showcase-card"],
     files: [
       {
         path: "registry/example/showcase-card-demo.tsx",
@@ -3655,7 +3667,7 @@ export const Index: Record<string, any> = {
     description:
       "Example showing an order summary card component for e-commerce checkout flows.",
     type: "registry:example",
-    registryDependencies: ["order-summary-card"],
+    registryDependencies: ["https://www.ruixen.com/r/order-summary-card"],
     files: [
       {
         path: "registry/example/order-summary-card-demo.tsx",
@@ -3681,7 +3693,7 @@ export const Index: Record<string, any> = {
     description:
       "Example showing a doctor profile card component for healthcare applications.",
     type: "registry:example",
-    registryDependencies: ["doctor-profile-card"],
+    registryDependencies: ["https://www.ruixen.com/r/doctor-profile-card"],
     files: [
       {
         path: "registry/example/doctor-profile-card-demo.tsx",
@@ -3707,7 +3719,7 @@ export const Index: Record<string, any> = {
     description:
       "Example showing an animated gradient blob card with glassmorphism effects.",
     type: "registry:example",
-    registryDependencies: ["gradient-blob-card"],
+    registryDependencies: ["https://www.ruixen.com/r/gradient-blob-card"],
     files: [
       {
         path: "registry/example/gradient-blob-card-demo.tsx",
@@ -3733,7 +3745,7 @@ export const Index: Record<string, any> = {
     description:
       "Example showing an AI-powered idea generator card with input and action buttons.",
     type: "registry:example",
-    registryDependencies: ["idea-generator-card"],
+    registryDependencies: ["https://www.ruixen.com/r/idea-generator-card"],
     files: [
       {
         path: "registry/example/idea-generator-card-demo.tsx",

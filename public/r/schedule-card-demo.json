@@ -5,7 +5,7 @@
   "title": "Schedule Card Demo",
   "description": "Example showing a schedule card component displaying daily events and meetings.",
   "registryDependencies": [
-    "schedule-card"
+    "https://www.ruixen.com/r/schedule-card"
   ],
   "files": [
     {

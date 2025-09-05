@@ -5,7 +5,7 @@
   "title": "Footer Enterprise Demo",
   "description": "Example of an enterprise-grade footer component",
   "registryDependencies": [
-    "footer-enterprise"
+    "https://www.ruixen.com/r/footer-enterprise"
   ],
   "files": [
     {

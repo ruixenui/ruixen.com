@@ -5,7 +5,7 @@
   "title": "Slide To Delete Button Demo",
   "description": "Example showing a draggable button that requires sliding to confirm deletion action.",
   "registryDependencies": [
-    "slide-to-delete-button"
+    "https://www.ruixen.com/r/slide-to-delete-button"
   ],
   "files": [
     {

@@ -5,7 +5,7 @@
   "title": "Automated Tasks Panel Demo",
   "description": "Example of animated task panel with scrolling automation features",
   "registryDependencies": [
-    "automated-tasks-panel"
+    "https://www.ruixen.com/r/automated-tasks-panel"
   ],
   "files": [
     {

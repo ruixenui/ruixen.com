@@ -5,7 +5,7 @@
   "title": "Idea Generator Card Demo",
   "description": "Example showing an AI-powered idea generator card with input and action buttons.",
   "registryDependencies": [
-    "idea-generator-card"
+    "https://www.ruixen.com/r/idea-generator-card"
   ],
   "files": [
     {

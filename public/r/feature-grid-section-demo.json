@@ -5,7 +5,7 @@
   "title": "Feature Grid Section Demo",
   "description": "Example of grid layout showcasing features with icons",
   "registryDependencies": [
-    "feature-grid-section"
+    "https://www.ruixen.com/r/feature-grid-section"
   ],
   "files": [
     {

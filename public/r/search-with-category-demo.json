@@ -5,7 +5,7 @@
   "title": "Search With Category Demo",
   "description": "Example showing a search input component with category filtering functionality.",
   "registryDependencies": [
-    "search-with-category"
+    "https://www.ruixen.com/r/search-with-category"
   ],
   "files": [
     {

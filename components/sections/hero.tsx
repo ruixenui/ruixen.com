@@ -98,8 +98,9 @@ function Home() {
                   </span>
                 </h1>
                 <p className="mt-6 text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-200 max-w-2xl">
-                  Ruixen UI is a modern, fast, and customizable React component library
-                  built with Tailwind CSS, TypeScript, and accessibility in mind.
+                  Ruixen UI is a modern, fast, and customizable React component
+                  library built with Tailwind CSS, TypeScript, and accessibility
+                  in mind.
                 </p>
               </AnimatedGroup>
 
@@ -132,7 +133,6 @@ function Home() {
               <Suspense fallback={null}>{/* <WhosOnRuixen /> */}</Suspense>
             </div>
           </div>
-
         </div>
       </div>
 

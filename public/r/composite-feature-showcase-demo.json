@@ -5,7 +5,7 @@
   "title": "Composite Feature Showcase Demo",
   "description": "Example of complex dashboard layout with map and charts",
   "registryDependencies": [
-    "composite-feature-showcase"
+    "https://www.ruixen.com/r/composite-feature-showcase"
   ],
   "files": [
     {

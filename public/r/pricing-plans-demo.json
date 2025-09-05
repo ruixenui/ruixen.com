@@ -5,7 +5,7 @@
   "title": "Pricing Plans Demo",
   "description": "Example of comprehensive pricing plans with multiple tiers",
   "registryDependencies": [
-    "pricing-plans"
+    "https://www.ruixen.com/r/pricing-plans"
   ],
   "files": [
     {

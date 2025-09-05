@@ -5,7 +5,7 @@
   "title": "Case Studies Demo",
   "description": "Example of customer case studies with metrics and testimonials",
   "registryDependencies": [
-    "case-studies"
+    "https://www.ruixen.com/r/case-studies"
   ],
   "files": [
     {

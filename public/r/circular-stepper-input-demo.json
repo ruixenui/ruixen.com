@@ -5,7 +5,7 @@
   "title": "Circular Stepper Input Demo",
   "description": "Example showing a circular input component with increment/decrement functionality.",
   "registryDependencies": [
-    "circular-stepper-input"
+    "https://www.ruixen.com/r/circular-stepper-input"
   ],
   "files": [
     {

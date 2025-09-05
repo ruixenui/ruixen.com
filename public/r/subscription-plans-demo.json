@@ -5,7 +5,7 @@
   "title": "Subscription Plans Demo",
   "description": "Example of subscription-focused pricing component",
   "registryDependencies": [
-    "subscription-plans"
+    "https://www.ruixen.com/r/subscription-plans"
   ],
   "files": [
     {

@@ -5,7 +5,7 @@
   "title": "Tech Orbit Showcase Demo",
   "description": "Example of animated orbital showcase with rotating tech icons",
   "registryDependencies": [
-    "tech-orbit-showcase"
+    "https://www.ruixen.com/r/tech-orbit-showcase"
   ],
   "files": [
     {

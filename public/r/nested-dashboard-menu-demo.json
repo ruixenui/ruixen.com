@@ -5,7 +5,7 @@
   "title": "Nested Dashboard Menu Demo",
   "description": "Example showing a nested navigation menu component for dashboard layouts.",
   "registryDependencies": [
-    "nested-dashboard-menu"
+    "https://www.ruixen.com/r/nested-dashboard-menu"
   ],
   "files": [
     {

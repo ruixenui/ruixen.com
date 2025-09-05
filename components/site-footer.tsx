@@ -76,7 +76,8 @@ export default function SiteFooter() {
             </span>
           </div>
           <p className="mt-4 max-w-xl">
-            Build high-performance, accessible components and templates with Ruixen UI. Powered by Tailwind CSS, Framer Motion, and TypeScript.
+            Build high-performance, accessible components and templates with
+            Ruixen UI. Powered by Tailwind CSS, Framer Motion, and TypeScript.
           </p>
         </div>
 
