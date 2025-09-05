@@ -13,7 +13,7 @@ export const docsConfig: DocsConfig = {
     },
     {
       title: "Templates",
-      href: "https://ruixen.com",
+      href: "/templates",
       event: "header_cta_clicked",
       label: "",
     },

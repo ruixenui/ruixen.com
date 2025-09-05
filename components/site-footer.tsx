@@ -100,7 +100,7 @@ export default function SiteFooter() {
           ))}
         </div>
 
-        <div className="border-t border-white/10 dark:border-black/10 pt-6 text-center">
+        <div className="border-t border-white/10 dark:border-black/10 pt-4 text-center">
           © {new Date().getFullYear()} Ruixen UI. All rights reserved.
         </div>
       </div>

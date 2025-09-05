@@ -48,9 +48,17 @@ export function MainNav() {
           <Link href="/" className="relative mr-6 flex items-center space-x-2">
             <Image
               src="https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/ruixen-dark.png"
-              alt="Logo"
-              width={28}
-              height={28}
+              alt="Ruixen Logo"
+              width={40}
+              height={40}
+              className="rounded-full h-10 w-10 block dark:hidden"
+            />
+            <Image
+              src="/ruixen_light.png"
+              alt="Ruixen Logo"
+              width={40}
+              height={40}
+              className="rounded-full h-10 w-10 hidden dark:block"
             />
             <span className="hidden font-semibold md:inline-block">
               {siteConfig.name}
