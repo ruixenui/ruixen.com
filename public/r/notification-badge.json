@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "notification-badge",
+  "type": "registry:ui",
+  "title": "Notification Badge",
+  "description": "A notification badge component with animated count display and different notification types.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/notification-badge.tsx",
+      "content": "\"use client\"\r\n\r\nimport { useState, useEffect } from \"react\"\r\nimport { BellIcon, CheckIcon, XIcon, InfoIcon, AlertTriangleIcon } from \"lucide-react\"\r\nimport { Button } from \"@/components/ui/button\"\r\n\r\ninterface NotificationBadgeProps {\r\n  initialCount?: number\r\n  type?: \"success\" | \"error\" | \"info\" | \"warning\"\r\n  label?: string\r\n  duration?: number\r\n}\r\n\r\nconst defaultProps: Required<NotificationBadgeProps> = {\r\n  initialCount: 0,\r\n  type: \"info\",\r\n  label: \"Notifications\",\r\n  duration: 5000,\r\n}\r\n\r\nexport default function NotificationBadge(props: NotificationBadgeProps) {\r\n  // Merge props with defaults\r\n  const { initialCount, type, label, duration } = { ...defaultProps, ...props }\r\n\r\n  // Explicitly tell TypeScript count is always a number\r\n  const [count, setCount] = useState<number>(initialCount)\r\n  const [visible, setVisible] = useState(false)\r\n\r\n  const typeColors: Record<string, string> = {\r\n    success: \"bg-green-500\",\r\n    error: \"bg-red-500\",\r\n    info: \"bg-blue-500\",\r\n    warning: \"bg-yellow-500\",\r\n  }\r\n\r\n  const typeIcons: Record<string, JSX.Element> = {\r\n    success: <CheckIcon size={16} />,\r\n    error: <XIcon size={16} />,\r\n    info: <InfoIcon size={16} />,\r\n    warning: <AlertTriangleIcon size={16} />,\r\n  }\r\n\r\n  useEffect(() => {\r\n    if (count > 0) {\r\n      setVisible(true)\r\n      const timer = setTimeout(() => setVisible(false), duration)\r\n      return () => clearTimeout(timer)\r\n    }\r\n  }, [count, duration])\r\n\r\n  const increment = () => setCount((prev) => prev + 1)\r\n  const decrement = () => setCount((prev) => Math.max(prev - 1, 0))\r\n\r\n  return (\r\n    <div className=\"relative inline-block\">\r\n      <Button\r\n        variant=\"outline\"\r\n        className=\"flex items-center gap-2\"\r\n        onClick={increment}\r\n      >\r\n        <BellIcon size={18} />\r\n        {label} {count > 0 && <span className=\"font-bold\">({count})</span>}\r\n      </Button>\r\n\r\n      {visible && count > 0 && (\r\n        <div\r\n          className={`absolute -top-4 -right-2 flex items-center gap-1 px-2 py-1 text-xs rounded-full text-white ${typeColors[type]}`}\r\n        >\r\n          {typeIcons[type]} {count} new\r\n        </div>\r\n      )}\r\n\r\n      <div className=\"mt-2 flex gap-2\">\r\n        <Button size=\"sm\" variant=\"ghost\" onClick={decrement}>\r\n          Decrement\r\n        </Button>\r\n        <Button size=\"sm\" variant=\"ghost\" onClick={() => setCount(0)}>\r\n          Clear\r\n        </Button>\r\n      </div>\r\n    </div>\r\n  )\r\n}\r\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/notification-badge.tsx"
+    }
+  ]
+}

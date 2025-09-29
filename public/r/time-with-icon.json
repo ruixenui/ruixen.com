@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "time-with-icon",
+  "type": "registry:ui",
+  "title": "Time With Icon",
+  "description": "A time input field with dynamic icons that change based on the selected time.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/time-with-icon.tsx",
+      "content": "\"use client\";\n\nimport { useState, useEffect } from \"react\";\nimport { Label } from \"@/components/ui/label\";\nimport { Input } from \"@/components/ui/input\";\nimport { Sun, Moon, Clock } from \"lucide-react\";\n\ninterface TimeWithIconProps {\n  label?: string;\n  defaultTime?: string; // format \"HH:MM\"\n}\n\nexport default function TimeWithIcon({\n  label = \"Select Time\",\n  defaultTime,\n}: TimeWithIconProps) {\n  const [time, setTime] = useState(defaultTime || \"\");\n  const [Icon, setIcon] = useState(() => Clock); // default icon\n\n  // Update icon based on time\n  useEffect(() => {\n    if (!time) {\n      setIcon(() => Clock);\n      return;\n    }\n\n    const [hours] = time.split(\":\").map(Number);\n    if (hours >= 6 && hours < 18) {\n      setIcon(() => Sun); // day\n    } else {\n      setIcon(() => Moon); // night\n    }\n  }, [time]);\n\n  return (\n    <div className=\"w-full max-w-sm relative\">\n      <Label className=\"text-foreground text-sm font-medium\">{label}</Label>\n      <div className=\"relative mt-1\">\n        {/* Icon */}\n        <div className=\"absolute inset-y-0 left-3 flex items-center pointer-events-none text-muted-foreground/80\">\n          <Icon size={16} aria-hidden=\"true\" />\n        </div>\n\n        {/* Time input */}\n        <Input\n          type=\"time\"\n          value={time}\n          onChange={(e) => setTime(e.target.value)}\n          className=\"ps-9 h-10\"\n        />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/time-with-icon.tsx"
+    }
+  ]
+}

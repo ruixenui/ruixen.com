@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-with-select-demo",
+  "type": "registry:example",
+  "title": "Input With Select Demo",
+  "description": "Example showing a modern input field with an integrated select dropdown for currency or unit selection.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/input-with-select"
+  ],
+  "files": [
+    {
+      "path": "registry/example/input-with-select-demo.tsx",
+      "content": "\"use client\";\n\nimport InputWithSelect from \"@/registry/ruixenui/input-with-select\";\n\nexport default function InputWithSelectDemoPage() {\n  return (\n    <main className=\"min-h-screen bg-gray-50 flex flex-col items-center justify-center p-8\">\n      <h1 className=\"text-2xl font-bold mb-6\">Input with Select Demo</h1>\n\n      <div className=\"w-full max-w-md space-y-6 bg-white p-6 rounded-xl shadow\">\n        {/* Default usage */}\n        <InputWithSelect />\n\n        {/* Customized with INR and step 10 */}\n        <InputWithSelect\n          label=\"Price\"\n          placeholder=\"Enter amount\"\n          defaultValue=\"inr\"\n          step={10}\n          options={[\n            { value: \"inr\", label: \"INR\" },\n            { value: \"usd\", label: \"USD\" },\n            { value: \"eur\", label: \"EUR\" },\n            { value: \"gbp\", label: \"GBP\" },\n          ]}\n        />\n\n        {/* Another variant */}\n        <InputWithSelect\n          label=\"Distance\"\n          placeholder=\"0\"\n          defaultValue=\"km\"\n          step={0.5}\n          options={[\n            { value: \"km\", label: \"Kilometers\" },\n            { value: \"miles\", label: \"Miles\" },\n          ]}\n        />\n      </div>\n    </main>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/input-with-select-demo.tsx"
+    }
+  ]
+}

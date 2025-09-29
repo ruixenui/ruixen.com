@@ -1125,4 +1125,306 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "input-with-select-demo",
+    type: "registry:example",
+    title: "Input With Select Demo",
+    description:
+      "Example showing a modern input field with an integrated select dropdown for currency or unit selection.",
+    registryDependencies: ["https://www.ruixen.com/r/input-with-select"],
+    files: [
+      {
+        path: "registry/example/input-with-select-demo.tsx",
+        type: "registry:example",
+        target: "components/input-with-select-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "range-slider-input-demo",
+    type: "registry:example",
+    title: "Range Slider Input Demo",
+    description:
+      "Example showing a dual-range slider with numeric inputs and increment/decrement controls.",
+    registryDependencies: ["https://www.ruixen.com/r/range-slider-input"],
+    files: [
+      {
+        path: "registry/example/range-slider-input-demo.tsx",
+        type: "registry:example",
+        target: "components/range-slider-input-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "url-input-demo",
+    type: "registry:example",
+    title: "URL Input Demo",
+    description:
+      "Example showing a smart URL input field that automatically displays website favicons.",
+    registryDependencies: ["https://www.ruixen.com/r/url-input"],
+    files: [
+      {
+        path: "registry/example/url-input-demo.tsx",
+        type: "registry:example",
+        target: "components/url-input-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "floating-input-demo",
+    type: "registry:example",
+    title: "Floating Input Demo",
+    description:
+      "Example showing a modern input field with floating label animation and icon support.",
+    registryDependencies: ["https://www.ruixen.com/r/floating-input"],
+    files: [
+      {
+        path: "registry/example/floating-input-demo.tsx",
+        type: "registry:example",
+        target: "components/floating-input-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "time-with-icon-demo",
+    type: "registry:example",
+    title: "Time With Icon Demo",
+    description:
+      "Example showing a time input field with dynamic icons that change based on the selected time.",
+    registryDependencies: ["https://www.ruixen.com/r/time-with-icon"],
+    files: [
+      {
+        path: "registry/example/time-with-icon-demo.tsx",
+        type: "registry:example",
+        target: "components/time-with-icon-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "otp-field-demo",
+    type: "registry:example",
+    title: "OTP Field Demo",
+    description:
+      "Example showing a customizable OTP (One-Time Password) input field with auto-focus and paste support.",
+    registryDependencies: ["https://www.ruixen.com/r/otp-field"],
+    files: [
+      {
+        path: "registry/example/otp-field-demo.tsx",
+        type: "registry:example",
+        target: "components/otp-field-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "modern-card-input-demo",
+    type: "registry:example",
+    title: "Modern Card Input Demo",
+    description:
+      "Example showing a sophisticated credit card input with real-time validation and card type detection.",
+    registryDependencies: ["https://www.ruixen.com/r/modern-card-input"],
+    files: [
+      {
+        path: "registry/example/modern-card-input-demo.tsx",
+        type: "registry:example",
+        target: "components/modern-card-input-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "password-field-demo",
+    type: "registry:example",
+    title: "Password Field Demo",
+    description:
+      "Example showing an advanced password input with strength meter, validation checklist, and password generation.",
+    registryDependencies: ["https://www.ruixen.com/r/password-field"],
+    files: [
+      {
+        path: "registry/example/password-field-demo.tsx",
+        type: "registry:example",
+        target: "components/password-field-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "smart-assist-input-demo",
+    type: "registry:example",
+    title: "Smart Assist Input Demo",
+    description:
+      "Example showing an intelligent input field with history tracking, validation, and quick actions.",
+    registryDependencies: ["https://www.ruixen.com/r/smart-assist-input"],
+    files: [
+      {
+        path: "registry/example/smart-assist-input-demo.tsx",
+        type: "registry:example",
+        target: "components/smart-assist-input-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "action-hub-input-demo",
+    type: "registry:example",
+    title: "Action Hub Input Demo",
+    description:
+      "Example showing a versatile input field with customizable action buttons and status indicators.",
+    registryDependencies: ["https://www.ruixen.com/r/action-hub-input"],
+    files: [
+      {
+        path: "registry/example/action-hub-input-demo.tsx",
+        type: "registry:example",
+        target: "components/action-hub-input-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "smart-notify-button-demo",
+    type: "registry:example",
+    title: "Smart Notify Button Demo",
+    description:
+      "Example showing a button component that triggers customizable toast notifications with actions and different types.",
+    registryDependencies: ["https://www.ruixen.com/r/smart-notify-button"],
+    files: [
+      {
+        path: "registry/example/smart-notify-button-demo.tsx",
+        type: "registry:example",
+        target: "components/smart-notify-button-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "notification-badge-demo",
+    type: "registry:example",
+    title: "Notification Badge Demo",
+    description:
+      "Example showing a notification badge component with animated count display and different notification types.",
+    registryDependencies: ["https://www.ruixen.com/r/notification-badge"],
+    files: [
+      {
+        path: "registry/example/notification-badge-demo.tsx",
+        type: "registry:example",
+        target: "components/notification-badge-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "notifications-popover-demo",
+    type: "registry:example",
+    title: "Notifications Popover Demo",
+    description:
+      "Example showing a dropdown menu component for displaying notifications with different types and read states.",
+    registryDependencies: ["https://www.ruixen.com/r/notifications-popover"],
+    files: [
+      {
+        path: "registry/example/notifications-popover-demo.tsx",
+        type: "registry:example",
+        target: "components/notifications-popover-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "notification-demo",
+    type: "registry:example",
+    title: "Notification Demo",
+    description:
+      "Example showing a clean notification popover component with title, description, and timestamp display.",
+    registryDependencies: ["https://www.ruixen.com/r/notification"],
+    files: [
+      {
+        path: "registry/example/notification-demo.tsx",
+        type: "registry:example",
+        target: "components/notification-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "notification-alt-demo",
+    type: "registry:example",
+    title: "Notification Alt Demo",
+    description:
+      "Example showing an enhanced notification component with info tooltips, clickable links, and different notification types.",
+    registryDependencies: ["https://www.ruixen.com/r/notification-alt"],
+    files: [
+      {
+        path: "registry/example/notification-alt-demo.tsx",
+        type: "registry:example",
+        target: "components/notification-alt-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "notifications-with-actions-demo",
+    type: "registry:example",
+    title: "Notifications With Actions Demo",
+    description:
+      "Example showing interactive notification component with swipe-to-reveal actions like archive and delete.",
+    registryDependencies: [
+      "https://www.ruixen.com/r/notifications-with-actions",
+    ],
+    files: [
+      {
+        path: "registry/example/notifications-with-actions-demo.tsx",
+        type: "registry:example",
+        target: "components/notifications-with-actions-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "notifications-carousel-demo",
+    type: "registry:example",
+    title: "Notifications Carousel Demo",
+    description:
+      "Example showing a carousel-style notification component that displays one notification at a time with navigation controls.",
+    registryDependencies: ["https://www.ruixen.com/r/notifications-carousel"],
+    files: [
+      {
+        path: "registry/example/notifications-carousel-demo.tsx",
+        type: "registry:example",
+        target: "components/notifications-carousel-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "notification-toggle-demo",
+    type: "registry:example",
+    title: "Notification Toggle Demo",
+    description:
+      "Example showing a versatile notification component that toggles between carousel and list view modes.",
+    registryDependencies: ["https://www.ruixen.com/r/notification-toggle"],
+    files: [
+      {
+        path: "registry/example/notification-toggle-demo.tsx",
+        type: "registry:example",
+        target: "components/notification-toggle-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "notifications-filter-demo",
+    type: "registry:example",
+    title: "Notifications Filter Demo",
+    description:
+      "Example showing a notification component with category filtering to organize notifications by type.",
+    registryDependencies: ["https://www.ruixen.com/r/notifications-filter"],
+    files: [
+      {
+        path: "registry/example/notifications-filter-demo.tsx",
+        type: "registry:example",
+        target: "components/notifications-filter-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "avatar-notifications-demo",
+    type: "registry:example",
+    title: "Avatar Notifications Demo",
+    description:
+      "Example showing a notification component that displays user avatars with messages and animated status indicators.",
+    registryDependencies: ["https://www.ruixen.com/r/avatar-notifications"],
+    files: [
+      {
+        path: "registry/example/avatar-notifications-demo.tsx",
+        type: "registry:example",
+        target: "components/avatar-notifications-demo.tsx",
+      },
+    ],
+  },
 ];

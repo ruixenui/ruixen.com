@@ -1,0 +1,48 @@
+---
+title: URL Input
+date: 2024-12-29
+description: A smart URL input field that automatically displays website favicons
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="url-input-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/url-input"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="url-input" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Features
+
+- **Automatic Favicon Detection**: Displays the website's favicon when a valid URL is entered
+- **Smart URL Parsing**: Handles URLs with or without protocol prefixes
+- **Fallback Icon**: Shows a globe icon when no favicon is available
+- **Error Handling**: Gracefully handles invalid URLs and missing favicons

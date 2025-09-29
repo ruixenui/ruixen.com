@@ -1,0 +1,110 @@
+---
+title: Notification
+description: A clean notification popover component with title, description, and timestamp display.
+component: true
+---
+
+<ComponentPreview name="notification-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx ruixenui@latest add notification
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install lucide-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="notification" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop    | Type                 | Default                | Description                 |
+| ------- | -------------------- | ---------------------- | --------------------------- |
+| `items` | `NotificationItem[]` | `defaultNotifications` | Array of notification items |
+
+## NotificationItem Interface
+
+```tsx
+interface NotificationItem {
+  id: string;
+  title: string;
+  description: string;
+  time: string;
+}
+```
+
+## Features
+
+- **Clean Design**: Simple and elegant notification layout
+- **Badge Count**: Shows total number of notifications
+- **Hover Effects**: Smooth hover transitions for better UX
+- **Scrollable**: Handles overflow with scrolling for many notifications
+- **Responsive**: Works well on different screen sizes
+- **Customizable**: Easy to modify styling and behavior
+
+## Usage
+
+```tsx
+import Notifications from "@/components/ui/notification";
+
+export default function Example() {
+  const notifications = [
+    {
+      id: "1",
+      title: "New Message",
+      description: "You have a new message from John.",
+      time: "2h ago",
+    },
+    {
+      id: "2",
+      title: "System Alert",
+      description: "Server downtime scheduled at midnight.",
+      time: "5h ago",
+    },
+    {
+      id: "3",
+      title: "Meeting Reminder",
+      description: "Project sync meeting at 3 PM.",
+      time: "1d ago",
+    },
+  ];
+
+  return (
+    <div className="p-6">
+      {/* Default notifications */}
+      <Notifications />
+
+      {/* Custom notifications */}
+      <Notifications items={notifications} />
+    </div>
+  );
+}
+```

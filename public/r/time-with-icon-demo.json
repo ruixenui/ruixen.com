@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "time-with-icon-demo",
+  "type": "registry:example",
+  "title": "Time With Icon Demo",
+  "description": "Example showing a time input field with dynamic icons that change based on the selected time.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/time-with-icon"
+  ],
+  "files": [
+    {
+      "path": "registry/example/time-with-icon-demo.tsx",
+      "content": "import TimeWithIcon from \"@/registry/ruixenui/time-with-icon\";\n\nexport default function DemoOne() {\n  return (\n    <div className=\"flex flex-col\">\n      <TimeWithIcon />\n      <TimeWithIcon defaultTime=\"07:30\" />\n      <TimeWithIcon defaultTime=\"22:15\" />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/time-with-icon-demo.tsx"
+    }
+  ]
+}

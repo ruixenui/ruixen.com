@@ -1,0 +1,51 @@
+---
+title: Input With Select
+date: 2024-12-29
+description: A modern input field with an integrated select dropdown for currency or unit selection
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="input-with-select-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/input-with-select"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="input-with-select" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop           | Type                                 | Default                               | Description                      |
+| -------------- | ------------------------------------ | ------------------------------------- | -------------------------------- |
+| `label`        | `string`                             | `"Amount"`                            | The label for the input field    |
+| `placeholder`  | `string`                             | `"0.00"`                              | Placeholder text for the input   |
+| `options`      | `{ value: string; label: string }[]` | `[{value: "usd", label: "USD"}, ...]` | Options for the select dropdown  |
+| `defaultValue` | `string`                             | `"usd"`                               | Default selected option          |
+| `step`         | `number`                             | `1`                                   | Step increment for numeric input |

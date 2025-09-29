@@ -1,0 +1,102 @@
+---
+title: Smart Notify Button
+description: A button component that triggers customizable toast notifications with actions and different types.
+component: true
+---
+
+<ComponentPreview name="smart-notify-button-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx ruixenui@latest add smart-notify-button
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install sonner lucide-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="smart-notify-button" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop             | Type                                | Default                     | Description                         |
+| ---------------- | ----------------------------------- | --------------------------- | ----------------------------------- |
+| `label`          | `string`                            | `"Notify"`                  | The button label text               |
+| `message`        | `string`                            | `"This is a notification!"` | The toast notification message      |
+| `description`    | `string`                            | `""`                        | Additional description text         |
+| `type`           | `"success" \| "error" \| "info"`    | `"info"`                    | The notification type and icon      |
+| `actionLabel`    | `string`                            | `undefined`                 | Label for action button in toast    |
+| `actionCallback` | `() => void`                        | `undefined`                 | Callback function for action button |
+| `variant`        | `"default" \| "outline" \| "ghost"` | `"default"`                 | Button variant style                |
+| `duration`       | `number`                            | `4000`                      | Toast display duration in ms        |
+| `position`       | `any`                               | `"top-right"`               | Position of toast on screen         |
+
+## Features
+
+- **Multiple Types**: Success, error, and info notification types with appropriate icons
+- **Action Support**: Add action buttons to notifications with custom callbacks
+- **Customizable Duration**: Control how long notifications stay visible
+- **Position Control**: Choose where notifications appear on screen
+- **Toast Integration**: Uses Sonner for smooth toast animations
+- **Button Variants**: Support for different button styles
+
+## Usage
+
+```tsx
+import SmartNotifyButton from "@/components/ui/smart-notify-button";
+
+export default function Example() {
+  return (
+    <div className="space-y-4">
+      {/* Basic notification */}
+      <SmartNotifyButton />
+
+      {/* Success notification with action */}
+      <SmartNotifyButton
+        label="Save Changes"
+        message="Data saved successfully!"
+        description="Your changes have been stored."
+        type="success"
+        actionLabel="Undo"
+        actionCallback={() => console.log("Undo clicked")}
+        position="bottom-left"
+      />
+
+      {/* Error notification */}
+      <SmartNotifyButton
+        label="Delete Item"
+        message="Failed to delete item"
+        type="error"
+        variant="outline"
+      />
+    </div>
+  );
+}
+```

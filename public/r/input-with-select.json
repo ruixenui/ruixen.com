@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-with-select",
+  "type": "registry:ui",
+  "title": "Input With Select",
+  "description": "A modern input field with an integrated select dropdown for currency or unit selection.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/input-with-select.tsx",
+      "content": "\"use client\";\n\nimport { useId, useState } from \"react\";\nimport { Input } from \"@/components/ui/input\";\nimport { Label } from \"@/components/ui/label\";\nimport {\n  Select,\n  SelectContent,\n  SelectItem,\n  SelectTrigger,\n  SelectValue,\n} from \"@/components/ui/select\";\nimport { ChevronUp, ChevronDown } from \"lucide-react\";\n\ninterface InputWithSelectProps {\n  label?: string;\n  placeholder?: string;\n  options?: { value: string; label: string }[];\n  defaultValue?: string;\n  step?: number;\n}\n\nexport default function InputWithSelect({\n  label = \"Amount\",\n  placeholder = \"0.00\",\n  options = [\n    { value: \"usd\", label: \"USD\" },\n    { value: \"eur\", label: \"EUR\" },\n    { value: \"inr\", label: \"INR\" },\n  ],\n  defaultValue = \"usd\",\n  step = 1,\n}: InputWithSelectProps) {\n  const id = useId();\n  const [value, setValue] = useState<number | string>(\"\");\n\n  const handleIncrement = () => {\n    const num = parseFloat(value as string) || 0;\n    setValue((num + step).toString());\n  };\n\n  const handleDecrement = () => {\n    const num = parseFloat(value as string) || 0;\n    setValue((num - step).toString());\n  };\n\n  return (\n    <div className=\"space-y-2 w-full max-w-sm\">\n      <Label htmlFor={id}>{label}</Label>\n      <div className=\"flex items-center rounded-xl border bg-background shadow-sm overflow-hidden focus-within:ring-2 focus-within:ring-primary/50 transition\">\n        <div className=\"relative flex-1\">\n          <Input\n            id={id}\n            type=\"text\"\n            placeholder={placeholder}\n            value={value}\n            onChange={(e) => setValue(e.target.value)}\n            className=\"flex-1 border-0 bg-transparent pr-8 focus-visible:ring-0 focus-visible:ring-offset-0\"\n          />\n          <div className=\"absolute inset-y-0 right-0 flex flex-col items-center justify-center pr-2 space-y-0.5\">\n            <button\n              type=\"button\"\n              onClick={handleIncrement}\n              className=\"p-0.5 text-muted-foreground hover:text-primary\"\n            >\n              <ChevronUp className=\"h-4 w-4\" />\n            </button>\n            <button\n              type=\"button\"\n              onClick={handleDecrement}\n              className=\"p-0.5 text-muted-foreground hover:text-primary\"\n            >\n              <ChevronDown className=\"h-4 w-4\" />\n            </button>\n          </div>\n        </div>\n\n        <Select defaultValue={defaultValue}>\n          <SelectTrigger className=\"w-24 border-0 border-l\">\n            <SelectValue placeholder=\"Unit\" />\n          </SelectTrigger>\n          <SelectContent>\n            {options.map((opt) => (\n              <SelectItem key={opt.value} value={opt.value}>\n                {opt.label}\n              </SelectItem>\n            ))}\n          </SelectContent>\n        </Select>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/input-with-select.tsx"
+    }
+  ]
+}

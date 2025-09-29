@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "smart-notify-button",
+  "type": "registry:ui",
+  "title": "Smart Notify Button",
+  "description": "A button component that triggers customizable toast notifications with actions and different types.",
+  "dependencies": [
+    "sonner",
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/smart-notify-button.tsx",
+      "content": "\"use client\"\r\n\r\nimport { toast, Toaster } from \"sonner\"\r\nimport { Button } from \"@/components/ui/button\"\r\nimport { CheckIcon, XIcon, InfoIcon } from \"lucide-react\"\r\n\r\ninterface SmartNotifyButtonProps {\r\n  label?: string\r\n  message?: string\r\n  description?: string\r\n  type?: \"success\" | \"error\" | \"info\"\r\n  actionLabel?: string\r\n  actionCallback?: () => void\r\n  variant?: \"default\" | \"outline\" | \"ghost\"\r\n  duration?: number\r\n  /** Position of toast on screen */\r\n  position?: any\r\n}\r\n\r\nconst defaultProps: SmartNotifyButtonProps = {\r\n  label: \"Notify\",\r\n  message: \"This is a notification!\",\r\n  description: \"\",\r\n  type: \"info\",\r\n  variant: \"default\",\r\n  duration: 4000,\r\n  position: \"top-right\",\r\n}\r\n\r\nexport default function SmartNotifyButton(props: SmartNotifyButtonProps) {\r\n  const {\r\n    label,\r\n    message,\r\n    description,\r\n    type,\r\n    actionLabel,\r\n    actionCallback,\r\n    variant,\r\n    duration,\r\n    position,\r\n  } = { ...defaultProps, ...props }\r\n\r\n  const icons = {\r\n    success: <CheckIcon size={16} />,\r\n    error: <XIcon size={16} />,\r\n    info: <InfoIcon size={16} />,\r\n  }\r\n\r\n  const handleClick = () => {\r\n    toast(message!, {\r\n      description,\r\n      icon: icons[type!],\r\n      duration,\r\n      action: actionLabel\r\n        ? { label: actionLabel, onClick: actionCallback ?? (() => {}) }\r\n        : undefined,\r\n      position,\r\n    })\r\n  }\r\n\r\n  return (\r\n    <>\r\n      <Button variant={variant} onClick={handleClick}>\r\n        {label}\r\n      </Button>\r\n\r\n      {/* Add the Toaster only once in your app */}\r\n      <Toaster />\r\n    </>\r\n  )\r\n}\r\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/smart-notify-button.tsx"
+    }
+  ]
+}

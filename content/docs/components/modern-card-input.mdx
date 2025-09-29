@@ -1,0 +1,64 @@
+---
+title: Modern Card Input
+date: 2024-12-29
+description: A sophisticated credit card input with real-time validation and card type detection
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="modern-card-input-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/modern-card-input"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the required dependency.</Step>
+
+```bash
+npm install react-payment-inputs
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="modern-card-input" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop          | Type                                                            | Default              | Description                     |
+| ------------- | --------------------------------------------------------------- | -------------------- | ------------------------------- |
+| `label`       | `string`                                                        | `"Card Information"` | The label for the card input    |
+| `showPreview` | `boolean`                                                       | `true`               | Show card type preview          |
+| `onChange`    | `(data: {number: string; expiry: string; cvc: string}) => void` | `undefined`          | Callback when card data changes |
+
+## Features
+
+- **Real-time Validation**: Validates card numbers, expiry dates, and CVC codes as you type
+- **Card Type Detection**: Automatically detects and displays card brand (Visa, Mastercard, etc.)
+- **Visual Card Icons**: Shows appropriate card brand icons
+- **Input Formatting**: Automatically formats card numbers with proper spacing
+- **Focus Management**: Smooth focus transitions between fields
+- **Responsive Design**: Adapts to different screen sizes

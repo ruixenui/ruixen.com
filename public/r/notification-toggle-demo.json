@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "notification-toggle-demo",
+  "type": "registry:example",
+  "title": "Notification Toggle Demo",
+  "description": "Example showing a versatile notification component that toggles between carousel and list view modes.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/notification-toggle"
+  ],
+  "files": [
+    {
+      "path": "registry/example/notification-toggle-demo.tsx",
+      "content": "\"use client\";\r\n\r\nimport React from \"react\";\r\nimport NotificationsToggle from \"@/registry/ruixenui/notification-toggle\";\r\nimport { Info, AlertCircle, Calendar } from \"lucide-react\";\r\n\r\nexport default function DemoNotificationsToggle() {\r\n  const demoItems = [\r\n    {\r\n      id: \"1\",\r\n      icon: <Info className=\"h-4 w-4 text-blue-500\" />,\r\n      title: \"Welcome\",\r\n      description: \"Thanks for checking out notifications.\",\r\n      time: \"just now\",\r\n    },\r\n    {\r\n      id: \"2\",\r\n      icon: <AlertCircle className=\"h-4 w-4 text-red-500\" />,\r\n      title: \"System Update\",\r\n      description: \"A new feature has been rolled out.\",\r\n      time: \"1h ago\",\r\n    },\r\n    {\r\n      id: \"3\",\r\n      icon: <Calendar className=\"h-4 w-4 text-green-500\" />,\r\n      title: \"Reminder\",\r\n      description: \"Complete your profile setup.\",\r\n      time: \"3h ago\",\r\n    },\r\n    {\r\n      id: \"4\",\r\n      icon: <Info className=\"h-4 w-4 text-purple-500\" />,\r\n      title: \"Weekly Report\",\r\n      description: \"Your weekly report is now available.\",\r\n      time: \"1d ago\",\r\n    },\r\n  ];\r\n\r\n  return (\r\n    <div className=\"min-h-screen flex items-center justify-center bg-gray-50 p-4\">\r\n      <div className=\"space-y-4\">\r\n        <h1 className=\"text-xl font-bold text-gray-800 text-center\">\r\n          Notifications Toggle Demo\r\n        </h1>\r\n        <div className=\"flex justify-center\">\r\n          <NotificationsToggle items={demoItems} placement=\"bottom\" />\r\n        </div>\r\n      </div>\r\n    </div>\r\n  );\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/notification-toggle-demo.tsx"
+    }
+  ]
+}

@@ -1860,6 +1860,490 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "input-with-select": {
+    name: "input-with-select",
+    description:
+      "A modern input field with an integrated select dropdown for currency or unit selection.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/input-with-select.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/input-with-select.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/input-with-select.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "range-slider-input": {
+    name: "range-slider-input",
+    description:
+      "A dual-range slider with numeric inputs and increment/decrement controls.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/range-slider-input.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/range-slider-input.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/range-slider-input.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "url-input": {
+    name: "url-input",
+    description:
+      "A smart URL input field that automatically displays website favicons.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/url-input.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/url-input.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/url-input.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "floating-input": {
+    name: "floating-input",
+    description:
+      "A modern input field with floating label animation and icon support.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/floating-input.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/floating-input.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/floating-input.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "time-with-icon": {
+    name: "time-with-icon",
+    description:
+      "A time input field with dynamic icons that change based on the selected time.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/time-with-icon.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/time-with-icon.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/time-with-icon.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "otp-field": {
+    name: "otp-field",
+    description:
+      "A customizable OTP (One-Time Password) input field with auto-focus and paste support.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/otp-field.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/otp-field.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/otp-field.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "modern-card-input": {
+    name: "modern-card-input",
+    description:
+      "A sophisticated credit card input with real-time validation and card type detection.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/modern-card-input.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/modern-card-input.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/modern-card-input.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "password-field": {
+    name: "password-field",
+    description:
+      "An advanced password input with strength meter, validation checklist, and password generation.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/password-field.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/password-field.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/password-field.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "smart-assist-input": {
+    name: "smart-assist-input",
+    description:
+      "An intelligent input field with history tracking, validation, and quick actions.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/smart-assist-input.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/smart-assist-input.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/smart-assist-input.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "action-hub-input": {
+    name: "action-hub-input",
+    description:
+      "A versatile input field with customizable action buttons and status indicators.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/action-hub-input.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/action-hub-input.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/action-hub-input.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "smart-notify-button": {
+    name: "smart-notify-button",
+    description:
+      "A button component that triggers customizable toast notifications with actions and different types.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/smart-notify-button.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/smart-notify-button.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/smart-notify-button.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "notification-badge": {
+    name: "notification-badge",
+    description:
+      "A notification badge component with animated count display and different notification types.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/notification-badge.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/notification-badge.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/notification-badge.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "notifications-popover": {
+    name: "notifications-popover",
+    description:
+      "A dropdown menu component for displaying notifications with different types and read states.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/notifications-popover.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/notifications-popover.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/notifications-popover.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  notification: {
+    name: "notification",
+    description:
+      "A clean notification popover component with title, description, and timestamp display.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/notification.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/notification.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/notification.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "notification-alt": {
+    name: "notification-alt",
+    description:
+      "An enhanced notification component with info tooltips, clickable links, and different notification types.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/notification-alt.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/notification-alt.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/notification-alt.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "notifications-with-actions": {
+    name: "notifications-with-actions",
+    description:
+      "Interactive notification component with swipe-to-reveal actions like archive and delete.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/notifications-with-actions.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/notifications-with-actions.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/ruixenui/notifications-with-actions.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "notifications-carousel": {
+    name: "notifications-carousel",
+    description:
+      "A carousel-style notification component that displays one notification at a time with navigation controls.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/notifications-carousel.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/notifications-carousel.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/ruixenui/notifications-carousel.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "notification-toggle": {
+    name: "notification-toggle",
+    description:
+      "A versatile notification component that toggles between carousel and list view modes.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/notification-toggle.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/notification-toggle.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/notification-toggle.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "notifications-filter": {
+    name: "notifications-filter",
+    description:
+      "A notification component with category filtering to organize notifications by type.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/notifications-filter.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/notifications-filter.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/notifications-filter.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "avatar-notifications": {
+    name: "avatar-notifications",
+    description:
+      "A notification component that displays user avatars with messages and animated status indicators.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/avatar-notifications.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/avatar-notifications.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/avatar-notifications.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "staggered-faq-section-demo": {
     name: "staggered-faq-section-demo",
     description:
@@ -3756,6 +4240,508 @@ export const Index: Record<string, any> = {
     component: React.lazy(async () => {
       const mod = await import(
         "@/registry/example/idea-generator-card-demo.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "input-with-select-demo": {
+    name: "input-with-select-demo",
+    description:
+      "Example showing a modern input field with an integrated select dropdown for currency or unit selection.",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/input-with-select"],
+    files: [
+      {
+        path: "registry/example/input-with-select-demo.tsx",
+        type: "registry:example",
+        target: "components/input-with-select-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/input-with-select-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "range-slider-input-demo": {
+    name: "range-slider-input-demo",
+    description:
+      "Example showing a dual-range slider with numeric inputs and increment/decrement controls.",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/range-slider-input"],
+    files: [
+      {
+        path: "registry/example/range-slider-input-demo.tsx",
+        type: "registry:example",
+        target: "components/range-slider-input-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/range-slider-input-demo.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "url-input-demo": {
+    name: "url-input-demo",
+    description:
+      "Example showing a smart URL input field that automatically displays website favicons.",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/url-input"],
+    files: [
+      {
+        path: "registry/example/url-input-demo.tsx",
+        type: "registry:example",
+        target: "components/url-input-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/url-input-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "floating-input-demo": {
+    name: "floating-input-demo",
+    description:
+      "Example showing a modern input field with floating label animation and icon support.",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/floating-input"],
+    files: [
+      {
+        path: "registry/example/floating-input-demo.tsx",
+        type: "registry:example",
+        target: "components/floating-input-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/floating-input-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "time-with-icon-demo": {
+    name: "time-with-icon-demo",
+    description:
+      "Example showing a time input field with dynamic icons that change based on the selected time.",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/time-with-icon"],
+    files: [
+      {
+        path: "registry/example/time-with-icon-demo.tsx",
+        type: "registry:example",
+        target: "components/time-with-icon-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/time-with-icon-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "otp-field-demo": {
+    name: "otp-field-demo",
+    description:
+      "Example showing a customizable OTP (One-Time Password) input field with auto-focus and paste support.",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/otp-field"],
+    files: [
+      {
+        path: "registry/example/otp-field-demo.tsx",
+        type: "registry:example",
+        target: "components/otp-field-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/otp-field-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "modern-card-input-demo": {
+    name: "modern-card-input-demo",
+    description:
+      "Example showing a sophisticated credit card input with real-time validation and card type detection.",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/modern-card-input"],
+    files: [
+      {
+        path: "registry/example/modern-card-input-demo.tsx",
+        type: "registry:example",
+        target: "components/modern-card-input-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/modern-card-input-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "password-field-demo": {
+    name: "password-field-demo",
+    description:
+      "Example showing an advanced password input with strength meter, validation checklist, and password generation.",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/password-field"],
+    files: [
+      {
+        path: "registry/example/password-field-demo.tsx",
+        type: "registry:example",
+        target: "components/password-field-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/password-field-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "smart-assist-input-demo": {
+    name: "smart-assist-input-demo",
+    description:
+      "Example showing an intelligent input field with history tracking, validation, and quick actions.",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/smart-assist-input"],
+    files: [
+      {
+        path: "registry/example/smart-assist-input-demo.tsx",
+        type: "registry:example",
+        target: "components/smart-assist-input-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/smart-assist-input-demo.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "action-hub-input-demo": {
+    name: "action-hub-input-demo",
+    description:
+      "Example showing a versatile input field with customizable action buttons and status indicators.",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/action-hub-input"],
+    files: [
+      {
+        path: "registry/example/action-hub-input-demo.tsx",
+        type: "registry:example",
+        target: "components/action-hub-input-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/action-hub-input-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "smart-notify-button-demo": {
+    name: "smart-notify-button-demo",
+    description:
+      "Example showing a button component that triggers customizable toast notifications with actions and different types.",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/smart-notify-button"],
+    files: [
+      {
+        path: "registry/example/smart-notify-button-demo.tsx",
+        type: "registry:example",
+        target: "components/smart-notify-button-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/smart-notify-button-demo.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "notification-badge-demo": {
+    name: "notification-badge-demo",
+    description:
+      "Example showing a notification badge component with animated count display and different notification types.",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/notification-badge"],
+    files: [
+      {
+        path: "registry/example/notification-badge-demo.tsx",
+        type: "registry:example",
+        target: "components/notification-badge-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/notification-badge-demo.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "notifications-popover-demo": {
+    name: "notifications-popover-demo",
+    description:
+      "Example showing a dropdown menu component for displaying notifications with different types and read states.",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/notifications-popover"],
+    files: [
+      {
+        path: "registry/example/notifications-popover-demo.tsx",
+        type: "registry:example",
+        target: "components/notifications-popover-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/notifications-popover-demo.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "notification-demo": {
+    name: "notification-demo",
+    description:
+      "Example showing a clean notification popover component with title, description, and timestamp display.",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/notification"],
+    files: [
+      {
+        path: "registry/example/notification-demo.tsx",
+        type: "registry:example",
+        target: "components/notification-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/notification-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "notification-alt-demo": {
+    name: "notification-alt-demo",
+    description:
+      "Example showing an enhanced notification component with info tooltips, clickable links, and different notification types.",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/notification-alt"],
+    files: [
+      {
+        path: "registry/example/notification-alt-demo.tsx",
+        type: "registry:example",
+        target: "components/notification-alt-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/notification-alt-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "notifications-with-actions-demo": {
+    name: "notifications-with-actions-demo",
+    description:
+      "Example showing interactive notification component with swipe-to-reveal actions like archive and delete.",
+    type: "registry:example",
+    registryDependencies: [
+      "https://www.ruixen.com/r/notifications-with-actions",
+    ],
+    files: [
+      {
+        path: "registry/example/notifications-with-actions-demo.tsx",
+        type: "registry:example",
+        target: "components/notifications-with-actions-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/notifications-with-actions-demo.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "notifications-carousel-demo": {
+    name: "notifications-carousel-demo",
+    description:
+      "Example showing a carousel-style notification component that displays one notification at a time with navigation controls.",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/notifications-carousel"],
+    files: [
+      {
+        path: "registry/example/notifications-carousel-demo.tsx",
+        type: "registry:example",
+        target: "components/notifications-carousel-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/notifications-carousel-demo.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "notification-toggle-demo": {
+    name: "notification-toggle-demo",
+    description:
+      "Example showing a versatile notification component that toggles between carousel and list view modes.",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/notification-toggle"],
+    files: [
+      {
+        path: "registry/example/notification-toggle-demo.tsx",
+        type: "registry:example",
+        target: "components/notification-toggle-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/notification-toggle-demo.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "notifications-filter-demo": {
+    name: "notifications-filter-demo",
+    description:
+      "Example showing a notification component with category filtering to organize notifications by type.",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/notifications-filter"],
+    files: [
+      {
+        path: "registry/example/notifications-filter-demo.tsx",
+        type: "registry:example",
+        target: "components/notifications-filter-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/notifications-filter-demo.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "avatar-notifications-demo": {
+    name: "avatar-notifications-demo",
+    description:
+      "Example showing a notification component that displays user avatars with messages and animated status indicators.",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/avatar-notifications"],
+    files: [
+      {
+        path: "registry/example/avatar-notifications-demo.tsx",
+        type: "registry:example",
+        target: "components/avatar-notifications-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/avatar-notifications-demo.tsx"
       );
       const exportName =
         Object.keys(mod).find(

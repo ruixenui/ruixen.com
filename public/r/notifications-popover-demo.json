@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "notifications-popover-demo",
+  "type": "registry:example",
+  "title": "Notifications Popover Demo",
+  "description": "Example showing a dropdown menu component for displaying notifications with different types and read states.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/notifications-popover"
+  ],
+  "files": [
+    {
+      "path": "registry/example/notifications-popover-demo.tsx",
+      "content": "\"use client\";\r\n\r\nimport NotificationsPopover, { Notification } from \"@/registry/ruixenui/notifications-popover\";\r\n\r\nexport default function NotificationsPopoverDemo() {\r\n  const demoNotifications: Notification[] = [\r\n    { id: 1, type: \"message\", message: \"New message from Alice\", timestamp: \"Just now\" },\r\n    { id: 2, type: \"alert\", message: \"Server backup failed\", timestamp: \"5m ago\" },\r\n    { id: 3, type: \"success\", message: \"Database restored successfully\", timestamp: \"10m ago\", read: true },\r\n  ];\r\n\r\n  return (\r\n    <div className=\"min-h-screen flex flex-col items-center justify-center p-6 bg-gray-50 space-y-6\">\r\n      <h1 className=\"text-2xl font-bold\">NotificationsPopover Demo</h1>\r\n\r\n      <NotificationsPopover notifications={demoNotifications} />\r\n\r\n      <p className=\"text-gray-500 text-sm\">\r\n        Click the bell icon to see unread notifications. Read notifications appear faded.\r\n      </p>\r\n    </div>\r\n  );\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/notifications-popover-demo.tsx"
+    }
+  ]
+}

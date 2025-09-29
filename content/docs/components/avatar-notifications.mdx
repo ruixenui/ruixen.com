@@ -1,0 +1,114 @@
+---
+title: Avatar Notifications
+description: A notification component that displays user avatars with messages and animated status indicators.
+component: true
+---
+
+<ComponentPreview name="avatar-notifications-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx ruixenui@latest add avatar-notifications
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install lucide-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="avatar-notifications" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop    | Type                 | Default                | Description                 |
+| ------- | -------------------- | ---------------------- | --------------------------- |
+| `items` | `NotificationItem[]` | `defaultNotifications` | Array of notification items |
+
+## NotificationItem Interface
+
+```tsx
+interface NotificationItem {
+  id: string;
+  user: string;
+  avatarUrl?: string;
+  message: string;
+  time: string;
+}
+```
+
+## Features
+
+- **User Avatars**: Display user profile pictures or initials
+- **Animated Status**: Blinking green dot when notifications are present
+- **Clear All**: Button to clear all notifications at once
+- **Fallback Avatars**: Shows user initials when no avatar URL provided
+- **User Messages**: Display user names and their messages
+- **Timestamps**: Show when each notification occurred
+- **Responsive Layout**: Clean layout that works on different screen sizes
+
+## Usage
+
+```tsx
+import AvatarNotifications from "@/components/ui/avatar-notifications";
+
+export default function Example() {
+  const notifications = [
+    {
+      id: "1",
+      user: "Alice",
+      avatarUrl: "https://i.pravatar.cc/40?img=1",
+      message: "Sent you a message.",
+      time: "2m ago",
+    },
+    {
+      id: "2",
+      user: "Bob",
+      avatarUrl: "https://i.pravatar.cc/40?img=2",
+      message: "Commented on your post.",
+      time: "10m ago",
+    },
+    {
+      id: "3",
+      user: "Charlie",
+      message: "Started following you.",
+      time: "30m ago",
+    },
+  ];
+
+  return (
+    <div className="p-6">
+      {/* Default avatar notifications */}
+      <AvatarNotifications />
+
+      {/* Custom notifications */}
+      <AvatarNotifications items={notifications} />
+    </div>
+  );
+}
+```

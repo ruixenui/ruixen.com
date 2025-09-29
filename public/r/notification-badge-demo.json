@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "notification-badge-demo",
+  "type": "registry:example",
+  "title": "Notification Badge Demo",
+  "description": "Example showing a notification badge component with animated count display and different notification types.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/notification-badge"
+  ],
+  "files": [
+    {
+      "path": "registry/example/notification-badge-demo.tsx",
+      "content": "\"use client\"\r\n\r\nimport { useState } from \"react\"\r\nimport NotificationBadge from \"@/registry/ruixenui/notification-badge\"\r\nimport { Button } from \"@/components/ui/button\"\r\n\r\nexport default function NotificationBadgeDemo() {\r\n  const [type, setType] = useState<\"success\" | \"error\" | \"info\" | \"warning\">(\"info\")\r\n\r\n  return (\r\n    <div className=\"min-h-screen flex flex-col items-center justify-center p-6 space-y-8 bg-gray-50\">\r\n      <h1 className=\"text-2xl font-bold\">NotificationBadge Demo</h1>\r\n\r\n      <NotificationBadge\r\n        initialCount={2}\r\n        type={type}\r\n        label=\"Messages\"\r\n        duration={4000}\r\n      />\r\n\r\n      <div className=\"flex gap-2 mt-4\">\r\n        <Button onClick={() => setType(\"success\")}>Success</Button>\r\n        <Button onClick={() => setType(\"error\")}>Error</Button>\r\n        <Button onClick={() => setType(\"info\")}>Info</Button>\r\n        <Button onClick={() => setType(\"warning\")}>Warning</Button>\r\n      </div>\r\n\r\n      <p className=\"text-sm text-muted-foreground\">\r\n        Click the bell to increment notifications. The badge disappears after the duration.\r\n      </p>\r\n    </div>\r\n  )\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/notification-badge-demo.tsx"
+    }
+  ]
+}

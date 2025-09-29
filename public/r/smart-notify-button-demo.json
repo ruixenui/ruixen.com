@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "smart-notify-button-demo",
+  "type": "registry:example",
+  "title": "Smart Notify Button Demo",
+  "description": "Example showing a button component that triggers customizable toast notifications with actions and different types.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/smart-notify-button"
+  ],
+  "files": [
+    {
+      "path": "registry/example/smart-notify-button-demo.tsx",
+      "content": "import SmartNotifyButton from \"@/registry/ruixenui/smart-notify-button\";\r\n\r\nexport default function DemoOne() {\r\n  return (\r\n    <div className=\"flex flex-col gap-6\">\r\n      <SmartNotifyButton />\r\n      <SmartNotifyButton\r\n        label=\"Save Changes\"\r\n        message=\"Data saved successfully!\"\r\n        description=\"Your changes have been stored.\"\r\n        type=\"success\"\r\n        actionLabel=\"Undo\"\r\n        actionCallback={() => console.log(\"Undo clicked\")}\r\n        position=\"bottom-left\"\r\n      />\r\n    </div>\r\n    );\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/smart-notify-button-demo.tsx"
+    }
+  ]
+}

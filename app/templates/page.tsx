@@ -232,7 +232,8 @@ export default function TemplatesPage() {
         <div className="text-center space-y-4 py-12 border-t">
           <h2 className="text-2xl font-bold">More Templates Coming Soon</h2>
           <p className="text-muted-foreground max-w-md mx-auto">
-            We&apos;re working on more amazing templates. Stay tuned for updates!
+            We&apos;re working on more amazing templates. Stay tuned for
+            updates!
           </p>
           <Link
             href="https://github.com/ruixenui/ruixen-ui"

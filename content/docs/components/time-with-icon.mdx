@@ -1,0 +1,55 @@
+---
+title: Time With Icon
+date: 2024-12-29
+description: A time input field with dynamic icons that change based on the selected time
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="time-with-icon-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/time-with-icon"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="time-with-icon" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop          | Type     | Default         | Description                        |
+| ------------- | -------- | --------------- | ---------------------------------- |
+| `label`       | `string` | `"Select Time"` | The label for the time input       |
+| `defaultTime` | `string` | `undefined`     | Default time value in HH:MM format |
+
+## Features
+
+- **Dynamic Icons**: Automatically switches between sun (day) and moon (night) icons based on time
+- **Time Range Detection**: Day hours (6 AM - 6 PM) show sun icon, night hours show moon icon
+- **Default Clock Icon**: Shows clock icon when no time is selected
+- **Native Time Picker**: Uses browser's native time input for best UX

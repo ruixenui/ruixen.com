@@ -1,0 +1,73 @@
+---
+title: Action Hub Input
+date: 2024-12-29
+description: A versatile input field with customizable action buttons and status indicators
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="action-hub-input-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/action-hub-input"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="action-hub-input" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop             | Type                                | Default                                | Description                   |
+| ---------------- | ----------------------------------- | -------------------------------------- | ----------------------------- |
+| `label`          | `string`                            | `"Action Input"`                       | The label for the input field |
+| `placeholder`    | `string`                            | `"Type command, email, or snippet..."` | Placeholder text              |
+| `type`           | `string`                            | `"text"`                               | Input type                    |
+| `defaultValue`   | `string`                            | `""`                                   | Default input value           |
+| `validate`       | `(value: string) => string \| null` | `undefined`                            | Custom validation function    |
+| `actions`        | `ActionHubInputAction[]`            | `[]`                                   | Array of action buttons       |
+| `historyEnabled` | `boolean`                           | `true`                                 | Enable input history tracking |
+
+## Action Interface
+
+```typescript
+interface ActionHubInputAction {
+  icon: JSX.Element;
+  onClick: (value: string) => Promise<void> | void;
+  tooltip?: string;
+  showOnEmpty?: boolean;
+}
+```
+
+## Features
+
+- **Customizable Actions**: Add any number of action buttons with custom icons and behaviors
+- **Status Indicators**: Visual feedback for loading, success, and error states
+- **Input History**: Tracks and suggests previously entered values
+- **Async Support**: Handles both synchronous and asynchronous action functions
+- **Conditional Display**: Actions can be shown/hidden based on input state
+- **Validation Support**: Built-in validation with error display

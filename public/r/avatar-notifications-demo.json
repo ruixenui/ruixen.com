@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar-notifications-demo",
+  "type": "registry:example",
+  "title": "Avatar Notifications Demo",
+  "description": "Example showing a notification component that displays user avatars with messages and animated status indicators.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/avatar-notifications"
+  ],
+  "files": [
+    {
+      "path": "registry/example/avatar-notifications-demo.tsx",
+      "content": "\"use client\";\r\n\r\nimport React from \"react\";\r\nimport AvatarNotifications from \"@/registry/ruixenui/avatar-notifications\";\r\n\r\nexport default function DemoAvatarNotifications() {\r\n  const demoItems = [\r\n    {\r\n      id: \"1\",\r\n      user: \"Alice\",\r\n      avatarUrl: \"https://i.pravatar.cc/40?img=1\",\r\n      message: \"Sent you a message.\",\r\n      time: \"2m ago\",\r\n    },\r\n    {\r\n      id: \"2\",\r\n      user: \"Bob\",\r\n      avatarUrl: \"https://i.pravatar.cc/40?img=2\",\r\n      message: \"Commented on your post.\",\r\n      time: \"10m ago\",\r\n    },\r\n    {\r\n      id: \"3\",\r\n      user: \"Charlie\",\r\n      avatarUrl: \"https://i.pravatar.cc/40?img=3\",\r\n      message: \"Liked your photo.\",\r\n      time: \"30m ago\",\r\n    },\r\n    {\r\n      id: \"4\",\r\n      user: \"Diana\",\r\n      avatarUrl: \"https://i.pravatar.cc/40?img=4\",\r\n      message: \"Started following you.\",\r\n      time: \"1h ago\",\r\n    },\r\n  ];\r\n\r\n  return (\r\n    <div className=\"min-h-screen flex items-center justify-center bg-gray-50 p-4\">\r\n      <div className=\"space-y-6 w-full max-w-md\">\r\n        <h1 className=\"text-xl font-bold text-gray-800 text-center\">\r\n          Avatar Notifications Demo\r\n        </h1>\r\n\r\n        <div className=\"flex justify-center\">\r\n          <AvatarNotifications items={demoItems} />\r\n        </div>\r\n      </div>\r\n    </div>\r\n  );\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/avatar-notifications-demo.tsx"
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+---
+title: Notifications Carousel
+description: A carousel-style notification component that displays one notification at a time with navigation controls.
+component: true
+---
+
+<ComponentPreview name="notifications-carousel-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx ruixenui@latest add notifications-carousel
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install lucide-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="notifications-carousel" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop        | Type                                     | Default                | Description                 |
+| ----------- | ---------------------------------------- | ---------------------- | --------------------------- |
+| `items`     | `NotificationItem[]`                     | `defaultNotifications` | Array of notification items |
+| `placement` | `"top" \| "bottom" \| "left" \| "right"` | `"bottom"`             | Popover placement position  |
+
+## NotificationItem Interface
+
+```tsx
+interface NotificationItem {
+  id: string;
+  title: string;
+  description: string;
+  time: string;
+}
+```
+
+## Features
+
+- **Carousel Navigation**: Navigate through notifications one at a time
+- **Smooth Transitions**: Smooth animation between notifications
+- **Navigation Controls**: Previous and next buttons for easy navigation
+- **Emoji Support**: Rich emoji support in notification titles
+- **Placement Options**: Choose where the popover appears
+- **Responsive Design**: Works well on different screen sizes
+
+## Usage
+
+```tsx
+import NotificationsCarousel from "@/components/ui/notifications-carousel";
+
+export default function Example() {
+  const notifications = [
+    {
+      id: "1",
+      title: "🎉 Welcome",
+      description: "Thanks for checking out the carousel notifications!",
+      time: "just now",
+    },
+    {
+      id: "2",
+      title: "⚡ System Update",
+      description: "A new feature has been rolled out to your account.",
+      time: "1h ago",
+    },
+    {
+      id: "3",
+      title: "⏰ Reminder",
+      description: "Don't forget to complete your profile setup.",
+      time: "3h ago",
+    },
+    {
+      id: "4",
+      title: "📊 Weekly Report",
+      description: "Your weekly report is now available.",
+      time: "1d ago",
+    },
+  ];
+
+  return (
+    <div className="p-6">
+      {/* Default carousel */}
+      <NotificationsCarousel />
+
+      {/* Custom notifications */}
+      <NotificationsCarousel items={notifications} placement="top" />
+    </div>
+  );
+}
+```

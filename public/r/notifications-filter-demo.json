@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "notifications-filter-demo",
+  "type": "registry:example",
+  "title": "Notifications Filter Demo",
+  "description": "Example showing a notification component with category filtering to organize notifications by type.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/notifications-filter"
+  ],
+  "files": [
+    {
+      "path": "registry/example/notifications-filter-demo.tsx",
+      "content": "\"use client\";\r\n\r\nimport React from \"react\";\r\nimport NotificationsFilter from \"@/registry/ruixenui/notifications-filter\";\r\nimport { Info, AlertCircle, Calendar } from \"lucide-react\";\r\nimport { NotificationItem } from \"@/registry/ruixenui/notifications-filter\";\r\n\r\n\r\nexport default function DemoNotificationsFilter() {\r\n    const demoItems: NotificationItem[] = [\r\n        {\r\n            id: \"1\",\r\n            category: \"updates\", // ✅ matches union type\r\n            icon: <Info className=\"h-4 w-4 text-blue-500\" />,\r\n            title: \"System Update\",\r\n            description: \"A new feature has been deployed.\",\r\n            time: \"just now\",\r\n        },\r\n        {\r\n            id: \"2\",\r\n            category: \"alerts\", // ✅ matches union type\r\n            icon: <AlertCircle className=\"h-4 w-4 text-red-500\" />,\r\n            title: \"Security Alert\",\r\n            description: \"Suspicious login detected.\",\r\n            time: \"1h ago\",\r\n        },\r\n        {\r\n            id: \"3\",\r\n            category: \"reminders\", // ✅ matches union type\r\n            icon: <Calendar className=\"h-4 w-4 text-green-500\" />,\r\n            title: \"Meeting Reminder\",\r\n            description: \"Project sync at 3 PM.\",\r\n            time: \"2h ago\",\r\n        },\r\n        {\r\n            id: \"4\",\r\n            category: \"updates\", // ✅ matches union type\r\n            icon: <Info className=\"h-4 w-4 text-purple-500\" />,\r\n            title: \"Weekly Report\",\r\n            description: \"Your weekly summary is ready.\",\r\n            time: \"1d ago\",\r\n        },\r\n    ];\r\n\r\n\r\n    return (\r\n        <div className=\"min-h-screen flex items-center justify-center bg-gray-50 p-4\">\r\n            <div className=\"space-y-4 w-full max-w-md\">\r\n                <h1 className=\"text-xl font-bold text-gray-800 text-center\">\r\n                    Notifications Filter Demo\r\n                </h1>\r\n\r\n                <div className=\"flex justify-center\">\r\n                    <NotificationsFilter items={demoItems} placement=\"bottom\" />\r\n                </div>\r\n            </div>\r\n        </div>\r\n    );\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/notifications-filter-demo.tsx"
+    }
+  ]
+}
