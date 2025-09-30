@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "job-card-demo",
+  "type": "registry:example",
+  "title": "Job Card Demo",
+  "description": "Example showing a professional job listing card with company info and action buttons.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/job-card"
+  ],
+  "files": [
+    {
+      "path": "registry/example/job-card-demo.tsx",
+      "content": "// app/job-card-demo/page.tsx (or pages/job-card-demo.tsx in older Next.js versions)\r\n\"use client\"\r\n\r\nimport JobCard from \"@/registry/ruixenui/job-card\"\r\n\r\nexport default function JobCardDemoPage() {\r\n  const demoJobs = [\r\n    {\r\n      title: \"Frontend Developer\",\r\n      company: \"OpenCV University\",\r\n      rate: \"$90k - $110k\",\r\n      location: \"Bangalore, India\",\r\n      type: \"Full-time\",\r\n      experience: \"3+ years\",\r\n      logoUrl: \"https://avatars.githubusercontent.com/u/1730971?s=200&v=4\",\r\n    },\r\n    {\r\n      title: \"Backend Engineer\",\r\n      company: \"Tech Corp\",\r\n      rate: \"$80k - $100k\",\r\n      location: \"Remote\",\r\n      type: \"Contract\",\r\n      experience: \"2+ years\",\r\n      logoUrl: \"\",\r\n    },\r\n    {\r\n      title: \"UI/UX Designer\",\r\n      company: \"DesignHub\",\r\n      rate: \"$70k - $90k\",\r\n      location: \"New York, USA\",\r\n      type: \"Part-time\",\r\n      experience: \"5+ years\",\r\n      logoUrl: \"\",\r\n    },\r\n  ]\r\n\r\n  return (\r\n    <div className=\"min-h-screen bg-gray-50 p-8\">\r\n      <h1 className=\"mb-6 text-3xl font-bold text-center\">JobCard Demo</h1>\r\n      <div className=\"flex flex-wrap justify-center gap-6\">\r\n        {demoJobs.map((job, index) => (\r\n          <JobCard key={index} {...job} />\r\n        ))}\r\n      </div>\r\n    </div>\r\n  )\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/job-card-demo.tsx"
+    }
+  ]
+}

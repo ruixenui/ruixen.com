@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "magic-tree-demo",
+  "type": "registry:example",
+  "title": "Magic Tree Demo",
+  "description": "Example showing a magical file tree with sparkle effects and interactive animations.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/magic-tree"
+  ],
+  "files": [
+    {
+      "path": "registry/example/magic-tree-demo.tsx",
+      "content": "// app/magic-tree-demo/page.tsx\r\n\"use client\";\r\n\r\nimport React from \"react\";\r\nimport MagicTree, { MagicNode } from \"@/registry/ruixenui/magic-tree\";\r\nimport { Card, CardContent, CardHeader, CardTitle } from \"@/components/ui/card\";\r\n\r\nexport default function MagicTreeDemoPage() {\r\n  const handleSelect = (node: MagicNode) => {\r\n    console.log(\"✨ Selected Magic Node:\", node);\r\n  };\r\n\r\n  return (\r\n    <div className=\"min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-white dark:from-gray-900 dark:via-purple-900 dark:to-black p-8 flex flex-col items-center gap-8\">\r\n      {/* Page Heading */}\r\n      <h1 className=\"text-4xl font-bold text-purple-700 dark:text-purple-300 drop-shadow-md\">\r\n        ✨ MagicTree Demo\r\n      </h1>\r\n\r\n      {/* Card Container */}\r\n      <Card className=\"w-full max-w-2xl shadow-lg rounded-xl border border-purple-200 dark:border-purple-800 bg-white/70 dark:bg-gray-800/70 backdrop-blur\">\r\n        <CardHeader>\r\n          <CardTitle className=\"text-xl font-semibold text-purple-600 dark:text-purple-300\">\r\n            Explore the Magical Tree 🌟\r\n          </CardTitle>\r\n        </CardHeader>\r\n\r\n        <CardContent>\r\n          <MagicTree onSelect={handleSelect} />\r\n        </CardContent>\r\n      </Card>\r\n\r\n      <p className=\"text-sm text-gray-500 dark:text-gray-400\">\r\n        Click folders to expand/collapse. Selected items sparkle ✨ in the console!\r\n      </p>\r\n    </div>\r\n  );\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/magic-tree-demo.tsx"
+    }
+  ]
+}

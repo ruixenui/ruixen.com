@@ -438,6 +438,86 @@ export const docsConfig: DocsConfig = {
             },
           ],
         },
+        {
+          title: "Forms",
+          items: [
+            {
+              title: "Sign In Form",
+              href: `/docs/components/sign-in-form`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Create Account Form",
+              href: `/docs/components/create-account-form`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Newsletter Form",
+              href: `/docs/components/newsletter-form`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Sign In Card",
+              href: `/docs/components/sign-in-card`,
+              items: [],
+              label: "New",
+            },
+          ],
+        },
+        {
+          title: "Job & Career",
+          items: [
+            {
+              title: "Job Card",
+              href: `/docs/components/job-card`,
+              items: [],
+              label: "New",
+            },
+          ],
+        },
+        {
+          title: "Notifications & Alerts",
+          items: [
+            {
+              title: "Cookie Notice",
+              href: `/docs/components/cookie-notice`,
+              items: [],
+              label: "New",
+            },
+          ],
+        },
+        {
+          title: "File Management",
+          items: [
+            {
+              title: "File Tree Manager",
+              href: `/docs/components/file-tree-manager`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Motion File Tree",
+              href: `/docs/components/motion-file-tree`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Magic Tree",
+              href: `/docs/components/magic-tree`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Tree Node Tooltip",
+              href: `/docs/components/tree-node-tooltip`,
+              items: [],
+              label: "New",
+            },
+          ],
+        },
       ],
     },
     {

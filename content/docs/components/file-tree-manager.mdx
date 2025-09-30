@@ -1,0 +1,63 @@
+---
+title: File Tree Manager
+date: 2024-06-01
+description: A comprehensive file tree component with CRUD operations and drag-and-drop
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="file-tree-manager-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/file-tree-manager"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="file-tree-manager" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop              | Type                                                                    | Default | Description                    |
+| ----------------- | ----------------------------------------------------------------------- | ------- | ------------------------------ |
+| `treeData`        | `FileNode[]`                                                            | `[]`    | Initial tree data              |
+| `initialExpanded` | `string[]`                                                              | `[]`    | Initially expanded node IDs    |
+| `initialSelected` | `string \| null`                                                        | `null`  | Initially selected node ID     |
+| `onSelect`        | `(node: FileNode) => void`                                              | -       | Callback when node is selected |
+| `onDelete`        | `(node: FileNode) => void`                                              | -       | Callback when node is deleted  |
+| `onCreate`        | `(parent?: FileNode, type?: "file" \| "folder", name?: string) => void` | -       | Callback when node is created  |
+| `onRename`        | `(node: FileNode, newName: string) => void`                             | -       | Callback when node is renamed  |
+
+## Features
+
+- **CRUD Operations**: Create, read, update, delete files and folders
+- **Expandable Tree**: Collapsible folder structure
+- **Context Menu**: Right-click actions
+- **Inline Editing**: Rename files and folders
+- **Selection State**: Track selected items
+- **Keyboard Navigation**: Arrow key support
+- **Tooltips**: Helpful action hints

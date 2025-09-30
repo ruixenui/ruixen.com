@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "file-tree-manager-demo",
+  "type": "registry:example",
+  "title": "File Tree Manager Demo",
+  "description": "Example showing a comprehensive file tree component with CRUD operations and management features.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/file-tree-manager"
+  ],
+  "files": [
+    {
+      "path": "registry/example/file-tree-manager-demo.tsx",
+      "content": "\"use client\"\r\n\r\nimport FileTree, { FileNode } from \"@/registry/ruixenui/file-tree-manager\"\r\nimport { Card, CardContent, CardHeader, CardTitle } from \"@/components/ui/card\"\r\n\r\nconst demoTree: FileNode[] = [\r\n  {\r\n    id: \"1\",\r\n    name: \"src\",\r\n    type: \"folder\",\r\n    children: [\r\n      { id: \"1-1\", name: \"components\", type: \"folder\", children: [{ id: \"1-1-1\", name: \"Button.tsx\", type: \"file\" }] },\r\n      { id: \"1-2\", name: \"app.tsx\", type: \"file\" },\r\n      { id: \"1-3\", name: \"styles.css\", type: \"file\" },\r\n    ],\r\n  },\r\n  {\r\n    id: \"2\",\r\n    name: \"public\",\r\n    type: \"folder\",\r\n    children: [{ id: \"2-1\", name: \"favicon.ico\", type: \"file\" }],\r\n  },\r\n  { id: \"3\", name: \"package.json\", type: \"file\" },\r\n]\r\n\r\nexport default function FileTreeDemoPage() {\r\n  return (\r\n    <div className=\"min-h-screen p-8 bg-gray-50 flex flex-col items-center gap-6\">\r\n      <h1 className=\"text-3xl font-bold text-center\">FileTree Component Demo</h1>\r\n\r\n      <Card className=\"w-full max-w-3xl\">\r\n        <CardHeader>\r\n          <CardTitle>Interactive FileTree Demo</CardTitle>\r\n        </CardHeader>\r\n        <CardContent>\r\n          <FileTree\r\n            treeData={demoTree}\r\n            initialExpanded={[\"1\", \"1-1\"]}\r\n            initialSelected={\"1-1-1\"}\r\n            onSelect={(node) => console.log(\"Selected:\", node)}\r\n            onDelete={(node) => console.log(\"Deleted:\", node)}\r\n            onCreate={(parent, type, name) => console.log(\"Created:\", { parent, type, name })}\r\n            onRename={(node, newName) => console.log(\"Renamed:\", node, \"to\", newName)}\r\n          />\r\n        </CardContent>\r\n      </Card>\r\n    </div>\r\n  )\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/file-tree-manager-demo.tsx"
+    }
+  ]
+}

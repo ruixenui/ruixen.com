@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "newsletter-form",
+  "type": "registry:ui",
+  "title": "Newsletter Form",
+  "description": "A simple newsletter subscription form with success state.",
+  "registryDependencies": [
+    "button",
+    "input",
+    "label",
+    "card"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/newsletter-form.tsx",
+      "content": "\"use client\"\r\n\r\nimport * as React from \"react\"\r\nimport { useState } from \"react\"\r\nimport { Button } from \"@/components/ui/button\"\r\nimport { Input } from \"@/components/ui/input\"\r\nimport { Label } from \"@/components/ui/label\"\r\nimport { Card, CardContent, CardHeader, CardTitle } from \"@/components/ui/card\"\r\n\r\nexport default function NewsletterForm() {\r\n  const [email, setEmail] = useState(\"\")\r\n  const [submitted, setSubmitted] = useState(false)\r\n\r\n  const handleSubmit = (e: React.FormEvent) => {\r\n    e.preventDefault()\r\n    setSubmitted(true)\r\n  }\r\n\r\n  return (\r\n    <Card className=\"w-full max-w-md mx-auto shadow-lg rounded-2xl\">\r\n      <CardHeader>\r\n        <CardTitle className=\"text-center text-xl font-semibold\">\r\n          Stay Updated\r\n        </CardTitle>\r\n      </CardHeader>\r\n      <CardContent>\r\n        {!submitted ? (\r\n          <form onSubmit={handleSubmit} className=\"space-y-4\">\r\n            <div className=\"space-y-2\">\r\n              <Label htmlFor=\"email\">Your Email Address</Label>\r\n              <Input\r\n                id=\"email\"\r\n                type=\"email\"\r\n                placeholder=\"example@domain.com\"\r\n                value={email}\r\n                onChange={(e) => setEmail(e.target.value)}\r\n                required\r\n              />\r\n            </div>\r\n            <Button type=\"submit\" className=\"w-full\">\r\n              Join the List\r\n            </Button>\r\n          </form>\r\n        ) : (\r\n          <p className=\"text-center text-green-600 font-medium\">\r\n            🎉 You’re in! We’ll keep you posted with exciting news and updates.\r\n          </p>\r\n        )}\r\n      </CardContent>\r\n    </Card>\r\n  )\r\n}\r\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/newsletter-form.tsx"
+    }
+  ]
+}

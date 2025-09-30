@@ -9,12 +9,14 @@ export default function DemoOne() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-6 space-y-6">
-      <h1 className="text-2xl font-bold text-center">Smart Notify Button Demo</h1>
-      
+      <h1 className="text-2xl font-bold text-center">
+        Smart Notify Button Demo
+      </h1>
+
       <div className="flex flex-col gap-6">
         {/* Basic notification */}
         <SmartNotifyButton />
-        
+
         {/* Success notification with action */}
         <SmartNotifyButton
           label="Save Changes"
@@ -25,7 +27,7 @@ export default function DemoOne() {
           actionCallback={handleUndo}
           position="bottom-left"
         />
-        
+
         {/* Error notification */}
         <SmartNotifyButton
           label="Delete Item"
@@ -34,9 +36,10 @@ export default function DemoOne() {
           variant="outline"
         />
       </div>
-      
+
       <p className="text-sm text-muted-foreground text-center max-w-md">
-        Click the buttons to see different types of toast notifications with customizable actions and positioning.
+        Click the buttons to see different types of toast notifications with
+        customizable actions and positioning.
       </p>
     </div>
   );

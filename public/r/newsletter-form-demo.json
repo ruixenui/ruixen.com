@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "newsletter-form-demo",
+  "type": "registry:example",
+  "title": "Newsletter Form Demo",
+  "description": "Example showing a simple newsletter subscription form with success state.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/newsletter-form"
+  ],
+  "files": [
+    {
+      "path": "registry/example/newsletter-form-demo.tsx",
+      "content": "import NewsletterForm from \"@/registry/ruixenui/newsletter-form\";\r\n\r\nexport default function DemoOne() {\r\n  return <NewsletterForm />;\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/newsletter-form-demo.tsx"
+    }
+  ]
+}

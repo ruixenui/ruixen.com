@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cookie-notice",
+  "type": "registry:ui",
+  "title": "Cookie Notice",
+  "description": "A GDPR-compliant cookie consent notice with customizable preferences.",
+  "registryDependencies": [
+    "button",
+    "card"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/cookie-notice.tsx",
+      "content": "\"use client\";\r\n\r\nimport { useState } from \"react\";\r\nimport { Button } from \"@/components/ui/button\";\r\nimport { Card, CardContent } from \"@/components/ui/card\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nexport default function CookieNotice() {\r\n  const [visible, setVisible] = useState(true);\r\n\r\n  if (!visible) return null;\r\n\r\n  return (\r\n    <div className=\"fixed bottom-6 left-1/4 -translate-x-1/2 z-50\">\r\n      <Card className=\"w-[350px] shadow-lg rounded-2xl border bg-background text-foreground\">\r\n        <CardContent className=\"p-5\">\r\n          <div className=\"flex flex-col space-y-3\">\r\n            <div className=\"flex items-center space-x-2\">\r\n              <span className=\"text-lg\">🍪</span>\r\n              <h2 className=\"font-semibold\">Cookie Notice</h2>\r\n            </div>\r\n            <p className=\"text-sm text-muted-foreground\">\r\n              We use cookies to ensure that we give you the best experience on\r\n              our website.{\" \"}\r\n              <a\r\n                href=\"#\"\r\n                className=\"underline text-primary hover:text-primary/80\"\r\n              >\r\n                Read cookies policies.\r\n              </a>\r\n            </p>\r\n            <div className=\"flex justify-between items-center pt-2\">\r\n              <a\r\n                href=\"#\"\r\n                className=\"text-sm underline hover:text-primary transition\"\r\n              >\r\n                Manage your preferences\r\n              </a>\r\n              <Button\r\n                size=\"sm\"\r\n                onClick={() => setVisible(false)}\r\n                className={cn(\r\n                  \"rounded-lg px-4 py-1 text-white\",\r\n                  \"bg-primary hover:bg-primary/90\"\r\n                )}\r\n              >\r\n                Accept\r\n              </Button>\r\n            </div>\r\n          </div>\r\n        </CardContent>\r\n      </Card>\r\n    </div>\r\n  );\r\n}\r\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/cookie-notice.tsx"
+    }
+  ]
+}

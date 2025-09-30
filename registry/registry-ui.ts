@@ -1460,4 +1460,156 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "sign-in-form",
+    type: "registry:ui",
+    title: "Sign In Form",
+    description:
+      "A professional sign-in form with email/password fields and social login options.",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["button", "input", "label", "checkbox", "card"],
+    files: [
+      {
+        path: "registry/ruixenui/sign-in-form.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/sign-in-form.tsx",
+      },
+    ],
+  },
+  {
+    name: "create-account-form",
+    type: "registry:ui",
+    title: "Create Account Form",
+    description:
+      "A modern account creation form with validation and terms acceptance.",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["button", "input", "label", "card"],
+    files: [
+      {
+        path: "registry/ruixenui/creat-account-form.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/create-account-form.tsx",
+      },
+    ],
+  },
+  {
+    name: "newsletter-form",
+    type: "registry:ui",
+    title: "Newsletter Form",
+    description: "A simple newsletter subscription form with success state.",
+    registryDependencies: ["button", "input", "label", "card"],
+    files: [
+      {
+        path: "registry/ruixenui/newsletter-form.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/newsletter-form.tsx",
+      },
+    ],
+  },
+  {
+    name: "sign-in-card",
+    type: "registry:ui",
+    title: "Sign In Card",
+    description:
+      "A Microsoft-inspired sign-in card with clean design and branding.",
+    registryDependencies: ["button", "input", "card"],
+    files: [
+      {
+        path: "registry/ruixenui/sign-in-card.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/sign-in-card.tsx",
+      },
+    ],
+  },
+  {
+    name: "job-card",
+    type: "registry:ui",
+    title: "Job Card",
+    description:
+      "A professional job listing card with company info and action buttons.",
+    registryDependencies: ["button", "card", "avatar"],
+    files: [
+      {
+        path: "registry/ruixenui/job-card.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/job-card.tsx",
+      },
+    ],
+  },
+  {
+    name: "cookie-notice",
+    type: "registry:ui",
+    title: "Cookie Notice",
+    description:
+      "A GDPR-compliant cookie consent notice with customizable preferences.",
+    registryDependencies: ["button", "card"],
+    files: [
+      {
+        path: "registry/ruixenui/cookie-notice.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/cookie-notice.tsx",
+      },
+    ],
+  },
+  {
+    name: "file-tree-manager",
+    type: "registry:ui",
+    title: "File Tree Manager",
+    description:
+      "A comprehensive file tree component with CRUD operations and management features.",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["button", "input", "card", "tooltip"],
+    files: [
+      {
+        path: "registry/ruixenui/file-tree-manager.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/file-tree-manager.tsx",
+      },
+    ],
+  },
+  {
+    name: "motion-file-tree",
+    type: "registry:ui",
+    title: "Motion File Tree",
+    description:
+      "An animated file tree component with smooth expand/collapse transitions.",
+    dependencies: ["framer-motion", "lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/motion-file-tree.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/motion-file-tree.tsx",
+      },
+    ],
+  },
+  {
+    name: "magic-tree",
+    type: "registry:ui",
+    title: "Magic Tree",
+    description:
+      "A magical file tree with sparkle effects and interactive animations.",
+    dependencies: ["framer-motion", "lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/magic-tree.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/magic-tree.tsx",
+      },
+    ],
+  },
+  {
+    name: "tree-node-tooltip",
+    type: "registry:ui",
+    title: "Tree Node Tooltip",
+    description: "A file tree component with tooltip support for each node.",
+    dependencies: ["framer-motion", "lucide-react"],
+    registryDependencies: ["tooltip"],
+    files: [
+      {
+        path: "registry/ruixenui/tree-node-tooltip.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/tree-node-tooltip.tsx",
+      },
+    ],
+  },
 ];

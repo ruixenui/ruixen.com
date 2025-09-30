@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "create-account-form",
+  "type": "registry:ui",
+  "title": "Create Account Form",
+  "description": "A modern account creation form with validation and terms acceptance.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "button",
+    "input",
+    "label",
+    "card"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/creat-account-form.tsx",
+      "content": "\"use client\";\r\n\r\nimport { useState } from \"react\";\r\nimport { Card, CardContent, CardHeader, CardTitle } from \"@/components/ui/card\";\r\nimport { Button } from \"@/components/ui/button\";\r\nimport { Input } from \"@/components/ui/input\";\r\nimport { Label } from \"@/components/ui/label\";\r\nimport { Mail, User, Lock } from \"lucide-react\";\r\n\r\nexport default function UniqueForm() {\r\n  const [email, setEmail] = useState(\"\");\r\n  const [name, setName] = useState(\"\");\r\n  const [password, setPassword] = useState(\"\");\r\n\r\n  const handleSubmit = (e: React.FormEvent) => {\r\n    e.preventDefault();\r\n    console.log({ name, email, password });\r\n  };\r\n\r\n  return (\r\n    <div className=\"flex items-center justify-center min-h-screen\">\r\n      <Card className=\"w-full max-w-md shadow-lg rounded-2xl border border-gray-200\">\r\n        <CardHeader>\r\n          <CardTitle className=\"text-2xl font-semibold text-center text-gray-800\">\r\n            Create Your Account\r\n          </CardTitle>\r\n          <p className=\"text-center text-sm text-gray-500 mt-1\">\r\n            Sign up and start exploring features tailored just for you.\r\n          </p>\r\n        </CardHeader>\r\n        <CardContent>\r\n          <form onSubmit={handleSubmit} className=\"space-y-5\">\r\n            <div>\r\n              <Label htmlFor=\"name\">Full Name</Label>\r\n              <div className=\"flex items-center gap-2 border rounded-lg px-3 py-2 bg-white\">\r\n                <User className=\"w-4 h-4 text-gray-500\" />\r\n                <Input\r\n                  id=\"name\"\r\n                  type=\"text\"\r\n                  placeholder=\"John Doe\"\r\n                  value={name}\r\n                  onChange={(e) => setName(e.target.value)}\r\n                  className=\"border-0 focus-visible:ring-0 focus-visible:outline-none shadow-none\"\r\n                />\r\n              </div>\r\n            </div>\r\n\r\n            <div>\r\n              <Label htmlFor=\"email\">Email Address</Label>\r\n              <div className=\"flex items-center gap-2 border rounded-lg px-3 py-2 bg-white\">\r\n                <Mail className=\"w-4 h-4 text-gray-500\" />\r\n                <Input\r\n                  id=\"email\"\r\n                  type=\"email\"\r\n                  placeholder=\"you@example.com\"\r\n                  value={email}\r\n                  onChange={(e) => setEmail(e.target.value)}\r\n                  className=\"border-0 focus-visible:ring-0 focus-visible:outline-none shadow-none\"\r\n                />\r\n              </div>\r\n            </div>\r\n\r\n            <div>\r\n              <Label htmlFor=\"password\">Password</Label>\r\n              <div className=\"flex items-center gap-2 border rounded-lg px-3 py-2 bg-white\">\r\n                <Lock className=\"w-4 h-4 text-gray-500\" />\r\n                <Input\r\n                  id=\"password\"\r\n                  type=\"password\"\r\n                  placeholder=\"••••••••\"\r\n                  value={password}\r\n                  onChange={(e) => setPassword(e.target.value)}\r\n                  className=\"border-0 focus-visible:ring-0 focus-visible:outline-none shadow-none\"\r\n                />\r\n              </div>\r\n            </div>\r\n\r\n            <Button\r\n              type=\"submit\"\r\n              className=\"w-full rounded-xl hover:cursor-pointer text-white font-medium shadow-md\"\r\n            >\r\n              Get Started\r\n            </Button>\r\n          </form>\r\n\r\n          <p className=\"text-xs text-gray-500 text-center mt-4\">\r\n            By continuing, you agree to our{\" \"}\r\n            <span className=\"text-indigo-600 font-medium cursor-pointer hover:underline\">\r\n              Terms of Service\r\n            </span>{\" \"}\r\n            and{\" \"}\r\n            <span className=\"text-indigo-600 font-medium cursor-pointer hover:underline\">\r\n              Privacy Policy\r\n            </span>\r\n            .\r\n          </p>\r\n        </CardContent>\r\n      </Card>\r\n    </div>\r\n  );\r\n}\r\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/create-account-form.tsx"
+    }
+  ]
+}

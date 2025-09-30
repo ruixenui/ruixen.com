@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tree-node-tooltip",
+  "type": "registry:ui",
+  "title": "Tree Node Tooltip",
+  "description": "A file tree component with tooltip support for each node.",
+  "dependencies": [
+    "framer-motion",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "tooltip"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/tree-node-tooltip.tsx",
+      "content": "\"use client\";\r\n\r\nimport React, { useState } from \"react\";\r\nimport { motion, AnimatePresence } from \"framer-motion\";\r\nimport { cn } from \"@/lib/utils\";\r\nimport { Folder, File } from \"lucide-react\";\r\nimport {\r\n  Tooltip,\r\n  TooltipContent,\r\n  TooltipProvider,\r\n  TooltipTrigger,\r\n} from \"@/components/ui/tooltip\";\r\n\r\nexport type TreeNode = {\r\n  id: string;\r\n  name: string;\r\n  tooltip?: string;\r\n  type: \"folder\" | \"file\";\r\n  children?: TreeNode[];\r\n};\r\n\r\nconst demoData: TreeNode[] = [\r\n  {\r\n    id: \"1\",\r\n    name: \"src\",\r\n    tooltip: \"src\",\r\n    type: \"folder\",\r\n    children: [\r\n      {\r\n        id: \"2\",\r\n        name: \"components\",\r\n        tooltip: \"components\",\r\n        type: \"folder\",\r\n        children: [\r\n          { id: \"3\", name: \"Button.tsx\", tooltip: \"Button's tooltip\", type: \"file\" },\r\n          { id: \"4\", name: \"Card.tsx\", tooltip: \"Card's tooltip\", type: \"file\" },\r\n        ],\r\n      },\r\n      {\r\n        id: \"5\",\r\n        name: \"lib\",\r\n        tooltip: \"lib\",\r\n        type: \"folder\",\r\n        children: [{ id: \"6\", name: \"utils.ts\", tooltip: \"utils's tooltip\", type: \"file\" }],\r\n      },\r\n    ],\r\n  },\r\n];\r\n\r\nexport default function TreeNodeTooltip({ node }: { node: TreeNode }) {\r\n  const [expanded, setExpanded] = useState(false);\r\n\r\n  const isFolder = node.type === \"folder\";\r\n\r\n  const toggle = () => {\r\n    if (isFolder) setExpanded((prev) => !prev);\r\n  };\r\n\r\n  return (\r\n    <div>\r\n      <TooltipProvider>\r\n        <Tooltip>\r\n          <TooltipTrigger asChild>\r\n            <button\r\n              onClick={toggle}\r\n              className={cn(\r\n                \"flex items-center gap-2 px-2 py-1 rounded-md w-full text-left\",\r\n                \"hover:bg-accent hover:text-accent-foreground transition-colors\"\r\n              )}\r\n            >\r\n              {isFolder ? (\r\n                <Folder\r\n                  size={16}\r\n                  className={cn(\r\n                    \"text-muted-foreground\",\r\n                    expanded && \"text-blue-500\"\r\n                  )}\r\n                />\r\n              ) : (\r\n                <File size={16} className=\"text-muted-foreground\" />\r\n              )}\r\n              <span className=\"truncate\">{node.name}</span>\r\n            </button>\r\n          </TooltipTrigger>\r\n          <TooltipContent side=\"right\">{node.tooltip}</TooltipContent>\r\n        </Tooltip>\r\n      </TooltipProvider>\r\n\r\n      {/* Animate children */}\r\n      {isFolder && (\r\n        <AnimatePresence>\r\n          {expanded && (\r\n            <motion.div\r\n              initial={{ height: 0, opacity: 0 }}\r\n              animate={{ height: \"auto\", opacity: 1 }}\r\n              exit={{ height: 0, opacity: 0 }}\r\n              transition={{ duration: 0.2 }}\r\n              className=\"ml-4 border-l pl-2 space-y-1\"\r\n            >\r\n              {node.children?.map((child) => (\r\n                <TreeNodeTooltip key={child.id} node={child} />\r\n              ))}\r\n            </motion.div>\r\n          )}\r\n        </AnimatePresence>\r\n      )}\r\n    </div>\r\n  );\r\n}",
+      "type": "registry:ui",
+      "target": "components/ruixen/tree-node-tooltip.tsx"
+    }
+  ]
+}

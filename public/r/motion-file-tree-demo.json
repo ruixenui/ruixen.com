@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "motion-file-tree-demo",
+  "type": "registry:example",
+  "title": "Motion File Tree Demo",
+  "description": "Example showing an animated file tree component with smooth expand/collapse transitions.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/motion-file-tree"
+  ],
+  "files": [
+    {
+      "path": "registry/example/motion-file-tree-demo.tsx",
+      "content": "\"use client\";\r\n\r\nimport MotionFileTree, { FileNode } from \"@/registry/ruixenui/motion-file-tree\";\r\nimport { Card, CardContent, CardHeader, CardTitle } from \"@/components/ui/card\";\r\n\r\nconst demoTree: FileNode[] = [\r\n  {\r\n    id: \"1\",\r\n    name: \"src\",\r\n    type: \"folder\",\r\n    children: [\r\n      {\r\n        id: \"1-1\",\r\n        name: \"components\",\r\n        type: \"folder\",\r\n        children: [{ id: \"1-1-1\", name: \"Button.tsx\", type: \"file\" }],\r\n      },\r\n      { id: \"1-2\", name: \"app.tsx\", type: \"file\" },\r\n      { id: \"1-3\", name: \"styles.css\", type: \"file\" },\r\n    ],\r\n  },\r\n  {\r\n    id: \"2\",\r\n    name: \"public\",\r\n    type: \"folder\",\r\n    children: [{ id: \"2-1\", name: \"favicon.ico\", type: \"file\" }],\r\n  },\r\n  { id: \"3\", name: \"package.json\", type: \"file\" },\r\n];\r\n\r\nexport default function MotionFileTreeDemoPage() {\r\n  const handleSelect = (node: FileNode) => {\r\n    console.log(\"Selected node:\", node);\r\n  };\r\n\r\n  return (\r\n    <div className=\"min-h-screen p-8 bg-gray-50 flex flex-col items-center gap-6\">\r\n      <h1 className=\"text-3xl font-bold text-center\">MotionFileTree Demo</h1>\r\n\r\n      <Card className=\"w-full max-w-3xl\">\r\n        <CardHeader>\r\n          <CardTitle>Interactive MotionFileTree</CardTitle>\r\n        </CardHeader>\r\n        <CardContent>\r\n          <MotionFileTree\r\n            data={demoTree}\r\n            defaultExpanded={{ \"1\": true, \"1-1\": true }}\r\n            onSelect={handleSelect}\r\n          />\r\n        </CardContent>\r\n      </Card>\r\n    </div>\r\n  );\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/motion-file-tree-demo.tsx"
+    }
+  ]
+}

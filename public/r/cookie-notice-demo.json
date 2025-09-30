@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cookie-notice-demo",
+  "type": "registry:example",
+  "title": "Cookie Notice Demo",
+  "description": "Example showing a GDPR-compliant cookie consent notice with customizable preferences.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/cookie-notice"
+  ],
+  "files": [
+    {
+      "path": "registry/example/cookie-notice-demo.tsx",
+      "content": "import CookieNotice from \"@/registry/ruixenui/cookie-notice\";\r\n\r\nexport default function DemoOne() {\r\n  return <CookieNotice />;\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/cookie-notice-demo.tsx"
+    }
+  ]
+}

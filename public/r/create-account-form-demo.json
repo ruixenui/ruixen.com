@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "create-account-form-demo",
+  "type": "registry:example",
+  "title": "Create Account Form Demo",
+  "description": "Example showing a modern account creation form with validation and terms acceptance.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/create-account-form"
+  ],
+  "files": [
+    {
+      "path": "registry/example/creat-account-form-demo.tsx",
+      "content": "import UniqueForm from \"@/registry/ruixenui/creat-account-form\";\r\n\r\nexport default function DemoOne() {\r\n  return <UniqueForm />;\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/create-account-form-demo.tsx"
+    }
+  ]
+}

@@ -2344,6 +2344,244 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "sign-in-form": {
+    name: "sign-in-form",
+    description:
+      "A professional sign-in form with email/password fields and social login options.",
+    type: "registry:ui",
+    registryDependencies: ["button", "input", "label", "checkbox", "card"],
+    files: [
+      {
+        path: "registry/ruixenui/sign-in-form.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/sign-in-form.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/sign-in-form.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "create-account-form": {
+    name: "create-account-form",
+    description:
+      "A modern account creation form with validation and terms acceptance.",
+    type: "registry:ui",
+    registryDependencies: ["button", "input", "label", "card"],
+    files: [
+      {
+        path: "registry/ruixenui/creat-account-form.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/create-account-form.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/creat-account-form.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "newsletter-form": {
+    name: "newsletter-form",
+    description: "A simple newsletter subscription form with success state.",
+    type: "registry:ui",
+    registryDependencies: ["button", "input", "label", "card"],
+    files: [
+      {
+        path: "registry/ruixenui/newsletter-form.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/newsletter-form.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/newsletter-form.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "sign-in-card": {
+    name: "sign-in-card",
+    description:
+      "A Microsoft-inspired sign-in card with clean design and branding.",
+    type: "registry:ui",
+    registryDependencies: ["button", "input", "card"],
+    files: [
+      {
+        path: "registry/ruixenui/sign-in-card.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/sign-in-card.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/sign-in-card.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "job-card": {
+    name: "job-card",
+    description:
+      "A professional job listing card with company info and action buttons.",
+    type: "registry:ui",
+    registryDependencies: ["button", "card", "avatar"],
+    files: [
+      {
+        path: "registry/ruixenui/job-card.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/job-card.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/job-card.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "cookie-notice": {
+    name: "cookie-notice",
+    description:
+      "A GDPR-compliant cookie consent notice with customizable preferences.",
+    type: "registry:ui",
+    registryDependencies: ["button", "card"],
+    files: [
+      {
+        path: "registry/ruixenui/cookie-notice.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/cookie-notice.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/cookie-notice.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "file-tree-manager": {
+    name: "file-tree-manager",
+    description:
+      "A comprehensive file tree component with CRUD operations and management features.",
+    type: "registry:ui",
+    registryDependencies: ["button", "input", "card", "tooltip"],
+    files: [
+      {
+        path: "registry/ruixenui/file-tree-manager.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/file-tree-manager.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/file-tree-manager.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "motion-file-tree": {
+    name: "motion-file-tree",
+    description:
+      "An animated file tree component with smooth expand/collapse transitions.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/motion-file-tree.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/motion-file-tree.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/motion-file-tree.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "magic-tree": {
+    name: "magic-tree",
+    description:
+      "A magical file tree with sparkle effects and interactive animations.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/magic-tree.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/magic-tree.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/magic-tree.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "tree-node-tooltip": {
+    name: "tree-node-tooltip",
+    description: "A file tree component with tooltip support for each node.",
+    type: "registry:ui",
+    registryDependencies: ["tooltip"],
+    files: [
+      {
+        path: "registry/ruixenui/tree-node-tooltip.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/tree-node-tooltip.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/tree-node-tooltip.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "staggered-faq-section-demo": {
     name: "staggered-faq-section-demo",
     description:
@@ -4743,6 +4981,248 @@ export const Index: Record<string, any> = {
       const mod = await import(
         "@/registry/example/avatar-notifications-demo.tsx"
       );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "sign-in-form-demo": {
+    name: "sign-in-form-demo",
+    description:
+      "Example showing a professional sign-in form with email/password fields and social login options.",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/sign-in-form"],
+    files: [
+      {
+        path: "registry/example/sign-in-form-demo.tsx",
+        type: "registry:example",
+        target: "components/sign-in-form-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/sign-in-form-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "create-account-form-demo": {
+    name: "create-account-form-demo",
+    description:
+      "Example showing a modern account creation form with validation and terms acceptance.",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/create-account-form"],
+    files: [
+      {
+        path: "registry/example/creat-account-form-demo.tsx",
+        type: "registry:example",
+        target: "components/create-account-form-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/creat-account-form-demo.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "newsletter-form-demo": {
+    name: "newsletter-form-demo",
+    description:
+      "Example showing a simple newsletter subscription form with success state.",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/newsletter-form"],
+    files: [
+      {
+        path: "registry/example/newsletter-form-demo.tsx",
+        type: "registry:example",
+        target: "components/newsletter-form-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/newsletter-form-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "sign-in-card-demo": {
+    name: "sign-in-card-demo",
+    description:
+      "Example showing a Microsoft-inspired sign-in card with clean design and branding.",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/sign-in-card"],
+    files: [
+      {
+        path: "registry/example/sign-in-card-demo.tsx",
+        type: "registry:example",
+        target: "components/sign-in-card-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/sign-in-card-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "job-card-demo": {
+    name: "job-card-demo",
+    description:
+      "Example showing a professional job listing card with company info and action buttons.",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/job-card"],
+    files: [
+      {
+        path: "registry/example/job-card-demo.tsx",
+        type: "registry:example",
+        target: "components/job-card-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/job-card-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "cookie-notice-demo": {
+    name: "cookie-notice-demo",
+    description:
+      "Example showing a GDPR-compliant cookie consent notice with customizable preferences.",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/cookie-notice"],
+    files: [
+      {
+        path: "registry/example/cookie-notice-demo.tsx",
+        type: "registry:example",
+        target: "components/cookie-notice-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/cookie-notice-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "file-tree-manager-demo": {
+    name: "file-tree-manager-demo",
+    description:
+      "Example showing a comprehensive file tree component with CRUD operations and management features.",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/file-tree-manager"],
+    files: [
+      {
+        path: "registry/example/file-tree-manager-demo.tsx",
+        type: "registry:example",
+        target: "components/file-tree-manager-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/file-tree-manager-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "motion-file-tree-demo": {
+    name: "motion-file-tree-demo",
+    description:
+      "Example showing an animated file tree component with smooth expand/collapse transitions.",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/motion-file-tree"],
+    files: [
+      {
+        path: "registry/example/motion-file-tree-demo.tsx",
+        type: "registry:example",
+        target: "components/motion-file-tree-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/motion-file-tree-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "magic-tree-demo": {
+    name: "magic-tree-demo",
+    description:
+      "Example showing a magical file tree with sparkle effects and interactive animations.",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/magic-tree"],
+    files: [
+      {
+        path: "registry/example/magic-tree-demo.tsx",
+        type: "registry:example",
+        target: "components/magic-tree-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/magic-tree-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "tree-node-tooltip-demo": {
+    name: "tree-node-tooltip-demo",
+    description:
+      "Example showing a file tree component with tooltip support for each node.",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/tree-node-tooltip"],
+    files: [
+      {
+        path: "registry/example/tree-node-tooltip-demo.tsx",
+        type: "registry:example",
+        target: "components/tree-node-tooltip-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/tree-node-tooltip-demo.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>

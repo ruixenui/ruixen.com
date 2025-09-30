@@ -1,0 +1,57 @@
+---
+title: Tree Node Tooltip
+date: 2024-06-01
+description: A file tree component with tooltip support for each node
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="tree-node-tooltip-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/tree-node-tooltip"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="tree-node-tooltip" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop   | Type       | Default | Description                 |
+| ------ | ---------- | ------- | --------------------------- |
+| `node` | `TreeNode` | -       | Tree node with tooltip data |
+
+## Features
+
+- **Tooltip Support**: Each node can have custom tooltip text
+- **Expandable Structure**: Folders can be expanded/collapsed
+- **Smooth Animations**: Framer Motion powered transitions
+- **Hover Effects**: Visual feedback on hover
+- **File/Folder Icons**: Clear visual distinction
+- **Nested Structure**: Supports deeply nested hierarchies
+- **Demo Data**: Includes sample tree structure

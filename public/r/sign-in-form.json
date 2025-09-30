@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sign-in-form",
+  "type": "registry:ui",
+  "title": "Sign In Form",
+  "description": "A professional sign-in form with email/password fields and social login options.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "button",
+    "input",
+    "label",
+    "checkbox",
+    "card"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/sign-in-form.tsx",
+      "content": "\"use client\"\r\n\r\nimport Image from \"next/image\"\r\nimport { Button } from \"@/components/ui/button\"\r\nimport { Input } from \"@/components/ui/input\"\r\nimport { Label } from \"@/components/ui/label\"\r\nimport { Checkbox } from \"@/components/ui/checkbox\"\r\nimport { Card, CardContent } from \"@/components/ui/card\"\r\nimport { Mail, Lock } from \"lucide-react\"\r\n\r\nexport default function SignInForm() {\r\n  return (\r\n    <Card className=\"w-full max-w-md rounded-2xl shadow-md border bg-background\">\r\n      <CardContent className=\"p-6 flex flex-col gap-6\">\r\n        {/* Email */}\r\n        <div className=\"flex flex-col gap-2\">\r\n          <Label htmlFor=\"email\">Email</Label>\r\n          <div className=\"flex items-center gap-2 border rounded-lg px-3 h-12 focus-within:ring-2 focus-within:ring-ring\">\r\n            <Mail className=\"h-5 w-5 text-muted-foreground\" />\r\n            <Input\r\n              id=\"email\"\r\n              type=\"email\"\r\n              placeholder=\"Enter your email\"\r\n              className=\"border-0 shadow-none focus-visible:ring-0\"\r\n            />\r\n          </div>\r\n        </div>\r\n\r\n        {/* Password */}\r\n        <div className=\"flex flex-col gap-2\">\r\n          <Label htmlFor=\"password\">Password</Label>\r\n          <div className=\"flex items-center gap-2 border rounded-lg px-3 h-12 focus-within:ring-2 focus-within:ring-ring\">\r\n            <Lock className=\"h-5 w-5 text-muted-foreground\" />\r\n            <Input\r\n              id=\"password\"\r\n              type=\"password\"\r\n              placeholder=\"Enter your password\"\r\n              className=\"border-0 shadow-none focus-visible:ring-0\"\r\n            />\r\n          </div>\r\n        </div>\r\n\r\n        {/* Remember me & Forgot */}\r\n        <div className=\"flex items-center justify-between\">\r\n          <div className=\"flex items-center space-x-2\">\r\n            <Checkbox id=\"remember\" />\r\n            <Label htmlFor=\"remember\" className=\"text-sm font-normal\">\r\n              Remember me\r\n            </Label>\r\n          </div>\r\n          <button className=\"text-sm text-primary hover:underline\">\r\n            Forgot password?\r\n          </button>\r\n        </div>\r\n\r\n        {/* Submit */}\r\n        <Button variant=\"default\" className=\"w-full h-12 text-base font-medium rounded-lg\">\r\n          Sign In\r\n        </Button>\r\n\r\n        {/* Social login buttons */}\r\n        <div className=\"flex flex-col gap-3 mt-2\">\r\n          <Button\r\n            variant=\"outline\"\r\n            className=\"w-full h-12 rounded-lg flex items-center justify-center gap-3\"\r\n          >\r\n            <Image\r\n              src=\"https://www.svgrepo.com/show/355037/google.svg\"\r\n              alt=\"Google\"\r\n              width={20}\r\n              height={20}\r\n            />\r\n            Continue with Google\r\n          </Button>\r\n\r\n          <Button\r\n            variant=\"outline\"\r\n            className=\"w-full h-12 rounded-lg flex items-center justify-center gap-3\"\r\n          >\r\n            <Image\r\n              src=\"https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg\"\r\n              alt=\"Apple\"\r\n              width={20}\r\n              height={20}\r\n              unoptimized\r\n            />\r\n            Continue with Apple\r\n          </Button>\r\n\r\n          <Button\r\n            variant=\"outline\"\r\n            className=\"w-full h-12 rounded-lg flex items-center justify-center gap-3\"\r\n          >\r\n            <Image\r\n              src=\"https://www.svgrepo.com/show/303615/github-icon-1-logo.svg\"\r\n              alt=\"GitHub\"\r\n              width={20}\r\n              height={20}\r\n            />\r\n            Continue with GitHub\r\n          </Button>\r\n        </div>\r\n\r\n        {/* Signup */}\r\n        <p className=\"text-center text-sm text-muted-foreground mt-2\">\r\n          Don’t have an account?{\" \"}\r\n          <span className=\"text-primary cursor-pointer hover:underline\">\r\n            Sign Up\r\n          </span>\r\n        </p>\r\n      </CardContent>\r\n    </Card>\r\n  )\r\n}\r\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/sign-in-form.tsx"
+    }
+  ]
+}

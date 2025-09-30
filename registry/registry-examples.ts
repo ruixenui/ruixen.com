@@ -1427,4 +1427,154 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "sign-in-form-demo",
+    type: "registry:example",
+    title: "Sign In Form Demo",
+    description:
+      "Example showing a professional sign-in form with email/password fields and social login options.",
+    registryDependencies: ["https://www.ruixen.com/r/sign-in-form"],
+    files: [
+      {
+        path: "registry/example/sign-in-form-demo.tsx",
+        type: "registry:example",
+        target: "components/sign-in-form-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "create-account-form-demo",
+    type: "registry:example",
+    title: "Create Account Form Demo",
+    description:
+      "Example showing a modern account creation form with validation and terms acceptance.",
+    registryDependencies: ["https://www.ruixen.com/r/create-account-form"],
+    files: [
+      {
+        path: "registry/example/creat-account-form-demo.tsx",
+        type: "registry:example",
+        target: "components/create-account-form-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "newsletter-form-demo",
+    type: "registry:example",
+    title: "Newsletter Form Demo",
+    description:
+      "Example showing a simple newsletter subscription form with success state.",
+    registryDependencies: ["https://www.ruixen.com/r/newsletter-form"],
+    files: [
+      {
+        path: "registry/example/newsletter-form-demo.tsx",
+        type: "registry:example",
+        target: "components/newsletter-form-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "sign-in-card-demo",
+    type: "registry:example",
+    title: "Sign In Card Demo",
+    description:
+      "Example showing a Microsoft-inspired sign-in card with clean design and branding.",
+    registryDependencies: ["https://www.ruixen.com/r/sign-in-card"],
+    files: [
+      {
+        path: "registry/example/sign-in-card-demo.tsx",
+        type: "registry:example",
+        target: "components/sign-in-card-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "job-card-demo",
+    type: "registry:example",
+    title: "Job Card Demo",
+    description:
+      "Example showing a professional job listing card with company info and action buttons.",
+    registryDependencies: ["https://www.ruixen.com/r/job-card"],
+    files: [
+      {
+        path: "registry/example/job-card-demo.tsx",
+        type: "registry:example",
+        target: "components/job-card-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "cookie-notice-demo",
+    type: "registry:example",
+    title: "Cookie Notice Demo",
+    description:
+      "Example showing a GDPR-compliant cookie consent notice with customizable preferences.",
+    registryDependencies: ["https://www.ruixen.com/r/cookie-notice"],
+    files: [
+      {
+        path: "registry/example/cookie-notice-demo.tsx",
+        type: "registry:example",
+        target: "components/cookie-notice-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "file-tree-manager-demo",
+    type: "registry:example",
+    title: "File Tree Manager Demo",
+    description:
+      "Example showing a comprehensive file tree component with CRUD operations and management features.",
+    registryDependencies: ["https://www.ruixen.com/r/file-tree-manager"],
+    files: [
+      {
+        path: "registry/example/file-tree-manager-demo.tsx",
+        type: "registry:example",
+        target: "components/file-tree-manager-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "motion-file-tree-demo",
+    type: "registry:example",
+    title: "Motion File Tree Demo",
+    description:
+      "Example showing an animated file tree component with smooth expand/collapse transitions.",
+    registryDependencies: ["https://www.ruixen.com/r/motion-file-tree"],
+    files: [
+      {
+        path: "registry/example/motion-file-tree-demo.tsx",
+        type: "registry:example",
+        target: "components/motion-file-tree-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "magic-tree-demo",
+    type: "registry:example",
+    title: "Magic Tree Demo",
+    description:
+      "Example showing a magical file tree with sparkle effects and interactive animations.",
+    registryDependencies: ["https://www.ruixen.com/r/magic-tree"],
+    files: [
+      {
+        path: "registry/example/magic-tree-demo.tsx",
+        type: "registry:example",
+        target: "components/magic-tree-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "tree-node-tooltip-demo",
+    type: "registry:example",
+    title: "Tree Node Tooltip Demo",
+    description:
+      "Example showing a file tree component with tooltip support for each node.",
+    registryDependencies: ["https://www.ruixen.com/r/tree-node-tooltip"],
+    files: [
+      {
+        path: "registry/example/tree-node-tooltip-demo.tsx",
+        type: "registry:example",
+        target: "components/tree-node-tooltip-demo.tsx",
+      },
+    ],
+  },
 ];

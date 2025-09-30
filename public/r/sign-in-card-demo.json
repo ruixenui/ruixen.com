@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sign-in-card-demo",
+  "type": "registry:example",
+  "title": "Sign In Card Demo",
+  "description": "Example showing a Microsoft-inspired sign-in card with clean design and branding.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/sign-in-card"
+  ],
+  "files": [
+    {
+      "path": "registry/example/sign-in-card-demo.tsx",
+      "content": "import SignInCard from \"@/registry/ruixenui/sign-in-card\";\r\n\r\nexport default function DemoOne() {\r\n  return <SignInCard />;\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/sign-in-card-demo.tsx"
+    }
+  ]
+}

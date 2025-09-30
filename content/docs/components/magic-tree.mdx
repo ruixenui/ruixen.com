@@ -1,0 +1,57 @@
+---
+title: Magic Tree
+date: 2024-06-01
+description: A magical file tree with sparkle effects and interactive animations
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="magic-tree-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/magic-tree"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="magic-tree" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop       | Type                        | Default            | Description                       |
+| ---------- | --------------------------- | ------------------ | --------------------------------- |
+| `data`     | `MagicNode[]`               | Default magic data | Tree data with sparkle properties |
+| `onSelect` | `(node: MagicNode) => void` | -                  | Callback when node is selected    |
+
+## Features
+
+- **Sparkle Effects**: Special nodes with magical sparkle indicators
+- **Interactive Animations**: Hover and tap animations
+- **Star Selection**: Selected items show with star icon
+- **Smooth Transitions**: Framer Motion animations
+- **Color-coded Borders**: Purple accent for magical elements
+- **Default Data**: Comes with sample magical folder structure

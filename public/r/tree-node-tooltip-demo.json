@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tree-node-tooltip-demo",
+  "type": "registry:example",
+  "title": "Tree Node Tooltip Demo",
+  "description": "Example showing a file tree component with tooltip support for each node.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/tree-node-tooltip"
+  ],
+  "files": [
+    {
+      "path": "registry/example/tree-node-tooltip-demo.tsx",
+      "content": "import TreeNodeTooltip, { TreeNode } from \"@/registry/ruixenui/tree-node-tooltip\";\r\n\r\nconst demoData: TreeNode[] = [\r\n  {\r\n    id: \"1\",\r\n    name: \"src\",\r\n    tooltip: \"src\",\r\n    type: \"folder\",\r\n    children: [\r\n      {\r\n        id: \"2\",\r\n        name: \"components\",\r\n        tooltip: \"components\",\r\n        type: \"folder\",\r\n        children: [\r\n          { id: \"3\", name: \"Button.tsx\", tooltip: \"Button's tooltip\", type: \"file\" },\r\n          { id: \"4\", name: \"Card.tsx\", tooltip: \"Card's tooltip\", type: \"file\" },\r\n        ],\r\n      },\r\n      {\r\n        id: \"5\",\r\n        name: \"lib\",\r\n        tooltip: \"lib\",\r\n        type: \"folder\",\r\n        children: [\r\n          { id: \"6\", name: \"utils.ts\", tooltip: \"utils's tooltip\", type: \"file\" },\r\n        ],\r\n      },\r\n    ],\r\n  },\r\n]\r\n\r\nexport default function TreeViewDemo() {\r\n  return (\r\n    <div className=\"p-4 bg-card rounded-xl shadow-sm\">\r\n      {demoData.map((node) => (\r\n        <TreeNodeTooltip key={node.id} node={node} />\r\n      ))}\r\n    </div>\r\n  )\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/tree-node-tooltip-demo.tsx"
+    }
+  ]
+}
