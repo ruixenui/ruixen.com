@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "advanced-image-uploader-demo",
+  "type": "registry:example",
+  "title": "Advanced Image Uploader Demo",
+  "description": "Example showing a drag-and-drop image uploader with cropping functionality.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/advanced-image-uploader"
+  ],
+  "files": [
+    {
+      "path": "registry/example/advanced-image-uploader-demo.tsx",
+      "content": "\"use client\";\r\n\r\nimport AdvancedImageUploader from \"@/registry/ruixenui/advanced-image-uploader\";\r\n\r\nexport default function ImageUploaderDemo() {\r\n  return (\r\n    <div className=\"p-6 space-y-6\">\r\n      <h1 className=\"text-2xl font-bold\">Advanced Image Uploader Demo</h1>\r\n      <p className=\"text-muted-foreground\">\r\n        Drag & drop images, crop them, or remove them. Works with multiple images.\r\n      </p>\r\n\r\n      <AdvancedImageUploader />\r\n    </div>\r\n  );\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/advanced-image-uploader-demo.tsx"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+---
+title: Sortable Table
+date: 2025-10-01
+description: A sortable and filterable data table with search functionality
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="sortable-table-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/sortable-table"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="sortable-table" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Features
+
+- **Sortable Columns**: Click on column headers to sort data in ascending/descending order
+- **Search Filter**: Real-time search across all table fields
+- **Responsive Design**: Works seamlessly on mobile and desktop
+- **Badge Status**: Visual status indicators with color coding
+- **TypeScript**: Fully typed for better developer experience
+
+## Props
+
+| Prop    | Type          | Default                | Description                   |
+| ------- | ------------- | ---------------------- | ----------------------------- |
+| `data`  | `TableUser[]` | `defaultData`          | Array of user data to display |
+| `title` | `string`      | `"Employee Directory"` | Table title shown at the top  |
+
+## TableUser Type
+
+```typescript
+export type TableUser = {
+  id: string;
+  name: string;
+  email: string;
+  department: string;
+  role: string;
+  status: "Active" | "Inactive" | "Pending";
+  salary: number;
+};
+```

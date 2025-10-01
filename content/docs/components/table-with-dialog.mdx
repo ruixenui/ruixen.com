@@ -1,0 +1,57 @@
+---
+title: Table With Dialog
+date: 2025-10-01
+description: A data table with row details shown in a dialog modal
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="table-with-dialog-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/table-with-dialog"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="table-with-dialog" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Features
+
+- **Dialog Details**: View full user details in a modal dialog
+- **Fixed Header/Footer**: Header and footer stay visible while scrolling
+- **Status Badges**: Color-coded status indicators (Active/Inactive/Suspended)
+- **Checkbox Selection**: Select rows for batch operations
+- **Scrollable Body**: Handle large datasets with smooth scrolling
+
+## Props
+
+| Prop          | Type     | Default        | Description                      |
+| ------------- | -------- | -------------- | -------------------------------- |
+| `data`        | `User[]` | `defaultUsers` | Array of user data               |
+| `title`       | `string` | `"User Table"` | Table header title               |
+| `footerTotal` | `string` | `"$2,500.00"`  | Total amount displayed in footer |

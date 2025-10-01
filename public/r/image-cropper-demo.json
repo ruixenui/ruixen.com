@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "image-cropper-demo",
+  "type": "registry:example",
+  "title": "Image Cropper Demo",
+  "description": "Example showing an image cropping tool with zoom and aspect ratio controls.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/image-cropper"
+  ],
+  "files": [
+    {
+      "path": "registry/example/image-cropper-demo.tsx",
+      "content": "import ImageCropper from \"@/registry/ruixenui/image-cropper\";\r\n\r\nexport default function DemoOne() {\r\n  return <ImageCropper />;\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/image-cropper-demo.tsx"
+    }
+  ]
+}

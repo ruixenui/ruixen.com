@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "date-time-picker-demo",
+  "type": "registry:example",
+  "title": "Date Time Picker Demo",
+  "description": "Example showing a date and time picker with calendar and time selection.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/date-time-picker"
+  ],
+  "files": [
+    {
+      "path": "registry/example/date-time-picker-demo.tsx",
+      "content": "\"use client\"\r\n\r\nimport React, { useState } from \"react\"\r\nimport DateTimePicker from \"@/registry/ruixenui/date-time-picker\"\r\nimport { format } from \"date-fns\"\r\n\r\nconst DateTimePickerDemo: React.FC = () => {\r\n  const [selectedDateTime, setSelectedDateTime] = useState<Date | null>(null)\r\n\r\n  return (\r\n    <div className=\"min-h-screen bg-gray-900 flex flex-col items-center justify-center p-8 gap-6\">\r\n      <h1 className=\"text-white text-2xl font-bold mb-4\">DateTimePicker Demo</h1>\r\n\r\n      {/* DateTimePicker component */}\r\n      <DateTimePicker\r\n        defaultDate={new Date()}\r\n        defaultHour=\"10\"\r\n        defaultMinute=\"30\"\r\n        defaultAMPM=\"AM\"\r\n        onChange={setSelectedDateTime}\r\n        minDate={new Date()} // cannot select past dates\r\n      />\r\n\r\n      {/* Display selected date/time */}\r\n      <div className=\"text-white mt-4\">\r\n        <p>\r\n          <span className=\"font-semibold\">Selected Date & Time:</span>{\" \"}\r\n          {selectedDateTime ? format(selectedDateTime, \"PPP p\") : \"None\"}\r\n        </p>\r\n      </div>\r\n    </div>\r\n  )\r\n}\r\n\r\nexport default DateTimePickerDemo\r\n",
+      "type": "registry:example",
+      "target": "components/date-time-picker-demo.tsx"
+    }
+  ]
+}

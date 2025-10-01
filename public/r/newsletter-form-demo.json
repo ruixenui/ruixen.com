@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/newsletter-form-demo.tsx",
-      "content": "import NewsletterForm from \"@/registry/ruixenui/newsletter-form\";\r\n\r\nexport default function DemoOne() {\r\n  return <NewsletterForm />;\r\n}\r\n",
+      "content": "import NewsletterForm from \"@/registry/ruixenui/newsletter-form\";\n\nexport default function DemoOne() {\n  return <NewsletterForm />;\n}\n",
       "type": "registry:example",
       "target": "components/newsletter-form-demo.tsx"
     }

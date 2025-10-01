@@ -1,0 +1,64 @@
+---
+title: Event Scheduler
+date: 2025-10-01
+description: A full-featured event scheduler with event creation and management
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="event-scheduler-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/event-scheduler"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="event-scheduler" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Features
+
+- **Two-Panel Layout**: Event creation and event list side-by-side
+- **Date & Time Selection**: Full calendar and time picker
+- **Event Management**: Add and delete events
+- **Event List**: View all scheduled events with timestamps
+- **Form Validation**: Prevents empty events
+- **Auto-Reset**: Form clears after successful creation
+
+## Props
+
+| Prop            | Type                     | Default | Description                 |
+| --------------- | ------------------------ | ------- | --------------------------- |
+| `defaultEvents` | `Event[]`                | `[]`    | Initial events              |
+| `defaultTitle`  | `string`                 | `""`    | Default event title         |
+| `defaultDate`   | `Date`                   | -       | Default date selection      |
+| `defaultHour`   | `string`                 | `"12"`  | Default hour                |
+| `defaultMinute` | `string`                 | `"00"`  | Default minute              |
+| `defaultAMPM`   | `"AM" \| "PM"`           | `"AM"`  | Default AM/PM               |
+| `onAddEvent`    | `(event: Event) => void` | -       | Callback when event added   |
+| `onDeleteEvent` | `(id: number) => void`   | -       | Callback when event deleted |
+| `disabled`      | `boolean`                | `false` | Disable all interactions    |

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "monthly-heatmap-calendar-demo",
+  "type": "registry:example",
+  "title": "Monthly Heatmap Calendar Demo",
+  "description": "Example showing a monthly calendar with event heatmap visualization.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/monthly-heatmap-calendar"
+  ],
+  "files": [
+    {
+      "path": "registry/example/monthly-heatmap-calendar-demo.tsx",
+      "content": "\"use client\"\r\n\r\nimport * as React from \"react\"\r\nimport MonthlyHeatmapCalendar from \"@/registry/ruixenui/monthly-heatmap-calendar\"\r\n\r\nexport default function MonthlyCalendarDemo() {\r\n  // Example initial events\r\n  const initialEvents = {\r\n    \"2025-10-01\": [\r\n      { time: \"10:00 AM\", title: \"Team Meeting\" },\r\n      { time: \"03:00 PM\", title: \"Doctor Appointment\" },\r\n    ],\r\n    \"2025-10-05\": [{ time: \"01:00 PM\", title: \"Lunch with Client\" }],\r\n  }\r\n\r\n  // Callback for when an event is added\r\n  const handleEventAdd = (dateKey: string, event: { time: string; title: string }) => {\r\n    console.log(\"Event added:\", dateKey, event)\r\n  }\r\n\r\n  // Callback for when an event is deleted\r\n  const handleEventDelete = (dateKey: string, index: number) => {\r\n    console.log(\"Event deleted:\", dateKey, index)\r\n  }\r\n\r\n  return (\r\n    <div className=\"p-6\">\r\n      <h1 className=\"text-2xl font-bold mb-4\">Monthly Heatmap Calendar Demo</h1>\r\n      <MonthlyHeatmapCalendar\r\n        initialMonth={new Date(\"2025-10-01\")}\r\n        initialEvents={initialEvents}\r\n        startYear={2020}\r\n        endYear={2030}\r\n        onEventAdd={handleEventAdd}\r\n        onEventDelete={handleEventDelete}\r\n      />\r\n    </div>\r\n  )\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/monthly-heatmap-calendar-demo.tsx"
+    }
+  ]
+}

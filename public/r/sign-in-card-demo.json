@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/sign-in-card-demo.tsx",
-      "content": "import SignInCard from \"@/registry/ruixenui/sign-in-card\";\r\n\r\nexport default function DemoOne() {\r\n  return <SignInCard />;\r\n}\r\n",
+      "content": "import SignInCard from \"@/registry/ruixenui/sign-in-card\";\n\nexport default function DemoOne() {\n  return <SignInCard />;\n}\n",
       "type": "registry:example",
       "target": "components/sign-in-card-demo.tsx"
     }

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "event-scheduler-demo",
+  "type": "registry:example",
+  "title": "Event Scheduler Demo",
+  "description": "Example showing a full-featured event scheduler with event creation and management.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/event-scheduler"
+  ],
+  "files": [
+    {
+      "path": "registry/example/event-scheduler-demo.tsx",
+      "content": "\"use client\"\r\n\r\nimport * as React from \"react\"\r\nimport EventScheduler, { Event } from \"@/registry/ruixenui/event-scheduler\"\r\n\r\nexport default function EventSchedulerDemo() {\r\n  const defaultEvents: Event[] = [\r\n    {\r\n      id: 1,\r\n      title: \"Team Meeting\",\r\n      date: new Date(new Date().setHours(10, 0, 0)),\r\n    },\r\n    {\r\n      id: 2,\r\n      title: \"Client Call\",\r\n      date: new Date(new Date().setHours(15, 30, 0)),\r\n    },\r\n  ]\r\n\r\n  const handleAddEvent = (event: Event) => {\r\n    console.log(\"Event added:\", event)\r\n  }\r\n\r\n  const handleDeleteEvent = (id: number) => {\r\n    console.log(\"Event deleted with id:\", id)\r\n  }\r\n\r\n  return (\r\n    <div className=\"p-8 bg-gray-100 min-h-screen\">\r\n      <h1 className=\"text-2xl font-bold mb-6\">Event Scheduler Demo</h1>\r\n      <EventScheduler\r\n        defaultEvents={defaultEvents}\r\n        defaultTitle=\"New Event\"\r\n        defaultHour=\"12\"\r\n        defaultMinute=\"00\"\r\n        defaultAMPM=\"PM\"\r\n        onAddEvent={handleAddEvent}\r\n        onDeleteEvent={handleDeleteEvent}\r\n      />\r\n    </div>\r\n  )\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/event-scheduler-demo.tsx"
+    }
+  ]
+}

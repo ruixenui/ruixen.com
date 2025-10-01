@@ -1577,4 +1577,185 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "sortable-table-demo",
+    type: "registry:example",
+    title: "Sortable Table Demo",
+    description:
+      "Example showing a sortable and filterable data table with search functionality.",
+    registryDependencies: ["https://www.ruixen.com/r/sortable-table"],
+    files: [
+      {
+        path: "registry/example/sortable-table-demo.tsx",
+        type: "registry:example",
+        target: "components/sortable-table-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "table-edit-demo",
+    type: "registry:example",
+    title: "Table Edit Demo",
+    description:
+      "Example showing an editable table component with inline editing and dropdown menus.",
+    registryDependencies: ["https://www.ruixen.com/r/table-edit"],
+    files: [
+      {
+        path: "registry/example/table-edit-demo.tsx",
+        type: "registry:example",
+        target: "components/table-edit-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "table-with-dialog-demo",
+    type: "registry:example",
+    title: "Table With Dialog Demo",
+    description:
+      "Example showing a data table with row details shown in a dialog modal.",
+    registryDependencies: ["https://www.ruixen.com/r/table-with-dialog"],
+    files: [
+      {
+        path: "registry/example/table-with-dialog-demo.tsx",
+        type: "registry:example",
+        target: "components/table-with-dialog-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "fixed-header-footer-table-demo",
+    type: "registry:example",
+    title: "Fixed Header Footer Table Demo",
+    description:
+      "Example showing a table with fixed header and footer, and scrollable body.",
+    registryDependencies: [
+      "https://www.ruixen.com/r/fixed-header-footer-table",
+    ],
+    files: [
+      {
+        path: "registry/example/fixed-header-footer-table-demo.tsx",
+        type: "registry:example",
+        target: "components/fixed-header-footer-table-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "date-time-picker-demo",
+    type: "registry:example",
+    title: "Date Time Picker Demo",
+    description:
+      "Example showing a date and time picker with calendar and time selection.",
+    registryDependencies: ["https://www.ruixen.com/r/date-time-picker"],
+    files: [
+      {
+        path: "registry/example/date-time-picker-demo.tsx",
+        type: "registry:example",
+        target: "components/date-time-picker-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "date-range-picker-demo",
+    type: "registry:example",
+    title: "Date Range Picker Demo",
+    description: "Example showing a date range picker with dual calendar view.",
+    registryDependencies: ["https://www.ruixen.com/r/date-range-picker"],
+    files: [
+      {
+        path: "registry/example/date-range-picker-demo.tsx",
+        type: "registry:example",
+        target: "components/date-range-picker-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "monthly-heatmap-calendar-demo",
+    type: "registry:example",
+    title: "Monthly Heatmap Calendar Demo",
+    description:
+      "Example showing a monthly calendar with event heatmap visualization.",
+    registryDependencies: ["https://www.ruixen.com/r/monthly-heatmap-calendar"],
+    files: [
+      {
+        path: "registry/example/monthly-heatmap-calendar-demo.tsx",
+        type: "registry:example",
+        target: "components/monthly-heatmap-calendar-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "event-scheduler-demo",
+    type: "registry:example",
+    title: "Event Scheduler Demo",
+    description:
+      "Example showing a full-featured event scheduler with event creation and management.",
+    registryDependencies: ["https://www.ruixen.com/r/event-scheduler"],
+    files: [
+      {
+        path: "registry/example/event-scheduler-demo.tsx",
+        type: "registry:example",
+        target: "components/event-scheduler-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "scheduler-demo",
+    type: "registry:example",
+    title: "Scheduler Demo",
+    description:
+      "Example showing a simple event scheduler with calendar integration.",
+    registryDependencies: ["https://www.ruixen.com/r/scheduler"],
+    files: [
+      {
+        path: "registry/example/scheduler-demo.tsx",
+        type: "registry:example",
+        target: "components/scheduler-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "daily-timeline-scheduler-demo",
+    type: "registry:example",
+    title: "Daily Timeline Scheduler Demo",
+    description:
+      "Example showing a timeline-based daily scheduler with time slot management.",
+    registryDependencies: ["https://www.ruixen.com/r/daily-timeline-scheduler"],
+    files: [
+      {
+        path: "registry/example/daily-timeline-scheduler-demo.tsx",
+        type: "registry:example",
+        target: "components/daily-timeline-scheduler-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "image-cropper-demo",
+    type: "registry:example",
+    title: "Image Cropper Demo",
+    description:
+      "Example showing an image cropping tool with zoom and aspect ratio controls.",
+    registryDependencies: ["https://www.ruixen.com/r/image-cropper"],
+    files: [
+      {
+        path: "registry/example/image-cropper-demo.tsx",
+        type: "registry:example",
+        target: "components/image-cropper-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "advanced-image-uploader-demo",
+    type: "registry:example",
+    title: "Advanced Image Uploader Demo",
+    description:
+      "Example showing a drag-and-drop image uploader with cropping functionality.",
+    registryDependencies: ["https://www.ruixen.com/r/advanced-image-uploader"],
+    files: [
+      {
+        path: "registry/example/advanced-image-uploader-demo.tsx",
+        type: "registry:example",
+        target: "components/advanced-image-uploader-demo.tsx",
+      },
+    ],
+  },
 ];

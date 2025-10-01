@@ -1,5 +1,23 @@
-import SignInForm from "@/registry/ruixenui/sign-in-form";
+"use client";
 
-export default function DemoOne() {
-  return <SignInForm />;
+import React from "react";
+import SignInForm from "@/registry/ruixenui/sign-in-form";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+
+export default function SignInFormDemoPage() {
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 via-slate-100 to-white dark:from-gray-900 dark:via-gray-800 dark:to-black p-6">
+      <Card className="w-full max-w-md shadow-xl rounded-2xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-gray-800/70 backdrop-blur">
+        <CardHeader className="text-center">
+          <CardTitle className="text-2xl font-semibold text-gray-700 dark:text-gray-200">
+            Sign in to your account
+          </CardTitle>
+        </CardHeader>
+
+        <CardContent>
+          <SignInForm />
+        </CardContent>
+      </Card>
+    </div>
+  );
 }

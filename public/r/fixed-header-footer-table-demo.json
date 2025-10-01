@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "fixed-header-footer-table-demo",
+  "type": "registry:example",
+  "title": "Fixed Header Footer Table Demo",
+  "description": "Example showing a table with fixed header and footer, and scrollable body.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/fixed-header-footer-table"
+  ],
+  "files": [
+    {
+      "path": "registry/example/fixed-header-footer-table-demo.tsx",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport FixedHeaderFooterTable, { TableItem } from \"@/registry/ruixenui/fixed-header-footer-table\";\r\n\r\nexport default function DemoPage() {\r\n  // Optional: Custom data for demo\r\n  const customItems: TableItem[] = [\r\n    { id: \"101\", name: \"Alice Johnson\", email: \"alice.johnson@company.com\", location: \"New York, US\", status: \"Active\", balance: 1200 },\r\n    { id: \"102\", name: \"Bob Smith\", email: \"bob.smith@company.com\", location: \"London, UK\", status: \"Inactive\", balance: 800 },\r\n    { id: \"103\", name: \"Charlie Lee\", email: \"charlie.lee@company.com\", location: \"Sydney, AU\", status: \"Active\", balance: 1500 },\r\n  ];\r\n\r\n  return (\r\n    <div className=\"p-6 space-y-8\">\r\n      <h1 className=\"text-2xl font-bold text-center\">Fixed Header & Footer Table Demo</h1>\r\n\r\n      {/* Table with default props */}\r\n      <div>\r\n        <h2 className=\"text-xl font-semibold mb-2\">Default Table</h2>\r\n        <FixedHeaderFooterTable />\r\n      </div>\r\n\r\n      {/* Table with custom data */}\r\n      <div>\r\n        <h2 className=\"text-xl font-semibold mb-2\">Custom Data Table</h2>\r\n        <FixedHeaderFooterTable\r\n          items={customItems}\r\n          title=\"Custom Users Table\"\r\n          footerTotal={customItems.reduce((acc, item) => acc + item.balance, 0)}\r\n        />\r\n      </div>\r\n    </div>\r\n  );\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/fixed-header-footer-table-demo.tsx"
+    }
+  ]
+}

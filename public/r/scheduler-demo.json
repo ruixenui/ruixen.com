@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scheduler-demo",
+  "type": "registry:example",
+  "title": "Scheduler Demo",
+  "description": "Example showing a simple event scheduler with calendar integration.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/scheduler"
+  ],
+  "files": [
+    {
+      "path": "registry/example/scheduler-demo.tsx",
+      "content": "\"use client\"\r\n\r\nimport Scheduler, { Event } from \"@/registry/ruixenui/scheduler\"\r\nimport { Card, CardContent, CardHeader, CardTitle } from \"@/components/ui/card\"\r\n\r\nexport default function SchedulerDemoPage() {\r\n  // Example default events\r\n  const defaultEvents: Event[] = [\r\n    { id: 1, date: new Date(\"2025-10-05T10:00:00\"), time: \"10:00\" },\r\n    { id: 2, date: new Date(\"2025-10-06T14:30:00\"), time: \"14:30\" },\r\n  ]\r\n\r\n  // Callback when event is added\r\n  const handleAddEvent = (event: Event) => {\r\n    console.log(\"Event Added:\", event)\r\n  }\r\n\r\n  // Callback when event is edited\r\n  const handleEditEvent = (event: Event) => {\r\n    console.log(\"Event Edited:\", event)\r\n  }\r\n\r\n  // Callback when event is deleted\r\n  const handleDeleteEvent = (id: number) => {\r\n    console.log(\"Event Deleted:\", id)\r\n  }\r\n\r\n  return (\r\n    <div className=\"max-w-4xl mx-auto p-4 space-y-6\">\r\n      <Card className=\"shadow-lg rounded-2xl\">\r\n        <CardHeader>\r\n          <CardTitle>Scheduler Demo</CardTitle>\r\n        </CardHeader>\r\n        <CardContent>\r\n          <Scheduler\r\n            defaultEvents={defaultEvents}\r\n            defaultHour=\"12\"\r\n            defaultMinute=\"00\"\r\n            onAddEvent={handleAddEvent}\r\n            onEditEvent={handleEditEvent}\r\n            onDeleteEvent={handleDeleteEvent}\r\n          />\r\n        </CardContent>\r\n      </Card>\r\n    </div>\r\n  )\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/scheduler-demo.tsx"
+    }
+  ]
+}

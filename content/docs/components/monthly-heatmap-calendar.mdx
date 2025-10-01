@@ -1,0 +1,61 @@
+---
+title: Monthly Heatmap Calendar
+date: 2025-10-01
+description: A monthly calendar with event heatmap visualization
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="monthly-heatmap-calendar-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/monthly-heatmap-calendar"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="monthly-heatmap-calendar" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Features
+
+- **Month/Year Selection**: Navigate through months and years with dropdowns
+- **Event Heatmap**: Visual indicators for days with events
+- **Add Events**: Create events with title, date, and time
+- **Event Management**: View and delete events per day
+- **Event Storage**: Keyed by date string for efficient lookup
+- **Popover Interface**: Clean UI for event interaction
+
+## Props
+
+| Prop            | Type                                       | Default          | Description                 |
+| --------------- | ------------------------------------------ | ---------------- | --------------------------- |
+| `initialMonth`  | `Date`                                     | `new Date()`     | Starting month to display   |
+| `initialEvents` | `{ [key: string]: Event[] }`               | `{}`             | Initial events by date      |
+| `startYear`     | `number`                                   | `2015`           | Earliest selectable year    |
+| `endYear`       | `number`                                   | Current year + 5 | Latest selectable year      |
+| `onEventAdd`    | `(dateKey: string, event: Event) => void`  | -                | Callback when event added   |
+| `onEventDelete` | `(dateKey: string, index: number) => void` | -                | Callback when event deleted |

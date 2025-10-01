@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/cookie-notice-demo.tsx",
-      "content": "import CookieNotice from \"@/registry/ruixenui/cookie-notice\";\r\n\r\nexport default function DemoOne() {\r\n  return <CookieNotice />;\r\n}\r\n",
+      "content": "import CookieNotice from \"@/registry/ruixenui/cookie-notice\";\n\nexport default function DemoOne() {\n  return <CookieNotice />;\n}\n",
       "type": "registry:example",
       "target": "components/cookie-notice-demo.tsx"
     }

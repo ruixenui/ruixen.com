@@ -1,0 +1,65 @@
+---
+title: Date Time Picker
+date: 2025-10-01
+description: A date and time picker with calendar and time selection
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="date-time-picker-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/date-time-picker"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="date-time-picker" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Features
+
+- **Calendar Selection**: Visual date picker with calendar view
+- **Time Picker**: Hour, minute, and AM/PM selection
+- **Date Restrictions**: Set min/max date boundaries
+- **Formatted Display**: Shows selected date and time in readable format
+- **Customizable Options**: Configure hour/minute intervals
+- **onChange Callback**: Get notified when date/time changes
+
+## Props
+
+| Prop            | Type                           | Default                 | Description                     |
+| --------------- | ------------------------------ | ----------------------- | ------------------------------- |
+| `defaultDate`   | `Date`                         | -                       | Initial date value              |
+| `defaultHour`   | `string`                       | `"12"`                  | Initial hour (01-12)            |
+| `defaultMinute` | `string`                       | `"00"`                  | Initial minute                  |
+| `defaultAMPM`   | `"AM" \| "PM"`                 | `"AM"`                  | Initial AM/PM selection         |
+| `onChange`      | `(date: Date \| null) => void` | -                       | Callback when date/time changes |
+| `disabled`      | `boolean`                      | `false`                 | Disable the picker              |
+| `minDate`       | `Date`                         | -                       | Minimum selectable date         |
+| `maxDate`       | `Date`                         | -                       | Maximum selectable date         |
+| `hourOptions`   | `string[]`                     | `["01"-"12"]`           | Custom hour options             |
+| `minuteOptions` | `string[]`                     | `["00","15","30","45"]` | Custom minute options           |

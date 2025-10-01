@@ -2582,6 +2582,322 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "sortable-table": {
+    name: "sortable-table",
+    description:
+      "A sortable and filterable data table with search functionality.",
+    type: "registry:ui",
+    registryDependencies: ["table", "input", "button", "badge"],
+    files: [
+      {
+        path: "registry/ruixenui/sortable-table.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/sortable-table.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/sortable-table.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "table-edit": {
+    name: "table-edit",
+    description:
+      "An editable table component with inline editing and dropdown menus.",
+    type: "registry:ui",
+    registryDependencies: [
+      "table",
+      "checkbox",
+      "badge",
+      "button",
+      "dropdown-menu",
+      "input",
+      "select",
+    ],
+    files: [
+      {
+        path: "registry/ruixenui/table-edit.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/table-edit.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/table-edit.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "table-with-dialog": {
+    name: "table-with-dialog",
+    description: "A data table with row details shown in a dialog modal.",
+    type: "registry:ui",
+    registryDependencies: ["table", "checkbox", "button", "dialog", "badge"],
+    files: [
+      {
+        path: "registry/ruixenui/table-with-dialog.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/table-with-dialog.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/table-with-dialog.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "fixed-header-footer-table": {
+    name: "fixed-header-footer-table",
+    description: "A table with fixed header and footer, and scrollable body.",
+    type: "registry:ui",
+    registryDependencies: ["table"],
+    files: [
+      {
+        path: "registry/ruixenui/fixed-header-footer-table.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/fixed-header-footer-table.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/ruixenui/fixed-header-footer-table.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "date-time-picker": {
+    name: "date-time-picker",
+    description: "A date and time picker with calendar and time selection.",
+    type: "registry:ui",
+    registryDependencies: ["popover", "button", "calendar", "select"],
+    files: [
+      {
+        path: "registry/ruixenui/date-time-picker.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/date-time-picker.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/date-time-picker.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "date-range-picker": {
+    name: "date-range-picker",
+    description: "A date range picker with dual calendar view.",
+    type: "registry:ui",
+    registryDependencies: ["button", "calendar", "popover"],
+    files: [
+      {
+        path: "registry/ruixenui/date-range-picker.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/date-range-picker.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/date-range-picker.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "monthly-heatmap-calendar": {
+    name: "monthly-heatmap-calendar",
+    description: "A monthly calendar with event heatmap visualization.",
+    type: "registry:ui",
+    registryDependencies: [
+      "card",
+      "button",
+      "popover",
+      "input",
+      "select",
+      "badge",
+    ],
+    files: [
+      {
+        path: "registry/ruixenui/monthly-heatmap-calendar.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/monthly-heatmap-calendar.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/ruixenui/monthly-heatmap-calendar.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "event-scheduler": {
+    name: "event-scheduler",
+    description:
+      "A full-featured event scheduler with event creation and management.",
+    type: "registry:ui",
+    registryDependencies: [
+      "button",
+      "calendar",
+      "popover",
+      "select",
+      "input",
+      "card",
+    ],
+    files: [
+      {
+        path: "registry/ruixenui/event-scheduler.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/event-scheduler.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/event-scheduler.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  scheduler: {
+    name: "scheduler",
+    description: "A simple event scheduler with calendar integration.",
+    type: "registry:ui",
+    registryDependencies: [
+      "button",
+      "popover",
+      "calendar",
+      "card",
+      "label",
+      "select",
+    ],
+    files: [
+      {
+        path: "registry/ruixenui/scheduler.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/scheduler.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/scheduler.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "daily-timeline-scheduler": {
+    name: "daily-timeline-scheduler",
+    description: "A timeline-based daily scheduler with time slot management.",
+    type: "registry:ui",
+    registryDependencies: ["card", "button", "popover", "input", "select"],
+    files: [
+      {
+        path: "registry/ruixenui/daily-timeline-scheduler.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/daily-timeline-scheduler.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/ruixenui/daily-timeline-scheduler.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "image-cropper": {
+    name: "image-cropper",
+    description: "An image cropping tool with zoom and aspect ratio controls.",
+    type: "registry:ui",
+    registryDependencies: ["button", "select", "slider", "card", "input"],
+    files: [
+      {
+        path: "registry/ruixenui/image-cropper.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/image-cropper.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/image-cropper.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "advanced-image-uploader": {
+    name: "advanced-image-uploader",
+    description: "A drag-and-drop image uploader with cropping functionality.",
+    type: "registry:ui",
+    registryDependencies: ["card", "button"],
+    files: [
+      {
+        path: "registry/ruixenui/advanced-image-uploader.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/advanced-image-uploader.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/ruixenui/advanced-image-uploader.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "staggered-faq-section-demo": {
     name: "staggered-faq-section-demo",
     description:
@@ -5223,6 +5539,303 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/tree-node-tooltip-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "sortable-table-demo": {
+    name: "sortable-table-demo",
+    description:
+      "Example showing a sortable and filterable data table with search functionality.",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/sortable-table"],
+    files: [
+      {
+        path: "registry/example/sortable-table-demo.tsx",
+        type: "registry:example",
+        target: "components/sortable-table-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/sortable-table-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "table-edit-demo": {
+    name: "table-edit-demo",
+    description:
+      "Example showing an editable table component with inline editing and dropdown menus.",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/table-edit"],
+    files: [
+      {
+        path: "registry/example/table-edit-demo.tsx",
+        type: "registry:example",
+        target: "components/table-edit-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/table-edit-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "table-with-dialog-demo": {
+    name: "table-with-dialog-demo",
+    description:
+      "Example showing a data table with row details shown in a dialog modal.",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/table-with-dialog"],
+    files: [
+      {
+        path: "registry/example/table-with-dialog-demo.tsx",
+        type: "registry:example",
+        target: "components/table-with-dialog-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/table-with-dialog-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "fixed-header-footer-table-demo": {
+    name: "fixed-header-footer-table-demo",
+    description:
+      "Example showing a table with fixed header and footer, and scrollable body.",
+    type: "registry:example",
+    registryDependencies: [
+      "https://www.ruixen.com/r/fixed-header-footer-table",
+    ],
+    files: [
+      {
+        path: "registry/example/fixed-header-footer-table-demo.tsx",
+        type: "registry:example",
+        target: "components/fixed-header-footer-table-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/fixed-header-footer-table-demo.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "date-time-picker-demo": {
+    name: "date-time-picker-demo",
+    description:
+      "Example showing a date and time picker with calendar and time selection.",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/date-time-picker"],
+    files: [
+      {
+        path: "registry/example/date-time-picker-demo.tsx",
+        type: "registry:example",
+        target: "components/date-time-picker-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/date-time-picker-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "date-range-picker-demo": {
+    name: "date-range-picker-demo",
+    description: "Example showing a date range picker with dual calendar view.",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/date-range-picker"],
+    files: [
+      {
+        path: "registry/example/date-range-picker-demo.tsx",
+        type: "registry:example",
+        target: "components/date-range-picker-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/date-range-picker-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "monthly-heatmap-calendar-demo": {
+    name: "monthly-heatmap-calendar-demo",
+    description:
+      "Example showing a monthly calendar with event heatmap visualization.",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/monthly-heatmap-calendar"],
+    files: [
+      {
+        path: "registry/example/monthly-heatmap-calendar-demo.tsx",
+        type: "registry:example",
+        target: "components/monthly-heatmap-calendar-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/monthly-heatmap-calendar-demo.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "event-scheduler-demo": {
+    name: "event-scheduler-demo",
+    description:
+      "Example showing a full-featured event scheduler with event creation and management.",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/event-scheduler"],
+    files: [
+      {
+        path: "registry/example/event-scheduler-demo.tsx",
+        type: "registry:example",
+        target: "components/event-scheduler-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/event-scheduler-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "scheduler-demo": {
+    name: "scheduler-demo",
+    description:
+      "Example showing a simple event scheduler with calendar integration.",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/scheduler"],
+    files: [
+      {
+        path: "registry/example/scheduler-demo.tsx",
+        type: "registry:example",
+        target: "components/scheduler-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/scheduler-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "daily-timeline-scheduler-demo": {
+    name: "daily-timeline-scheduler-demo",
+    description:
+      "Example showing a timeline-based daily scheduler with time slot management.",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/daily-timeline-scheduler"],
+    files: [
+      {
+        path: "registry/example/daily-timeline-scheduler-demo.tsx",
+        type: "registry:example",
+        target: "components/daily-timeline-scheduler-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/daily-timeline-scheduler-demo.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "image-cropper-demo": {
+    name: "image-cropper-demo",
+    description:
+      "Example showing an image cropping tool with zoom and aspect ratio controls.",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/image-cropper"],
+    files: [
+      {
+        path: "registry/example/image-cropper-demo.tsx",
+        type: "registry:example",
+        target: "components/image-cropper-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/image-cropper-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "advanced-image-uploader-demo": {
+    name: "advanced-image-uploader-demo",
+    description:
+      "Example showing a drag-and-drop image uploader with cropping functionality.",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/advanced-image-uploader"],
+    files: [
+      {
+        path: "registry/example/advanced-image-uploader-demo.tsx",
+        type: "registry:example",
+        target: "components/advanced-image-uploader-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/advanced-image-uploader-demo.tsx"
+      );
       const exportName =
         Object.keys(mod).find(
           (key) =>

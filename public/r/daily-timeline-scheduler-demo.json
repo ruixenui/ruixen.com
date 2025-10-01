@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "daily-timeline-scheduler-demo",
+  "type": "registry:example",
+  "title": "Daily Timeline Scheduler Demo",
+  "description": "Example showing a timeline-based daily scheduler with time slot management.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/daily-timeline-scheduler"
+  ],
+  "files": [
+    {
+      "path": "registry/example/daily-timeline-scheduler-demo.tsx",
+      "content": "\"use client\"\r\n\r\nimport * as React from \"react\"\r\nimport DailyTimelineScheduler from \"@/registry/ruixenui/daily-timeline-scheduler\"\r\n\r\nexport default function DemoPage() {\r\n  return (\r\n    <div className=\"min-h-screen bg-gray-50 p-6\">\r\n      <h1 className=\"text-2xl font-bold mb-6\">Daily Timeline Scheduler Demo</h1>\r\n\r\n      <DailyTimelineScheduler\r\n        startHour={8}          // Timeline starts at 8AM\r\n        endHour={18}           // Timeline ends at 6PM\r\n        stepMinutes={30}       // Each slot is 30 minutes\r\n        title=\"Work Schedule\"  // Card title\r\n        initialEvents={[\r\n          { title: \"Morning Meeting\", time: new Date(\"2025-10-01T09:00:00\") },\r\n          { title: \"Lunch Break\", time: new Date(\"2025-10-01T13:00:00\") },\r\n          { title: \"Project Review\", time: new Date(\"2025-10-01T15:30:00\") },\r\n        ]}\r\n        onEventAdd={(ev) => console.log(\"Added:\", ev)}\r\n        onEventUpdate={(ev, idx) => console.log(\"Updated:\", idx, ev)}\r\n        onEventDelete={(ev, idx) => console.log(\"Deleted:\", idx, ev)}\r\n      />\r\n    </div>\r\n  )\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/daily-timeline-scheduler-demo.tsx"
+    }
+  ]
+}

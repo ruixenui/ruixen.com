@@ -74,6 +74,9 @@ importers:
       '@radix-ui/react-separator':
         specifier: ^1.1.2
         version: 1.1.7(@types/react-dom@18.2.5)(@types/react@18.2.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-slider':
+        specifier: ^1.3.6
+        version: 1.3.6(@types/react-dom@18.2.5)(@types/react@18.2.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-slot':
         specifier: ^1.1.2
         version: 1.2.3(@types/react@18.2.12)(react@18.3.1)
@@ -194,6 +197,9 @@ importers:
       react-dom:
         specifier: 18.3.1
         version: 18.3.1(react@18.3.1)
+      react-easy-crop:
+        specifier: ^5.5.2
+        version: 5.5.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-hook-form:
         specifier: ^7.50.1
         version: 7.62.0(react@18.3.1)
@@ -1935,6 +1941,19 @@ packages:
 
   '@radix-ui/react-separator@1.1.7':
     resolution: {integrity: sha512-0HEb8R9E8A+jZjvmFCy/J4xhbXy3TV+9XSnGJ3KvTtjlIUy/YQ/p6UYZvi7YbeoeXdyU9+Y3scizK6hkY37baA==}
+    peerDependencies:
+      '@types/react': '*'
+      '@types/react-dom': '*'
+      react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+      react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
+        optional: true
+
+  '@radix-ui/react-slider@1.3.6':
+    resolution: {integrity: sha512-JPYb1GuM1bxfjMRlNLE+BcmBC8onfCi60Blk7OBqi2MLTFdS+8401U4uFjnwkOr49BLmXxLC6JHkvAsx5OJvHw==}
     peerDependencies:
       '@types/react': '*'
       '@types/react-dom': '*'
@@ -4858,6 +4877,9 @@ packages:
     resolution: {integrity: sha512-bdok/XvKII3nUpklnV6P2hxtMNrCboOjAcyBuQnWEhO665FwrSNRxU+AqpsyvO6LgGYPspN+lu5CLtw4jPRKNA==}
     engines: {node: '>=0.10.0'}
 
+  normalize-wheel@1.0.1:
+    resolution: {integrity: sha512-1OnlAPZ3zgrk8B91HyRj+eVv+kS5u+Z0SCsak6Xil/kmgEia50ga7zfkumayonZrImffAxPU/5WcyGhzetHNPA==}
+
   npm-run-all@4.1.5:
     resolution: {integrity: sha512-Oo82gJDAVcaMdi3nuoKFavkIHBRVqQ1qvMb+9LHk/cF4P6B2m8aP04hGf7oL6wZ9BuGwX1onlLhpuoofSyoQDQ==}
     engines: {node: '>= 4'}
@@ -5356,6 +5378,12 @@ packages:
     resolution: {integrity: sha512-5m4nQKp+rZRb09LNH59GM4BxTh9251/ylbKIbpe7TpGxfJ+9kv6BLkLBXIjjspbgbnIBNqlI23tRnTWT0snUIw==}
     peerDependencies:
       react: ^18.3.1
+
+  react-easy-crop@5.5.2:
+    resolution: {integrity: sha512-8sxx7x7QBMF8fi+zd9QTf9MXovPzQUASNCRrXy/ZUQe9r25U0yDweyM38CaoNTAfX9+k/v52ywLRXiwDN3TBtQ==}
+    peerDependencies:
+      react: '>=16.4.0'
+      react-dom: '>=16.4.0'
 
   react-hook-form@7.62.0:
     resolution: {integrity: sha512-7KWFejc98xqG/F4bAxpL41NB3o1nnvQO1RWZT3TqRZYL8RryQETGfEdVnJN2fy1crCiBLLjkRBVK05j24FxJGA==}
@@ -7947,6 +7975,25 @@ snapshots:
   '@radix-ui/react-separator@1.1.7(@types/react-dom@18.2.5)(@types/react@18.2.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@radix-ui/react-primitive': 2.1.3(@types/react-dom@18.2.5)(@types/react@18.2.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+    optionalDependencies:
+      '@types/react': 18.2.12
+      '@types/react-dom': 18.2.5
+
+  '@radix-ui/react-slider@1.3.6(@types/react-dom@18.2.5)(@types/react@18.2.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@radix-ui/number': 1.1.1
+      '@radix-ui/primitive': 1.1.3
+      '@radix-ui/react-collection': 1.1.7(@types/react-dom@18.2.5)(@types/react@18.2.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-compose-refs': 1.1.2(@types/react@18.2.12)(react@18.3.1)
+      '@radix-ui/react-context': 1.1.2(@types/react@18.2.12)(react@18.3.1)
+      '@radix-ui/react-direction': 1.1.1(@types/react@18.2.12)(react@18.3.1)
+      '@radix-ui/react-primitive': 2.1.3(@types/react-dom@18.2.5)(@types/react@18.2.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-use-controllable-state': 1.2.2(@types/react@18.2.12)(react@18.3.1)
+      '@radix-ui/react-use-layout-effect': 1.1.1(@types/react@18.2.12)(react@18.3.1)
+      '@radix-ui/react-use-previous': 1.1.1(@types/react@18.2.12)(react@18.3.1)
+      '@radix-ui/react-use-size': 1.1.1(@types/react@18.2.12)(react@18.3.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
     optionalDependencies:
@@ -11455,6 +11502,8 @@ snapshots:
 
   normalize-range@0.1.2: {}
 
+  normalize-wheel@1.0.1: {}
+
   npm-run-all@4.1.5:
     dependencies:
       ansi-styles: 3.2.1
@@ -11966,6 +12015,13 @@ snapshots:
       loose-envify: 1.4.0
       react: 18.3.1
       scheduler: 0.23.2
+
+  react-easy-crop@5.5.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+    dependencies:
+      normalize-wheel: 1.0.1
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      tslib: 2.8.1
 
   react-hook-form@7.62.0(react@18.3.1):
     dependencies:

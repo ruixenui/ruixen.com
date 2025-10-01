@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/creat-account-form-demo.tsx",
-      "content": "import UniqueForm from \"@/registry/ruixenui/creat-account-form\";\r\n\r\nexport default function DemoOne() {\r\n  return <UniqueForm />;\r\n}\r\n",
+      "content": "import UniqueForm from \"@/registry/ruixenui/creat-account-form\";\n\nexport default function DemoOne() {\n  return <UniqueForm />;\n}\n",
       "type": "registry:example",
       "target": "components/create-account-form-demo.tsx"
     }

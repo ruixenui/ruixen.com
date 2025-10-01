@@ -1612,4 +1612,214 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "sortable-table",
+    type: "registry:ui",
+    title: "Sortable Table",
+    description:
+      "A sortable and filterable data table with search functionality.",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["table", "input", "button", "badge"],
+    files: [
+      {
+        path: "registry/ruixenui/sortable-table.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/sortable-table.tsx",
+      },
+    ],
+  },
+  {
+    name: "table-edit",
+    type: "registry:ui",
+    title: "Table Edit",
+    description:
+      "An editable table component with inline editing and dropdown menus.",
+    dependencies: ["lucide-react"],
+    registryDependencies: [
+      "table",
+      "checkbox",
+      "badge",
+      "button",
+      "dropdown-menu",
+      "input",
+      "select",
+    ],
+    files: [
+      {
+        path: "registry/ruixenui/table-edit.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/table-edit.tsx",
+      },
+    ],
+  },
+  {
+    name: "table-with-dialog",
+    type: "registry:ui",
+    title: "Table With Dialog",
+    description: "A data table with row details shown in a dialog modal.",
+    registryDependencies: ["table", "checkbox", "button", "dialog", "badge"],
+    files: [
+      {
+        path: "registry/ruixenui/table-with-dialog.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/table-with-dialog.tsx",
+      },
+    ],
+  },
+  {
+    name: "fixed-header-footer-table",
+    type: "registry:ui",
+    title: "Fixed Header Footer Table",
+    description: "A table with fixed header and footer, and scrollable body.",
+    registryDependencies: ["table"],
+    files: [
+      {
+        path: "registry/ruixenui/fixed-header-footer-table.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/fixed-header-footer-table.tsx",
+      },
+    ],
+  },
+  {
+    name: "date-time-picker",
+    type: "registry:ui",
+    title: "Date Time Picker",
+    description: "A date and time picker with calendar and time selection.",
+    dependencies: ["date-fns", "lucide-react", "react-day-picker"],
+    registryDependencies: ["popover", "button", "calendar", "select"],
+    files: [
+      {
+        path: "registry/ruixenui/date-time-picker.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/date-time-picker.tsx",
+      },
+    ],
+  },
+  {
+    name: "date-range-picker",
+    type: "registry:ui",
+    title: "Date Range Picker",
+    description: "A date range picker with dual calendar view.",
+    dependencies: ["date-fns", "lucide-react", "react-day-picker"],
+    registryDependencies: ["button", "calendar", "popover"],
+    files: [
+      {
+        path: "registry/ruixenui/date-range-picker.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/date-range-picker.tsx",
+      },
+    ],
+  },
+  {
+    name: "monthly-heatmap-calendar",
+    type: "registry:ui",
+    title: "Monthly Heatmap Calendar",
+    description: "A monthly calendar with event heatmap visualization.",
+    dependencies: ["date-fns", "lucide-react"],
+    registryDependencies: [
+      "card",
+      "button",
+      "popover",
+      "input",
+      "select",
+      "badge",
+    ],
+    files: [
+      {
+        path: "registry/ruixenui/monthly-heatmap-calendar.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/monthly-heatmap-calendar.tsx",
+      },
+    ],
+  },
+  {
+    name: "event-scheduler",
+    type: "registry:ui",
+    title: "Event Scheduler",
+    description:
+      "A full-featured event scheduler with event creation and management.",
+    dependencies: ["date-fns", "lucide-react"],
+    registryDependencies: [
+      "button",
+      "calendar",
+      "popover",
+      "select",
+      "input",
+      "card",
+    ],
+    files: [
+      {
+        path: "registry/ruixenui/event-scheduler.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/event-scheduler.tsx",
+      },
+    ],
+  },
+  {
+    name: "scheduler",
+    type: "registry:ui",
+    title: "Scheduler",
+    description: "A simple event scheduler with calendar integration.",
+    dependencies: ["lucide-react"],
+    registryDependencies: [
+      "button",
+      "popover",
+      "calendar",
+      "card",
+      "label",
+      "select",
+    ],
+    files: [
+      {
+        path: "registry/ruixenui/scheduler.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/scheduler.tsx",
+      },
+    ],
+  },
+  {
+    name: "daily-timeline-scheduler",
+    type: "registry:ui",
+    title: "Daily Timeline Scheduler",
+    description: "A timeline-based daily scheduler with time slot management.",
+    dependencies: ["date-fns", "lucide-react"],
+    registryDependencies: ["card", "button", "popover", "input", "select"],
+    files: [
+      {
+        path: "registry/ruixenui/daily-timeline-scheduler.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/daily-timeline-scheduler.tsx",
+      },
+    ],
+  },
+  {
+    name: "image-cropper",
+    type: "registry:ui",
+    title: "Image Cropper",
+    description: "An image cropping tool with zoom and aspect ratio controls.",
+    dependencies: ["react-easy-crop"],
+    registryDependencies: ["button", "select", "slider", "card", "input"],
+    files: [
+      {
+        path: "registry/ruixenui/image-cropper.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/image-cropper.tsx",
+      },
+    ],
+  },
+  {
+    name: "advanced-image-uploader",
+    type: "registry:ui",
+    title: "Advanced Image Uploader",
+    description: "A drag-and-drop image uploader with cropping functionality.",
+    dependencies: ["react-easy-crop", "lucide-react"],
+    registryDependencies: ["card", "button"],
+    files: [
+      {
+        path: "registry/ruixenui/advanced-image-uploader.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/advanced-image-uploader.tsx",
+      },
+    ],
+  },
 ];
