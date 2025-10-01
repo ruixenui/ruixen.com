@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/video-player-pro-demo.tsx",
-      "content": "import VideoPlayerPro from \"@/registry/ruixenui/video-player-pro\";\r\n\r\nexport default function VideoPlayerProDemo() {\r\n  return (\r\n    <div className=\"min-h-screen flex items-center justify-center bg-background p-4\">\r\n      <VideoPlayerPro src=\"https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4\" />\r\n    </div>\r\n  );\r\n}\r\n",
+      "content": "import VideoPlayerPro from \"@/registry/ruixenui/video-player-pro\";\n\nexport default function VideoPlayerProDemo() {\n  return (\n    <div className=\"min-h-screen flex items-center justify-center bg-background p-4\">\n      <VideoPlayerPro src=\"https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4\" />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/video-player-pro-demo.tsx"
     }

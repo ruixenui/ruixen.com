@@ -182,6 +182,9 @@ importers:
       octokit:
         specifier: ^4.0.2
         version: 4.1.4
+      ogl:
+        specifier: ^1.0.11
+        version: 1.0.11
       postcss:
         specifier: 8.4.39
         version: 8.4.39
@@ -4953,6 +4956,9 @@ packages:
   octokit@4.1.4:
     resolution: {integrity: sha512-cRvxRte6FU3vAHRC9+PMSY3D+mRAs2Rd9emMoqp70UGRvJRM3sbAoim2IXRZNNsf8wVfn4sGxVBHRAP+JBVX/g==}
     engines: {node: '>= 18'}
+
+  ogl@1.0.11:
+    resolution: {integrity: sha512-kUpC154AFfxi16pmZUK4jk3J+8zxwTWGPo03EoYA8QPbzikHoaC82n6pNTbd+oEaJonaE8aPWBlX7ad9zrqLsA==}
 
   once@1.4.0:
     resolution: {integrity: sha512-lNaJgI+2Q5URQBkccEKHTQOPaXdUxnZZElQTZY0MFUAuaEqe1E+Nyvgdz/aIyNi6Z9MzO5dv1H8n58/GELp3+w==}
@@ -11616,6 +11622,8 @@ snapshots:
       '@octokit/request-error': 6.1.8
       '@octokit/types': 14.1.0
       '@octokit/webhooks': 13.9.1
+
+  ogl@1.0.11: {}
 
   once@1.4.0:
     dependencies:
