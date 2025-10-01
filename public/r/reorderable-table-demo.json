@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "reorderable-table-demo",
+  "type": "registry:example",
+  "title": "Reorderable Table Demo",
+  "description": "Example showing a table with column reordering and visibility controls.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/reorderable-table"
+  ],
+  "files": [
+    {
+      "path": "registry/example/reorderable-table-demo.tsx",
+      "content": "\"use client\";\r\n\r\nimport ReorderableTable, { ColumnDef } from \"@/registry/ruixenui/reorderable-table\";\r\n\r\nexport default function ReorderableTableDemo() {\r\n  // --- Custom Data Example ---\r\n  const customData = [\r\n    { id: 1, name: \"John Doe\", department: \"Engineering\", salary: 90000, status: \"Active\" },\r\n    { id: 2, name: \"Anna Smith\", department: \"HR\", salary: 70000, status: \"Inactive\" },\r\n    { id: 3, name: \"Mark Lee\", department: \"Finance\", salary: 80000, status: \"Active\" },\r\n    { id: 4, name: \"Sophia Liu\", department: \"Marketing\", salary: 75000, status: \"Suspended\" },\r\n  ];\r\n\r\n  const customColumns: ColumnDef<typeof customData[0]>[] = [\r\n    { key: \"name\", label: \"Full Name\", width: \"200px\" },\r\n    { key: \"department\", label: \"Department\", width: \"150px\" },\r\n    {\r\n      key: \"salary\",\r\n      label: \"Salary\",\r\n      width: \"120px\",\r\n      render: (row) => `$${row.salary.toLocaleString()}`,\r\n    },\r\n    {\r\n      key: \"status\",\r\n      label: \"Status\",\r\n      width: \"120px\",\r\n      render: (row) => {\r\n        const statusColors = {\r\n          Active: \"bg-green-100 text-green-800\",\r\n          Inactive: \"bg-gray-100 text-gray-800\",\r\n          Suspended: \"bg-red-100 text-red-800\",\r\n        };\r\n        const status = row.status as keyof typeof statusColors;\r\n        return (\r\n          <span className={`inline-block px-2 py-0.5 rounded-md text-sm font-medium ${statusColors[status]}`}>\r\n            {row.status}\r\n          </span>\r\n        );\r\n      },\r\n    },\r\n  ];\r\n\r\n  return (\r\n    <div className=\"p-6 flex flex-col gap-10\">\r\n      {/* Default Table */}\r\n      <div>\r\n        <h1 className=\"text-2xl font-bold mb-4\">Default Table</h1>\r\n        <ReorderableTable title=\"Default Users Table\" />\r\n      </div>\r\n\r\n      {/* Custom Table */}\r\n      <div>\r\n        <h1 className=\"text-2xl font-bold mb-4\">Custom Table</h1>\r\n        <ReorderableTable\r\n          title=\"Employee Table\"\r\n          data={customData}\r\n          columns={customColumns}\r\n          lsOrderKey=\"employee_table_order\"\r\n          lsVisibleKey=\"employee_table_visible\"\r\n        />\r\n      </div>\r\n    </div>\r\n  );\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/reorderable-table-demo.tsx"
+    }
+  ]
+}

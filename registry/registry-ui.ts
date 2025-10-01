@@ -1822,4 +1822,172 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "reorderable-table",
+    type: "registry:ui",
+    title: "Reorderable Table",
+    description:
+      "A feature-rich table with column reordering, visibility toggle, and search functionality.",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["table", "button", "checkbox", "popover", "input"],
+    files: [
+      {
+        path: "registry/ruixenui/reorderable-table.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/reorderable-table.tsx",
+      },
+    ],
+  },
+  {
+    name: "comparison-table",
+    type: "registry:ui",
+    title: "Comparison Table",
+    description:
+      "A comparison table with filtering, search, and side-by-side item comparison.",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["table", "card", "button", "input", "select"],
+    files: [
+      {
+        path: "registry/ruixenui/comparison-table.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/comparison-table.tsx",
+      },
+    ],
+  },
+  {
+    name: "flexi-filter-table",
+    type: "registry:ui",
+    title: "Flexi Filter Table",
+    description:
+      "A flexible table with multiple filter options including date range, balance, and location.",
+    dependencies: ["lucide-react"],
+    registryDependencies: [
+      "table",
+      "checkbox",
+      "button",
+      "input",
+      "badge",
+      "dropdown-menu",
+      "calendar",
+      "popover",
+    ],
+    files: [
+      {
+        path: "registry/ruixenui/flexi-filter-table.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/flexi-filter-table.tsx",
+      },
+    ],
+  },
+  {
+    name: "table-dialog",
+    type: "registry:ui",
+    title: "Table Dialog",
+    description:
+      "An editable table with dialog-based editing and row selection.",
+    dependencies: ["lucide-react"],
+    registryDependencies: [
+      "table",
+      "checkbox",
+      "badge",
+      "button",
+      "dropdown-menu",
+      "dialog",
+      "input",
+      "select",
+    ],
+    files: [
+      {
+        path: "registry/ruixenui/table-dialog.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/table-dialog.tsx",
+      },
+    ],
+  },
+  {
+    name: "minimisable-table",
+    type: "registry:ui",
+    title: "Minimisable Table",
+    description:
+      "A table with collapsible columns that can be minimized to icons.",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["table", "button", "dropdown-menu"],
+    files: [
+      {
+        path: "registry/ruixenui/minimisable-table.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/minimisable-table.tsx",
+      },
+    ],
+  },
+  {
+    name: "inline-analytics-table",
+    type: "registry:ui",
+    title: "Inline Analytics Table",
+    description:
+      "A table with inline analytics including progress bars and trend indicators.",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["table", "progress"],
+    files: [
+      {
+        path: "registry/ruixenui/inline-analytics-table.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/inline-analytics-table.tsx",
+      },
+    ],
+  },
+  {
+    name: "column-collaboration-table",
+    type: "registry:ui",
+    title: "Column Collaboration Table",
+    description:
+      "A collaborative table with column-level comments and annotations.",
+    dependencies: ["lucide-react"],
+    registryDependencies: [
+      "table",
+      "button",
+      "popover",
+      "input",
+      "scroll-area",
+    ],
+    files: [
+      {
+        path: "registry/ruixenui/column-collaboration-table.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/column-collaboration-table.tsx",
+      },
+    ],
+  },
+  {
+    name: "video-player-pro",
+    type: "registry:ui",
+    title: "Video Player Pro",
+    description:
+      "A professional video player with custom controls, playback speed, and fullscreen support.",
+    dependencies: ["framer-motion", "lucide-react"],
+    registryDependencies: ["button", "popover", "slider"],
+    files: [
+      {
+        path: "registry/ruixenui/video-player-pro.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/video-player-pro.tsx",
+      },
+    ],
+  },
+  {
+    name: "hover-play-card",
+    type: "registry:ui",
+    title: "Hover Play Card",
+    description:
+      "A video card that plays on hover with manual play/pause controls.",
+    dependencies: ["framer-motion", "lucide-react"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "registry/ruixenui/hover-play-card.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/hover-play-card.tsx",
+      },
+    ],
+  },
 ];

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "table-dialog-demo",
+  "type": "registry:example",
+  "title": "Table Dialog Demo",
+  "description": "Example showing an editable table with dialog-based editing.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/table-dialog"
+  ],
+  "files": [
+    {
+      "path": "registry/example/table-dialog-demo.tsx",
+      "content": "\"use client\"\r\n\r\nimport { useState } from \"react\"\r\nimport TableDialog, { User } from \"@/registry/ruixenui/table-dialog\"\r\nimport { Button } from \"@/components/ui/button\"\r\n\r\nexport default function DemoPage() {\r\n  const customData: User[] = [\r\n    { id: \"10\", name: \"Liam Smith\", email: \"liam@company.com\", role: \"Developer\", status: \"Active\", balance: \"$1,000.00\" },\r\n    { id: \"11\", name: \"Emma Brown\", email: \"emma@company.com\", role: \"Designer\", status: \"Inactive\", balance: \"$500.00\" },\r\n    { id: \"12\", name: \"Noah Johnson\", email: \"noah@company.com\", role: \"Manager\", status: \"Active\", balance: \"$2,100.00\" },\r\n  ]\r\n\r\n  const [useCustom, setUseCustom] = useState(false)\r\n\r\n  return (\r\n    <div className=\"p-6 space-y-4\">\r\n      <h1 className=\"text-2xl font-bold\">Configurable Editable Table Demo</h1>\r\n      <div className=\"flex gap-4\">\r\n        <Button onClick={() => setUseCustom(false)}>Use Default Data</Button>\r\n        <Button onClick={() => setUseCustom(true)}>Use Custom Data</Button>\r\n      </div>\r\n\r\n      <TableDialog\r\n        data={useCustom ? customData : undefined}\r\n        footerTotal={useCustom ? \"$3,600.00\" : undefined}\r\n        maxHeight=\"450px\"\r\n      />\r\n    </div>\r\n  )\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/table-dialog-demo.tsx"
+    }
+  ]
+}

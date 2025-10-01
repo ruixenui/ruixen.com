@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/sortable-table-demo.tsx",
-      "content": "\"use client\";\r\n\r\nimport SortableTable from \"@/registry/ruixenui/sortable-table\";\r\n\r\nexport default function SortableTableDemo() {\r\n  return (\r\n    <div className=\"p-8\">\r\n      <SortableTable />\r\n    </div>\r\n  );\r\n}\r\n",
+      "content": "\"use client\";\n\nimport SortableTable from \"@/registry/ruixenui/sortable-table\";\n\nexport default function SortableTableDemo() {\n  return (\n    <div className=\"p-8\">\n      <SortableTable />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/sortable-table-demo.tsx"
     }

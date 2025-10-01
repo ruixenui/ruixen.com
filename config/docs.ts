@@ -551,6 +551,48 @@ export const docsConfig: DocsConfig = {
               items: [],
               label: "New",
             },
+            {
+              title: "Reorderable Table",
+              href: `/docs/components/reorderable-table`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Comparison Table",
+              href: `/docs/components/comparison-table`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Flexi Filter Table",
+              href: `/docs/components/flexi-filter-table`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Table Dialog",
+              href: `/docs/components/table-dialog`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Minimisable Table",
+              href: `/docs/components/minimisable-table`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Inline Analytics Table",
+              href: `/docs/components/inline-analytics-table`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Column Collaboration Table",
+              href: `/docs/components/column-collaboration-table`,
+              items: [],
+              label: "New",
+            },
           ],
         },
         {
@@ -616,6 +658,23 @@ export const docsConfig: DocsConfig = {
             {
               title: "Advanced Image Uploader",
               href: `/docs/components/advanced-image-uploader`,
+              items: [],
+              label: "New",
+            },
+          ],
+        },
+        {
+          title: "Video Players",
+          items: [
+            {
+              title: "Video Player Pro",
+              href: `/docs/components/video-player-pro`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Hover Play Card",
+              href: `/docs/components/hover-play-card`,
               items: [],
               label: "New",
             },

@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/image-cropper-demo.tsx",
-      "content": "import ImageCropper from \"@/registry/ruixenui/image-cropper\";\r\n\r\nexport default function DemoOne() {\r\n  return <ImageCropper />;\r\n}\r\n",
+      "content": "import ImageCropper from \"@/registry/ruixenui/image-cropper\";\n\nexport default function DemoOne() {\n  return <ImageCropper />;\n}\n",
       "type": "registry:example",
       "target": "components/image-cropper-demo.tsx"
     }

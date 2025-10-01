@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "comparison-table-demo",
+  "type": "registry:example",
+  "title": "Comparison Table Demo",
+  "description": "Example showing a comparison table with filtering and side-by-side comparison.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/comparison-table"
+  ],
+  "files": [
+    {
+      "path": "registry/example/comparison-table-demo.tsx",
+      "content": "\"use client\"\r\n\r\nimport ComparisonTable, { Item } from \"@/registry/ruixenui/comparison-table\"\r\n\r\nconst customData: Item[] = [\r\n  { id: 1, category: \"Camera\", price: 900, rating: 4.6, stock: 25 },\r\n  { id: 2, category: \"Drone\", price: 1200, rating: 4.8, stock: 12 },\r\n  { id: 3, category: \"Camera\", price: 750, rating: 4.3, stock: 18 },\r\n  { id: 4, category: \"Headphones\", price: 250, rating: 4.5, stock: 40 },\r\n]\r\n\r\nexport default function ComparisonDemo() {\r\n  return (\r\n    <div className=\"p-6\">\r\n      <ComparisonTable\r\n        data={customData}\r\n        categories={[\"Camera\", \"Drone\", \"Headphones\"]}\r\n        title=\"Gadget Comparison Table\"\r\n      />\r\n    </div>\r\n  )\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/comparison-table-demo.tsx"
+    }
+  ]
+}

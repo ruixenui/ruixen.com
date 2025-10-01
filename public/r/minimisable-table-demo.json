@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "minimisable-table-demo",
+  "type": "registry:example",
+  "title": "Minimisable Table Demo",
+  "description": "Example showing a table with collapsible columns.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/minimisable-table"
+  ],
+  "files": [
+    {
+      "path": "registry/example/minimisable-table-demo.tsx",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport MinimisableTable, { ColumnConfig } from \"@/registry/ruixenui/minimisable-table\";\r\nimport { User, Mail, MapPin, ShieldCheck, DollarSign } from \"lucide-react\";\r\n\r\ntype CustomRow = {\r\n  id: string;\r\n  fullName: string;\r\n  emailAddress: string;\r\n  city: string;\r\n  status: \"Active\" | \"Inactive\";\r\n  balanceUSD: string;\r\n};\r\n\r\nexport default function MinimisableTableDemo() {\r\n  const customData: CustomRow[] = [\r\n    {\r\n      id: \"1\",\r\n      fullName: \"Srinath G\",\r\n      emailAddress: \"srinath.g@company.com\",\r\n      city: \"Bangalore, IN\",\r\n      status: \"Active\",\r\n      balanceUSD: \"$2,500.00\",\r\n    },\r\n    {\r\n      id: \"2\",\r\n      fullName: \"Alice Wong\",\r\n      emailAddress: \"alice.wong@company.com\",\r\n      city: \"Singapore\",\r\n      status: \"Inactive\",\r\n      balanceUSD: \"$1,200.00\",\r\n    },\r\n    {\r\n      id: \"3\",\r\n      fullName: \"John Doe\",\r\n      emailAddress: \"john.doe@company.com\",\r\n      city: \"New York, USA\",\r\n      status: \"Active\",\r\n      balanceUSD: \"$3,100.00\",\r\n    },\r\n  ];\r\n\r\n  const customColumns: ColumnConfig<CustomRow>[] = [\r\n    { key: \"fullName\", label: \"Full Name\", icon: <User className=\"h-4 w-4\" /> },\r\n    { key: \"emailAddress\", label: \"Email\", icon: <Mail className=\"h-4 w-4\" /> },\r\n    { key: \"city\", label: \"City\", icon: <MapPin className=\"h-4 w-4\" /> },\r\n    { key: \"status\", label: \"Status\", icon: <ShieldCheck className=\"h-4 w-4\" /> },\r\n    { key: \"balanceUSD\", label: \"Balance\", icon: <DollarSign className=\"h-4 w-4\" />, align: \"text-right\" },\r\n  ];\r\n\r\n  return (\r\n    <div className=\"space-y-10 p-6\">\r\n      <h1 className=\"text-2xl font-bold\">Minimisable Table Demo</h1>\r\n\r\n      <section className=\"space-y-4\">\r\n        <h2 className=\"text-xl font-semibold\">Default Table</h2>\r\n        <MinimisableTable />\r\n      </section>\r\n\r\n      <section className=\"space-y-4\">\r\n        <h2 className=\"text-xl font-semibold\">Custom Table</h2>\r\n        <MinimisableTable\r\n          data={customData}\r\n          columns={customColumns}\r\n          defaultMinimized={[\"status\", \"balanceUSD\"]}\r\n        />\r\n      </section>\r\n    </div>\r\n  );\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/minimisable-table-demo.tsx"
+    }
+  ]
+}

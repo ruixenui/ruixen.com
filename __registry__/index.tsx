@@ -2898,6 +2898,250 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "reorderable-table": {
+    name: "reorderable-table",
+    description:
+      "A feature-rich table with column reordering, visibility toggle, and search functionality.",
+    type: "registry:ui",
+    registryDependencies: ["table", "button", "checkbox", "popover", "input"],
+    files: [
+      {
+        path: "registry/ruixenui/reorderable-table.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/reorderable-table.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/reorderable-table.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "comparison-table": {
+    name: "comparison-table",
+    description:
+      "A comparison table with filtering, search, and side-by-side item comparison.",
+    type: "registry:ui",
+    registryDependencies: ["table", "card", "button", "input", "select"],
+    files: [
+      {
+        path: "registry/ruixenui/comparison-table.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/comparison-table.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/comparison-table.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "flexi-filter-table": {
+    name: "flexi-filter-table",
+    description:
+      "A flexible table with multiple filter options including date range, balance, and location.",
+    type: "registry:ui",
+    registryDependencies: [
+      "table",
+      "checkbox",
+      "button",
+      "input",
+      "badge",
+      "dropdown-menu",
+      "calendar",
+      "popover",
+    ],
+    files: [
+      {
+        path: "registry/ruixenui/flexi-filter-table.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/flexi-filter-table.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/flexi-filter-table.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "table-dialog": {
+    name: "table-dialog",
+    description:
+      "An editable table with dialog-based editing and row selection.",
+    type: "registry:ui",
+    registryDependencies: [
+      "table",
+      "checkbox",
+      "badge",
+      "button",
+      "dropdown-menu",
+      "dialog",
+      "input",
+      "select",
+    ],
+    files: [
+      {
+        path: "registry/ruixenui/table-dialog.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/table-dialog.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/table-dialog.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "minimisable-table": {
+    name: "minimisable-table",
+    description:
+      "A table with collapsible columns that can be minimized to icons.",
+    type: "registry:ui",
+    registryDependencies: ["table", "button", "dropdown-menu"],
+    files: [
+      {
+        path: "registry/ruixenui/minimisable-table.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/minimisable-table.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/minimisable-table.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "inline-analytics-table": {
+    name: "inline-analytics-table",
+    description:
+      "A table with inline analytics including progress bars and trend indicators.",
+    type: "registry:ui",
+    registryDependencies: ["table", "progress"],
+    files: [
+      {
+        path: "registry/ruixenui/inline-analytics-table.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/inline-analytics-table.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/ruixenui/inline-analytics-table.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "column-collaboration-table": {
+    name: "column-collaboration-table",
+    description:
+      "A collaborative table with column-level comments and annotations.",
+    type: "registry:ui",
+    registryDependencies: [
+      "table",
+      "button",
+      "popover",
+      "input",
+      "scroll-area",
+    ],
+    files: [
+      {
+        path: "registry/ruixenui/column-collaboration-table.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/column-collaboration-table.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/ruixenui/column-collaboration-table.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "video-player-pro": {
+    name: "video-player-pro",
+    description:
+      "A professional video player with custom controls, playback speed, and fullscreen support.",
+    type: "registry:ui",
+    registryDependencies: ["button", "popover", "slider"],
+    files: [
+      {
+        path: "registry/ruixenui/video-player-pro.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/video-player-pro.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/video-player-pro.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "hover-play-card": {
+    name: "hover-play-card",
+    description:
+      "A video card that plays on hover with manual play/pause controls.",
+    type: "registry:ui",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "registry/ruixenui/hover-play-card.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/hover-play-card.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/hover-play-card.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "staggered-faq-section-demo": {
     name: "staggered-faq-section-demo",
     description:
@@ -5836,6 +6080,227 @@ export const Index: Record<string, any> = {
       const mod = await import(
         "@/registry/example/advanced-image-uploader-demo.tsx"
       );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "reorderable-table-demo": {
+    name: "reorderable-table-demo",
+    description:
+      "Example showing a table with column reordering and visibility controls.",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/reorderable-table"],
+    files: [
+      {
+        path: "registry/example/reorderable-table-demo.tsx",
+        type: "registry:example",
+        target: "components/reorderable-table-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/reorderable-table-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "comparison-table-demo": {
+    name: "comparison-table-demo",
+    description:
+      "Example showing a comparison table with filtering and side-by-side comparison.",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/comparison-table"],
+    files: [
+      {
+        path: "registry/example/comparison-table-demo.tsx",
+        type: "registry:example",
+        target: "components/comparison-table-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/comparison-table-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "flexi-filter-table-demo": {
+    name: "flexi-filter-table-demo",
+    description:
+      "Example showing a flexible table with multiple filter options.",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/flexi-filter-table"],
+    files: [
+      {
+        path: "registry/example/flexi-filter-table-demo.tsx",
+        type: "registry:example",
+        target: "components/flexi-filter-table-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/flexi-filter-table-demo.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "table-dialog-demo": {
+    name: "table-dialog-demo",
+    description: "Example showing an editable table with dialog-based editing.",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/table-dialog"],
+    files: [
+      {
+        path: "registry/example/table-dialog-demo.tsx",
+        type: "registry:example",
+        target: "components/table-dialog-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/table-dialog-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "minimisable-table-demo": {
+    name: "minimisable-table-demo",
+    description: "Example showing a table with collapsible columns.",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/minimisable-table"],
+    files: [
+      {
+        path: "registry/example/minimisable-table-demo.tsx",
+        type: "registry:example",
+        target: "components/minimisable-table-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/minimisable-table-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "inline-analytics-table-demo": {
+    name: "inline-analytics-table-demo",
+    description:
+      "Example showing a table with inline analytics and progress indicators.",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/inline-analytics-table"],
+    files: [
+      {
+        path: "registry/example/inline-analytics-table-demo.tsx",
+        type: "registry:example",
+        target: "components/inline-analytics-table-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/inline-analytics-table-demo.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "column-collaboration-table-demo": {
+    name: "column-collaboration-table-demo",
+    description:
+      "Example showing a collaborative table with column-level comments.",
+    type: "registry:example",
+    registryDependencies: [
+      "https://www.ruixen.com/r/column-collaboration-table",
+    ],
+    files: [
+      {
+        path: "registry/example/column-collaboration-table-demo.tsx",
+        type: "registry:example",
+        target: "components/column-collaboration-table-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/column-collaboration-table-demo.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "video-player-pro-demo": {
+    name: "video-player-pro-demo",
+    description:
+      "Example showing a professional video player with custom controls.",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/video-player-pro"],
+    files: [
+      {
+        path: "registry/example/video-player-pro-demo.tsx",
+        type: "registry:example",
+        target: "components/video-player-pro-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/video-player-pro-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "hover-play-card-demo": {
+    name: "hover-play-card-demo",
+    description: "Example showing a video card that plays on hover.",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/hover-play-card"],
+    files: [
+      {
+        path: "registry/example/hover-play-card-demo.tsx",
+        type: "registry:example",
+        target: "components/hover-play-card-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/hover-play-card-demo.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>
