@@ -1486,7 +1486,7 @@ export const ui: Registry["items"] = [
     registryDependencies: ["button", "input", "label", "card"],
     files: [
       {
-        path: "registry/ruixenui/creat-account-form.tsx",
+        path: "registry/ruixenui/create-account-form.tsx",
         type: "registry:ui",
         target: "components/ruixen/create-account-form.tsx",
       },

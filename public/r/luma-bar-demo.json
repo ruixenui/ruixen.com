@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/luma-bar-demo.tsx",
-      "content": "import LumaBar from \"../ruixenui/luma-bar\";\n\nexport default function DemoPage() {\n  return (\n    <main>\n      <LumaBar />\n    </main>\n  );\n}\n",
+      "content": "import LumaBar from \"@/registry/ruixenui/luma-bar\";\n\nexport default function DemoPage() {\n  return (\n    <main className=\"p-6\">\n      <LumaBar />\n    </main>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/luma-bar-demo.tsx"
     }

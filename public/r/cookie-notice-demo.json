@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/cookie-notice-demo.tsx",
-      "content": "import CookieNotice from \"@/registry/ruixenui/cookie-notice\";\n\nexport default function DemoOne() {\n  return <CookieNotice />;\n}\n",
+      "content": "import CookieNotice from \"@/registry/ruixenui/cookie-notice\";\n\nexport default function DemoOne() {\n  return (\n    <div className=\"flex flex-col items-center justify-center p-12 gap-6 min-h-[50vh]\">\n      <CookieNotice />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/cookie-notice-demo.tsx"
     }

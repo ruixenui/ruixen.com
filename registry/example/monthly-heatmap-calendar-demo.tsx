@@ -27,8 +27,7 @@ export default function MonthlyCalendarDemo() {
   };
 
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Monthly Heatmap Calendar Demo</h1>
+    <div className="p-4 max-w-md mx-auto">
       <MonthlyHeatmapCalendar
         initialMonth={new Date("2025-10-01")}
         initialEvents={initialEvents}

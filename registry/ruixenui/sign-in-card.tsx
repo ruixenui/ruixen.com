@@ -21,8 +21,8 @@ export default function SignInCard() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
-      <Card className="w-full min-w-md rounded-xl shadow-md bg-white dark:bg-gray-800">
+    <div className="flex items-center justify-center">
+      <Card className="w-full max-w-md rounded-xl shadow-md bg-white dark:bg-gray-800">
         <CardHeader>
           <div className="flex items-center gap-2">
             <Image

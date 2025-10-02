@@ -26,8 +26,7 @@ export default function EventSchedulerDemo() {
   };
 
   return (
-    <div className="p-8 bg-gray-100 min-h-screen">
-      <h1 className="text-2xl font-bold mb-6">Event Scheduler Demo</h1>
+    <div className="p-4 max-w-2xl mx-auto">
       <EventScheduler
         defaultEvents={defaultEvents}
         defaultTitle="New Event"

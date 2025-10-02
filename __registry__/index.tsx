@@ -2376,13 +2376,13 @@ export const Index: Record<string, any> = {
     registryDependencies: ["button", "input", "label", "card"],
     files: [
       {
-        path: "registry/ruixenui/creat-account-form.tsx",
+        path: "registry/ruixenui/create-account-form.tsx",
         type: "registry:ui",
         target: "components/ruixen/create-account-form.tsx",
       },
     ],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/ruixenui/creat-account-form.tsx");
+      const mod = await import("@/registry/ruixenui/create-account-form.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -5582,14 +5582,14 @@ export const Index: Record<string, any> = {
     registryDependencies: ["https://www.ruixen.com/r/create-account-form"],
     files: [
       {
-        path: "registry/example/creat-account-form-demo.tsx",
+        path: "registry/example/create-account-form-demo.tsx",
         type: "registry:example",
         target: "components/create-account-form-demo.tsx",
       },
     ],
     component: React.lazy(async () => {
       const mod = await import(
-        "@/registry/example/creat-account-form-demo.tsx"
+        "@/registry/example/create-account-form-demo.tsx"
       );
       const exportName =
         Object.keys(mod).find(

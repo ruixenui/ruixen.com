@@ -100,5 +100,5 @@ export default function MagicTree({
     ));
   };
 
-  return <div className="space-y-1">{renderNodes(data)}</div>;
+  return <div className="space-y-1 max-w-sm">{renderNodes(data)}</div>;
 }

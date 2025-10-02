@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/otp-input-demo.tsx",
-      "content": "\"use client\";\n\nimport OTPInput from \"../ruixenui/otp-input\";\nimport { useState } from \"react\";\n\nexport default function DemoOTP() {\n  const [otp, setOtp] = useState(\"\");\n\n  return (\n    <div className=\"min-h-screen flex flex-col items-center justify-center p-6 gap-6\">\n      <h2 className=\"text-lg font-semibold text-zinc-800 dark:text-white\">\n        Enter OTP\n      </h2>\n\n      <OTPInput length={6} onChange={(val) => setOtp(val)} placeholder=\"•\" />\n\n      <p className=\"text-sm text-zinc-600 dark:text-zinc-400\">\n        Current OTP: <span className=\"font-mono\">{otp}</span>\n      </p>\n    </div>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport OTPInput from \"../ruixenui/otp-input\";\nimport { useState } from \"react\";\n\nexport default function DemoOTP() {\n  const [otp, setOtp] = useState(\"\");\n\n  return (\n    <div className=\"flex flex-col items-center justify-center gap-6\">\n      <h2 className=\"text-lg font-semibold text-zinc-800 dark:text-white\">\n        Enter OTP\n      </h2>\n\n      <OTPInput length={6} onChange={(val) => setOtp(val)} placeholder=\"•\" />\n\n      <p className=\"text-sm text-zinc-600 dark:text-zinc-400\">\n        Current OTP: <span className=\"font-mono\">{otp}</span>\n      </p>\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/otp-input-demo.tsx"
     }

@@ -37,20 +37,8 @@ export default function PricingFlowDemo() {
   ];
 
   return (
-    <main className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      <div className="text-center py-20">
-        <h1 className="text-4xl font-bold text-gray-900 dark:text-white">
-          PricingFlow Demo
-        </h1>
-        <p className="mt-4 text-gray-600 dark:text-gray-300">
-          Default pricing plans below, plus a custom example.
-        </p>
-      </div>
-
-      {/* Custom Plans */}
-      <div className="mt-20">
-        <PricingFlow plans={customPlans} defaultBillPlan="annually" />
-      </div>
+    <main className="p-6">
+      <PricingFlow plans={customPlans} defaultBillPlan="annually" />
     </main>
   );
 }

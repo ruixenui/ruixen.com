@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/drawer-inner-content-demo.tsx",
-      "content": "\"use client\";\n\nimport DrawerInnerContent from \"../ruixenui/drawer-inner-content\";\n\nexport default function DemoDrawerInnerContent() {\n  return <DrawerInnerContent />;\n}\n",
+      "content": "\"use client\";\n\nimport DrawerInnerContent from \"@/registry/ruixenui/drawer-inner-content\";\n\nexport default function DemoDrawerInnerContent() {\n  return (\n    <div className=\"flex flex-col items-center justify-center p-12 gap-6\">\n      <DrawerInnerContent />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/drawer-inner-content-demo.tsx"
     }

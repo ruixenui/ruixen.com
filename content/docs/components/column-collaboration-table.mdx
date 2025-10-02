@@ -1,0 +1,99 @@
+---
+title: Column Collaboration Table
+date: 2024-10-02
+description: A collaborative table component that allows users to add comments and notes to individual columns for team discussions.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="column-collaboration-table-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/column-collaboration-table"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="column-collaboration-table" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import ColumnCollaborationTable from "@/components/ui/column-collaboration-table";
+
+const columns = ["Name", "Email", "Location", "Status", "Balance"];
+
+const data = [
+  {
+    id: "1",
+    Name: "John Doe",
+    Email: "john@company.com",
+    Location: "New York, US",
+    Status: "Active",
+    Balance: "$1,250.00",
+  },
+  // ... more data
+];
+
+export default function MyCollaborationTable() {
+  return <ColumnCollaborationTable columns={columns} data={data} />;
+}
+```
+
+## Props
+
+| Prop      | Type                        | Default          | Description           |
+| --------- | --------------------------- | ---------------- | --------------------- |
+| `columns` | `string[]`                  | `defaultColumns` | Array of column names |
+| `data`    | `ColumnCollaborationItem[]` | `defaultData`    | Array of data objects |
+
+## Data Item Type
+
+| Property        | Type     | Description                              |
+| --------------- | -------- | ---------------------------------------- |
+| `id`            | `string` | Unique identifier for the row            |
+| `[key: string]` | `string` | Dynamic properties matching column names |
+
+## Features
+
+- **Column Comments**: Click the plus icon in any column header to add comments
+- **Comment Popover**: Floating popover showing existing comments and input for new ones
+- **Scrollable Comments**: Comment list scrolls when there are many comments
+- **Real-time Updates**: Comments appear immediately after adding
+- **Team Collaboration**: Perfect for team discussions about specific data columns
+- **Visual Indicators**: Plus icon in headers shows where comments can be added
+- **Persistent State**: Comments maintained during component lifecycle
+- **Responsive Design**: Popovers adjust position based on screen space
+- **Clean Interface**: Comments don't clutter the main table view
+
+## Use Cases
+
+- **Data Review**: Team members can discuss specific columns during data analysis
+- **Quality Assurance**: Add notes about data quality issues in specific columns
+- **Documentation**: Document column meanings or calculation methods
+- **Feedback Collection**: Gather input on data presentation or column relevance
+- **Change Requests**: Discuss modifications needed for specific data fields

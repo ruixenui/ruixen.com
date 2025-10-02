@@ -1451,7 +1451,7 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://www.ruixen.com/r/create-account-form"],
     files: [
       {
-        path: "registry/example/creat-account-form-demo.tsx",
+        path: "registry/example/create-account-form-demo.tsx",
         type: "registry:example",
         target: "components/create-account-form-demo.tsx",
       },

@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/gravatar-email-input-demo.tsx",
-      "content": "\"use client\";\n\nimport GravatarEmailInput from \"../ruixenui/gravatar-email-input\";\n\nexport default function Demo() {\n  const handleEmailChange = (email: string) => {\n    console.log(\"Email changed:\", email);\n  };\n\n  return (\n    <div className=\"min-h-screen flex items-center justify-center p-6\">\n      <GravatarEmailInput\n        initialValue=\"test@example.com\"\n        onChange={handleEmailChange}\n      />\n    </div>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport GravatarEmailInput from \"../ruixenui/gravatar-email-input\";\n\nexport default function Demo() {\n  const handleEmailChange = (email: string) => {\n    console.log(\"Email changed:\", email);\n  };\n\n  return (\n    <div className=\"flex items-center justify-center\">\n      <GravatarEmailInput\n        initialValue=\"test@example.com\"\n        onChange={handleEmailChange}\n      />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/gravatar-email-input-demo.tsx"
     }

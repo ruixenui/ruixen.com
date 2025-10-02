@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/better-time-picker-demo.tsx",
-      "content": "import BetterTimePicker from \"../ruixenui/better-time-picker\";\n\nexport default function Demo() {\n  return (\n    <div className=\"min-h-screen flex items-center justify-center p-6\">\n      <BetterTimePicker />\n    </div>\n  );\n}\n",
+      "content": "import BetterTimePicker from \"../ruixenui/better-time-picker\";\n\nexport default function Demo() {\n  return (\n    <div className=\"flex items-center justify-center p-12\">\n      <BetterTimePicker />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/better-time-picker-demo.tsx"
     }

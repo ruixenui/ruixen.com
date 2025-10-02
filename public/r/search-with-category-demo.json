@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/search-with-category-demo.tsx",
-      "content": "\"use client\";\n\nimport SearchWithCategory from \"../ruixenui/search-with-category\";\n\nexport default function Demo() {\n  return (\n    <div className=\"min-h-screen flex items-center justify-center p-6\">\n      <SearchWithCategory />\n    </div>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport SearchWithCategory from \"../ruixenui/search-with-category\";\n\nexport default function Demo() {\n  return (\n    <div className=\"flex items-center justify-center p-12\">\n      <SearchWithCategory />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/search-with-category-demo.tsx"
     }

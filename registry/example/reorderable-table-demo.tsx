@@ -70,15 +70,11 @@ export default function ReorderableTableDemo() {
 
   return (
     <div className="p-6 flex flex-col gap-10">
-      {/* Default Table */}
       <div>
-        <h1 className="text-2xl font-bold mb-4">Default Table</h1>
         <ReorderableTable title="Default Users Table" />
       </div>
 
-      {/* Custom Table */}
       <div>
-        <h1 className="text-2xl font-bold mb-4">Custom Table</h1>
         <ReorderableTable
           title="Employee Table"
           data={customData}

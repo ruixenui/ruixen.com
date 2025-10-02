@@ -1,7 +1,7 @@
 "use client";
 
 import FileTree, { FileNode } from "@/registry/ruixenui/file-tree-manager";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 
 const demoTree: FileNode[] = [
   {
@@ -30,15 +30,8 @@ const demoTree: FileNode[] = [
 
 export default function FileTreeDemoPage() {
   return (
-    <div className="min-h-screen p-8 bg-gray-50 flex flex-col items-center gap-6">
-      <h1 className="text-3xl font-bold text-center">
-        FileTree Component Demo
-      </h1>
-
+    <div className="p-8 flex flex-col items-center gap-6">
       <Card className="w-full max-w-3xl">
-        <CardHeader>
-          <CardTitle>Interactive FileTree Demo</CardTitle>
-        </CardHeader>
         <CardContent>
           <FileTree
             treeData={demoTree}

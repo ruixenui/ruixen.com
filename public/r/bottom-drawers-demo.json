@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/bottom-drawers-demo.tsx",
-      "content": "import BottomDrawers from \"../ruixenui/bottom-drawers\";\n\nexport default function BottomDrawersDemo() {\n  return <BottomDrawers />;\n}\n",
+      "content": "import BottomDrawers from \"@/registry/ruixenui/bottom-drawers\";\n\nexport default function BottomDrawersDemo() {\n  return (\n    <div className=\"flex flex-col items-center justify-center p-12 gap-6\">\n      <BottomDrawers />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/bottom-drawers-demo.tsx"
     }

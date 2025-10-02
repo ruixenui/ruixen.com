@@ -41,7 +41,7 @@ export default function DemoPage() {
       heading="Next-Gen Features for Teams"
       subtitle="Empower your workflow with speed, security, and insights."
       tabs={demoTabs}
-      backgroundImage="/demo-dashboard.png"
+      backgroundImage="https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/dashboard-02.png"
     />
   );
 }

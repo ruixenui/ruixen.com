@@ -9,8 +9,8 @@
   ],
   "files": [
     {
-      "path": "registry/example/creat-account-form-demo.tsx",
-      "content": "import UniqueForm from \"@/registry/ruixenui/creat-account-form\";\n\nexport default function DemoOne() {\n  return <UniqueForm />;\n}\n",
+      "path": "registry/example/create-account-form-demo.tsx",
+      "content": "import CreateAccountForm from \"@/registry/ruixenui/create-account-form\";\n\nexport default function DemoOne() {\n  return (\n    <div className=\"flex items-center justify-center\">\n      <CreateAccountForm />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/create-account-form-demo.tsx"
     }

@@ -1676,7 +1676,7 @@
       ],
       "files": [
         {
-          "path": "registry/ruixenui/creat-account-form.tsx",
+          "path": "registry/ruixenui/create-account-form.tsx",
           "type": "registry:ui",
           "target": "components/ruixen/create-account-form.tsx"
         }
@@ -3868,7 +3868,7 @@
       ],
       "files": [
         {
-          "path": "registry/example/creat-account-form-demo.tsx",
+          "path": "registry/example/create-account-form-demo.tsx",
           "type": "registry:example",
           "target": "components/create-account-form-demo.tsx"
         }

@@ -36,19 +36,11 @@ export default function DemoPage() {
 
   return (
     <div className="p-6 space-y-8">
-      <h1 className="text-2xl font-bold text-center">
-        Fixed Header & Footer Table Demo
-      </h1>
-
-      {/* Table with default props */}
       <div>
-        <h2 className="text-xl font-semibold mb-2">Default Table</h2>
         <FixedHeaderFooterTable />
       </div>
 
-      {/* Table with custom data */}
       <div>
-        <h2 className="text-xl font-semibold mb-2">Custom Data Table</h2>
         <FixedHeaderFooterTable
           items={customItems}
           title="Custom Users Table"

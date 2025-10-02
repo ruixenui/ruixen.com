@@ -1,0 +1,97 @@
+---
+title: Table Dialog
+date: 2024-10-02
+description: An editable table component with inline editing capabilities through dialog modals and row selection functionality.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="table-dialog-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/table-dialog"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="table-dialog" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import TableDialog from "@/components/ui/table-dialog";
+
+const userData = [
+  {
+    id: "1",
+    name: "John Doe",
+    email: "john@company.com",
+    role: "Manager",
+    status: "Active" as const,
+    balance: "$1,250.00",
+  },
+  // ... more users
+];
+
+export default function MyEditableTable() {
+  return (
+    <TableDialog data={userData} footerTotal="$5,000.00" maxHeight="500px" />
+  );
+}
+```
+
+## Props
+
+| Prop          | Type     | Default        | Description                              |
+| ------------- | -------- | -------------- | ---------------------------------------- |
+| `data`        | `User[]` | `defaultUsers` | Array of user objects to display         |
+| `footerTotal` | `string` | `"$3,400.00"`  | Total amount shown in table footer       |
+| `maxHeight`   | `string` | `"400px"`      | Maximum height for scrollable table area |
+
+## User Type
+
+| Property  | Type                     | Description                    |
+| --------- | ------------------------ | ------------------------------ |
+| `id`      | `string`                 | Unique identifier for the user |
+| `name`    | `string`                 | User's full name               |
+| `email`   | `string`                 | User's email address           |
+| `role`    | `string`                 | User's role/position           |
+| `status`  | `"Active" \| "Inactive"` | User's current status          |
+| `balance` | `string`                 | Formatted balance amount       |
+
+## Features
+
+- **Inline Editing**: Click edit button to open dialog for row editing
+- **Dialog Form**: Modal dialog with form inputs for all user fields
+- **Row Selection**: Multi-select rows with checkboxes
+- **Select All**: Header checkbox to select/deselect all rows
+- **Status Badges**: Visual status indicators with color coding
+- **Scrollable Content**: Fixed header with scrollable body
+- **Action Menu**: Dropdown menu for row-level actions
+- **Footer Summary**: Total balance displayed in table footer
+- **Form Validation**: Proper form handling with select dropdowns
+- **Responsive Design**: Mobile-friendly layout and interactions

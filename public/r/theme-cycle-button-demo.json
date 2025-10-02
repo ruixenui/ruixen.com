@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/theme-cycle-button-demo.tsx",
-      "content": "\"use client\";\n\nimport ThemeCycleButton from \"../ruixenui/theme-cycle-button\";\n\nexport default function DemoThemeCycleButton() {\n  return (\n    <main className=\"flex flex-col items-center justify-center min-h-screen gap-6 p-6 bg-zinc-50 dark:bg-zinc-900\">\n      {/* Pill variant with label hidden */}\n      <ThemeCycleButton variant=\"pill\" showLabel={false} />\n\n      {/* Ghost variant + large size + mode callback */}\n      <ThemeCycleButton\n        variant=\"ghost\"\n        size=\"lg\"\n        onModeChange={(mode) => console.log(\"Theme changed to:\", mode)}\n      />\n    </main>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport ThemeCycleButton from \"../ruixenui/theme-cycle-button\";\n\nexport default function DemoThemeCycleButton() {\n  return (\n    <main className=\"flex flex-col items-center justify-center gap-6\">\n      {/* Pill variant with label hidden */}\n      <ThemeCycleButton variant=\"pill\" showLabel={false} />\n\n      {/* Ghost variant + large size + mode callback */}\n      <ThemeCycleButton\n        variant=\"ghost\"\n        size=\"lg\"\n        onModeChange={(mode) => console.log(\"Theme changed to:\", mode)}\n      />\n    </main>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/theme-cycle-button-demo.tsx"
     }

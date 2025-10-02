@@ -4,18 +4,9 @@ import SubscriptionPlans from "../ruixenui/subscription-plans";
 
 export default function SubscriptionDemo() {
   return (
-    <main className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      <div className="text-center py-20">
-        <h1 className="text-4xl font-bold text-gray-900 dark:text-white">
-          SubscriptionPlans Demo
-        </h1>
-        <p className="mt-4 text-gray-600 dark:text-gray-300">
-          Default subscription plans below, plus a custom example.
-        </p>
-      </div>
-
+    <main className="p-6">
       {/* Custom Plans */}
-      <div className="mt-20">
+      <div>
         <SubscriptionPlans
           plans={[
             {
