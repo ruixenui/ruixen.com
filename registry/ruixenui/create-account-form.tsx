@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Mail, User, Lock } from "lucide-react";
 
-export default function UniqueForm() {
+export default function CreateAccountForm() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -18,7 +18,7 @@ export default function UniqueForm() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
+    <div className="flex items-center justify-center">
       <Card className="w-full max-w-md shadow-lg rounded-2xl border border-gray-200">
         <CardHeader>
           <CardTitle className="text-2xl font-semibold text-center text-gray-800">

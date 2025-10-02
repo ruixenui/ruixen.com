@@ -2,7 +2,7 @@ import InlineCopyInput from "../ruixenui/inline-copy-input";
 
 export default function InlineCopyInputDemo() {
   return (
-    <div className="w-full max-w-md mx-auto">
+    <div className="flex items-center justify-center p-12">
       <InlineCopyInput />
     </div>
   );

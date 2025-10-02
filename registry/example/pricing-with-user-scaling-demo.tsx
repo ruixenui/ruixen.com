@@ -29,24 +29,12 @@ export default function PricingScalingDemo() {
   ];
 
   return (
-    <main className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      <div className="text-center py-20">
-        <h1 className="text-4xl font-bold text-gray-900 dark:text-white">
-          PricingWithUserScaling Demo
-        </h1>
-        <p className="mt-4 text-gray-600 dark:text-gray-300">
-          Default plans below, plus a custom example with 3 users by default.
-        </p>
-      </div>
-
-      {/* Custom Plans */}
-      <div className="mt-20">
-        <PricingWithUserScaling
-          plans={customPlans}
-          defaultBilling="annual"
-          defaultUsers={3}
-        />
-      </div>
+    <main className="p-6">
+      <PricingWithUserScaling
+        plans={customPlans}
+        defaultBilling="annual"
+        defaultUsers={3}
+      />
     </main>
   );
 }

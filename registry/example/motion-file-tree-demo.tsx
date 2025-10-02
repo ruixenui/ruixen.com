@@ -34,13 +34,8 @@ export default function MotionFileTreeDemoPage() {
   };
 
   return (
-    <div className="min-h-screen p-8 bg-gray-50 flex flex-col items-center gap-6">
-      <h1 className="text-3xl font-bold text-center">MotionFileTree Demo</h1>
-
+    <div className="p-8 flex flex-col items-center gap-6">
       <Card className="w-full max-w-3xl">
-        <CardHeader>
-          <CardTitle>Interactive MotionFileTree</CardTitle>
-        </CardHeader>
         <CardContent>
           <MotionFileTree
             data={demoTree}

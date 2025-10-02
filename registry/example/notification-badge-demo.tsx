@@ -10,7 +10,7 @@ export default function NotificationBadgeDemo() {
   );
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-6 space-y-8 bg-gray-50">
+    <div className="flex flex-col items-center justify-center p-12 gap-6 min-h-[50vh]">
       <h1 className="text-2xl font-bold">NotificationBadge Demo</h1>
 
       <NotificationBadge

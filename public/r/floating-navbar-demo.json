@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/floating-navbar-demo.tsx",
-      "content": "import FloatingNav from \"../ruixenui/floating-navbar\";\n\nexport default function FloatingNavbarDemo() {\n  return (\n    <main className=\"min-h-screen bg-gray-50 dark:bg-gray-900\">\n      <FloatingNav />\n    </main>\n  );\n}\n",
+      "content": "import FloatingNav from \"../ruixenui/floating-navbar\";\n\nexport default function FloatingNavbarDemo() {\n  return (\n    <main className=\"p-2\">\n      <FloatingNav />\n    </main>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/floating-navbar-demo.tsx"
     }

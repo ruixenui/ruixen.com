@@ -1,0 +1,112 @@
+---
+title: Minimisable Table
+date: 2024-10-02
+description: A compact table component that allows columns to be minimized to icons, perfect for space-constrained layouts.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="minimisable-table-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/minimisable-table"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="minimisable-table" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import MinimisableTable from "@/components/ui/minimisable-table";
+import { User, Mail, MapPin, ShieldCheck, DollarSign } from "lucide-react";
+
+const data = [
+  {
+    id: "1",
+    name: "John Doe",
+    email: "john@company.com",
+    location: "New York, US",
+    status: "Active",
+    balance: "$1,250.00",
+  },
+  // ... more data
+];
+
+const columns = [
+  { key: "name", label: "Name", icon: <User className="h-4 w-4" /> },
+  { key: "email", label: "Email", icon: <Mail className="h-4 w-4" /> },
+  { key: "location", label: "Location", icon: <MapPin className="h-4 w-4" /> },
+  { key: "status", label: "Status", icon: <ShieldCheck className="h-4 w-4" /> },
+  {
+    key: "balance",
+    label: "Balance",
+    icon: <DollarSign className="h-4 w-4" />,
+    align: "text-right",
+  },
+];
+
+export default function MyMinimisableTable() {
+  return (
+    <MinimisableTable
+      data={data}
+      columns={columns}
+      defaultMinimized={["email", "location"]}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop               | Type                | Default          | Description                                 |
+| ------------------ | ------------------- | ---------------- | ------------------------------------------- |
+| `data`             | `T[]`               | `defaultData`    | Array of data objects with `id` property    |
+| `columns`          | `ColumnConfig<T>[]` | `defaultColumns` | Column configuration with icons             |
+| `defaultMinimized` | `ColumnKey[]`       | `[]`             | Array of column keys to minimize by default |
+
+## Column Configuration
+
+| Property | Type              | Description                                  |
+| -------- | ----------------- | -------------------------------------------- |
+| `key`    | `keyof T`         | The data property key this column represents |
+| `label`  | `string`          | Display label for the column header          |
+| `icon`   | `React.ReactNode` | Icon to show when column is minimized        |
+| `align`  | `string`          | Optional CSS text alignment class            |
+
+## Features
+
+- **Column Minimization**: Toggle columns between full view and icon-only view
+- **Icon Headers**: Minimized columns show only icons in header
+- **Icon Cells**: Minimized columns show only icons in data cells
+- **Manage Columns**: Dropdown menu to control column visibility
+- **Visual Indicators**: Check marks show which columns are minimized
+- **Space Efficient**: Perfect for cramped layouts or mobile views
+- **Flexible Icons**: Use any Lucide React icons or custom components
+- **Responsive Design**: Compact layout works well on all screen sizes
+- **State Management**: Toggle state persisted during component lifecycle

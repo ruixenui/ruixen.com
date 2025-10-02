@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/chart";
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid } from "recharts";
 import { Card } from "@/components/ui/card";
-import RuixenFeaturedMessageCard from "@/components/ruixen-featured-message-card";
+import RuixenFeaturedMessageCard from "@/registry/ruixenui/ruixen-featured-message-card";
 
 export default function CompositeFeatureShowcase() {
   const featuredCasestudy = {

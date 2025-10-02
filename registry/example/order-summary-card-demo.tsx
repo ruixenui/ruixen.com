@@ -4,7 +4,7 @@ import OrderSummaryCard from "../ruixenui/order-summary-card";
 
 export default function Demo() {
   return (
-    <div className="flex flex-col gap-6 p-6">
+    <div className="flex flex-col gap-6 justify-center items-center w-full">
       <OrderSummaryCard
         items={[
           {

@@ -49,7 +49,7 @@ const demoData: TreeNode[] = [
 
 export default function TreeViewDemo() {
   return (
-    <div className="p-4 bg-card rounded-xl shadow-sm">
+    <div className="p-4 max-w-sm mx-auto">
       {demoData.map((node) => (
         <TreeNodeTooltip key={node.id} node={node} />
       ))}

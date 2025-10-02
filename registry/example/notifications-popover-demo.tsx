@@ -28,7 +28,7 @@ export default function NotificationsPopoverDemo() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-gray-50 space-y-6">
+    <div className="flex flex-col items-center justify-center p-12 gap-6">
       <h1 className="text-2xl font-bold">NotificationsPopover Demo</h1>
 
       <NotificationsPopover notifications={demoNotifications} />

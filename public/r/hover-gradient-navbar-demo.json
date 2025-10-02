@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/hover-gradient-navbar-demo.tsx",
-      "content": "\"use client\";\n\nimport HoverGradientNavBar from \"../ruixenui/hover-gradient-navbar\";\n\nexport default function HoverGradientNavBarDemo() {\n  return (\n    <main className=\"min-h-screen bg-gray-50 dark:bg-gray-900\">\n      <HoverGradientNavBar />\n    </main>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport HoverGradientNavBar from \"../ruixenui/hover-gradient-navbar\";\n\nexport default function HoverGradientNavBarDemo() {\n  return (\n    <main className=\"p-2\">\n      <HoverGradientNavBar />\n    </main>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/hover-gradient-navbar-demo.tsx"
     }

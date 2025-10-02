@@ -11,7 +11,7 @@ export default function CardDemoPage() {
   });
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-6 space-y-6">
+    <div className="flex flex-col items-center justify-center p-12 gap-6">
       <h1 className="text-2xl font-bold">Modern Card Input Demo</h1>
 
       <ModernCardInput
@@ -20,7 +20,7 @@ export default function CardDemoPage() {
         onChange={(data) => setCardData(data)}
       />
 
-      <div className="w-full max-w-md p-4 rounded-xl border bg-white shadow-md space-y-2">
+      <div className="w-full max-w-md p-4 rounded-xl border">
         <h2 className="text-lg font-medium">Card Data Preview:</h2>
         <p>
           <strong>Number:</strong> {cardData.number || "—"}

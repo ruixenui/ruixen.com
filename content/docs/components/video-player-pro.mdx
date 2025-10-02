@@ -1,0 +1,113 @@
+---
+title: Video Player Pro
+date: 2024-10-02
+description: A professional video player component with custom controls, playback speed adjustment, volume control, and fullscreen support.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="video-player-pro-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/video-player-pro"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="video-player-pro" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Install required dependencies</Step>
+
+```bash
+npm install framer-motion
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import VideoPlayerPro from "@/components/ui/video-player-pro";
+
+export default function MyVideoPlayer() {
+  return <VideoPlayerPro src="https://example.com/video.mp4" />;
+}
+```
+
+## Props
+
+| Prop  | Type     | Default | Description                                 |
+| ----- | -------- | ------- | ------------------------------------------- |
+| `src` | `string` | -       | **Required.** URL of the video file to play |
+
+## Features
+
+- **Custom Controls**: Beautiful custom video controls with smooth animations
+- **Play/Pause/Restart**: Click video or button to control playback
+- **Progress Scrubbing**: Click anywhere on progress bar to seek
+- **Volume Control**: Slider for precise volume adjustment
+- **Mute Toggle**: Quick mute/unmute with visual feedback
+- **Playback Speed**: Adjustable playback speed (0.5x to 2x)
+- **Fullscreen Support**: Enter/exit fullscreen mode
+- **Time Display**: Current time and total duration
+- **Auto-hide Controls**: Controls fade out during playback
+- **Responsive Design**: Adapts to different screen sizes
+- **Smooth Animations**: Framer Motion powered transitions
+- **Professional Styling**: Backdrop blur and modern design
+
+## Control Features
+
+### Playback Controls
+
+- **Play/Pause**: Space bar or click video
+- **Restart**: Automatically restarts when video ends
+- **Seeking**: Click progress bar to jump to specific time
+
+### Audio Controls
+
+- **Volume Slider**: Precise volume control from 0-100%
+- **Mute Button**: Toggle mute with visual state
+- **Volume Icons**: Different icons for muted, low, and normal volume
+
+### Display Controls
+
+- **Fullscreen**: Enter/exit fullscreen mode
+- **Settings Popover**: Access playback speed settings
+- **Time Formatting**: MM:SS format for current time and duration
+
+## Keyboard Shortcuts
+
+| Key     | Action            |
+| ------- | ----------------- |
+| `Space` | Play/Pause toggle |
+| `Click` | Play/Pause toggle |
+| `F`     | Toggle fullscreen |
+| `M`     | Toggle mute       |
+
+## Browser Support
+
+- Modern browsers with HTML5 video support
+- Fullscreen API support for fullscreen functionality
+- Requires JavaScript enabled for custom controls

@@ -1,0 +1,108 @@
+---
+title: Reorderable Table
+date: 2024-10-02
+description: A customizable table component with drag-and-drop column reordering, column visibility controls, and persistent layout settings.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="reorderable-table-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/reorderable-table"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="reorderable-table" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import ReorderableTable from "@/components/ui/reorderable-table";
+
+const data = [
+  {
+    id: 1,
+    name: "John Doe",
+    email: "john@example.com",
+    role: "Developer",
+    location: "New York",
+    status: "Active",
+    balance: 1250,
+  },
+  // ... more data
+];
+
+const columns = [
+  { key: "name", label: "Name", width: "220px" },
+  { key: "email", label: "Email", width: "260px" },
+  { key: "role", label: "Role", width: "140px" },
+  // ... more columns
+];
+
+export default function MyTable() {
+  return (
+    <ReorderableTable
+      data={data}
+      columns={columns}
+      title="My Reorderable Table"
+      searchable={true}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop           | Type             | Default                          | Description                                                  |
+| -------------- | ---------------- | -------------------------------- | ------------------------------------------------------------ |
+| `data`         | `T[]`            | `defaultRows`                    | Array of data objects to display in the table                |
+| `columns`      | `ColumnDef<T>[]` | `defaultColumns`                 | Column definitions with keys, labels, and optional rendering |
+| `lsOrderKey`   | `string`         | `"reorderable_table_order_v1"`   | LocalStorage key for persisting column order                 |
+| `lsVisibleKey` | `string`         | `"reorderable_table_visible_v1"` | LocalStorage key for persisting column visibility            |
+| `searchable`   | `boolean`        | `true`                           | Whether to show the search input                             |
+| `title`        | `string`         | `"Reorderable Table"`            | Table title displayed at the top                             |
+
+## Column Definition
+
+| Property | Type                          | Description                                           |
+| -------- | ----------------------------- | ----------------------------------------------------- |
+| `key`    | `keyof T`                     | The data property key this column represents          |
+| `label`  | `string`                      | Display label for the column header                   |
+| `width`  | `string`                      | Optional CSS width value for the column               |
+| `sticky` | `boolean`                     | Whether the column should be sticky (not implemented) |
+| `render` | `(row: T) => React.ReactNode` | Optional custom render function for cell content      |
+
+## Features
+
+- **Drag & Drop Reordering**: Drag column headers to reorder columns
+- **Column Visibility**: Toggle column visibility with checkboxes
+- **Persistent Layout**: Column order and visibility saved to localStorage
+- **Search Functionality**: Built-in search across all visible columns
+- **Custom Rendering**: Support for custom cell renderers
+- **Responsive Design**: Horizontal scrolling on smaller screens

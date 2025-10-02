@@ -1,7 +1,11 @@
 "use client";
 
-import DrawerInnerContent from "../ruixenui/drawer-inner-content";
+import DrawerInnerContent from "@/registry/ruixenui/drawer-inner-content";
 
 export default function DemoDrawerInnerContent() {
-  return <DrawerInnerContent />;
+  return (
+    <div className="flex flex-col items-center justify-center p-12 gap-6">
+      <DrawerInnerContent />
+    </div>
+  );
 }

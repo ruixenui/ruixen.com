@@ -35,7 +35,7 @@ export default function ActionHubDemo() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-gray-50 space-y-8">
+    <div className="flex flex-col items-center justify-center p-12 gap-6 space-y-8">
       <h1 className="text-2xl font-bold">ActionHubInput Demo</h1>
 
       <ActionHubInput
@@ -47,7 +47,7 @@ export default function ActionHubDemo() {
         historyEnabled={true}
       />
 
-      <div className="w-full max-w-lg p-4 rounded-xl border bg-white shadow-md">
+      <div className="w-full max-w-lg p-4 rounded-xl border">
         <h2 className="text-lg font-medium mb-2">Current Value:</h2>
         <p className="text-sm text-muted-foreground">{currentValue || "—"}</p>
       </div>

@@ -5,9 +5,7 @@ import DailyTimelineScheduler from "@/registry/ruixenui/daily-timeline-scheduler
 
 export default function DemoPage() {
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
-      <h1 className="text-2xl font-bold mb-6">Daily Timeline Scheduler Demo</h1>
-
+    <div className="p-4 max-w-xl mx-auto">
       <DailyTimelineScheduler
         startHour={8} // Timeline starts at 8AM
         endHour={18} // Timeline ends at 6PM

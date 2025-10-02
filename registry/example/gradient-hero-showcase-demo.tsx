@@ -12,8 +12,14 @@ export default function DemoPage() {
         { label: "Book a Demo", href: "/demo", variant: "gradient" },
       ]}
       images={[
-        { src: "/demo-dark.png", alt: "Dark Mode Preview" },
-        { src: "/demo-light.png", alt: "Light Mode Preview" },
+        {
+          src: "https://tailark.com/_next/image?url=%2Fmail2.png&w=3840&q=75",
+          alt: "App screen dark",
+        },
+        {
+          src: "https://tailark.com/_next/image?url=%2Fmail2-light.png&w=3840&q=75",
+          alt: "App screen light",
+        },
       ]}
     />
   );

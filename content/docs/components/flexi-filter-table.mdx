@@ -1,0 +1,108 @@
+---
+title: Flexi Filter Table
+date: 2024-10-02
+description: A flexible table component with multiple filter options including search, status, location, balance range, and date filtering.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="flexi-filter-table-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/flexi-filter-table"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="flexi-filter-table" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import FlexiFilterTable from "@/components/ui/flexi-filter-table";
+
+const data = [
+  {
+    id: 1,
+    name: "Alex Thompson",
+    email: "alex.t@company.com",
+    location: "San Francisco",
+    status: "Active",
+    balance: 1250,
+    joined: new Date(2023, 3, 10),
+  },
+  // ... more data
+];
+
+const statuses = ["Active", "Inactive"];
+const locations = ["San Francisco", "Singapore", "London"];
+
+export default function MyFlexiTable() {
+  return (
+    <FlexiFilterTable
+      data={data}
+      statuses={statuses}
+      locations={locations}
+      title="Employee Management"
+    />
+  );
+}
+```
+
+## Props
+
+| Prop        | Type         | Default                | Description                              |
+| ----------- | ------------ | ---------------------- | ---------------------------------------- |
+| `data`      | `DataItem[]` | `defaultData`          | Array of data objects to display         |
+| `statuses`  | `string[]`   | `defaultStatuses`      | Available status options for filtering   |
+| `locations` | `string[]`   | `defaultLocations`     | Available location options for filtering |
+| `title`     | `string`     | `"Flexi Filter Table"` | Table title displayed at the top         |
+
+## Data Item Type
+
+| Property   | Type     | Description                       |
+| ---------- | -------- | --------------------------------- |
+| `id`       | `number` | Unique identifier                 |
+| `name`     | `string` | Person's full name                |
+| `email`    | `string` | Email address                     |
+| `location` | `string` | Geographic location               |
+| `status`   | `string` | Current status (Active/Inactive)  |
+| `balance`  | `number` | Account balance (can be negative) |
+| `joined`   | `Date`   | Date when person joined           |
+
+## Features
+
+- **Multi-Row Selection**: Select multiple rows with checkboxes
+- **Text Search**: Search across name and email fields
+- **Status Filtering**: Filter by status dropdown
+- **Location Filtering**: Filter by location dropdown
+- **Balance Range**: Filter by minimum and maximum balance
+- **Date Filtering**: Filter by join date (joined after specific date)
+- **Combined Filtering**: All filters work together simultaneously
+- **Selection Summary**: Shows count of selected items
+- **Responsive Layout**: Filters stack on mobile devices
+- **Real-time Updates**: Filters apply immediately as you type/select

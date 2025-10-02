@@ -156,7 +156,10 @@ export default function Scheduler({
         )}
 
         {events.map((ev) => (
-          <Card key={ev.id} className="flex items-center justify-between p-3">
+          <Card
+            key={ev.id}
+            className="flex flex-col items-center justify-between p-3"
+          >
             <CardContent className="p-0">
               <p className="font-medium">{ev.date.toDateString()}</p>
               <p className="text-sm text-muted-foreground">at {ev.time}</p>

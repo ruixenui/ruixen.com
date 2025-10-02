@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/gradient-hero-showcase-demo.tsx",
-      "content": "\"use client\";\n\nimport GradientHeroShowcase from \"../ruixenui/gradient-hero-showcase\";\n\nexport default function DemoPage() {\n  return (\n    <GradientHeroShowcase\n      title=\"Revolutionize Your Workflow\"\n      description=\"Seamlessly integrate AI and automation to accelerate your business.\"\n      buttons={[\n        { label: \"Get Started\", href: \"/start\", variant: \"default\" },\n        { label: \"Book a Demo\", href: \"/demo\", variant: \"gradient\" },\n      ]}\n      images={[\n        { src: \"/demo-dark.png\", alt: \"Dark Mode Preview\" },\n        { src: \"/demo-light.png\", alt: \"Light Mode Preview\" },\n      ]}\n    />\n  );\n}\n",
+      "content": "\"use client\";\n\nimport GradientHeroShowcase from \"../ruixenui/gradient-hero-showcase\";\n\nexport default function DemoPage() {\n  return (\n    <GradientHeroShowcase\n      title=\"Revolutionize Your Workflow\"\n      description=\"Seamlessly integrate AI and automation to accelerate your business.\"\n      buttons={[\n        { label: \"Get Started\", href: \"/start\", variant: \"default\" },\n        { label: \"Book a Demo\", href: \"/demo\", variant: \"gradient\" },\n      ]}\n      images={[\n        {\n          src: \"https://tailark.com/_next/image?url=%2Fmail2.png&w=3840&q=75\",\n          alt: \"App screen dark\",\n        },\n        {\n          src: \"https://tailark.com/_next/image?url=%2Fmail2-light.png&w=3840&q=75\",\n          alt: \"App screen light\",\n        },\n      ]}\n    />\n  );\n}\n",
       "type": "registry:example",
       "target": "components/gradient-hero-showcase-demo.tsx"
     }

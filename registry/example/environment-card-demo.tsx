@@ -5,7 +5,7 @@ import EnvironmentCard from "../ruixenui/environment-card";
 
 export default function EnvironmentCardDemo() {
   return (
-    <div className="flex flex-col gap-6 p-6">
+    <div className="flex flex-col gap-6 p-6 w-full">
       <EnvironmentCard
         roomName="Living Room"
         temperature={22.5}

@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/glow-link-button-demo.tsx",
-      "content": "import GlowLinkButton from \"../ruixenui/glow-link-button\";\n\nexport default function DemoGlowLinkButton() {\n  return (\n    <main className=\"flex flex-col items-center justify-center min-h-screen gap-6 p-6 bg-zinc-50 dark:bg-zinc-900\">\n      {/* Custom label + link */}\n      <GlowLinkButton label=\"Visit Docs\" href=\"https://docs.ruixenui.com\" />\n\n      {/* Custom styles */}\n      <GlowLinkButton\n        className=\"bg-blue-600 text-white border-blue-700 hover:shadow-lg\"\n        label=\"Get Started\"\n        href=\"https://ruixenui.com/get-started\"\n      />\n    </main>\n  );\n}\n",
+      "content": "import GlowLinkButton from \"../ruixenui/glow-link-button\";\n\nexport default function DemoGlowLinkButton() {\n  return (\n    <main className=\"flex flex-col items-center justify-center gap-6\">\n      {/* Custom label + link */}\n      <GlowLinkButton label=\"Visit Docs\" href=\"https://docs.ruixenui.com\" />\n\n      {/* Custom styles */}\n      <GlowLinkButton\n        className=\"bg-blue-600 text-white border-blue-700 hover:shadow-lg\"\n        label=\"Get Started\"\n        href=\"https://ruixenui.com/get-started\"\n      />\n    </main>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/glow-link-button-demo.tsx"
     }

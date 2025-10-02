@@ -11,7 +11,7 @@ const IdeaGeneratorCard: React.FC<CardProps> = ({
   tags = ["Generate Image", "Analyze Data", "Explore More"],
 }) => {
   return (
-    <div className="flex flex-col items-center mx-auto mt-64 max-w-[350px] w-full">
+    <div className="flex flex-col items-center mx-auto max-w-[350px] w-full">
       <div className="relative flex flex-col rounded-2xl p-[2px] overflow-hidden">
         {/* Glow effect */}
         <div className="absolute -top-2 -left-2 w-8 h-8 rounded-full bg-gradient-radial from-white via-white/30 via-white/10 to-transparent blur-sm"></div>

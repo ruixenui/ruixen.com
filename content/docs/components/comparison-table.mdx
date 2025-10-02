@@ -1,0 +1,93 @@
+---
+title: Comparison Table
+date: 2024-10-02
+description: A table component for comparing items with selection functionality, filtering, and side-by-side comparison view.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="comparison-table-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/comparison-table"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="comparison-table" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import ComparisonTable from "@/components/ui/comparison-table";
+
+const data = [
+  { id: 1, category: "Laptop", price: 1200, rating: 4.5, stock: 20 },
+  { id: 2, category: "Tablet", price: 600, rating: 4.1, stock: 35 },
+  // ... more items
+];
+
+const categories = ["Laptop", "Tablet", "Smartphone", "Monitor"];
+
+export default function MyComparison() {
+  return (
+    <ComparisonTable
+      data={data}
+      categories={categories}
+      title="Product Comparison"
+    />
+  );
+}
+```
+
+## Props
+
+| Prop         | Type       | Default              | Description                           |
+| ------------ | ---------- | -------------------- | ------------------------------------- |
+| `data`       | `Item[]`   | `defaultData`        | Array of items to display and compare |
+| `categories` | `string[]` | `defaultCategories`  | Available categories for filtering    |
+| `title`      | `string`   | `"Comparison Table"` | Table title displayed at the top      |
+
+## Item Type
+
+| Property   | Type     | Description                    |
+| ---------- | -------- | ------------------------------ |
+| `id`       | `number` | Unique identifier for the item |
+| `category` | `string` | Item category for filtering    |
+| `price`    | `number` | Item price                     |
+| `rating`   | `number` | Item rating (0-5)              |
+| `stock`    | `number` | Available stock quantity       |
+
+## Features
+
+- **Item Selection**: Select up to 2 items for comparison (maximum enforced)
+- **Search Filtering**: Search items by category name
+- **Category Filtering**: Filter items by specific categories
+- **Side-by-Side Comparison**: Selected items displayed in comparison section
+- **Visual Feedback**: Selected items highlighted in the table
+- **Reset Functionality**: Clear all selections with reset button
+- **Responsive Design**: Mobile-friendly layout with proper spacing

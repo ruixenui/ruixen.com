@@ -7,10 +7,10 @@ export default function OTPFieldDemoPage() {
   const [otp, setOtp] = useState("");
 
   return (
-    <main className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-8">
+    <main className="flex flex-col items-center justify-center p-12">
       <h1 className="text-2xl font-bold mb-6">OTP Input Demo</h1>
 
-      <div className="w-full max-w-md space-y-6 bg-white p-6 rounded-xl shadow">
+      <div className="w-full max-w-md space-y-6">
         {/* Default OTP input */}
         <OTPField
           label="Enter OTP"

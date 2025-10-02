@@ -5,10 +5,10 @@ import { User, Lock, Mail } from "lucide-react";
 
 export default function FloatingInputDemoPage() {
   return (
-    <main className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-8">
+    <main className="flex flex-col items-center justify-center p-12 mx-auto">
       <h1 className="text-2xl font-bold mb-6">Floating Input Demo</h1>
 
-      <div className="w-full max-w-md space-y-6 bg-white p-6 rounded-xl shadow">
+      <div className="w-full max-w-md space-y-6 mx-auto">
         {/* Email input (default) */}
         <FloatingInput label="Email" type="email" icon={<Mail size={18} />} />
 

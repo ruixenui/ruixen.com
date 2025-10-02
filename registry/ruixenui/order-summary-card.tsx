@@ -49,7 +49,7 @@ export default function OrderSummaryCard({
   return (
     <Card
       className={cn(
-        "max-w-md w-full p-0 border relative overflow-hidden",
+        "max-w-md w-full p-0 py-4 border relative overflow-hidden",
         "bg-white/30 dark:bg-zinc-800/30 backdrop-blur-md",
         "shadow-xl rounded-2xl",
       )}

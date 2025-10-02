@@ -7,7 +7,7 @@ export default function PasswordDemoPage() {
   const [password, setPassword] = useState("");
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-6 space-y-8">
+    <div className="flex flex-col items-center justify-center p-12 gap-6 space-y-8">
       <h1 className="text-2xl font-bold">Password Field Demo</h1>
 
       <PasswordField

@@ -32,12 +32,11 @@ export default function DemoNotificationsCarousel() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+    <div className="flex flex-col items-center justify-center p-12 gap-6">
       <div className="space-y-4">
-        <h1 className="text-xl font-bold text-gray-800">
-          Notifications Carousel Demo
-        </h1>
-        <NotificationsCarousel items={demoNotifications} placement="bottom" />
+        <div className="mx-auto">
+          <NotificationsCarousel items={demoNotifications} placement="bottom" />
+        </div>
       </div>
     </div>
   );

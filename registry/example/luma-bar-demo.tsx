@@ -1,8 +1,8 @@
-import LumaBar from "../ruixenui/luma-bar";
+import LumaBar from "@/registry/ruixenui/luma-bar";
 
 export default function DemoPage() {
   return (
-    <main>
+    <main className="p-6">
       <LumaBar />
     </main>
   );
