@@ -138,11 +138,17 @@ export default function ReorderableTable<T extends ReorderableRow>({
   const [rows] = useState<T[]>(data);
   const [query, setQuery] = useState("");
 
-  const [columnOrder, setColumnOrder] = useState<string[]>(
-    () => JSON.parse(localStorage.getItem(lsOrderKey) || "null") || columnKeys,
-  );
+  const [columnOrder, setColumnOrder] = useState<string[]>(() => {
+    if (typeof window === "undefined") return columnKeys;
+    return JSON.parse(localStorage.getItem(lsOrderKey) || "null") || columnKeys;
+  });
 
   const [visible, setVisible] = useState<Record<string, boolean>>(() => {
+    if (typeof window === "undefined") {
+      const initial: Record<string, boolean> = {};
+      columnKeys.forEach((k) => (initial[k] = true));
+      return initial;
+    }
     const saved = JSON.parse(localStorage.getItem(lsVisibleKey) || "null");
     if (saved) return saved;
     const initial: Record<string, boolean> = {};
@@ -152,11 +158,15 @@ export default function ReorderableTable<T extends ReorderableRow>({
 
   /* --- persist layout --- */
   useEffect(() => {
-    localStorage.setItem(lsOrderKey, JSON.stringify(columnOrder));
+    if (typeof window !== "undefined") {
+      localStorage.setItem(lsOrderKey, JSON.stringify(columnOrder));
+    }
   }, [columnOrder, lsOrderKey]);
 
   useEffect(() => {
-    localStorage.setItem(lsVisibleKey, JSON.stringify(visible));
+    if (typeof window !== "undefined") {
+      localStorage.setItem(lsVisibleKey, JSON.stringify(visible));
+    }
   }, [visible, lsVisibleKey]);
 
   /* --- ensure order is in sync with columns --- */
