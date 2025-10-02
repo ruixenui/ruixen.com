@@ -8,10 +8,10 @@ export default function RangeSliderDemoPage() {
   const [ageRange, setAgeRange] = useState({ from: 18, to: 50 });
 
   return (
-    <main className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-8">
+    <main className="flex flex-col items-center justify-center p-12">
       <h1 className="text-2xl font-bold mb-6">Range Slider Demo</h1>
 
-      <div className="w-full max-w-lg space-y-8 bg-white p-6 rounded-xl shadow">
+      <div className="w-full max-w-lg space-y-8">
         {/* Example 1: Price range with currency */}
         <RangeSliderInput
           label="Price Range"

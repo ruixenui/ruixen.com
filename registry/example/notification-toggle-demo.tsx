@@ -37,7 +37,7 @@ export default function DemoNotificationsToggle() {
   ];
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
+    <div className="flex flex-col items-center justify-center p-12 gap-6">
       <div className="space-y-4">
         <h1 className="text-xl font-bold text-gray-800 text-center">
           Notifications Toggle Demo

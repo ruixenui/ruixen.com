@@ -8,7 +8,7 @@ export default function DemoColorPicker() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-6">
+    <div className="flex items-center justify-center">
       <ColorPickerInput
         initialColor="#EC4899"
         initialOpacity={80}

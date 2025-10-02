@@ -4,7 +4,7 @@ import ScheduleCard from "../ruixenui/schedule-card";
 
 export default function ScheduleCardDemo() {
   return (
-    <div className="flex flex-col gap-6 p-6">
+    <div className="flex flex-col gap-6 p-6 w-full">
       <ScheduleCard
         date="Today, December 14"
         events={[

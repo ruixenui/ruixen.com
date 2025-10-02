@@ -18,7 +18,7 @@ export interface ShowcaseCardProps {
 export default function ShowcaseCard({
   title = "Build Stunning Interfaces",
   subtitle = "Harness the power of elegant components built for speed and clarity with RUIXEN UI",
-  image = "/ruixenui-bg.png",
+  image = "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/ruixen_hero_gradient.jpg",
   badge = { text: "New", variant: "orange" },
   href = "#",
   id = title,
@@ -30,7 +30,7 @@ export default function ShowcaseCard({
   };
 
   return (
-    <div className="w-full max-w-[300px] flex flex-col group">
+    <div className="w-full max-w-[300px] mx-auto flex flex-col group">
       <Link
         href={href}
         className="relative block overflow-hidden rounded-2xl shadow-xl border border-zinc-200 dark:border-zinc-800 bg-gradient-to-tr from-white/50 to-zinc-100 dark:from-zinc-900/40 dark:to-zinc-800/30 backdrop-blur-md transition-all duration-300 hover:scale-[1.02]"
@@ -45,17 +45,6 @@ export default function ShowcaseCard({
             sizes="(max-width: 768px) 100vw, 33vw"
             priority
           />
-        </div>
-
-        <div className="absolute top-4 -left-10 transform -rotate-45">
-          <div
-            className={cn(
-              "px-3 py-0.5 text-xs font-bold shadow-md",
-              badgeColors[badge.variant],
-            )}
-          >
-            {badge.text}
-          </div>
         </div>
 
         <div className="absolute bottom-4 left-4 right-4 group-hover:scale-[1.01] group-hover:translate-y-[-4px] transform transition-all duration-300 ease-out bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md rounded-xl p-4 shadow-md border border-white/10 dark:border-zinc-700">

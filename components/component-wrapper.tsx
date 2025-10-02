@@ -90,6 +90,7 @@ export const ComponentWrapper = ({
             style={{
               transform: `scale(${scale})`,
               transformOrigin: "center center",
+              width: "100%",
             }}
           >
             {children}
@@ -129,12 +130,13 @@ export const ComponentWrapper = ({
         </Button>
       </div>
 
-      <div className="flex min-h-[350px] w-full items-center justify-center">
+      <div className="flex min-h-[100px] w-[100%] items-center justify-center">
         <div
           ref={contentRef}
           style={{
             transform: `scale(${scale})`,
             transformOrigin: "center center",
+            width: "100%",
           }}
         >
           {children}

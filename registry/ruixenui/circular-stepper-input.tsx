@@ -42,7 +42,7 @@ export default function CircularStepperInput({
   };
 
   return (
-    <div className={`w-full max-w-[${size}px] mx-auto`}>
+    <div className={`w-full max-w-md mx-auto`}>
       <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow p-4 flex flex-col items-center gap-4">
         {/* Increment Button */}
         <button
