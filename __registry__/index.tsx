@@ -3142,6 +3142,224 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "wave-background": {
+    name: "wave-background",
+    description:
+      "A flowing wave background with WebGL shaders and theme support.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/wave-background.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/wave-background.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/wave-background.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "aurora-flow": {
+    name: "aurora-flow",
+    description:
+      "A beautiful aurora-style background with flowing gradients and noise effects.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/aurora-flow.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/aurora-flow.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/aurora-flow.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "aurora-waves": {
+    name: "aurora-waves",
+    description:
+      "Aurora-style waves with customizable speed, glow, and theme support.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/aurora-waves.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/aurora-waves.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/aurora-waves.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "falling-symbols-background": {
+    name: "falling-symbols-background",
+    description:
+      "A Matrix-style falling symbols background with customizable characters and effects.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/falling-symbols-background.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/falling-symbols-background.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/ruixenui/falling-symbols-background.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "spotlight-background": {
+    name: "spotlight-background",
+    description: "A mouse-following spotlight effect with smooth animations.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/spotlight-background.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/spotlight-background.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/spotlight-background.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "ripple-distortion": {
+    name: "ripple-distortion",
+    description:
+      "An interactive image distortion effect with mouse-driven ripples using Three.js.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/ripple-distortion.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/ripple-distortion.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/ripple-distortion.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "particle-field": {
+    name: "particle-field",
+    description:
+      "An interactive particle field with mouse attraction and connection lines.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/particle-field.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/particle-field.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/particle-field.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "rain-background": {
+    name: "rain-background",
+    description: "A neon rain effect with animated streaks and glow orbs.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/rain-background.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/rain-background.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/rain-background.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "dual-tone-rain-background": {
+    name: "dual-tone-rain-background",
+    description:
+      "A sophisticated rain effect with dual-tone teal-cyan colors and grid overlay.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/dual-tone-rain-background.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/dual-tone-rain-background.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/ruixenui/dual-tone-rain-background.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "staggered-faq-section-demo": {
     name: "staggered-faq-section-demo",
     description:
@@ -6301,6 +6519,225 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/hover-play-card-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "wave-background-demo": {
+    name: "wave-background-demo",
+    description:
+      "Example showing a flowing wave background with WebGL shaders.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/wave-background"],
+    files: [
+      {
+        path: "registry/example/wave-background-demo.tsx",
+        type: "registry:example",
+        target: "components/wave-background-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/wave-background-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "aurora-flow-demo": {
+    name: "aurora-flow-demo",
+    description:
+      "Example showing a beautiful aurora-style background with flowing gradients.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/aurora-flow"],
+    files: [
+      {
+        path: "registry/example/aurora-flow-demo.tsx",
+        type: "registry:example",
+        target: "components/aurora-flow-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/aurora-flow-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "aurora-waves-demo": {
+    name: "aurora-waves-demo",
+    description:
+      "Example showing aurora-style waves with customizable properties.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/aurora-waves"],
+    files: [
+      {
+        path: "registry/example/aurora-waves-demo.tsx",
+        type: "registry:example",
+        target: "components/aurora-waves-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/aurora-waves-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "falling-symbols-background-demo": {
+    name: "falling-symbols-background-demo",
+    description: "Example showing a Matrix-style falling symbols background.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/falling-symbols-background"],
+    files: [
+      {
+        path: "registry/example/falling-symbols-background-demo.tsx",
+        type: "registry:example",
+        target: "components/falling-symbols-background-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/falling-symbols-background-demo.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "spotlight-background-demo": {
+    name: "spotlight-background-demo",
+    description: "Example showing a mouse-following spotlight effect.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/spotlight-background"],
+    files: [
+      {
+        path: "registry/example/spotlight-background-demo.tsx",
+        type: "registry:example",
+        target: "components/spotlight-background-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/spotlight-background-demo.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "ripple-distortion-demo": {
+    name: "ripple-distortion-demo",
+    description:
+      "Example showing an interactive image distortion effect with ripples.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/ripple-distortion"],
+    files: [
+      {
+        path: "registry/example/ripple-distortion-demo.tsx",
+        type: "registry:example",
+        target: "components/ripple-distortion-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/ripple-distortion-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "particle-field-demo": {
+    name: "particle-field-demo",
+    description:
+      "Example showing an interactive particle field with mouse attraction.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/particle-field"],
+    files: [
+      {
+        path: "registry/example/particle-field-demo.tsx",
+        type: "registry:example",
+        target: "components/particle-field-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/particle-field-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "rain-background-demo": {
+    name: "rain-background-demo",
+    description: "Example showing a neon rain effect with animated streaks.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/rain-background"],
+    files: [
+      {
+        path: "registry/example/rain-background-demo.tsx",
+        type: "registry:example",
+        target: "components/rain-background-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/rain-background-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "dual-tone-rain-background-demo": {
+    name: "dual-tone-rain-background-demo",
+    description:
+      "Example showing a sophisticated rain effect with dual-tone colors.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/dual-tone-rain-background"],
+    files: [
+      {
+        path: "registry/example/dual-tone-rain-background-demo.tsx",
+        type: "registry:example",
+        target: "components/dual-tone-rain-background-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/dual-tone-rain-background-demo.tsx"
+      );
       const exportName =
         Object.keys(mod).find(
           (key) =>

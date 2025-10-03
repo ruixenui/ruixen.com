@@ -1,0 +1,85 @@
+---
+title: Ripple Distortion
+date: 2024-06-01
+description: An interactive image distortion effect with mouse-driven ripples using Three.js
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="ripple-distortion-demo" category="backgrounds" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/ripple-distortion"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="ripple-distortion" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Install dependencies</Step>
+
+```bash
+npm install three
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import RippleDistortion from "@/components/ruixen/ripple-distortion";
+
+export default function App() {
+  return (
+    <div className="relative h-screen w-full">
+      <RippleDistortion
+        imageSrc="/path/to/your/image.jpg"
+        frequency={30.0}
+        amplitude={0.02}
+        speed={5.0}
+        className="w-full h-full"
+      />
+      <div className="relative z-10">{/* Your content here */}</div>
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop        | Type     | Default | Description                                 |
+| ----------- | -------- | ------- | ------------------------------------------- |
+| `imageSrc`  | `string` | -       | Path to the image to be distorted           |
+| `frequency` | `number` | `30.0`  | Frequency of the ripple waves               |
+| `amplitude` | `number` | `0.02`  | Amplitude/strength of the distortion effect |
+| `speed`     | `number` | `5.0`   | Speed of the ripple animation               |
+| `className` | `string` | `""`    | Additional CSS classes                      |
+
+## Features
+
+- **Interactive**: Ripples follow mouse movement
+- **WebGL Powered**: Uses Three.js for smooth performance
+- **Customizable**: Adjustable wave properties
+- **Responsive**: Automatically adapts to container size

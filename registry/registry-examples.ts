@@ -1892,4 +1892,136 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "wave-background-demo",
+    type: "registry:example",
+    title: "Wave Background Demo",
+    description:
+      "Example showing a flowing wave background with WebGL shaders.",
+    registryDependencies: ["https://ruixen.com/r/wave-background"],
+    files: [
+      {
+        path: "registry/example/wave-background-demo.tsx",
+        type: "registry:example",
+        target: "components/wave-background-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "aurora-flow-demo",
+    type: "registry:example",
+    title: "Aurora Flow Demo",
+    description:
+      "Example showing a beautiful aurora-style background with flowing gradients.",
+    registryDependencies: ["https://ruixen.com/r/aurora-flow"],
+    files: [
+      {
+        path: "registry/example/aurora-flow-demo.tsx",
+        type: "registry:example",
+        target: "components/aurora-flow-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "aurora-waves-demo",
+    type: "registry:example",
+    title: "Aurora Waves Demo",
+    description:
+      "Example showing aurora-style waves with customizable properties.",
+    registryDependencies: ["https://ruixen.com/r/aurora-waves"],
+    files: [
+      {
+        path: "registry/example/aurora-waves-demo.tsx",
+        type: "registry:example",
+        target: "components/aurora-waves-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "falling-symbols-background-demo",
+    type: "registry:example",
+    title: "Falling Symbols Background Demo",
+    description: "Example showing a Matrix-style falling symbols background.",
+    registryDependencies: ["https://ruixen.com/r/falling-symbols-background"],
+    files: [
+      {
+        path: "registry/example/falling-symbols-background-demo.tsx",
+        type: "registry:example",
+        target: "components/falling-symbols-background-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "spotlight-background-demo",
+    type: "registry:example",
+    title: "Spotlight Background Demo",
+    description: "Example showing a mouse-following spotlight effect.",
+    registryDependencies: ["https://ruixen.com/r/spotlight-background"],
+    files: [
+      {
+        path: "registry/example/spotlight-background-demo.tsx",
+        type: "registry:example",
+        target: "components/spotlight-background-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "ripple-distortion-demo",
+    type: "registry:example",
+    title: "Ripple Distortion Demo",
+    description:
+      "Example showing an interactive image distortion effect with ripples.",
+    registryDependencies: ["https://ruixen.com/r/ripple-distortion"],
+    files: [
+      {
+        path: "registry/example/ripple-distortion-demo.tsx",
+        type: "registry:example",
+        target: "components/ripple-distortion-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "particle-field-demo",
+    type: "registry:example",
+    title: "Particle Field Demo",
+    description:
+      "Example showing an interactive particle field with mouse attraction.",
+    registryDependencies: ["https://ruixen.com/r/particle-field"],
+    files: [
+      {
+        path: "registry/example/particle-field-demo.tsx",
+        type: "registry:example",
+        target: "components/particle-field-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "rain-background-demo",
+    type: "registry:example",
+    title: "Rain Background Demo",
+    description: "Example showing a neon rain effect with animated streaks.",
+    registryDependencies: ["https://ruixen.com/r/rain-background"],
+    files: [
+      {
+        path: "registry/example/rain-background-demo.tsx",
+        type: "registry:example",
+        target: "components/rain-background-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "dual-tone-rain-background-demo",
+    type: "registry:example",
+    title: "Dual Tone Rain Background Demo",
+    description:
+      "Example showing a sophisticated rain effect with dual-tone colors.",
+    registryDependencies: ["https://ruixen.com/r/dual-tone-rain-background"],
+    files: [
+      {
+        path: "registry/example/dual-tone-rain-background-demo.tsx",
+        type: "registry:example",
+        target: "components/dual-tone-rain-background-demo.tsx",
+      },
+    ],
+  },
 ];

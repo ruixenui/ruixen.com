@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "wave-background",
+  "type": "registry:ui",
+  "title": "Wave Background",
+  "description": "A flowing wave background with WebGL shaders and theme support.",
+  "dependencies": [
+    "ogl"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/wave-background.tsx",
+      "content": "\"use client\";\n\nimport { useRef, useEffect } from \"react\";\nimport { Renderer, Program, Mesh, Triangle, Vec2 } from \"ogl\";\n\nconst vertex = `\nattribute vec2 position;\nvoid main() {\n  gl_Position = vec4(position, 0.0, 1.0);\n}\n`;\n\n// Flowing wave fragment shader\nconst fragment = `\n#ifdef GL_ES\nprecision mediump float;\n#endif\n\nuniform vec2 uResolution;\nuniform float uTime;\nuniform int uDarkTheme;\n\n#define PI 3.14159265359\n\n// Palette for light theme\nvec3 lightPalette(float t) {\n  return mix(\n    vec3(0.9, 0.95, 1.0),\n    vec3(0.2, 0.4, 0.8),\n    0.5 + 0.5 * sin(6.2831 * t)\n  );\n}\n\n// Palette for dark theme\nvec3 darkPalette(float t) {\n  return mix(\n    vec3(0.05, 0.1, 0.2),\n    vec3(0.1, 0.6, 0.9),\n    0.5 + 0.5 * cos(6.2831 * t)\n  );\n}\n\n// Flowing wave function\nfloat wave(vec2 uv, float speed, float offset) {\n  return sin(uv.x * 3.0 + uTime * speed + offset) * 0.3 +\n         cos(uv.y * 2.0 - uTime * speed * 0.5 + offset) * 0.2;\n}\n\nvoid main() {\n  vec2 uv = gl_FragCoord.xy / uResolution.xy;\n  uv = uv * 2.0 - 1.0;\n  uv.x *= uResolution.x / uResolution.y;\n\n  float w1 = wave(uv, 1.2, 0.0);\n  float w2 = wave(uv, 0.8, 2.0);\n  float w3 = wave(uv, 1.5, 4.0);\n  float pattern = (w1 + w2 + w3) * 0.5;\n\n  vec3 col;\n  if (uDarkTheme == 1) {\n    col = darkPalette(pattern + uTime * 0.05);\n  } else {\n    col = lightPalette(pattern + uTime * 0.05);\n  }\n\n  gl_FragColor = vec4(col, 1.0);\n}\n`;\n\ntype Props = {\n  darkTheme?: boolean;\n  resolutionScale?: number;\n};\n\nexport default function WaveBackground({\n  darkTheme = false,\n  resolutionScale = 1.0,\n}: Props) {\n  const ref = useRef<HTMLCanvasElement>(null);\n\n  useEffect(() => {\n    const canvas = ref.current as HTMLCanvasElement;\n    const parent = canvas.parentElement as HTMLElement;\n\n    const renderer = new Renderer({\n      dpr: Math.min(window.devicePixelRatio, 2),\n      canvas,\n    });\n\n    const gl = renderer.gl;\n    const geometry = new Triangle(gl);\n\n    const program = new Program(gl, {\n      vertex,\n      fragment,\n      uniforms: {\n        uTime: { value: 0 },\n        uResolution: { value: new Vec2() },\n        uDarkTheme: { value: darkTheme ? 1 : 0 },\n      },\n    });\n\n    const mesh = new Mesh(gl, { geometry, program });\n\n    const resize = () => {\n      const w = parent.clientWidth,\n        h = parent.clientHeight;\n      renderer.setSize(w * resolutionScale, h * resolutionScale);\n      program.uniforms.uResolution.value.set(w, h);\n    };\n\n    window.addEventListener(\"resize\", resize);\n    resize();\n\n    const start = performance.now();\n    let frame = 0;\n\n    const loop = () => {\n      program.uniforms.uTime.value = (performance.now() - start) / 1000;\n      program.uniforms.uDarkTheme.value = darkTheme ? 1 : 0;\n      renderer.render({ scene: mesh });\n      frame = requestAnimationFrame(loop);\n    };\n\n    loop();\n\n    return () => {\n      cancelAnimationFrame(frame);\n      window.removeEventListener(\"resize\", resize);\n    };\n  }, [darkTheme, resolutionScale]);\n\n  return <canvas ref={ref} className=\"absolute inset-0 w-full h-full block\" />;\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/wave-background.tsx"
+    }
+  ]
+}
