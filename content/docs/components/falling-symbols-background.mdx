@@ -1,0 +1,82 @@
+---
+title: Falling Symbols Background
+date: 2024-06-01
+description: A Matrix-style falling symbols background with customizable characters and effects
+author: ruixen
+published: true
+---
+
+<ComponentPreview
+  name="falling-symbols-background-demo"
+  category="backgrounds"
+/>
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/falling-symbols-background"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="falling-symbols-background" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import FallingSymbolsBackground from "@/components/ruixen/falling-symbols-background";
+
+export default function App() {
+  return (
+    <div className="relative h-screen w-full">
+      <FallingSymbolsBackground
+        symbols="░▒▓█▌▐"
+        symbolColors={["rgba(255,255,255,0.6)", "rgba(255,255,255,0.4)"]}
+        fontSize={16}
+        backgroundColor="#080A12"
+        glitchSpeed={80}
+        glitchIntensity={0.03}
+        fallSpeed={0.7}
+        outerVignette={true}
+      />
+      <div className="relative z-10">{/* Your content here */}</div>
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop              | Type       | Default                                                   | Description                              |
+| ----------------- | ---------- | --------------------------------------------------------- | ---------------------------------------- |
+| `symbols`         | `string`   | `"░▒▓█▌▐"`                                                | Characters to display as falling symbols |
+| `symbolColors`    | `string[]` | `["rgba(255,255,255,0.6)", "rgba(255,255,255,0.4)", ...]` | Array of colors for the symbols          |
+| `fontSize`        | `number`   | `16`                                                      | Font size of the symbols                 |
+| `backgroundColor` | `string`   | `"#080A12"`                                               | Background color                         |
+| `glitchSpeed`     | `number`   | `80`                                                      | Speed of character glitching (ms)        |
+| `glitchIntensity` | `number`   | `0.03`                                                    | Intensity of glitch effect (0-1)         |
+| `fallSpeed`       | `number`   | `0.7`                                                     | Speed of falling animation               |
+| `outerVignette`   | `boolean`  | `true`                                                    | Whether to show outer vignette effect    |
+| `className`       | `string`   | `"w-full h-full"`                                         | Additional CSS classes                   |

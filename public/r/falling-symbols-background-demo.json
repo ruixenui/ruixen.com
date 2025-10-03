@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "falling-symbols-background-demo",
+  "type": "registry:example",
+  "title": "Falling Symbols Background Demo",
+  "description": "Example showing a Matrix-style falling symbols background.",
+  "registryDependencies": [
+    "https://ruixen.com/r/falling-symbols-background"
+  ],
+  "files": [
+    {
+      "path": "registry/example/falling-symbols-background-demo.tsx",
+      "content": "import FallingSymbolsBackground from \"@/registry/ruixenui/falling-symbols-background\";\n\nexport default function DemoOne() {\n  return (\n    <div className=\"relative w-full h-screen overflow-hidden\">\n      <FallingSymbolsBackground />\n      <div className=\"relative z-10 flex items-center justify-center h-full\">\n        <h1 className=\"text-5xl text-white\"> Foreground Content </h1>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/falling-symbols-background-demo.tsx"
+    }
+  ]
+}

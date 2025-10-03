@@ -1,0 +1,71 @@
+---
+title: Aurora Waves
+date: 2024-06-01
+description: Aurora-style waves with customizable speed, glow, and theme support
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="aurora-waves-demo" category="backgrounds" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/aurora-waves"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="aurora-waves" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Install dependencies</Step>
+
+```bash
+npm install ogl
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import AuroraWaves from "@/components/ruixen/aurora-waves";
+
+export default function App() {
+  return (
+    <div className="relative h-screen w-full">
+      <AuroraWaves speed={1.0} glow={15.0} theme="dark" resolutionScale={1.0} />
+      <div className="relative z-10">{/* Your content here */}</div>
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop              | Type                | Default  | Description                           |
+| ----------------- | ------------------- | -------- | ------------------------------------- |
+| `speed`           | `number`            | `1.0`    | Animation speed multiplier            |
+| `glow`            | `number`            | `15.0`   | Glow intensity around waves           |
+| `theme`           | `"dark" \| "light"` | `"dark"` | Color theme for the background        |
+| `resolutionScale` | `number`            | `1.0`    | Scale factor for rendering resolution |

@@ -1990,4 +1990,132 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "wave-background",
+    type: "registry:ui",
+    title: "Wave Background",
+    description:
+      "A flowing wave background with WebGL shaders and theme support.",
+    dependencies: ["ogl"],
+    files: [
+      {
+        path: "registry/ruixenui/wave-background.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/wave-background.tsx",
+      },
+    ],
+  },
+  {
+    name: "aurora-flow",
+    type: "registry:ui",
+    title: "Aurora Flow",
+    description:
+      "A beautiful aurora-style background with flowing gradients and noise effects.",
+    dependencies: ["ogl"],
+    files: [
+      {
+        path: "registry/ruixenui/aurora-flow.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/aurora-flow.tsx",
+      },
+    ],
+  },
+  {
+    name: "aurora-waves",
+    type: "registry:ui",
+    title: "Aurora Waves",
+    description:
+      "Aurora-style waves with customizable speed, glow, and theme support.",
+    dependencies: ["ogl"],
+    files: [
+      {
+        path: "registry/ruixenui/aurora-waves.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/aurora-waves.tsx",
+      },
+    ],
+  },
+  {
+    name: "falling-symbols-background",
+    type: "registry:ui",
+    title: "Falling Symbols Background",
+    description:
+      "A Matrix-style falling symbols background with customizable characters and effects.",
+    files: [
+      {
+        path: "registry/ruixenui/falling-symbols-background.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/falling-symbols-background.tsx",
+      },
+    ],
+  },
+  {
+    name: "spotlight-background",
+    type: "registry:ui",
+    title: "Spotlight Background",
+    description: "A mouse-following spotlight effect with smooth animations.",
+    files: [
+      {
+        path: "registry/ruixenui/spotlight-background.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/spotlight-background.tsx",
+      },
+    ],
+  },
+  {
+    name: "ripple-distortion",
+    type: "registry:ui",
+    title: "Ripple Distortion",
+    description:
+      "An interactive image distortion effect with mouse-driven ripples using Three.js.",
+    dependencies: ["three"],
+    files: [
+      {
+        path: "registry/ruixenui/ripple-distortion.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/ripple-distortion.tsx",
+      },
+    ],
+  },
+  {
+    name: "particle-field",
+    type: "registry:ui",
+    title: "Particle Field",
+    description:
+      "An interactive particle field with mouse attraction and connection lines.",
+    files: [
+      {
+        path: "registry/ruixenui/particle-field.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/particle-field.tsx",
+      },
+    ],
+  },
+  {
+    name: "rain-background",
+    type: "registry:ui",
+    title: "Rain Background",
+    description: "A neon rain effect with animated streaks and glow orbs.",
+    files: [
+      {
+        path: "registry/ruixenui/rain-background.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/rain-background.tsx",
+      },
+    ],
+  },
+  {
+    name: "dual-tone-rain-background",
+    type: "registry:ui",
+    title: "Dual Tone Rain Background",
+    description:
+      "A sophisticated rain effect with dual-tone teal-cyan colors and grid overlay.",
+    files: [
+      {
+        path: "registry/ruixenui/dual-tone-rain-background.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/dual-tone-rain-background.tsx",
+      },
+    ],
+  },
 ];

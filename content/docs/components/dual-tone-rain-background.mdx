@@ -1,0 +1,93 @@
+---
+title: Dual Tone Rain Background
+date: 2024-06-01
+description: A sophisticated rain effect with dual-tone teal-cyan colors and grid overlay
+author: ruixen
+published: true
+---
+
+<ComponentPreview
+  name="dual-tone-rain-background-demo"
+  category="backgrounds"
+/>
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/dual-tone-rain-background"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="dual-tone-rain-background" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import DualToneRainBackground from "@/components/ruixen/dual-tone-rain-background";
+
+export default function App() {
+  return (
+    <div className="relative h-screen w-full">
+      <DualToneRainBackground />
+      <div className="relative z-10">{/* Your content here */}</div>
+    </div>
+  );
+}
+```
+
+## Features
+
+- **Dual-Tone Design**: Uses a sophisticated teal-cyan color scheme
+- **Complex Rain Pattern**: Multiple layers of rain streaks with varying sizes
+- **Grid Overlay**: Enhanced grid pattern with backdrop blur
+- **Smooth Animation**: 150-second animation cycle for seamless looping
+- **Pure CSS**: No JavaScript dependencies
+- **Performance Optimized**: Uses CSS transforms and efficient animations
+
+## Customization
+
+The component uses a CSS custom property for the main accent color:
+
+```css
+.rain-container {
+  --c: #00b8a9; /* tuned accent color: teal-cyan */
+}
+```
+
+You can customize the color by overriding this property:
+
+```css
+.your-custom-class .rain-container {
+  --c: #ff6b6b; /* custom coral color */
+}
+```
+
+## Differences from Rain Background
+
+- **Color Scheme**: Uses teal-cyan instead of blue-purple
+- **Pattern Complexity**: More intricate rain pattern with additional layers
+- **Grid Density**: Tighter grid pattern (8px vs 12px)
+- **Animation Duration**: Longer animation cycle (150s vs 90s)

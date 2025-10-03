@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aurora-waves-demo",
+  "type": "registry:example",
+  "title": "Aurora Waves Demo",
+  "description": "Example showing aurora-style waves with customizable properties.",
+  "registryDependencies": [
+    "https://ruixen.com/r/aurora-waves"
+  ],
+  "files": [
+    {
+      "path": "registry/example/aurora-waves-demo.tsx",
+      "content": "import AuroraWaves from \"@/registry/ruixenui/aurora-waves\";\n\nexport default function DemoOne() {\n  return <AuroraWaves />;\n}\n",
+      "type": "registry:example",
+      "target": "components/aurora-waves-demo.tsx"
+    }
+  ]
+}

@@ -670,6 +670,65 @@ export const docsConfig: DocsConfig = {
             },
           ],
         },
+        {
+          title: "Backgrounds",
+          items: [
+            {
+              title: "Wave Background",
+              href: `/docs/components/wave-background`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Aurora Flow",
+              href: `/docs/components/aurora-flow`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Aurora Waves",
+              href: `/docs/components/aurora-waves`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Falling Symbols Background",
+              href: `/docs/components/falling-symbols-background`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Spotlight Background",
+              href: `/docs/components/spotlight-background`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Ripple Distortion",
+              href: `/docs/components/ripple-distortion`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Particle Field",
+              href: `/docs/components/particle-field`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Rain Background",
+              href: `/docs/components/rain-background`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Dual Tone Rain Background",
+              href: `/docs/components/dual-tone-rain-background`,
+              items: [],
+              label: "",
+            },
+          ],
+        },
       ],
     },
     {
