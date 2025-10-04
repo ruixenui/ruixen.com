@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-pagination",
+  "type": "registry:ui",
+  "title": "Scroll Pagination",
+  "description": "Minimalist pagination with mouse wheel navigation and animated number carousel.",
+  "dependencies": [
+    "framer-motion",
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/scroll-pagination.tsx",
+      "content": "\"use client\";\n\nimport { useState, useEffect, useRef } from \"react\";\nimport { Button } from \"@/components/ui/button\";\nimport { ChevronLeft, ChevronRight } from \"lucide-react\";\nimport { cn } from \"@/lib/utils\";\nimport { motion, AnimatePresence } from \"framer-motion\";\n\ninterface ScrollPaginationProps {\n  totalPages?: number;\n  className?: string;\n  onChange?: (page: number) => void;\n}\n\nexport default function ScrollPagination({\n  totalPages = 20,\n  className,\n  onChange,\n}: ScrollPaginationProps) {\n  const [active, setActive] = useState(0);\n  const containerRef = useRef<HTMLDivElement>(null);\n  const scrollTimeout = useRef<NodeJS.Timeout | null>(null);\n\n  useEffect(() => {\n    if (onChange) onChange(active);\n  }, [active, onChange]);\n\n  const changePage = (delta: number) => {\n    setActive((prev) => Math.max(0, Math.min(totalPages - 1, prev + delta)));\n  };\n\n  const handleWheel = (e: WheelEvent) => {\n    e.preventDefault();\n\n    // throttle wheel events: only allow one page change per 150ms\n    if (scrollTimeout.current) return;\n\n    if (e.deltaY < 0) changePage(-1);\n    else if (e.deltaY > 0) changePage(1);\n\n    scrollTimeout.current = setTimeout(() => {\n      scrollTimeout.current = null;\n    }, 150);\n  };\n\n  useEffect(() => {\n    const el = containerRef.current;\n    if (!el) return;\n    el.addEventListener(\"wheel\", handleWheel, { passive: false });\n    return () => el.removeEventListener(\"wheel\", handleWheel);\n  }, []);\n\n  const prevPage = () => changePage(-1);\n  const nextPage = () => changePage(1);\n\n  return (\n    <div\n      ref={containerRef}\n      className={cn(\n        \"flex items-center gap-4 p-4 select-none cursor-pointer\",\n        className,\n      )}\n    >\n      {/* Previous Arrow */}\n      <Button\n        variant=\"ghost\"\n        size=\"icon\"\n        onClick={prevPage}\n        disabled={active === 0}\n        className=\"text-gray-400 hover:text-primary disabled:opacity-40 transition-colors\"\n      >\n        <ChevronLeft className=\"w-5 h-5\" />\n      </Button>\n\n      {/* Number Carousel */}\n      <div className=\"relative w-16 h-10 overflow-hidden flex items-center justify-center\">\n        <AnimatePresence initial={false}>\n          <motion.div\n            key={active}\n            initial={{ y: 20, opacity: 0 }}\n            animate={{ y: 0, opacity: 1 }}\n            exit={{ y: -20, opacity: 0 }}\n            transition={{ type: \"spring\", stiffness: 300, damping: 25 }}\n            className=\"absolute text-lg font-semibold w-full text-center\"\n          >\n            {active + 1}\n          </motion.div>\n        </AnimatePresence>\n      </div>\n\n      {/* Next Arrow */}\n      <Button\n        variant=\"ghost\"\n        size=\"icon\"\n        onClick={nextPage}\n        disabled={active === totalPages - 1}\n        className=\"text-gray-400 hover:text-primary disabled:opacity-40 transition-colors\"\n      >\n        <ChevronRight className=\"w-5 h-5\" />\n      </Button>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/scroll-pagination.tsx"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "icon-pagination-demo",
+  "type": "registry:example",
+  "title": "Icon Pagination Demo",
+  "description": "Example showing pagination with colorful icon indicators.",
+  "registryDependencies": [
+    "https://ruixen.com/r/icon-pagination"
+  ],
+  "files": [
+    {
+      "path": "registry/example/icon-pagination-demo.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport IconPagination from \"@/registry/ruixenui/icon-pagination\";\nimport { Card, CardContent } from \"@/components/ui/card\";\n\nexport default function IconPaginationDemo() {\n  const [currentPage, setCurrentPage] = React.useState(0);\n\n  return (\n    <main className=\"flex flex-col items-center justify-center min-h-screen bg-background px-4\">\n      <h1 className=\"text-3xl font-bold mb-6 text-center\">\n        Icon Pagination Demo\n      </h1>\n\n      {/* Pagination Component */}\n      <IconPagination\n        totalPages={200}\n        maxVisible={7}\n        className=\"mb-10\"\n      />\n\n      {/* Display current page info */}\n      <Card className=\"w-full max-w-md shadow-lg\">\n        <CardContent className=\"p-6 text-center space-y-4\">\n          <h2 className=\"text-xl font-semibold\">Current Page</h2>\n          <p className=\"text-lg text-primary font-medium\">\n            You are on <strong>Page {currentPage + 1}</strong>\n          </p>\n          <p className=\"text-sm text-muted-foreground\">\n            Click on an icon to change pages or use the arrow buttons to\n            navigate. Hover over an icon to see the tooltip label.\n          </p>\n        </CardContent>\n      </Card>\n    </main>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/icon-pagination-demo.tsx"
+    }
+  ]
+}

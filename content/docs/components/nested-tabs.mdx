@@ -1,0 +1,103 @@
+---
+title: Nested Tabs
+date: 2024-06-01
+description: A tab component with nested sub-tabs that expand with smooth animations
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="nested-tabs-demo" category="tabs" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/nested-tabs"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="nested-tabs" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Install dependencies</Step>
+
+```bash
+npm install framer-motion
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import NestedTabs from "@/components/ruixen/nested-tabs";
+
+const tabItems = [
+  {
+    value: "dashboard",
+    label: "Dashboard",
+    content: "Main Dashboard Overview",
+    subTabs: [
+      { value: "stats", label: "Stats", content: "Detailed stats here." },
+      { value: "reports", label: "Reports", content: "Reports content here." },
+    ],
+  },
+  {
+    value: "settings",
+    label: "Settings",
+    content: "General settings content",
+    subTabs: [
+      { value: "profile", label: "Profile", content: "Profile settings here." },
+      { value: "account", label: "Account", content: "Account settings here." },
+    ],
+  },
+];
+
+export default function App() {
+  return <NestedTabs items={tabItems} defaultValue="dashboard" />;
+}
+```
+
+## Props
+
+| Prop           | Type              | Default       | Description                               |
+| -------------- | ----------------- | ------------- | ----------------------------------------- |
+| `items`        | `NestedTabItem[]` | Default items | Array of tab items with optional sub-tabs |
+| `defaultValue` | `string`          | `"dashboard"` | Default active tab value                  |
+| `className`    | `string`          | `""`          | Additional CSS classes                    |
+
+## Types
+
+```tsx
+interface NestedSubTab {
+  value: string;
+  label: string;
+  content?: React.ReactNode;
+}
+
+interface NestedTabItem {
+  value: string;
+  label: string;
+  content?: React.ReactNode;
+  subTabs?: NestedSubTab[];
+}
+```

@@ -1,0 +1,89 @@
+---
+title: Stack Pagination
+date: 2024-06-01
+description: 3D card stack pagination with flip animations and perspective effects
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="stack-pagination-demo" category="pagination" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/stack-pagination"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="stack-pagination" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Install dependencies</Step>
+
+```bash
+npm install framer-motion
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import StackPagination from "@/components/ruixen/stack-pagination";
+
+export default function App() {
+  return <StackPagination totalPages={20} visibleCount={5} />;
+}
+```
+
+## Props
+
+| Prop           | Type     | Default | Description                           |
+| -------------- | -------- | ------- | ------------------------------------- |
+| `totalPages`   | `number` | `20`    | Total number of pages                 |
+| `visibleCount` | `number` | `5`     | Number of cards visible in pagination |
+| `className`    | `string` | `""`    | Additional CSS classes                |
+
+## Features
+
+- **3D Card Stack**: Cards appear stacked with depth using z-transforms
+- **Flip Animation**: Click cards to flip and see back content
+- **Perspective**: Uses CSS perspective for 3D depth effect
+- **Smart Pagination**: Shows ellipsis (...) for large page counts
+- **Hover Effects**: Cards lift up on hover with z-axis translation
+
+## Interactions
+
+- **Click Card**: Flip card to see back content
+- **Hover**: Card lifts up with 3D transform
+- **Prev/Next Buttons**: Navigate through pages
+- **Active State**: Current page card appears elevated
+
+## 3D Effects
+
+The component uses CSS transforms for 3D effects:
+
+- `perspective(1200px)` on container
+- `transformStyle: "preserve-3d"` on cards
+- `rotateY(180deg)` for flip animation
+- `z` translations for depth stacking

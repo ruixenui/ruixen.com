@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "magnetic-dock-demo",
+  "type": "registry:example",
+  "title": "Magnetic Dock Demo",
+  "description": "Example showing macOS-style dock with magnetic effects.",
+  "registryDependencies": [
+    "https://ruixen.com/r/magnetic-dock"
+  ],
+  "files": [
+    {
+      "path": "registry/example/magnetic-dock-demo.tsx",
+      "content": "\"use client\";\nimport MagneticDock, { DockItem } from \"@/registry/ruixenui/magnetic-dock\";\nimport { Camera, Music, Heart, Star } from \"lucide-react\";\n\nconst customItems: DockItem[] = [\n  { id: 1, icon: <Camera className=\"h-7 w-7\" />, label: \"Camera\" },\n  { id: 2, icon: <Music className=\"h-7 w-7\" />, label: \"Music\" },\n  { id: 3, icon: <Heart className=\"h-7 w-7\" />, label: \"Likes\" },\n  { id: 4, icon: <Star className=\"h-7 w-7\" />, label: \"Stars\" },\n];\n\nexport default function MagneticDockDemo() {\n  return (\n    <div className=\"h-screen w-full flex items-center justify-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500\">\n      <MagneticDock\n        items={customItems}\n        position=\"bottom\"\n        magneticStrength={20}\n        hoverScale={1.5}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/magnetic-dock-demo.tsx"
+    }
+  ]
+}

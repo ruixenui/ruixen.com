@@ -1,0 +1,89 @@
+---
+title: Animated Number Flip
+date: 2024-06-01
+description: A card component that displays numbers with smooth flip animations
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="animated-number-flip-demo" category="pagination" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/animated-number-flip"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="animated-number-flip" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Install dependencies</Step>
+
+```bash
+npm install framer-motion
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import AnimatedNumberFlip from "@/components/ruixen/animated-number-flip";
+import { useState } from "react";
+
+export default function App() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div className="flex items-center gap-4">
+      <AnimatedNumberFlip value={count} />
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop        | Type     | Default | Description            |
+| ----------- | -------- | ------- | ---------------------- |
+| `value`     | `number` | -       | The number to display  |
+| `className` | `string` | `""`    | Additional CSS classes |
+
+## Features
+
+- **3D Flip Animation**: Numbers flip with rotateX transforms
+- **Smooth Transitions**: 300ms duration with easing
+- **Card Design**: Numbers displayed in card containers
+- **Overflow Hidden**: Clean transitions without visual artifacts
+- **Pop Layout**: Uses AnimatePresence popLayout mode
+
+## Animation Details
+
+The flip animation uses:
+
+- **Initial**: `rotateX(-90deg)` and `y: -40px`
+- **Animate**: `rotateX(0deg)` and `y: 0px`
+- **Exit**: `rotateX(90deg)` and `y: 40px`
+- **Duration**: 300ms for smooth transitions

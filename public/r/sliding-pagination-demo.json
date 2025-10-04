@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sliding-pagination-demo",
+  "type": "registry:example",
+  "title": "Sliding Pagination Demo",
+  "description": "Example showing pagination with sliding underline indicator.",
+  "registryDependencies": [
+    "https://ruixen.com/r/sliding-pagination"
+  ],
+  "files": [
+    {
+      "path": "registry/example/sliding-pagination-demo.tsx",
+      "content": "\"use client\";\n\nimport SlidingPagination from \"@/registry/ruixenui/sliding-pagination\";\nimport { useState } from \"react\";\n\nexport default function DemoPagination() {\n  const [page, setPage] = useState(1);\n\n  return (\n    <div className=\"mt-10\">\n      <SlidingPagination\n        totalPages={120}\n        currentPage={page}\n        onPageChange={setPage}\n        maxVisiblePages={9} // optional, number of visible buttons\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/sliding-pagination-demo.tsx"
+    }
+  ]
+}

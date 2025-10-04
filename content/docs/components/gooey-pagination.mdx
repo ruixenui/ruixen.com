@@ -1,0 +1,88 @@
+---
+title: Gooey Pagination
+date: 2024-06-01
+description: Pagination component with liquid gooey effects using SVG filters
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="gooey-pagination-demo" category="pagination" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/gooey-pagination"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="gooey-pagination" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Install dependencies</Step>
+
+```bash
+npm install framer-motion lucide-react
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import GooeyPagination from "@/components/ruixen/gooey-pagination";
+
+export default function App() {
+  return <GooeyPagination totalPages={7} />;
+}
+```
+
+## Props
+
+| Prop         | Type     | Default | Description            |
+| ------------ | -------- | ------- | ---------------------- |
+| `totalPages` | `number` | `7`     | Total number of pages  |
+| `className`  | `string` | `""`    | Additional CSS classes |
+
+## Features
+
+- **Gooey Effect**: SVG filter creates liquid blob transitions
+- **Active Indicator**: Large blob appears behind active page dot
+- **Spring Animations**: Smooth scaling and morphing effects
+- **Arrow Navigation**: Previous/next arrows with disabled states
+- **Dots Layout**: Clean dot-based pagination design
+
+## How It Works
+
+The gooey effect is achieved using an SVG filter with:
+
+- **Gaussian Blur**: Blurs the elements to create soft edges
+- **Color Matrix**: Increases contrast to create sharp blob boundaries
+- **Composite**: Combines the original and processed elements
+
+## CSS Filter
+
+```css
+filter: url(#goo);
+```
+
+The SVG filter definition creates the liquid morphing effect when elements overlap or scale.

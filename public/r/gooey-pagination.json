@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gooey-pagination",
+  "type": "registry:ui",
+  "title": "Gooey Pagination",
+  "description": "Pagination component with liquid gooey effects using SVG filters.",
+  "dependencies": [
+    "framer-motion",
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/gooey-pagination.tsx",
+      "content": "\"use client\";\n\nimport { useState } from \"react\";\nimport { motion, AnimatePresence } from \"framer-motion\";\nimport { cn } from \"@/lib/utils\";\nimport { Button } from \"@/components/ui/button\";\nimport { ChevronLeft, ChevronRight } from \"lucide-react\";\n\ninterface GooeyPaginationProps {\n  totalPages?: number;\n  className?: string;\n}\n\nexport default function GooeyPagination({\n  totalPages = 7,\n  className,\n}: GooeyPaginationProps) {\n  const [active, setActive] = useState(0);\n\n  const prevPage = () => setActive((prev) => (prev > 0 ? prev - 1 : prev));\n  const nextPage = () =>\n    setActive((prev) => (prev < totalPages - 1 ? prev + 1 : prev));\n\n  return (\n    <div\n      className={cn(\n        \"flex items-center justify-center gap-6 p-4 relative\",\n        className,\n      )}\n    >\n      {/* SVG gooey filter */}\n      <svg className=\"absolute h-0 w-0\">\n        <defs>\n          <filter id=\"goo\">\n            <feGaussianBlur in=\"SourceGraphic\" stdDeviation=\"8\" result=\"blur\" />\n            <feColorMatrix\n              in=\"blur\"\n              mode=\"matrix\"\n              values=\"1 0 0 0 0  \n                      0 1 0 0 0  \n                      0 0 1 0 0  \n                      0 0 0 20 -10\"\n              result=\"goo\"\n            />\n            <feComposite in=\"SourceGraphic\" in2=\"goo\" operator=\"atop\" />\n          </filter>\n        </defs>\n      </svg>\n\n      {/* Previous arrow */}\n      <Button\n        variant=\"ghost\"\n        size=\"icon\"\n        onClick={prevPage}\n        disabled={active === 0}\n        className=\"text-gray-400 hover:text-primary disabled:opacity-40 transition-colors\"\n      >\n        <ChevronLeft className=\"w-5 h-5\" />\n      </Button>\n\n      {/* Page dots */}\n      <div className=\"flex gap-4 relative\" style={{ filter: \"url(#goo)\" }}>\n        {Array.from({ length: totalPages }).map((_, i) => (\n          <motion.div\n            key={i}\n            onClick={() => setActive(i)}\n            className=\"relative w-6 h-6 flex items-center justify-center\"\n          >\n            <AnimatePresence>\n              {active === i && (\n                <motion.div\n                  layoutId=\"active-dot\"\n                  initial={{ scale: 0.8, opacity: 0 }}\n                  animate={{ scale: 1.8, opacity: 1 }}\n                  exit={{ scale: 0.8, opacity: 0 }}\n                  transition={{\n                    type: \"spring\",\n                    stiffness: 300,\n                    damping: 20,\n                  }}\n                  className=\"absolute w-6 h-6 rounded-full bg-primary/70\"\n                />\n              )}\n            </AnimatePresence>\n\n            <Button\n              variant=\"ghost\"\n              size=\"icon\"\n              className=\"w-6 h-6 rounded-full bg-gray-300 dark:bg-gray-600 hover:bg-primary/50 transition-colors\"\n            />\n          </motion.div>\n        ))}\n      </div>\n\n      {/* Next arrow */}\n      <Button\n        variant=\"ghost\"\n        size=\"icon\"\n        onClick={nextPage}\n        disabled={active === totalPages - 1}\n        className=\"text-gray-400 hover:text-primary disabled:opacity-40 transition-colors\"\n      >\n        <ChevronRight className=\"w-5 h-5\" />\n      </Button>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/gooey-pagination.tsx"
+    }
+  ]
+}

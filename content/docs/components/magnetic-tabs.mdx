@@ -1,0 +1,96 @@
+---
+title: Magnetic Tabs
+date: 2024-06-01
+description: Tab component with magnetic hover effects and smooth indicator animations
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="magnetic-tabs-demo" category="tabs" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/magnetic-tabs"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="magnetic-tabs" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Install dependencies</Step>
+
+```bash
+npm install framer-motion
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import MagneticTabs from "@/components/ruixen/magnetic-tabs";
+
+const tabItems = [
+  { value: "overview", label: "Overview", content: "Overview content here." },
+  { value: "activity", label: "Activity", content: "Activity content here." },
+  { value: "settings", label: "Settings", content: "Settings content here." },
+  { value: "faq", label: "FAQ", content: "FAQ content here." },
+];
+
+export default function App() {
+  return (
+    <MagneticTabs
+      items={tabItems}
+      defaultValue="overview"
+      indicatorPadding={6}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop               | Type                | Default       | Description                               |
+| ------------------ | ------------------- | ------------- | ----------------------------------------- |
+| `items`            | `MagneticTabItem[]` | Default items | Array of tab items                        |
+| `defaultValue`     | `string`            | `"overview"`  | Default active tab value                  |
+| `className`        | `string`            | `""`          | Additional CSS classes                    |
+| `indicatorPadding` | `number`            | `6`           | Padding around tab for magnetic indicator |
+
+## Features
+
+- **Magnetic Effect**: Indicator follows mouse hover and active state
+- **Smooth Animations**: Spring-based transitions for natural feel
+- **Responsive**: Automatically adjusts to tab size changes
+- **Blur Effect**: Subtle blur effect on the magnetic indicator
+
+## Types
+
+```tsx
+interface MagneticTabItem {
+  value: string;
+  label: string;
+  content?: React.ReactNode;
+}
+```

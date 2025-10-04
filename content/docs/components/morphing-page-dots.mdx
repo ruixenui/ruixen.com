@@ -1,0 +1,90 @@
+---
+title: Morphing Page Dots
+date: 2024-06-01
+description: Pagination dots that morph in width with ripple effects for the active state
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="morphing-page-dots-demo" category="pagination" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/morphing-page-dots"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="morphing-page-dots" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Install dependencies</Step>
+
+```bash
+npm install framer-motion lucide-react
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import MorphingPageDots from "@/components/ruixen/morphing-page-dots";
+import { useState } from "react";
+
+export default function App() {
+  const [currentPage, setCurrentPage] = useState(0);
+  const totalPages = 5;
+
+  return (
+    <MorphingPageDots
+      total={totalPages}
+      initialPage={currentPage}
+      onPageChange={setCurrentPage}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop           | Type       | Default | Description                |
+| -------------- | ---------- | ------- | -------------------------- |
+| `total`        | `number`   | -       | Total number of pages      |
+| `initialPage`  | `number`   | `0`     | Initial active page index  |
+| `onPageChange` | `function` | -       | Callback when page changes |
+
+## Features
+
+- **Morphing Width**: Active dot expands to pill shape (28px width)
+- **Ripple Effect**: Expanding circle animation on active dot
+- **Arrow Navigation**: Chevron arrows for previous/next navigation
+- **Spring Animation**: Smooth morphing with spring physics
+- **Disabled States**: Arrows disable at first/last page
+
+## Animation Details
+
+- **Active Dot**: Morphs from 10px circle to 28px pill
+- **Ripple**: Scales from 0.8 to 1.6 with fade out
+- **Spring Config**: `stiffness: 300, damping: 24`
+- **Duration**: 0.6s for ripple effect

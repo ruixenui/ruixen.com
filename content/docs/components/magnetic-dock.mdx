@@ -1,0 +1,108 @@
+---
+title: Magnetic Dock
+date: 2024-06-01
+description: macOS-style dock with magnetic hover effects and smooth icon animations
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="magnetic-dock-demo" category="docks" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/magnetic-dock"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="magnetic-dock" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Install dependencies</Step>
+
+```bash
+npm install framer-motion lucide-react
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import MagneticDock from "@/components/ruixen/magnetic-dock";
+import { Home, Search, Settings, User, Bell } from "lucide-react";
+
+const dockItems = [
+  { id: 1, icon: <Home className="h-7 w-7" />, label: "Home" },
+  { id: 2, icon: <Search className="h-7 w-7" />, label: "Search" },
+  { id: 3, icon: <Bell className="h-7 w-7" />, label: "Alerts" },
+  { id: 4, icon: <Settings className="h-7 w-7" />, label: "Settings" },
+  { id: 5, icon: <User className="h-7 w-7" />, label: "Profile" },
+];
+
+export default function App() {
+  return (
+    <MagneticDock
+      items={dockItems}
+      position="bottom"
+      magneticStrength={18}
+      hoverScale={1.35}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop               | Type         | Default       | Description                             |
+| ------------------ | ------------ | ------------- | --------------------------------------- |
+| `items`            | `DockItem[]` | Default items | Array of dock items                     |
+| `position`         | `string`     | `"bottom"`    | Dock placement: "bottom", "top", "left" |
+| `magneticStrength` | `number`     | `18`          | How strong the magnetic effect is       |
+| `hoverScale`       | `number`     | `1.35`        | How much the hovered icon enlarges      |
+
+## Features
+
+- **Magnetic Effect**: Icons push away from hovered icon
+- **Scale Animation**: Hovered icon scales up smoothly
+- **Position Variants**: Support for bottom, top, and left placement
+- **Glassmorphism**: Semi-transparent background with backdrop blur
+- **Labels**: Optional labels appear on hover
+
+## Types
+
+```tsx
+interface DockItem {
+  id: number;
+  icon: React.ReactNode;
+  label?: string;
+}
+```
+
+## Magnetic Algorithm
+
+The magnetic effect calculates distance from hovered icon:
+
+- Icons within 2 positions are affected
+- Displacement is inversely proportional to distance
+- Uses spring animations for smooth movement

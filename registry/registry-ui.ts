@@ -2118,4 +2118,349 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "nested-tabs",
+    type: "registry:ui",
+    title: "Nested Tabs",
+    description:
+      "A tab component with nested sub-tabs that expand with smooth animations.",
+    dependencies: ["framer-motion"],
+    files: [
+      {
+        path: "registry/ruixenui/nested-tabs.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/nested-tabs.tsx",
+      },
+    ],
+  },
+  {
+    name: "zoom-depth-tabs",
+    type: "registry:ui",
+    title: "Zoom Depth Tabs",
+    description:
+      "A tab component with 3D zoom and depth effects for enhanced visual appeal.",
+    dependencies: ["framer-motion"],
+    files: [
+      {
+        path: "registry/ruixenui/zoom-depth-tabs.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/zoom-depth-tabs.tsx",
+      },
+    ],
+  },
+  {
+    name: "badge-tabs",
+    type: "registry:ui",
+    title: "Badge Tabs",
+    description:
+      "Tab component with animated badges showing counts or notifications.",
+    dependencies: ["framer-motion"],
+    files: [
+      {
+        path: "registry/ruixenui/badge-tabs.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/badge-tabs.tsx",
+      },
+    ],
+  },
+  {
+    name: "capsule-tabs",
+    type: "registry:ui",
+    title: "Capsule Tabs",
+    description:
+      "Scrollable capsule-style tabs with pagination dots and navigation arrows.",
+    dependencies: ["framer-motion", "lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/capsule-tabs.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/capsule-tabs.tsx",
+      },
+    ],
+  },
+  {
+    name: "magnetic-tabs",
+    type: "registry:ui",
+    title: "Magnetic Tabs",
+    description:
+      "Tab component with magnetic hover effects and smooth indicator animations.",
+    dependencies: ["framer-motion"],
+    files: [
+      {
+        path: "registry/ruixenui/magnetic-tabs.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/magnetic-tabs.tsx",
+      },
+    ],
+  },
+  {
+    name: "fade-slide-tabs",
+    type: "registry:ui",
+    title: "Fade Slide Tabs",
+    description:
+      "Tab component with fade and slide animations for smooth content transitions.",
+    dependencies: ["framer-motion"],
+    files: [
+      {
+        path: "registry/ruixenui/fade-slide-tabs.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/fade-slide-tabs.tsx",
+      },
+    ],
+  },
+  {
+    name: "hybrid-tabs",
+    type: "registry:ui",
+    title: "Hybrid Tabs",
+    description:
+      "Tab component that shows icons only by default and expands to show labels on hover.",
+    dependencies: ["framer-motion", "lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/hybrid-tabs.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/hybrid-tabs.tsx",
+      },
+    ],
+  },
+  {
+    name: "pill-morph-tabs",
+    type: "registry:ui",
+    title: "Pill Morph Tabs",
+    description:
+      "Elegant tab component with morphing pill indicator and glassmorphism effects.",
+    dependencies: ["framer-motion"],
+    files: [
+      {
+        path: "registry/ruixenui/pill-morph-tabs.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/pill-morph-tabs.tsx",
+      },
+    ],
+  },
+  {
+    name: "sliding-tabs",
+    type: "registry:ui",
+    title: "Sliding Tabs",
+    description:
+      "Tab component with sliding gradient indicator and keyboard navigation support.",
+    dependencies: ["framer-motion"],
+    files: [
+      {
+        path: "registry/ruixenui/sliding-tabs.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/sliding-tabs.tsx",
+      },
+    ],
+  },
+  {
+    name: "wheel-pagination",
+    type: "registry:ui",
+    title: "Wheel Pagination",
+    description:
+      "Interactive pagination component with mouse wheel support and animated page numbers.",
+    dependencies: ["framer-motion", "lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/wheel-pagination.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/wheel-pagination.tsx",
+      },
+    ],
+  },
+  {
+    name: "scroll-pagination",
+    type: "registry:ui",
+    title: "Scroll Pagination",
+    description:
+      "Minimalist pagination with mouse wheel navigation and animated number carousel.",
+    dependencies: ["framer-motion", "lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/scroll-pagination.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/scroll-pagination.tsx",
+      },
+    ],
+  },
+  {
+    name: "icon-pagination",
+    type: "registry:ui",
+    title: "Icon Pagination",
+    description:
+      "Pagination component with colorful icon indicators and tooltip labels.",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/icon-pagination.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/icon-pagination.tsx",
+      },
+    ],
+  },
+  {
+    name: "gooey-pagination",
+    type: "registry:ui",
+    title: "Gooey Pagination",
+    description:
+      "Pagination component with liquid gooey effects using SVG filters.",
+    dependencies: ["framer-motion", "lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/gooey-pagination.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/gooey-pagination.tsx",
+      },
+    ],
+  },
+  {
+    name: "stack-pagination",
+    type: "registry:ui",
+    title: "Stack Pagination",
+    description:
+      "3D card stack pagination with flip animations and perspective effects.",
+    dependencies: ["framer-motion"],
+    files: [
+      {
+        path: "registry/ruixenui/stack-pagination.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/stack-pagination.tsx",
+      },
+    ],
+  },
+  {
+    name: "animated-number-flip",
+    type: "registry:ui",
+    title: "Animated Number Flip",
+    description:
+      "A card component that displays numbers with smooth flip animations.",
+    dependencies: ["framer-motion"],
+    files: [
+      {
+        path: "registry/ruixenui/animated-number-flip.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/animated-number-flip.tsx",
+      },
+    ],
+  },
+  {
+    name: "morphing-page-dots",
+    type: "registry:ui",
+    title: "Morphing Page Dots",
+    description:
+      "Pagination dots that morph in width with ripple effects for the active state.",
+    dependencies: ["framer-motion", "lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/morphing-page-dots.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/morphing-page-dots.tsx",
+      },
+    ],
+  },
+  {
+    name: "sliding-pagination",
+    type: "registry:ui",
+    title: "Sliding Pagination",
+    description:
+      "Pagination component with sliding underline indicator and smart page grouping.",
+    dependencies: ["framer-motion"],
+    files: [
+      {
+        path: "registry/ruixenui/sliding-pagination.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/sliding-pagination.tsx",
+      },
+    ],
+  },
+  {
+    name: "ai-chat-input",
+    type: "registry:ui",
+    title: "AI Chat Input",
+    description:
+      "Advanced chat input with slash commands, emoji picker, file upload, and AI features.",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/ai-chat-input.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/ai-chat-input.tsx",
+      },
+    ],
+  },
+  {
+    name: "magnetic-dock",
+    type: "registry:ui",
+    title: "Magnetic Dock",
+    description:
+      "macOS-style dock with magnetic hover effects and smooth icon animations.",
+    dependencies: ["framer-motion", "lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/magnetic-dock.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/magnetic-dock.tsx",
+      },
+    ],
+  },
+  {
+    name: "gooey-dock",
+    type: "registry:ui",
+    title: "Gooey Dock",
+    description:
+      "Dock component with liquid gooey blob effects using SVG filters.",
+    dependencies: ["framer-motion", "lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/gooey-dock.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/gooey-dock.tsx",
+      },
+    ],
+  },
+  {
+    name: "tilted-dock",
+    type: "registry:ui",
+    title: "Tilted Dock",
+    description:
+      "3D tilted dock with perspective effects and parallax mouse tracking.",
+    dependencies: ["framer-motion", "lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/tilted-dock.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/tilted-dock.tsx",
+      },
+    ],
+  },
+  {
+    name: "dock-morph",
+    type: "registry:ui",
+    title: "Dock Morph",
+    description:
+      "Morphing dock with glassmorphism bubbles and flexible positioning.",
+    dependencies: ["framer-motion", "lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/dock-morph.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/dock-morph.tsx",
+      },
+    ],
+  },
+  {
+    name: "dock",
+    type: "registry:ui",
+    title: "Dock",
+    description:
+      "Classic dock component with floating animation and glow effects.",
+    dependencies: ["framer-motion", "lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/dock.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/dock.tsx",
+      },
+    ],
+  },
 ];
