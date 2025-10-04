@@ -1,0 +1,137 @@
+---
+title: Auth Tabs Card
+date: 2024-06-01
+description: Tabbed authentication card with sign-in/sign-up forms and social login options
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="auth-tabs-card-demo" category="forms" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/auth-tabs-card"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="auth-tabs-card" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import AuthTabsCard from "@/components/ruixen/auth-tabs-card";
+import { FaGoogle, FaGithub } from "react-icons/fa";
+
+export default function App() {
+  const socialButtons = [
+    {
+      id: "google",
+      label: "Continue with Google",
+      icon: FaGoogle,
+      onClick: () => console.log("Google login"),
+    },
+    {
+      id: "github",
+      label: "Continue with GitHub",
+      icon: FaGithub,
+      onClick: () => console.log("GitHub login"),
+    },
+  ];
+
+  const handleSignIn = (data: Record<string, string>) => {
+    console.log("Sign in:", data);
+  };
+
+  const handleSignUp = (data: Record<string, string>) => {
+    console.log("Sign up:", data);
+  };
+
+  return (
+    <AuthTabsCard
+      socialButtons={socialButtons}
+      onSignIn={handleSignIn}
+      onSignUp={handleSignUp}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop            | Type                                     | Default                     | Description            |
+| --------------- | ---------------------------------------- | --------------------------- | ---------------------- |
+| `signInFields`  | `Field[]`                                | Default email/password      | Sign-in form fields    |
+| `signUpFields`  | `Field[]`                                | Default name/email/password | Sign-up form fields    |
+| `socialButtons` | `SocialButton[]`                         | `[]`                        | Social login buttons   |
+| `onSignIn`      | `(data: Record<string, string>) => void` | -                           | Sign-in handler        |
+| `onSignUp`      | `(data: Record<string, string>) => void` | -                           | Sign-up handler        |
+| `className`     | `string`                                 | `""`                        | Additional CSS classes |
+
+## Features
+
+- **Tabbed Interface**: Switch between Sign In and Sign Up
+- **Social Login**: Configurable social authentication buttons
+- **Custom Fields**: Customize form fields for both tabs
+- **Form Validation**: Built-in input validation
+- **Responsive Design**: Adapts to different screen sizes
+- **Icon Support**: React Icons integration for social buttons
+
+## Social Button Type
+
+```typescript
+export interface SocialButton {
+  id: string;
+  label: string;
+  icon: IconType;
+  onClick: () => void;
+  variant?: "default" | "outline";
+}
+```
+
+## Field Type
+
+```typescript
+export interface Field {
+  id: string;
+  label: string;
+  type: string;
+  placeholder?: string;
+}
+```
+
+## Default Fields
+
+**Sign In:**
+
+- Email (email input)
+- Password (password input)
+
+**Sign Up:**
+
+- Name (text input)
+- Email (email input)
+- Password (password input)

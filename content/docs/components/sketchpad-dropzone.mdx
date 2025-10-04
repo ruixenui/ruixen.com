@@ -1,0 +1,98 @@
+---
+title: Sketchpad Dropzone
+date: 2024-06-01
+description: Creative dropzone with sketchpad-style grid background and sticky note file cards
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="sketchpad-dropzone-demo" category="upload" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/sketchpad-dropzone"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="sketchpad-dropzone" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { SketchpadDropzone } from "@/components/ruixen/sketchpad-dropzone";
+
+const files = [
+  {
+    id: "1",
+    file: new File([""], "document.pdf", { type: "application/pdf" }),
+  },
+];
+
+export default function App() {
+  const handleDrop = (fileList: FileList) => {
+    console.log("Files dropped:", fileList);
+  };
+
+  const handleRemove = (id: string) => {
+    console.log("Remove file:", id);
+  };
+
+  return (
+    <SketchpadDropzone
+      files={files}
+      onDrop={handleDrop}
+      onRemove={handleRemove}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop       | Type                        | Default | Description                     |
+| ---------- | --------------------------- | ------- | ------------------------------- |
+| `files`    | `DropFile[]`                | -       | Array of files to display       |
+| `onDrop`   | `(files: FileList) => void` | -       | Callback when files are dropped |
+| `onRemove` | `(id: string) => void`      | -       | Callback when file is removed   |
+
+## Features
+
+- **Grid Background**: Sketchpad-style lined background
+- **Drag & Drop**: Full drag and drop support
+- **Click to Upload**: Click anywhere to open file picker
+- **Sticky Note Cards**: Files appear as yellow sticky notes
+- **Smooth Animations**: Scale and rotation effects
+- **Multiple Files**: Support for multiple file uploads
+
+## File Type
+
+```typescript
+export type DropFile = {
+  id: string;
+  file: File;
+};
+```

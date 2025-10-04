@@ -1,0 +1,114 @@
+---
+title: Step Card
+date: 2024-06-01
+description: Multi-step form card with smooth transitions between steps
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="step-card-demo" category="forms" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/step-card"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="step-card" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import StepCard from "@/components/ruixen/step-card";
+
+export default function App() {
+  const handleComplete = (data: {
+    email: string;
+    password: string;
+    otp: string;
+  }) => {
+    console.log("Form completed:", data);
+    // Handle form submission
+  };
+
+  return <StepCard onComplete={handleComplete} />;
+}
+```
+
+## Props
+
+| Prop         | Type                                                               | Default | Description                     |
+| ------------ | ------------------------------------------------------------------ | ------- | ------------------------------- |
+| `onComplete` | `(data: { email: string; password: string; otp: string }) => void` | -       | Callback when form is completed |
+
+## Features
+
+- **Three-Step Process**: Email → Password → 2FA
+- **Smooth Transitions**: Animated step transitions
+- **Navigation Controls**: Back/Next/Submit buttons
+- **Form Validation**: Built-in input validation
+- **Progress Indication**: Clear step titles
+- **Responsive Design**: Works on all screen sizes
+
+## Steps
+
+### Step 1: Email
+
+- Email input field
+- Next button to proceed
+
+### Step 2: Password
+
+- Password input field
+- Back button to return to email
+- Next button to proceed
+
+### Step 3: 2FA Code
+
+- OTP input field
+- Back button to return to password
+- Submit button to complete
+
+## Data Structure
+
+The component collects and returns:
+
+```typescript
+{
+  email: string;
+  password: string;
+  otp: string;
+}
+```
+
+## Animations
+
+Uses Framer Motion for:
+
+- **Step transitions**: Slide in/out effects
+- **Button states**: Hover and click animations
+- **Form validation**: Error state animations

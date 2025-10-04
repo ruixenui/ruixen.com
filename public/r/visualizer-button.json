@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "visualizer-button",
+  "type": "registry:ui",
+  "title": "Visualizer Button",
+  "description": "Compact audio button with animated equalizer bars visualization.",
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/ruixenui/visualizer-button.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { Button } from \"@/components/ui/button\";\nimport { cn } from \"@/lib/utils\";\n\ninterface VisualizerButtonProps {\n  audioSrc: string;\n  width?: number;\n  height?: number;\n  className?: string;\n}\n\nexport default function VisualizerButton({\n  audioSrc,\n  width = 60,\n  height = 30,\n  className,\n}: VisualizerButtonProps) {\n  const [audio, setAudio] = React.useState<HTMLAudioElement | null>(null);\n  const [isPlaying, setIsPlaying] = React.useState(false);\n  const [levels, setLevels] = React.useState<number[]>(Array(5).fill(0));\n\n  React.useEffect(() => {\n    // Only create Audio instance on client side\n    if (typeof window !== \"undefined\") {\n      const audioElement = new Audio(audioSrc);\n      setAudio(audioElement);\n    }\n  }, [audioSrc]);\n\n  React.useEffect(() => {\n    let interval: ReturnType<typeof setInterval>;\n\n    if (isPlaying) {\n      interval = setInterval(() => {\n        setLevels((prev) => prev.map(() => Math.random() * height));\n      }, 150);\n    } else {\n      setLevels(Array(5).fill(0));\n    }\n\n    return () => clearInterval(interval);\n  }, [isPlaying, height]);\n\n  const togglePlay = () => {\n    if (!audio) return;\n    if (isPlaying) audio.pause();\n    else audio.play();\n    setIsPlaying(!isPlaying);\n  };\n\n  return (\n    <Button\n      className={cn(\n        \"relative flex items-end justify-between px-2 py-1\",\n        className,\n      )}\n      onClick={togglePlay}\n      variant=\"outline\"\n      style={{ width, height }}\n    >\n      {levels.map((lvl, idx) => (\n        <div\n          key={idx}\n          className=\"bg-blue-500 dark:bg-white rounded-sm transition-all duration-150\"\n          style={{ width: 4, height: `${lvl}px` }}\n        />\n      ))}\n    </Button>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/visualizer-button.tsx"
+    }
+  ]
+}

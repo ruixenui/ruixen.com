@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "voice-message-bubble-demo",
+  "type": "registry:example",
+  "title": "Voice Message Bubble Demo",
+  "description": "Example showing chat-style voice message with waveform.",
+  "registryDependencies": [
+    "https://ruixen.com/r/voice-message-bubble"
+  ],
+  "files": [
+    {
+      "path": "registry/example/voice-message-bubble-demo.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport VoiceMessageBubble from \"@/registry/ruixenui/voice-message-bubble\";\n\nexport default function DemoVoiceMessageBubble() {\n  return (\n    <div className=\"flex flex-col gap-4 p-6 max-w-md mx-auto\">\n      <h2 className=\"text-2xl font-semibold mb-4 text-center text-black dark:text-white\">\n        Voice Message Bubble Demo\n      </h2>\n\n      <VoiceMessageBubble\n        audioSrc=\"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3\"\n        duration={15}\n        bubbleColor=\"#fff\"\n        waveColor=\"#000\"\n      />\n\n      <VoiceMessageBubble\n        audioSrc=\"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3\"\n        duration={10}\n        bubbleColor=\"#000\"\n        waveColor=\"#fff\"\n      />\n\n      <VoiceMessageBubble\n        audioSrc=\"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3\"\n        duration={20}\n        bubbleColor=\"#fff\"\n        waveColor=\"#000\"\n      />\n\n      <VoiceMessageBubble\n        audioSrc=\"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3\"\n        duration={12}\n        bubbleColor=\"#000\"\n        waveColor=\"#fff\"\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/voice-message-bubble-demo.tsx"
+    }
+  ]
+}

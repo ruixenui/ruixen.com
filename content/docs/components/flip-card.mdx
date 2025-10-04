@@ -1,0 +1,122 @@
+---
+title: Flip Card
+date: 2024-06-01
+description: 3D flip card with login form, customizable fields, and success states
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="flip-card-demo" category="forms" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/flip-card"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="flip-card" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import FlipCard from "@/components/ruixen/flip-card";
+
+export default function App() {
+  const handleLogin = async (data: Record<string, string>) => {
+    console.log("Login data:", data);
+    // Simulate API call
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    return true; // Return true for success, false for failure
+  };
+
+  return (
+    <FlipCard
+      frontTitle="Welcome Back 👋"
+      frontDescription="Login to continue"
+      backTitle="Login Form"
+      fields={[
+        {
+          name: "email",
+          type: "email",
+          label: "Email",
+          placeholder: "Enter your email",
+        },
+        {
+          name: "password",
+          type: "password",
+          label: "Password",
+          placeholder: "Enter your password",
+        },
+      ]}
+      onLogin={handleLogin}
+      cardWidth={320}
+      cardHeight={420}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop                | Type                                                 | Default                       | Description                  |
+| ------------------- | ---------------------------------------------------- | ----------------------------- | ---------------------------- |
+| `frontTitle`        | `string`                                             | `"Welcome Back 👋"`           | Title on front of card       |
+| `frontDescription`  | `string`                                             | `"Login to continue"`         | Description on front         |
+| `backTitle`         | `string`                                             | `"Login Form"`                | Title on back of card        |
+| `successTitle`      | `string`                                             | `"Login Successful 🎉"`       | Title when login succeeds    |
+| `fields`            | `FlipCardField[]`                                    | Default email/password fields | Form fields configuration    |
+| `onLogin`           | `(data: Record<string, string>) => Promise<boolean>` | -                             | Login handler function       |
+| `cardWidth`         | `number`                                             | `320`                         | Width of the card            |
+| `cardHeight`        | `number`                                             | `420`                         | Height of the card           |
+| `showBackInitially` | `boolean`                                            | `false`                       | Start with form side visible |
+
+## Features
+
+- **3D Flip Animation**: Smooth card flip transition
+- **Three States**: Front welcome, back form, success confirmation
+- **Customizable Fields**: Configure form inputs
+- **Async Login**: Support for API calls with loading states
+- **Error Handling**: Display login errors
+- **Success Animation**: Celebration state after login
+- **Responsive Design**: Adapts to different screen sizes
+
+## Field Type
+
+```typescript
+export interface FlipCardField {
+  name: string;
+  type?: string;
+  label: string;
+  placeholder?: string;
+}
+```
+
+## States
+
+1. **Front**: Welcome message with login button
+2. **Back**: Form with input fields
+3. **Success**: Confirmation message after successful login

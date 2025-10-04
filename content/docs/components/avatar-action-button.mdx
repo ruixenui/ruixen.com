@@ -1,0 +1,226 @@
+---
+title: Avatar Action Button
+date: 2024-06-01
+description: Button with integrated avatar image for user actions
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="avatar-action-button-demo" category="buttons" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/avatar-action-button"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="avatar-action-button" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import AvatarActionButton from "@/components/ruixen/avatar-action-button";
+
+export default function App() {
+  return (
+    <div className="space-y-4">
+      {/* Default avatar */}
+      <AvatarActionButton
+        label="View Profile"
+        onClick={() => console.log("Profile clicked")}
+        size="md"
+      />
+
+      {/* Custom avatar */}
+      <AvatarActionButton
+        label="John Doe"
+        avatarSrc="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150"
+        onClick={() => console.log("User clicked")}
+        size="lg"
+      />
+
+      {/* Small size with custom styling */}
+      <AvatarActionButton
+        label="Admin"
+        avatarSrc="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150"
+        size="sm"
+        className="bg-purple-500 hover:bg-purple-600"
+      />
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop        | Type                   | Default       | Description            |
+| ----------- | ---------------------- | ------------- | ---------------------- |
+| `label`     | `string`               | -             | Button text            |
+| `avatarSrc` | `string`               | RuixenUI logo | Avatar image URL       |
+| `size`      | `"sm" \| "md" \| "lg"` | `"md"`        | Button size            |
+| `className` | `string`               | -             | Additional CSS classes |
+
+## Features
+
+- **Integrated Avatar**: Built-in avatar component
+- **Default Image**: RuixenUI logo as fallback
+- **Size Variants**: Small, medium, and large sizes
+- **Rounded Design**: Pill-shaped button with rounded avatar
+- **Responsive Layout**: Avatar and text scale together
+- **Fallback Support**: Avatar component handles broken images
+
+## Size Variants
+
+Each size includes specific measurements for optimal proportions:
+
+```tsx
+// Small (32px height, 24px avatar)
+<AvatarActionButton size="sm" label="User" />
+
+// Medium (40px height, 32px avatar) - Default
+<AvatarActionButton size="md" label="Profile" />
+
+// Large (48px height, 40px avatar)
+<AvatarActionButton size="lg" label="Account" />
+```
+
+## Size Configuration
+
+```typescript
+const sizeConfig = {
+  sm: {
+    buttonHeight: "h-8 px-2",
+    avatar: "w-6 h-6",
+    gap: "gap-2",
+    font: "text-sm",
+  },
+  md: {
+    buttonHeight: "h-10 px-3",
+    avatar: "w-8 h-8",
+    gap: "gap-3",
+    font: "text-base",
+  },
+  lg: {
+    buttonHeight: "h-12 px-4",
+    avatar: "w-10 h-10",
+    gap: "gap-3",
+    font: "text-lg",
+  },
+};
+```
+
+## Avatar Sources
+
+### User Profiles
+
+```tsx
+<AvatarActionButton
+  label="Sarah Wilson"
+  avatarSrc="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150"
+  onClick={() => viewProfile("sarah")}
+/>
+```
+
+### Team Members
+
+```tsx
+<AvatarActionButton
+  label="Development Team"
+  avatarSrc="/team-avatar.jpg"
+  onClick={() => viewTeam()}
+/>
+```
+
+### System Users
+
+```tsx
+<AvatarActionButton
+  label="System Admin"
+  avatarSrc="/admin-avatar.png"
+  onClick={() => openAdminPanel()}
+/>
+```
+
+## Default Avatar
+
+When no `avatarSrc` is provided, the component uses the RuixenUI logo:
+
+```
+https://www.ruixen.com/_next/image?url=%2Fruixen_light.png&w=96&q=75
+```
+
+## Styling
+
+The button features:
+
+- **Primary Colors**: Uses theme primary colors
+- **Rounded Full**: Pill-shaped appearance
+- **Flex Layout**: Avatar and text aligned horizontally
+- **Font Weight**: Medium font weight for readability
+- **Hover Effects**: Subtle hover state transitions
+
+## Common Patterns
+
+### User Menu Trigger
+
+```tsx
+<AvatarActionButton
+  label="My Account"
+  avatarSrc={currentUser.avatar}
+  onClick={() => toggleUserMenu()}
+/>
+```
+
+### Profile Navigation
+
+```tsx
+<AvatarActionButton
+  label={user.displayName}
+  avatarSrc={user.profileImage}
+  onClick={() => navigateToProfile(user.id)}
+/>
+```
+
+### Contact Actions
+
+```tsx
+<AvatarActionButton
+  label="Message User"
+  avatarSrc={contact.avatar}
+  onClick={() => startConversation(contact.id)}
+/>
+```
+
+## Use Cases
+
+Perfect for:
+
+- **User Profiles**: Profile access buttons
+- **Contact Lists**: User interaction buttons
+- **Team Directories**: Team member buttons
+- **Chat Applications**: User conversation starters
+- **Admin Panels**: User management actions

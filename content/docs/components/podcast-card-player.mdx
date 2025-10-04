@@ -1,0 +1,97 @@
+---
+title: Podcast Card Player
+date: 2024-06-01
+description: Card-style podcast player with cover art, episode info, and audio controls
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="podcast-card-player-demo" category="audio" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/podcast-card-player"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="podcast-card-player" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import PodcastCardPlayer from "@/components/ruixen/podcast-card-player";
+
+export default function App() {
+  return (
+    <PodcastCardPlayer
+      imageSrc="https://example.com/podcast-cover.jpg"
+      title="The Tech Podcast"
+      episode="Episode 42: AI Revolution"
+      audioSrc="https://example.com/episode-42.mp3"
+      width={350}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop        | Type     | Default | Description                    |
+| ----------- | -------- | ------- | ------------------------------ |
+| `imageSrc`  | `string` | -       | URL of the podcast cover image |
+| `title`     | `string` | -       | Podcast title                  |
+| `episode`   | `string` | -       | Episode title/description      |
+| `audioSrc`  | `string` | -       | URL of the audio file          |
+| `width`     | `number` | `350`   | Width of the card              |
+| `className` | `string` | -       | Additional CSS classes         |
+
+## Features
+
+- **Cover Art Display**: Large podcast cover image
+- **Episode Information**: Title and episode details
+- **Progress Bar**: Visual progress indicator
+- **Seek Control**: Click progress bar to seek
+- **Play/Pause Button**: Audio playback controls
+- **Time Display**: Current time and total duration
+- **Card Layout**: Clean, organized design
+- **Responsive**: Adapts to different screen sizes
+
+## Layout Structure
+
+The card includes:
+
+1. **Cover Image**: 160px height, rounded corners
+2. **Title Section**: Podcast and episode names
+3. **Progress Bar**: Clickable seek control
+4. **Controls Row**: Play button and time display
+
+## Time Format
+
+Times are displayed in MM:SS format:
+
+- Current: `2:34`
+- Total: `45:12`

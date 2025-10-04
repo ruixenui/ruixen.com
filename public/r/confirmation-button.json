@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "confirmation-button",
+  "type": "registry:ui",
+  "title": "Confirmation Button",
+  "description": "Safety button that requires confirmation before executing destructive actions.",
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/ruixenui/confirmation-button.tsx",
+      "content": "\"use client\";\n\nimport React, { useState } from \"react\";\nimport { Button } from \"@/components/ui/button\";\nimport { cn } from \"@/lib/utils\";\n\n/**\n * ConfirmationButton\n *\n * A button that requires confirmation before performing an action.\n * First click changes text to \"Are you sure?\" and shows ✅ / ❌ choices.\n * Prevents accidental actions like \"Delete\".\n */\n\ninterface ConfirmationButtonProps\n  extends React.ButtonHTMLAttributes<HTMLButtonElement> {\n  label: string;\n  confirmLabel?: string;\n  onConfirm: () => void;\n  size?: \"sm\" | \"md\" | \"lg\";\n  className?: string;\n}\n\nconst sizeConfig = {\n  sm: \"px-3 py-1 text-sm\",\n  md: \"px-4 py-2 text-sm\",\n  lg: \"px-5 py-3 text-base\",\n};\n\nconst ConfirmationButton: React.FC<ConfirmationButtonProps> = ({\n  label,\n  confirmLabel = \"Are you sure?\",\n  onConfirm,\n  size = \"md\",\n  className,\n  ...props\n}) => {\n  const [confirming, setConfirming] = useState(false);\n\n  const handleClick = () => {\n    if (!confirming) {\n      setConfirming(true);\n      setTimeout(() => setConfirming(false), 3000); // reset after 3s\n    } else {\n      onConfirm();\n      setConfirming(false);\n    }\n  };\n\n  return (\n    <div className=\"inline-flex gap-2\">\n      {!confirming ? (\n        <Button\n          className={cn(sizeConfig[size], className)}\n          onClick={handleClick}\n          {...props}\n        >\n          {label}\n        </Button>\n      ) : (\n        <>\n          <Button\n            className={cn(sizeConfig[size], className, \"bg-red-600 text-white\")}\n            onClick={handleClick}\n          >\n            ✅ {confirmLabel}\n          </Button>\n          <Button\n            className={cn(\n              sizeConfig[size],\n              className,\n              \"bg-gray-300 text-black\",\n            )}\n            onClick={() => setConfirming(false)}\n          >\n            ❌\n          </Button>\n        </>\n      )}\n    </div>\n  );\n};\n\nexport default ConfirmationButton;\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/confirmation-button.tsx"
+    }
+  ]
+}

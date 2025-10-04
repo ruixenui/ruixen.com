@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "multi-step-button",
+  "type": "registry:ui",
+  "title": "Multi Step Button",
+  "description": "Button that cycles through multiple steps/labels on each click.",
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/ruixenui/multi-step-button.tsx",
+      "content": "\"use client\";\n\nimport React, { useState } from \"react\";\nimport { Button } from \"@/components/ui/button\";\nimport { cn } from \"@/lib/utils\";\n\ninterface MultiStepButtonProps\n  extends React.ButtonHTMLAttributes<HTMLButtonElement> {\n  steps: string[];\n  size?: \"sm\" | \"md\" | \"lg\";\n}\n\nconst sizeConfig = {\n  sm: \"px-3 py-1 text-sm\",\n  md: \"px-4 py-2 text-base\",\n  lg: \"px-5 py-3 text-lg\",\n};\n\nexport default function MultiStepButton({\n  steps,\n  size = \"md\",\n  className,\n  ...props\n}: MultiStepButtonProps) {\n  const [currentStep, setCurrentStep] = useState(0);\n\n  const handleClick = () => {\n    setCurrentStep((prev) => (prev + 1 < steps.length ? prev + 1 : prev));\n  };\n\n  return (\n    <Button\n      className={cn(sizeConfig[size], className)}\n      onClick={(e) => {\n        handleClick();\n        props.onClick?.(e);\n      }}\n      {...props}\n    >\n      {steps[currentStep]}\n    </Button>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/multi-step-button.tsx"
+    }
+  ]
+}

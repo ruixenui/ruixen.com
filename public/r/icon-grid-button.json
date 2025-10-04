@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "icon-grid-button",
+  "type": "registry:ui",
+  "title": "Icon Grid Button",
+  "description": "Button that reveals a grid of icon options on click.",
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/ruixenui/icon-grid-button.tsx",
+      "content": "\"use client\";\n\nimport React, { useState, useRef, useEffect } from \"react\";\nimport { Button } from \"@/components/ui/button\";\nimport { cn } from \"@/lib/utils\";\n\ninterface IconGridButtonProps\n  extends React.ButtonHTMLAttributes<HTMLButtonElement> {\n  label: string;\n  size?: \"sm\" | \"md\" | \"lg\";\n  icons?: Array<{ icon: React.ReactNode; onClick: () => void }>;\n}\n\nconst sizeConfig = {\n  sm: \"px-3 py-1 text-sm\",\n  md: \"px-4 py-2 text-base\",\n  lg: \"px-5 py-3 text-lg\",\n};\n\nexport default function IconGridButton({\n  label,\n  size = \"md\",\n  icons = [],\n  className,\n  ...props\n}: IconGridButtonProps) {\n  const [open, setOpen] = useState(false);\n  const containerRef = useRef<HTMLDivElement>(null);\n\n  useEffect(() => {\n    const handleClickOutside = (event: MouseEvent) => {\n      if (\n        containerRef.current &&\n        !containerRef.current.contains(event.target as Node)\n      ) {\n        setOpen(false);\n      }\n    };\n    document.addEventListener(\"mousedown\", handleClickOutside);\n    return () => document.removeEventListener(\"mousedown\", handleClickOutside);\n  }, []);\n\n  return (\n    <div ref={containerRef} className=\"relative inline-block\">\n      <Button\n        className={cn(sizeConfig[size], className)}\n        onClick={() => setOpen(!open)}\n        {...props}\n      >\n        {label}\n      </Button>\n      {open && (\n        <div className=\"absolute mt-2 grid grid-cols-4 gap-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-lg rounded-lg p-2 z-50\">\n          {icons.map((item, idx) => (\n            <Button\n              key={idx}\n              variant=\"ghost\"\n              className=\"flex items-center justify-center p-2\"\n              onClick={() => {\n                item.onClick();\n                setOpen(false);\n              }}\n            >\n              {item.icon}\n            </Button>\n          ))}\n        </div>\n      )}\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/icon-grid-button.tsx"
+    }
+  ]
+}

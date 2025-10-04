@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "music-equalizer-upload-demo",
+  "type": "registry:example",
+  "title": "Music Equalizer Upload Demo",
+  "description": "Example showing upload component with animated equalizer bars.",
+  "registryDependencies": [
+    "https://ruixen.com/r/music-equalizer-upload"
+  ],
+  "files": [
+    {
+      "path": "registry/example/music-equalizer-upload-demo.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport {\n  MusicEqualizerUpload,\n  UploadFile,\n} from \"@/registry/ruixenui/music-equalizer-upload\";\nimport { Button } from \"@/components/ui/button\";\nimport { v4 as uuidv4 } from \"uuid\";\n\nexport default function DemoMusicEqualizerUpload() {\n  const [files, setFiles] = React.useState<UploadFile[]>([]);\n  const inputRef = React.useRef<HTMLInputElement | null>(null);\n\n  // Simulate upload completion after 3 seconds\n  React.useEffect(() => {\n    const interval = setInterval(() => {\n      setFiles((prev) =>\n        prev.map((f) =>\n          f.status === \"uploading\" ? { ...f, status: \"done\" } : f,\n        ),\n      );\n    }, 3000);\n    return () => clearInterval(interval);\n  }, []);\n\n  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {\n    if (!e.target.files) return;\n\n    // Filter only audio files\n    const audioFiles = Array.from(e.target.files).filter((file) =>\n      file.type.startsWith(\"audio/\"),\n    );\n\n    const newFiles: UploadFile[] = audioFiles.map((file) => ({\n      id: uuidv4(),\n      file,\n      status: \"uploading\",\n    }));\n\n    setFiles((prev) => [...prev, ...newFiles]);\n    e.target.value = \"\"; // reset input to allow re-upload\n  };\n\n  const handleRemove = (id: string) => {\n    setFiles((prev) => prev.filter((f) => f.id !== id));\n  };\n\n  return (\n    <div className=\"p-6 space-y-6\">\n      <h1 className=\"text-2xl font-semibold\">\n        Music Equalizer Upload Demo (Audio Only)\n      </h1>\n\n      <input\n        type=\"file\"\n        multiple\n        accept=\"audio/*\" // Accept only audio files\n        className=\"hidden\"\n        ref={inputRef}\n        onChange={handleFileSelect}\n      />\n      <Button onClick={() => inputRef.current?.click()}>\n        Upload Audio Files\n      </Button>\n\n      <MusicEqualizerUpload files={files} onRemove={handleRemove} />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/music-equalizer-upload-demo.tsx"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "split-action-button",
+  "type": "registry:ui",
+  "title": "Split Action Button",
+  "description": "Button with primary action and dropdown for secondary options.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/split-action-button.tsx",
+      "content": "import React from \"react\";\nimport { Button } from \"@/components/ui/button\";\nimport {\n  DropdownMenu,\n  DropdownMenuTrigger,\n  DropdownMenuContent,\n  DropdownMenuItem,\n} from \"@/components/ui/dropdown-menu\";\nimport { ChevronDown } from \"lucide-react\";\nimport { cn } from \"@/lib/utils\";\n\n/**\n * SplitActionButton\n *\n * A button that combines a primary action and a secondary dropdown.\n * Left side triggers main action.\n * Right side opens a dropdown with additional options.\n * Useful for actions like \"Save\" + \"Save As...\" or \"Export\" + formats.\n */\n\ninterface SplitActionButtonProps {\n  mainLabel: string;\n  mainAction: () => void;\n  secondaryActions: { label: string; onClick: () => void }[];\n  size?: \"sm\" | \"md\" | \"lg\";\n  className?: string;\n}\n\nconst sizeClasses = {\n  sm: \"px-3 py-1 text-sm\",\n  md: \"px-4 py-2 text-sm\",\n  lg: \"px-5 py-3 text-base\",\n};\n\nconst SplitActionButton: React.FC<SplitActionButtonProps> = ({\n  mainLabel,\n  mainAction,\n  secondaryActions,\n  size = \"md\",\n  className,\n}) => {\n  return (\n    <div\n      className={cn(\n        \"inline-flex rounded-lg overflow-hidden border border-border\",\n        className,\n      )}\n    >\n      {/* Main action button */}\n      <Button\n        variant=\"default\"\n        className={cn(\"rounded-none rounded-l-lg\", sizeClasses[size])}\n        onClick={mainAction}\n      >\n        {mainLabel}\n      </Button>\n\n      {/* Dropdown trigger */}\n      <DropdownMenu>\n        <DropdownMenuTrigger asChild>\n          <Button\n            variant=\"default\"\n            className={cn(\"rounded-none rounded-r-lg\", sizeClasses[size])}\n          >\n            <ChevronDown className=\"w-4 h-4\" />\n          </Button>\n        </DropdownMenuTrigger>\n        <DropdownMenuContent>\n          {secondaryActions.map((action, index) => (\n            <DropdownMenuItem key={index} onClick={action.onClick}>\n              {action.label}\n            </DropdownMenuItem>\n          ))}\n        </DropdownMenuContent>\n      </DropdownMenu>\n    </div>\n  );\n};\n\nexport default SplitActionButton;\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/split-action-button.tsx"
+    }
+  ]
+}

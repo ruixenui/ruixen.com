@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "status-button",
+  "type": "registry:ui",
+  "title": "Status Button",
+  "description": "Button with animated status indicator dot for live/idle/offline states.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/status-button.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { Button } from \"@/components/ui/button\";\nimport { motion, AnimatePresence } from \"framer-motion\";\n\nexport type StatusType = \"live\" | \"idle\" | \"offline\" | string;\n\ninterface StatusButtonProps {\n  label?: string;\n  status?: StatusType;\n  onClick?: () => void;\n  colors?: Record<StatusType, string>;\n  size?: number;\n  pulseDuration?: number;\n  className?: string;\n}\n\nexport default function StatusButton({\n  label = \"Go Live\",\n  status = \"offline\",\n  onClick,\n  colors = {\n    live: \"bg-green-500\",\n    idle: \"bg-yellow-400\",\n    offline: \"bg-red-500\",\n  },\n  size = 12,\n  pulseDuration = 1,\n  className,\n}: StatusButtonProps) {\n  const dotColor = colors[status] || \"bg-gray-400\";\n\n  return (\n    <Button\n      variant=\"default\"\n      className={`flex items-center gap-2 ${className}`}\n      onClick={onClick}\n    >\n      <AnimatePresence mode=\"wait\" initial={false}>\n        <motion.span\n          key={status}\n          className={`rounded-full ${dotColor}`}\n          style={{ width: size, height: size }}\n          layout\n          animate={{ scale: [1, 1.4, 1], opacity: [0.7, 1, 0.7] }}\n          transition={{ repeat: Infinity, duration: pulseDuration }}\n        />\n      </AnimatePresence>\n      {label}\n    </Button>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/status-button.tsx"
+    }
+  ]
+}

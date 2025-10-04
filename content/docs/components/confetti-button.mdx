@@ -1,0 +1,99 @@
+---
+title: Confetti Button
+date: 2024-06-01
+description: Celebration button that triggers animated confetti particles on click
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="confetti-button-demo" category="buttons" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/confetti-button"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="confetti-button" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import ConfettiButton from "@/components/ruixen/confetti-button";
+
+export default function App() {
+  const handleCelebration = () => {
+    console.log("Achievement unlocked!");
+    // Your celebration logic here
+  };
+
+  return (
+    <ConfettiButton
+      label="Celebrate!"
+      onClick={handleCelebration}
+      className="bg-gradient-to-r from-purple-500 to-pink-500"
+    />
+  );
+}
+```
+
+## Props
+
+| Prop        | Type         | Default    | Description            |
+| ----------- | ------------ | ---------- | ---------------------- |
+| `label`     | `string`     | `"Submit"` | Button text            |
+| `onClick`   | `() => void` | -          | Click handler function |
+| `className` | `string`     | -          | Additional CSS classes |
+
+## Features
+
+- **Animated Confetti**: 20 colorful particles burst from button
+- **Random Colors**: 5 vibrant colors for variety
+- **Physics Animation**: Realistic particle movement with rotation
+- **Auto Cleanup**: Particles disappear after 800ms
+- **Responsive**: Adapts to button width for centered effect
+- **Customizable**: Easy to modify colors and particle count
+
+## Confetti Colors
+
+The component uses 5 predefined colors:
+
+- **Yellow**: `#facc15` (Amber)
+- **Green**: `#22c55e` (Emerald)
+- **Blue**: `#3b82f6` (Blue)
+- **Pink**: `#f472b6` (Pink)
+- **Orange**: `#f97316` (Orange)
+
+## Use Cases
+
+Perfect for:
+
+- **Achievement Celebrations**: Game completions, milestones
+- **Form Submissions**: Successful signups, purchases
+- **Interactive Rewards**: Button clicks, feature unlocks
+- **Gamification**: Points earned, levels completed
+- **Special Events**: Birthdays, anniversaries

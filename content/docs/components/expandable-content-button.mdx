@@ -1,0 +1,224 @@
+---
+title: Expandable Content Button
+date: 2024-06-01
+description: Button that expands to show additional content options
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="expandable-content-button-demo" category="buttons" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/expandable-content-button"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="expandable-content-button" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import ExpandableContentButton from "@/components/ruixen/expandable-content-button";
+import { Twitter, Linkedin, Copy, Share, Mail } from "lucide-react";
+
+export default function App() {
+  const shareOptions = [
+    {
+      label: "Share on Twitter",
+      icon: <Twitter className="w-4 h-4" />,
+      onClick: () => console.log("Shared on Twitter"),
+    },
+    {
+      label: "Share on LinkedIn",
+      icon: <Linkedin className="w-4 h-4" />,
+      onClick: () => console.log("Shared on LinkedIn"),
+    },
+    {
+      label: "Copy Link",
+      icon: <Copy className="w-4 h-4" />,
+      onClick: () => console.log("Link copied"),
+    },
+    {
+      label: "Send via Email",
+      icon: <Mail className="w-4 h-4" />,
+      onClick: () => console.log("Email sent"),
+    },
+  ];
+
+  return (
+    <div className="space-y-4">
+      <ExpandableContentButton
+        label="Share Article"
+        options={shareOptions}
+        size="md"
+      />
+
+      <ExpandableContentButton
+        label="Export Data"
+        options={[
+          { label: "Export as PDF", onClick: () => console.log("PDF export") },
+          { label: "Export as CSV", onClick: () => console.log("CSV export") },
+          {
+            label: "Export as Excel",
+            onClick: () => console.log("Excel export"),
+          },
+        ]}
+        size="sm"
+        className="bg-green-500 hover:bg-green-600"
+      />
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop        | Type                                                                    | Default | Description            |
+| ----------- | ----------------------------------------------------------------------- | ------- | ---------------------- |
+| `label`     | `string`                                                                | -       | Button text            |
+| `size`      | `"sm" \| "md" \| "lg"`                                                  | `"md"`  | Button size            |
+| `options`   | `Array<{ label: string; icon?: React.ReactNode; onClick: () => void }>` | `[]`    | Expandable options     |
+| `className` | `string`                                                                | -       | Additional CSS classes |
+
+## Features
+
+- **Expandable Menu**: Click to reveal options
+- **Click Outside**: Closes menu when clicking outside
+- **Icon Support**: Optional icons for each option
+- **Chevron Indicator**: Shows expand/collapse state
+- **Auto Close**: Menu closes after selecting option
+- **Flexible Width**: 240px (15rem) content width
+
+## Option Configuration
+
+```typescript
+interface Option {
+  label: string;
+  icon?: React.ReactNode;
+  onClick: () => void;
+}
+```
+
+## Menu Behavior
+
+- **Toggle**: Click button to expand/collapse
+- **Auto-close**: Selecting option closes menu
+- **Outside Click**: Clicking outside closes menu
+- **Positioning**: Menu appears below button with `mt-2` spacing
+- **Z-index**: Uses `z-50` for proper layering
+
+## Size Variants
+
+```tsx
+// Small button
+<ExpandableContentButton size="sm" label="Actions" options={options} />
+
+// Medium button (default)
+<ExpandableContentButton size="md" label="Share" options={options} />
+
+// Large button
+<ExpandableContentButton size="lg" label="Export" options={options} />
+```
+
+## Example Option Sets
+
+### Social Sharing
+
+```tsx
+const socialOptions = [
+  {
+    label: "Share on Twitter",
+    icon: <Twitter />,
+    onClick: () => shareOnTwitter(),
+  },
+  {
+    label: "Share on Facebook",
+    icon: <Facebook />,
+    onClick: () => shareOnFacebook(),
+  },
+  {
+    label: "Copy Link",
+    icon: <Copy />,
+    onClick: () => copyToClipboard(),
+  },
+];
+```
+
+### Export Options
+
+```tsx
+const exportOptions = [
+  {
+    label: "Download PDF",
+    icon: <FileText />,
+    onClick: () => exportPDF(),
+  },
+  {
+    label: "Download CSV",
+    icon: <Download />,
+    onClick: () => exportCSV(),
+  },
+  {
+    label: "Print",
+    icon: <Printer />,
+    onClick: () => printDocument(),
+  },
+];
+```
+
+### Admin Actions
+
+```tsx
+const adminOptions = [
+  {
+    label: "Edit User",
+    icon: <Edit />,
+    onClick: () => editUser(),
+  },
+  {
+    label: "Delete User",
+    icon: <Trash />,
+    onClick: () => deleteUser(),
+  },
+  {
+    label: "Reset Password",
+    icon: <Key />,
+    onClick: () => resetPassword(),
+  },
+];
+```
+
+## Use Cases
+
+Perfect for:
+
+- **Share Buttons**: Social media sharing options
+- **Export Menus**: Multiple export format options
+- **Action Menus**: Admin or user action options
+- **Tool Palettes**: Design or editing tool options
+- **Context Menus**: Contextual action lists

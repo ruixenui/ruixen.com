@@ -1,0 +1,130 @@
+---
+title: Confirmation Button
+date: 2024-06-01
+description: Safety button that requires confirmation before executing destructive actions
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="confirmation-button-demo" category="buttons" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/confirmation-button"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="confirmation-button" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import ConfirmationButton from "@/components/ruixen/confirmation-button";
+
+export default function App() {
+  const handleDelete = () => {
+    console.log("Item deleted!");
+    // Your deletion logic here
+  };
+
+  return (
+    <ConfirmationButton
+      label="Delete Item"
+      confirmLabel="Are you sure?"
+      onConfirm={handleDelete}
+      size="md"
+      className="bg-red-600 hover:bg-red-700"
+    />
+  );
+}
+```
+
+## Props
+
+| Prop           | Type                   | Default           | Description                     |
+| -------------- | ---------------------- | ----------------- | ------------------------------- |
+| `label`        | `string`               | -                 | Initial button text             |
+| `confirmLabel` | `string`               | `"Are you sure?"` | Confirmation state text         |
+| `onConfirm`    | `() => void`           | -                 | Function called on confirmation |
+| `size`         | `"sm" \| "md" \| "lg"` | `"md"`            | Button size                     |
+| `className`    | `string`               | -                 | Additional CSS classes          |
+
+## Features
+
+- **Two-Step Process**: Click once to confirm, click again to execute
+- **Auto Reset**: Returns to initial state after 3 seconds
+- **Visual Feedback**: Different colors for confirm/cancel states
+- **Safety First**: Prevents accidental destructive actions
+- **Customizable**: Configure text and styling
+- **Accessible**: Clear visual states and interactions
+
+## Button States
+
+### Initial State
+
+Shows the primary action label:
+
+```tsx
+<ConfirmationButton label="Delete Account" />
+```
+
+### Confirmation State
+
+Shows confirmation message with ✅ and ❌ options:
+
+- **✅ Button**: Confirms and executes the action
+- **❌ Button**: Cancels and returns to initial state
+
+## Size Variants
+
+```tsx
+// Small
+<ConfirmationButton size="sm" label="Delete" />
+
+// Medium (default)
+<ConfirmationButton size="md" label="Delete" />
+
+// Large
+<ConfirmationButton size="lg" label="Delete" />
+```
+
+## Use Cases
+
+Perfect for:
+
+- **Delete Operations**: Files, accounts, records
+- **Destructive Actions**: Reset, clear, remove
+- **Critical Operations**: Payments, submissions
+- **Data Loss Prevention**: Unsaved changes warnings
+- **Admin Actions**: User management, system changes
+
+## Safety Features
+
+- **3-Second Timeout**: Auto-cancels if no action taken
+- **Clear Visual States**: Red for confirm, gray for cancel
+- **Two-Click Requirement**: Prevents accidental execution
+- **Immediate Feedback**: Instant state changes on interaction

@@ -1,0 +1,156 @@
+---
+title: Dynamic Status Button
+date: 2024-06-01
+description: Button that cycles through different status states with icons and colors
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="dynamic-status-button-demo" category="buttons" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/dynamic-status-button"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="dynamic-status-button" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import DynamicStatusButton from "@/components/ruixen/dynamic-status-button";
+import { Play, Pause, Square } from "lucide-react";
+
+const playerStatuses = [
+  {
+    label: "Play",
+    icon: <Play className="w-4 h-4" />,
+    color: "#22c55e",
+    textColor: "#ffffff",
+  },
+  {
+    label: "Pause",
+    icon: <Pause className="w-4 h-4" />,
+    color: "#f59e0b",
+    textColor: "#ffffff",
+  },
+  {
+    label: "Stop",
+    icon: <Square className="w-4 h-4" />,
+    color: "#ef4444",
+    textColor: "#ffffff",
+  },
+];
+
+export default function App() {
+  const handleStatusChange = (status, index) => {
+    console.log(`Status changed to: ${status.label} (${index})`);
+  };
+
+  return (
+    <DynamicStatusButton
+      statuses={playerStatuses}
+      currentIndex={0}
+      onClick={handleStatusChange}
+      width={120}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop           | Type                                            | Default | Description                    |
+| -------------- | ----------------------------------------------- | ------- | ------------------------------ |
+| `statuses`     | `ButtonStatus[]`                                | -       | Array of status configurations |
+| `currentIndex` | `number`                                        | `0`     | Initial status index           |
+| `onClick`      | `(status: ButtonStatus, index: number) => void` | -       | Status change handler          |
+| `className`    | `string`                                        | -       | Additional CSS classes         |
+| `width`        | `number`                                        | `150`   | Button width in pixels         |
+
+## Features
+
+- **Cycling States**: Click to cycle through different statuses
+- **Custom Icons**: Each status can have its own icon
+- **Custom Colors**: Configurable background and text colors
+- **Smooth Transitions**: Animated state changes
+- **Callback Support**: Get notified of status changes
+- **Flexible Width**: Adjustable button width
+
+## Button Status Type
+
+```typescript
+export type ButtonStatus = {
+  label: string;
+  icon: React.ReactNode;
+  color?: string; // button background color
+  textColor?: string; // text/icon color
+};
+```
+
+## Example Configurations
+
+### Media Player
+
+```tsx
+const mediaStatuses = [
+  { label: "Play", icon: <Play />, color: "#10b981" },
+  { label: "Pause", icon: <Pause />, color: "#f59e0b" },
+  { label: "Stop", icon: <Square />, color: "#ef4444" },
+];
+```
+
+### Task Status
+
+```tsx
+const taskStatuses = [
+  { label: "Todo", icon: <Circle />, color: "#6b7280" },
+  { label: "In Progress", icon: <Clock />, color: "#3b82f6" },
+  { label: "Done", icon: <Check />, color: "#10b981" },
+];
+```
+
+### Connection Status
+
+```tsx
+const connectionStatuses = [
+  { label: "Offline", icon: <WifiOff />, color: "#ef4444" },
+  { label: "Connecting", icon: <Loader />, color: "#f59e0b" },
+  { label: "Online", icon: <Wifi />, color: "#10b981" },
+];
+```
+
+## Use Cases
+
+Perfect for:
+
+- **Media Controls**: Play/pause/stop buttons
+- **Task Management**: Status cycling for tasks
+- **Connection States**: Network status indicators
+- **Mode Switching**: Toggle between different modes
+- **Workflow States**: Process step indicators

@@ -1,0 +1,122 @@
+---
+title: Progress Button
+date: 2024-06-01
+description: Button with built-in progress feedback for async operations - spinner or progress bar
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="progress-button-demo" category="buttons" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/progress-button"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="progress-button" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import ProgressButton from "@/components/ruixen/progress-button";
+
+export default function App() {
+  return (
+    <div className="flex gap-4">
+      {/* Spinner version */}
+      <ProgressButton
+        label="Upload File"
+        loadingLabel="Uploading..."
+        successLabel="Uploaded!"
+        duration={3000}
+      />
+
+      {/* Progress bar version */}
+      <ProgressButton
+        label="Process Data"
+        loadingLabel="Processing..."
+        successLabel="Complete!"
+        showBar={true}
+        duration={2000}
+      />
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop           | Type      | Default           | Description                  |
+| -------------- | --------- | ----------------- | ---------------------------- |
+| `label`        | `string`  | -                 | Button text in idle state    |
+| `loadingLabel` | `string`  | `"Processing..."` | Text shown during loading    |
+| `successLabel` | `string`  | `"Done!"`         | Text shown on success        |
+| `showBar`      | `boolean` | `false`           | Show progress bar vs spinner |
+| `duration`     | `number`  | `2000`            | Loading duration in ms       |
+| `className`    | `string`  | -                 | Additional CSS classes       |
+
+## Features
+
+- **Two Display Modes**: Spinner or progress bar
+- **Three States**: Idle, loading, success
+- **Auto Reset**: Returns to idle after success
+- **Click Protection**: Prevents multiple clicks during loading
+- **Smooth Animations**: CSS transitions for all states
+- **Customizable Duration**: Control loading time
+- **Accessible**: Proper disabled states and ARIA support
+
+## Display Modes
+
+### Spinner Mode (Default)
+
+Shows a rotating loader icon during processing:
+
+```tsx
+<ProgressButton
+  label="Submit"
+  showBar={false} // or omit (default)
+/>
+```
+
+### Progress Bar Mode
+
+Shows a filling progress bar at the bottom:
+
+```tsx
+<ProgressButton label="Upload" showBar={true} duration={3000} />
+```
+
+## Use Cases
+
+Perfect for:
+
+- **File Uploads**: Show upload progress
+- **Form Submissions**: API call feedback
+- **Data Processing**: Long-running operations
+- **Payment Processing**: Transaction feedback
+- **Export Operations**: File generation progress
