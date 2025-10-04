@@ -3360,6 +3360,558 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "nested-tabs": {
+    name: "nested-tabs",
+    description:
+      "A tab component with nested sub-tabs that expand with smooth animations.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/nested-tabs.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/nested-tabs.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/nested-tabs.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "zoom-depth-tabs": {
+    name: "zoom-depth-tabs",
+    description:
+      "A tab component with 3D zoom and depth effects for enhanced visual appeal.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/zoom-depth-tabs.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/zoom-depth-tabs.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/zoom-depth-tabs.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "badge-tabs": {
+    name: "badge-tabs",
+    description:
+      "Tab component with animated badges showing counts or notifications.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/badge-tabs.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/badge-tabs.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/badge-tabs.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "capsule-tabs": {
+    name: "capsule-tabs",
+    description:
+      "Scrollable capsule-style tabs with pagination dots and navigation arrows.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/capsule-tabs.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/capsule-tabs.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/capsule-tabs.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "magnetic-tabs": {
+    name: "magnetic-tabs",
+    description:
+      "Tab component with magnetic hover effects and smooth indicator animations.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/magnetic-tabs.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/magnetic-tabs.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/magnetic-tabs.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "fade-slide-tabs": {
+    name: "fade-slide-tabs",
+    description:
+      "Tab component with fade and slide animations for smooth content transitions.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/fade-slide-tabs.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/fade-slide-tabs.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/fade-slide-tabs.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "hybrid-tabs": {
+    name: "hybrid-tabs",
+    description:
+      "Tab component that shows icons only by default and expands to show labels on hover.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/hybrid-tabs.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/hybrid-tabs.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/hybrid-tabs.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "pill-morph-tabs": {
+    name: "pill-morph-tabs",
+    description:
+      "Elegant tab component with morphing pill indicator and glassmorphism effects.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/pill-morph-tabs.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/pill-morph-tabs.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/pill-morph-tabs.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "sliding-tabs": {
+    name: "sliding-tabs",
+    description:
+      "Tab component with sliding gradient indicator and keyboard navigation support.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/sliding-tabs.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/sliding-tabs.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/sliding-tabs.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "wheel-pagination": {
+    name: "wheel-pagination",
+    description:
+      "Interactive pagination component with mouse wheel support and animated page numbers.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/wheel-pagination.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/wheel-pagination.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/wheel-pagination.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "scroll-pagination": {
+    name: "scroll-pagination",
+    description:
+      "Minimalist pagination with mouse wheel navigation and animated number carousel.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/scroll-pagination.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/scroll-pagination.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/scroll-pagination.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "icon-pagination": {
+    name: "icon-pagination",
+    description:
+      "Pagination component with colorful icon indicators and tooltip labels.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/icon-pagination.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/icon-pagination.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/icon-pagination.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "gooey-pagination": {
+    name: "gooey-pagination",
+    description:
+      "Pagination component with liquid gooey effects using SVG filters.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/gooey-pagination.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/gooey-pagination.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/gooey-pagination.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "stack-pagination": {
+    name: "stack-pagination",
+    description:
+      "3D card stack pagination with flip animations and perspective effects.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/stack-pagination.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/stack-pagination.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/stack-pagination.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "animated-number-flip": {
+    name: "animated-number-flip",
+    description:
+      "A card component that displays numbers with smooth flip animations.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/animated-number-flip.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/animated-number-flip.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/animated-number-flip.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "morphing-page-dots": {
+    name: "morphing-page-dots",
+    description:
+      "Pagination dots that morph in width with ripple effects for the active state.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/morphing-page-dots.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/morphing-page-dots.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/morphing-page-dots.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "sliding-pagination": {
+    name: "sliding-pagination",
+    description:
+      "Pagination component with sliding underline indicator and smart page grouping.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/sliding-pagination.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/sliding-pagination.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/sliding-pagination.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "ai-chat-input": {
+    name: "ai-chat-input",
+    description:
+      "Advanced chat input with slash commands, emoji picker, file upload, and AI features.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/ai-chat-input.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/ai-chat-input.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/ai-chat-input.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "magnetic-dock": {
+    name: "magnetic-dock",
+    description:
+      "macOS-style dock with magnetic hover effects and smooth icon animations.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/magnetic-dock.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/magnetic-dock.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/magnetic-dock.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "gooey-dock": {
+    name: "gooey-dock",
+    description:
+      "Dock component with liquid gooey blob effects using SVG filters.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/gooey-dock.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/gooey-dock.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/gooey-dock.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "tilted-dock": {
+    name: "tilted-dock",
+    description:
+      "3D tilted dock with perspective effects and parallax mouse tracking.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/tilted-dock.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/tilted-dock.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/tilted-dock.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "dock-morph": {
+    name: "dock-morph",
+    description:
+      "Morphing dock with glassmorphism bubbles and flexible positioning.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/dock-morph.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/dock-morph.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/dock-morph.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  dock: {
+    name: "dock",
+    description:
+      "Classic dock component with floating animation and glow effects.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/dock.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/dock.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/dock.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "staggered-faq-section-demo": {
     name: "staggered-faq-section-demo",
     description:
@@ -6738,6 +7290,545 @@ export const Index: Record<string, any> = {
       const mod = await import(
         "@/registry/example/dual-tone-rain-background-demo.tsx"
       );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "nested-tabs-demo": {
+    name: "nested-tabs-demo",
+    description: "Example showing nested tabs with expandable sub-tabs.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/nested-tabs"],
+    files: [
+      {
+        path: "registry/example/nested-tabs-demo.tsx",
+        type: "registry:example",
+        target: "components/nested-tabs-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/nested-tabs-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "zoom-depth-tabs-demo": {
+    name: "zoom-depth-tabs-demo",
+    description: "Example showing 3D zoom and depth effects for tabs.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/zoom-depth-tabs"],
+    files: [
+      {
+        path: "registry/example/zoom-depth-tabs-demo.tsx",
+        type: "registry:example",
+        target: "components/zoom-depth-tabs-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/zoom-depth-tabs-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "badge-tabs-demo": {
+    name: "badge-tabs-demo",
+    description: "Example showing tabs with animated notification badges.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/badge-tabs"],
+    files: [
+      {
+        path: "registry/example/badge-tabs-demo.tsx",
+        type: "registry:example",
+        target: "components/badge-tabs-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/badge-tabs-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "capsule-tabs-demo": {
+    name: "capsule-tabs-demo",
+    description:
+      "Example showing scrollable capsule-style tabs with pagination.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/capsule-tabs"],
+    files: [
+      {
+        path: "registry/example/capsule-tabs-demo.tsx",
+        type: "registry:example",
+        target: "components/capsule-tabs-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/capsule-tabs-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "magnetic-tabs-demo": {
+    name: "magnetic-tabs-demo",
+    description: "Example showing tabs with magnetic hover effects.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/magnetic-tabs"],
+    files: [
+      {
+        path: "registry/example/magnetic-tabs-demo.tsx",
+        type: "registry:example",
+        target: "components/magnetic-tabs-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/magnetic-tabs-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "fade-slide-tabs-demo": {
+    name: "fade-slide-tabs-demo",
+    description: "Example showing tabs with fade and slide animations.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/fade-slide-tabs"],
+    files: [
+      {
+        path: "registry/example/fade-slide-tabs-demo.tsx",
+        type: "registry:example",
+        target: "components/fade-slide-tabs-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/fade-slide-tabs-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "hybrid-tabs-demo": {
+    name: "hybrid-tabs-demo",
+    description: "Example showing icon-first tabs that expand labels on hover.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/hybrid-tabs"],
+    files: [
+      {
+        path: "registry/example/hybrid-tabs-demo.tsx",
+        type: "registry:example",
+        target: "components/hybrid-tabs-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/hybrid-tabs-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "pill-morph-tabs-demo": {
+    name: "pill-morph-tabs-demo",
+    description: "Example showing tabs with morphing pill indicator.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/pill-morph-tabs"],
+    files: [
+      {
+        path: "registry/example/pill-morph-tabs-demo.tsx",
+        type: "registry:example",
+        target: "components/pill-morph-tabs-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/pill-morph-tabs-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "sliding-tabs-demo": {
+    name: "sliding-tabs-demo",
+    description: "Example showing tabs with sliding gradient indicator.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/sliding-tabs"],
+    files: [
+      {
+        path: "registry/example/sliding-tabs-demo.tsx",
+        type: "registry:example",
+        target: "components/sliding-tabs-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/sliding-tabs-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "wheel-pagination-demo": {
+    name: "wheel-pagination-demo",
+    description: "Example showing pagination with mouse wheel support.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/wheel-pagination"],
+    files: [
+      {
+        path: "registry/example/wheel-pagination-demo.tsx",
+        type: "registry:example",
+        target: "components/wheel-pagination-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/wheel-pagination-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "scroll-pagination-demo": {
+    name: "scroll-pagination-demo",
+    description:
+      "Example showing minimalist pagination with scroll navigation.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/scroll-pagination"],
+    files: [
+      {
+        path: "registry/example/scroll-pagination-demo.tsx",
+        type: "registry:example",
+        target: "components/scroll-pagination-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/scroll-pagination-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "icon-pagination-demo": {
+    name: "icon-pagination-demo",
+    description: "Example showing pagination with colorful icon indicators.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/icon-pagination"],
+    files: [
+      {
+        path: "registry/example/icon-pagination-demo.tsx",
+        type: "registry:example",
+        target: "components/icon-pagination-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/icon-pagination-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "gooey-pagination-demo": {
+    name: "gooey-pagination-demo",
+    description: "Example showing pagination with liquid gooey effects.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/gooey-pagination"],
+    files: [
+      {
+        path: "registry/example/gooey-pagination-demo.tsx",
+        type: "registry:example",
+        target: "components/gooey-pagination-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/gooey-pagination-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "stack-pagination-demo": {
+    name: "stack-pagination-demo",
+    description:
+      "Example showing 3D card stack pagination with flip animations.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/stack-pagination"],
+    files: [
+      {
+        path: "registry/example/stack-pagination-demo.tsx",
+        type: "registry:example",
+        target: "components/stack-pagination-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/stack-pagination-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "animated-number-flip-demo": {
+    name: "animated-number-flip-demo",
+    description: "Example showing number cards with smooth flip animations.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/animated-number-flip"],
+    files: [
+      {
+        path: "registry/example/animated-number-flip-demo.tsx",
+        type: "registry:example",
+        target: "components/animated-number-flip-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/animated-number-flip-demo.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "morphing-page-dots-demo": {
+    name: "morphing-page-dots-demo",
+    description:
+      "Example showing pagination dots that morph with ripple effects.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/morphing-page-dots"],
+    files: [
+      {
+        path: "registry/example/morphing-page-dots-demo.tsx",
+        type: "registry:example",
+        target: "components/morphing-page-dots-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/morphing-page-dots-demo.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "sliding-pagination-demo": {
+    name: "sliding-pagination-demo",
+    description: "Example showing pagination with sliding underline indicator.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/sliding-pagination"],
+    files: [
+      {
+        path: "registry/example/sliding-pagination-demo.tsx",
+        type: "registry:example",
+        target: "components/sliding-pagination-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/sliding-pagination-demo.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "ai-chat-input-demo": {
+    name: "ai-chat-input-demo",
+    description: "Example showing advanced chat input with AI features.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/ai-chat-input"],
+    files: [
+      {
+        path: "registry/example/ai-chat-input-demo.tsx",
+        type: "registry:example",
+        target: "components/ai-chat-input-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/ai-chat-input-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "magnetic-dock-demo": {
+    name: "magnetic-dock-demo",
+    description: "Example showing macOS-style dock with magnetic effects.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/magnetic-dock"],
+    files: [
+      {
+        path: "registry/example/magnetic-dock-demo.tsx",
+        type: "registry:example",
+        target: "components/magnetic-dock-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/magnetic-dock-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "gooey-dock-demo": {
+    name: "gooey-dock-demo",
+    description: "Example showing dock with liquid gooey blob effects.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/gooey-dock"],
+    files: [
+      {
+        path: "registry/example/gooey-dock-demo.tsx",
+        type: "registry:example",
+        target: "components/gooey-dock-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/gooey-dock-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "tilted-dock-demo": {
+    name: "tilted-dock-demo",
+    description: "Example showing 3D tilted dock with perspective effects.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/tilted-dock"],
+    files: [
+      {
+        path: "registry/example/tilted-dock-demo.tsx",
+        type: "registry:example",
+        target: "components/tilted-dock-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/tilted-dock-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "dock-morph-demo": {
+    name: "dock-morph-demo",
+    description: "Example showing morphing dock with glassmorphism bubbles.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/dock-morph"],
+    files: [
+      {
+        path: "registry/example/dock-morph-demo.tsx",
+        type: "registry:example",
+        target: "components/dock-morph-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/dock-morph-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "dock-demo": {
+    name: "dock-demo",
+    description: "Example showing classic dock with floating animation.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/dock"],
+    files: [
+      {
+        path: "registry/example/dock-demo.tsx",
+        type: "registry:example",
+        target: "components/dock-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/dock-demo.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>

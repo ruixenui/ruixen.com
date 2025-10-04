@@ -729,6 +729,164 @@ export const docsConfig: DocsConfig = {
             },
           ],
         },
+        {
+          title: "Tabs",
+          items: [
+            {
+              title: "Nested Tabs",
+              href: `/docs/components/nested-tabs`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Zoom Depth Tabs",
+              href: `/docs/components/zoom-depth-tabs`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Badge Tabs",
+              href: `/docs/components/badge-tabs`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Capsule Tabs",
+              href: `/docs/components/capsule-tabs`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Magnetic Tabs",
+              href: `/docs/components/magnetic-tabs`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Fade Slide Tabs",
+              href: `/docs/components/fade-slide-tabs`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Hybrid Tabs",
+              href: `/docs/components/hybrid-tabs`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Pill Morph Tabs",
+              href: `/docs/components/pill-morph-tabs`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Sliding Tabs",
+              href: `/docs/components/sliding-tabs`,
+              items: [],
+              label: "",
+            },
+          ],
+        },
+        {
+          title: "Pagination",
+          items: [
+            {
+              title: "Wheel Pagination",
+              href: `/docs/components/wheel-pagination`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Scroll Pagination",
+              href: `/docs/components/scroll-pagination`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Icon Pagination",
+              href: `/docs/components/icon-pagination`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Gooey Pagination",
+              href: `/docs/components/gooey-pagination`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Stack Pagination",
+              href: `/docs/components/stack-pagination`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Animated Number Flip",
+              href: `/docs/components/animated-number-flip`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Morphing Page Dots",
+              href: `/docs/components/morphing-page-dots`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Sliding Pagination",
+              href: `/docs/components/sliding-pagination`,
+              items: [],
+              label: "",
+            },
+          ],
+        },
+        {
+          title: "Docks",
+          items: [
+            {
+              title: "Magnetic Dock",
+              href: `/docs/components/magnetic-dock`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Gooey Dock",
+              href: `/docs/components/gooey-dock`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Tilted Dock",
+              href: `/docs/components/tilted-dock`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Dock Morph",
+              href: `/docs/components/dock-morph`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Dock",
+              href: `/docs/components/dock`,
+              items: [],
+              label: "",
+            },
+          ],
+        },
+        {
+          title: "AI Chat Inputs",
+          items: [
+            {
+              title: "AI Chat Input",
+              href: `/docs/components/ai-chat-input`,
+              items: [],
+              label: "",
+            },
+          ],
+        },
       ],
     },
     {

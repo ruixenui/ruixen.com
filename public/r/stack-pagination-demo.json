@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stack-pagination-demo",
+  "type": "registry:example",
+  "title": "Stack Pagination Demo",
+  "description": "Example showing 3D card stack pagination with flip animations.",
+  "registryDependencies": [
+    "https://ruixen.com/r/stack-pagination"
+  ],
+  "files": [
+    {
+      "path": "registry/example/stack-pagination-demo.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport StackPagination from \"@/registry/ruixenui/stack-pagination\"; // <-- adjust path if needed\nimport { Card, CardContent } from \"@/components/ui/card\";\n\nexport default function StackPaginationDemo() {\n  return (\n    <main className=\"flex flex-col items-center justify-center min-h-screen bg-background px-4\">\n      <h1 className=\"text-3xl font-bold mb-8\">Stack Pagination Demo</h1>\n\n      <StackPagination\n        totalPages={15}\n        visibleCount={5}\n        className=\"w-full max-w-3xl\"\n      />\n\n      <section className=\"mt-12 w-full max-w-2xl\">\n        <Card className=\"shadow-lg\">\n          <CardContent className=\"p-6\">\n            <h2 className=\"text-xl font-semibold mb-4\">Instructions</h2>\n            <p className=\"text-muted-foreground\">\n              Hover over any card to see it pop up. Click on a card to flip it\n              and reveal the back side. Use the <strong>Prev</strong> and{\" \"}\n              <strong>Next</strong> buttons to navigate between pages.\n            </p>\n          </CardContent>\n        </Card>\n      </section>\n    </main>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/stack-pagination-demo.tsx"
+    }
+  ]
+}

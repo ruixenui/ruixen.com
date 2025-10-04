@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "animated-number-flip-demo",
+  "type": "registry:example",
+  "title": "Animated Number Flip Demo",
+  "description": "Example showing number cards with smooth flip animations.",
+  "registryDependencies": [
+    "https://ruixen.com/r/animated-number-flip"
+  ],
+  "files": [
+    {
+      "path": "registry/example/animated-number-flip-demo.tsx",
+      "content": "\"use client\";\n\nimport { useState } from \"react\";\nimport AnimatedNumberFlip from \"@/registry/ruixenui/animated-number-flip\";\nimport { Button } from \"@/components/ui/button\";\n\nexport default function Demo() {\n  const [page, setPage] = useState(1);\n\n  return (\n    <div className=\"flex flex-col items-center gap-6 py-20\">\n      <AnimatedNumberFlip value={page} />\n      <div className=\"flex gap-4\">\n        <Button onClick={() => setPage((p) => Math.max(1, p - 1))}>Prev</Button>\n        <Button onClick={() => setPage((p) => p + 1)}>Next</Button>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/animated-number-flip-demo.tsx"
+    }
+  ]
+}

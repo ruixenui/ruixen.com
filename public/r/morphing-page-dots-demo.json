@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "morphing-page-dots-demo",
+  "type": "registry:example",
+  "title": "Morphing Page Dots Demo",
+  "description": "Example showing pagination dots that morph with ripple effects.",
+  "registryDependencies": [
+    "https://ruixen.com/r/morphing-page-dots"
+  ],
+  "files": [
+    {
+      "path": "registry/example/morphing-page-dots-demo.tsx",
+      "content": "\"use client\";\n\nimport { useState } from \"react\";\nimport MorphingPageDots from \"@/registry/ruixenui/morphing-page-dots\";\n\nexport default function DemoPagination() {\n  const [page, setPage] = useState(0);\n  return (\n    <div className=\"flex flex-col items-center gap-4 mt-20\">\n      <MorphingPageDots total={5} initialPage={page} onPageChange={setPage} />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/morphing-page-dots-demo.tsx"
+    }
+  ]
+}

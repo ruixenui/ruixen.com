@@ -1,0 +1,115 @@
+---
+title: Gooey Dock
+date: 2024-06-01
+description: Dock component with liquid gooey blob effects using SVG filters
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="gooey-dock-demo" category="docks" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/gooey-dock"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="gooey-dock" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Install dependencies</Step>
+
+```bash
+npm install framer-motion lucide-react
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import GooeyDock from "@/components/ruixen/gooey-dock";
+import { Home, Search, Settings, User, Bell } from "lucide-react";
+
+const dockItems = [
+  {
+    icon: <Home className="h-6 w-6" />,
+    label: "Home",
+    onClick: () => console.log("Home"),
+  },
+  {
+    icon: <Search className="h-6 w-6" />,
+    label: "Search",
+    onClick: () => console.log("Search"),
+  },
+  {
+    icon: <Bell className="h-6 w-6" />,
+    label: "Notifications",
+    onClick: () => console.log("Notifications"),
+  },
+  {
+    icon: <User className="h-6 w-6" />,
+    label: "Profile",
+    onClick: () => console.log("Profile"),
+  },
+  {
+    icon: <Settings className="h-6 w-6" />,
+    label: "Settings",
+    onClick: () => console.log("Settings"),
+  },
+];
+
+export default function App() {
+  return <GooeyDock items={dockItems} />;
+}
+```
+
+## Props
+
+| Prop        | Type                                                          | Default | Description            |
+| ----------- | ------------------------------------------------------------- | ------- | ---------------------- |
+| `items`     | `Array<{icon: ReactNode, label: string, onClick?: function}>` | -       | Array of dock items    |
+| `className` | `string`                                                      | `""`    | Additional CSS classes |
+
+## Features
+
+- **Gooey Effect**: SVG filter creates liquid blob morphing
+- **Scale Animation**: Icons scale up on hover
+- **Tooltips**: Labels appear on hover with positioning
+- **Backdrop Blur**: Glassmorphism effect on icon buttons
+- **Spring Physics**: Smooth animations with spring transitions
+
+## How the Gooey Effect Works
+
+The liquid effect uses an SVG filter with:
+
+- **Gaussian Blur**: `stdDeviation="10"` creates soft edges
+- **Color Matrix**: Increases contrast to create sharp boundaries
+- **Blend Mode**: Combines original and processed elements
+
+```css
+filter: url(#goo);
+```
+
+The filter is applied to the container, making overlapping elements merge into liquid blobs.

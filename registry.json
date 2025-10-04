@@ -2436,6 +2436,385 @@
       ]
     },
     {
+      "name": "nested-tabs",
+      "type": "registry:ui",
+      "title": "Nested Tabs",
+      "description": "A tab component with nested sub-tabs that expand with smooth animations.",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/nested-tabs.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/nested-tabs.tsx"
+        }
+      ]
+    },
+    {
+      "name": "zoom-depth-tabs",
+      "type": "registry:ui",
+      "title": "Zoom Depth Tabs",
+      "description": "A tab component with 3D zoom and depth effects for enhanced visual appeal.",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/zoom-depth-tabs.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/zoom-depth-tabs.tsx"
+        }
+      ]
+    },
+    {
+      "name": "badge-tabs",
+      "type": "registry:ui",
+      "title": "Badge Tabs",
+      "description": "Tab component with animated badges showing counts or notifications.",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/badge-tabs.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/badge-tabs.tsx"
+        }
+      ]
+    },
+    {
+      "name": "capsule-tabs",
+      "type": "registry:ui",
+      "title": "Capsule Tabs",
+      "description": "Scrollable capsule-style tabs with pagination dots and navigation arrows.",
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/capsule-tabs.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/capsule-tabs.tsx"
+        }
+      ]
+    },
+    {
+      "name": "magnetic-tabs",
+      "type": "registry:ui",
+      "title": "Magnetic Tabs",
+      "description": "Tab component with magnetic hover effects and smooth indicator animations.",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/magnetic-tabs.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/magnetic-tabs.tsx"
+        }
+      ]
+    },
+    {
+      "name": "fade-slide-tabs",
+      "type": "registry:ui",
+      "title": "Fade Slide Tabs",
+      "description": "Tab component with fade and slide animations for smooth content transitions.",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/fade-slide-tabs.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/fade-slide-tabs.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hybrid-tabs",
+      "type": "registry:ui",
+      "title": "Hybrid Tabs",
+      "description": "Tab component that shows icons only by default and expands to show labels on hover.",
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/hybrid-tabs.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/hybrid-tabs.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pill-morph-tabs",
+      "type": "registry:ui",
+      "title": "Pill Morph Tabs",
+      "description": "Elegant tab component with morphing pill indicator and glassmorphism effects.",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/pill-morph-tabs.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/pill-morph-tabs.tsx"
+        }
+      ]
+    },
+    {
+      "name": "sliding-tabs",
+      "type": "registry:ui",
+      "title": "Sliding Tabs",
+      "description": "Tab component with sliding gradient indicator and keyboard navigation support.",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/sliding-tabs.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/sliding-tabs.tsx"
+        }
+      ]
+    },
+    {
+      "name": "wheel-pagination",
+      "type": "registry:ui",
+      "title": "Wheel Pagination",
+      "description": "Interactive pagination component with mouse wheel support and animated page numbers.",
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/wheel-pagination.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/wheel-pagination.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-pagination",
+      "type": "registry:ui",
+      "title": "Scroll Pagination",
+      "description": "Minimalist pagination with mouse wheel navigation and animated number carousel.",
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/scroll-pagination.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/scroll-pagination.tsx"
+        }
+      ]
+    },
+    {
+      "name": "icon-pagination",
+      "type": "registry:ui",
+      "title": "Icon Pagination",
+      "description": "Pagination component with colorful icon indicators and tooltip labels.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/icon-pagination.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/icon-pagination.tsx"
+        }
+      ]
+    },
+    {
+      "name": "gooey-pagination",
+      "type": "registry:ui",
+      "title": "Gooey Pagination",
+      "description": "Pagination component with liquid gooey effects using SVG filters.",
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/gooey-pagination.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/gooey-pagination.tsx"
+        }
+      ]
+    },
+    {
+      "name": "stack-pagination",
+      "type": "registry:ui",
+      "title": "Stack Pagination",
+      "description": "3D card stack pagination with flip animations and perspective effects.",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/stack-pagination.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/stack-pagination.tsx"
+        }
+      ]
+    },
+    {
+      "name": "animated-number-flip",
+      "type": "registry:ui",
+      "title": "Animated Number Flip",
+      "description": "A card component that displays numbers with smooth flip animations.",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/animated-number-flip.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/animated-number-flip.tsx"
+        }
+      ]
+    },
+    {
+      "name": "morphing-page-dots",
+      "type": "registry:ui",
+      "title": "Morphing Page Dots",
+      "description": "Pagination dots that morph in width with ripple effects for the active state.",
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/morphing-page-dots.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/morphing-page-dots.tsx"
+        }
+      ]
+    },
+    {
+      "name": "sliding-pagination",
+      "type": "registry:ui",
+      "title": "Sliding Pagination",
+      "description": "Pagination component with sliding underline indicator and smart page grouping.",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/sliding-pagination.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/sliding-pagination.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ai-chat-input",
+      "type": "registry:ui",
+      "title": "AI Chat Input",
+      "description": "Advanced chat input with slash commands, emoji picker, file upload, and AI features.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/ai-chat-input.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/ai-chat-input.tsx"
+        }
+      ]
+    },
+    {
+      "name": "magnetic-dock",
+      "type": "registry:ui",
+      "title": "Magnetic Dock",
+      "description": "macOS-style dock with magnetic hover effects and smooth icon animations.",
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/magnetic-dock.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/magnetic-dock.tsx"
+        }
+      ]
+    },
+    {
+      "name": "gooey-dock",
+      "type": "registry:ui",
+      "title": "Gooey Dock",
+      "description": "Dock component with liquid gooey blob effects using SVG filters.",
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/gooey-dock.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/gooey-dock.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tilted-dock",
+      "type": "registry:ui",
+      "title": "Tilted Dock",
+      "description": "3D tilted dock with perspective effects and parallax mouse tracking.",
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/tilted-dock.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/tilted-dock.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dock-morph",
+      "type": "registry:ui",
+      "title": "Dock Morph",
+      "description": "Morphing dock with glassmorphism bubbles and flexible positioning.",
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/dock-morph.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/dock-morph.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dock",
+      "type": "registry:ui",
+      "title": "Dock",
+      "description": "Classic dock component with floating animation and glow effects.",
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/dock.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/dock.tsx"
+        }
+      ]
+    },
+    {
       "name": "staggered-faq-section-demo",
       "type": "registry:example",
       "title": "StaggeredFAQSection Demo",
@@ -4608,6 +4987,374 @@
           "path": "registry/example/dual-tone-rain-background-demo.tsx",
           "type": "registry:example",
           "target": "components/dual-tone-rain-background-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "nested-tabs-demo",
+      "type": "registry:example",
+      "title": "Nested Tabs Demo",
+      "description": "Example showing nested tabs with expandable sub-tabs.",
+      "registryDependencies": [
+        "https://ruixen.com/r/nested-tabs"
+      ],
+      "files": [
+        {
+          "path": "registry/example/nested-tabs-demo.tsx",
+          "type": "registry:example",
+          "target": "components/nested-tabs-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "zoom-depth-tabs-demo",
+      "type": "registry:example",
+      "title": "Zoom Depth Tabs Demo",
+      "description": "Example showing 3D zoom and depth effects for tabs.",
+      "registryDependencies": [
+        "https://ruixen.com/r/zoom-depth-tabs"
+      ],
+      "files": [
+        {
+          "path": "registry/example/zoom-depth-tabs-demo.tsx",
+          "type": "registry:example",
+          "target": "components/zoom-depth-tabs-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "badge-tabs-demo",
+      "type": "registry:example",
+      "title": "Badge Tabs Demo",
+      "description": "Example showing tabs with animated notification badges.",
+      "registryDependencies": [
+        "https://ruixen.com/r/badge-tabs"
+      ],
+      "files": [
+        {
+          "path": "registry/example/badge-tabs-demo.tsx",
+          "type": "registry:example",
+          "target": "components/badge-tabs-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "capsule-tabs-demo",
+      "type": "registry:example",
+      "title": "Capsule Tabs Demo",
+      "description": "Example showing scrollable capsule-style tabs with pagination.",
+      "registryDependencies": [
+        "https://ruixen.com/r/capsule-tabs"
+      ],
+      "files": [
+        {
+          "path": "registry/example/capsule-tabs-demo.tsx",
+          "type": "registry:example",
+          "target": "components/capsule-tabs-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "magnetic-tabs-demo",
+      "type": "registry:example",
+      "title": "Magnetic Tabs Demo",
+      "description": "Example showing tabs with magnetic hover effects.",
+      "registryDependencies": [
+        "https://ruixen.com/r/magnetic-tabs"
+      ],
+      "files": [
+        {
+          "path": "registry/example/magnetic-tabs-demo.tsx",
+          "type": "registry:example",
+          "target": "components/magnetic-tabs-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "fade-slide-tabs-demo",
+      "type": "registry:example",
+      "title": "Fade Slide Tabs Demo",
+      "description": "Example showing tabs with fade and slide animations.",
+      "registryDependencies": [
+        "https://ruixen.com/r/fade-slide-tabs"
+      ],
+      "files": [
+        {
+          "path": "registry/example/fade-slide-tabs-demo.tsx",
+          "type": "registry:example",
+          "target": "components/fade-slide-tabs-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hybrid-tabs-demo",
+      "type": "registry:example",
+      "title": "Hybrid Tabs Demo",
+      "description": "Example showing icon-first tabs that expand labels on hover.",
+      "registryDependencies": [
+        "https://ruixen.com/r/hybrid-tabs"
+      ],
+      "files": [
+        {
+          "path": "registry/example/hybrid-tabs-demo.tsx",
+          "type": "registry:example",
+          "target": "components/hybrid-tabs-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pill-morph-tabs-demo",
+      "type": "registry:example",
+      "title": "Pill Morph Tabs Demo",
+      "description": "Example showing tabs with morphing pill indicator.",
+      "registryDependencies": [
+        "https://ruixen.com/r/pill-morph-tabs"
+      ],
+      "files": [
+        {
+          "path": "registry/example/pill-morph-tabs-demo.tsx",
+          "type": "registry:example",
+          "target": "components/pill-morph-tabs-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "sliding-tabs-demo",
+      "type": "registry:example",
+      "title": "Sliding Tabs Demo",
+      "description": "Example showing tabs with sliding gradient indicator.",
+      "registryDependencies": [
+        "https://ruixen.com/r/sliding-tabs"
+      ],
+      "files": [
+        {
+          "path": "registry/example/sliding-tabs-demo.tsx",
+          "type": "registry:example",
+          "target": "components/sliding-tabs-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "wheel-pagination-demo",
+      "type": "registry:example",
+      "title": "Wheel Pagination Demo",
+      "description": "Example showing pagination with mouse wheel support.",
+      "registryDependencies": [
+        "https://ruixen.com/r/wheel-pagination"
+      ],
+      "files": [
+        {
+          "path": "registry/example/wheel-pagination-demo.tsx",
+          "type": "registry:example",
+          "target": "components/wheel-pagination-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-pagination-demo",
+      "type": "registry:example",
+      "title": "Scroll Pagination Demo",
+      "description": "Example showing minimalist pagination with scroll navigation.",
+      "registryDependencies": [
+        "https://ruixen.com/r/scroll-pagination"
+      ],
+      "files": [
+        {
+          "path": "registry/example/scroll-pagination-demo.tsx",
+          "type": "registry:example",
+          "target": "components/scroll-pagination-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "icon-pagination-demo",
+      "type": "registry:example",
+      "title": "Icon Pagination Demo",
+      "description": "Example showing pagination with colorful icon indicators.",
+      "registryDependencies": [
+        "https://ruixen.com/r/icon-pagination"
+      ],
+      "files": [
+        {
+          "path": "registry/example/icon-pagination-demo.tsx",
+          "type": "registry:example",
+          "target": "components/icon-pagination-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "gooey-pagination-demo",
+      "type": "registry:example",
+      "title": "Gooey Pagination Demo",
+      "description": "Example showing pagination with liquid gooey effects.",
+      "registryDependencies": [
+        "https://ruixen.com/r/gooey-pagination"
+      ],
+      "files": [
+        {
+          "path": "registry/example/gooey-pagination-demo.tsx",
+          "type": "registry:example",
+          "target": "components/gooey-pagination-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "stack-pagination-demo",
+      "type": "registry:example",
+      "title": "Stack Pagination Demo",
+      "description": "Example showing 3D card stack pagination with flip animations.",
+      "registryDependencies": [
+        "https://ruixen.com/r/stack-pagination"
+      ],
+      "files": [
+        {
+          "path": "registry/example/stack-pagination-demo.tsx",
+          "type": "registry:example",
+          "target": "components/stack-pagination-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "animated-number-flip-demo",
+      "type": "registry:example",
+      "title": "Animated Number Flip Demo",
+      "description": "Example showing number cards with smooth flip animations.",
+      "registryDependencies": [
+        "https://ruixen.com/r/animated-number-flip"
+      ],
+      "files": [
+        {
+          "path": "registry/example/animated-number-flip-demo.tsx",
+          "type": "registry:example",
+          "target": "components/animated-number-flip-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "morphing-page-dots-demo",
+      "type": "registry:example",
+      "title": "Morphing Page Dots Demo",
+      "description": "Example showing pagination dots that morph with ripple effects.",
+      "registryDependencies": [
+        "https://ruixen.com/r/morphing-page-dots"
+      ],
+      "files": [
+        {
+          "path": "registry/example/morphing-page-dots-demo.tsx",
+          "type": "registry:example",
+          "target": "components/morphing-page-dots-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "sliding-pagination-demo",
+      "type": "registry:example",
+      "title": "Sliding Pagination Demo",
+      "description": "Example showing pagination with sliding underline indicator.",
+      "registryDependencies": [
+        "https://ruixen.com/r/sliding-pagination"
+      ],
+      "files": [
+        {
+          "path": "registry/example/sliding-pagination-demo.tsx",
+          "type": "registry:example",
+          "target": "components/sliding-pagination-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ai-chat-input-demo",
+      "type": "registry:example",
+      "title": "AI Chat Input Demo",
+      "description": "Example showing advanced chat input with AI features.",
+      "registryDependencies": [
+        "https://ruixen.com/r/ai-chat-input"
+      ],
+      "files": [
+        {
+          "path": "registry/example/ai-chat-input-demo.tsx",
+          "type": "registry:example",
+          "target": "components/ai-chat-input-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "magnetic-dock-demo",
+      "type": "registry:example",
+      "title": "Magnetic Dock Demo",
+      "description": "Example showing macOS-style dock with magnetic effects.",
+      "registryDependencies": [
+        "https://ruixen.com/r/magnetic-dock"
+      ],
+      "files": [
+        {
+          "path": "registry/example/magnetic-dock-demo.tsx",
+          "type": "registry:example",
+          "target": "components/magnetic-dock-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "gooey-dock-demo",
+      "type": "registry:example",
+      "title": "Gooey Dock Demo",
+      "description": "Example showing dock with liquid gooey blob effects.",
+      "registryDependencies": [
+        "https://ruixen.com/r/gooey-dock"
+      ],
+      "files": [
+        {
+          "path": "registry/example/gooey-dock-demo.tsx",
+          "type": "registry:example",
+          "target": "components/gooey-dock-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tilted-dock-demo",
+      "type": "registry:example",
+      "title": "Tilted Dock Demo",
+      "description": "Example showing 3D tilted dock with perspective effects.",
+      "registryDependencies": [
+        "https://ruixen.com/r/tilted-dock"
+      ],
+      "files": [
+        {
+          "path": "registry/example/tilted-dock-demo.tsx",
+          "type": "registry:example",
+          "target": "components/tilted-dock-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dock-morph-demo",
+      "type": "registry:example",
+      "title": "Dock Morph Demo",
+      "description": "Example showing morphing dock with glassmorphism bubbles.",
+      "registryDependencies": [
+        "https://ruixen.com/r/dock-morph"
+      ],
+      "files": [
+        {
+          "path": "registry/example/dock-morph-demo.tsx",
+          "type": "registry:example",
+          "target": "components/dock-morph-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dock-demo",
+      "type": "registry:example",
+      "title": "Dock Demo",
+      "description": "Example showing classic dock with floating animation.",
+      "registryDependencies": [
+        "https://ruixen.com/r/dock"
+      ],
+      "files": [
+        {
+          "path": "registry/example/dock-demo.tsx",
+          "type": "registry:example",
+          "target": "components/dock-demo.tsx"
         }
       ]
     },

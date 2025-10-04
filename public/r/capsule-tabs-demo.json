@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "capsule-tabs-demo",
+  "type": "registry:example",
+  "title": "Capsule Tabs Demo",
+  "description": "Example showing scrollable capsule-style tabs with pagination.",
+  "registryDependencies": [
+    "https://ruixen.com/r/capsule-tabs"
+  ],
+  "files": [
+    {
+      "path": "registry/example/capsule-tabs-demo.tsx",
+      "content": "\"use client\";\n\nimport CapsuleTabs, {\n  ScrollableTabItem,\n} from \"@/registry/ruixenui/capsule-tabs\";\n\nexport default function CapsuleTabsDemoPage() {\n  // Example items to show how it works\n  const demoItems: ScrollableTabItem[] = Array.from({ length: 20 }, (_, i) => ({\n    value: `tab${i + 1}`,\n    label: `Tab ${i + 1}`,\n    content: (\n      <div className=\"text-center text-lg font-semibold\">\n        This is content for <span className=\"text-primary\">Tab {i + 1}</span>.\n      </div>\n    ),\n  }));\n\n  return (\n    <main className=\"flex flex-col items-center justify-start min-h-screen p-8 bg-muted/30\">\n      <h1 className=\"text-3xl font-bold mb-6 text-center\">Capsule Tabs Demo</h1>\n      <p className=\"mb-6 text-muted-foreground text-center max-w-xl\">\n        Use the arrows to navigate between pages of tabs. Click on any tab to\n        view its content below.\n      </p>\n\n      <CapsuleTabs\n        items={demoItems}\n        defaultValue={demoItems[0].value}\n        visibleCount={5} // Tabs visible per page\n        className=\"w-full max-w-2xl\"\n      />\n    </main>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/capsule-tabs-demo.tsx"
+    }
+  ]
+}

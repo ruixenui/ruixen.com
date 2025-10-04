@@ -1,0 +1,91 @@
+---
+title: Wheel Pagination
+date: 2024-06-01
+description: Interactive pagination component with mouse wheel support and animated page numbers
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="wheel-pagination-demo" category="pagination" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/wheel-pagination"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="wheel-pagination" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Install dependencies</Step>
+
+```bash
+npm install framer-motion lucide-react
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import WheelPagination from "@/components/ruixen/wheel-pagination";
+
+export default function App() {
+  const handlePageChange = (page: number) => {
+    console.log(`Current page: ${page + 1}`);
+  };
+
+  return (
+    <WheelPagination
+      totalPages={50}
+      visibleCount={5}
+      onChange={handlePageChange}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop           | Type       | Default | Description                            |
+| -------------- | ---------- | ------- | -------------------------------------- |
+| `totalPages`   | `number`   | `50`    | Total number of pages                  |
+| `visibleCount` | `number`   | `5`     | Number of page buttons visible at once |
+| `onChange`     | `function` | -       | Callback when page changes             |
+| `className`    | `string`   | `""`    | Additional CSS classes                 |
+
+## Features
+
+- **Mouse Wheel Support**: Navigate pages using mouse wheel
+- **Carousel View**: Shows a sliding window of visible pages
+- **Scale Animation**: Active page scales up with spring animation
+- **Arrow Navigation**: Previous/next arrows with disabled states
+- **Responsive**: Automatically adjusts visible pages around current page
+
+## Interactions
+
+- **Mouse Wheel Up**: Go to previous page
+- **Mouse Wheel Down**: Go to next page
+- **Click Page**: Jump directly to that page
+- **Arrow Buttons**: Navigate one page at a time

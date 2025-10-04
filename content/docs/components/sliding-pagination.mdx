@@ -1,0 +1,92 @@
+---
+title: Sliding Pagination
+date: 2024-06-01
+description: Pagination component with sliding underline indicator and smart page grouping
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="sliding-pagination-demo" category="pagination" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/sliding-pagination"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="sliding-pagination" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Install dependencies</Step>
+
+```bash
+npm install framer-motion
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import SlidingPagination from "@/components/ruixen/sliding-pagination";
+import { useState } from "react";
+
+export default function App() {
+  const [page, setPage] = useState(1);
+
+  return (
+    <SlidingPagination
+      totalPages={120}
+      currentPage={page}
+      onPageChange={setPage}
+      maxVisiblePages={9}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop              | Type       | Default | Description                                 |
+| ----------------- | ---------- | ------- | ------------------------------------------- |
+| `totalPages`      | `number`   | -       | Total number of pages                       |
+| `currentPage`     | `number`   | -       | Current active page                         |
+| `onPageChange`    | `function` | -       | Callback when page changes                  |
+| `maxVisiblePages` | `number`   | `7`     | Maximum page buttons before adding ellipsis |
+| `className`       | `string`   | `""`    | Additional CSS classes                      |
+
+## Features
+
+- **Sliding Underline**: Animated underline follows active page
+- **Smart Ellipsis**: Shows "..." when there are gaps in page numbers
+- **Responsive Layout**: Adjusts visible pages based on current position
+- **Spring Animation**: Smooth underline movement with spring physics
+- **Auto-measuring**: Automatically measures button positions
+
+## Page Generation Logic
+
+- Shows first and last page when possible
+- Centers visible pages around current page
+- Adds ellipsis (...) when there are gaps
+- Maintains consistent spacing and alignment

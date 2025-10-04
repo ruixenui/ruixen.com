@@ -1,0 +1,101 @@
+---
+title: Icon Pagination
+date: 2024-06-01
+description: Pagination component with colorful icon indicators and tooltip labels
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="icon-pagination-demo" category="pagination" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/icon-pagination"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="icon-pagination" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Install dependencies</Step>
+
+```bash
+npm install lucide-react
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import IconPagination from "@/components/ruixen/icon-pagination";
+
+export default function App() {
+  const handlePageChange = (page: number) => {
+    console.log(`Current page: ${page + 1}`);
+  };
+
+  return (
+    <IconPagination
+      totalPages={200}
+      maxVisible={5}
+      onChange={handlePageChange}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop         | Type       | Default | Description                              |
+| ------------ | ---------- | ------- | ---------------------------------------- |
+| `totalPages` | `number`   | `200`   | Total number of pages                    |
+| `maxVisible` | `number`   | `5`     | Maximum icons to show around active page |
+| `onChange`   | `function` | -       | Callback when page changes               |
+| `className`  | `string`   | `""`    | Additional CSS classes                   |
+
+## Features
+
+- **Colorful Icons**: Each page has a colored square icon (5 color rotation)
+- **Smart Ellipsis**: Shows "..." when there are gaps in page numbers
+- **Tooltips**: Hover to see page labels
+- **Scale Animation**: Active page scales up (110%)
+- **Responsive Layout**: Flexbox layout that wraps on smaller screens
+
+## Icon Colors
+
+The component cycles through 5 colors for the page icons:
+
+- **Red** (pages 0, 5, 10, ...)
+- **Green** (pages 1, 6, 11, ...)
+- **Blue** (pages 2, 7, 12, ...)
+- **Yellow** (pages 3, 8, 13, ...)
+- **Purple** (pages 4, 9, 14, ...)
+
+## Layout Logic
+
+- Always shows first and last page
+- Shows ellipsis (...) when there are gaps
+- Centers visible pages around the current active page
+- Maintains consistent spacing and alignment

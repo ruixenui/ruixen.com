@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hybrid-tabs-demo",
+  "type": "registry:example",
+  "title": "Hybrid Tabs Demo",
+  "description": "Example showing icon-first tabs that expand labels on hover.",
+  "registryDependencies": [
+    "https://ruixen.com/r/hybrid-tabs"
+  ],
+  "files": [
+    {
+      "path": "registry/example/hybrid-tabs-demo.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport HybridTabs from \"@/registry/ruixenui/hybrid-tabs\";\nimport { Card, CardContent } from \"@/components/ui/card\";\n\nexport default function HybridTabsDemo() {\n  const [activeTab, setActiveTab] = React.useState(\"home\");\n\n  return (\n    <main className=\"flex flex-col items-center justify-center min-h-screen bg-background px-4\">\n      <h1 className=\"text-3xl font-bold mb-8 text-center\">Hybrid Tabs Demo</h1>\n\n      {/* HybridTabs Component */}\n      <HybridTabs defaultValue=\"home\" className=\"mb-8\" />\n\n      {/* Info Card */}\n      <Card className=\"w-full max-w-md shadow-lg\">\n        <CardContent className=\"p-6 text-center space-y-4\">\n          <h2 className=\"text-xl font-semibold\">How It Works</h2>\n          <p className=\"text-sm text-muted-foreground\">\n            The tabs combine <strong>icons</strong> with{\" \"}\n            <strong>animated labels</strong>. When a tab is active, the label\n            smoothly appears next to the icon.\n          </p>\n          <p className=\"text-sm text-muted-foreground\">\n            Click between the tabs above to experience the animation. You can\n            easily add or modify tab items in the component’s props.\n          </p>\n        </CardContent>\n      </Card>\n    </main>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/hybrid-tabs-demo.tsx"
+    }
+  ]
+}

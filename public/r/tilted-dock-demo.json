@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tilted-dock-demo",
+  "type": "registry:example",
+  "title": "Tilted Dock Demo",
+  "description": "Example showing 3D tilted dock with perspective effects.",
+  "registryDependencies": [
+    "https://ruixen.com/r/tilted-dock"
+  ],
+  "files": [
+    {
+      "path": "registry/example/tilted-dock-demo.tsx",
+      "content": "\"use client\";\nimport { Camera, Heart, Star, Music } from \"lucide-react\";\nimport TiltedDock, { DockItem } from \"@/registry/ruixenui/tilted-dock\";\n\nconst customItems: DockItem[] = [\n  { id: 1, icon: <Camera size={28} />, label: \"Camera\" },\n  { id: 2, icon: <Heart size={28} />, label: \"Favorites\" },\n  { id: 3, icon: <Music size={28} />, label: \"Music\" },\n  { id: 4, icon: <Star size={28} />, label: \"Stars\" },\n];\n\nexport default function TiltedDockDemo() {\n  return (\n    <div className=\"h-screen w-full flex items-center justify-center bg-gradient-to-br from-purple-500 via-indigo-500 to-blue-500\">\n      <TiltedDock\n        items={customItems}\n        tilt={{ baseX: 20, maxY: 15 }}\n        hoverScale={1.5}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/tilted-dock-demo.tsx"
+    }
+  ]
+}

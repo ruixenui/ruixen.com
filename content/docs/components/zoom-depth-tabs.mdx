@@ -1,0 +1,105 @@
+---
+title: Zoom Depth Tabs
+date: 2024-06-01
+description: A tab component with 3D zoom and depth effects for enhanced visual appeal
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="zoom-depth-tabs-demo" category="tabs" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/zoom-depth-tabs"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="zoom-depth-tabs" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Install dependencies</Step>
+
+```bash
+npm install framer-motion
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import ZoomDepthTabs from "@/components/ruixen/zoom-depth-tabs";
+
+const tabItems = [
+  {
+    value: "overview",
+    label: "Overview",
+    content: "Overview with rich info and stats.",
+  },
+  {
+    value: "activity",
+    label: "Activity",
+    content: "Activity with graphs and timelines.",
+  },
+  {
+    value: "settings",
+    label: "Settings",
+    content: "Settings with controls and toggles.",
+  },
+  {
+    value: "faq",
+    label: "FAQ",
+    content: "Common questions and helpful answers.",
+  },
+];
+
+export default function App() {
+  return <ZoomDepthTabs items={tabItems} defaultValue="overview" />;
+}
+```
+
+## Props
+
+| Prop           | Type             | Default       | Description              |
+| -------------- | ---------------- | ------------- | ------------------------ |
+| `items`        | `DepthTabItem[]` | Default items | Array of tab items       |
+| `defaultValue` | `string`         | First item    | Default active tab value |
+| `className`    | `string`         | `""`          | Additional CSS classes   |
+
+## Features
+
+- **3D Effects**: Tabs have rotateX and rotateY transformations
+- **Zoom Animation**: Active tabs scale up with spring animations
+- **Depth Perception**: Uses perspective and transforms for 3D feel
+- **Smooth Transitions**: Spring-based animations for natural movement
+
+## Types
+
+```tsx
+interface DepthTabItem {
+  value: string;
+  label: string;
+  content?: React.ReactNode;
+}
+```

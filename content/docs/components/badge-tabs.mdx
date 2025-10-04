@@ -1,0 +1,104 @@
+---
+title: Badge Tabs
+date: 2024-06-01
+description: Tab component with animated badges showing counts or notifications
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="badge-tabs-demo" category="tabs" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/badge-tabs"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="badge-tabs" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Install dependencies</Step>
+
+```bash
+npm install framer-motion
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import BadgeTabs from "@/components/ruixen/badge-tabs";
+
+const tabItems = [
+  {
+    value: "messages",
+    label: "Messages",
+    badge: 5,
+    content: "You have 5 new messages.",
+  },
+  {
+    value: "tasks",
+    label: "Tasks",
+    badge: 12,
+    content: "12 tasks pending review.",
+  },
+  {
+    value: "alerts",
+    label: "Alerts",
+    badge: 3,
+    content: "3 new system alerts.",
+  },
+];
+
+export default function App() {
+  return <BadgeTabs items={tabItems} defaultValue="messages" />;
+}
+```
+
+## Props
+
+| Prop           | Type             | Default       | Description                    |
+| -------------- | ---------------- | ------------- | ------------------------------ |
+| `items`        | `BadgeTabItem[]` | Default items | Array of tab items with badges |
+| `defaultValue` | `string`         | First item    | Default active tab value       |
+| `className`    | `string`         | `""`          | Additional CSS classes         |
+
+## Features
+
+- **Animated Badges**: Badges scale in/out with smooth animations
+- **Active Pill**: Moving background pill follows active tab
+- **Hover Effects**: Scale animation on hover
+- **Badge Counts**: Display numeric badges for notifications
+
+## Types
+
+```tsx
+interface BadgeTabItem {
+  value: string;
+  label: string;
+  badge?: number;
+  content?: React.ReactNode;
+}
+```
