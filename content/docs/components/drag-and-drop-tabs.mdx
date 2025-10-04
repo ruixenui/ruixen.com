@@ -1,0 +1,129 @@
+---
+title: Drag And Drop Tabs
+date: 2024-06-01
+description: Interactive tabs component with drag-and-drop reordering functionality
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="drag-and-drop-tabs-demo" category="tabs" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/drag-and-drop-tabs"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="drag-and-drop-tabs" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Install required dependencies</Step>
+
+```bash
+npm install @dnd-kit/core @dnd-kit/sortable @dnd-kit/utilities
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import DragAndDropTabs from "@/components/ruixen/drag-and-drop-tabs";
+
+const tabItems = [
+  {
+    value: "overview",
+    label: "Overview",
+    content: <div>Overview content here...</div>,
+  },
+  {
+    value: "analytics",
+    label: "Analytics",
+    content: <div>Analytics dashboard...</div>,
+  },
+  {
+    value: "settings",
+    label: "Settings",
+    content: <div>Settings panel...</div>,
+  },
+];
+
+export default function App() {
+  return <DragAndDropTabs items={tabItems} defaultValue="overview" />;
+}
+```
+
+## Props
+
+| Prop           | Type            | Default         | Description                 |
+| -------------- | --------------- | --------------- | --------------------------- |
+| `items`        | `DragTabItem[]` | Default tabs    | Array of tab configurations |
+| `defaultValue` | `string`        | First tab value | Initially active tab        |
+| `className`    | `string`        | -               | Additional CSS classes      |
+
+## Features
+
+- **Drag & Drop**: Reorder tabs by dragging
+- **Touch Support**: Works on mobile devices
+- **Visual Feedback**: Drag indicators and animations
+- **Active State**: Clear visual distinction for active tab
+- **Smooth Transitions**: Animated tab switching
+- **Responsive Design**: Adapts to different screen sizes
+
+## Tab Item Type
+
+```typescript
+export interface DragTabItem {
+  value: string;
+  label: string;
+  content?: React.ReactNode;
+}
+```
+
+## Drag Behavior
+
+- **Horizontal Sorting**: Tabs reorder horizontally
+- **Visual Indicators**: Active tab highlighted during drag
+- **Snap to Position**: Tabs snap into place when dropped
+- **Collision Detection**: Smart positioning during drag
+- **Pointer Sensor**: Optimized for mouse and touch input
+
+## Styling
+
+The component uses:
+
+- **Active State**: Primary color with shadow
+- **Inactive State**: Muted background and text
+- **Drag State**: Opacity and ring effects
+- **Transitions**: Smooth color and position changes
+
+## Use Cases
+
+Perfect for:
+
+- **Dashboard Tabs**: Reorderable sections
+- **Settings Panels**: Customizable tab order
+- **Content Management**: User-defined layouts
+- **Workflow Tools**: Personalized interfaces
+- **Admin Panels**: Flexible navigation

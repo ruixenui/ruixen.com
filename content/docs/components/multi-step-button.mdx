@@ -1,0 +1,158 @@
+---
+title: Multi Step Button
+date: 2024-06-01
+description: Button that cycles through multiple steps/labels on each click
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="multi-step-button-demo" category="buttons" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/multi-step-button"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="multi-step-button" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import MultiStepButton from "@/components/ruixen/multi-step-button";
+
+export default function App() {
+  const handleStepChange = (event) => {
+    console.log("Button clicked:", event.target.textContent);
+  };
+
+  return (
+    <div className="space-y-4">
+      {/* Wizard steps */}
+      <MultiStepButton
+        steps={["Start Setup", "Configure", "Review", "Complete"]}
+        onClick={handleStepChange}
+        size="md"
+      />
+
+      {/* Process states */}
+      <MultiStepButton
+        steps={["Draft", "Review", "Approved", "Published"]}
+        onClick={handleStepChange}
+        size="sm"
+        className="bg-green-500 hover:bg-green-600"
+      />
+
+      {/* Game states */}
+      <MultiStepButton
+        steps={["Ready", "Playing", "Paused", "Game Over"]}
+        onClick={handleStepChange}
+        size="lg"
+      />
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop        | Type                                | Default | Description            |
+| ----------- | ----------------------------------- | ------- | ---------------------- |
+| `steps`     | `string[]`                          | -       | Array of step labels   |
+| `size`      | `"sm" \| "md" \| "lg"`              | `"md"`  | Button size            |
+| `className` | `string`                            | -       | Additional CSS classes |
+| `onClick`   | `(event: React.MouseEvent) => void` | -       | Click handler function |
+
+## Features
+
+- **Sequential Steps**: Cycles through steps in order
+- **Final State**: Stops at last step (doesn't loop back)
+- **Visual Feedback**: Button text changes with each click
+- **Size Variants**: Small, medium, and large sizes
+- **Custom Styling**: Supports additional CSS classes
+- **Event Handling**: Passes click event to handler
+
+## Step Progression
+
+1. **Initial State**: Shows first step label
+2. **Click Progression**: Each click advances to next step
+3. **Final State**: Reaches last step and stops
+4. **No Reset**: Button stays on final step
+
+## Size Variants
+
+```tsx
+// Small button
+<MultiStepButton size="sm" steps={["Start", "Process", "Done"]} />
+
+// Medium button (default)
+<MultiStepButton size="md" steps={["Begin", "Working", "Complete"]} />
+
+// Large button
+<MultiStepButton size="lg" steps={["Initialize", "Execute", "Finish"]} />
+```
+
+## Common Step Patterns
+
+### Wizard Flow
+
+```tsx
+const wizardSteps = [
+  "Start Wizard",
+  "Enter Details",
+  "Review Settings",
+  "Confirm & Save",
+];
+```
+
+### Document Workflow
+
+```tsx
+const documentSteps = ["Draft", "Under Review", "Approved", "Published"];
+```
+
+### Game States
+
+```tsx
+const gameSteps = ["Ready to Play", "Game Started", "Game Paused", "Game Over"];
+```
+
+### Installation Process
+
+```tsx
+const installSteps = ["Download", "Installing", "Configuring", "Complete"];
+```
+
+## Use Cases
+
+Perfect for:
+
+- **Setup Wizards**: Multi-step configuration processes
+- **Workflow States**: Document approval workflows
+- **Game Controls**: Game state progression
+- **Installation**: Software installation steps
+- **Tutorial Steps**: Guided tutorial progression

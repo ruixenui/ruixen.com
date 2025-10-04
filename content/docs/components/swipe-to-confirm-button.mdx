@@ -1,0 +1,126 @@
+---
+title: Swipe To Confirm Button
+date: 2024-06-01
+description: Interactive button requiring swipe gesture for confirmation
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="swipe-to-confirm-button-demo" category="buttons" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/swipe-to-confirm-button"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="swipe-to-confirm-button" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import SwipeToConfirmButton from "@/components/ruixen/swipe-to-confirm-button";
+
+export default function App() {
+  const handleConfirm = () => {
+    console.log("Action confirmed!");
+    alert("Payment processed successfully!");
+  };
+
+  return (
+    <div className="space-y-4">
+      <SwipeToConfirmButton
+        label="Swipe to Pay"
+        onConfirm={handleConfirm}
+        width={300}
+        height={60}
+      />
+
+      <SwipeToConfirmButton
+        label="Slide to Delete"
+        onConfirm={() => console.log("Deleted!")}
+        width={250}
+        height={50}
+        className="bg-red-100"
+      />
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop        | Type         | Default              | Description                   |
+| ----------- | ------------ | -------------------- | ----------------------------- |
+| `label`     | `string`     | `"Swipe to Confirm"` | Button label text             |
+| `onConfirm` | `() => void` | -                    | Callback when swipe completes |
+| `width`     | `number`     | `300`                | Button width in pixels        |
+| `height`    | `number`     | `50`                 | Button height in pixels       |
+| `className` | `string`     | -                    | Additional CSS classes        |
+
+## Features
+
+- **Swipe Gesture**: Drag to confirm action
+- **Visual Feedback**: Green background fills as you swipe
+- **Snap Behavior**: Snaps to end on complete swipe, resets on incomplete
+- **Touch Support**: Works on mobile and desktop
+- **Customizable Size**: Adjustable width and height
+- **Elastic Constraints**: Smooth drag boundaries
+- **Auto Reset**: Returns to start if not fully swiped
+
+## Interaction Behavior
+
+1. **Start**: Button shows label with neutral background
+2. **Drag**: Green background expands as you swipe right
+3. **Complete**: If swiped to end, triggers `onConfirm` and snaps
+4. **Incomplete**: If released early, snaps back to start
+
+## Styling
+
+The component features:
+
+- **Rounded Design**: `rounded-full` for pill shape
+- **Layered Background**: Green fill behind white button
+- **Smooth Animation**: Framer Motion powered interactions
+- **Theme Support**: Dark mode compatible colors
+
+## Use Cases
+
+Perfect for:
+
+- **Payment Confirmation**: "Swipe to Pay" interactions
+- **Destructive Actions**: "Slide to Delete" confirmations
+- **Security Actions**: "Swipe to Unlock" gestures
+- **Critical Operations**: "Slide to Confirm" for important actions
+- **Mobile Interfaces**: Touch-friendly confirmation patterns
+
+## Accessibility
+
+- **Clear Labels**: Descriptive text for screen readers
+- **Visual Feedback**: Clear indication of progress
+- **Forgiving Interaction**: Easy to reset if changed mind
+- **Size Flexibility**: Adjustable for different accessibility needs

@@ -1,0 +1,97 @@
+---
+title: Timeline Upload
+date: 2024-06-01
+description: Upload component with timeline layout showing upload progress and status
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="timeline-upload-demo" category="upload" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/timeline-upload"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="timeline-upload" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { TimelineUpload } from "@/components/ruixen/timeline-upload";
+
+const uploadFiles = [
+  {
+    id: "1",
+    file: new File([""], "document.pdf", { type: "application/pdf" }),
+    progress: 100,
+    status: "done" as const,
+  },
+  {
+    id: "2",
+    file: new File([""], "image.jpg", { type: "image/jpeg" }),
+    progress: 45,
+    status: "uploading" as const,
+  },
+];
+
+export default function App() {
+  const handleRemove = (id: string) => {
+    console.log("Remove file:", id);
+  };
+
+  return <TimelineUpload files={uploadFiles} onRemove={handleRemove} />;
+}
+```
+
+## Props
+
+| Prop       | Type                   | Default | Description                   |
+| ---------- | ---------------------- | ------- | ----------------------------- |
+| `files`    | `UploadFile[]`         | -       | Array of files to display     |
+| `onRemove` | `(id: string) => void` | -       | Callback when file is removed |
+
+## Features
+
+- **Timeline Layout**: Vertical timeline with connecting lines
+- **Status Icons**: Visual indicators (circle for uploading, checkmark for done)
+- **Progress Bars**: Show upload progress for active files
+- **File Emojis**: File type indicators with emojis
+- **Remove Action**: Delete files with trash icon
+- **Status Labels**: "Uploading..." and "Completed" text
+
+## File Type
+
+```typescript
+export type UploadFile = {
+  id: string;
+  file: File;
+  progress: number;
+  status: "uploading" | "done";
+};
+```

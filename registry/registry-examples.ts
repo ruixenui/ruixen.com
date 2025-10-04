@@ -2350,4 +2350,222 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  // Upload Component Demos
+  {
+    name: "music-equalizer-upload-demo",
+    type: "registry:example",
+    title: "Music Equalizer Upload Demo",
+    description:
+      "Example showing upload component with animated equalizer bars.",
+    registryDependencies: ["https://ruixen.com/r/music-equalizer-upload"],
+    files: [
+      {
+        path: "registry/example/music-equalizer-upload-demo.tsx",
+        type: "registry:example",
+        target: "components/music-equalizer-upload-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "sketchpad-dropzone-demo",
+    type: "registry:example",
+    title: "Sketchpad Dropzone Demo",
+    description: "Example showing creative dropzone with sketchpad background.",
+    registryDependencies: ["https://ruixen.com/r/sketchpad-dropzone"],
+    files: [
+      {
+        path: "registry/example/sketchpad-dropzone-demo.tsx",
+        type: "registry:example",
+        target: "components/sketchpad-dropzone-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "stacked-cards-upload-demo",
+    type: "registry:example",
+    title: "Stacked Cards Upload Demo",
+    description:
+      "Example showing stacked card upload with progress indicators.",
+    registryDependencies: ["https://ruixen.com/r/stacked-cards-upload"],
+    files: [
+      {
+        path: "registry/example/stacked-cards-upload-demo.tsx",
+        type: "registry:example",
+        target: "components/stacked-cards-upload-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "timeline-upload-demo",
+    type: "registry:example",
+    title: "Timeline Upload Demo",
+    description: "Example showing timeline upload with progress tracking.",
+    registryDependencies: ["https://ruixen.com/r/timeline-upload"],
+    files: [
+      {
+        path: "registry/example/timeline-upload-demo.tsx",
+        type: "registry:example",
+        target: "components/timeline-upload-demo.tsx",
+      },
+    ],
+  },
+  // Audio & Media Component Demos
+  {
+    name: "audio-timeline-with-chapters-demo",
+    type: "registry:example",
+    title: "Audio Timeline With Chapters Demo",
+    description:
+      "Example showing interactive audio player with chapter navigation.",
+    registryDependencies: ["https://ruixen.com/r/audio-timeline-with-chapters"],
+    files: [
+      {
+        path: "registry/example/audio-timeline-with-chapters-demo.tsx",
+        type: "registry:example",
+        target: "components/audio-timeline-with-chapters-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "playlist-carousel-demo",
+    type: "registry:example",
+    title: "Playlist Carousel Demo",
+    description:
+      "Example showing horizontal scrolling playlist with audio players.",
+    registryDependencies: ["https://ruixen.com/r/playlist-carousel"],
+    files: [
+      {
+        path: "registry/example/playlist-carousel-demo.tsx",
+        type: "registry:example",
+        target: "components/playlist-carousel-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "voice-message-bubble-demo",
+    type: "registry:example",
+    title: "Voice Message Bubble Demo",
+    description: "Example showing chat-style voice message with waveform.",
+    registryDependencies: ["https://ruixen.com/r/voice-message-bubble"],
+    files: [
+      {
+        path: "registry/example/voice-message-bubble-demo.tsx",
+        type: "registry:example",
+        target: "components/voice-message-bubble-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "visualizer-button-demo",
+    type: "registry:example",
+    title: "Visualizer Button Demo",
+    description:
+      "Example showing compact audio button with equalizer visualization.",
+    registryDependencies: ["https://ruixen.com/r/visualizer-button"],
+    files: [
+      {
+        path: "registry/example/visualizer-button-demo.tsx",
+        type: "registry:example",
+        target: "components/visualizer-button-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "audio-book-player-demo",
+    type: "registry:example",
+    title: "Audio Book Player Demo",
+    description: "Example showing audiobook player with speed control.",
+    registryDependencies: ["https://ruixen.com/r/audio-book-player"],
+    files: [
+      {
+        path: "registry/example/audio-book-player-demo.tsx",
+        type: "registry:example",
+        target: "components/audio-book-player-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "podcast-card-player-demo",
+    type: "registry:example",
+    title: "Podcast Card Player Demo",
+    description: "Example showing podcast player with cover art and controls.",
+    registryDependencies: ["https://ruixen.com/r/podcast-card-player"],
+    files: [
+      {
+        path: "registry/example/podcast-card-player-demo.tsx",
+        type: "registry:example",
+        target: "components/podcast-card-player-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "waveform-player-demo",
+    type: "registry:example",
+    title: "Waveform Player Demo",
+    description: "Example showing audio player with visual waveform.",
+    registryDependencies: ["https://ruixen.com/r/waveform-player"],
+    files: [
+      {
+        path: "registry/example/waveform-player-demo.tsx",
+        type: "registry:example",
+        target: "components/waveform-player-demo.tsx",
+      },
+    ],
+  },
+  // Auth/Login Component Demos
+  {
+    name: "flip-card-demo",
+    type: "registry:example",
+    title: "Flip Card Demo",
+    description: "Example showing 3D flip card with login form.",
+    registryDependencies: ["https://ruixen.com/r/flip-card"],
+    files: [
+      {
+        path: "registry/example/flip-card-demo.tsx",
+        type: "registry:example",
+        target: "components/flip-card-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "success-login-card-demo",
+    type: "registry:example",
+    title: "Success Login Card Demo",
+    description: "Example showing animated login card with success states.",
+    registryDependencies: ["https://ruixen.com/r/success-login-card"],
+    files: [
+      {
+        path: "registry/example/success-login-card-demo.tsx",
+        type: "registry:example",
+        target: "components/success-login-card-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "step-card-demo",
+    type: "registry:example",
+    title: "Step Card Demo",
+    description: "Example showing multi-step form card with transitions.",
+    registryDependencies: ["https://ruixen.com/r/step-card"],
+    files: [
+      {
+        path: "registry/example/step-card-demo.tsx",
+        type: "registry:example",
+        target: "components/step-card-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "auth-tabs-card-demo",
+    type: "registry:example",
+    title: "Auth Tabs Card Demo",
+    description: "Example showing tabbed authentication with social login.",
+    registryDependencies: ["https://ruixen.com/r/auth-tabs-card"],
+    files: [
+      {
+        path: "registry/example/auth-tabs-card-demo.tsx",
+        type: "registry:example",
+        target: "components/auth-tabs-card-demo.tsx",
+      },
+    ],
+  },
 ];

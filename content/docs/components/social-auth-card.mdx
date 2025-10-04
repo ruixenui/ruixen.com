@@ -1,0 +1,154 @@
+---
+title: Social Auth Card
+date: 2024-06-01
+description: Authentication card with social login buttons and traditional form
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="social-auth-card-demo" category="forms" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/social-auth-card"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="social-auth-card" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import SocialAuthCard from "@/components/ruixen/social-auth-card";
+import { FaGoogle, FaGithub, FaTwitter } from "react-icons/fa";
+
+export default function App() {
+  const socialProviders = [
+    {
+      id: "google",
+      label: "Continue with Google",
+      icon: <FaGoogle />,
+      colorClass: "bg-red-500",
+      textColorClass: "text-white",
+      onClick: () => console.log("Google login"),
+    },
+    {
+      id: "github",
+      label: "Continue with GitHub",
+      icon: <FaGithub />,
+      colorClass: "bg-gray-800",
+      textColorClass: "text-white",
+      onClick: () => console.log("GitHub login"),
+    },
+  ];
+
+  const handleChange = (values: Record<string, string>) => {
+    console.log("Form values:", values);
+  };
+
+  const handleSubmit = (values: Record<string, string>) => {
+    console.log("Form submitted:", values);
+  };
+
+  return (
+    <SocialAuthCard
+      socialProviders={socialProviders}
+      formInputs={[
+        {
+          id: "email",
+          type: "email",
+          label: "Email",
+          placeholder: "you@example.com",
+        },
+        {
+          id: "password",
+          type: "password",
+          label: "Password",
+          placeholder: "********",
+        },
+      ]}
+      buttonLabel="Sign In"
+      onChange={handleChange}
+      onSubmit={handleSubmit}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop              | Type                                       | Default               | Description                       |
+| ----------------- | ------------------------------------------ | --------------------- | --------------------------------- |
+| `socialProviders` | `SocialProvider[]`                         | `[]`                  | Social login button configuration |
+| `formInputs`      | `FormInput[]`                              | Email/password fields | Traditional form inputs           |
+| `buttonLabel`     | `string`                                   | `"Login"`             | Submit button text                |
+| `className`       | `string`                                   | -                     | Additional CSS classes            |
+| `onChange`        | `(values: Record<string, string>) => void` | -                     | Input change handler              |
+| `onSubmit`        | `(values: Record<string, string>) => void` | -                     | Form submit handler               |
+
+## Features
+
+- **Social Login Options**: Configurable social authentication buttons
+- **Traditional Form**: Email/password fallback option
+- **Visual Divider**: Clean separation between social and form login
+- **Custom Styling**: Configurable colors for social buttons
+- **Flexible Inputs**: Customizable form fields
+- **Responsive Design**: Works on all screen sizes
+
+## Social Provider Type
+
+```typescript
+export interface SocialProvider {
+  id: string;
+  label: string;
+  icon: React.ReactNode;
+  colorClass?: string; // Tailwind background color
+  textColorClass?: string; // Tailwind text color
+  onClick?: () => void;
+}
+```
+
+## Form Input Type
+
+```typescript
+export interface FormInput {
+  id: string;
+  type: string;
+  label: string;
+  placeholder?: string;
+}
+```
+
+## Use Cases
+
+Perfect for:
+
+- **Multi-platform Authentication**: Support various login methods
+- **User Onboarding**: Reduce friction with social login
+- **Enterprise Applications**: Professional authentication UI
+- **SaaS Platforms**: Modern login experience
+- **Mobile-first Apps**: Touch-friendly authentication

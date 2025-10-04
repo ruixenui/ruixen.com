@@ -1,0 +1,195 @@
+---
+title: Badge Button Combo
+date: 2024-06-01
+description: Button with notification badge for counts or status indicators
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="badge-button-combo-demo" category="buttons" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/badge-button-combo"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="badge-button-combo" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import BadgeButtonCombo from "@/components/ruixen/badge-button-combo";
+import { useState } from "react";
+
+export default function App() {
+  const [notifications, setNotifications] = useState(5);
+  const [messages, setMessages] = useState(12);
+
+  return (
+    <div className="space-y-4 flex gap-4">
+      {/* Notification button with count */}
+      <BadgeButtonCombo
+        label="Notifications"
+        badge={notifications}
+        size="md"
+        onClick={() => setNotifications(0)}
+      />
+
+      {/* Messages button with count */}
+      <BadgeButtonCombo
+        label="Messages"
+        badge={messages}
+        size="sm"
+        onClick={() => setMessages(0)}
+        className="bg-blue-500 hover:bg-blue-600"
+      />
+
+      {/* Cart button with string badge */}
+      <BadgeButtonCombo
+        label="Cart"
+        badge="NEW"
+        size="lg"
+        className="bg-green-500 hover:bg-green-600"
+      />
+
+      {/* Button without badge */}
+      <BadgeButtonCombo label="Settings" size="md" />
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop        | Type                   | Default | Description                   |
+| ----------- | ---------------------- | ------- | ----------------------------- |
+| `label`     | `string`               | -       | Button text                   |
+| `badge`     | `string \| number`     | -       | Badge content (count or text) |
+| `size`      | `"sm" \| "md" \| "lg"` | `"md"`  | Button size                   |
+| `className` | `string`               | -       | Additional CSS classes        |
+
+## Features
+
+- **Flexible Badge**: Supports numbers or text
+- **Conditional Display**: Badge only shows when value provided
+- **Size Variants**: Small, medium, and large sizes
+- **Positioned Badge**: Top-right corner positioning
+- **Responsive Design**: Badge scales with button size
+- **Theme Support**: Works with light and dark themes
+
+## Badge Types
+
+### Numeric Badges
+
+```tsx
+// Notification count
+<BadgeButtonCombo label="Notifications" badge={5} />
+
+// Message count
+<BadgeButtonCombo label="Messages" badge={23} />
+
+// Zero count (badge hidden)
+<BadgeButtonCombo label="Alerts" badge={0} />
+```
+
+### Text Badges
+
+```tsx
+// Status indicators
+<BadgeButtonCombo label="Updates" badge="NEW" />
+<BadgeButtonCombo label="Features" badge="BETA" />
+<BadgeButtonCombo label="Sale" badge="HOT" />
+```
+
+## Size Variants
+
+```tsx
+// Small button with badge
+<BadgeButtonCombo size="sm" label="Cart" badge={3} />
+
+// Medium button (default)
+<BadgeButtonCombo size="md" label="Inbox" badge={12} />
+
+// Large button with badge
+<BadgeButtonCombo size="lg" label="Orders" badge="5" />
+```
+
+## Badge Positioning
+
+The badge is positioned:
+
+- **Location**: Top-right corner (`-top-2 -right-2`)
+- **Z-index**: Above button content
+- **Size**: Minimum width with centered content
+- **Shape**: Rounded badge with padding
+
+## Badge Styling
+
+- **Background**: Primary badge color
+- **Text**: High contrast text color
+- **Size**: `h-5` height with responsive width
+- **Font**: Small font size (`text-[0.65rem]`)
+- **Padding**: `p-1` for comfortable spacing
+
+## Common Patterns
+
+### Shopping Cart
+
+```tsx
+const [cartItems, setCartItems] = useState(3);
+
+<BadgeButtonCombo label="Cart" badge={cartItems} onClick={() => openCart()} />;
+```
+
+### Notification Center
+
+```tsx
+const [unreadCount, setUnreadCount] = useState(8);
+
+<BadgeButtonCombo
+  label="Notifications"
+  badge={unreadCount}
+  onClick={() => openNotifications()}
+/>;
+```
+
+### Status Indicators
+
+```tsx
+<BadgeButtonCombo label="Updates" badge="NEW" onClick={() => checkUpdates()} />
+```
+
+## Use Cases
+
+Perfect for:
+
+- **Shopping Carts**: Show item count
+- **Notifications**: Display unread count
+- **Messages**: Show new message count
+- **Status Updates**: Indicate new features or updates
+- **Activity Indicators**: Show pending tasks or alerts

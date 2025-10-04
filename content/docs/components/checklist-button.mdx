@@ -1,0 +1,144 @@
+---
+title: Checklist Button
+date: 2024-06-01
+description: Toggle button with checkmark animation for task completion
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="checklist-button-demo" category="buttons" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/checklist-button"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="checklist-button" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import ChecklistButton from "@/components/ruixen/checklist-button";
+import { FileText, Check } from "lucide-react";
+
+export default function App() {
+  const handleTaskComplete = () => {
+    console.log("Task marked as complete!");
+  };
+
+  return (
+    <div className="space-y-4">
+      {/* Basic usage */}
+      <ChecklistButton
+        label="Complete Task"
+        doneLabel="Completed!"
+        onDone={handleTaskComplete}
+      />
+
+      {/* With custom icons */}
+      <ChecklistButton
+        label="Review Document"
+        doneLabel="Reviewed"
+        icon={<FileText className="w-4 h-4" />}
+        doneIcon={<Check className="w-4 h-4 text-green-600" />}
+        onDone={() => console.log("Document reviewed")}
+      />
+
+      {/* Resettable version */}
+      <ChecklistButton
+        label="Toggle Status"
+        doneLabel="Active"
+        resettable={true}
+        onDone={() => console.log("Status toggled")}
+      />
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop         | Type              | Default          | Description                   |
+| ------------ | ----------------- | ---------------- | ----------------------------- |
+| `label`      | `string`          | `"Mark as Done"` | Initial button text           |
+| `doneLabel`  | `string`          | `"Done"`         | Text when completed           |
+| `onDone`     | `() => void`      | -                | Callback when marked done     |
+| `resettable` | `boolean`         | `false`          | Allow toggling back to undone |
+| `icon`       | `React.ReactNode` | -                | Icon for initial state        |
+| `doneIcon`   | `React.ReactNode` | Green checkmark  | Icon for completed state      |
+| `className`  | `string`          | -                | Additional CSS classes        |
+
+## Features
+
+- **Animated Transition**: Smooth state change animation
+- **Custom Icons**: Configurable icons for both states
+- **Resettable Option**: Toggle between done/undone states
+- **Visual Feedback**: Clear visual distinction between states
+- **Accessibility**: Proper button semantics and states
+- **Theme Support**: Works with light and dark themes
+
+## Animation Details
+
+The transition includes:
+
+- **Scale Animation**: Checkmark scales from 0 to 1
+- **Rotation**: Checkmark rotates from -90° to 0°
+- **Opacity Fade**: Smooth opacity transitions
+- **Vertical Movement**: Text slides up/down during transition
+
+## Button States
+
+### Initial State
+
+- Shows `label` text with optional `icon`
+- Default or outline button variant
+- Ready for user interaction
+
+### Completed State
+
+- Shows `doneLabel` text with checkmark `doneIcon`
+- Secondary button variant
+- Green checkmark icon by default
+
+## Resettable Behavior
+
+When `resettable={true}`:
+
+- Clicking completed button toggles back to initial state
+- Useful for toggle switches or reversible actions
+- Maintains smooth animations in both directions
+
+## Use Cases
+
+Perfect for:
+
+- **Task Lists**: Mark tasks as complete
+- **Checklists**: Interactive checklist items
+- **Form Steps**: Step completion indicators
+- **Progress Tracking**: Mark milestones as done
+- **Toggle States**: Reversible status changes

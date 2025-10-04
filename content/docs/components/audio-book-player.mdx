@@ -1,0 +1,95 @@
+---
+title: Audio Book Player
+date: 2024-06-01
+description: Fixed-position audiobook player with chapter info, speed control, and progress tracking
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="audio-book-player-demo" category="audio" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/audio-book-player"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="audio-book-player" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import AudioBookPlayer from "@/components/ruixen/audio-book-player";
+
+export default function App() {
+  return (
+    <AudioBookPlayer
+      audioSrc="https://example.com/audiobook-chapter1.mp3"
+      chapterTitle="Chapter 1: The Beginning"
+      author="John Doe"
+    />
+  );
+}
+```
+
+## Props
+
+| Prop           | Type     | Default                      | Description               |
+| -------------- | -------- | ---------------------------- | ------------------------- |
+| `audioSrc`     | `string` | Default audio URL            | URL of the audiobook file |
+| `chapterTitle` | `string` | `"Chapter 1: The Beginning"` | Title of current chapter  |
+| `author`       | `string` | `"John Doe"`                 | Author name               |
+| `className`    | `string` | -                            | Additional CSS classes    |
+
+## Features
+
+- **Fixed Position**: Stays at bottom of screen like music apps
+- **Chapter Information**: Display chapter title and author
+- **Speed Control**: Toggle between 1x, 1.5x, and 2x playback speeds
+- **Progress Slider**: Seekable progress bar
+- **Play/Pause Control**: Simple audio controls
+- **Progress Percentage**: Shows completion percentage
+- **Responsive Design**: Adapts to different screen sizes
+
+## Positioning
+
+The player is positioned fixed at the bottom center of the screen:
+
+```css
+position: fixed
+bottom: 1rem
+left: 50%
+transform: translateX(-50%)
+```
+
+## Speed Options
+
+The speed control cycles through:
+
+- **1x**: Normal speed
+- **1.5x**: 1.5x faster
+- **2x**: Double speed

@@ -1,0 +1,157 @@
+---
+title: Multi Step Login
+date: 2024-06-01
+description: Multi-step authentication form with progress indicator
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="multi-step-login-demo" category="forms" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/multi-step-login"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="multi-step-login" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import MultiStepLogin from "@/components/ruixen/multi-step-login";
+
+const loginSteps = [
+  {
+    title: "Account Information",
+    inputs: [
+      {
+        id: "email",
+        type: "email",
+        label: "Email",
+        placeholder: "you@example.com",
+      },
+    ],
+    nextLabel: "Continue",
+  },
+  {
+    title: "Security",
+    inputs: [
+      {
+        id: "password",
+        type: "password",
+        label: "Password",
+        placeholder: "********",
+      },
+    ],
+    nextLabel: "Next",
+    backLabel: "Back",
+  },
+  {
+    title: "Verification",
+    inputs: [
+      { id: "code", type: "text", label: "2FA Code", placeholder: "000000" },
+    ],
+    submitLabel: "Sign In",
+    backLabel: "Back",
+  },
+];
+
+export default function App() {
+  const handleChange = (values: Record<string, string>) => {
+    console.log("Form values:", values);
+  };
+
+  const handleSubmit = (values: Record<string, string>) => {
+    console.log("Login completed:", values);
+  };
+
+  return (
+    <MultiStepLogin
+      steps={loginSteps}
+      onChange={handleChange}
+      onSubmit={handleSubmit}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop        | Type                                       | Default | Description                  |
+| ----------- | ------------------------------------------ | ------- | ---------------------------- |
+| `steps`     | `MultiStep[]`                              | -       | Array of step configurations |
+| `className` | `string`                                   | -       | Additional CSS classes       |
+| `onChange`  | `(values: Record<string, string>) => void` | -       | Input change handler         |
+| `onSubmit`  | `(values: Record<string, string>) => void` | -       | Form submit handler          |
+
+## Features
+
+- **Progress Indicator**: Visual step progress bar
+- **Step Navigation**: Back/Next button controls
+- **Flexible Steps**: Configurable number of steps
+- **Optional Fields**: Support for optional inputs
+- **Custom Labels**: Customizable button text
+- **Form Validation**: Built-in input validation
+- **Responsive Design**: Works on all screen sizes
+
+## Step Configuration
+
+```typescript
+export interface MultiStep {
+  title?: string;
+  inputs: MultiStepInput[];
+  nextLabel?: string;
+  backLabel?: string;
+  submitLabel?: string;
+}
+
+export interface MultiStepInput {
+  id: string;
+  type: string;
+  label: string;
+  placeholder?: string;
+  optional?: boolean;
+}
+```
+
+## Step Flow
+
+1. **Step 1**: Initial information (email, username)
+2. **Step 2**: Security details (password, security questions)
+3. **Step 3**: Verification (2FA, email confirmation)
+4. **Final**: Submit and complete authentication
+
+## Use Cases
+
+Perfect for:
+
+- **Enhanced Security**: Multi-factor authentication
+- **Complex Registration**: Detailed user onboarding
+- **Enterprise Login**: Corporate security requirements
+- **Compliance**: Regulatory authentication needs
+- **User Experience**: Simplified complex forms

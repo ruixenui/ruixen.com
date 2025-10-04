@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tooltip-button",
+  "type": "registry:ui",
+  "title": "Tooltip Button",
+  "description": "Button with integrated tooltip for additional context.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/tooltip-button.tsx",
+      "content": "import React from \"react\";\nimport { Button } from \"@/components/ui/button\";\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipProvider,\n  TooltipTrigger,\n} from \"@/components/ui/tooltip\";\nimport { cn } from \"@/lib/utils\";\nimport { Info } from \"lucide-react\";\n\ninterface TooltipButtonProps\n  extends React.ButtonHTMLAttributes<HTMLButtonElement> {\n  label: string;\n  tooltip: string;\n  size?: \"sm\" | \"md\" | \"lg\";\n  icon?: React.ReactNode;\n}\n\nconst sizeConfig = {\n  sm: \"px-3 py-1 text-sm\",\n  md: \"px-4 py-2 text-base\",\n  lg: \"px-5 py-3 text-lg\",\n};\n\nexport default function TooltipButton({\n  label,\n  tooltip,\n  size = \"md\",\n  icon,\n  className,\n  ...props\n}: TooltipButtonProps) {\n  return (\n    <TooltipProvider>\n      <Tooltip>\n        <TooltipTrigger asChild>\n          <Button\n            className={cn(\n              \"flex items-center gap-2\",\n              sizeConfig[size],\n              className,\n            )}\n            {...props}\n          >\n            {icon ?? <Info className=\"w-4 h-4\" />}\n            {label}\n          </Button>\n        </TooltipTrigger>\n        <TooltipContent side=\"top\">{tooltip}</TooltipContent>\n      </Tooltip>\n    </TooltipProvider>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/tooltip-button.tsx"
+    }
+  ]
+}

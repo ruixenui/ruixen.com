@@ -2463,4 +2463,615 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  // Upload Components
+  {
+    name: "music-equalizer-upload",
+    type: "registry:ui",
+    title: "Music Equalizer Upload",
+    description:
+      "Upload component with animated equalizer bars for audio files.",
+    dependencies: ["framer-motion", "lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/music-equalizer-upload.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/music-equalizer-upload.tsx",
+      },
+    ],
+  },
+  {
+    name: "sketchpad-dropzone",
+    type: "registry:ui",
+    title: "Sketchpad Dropzone",
+    description:
+      "Creative dropzone with sketchpad-style grid background and sticky note file cards.",
+    dependencies: ["framer-motion", "lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/sketchpad-dropzone.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/sketchpad-dropzone.tsx",
+      },
+    ],
+  },
+  {
+    name: "stacked-cards-upload",
+    type: "registry:ui",
+    title: "Stacked Cards Upload",
+    description:
+      "Upload component with stacked card layout and progress indicators.",
+    dependencies: ["framer-motion", "lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/stacked-cards-upload.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/stacked-cards-upload.tsx",
+      },
+    ],
+  },
+  {
+    name: "timeline-upload",
+    type: "registry:ui",
+    title: "Timeline Upload",
+    description:
+      "Upload component with timeline layout showing upload progress and status.",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/timeline-upload.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/timeline-upload.tsx",
+      },
+    ],
+  },
+  // Audio & Media Components
+  {
+    name: "audio-timeline-with-chapters",
+    type: "registry:ui",
+    title: "Audio Timeline With Chapters",
+    description:
+      "Interactive audio player with timeline and chapter navigation.",
+    dependencies: [],
+    files: [
+      {
+        path: "registry/ruixenui/audio-timeline-with-chapters.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/audio-timeline-with-chapters.tsx",
+      },
+    ],
+  },
+  {
+    name: "playlist-carousel",
+    type: "registry:ui",
+    title: "Playlist Carousel",
+    description:
+      "Horizontal scrolling playlist with individual audio players and progress indicators.",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/playlist-carousel.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/playlist-carousel.tsx",
+      },
+    ],
+  },
+  {
+    name: "voice-message-bubble",
+    type: "registry:ui",
+    title: "Voice Message Bubble",
+    description:
+      "Chat-style voice message bubble with waveform visualization and playback controls.",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/voice-message-bubble.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/voice-message-bubble.tsx",
+      },
+    ],
+  },
+  {
+    name: "visualizer-button",
+    type: "registry:ui",
+    title: "Visualizer Button",
+    description:
+      "Compact audio button with animated equalizer bars visualization.",
+    dependencies: [],
+    files: [
+      {
+        path: "registry/ruixenui/visualizer-button.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/visualizer-button.tsx",
+      },
+    ],
+  },
+  {
+    name: "audio-book-player",
+    type: "registry:ui",
+    title: "Audio Book Player",
+    description:
+      "Fixed-position audiobook player with chapter info, speed control, and progress tracking.",
+    dependencies: [],
+    files: [
+      {
+        path: "registry/ruixenui/audio-book-player.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/audio-book-player.tsx",
+      },
+    ],
+  },
+  {
+    name: "podcast-card-player",
+    type: "registry:ui",
+    title: "Podcast Card Player",
+    description:
+      "Card-style podcast player with cover art, episode info, and audio controls.",
+    dependencies: [],
+    files: [
+      {
+        path: "registry/ruixenui/podcast-card-player.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/podcast-card-player.tsx",
+      },
+    ],
+  },
+  {
+    name: "waveform-player",
+    type: "registry:ui",
+    title: "Waveform Player",
+    description:
+      "Audio player with visual waveform representation and seek controls.",
+    dependencies: [],
+    files: [
+      {
+        path: "registry/ruixenui/waveform-player.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/waveform-player.tsx",
+      },
+    ],
+  },
+  // Auth/Login Components
+  {
+    name: "flip-card",
+    type: "registry:ui",
+    title: "Flip Card",
+    description:
+      "3D flip card with login form, customizable fields, and success states.",
+    dependencies: ["framer-motion"],
+    files: [
+      {
+        path: "registry/ruixenui/flip-card.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/flip-card.tsx",
+      },
+    ],
+  },
+  {
+    name: "success-login-card",
+    type: "registry:ui",
+    title: "Success Login Card",
+    description:
+      "Animated login card with success states and customizable animation types.",
+    dependencies: ["framer-motion"],
+    files: [
+      {
+        path: "registry/ruixenui/success-login-card.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/success-login-card.tsx",
+      },
+    ],
+  },
+  {
+    name: "step-card",
+    type: "registry:ui",
+    title: "Step Card",
+    description: "Multi-step form card with smooth transitions between steps.",
+    dependencies: ["framer-motion"],
+    files: [
+      {
+        path: "registry/ruixenui/step-card.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/step-card.tsx",
+      },
+    ],
+  },
+  {
+    name: "auth-tabs-card",
+    type: "registry:ui",
+    title: "Auth Tabs Card",
+    description:
+      "Tabbed authentication card with sign-in/sign-up forms and social login options.",
+    dependencies: ["react-icons"],
+    files: [
+      {
+        path: "registry/ruixenui/auth-tabs-card.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/auth-tabs-card.tsx",
+      },
+    ],
+  },
+  // Additional Button Components
+  {
+    name: "multi-state-morph-button",
+    type: "registry:ui",
+    title: "Multi State Morph Button",
+    description:
+      "Animated button that morphs through different states - idle, loading, success, and error.",
+    dependencies: ["framer-motion", "react-icons"],
+    files: [
+      {
+        path: "registry/ruixenui/multi-state-morph-button.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/multi-state-morph-button.tsx",
+      },
+    ],
+  },
+  {
+    name: "dynamic-status-button",
+    type: "registry:ui",
+    title: "Dynamic Status Button",
+    description:
+      "Button that cycles through different status states with icons and colors.",
+    dependencies: ["framer-motion"],
+    files: [
+      {
+        path: "registry/ruixenui/dynamic-status-button.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/dynamic-status-button.tsx",
+      },
+    ],
+  },
+  {
+    name: "hover-preview-button",
+    type: "registry:ui",
+    title: "Hover Preview Button",
+    description: "Button with hover-triggered preview content display.",
+    dependencies: [],
+    files: [
+      {
+        path: "registry/ruixenui/hover-preview-button.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/hover-preview-button.tsx",
+      },
+    ],
+  },
+  {
+    name: "segmented-button-group",
+    type: "registry:ui",
+    title: "Segmented Button Group",
+    description:
+      "Group of connected buttons for single selection with smooth animations.",
+    dependencies: [],
+    files: [
+      {
+        path: "registry/ruixenui/segmented-button-group.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/segmented-button-group.tsx",
+      },
+    ],
+  },
+  {
+    name: "confetti-button",
+    type: "registry:ui",
+    title: "Confetti Button",
+    description:
+      "Celebration button that triggers animated confetti particles on click.",
+    dependencies: ["framer-motion"],
+    files: [
+      {
+        path: "registry/ruixenui/confetti-button.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/confetti-button.tsx",
+      },
+    ],
+  },
+  {
+    name: "swipe-to-confirm-button",
+    type: "registry:ui",
+    title: "Swipe To Confirm Button",
+    description: "Interactive button requiring swipe gesture for confirmation.",
+    dependencies: ["framer-motion"],
+    files: [
+      {
+        path: "registry/ruixenui/swipe-to-confirm-button.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/swipe-to-confirm-button.tsx",
+      },
+    ],
+  },
+  {
+    name: "status-button",
+    type: "registry:ui",
+    title: "Status Button",
+    description:
+      "Button with animated status indicator dot for live/idle/offline states.",
+    dependencies: ["framer-motion"],
+    files: [
+      {
+        path: "registry/ruixenui/status-button.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/status-button.tsx",
+      },
+    ],
+  },
+  {
+    name: "checklist-button",
+    type: "registry:ui",
+    title: "Checklist Button",
+    description: "Toggle button with checkmark animation for task completion.",
+    dependencies: ["framer-motion", "lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/checklist-button.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/checklist-button.tsx",
+      },
+    ],
+  },
+  {
+    name: "countdown-button",
+    type: "registry:ui",
+    title: "Countdown Button",
+    description:
+      "Button with countdown timer that disables for specified duration.",
+    dependencies: [],
+    files: [
+      {
+        path: "registry/ruixenui/countdown-button.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/countdown-button.tsx",
+      },
+    ],
+  },
+  {
+    name: "icon-grid-button",
+    type: "registry:ui",
+    title: "Icon Grid Button",
+    description: "Button that reveals a grid of icon options on click.",
+    dependencies: [],
+    files: [
+      {
+        path: "registry/ruixenui/icon-grid-button.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/icon-grid-button.tsx",
+      },
+    ],
+  },
+  {
+    name: "multi-step-button",
+    type: "registry:ui",
+    title: "Multi Step Button",
+    description:
+      "Button that cycles through multiple steps/labels on each click.",
+    dependencies: [],
+    files: [
+      {
+        path: "registry/ruixenui/multi-step-button.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/multi-step-button.tsx",
+      },
+    ],
+  },
+  {
+    name: "tooltip-button",
+    type: "registry:ui",
+    title: "Tooltip Button",
+    description: "Button with integrated tooltip for additional context.",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/tooltip-button.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/tooltip-button.tsx",
+      },
+    ],
+  },
+  {
+    name: "badge-button-combo",
+    type: "registry:ui",
+    title: "Badge Button Combo",
+    description:
+      "Button with notification badge for counts or status indicators.",
+    dependencies: [],
+    files: [
+      {
+        path: "registry/ruixenui/badge-button-combo.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/badge-button-combo.tsx",
+      },
+    ],
+  },
+  {
+    name: "expandable-content-button",
+    type: "registry:ui",
+    title: "Expandable Content Button",
+    description: "Button that expands to show additional content options.",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/expandable-content-button.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/expandable-content-button.tsx",
+      },
+    ],
+  },
+  {
+    name: "notification-button",
+    type: "registry:ui",
+    title: "Notification Button",
+    description:
+      "Button with notification badge count for alerts and messages.",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/notification-button.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/notification-button.tsx",
+      },
+    ],
+  },
+  {
+    name: "confirmation-button",
+    type: "registry:ui",
+    title: "Confirmation Button",
+    description:
+      "Safety button that requires confirmation before executing destructive actions.",
+    dependencies: [],
+    files: [
+      {
+        path: "registry/ruixenui/confirmation-button.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/confirmation-button.tsx",
+      },
+    ],
+  },
+  {
+    name: "avatar-action-button",
+    type: "registry:ui",
+    title: "Avatar Action Button",
+    description: "Button with integrated avatar image for user actions.",
+    dependencies: [],
+    files: [
+      {
+        path: "registry/ruixenui/avatar-action-button.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/avatar-action-button.tsx",
+      },
+    ],
+  },
+  {
+    name: "split-action-button",
+    type: "registry:ui",
+    title: "Split Action Button",
+    description:
+      "Button with primary action and dropdown for secondary options.",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/split-action-button.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/split-action-button.tsx",
+      },
+    ],
+  },
+  {
+    name: "progress-button",
+    type: "registry:ui",
+    title: "Progress Button",
+    description: "Button with built-in progress feedback for async operations.",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/progress-button.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/progress-button.tsx",
+      },
+    ],
+  },
+  {
+    name: "icon-label-subtext-button",
+    type: "registry:ui",
+    title: "Icon Label Subtext Button",
+    description:
+      "Comprehensive button with icon, main label, and subtext for detailed actions.",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/icon-label-subtext-button.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/icon-label-subtext-button.tsx",
+      },
+    ],
+  },
+  // Additional Auth Components
+  {
+    name: "gamified-login-card",
+    type: "registry:ui",
+    title: "Gamified Login Card",
+    description:
+      "Interactive login card with confetti celebration animation on successful login.",
+    dependencies: ["framer-motion"],
+    files: [
+      {
+        path: "registry/ruixenui/gamified-login-card.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/gamified-login-card.tsx",
+      },
+    ],
+  },
+  {
+    name: "social-auth-card",
+    type: "registry:ui",
+    title: "Social Auth Card",
+    description:
+      "Authentication card with social login buttons and traditional form.",
+    dependencies: [],
+    files: [
+      {
+        path: "registry/ruixenui/social-auth-card.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/social-auth-card.tsx",
+      },
+    ],
+  },
+  {
+    name: "login-card",
+    type: "registry:ui",
+    title: "Login Card",
+    description:
+      "Clean and simple login card with customizable inputs and logo support.",
+    dependencies: [],
+    files: [
+      {
+        path: "registry/ruixenui/login-card.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/login-card.tsx",
+      },
+    ],
+  },
+  {
+    name: "multi-step-login",
+    type: "registry:ui",
+    title: "Multi Step Login",
+    description: "Multi-step authentication form with progress indicator.",
+    dependencies: [],
+    files: [
+      {
+        path: "registry/ruixenui/multi-step-login.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/multi-step-login.tsx",
+      },
+    ],
+  },
+  {
+    name: "split-login-card",
+    type: "registry:ui",
+    title: "Split Login Card",
+    description:
+      "Split-screen login card with branding on one side and form on the other.",
+    dependencies: [],
+    files: [
+      {
+        path: "registry/ruixenui/split-login-card.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/split-login-card.tsx",
+      },
+    ],
+  },
+  // Tabs Components
+  {
+    name: "drag-and-drop-tabs",
+    type: "registry:ui",
+    title: "Drag And Drop Tabs",
+    description:
+      "Interactive tabs component with drag-and-drop reordering functionality.",
+    dependencies: ["@dnd-kit/core", "@dnd-kit/sortable", "@dnd-kit/utilities"],
+    files: [
+      {
+        path: "registry/ruixenui/drag-and-drop-tabs.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/drag-and-drop-tabs.tsx",
+      },
+    ],
+  },
 ];

@@ -1,0 +1,150 @@
+---
+title: Hover Preview Button
+date: 2024-06-01
+description: Button with hover-triggered preview content display
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="hover-preview-button-demo" category="buttons" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/hover-preview-button"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="hover-preview-button" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import HoverPreviewButton from "@/components/ruixen/hover-preview-button";
+
+export default function App() {
+  const previewContent = (
+    <div className="p-4">
+      <h3 className="font-semibold mb-2">Quick Preview</h3>
+      <p className="text-sm text-muted-foreground">
+        This is a preview of what you'll see when you click this button. It can
+        contain any React content including images, charts, or forms.
+      </p>
+      <div className="mt-2 flex gap-2">
+        <div className="w-4 h-4 bg-blue-500 rounded"></div>
+        <div className="w-4 h-4 bg-green-500 rounded"></div>
+        <div className="w-4 h-4 bg-red-500 rounded"></div>
+      </div>
+    </div>
+  );
+
+  return (
+    <HoverPreviewButton
+      label="Hover for Preview"
+      previewContent={previewContent}
+      className="bg-blue-500 hover:bg-blue-600"
+    />
+  );
+}
+```
+
+## Props
+
+| Prop             | Type              | Default | Description              |
+| ---------------- | ----------------- | ------- | ------------------------ |
+| `label`          | `string`          | -       | Button text              |
+| `previewContent` | `React.ReactNode` | -       | Content to show on hover |
+| `className`      | `string`          | -       | Additional CSS classes   |
+
+## Features
+
+- **Hover Trigger**: Shows preview on mouse enter
+- **Auto Hide**: Hides preview on mouse leave
+- **Flexible Content**: Any React component as preview
+- **Positioned Tooltip**: Centered below button
+- **Z-Index Management**: Proper layering with z-50
+- **Responsive Width**: 256px (16rem) preview width
+
+## Preview Content Examples
+
+### Simple Text Preview
+
+```tsx
+const textPreview = (
+  <div className="p-3">
+    <p className="text-sm">This action will save your changes.</p>
+  </div>
+);
+```
+
+### Rich Content Preview
+
+```tsx
+const richPreview = (
+  <div className="p-4 space-y-3">
+    <div className="flex items-center gap-2">
+      <img src="/avatar.jpg" className="w-8 h-8 rounded-full" />
+      <div>
+        <p className="font-medium">John Doe</p>
+        <p className="text-xs text-muted-foreground">Online now</p>
+      </div>
+    </div>
+    <p className="text-sm">Click to start a conversation</p>
+  </div>
+);
+```
+
+### Chart Preview
+
+```tsx
+const chartPreview = (
+  <div className="p-4">
+    <h4 className="font-medium mb-2">Sales Overview</h4>
+    <div className="h-20 bg-gradient-to-r from-blue-500 to-purple-500 rounded"></div>
+    <p className="text-xs text-muted-foreground mt-2">+12% from last month</p>
+  </div>
+);
+```
+
+## Styling
+
+The preview tooltip includes:
+
+- **Background**: `bg-background` (theme-aware)
+- **Border**: Standard border styling
+- **Shadow**: `shadow-lg` for elevation
+- **Rounded**: `rounded-lg` corners
+- **Positioning**: Centered below button with `mt-2` spacing
+
+## Use Cases
+
+Perfect for:
+
+- **Action Previews**: Show what will happen before clicking
+- **User Profiles**: Display user info on hover
+- **Content Previews**: Show document/image previews
+- **Status Information**: Display detailed status info
+- **Help Context**: Provide additional context or help

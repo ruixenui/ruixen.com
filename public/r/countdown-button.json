@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "countdown-button",
+  "type": "registry:ui",
+  "title": "Countdown Button",
+  "description": "Button with countdown timer that disables for specified duration.",
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/ruixenui/countdown-button.tsx",
+      "content": "\"use client\";\n\nimport React, { useState, useEffect } from \"react\";\nimport { Button } from \"@/components/ui/button\";\nimport { cn } from \"@/lib/utils\";\n\ninterface CountdownButtonProps\n  extends React.ButtonHTMLAttributes<HTMLButtonElement> {\n  label: string;\n  countdown: number; // in seconds\n  size?: \"sm\" | \"md\" | \"lg\";\n  onClick?: () => void;\n}\n\nconst sizeConfig = {\n  sm: \"px-3 py-1 text-sm\",\n  md: \"px-4 py-2 text-base\",\n  lg: \"px-5 py-3 text-lg\",\n};\n\nexport default function CountdownButton({\n  label,\n  countdown,\n  size = \"md\",\n  onClick,\n  className,\n  ...props\n}: CountdownButtonProps) {\n  const [timeLeft, setTimeLeft] = useState(0);\n  const [disabled, setDisabled] = useState(false);\n\n  useEffect(() => {\n    let timer: NodeJS.Timeout;\n    if (timeLeft > 0) {\n      timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);\n    } else {\n      setDisabled(false);\n    }\n    return () => clearTimeout(timer);\n  }, [timeLeft]);\n\n  const handleClick = () => {\n    if (onClick) onClick();\n    setTimeLeft(countdown);\n    setDisabled(true);\n  };\n\n  return (\n    <Button\n      className={cn(sizeConfig[size], className)}\n      onClick={handleClick}\n      disabled={disabled}\n      {...props}\n    >\n      {disabled ? `${label} in ${timeLeft}s` : label}\n    </Button>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/countdown-button.tsx"
+    }
+  ]
+}

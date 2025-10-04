@@ -1,0 +1,137 @@
+---
+title: Segmented Button Group
+date: 2024-06-01
+description: Group of connected buttons for single selection with smooth animations
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="segmented-button-group-demo" category="buttons" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/segmented-button-group"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="segmented-button-group" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import SegmentedButtonGroup from "@/components/ruixen/segmented-button-group";
+import { useState } from "react";
+
+export default function App() {
+  const [selectedPeriod, setSelectedPeriod] = useState("Week");
+  const [selectedPriority, setSelectedPriority] = useState("Medium");
+
+  return (
+    <div className="space-y-4">
+      {/* Time Period Selector */}
+      <SegmentedButtonGroup
+        options={["Day", "Week", "Month", "Year"]}
+        selected={selectedPeriod}
+        onChange={setSelectedPeriod}
+      />
+
+      {/* Priority Selector */}
+      <SegmentedButtonGroup
+        options={["Low", "Medium", "High", "Critical"]}
+        selected={selectedPriority}
+        onChange={setSelectedPriority}
+        className="bg-red-50"
+      />
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop        | Type                      | Default      | Description               |
+| ----------- | ------------------------- | ------------ | ------------------------- |
+| `options`   | `string[]`                | -            | Array of option labels    |
+| `selected`  | `string`                  | First option | Currently selected option |
+| `onChange`  | `(value: string) => void` | -            | Selection change handler  |
+| `className` | `string`                  | -            | Additional CSS classes    |
+
+## Features
+
+- **Single Selection**: Only one option can be selected at a time
+- **Smooth Transitions**: Animated selection changes
+- **Rounded Design**: Pill-shaped button group
+- **Connected Buttons**: Seamless button connections
+- **Theme Aware**: Adapts to light/dark themes
+- **Keyboard Accessible**: Full keyboard navigation support
+
+## Styling Variants
+
+### Default Style
+
+```tsx
+<SegmentedButtonGroup
+  options={["Option 1", "Option 2", "Option 3"]}
+  selected="Option 1"
+/>
+```
+
+### Custom Background
+
+```tsx
+<SegmentedButtonGroup
+  options={["Draft", "Published", "Archived"]}
+  selected="Published"
+  className="bg-blue-50 dark:bg-blue-900/20"
+/>
+```
+
+## Button States
+
+- **Active**: Primary color background with white text
+- **Inactive**: Transparent background with muted text
+- **Hover**: Subtle background color change
+- **Focus**: Keyboard focus indicators
+
+## Layout
+
+The component uses:
+
+- **Rounded Full**: `rounded-full` for pill shape
+- **Flex Layout**: `inline-flex` for horizontal arrangement
+- **Connected Borders**: Seamless button connections
+- **Responsive Padding**: `px-4 py-2` for comfortable touch targets
+
+## Use Cases
+
+Perfect for:
+
+- **View Toggles**: List/grid view switchers
+- **Time Periods**: Day/week/month selectors
+- **Priority Levels**: Low/medium/high options
+- **Status Filters**: Active/inactive/all filters
+- **Display Modes**: Compact/comfortable/spacious views

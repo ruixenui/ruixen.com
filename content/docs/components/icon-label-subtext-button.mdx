@@ -1,0 +1,247 @@
+---
+title: Icon Label Subtext Button
+date: 2024-06-01
+description: Comprehensive button with icon, main label, and subtext for detailed actions
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="icon-label-subtext-button-demo" category="buttons" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/icon-label-subtext-button"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="icon-label-subtext-button" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import IconLabelSubtextButton from "@/components/ruixen/icon-label-subtext-button";
+import { Download, Upload, Share, Settings } from "lucide-react";
+
+export default function App() {
+  return (
+    <div className="space-y-4">
+      {/* Download button with subtext */}
+      <IconLabelSubtextButton
+        icon={<Download className="w-5 h-5" />}
+        label="Download Report"
+        subtext="PDF • 2.4 MB"
+        onClick={() => console.log("Download started")}
+      />
+
+      {/* Upload with badge and tooltip */}
+      <IconLabelSubtextButton
+        icon={<Upload className="w-5 h-5" />}
+        label="Upload Files"
+        subtext="Drag & drop or click"
+        badge={3}
+        tooltip="Upload up to 10 files at once"
+        variant="outline"
+      />
+
+      {/* Share with loading state */}
+      <IconLabelSubtextButton
+        icon={<Share className="w-5 h-5" />}
+        label="Share Document"
+        subtext="Send to team members"
+        loading={true}
+        size="lg"
+      />
+
+      {/* Settings with success state */}
+      <IconLabelSubtextButton
+        icon={<Settings className="w-5 h-5" />}
+        label="Save Settings"
+        subtext="Auto-save enabled"
+        success={true}
+        variant="ghost"
+        size="sm"
+      />
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop        | Type                                | Default       | Description                |
+| ----------- | ----------------------------------- | ------------- | -------------------------- |
+| `icon`      | `React.ReactNode`                   | Download icon | Button icon                |
+| `label`     | `string`                            | -             | Main button text           |
+| `subtext`   | `string`                            | -             | Secondary descriptive text |
+| `badge`     | `string \| number`                  | -             | Optional badge indicator   |
+| `tooltip`   | `string`                            | -             | Optional tooltip content   |
+| `variant`   | `"default" \| "ghost" \| "outline"` | `"default"`   | Button style variant       |
+| `size`      | `"sm" \| "md" \| "lg"`              | `"md"`        | Button size                |
+| `loading`   | `boolean`                           | `false`       | Show loading spinner       |
+| `success`   | `boolean`                           | `false`       | Show success checkmark     |
+| `className` | `string`                            | -             | Additional CSS classes     |
+| `disabled`  | `boolean`                           | `false`       | Disable button interaction |
+
+## Features
+
+- **Rich Content**: Icon, label, and subtext in one button
+- **Multiple States**: Loading, success, and disabled states
+- **Badge Support**: Optional notification badge
+- **Tooltip Integration**: Built-in tooltip functionality
+- **Variant Styles**: Default, ghost, and outline variants
+- **Size Options**: Small, medium, and large sizes
+- **Accessibility**: Full keyboard and screen reader support
+
+## Variant Styles
+
+```tsx
+// Default variant (filled)
+<IconLabelSubtextButton variant="default" label="Action" subtext="Description" />
+
+// Ghost variant (transparent)
+<IconLabelSubtextButton variant="ghost" label="Action" subtext="Description" />
+
+// Outline variant (bordered)
+<IconLabelSubtextButton variant="outline" label="Action" subtext="Description" />
+```
+
+## Size Variants
+
+```tsx
+// Small button
+<IconLabelSubtextButton size="sm" label="Small" subtext="Compact size" />
+
+// Medium button (default)
+<IconLabelSubtextButton size="md" label="Medium" subtext="Standard size" />
+
+// Large button
+<IconLabelSubtextButton size="lg" label="Large" subtext="Spacious size" />
+```
+
+## State Examples
+
+### Loading State
+
+```tsx
+<IconLabelSubtextButton
+  label="Processing"
+  subtext="Please wait..."
+  loading={true}
+/>
+```
+
+### Success State
+
+```tsx
+<IconLabelSubtextButton
+  label="Completed"
+  subtext="Task finished successfully"
+  success={true}
+/>
+```
+
+### With Badge
+
+```tsx
+<IconLabelSubtextButton
+  label="Messages"
+  subtext="Unread notifications"
+  badge={5}
+/>
+```
+
+### With Tooltip
+
+```tsx
+<IconLabelSubtextButton
+  label="Advanced Settings"
+  subtext="Configure options"
+  tooltip="Access advanced configuration options"
+/>
+```
+
+## Layout Structure
+
+The button layout includes:
+
+1. **Icon Section**: Left-aligned icon with consistent sizing
+2. **Text Column**: Vertically stacked label and subtext
+3. **Badge**: Top-right corner badge (if provided)
+4. **States**: Loading spinner or success checkmark replaces icon
+
+## Typography
+
+- **Label**: Primary text with medium font weight
+- **Subtext**: Muted secondary text with smaller font size
+- **Responsive**: Font sizes scale with button size
+
+## Common Use Cases
+
+### File Operations
+
+```tsx
+<IconLabelSubtextButton
+  icon={<FileText />}
+  label="Export Data"
+  subtext="CSV format • 1.2 MB"
+  onClick={exportData}
+/>
+```
+
+### User Actions
+
+```tsx
+<IconLabelSubtextButton
+  icon={<UserPlus />}
+  label="Invite Team Member"
+  subtext="Send invitation email"
+  badge="NEW"
+  onClick={inviteUser}
+/>
+```
+
+### System Operations
+
+```tsx
+<IconLabelSubtextButton
+  icon={<Database />}
+  label="Backup Database"
+  subtext="Last backup: 2 hours ago"
+  tooltip="Create a full database backup"
+  onClick={backupDatabase}
+/>
+```
+
+## Use Cases
+
+Perfect for:
+
+- **File Management**: Download, upload, export operations
+- **User Management**: Invite, manage, contact actions
+- **System Operations**: Backup, sync, configure actions
+- **Content Actions**: Share, publish, archive operations
+- **Dashboard Actions**: Detailed action buttons with context

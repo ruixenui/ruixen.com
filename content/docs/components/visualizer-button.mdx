@@ -1,0 +1,85 @@
+---
+title: Visualizer Button
+date: 2024-06-01
+description: Compact audio button with animated equalizer bars visualization
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="visualizer-button-demo" category="audio" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/visualizer-button"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="visualizer-button" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import VisualizerButton from "@/components/ruixen/visualizer-button";
+
+export default function App() {
+  return (
+    <VisualizerButton
+      audioSrc="https://example.com/audio.mp3"
+      width={80}
+      height={40}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop        | Type     | Default | Description            |
+| ----------- | -------- | ------- | ---------------------- |
+| `audioSrc`  | `string` | -       | URL of the audio file  |
+| `width`     | `number` | `60`    | Width of the button    |
+| `height`    | `number` | `30`    | Height of the button   |
+| `className` | `string` | -       | Additional CSS classes |
+
+## Features
+
+- **Compact Design**: Small button perfect for toolbars
+- **Animated Bars**: Dancing equalizer visualization when playing
+- **Click to Toggle**: Single click to play/pause
+- **Responsive Bars**: Bars animate based on playing state
+- **Customizable Size**: Adjustable width and height
+- **Smooth Transitions**: CSS transitions for bar animations
+
+## Use Cases
+
+Perfect for:
+
+- **Music Players**: Compact play button with visual feedback
+- **Podcast Apps**: Episode play buttons
+- **Audio Previews**: Quick audio sample players
+- **Toolbars**: Space-efficient audio controls
+- **Audio Lists**: Individual track controls

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "waveform-player-demo",
+  "type": "registry:example",
+  "title": "Waveform Player Demo",
+  "description": "Example showing audio player with visual waveform.",
+  "registryDependencies": [
+    "https://ruixen.com/r/waveform-player"
+  ],
+  "files": [
+    {
+      "path": "registry/example/waveform-player-demo.tsx",
+      "content": "\"use client\";\n\nimport WaveformPlayer from \"@/registry/ruixenui/waveform-player\";\n\nexport default function DemoWaveformPlayer() {\n  return (\n    <div className=\"flex items-center justify-center\">\n      <WaveformPlayer\n        audioSrc=\"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3\"\n        // width={360}\n        // height={50}\n        // className=\"rounded-xl shadow-md\"\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/waveform-player-demo.tsx"
+    }
+  ]
+}

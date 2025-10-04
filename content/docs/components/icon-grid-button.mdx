@@ -1,0 +1,189 @@
+---
+title: Icon Grid Button
+date: 2024-06-01
+description: Button that reveals a grid of icon options on click
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="icon-grid-button-demo" category="buttons" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/icon-grid-button"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="icon-grid-button" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import IconGridButton from "@/components/ruixen/icon-grid-button";
+import {
+  Download,
+  Share,
+  Edit,
+  Trash,
+  Copy,
+  Eye,
+  Heart,
+  Bookmark,
+} from "lucide-react";
+
+export default function App() {
+  const actionIcons = [
+    {
+      icon: <Download className="w-5 h-5" />,
+      onClick: () => console.log("Download clicked"),
+    },
+    {
+      icon: <Share className="w-5 h-5" />,
+      onClick: () => console.log("Share clicked"),
+    },
+    {
+      icon: <Edit className="w-5 h-5" />,
+      onClick: () => console.log("Edit clicked"),
+    },
+    {
+      icon: <Trash className="w-5 h-5" />,
+      onClick: () => console.log("Delete clicked"),
+    },
+    {
+      icon: <Copy className="w-5 h-5" />,
+      onClick: () => console.log("Copy clicked"),
+    },
+    {
+      icon: <Eye className="w-5 h-5" />,
+      onClick: () => console.log("View clicked"),
+    },
+    {
+      icon: <Heart className="w-5 h-5" />,
+      onClick: () => console.log("Like clicked"),
+    },
+    {
+      icon: <Bookmark className="w-5 h-5" />,
+      onClick: () => console.log("Bookmark clicked"),
+    },
+  ];
+
+  return (
+    <div className="space-y-4">
+      <IconGridButton label="Quick Actions" icons={actionIcons} size="md" />
+
+      <IconGridButton
+        label="Tools"
+        icons={actionIcons.slice(0, 4)}
+        size="sm"
+        className="bg-blue-500 hover:bg-blue-600"
+      />
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop        | Type                                                    | Default | Description            |
+| ----------- | ------------------------------------------------------- | ------- | ---------------------- |
+| `label`     | `string`                                                | -       | Button text            |
+| `size`      | `"sm" \| "md" \| "lg"`                                  | `"md"`  | Button size            |
+| `icons`     | `Array<{ icon: React.ReactNode; onClick: () => void }>` | `[]`    | Icon configurations    |
+| `className` | `string`                                                | -       | Additional CSS classes |
+
+## Features
+
+- **Grid Layout**: Icons arranged in 4-column grid
+- **Click Outside**: Closes grid when clicking outside
+- **Hover Effects**: Icon buttons have hover states
+- **Responsive**: Adapts to different screen sizes
+- **Auto Close**: Grid closes after selecting an icon
+- **Flexible Icons**: Support any React icon library
+
+## Icon Configuration
+
+```typescript
+interface IconConfig {
+  icon: React.ReactNode;
+  onClick: () => void;
+}
+```
+
+## Grid Behavior
+
+- **4-Column Layout**: Icons arranged in `grid-cols-4`
+- **Auto-sizing**: Grid adjusts height based on icon count
+- **Positioning**: Appears below button with `mt-2` spacing
+- **Z-index**: Uses `z-50` to appear above other content
+- **Backdrop**: White/dark background with border and shadow
+
+## Size Variants
+
+```tsx
+// Small button
+<IconGridButton size="sm" label="Actions" icons={icons} />
+
+// Medium button (default)
+<IconGridButton size="md" label="Quick Actions" icons={icons} />
+
+// Large button
+<IconGridButton size="lg" label="All Actions" icons={icons} />
+```
+
+## Example Icon Sets
+
+### File Actions
+
+```tsx
+const fileIcons = [
+  { icon: <Download />, onClick: () => downloadFile() },
+  { icon: <Share />, onClick: () => shareFile() },
+  { icon: <Edit />, onClick: () => editFile() },
+  { icon: <Trash />, onClick: () => deleteFile() },
+];
+```
+
+### Social Actions
+
+```tsx
+const socialIcons = [
+  { icon: <Heart />, onClick: () => likePost() },
+  { icon: <MessageCircle />, onClick: () => commentPost() },
+  { icon: <Share />, onClick: () => sharePost() },
+  { icon: <Bookmark />, onClick: () => bookmarkPost() },
+];
+```
+
+## Use Cases
+
+Perfect for:
+
+- **File Management**: Download, share, edit, delete actions
+- **Content Actions**: Like, comment, share, bookmark
+- **Admin Tools**: Quick access to management functions
+- **Media Controls**: Play, pause, skip, volume controls
+- **Toolbar Actions**: Compact action menus

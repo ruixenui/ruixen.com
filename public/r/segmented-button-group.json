@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "segmented-button-group",
+  "type": "registry:ui",
+  "title": "Segmented Button Group",
+  "description": "Group of connected buttons for single selection with smooth animations.",
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/ruixenui/segmented-button-group.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { Button } from \"@/components/ui/button\";\nimport { cn } from \"@/lib/utils\";\n\ninterface SegmentedButtonGroupProps {\n  options: string[];\n  selected?: string;\n  onChange?: (value: string) => void;\n  className?: string;\n}\n\nexport default function SegmentedButtonGroup({\n  options,\n  selected,\n  onChange,\n  className,\n}: SegmentedButtonGroupProps) {\n  const [active, setActive] = React.useState<string>(selected || options[0]);\n\n  const handleClick = (value: string) => {\n    setActive(value);\n    onChange?.(value);\n  };\n\n  return (\n    <div className={cn(\"inline-flex rounded-full bg-background\", className)}>\n      {options.map((option, idx) => {\n        const isFirst = idx === 0;\n        const isLast = idx === options.length - 1;\n        const isActive = option === active;\n\n        return (\n          <Button\n            key={option}\n            onClick={() => handleClick(option)}\n            variant={isActive ? \"default\" : \"outline\"}\n            className={cn(\n              \"rounded-none px-4 py-2\",\n              isFirst && \"rounded-l-full\",\n              isLast && \"rounded-r-full\",\n              isActive && \"bg-primary text-primary-foreground\",\n              !isActive && \"bg-background text-foreground\",\n            )}\n          >\n            {option}\n          </Button>\n        );\n      })}\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/segmented-button-group.tsx"
+    }
+  ]
+}

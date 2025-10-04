@@ -1,0 +1,90 @@
+---
+title: Waveform Player
+date: 2024-06-01
+description: Audio player with visual waveform representation and seek controls
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="waveform-player-demo" category="audio" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/waveform-player"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="waveform-player" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import WaveformPlayer from "@/components/ruixen/waveform-player";
+
+export default function App() {
+  return (
+    <WaveformPlayer
+      audioSrc="https://example.com/audio.mp3"
+      width={500}
+      height={80}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop        | Type     | Default | Description            |
+| ----------- | -------- | ------- | ---------------------- |
+| `audioSrc`  | `string` | -       | URL of the audio file  |
+| `width`     | `number` | `400`   | Width of the waveform  |
+| `height`    | `number` | `60`    | Height of the waveform |
+| `className` | `string` | -       | Additional CSS classes |
+
+## Features
+
+- **Visual Waveform**: Simulated audio waveform with random heights
+- **Click to Seek**: Click anywhere on waveform to jump to position
+- **Progress Overlay**: Visual indication of playback progress
+- **Play/Pause Control**: Simple audio controls
+- **Responsive Bars**: 40 individual waveform bars
+- **Smooth Animations**: CSS transitions for interactions
+
+## Waveform Generation
+
+The component generates a simulated waveform with:
+
+- **40 bars**: Individual frequency bars
+- **Random heights**: Between 10px and (height-20)px
+- **2px width**: Consistent bar width
+- **Rounded corners**: Smooth appearance
+
+## Interaction
+
+- **Click to seek**: Click any position to jump to that time
+- **Progress visualization**: Filled overlay shows current position
+- **Responsive design**: Adapts to specified dimensions
