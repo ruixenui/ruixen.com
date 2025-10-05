@@ -1,0 +1,77 @@
+---
+title: Pill Calendar
+date: 2024-06-01
+description: A modern calendar component with pill-shaped date cells and range selection support
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="pill-calendar-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/pill-calendar"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="pill-calendar" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Components
+
+This package exports two calendar components:
+
+### Calendar
+
+Single date selection with pill-shaped cells.
+
+### RangeCalendar
+
+Date range selection with connected pill styling.
+
+## Usage
+
+```tsx
+import { Calendar, RangeCalendar } from "@/components/ui/pill-calendar";
+
+// Single date selection
+function SingleDatePicker() {
+  return <Calendar />;
+}
+
+// Date range selection
+function DateRangePicker() {
+  return <RangeCalendar />;
+}
+```
+
+## Features
+
+- **Pill-shaped cells**: Modern rounded design for date cells
+- **Range selection**: Seamless date range picking with connected styling
+- **Today indicator**: Visual highlight for the current date
+- **Keyboard navigation**: Full accessibility support
+- **Responsive design**: Works on all screen sizes

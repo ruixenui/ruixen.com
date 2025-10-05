@@ -1,3 +1,5 @@
+"use client";
+
 import ConfirmationButton from "@/registry/ruixenui/confirmation-button";
 
 export default function DemoConfirmationButton() {

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "origami-fold-out-calendar-demo",
+  "type": "registry:example",
+  "title": "Origami Fold Out Calendar Demo",
+  "description": "Example showing an origami-style fold-out calendar with animations.",
+  "registryDependencies": [
+    "https://ruixen.com/r/origami-fold-out-calendar"
+  ],
+  "files": [
+    {
+      "path": "registry/example/origami-fold-out-calendar-demo.tsx",
+      "content": "\"use client\";\n\nimport {\n  OrigamiFoldOutCalendar,\n  EventItem,\n} from \"@/registry/ruixenui/origami-fold-out-calendar\";\nimport { useState } from \"react\";\n\nexport default function OrigamiCalendarDemoPage() {\n  const [events, setEvents] = useState<EventItem[]>([\n    {\n      id: 1,\n      title: \"Team Meeting\",\n      date: new Date(),\n    },\n    {\n      id: 2,\n      title: \"Hackathon Kickoff\",\n      date: new Date(new Date().setDate(new Date().getDate() + 3)),\n    },\n  ]);\n\n  return (\n    <div className=\"max-w-4xl mx-auto py-10 space-y-6\">\n      <h1 className=\"text-3xl font-bold\">Origami Fold-Out Calendar Demo</h1>\n      <p className=\"text-muted-foreground\">\n        This page demonstrates the reusable{\" \"}\n        <strong>OrigamiFoldOutCalendar</strong> component.\n      </p>\n\n      <OrigamiFoldOutCalendar\n        initialEvents={events}\n        onEventsChange={setEvents}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/origami-fold-out-calendar-demo.tsx"
+    }
+  ]
+}

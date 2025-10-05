@@ -3219,4 +3219,67 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "calendar-planner",
+    type: "registry:ui",
+    title: "Calendar Planner",
+    description:
+      "A comprehensive calendar planner with month/year view switching and event information display.",
+    dependencies: ["date-fns", "lucide-react"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "registry/ruixenui/calendar-planner.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/calendar-planner.tsx",
+      },
+    ],
+  },
+  {
+    name: "calendar-twin",
+    type: "registry:ui",
+    title: "Calendar Twin",
+    description:
+      "A dual-view calendar component with month and year selection modes.",
+    dependencies: ["date-fns", "lucide-react"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "registry/ruixenui/calendar-twin.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/calendar-twin.tsx",
+      },
+    ],
+  },
+  {
+    name: "chrono-select",
+    type: "registry:ui",
+    title: "Chrono Select",
+    description:
+      "A date picker with integrated year selection dropdown and calendar view.",
+    dependencies: ["date-fns", "lucide-react"],
+    registryDependencies: ["button", "popover", "calendar", "select"],
+    files: [
+      {
+        path: "registry/ruixenui/chrono-select.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/chrono-select.tsx",
+      },
+    ],
+  },
+  {
+    name: "pill-calendar",
+    type: "registry:ui",
+    title: "Pill Calendar",
+    description:
+      "A modern calendar component with pill-shaped date cells and range selection support.",
+    dependencies: ["react-aria-components", "@internationalized/date"],
+    files: [
+      {
+        path: "registry/ruixenui/pill-calendar.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/pill-calendar.tsx",
+      },
+    ],
+  },
 ];

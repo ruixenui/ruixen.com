@@ -1,3 +1,5 @@
+"use client";
+
 import ExpandableContentButton from "@/registry/ruixenui/expandable-content-button";
 import { ChevronDown, ChevronUp, Twitter, Linkedin, Copy } from "lucide-react";
 

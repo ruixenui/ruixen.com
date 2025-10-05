@@ -1013,6 +1013,30 @@ export const docsConfig: DocsConfig = {
               items: [],
               label: "New",
             },
+            {
+              title: "Calendar Planner",
+              href: `/docs/components/calendar-planner`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Calendar Twin",
+              href: `/docs/components/calendar-twin`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Chrono Select",
+              href: `/docs/components/chrono-select`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Pill Calendar",
+              href: `/docs/components/pill-calendar`,
+              items: [],
+              label: "New",
+            },
           ],
         },
         {

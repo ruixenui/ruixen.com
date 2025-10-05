@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pill-calendar-demo",
+  "type": "registry:example",
+  "title": "Pill Calendar Demo",
+  "description": "Example showing a modern calendar component with pill-shaped date cells.",
+  "registryDependencies": [
+    "https://ruixen.com/r/pill-calendar"
+  ],
+  "files": [
+    {
+      "path": "registry/example/pill-calendar-demo.tsx",
+      "content": "\"use client\";\n\nimport { SiNpm, SiPnpm, SiYarn, SiBun } from \"react-icons/si\";\nimport PackageInstallerTabs, {\n  PackageTab,\n} from \"@/registry/ruixenui/package-installer-tabs\";\nimport { toast } from \"sonner\"; // Optional toast library\n\nconst tabs: PackageTab[] = [\n  {\n    id: \"npm\",\n    label: \"npm\",\n    icon: <SiNpm className=\"w-4 h-4\" />,\n    command: \"npx\",\n    packageName: \"shadcn@latest add https://ruixen.com/r/staggered-faq-section\",\n    extra: \"--save\",\n  },\n  {\n    id: \"pnpm\",\n    label: \"pnpm\",\n    icon: <SiPnpm className=\"w-4 h-4\" />,\n    command: \"pnpm dlx\",\n    packageName: \"shadcn@latest add https://ruixen.com/r/staggered-faq-section\",\n  },\n  {\n    id: \"yarn\",\n    label: \"yarn\",\n    icon: <SiYarn className=\"w-4 h-4\" />,\n    command: \"yarn dlx\",\n    packageName: \"shadcn@latest add https://ruixen.com/r/staggered-faq-section\",\n  },\n  {\n    id: \"bun\",\n    label: \"bun\",\n    icon: <SiBun className=\"w-4 h-4\" />,\n    command: \"bunx\",\n    packageName: \"shadcn@latest add https://ruixen.com/r/staggered-faq-section\",\n  },\n];\n\nexport default function PackageInstallerDemoPage() {\n  const handleCopy = (text: string) => {\n    toast?.success(`Copied: ${text}`);\n  };\n\n  return (\n    <div className=\"min-h-screen bg-white dark:bg-zinc-950 flex flex-col items-center justify-center p-6 gap-6\">\n      <h1 className=\"text-2xl font-bold text-center\">\n        Package Installer Tabs Demo\n      </h1>\n      <p className=\"text-gray-600 dark:text-gray-300 text-center max-w-lg\">\n        Switch between package managers to see the installation commands and\n        copy them easily.\n      </p>\n\n      <PackageInstallerTabs\n        tabs={tabs}\n        defaultTab=\"npm\"\n        title=\"Install Staggered FAQ Section\"\n        onCopy={handleCopy}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/pill-calendar-demo.tsx"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "drag-and-drop-tabs-demo",
+  "type": "registry:example",
+  "title": "Drag And Drop Tabs Demo",
+  "description": "Example showing tabs with drag and drop reordering functionality.",
+  "registryDependencies": [
+    "https://ruixen.com/r/drag-and-drop-tabs"
+  ],
+  "files": [
+    {
+      "path": "registry/example/drag-and-drop-tabs-demo.tsx",
+      "content": "\"use client\";\n\nimport DragAndDropTabs from \"@/registry/ruixenui/drag-and-drop-tabs\";\n\nexport default function DragAndDropTabsDemoPage() {\n  const demoItems = [\n    { value: \"tab1\", label: \"Tab 1\", content: \"This is content for Tab 1.\" },\n    { value: \"tab2\", label: \"Tab 2\", content: \"This is content for Tab 2.\" },\n    { value: \"tab3\", label: \"Tab 3\", content: \"This is content for Tab 3.\" },\n    { value: \"tab4\", label: \"Tab 4\", content: \"This is content for Tab 4.\" },\n    { value: \"tab5\", label: \"Tab 5\", content: \"This is content for Tab 5.\" },\n  ];\n\n  return (\n    <div className=\"min-h-screen flex flex-col items-center justify-center p-6 bg-gray-50 dark:bg-gray-900\">\n      <h1 className=\"text-2xl font-bold mb-6 text-center\">\n        Drag & Drop Tabs Demo\n      </h1>\n      <div className=\"w-full max-w-xl\">\n        <DragAndDropTabs items={demoItems} defaultValue=\"tab1\" />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/drag-and-drop-tabs-demo.tsx"
+    }
+  ]
+}

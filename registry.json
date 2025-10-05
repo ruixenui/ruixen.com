@@ -3644,6 +3644,86 @@
       ]
     },
     {
+      "name": "calendar-planner",
+      "type": "registry:ui",
+      "title": "Calendar Planner",
+      "description": "A comprehensive calendar planner with month/year view switching and event information display.",
+      "dependencies": [
+        "date-fns",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/calendar-planner.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/calendar-planner.tsx"
+        }
+      ]
+    },
+    {
+      "name": "calendar-twin",
+      "type": "registry:ui",
+      "title": "Calendar Twin",
+      "description": "A dual-view calendar component with month and year selection modes.",
+      "dependencies": [
+        "date-fns",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/calendar-twin.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/calendar-twin.tsx"
+        }
+      ]
+    },
+    {
+      "name": "chrono-select",
+      "type": "registry:ui",
+      "title": "Chrono Select",
+      "description": "A date picker with integrated year selection dropdown and calendar view.",
+      "dependencies": [
+        "date-fns",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "popover",
+        "calendar",
+        "select"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/chrono-select.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/chrono-select.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pill-calendar",
+      "type": "registry:ui",
+      "title": "Pill Calendar",
+      "description": "A modern calendar component with pill-shaped date cells and range selection support.",
+      "dependencies": [
+        "react-aria-components",
+        "@internationalized/date"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/pill-calendar.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/pill-calendar.tsx"
+        }
+      ]
+    },
+    {
       "name": "staggered-faq-section-demo",
       "type": "registry:example",
       "title": "StaggeredFAQSection Demo",
@@ -6552,6 +6632,582 @@
           "path": "registry/example/event-calendar-demo.tsx",
           "type": "registry:example",
           "target": "components/event-calendar-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "calendar-planner-demo",
+      "type": "registry:example",
+      "title": "Calendar Planner Demo",
+      "description": "Example showing a comprehensive calendar planner with month/year view switching.",
+      "registryDependencies": [
+        "https://ruixen.com/r/calendar-planner"
+      ],
+      "files": [
+        {
+          "path": "registry/example/calendar-planner-demo.tsx",
+          "type": "registry:example",
+          "target": "components/calendar-planner-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "calendar-twin-demo",
+      "type": "registry:example",
+      "title": "Calendar Twin Demo",
+      "description": "Example showing a dual-view calendar component with month and year selection modes.",
+      "registryDependencies": [
+        "https://ruixen.com/r/calendar-twin"
+      ],
+      "files": [
+        {
+          "path": "registry/example/calendar-twin-demo.tsx",
+          "type": "registry:example",
+          "target": "components/calendar-twin-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "chrono-select-demo",
+      "type": "registry:example",
+      "title": "Chrono Select Demo",
+      "description": "Example showing a date picker with integrated year selection dropdown.",
+      "registryDependencies": [
+        "https://ruixen.com/r/chrono-select"
+      ],
+      "files": [
+        {
+          "path": "registry/example/chrono-select-demo.tsx",
+          "type": "registry:example",
+          "target": "components/chrono-select-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pill-calendar-demo",
+      "type": "registry:example",
+      "title": "Pill Calendar Demo",
+      "description": "Example showing a modern calendar component with pill-shaped date cells.",
+      "registryDependencies": [
+        "https://ruixen.com/r/pill-calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/example/pill-calendar-demo.tsx",
+          "type": "registry:example",
+          "target": "components/pill-calendar-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "particle-flow-calendar-demo",
+      "type": "registry:example",
+      "title": "Particle Flow Calendar Demo",
+      "description": "Example showing a particle flow calendar with animated particles.",
+      "registryDependencies": [
+        "https://ruixen.com/r/particle-flow-calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/example/particle-flow-calendar-demo.tsx",
+          "type": "registry:example",
+          "target": "components/particle-flow-calendar-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "wheel-of-time-calendar-demo",
+      "type": "registry:example",
+      "title": "Wheel Of Time Calendar Demo",
+      "description": "Example showing a wheel of time calendar with circular time display.",
+      "registryDependencies": [
+        "https://ruixen.com/r/wheel-of-time-calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/example/wheel-of-time-calendar-demo.tsx",
+          "type": "registry:example",
+          "target": "components/wheel-of-time-calendar-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "swipe-to-confirm-button-demo",
+      "type": "registry:example",
+      "title": "Swipe To Confirm Button Demo",
+      "description": "Example showing a swipe to confirm button with gesture interaction.",
+      "registryDependencies": [
+        "https://ruixen.com/r/swipe-to-confirm-button"
+      ],
+      "files": [
+        {
+          "path": "registry/example/swipe-to-confirm-button-demo.tsx",
+          "type": "registry:example",
+          "target": "components/swipe-to-confirm-button-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "expandable-content-button-demo",
+      "type": "registry:example",
+      "title": "Expandable Content Button Demo",
+      "description": "Example showing a button that expands to reveal additional content.",
+      "registryDependencies": [
+        "https://ruixen.com/r/expandable-content-button"
+      ],
+      "files": [
+        {
+          "path": "registry/example/expandable-content-button-demo.tsx",
+          "type": "registry:example",
+          "target": "components/expandable-content-button-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "confirmation-button-demo",
+      "type": "registry:example",
+      "title": "Confirmation Button Demo",
+      "description": "Example showing a button with confirmation dialog functionality.",
+      "registryDependencies": [
+        "https://ruixen.com/r/confirmation-button"
+      ],
+      "files": [
+        {
+          "path": "registry/example/confirmation-button-demo.tsx",
+          "type": "registry:example",
+          "target": "components/confirmation-button-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "confetti-button-demo",
+      "type": "registry:example",
+      "title": "Confetti Button Demo",
+      "description": "Example showing a button that triggers confetti animation on click.",
+      "registryDependencies": [
+        "https://ruixen.com/r/confetti-button"
+      ],
+      "files": [
+        {
+          "path": "registry/example/confetti-button-demo.tsx",
+          "type": "registry:example",
+          "target": "components/confetti-button-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "countdown-button-demo",
+      "type": "registry:example",
+      "title": "Countdown Button Demo",
+      "description": "Example showing a button with countdown timer functionality.",
+      "registryDependencies": [
+        "https://ruixen.com/r/countdown-button"
+      ],
+      "files": [
+        {
+          "path": "registry/example/countdown-button-demo.tsx",
+          "type": "registry:example",
+          "target": "components/countdown-button-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "segmented-button-group-demo",
+      "type": "registry:example",
+      "title": "Segmented Button Group Demo",
+      "description": "Example showing a segmented button group with multiple options.",
+      "registryDependencies": [
+        "https://ruixen.com/r/segmented-button-group"
+      ],
+      "files": [
+        {
+          "path": "registry/example/segmented-button-group-demo.tsx",
+          "type": "registry:example",
+          "target": "components/segmented-button-group-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hover-preview-button-demo",
+      "type": "registry:example",
+      "title": "Hover Preview Button Demo",
+      "description": "Example showing a button with hover preview functionality.",
+      "registryDependencies": [
+        "https://ruixen.com/r/hover-preview-button"
+      ],
+      "files": [
+        {
+          "path": "registry/example/hover-preview-button-demo.tsx",
+          "type": "registry:example",
+          "target": "components/hover-preview-button-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "icon-label-subtext-button-demo",
+      "type": "registry:example",
+      "title": "Icon Label Subtext Button Demo",
+      "description": "Example showing a button with icon, label, and subtext.",
+      "registryDependencies": [
+        "https://ruixen.com/r/icon-label-subtext-button"
+      ],
+      "files": [
+        {
+          "path": "registry/example/icon-label-subtext-button-demo.tsx",
+          "type": "registry:example",
+          "target": "components/icon-label-subtext-button-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "icon-grid-button-demo",
+      "type": "registry:example",
+      "title": "Icon Grid Button Demo",
+      "description": "Example showing a button with grid layout of icons.",
+      "registryDependencies": [
+        "https://ruixen.com/r/icon-grid-button"
+      ],
+      "files": [
+        {
+          "path": "registry/example/icon-grid-button-demo.tsx",
+          "type": "registry:example",
+          "target": "components/icon-grid-button-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "multi-state-morph-button-demo",
+      "type": "registry:example",
+      "title": "Multi State Morph Button Demo",
+      "description": "Example showing a button that morphs between different states.",
+      "registryDependencies": [
+        "https://ruixen.com/r/multi-state-morph-button"
+      ],
+      "files": [
+        {
+          "path": "registry/example/multi-state-morph-button-demo.tsx",
+          "type": "registry:example",
+          "target": "components/multi-state-morph-button-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "multi-step-login-demo",
+      "type": "registry:example",
+      "title": "Multi Step Login Demo",
+      "description": "Example showing a multi-step login process with form validation.",
+      "registryDependencies": [
+        "https://ruixen.com/r/multi-step-login"
+      ],
+      "files": [
+        {
+          "path": "registry/example/multi-step-login-demo.tsx",
+          "type": "registry:example",
+          "target": "components/multi-step-login-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "multi-step-button-demo",
+      "type": "registry:example",
+      "title": "Multi Step Button Demo",
+      "description": "Example showing a button with multi-step functionality.",
+      "registryDependencies": [
+        "https://ruixen.com/r/multi-step-button"
+      ],
+      "files": [
+        {
+          "path": "registry/example/multi-step-button-demo.tsx",
+          "type": "registry:example",
+          "target": "components/multi-step-button-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "badge-button-combo-demo",
+      "type": "registry:example",
+      "title": "Badge Button Combo Demo",
+      "description": "Example showing a button combined with badge functionality.",
+      "registryDependencies": [
+        "https://ruixen.com/r/badge-button-combo"
+      ],
+      "files": [
+        {
+          "path": "registry/example/badge-button-combo-demo.tsx",
+          "type": "registry:example",
+          "target": "components/badge-button-combo-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "avatar-action-button-demo",
+      "type": "registry:example",
+      "title": "Avatar Action Button Demo",
+      "description": "Example showing a button with avatar and action functionality.",
+      "registryDependencies": [
+        "https://ruixen.com/r/avatar-action-button"
+      ],
+      "files": [
+        {
+          "path": "registry/example/avatar-action-button-demo.tsx",
+          "type": "registry:example",
+          "target": "components/avatar-action-button-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "social-auth-card-demo",
+      "type": "registry:example",
+      "title": "Social Auth Card Demo",
+      "description": "Example showing a social authentication card with multiple providers.",
+      "registryDependencies": [
+        "https://ruixen.com/r/social-auth-card"
+      ],
+      "files": [
+        {
+          "path": "registry/example/social-auth-card-demo.tsx",
+          "type": "registry:example",
+          "target": "components/social-auth-card-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "priority-pyramid-calendar-demo",
+      "type": "registry:example",
+      "title": "Priority Pyramid Calendar Demo",
+      "description": "Example showing a priority pyramid calendar with task prioritization.",
+      "registryDependencies": [
+        "https://ruixen.com/r/priority-pyramid-calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/example/priority-pyramid-calendar-demo.tsx",
+          "type": "registry:example",
+          "target": "components/priority-pyramid-calendar-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "progress-button-demo",
+      "type": "registry:example",
+      "title": "Progress Button Demo",
+      "description": "Example showing a button with progress indicator functionality.",
+      "registryDependencies": [
+        "https://ruixen.com/r/progress-button"
+      ],
+      "files": [
+        {
+          "path": "registry/example/progress-button-demo.tsx",
+          "type": "registry:example",
+          "target": "components/progress-button-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "notification-button-demo",
+      "type": "registry:example",
+      "title": "Notification Button Demo",
+      "description": "Example showing a button with notification badge functionality.",
+      "registryDependencies": [
+        "https://ruixen.com/r/notification-button"
+      ],
+      "files": [
+        {
+          "path": "registry/example/notification-button-demo.tsx",
+          "type": "registry:example",
+          "target": "components/notification-button-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tooltip-button-demo",
+      "type": "registry:example",
+      "title": "Tooltip Button Demo",
+      "description": "Example showing a button with tooltip functionality.",
+      "registryDependencies": [
+        "https://ruixen.com/r/tooltip-button"
+      ],
+      "files": [
+        {
+          "path": "registry/example/tooltip-button-demo.tsx",
+          "type": "registry:example",
+          "target": "components/tooltip-button-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "drag-and-drop-tabs-demo",
+      "type": "registry:example",
+      "title": "Drag And Drop Tabs Demo",
+      "description": "Example showing tabs with drag and drop reordering functionality.",
+      "registryDependencies": [
+        "https://ruixen.com/r/drag-and-drop-tabs"
+      ],
+      "files": [
+        {
+          "path": "registry/example/drag-and-drop-tabs-demo.tsx",
+          "type": "registry:example",
+          "target": "components/drag-and-drop-tabs-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dynamic-status-button-demo",
+      "type": "registry:example",
+      "title": "Dynamic Status Button Demo",
+      "description": "Example showing a button with dynamic status indicators.",
+      "registryDependencies": [
+        "https://ruixen.com/r/dynamic-status-button"
+      ],
+      "files": [
+        {
+          "path": "registry/example/dynamic-status-button-demo.tsx",
+          "type": "registry:example",
+          "target": "components/dynamic-status-button-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "split-action-button-demo",
+      "type": "registry:example",
+      "title": "Split Action Button Demo",
+      "description": "Example showing a split button with multiple action options.",
+      "registryDependencies": [
+        "https://ruixen.com/r/split-action-button"
+      ],
+      "files": [
+        {
+          "path": "registry/example/split-action-button-demo.tsx",
+          "type": "registry:example",
+          "target": "components/split-action-button-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "split-login-card-demo",
+      "type": "registry:example",
+      "title": "Split Login Card Demo",
+      "description": "Example showing a split layout login card with dual sections.",
+      "registryDependencies": [
+        "https://ruixen.com/r/split-login-card"
+      ],
+      "files": [
+        {
+          "path": "registry/example/split-login-card-demo.tsx",
+          "type": "registry:example",
+          "target": "components/split-login-card-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "event-aquarium-calendar-demo",
+      "type": "registry:example",
+      "title": "Event Aquarium Calendar Demo",
+      "description": "Example showing an event aquarium calendar with floating event bubbles.",
+      "registryDependencies": [
+        "https://ruixen.com/r/event-aquarium-calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/example/event-aquarium-calendar-demo.tsx",
+          "type": "registry:example",
+          "target": "components/event-aquarium-calendar-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "checklist-button-demo",
+      "type": "registry:example",
+      "title": "Checklist Button Demo",
+      "description": "Example showing a button with checklist functionality.",
+      "registryDependencies": [
+        "https://ruixen.com/r/checklist-button"
+      ],
+      "files": [
+        {
+          "path": "registry/example/checklist-button-demo.tsx",
+          "type": "registry:example",
+          "target": "components/checklist-button-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "status-button-demo",
+      "type": "registry:example",
+      "title": "Status Button Demo",
+      "description": "Example showing a button with status indicator functionality.",
+      "registryDependencies": [
+        "https://ruixen.com/r/status-button"
+      ],
+      "files": [
+        {
+          "path": "registry/example/status-button-demo.tsx",
+          "type": "registry:example",
+          "target": "components/status-button-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "login-card-demo",
+      "type": "registry:example",
+      "title": "Login Card Demo",
+      "description": "Example showing a login card with form validation and authentication.",
+      "registryDependencies": [
+        "https://ruixen.com/r/login-card"
+      ],
+      "files": [
+        {
+          "path": "registry/example/login-card-demo.tsx",
+          "type": "registry:example",
+          "target": "components/login-card-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "gamified-login-card-demo",
+      "type": "registry:example",
+      "title": "Gamified Login Card Demo",
+      "description": "Example showing a gamified login card with interactive elements.",
+      "registryDependencies": [
+        "https://ruixen.com/r/gamified-login-card"
+      ],
+      "files": [
+        {
+          "path": "registry/example/gamified-login-card-demo.tsx",
+          "type": "registry:example",
+          "target": "components/gamified-login-card-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "origami-fold-out-calendar-demo",
+      "type": "registry:example",
+      "title": "Origami Fold Out Calendar Demo",
+      "description": "Example showing an origami-style fold-out calendar with animations.",
+      "registryDependencies": [
+        "https://ruixen.com/r/origami-fold-out-calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/example/origami-fold-out-calendar-demo.tsx",
+          "type": "registry:example",
+          "target": "components/origami-fold-out-calendar-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "event-path-calendar-demo",
+      "type": "registry:example",
+      "title": "Event Path Calendar Demo",
+      "description": "Example showing an event path calendar with timeline visualization.",
+      "registryDependencies": [
+        "https://ruixen.com/r/event-path-calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/example/event-path-calendar-demo.tsx",
+          "type": "registry:example",
+          "target": "components/event-path-calendar-demo.tsx"
         }
       ]
     },

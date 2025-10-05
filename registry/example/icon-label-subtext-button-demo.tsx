@@ -1,3 +1,5 @@
+"use client";
+
 import IconLabelSubtextButton from "@/registry/ruixenui/icon-label-subtext-button";
 import { DownloadCloud, Loader2, Check } from "lucide-react";
 
