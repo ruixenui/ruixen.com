@@ -412,6 +412,51 @@ export const docsConfig: DocsConfig = {
           ],
         },
         {
+          title: "Select Components",
+          items: [
+            {
+              title: "Color Emotion Select",
+              href: `/docs/components/color-emotion-select`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Tag Cloud Select",
+              href: `/docs/components/tag-cloud-select`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Live Preview Style Select",
+              href: `/docs/components/live-preview-style-select`,
+              items: [],
+              label: "New",
+            },
+          ],
+        },
+        {
+          title: "Hero Sections",
+          items: [
+            {
+              title: "Hero Title Slide",
+              href: `/docs/components/hero-title-slide`,
+              items: [],
+              label: "New",
+            },
+          ],
+        },
+        {
+          title: "Chat Components",
+          items: [
+            {
+              title: "Ruixen Moon Chat",
+              href: `/docs/components/ruixen-moon-chat`,
+              items: [],
+              label: "New",
+            },
+          ],
+        },
+        {
           title: "Inputs",
           items: [
             {
@@ -931,6 +976,42 @@ export const docsConfig: DocsConfig = {
               href: `/docs/components/event-calendar`,
               items: [],
               label: "",
+            },
+            {
+              title: "Priority Pyramid Calendar",
+              href: `/docs/components/priority-pyramid-calendar`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Event Path Calendar",
+              href: `/docs/components/event-path-calendar`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Wheel Of Time Calendar",
+              href: `/docs/components/wheel-of-time-calendar`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Particle Flow Calendar",
+              href: `/docs/components/particle-flow-calendar`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Event Aquarium Calendar",
+              href: `/docs/components/event-aquarium-calendar`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Origami Fold Out Calendar",
+              href: `/docs/components/origami-fold-out-calendar`,
+              items: [],
+              label: "New",
             },
           ],
         },
