@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "review-filter-bars",
+  "type": "registry:ui",
+  "title": "Review Filter Bars",
+  "description": "A radio group for filtering reviews by star rating with progress bars and counts.",
+  "dependencies": [
+    "@radix-ui/react-radio-group",
+    "@remixicon/react"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/review-filter-bars.tsx",
+      "content": "\"use client\";\r\n\r\nimport * as RadioGroupPrimitive from \"@radix-ui/react-radio-group\";\r\nimport * as React from \"react\";\r\nimport { RiStarFill } from \"@remixicon/react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nconst ReviewFilterGroup = React.forwardRef<\r\n  React.ElementRef<typeof RadioGroupPrimitive.Root>,\r\n  React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root>\r\n>(({ className, ...props }, ref) => (\r\n  <RadioGroupPrimitive.Root\r\n    ref={ref}\r\n    className={cn(\"flex flex-col gap-2 w-full max-w-md\", className)}\r\n    {...props}\r\n  />\r\n));\r\nReviewFilterGroup.displayName = RadioGroupPrimitive.Root.displayName;\r\n\r\nconst ReviewFilterItem = React.forwardRef<\r\n  React.ElementRef<typeof RadioGroupPrimitive.Item>,\r\n  React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item> & {\r\n    stars: number;\r\n    count: number;\r\n    total: number;\r\n  }\r\n>(({ className, stars, count, total, ...props }, ref) => {\r\n  const percentage = Math.round((count / total) * 100);\r\n\r\n  return (\r\n    <RadioGroupPrimitive.Item\r\n      ref={ref}\r\n      className={cn(\r\n        \"relative flex items-center gap-3 rounded-md border border-input p-2 transition-colors\",\r\n        \"hover:border-primary/60 hover:bg-accent/40\",\r\n        \"data-[state=checked]:border-gray-500 data-[state=checked]:bg-accent/60\",\r\n        className\r\n      )}\r\n      {...props}\r\n    >\r\n      {/* Star rating */}\r\n      <div className=\"flex items-center gap-0.5 min-w-[72px]\">\r\n        {Array.from({ length: 5 }).map((_, i) => (\r\n          <RiStarFill\r\n            key={i}\r\n            size={16}\r\n            className={i < stars ? \"text-amber-500\" : \"text-muted-foreground/30\"}\r\n          />\r\n        ))}\r\n      </div>\r\n\r\n      {/* Progress bar */}\r\n      <div className=\"flex-1 h-2 rounded-full bg-muted\">\r\n        <div\r\n          className=\"h-2 rounded-full bg-primary\"\r\n          style={{ width: `${percentage}%` }}\r\n        />\r\n      </div>\r\n\r\n      {/* Count */}\r\n      <span className=\"text-xs font-medium text-muted-foreground w-12 text-right\">\r\n        {count.toLocaleString()}\r\n      </span>\r\n    </RadioGroupPrimitive.Item>\r\n  );\r\n});\r\nReviewFilterItem.displayName = \"ReviewFilterItem\";\r\n\r\nexport { ReviewFilterGroup, ReviewFilterItem };\r\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/review-filter-bars.tsx"
+    }
+  ]
+}

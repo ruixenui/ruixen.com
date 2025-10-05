@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sentiment-radio-group",
+  "type": "registry:ui",
+  "title": "Sentiment Radio Group",
+  "description": "A radio group with sentiment cards featuring emojis, titles, and descriptions for feedback collection.",
+  "dependencies": [
+    "@radix-ui/react-radio-group"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/sentiment-radio-group.tsx",
+      "content": "\"use client\";\r\n\r\nimport * as RadioGroupPrimitive from \"@radix-ui/react-radio-group\";\r\nimport * as React from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nconst RadioGroup = React.forwardRef<\r\n  React.ElementRef<typeof RadioGroupPrimitive.Root>,\r\n  React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root>\r\n>(({ className, ...props }, ref) => (\r\n  <RadioGroupPrimitive.Root\r\n    ref={ref}\r\n    className={cn(\"flex flex-col gap-3\", className)}\r\n    {...props}\r\n  />\r\n));\r\nRadioGroup.displayName = RadioGroupPrimitive.Root.displayName;\r\n\r\nconst SentimentCard = React.forwardRef<\r\n  React.ElementRef<typeof RadioGroupPrimitive.Item>,\r\n  React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item> & {\r\n    emoji: string;\r\n    title: string;\r\n    description?: string;\r\n  }\r\n>(({ className, emoji, title, description, ...props }, ref) => (\r\n  <RadioGroupPrimitive.Item\r\n    ref={ref}\r\n    className={cn(\r\n      \"relative flex w-full items-center gap-3 rounded-lg border p-3 text-left shadow-sm transition-all\",\r\n      \"hover:shadow-md\",\r\n      \"focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring/70\",\r\n      \"data-[state=checked]:border-gray-400 data-[state=checked]:bg-accent data-[state=checked]:text-accent-foreground\",\r\n      \"disabled:cursor-not-allowed disabled:opacity-50\",\r\n      className\r\n    )}\r\n    {...props}\r\n  >\r\n    <span className=\"text-2xl\">{emoji}</span>\r\n    <div className=\"flex flex-col\">\r\n      <span className=\"font-medium\">{title}</span>\r\n      {description && (\r\n        <span className=\"text-xs text-muted-foreground\">{description}</span>\r\n      )}\r\n    </div>\r\n  </RadioGroupPrimitive.Item>\r\n));\r\nSentimentCard.displayName = \"SentimentCard\";\r\n\r\nexport { RadioGroup, SentimentCard };\r\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/sentiment-radio-group.tsx"
+    }
+  ]
+}

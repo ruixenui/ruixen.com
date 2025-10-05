@@ -1,3 +1,5 @@
+"use client";
+
 import IconGridButton from "@/registry/ruixenui/icon-grid-button";
 import { MonitorDown, Settings, Star, Heart } from "lucide-react";
 

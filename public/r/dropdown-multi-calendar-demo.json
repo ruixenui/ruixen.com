@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dropdown-multi-calendar-demo",
+  "type": "registry:example",
+  "title": "Dropdown Multi Calendar Demo",
+  "description": "Example showing a multi-select calendar with year/month dropdowns.",
+  "registryDependencies": [
+    "https://ruixen.com/r/dropdown-multi-calendar"
+  ],
+  "files": [
+    {
+      "path": "registry/example/dropdown-multi-calendar-demo.tsx",
+      "content": "\"use client\";\n\nimport { useState } from \"react\";\nimport { DropdownMultiCalendar } from \"@/registry/ruixenui/dropdown-multi-calendar\";\n\nexport default function DemoDropdownMultiCalendar() {\n  const [dates, setDates] = useState<Date[]>([]);\n\n  return (\n    <div className=\"p-6 space-y-6\">\n      <h2 className=\"text-lg font-semibold\">\n        Configurable Dropdown Multi-Select Calendar\n      </h2>\n\n      <DropdownMultiCalendar\n        selectedDates={dates}\n        onChange={(newDates) => setDates(newDates)}\n        minYear={2000}\n        maxYear={2030}\n        maxSelectable={10}\n        label=\"Select your important dates\"\n        monthFormat=\"MMM\"\n        className=\"max-w-md\"\n      />\n\n      <div className=\"mt-4 text-sm text-muted-foreground\">\n        Selected Dates:{\" \"}\n        {dates.length > 0\n          ? dates.map((d) => d.toDateString()).join(\", \")\n          : \"None\"}\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/dropdown-multi-calendar-demo.tsx"
+    }
+  ]
+}

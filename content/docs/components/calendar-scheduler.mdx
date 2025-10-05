@@ -1,0 +1,107 @@
+---
+title: Calendar Scheduler
+date: 2024-06-01
+description: A meeting scheduler with calendar date selection and time slot picker
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="calendar-scheduler-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/calendar-scheduler"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="calendar-scheduler" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { CalendarScheduler } from "@/components/ruixen/calendar-scheduler";
+
+export default function App() {
+  const customTimeSlots = [
+    "09:00 AM",
+    "10:00 AM",
+    "11:00 AM",
+    "02:00 PM",
+    "03:00 PM",
+    "04:00 PM",
+  ];
+
+  return (
+    <CalendarScheduler
+      timeSlots={customTimeSlots}
+      onConfirm={(value) => {
+        console.log("Scheduled:", value);
+      }}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop        | Type                                              | Default                | Description                            |
+| ----------- | ------------------------------------------------- | ---------------------- | -------------------------------------- |
+| `timeSlots` | `string[]`                                        | Default business hours | Available time slots                   |
+| `onConfirm` | `(value: { date?: Date; time?: string }) => void` | -                      | Callback when appointment is confirmed |
+
+## Features
+
+- **Split Layout**: Calendar and time slots side by side
+- **Time Slot Grid**: Easy selection of available times
+- **Visual Feedback**: Selected time highlighted with ring
+- **Reset Function**: Clear selection with one click
+- **Responsive Design**: Adapts to different screen sizes
+- **Confirmation Flow**: Requires both date and time selection
+
+## Default Time Slots
+
+```tsx
+[
+  "08:00 AM",
+  "09:00 AM",
+  "10:00 AM",
+  "11:00 AM",
+  "12:00 PM",
+  "01:00 PM",
+  "02:00 PM",
+  "03:00 PM",
+  "04:00 PM",
+  "05:00 PM",
+];
+```
+
+## Use Cases
+
+- **Meeting Scheduling**: Book appointments with clients
+- **Event Planning**: Schedule events with time constraints
+- **Service Booking**: Reserve time slots for services
+- **Consultation Booking**: Professional appointment scheduling

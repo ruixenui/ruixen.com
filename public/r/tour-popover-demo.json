@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tour-popover-demo",
+  "type": "registry:example",
+  "title": "Tour Popover Demo",
+  "description": "Example showing a guided tour popover with step navigation.",
+  "registryDependencies": [
+    "https://ruixen.com/r/tour-popover"
+  ],
+  "files": [
+    {
+      "path": "registry/example/tour-popover-demo.tsx",
+      "content": "\"use client\";\r\n\r\nimport { TourPopover, TourStep } from \"@/registry/ruixenui/tour-popover\";\r\nimport { Home, Settings, HelpCircle, Keyboard } from \"lucide-react\";\r\n\r\nconst steps: TourStep[] = [\r\n  {\r\n    icon: Home,\r\n    title: \"Dashboard\",\r\n    description: \"This is your dashboard where you see your project overview.\",\r\n  },\r\n  {\r\n    icon: Settings,\r\n    title: \"Settings\",\r\n    description: \"Adjust your preferences and configure your workspace.\",\r\n  },\r\n  {\r\n    icon: HelpCircle,\r\n    title: \"Support\",\r\n    description: \"Access our help center and documentation anytime.\",\r\n  },\r\n  {\r\n    icon: Keyboard,\r\n    title: \"Shortcuts\",\r\n    description: \"Use shortcuts to navigate faster and improve productivity.\",\r\n  },\r\n];\r\n\r\nexport default function TourDemoPage() {\r\n  return (\r\n    <div className=\"flex min-h-screen items-center justify-center bg-gray-50\">\r\n      <TourPopover\r\n        steps={steps}\r\n        triggerLabel=\"Take a tour\"\r\n        popoverWidth=\"w-96\"\r\n        side=\"right\"\r\n        align=\"start\"\r\n      />\r\n    </div>\r\n  );\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/tour-popover-demo.tsx"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "credit-card-dialog-demo",
+  "type": "registry:example",
+  "title": "Credit Card Dialog Demo",
+  "description": "Example showing a credit card activation dialog with animated card.",
+  "registryDependencies": [
+    "https://ruixen.com/r/credit-card-dialog"
+  ],
+  "files": [
+    {
+      "path": "registry/example/credit-card-dialog-demo.tsx",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { Button } from \"@/components/ui/button\";\r\nimport { CreditCardDialog } from \"@/registry/ruixenui/credit-card-dialog\";\r\n\r\nexport default function CreditDemo() {\r\n  const [isDialogOpen, setIsDialogOpen] = React.useState(false);\r\n\r\n  const handleActivate = (code: string): Promise<void> => {\r\n    console.log(`Verifying activation code: ${code}`);\r\n    return new Promise((resolve) => {\r\n      setTimeout(() => {\r\n        console.log(\"✅ Card activated successfully!\");\r\n        setIsDialogOpen(false);\r\n        resolve();\r\n      }, 2000);\r\n    });\r\n  };\r\n\r\n  return (\r\n    <div className=\"flex min-h-[350px] w-full items-center justify-center\">\r\n      <Button onClick={() => setIsDialogOpen(true)}>Activate Card</Button>\r\n\r\n      <CreditCardDialog\r\n        open={isDialogOpen}\r\n        onOpenChange={setIsDialogOpen}\r\n        onActivate={handleActivate}\r\n      />\r\n    </div>\r\n  );\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/credit-card-dialog-demo.tsx"
+    }
+  ]
+}

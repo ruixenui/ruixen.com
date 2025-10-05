@@ -1,0 +1,141 @@
+---
+title: Rating Scale Group
+date: 2024-06-01
+description: A horizontal rating scale radio group with numbered items and green indicator dots.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="rating-scale-group-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/rating-scale-group"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="rating-scale-group" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import {
+  RatingScaleGroup,
+  RatingScaleItem,
+} from "@/components/ruixen/rating-scale-group";
+
+export default function App() {
+  return (
+    <div className="space-y-4">
+      <h2 className="text-lg font-semibold">How satisfied are you?</h2>
+      <p className="text-sm text-muted-foreground">
+        Choose a number between 1 and 10 that best reflects your experience.
+      </p>
+
+      <RatingScaleGroup defaultValue="7">
+        {Array.from({ length: 10 }).map((_, i) => (
+          <RatingScaleItem
+            key={i}
+            value={(i + 1).toString()}
+            label={(i + 1).toString()}
+          />
+        ))}
+      </RatingScaleGroup>
+
+      <div className="flex justify-between text-xs font-medium text-muted-foreground">
+        <span>Not satisfied 😞</span>
+        <span>Very satisfied 🤩</span>
+      </div>
+    </div>
+  );
+}
+```
+
+## Props
+
+### RatingScaleGroup Props
+
+| Prop            | Type                      | Default | Description                 |
+| --------------- | ------------------------- | ------- | --------------------------- |
+| `className`     | `string`                  | -       | Additional CSS classes      |
+| `defaultValue`  | `string`                  | -       | Default selected value      |
+| `value`         | `string`                  | -       | Controlled selected value   |
+| `onValueChange` | `(value: string) => void` | -       | Callback when value changes |
+
+### RatingScaleItem Props
+
+| Prop        | Type     | Default | Description                  |
+| ----------- | -------- | ------- | ---------------------------- |
+| `value`     | `string` | -       | Unique value for this option |
+| `label`     | `string` | -       | Text label to display        |
+| `className` | `string` | -       | Additional CSS classes       |
+
+## Features
+
+- **Numeric Rating**: Perfect for 1-10 satisfaction or quality ratings
+- **Visual Indicators**: Green dots appear on selected items for clear feedback
+- **Compact Design**: Horizontal layout saves vertical space
+- **Accessible**: Built on Radix UI primitives with keyboard navigation
+- **Customizable**: Easy to adjust scale length and styling
+
+## Common Scale Variations
+
+### 5-Point Scale
+
+```tsx
+<RatingScaleGroup defaultValue="3">
+  {Array.from({ length: 5 }).map((_, i) => (
+    <RatingScaleItem
+      key={i}
+      value={(i + 1).toString()}
+      label={(i + 1).toString()}
+    />
+  ))}
+</RatingScaleGroup>
+```
+
+### 7-Point Scale
+
+```tsx
+<RatingScaleGroup defaultValue="4">
+  {Array.from({ length: 7 }).map((_, i) => (
+    <RatingScaleItem
+      key={i}
+      value={(i + 1).toString()}
+      label={(i + 1).toString()}
+    />
+  ))}
+</RatingScaleGroup>
+```
+
+## Use Cases
+
+- **Customer Satisfaction**: Post-purchase or service satisfaction surveys
+- **Product Reviews**: Rating products on quality, value, or features
+- **Performance Evaluation**: Employee or student performance ratings
+- **User Experience**: Rating app features or usability
+- **Net Promoter Score**: Likelihood to recommend surveys

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "task-orbit-calendar-demo",
+  "type": "registry:example",
+  "title": "Task Orbit Calendar Demo",
+  "description": "Example showing an orbital calendar with tasks rotating around today.",
+  "registryDependencies": [
+    "https://ruixen.com/r/task-orbit-calendar"
+  ],
+  "files": [
+    {
+      "path": "registry/example/task-orbit-calendar-demo.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport {\n  TaskOrbitCalendar,\n  CalendarEvent,\n} from \"@/registry/ruixenui/task-orbit-calendar\";\nimport { v4 as uuidv4 } from \"uuid\";\n\nexport default function TaskOrbitCalendarDemo() {\n  const [events, setEvents] = React.useState<CalendarEvent[]>([\n    { id: uuidv4(), title: \"Morning Meeting\", date: new Date().toISOString() },\n    {\n      id: uuidv4(),\n      title: \"Code Review\",\n      date: new Date(new Date().getTime() + 2 * 60 * 60 * 1000).toISOString(),\n    },\n  ]);\n\n  const handleAddEvent = (event: CalendarEvent) =>\n    setEvents((prev) => [...prev, event]);\n  const handleRemoveEvent = (id: string) =>\n    setEvents((prev) => prev.filter((e) => e.id !== id));\n\n  return (\n    <div className=\"p-4\">\n      <h1 className=\"text-lg font-semibold mb-4\">Task Orbit Calendar Demo</h1>\n      <TaskOrbitCalendar\n        events={events}\n        onAddEvent={handleAddEvent}\n        onRemoveEvent={handleRemoveEvent}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/task-orbit-calendar-demo.tsx"
+    }
+  ]
+}

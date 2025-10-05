@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "confirmation-button-demo",
+  "type": "registry:example",
+  "title": "Confirmation Button Demo",
+  "description": "Example showing a button with confirmation dialog functionality.",
+  "registryDependencies": [
+    "https://ruixen.com/r/confirmation-button"
+  ],
+  "files": [
+    {
+      "path": "registry/example/confirmation-button-demo.tsx",
+      "content": "\"use client\";\n\nimport ConfirmationButton from \"@/registry/ruixenui/confirmation-button\";\n\nexport default function DemoConfirmationButton() {\n  return (\n    <div className=\"flex gap-4\">\n      <ConfirmationButton label=\"Delete\" onConfirm={() => alert(\"Deleted!\")} />\n      <ConfirmationButton\n        label=\"Archive\"\n        confirmLabel=\"Really archive?\"\n        onConfirm={() => alert(\"Archived!\")}\n        size=\"lg\"\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/confirmation-button-demo.tsx"
+    }
+  ]
+}

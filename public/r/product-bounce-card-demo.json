@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "product-bounce-card-demo",
+  "type": "registry:example",
+  "title": "Product Bounce Card Demo",
+  "description": "Example showing an animated product showcase with bouncing effects.",
+  "registryDependencies": [
+    "https://ruixen.com/r/product-bounce-card"
+  ],
+  "files": [
+    {
+      "path": "registry/example/product-bounce-card-demo.tsx",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { ProductBounceCard } from \"@/registry/ruixenui/product-bounce-card\";\r\n\r\nexport default function ProductBounceDemo() {\r\n  return (\r\n    <div className=\"flex min-h-screen items-center justify-center\">\r\n      <ProductBounceCard\r\n        imageUrl=\"https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/ruixen_shirt_product.png\"\r\n        alt=\"Ruixen Shirt\"\r\n      />\r\n    </div>\r\n  );\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/product-bounce-card-demo.tsx"
+    }
+  ]
+}

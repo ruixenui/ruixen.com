@@ -3074,4 +3074,645 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "inbox-calendar",
+    type: "registry:ui",
+    title: "Inbox Calendar",
+    description:
+      "Interactive inbox-style calendar with event management and scrollable timeline.",
+    dependencies: ["date-fns", "lucide-react", "uuid"],
+    registryDependencies: [
+      "card",
+      "scroll-area",
+      "separator",
+      "badge",
+      "button",
+      "popover",
+      "input",
+      "textarea",
+      "calendar",
+    ],
+    files: [
+      {
+        path: "registry/ruixenui/inbox-calendar.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/inbox-calendar.tsx",
+      },
+    ],
+  },
+  {
+    name: "event-constellation-calendar",
+    type: "registry:ui",
+    title: "Event Constellation Calendar",
+    description:
+      "Unique starfield-style calendar with constellation connections between events.",
+    dependencies: ["date-fns", "lucide-react", "uuid"],
+    registryDependencies: ["card", "button", "popover", "input"],
+    files: [
+      {
+        path: "registry/ruixenui/event-constellation-calendar.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/event-constellation-calendar.tsx",
+      },
+    ],
+  },
+  {
+    name: "three-dwall-calendar",
+    type: "registry:ui",
+    title: "Three D Wall Calendar",
+    description:
+      "Interactive 3D wall-style calendar with tilt controls and drag interactions.",
+    dependencies: ["date-fns", "lucide-react", "uuid"],
+    registryDependencies: ["card", "button", "input", "popover", "hover-card"],
+    files: [
+      {
+        path: "registry/ruixenui/three-dwall-calendar.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/three-dwall-calendar.tsx",
+      },
+    ],
+  },
+  {
+    name: "task-orbit-calendar",
+    type: "registry:ui",
+    title: "Task Orbit Calendar",
+    description:
+      "Orbital calendar view with tasks rotating around a central 'Today' hub.",
+    dependencies: ["date-fns", "lucide-react", "uuid"],
+    registryDependencies: ["card", "popover", "button", "input"],
+    files: [
+      {
+        path: "registry/ruixenui/task-orbit-calendar.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/task-orbit-calendar.tsx",
+      },
+    ],
+  },
+  {
+    name: "radial-week-view",
+    type: "registry:ui",
+    title: "Radial Week View",
+    description:
+      "Circular week calendar with radial hour markers and event positioning.",
+    dependencies: ["date-fns", "lucide-react", "uuid"],
+    registryDependencies: ["card", "popover", "button", "input"],
+    files: [
+      {
+        path: "registry/ruixenui/radial-week-view.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/radial-week-view.tsx",
+      },
+    ],
+  },
+  {
+    name: "stacked-bar-calendar",
+    type: "registry:ui",
+    title: "Stacked Bar Calendar",
+    description:
+      "Calendar with stacked bar visualization for event categories and filtering.",
+    dependencies: ["date-fns", "lucide-react", "uuid"],
+    registryDependencies: [
+      "calendar",
+      "popover",
+      "card",
+      "button",
+      "input",
+      "select",
+    ],
+    files: [
+      {
+        path: "registry/ruixenui/stacked-bar-calendar.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/stacked-bar-calendar.tsx",
+      },
+    ],
+  },
+  {
+    name: "heatmap-calendar",
+    type: "registry:ui",
+    title: "Heatmap Calendar",
+    description:
+      "GitHub-style heatmap calendar showing event intensity with color gradients.",
+    dependencies: ["date-fns", "lucide-react", "uuid"],
+    registryDependencies: ["card", "popover", "button", "input"],
+    files: [
+      {
+        path: "registry/ruixenui/heatmap-calendar.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/heatmap-calendar.tsx",
+      },
+    ],
+  },
+  {
+    name: "event-calendar",
+    type: "registry:ui",
+    title: "Event Calendar",
+    description:
+      "Simple and clean event calendar with date selection and event management.",
+    dependencies: ["date-fns", "lucide-react", "uuid"],
+    registryDependencies: ["calendar", "card", "button", "input"],
+    files: [
+      {
+        path: "registry/ruixenui/event-calendar.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/event-calendar.tsx",
+      },
+    ],
+  },
+  {
+    name: "calendar-planner",
+    type: "registry:ui",
+    title: "Calendar Planner",
+    description:
+      "A comprehensive calendar planner with month/year view switching and event information display.",
+    dependencies: ["date-fns", "lucide-react"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "registry/ruixenui/calendar-planner.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/calendar-planner.tsx",
+      },
+    ],
+  },
+  {
+    name: "calendar-twin",
+    type: "registry:ui",
+    title: "Calendar Twin",
+    description:
+      "A dual-view calendar component with month and year selection modes.",
+    dependencies: ["date-fns", "lucide-react"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "registry/ruixenui/calendar-twin.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/calendar-twin.tsx",
+      },
+    ],
+  },
+  {
+    name: "chrono-select",
+    type: "registry:ui",
+    title: "Chrono Select",
+    description:
+      "A date picker with integrated year selection dropdown and calendar view.",
+    dependencies: ["date-fns", "lucide-react"],
+    registryDependencies: ["button", "popover", "calendar", "select"],
+    files: [
+      {
+        path: "registry/ruixenui/chrono-select.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/chrono-select.tsx",
+      },
+    ],
+  },
+  {
+    name: "pill-calendar",
+    type: "registry:ui",
+    title: "Pill Calendar",
+    description:
+      "A modern calendar component with pill-shaped date cells and range selection support.",
+    dependencies: ["react-aria-components", "@internationalized/date"],
+    files: [
+      {
+        path: "registry/ruixenui/pill-calendar.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/pill-calendar.tsx",
+      },
+    ],
+  },
+  {
+    name: "multi-month-calendar",
+    type: "registry:ui",
+    title: "Multi Month Calendar",
+    description:
+      "A calendar component that displays multiple months with year/month dropdowns and range selection support.",
+    dependencies: ["react-day-picker", "date-fns", "lucide-react"],
+    registryDependencies: ["select"],
+    files: [
+      {
+        path: "registry/ruixenui/multi-month-calendar.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/multi-month-calendar.tsx",
+      },
+    ],
+  },
+  {
+    name: "calendar-with-presets",
+    type: "registry:ui",
+    title: "Calendar With Presets",
+    description:
+      "A customizable calendar component with preset date ranges and flexible styling options.",
+    dependencies: ["react-day-picker", "lucide-react"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "registry/ruixenui/calendar-with-presets.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/calendar-with-presets.tsx",
+      },
+    ],
+  },
+  {
+    name: "universal-date-picker",
+    type: "registry:ui",
+    title: "Universal Date Picker",
+    description:
+      "A versatile date picker with single/range mode toggle, preset shortcuts, and year selector.",
+    dependencies: ["react-day-picker", "date-fns", "lucide-react"],
+    registryDependencies: ["button", "calendar", "label", "card", "popover"],
+    files: [
+      {
+        path: "registry/ruixenui/universal-date-picker.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/universal-date-picker.tsx",
+      },
+    ],
+  },
+  {
+    name: "calendar-lume",
+    type: "registry:ui",
+    title: "Calendar Lume",
+    description:
+      "An animated calendar with year/month/day step navigation and smooth transitions.",
+    dependencies: ["date-fns", "framer-motion"],
+    registryDependencies: ["calendar", "button", "scroll-area"],
+    files: [
+      {
+        path: "registry/ruixenui/calendar-lume.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/calendar-lume.tsx",
+      },
+    ],
+  },
+  {
+    name: "date-time-input",
+    type: "registry:ui",
+    title: "Date Time Input",
+    description:
+      "A combined date and time picker with calendar popover and time input field.",
+    dependencies: ["date-fns", "lucide-react"],
+    registryDependencies: ["calendar", "popover", "button", "input", "label"],
+    files: [
+      {
+        path: "registry/ruixenui/date-time-input.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/date-time-input.tsx",
+      },
+    ],
+  },
+  {
+    name: "calendar-scheduler",
+    type: "registry:ui",
+    title: "Calendar Scheduler",
+    description:
+      "A meeting scheduler with calendar date selection and time slot picker.",
+    dependencies: ["date-fns"],
+    registryDependencies: ["calendar", "button", "card"],
+    files: [
+      {
+        path: "registry/ruixenui/calendar-scheduler.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/calendar-scheduler.tsx",
+      },
+    ],
+  },
+  {
+    name: "multi-select-calendar-card",
+    type: "registry:ui",
+    title: "Multi Select Calendar Card",
+    description:
+      "A calendar card that allows selecting multiple dates with badge display and removal.",
+    dependencies: ["date-fns"],
+    registryDependencies: ["calendar", "button", "badge", "card"],
+    files: [
+      {
+        path: "registry/ruixenui/multi-select-calendar-card.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/multi-select-calendar-card.tsx",
+      },
+    ],
+  },
+  {
+    name: "side-panel-multi-calendar",
+    type: "registry:ui",
+    title: "Side Panel Multi Calendar",
+    description:
+      "A multi-select calendar with a side panel showing grouped selected dates by month.",
+    dependencies: ["date-fns"],
+    registryDependencies: ["calendar", "button", "scroll-area", "card"],
+    files: [
+      {
+        path: "registry/ruixenui/side-panel-multi-calendar.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/side-panel-multi-calendar.tsx",
+      },
+    ],
+  },
+  {
+    name: "dropdown-multi-calendar",
+    type: "registry:ui",
+    title: "Dropdown Multi Calendar",
+    description:
+      "A multi-select calendar with year/month dropdowns and badge-based date display.",
+    dependencies: ["date-fns"],
+    registryDependencies: ["calendar", "button", "badge", "card", "select"],
+    files: [
+      {
+        path: "registry/ruixenui/dropdown-multi-calendar.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/dropdown-multi-calendar.tsx",
+      },
+    ],
+  },
+  {
+    name: "dropdown-range-date-picker",
+    type: "registry:ui",
+    title: "Dropdown Range Date Picker",
+    description:
+      "A range date picker with year/month dropdowns in a popover interface.",
+    dependencies: ["date-fns", "lucide-react"],
+    registryDependencies: ["calendar", "button", "popover", "select"],
+    files: [
+      {
+        path: "registry/ruixenui/dropdown-range-date-picker.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/dropdown-range-date-picker.tsx",
+      },
+    ],
+  },
+  {
+    name: "radio-group-card",
+    type: "registry:ui",
+    title: "Radio Group Card",
+    description:
+      "A radio group with card-style items featuring icons, titles, descriptions, and animated selection indicator.",
+    dependencies: ["@radix-ui/react-radio-group"],
+    files: [
+      {
+        path: "registry/ruixenui/radio-group-card.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/radio-group-card.tsx",
+      },
+    ],
+  },
+  {
+    name: "emoji-radio-group",
+    type: "registry:ui",
+    title: "Emoji Radio Group",
+    description:
+      "A compact radio group with emoji-based options for quick visual feedback selection.",
+    dependencies: ["@radix-ui/react-radio-group"],
+    files: [
+      {
+        path: "registry/ruixenui/emoji-radio-group.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/emoji-radio-group.tsx",
+      },
+    ],
+  },
+  {
+    name: "sentiment-radio-group",
+    type: "registry:ui",
+    title: "Sentiment Radio Group",
+    description:
+      "A radio group with sentiment cards featuring emojis, titles, and descriptions for feedback collection.",
+    dependencies: ["@radix-ui/react-radio-group"],
+    files: [
+      {
+        path: "registry/ruixenui/sentiment-radio-group.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/sentiment-radio-group.tsx",
+      },
+    ],
+  },
+  {
+    name: "rating-scale-group",
+    type: "registry:ui",
+    title: "Rating Scale Group",
+    description:
+      "A horizontal rating scale radio group with numbered items and green indicator dots.",
+    dependencies: ["@radix-ui/react-radio-group"],
+    files: [
+      {
+        path: "registry/ruixenui/rating-scale-group.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/rating-scale-group.tsx",
+      },
+    ],
+  },
+  {
+    name: "review-filter-bars",
+    type: "registry:ui",
+    title: "Review Filter Bars",
+    description:
+      "A radio group for filtering reviews by star rating with progress bars and counts.",
+    dependencies: ["@radix-ui/react-radio-group", "@remixicon/react"],
+    files: [
+      {
+        path: "registry/ruixenui/review-filter-bars.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/review-filter-bars.tsx",
+      },
+    ],
+  },
+  {
+    name: "tour-popover",
+    type: "registry:ui",
+    title: "Tour Popover",
+    description:
+      "A guided tour popover with steps, progress tracking, and navigation controls.",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["button", "popover", "progress", "separator"],
+    files: [
+      {
+        path: "registry/ruixenui/tour-popover.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/tour-popover.tsx",
+      },
+    ],
+  },
+  {
+    name: "notification-inbox-popover",
+    type: "registry:ui",
+    title: "Notification Inbox Popover",
+    description:
+      "A notification inbox popover with tabs, unread counts, and mark as read functionality.",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["badge", "button", "popover", "tabs"],
+    files: [
+      {
+        path: "registry/ruixenui/notification-inbox-popover.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/notification-inbox-popover.tsx",
+      },
+    ],
+  },
+  {
+    name: "credit-card-dialog",
+    type: "registry:ui",
+    title: "Credit Card Dialog",
+    description:
+      "A credit card activation dialog with animated card display and form input.",
+    dependencies: ["lucide-react", "framer-motion"],
+    registryDependencies: ["button", "dialog", "input"],
+    files: [
+      {
+        path: "registry/ruixenui/credit-card-dialog.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/credit-card-dialog.tsx",
+      },
+    ],
+  },
+  {
+    name: "identity-verification-dialog",
+    type: "registry:ui",
+    title: "Identity Verification Dialog",
+    description:
+      "An identity verification dialog with ID card display and PIN input form.",
+    dependencies: ["lucide-react", "framer-motion"],
+    registryDependencies: ["button", "dialog", "input"],
+    files: [
+      {
+        path: "registry/ruixenui/identity-verification-dialog.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/identity-verification-dialog.tsx",
+      },
+    ],
+  },
+  {
+    name: "verification-card",
+    type: "registry:ui",
+    title: "Verification Card",
+    description:
+      "An animated verification card component with customizable background and content.",
+    dependencies: ["framer-motion"],
+    files: [
+      {
+        path: "registry/ruixenui/verification-card.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/verification-card.tsx",
+      },
+    ],
+  },
+  {
+    name: "credit-card-hero",
+    type: "registry:ui",
+    title: "Credit Card Hero",
+    description:
+      "A 3D interactive hero section with floating credit cards and mouse tilt effects.",
+    dependencies: ["framer-motion"],
+    files: [
+      {
+        path: "registry/ruixenui/credit-card-hero.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/credit-card-hero.tsx",
+      },
+    ],
+  },
+  {
+    name: "order-tracking-parallax-card",
+    type: "registry:ui",
+    title: "Order Tracking Parallax Card",
+    description:
+      "A 3D parallax card for order tracking with delivery status and progress indicator.",
+    dependencies: ["framer-motion"],
+    files: [
+      {
+        path: "registry/ruixenui/order-tracking-parallax-card.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/order-tracking-parallax-card.tsx",
+      },
+    ],
+  },
+  {
+    name: "shirt-parallax-card",
+    type: "registry:ui",
+    title: "Shirt Parallax Card",
+    description:
+      "A product card with 3D parallax effects and floating product image with bounce animation.",
+    dependencies: ["framer-motion"],
+    registryDependencies: ["card", "button"],
+    files: [
+      {
+        path: "registry/ruixenui/shirt-parallax-card.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/shirt-parallax-card.tsx",
+      },
+    ],
+  },
+  {
+    name: "elite-plan-card",
+    type: "registry:ui",
+    title: "Elite Plan Card",
+    description:
+      "A premium plan card with image parallax, highlights, and call-to-action button.",
+    dependencies: ["framer-motion"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "registry/ruixenui/elite-plan-card.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/elite-plan-card.tsx",
+      },
+    ],
+  },
+  {
+    name: "product-bounce-card",
+    type: "registry:ui",
+    title: "Product Bounce Card",
+    description:
+      "An animated product showcase with bouncing and rotating effects plus shadow.",
+    dependencies: ["framer-motion"],
+    files: [
+      {
+        path: "registry/ruixenui/product-bounce-card.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/product-bounce-card.tsx",
+      },
+    ],
+  },
+  {
+    name: "loading-circle",
+    type: "registry:ui",
+    title: "Loading Circle",
+    description:
+      "A ripple loading animation with multiple concentric circles and gradient effects.",
+    files: [
+      {
+        path: "registry/ruixenui/loading-circle.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/loading-circle.tsx",
+      },
+    ],
+  },
+  {
+    name: "load-ripple",
+    type: "registry:ui",
+    title: "Load Ripple",
+    description:
+      "A simple ripple loader with 5 animated circles and staggered timing.",
+    files: [
+      {
+        path: "registry/ruixenui/load-ripple.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/load-ripple.tsx",
+      },
+    ],
+  },
+  {
+    name: "ripple-circles",
+    type: "registry:ui",
+    title: "Ripple Circles",
+    description:
+      "Animated ripple circles loader with gradient backgrounds and backdrop blur.",
+    files: [
+      {
+        path: "registry/ruixenui/ripple-circles.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/ripple-circles.tsx",
+      },
+    ],
+  },
 ];

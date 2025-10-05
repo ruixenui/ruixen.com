@@ -1,3 +1,5 @@
+"use client";
+
 import SplitActionButton from "@/registry/ruixenui/split-action-button";
 
 export default function DemoSplitActionButton() {

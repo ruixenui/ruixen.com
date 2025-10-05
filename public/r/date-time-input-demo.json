@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "date-time-input-demo",
+  "type": "registry:example",
+  "title": "Date Time Input Demo",
+  "description": "Example showing a combined date and time picker with preview display.",
+  "registryDependencies": [
+    "https://ruixen.com/r/date-time-input"
+  ],
+  "files": [
+    {
+      "path": "registry/example/date-time-input-demo.tsx",
+      "content": "\"use client\";\n\nimport { useState } from \"react\";\nimport { DateTimeInput } from \"@/registry/ruixenui/date-time-input\";\n\nexport default function DemoDateTimeInput() {\n  const [dateTime, setDateTime] = useState<{ date?: Date; time: string }>({\n    time: \"12:00\",\n  });\n\n  return (\n    <div className=\"p-6 space-y-6\">\n      <h2 className=\"text-lg font-semibold\">Configurable DateTime Picker</h2>\n\n      <DateTimeInput\n        value={dateTime.date}\n        time={dateTime.time}\n        dateFormat=\"PPP\"\n        datePlaceholder=\"Select a date\"\n        timePlaceholder=\"Select a time\"\n        onChange={(date, time) => setDateTime({ date, time })}\n        className=\"max-w-md\"\n      />\n\n      <div className=\"mt-4 text-sm text-muted-foreground\">\n        Selected:{\" \"}\n        {dateTime.date\n          ? `${dateTime.date.toDateString()} at ${dateTime.time}`\n          : \"No date selected\"}\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/date-time-input-demo.tsx"
+    }
+  ]
+}

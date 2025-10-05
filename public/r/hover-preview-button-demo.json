@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hover-preview-button-demo",
+  "type": "registry:example",
+  "title": "Hover Preview Button Demo",
+  "description": "Example showing a button with hover preview functionality.",
+  "registryDependencies": [
+    "https://ruixen.com/r/hover-preview-button"
+  ],
+  "files": [
+    {
+      "path": "registry/example/hover-preview-button-demo.tsx",
+      "content": "\"use client\";\n\nimport HoverPreviewButton from \"@/registry/ruixenui/hover-preview-button\";\n\nexport default function HoverPreviewButtonDemo() {\n  return (\n    <div className=\"p-6 flex flex-col gap-6\">\n      <HoverPreviewButton\n        label=\"View Report\"\n        previewContent={\n          <div className=\"text-sm\">\n            <p className=\"font-semibold mb-1\">Sales Report</p>\n            <p>Total Revenue: $12,340</p>\n            <p>New Customers: 120</p>\n          </div>\n        }\n      />\n\n      <HoverPreviewButton\n        label=\"Preview Image\"\n        previewContent={\n          <img\n            src=\"https://placekitten.com/200/150\"\n            alt=\"Preview\"\n            className=\"w-full h-auto rounded-md\"\n          />\n        }\n      />\n\n      <HoverPreviewButton\n        label=\"Mini Chart\"\n        previewContent={\n          <div className=\"w-full h-24 bg-gray-100 flex items-center justify-center rounded-md text-gray-500\">\n            Chart Preview\n          </div>\n        }\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/hover-preview-button-demo.tsx"
+    }
+  ]
+}

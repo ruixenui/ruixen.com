@@ -1,0 +1,70 @@
+---
+title: Chrono Select
+date: 2024-06-01
+description: A date picker with integrated year selection dropdown and calendar view
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="chrono-select-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/chrono-select"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="chrono-select" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop          | Type                                | Default         | Description                      |
+| ------------- | ----------------------------------- | --------------- | -------------------------------- |
+| `value`       | `Date`                              | -               | Currently selected date          |
+| `onChange`    | `(date: Date \| undefined) => void` | -               | Callback when date changes       |
+| `placeholder` | `string`                            | `"Pick a date"` | Placeholder text for the trigger |
+| `className`   | `string`                            | -               | Additional CSS classes           |
+| `yearRange`   | `[number, number]`                  | `[1970, 2050]`  | Range of years to display        |
+
+## Usage
+
+```tsx
+import { ChronoSelect } from "@/components/ui/chrono-select";
+
+function MyDatePicker() {
+  const [selectedDate, setSelectedDate] = React.useState<Date | undefined>();
+
+  return (
+    <ChronoSelect
+      value={selectedDate}
+      onChange={setSelectedDate}
+      placeholder="Select a date"
+      yearRange={[2000, 2030]}
+    />
+  );
+}
+```

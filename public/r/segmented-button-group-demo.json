@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "segmented-button-group-demo",
+  "type": "registry:example",
+  "title": "Segmented Button Group Demo",
+  "description": "Example showing a segmented button group with multiple options.",
+  "registryDependencies": [
+    "https://ruixen.com/r/segmented-button-group"
+  ],
+  "files": [
+    {
+      "path": "registry/example/segmented-button-group-demo.tsx",
+      "content": "\"use client\";\n\nimport SegmentedButtonGroup from \"@/registry/ruixenui/segmented-button-group\";\nimport { useState } from \"react\";\n\nexport default function SegmentedButtonGroupDemo() {\n  const [period, setPeriod] = useState(\"Day\");\n\n  return (\n    <div className=\"p-6 flex flex-col gap-4\">\n      <SegmentedButtonGroup\n        options={[\"Day\", \"Week\", \"Month\"]}\n        selected={period}\n      />\n      <p>Selected Period: {period}</p>\n\n      <SegmentedButtonGroup options={[\"Low\", \"Medium\", \"High\", \"Critical\"]} />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/segmented-button-group-demo.tsx"
+    }
+  ]
+}

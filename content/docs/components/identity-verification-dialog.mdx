@@ -1,0 +1,175 @@
+---
+title: Identity Verification Dialog
+date: 2024-06-01
+description: An identity verification dialog with ID card display and PIN input form.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="identity-verification-dialog-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/identity-verification-dialog"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="identity-verification-dialog" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { IdentityVerificationDialog } from "@/components/ruixen/identity-verification-dialog";
+
+export default function App() {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  const handleVerify = async (pin: string): Promise<void> => {
+    console.log(`Verifying identity with PIN: ${pin}`);
+
+    // Simulate API call
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (pin === "1234") {
+          console.log("✅ Identity verified successfully!");
+          setIsDialogOpen(false);
+          resolve();
+        } else {
+          reject(new Error("Invalid PIN"));
+        }
+      }, 2000);
+    });
+  };
+
+  return (
+    <div>
+      <Button onClick={() => setIsDialogOpen(true)}>Verify Identity</Button>
+
+      <IdentityVerificationDialog
+        open={isDialogOpen}
+        onOpenChange={setIsDialogOpen}
+        onVerify={handleVerify}
+        backgroundImage="https://example.com/id-card-bg.jpg"
+      />
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop              | Type                             | Default                                                               | Description                              |
+| ----------------- | -------------------------------- | --------------------------------------------------------------------- | ---------------------------------------- |
+| `open`            | `boolean`                        | -                                                                     | Whether the dialog is open               |
+| `onOpenChange`    | `(open: boolean) => void`        | -                                                                     | Callback when dialog state changes       |
+| `onVerify`        | `(pin: string) => Promise<void>` | -                                                                     | Async callback for identity verification |
+| `backgroundImage` | `string`                         | "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/ruixen_moon.png" | Background image URL for the ID card     |
+
+## Features
+
+- **Split Layout**: Two-column design with ID card and verification form
+- **Animated ID Card**: Identity card with smooth entrance animation
+- **Secure PIN Input**: Password-masked input for PIN entry
+- **Loading States**: Shows verification state during processing
+- **Custom Background**: Customizable ID card background image
+- **Responsive Design**: Adapts to mobile and desktop screens
+- **Accessible**: Built with proper ARIA labels and keyboard navigation
+
+## ID Card Design Elements
+
+The identity card includes:
+
+- **Card Type**: "IDENTITY CARD" label
+- **Validity**: "VALID" status indicator
+- **ID Number**: Masked ID number display (`ID **** 4590`)
+- **Name**: Cardholder name (`RUIXEN UI`)
+- **Expiry Date**: Card expiration date (`11/29`)
+- **Background Overlay**: Semi-transparent overlay for text readability
+
+## Verification Flow
+
+1. User clicks trigger button
+2. Dialog opens with ID card and verification form
+3. User enters secure PIN
+4. Form validates input
+5. `onVerify` callback is triggered
+6. Loading state shows during verification
+7. Dialog closes on successful verification
+
+## Error Handling
+
+```tsx
+const handleVerify = async (pin: string): Promise<void> => {
+  try {
+    const response = await verifyIdentity(pin);
+    if (response.verified) {
+      setIsDialogOpen(false);
+      showSuccessMessage("Identity verified successfully!");
+    }
+  } catch (error) {
+    showErrorMessage("Verification failed. Please check your PIN.");
+    throw error; // Keep dialog open on error
+  }
+};
+```
+
+## Security Considerations
+
+- **PIN Masking**: Input type is set to "password" for security
+- **No PIN Storage**: PIN is only passed to the verification callback
+- **Secure Transmission**: Always use HTTPS for PIN transmission
+- **Rate Limiting**: Implement server-side rate limiting for verification attempts
+
+## Customization
+
+### Custom ID Card Styling
+
+```tsx
+<IdentityVerificationDialog
+  backgroundImage="https://your-domain.com/custom-id-bg.jpg"
+  onVerify={handleVerify}
+/>
+```
+
+### Custom ID Card Content
+
+The ID card displays:
+
+- ID number: `ID **** 4590`
+- Name: `RUIXEN UI`
+- Expiry: `11/29`
+- Status: `VALID`
+
+## Use Cases
+
+- **Banking**: Account verification and secure transactions
+- **Government Services**: Identity verification for digital services
+- **Healthcare**: Patient identity verification
+- **Financial Services**: KYC (Know Your Customer) processes
+- **Secure Applications**: Two-factor authentication workflows

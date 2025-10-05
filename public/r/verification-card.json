@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "verification-card",
+  "type": "registry:ui",
+  "title": "Verification Card",
+  "description": "An animated verification card component with customizable background and content.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/verification-card.tsx",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { motion } from \"framer-motion\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ninterface VerificationCardProps {\r\n  backgroundImage?: string;\r\n  idNumber?: string;\r\n  name?: string;\r\n  validThru?: string;\r\n  label?: string;\r\n}\r\n\r\nexport function VerificationCard({\r\n  backgroundImage = \"https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/ruixen_moon.png\",\r\n  idNumber = \"ID **** 4590\",\r\n  name = \"JANE DOE\",\r\n  validThru = \"11/29\",\r\n  label = \"IDENTITY CARD\",\r\n}: VerificationCardProps) {\r\n  return (\r\n    <motion.div\r\n      initial={{ y: -20, opacity: 0 }}\r\n      animate={{ y: 0, opacity: 1 }}\r\n      transition={{ duration: 0.5, ease: \"easeOut\" }}\r\n      className={cn(\r\n        \"relative h-52 w-80 rounded-2xl p-6 shadow-2xl text-white flex flex-col justify-between bg-cover bg-center\"\r\n      )}\r\n      style={{ backgroundImage: `url(${backgroundImage})` }}\r\n    >\r\n      {/* Overlay */}\r\n      <div className=\"absolute inset-0 bg-black/50 rounded-2xl\" />\r\n\r\n      {/* Card Content */}\r\n      <div className=\"relative z-10 flex justify-between items-start text-xs tracking-wide\">\r\n        <span>{label}</span>\r\n        <span>VALID</span>\r\n      </div>\r\n\r\n      <div className=\"relative z-10\">\r\n        <p className=\"text-lg tracking-widest font-semibold\">{idNumber}</p>\r\n        <div className=\"flex justify-between text-sm mt-2\">\r\n          <span>{name}</span>\r\n          <span>{validThru}</span>\r\n        </div>\r\n      </div>\r\n    </motion.div>\r\n  );\r\n}\r\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/verification-card.tsx"
+    }
+  ]
+}

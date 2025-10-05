@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gamified-login-card-demo",
+  "type": "registry:example",
+  "title": "Gamified Login Card Demo",
+  "description": "Example showing a gamified login card with interactive elements.",
+  "registryDependencies": [
+    "https://ruixen.com/r/gamified-login-card"
+  ],
+  "files": [
+    {
+      "path": "registry/example/gamified-login-card-demo.tsx",
+      "content": "\"use client\";\n\nimport GamifiedLoginCard from \"@/registry/ruixenui/gamified-login-card\";\n\nexport default function DemoGamifiedLoginCard() {\n  const handleChange = (values: Record<string, string>) => {\n    console.log(\"Input changed:\", values);\n  };\n\n  const handleSubmit = (values: Record<string, string>) => {\n    console.log(\"Form submitted:\", values);\n    alert(\"Check console for submitted values!\");\n  };\n\n  return (\n    <GamifiedLoginCard\n      title=\"Login to Gamify!\"\n      successMessage=\"🎉 Welcome to the Game!\"\n      inputs={[\n        {\n          id: \"email\",\n          type: \"email\",\n          label: \"Email\",\n          placeholder: \"you@example.com\",\n        },\n        {\n          id: \"password\",\n          type: \"password\",\n          label: \"Password\",\n          placeholder: \"********\",\n        },\n        {\n          id: \"username\",\n          type: \"text\",\n          label: \"Username\",\n          placeholder: \"Your username\",\n        },\n      ]}\n      buttonText=\"Play & Login\"\n      confettiColors={[\"#f59e0b\", \"#10b981\", \"#3b82f6\", \"#f472b6\"]}\n      confettiCount={50}\n      onChange={handleChange}\n      onSubmit={handleSubmit}\n    />\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/gamified-login-card-demo.tsx"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "rating-scale-group-demo",
+  "type": "registry:example",
+  "title": "Rating Scale Group Demo",
+  "description": "Example showing a 1-10 rating scale with satisfaction indicators.",
+  "registryDependencies": [
+    "https://ruixen.com/r/rating-scale-group"
+  ],
+  "files": [
+    {
+      "path": "registry/example/rating-scale-group-demo.tsx",
+      "content": "\"use client\";\r\n\r\nimport { RatingScaleGroup, RatingScaleItem } from \"@/registry/ruixenui/rating-scale-group\";\r\n\r\nfunction DemoPage() {\r\n  return (\r\n    <div className=\"max-w-md space-y-6\">\r\n      <h2 className=\"text-lg font-semibold\">How satisfied are you?</h2>\r\n      <p className=\"text-sm text-muted-foreground\">\r\n        Choose a number between 1 and 10 that best reflects your experience.\r\n      </p>\r\n\r\n      <RatingScaleGroup defaultValue=\"7\">\r\n        {Array.from({ length: 10 }).map((_, i) => (\r\n          <RatingScaleItem key={i} value={(i + 1).toString()} label={(i + 1).toString()} />\r\n        ))}\r\n      </RatingScaleGroup>\r\n\r\n      <div className=\"mt-2 flex justify-between text-xs font-medium text-muted-foreground\">\r\n        <span>Not satisfied 😞</span>\r\n        <span>Very satisfied 🤩</span>\r\n      </div>\r\n    </div>\r\n  );\r\n}\r\n\r\nexport default DemoPage;\r\n",
+      "type": "registry:example",
+      "target": "components/rating-scale-group-demo.tsx"
+    }
+  ]
+}

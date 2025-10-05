@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "load-ripple-demo",
+  "type": "registry:example",
+  "title": "Load Ripple Demo",
+  "description": "Example showing a simple ripple loader with staggered animation timing.",
+  "registryDependencies": [
+    "https://ruixen.com/r/load-ripple"
+  ],
+  "files": [
+    {
+      "path": "registry/example/load-ripple-demo.tsx",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { LoadRipple } from \"@/registry/ruixenui/load-ripple\";\r\n\r\nexport default function LoaderDemo() {\r\n  return (\r\n    <div className=\"flex min-h-screen items-center justify-center transition-colors\">\r\n      <LoadRipple />\r\n    </div>\r\n  );\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/load-ripple-demo.tsx"
+    }
+  ]
+}

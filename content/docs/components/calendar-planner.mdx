@@ -1,0 +1,75 @@
+---
+title: Calendar Planner
+date: 2024-06-01
+description: A comprehensive calendar planner with month/year view switching and event information display
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="calendar-planner-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/calendar-planner"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="calendar-planner" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop        | Type                     | Default        | Description                         |
+| ----------- | ------------------------ | -------------- | ----------------------------------- |
+| `value`     | `Date`                   | -              | Currently selected date             |
+| `onChange`  | `(date: Date) => void`   | -              | Callback when date is selected      |
+| `className` | `string`                 | -              | Additional CSS classes              |
+| `yearRange` | `[number, number]`       | `[2000, 2040]` | Range of years to display           |
+| `info`      | `Record<string, string>` | `{}`           | Date info mapping (dateKey -> info) |
+
+## Usage
+
+```tsx
+import { CalendarPlanner } from "@/components/ui/calendar-planner";
+
+const eventInfo = {
+  "2024-12-25": "Christmas",
+  "2024-01-01": "New Year",
+};
+
+function MyCalendar() {
+  const [selectedDate, setSelectedDate] = React.useState<Date>(new Date());
+
+  return (
+    <CalendarPlanner
+      value={selectedDate}
+      onChange={setSelectedDate}
+      info={eventInfo}
+      yearRange={[2020, 2030]}
+    />
+  );
+}
+```

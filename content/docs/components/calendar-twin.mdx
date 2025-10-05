@@ -1,0 +1,68 @@
+---
+title: Calendar Twin
+date: 2024-06-01
+description: A dual-view calendar component with month and year selection modes
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="calendar-twin-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/calendar-twin"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="calendar-twin" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop        | Type                   | Default        | Description                    |
+| ----------- | ---------------------- | -------------- | ------------------------------ |
+| `value`     | `Date`                 | -              | Currently selected date        |
+| `onChange`  | `(date: Date) => void` | -              | Callback when date is selected |
+| `className` | `string`               | -              | Additional CSS classes         |
+| `yearRange` | `[number, number]`     | `[2000, 2035]` | Range of years to display      |
+
+## Usage
+
+```tsx
+import { CalendarTwin } from "@/components/ui/calendar-twin";
+
+function MyCalendar() {
+  const [selectedDate, setSelectedDate] = React.useState<Date>(new Date());
+
+  return (
+    <CalendarTwin
+      value={selectedDate}
+      onChange={setSelectedDate}
+      yearRange={[2020, 2030]}
+    />
+  );
+}
+```

@@ -1,0 +1,83 @@
+---
+title: Inbox Calendar
+date: 2024-06-01
+description: Interactive inbox-style calendar with event management and scrollable timeline
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="inbox-calendar-demo" category="calendars" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/inbox-calendar"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="inbox-calendar" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop            | Type                          | Default | Description                    |
+| --------------- | ----------------------------- | ------- | ------------------------------ |
+| `events`        | `InboxEvent[]`                | `[]`    | Array of calendar events       |
+| `onAddEvent`    | `(event: InboxEvent) => void` | -       | Callback when adding new event |
+| `onRemoveEvent` | `(id: string) => void`        | -       | Callback when removing event   |
+
+## Usage
+
+```tsx
+import { InboxCalendar, InboxEvent } from "@/components/ui/inbox-calendar";
+
+const events: InboxEvent[] = [
+  {
+    id: "1",
+    title: "Team Meeting",
+    description: "Weekly sync with the team",
+    date: new Date(),
+    label: "Work",
+  },
+];
+
+function MyCalendar() {
+  const handleAddEvent = (event: InboxEvent) => {
+    console.log("New event:", event);
+  };
+
+  const handleRemoveEvent = (id: string) => {
+    console.log("Remove event:", id);
+  };
+
+  return (
+    <InboxCalendar
+      events={events}
+      onAddEvent={handleAddEvent}
+      onRemoveEvent={handleRemoveEvent}
+    />
+  );
+}
+```

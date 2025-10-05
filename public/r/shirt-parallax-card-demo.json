@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shirt-parallax-card-demo",
+  "type": "registry:example",
+  "title": "Shirt Parallax Card Demo",
+  "description": "Example showing a product card with 3D parallax effects and floating image.",
+  "registryDependencies": [
+    "https://ruixen.com/r/shirt-parallax-card"
+  ],
+  "files": [
+    {
+      "path": "registry/example/shirt-parallax-card-demo.tsx",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { ShirtParallaxCard } from \"@/registry/ruixenui/shirt-parallax-card\";\r\n\r\nexport default function ShirtParallaxDemo() {\r\n  return (\r\n    <div className=\"flex h-screen w-full items-center justify-center bg-muted/10 p-8\">\r\n      <ShirtParallaxCard\r\n        title=\"Premium Cotton Shirt\"\r\n        description=\"Soft-touch fabric with a tailored fit — perfect for work and casual wear.\"\r\n        price=\"$39.99\"\r\n      />\r\n    </div>\r\n  );\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/shirt-parallax-card-demo.tsx"
+    }
+  ]
+}

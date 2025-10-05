@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "particle-flow-calendar-demo",
+  "type": "registry:example",
+  "title": "Particle Flow Calendar Demo",
+  "description": "Example showing a particle flow calendar with animated particles.",
+  "registryDependencies": [
+    "https://ruixen.com/r/particle-flow-calendar"
+  ],
+  "files": [
+    {
+      "path": "registry/example/particle-flow-calendar-demo.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport {\n  ParticleFlowCalendar,\n  ParticleEvent,\n} from \"@/registry/ruixenui/particle-flow-calendar\";\n\nexport default function ParticleFlowDemoPage() {\n  const [events, setEvents] = React.useState<ParticleEvent[]>([\n    {\n      id: 1,\n      title: \"Conference Talk\",\n      date: new Date(),\n    },\n    {\n      id: 2,\n      title: \"Hackathon Deadline\",\n      date: new Date(new Date().setDate(new Date().getDate() + 5)),\n    },\n  ]);\n\n  return (\n    <div className=\"container mx-auto p-6\">\n      <h1 className=\"text-2xl font-bold mb-4\">Particle Flow Calendar Demo</h1>\n      <ParticleFlowCalendar\n        initialEvents={events}\n        onEventsChange={setEvents}\n        particleCount={36} // Optional: customize number of particles\n        radius={160} // Optional: customize circle size\n        size={450} // Optional: customize the overall container size\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/particle-flow-calendar-demo.tsx"
+    }
+  ]
+}

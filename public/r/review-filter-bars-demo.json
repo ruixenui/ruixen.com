@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "review-filter-bars-demo",
+  "type": "registry:example",
+  "title": "Review Filter Bars Demo",
+  "description": "Example showing review filter bars with star ratings and progress indicators.",
+  "registryDependencies": [
+    "https://ruixen.com/r/review-filter-bars"
+  ],
+  "files": [
+    {
+      "path": "registry/example/review-filter-bars-demo.tsx",
+      "content": "\"use client\";\r\n\r\nimport { ReviewFilterGroup, ReviewFilterItem } from \"@/registry/ruixenui/review-filter-bars\";\r\n\r\nfunction DemoPage() {\r\n  const total = 12921;\r\n\r\n  return (\r\n    <div className=\"space-y-4\">\r\n      <h2 className=\"text-lg font-semibold\">Filter by rating</h2>\r\n      <p className=\"text-sm text-muted-foreground\">Select a review group to filter results.</p>\r\n\r\n      <ReviewFilterGroup defaultValue=\"all\">\r\n        <ReviewFilterItem value=\"5-stars\" stars={5} count={5168} total={total} />\r\n        <ReviewFilterItem value=\"4-stars\" stars={4} count={4726} total={total} />\r\n        <ReviewFilterItem value=\"3-stars\" stars={3} count={3234} total={total} />\r\n        <ReviewFilterItem value=\"2-stars\" stars={2} count={1842} total={total} />\r\n        <ReviewFilterItem value=\"1-star\" stars={1} count={452} total={total} />\r\n      </ReviewFilterGroup>\r\n      <div className=\"mt-4 text-xs text-center text-muted-foreground\">\r\n        Minimal design • Made by{\" \"}\r\n        <a href=\"https://www.ruixen.com\" target=\"_blank\" className=\"underline\">\r\n          ruixen.com\r\n        </a>\r\n      </div>\r\n    </div>\r\n  );\r\n}\r\n\r\nexport default DemoPage;\r\n",
+      "type": "registry:example",
+      "target": "components/review-filter-bars-demo.tsx"
+    }
+  ]
+}

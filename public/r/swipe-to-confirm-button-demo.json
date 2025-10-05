@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "swipe-to-confirm-button-demo",
+  "type": "registry:example",
+  "title": "Swipe To Confirm Button Demo",
+  "description": "Example showing a swipe to confirm button with gesture interaction.",
+  "registryDependencies": [
+    "https://ruixen.com/r/swipe-to-confirm-button"
+  ],
+  "files": [
+    {
+      "path": "registry/example/swipe-to-confirm-button-demo.tsx",
+      "content": "\"use client\";\n\nimport SwipeToConfirmButton from \"@/registry/ruixenui/swipe-to-confirm-button\";\n\nexport default function SwipeToConfirmDemo() {\n  const handleConfirm = () => alert(\"Payment Confirmed!\");\n\n  return (\n    <div className=\"p-6 flex flex-col gap-6 items-center\">\n      <SwipeToConfirmButton onConfirm={handleConfirm} />\n      <SwipeToConfirmButton\n        label=\"Swipe to Submit\"\n        width={350}\n        height={60}\n        onConfirm={() => console.log(\"Form Submitted!\")}\n      />\n      <SwipeToConfirmButton\n        label=\"Slide to Unlock\"\n        width={300}\n        height={50}\n        onConfirm={() => console.log(\"Unlocked!\")}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/swipe-to-confirm-button-demo.tsx"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radio-group-card-demo",
+  "type": "registry:example",
+  "title": "Radio Group Card Demo",
+  "description": "Example showing a radio group with card-style items and animated indicator.",
+  "registryDependencies": [
+    "https://ruixen.com/r/radio-group-card"
+  ],
+  "files": [
+    {
+      "path": "registry/example/radio-group-card-demo.tsx",
+      "content": "\"use client\";\n\nimport { RadioGroup, RadioCard } from \"@/registry/ruixenui/radio-group-card\";\nimport { Laptop, SunMedium, Moon } from \"lucide-react\";\n\nfunction DemoPage() {\n  return (\n    <div className=\"max-w-md space-y-6\">\n      <p className=\"text-sm text-muted-foreground\">\n        Select the theme that best matches your environment.\n      </p>\n\n      <RadioGroup defaultValue=\"system\">\n        <RadioCard\n          value=\"light\"\n          title=\"Light Mode\"\n          description=\"Bright and clean layout with light backgrounds.\"\n          icon={<SunMedium size={20} />}\n        />\n        <RadioCard\n          value=\"dark\"\n          title=\"Dark Mode\"\n          description=\"Dimmed layout that’s easy on the eyes at night.\"\n          icon={<Moon size={20} />}\n        />\n        <RadioCard\n          value=\"system\"\n          title=\"System\"\n          description=\"Automatically adapts to your device’s settings.\"\n          icon={<Laptop size={20} />}\n        />\n      </RadioGroup>\n      <div className=\"mt-4 text-xs text-center text-muted-foreground\">\n        Minimal design • made by{\" \"}\n        <a href=\"https://www.ruixen.com\" target=\"_blank\" className=\"underline\">\n          ruixen.com\n        </a>\n      </div>\n    </div>\n  );\n}\n\nexport default DemoPage;\n",
+      "type": "registry:example",
+      "target": "components/radio-group-card-demo.tsx"
+    }
+  ]
+}

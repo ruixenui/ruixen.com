@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "loading-circle",
+  "type": "registry:ui",
+  "title": "Loading Circle",
+  "description": "A ripple loading animation with multiple concentric circles and gradient effects.",
+  "files": [
+    {
+      "path": "registry/ruixenui/loading-circle.tsx",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\n\r\nexport const LoadingCircle: React.FC = () => {\r\n  const circles = Array.from({ length: 8 }); // 8 ripple circles\r\n\r\n  return (\r\n    <div className=\"relative h-[250px] aspect-square\">\r\n      {circles.map((_, i) => (\r\n        <span\r\n          key={i}\r\n          className={`\r\n            absolute rounded-full \r\n            border \r\n            bg-gradient-to-tr \r\n            from-gray-300/5 to-gray-200/10 \r\n            dark:from-gray-500/10 dark:to-gray-400/10 \r\n            backdrop-blur-sm\r\n          `}\r\n          style={{\r\n            inset: `${i * 5}%`,\r\n            zIndex: 99 - i,\r\n            borderColor: `rgba(100,100,100,${0.9 - i * 0.1})`,\r\n            animation: `ripple 2s infinite ease-in-out ${i * 0.15}s`,\r\n          }}\r\n        />\r\n      ))}\r\n    </div>\r\n  );\r\n};\r\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/loading-circle.tsx"
+    }
+  ]
+}

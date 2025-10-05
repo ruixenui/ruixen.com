@@ -1,0 +1,182 @@
+---
+title: Loading Circle
+date: 2024-06-01
+description: A ripple loading animation with multiple concentric circles and gradient effects.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="loading-circle-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/loading-circle"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="loading-circle" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Add the required CSS animations</Step>
+
+<Step>
+  Add the following animations to your global CSS file (e.g., `app/globals.css`)
+</Step>
+
+```css title="app/globals.css"
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { LoadingCircle } from "@/components/ruixen/loading-circle";
+
+export default function App() {
+  return (
+    <div className="flex min-h-screen items-center justify-center">
+      <LoadingCircle />
+    </div>
+  );
+}
+```
+
+## Features
+
+- **Multiple Circles**: 8 concentric circles for rich visual effect
+- **Staggered Animation**: Each circle starts with a 0.15s delay
+- **Gradient Backgrounds**: Subtle gradient effects with backdrop blur
+- **Dynamic Sizing**: Circles scale from center outward
+- **Responsive Design**: Maintains aspect ratio across screen sizes
+- **Smooth Animation**: 2-second infinite loop with ease-in-out timing
+
+## Animation Details
+
+### Circle Configuration
+
+- **Count**: 8 circles total
+- **Sizing**: Each circle is 5% smaller than the previous (inset: `i * 5%`)
+- **Z-Index**: Decreasing z-index for proper layering (99 - i)
+- **Delay**: Staggered start times (i \* 0.15s)
+
+### Visual Effects
+
+- **Border Opacity**: Decreasing opacity for depth effect (0.9 - i \* 0.1)
+- **Gradient**: Light gray gradients with transparency
+- **Backdrop Blur**: Subtle blur effect for modern appearance
+
+## Customization
+
+### Custom Colors
+
+```tsx
+// Modify colors in your CSS
+.from-gray-300/5 {
+  --tw-gradient-from: rgba(209, 213, 219, 0.05);
+}
+
+.to-gray-200/10 {
+  --tw-gradient-to: rgba(229, 231, 235, 0.1);
+}
+```
+
+### Dark Mode Support
+
+```tsx
+// Built-in dark mode variants
+.dark:from-gray-500/10 {
+  --tw-gradient-from: rgba(107, 114, 126, 0.1);
+}
+
+.dark:to-gray-400/10 {
+  --tw-gradient-to: rgba(156, 163, 175, 0.1);
+}
+```
+
+### Custom Animation Speed
+
+```css
+/* Modify animation duration */
+.custom-ripple {
+  animation: ripple 1.5s infinite ease-in-out; /* Faster animation */
+}
+```
+
+### Custom Circle Count
+
+```tsx
+// Modify the circles array length
+const circles = Array.from({ length: 6 }); // Fewer circles
+```
+
+## Size Variants
+
+### Small Loader
+
+```tsx
+<div className="relative h-[150px] aspect-square">
+  <LoadingCircle />
+</div>
+```
+
+### Large Loader
+
+```tsx
+<div className="relative h-[350px] aspect-square">
+  <LoadingCircle />
+</div>
+```
+
+## Use Cases
+
+- **Page Loading**: Full-page loading states
+- **Data Fetching**: API call loading indicators
+- **Form Submission**: Processing states for forms
+- **Image Loading**: Placeholder while images load
+- **App Initialization**: Startup loading screens
+- **Background Tasks**: Long-running process indicators
+
+## Performance
+
+- **CSS Animations**: Uses CSS animations for optimal performance
+- **Hardware Acceleration**: Transform and opacity changes are GPU-accelerated
+- **Minimal DOM**: Lightweight with only 8 span elements
+- **No JavaScript**: Pure CSS animation, no JavaScript required after render
+
+## Accessibility
+
+- **Screen Readers**: Consider adding `aria-label="Loading"` to the container
+- **Motion Preferences**: Respects `prefers-reduced-motion` when implemented
+- **Focus Management**: Non-interactive, doesn't interfere with focus flow

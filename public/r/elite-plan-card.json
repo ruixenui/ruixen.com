@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "elite-plan-card",
+  "type": "registry:ui",
+  "title": "Elite Plan Card",
+  "description": "A premium plan card with image parallax, highlights, and call-to-action button.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/elite-plan-card.tsx",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { motion } from \"framer-motion\";\r\nimport { cn } from \"@/lib/utils\";\r\nimport { Button } from \"@/components/ui/button\";\r\n\r\ninterface ElitePlanCardProps extends React.HTMLAttributes<HTMLDivElement> {\r\n  imageUrl: string;\r\n  title: string;\r\n  subtitle: string;\r\n  description: string;\r\n  highlights?: string[]; // new section for extra text\r\n  onAction?: () => void;\r\n}\r\n\r\nexport const ElitePlanCard = React.forwardRef<\r\n  HTMLDivElement,\r\n  ElitePlanCardProps\r\n>(\r\n  (\r\n    {\r\n      className,\r\n      imageUrl,\r\n      title,\r\n      subtitle,\r\n      description,\r\n      highlights = [],\r\n      onAction,\r\n      ...props\r\n    },\r\n    ref\r\n  ) => {\r\n    return (\r\n      <motion.div\r\n        whileHover={{ scale: 1.02 }}\r\n        transition={{ type: \"spring\", stiffness: 250, damping: 20 }}\r\n        className={cn(\r\n          \"relative w-full max-w-sm overflow-hidden rounded-3xl hover:shadow-xl bg-black\",\r\n          className\r\n        )}\r\n      >\r\n        {/* Top image with parallax */}\r\n        <motion.div\r\n          className=\"relative h-64 w-full overflow-hidden\"\r\n          whileHover={{ scale: 1.1 }}\r\n          transition={{ duration: 0.45 }}\r\n        >\r\n          <img\r\n            src={imageUrl}\r\n            alt={title}\r\n            className=\"h-full w-full object-cover\"\r\n          />\r\n          {/* Fade connection between image and black background */}\r\n          <div className=\"absolute bottom-0 h-32 w-full bg-gradient-to-t from-black via-black/80 to-transparent\" />\r\n        </motion.div>\r\n\r\n        {/* Bottom content */}\r\n        <div className=\"relative z-10 p-6 bg-black text-white\">\r\n          <p className=\"text-sm uppercase tracking-wider text-gray-400\">\r\n            {subtitle}\r\n          </p>\r\n          <h3 className=\"mt-1 text-2xl font-bold\">{title}</h3>\r\n          <p className=\"mt-3 text-sm leading-relaxed text-gray-300\">\r\n            {description}\r\n          </p>\r\n\r\n          {/* Highlights */}\r\n          {highlights.length > 0 && (\r\n            <ul className=\"mt-4 grid grid-cols-2 gap-2 text-xs text-gray-400\">\r\n              {highlights.map((item, idx) => (\r\n                <li\r\n                  key={idx}\r\n                  className=\"flex items-center gap-2 rounded-md bg-gray-800/50 px-2 py-1\"\r\n                >\r\n                  <span className=\"h-1.5 w-1.5 rounded-full bg-white\" />\r\n                  {item}\r\n                </li>\r\n              ))}\r\n            </ul>\r\n          )}\r\n\r\n          {/* CTA */}\r\n          {onAction && (\r\n            <div className=\"mt-6\">\r\n              <Button\r\n                variant=\"default\"\r\n                onClick={onAction}\r\n                className=\"w-full bg-white text-black hover:bg-gray-200\"\r\n              >\r\n                Learn More\r\n              </Button>\r\n            </div>\r\n          )}\r\n        </div>\r\n      </motion.div>\r\n    );\r\n  }\r\n);\r\n\r\nElitePlanCard.displayName = \"ElitePlanCard\";\r\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/elite-plan-card.tsx"
+    }
+  ]
+}

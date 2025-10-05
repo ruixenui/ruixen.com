@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "emoji-radio-group",
+  "type": "registry:ui",
+  "title": "Emoji Radio Group",
+  "description": "A compact radio group with emoji-based options for quick visual feedback selection.",
+  "dependencies": [
+    "@radix-ui/react-radio-group"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/emoji-radio-group.tsx",
+      "content": "\"use client\";\n\nimport * as RadioGroupPrimitive from \"@radix-ui/react-radio-group\";\nimport * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nconst RadioGroup = React.forwardRef<\n  React.ElementRef<typeof RadioGroupPrimitive.Root>,\n  React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root>\n>(({ className, ...props }, ref) => (\n  <RadioGroupPrimitive.Root\n    ref={ref}\n    className={cn(\"flex gap-3\", className)}\n    {...props}\n  />\n));\nRadioGroup.displayName = RadioGroupPrimitive.Root.displayName;\n\nconst EmojiRadio = React.forwardRef<\n  React.ElementRef<typeof RadioGroupPrimitive.Item>,\n  React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item> & {\n    emoji: string;\n    label: string;\n  }\n>(({ className, emoji, label, ...props }, ref) => (\n  <RadioGroupPrimitive.Item\n    ref={ref}\n    className={cn(\n      \"relative flex size-14 cursor-pointer flex-col items-center justify-center rounded-lg border border-input bg-background text-lg shadow-sm transition-all\",\n      \"hover:scale-105 hover:border-primary/70\",\n      \"focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring/70\",\n      \"data-[state=checked]:border-primary data-[state=checked]:bg-accent data-[state=checked]:text-accent-foreground\",\n      \"disabled:cursor-not-allowed disabled:opacity-50\",\n      className,\n    )}\n    {...props}\n  >\n    <span>{emoji}</span>\n    <span className=\"text-[10px] font-medium\">{label}</span>\n  </RadioGroupPrimitive.Item>\n));\nEmojiRadio.displayName = \"EmojiRadio\";\n\nexport { RadioGroup, EmojiRadio };\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/emoji-radio-group.tsx"
+    }
+  ]
+}

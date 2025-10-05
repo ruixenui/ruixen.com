@@ -1,0 +1,83 @@
+---
+title: Calendar Lume
+date: 2024-06-01
+description: An animated calendar with year/month/day step navigation and smooth transitions
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="calendar-lume-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/calendar-lume"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="calendar-lume" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { CalendarLume } from "@/components/ruixen/calendar-lume";
+import { useState } from "react";
+
+export default function App() {
+  const [date, setDate] = useState<Date>();
+
+  return (
+    <CalendarLume
+      initialDate={date}
+      onChange={setDate}
+      startYear={2000}
+      endYear={2030}
+      className="max-w-md"
+    />
+  );
+}
+```
+
+## Props
+
+| Prop                | Type                                | Default | Description                |
+| ------------------- | ----------------------------------- | ------- | -------------------------- |
+| `startYear`         | `number`                            | `1900`  | Minimum selectable year    |
+| `endYear`           | `number`                            | `2100`  | Maximum selectable year    |
+| `initialDate`       | `Date`                              | -       | Initial selected date      |
+| `onChange`          | `(date: Date \| undefined) => void` | -       | Callback when date changes |
+| `className`         | `string`                            | -       | Additional CSS classes     |
+| `showYearSelector`  | `boolean`                           | `true`  | Show year selection step   |
+| `showMonthSelector` | `boolean`                           | `true`  | Show month selection step  |
+
+## Features
+
+- **Step Navigation**: Year → Month → Day progression
+- **Smooth Animations**: Framer Motion powered transitions
+- **Breadcrumb Controls**: Easy navigation between steps
+- **Configurable Range**: Set custom year ranges
+- **Backdrop Blur**: Modern glassmorphism design
+- **Responsive Grid**: Adaptive layout for all screen sizes

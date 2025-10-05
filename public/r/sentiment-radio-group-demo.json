@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sentiment-radio-group-demo",
+  "type": "registry:example",
+  "title": "Sentiment Radio Group Demo",
+  "description": "Example showing a sentiment radio group with emojis and descriptions.",
+  "registryDependencies": [
+    "https://ruixen.com/r/sentiment-radio-group"
+  ],
+  "files": [
+    {
+      "path": "registry/example/sentiment-radio-group-demo.tsx",
+      "content": "\"use client\";\r\n\r\nimport { RadioGroup, SentimentCard } from \"@/registry/ruixenui/sentiment-radio-group\";\r\n\r\nfunction DemoPage() {\r\n  return (\r\n    <div className=\"max-w-md space-y-6\">\r\n      <h2 className=\"text-lg font-semibold\">How did it go?</h2>\r\n      <p className=\"text-sm text-muted-foreground\">\r\n        Select the option that best reflects your experience.\r\n      </p>\r\n\r\n      <RadioGroup defaultValue=\"neutral\">\r\n        <SentimentCard\r\n          value=\"angry\"\r\n          emoji=\"😠\"\r\n          title=\"Angry\"\r\n          description=\"Frustrated or upset with the experience.\"\r\n        />\r\n        <SentimentCard\r\n          value=\"sad\"\r\n          emoji=\"🙁\"\r\n          title=\"Sad\"\r\n          description=\"Something didn’t meet expectations.\"\r\n        />\r\n        <SentimentCard\r\n          value=\"neutral\"\r\n          emoji=\"😐\"\r\n          title=\"Neutral\"\r\n          description=\"Neither good nor bad, just okay.\"\r\n        />\r\n        <SentimentCard\r\n          value=\"happy\"\r\n          emoji=\"🙂\"\r\n          title=\"Happy\"\r\n          description=\"Satisfied and had a good experience.\"\r\n        />\r\n        <SentimentCard\r\n          value=\"laughing\"\r\n          emoji=\"😀\"\r\n          title=\"Delighted\"\r\n          description=\"Loved it, exceeded expectations!\"\r\n        />\r\n      </RadioGroup>\r\n      <div className=\"mt-4 text-xs text-center text-muted-foreground\">\r\n        Minimal design • Made by{\" \"}\r\n        <a href=\"https://www.ruixen.com\" target=\"_blank\" className=\"underline\">\r\n          ruixen.com\r\n        </a>\r\n      </div>\r\n    </div>\r\n  );\r\n}\r\n\r\nexport default DemoPage;\r\n",
+      "type": "registry:example",
+      "target": "components/sentiment-radio-group-demo.tsx"
+    }
+  ]
+}

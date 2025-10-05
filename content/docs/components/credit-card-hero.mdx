@@ -1,0 +1,154 @@
+---
+title: Credit Card Hero
+date: 2024-06-01
+description: A 3D interactive hero section with floating credit cards and mouse tilt effects.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="credit-card-hero-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/credit-card-hero"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="credit-card-hero" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { CreditCardHero } from "@/components/ruixen/credit-card-hero";
+
+export default function App() {
+  return (
+    <div className="flex h-screen w-full items-center justify-center bg-muted/20 p-8">
+      <CreditCardHero
+        headline="The Future of Digital Banking"
+        subtext="Secure, globally accepted, and packed with exclusive rewards — your new digital credit card is here."
+        cta="Apply Now"
+        onCtaClick={() => alert("CTA Clicked!")}
+        primaryCardImage="https://example.com/card1.jpg"
+        secondaryCardImage="https://example.com/card2.jpg"
+      />
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop                 | Type         | Default                                                                    | Description                           |
+| -------------------- | ------------ | -------------------------------------------------------------------------- | ------------------------------------- |
+| `headline`           | `string`     | -                                                                          | Main headline text                    |
+| `subtext`            | `string`     | -                                                                          | Supporting description text           |
+| `cta`                | `string`     | -                                                                          | Call-to-action button text            |
+| `onCtaClick`         | `() => void` | -                                                                          | Callback when CTA button is clicked   |
+| `primaryCardImage`   | `string`     | "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/ruixen_moon.png"      | Background image for the larger card  |
+| `secondaryCardImage` | `string`     | "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/ruixen_gradient.jpeg" | Background image for the smaller card |
+| `className`          | `string`     | -                                                                          | Additional CSS classes                |
+
+## Features
+
+- **3D Mouse Tracking**: Cards tilt and rotate based on mouse movement
+- **Floating Cards**: Two credit cards positioned outside the main content area
+- **Smooth Animations**: Spring-based animations with Framer Motion
+- **Responsive Design**: Adapts to different screen sizes
+- **Interactive CTA**: Prominent call-to-action button
+- **Depth Layers**: Multiple Z-index layers create depth perception
+
+## 3D Effects
+
+The component uses Framer Motion's `useTransform` and `useSpring` for smooth 3D effects:
+
+### Mouse Tracking
+
+- **X-axis rotation**: -8° to 8° based on mouse Y position
+- **Y-axis rotation**: -8° to 8° based on mouse X position
+- **Spring animation**: Smooth transitions with stiffness: 300, damping: 20
+
+### Card Positioning
+
+- **Primary Card**: Bottom-left, larger size (320×176px), translateZ(50px)
+- **Secondary Card**: Top-right, smaller size (240×128px), translateZ(40px)
+
+## Card Design Elements
+
+Each floating card includes:
+
+- **Background Image**: Custom background with cover positioning
+- **Overlay**: Semi-transparent black overlay (40% opacity)
+- **Card Number**: Masked card number display
+- **Cardholder Info**: Name and expiry date
+- **Realistic Proportions**: Credit card aspect ratio
+
+## Customization
+
+### Custom Card Content
+
+```tsx
+// Primary card displays: **** 4590, JANE DOE, 11/29
+// Secondary card displays: **** 7421, JOHN DOE, 07/31
+```
+
+### Custom Animations
+
+```tsx
+// Adjust tilt sensitivity by modifying transform ranges
+const rotateX = useTransform(mouseY, [0, 400], [8, -8]); // Reduce range for less tilt
+const rotateY = useTransform(mouseX, [0, 600], [-8, 8]);
+```
+
+### Custom Positioning
+
+```tsx
+// Modify card positions in the component
+// Primary card: -bottom-20 -left-28
+// Secondary card: -top-12 -right-24
+```
+
+## Performance Considerations
+
+- **Transform Style**: Uses `transform-style: preserve-3d` for hardware acceleration
+- **Spring Animations**: Optimized spring physics for smooth performance
+- **Mouse Throttling**: Mouse events are efficiently handled by Framer Motion
+
+## Use Cases
+
+- **Banking Websites**: Credit card product landing pages
+- **Fintech Apps**: Digital banking service promotion
+- **Payment Platforms**: Payment method showcases
+- **Financial Services**: Premium card marketing
+- **E-commerce**: Payment solution highlights
+
+## Accessibility
+
+- **Keyboard Navigation**: CTA button is keyboard accessible
+- **Screen Readers**: Proper semantic structure with headings
+- **Motion Preferences**: Respects user's motion preferences
+- **Focus Management**: Clear focus indicators on interactive elements
