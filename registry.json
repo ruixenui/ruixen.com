@@ -3444,6 +3444,206 @@
       ]
     },
     {
+      "name": "inbox-calendar",
+      "type": "registry:ui",
+      "title": "Inbox Calendar",
+      "description": "Interactive inbox-style calendar with event management and scrollable timeline.",
+      "dependencies": [
+        "date-fns",
+        "lucide-react",
+        "uuid"
+      ],
+      "registryDependencies": [
+        "card",
+        "scroll-area",
+        "separator",
+        "badge",
+        "button",
+        "popover",
+        "input",
+        "textarea",
+        "calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/inbox-calendar.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/inbox-calendar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "event-constellation-calendar",
+      "type": "registry:ui",
+      "title": "Event Constellation Calendar",
+      "description": "Unique starfield-style calendar with constellation connections between events.",
+      "dependencies": [
+        "date-fns",
+        "lucide-react",
+        "uuid"
+      ],
+      "registryDependencies": [
+        "card",
+        "button",
+        "popover",
+        "input"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/event-constellation-calendar.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/event-constellation-calendar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "three-dwall-calendar",
+      "type": "registry:ui",
+      "title": "Three D Wall Calendar",
+      "description": "Interactive 3D wall-style calendar with tilt controls and drag interactions.",
+      "dependencies": [
+        "date-fns",
+        "lucide-react",
+        "uuid"
+      ],
+      "registryDependencies": [
+        "card",
+        "button",
+        "input",
+        "popover",
+        "hover-card"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/three-dwall-calendar.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/three-dwall-calendar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "task-orbit-calendar",
+      "type": "registry:ui",
+      "title": "Task Orbit Calendar",
+      "description": "Orbital calendar view with tasks rotating around a central 'Today' hub.",
+      "dependencies": [
+        "date-fns",
+        "lucide-react",
+        "uuid"
+      ],
+      "registryDependencies": [
+        "card",
+        "popover",
+        "button",
+        "input"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/task-orbit-calendar.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/task-orbit-calendar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "radial-week-view",
+      "type": "registry:ui",
+      "title": "Radial Week View",
+      "description": "Circular week calendar with radial hour markers and event positioning.",
+      "dependencies": [
+        "date-fns",
+        "lucide-react",
+        "uuid"
+      ],
+      "registryDependencies": [
+        "card",
+        "popover",
+        "button",
+        "input"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/radial-week-view.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/radial-week-view.tsx"
+        }
+      ]
+    },
+    {
+      "name": "stacked-bar-calendar",
+      "type": "registry:ui",
+      "title": "Stacked Bar Calendar",
+      "description": "Calendar with stacked bar visualization for event categories and filtering.",
+      "dependencies": [
+        "date-fns",
+        "lucide-react",
+        "uuid"
+      ],
+      "registryDependencies": [
+        "calendar",
+        "popover",
+        "card",
+        "button",
+        "input",
+        "select"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/stacked-bar-calendar.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/stacked-bar-calendar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "heatmap-calendar",
+      "type": "registry:ui",
+      "title": "Heatmap Calendar",
+      "description": "GitHub-style heatmap calendar showing event intensity with color gradients.",
+      "dependencies": [
+        "date-fns",
+        "lucide-react",
+        "uuid"
+      ],
+      "registryDependencies": [
+        "card",
+        "popover",
+        "button",
+        "input"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/heatmap-calendar.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/heatmap-calendar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "event-calendar",
+      "type": "registry:ui",
+      "title": "Event Calendar",
+      "description": "Simple and clean event calendar with date selection and event management.",
+      "dependencies": [
+        "date-fns",
+        "lucide-react",
+        "uuid"
+      ],
+      "registryDependencies": [
+        "calendar",
+        "card",
+        "button",
+        "input"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/event-calendar.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/event-calendar.tsx"
+        }
+      ]
+    },
+    {
       "name": "staggered-faq-section-demo",
       "type": "registry:example",
       "title": "StaggeredFAQSection Demo",
@@ -6224,6 +6424,134 @@
           "path": "registry/example/auth-tabs-card-demo.tsx",
           "type": "registry:example",
           "target": "components/auth-tabs-card-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "inbox-calendar-demo",
+      "type": "registry:example",
+      "title": "Inbox Calendar Demo",
+      "description": "Example showing an interactive inbox-style calendar with event management.",
+      "registryDependencies": [
+        "https://ruixen.com/r/inbox-calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/example/inbox-calendar-demo.tsx",
+          "type": "registry:example",
+          "target": "components/inbox-calendar-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "event-constellation-calendar-demo",
+      "type": "registry:example",
+      "title": "Event Constellation Calendar Demo",
+      "description": "Example showing a starfield-style calendar with constellation connections.",
+      "registryDependencies": [
+        "https://ruixen.com/r/event-constellation-calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/example/event-constellation-calendar-demo.tsx",
+          "type": "registry:example",
+          "target": "components/event-constellation-calendar-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "three-dwall-calendar-demo",
+      "type": "registry:example",
+      "title": "Three D Wall Calendar Demo",
+      "description": "Example showing a 3D wall-style calendar with interactive controls.",
+      "registryDependencies": [
+        "https://ruixen.com/r/three-dwall-calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/example/three-dwall-calendar-demo.tsx",
+          "type": "registry:example",
+          "target": "components/three-dwall-calendar-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "task-orbit-calendar-demo",
+      "type": "registry:example",
+      "title": "Task Orbit Calendar Demo",
+      "description": "Example showing an orbital calendar with tasks rotating around today.",
+      "registryDependencies": [
+        "https://ruixen.com/r/task-orbit-calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/example/task-orbit-calendar-demo.tsx",
+          "type": "registry:example",
+          "target": "components/task-orbit-calendar-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "radial-week-view-demo",
+      "type": "registry:example",
+      "title": "Radial Week View Demo",
+      "description": "Example showing a circular week calendar with radial hour markers.",
+      "registryDependencies": [
+        "https://ruixen.com/r/radial-week-view"
+      ],
+      "files": [
+        {
+          "path": "registry/example/radial-week-view-demo.tsx",
+          "type": "registry:example",
+          "target": "components/radial-week-view-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "stacked-bar-calendar-demo",
+      "type": "registry:example",
+      "title": "Stacked Bar Calendar Demo",
+      "description": "Example showing a calendar with stacked bar visualization and filtering.",
+      "registryDependencies": [
+        "https://ruixen.com/r/stacked-bar-calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/example/stacked-bar-calendar-demo.tsx",
+          "type": "registry:example",
+          "target": "components/stacked-bar-calendar-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "heatmap-calendar-demo",
+      "type": "registry:example",
+      "title": "Heatmap Calendar Demo",
+      "description": "Example showing a GitHub-style heatmap calendar with event intensity.",
+      "registryDependencies": [
+        "https://ruixen.com/r/heatmap-calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/example/heatmap-calendar-demo.tsx",
+          "type": "registry:example",
+          "target": "components/heatmap-calendar-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "event-calendar-demo",
+      "type": "registry:example",
+      "title": "Event Calendar Demo",
+      "description": "Example showing a simple and clean event calendar with date selection.",
+      "registryDependencies": [
+        "https://ruixen.com/r/event-calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/example/event-calendar-demo.tsx",
+          "type": "registry:example",
+          "target": "components/event-calendar-demo.tsx"
         }
       ]
     },

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "inbox-calendar-demo",
+  "type": "registry:example",
+  "title": "Inbox Calendar Demo",
+  "description": "Example showing an interactive inbox-style calendar with event management.",
+  "registryDependencies": [
+    "https://ruixen.com/r/inbox-calendar"
+  ],
+  "files": [
+    {
+      "path": "registry/example/inbox-calendar-demo.tsx",
+      "content": "\"use client\"\r\n\r\nimport * as React from \"react\"\r\nimport { InboxCalendar, InboxEvent } from \"@/registry/ruixenui/inbox-calendar\"\r\nimport { v4 as uuidv4 } from \"uuid\"\r\n\r\nexport default function InboxCalendarDemo() {\r\n  const [events, setEvents] = React.useState<InboxEvent[]>([\r\n    {\r\n      id: uuidv4(),\r\n      title: \"Team Standup\",\r\n      description: \"Daily sync with the dev team.\",\r\n      date: new Date(2025, 8, 25, 10, 0),\r\n      label: \"Work\",\r\n    },\r\n    {\r\n      id: uuidv4(),\r\n      title: \"Lunch with Sarah\",\r\n      description: \"Catch up at the cafe near office.\",\r\n      date: new Date(2025, 8, 25, 13, 0),\r\n      label: \"Personal\",\r\n    },\r\n  ])\r\n\r\n  const handleAdd = (event: InboxEvent) => {\r\n    setEvents((prev) => [...prev, event])\r\n  }\r\n\r\n  const handleRemove = (id: string) => {\r\n    setEvents((prev) => prev.filter((e) => e.id !== id))\r\n  }\r\n\r\n  return (\r\n    <div className=\"p-6 flex justify-center\">\r\n      <InboxCalendar\r\n        events={events}\r\n        onAddEvent={handleAdd}\r\n        onRemoveEvent={handleRemove}\r\n      />\r\n    </div>\r\n  )\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/inbox-calendar-demo.tsx"
+    }
+  ]
+}

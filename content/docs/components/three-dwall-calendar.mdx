@@ -1,0 +1,89 @@
+---
+title: Three D Wall Calendar
+date: 2024-06-01
+description: Interactive 3D wall-style calendar with tilt controls and drag interactions
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="three-dwall-calendar-demo" category="calendars" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/three-dwall-calendar"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="three-dwall-calendar" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop            | Type                             | Default | Description                    |
+| --------------- | -------------------------------- | ------- | ------------------------------ |
+| `events`        | `CalendarEvent[]`                | `[]`    | Array of calendar events       |
+| `onAddEvent`    | `(event: CalendarEvent) => void` | -       | Callback when adding new event |
+| `onRemoveEvent` | `(id: string) => void`           | -       | Callback when removing event   |
+| `panelWidth`    | `number`                         | `160`   | Width of each calendar panel   |
+| `panelHeight`   | `number`                         | `120`   | Height of each calendar panel  |
+| `columns`       | `number`                         | `7`     | Number of columns in the grid  |
+
+## Usage
+
+```tsx
+import {
+  ThreeDWallCalendar,
+  CalendarEvent,
+} from "@/components/ui/three-dwall-calendar";
+
+const events: CalendarEvent[] = [
+  {
+    id: "1",
+    title: "Meeting",
+    date: new Date().toISOString(),
+  },
+];
+
+function MyCalendar() {
+  const handleAddEvent = (event: CalendarEvent) => {
+    console.log("New event:", event);
+  };
+
+  const handleRemoveEvent = (id: string) => {
+    console.log("Remove event:", id);
+  };
+
+  return (
+    <ThreeDWallCalendar
+      events={events}
+      onAddEvent={handleAddEvent}
+      onRemoveEvent={handleRemoveEvent}
+      panelWidth={180}
+      panelHeight={140}
+    />
+  );
+}
+```

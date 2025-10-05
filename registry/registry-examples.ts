@@ -2568,4 +2568,124 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "inbox-calendar-demo",
+    type: "registry:example",
+    title: "Inbox Calendar Demo",
+    description:
+      "Example showing an interactive inbox-style calendar with event management.",
+    registryDependencies: ["https://ruixen.com/r/inbox-calendar"],
+    files: [
+      {
+        path: "registry/example/inbox-calendar-demo.tsx",
+        type: "registry:example",
+        target: "components/inbox-calendar-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "event-constellation-calendar-demo",
+    type: "registry:example",
+    title: "Event Constellation Calendar Demo",
+    description:
+      "Example showing a starfield-style calendar with constellation connections.",
+    registryDependencies: ["https://ruixen.com/r/event-constellation-calendar"],
+    files: [
+      {
+        path: "registry/example/event-constellation-calendar-demo.tsx",
+        type: "registry:example",
+        target: "components/event-constellation-calendar-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "three-dwall-calendar-demo",
+    type: "registry:example",
+    title: "Three D Wall Calendar Demo",
+    description:
+      "Example showing a 3D wall-style calendar with interactive controls.",
+    registryDependencies: ["https://ruixen.com/r/three-dwall-calendar"],
+    files: [
+      {
+        path: "registry/example/three-dwall-calendar-demo.tsx",
+        type: "registry:example",
+        target: "components/three-dwall-calendar-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "task-orbit-calendar-demo",
+    type: "registry:example",
+    title: "Task Orbit Calendar Demo",
+    description:
+      "Example showing an orbital calendar with tasks rotating around today.",
+    registryDependencies: ["https://ruixen.com/r/task-orbit-calendar"],
+    files: [
+      {
+        path: "registry/example/task-orbit-calendar-demo.tsx",
+        type: "registry:example",
+        target: "components/task-orbit-calendar-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "radial-week-view-demo",
+    type: "registry:example",
+    title: "Radial Week View Demo",
+    description:
+      "Example showing a circular week calendar with radial hour markers.",
+    registryDependencies: ["https://ruixen.com/r/radial-week-view"],
+    files: [
+      {
+        path: "registry/example/radial-week-view-demo.tsx",
+        type: "registry:example",
+        target: "components/radial-week-view-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "stacked-bar-calendar-demo",
+    type: "registry:example",
+    title: "Stacked Bar Calendar Demo",
+    description:
+      "Example showing a calendar with stacked bar visualization and filtering.",
+    registryDependencies: ["https://ruixen.com/r/stacked-bar-calendar"],
+    files: [
+      {
+        path: "registry/example/stacked-bar-calendar-demo.tsx",
+        type: "registry:example",
+        target: "components/stacked-bar-calendar-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "heatmap-calendar-demo",
+    type: "registry:example",
+    title: "Heatmap Calendar Demo",
+    description:
+      "Example showing a GitHub-style heatmap calendar with event intensity.",
+    registryDependencies: ["https://ruixen.com/r/heatmap-calendar"],
+    files: [
+      {
+        path: "registry/example/heatmap-calendar-demo.tsx",
+        type: "registry:example",
+        target: "components/heatmap-calendar-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "event-calendar-demo",
+    type: "registry:example",
+    title: "Event Calendar Demo",
+    description:
+      "Example showing a simple and clean event calendar with date selection.",
+    registryDependencies: ["https://ruixen.com/r/event-calendar"],
+    files: [
+      {
+        path: "registry/example/event-calendar-demo.tsx",
+        type: "registry:example",
+        target: "components/event-calendar-demo.tsx",
+      },
+    ],
+  },
 ];

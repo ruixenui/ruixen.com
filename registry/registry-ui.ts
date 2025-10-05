@@ -3074,4 +3074,149 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "inbox-calendar",
+    type: "registry:ui",
+    title: "Inbox Calendar",
+    description:
+      "Interactive inbox-style calendar with event management and scrollable timeline.",
+    dependencies: ["date-fns", "lucide-react", "uuid"],
+    registryDependencies: [
+      "card",
+      "scroll-area",
+      "separator",
+      "badge",
+      "button",
+      "popover",
+      "input",
+      "textarea",
+      "calendar",
+    ],
+    files: [
+      {
+        path: "registry/ruixenui/inbox-calendar.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/inbox-calendar.tsx",
+      },
+    ],
+  },
+  {
+    name: "event-constellation-calendar",
+    type: "registry:ui",
+    title: "Event Constellation Calendar",
+    description:
+      "Unique starfield-style calendar with constellation connections between events.",
+    dependencies: ["date-fns", "lucide-react", "uuid"],
+    registryDependencies: ["card", "button", "popover", "input"],
+    files: [
+      {
+        path: "registry/ruixenui/event-constellation-calendar.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/event-constellation-calendar.tsx",
+      },
+    ],
+  },
+  {
+    name: "three-dwall-calendar",
+    type: "registry:ui",
+    title: "Three D Wall Calendar",
+    description:
+      "Interactive 3D wall-style calendar with tilt controls and drag interactions.",
+    dependencies: ["date-fns", "lucide-react", "uuid"],
+    registryDependencies: ["card", "button", "input", "popover", "hover-card"],
+    files: [
+      {
+        path: "registry/ruixenui/three-dwall-calendar.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/three-dwall-calendar.tsx",
+      },
+    ],
+  },
+  {
+    name: "task-orbit-calendar",
+    type: "registry:ui",
+    title: "Task Orbit Calendar",
+    description:
+      "Orbital calendar view with tasks rotating around a central 'Today' hub.",
+    dependencies: ["date-fns", "lucide-react", "uuid"],
+    registryDependencies: ["card", "popover", "button", "input"],
+    files: [
+      {
+        path: "registry/ruixenui/task-orbit-calendar.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/task-orbit-calendar.tsx",
+      },
+    ],
+  },
+  {
+    name: "radial-week-view",
+    type: "registry:ui",
+    title: "Radial Week View",
+    description:
+      "Circular week calendar with radial hour markers and event positioning.",
+    dependencies: ["date-fns", "lucide-react", "uuid"],
+    registryDependencies: ["card", "popover", "button", "input"],
+    files: [
+      {
+        path: "registry/ruixenui/radial-week-view.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/radial-week-view.tsx",
+      },
+    ],
+  },
+  {
+    name: "stacked-bar-calendar",
+    type: "registry:ui",
+    title: "Stacked Bar Calendar",
+    description:
+      "Calendar with stacked bar visualization for event categories and filtering.",
+    dependencies: ["date-fns", "lucide-react", "uuid"],
+    registryDependencies: [
+      "calendar",
+      "popover",
+      "card",
+      "button",
+      "input",
+      "select",
+    ],
+    files: [
+      {
+        path: "registry/ruixenui/stacked-bar-calendar.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/stacked-bar-calendar.tsx",
+      },
+    ],
+  },
+  {
+    name: "heatmap-calendar",
+    type: "registry:ui",
+    title: "Heatmap Calendar",
+    description:
+      "GitHub-style heatmap calendar showing event intensity with color gradients.",
+    dependencies: ["date-fns", "lucide-react", "uuid"],
+    registryDependencies: ["card", "popover", "button", "input"],
+    files: [
+      {
+        path: "registry/ruixenui/heatmap-calendar.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/heatmap-calendar.tsx",
+      },
+    ],
+  },
+  {
+    name: "event-calendar",
+    type: "registry:ui",
+    title: "Event Calendar",
+    description:
+      "Simple and clean event calendar with date selection and event management.",
+    dependencies: ["date-fns", "lucide-react", "uuid"],
+    registryDependencies: ["calendar", "card", "button", "input"],
+    files: [
+      {
+        path: "registry/ruixenui/event-calendar.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/event-calendar.tsx",
+      },
+    ],
+  },
 ];

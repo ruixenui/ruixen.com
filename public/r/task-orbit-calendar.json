@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "task-orbit-calendar",
+  "type": "registry:ui",
+  "title": "Task Orbit Calendar",
+  "description": "Orbital calendar view with tasks rotating around a central 'Today' hub.",
+  "dependencies": [
+    "date-fns",
+    "lucide-react",
+    "uuid"
+  ],
+  "registryDependencies": [
+    "card",
+    "popover",
+    "button",
+    "input"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/task-orbit-calendar.tsx",
+      "content": "\"use client\"\r\n\r\nimport * as React from \"react\"\r\nimport { Card, CardContent } from \"@/components/ui/card\"\r\nimport { Popover, PopoverTrigger, PopoverContent } from \"@/components/ui/popover\"\r\nimport { Button } from \"@/components/ui/button\"\r\nimport { Input } from \"@/components/ui/input\"\r\nimport { Trash2 } from \"lucide-react\"\r\nimport { v4 as uuidv4 } from \"uuid\"\r\nimport { differenceInHours, parseISO, format, addDays, isBefore, isAfter } from \"date-fns\"\r\n\r\nexport type CalendarEvent = {\r\n  id: string\r\n  title: string\r\n  date: string // ISO string\r\n}\r\n\r\ninterface TaskOrbitCalendarProps {\r\n  events: CalendarEvent[]\r\n  onAddEvent: (event: CalendarEvent) => void\r\n  onRemoveEvent?: (id: string) => void\r\n}\r\n\r\nexport function TaskOrbitCalendar({ events, onAddEvent, onRemoveEvent }: TaskOrbitCalendarProps) {\r\n  const [newTitle, setNewTitle] = React.useState(\"\")\r\n  const [newDate, setNewDate] = React.useState(\"\")\r\n\r\n  const now = new Date()\r\n  const minDate = addDays(now, -7)\r\n  const maxDate = addDays(now, 7)\r\n\r\n  const handleAddEvent = () => {\r\n    if (!newTitle.trim() || !newDate) return\r\n\r\n    const eventDate = parseISO(newDate)\r\n    if (isBefore(eventDate, minDate) || isAfter(eventDate, maxDate)) {\r\n      alert(\"Event date must be within ±7 days from today\")\r\n      return\r\n    }\r\n\r\n    onAddEvent({\r\n      id: uuidv4(),\r\n      title: newTitle.trim(),\r\n      date: newDate,\r\n    })\r\n    setNewTitle(\"\")\r\n    setNewDate(\"\")\r\n  }\r\n\r\n  const getOrbitDistance = (eventDate: string) => {\r\n    const hoursDiff = Math.max(differenceInHours(parseISO(eventDate), now), 0)\r\n    const maxDistance = 150\r\n    const distance = Math.min(maxDistance, hoursDiff * 5 + 40) // closer events move inward\r\n    return distance\r\n  }\r\n\r\n  return (\r\n    <div className=\"flex flex-col items-center space-y-4\">\r\n      {/* Central Today Circle */}\r\n      <div className=\"relative w-[400px] h-[400px] flex items-center justify-center rounded-full border border-gray-300 dark:border-gray-600\">\r\n        <div className=\"w-16 h-16 rounded-full bg-blue-500 flex items-center justify-center text-white font-semibold\">\r\n          Today\r\n        </div>\r\n\r\n        {/* Orbiting Events */}\r\n        {events.map((event, i) => {\r\n          const angle = (i / events.length) * 360\r\n          const distance = getOrbitDistance(event.date)\r\n          return (\r\n            <Popover key={event.id}>\r\n              <PopoverTrigger asChild>\r\n                <div\r\n                  className=\"absolute w-8 h-8 bg-green-400 dark:bg-green-600 rounded-full flex items-center justify-center text-xs text-white cursor-pointer\"\r\n                  style={{\r\n                    transform: `rotate(${angle}deg) translate(${distance}px) rotate(-${angle}deg)`,\r\n                  }}\r\n                >\r\n                  {format(parseISO(event.date), \"HH:mm\")}\r\n                </div>\r\n              </PopoverTrigger>\r\n              <PopoverContent className=\"w-48\">\r\n                <Card>\r\n                  <CardContent className=\"flex justify-between items-center p-2 text-sm\">\r\n                    <span>{event.title}</span>\r\n                    {onRemoveEvent && (\r\n                      <Button\r\n                        variant=\"ghost\"\r\n                        size=\"icon\"\r\n                        className=\"h-4 w-4\"\r\n                        onClick={() => onRemoveEvent(event.id)}\r\n                      >\r\n                        <Trash2 className=\"h-3 w-3 text-red-500\" />\r\n                      </Button>\r\n                    )}\r\n                  </CardContent>\r\n                </Card>\r\n              </PopoverContent>\r\n            </Popover>\r\n          )\r\n        })}\r\n      </div>\r\n\r\n      {/* Add Event */}\r\n      <div className=\"flex flex-col items-center gap-2\">\r\n        <div className=\"flex gap-2 items-center\">\r\n          <Input\r\n            placeholder=\"Event title\"\r\n            value={newTitle}\r\n            onChange={(e) => setNewTitle(e.target.value)}\r\n          />\r\n          <Input\r\n            type=\"datetime-local\"\r\n            value={newDate}\r\n            onChange={(e) => setNewDate(e.target.value)}\r\n          />\r\n          <Button onClick={handleAddEvent}>Add Event</Button>\r\n        </div>\r\n        <p className=\"text-xs text-muted-foreground\">\r\n          Event date must be within 7 days before or after today\r\n        </p>\r\n      </div>\r\n    </div>\r\n  )\r\n}\r\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/task-orbit-calendar.tsx"
+    }
+  ]
+}

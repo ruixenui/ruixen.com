@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "event-constellation-calendar-demo",
+  "type": "registry:example",
+  "title": "Event Constellation Calendar Demo",
+  "description": "Example showing a starfield-style calendar with constellation connections.",
+  "registryDependencies": [
+    "https://ruixen.com/r/event-constellation-calendar"
+  ],
+  "files": [
+    {
+      "path": "registry/example/event-constellation-calendar-demo.tsx",
+      "content": "\"use client\"\r\n\r\nimport * as React from \"react\"\r\nimport { EventConstellationCalendar, CalendarEvent } from \"@/registry/ruixenui/event-constellation-calendar\"\r\nimport { v4 as uuidv4 } from \"uuid\"\r\n\r\nexport default function EventConstellationDemo() {\r\n  const [events, setEvents] = React.useState<CalendarEvent[]>([\r\n    {\r\n      id: uuidv4(),\r\n      title: \"Kickoff Meeting\",\r\n      date: new Date().toISOString(),\r\n    },\r\n    {\r\n      id: uuidv4(),\r\n      title: \"Demo Review\",\r\n      date: new Date(new Date().setDate(new Date().getDate() + 3)).toISOString(),\r\n    },\r\n    {\r\n      id: uuidv4(),\r\n      title: \"Design Handoff\",\r\n      date: new Date(new Date().setDate(new Date().getDate() + 7)).toISOString(),\r\n    },\r\n  ])\r\n\r\n  const handleAdd = (ev: CalendarEvent) => setEvents((p) => [...p, ev])\r\n  const handleRemove = (id: string) => setEvents((p) => p.filter((e) => e.id !== id))\r\n\r\n  return (\r\n    <div className=\"p-6\">\r\n      <h1 className=\"text-lg font-semibold mb-4\">Event Constellation Calendar (Demo)</h1>\r\n      <EventConstellationCalendar events={events} onAddEvent={handleAdd} onRemoveEvent={handleRemove} />\r\n    </div>\r\n  )\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/event-constellation-calendar-demo.tsx"
+    }
+  ]
+}

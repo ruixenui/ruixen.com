@@ -1,0 +1,81 @@
+---
+title: Event Calendar
+date: 2024-06-01
+description: Simple and clean event calendar with date selection and event management
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="event-calendar-demo" category="calendars" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/event-calendar"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="event-calendar" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop            | Type                             | Default | Description                    |
+| --------------- | -------------------------------- | ------- | ------------------------------ |
+| `events`        | `CalendarEvent[]`                | `[]`    | Array of calendar events       |
+| `onAddEvent`    | `(event: CalendarEvent) => void` | -       | Callback when adding new event |
+| `onRemoveEvent` | `(id: string) => void`           | -       | Callback when removing event   |
+
+## Usage
+
+```tsx
+import { EventCalendar, CalendarEvent } from "@/components/ui/event-calendar";
+
+const events: CalendarEvent[] = [
+  {
+    id: "1",
+    title: "Team Lunch",
+    date: new Date().toISOString(),
+  },
+];
+
+function MyCalendar() {
+  const handleAddEvent = (event: CalendarEvent) => {
+    console.log("New event:", event);
+  };
+
+  const handleRemoveEvent = (id: string) => {
+    console.log("Remove event:", id);
+  };
+
+  return (
+    <EventCalendar
+      events={events}
+      onAddEvent={handleAddEvent}
+      onRemoveEvent={handleRemoveEvent}
+    />
+  );
+}
+```

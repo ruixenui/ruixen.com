@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "event-calendar",
+  "type": "registry:ui",
+  "title": "Event Calendar",
+  "description": "Simple and clean event calendar with date selection and event management.",
+  "dependencies": [
+    "date-fns",
+    "lucide-react",
+    "uuid"
+  ],
+  "registryDependencies": [
+    "calendar",
+    "card",
+    "button",
+    "input"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/event-calendar.tsx",
+      "content": "\"use client\"\r\n\r\nimport * as React from \"react\"\r\nimport { Calendar } from \"@/components/ui/calendar\"\r\nimport { Card, CardContent } from \"@/components/ui/card\"\r\nimport { Button } from \"@/components/ui/button\"\r\nimport { Input } from \"@/components/ui/input\"\r\nimport { Trash2 } from \"lucide-react\"\r\nimport { v4 as uuidv4 } from \"uuid\"\r\nimport { format } from \"date-fns\"\r\n\r\nexport type CalendarEvent = {\r\n  id: string\r\n  title: string\r\n  date: string // ISO string\r\n}\r\n\r\ninterface EventCalendarProps {\r\n  events: CalendarEvent[]\r\n  onAddEvent: (event: CalendarEvent) => void\r\n  onRemoveEvent?: (id: string) => void\r\n}\r\n\r\nexport function EventCalendar({ events, onAddEvent, onRemoveEvent }: EventCalendarProps) {\r\n  const [selectedDate, setSelectedDate] = React.useState<Date | undefined>(new Date())\r\n  const [newTitle, setNewTitle] = React.useState(\"\")\r\n\r\n  const eventsForSelectedDate = selectedDate\r\n    ? events.filter(\r\n        (e) => format(new Date(e.date), \"yyyy-MM-dd\") === format(selectedDate, \"yyyy-MM-dd\")\r\n      )\r\n    : []\r\n\r\n  const handleAddEvent = () => {\r\n    if (!selectedDate || !newTitle.trim()) return\r\n    onAddEvent({\r\n      id: uuidv4(),\r\n      title: newTitle.trim(),\r\n      date: selectedDate.toISOString(),\r\n    })\r\n    setNewTitle(\"\")\r\n  }\r\n\r\n  return (\r\n    <div className=\"space-y-4\">\r\n      <Calendar\r\n        mode=\"single\"\r\n        selected={selectedDate}\r\n        onSelect={setSelectedDate}\r\n        className=\"w-full\"\r\n      />\r\n\r\n      {/* Events list for selected date */}\r\n      {selectedDate && (\r\n        <div className=\"space-y-2\">\r\n          <h2 className=\"text-lg font-semibold\">\r\n            Events on {format(selectedDate, \"PPP\")}\r\n          </h2>\r\n\r\n          {eventsForSelectedDate.length === 0 && (\r\n            <p className=\"text-sm text-muted-foreground\">No events yet.</p>\r\n          )}\r\n\r\n          {eventsForSelectedDate.map((event) => (\r\n            <Card key={event.id}>\r\n              <CardContent className=\"p-2 flex justify-between items-center text-sm\">\r\n                <span>{event.title}</span>\r\n                {onRemoveEvent && (\r\n                  <Button\r\n                    variant=\"ghost\"\r\n                    size=\"icon\"\r\n                    className=\"h-5 w-5\"\r\n                    onClick={() => onRemoveEvent(event.id)}\r\n                  >\r\n                    <Trash2 className=\"h-4 w-4 text-red-500\" />\r\n                  </Button>\r\n                )}\r\n              </CardContent>\r\n            </Card>\r\n          ))}\r\n\r\n          {/* Add new event */}\r\n          <div className=\"flex gap-2 mt-2\">\r\n            <Input\r\n              placeholder=\"New event title\"\r\n              value={newTitle}\r\n              onChange={(e) => setNewTitle(e.target.value)}\r\n            />\r\n            <Button onClick={handleAddEvent}>Add Event</Button>\r\n          </div>\r\n        </div>\r\n      )}\r\n    </div>\r\n  )\r\n}\r\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/event-calendar.tsx"
+    }
+  ]
+}

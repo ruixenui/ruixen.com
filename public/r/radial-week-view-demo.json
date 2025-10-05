@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radial-week-view-demo",
+  "type": "registry:example",
+  "title": "Radial Week View Demo",
+  "description": "Example showing a circular week calendar with radial hour markers.",
+  "registryDependencies": [
+    "https://ruixen.com/r/radial-week-view"
+  ],
+  "files": [
+    {
+      "path": "registry/example/radial-week-view-demo.tsx",
+      "content": "\"use client\"\r\n\r\nimport * as React from \"react\"\r\nimport { RadialWeekView, CalendarEvent } from \"@/registry/ruixenui/radial-week-view\"\r\n\r\nexport default function RadialWeekViewDemo() {\r\n  const [events, setEvents] = React.useState<CalendarEvent[]>([])\r\n\r\n  const handleAddEvent = (event: CalendarEvent) => {\r\n    setEvents((prev) => [...prev, event])\r\n  }\r\n\r\n  const handleRemoveEvent = (id: string) => {\r\n    setEvents((prev) => prev.filter((e) => e.id !== id))\r\n  }\r\n\r\n  return (\r\n    <div className=\"p-4\">\r\n      <h2 className=\"text-lg font-semibold mb-4\">Radial Week View Demo</h2>\r\n      <RadialWeekView\r\n        events={events}\r\n        onAddEvent={handleAddEvent}\r\n        onRemoveEvent={handleRemoveEvent}\r\n      />\r\n    </div>\r\n  )\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/radial-week-view-demo.tsx"
+    }
+  ]
+}

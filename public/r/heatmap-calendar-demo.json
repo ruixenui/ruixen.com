@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "heatmap-calendar-demo",
+  "type": "registry:example",
+  "title": "Heatmap Calendar Demo",
+  "description": "Example showing a GitHub-style heatmap calendar with event intensity.",
+  "registryDependencies": [
+    "https://ruixen.com/r/heatmap-calendar"
+  ],
+  "files": [
+    {
+      "path": "registry/example/heatmap-calendar-demo.tsx",
+      "content": "\"use client\"\r\n\r\nimport * as React from \"react\"\r\nimport { HeatmapCalendar, CalendarEvent } from \"@/registry/ruixenui/heatmap-calendar\"\r\n\r\nexport default function DemoHeatmapCalendar() {\r\n  const [events, setEvents] = React.useState<CalendarEvent[]>([\r\n    { id: \"1\", title: \"Meeting\", date: new Date().toISOString() },\r\n    { id: \"2\", title: \"Design Review\", date: new Date().toISOString() },\r\n    { id: \"3\", title: \"Deploy\", date: new Date().toISOString() },\r\n  ])\r\n\r\n  const handleAddEvent = (event: CalendarEvent) => {\r\n    setEvents((prev) => [...prev, event])\r\n  }\r\n\r\n  const handleRemoveEvent = (id: string) => {\r\n    setEvents((prev) => prev.filter((e) => e.id !== id))\r\n  }\r\n\r\n  return (\r\n    <div className=\"p-6 space-y-6\">\r\n      <h1 className=\"text-2xl font-bold\">Heatmap Calendar Demo</h1>\r\n      <HeatmapCalendar\r\n        events={events}\r\n        onAddEvent={handleAddEvent}\r\n        onRemoveEvent={handleRemoveEvent}\r\n      />\r\n    </div>\r\n  )\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/heatmap-calendar-demo.tsx"
+    }
+  ]
+}
