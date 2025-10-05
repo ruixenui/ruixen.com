@@ -3218,4 +3218,184 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "multi-month-calendar-demo",
+    type: "registry:example",
+    title: "Multi Month Calendar Demo",
+    description:
+      "Example showing a multi-month calendar with range and single date selection modes.",
+    registryDependencies: ["https://ruixen.com/r/multi-month-calendar"],
+    files: [
+      {
+        path: "registry/example/multi-month-calendar-demo.tsx",
+        type: "registry:example",
+        target: "components/multi-month-calendar-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "calendar-with-presets-demo",
+    type: "registry:example",
+    title: "Calendar With Presets Demo",
+    description:
+      "Example showing a calendar with preset date ranges and sidebar navigation.",
+    registryDependencies: ["https://ruixen.com/r/calendar-with-presets"],
+    files: [
+      {
+        path: "registry/example/calendar-with-presets-demo.tsx",
+        type: "registry:example",
+        target: "components/calendar-with-presets-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "universal-date-picker-demo",
+    type: "registry:example",
+    title: "Universal Date Picker Demo",
+    description:
+      "Example showing a universal date picker with mode toggle and preset shortcuts.",
+    registryDependencies: ["https://ruixen.com/r/universal-date-picker"],
+    files: [
+      {
+        path: "registry/example/universal-date-picker-demo.tsx",
+        type: "registry:example",
+        target: "components/universal-date-picker-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "calendar-lume-demo",
+    type: "registry:example",
+    title: "Calendar Lume Demo",
+    description:
+      "Example showing an animated calendar with year/month/day step navigation.",
+    registryDependencies: ["https://ruixen.com/r/calendar-lume"],
+    files: [
+      {
+        path: "registry/example/calendar-lume-demo.tsx",
+        type: "registry:example",
+        target: "components/calendar-lume-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "date-time-input-demo",
+    type: "registry:example",
+    title: "Date Time Input Demo",
+    description:
+      "Example showing a combined date and time picker with preview display.",
+    registryDependencies: ["https://ruixen.com/r/date-time-input"],
+    files: [
+      {
+        path: "registry/example/date-time-input-demo.tsx",
+        type: "registry:example",
+        target: "components/date-time-input-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "calendar-scheduler-demo",
+    type: "registry:example",
+    title: "Calendar Scheduler Demo",
+    description:
+      "Example showing a meeting scheduler with calendar and time slot selection.",
+    registryDependencies: ["https://ruixen.com/r/calendar-scheduler"],
+    files: [
+      {
+        path: "registry/example/calendar-scheduler-demo.tsx",
+        type: "registry:example",
+        target: "components/calendar-scheduler-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "multi-select-calendar-card-demo",
+    type: "registry:example",
+    title: "Multi Select Calendar Card Demo",
+    description:
+      "Example showing a multi-select calendar with badge display and removal.",
+    registryDependencies: ["https://ruixen.com/r/multi-select-calendar-card"],
+    files: [
+      {
+        path: "registry/example/multi-select-calendar-card-demo.tsx",
+        type: "registry:example",
+        target: "components/multi-select-calendar-card-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "side-panel-multi-calendar-demo",
+    type: "registry:example",
+    title: "Side Panel Multi Calendar Demo",
+    description:
+      "Example showing a multi-select calendar with side panel grouped by month.",
+    registryDependencies: ["https://ruixen.com/r/side-panel-multi-calendar"],
+    files: [
+      {
+        path: "registry/example/side-panel-multi-calendar-demo.tsx",
+        type: "registry:example",
+        target: "components/side-panel-multi-calendar-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "dropdown-multi-calendar-demo",
+    type: "registry:example",
+    title: "Dropdown Multi Calendar Demo",
+    description:
+      "Example showing a multi-select calendar with year/month dropdowns.",
+    registryDependencies: ["https://ruixen.com/r/dropdown-multi-calendar"],
+    files: [
+      {
+        path: "registry/example/dropdown-multi-calendar-demo.tsx",
+        type: "registry:example",
+        target: "components/dropdown-multi-calendar-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "dropdown-range-date-picker-demo",
+    type: "registry:example",
+    title: "Dropdown Range Date Picker Demo",
+    description:
+      "Example showing a range date picker with year/month dropdowns in popover.",
+    registryDependencies: ["https://ruixen.com/r/dropdown-range-date-picker"],
+    files: [
+      {
+        path: "registry/example/dropdown-range-date-picker-demo.tsx",
+        type: "registry:example",
+        target: "components/dropdown-range-date-picker-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "radio-group-card-demo",
+    type: "registry:example",
+    title: "Radio Group Card Demo",
+    description:
+      "Example showing a radio group with card-style items and animated indicator.",
+    registryDependencies: ["https://ruixen.com/r/radio-group-card"],
+    files: [
+      {
+        path: "registry/example/radio-group-card-demo.tsx",
+        type: "registry:example",
+        target: "components/radio-group-card-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "emoji-radio-group-demo",
+    type: "registry:example",
+    title: "Emoji Radio Group Demo",
+    description:
+      "Example showing a compact emoji-based radio group for quick feedback.",
+    registryDependencies: ["https://ruixen.com/r/emoji-radio-group"],
+    files: [
+      {
+        path: "registry/example/emoji-radio-group-demo.tsx",
+        type: "registry:example",
+        target: "components/emoji-radio-group-demo.tsx",
+      },
+    ],
+  },
 ];

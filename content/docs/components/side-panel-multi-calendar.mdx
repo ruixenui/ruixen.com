@@ -1,0 +1,109 @@
+---
+title: Side Panel Multi Calendar
+date: 2024-06-01
+description: A multi-select calendar with a side panel showing grouped selected dates by month
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="side-panel-multi-calendar-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/side-panel-multi-calendar"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="side-panel-multi-calendar" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { SidePanelMultiCalendar } from "@/components/ruixen/side-panel-multi-calendar";
+import { useState } from "react";
+
+export default function App() {
+  const [dates, setDates] = useState<Date[]>([]);
+
+  return (
+    <SidePanelMultiCalendar
+      selectedDates={dates}
+      onChange={(newDates) => setDates(newDates)}
+      maxSelectable={10}
+      label="Choose multiple important dates"
+      dateFormat="d"
+      className="max-w-3xl"
+      calendarClassName="border"
+      panelClassName="bg-card rounded-md"
+    />
+  );
+}
+```
+
+## Props
+
+| Prop                | Type                      | Default                                   | Description                     |
+| ------------------- | ------------------------- | ----------------------------------------- | ------------------------------- |
+| `selectedDates`     | `Date[]`                  | `[]`                                      | Currently selected dates        |
+| `onChange`          | `(dates: Date[]) => void` | -                                         | Callback when selection changes |
+| `maxSelectable`     | `number`                  | -                                         | Maximum selectable dates        |
+| `label`             | `string`                  | `"Multi-Select Calendar with Side Panel"` | Component title                 |
+| `dateFormat`        | `string`                  | `"d"`                                     | Date format in side panel       |
+| `className`         | `string`                  | -                                         | Container CSS classes           |
+| `calendarClassName` | `string`                  | -                                         | Calendar CSS classes            |
+| `panelClassName`    | `string`                  | -                                         | Side panel CSS classes          |
+
+## Features
+
+- **Side Panel Organization**: Dates grouped by month-year
+- **Bulk Actions**: Clear entire months at once
+- **Scrollable Panel**: Handles large date selections
+- **Individual Removal**: Click dates to remove them
+- **Month Grouping**: Automatic organization by month
+- **Sorted Display**: Dates sorted chronologically within months
+
+## Side Panel Layout
+
+The side panel groups selected dates by month and provides:
+
+- **Month Headers**: Clear month-year labels
+- **Clear Buttons**: Remove all dates from a month
+- **Date Buttons**: Individual date removal
+- **Scroll Area**: Handles overflow gracefully
+
+## Date Format Options
+
+```tsx
+// Day only
+dateFormat = "d"; // 29
+
+// Day with suffix
+dateFormat = "do"; // 29th
+
+// Short date
+dateFormat = "P"; // 04/29/1453
+```

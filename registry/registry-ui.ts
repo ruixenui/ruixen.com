@@ -3282,4 +3282,194 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "multi-month-calendar",
+    type: "registry:ui",
+    title: "Multi Month Calendar",
+    description:
+      "A calendar component that displays multiple months with year/month dropdowns and range selection support.",
+    dependencies: ["react-day-picker", "date-fns", "lucide-react"],
+    registryDependencies: ["select"],
+    files: [
+      {
+        path: "registry/ruixenui/multi-month-calendar.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/multi-month-calendar.tsx",
+      },
+    ],
+  },
+  {
+    name: "calendar-with-presets",
+    type: "registry:ui",
+    title: "Calendar With Presets",
+    description:
+      "A customizable calendar component with preset date ranges and flexible styling options.",
+    dependencies: ["react-day-picker", "lucide-react"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "registry/ruixenui/calendar-with-presets.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/calendar-with-presets.tsx",
+      },
+    ],
+  },
+  {
+    name: "universal-date-picker",
+    type: "registry:ui",
+    title: "Universal Date Picker",
+    description:
+      "A versatile date picker with single/range mode toggle, preset shortcuts, and year selector.",
+    dependencies: ["react-day-picker", "date-fns", "lucide-react"],
+    registryDependencies: ["button", "calendar", "label", "card", "popover"],
+    files: [
+      {
+        path: "registry/ruixenui/universal-date-picker.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/universal-date-picker.tsx",
+      },
+    ],
+  },
+  {
+    name: "calendar-lume",
+    type: "registry:ui",
+    title: "Calendar Lume",
+    description:
+      "An animated calendar with year/month/day step navigation and smooth transitions.",
+    dependencies: ["date-fns", "framer-motion"],
+    registryDependencies: ["calendar", "button", "scroll-area"],
+    files: [
+      {
+        path: "registry/ruixenui/calendar-lume.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/calendar-lume.tsx",
+      },
+    ],
+  },
+  {
+    name: "date-time-input",
+    type: "registry:ui",
+    title: "Date Time Input",
+    description:
+      "A combined date and time picker with calendar popover and time input field.",
+    dependencies: ["date-fns", "lucide-react"],
+    registryDependencies: ["calendar", "popover", "button", "input", "label"],
+    files: [
+      {
+        path: "registry/ruixenui/date-time-input.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/date-time-input.tsx",
+      },
+    ],
+  },
+  {
+    name: "calendar-scheduler",
+    type: "registry:ui",
+    title: "Calendar Scheduler",
+    description:
+      "A meeting scheduler with calendar date selection and time slot picker.",
+    dependencies: ["date-fns"],
+    registryDependencies: ["calendar", "button", "card"],
+    files: [
+      {
+        path: "registry/ruixenui/calendar-scheduler.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/calendar-scheduler.tsx",
+      },
+    ],
+  },
+  {
+    name: "multi-select-calendar-card",
+    type: "registry:ui",
+    title: "Multi Select Calendar Card",
+    description:
+      "A calendar card that allows selecting multiple dates with badge display and removal.",
+    dependencies: ["date-fns"],
+    registryDependencies: ["calendar", "button", "badge", "card"],
+    files: [
+      {
+        path: "registry/ruixenui/multi-select-calendar-card.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/multi-select-calendar-card.tsx",
+      },
+    ],
+  },
+  {
+    name: "side-panel-multi-calendar",
+    type: "registry:ui",
+    title: "Side Panel Multi Calendar",
+    description:
+      "A multi-select calendar with a side panel showing grouped selected dates by month.",
+    dependencies: ["date-fns"],
+    registryDependencies: ["calendar", "button", "scroll-area", "card"],
+    files: [
+      {
+        path: "registry/ruixenui/side-panel-multi-calendar.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/side-panel-multi-calendar.tsx",
+      },
+    ],
+  },
+  {
+    name: "dropdown-multi-calendar",
+    type: "registry:ui",
+    title: "Dropdown Multi Calendar",
+    description:
+      "A multi-select calendar with year/month dropdowns and badge-based date display.",
+    dependencies: ["date-fns"],
+    registryDependencies: ["calendar", "button", "badge", "card", "select"],
+    files: [
+      {
+        path: "registry/ruixenui/dropdown-multi-calendar.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/dropdown-multi-calendar.tsx",
+      },
+    ],
+  },
+  {
+    name: "dropdown-range-date-picker",
+    type: "registry:ui",
+    title: "Dropdown Range Date Picker",
+    description:
+      "A range date picker with year/month dropdowns in a popover interface.",
+    dependencies: ["date-fns", "lucide-react"],
+    registryDependencies: ["calendar", "button", "popover", "select"],
+    files: [
+      {
+        path: "registry/ruixenui/dropdown-range-date-picker.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/dropdown-range-date-picker.tsx",
+      },
+    ],
+  },
+  {
+    name: "radio-group-card",
+    type: "registry:ui",
+    title: "Radio Group Card",
+    description:
+      "A radio group with card-style items featuring icons, titles, descriptions, and animated selection indicator.",
+    dependencies: ["@radix-ui/react-radio-group"],
+    files: [
+      {
+        path: "registry/ruixenui/radio-group-card.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/radio-group-card.tsx",
+      },
+    ],
+  },
+  {
+    name: "emoji-radio-group",
+    type: "registry:ui",
+    title: "Emoji Radio Group",
+    description:
+      "A compact radio group with emoji-based options for quick visual feedback selection.",
+    dependencies: ["@radix-ui/react-radio-group"],
+    files: [
+      {
+        path: "registry/ruixenui/emoji-radio-group.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/emoji-radio-group.tsx",
+      },
+    ],
+  },
 ];

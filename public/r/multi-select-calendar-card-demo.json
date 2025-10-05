@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "multi-select-calendar-card-demo",
+  "type": "registry:example",
+  "title": "Multi Select Calendar Card Demo",
+  "description": "Example showing a multi-select calendar with badge display and removal.",
+  "registryDependencies": [
+    "https://ruixen.com/r/multi-select-calendar-card"
+  ],
+  "files": [
+    {
+      "path": "registry/example/multi-select-calendar-card-demo.tsx",
+      "content": "\"use client\";\r\n\r\nimport { useState } from \"react\";\r\nimport { MultiSelectCalendarCard } from \"@/registry/ruixenui/multi-select-calendar-card\";\r\n\r\nexport default function DemoMultiSelectCalendar() {\r\n  const [selectedDates, setSelectedDates] = useState<Date[]>([]);\r\n\r\n  return (\r\n    <div className=\"p-6 space-y-6\">\r\n      <h2 className=\"text-lg font-semibold\">Configurable Multi-Select Calendar</h2>\r\n\r\n      <MultiSelectCalendarCard\r\n        selectedDates={selectedDates}\r\n        onChange={(dates) => setSelectedDates(dates)}\r\n        maxSelectable={5}\r\n        label=\"Choose important dates\"\r\n        dateFormat=\"PPP\"\r\n        className=\"max-w-md\"\r\n      />\r\n\r\n      <div className=\"mt-4 text-sm text-muted-foreground\">\r\n        Selected Dates:{\" \"}\r\n        {selectedDates.length > 0\r\n          ? selectedDates.map((d) => d.toDateString()).join(\", \")\r\n          : \"None\"}\r\n      </div>\r\n    </div>\r\n  );\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/multi-select-calendar-card-demo.tsx"
+    }
+  ]
+}

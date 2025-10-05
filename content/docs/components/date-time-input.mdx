@@ -1,0 +1,88 @@
+---
+title: Date Time Input
+date: 2024-06-01
+description: A combined date and time picker with calendar popover and time input field
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="date-time-input-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/date-time-input"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="date-time-input" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { DateTimeInput } from "@/components/ruixen/date-time-input";
+import { useState } from "react";
+
+export default function App() {
+  const [dateTime, setDateTime] = useState<{ date?: Date; time: string }>({
+    time: "12:00",
+  });
+
+  return (
+    <DateTimeInput
+      value={dateTime.date}
+      time={dateTime.time}
+      dateFormat="PPP"
+      datePlaceholder="Select a date"
+      timePlaceholder="Select a time"
+      onChange={(date, time) => setDateTime({ date, time })}
+      className="max-w-md"
+    />
+  );
+}
+```
+
+## Props
+
+| Prop              | Type                                              | Default         | Description                  |
+| ----------------- | ------------------------------------------------- | --------------- | ---------------------------- |
+| `value`           | `Date`                                            | -               | Selected date                |
+| `time`            | `string`                                          | `"12:00"`       | Selected time (HH:MM format) |
+| `onChange`        | `(date: Date \| undefined, time: string) => void` | -               | Callback when values change  |
+| `datePlaceholder` | `string`                                          | `"Pick a date"` | Date picker placeholder      |
+| `timePlaceholder` | `string`                                          | `"Pick a time"` | Time input placeholder       |
+| `dateFormat`      | `string`                                          | `"PPP"`         | Date display format          |
+| `className`       | `string`                                          | -               | Additional CSS classes       |
+| `inputClassName`  | `string`                                          | -               | Input field CSS classes      |
+
+## Features
+
+- **Combined Input**: Date and time in one component
+- **Calendar Popover**: Clean date selection interface
+- **Time Input**: Native HTML5 time picker
+- **Live Preview**: Shows selected date and time
+- **Custom Formatting**: Configurable date display format
+- **Icon Indicators**: Visual cues for date and time fields

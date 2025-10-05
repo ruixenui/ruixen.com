@@ -1,0 +1,109 @@
+---
+title: Dropdown Multi Calendar
+date: 2024-06-01
+description: A multi-select calendar with year/month dropdowns and badge-based date display
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="dropdown-multi-calendar-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/dropdown-multi-calendar"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="dropdown-multi-calendar" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { DropdownMultiCalendar } from "@/components/ruixen/dropdown-multi-calendar";
+import { useState } from "react";
+
+export default function App() {
+  const [dates, setDates] = useState<Date[]>([]);
+
+  return (
+    <DropdownMultiCalendar
+      selectedDates={dates}
+      onChange={(newDates) => setDates(newDates)}
+      minYear={2000}
+      maxYear={2030}
+      maxSelectable={10}
+      label="Select your important dates"
+      monthFormat="MMM"
+      className="max-w-md"
+    />
+  );
+}
+```
+
+## Props
+
+| Prop                | Type                      | Default          | Description                     |
+| ------------------- | ------------------------- | ---------------- | ------------------------------- |
+| `selectedDates`     | `Date[]`                  | `[]`             | Currently selected dates        |
+| `onChange`          | `(dates: Date[]) => void` | -                | Callback when selection changes |
+| `minYear`           | `number`                  | `1900`           | Minimum selectable year         |
+| `maxYear`           | `number`                  | `current + 10`   | Maximum selectable year         |
+| `maxSelectable`     | `number`                  | -                | Maximum selectable dates        |
+| `label`             | `string`                  | `"Select Dates"` | Component title                 |
+| `monthFormat`       | `string`                  | `"MMMM"`         | Month dropdown format           |
+| `className`         | `string`                  | -                | Container CSS classes           |
+| `calendarClassName` | `string`                  | -                | Calendar CSS classes            |
+| `dropdownClassName` | `string`                  | -                | Dropdown CSS classes            |
+
+## Features
+
+- **Year/Month Dropdowns**: Quick navigation to any month
+- **Multi-Selection**: Select multiple dates across months
+- **Badge Display**: Selected dates shown as removable badges
+- **Selection Limits**: Optional maximum date constraints
+- **Sorted Display**: Dates automatically sorted chronologically
+- **Easy Navigation**: Jump to any year/month combination
+
+## Month Format Options
+
+```tsx
+// Full month name
+monthFormat = "MMMM"; // January
+
+// Short month name
+monthFormat = "MMM"; // Jan
+
+// Numeric month
+monthFormat = "M"; // 1
+```
+
+## Use Cases
+
+- **Event Planning**: Select multiple event dates
+- **Availability Tracking**: Mark available dates
+- **Deadline Management**: Set multiple project milestones
+- **Holiday Planning**: Choose vacation dates

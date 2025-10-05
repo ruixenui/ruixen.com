@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "universal-date-picker-demo",
+  "type": "registry:example",
+  "title": "Universal Date Picker Demo",
+  "description": "Example showing a universal date picker with mode toggle and preset shortcuts.",
+  "registryDependencies": [
+    "https://ruixen.com/r/universal-date-picker"
+  ],
+  "files": [
+    {
+      "path": "registry/example/universal-date-picker-demo.tsx",
+      "content": "\"use client\";\r\n\r\nimport { useState } from \"react\";\r\nimport { UniversalDatePicker } from \"@/registry/ruixenui/universal-date-picker\";\r\nimport type { DateRange } from \"react-day-picker\";\r\n\r\nexport default function DemoUniversalDatePicker() {\r\n  const [selectedSingle, setSelectedSingle] = useState<Date>();\r\n  const [selectedRange, setSelectedRange] = useState<DateRange>();\r\n\r\n  return (\r\n    <div className=\"space-y-6 p-6\">\r\n      <h2 className=\"text-lg font-semibold\">Single Date Picker</h2>\r\n      <UniversalDatePicker\r\n        mode=\"single\"\r\n        selected={selectedSingle}\r\n        onChange={(value) => {\r\n          // Ensure only Date is passed for single mode\r\n          if (value instanceof Date || value === undefined) {\r\n            setSelectedSingle(value);\r\n          }\r\n        }}\r\n        className=\"max-w-sm\"\r\n        label=\"Pick a single date\"\r\n      />\r\n\r\n      <h2 className=\"text-lg font-semibold mt-6\">Range Date Picker</h2>\r\n      <UniversalDatePicker\r\n        mode=\"range\"\r\n        selected={selectedRange}\r\n        onChange={(value) => {\r\n          // Ensure only DateRange is passed for range mode\r\n          if (!value || (\"from\" in value && \"to\" in value)) {\r\n            setSelectedRange(value as DateRange);\r\n          }\r\n        }}\r\n        className=\"max-w-sm\"\r\n        label=\"Pick a date range\"\r\n      />\r\n\r\n      <div className=\"mt-4 text-sm text-muted-foreground\">\r\n        Selected Single: {selectedSingle ? selectedSingle.toDateString() : \"None\"}\r\n        <br />\r\n        Selected Range:{\" \"}\r\n        {selectedRange\r\n          ? `${selectedRange.from?.toDateString() ?? \"—\"} – ${selectedRange.to?.toDateString() ?? \"—\"}`\r\n          : \"None\"}\r\n      </div>\r\n    </div>\r\n  );\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/universal-date-picker-demo.tsx"
+    }
+  ]
+}

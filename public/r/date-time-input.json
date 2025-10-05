@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "date-time-input",
+  "type": "registry:ui",
+  "title": "Date Time Input",
+  "description": "A combined date and time picker with calendar popover and time input field.",
+  "dependencies": [
+    "date-fns",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "calendar",
+    "popover",
+    "button",
+    "input",
+    "label"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/date-time-input.tsx",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { format } from \"date-fns\";\r\nimport { Calendar } from \"@/components/ui/calendar\";\r\nimport {\r\n  Popover,\r\n  PopoverContent,\r\n  PopoverTrigger,\r\n} from \"@/components/ui/popover\";\r\nimport { Button } from \"@/components/ui/button\";\r\nimport { Input } from \"@/components/ui/input\";\r\nimport { Label } from \"@/components/ui/label\";\r\nimport { Calendar as CalendarIcon, Clock } from \"lucide-react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nexport type DateTimeInputProps = {\r\n  value?: Date;\r\n  time?: string;\r\n  onChange?: (date: Date | undefined, time: string) => void;\r\n  datePlaceholder?: string;\r\n  timePlaceholder?: string;\r\n  dateFormat?: string;\r\n  className?: string;\r\n  inputClassName?: string;\r\n};\r\n\r\nexport function DateTimeInput({\r\n  value,\r\n  time: initialTime = \"12:00\",\r\n  onChange,\r\n  datePlaceholder = \"Pick a date\",\r\n  timePlaceholder = \"Pick a time\",\r\n  dateFormat = \"PPP\",\r\n  className,\r\n  inputClassName,\r\n}: DateTimeInputProps) {\r\n  const [date, setDate] = React.useState<Date | undefined>(value);\r\n  const [time, setTime] = React.useState(initialTime);\r\n\r\n  const handleDateChange = (newDate: Date | undefined) => {\r\n    setDate(newDate);\r\n    onChange?.(newDate, time);\r\n  };\r\n\r\n  const handleTimeChange = (newTime: string) => {\r\n    setTime(newTime);\r\n    onChange?.(date, newTime);\r\n  };\r\n\r\n  return (\r\n    <div className={cn(\"flex flex-col gap-4\", className)}>\r\n      {/* Date Picker */}\r\n      <div className=\"flex flex-col gap-1.5\">\r\n        <Label className=\"text-xs font-medium\">Date</Label>\r\n        <Popover>\r\n          <PopoverTrigger asChild>\r\n            <Button\r\n              variant=\"outline\"\r\n              className={cn(\r\n                \"w-[250px] justify-start text-left font-normal\",\r\n                !date && \"text-muted-foreground\",\r\n                inputClassName\r\n              )}\r\n            >\r\n              <CalendarIcon className=\"mr-2 h-4 w-4\" />\r\n              {date ? format(date, dateFormat) : <span>{datePlaceholder}</span>}\r\n            </Button>\r\n          </PopoverTrigger>\r\n          <PopoverContent className=\"p-0\">\r\n            <Calendar mode=\"single\" selected={date} onSelect={handleDateChange} initialFocus />\r\n          </PopoverContent>\r\n        </Popover>\r\n      </div>\r\n\r\n      {/* Time Picker */}\r\n      <div className=\"flex flex-col gap-1.5\">\r\n        <Label htmlFor=\"time\" className=\"text-xs font-medium\">\r\n          Time\r\n        </Label>\r\n        <div className=\"relative w-[250px]\">\r\n          <Input\r\n            id=\"time\"\r\n            type=\"time\"\r\n            value={time}\r\n            onChange={(e) => handleTimeChange(e.target.value)}\r\n            step=\"60\"\r\n            placeholder={timePlaceholder}\r\n            className={cn(\"pl-8\", inputClassName)}\r\n          />\r\n          <Clock className=\"absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground\" />\r\n        </div>\r\n      </div>\r\n\r\n      {/* Preview */}\r\n      <div className=\"rounded-md border p-2 text-sm text-muted-foreground\">\r\n        Selected: {date ? `${format(date, dateFormat)} at ${time}` : \"No date selected\"}\r\n      </div>\r\n    </div>\r\n  );\r\n}\r\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/date-time-input.tsx"
+    }
+  ]
+}

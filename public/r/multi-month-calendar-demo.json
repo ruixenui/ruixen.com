@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "multi-month-calendar-demo",
+  "type": "registry:example",
+  "title": "Multi Month Calendar Demo",
+  "description": "Example showing a multi-month calendar with range and single date selection modes.",
+  "registryDependencies": [
+    "https://ruixen.com/r/multi-month-calendar"
+  ],
+  "files": [
+    {
+      "path": "registry/example/multi-month-calendar-demo.tsx",
+      "content": "\"use client\";\r\n\r\nimport { useState } from \"react\";\r\nimport { MultiMonthCalendar } from \"@/registry/ruixenui/multi-month-calendar\";\r\nimport { DateRange } from \"react-day-picker\";\r\nimport { addDays } from \"date-fns\";\r\n\r\nexport default function DemoMultiMonthCalendar() {\r\n  const today = new Date();\r\n\r\n  // Range example\r\n  const [range, setRange] = useState<DateRange | undefined>({\r\n    from: today,\r\n    to: addDays(today, 3),\r\n  });\r\n\r\n  // Single date example\r\n  const [single, setSingle] = useState<Date | undefined>(today);\r\n\r\n  return (\r\n    <div className=\"flex flex-col gap-10 p-8\">\r\n      <h1 className=\"text-xl font-semibold text-center\">Multi-Month Calendar Demo</h1>\r\n\r\n      {/* Range Mode */}\r\n      <div className=\"flex flex-col items-center gap-4\">\r\n        <h2 className=\"font-semibold\">Range Mode</h2>\r\n        <MultiMonthCalendar\r\n          numberOfMonths={3}\r\n          mode=\"range\"\r\n          selected={range}\r\n          onSelect={(date) => setRange(date)}\r\n        />\r\n        {range?.from && range?.to && (\r\n          <p className=\"text-sm text-muted-foreground\">\r\n            Selected: {range.from.toDateString()} → {range.to.toDateString()}\r\n          </p>\r\n        )}\r\n      </div>\r\n\r\n      {/* Single Mode */}\r\n      <div className=\"flex flex-col items-center gap-4\">\r\n        <h2 className=\"font-semibold\">Single Date Mode</h2>\r\n        <MultiMonthCalendar\r\n          numberOfMonths={2}\r\n          mode=\"single\"\r\n          selected={single}\r\n          onSelect={(date) => setSingle(date)}\r\n        />\r\n        {single && (\r\n          <p className=\"text-sm text-muted-foreground\">\r\n            Selected: {single.toDateString()}\r\n          </p>\r\n        )}\r\n      </div>\r\n    </div>\r\n  );\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/multi-month-calendar-demo.tsx"
+    }
+  ]
+}

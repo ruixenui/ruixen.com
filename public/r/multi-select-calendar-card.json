@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "multi-select-calendar-card",
+  "type": "registry:ui",
+  "title": "Multi Select Calendar Card",
+  "description": "A calendar card that allows selecting multiple dates with badge display and removal.",
+  "dependencies": [
+    "date-fns"
+  ],
+  "registryDependencies": [
+    "calendar",
+    "button",
+    "badge",
+    "card"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/multi-select-calendar-card.tsx",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { format } from \"date-fns\";\r\nimport { Calendar } from \"@/components/ui/calendar\";\r\nimport { Button } from \"@/components/ui/button\";\r\nimport { Badge } from \"@/components/ui/badge\";\r\nimport {\r\n  Card,\r\n  CardContent,\r\n  CardFooter,\r\n  CardHeader,\r\n  CardTitle,\r\n} from \"@/components/ui/card\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nexport type MultiSelectCalendarCardProps = {\r\n  selectedDates?: Date[];\r\n  onChange?: (dates: Date[]) => void;\r\n  maxSelectable?: number;\r\n  label?: string;\r\n  dateFormat?: string;\r\n  className?: string;\r\n  calendarClassName?: string;\r\n};\r\n\r\nexport function MultiSelectCalendarCard({\r\n  selectedDates = [],\r\n  onChange,\r\n  maxSelectable,\r\n  label = \"Select Multiple Dates\",\r\n  dateFormat = \"PP\",\r\n  className,\r\n  calendarClassName,\r\n}: MultiSelectCalendarCardProps) {\r\n  const [dates, setDates] = React.useState<Date[]>(selectedDates);\r\n\r\n  const handleSelect = (selected: Date[] | undefined) => {\r\n    let newDates = selected ?? [];\r\n    if (maxSelectable) {\r\n      newDates = newDates.slice(0, maxSelectable);\r\n    }\r\n    setDates(newDates);\r\n    onChange?.(newDates);\r\n  };\r\n\r\n  const handleRemove = (date: Date) => {\r\n    const newDates = dates.filter(\r\n      (d) => format(d, \"yyyy-MM-dd\") !== format(date, \"yyyy-MM-dd\")\r\n    );\r\n    setDates(newDates);\r\n    onChange?.(newDates);\r\n  };\r\n\r\n  return (\r\n    <Card className={cn(\"w-[380px] shadow-none border-none bg-background\", className)}>\r\n      <CardHeader>\r\n        <CardTitle className=\"text-base\">{label}</CardTitle>\r\n      </CardHeader>\r\n      <CardContent className=\"flex flex-col gap-4\">\r\n        {/* Calendar */}\r\n        <Calendar\r\n          mode=\"multiple\"\r\n          selected={dates}\r\n          onSelect={handleSelect}\r\n          className={cn(\"rounded-md border\", calendarClassName)}\r\n        />\r\n\r\n        {/* Selected dates list */}\r\n        <div className=\"flex flex-wrap gap-2\">\r\n          {dates.length === 0 && (\r\n            <p className=\"text-xs text-muted-foreground\">No dates selected</p>\r\n          )}\r\n          {dates.map((d) => (\r\n            <Badge\r\n              key={d.toISOString()}\r\n              variant=\"secondary\"\r\n              className=\"flex items-center gap-2\"\r\n            >\r\n              {format(d, dateFormat)}\r\n              <Button\r\n                size=\"icon\"\r\n                variant=\"ghost\"\r\n                className=\"h-4 w-4 p-0 text-muted-foreground hover:text-destructive\"\r\n                onClick={() => handleRemove(d)}\r\n              >\r\n                ✕\r\n              </Button>\r\n            </Badge>\r\n          ))}\r\n        </div>\r\n      </CardContent>\r\n      <CardFooter className=\"flex justify-end\">\r\n        <Button size=\"sm\" onClick={() => console.log(\"Selected Dates:\", dates)} disabled={dates.length === 0}>\r\n          Confirm\r\n        </Button>\r\n      </CardFooter>\r\n    </Card>\r\n  );\r\n}\r\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/multi-select-calendar-card.tsx"
+    }
+  ]
+}

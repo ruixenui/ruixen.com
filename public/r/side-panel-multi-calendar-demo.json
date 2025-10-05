@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "side-panel-multi-calendar-demo",
+  "type": "registry:example",
+  "title": "Side Panel Multi Calendar Demo",
+  "description": "Example showing a multi-select calendar with side panel grouped by month.",
+  "registryDependencies": [
+    "https://ruixen.com/r/side-panel-multi-calendar"
+  ],
+  "files": [
+    {
+      "path": "registry/example/side-panel-multi-calendar-demo.tsx",
+      "content": "\"use client\";\r\n\r\nimport { useState } from \"react\";\r\nimport { SidePanelMultiCalendar } from \"@/registry/ruixenui/side-panel-multi-calendar\";\r\n\r\nexport default function DemoSidePanelMultiCalendar() {\r\n  const [dates, setDates] = useState<Date[]>([]);\r\n\r\n  return (\r\n    <div className=\"p-6 space-y-6\">\r\n      <h2 className=\"text-lg font-semibold\">\r\n        Configurable Side Panel Multi-Select Calendar\r\n      </h2>\r\n\r\n      <SidePanelMultiCalendar\r\n        selectedDates={dates}\r\n        onChange={(newDates) => setDates(newDates)}\r\n        maxSelectable={10}\r\n        label=\"Choose multiple important dates\"\r\n        dateFormat=\"d\"\r\n        className=\"max-w-3xl\"\r\n        calendarClassName=\"border\"\r\n        panelClassName=\"bg-card rounded-md\"\r\n      />\r\n\r\n      <div className=\"mt-4 text-sm text-muted-foreground\">\r\n        Selected Dates:{\" \"}\r\n        {dates.length > 0\r\n          ? dates.map((d) => d.toDateString()).join(\", \")\r\n          : \"None\"}\r\n      </div>\r\n    </div>\r\n  );\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/side-panel-multi-calendar-demo.tsx"
+    }
+  ]
+}

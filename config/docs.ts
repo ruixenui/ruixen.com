@@ -743,6 +743,18 @@ export const docsConfig: DocsConfig = {
               label: "",
             },
             {
+              title: "Radio Group Card",
+              href: `/docs/components/radio-group-card`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Emoji Radio Group",
+              href: `/docs/components/emoji-radio-group`,
+              items: [],
+              label: "New",
+            },
+            {
               title: "Auth Tabs Card",
               href: `/docs/components/auth-tabs-card`,
               items: [],
@@ -906,6 +918,54 @@ export const docsConfig: DocsConfig = {
               items: [],
               label: "",
             },
+            {
+              title: "Multi Month Calendar",
+              href: `/docs/components/multi-month-calendar`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Calendar With Presets",
+              href: `/docs/components/calendar-with-presets`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Universal Date Picker",
+              href: `/docs/components/universal-date-picker`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Date Time Input",
+              href: `/docs/components/date-time-input`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Dropdown Range Date Picker",
+              href: `/docs/components/dropdown-range-date-picker`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Dropdown Multi Calendar",
+              href: `/docs/components/dropdown-multi-calendar`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Multi Select Calendar Card",
+              href: `/docs/components/multi-select-calendar-card`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Side Panel Multi Calendar",
+              href: `/docs/components/side-panel-multi-calendar`,
+              items: [],
+              label: "New",
+            },
           ],
         },
         {
@@ -1034,6 +1094,18 @@ export const docsConfig: DocsConfig = {
             {
               title: "Pill Calendar",
               href: `/docs/components/pill-calendar`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Calendar Scheduler",
+              href: `/docs/components/calendar-scheduler`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Calendar Lume",
+              href: `/docs/components/calendar-lume`,
               items: [],
               label: "New",
             },

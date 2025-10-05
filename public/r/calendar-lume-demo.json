@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "calendar-lume-demo",
+  "type": "registry:example",
+  "title": "Calendar Lume Demo",
+  "description": "Example showing an animated calendar with year/month/day step navigation.",
+  "registryDependencies": [
+    "https://ruixen.com/r/calendar-lume"
+  ],
+  "files": [
+    {
+      "path": "registry/example/calendar-lume-demo.tsx",
+      "content": "\"use client\";\r\n\r\nimport { useState } from \"react\";\r\nimport { CalendarLume } from \"@/registry/ruixenui/calendar-lume\";\r\n\r\nexport default function DemoCalendarLume() {\r\n  const [date, setDate] = useState<Date>();\r\n\r\n  return (\r\n    <div className=\"p-6 space-y-6\">\r\n      <h2 className=\"text-lg font-semibold\">Configurable Calendar Demo</h2>\r\n\r\n      <CalendarLume\r\n        initialDate={date}\r\n        onChange={setDate}\r\n        startYear={2000}\r\n        endYear={2030}\r\n        className=\"max-w-md\"\r\n      />\r\n\r\n      <div className=\"mt-4 text-sm text-muted-foreground\">\r\n        Selected Date: {date ? date.toDateString() : \"None\"}\r\n      </div>\r\n    </div>\r\n  );\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/calendar-lume-demo.tsx"
+    }
+  ]
+}

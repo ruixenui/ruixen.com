@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dropdown-range-date-picker-demo",
+  "type": "registry:example",
+  "title": "Dropdown Range Date Picker Demo",
+  "description": "Example showing a range date picker with year/month dropdowns in popover.",
+  "registryDependencies": [
+    "https://ruixen.com/r/dropdown-range-date-picker"
+  ],
+  "files": [
+    {
+      "path": "registry/example/dropdown-range-date-picker-demo.tsx",
+      "content": "\"use client\";\r\n\r\nimport { useState } from \"react\";\r\nimport { DropdownRangeDatePicker } from \"@/registry/ruixenui/dropdown-range-date-picker\";\r\n\r\nexport default function DemoDropdownRangeDatePicker() {\r\n  const [range, setRange] = useState<{ from?: Date; to?: Date }>();\r\n\r\n  return (\r\n    <div className=\"p-6 space-y-6\">\r\n      <h2 className=\"text-lg font-semibold\">Configurable Dropdown Range Picker</h2>\r\n\r\n      <DropdownRangeDatePicker\r\n        selectedRange={range}\r\n        onChange={setRange}\r\n        minYear={2000}\r\n        maxYear={2030}\r\n        monthFormat=\"MMM\"\r\n        label=\"Select date range\"\r\n        clearable\r\n      />\r\n\r\n      <div className=\"mt-4 text-sm text-muted-foreground\">\r\n        Selected Range:{\" \"}\r\n        {range?.from\r\n          ? range.to\r\n            ? `${range.from.toDateString()} - ${range.to.toDateString()}`\r\n            : `${range.from.toDateString()}`\r\n          : \"None\"}\r\n      </div>\r\n    </div>\r\n  );\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/dropdown-range-date-picker-demo.tsx"
+    }
+  ]
+}

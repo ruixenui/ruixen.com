@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "emoji-radio-group",
+  "type": "registry:ui",
+  "title": "Emoji Radio Group",
+  "description": "A compact radio group with emoji-based options for quick visual feedback selection.",
+  "dependencies": [
+    "@radix-ui/react-radio-group"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/emoji-radio-group.tsx",
+      "content": "\"use client\";\r\n\r\nimport * as RadioGroupPrimitive from \"@radix-ui/react-radio-group\";\r\nimport * as React from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nconst RadioGroup = React.forwardRef<\r\n  React.ElementRef<typeof RadioGroupPrimitive.Root>,\r\n  React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root>\r\n>(({ className, ...props }, ref) => (\r\n  <RadioGroupPrimitive.Root\r\n    ref={ref}\r\n    className={cn(\"flex gap-3\", className)}\r\n    {...props}\r\n  />\r\n));\r\nRadioGroup.displayName = RadioGroupPrimitive.Root.displayName;\r\n\r\nconst EmojiRadio = React.forwardRef<\r\n  React.ElementRef<typeof RadioGroupPrimitive.Item>,\r\n  React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item> & {\r\n    emoji: string;\r\n    label: string;\r\n  }\r\n>(({ className, emoji, label, ...props }, ref) => (\r\n  <RadioGroupPrimitive.Item\r\n    ref={ref}\r\n    className={cn(\r\n      \"relative flex size-14 cursor-pointer flex-col items-center justify-center rounded-lg border border-input bg-background text-lg shadow-sm transition-all\",\r\n      \"hover:scale-105 hover:border-primary/70\",\r\n      \"focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring/70\",\r\n      \"data-[state=checked]:border-primary data-[state=checked]:bg-accent data-[state=checked]:text-accent-foreground\",\r\n      \"disabled:cursor-not-allowed disabled:opacity-50\",\r\n      className\r\n    )}\r\n    {...props}\r\n  >\r\n    <span>{emoji}</span>\r\n    <span className=\"text-[10px] font-medium\">{label}</span>\r\n  </RadioGroupPrimitive.Item>\r\n));\r\nEmojiRadio.displayName = \"EmojiRadio\";\r\n\r\nexport { RadioGroup, EmojiRadio };\r\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/emoji-radio-group.tsx"
+    }
+  ]
+}

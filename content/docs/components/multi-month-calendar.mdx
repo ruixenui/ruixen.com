@@ -1,0 +1,94 @@
+---
+title: Multi Month Calendar
+date: 2024-06-01
+description: A calendar component that displays multiple months with year/month dropdowns and range selection support
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="multi-month-calendar-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/multi-month-calendar"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="multi-month-calendar" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { MultiMonthCalendar } from "@/components/ruixen/multi-month-calendar";
+import { useState } from "react";
+import { DateRange } from "react-day-picker";
+
+export default function App() {
+  const [range, setRange] = useState<DateRange | undefined>();
+  const [single, setSingle] = useState<Date | undefined>();
+
+  return (
+    <div className="space-y-6">
+      {/* Range Mode */}
+      <MultiMonthCalendar
+        numberOfMonths={3}
+        mode="range"
+        selected={range}
+        onSelect={(date) => setRange(date)}
+      />
+
+      {/* Single Mode */}
+      <MultiMonthCalendar
+        numberOfMonths={2}
+        mode="single"
+        selected={single}
+        onSelect={(date) => setSingle(date)}
+      />
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop              | Type                                             | Default    | Description                     |
+| ----------------- | ------------------------------------------------ | ---------- | ------------------------------- |
+| `numberOfMonths`  | `number`                                         | `2`        | Number of months to display     |
+| `mode`            | `"single" \| "range"`                            | `"single"` | Selection mode                  |
+| `selected`        | `Date \| DateRange \| undefined`                 | -          | Selected date(s)                |
+| `onSelect`        | `(date: Date \| DateRange \| undefined) => void` | -          | Callback when date is selected  |
+| `showOutsideDays` | `boolean`                                        | `true`     | Show days outside current month |
+| `className`       | `string`                                         | -          | Additional CSS classes          |
+
+## Features
+
+- **Multiple Months**: Display 2+ months simultaneously
+- **Year/Month Dropdowns**: Quick navigation to any year/month
+- **Dual Mode Support**: Single date or range selection
+- **Responsive Design**: Adapts to different screen sizes
+- **Keyboard Navigation**: Full keyboard accessibility
+- **Custom Styling**: Tailwind CSS classes for easy customization
