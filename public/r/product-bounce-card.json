@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "product-bounce-card",
+  "type": "registry:ui",
+  "title": "Product Bounce Card",
+  "description": "An animated product showcase with bouncing and rotating effects plus shadow.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/product-bounce-card.tsx",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { motion } from \"framer-motion\";\r\n\r\ninterface ProductBounceCardProps {\r\n  imageUrl: string;\r\n  alt?: string;\r\n}\r\n\r\nexport const ProductBounceCard: React.FC<ProductBounceCardProps> = ({\r\n  imageUrl,\r\n  alt = \"Product image\",\r\n}) => {\r\n  return (\r\n    <div className=\"relative flex flex-col items-center justify-center\">\r\n      {/* Product image */}\r\n      <motion.img\r\n        src={imageUrl}\r\n        alt={alt}\r\n        className=\"h-64 w-auto object-contain\"\r\n        animate={{\r\n          y: [0, -20, 0],\r\n          rotateY: [0, 10, -10, 0],\r\n        }}\r\n        transition={{\r\n          duration: 1.7,\r\n          repeat: Infinity,\r\n          ease: \"easeInOut\",\r\n        }}\r\n        style={{\r\n          transformStyle: \"preserve-3d\",\r\n        }}\r\n      />\r\n\r\n      {/* Bottom shadow */}\r\n      <div className=\"absolute bottom-0 h-6 w-40 rounded-full bg-black/20 blur-md\" />\r\n    </div>\r\n  );\r\n};\r\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/product-bounce-card.tsx"
+    }
+  ]
+}

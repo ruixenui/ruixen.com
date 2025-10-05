@@ -1,0 +1,130 @@
+---
+title: Shirt Parallax Card
+date: 2024-06-01
+description: A product card with 3D parallax effects and floating product image with bounce animation.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="shirt-parallax-card-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/shirt-parallax-card"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="shirt-parallax-card" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Add the required CSS animations</Step>
+
+<Step>
+  Add the following animations to your global CSS file (e.g., `app/globals.css`)
+</Step>
+
+```css title="app/globals.css"
+@keyframes bounceFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.bounce {
+  animation: bounceFloat 3s ease-in-out infinite;
+}
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { ShirtParallaxCard } from "@/components/ruixen/shirt-parallax-card";
+
+export default function App() {
+  return (
+    <div className="flex h-screen w-full items-center justify-center bg-muted/10 p-8">
+      <ShirtParallaxCard
+        title="Premium Cotton Shirt"
+        description="Soft-touch fabric with a tailored fit — perfect for work and casual wear."
+        price="$39.99"
+        imageUrl="https://example.com/shirt-product.png"
+      />
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop          | Type     | Default                                                                        | Description            |
+| ------------- | -------- | ------------------------------------------------------------------------------ | ---------------------- |
+| `title`       | `string` | -                                                                              | Product title          |
+| `description` | `string` | -                                                                              | Product description    |
+| `price`       | `string` | -                                                                              | Product price          |
+| `imageUrl`    | `string` | "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/ruixen_shirt_product.png" | Product image URL      |
+| `className`   | `string` | -                                                                              | Additional CSS classes |
+
+## Features
+
+- **3D Parallax Effects**: Card tilts based on mouse movement for depth
+- **Floating Product Image**: Product image hovers outside the card with bounce animation
+- **Interactive Hover**: Enhanced scaling and shadow effects on hover
+- **Smooth Animations**: Spring-based physics for natural movement
+- **Responsive Design**: Adapts to different screen sizes
+- **Call-to-Action**: Integrated "Buy Now" button
+
+## Animation Details
+
+### Card Parallax
+
+- **Rotation Range**: ±6° on both X and Y axes
+- **Mouse Sensitivity**: Responds to mouse position within card bounds
+- **Spring Physics**: Stiffness: 300, Damping: 30
+
+### Product Image Effects
+
+- **Bounce Animation**: Continuous 3-second bounce cycle
+- **Hover Enhancement**: 15% scale increase with vertical lift
+- **Shadow Effects**: Dynamic shadow on hover
+- **Positioning**: Absolute positioned outside card boundaries
+
+### Card Interactions
+
+- **Hover Scale**: Card scales to 97% for pressed effect
+- **Shadow Enhancement**: Dramatic shadow increase on hover
+- **Spring Transition**: Smooth spring-based transitions
+
+## Use Cases
+
+- **E-commerce**: Product showcase cards for online stores
+- **Fashion Retail**: Clothing and accessory displays
+- **Product Catalogs**: Interactive product browsing
+- **Landing Pages**: Featured product highlights
+- **Mobile Commerce**: Touch-friendly product cards

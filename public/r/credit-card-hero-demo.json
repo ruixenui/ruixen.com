@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "credit-card-hero-demo",
+  "type": "registry:example",
+  "title": "Credit Card Hero Demo",
+  "description": "Example showing a 3D interactive hero section with floating credit cards.",
+  "registryDependencies": [
+    "https://ruixen.com/r/credit-card-hero"
+  ],
+  "files": [
+    {
+      "path": "registry/example/credit-card-hero-demo.tsx",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { CreditCardHero } from \"@/registry/ruixenui/credit-card-hero\";\r\n\r\nexport default function CreditCardHeroDemo() {\r\n  return (\r\n    <div className=\"flex h-screen w-full items-center justify-center bg-muted/20 p-8\">\r\n      <CreditCardHero\r\n        headline=\"The Future of Digital Banking\"\r\n        subtext=\"Secure, globally accepted, and packed with exclusive rewards — your new digital credit card is here.\"\r\n        cta=\"Apply Now\"\r\n        onCtaClick={() => alert(\"CTA Clicked!\")}\r\n        primaryCardImage=\"https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/ruixen_moon.png\"\r\n        secondaryCardImage=\"https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/ruixen_gradient.jpeg\"\r\n      />\r\n    </div>\r\n  );\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/credit-card-hero-demo.tsx"
+    }
+  ]
+}

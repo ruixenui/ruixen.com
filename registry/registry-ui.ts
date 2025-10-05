@@ -3472,4 +3472,247 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "sentiment-radio-group",
+    type: "registry:ui",
+    title: "Sentiment Radio Group",
+    description:
+      "A radio group with sentiment cards featuring emojis, titles, and descriptions for feedback collection.",
+    dependencies: ["@radix-ui/react-radio-group"],
+    files: [
+      {
+        path: "registry/ruixenui/sentiment-radio-group.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/sentiment-radio-group.tsx",
+      },
+    ],
+  },
+  {
+    name: "rating-scale-group",
+    type: "registry:ui",
+    title: "Rating Scale Group",
+    description:
+      "A horizontal rating scale radio group with numbered items and green indicator dots.",
+    dependencies: ["@radix-ui/react-radio-group"],
+    files: [
+      {
+        path: "registry/ruixenui/rating-scale-group.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/rating-scale-group.tsx",
+      },
+    ],
+  },
+  {
+    name: "review-filter-bars",
+    type: "registry:ui",
+    title: "Review Filter Bars",
+    description:
+      "A radio group for filtering reviews by star rating with progress bars and counts.",
+    dependencies: ["@radix-ui/react-radio-group", "@remixicon/react"],
+    files: [
+      {
+        path: "registry/ruixenui/review-filter-bars.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/review-filter-bars.tsx",
+      },
+    ],
+  },
+  {
+    name: "tour-popover",
+    type: "registry:ui",
+    title: "Tour Popover",
+    description:
+      "A guided tour popover with steps, progress tracking, and navigation controls.",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["button", "popover", "progress", "separator"],
+    files: [
+      {
+        path: "registry/ruixenui/tour-popover.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/tour-popover.tsx",
+      },
+    ],
+  },
+  {
+    name: "notification-inbox-popover",
+    type: "registry:ui",
+    title: "Notification Inbox Popover",
+    description:
+      "A notification inbox popover with tabs, unread counts, and mark as read functionality.",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["badge", "button", "popover", "tabs"],
+    files: [
+      {
+        path: "registry/ruixenui/notification-inbox-popover.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/notification-inbox-popover.tsx",
+      },
+    ],
+  },
+  {
+    name: "credit-card-dialog",
+    type: "registry:ui",
+    title: "Credit Card Dialog",
+    description:
+      "A credit card activation dialog with animated card display and form input.",
+    dependencies: ["lucide-react", "framer-motion"],
+    registryDependencies: ["button", "dialog", "input"],
+    files: [
+      {
+        path: "registry/ruixenui/credit-card-dialog.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/credit-card-dialog.tsx",
+      },
+    ],
+  },
+  {
+    name: "identity-verification-dialog",
+    type: "registry:ui",
+    title: "Identity Verification Dialog",
+    description:
+      "An identity verification dialog with ID card display and PIN input form.",
+    dependencies: ["lucide-react", "framer-motion"],
+    registryDependencies: ["button", "dialog", "input"],
+    files: [
+      {
+        path: "registry/ruixenui/identity-verification-dialog.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/identity-verification-dialog.tsx",
+      },
+    ],
+  },
+  {
+    name: "verification-card",
+    type: "registry:ui",
+    title: "Verification Card",
+    description:
+      "An animated verification card component with customizable background and content.",
+    dependencies: ["framer-motion"],
+    files: [
+      {
+        path: "registry/ruixenui/verification-card.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/verification-card.tsx",
+      },
+    ],
+  },
+  {
+    name: "credit-card-hero",
+    type: "registry:ui",
+    title: "Credit Card Hero",
+    description:
+      "A 3D interactive hero section with floating credit cards and mouse tilt effects.",
+    dependencies: ["framer-motion"],
+    files: [
+      {
+        path: "registry/ruixenui/credit-card-hero.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/credit-card-hero.tsx",
+      },
+    ],
+  },
+  {
+    name: "order-tracking-parallax-card",
+    type: "registry:ui",
+    title: "Order Tracking Parallax Card",
+    description:
+      "A 3D parallax card for order tracking with delivery status and progress indicator.",
+    dependencies: ["framer-motion"],
+    files: [
+      {
+        path: "registry/ruixenui/order-tracking-parallax-card.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/order-tracking-parallax-card.tsx",
+      },
+    ],
+  },
+  {
+    name: "shirt-parallax-card",
+    type: "registry:ui",
+    title: "Shirt Parallax Card",
+    description:
+      "A product card with 3D parallax effects and floating product image with bounce animation.",
+    dependencies: ["framer-motion"],
+    registryDependencies: ["card", "button"],
+    files: [
+      {
+        path: "registry/ruixenui/shirt-parallax-card.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/shirt-parallax-card.tsx",
+      },
+    ],
+  },
+  {
+    name: "elite-plan-card",
+    type: "registry:ui",
+    title: "Elite Plan Card",
+    description:
+      "A premium plan card with image parallax, highlights, and call-to-action button.",
+    dependencies: ["framer-motion"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "registry/ruixenui/elite-plan-card.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/elite-plan-card.tsx",
+      },
+    ],
+  },
+  {
+    name: "product-bounce-card",
+    type: "registry:ui",
+    title: "Product Bounce Card",
+    description:
+      "An animated product showcase with bouncing and rotating effects plus shadow.",
+    dependencies: ["framer-motion"],
+    files: [
+      {
+        path: "registry/ruixenui/product-bounce-card.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/product-bounce-card.tsx",
+      },
+    ],
+  },
+  {
+    name: "loading-circle",
+    type: "registry:ui",
+    title: "Loading Circle",
+    description:
+      "A ripple loading animation with multiple concentric circles and gradient effects.",
+    files: [
+      {
+        path: "registry/ruixenui/loading-circle.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/loading-circle.tsx",
+      },
+    ],
+  },
+  {
+    name: "load-ripple",
+    type: "registry:ui",
+    title: "Load Ripple",
+    description:
+      "A simple ripple loader with 5 animated circles and staggered timing.",
+    files: [
+      {
+        path: "registry/ruixenui/load-ripple.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/load-ripple.tsx",
+      },
+    ],
+  },
+  {
+    name: "ripple-circles",
+    type: "registry:ui",
+    title: "Ripple Circles",
+    description:
+      "Animated ripple circles loader with gradient backgrounds and backdrop blur.",
+    files: [
+      {
+        path: "registry/ruixenui/ripple-circles.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/ripple-circles.tsx",
+      },
+    ],
+  },
 ];

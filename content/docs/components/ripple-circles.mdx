@@ -1,0 +1,250 @@
+---
+title: Ripple Circles
+date: 2024-06-01
+description: Animated ripple circles loader with gradient backgrounds and backdrop blur.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="ripple-circles-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/ripple-circles"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="ripple-circles" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Add the required CSS animations</Step>
+
+<Step>
+  Add the following animations to your global CSS file (e.g., `app/globals.css`)
+</Step>
+
+```css title="app/globals.css"
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { RippleCircles } from "@/components/ruixen/ripple-circles";
+
+export default function App() {
+  return (
+    <div className="flex min-h-screen items-center justify-center">
+      <RippleCircles />
+    </div>
+  );
+}
+```
+
+## Features
+
+- **5 Concentric Circles**: Perfectly balanced number for smooth animation
+- **Staggered Animation**: 0.2s delay between each circle
+- **Gradient Effects**: Subtle gradients with backdrop blur
+- **Responsive Container**: 250px square with aspect ratio maintained
+- **Dark Mode Support**: Automatic color adaptation
+- **Smooth Performance**: Hardware-accelerated CSS animations
+
+## Animation Sequence
+
+The ripple effect creates a wave-like animation:
+
+1. **Inner Circle** (40% inset) - Starts immediately
+2. **Second Circle** (30% inset) - Starts after 0.2s
+3. **Third Circle** (20% inset) - Starts after 0.4s
+4. **Fourth Circle** (10% inset) - Starts after 0.6s
+5. **Outer Circle** (0% inset) - Starts after 0.8s
+
+## Visual Properties
+
+### Border Opacity Levels
+
+- **Circle 1**: 80% opacity (most visible)
+- **Circle 2**: 60% opacity
+- **Circle 3**: 40% opacity
+- **Circle 4**: 30% opacity
+- **Circle 5**: 20% opacity (most subtle)
+
+### Background Gradients
+
+- **Light Mode**: `from-gray-500/10 to-gray-400/10`
+- **Dark Mode**: Same gradient for consistency
+- **Backdrop Blur**: `backdrop-blur-sm` for depth effect
+
+## Customization
+
+### Color Themes
+
+#### Primary Theme
+
+```css
+.border-primary/80
+.border-primary/60
+.border-primary/40
+.border-primary/30
+.border-primary/20
+
+.bg-gradient-to-tr.from-primary/10.to-primary/10
+```
+
+#### Success Theme
+
+```css
+.border-green-500/80
+.border-green-500/60
+.border-green-500/40
+.border-green-500/30
+.border-green-500/20
+
+.bg-gradient-to-tr.from-green-500/10.to-green-400/10
+```
+
+#### Warning Theme
+
+```css
+.border-yellow-500/80
+.border-yellow-500/60
+.border-yellow-500/40
+.border-yellow-500/30
+.border-yellow-500/20
+
+.bg-gradient-to-tr.from-yellow-500/10.to-yellow-400/10
+```
+
+### Animation Timing
+
+#### Faster Animation
+
+```css
+.animate-[ripple_1.5s_infinite_ease-in-out]
+.animate-[ripple_1.5s_infinite_ease-in-out_0.15s]
+.animate-[ripple_1.5s_infinite_ease-in-out_0.3s]
+.animate-[ripple_1.5s_infinite_ease-in-out_0.45s]
+.animate-[ripple_1.5s_infinite_ease-in-out_0.6s]
+```
+
+#### Slower Animation
+
+```css
+.animate-[ripple_3s_infinite_ease-in-out]
+.animate-[ripple_3s_infinite_ease-in-out_0.3s]
+.animate-[ripple_3s_infinite_ease-in-out_0.6s]
+.animate-[ripple_3s_infinite_ease-in-out_0.9s]
+.animate-[ripple_3s_infinite_ease-in-out_1.2s]
+```
+
+## Size Variations
+
+### Mini Loader
+
+```tsx
+<div className="relative h-[100px] aspect-square">
+  <RippleCircles />
+</div>
+```
+
+### Standard Loader
+
+```tsx
+<div className="relative h-[250px] aspect-square">
+  <RippleCircles />
+</div>
+```
+
+### Large Loader
+
+```tsx
+<div className="relative h-[400px] aspect-square">
+  <RippleCircles />
+</div>
+```
+
+## Use Cases
+
+- **App Loading**: Initial app loading screens
+- **Content Loading**: Loading states for content areas
+- **Search Results**: Indicating search in progress
+- **File Upload**: Progress indication for uploads
+- **API Calls**: Network request loading states
+- **Background Tasks**: Long-running process indicators
+
+## Integration Examples
+
+### Loading Overlay
+
+```tsx
+{
+  isLoading && (
+    <div className="fixed inset-0 bg-background/80 flex items-center justify-center z-50">
+      <RippleCircles />
+    </div>
+  );
+}
+```
+
+### Card Loading State
+
+```tsx
+<Card className="min-h-[200px] flex items-center justify-center">
+  {isLoading ? <RippleCircles /> : <CardContent>...</CardContent>}
+</Card>
+```
+
+### Button Loading
+
+```tsx
+<Button disabled={isLoading} className="min-w-[120px]">
+  {isLoading ? <RippleCircles /> : "Load Data"}
+</Button>
+```
+
+## Performance Optimization
+
+- **CSS-Only Animation**: No JavaScript after render
+- **Transform Properties**: GPU-accelerated animations
+- **Minimal DOM**: Only 5 span elements
+- **Efficient Layering**: Proper z-index management
+
+## Accessibility
+
+- **Screen Reader Support**: Add `aria-label="Loading content"`
+- **Motion Preferences**: Respect `prefers-reduced-motion`
+- **Focus Management**: Non-interactive, preserves focus flow
+- **Alternative Text**: Provide text alternative for screen readers

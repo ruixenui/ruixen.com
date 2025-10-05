@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/calendar-lume-demo.tsx",
-      "content": "\"use client\";\r\n\r\nimport { useState } from \"react\";\r\nimport { CalendarLume } from \"@/registry/ruixenui/calendar-lume\";\r\n\r\nexport default function DemoCalendarLume() {\r\n  const [date, setDate] = useState<Date>();\r\n\r\n  return (\r\n    <div className=\"p-6 space-y-6\">\r\n      <h2 className=\"text-lg font-semibold\">Configurable Calendar Demo</h2>\r\n\r\n      <CalendarLume\r\n        initialDate={date}\r\n        onChange={setDate}\r\n        startYear={2000}\r\n        endYear={2030}\r\n        className=\"max-w-md\"\r\n      />\r\n\r\n      <div className=\"mt-4 text-sm text-muted-foreground\">\r\n        Selected Date: {date ? date.toDateString() : \"None\"}\r\n      </div>\r\n    </div>\r\n  );\r\n}\r\n",
+      "content": "\"use client\";\n\nimport { useState } from \"react\";\nimport { CalendarLume } from \"@/registry/ruixenui/calendar-lume\";\n\nexport default function DemoCalendarLume() {\n  const [date, setDate] = useState<Date>();\n\n  return (\n    <div className=\"p-6 space-y-6\">\n      <h2 className=\"text-lg font-semibold\">Configurable Calendar Demo</h2>\n\n      <CalendarLume\n        initialDate={date}\n        onChange={setDate}\n        startYear={2000}\n        endYear={2030}\n        className=\"max-w-md\"\n      />\n\n      <div className=\"mt-4 text-sm text-muted-foreground\">\n        Selected Date: {date ? date.toDateString() : \"None\"}\n      </div>\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/calendar-lume-demo.tsx"
     }

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "notification-inbox-popover-demo",
+  "type": "registry:example",
+  "title": "Notification Inbox Popover Demo",
+  "description": "Example showing a notification inbox with tabs and mark as read functionality.",
+  "registryDependencies": [
+    "https://ruixen.com/r/notification-inbox-popover"
+  ],
+  "files": [
+    {
+      "path": "registry/example/notification-inbox-popover-demo.tsx",
+      "content": "\"use client\";\r\n\r\nimport { NotificationInboxPopover, Notification } from \"@/registry/ruixenui/notification-inbox-popover\";\r\nimport { Bell, GitMerge, FileText } from \"lucide-react\";\r\n\r\nconst demoNotifications: Notification[] = [\r\n  {\r\n    id: 1,\r\n    user: \"Alice\",\r\n    action: \"merged\",\r\n    target: \"PR #45\",\r\n    timestamp: \"5 mins ago\",\r\n    unread: true,\r\n    icon: GitMerge,\r\n  },\r\n  {\r\n    id: 2,\r\n    user: \"Bob\",\r\n    action: \"uploaded\",\r\n    target: \"Project Plan.pdf\",\r\n    timestamp: \"1 hour ago\",\r\n    unread: true,\r\n    icon: FileText,\r\n  },\r\n];\r\n\r\nexport default function NotificationsDemoPage() {\r\n  return (\r\n    <div className=\"flex min-h-screen items-center justify-center bg-gray-50\">\r\n      <NotificationInboxPopover\r\n        notifications={demoNotifications}\r\n        triggerLabel=\"Notifications\"\r\n        onMarkAll={(notifs) => console.log(\"Marked all as read:\", notifs)}\r\n        onMarkAsRead={(id) => console.log(\"Marked as read:\", id)}\r\n        onViewAll={() => console.log(\"View all clicked\")}\r\n      />\r\n    </div>\r\n  );\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/notification-inbox-popover-demo.tsx"
+    }
+  ]
+}

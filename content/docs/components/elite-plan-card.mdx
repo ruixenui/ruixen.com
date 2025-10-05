@@ -1,0 +1,234 @@
+---
+title: Elite Plan Card
+date: 2024-06-01
+description: A premium plan card with image parallax, highlights, and call-to-action button.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="elite-plan-card-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/elite-plan-card"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="elite-plan-card" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { ElitePlanCard } from "@/components/ruixen/elite-plan-card";
+
+export default function App() {
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-background p-6">
+      <ElitePlanCard
+        imageUrl="https://example.com/premium-image.jpg"
+        title="Lunar Series"
+        subtitle="Ruixen Collection"
+        description="Experience the fusion of art and design with the Lunar Series. Minimalist, bold, and timeless."
+        highlights={[
+          "Premium Quality",
+          "Limited Edition",
+          "Exclusive Design",
+          "Lifetime Support",
+        ]}
+        onAction={() => alert("Learn more clicked!")}
+      />
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop          | Type         | Default | Description                   |
+| ------------- | ------------ | ------- | ----------------------------- |
+| `imageUrl`    | `string`     | -       | Header image URL              |
+| `title`       | `string`     | -       | Main title text               |
+| `subtitle`    | `string`     | -       | Subtitle or category text     |
+| `description` | `string`     | -       | Detailed description          |
+| `highlights`  | `string[]`   | `[]`    | Array of highlight features   |
+| `onAction`    | `() => void` | -       | Callback for CTA button click |
+| `className`   | `string`     | -       | Additional CSS classes        |
+
+## Features
+
+- **Image Parallax**: Header image scales on hover for depth effect
+- **Dark Theme**: Elegant black background with white text
+- **Highlight Grid**: 2-column grid for feature highlights
+- **Smooth Animations**: Hover effects with spring physics
+- **Gradient Fade**: Seamless transition from image to content
+- **Premium Styling**: High-end design with rounded corners
+
+## Design Elements
+
+### Header Image
+
+- **Parallax Effect**: 10% scale increase on hover
+- **Gradient Overlay**: Smooth fade from image to black background
+- **Fixed Height**: 256px (h-64) for consistent proportions
+
+### Content Section
+
+- **Black Background**: Premium dark theme
+- **White Text**: High contrast for readability
+- **Structured Layout**: Subtitle, title, description hierarchy
+
+### Highlights Section
+
+- **Grid Layout**: 2-column responsive grid
+- **Dot Indicators**: White dots for visual consistency
+- **Card Style**: Subtle background with rounded corners
+- **Compact Text**: Small font size for clean appearance
+
+## Animation Details
+
+### Card Hover
+
+- **Scale**: 2% increase (scale: 1.02)
+- **Shadow**: Enhanced shadow on hover
+- **Spring Physics**: Stiffness: 250, Damping: 20
+
+### Image Parallax
+
+- **Scale**: 10% increase on hover
+- **Duration**: 0.45 seconds
+- **Smooth Transition**: Natural easing
+
+## Customization
+
+### Custom Colors
+
+```tsx
+// Modify the background colors
+.bg-black → .bg-slate-900
+.text-white → .text-slate-100
+.text-gray-400 → .text-slate-400
+.text-gray-300 → .text-slate-300
+```
+
+### Custom Highlight Layout
+
+```tsx
+// Single column highlights
+<ul className="mt-4 grid grid-cols-1 gap-2 text-xs text-gray-400">
+
+// Three column highlights
+<ul className="mt-4 grid grid-cols-3 gap-2 text-xs text-gray-400">
+```
+
+### Custom CTA Button
+
+```tsx
+// Different button styles
+<Button className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white">
+  Get Started
+</Button>
+
+<Button className="w-full bg-white text-black hover:bg-gray-100">
+  Learn More
+</Button>
+```
+
+## Content Examples
+
+### Software Plan
+
+```tsx
+<ElitePlanCard
+  imageUrl="/software-hero.jpg"
+  title="Pro Plan"
+  subtitle="Development Suite"
+  description="Advanced tools for professional developers with unlimited projects and priority support."
+  highlights={[
+    "Unlimited Projects",
+    "Priority Support",
+    "Advanced Analytics",
+    "Team Collaboration",
+  ]}
+/>
+```
+
+### Membership Plan
+
+```tsx
+<ElitePlanCard
+  imageUrl="/membership-hero.jpg"
+  title="Elite Membership"
+  subtitle="Exclusive Access"
+  description="Join our elite community with exclusive perks, early access, and premium content."
+  highlights={[
+    "Early Access",
+    "Exclusive Content",
+    "Community Access",
+    "Monthly Rewards",
+  ]}
+/>
+```
+
+### Product Showcase
+
+```tsx
+<ElitePlanCard
+  imageUrl="/product-hero.jpg"
+  title="Limited Edition"
+  subtitle="Premium Collection"
+  description="Handcrafted with attention to detail, this limited edition piece represents the pinnacle of design."
+  highlights={[
+    "Handcrafted",
+    "Limited Edition",
+    "Premium Materials",
+    "Lifetime Warranty",
+  ]}
+/>
+```
+
+## Use Cases
+
+- **Subscription Plans**: Premium tier showcases
+- **Product Launches**: High-end product presentations
+- **Service Packages**: Professional service offerings
+- **Membership Tiers**: Elite membership promotions
+- **Portfolio Items**: Premium work showcases
+- **Event Tickets**: VIP experience packages
+
+## Performance
+
+- **Optimized Images**: Use next/image for automatic optimization
+- **Hardware Acceleration**: Transform-based animations
+- **Minimal Reflows**: Efficient hover effects
+- **Lazy Loading**: Consider lazy loading for images
+
+## Accessibility
+
+- **Keyboard Navigation**: CTA button is keyboard accessible
+- **Screen Readers**: Proper heading hierarchy and alt text
+- **Focus Indicators**: Clear focus states on interactive elements
+- **Color Contrast**: High contrast white text on black background

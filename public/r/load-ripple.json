@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "load-ripple",
+  "type": "registry:ui",
+  "title": "Load Ripple",
+  "description": "A simple ripple loader with 5 animated circles and staggered timing.",
+  "files": [
+    {
+      "path": "registry/ruixenui/load-ripple.tsx",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\n\r\nexport const LoadRipple: React.FC = () => {\r\n  return (\r\n    <div className=\"relative h-[250px] aspect-square\">\r\n      {/* Ripple circles */}\r\n      <span className=\"absolute inset-[40%] rounded-full border border-gray-500/80 dark:border-gray-300/80 animate-[ripple_2s_infinite_ease-in-out] bg-gradient-to-tr from-gray-500/10 to-gray-400/10 backdrop-blur-sm z-[98]\" />\r\n      <span className=\"absolute inset-[30%] rounded-full border border-gray-500/60 dark:border-gray-300/60 animate-[ripple_2s_infinite_ease-in-out_0.2s] bg-gradient-to-tr from-gray-500/10 to-gray-400/10 backdrop-blur-sm z-[97]\" />\r\n      <span className=\"absolute inset-[20%] rounded-full border border-gray-500/40 dark:border-gray-300/40 animate-[ripple_2s_infinite_ease-in-out_0.4s] bg-gradient-to-tr from-gray-500/10 to-gray-400/10 backdrop-blur-sm z-[96]\" />\r\n      <span className=\"absolute inset-[10%] rounded-full border border-gray-500/30 dark:border-gray-300/30 animate-[ripple_2s_infinite_ease-in-out_0.6s] bg-gradient-to-tr from-gray-500/10 to-gray-400/10 backdrop-blur-sm z-[95]\" />\r\n      <span className=\"absolute inset-0 rounded-full border border-gray-500/20 dark:border-gray-300/20 animate-[ripple_2s_infinite_ease-in-out_0.8s] bg-gradient-to-tr from-gray-500/10 to-gray-400/10 backdrop-blur-sm z-[94]\" />\r\n    </div>\r\n  );\r\n};\r\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/load-ripple.tsx"
+    }
+  ]
+}

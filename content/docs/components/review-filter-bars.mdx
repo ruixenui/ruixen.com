@@ -1,0 +1,165 @@
+---
+title: Review Filter Bars
+date: 2024-06-01
+description: A radio group for filtering reviews by star rating with progress bars and counts.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="review-filter-bars-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/review-filter-bars"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="review-filter-bars" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import {
+  ReviewFilterGroup,
+  ReviewFilterItem,
+} from "@/components/ruixen/review-filter-bars";
+
+export default function App() {
+  const total = 12921;
+
+  return (
+    <div className="space-y-4">
+      <h2 className="text-lg font-semibold">Filter by rating</h2>
+      <p className="text-sm text-muted-foreground">
+        Select a review group to filter results.
+      </p>
+
+      <ReviewFilterGroup defaultValue="5-stars">
+        <ReviewFilterItem
+          value="5-stars"
+          stars={5}
+          count={5168}
+          total={total}
+        />
+        <ReviewFilterItem
+          value="4-stars"
+          stars={4}
+          count={4726}
+          total={total}
+        />
+        <ReviewFilterItem
+          value="3-stars"
+          stars={3}
+          count={3234}
+          total={total}
+        />
+        <ReviewFilterItem
+          value="2-stars"
+          stars={2}
+          count={1842}
+          total={total}
+        />
+        <ReviewFilterItem value="1-star" stars={1} count={452} total={total} />
+      </ReviewFilterGroup>
+    </div>
+  );
+}
+```
+
+## Props
+
+### ReviewFilterGroup Props
+
+| Prop            | Type                      | Default | Description                 |
+| --------------- | ------------------------- | ------- | --------------------------- |
+| `className`     | `string`                  | -       | Additional CSS classes      |
+| `defaultValue`  | `string`                  | -       | Default selected value      |
+| `value`         | `string`                  | -       | Controlled selected value   |
+| `onValueChange` | `(value: string) => void` | -       | Callback when value changes |
+
+### ReviewFilterItem Props
+
+| Prop        | Type     | Default | Description                       |
+| ----------- | -------- | ------- | --------------------------------- |
+| `value`     | `string` | -       | Unique value for this filter      |
+| `stars`     | `number` | -       | Number of stars (1-5)             |
+| `count`     | `number` | -       | Number of reviews for this rating |
+| `total`     | `number` | -       | Total number of reviews           |
+| `className` | `string` | -       | Additional CSS classes            |
+
+## Features
+
+- **Visual Progress**: Progress bars show the distribution of ratings
+- **Star Display**: Clear 5-star rating system with filled/unfilled stars
+- **Review Counts**: Shows exact number of reviews for each rating
+- **Percentage Calculation**: Automatically calculates and displays percentages
+- **Interactive Selection**: Click to filter reviews by rating
+- **Accessible**: Built on Radix UI primitives with proper keyboard navigation
+
+## Progress Bar Calculation
+
+The progress bar width is automatically calculated as:
+
+```tsx
+const percentage = Math.round((count / total) * 100);
+```
+
+## Customization
+
+### Custom Star Colors
+
+```tsx
+// Modify the star colors in your CSS
+.text-amber-500 {
+  color: #f59e0b; /* Active star color */
+}
+
+.text-muted-foreground/30 {
+  color: rgba(107, 114, 126, 0.3); /* Inactive star color */
+}
+```
+
+### Custom Progress Bar Colors
+
+```tsx
+// Modify progress bar colors
+.bg-primary {
+  background-color: hsl(var(--primary)); /* Progress fill color */
+}
+
+.bg-muted {
+  background-color: hsl(var(--muted)); /* Progress background color */
+}
+```
+
+## Use Cases
+
+- **E-commerce**: Filter product reviews by star rating
+- **App Stores**: Filter app reviews and ratings
+- **Restaurant Reviews**: Filter dining reviews by satisfaction level
+- **Service Reviews**: Filter service provider reviews
+- **Content Rating**: Filter user-generated content by rating

@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/calendar-scheduler-demo.tsx",
-      "content": "\"use client\";\r\n\r\nimport { CalendarScheduler } from \"@/registry/ruixenui/calendar-scheduler\";\r\n\r\nexport default function SchedulerDemoPage() {\r\n  return (\r\n    <div className=\"flex min-h-screen flex-col items-center justify-center p-8\">\r\n        <CalendarScheduler\r\n          onConfirm={(val) => {\r\n            console.log(\"Scheduled:\", val);\r\n          }}\r\n        />\r\n    </div>\r\n  );\r\n}\r\n",
+      "content": "\"use client\";\n\nimport { CalendarScheduler } from \"@/registry/ruixenui/calendar-scheduler\";\n\nexport default function SchedulerDemoPage() {\n  return (\n    <div className=\"flex min-h-screen flex-col items-center justify-center p-8\">\n      <CalendarScheduler\n        onConfirm={(val) => {\n          console.log(\"Scheduled:\", val);\n        }}\n      />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/calendar-scheduler-demo.tsx"
     }

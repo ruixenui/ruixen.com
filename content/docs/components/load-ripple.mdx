@@ -1,0 +1,225 @@
+---
+title: Load Ripple
+date: 2024-06-01
+description: A simple ripple loader with 5 animated circles and staggered timing.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="load-ripple-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/load-ripple"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="load-ripple" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Add the required CSS animations</Step>
+
+<Step>
+  Add the following animations to your global CSS file (e.g., `app/globals.css`)
+</Step>
+
+```css title="app/globals.css"
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { LoadRipple } from "@/components/ruixen/load-ripple";
+
+export default function App() {
+  return (
+    <div className="flex min-h-screen items-center justify-center">
+      <LoadRipple />
+    </div>
+  );
+}
+```
+
+## Features
+
+- **5 Ripple Circles**: Optimized number of circles for clean animation
+- **Staggered Timing**: Each circle starts 0.2s after the previous
+- **Gradient Backgrounds**: Subtle gradient effects with backdrop blur
+- **Fixed Positioning**: Precise positioning with inset percentages
+- **Responsive Design**: Maintains 250px square aspect ratio
+- **Smooth Animation**: 2-second infinite loop with ease-in-out timing
+
+## Animation Details
+
+### Circle Configuration
+
+| Circle | Inset | Delay | Opacity |
+| ------ | ----- | ----- | ------- |
+| 1      | 40%   | 0s    | 80%     |
+| 2      | 30%   | 0.2s  | 60%     |
+| 3      | 20%   | 0.4s  | 40%     |
+| 4      | 10%   | 0.6s  | 30%     |
+| 5      | 0%    | 0.8s  | 20%     |
+
+### Visual Effects
+
+- **Border Colors**: Gray with varying opacity levels
+- **Gradient**: Light gray gradients for depth
+- **Backdrop Blur**: Subtle blur effect for modern appearance
+- **Z-Index**: Layered from 98 (innermost) to 94 (outermost)
+
+## Customization
+
+### Custom Colors
+
+```tsx
+// Light mode colors
+border - gray - 500 / 80; // Innermost circle
+border - gray - 500 / 60; // Second circle
+border - gray - 500 / 40; // Third circle
+border - gray - 500 / 30; // Fourth circle
+border - gray - 500 / 20; // Outermost circle
+
+// Dark mode colors
+dark: border - gray - 300 / 80; // Innermost circle
+dark: border - gray - 300 / 60; // Second circle
+dark: border - gray - 300 / 40; // Third circle
+dark: border - gray - 300 / 30; // Fourth circle
+dark: border - gray - 300 / 20; // Outermost circle
+```
+
+### Custom Animation Speed
+
+```css
+/* Faster animation */
+.animate-[ripple_1.5s_infinite_ease-in-out]
+
+/* Slower animation */
+.animate-[ripple_3s_infinite_ease-in-out]
+```
+
+### Custom Delays
+
+```css
+/* Modify delay values */
+.animate-[ripple_2s_infinite_ease-in-out_0.1s]  /* Faster stagger */
+.animate-[ripple_2s_infinite_ease-in-out_0.3s]  /* Slower stagger */
+```
+
+## Size Variants
+
+### Compact Loader
+
+```tsx
+<div className="relative h-[150px] aspect-square">
+  <LoadRipple />
+</div>
+```
+
+### Large Loader
+
+```tsx
+<div className="relative h-[400px] aspect-square">
+  <LoadRipple />
+</div>
+```
+
+## Color Variants
+
+### Primary Color
+
+```css
+.border-primary/80
+.border-primary/60
+.border-primary/40
+.border-primary/30
+.border-primary/20
+```
+
+### Success Color
+
+```css
+.border-green-500/80
+.border-green-500/60
+.border-green-500/40
+.border-green-500/30
+.border-green-500/20
+```
+
+## Use Cases
+
+- **Button Loading**: Loading state for buttons and actions
+- **Form Processing**: Indicating form submission progress
+- **Data Loading**: Simple loading indicator for data fetching
+- **Page Transitions**: Smooth transitions between pages
+- **Modal Loading**: Loading states within modals or dialogs
+- **Component Loading**: Individual component loading states
+
+## Performance
+
+- **Lightweight**: Only 5 DOM elements
+- **CSS Animations**: Hardware-accelerated animations
+- **No JavaScript**: Pure CSS after initial render
+- **Optimized Rendering**: Uses transform and opacity for smooth performance
+
+## Accessibility
+
+- **ARIA Labels**: Add `aria-label="Loading"` for screen readers
+- **Motion Sensitivity**: Consider `prefers-reduced-motion` media query
+- **Non-Interactive**: Doesn't interfere with keyboard navigation
+- **Visual Only**: Provide alternative loading text for screen readers
+
+## Integration Examples
+
+### With Button
+
+```tsx
+<Button disabled={isLoading}>{isLoading ? <LoadRipple /> : "Submit"}</Button>
+```
+
+### With Card
+
+```tsx
+<Card>
+  {isLoading ? (
+    <div className="flex justify-center p-8">
+      <LoadRipple />
+    </div>
+  ) : (
+    <CardContent>...</CardContent>
+  )}
+</Card>
+```

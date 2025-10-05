@@ -1,0 +1,196 @@
+---
+title: Notification Inbox Popover
+date: 2024-06-01
+description: A notification inbox popover with tabs, unread counts, and mark as read functionality.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="notification-inbox-popover-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/notification-inbox-popover"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="notification-inbox-popover" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import {
+  NotificationInboxPopover,
+  Notification,
+} from "@/components/ruixen/notification-inbox-popover";
+import { Bell, GitMerge, FileText, MessageSquare } from "lucide-react";
+
+const notifications: Notification[] = [
+  {
+    id: 1,
+    user: "Alice",
+    action: "merged",
+    target: "PR #45",
+    timestamp: "5 mins ago",
+    unread: true,
+    icon: GitMerge,
+  },
+  {
+    id: 2,
+    user: "Bob",
+    action: "uploaded",
+    target: "Project Plan.pdf",
+    timestamp: "1 hour ago",
+    unread: true,
+    icon: FileText,
+  },
+  {
+    id: 3,
+    user: "Carol",
+    action: "commented on",
+    target: "Issue #23",
+    timestamp: "2 hours ago",
+    unread: false,
+    icon: MessageSquare,
+  },
+];
+
+export default function App() {
+  return (
+    <NotificationInboxPopover
+      notifications={notifications}
+      triggerLabel={<Bell size={16} />}
+      onMarkAll={(notifs) => console.log("Marked all as read:", notifs)}
+      onMarkAsRead={(id) => console.log("Marked as read:", id)}
+      onViewAll={() => console.log("View all clicked")}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop            | Type                                      | Default                                                              | Description                          |
+| --------------- | ----------------------------------------- | -------------------------------------------------------------------- | ------------------------------------ |
+| `notifications` | `Notification[]`                          | -                                                                    | Array of notification objects        |
+| `triggerLabel`  | `string \| React.ReactNode`               | ""                                                                   | Content for the trigger button       |
+| `popoverWidth`  | `string`                                  | "w-[380px]"                                                          | Tailwind width class for popover     |
+| `onMarkAll`     | `(notifications: Notification[]) => void` | -                                                                    | Callback when marking all as read    |
+| `onMarkAsRead`  | `(id: number) => void`                    | -                                                                    | Callback when marking single as read |
+| `onViewAll`     | `() => void`                              | -                                                                    | Callback when "View all" is clicked  |
+| `tabs`          | `{ value: string; label: string }[]`      | `[{value: "all", label: "All"}, {value: "unread", label: "Unread"}]` | Tab configuration                    |
+
+## Notification Interface
+
+```tsx
+interface Notification {
+  id: number;
+  user: string;
+  action: string;
+  target: string;
+  timestamp: string;
+  unread: boolean;
+  icon: LucideIcon;
+}
+```
+
+| Property    | Type         | Description                    |
+| ----------- | ------------ | ------------------------------ |
+| `id`        | `number`     | Unique notification identifier |
+| `user`      | `string`     | User who performed the action  |
+| `action`    | `string`     | Action that was performed      |
+| `target`    | `string`     | Target of the action           |
+| `timestamp` | `string`     | When the action occurred       |
+| `unread`    | `boolean`    | Whether notification is unread |
+| `icon`      | `LucideIcon` | Icon representing the action   |
+
+## Features
+
+- **Tabbed Interface**: Switch between "All" and "Unread" notifications
+- **Unread Badges**: Visual indicators for unread count
+- **Mark as Read**: Click notifications to mark them as read
+- **Mark All as Read**: Bulk action to mark all notifications as read
+- **Icon Support**: Each notification displays a relevant icon
+- **Responsive Design**: Adapts to different screen sizes
+- **Scroll Support**: Handles large numbers of notifications
+
+## Tab Configuration
+
+Customize the tabs by passing a custom tabs array:
+
+```tsx
+const customTabs = [
+  { value: "all", label: "All Notifications" },
+  { value: "unread", label: "Unread Only" },
+  { value: "mentions", label: "Mentions" },
+]
+
+<NotificationInboxPopover
+  notifications={notifications}
+  tabs={customTabs}
+/>
+```
+
+## Event Handlers
+
+### Mark as Read
+
+```tsx
+const handleMarkAsRead = (id: number) => {
+  // Update your state or make API call
+  updateNotificationStatus(id, { unread: false });
+};
+```
+
+### Mark All as Read
+
+```tsx
+const handleMarkAll = (notifications: Notification[]) => {
+  // Bulk update all notifications
+  bulkUpdateNotifications(
+    notifications.map((n) => n.id),
+    { unread: false },
+  );
+};
+```
+
+### View All Notifications
+
+```tsx
+const handleViewAll = () => {
+  // Navigate to full notifications page
+  router.push("/notifications");
+};
+```
+
+## Use Cases
+
+- **Team Collaboration**: Notify about code reviews, merges, and comments
+- **Project Management**: Updates on tasks, deadlines, and assignments
+- **Social Platforms**: Likes, comments, follows, and mentions
+- **E-commerce**: Order updates, shipping notifications, and promotions
+- **System Alerts**: Security alerts, system updates, and maintenance notices

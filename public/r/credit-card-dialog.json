@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "credit-card-dialog",
+  "type": "registry:ui",
+  "title": "Credit Card Dialog",
+  "description": "A credit card activation dialog with animated card display and form input.",
+  "dependencies": [
+    "lucide-react",
+    "framer-motion"
+  ],
+  "registryDependencies": [
+    "button",
+    "dialog",
+    "input"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/credit-card-dialog.tsx",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { Loader2 } from \"lucide-react\";\r\nimport { motion } from \"framer-motion\";\r\n\r\nimport { cn } from \"@/lib/utils\";\r\nimport { Button } from \"@/components/ui/button\";\r\nimport {\r\n  Dialog,\r\n  DialogContent,\r\n  DialogDescription,\r\n  DialogFooter,\r\n  DialogHeader,\r\n  DialogTitle,\r\n} from \"@/components/ui/dialog\";\r\nimport { Input } from \"@/components/ui/input\";\r\n\r\ninterface CreditCardDialogProps {\r\n  open: boolean;\r\n  onOpenChange: (open: boolean) => void;\r\n  onActivate: (code: string) => Promise<void>;\r\n  backgroundImage?: string;\r\n}\r\n\r\nexport function CreditCardDialog({\r\n  open,\r\n  onOpenChange,\r\n  onActivate,\r\n  backgroundImage = \"https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/ruixen_gradient.jpeg\",\r\n}: CreditCardDialogProps) {\r\n  const [code, setCode] = React.useState(\"\");\r\n  const [isProcessing, setIsProcessing] = React.useState(false);\r\n\r\n  const handleActivateClick = async () => {\r\n    if (!code) return;\r\n    setIsProcessing(true);\r\n    try {\r\n      await onActivate(code);\r\n    } finally {\r\n      setIsProcessing(false);\r\n    }\r\n  };\r\n\r\n  React.useEffect(() => {\r\n    if (!open) {\r\n      setCode(\"\");\r\n      setIsProcessing(false);\r\n    }\r\n  }, [open]);\r\n\r\n  return (\r\n    <Dialog open={open} onOpenChange={onOpenChange}>\r\n      <DialogContent className=\"sm:max-w-[450px] p-0\">\r\n        {/* Credit Card */}\r\n        <div className=\"flex items-center justify-center pt-8\">\r\n          <motion.div\r\n            initial={{ y: -20, opacity: 0 }}\r\n            animate={{ y: 0, opacity: 1 }}\r\n            transition={{ duration: 0.5, ease: \"easeOut\" }}\r\n            className={cn(\r\n              \"relative h-48 w-80 rounded-2xl p-6 shadow-2xl text-white flex flex-col justify-between bg-cover bg-center\"\r\n            )}\r\n            style={{ backgroundImage: `url(${backgroundImage})` }}\r\n          >\r\n            {/* Overlay for readability */}\r\n            <div className=\"absolute inset-0 bg-black/40 rounded-2xl\" />\r\n\r\n            {/* Card content */}\r\n            <div className=\"relative z-10 flex justify-between items-start\">\r\n              <div className=\"h-8 w-12 bg-yellow-400 rounded-sm\" /> {/* chip */}\r\n              <p className=\"text-sm font-medium tracking-wider\">VIRTUAL CARD</p>\r\n            </div>\r\n\r\n            <div className=\"relative z-10\">\r\n              <p className=\"text-lg tracking-widest font-semibold\">\r\n                **** **** **** 1234\r\n              </p>\r\n              <div className=\"flex justify-between text-sm mt-2\">\r\n                <span>RUIXEN UI</span>\r\n                <span>12/28</span>\r\n              </div>\r\n            </div>\r\n          </motion.div>\r\n        </div>\r\n\r\n        {/* Dialog Header */}\r\n        <DialogHeader className=\"p-6 pb-2\">\r\n          <DialogTitle className=\"text-xl\">Activate Your Virtual Card</DialogTitle>\r\n          <DialogDescription>\r\n            Enter the activation code to enable your digital card for use.\r\n          </DialogDescription>\r\n        </DialogHeader>\r\n\r\n        {/* Input */}\r\n        <div className=\"grid gap-4 px-6\">\r\n          <Input\r\n            id=\"activation-code\"\r\n            placeholder=\"enter activation code\"\r\n            value={code}\r\n            onChange={(e) => setCode(e.target.value)}\r\n            disabled={isProcessing}\r\n            className=\"h-10 text-base\"\r\n          />\r\n        </div>\r\n\r\n        {/* Footer */}\r\n        <DialogFooter className=\"p-6 pt-4 bg-muted/50 rounded-b-lg\">\r\n          <Button\r\n            variant=\"outline\"\r\n            onClick={() => onOpenChange(false)}\r\n            disabled={isProcessing}\r\n          >\r\n            Cancel\r\n          </Button>\r\n          <Button\r\n            onClick={handleActivateClick}\r\n            disabled={!code || isProcessing}\r\n          >\r\n            {isProcessing && <Loader2 className=\"mr-2 h-4 w-4 animate-spin\" />}\r\n            {isProcessing ? \"Activating...\" : \"Activate\"}\r\n          </Button>\r\n        </DialogFooter>\r\n      </DialogContent>\r\n    </Dialog>\r\n  );\r\n}\r\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/credit-card-dialog.tsx"
+    }
+  ]
+}

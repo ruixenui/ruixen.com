@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ripple-circles-demo",
+  "type": "registry:example",
+  "title": "Ripple Circles Demo",
+  "description": "Example showing animated ripple circles with gradient backgrounds.",
+  "registryDependencies": [
+    "https://ruixen.com/r/ripple-circles"
+  ],
+  "files": [
+    {
+      "path": "registry/example/ripple-circles-demo.tsx",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { RippleCircles } from \"@/registry/ruixenui/ripple-circles\";\r\n\r\nexport default function RippleCirclesDemo() {\r\n  return (\r\n    <div className=\"flex min-h-screen items-center justify-center transition-colors\">\r\n      <RippleCircles />\r\n    </div>\r\n  );\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/ripple-circles-demo.tsx"
+    }
+  ]
+}

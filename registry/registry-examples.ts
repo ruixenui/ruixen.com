@@ -3398,4 +3398,243 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "sentiment-radio-group-demo",
+    type: "registry:example",
+    title: "Sentiment Radio Group Demo",
+    description:
+      "Example showing a sentiment radio group with emojis and descriptions.",
+    registryDependencies: ["https://ruixen.com/r/sentiment-radio-group"],
+    files: [
+      {
+        path: "registry/example/sentiment-radio-group-demo.tsx",
+        type: "registry:example",
+        target: "components/sentiment-radio-group-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "rating-scale-group-demo",
+    type: "registry:example",
+    title: "Rating Scale Group Demo",
+    description:
+      "Example showing a 1-10 rating scale with satisfaction indicators.",
+    registryDependencies: ["https://ruixen.com/r/rating-scale-group"],
+    files: [
+      {
+        path: "registry/example/rating-scale-group-demo.tsx",
+        type: "registry:example",
+        target: "components/rating-scale-group-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "review-filter-bars-demo",
+    type: "registry:example",
+    title: "Review Filter Bars Demo",
+    description:
+      "Example showing review filter bars with star ratings and progress indicators.",
+    registryDependencies: ["https://ruixen.com/r/review-filter-bars"],
+    files: [
+      {
+        path: "registry/example/review-filter-bars-demo.tsx",
+        type: "registry:example",
+        target: "components/review-filter-bars-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "tour-popover-demo",
+    type: "registry:example",
+    title: "Tour Popover Demo",
+    description: "Example showing a guided tour popover with step navigation.",
+    registryDependencies: ["https://ruixen.com/r/tour-popover"],
+    files: [
+      {
+        path: "registry/example/tour-popover-demo.tsx",
+        type: "registry:example",
+        target: "components/tour-popover-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "notification-inbox-popover-demo",
+    type: "registry:example",
+    title: "Notification Inbox Popover Demo",
+    description:
+      "Example showing a notification inbox with tabs and mark as read functionality.",
+    registryDependencies: ["https://ruixen.com/r/notification-inbox-popover"],
+    files: [
+      {
+        path: "registry/example/notification-inbox-popover-demo.tsx",
+        type: "registry:example",
+        target: "components/notification-inbox-popover-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "credit-card-dialog-demo",
+    type: "registry:example",
+    title: "Credit Card Dialog Demo",
+    description:
+      "Example showing a credit card activation dialog with animated card.",
+    registryDependencies: ["https://ruixen.com/r/credit-card-dialog"],
+    files: [
+      {
+        path: "registry/example/credit-card-dialog-demo.tsx",
+        type: "registry:example",
+        target: "components/credit-card-dialog-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "identity-verification-dialog-demo",
+    type: "registry:example",
+    title: "Identity Verification Dialog Demo",
+    description:
+      "Example showing an identity verification dialog with ID card display.",
+    registryDependencies: ["https://ruixen.com/r/identity-verification-dialog"],
+    files: [
+      {
+        path: "registry/example/identity-verification-dialog-demo.tsx",
+        type: "registry:example",
+        target: "components/identity-verification-dialog-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "verification-card-demo",
+    type: "registry:example",
+    title: "Verification Card Demo",
+    description:
+      "Example showing an animated verification card with custom styling.",
+    registryDependencies: ["https://ruixen.com/r/verification-card"],
+    files: [
+      {
+        path: "registry/example/verification-card-demo.tsx",
+        type: "registry:example",
+        target: "components/verification-card-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "credit-card-hero-demo",
+    type: "registry:example",
+    title: "Credit Card Hero Demo",
+    description:
+      "Example showing a 3D interactive hero section with floating credit cards.",
+    registryDependencies: ["https://ruixen.com/r/credit-card-hero"],
+    files: [
+      {
+        path: "registry/example/credit-card-hero-demo.tsx",
+        type: "registry:example",
+        target: "components/credit-card-hero-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "order-tracking-parallax-card-demo",
+    type: "registry:example",
+    title: "Order Tracking Parallax Card Demo",
+    description:
+      "Example showing a 3D parallax order tracking card with delivery status.",
+    registryDependencies: ["https://ruixen.com/r/order-tracking-parallax-card"],
+    files: [
+      {
+        path: "registry/example/order-tracking-parallax-card-demo.tsx",
+        type: "registry:example",
+        target: "components/order-tracking-parallax-card-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "shirt-parallax-card-demo",
+    type: "registry:example",
+    title: "Shirt Parallax Card Demo",
+    description:
+      "Example showing a product card with 3D parallax effects and floating image.",
+    registryDependencies: ["https://ruixen.com/r/shirt-parallax-card"],
+    files: [
+      {
+        path: "registry/example/shirt-parallax-card-demo.tsx",
+        type: "registry:example",
+        target: "components/shirt-parallax-card-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "elite-plan-card-demo",
+    type: "registry:example",
+    title: "Elite Plan Card Demo",
+    description:
+      "Example showing a premium plan card with image parallax and highlights.",
+    registryDependencies: ["https://ruixen.com/r/elite-plan-card"],
+    files: [
+      {
+        path: "registry/example/elite-plan-card-demo.tsx",
+        type: "registry:example",
+        target: "components/elite-plan-card-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "product-bounce-card-demo",
+    type: "registry:example",
+    title: "Product Bounce Card Demo",
+    description:
+      "Example showing an animated product showcase with bouncing effects.",
+    registryDependencies: ["https://ruixen.com/r/product-bounce-card"],
+    files: [
+      {
+        path: "registry/example/product-bounce-card-demo.tsx",
+        type: "registry:example",
+        target: "components/product-bounce-card-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "loading-circle-demo",
+    type: "registry:example",
+    title: "Loading Circle Demo",
+    description:
+      "Example showing a ripple loading animation with concentric circles.",
+    registryDependencies: ["https://ruixen.com/r/loading-circle"],
+    files: [
+      {
+        path: "registry/example/loading-circle-demo.tsx",
+        type: "registry:example",
+        target: "components/loading-circle-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "load-ripple-demo",
+    type: "registry:example",
+    title: "Load Ripple Demo",
+    description:
+      "Example showing a simple ripple loader with staggered animation timing.",
+    registryDependencies: ["https://ruixen.com/r/load-ripple"],
+    files: [
+      {
+        path: "registry/example/load-ripple-demo.tsx",
+        type: "registry:example",
+        target: "components/load-ripple-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "ripple-circles-demo",
+    type: "registry:example",
+    title: "Ripple Circles Demo",
+    description:
+      "Example showing animated ripple circles with gradient backgrounds.",
+    registryDependencies: ["https://ruixen.com/r/ripple-circles"],
+    files: [
+      {
+        path: "registry/example/ripple-circles-demo.tsx",
+        type: "registry:example",
+        target: "components/ripple-circles-demo.tsx",
+      },
+    ],
+  },
 ];

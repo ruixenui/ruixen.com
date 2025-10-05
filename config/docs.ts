@@ -184,6 +184,42 @@ export const docsConfig: DocsConfig = {
               items: [],
               label: "",
             },
+            {
+              title: "Elite Plan Card",
+              href: `/docs/components/elite-plan-card`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Shirt Parallax Card",
+              href: `/docs/components/shirt-parallax-card`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Order Tracking Parallax Card",
+              href: `/docs/components/order-tracking-parallax-card`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Product Bounce Card",
+              href: `/docs/components/product-bounce-card`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Credit Card Hero",
+              href: `/docs/components/credit-card-hero`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Verification Card",
+              href: `/docs/components/verification-card`,
+              items: [],
+              label: "New",
+            },
           ],
         },
         {
@@ -332,6 +368,46 @@ export const docsConfig: DocsConfig = {
               href: `/docs/components/icon-label-subtext-button`,
               items: [],
               label: "",
+            },
+          ],
+        },
+        {
+          title: "Loaders",
+          items: [
+            {
+              title: "Loading Circle",
+              href: `/docs/components/loading-circle`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Load Ripple",
+              href: `/docs/components/load-ripple`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Ripple Circles",
+              href: `/docs/components/ripple-circles`,
+              items: [],
+              label: "New",
+            },
+          ],
+        },
+        {
+          title: "Dialogs",
+          items: [
+            {
+              title: "Credit Card Dialog",
+              href: `/docs/components/credit-card-dialog`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Identity Verification Dialog",
+              href: `/docs/components/identity-verification-dialog`,
+              items: [],
+              label: "New",
             },
           ],
         },
@@ -609,6 +685,18 @@ export const docsConfig: DocsConfig = {
               label: "",
             },
             {
+              title: "Notification Inbox Popover",
+              href: `/docs/components/notification-inbox-popover`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Tour Popover",
+              href: `/docs/components/tour-popover`,
+              items: [],
+              label: "New",
+            },
+            {
               title: "Notification",
               href: `/docs/components/notification`,
               items: [],
@@ -751,6 +839,24 @@ export const docsConfig: DocsConfig = {
             {
               title: "Emoji Radio Group",
               href: `/docs/components/emoji-radio-group`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Sentiment Radio Group",
+              href: `/docs/components/sentiment-radio-group`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Rating Scale Group",
+              href: `/docs/components/rating-scale-group`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Review Filter Bars",
+              href: `/docs/components/review-filter-bars`,
               items: [],
               label: "New",
             },

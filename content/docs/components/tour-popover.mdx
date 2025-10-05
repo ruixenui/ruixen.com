@@ -1,0 +1,154 @@
+---
+title: Tour Popover
+date: 2024-06-01
+description: A guided tour popover with steps, progress tracking, and navigation controls.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="tour-popover-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/tour-popover"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="tour-popover" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { TourPopover, TourStep } from "@/components/ruixen/tour-popover";
+import { Home, Settings, HelpCircle, Keyboard } from "lucide-react";
+
+const steps: TourStep[] = [
+  {
+    icon: Home,
+    title: "Dashboard",
+    description: "This is your dashboard where you see your project overview.",
+  },
+  {
+    icon: Settings,
+    title: "Settings",
+    description: "Adjust your preferences and configure your workspace.",
+  },
+  {
+    icon: HelpCircle,
+    title: "Support",
+    description: "Access our help center and documentation anytime.",
+  },
+  {
+    icon: Keyboard,
+    title: "Shortcuts",
+    description: "Use shortcuts to navigate faster and improve productivity.",
+  },
+];
+
+export default function App() {
+  return (
+    <TourPopover
+      steps={steps}
+      triggerLabel="Take a tour"
+      popoverWidth="w-96"
+      side="right"
+      align="start"
+    />
+  );
+}
+```
+
+## Props
+
+| Prop           | Type                                   | Default      | Description                          |
+| -------------- | -------------------------------------- | ------------ | ------------------------------------ |
+| `steps`        | `TourStep[]`                           | -            | Array of tour steps                  |
+| `triggerLabel` | `string`                               | "Start tour" | Text for the trigger button          |
+| `popoverWidth` | `string`                               | "w-80"       | Tailwind width class for popover     |
+| `side`         | "top" \| "bottom" \| "left" \| "right" | "bottom"     | Popover position relative to trigger |
+| `align`        | "start" \| "center" \| "end"           | "center"     | Popover alignment                    |
+
+## TourStep Interface
+
+```tsx
+interface TourStep {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+}
+```
+
+| Property      | Type         | Description                 |
+| ------------- | ------------ | --------------------------- |
+| `icon`        | `LucideIcon` | Lucide React icon component |
+| `title`       | `string`     | Step title                  |
+| `description` | `string`     | Step description text       |
+
+## Features
+
+- **Step Navigation**: Navigate through tour steps with Next/Back buttons
+- **Progress Tracking**: Visual progress bar shows completion status
+- **Icon Support**: Each step can have a custom Lucide icon
+- **Restart Functionality**: Restart tour from the final step
+- **Responsive Design**: Adapts to different screen sizes
+- **Customizable Positioning**: Control popover placement and alignment
+
+## Navigation Controls
+
+- **Next Button**: Advances to the next step
+- **Back Button**: Returns to the previous step (hidden on first step)
+- **Restart Button**: Appears on final step to restart the tour
+
+## Progress Calculation
+
+The progress bar automatically calculates completion:
+
+```tsx
+const progress = ((step + 1) / steps.length) * 100;
+```
+
+## Customization Examples
+
+### Custom Positioning
+
+```tsx
+<TourPopover steps={steps} side="top" align="end" popoverWidth="w-72" />
+```
+
+### Custom Trigger
+
+```tsx
+<TourPopover steps={steps} triggerLabel="Get Started" />
+```
+
+## Use Cases
+
+- **App Onboarding**: Guide new users through key features
+- **Feature Introduction**: Introduce new features to existing users
+- **Dashboard Tours**: Explain dashboard sections and functionality
+- **Settings Walkthrough**: Guide users through configuration options
+- **Help System**: Provide contextual help and guidance

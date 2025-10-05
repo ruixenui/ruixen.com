@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "identity-verification-dialog-demo",
+  "type": "registry:example",
+  "title": "Identity Verification Dialog Demo",
+  "description": "Example showing an identity verification dialog with ID card display.",
+  "registryDependencies": [
+    "https://ruixen.com/r/identity-verification-dialog"
+  ],
+  "files": [
+    {
+      "path": "registry/example/identity-verification-dialog-demo.tsx",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { Button } from \"@/components/ui/button\";\r\nimport { IdentityVerificationDialog } from \"@/registry/ruixenui/identity-verification-dialog\";\r\n\r\nexport default function IdentityDemo() {\r\n  const [isDialogOpen, setIsDialogOpen] = React.useState(false);\r\n\r\n  const handleVerify = (pin: string): Promise<void> => {\r\n    console.log(`Verifying PIN: ${pin}`);\r\n    return new Promise((resolve) => {\r\n      setTimeout(() => {\r\n        console.log(\"✅ Identity verified successfully!\");\r\n        setIsDialogOpen(false);\r\n        resolve();\r\n      }, 2000);\r\n    });\r\n  };\r\n\r\n  return (\r\n    <div className=\"flex min-h-[350px] w-full items-center justify-center\">\r\n      <Button onClick={() => setIsDialogOpen(true)}>Verify Identity</Button>\r\n\r\n      <IdentityVerificationDialog\r\n        open={isDialogOpen}\r\n        onOpenChange={setIsDialogOpen}\r\n        onVerify={handleVerify}\r\n      />\r\n    </div>\r\n  );\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/identity-verification-dialog-demo.tsx"
+    }
+  ]
+}
