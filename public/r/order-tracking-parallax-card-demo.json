@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/order-tracking-parallax-card-demo.tsx",
-      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { OrderTrackingParallaxCard } from \"@/registry/ruixenui/order-tracking-parallax-card\";\r\n\r\nexport default function OrderTrackingParallaxDemo() {\r\n  return (\r\n      <OrderTrackingParallaxCard\r\n        orderId=\"4582\"\r\n        product=\"Wireless Headphones\"\r\n        status=\"Out for Delivery\"\r\n        eta=\"Tomorrow, 7 PM\"\r\n      />\r\n  );\r\n}\r\n",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { OrderTrackingParallaxCard } from \"@/registry/ruixenui/order-tracking-parallax-card\";\n\nexport default function OrderTrackingParallaxDemo() {\n  return (\n    <OrderTrackingParallaxCard\n      orderId=\"4582\"\n      product=\"Wireless Headphones\"\n      status=\"Out for Delivery\"\n      eta=\"Tomorrow, 7 PM\"\n    />\n  );\n}\n",
       "type": "registry:example",
       "target": "components/order-tracking-parallax-card-demo.tsx"
     }

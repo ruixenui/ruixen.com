@@ -9,7 +9,7 @@ export const docsConfig: DocsConfig = {
   mainNav: [
     {
       title: "Components",
-      href: "/docs/components/social-card",
+      href: "/docs/components",
     },
     {
       title: "Templates",
@@ -217,6 +217,12 @@ export const docsConfig: DocsConfig = {
             {
               title: "Verification Card",
               href: `/docs/components/verification-card`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Project Progress Card",
+              href: `/docs/components/project-progress-card`,
               items: [],
               label: "New",
             },
@@ -896,6 +902,12 @@ export const docsConfig: DocsConfig = {
               items: [],
               label: "",
             },
+            {
+              title: "Cloud Watch Form",
+              href: `/docs/components/cloud-watch-form`,
+              items: [],
+              label: "New",
+            },
           ],
         },
         {
@@ -1307,6 +1319,18 @@ export const docsConfig: DocsConfig = {
               href: `/docs/components/dual-tone-rain-background`,
               items: [],
               label: "",
+            },
+            {
+              title: "Mouse Spark",
+              href: `/docs/components/mouse-spark`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Rising Glow",
+              href: `/docs/components/rising-glow`,
+              items: [],
+              label: "New",
             },
           ],
         },

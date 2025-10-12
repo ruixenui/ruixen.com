@@ -3715,4 +3715,62 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "mouse-spark",
+    type: "registry:ui",
+    title: "Mouse Spark",
+    description:
+      "Interactive mouse-following particle effect with customizable colors and themes.",
+    files: [
+      {
+        path: "registry/ruixenui/mouse-spark.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/mouse-spark.tsx",
+      },
+    ],
+  },
+  {
+    name: "rising-glow",
+    type: "registry:ui",
+    title: "Rising Glow",
+    description:
+      "Animated rising particle effect with customizable colors and particle count.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/ruixenui/rising-glow.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/rising-glow.tsx",
+      },
+    ],
+  },
+  {
+    name: "project-progress-card",
+    type: "registry:ui",
+    title: "Project Progress Card",
+    description:
+      "Interactive project progress card with milestone tracking and timeline visualization.",
+    dependencies: ["motion", "lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/project-progress-card.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/project-progress-card.tsx",
+      },
+    ],
+  },
+  {
+    name: "cloud-watch-form",
+    type: "registry:ui",
+    title: "Cloud Watch Form",
+    description:
+      "Interactive form with animated cloud character that reacts to user input.",
+    files: [
+      {
+        path: "registry/ruixenui/cloud-watch-form.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/cloud-watch-form.tsx",
+      },
+    ],
+  },
 ];

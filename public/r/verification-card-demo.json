@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/verification-card-demo.tsx",
-      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { VerificationCard } from \"@/registry/ruixenui/verification-card\";\r\n\r\nexport default function IdentityCardDemo() {\r\n  return (\r\n    <div className=\"flex min-h-[400px] w-full items-center justify-center bg-muted/30\">\r\n      <a\r\n        href=\"https://www.ruixen.com/?utm_source=21st.dev\"\r\n        target=\"_blank\"\r\n        rel=\"noopener noreferrer\"\r\n      >\r\n        <VerificationCard\r\n          backgroundImage=\"https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/ruixen_moon.png\"\r\n          idNumber=\"**** **** **** 7421\"\r\n          name=\"RUIXEN UI\"\r\n          validThru=\"07/31\"\r\n          label=\"VERIFICATION CARD\"\r\n        />\r\n      </a>\r\n    </div>\r\n  );\r\n}\r\n",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { VerificationCard } from \"@/registry/ruixenui/verification-card\";\n\nexport default function IdentityCardDemo() {\n  return (\n    <div className=\"flex min-h-[400px] w-full items-center justify-center bg-muted/30\">\n      <a\n        href=\"https://www.ruixen.com/?utm_source=21st.dev\"\n        target=\"_blank\"\n        rel=\"noopener noreferrer\"\n      >\n        <VerificationCard\n          backgroundImage=\"https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/ruixen_moon.png\"\n          idNumber=\"**** **** **** 7421\"\n          name=\"RUIXEN UI\"\n          validThru=\"07/31\"\n          label=\"VERIFICATION CARD\"\n        />\n      </a>\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/verification-card-demo.tsx"
     }

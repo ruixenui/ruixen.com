@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/shirt-parallax-card-demo.tsx",
-      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { ShirtParallaxCard } from \"@/registry/ruixenui/shirt-parallax-card\";\r\n\r\nexport default function ShirtParallaxDemo() {\r\n  return (\r\n    <div className=\"flex h-screen w-full items-center justify-center bg-muted/10 p-8\">\r\n      <ShirtParallaxCard\r\n        title=\"Premium Cotton Shirt\"\r\n        description=\"Soft-touch fabric with a tailored fit — perfect for work and casual wear.\"\r\n        price=\"$39.99\"\r\n      />\r\n    </div>\r\n  );\r\n}\r\n",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { ShirtParallaxCard } from \"@/registry/ruixenui/shirt-parallax-card\";\n\nexport default function ShirtParallaxDemo() {\n  return (\n    <div className=\"flex h-screen w-full items-center justify-center bg-muted/10 p-8\">\n      <ShirtParallaxCard\n        title=\"Premium Cotton Shirt\"\n        description=\"Soft-touch fabric with a tailored fit — perfect for work and casual wear.\"\n        price=\"$39.99\"\n      />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/shirt-parallax-card-demo.tsx"
     }

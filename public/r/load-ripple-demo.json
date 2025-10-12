@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/load-ripple-demo.tsx",
-      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { LoadRipple } from \"@/registry/ruixenui/load-ripple\";\r\n\r\nexport default function LoaderDemo() {\r\n  return (\r\n    <div className=\"flex min-h-screen items-center justify-center transition-colors\">\r\n      <LoadRipple />\r\n    </div>\r\n  );\r\n}\r\n",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { LoadRipple } from \"@/registry/ruixenui/load-ripple\";\n\nexport default function LoaderDemo() {\n  return (\n    <div className=\"flex min-h-screen items-center justify-center transition-colors\">\n      <LoadRipple />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/load-ripple-demo.tsx"
     }

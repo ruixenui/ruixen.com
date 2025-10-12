@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/loading-circle-demo.tsx",
-      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { LoadingCircle } from \"@/registry/ruixenui/loading-circle\";\r\n\r\nexport default function LoadingCircleDemo() {\r\n  return (\r\n    <div className=\"flex min-h-screen items-center justify-center transition-colors\">\r\n      <LoadingCircle />\r\n    </div>\r\n  );\r\n}\r\n",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { LoadingCircle } from \"@/registry/ruixenui/loading-circle\";\n\nexport default function LoadingCircleDemo() {\n  return (\n    <div className=\"flex min-h-screen items-center justify-center transition-colors\">\n      <LoadingCircle />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/loading-circle-demo.tsx"
     }

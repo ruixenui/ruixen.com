@@ -1,0 +1,152 @@
+---
+title: Project Progress Card
+date: 2024-12-29
+description: Interactive project progress card with milestone tracking and timeline visualization
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="project-progress-card-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/project-progress-card"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="project-progress-card" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Install required dependencies</Step>
+
+```bash
+npm install framer-motion lucide-react
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop             | Type          | Description                            |
+| ---------------- | ------------- | -------------------------------------- |
+| `title`          | `string`      | Project title                          |
+| `projectManager` | `string`      | Name of the project manager            |
+| `dueDate`        | `string`      | Project due date                       |
+| `milestones`     | `Milestone[]` | Array of project milestones            |
+| `onNextStep`     | `() => void`  | Callback function for next step button |
+
+### Milestone Type
+
+| Prop          | Type      | Description                        |
+| ------------- | --------- | ---------------------------------- |
+| `title`       | `string`  | Milestone title                    |
+| `description` | `string`  | Milestone description              |
+| `completed`   | `boolean` | Whether the milestone is completed |
+
+## Features
+
+- **Timeline Visualization**: Visual milestone progress with icons
+- **Responsive Design**: Adapts to different screen sizes
+- **Interactive Elements**: Clickable next step button
+- **Status Indicators**: Clear visual distinction between completed and pending milestones
+- **Smooth Animations**: Powered by Framer Motion
+
+## Usage Examples
+
+### Basic Usage
+
+```tsx
+import { ProjectProgressCard } from "@/components/project-progress-card";
+
+const milestones = [
+  {
+    title: "Project Planning",
+    description: "Define scope and requirements",
+    completed: true,
+  },
+  {
+    title: "Design Phase",
+    description: "Create wireframes and mockups",
+    completed: true,
+  },
+  {
+    title: "Development",
+    description: "Build core functionality",
+    completed: false,
+  },
+  {
+    title: "Testing & QA",
+    description: "Quality assurance and bug fixes",
+    completed: false,
+  },
+];
+
+export default function App() {
+  return (
+    <ProjectProgressCard
+      title="Website Redesign"
+      projectManager="John Smith"
+      dueDate="Dec 31, 2024"
+      milestones={milestones}
+      onNextStep={() => console.log("Next step clicked")}
+    />
+  );
+}
+```
+
+### With Custom Styling
+
+```tsx
+import { ProjectProgressCard } from "@/components/project-progress-card";
+
+export default function ProjectDashboard() {
+  const handleNextStep = () => {
+    // Handle next step logic
+    console.log("Moving to next milestone");
+  };
+
+  return (
+    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <ProjectProgressCard
+        title="Mobile App Development"
+        projectManager="Sarah Johnson"
+        dueDate="Jan 15, 2025"
+        milestones={[
+          {
+            title: "Research & Planning",
+            description: "Market research and feature planning",
+            completed: true,
+          },
+          {
+            title: "UI/UX Design",
+            description: "Design user interface and experience",
+            completed: false,
+          },
+        ]}
+        onNextStep={handleNextStep}
+      />
+    </div>
+  );
+}
+```

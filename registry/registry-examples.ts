@@ -3637,4 +3637,64 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "mouse-spark-demo",
+    type: "registry:example",
+    title: "Mouse Spark Demo",
+    description:
+      "Example showing interactive mouse-following particle effects with customizable themes.",
+    registryDependencies: ["https://ruixen.com/r/mouse-spark"],
+    files: [
+      {
+        path: "registry/example/mouse-spark-demo.tsx",
+        type: "registry:example",
+        target: "components/mouse-spark-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "rising-glow-demo",
+    type: "registry:example",
+    title: "Rising Glow Demo",
+    description:
+      "Example showing animated rising particle effects with customizable colors.",
+    registryDependencies: ["https://ruixen.com/r/rising-glow"],
+    files: [
+      {
+        path: "registry/example/rising-glow-demo.tsx",
+        type: "registry:example",
+        target: "components/rising-glow-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "project-progress-card-demo",
+    type: "registry:example",
+    title: "Project Progress Card Demo",
+    description:
+      "Example showing interactive project progress tracking with milestone visualization.",
+    registryDependencies: ["https://ruixen.com/r/project-progress-card"],
+    files: [
+      {
+        path: "registry/example/project-progress-card-demo.tsx",
+        type: "registry:example",
+        target: "components/project-progress-card-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "cloud-watch-form-demo",
+    type: "registry:example",
+    title: "Cloud Watch Form Demo",
+    description:
+      "Example showing interactive form with animated cloud character that reacts to user input.",
+    registryDependencies: ["https://ruixen.com/r/cloud-watch-form"],
+    files: [
+      {
+        path: "registry/example/cloud-watch-form-demo.tsx",
+        type: "registry:example",
+        target: "components/cloud-watch-form-demo.tsx",
+      },
+    ],
+  },
 ];

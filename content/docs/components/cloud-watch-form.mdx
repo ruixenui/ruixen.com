@@ -1,0 +1,129 @@
+---
+title: Cloud Watch Form
+date: 2024-12-29
+description: Interactive form with animated cloud character that reacts to user input
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="cloud-watch-form-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/cloud-watch-form"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="cloud-watch-form" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Features
+
+- **Interactive Character**: Cloud character with animated eyes that follow mouse movement
+- **Privacy Protection**: Eyes close when typing in password field
+- **Smooth Animations**: Natural eye movement and blinking effects
+- **Glassmorphism Design**: Modern frosted glass aesthetic
+- **Responsive Form**: Complete form with validation-ready inputs
+- **Mouse Tracking**: Eyes follow cursor movement across the screen
+
+## Usage Examples
+
+### Basic Usage
+
+```tsx
+import CloudWatchForm from "@/components/cloud-watch-form";
+
+export default function LoginPage() {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-blue-400 to-purple-600">
+      <CloudWatchForm />
+    </div>
+  );
+}
+```
+
+### With Custom Background
+
+```tsx
+import CloudWatchForm from "@/components/cloud-watch-form";
+
+export default function AuthPage() {
+  return (
+    <div className="min-h-screen bg-gradient-to-r from-cyan-500 to-blue-500 relative">
+      {/* Background decoration */}
+      <div className="absolute inset-0 bg-white/10 backdrop-blur-sm" />
+
+      <CloudWatchForm />
+    </div>
+  );
+}
+```
+
+### In a Modal
+
+```tsx
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import CloudWatchForm from "@/components/cloud-watch-form";
+
+export default function AuthModal({ open, onClose }) {
+  return (
+    <Dialog open={open} onOpenChange={onClose}>
+      <DialogContent className="p-0 bg-transparent border-none shadow-none">
+        <CloudWatchForm />
+      </DialogContent>
+    </Dialog>
+  );
+}
+```
+
+## Customization
+
+The component uses a cloud image from a CDN. You can replace it with your own character:
+
+```tsx
+// Replace the image source in the component
+<img
+  src="/your-character.jpg" // Your custom character image
+  alt="character"
+  className="w-full h-full"
+/>
+```
+
+## Animation Details
+
+- **Eye Tracking**: Eyes follow mouse cursor with smooth transitions
+- **Password Privacy**: Eyes automatically close when password field is focused
+- **Blinking**: Natural blinking animation every 3 seconds
+- **Responsive Movement**: Eye movement scales with screen size
+
+## Form Fields
+
+The form includes the following fields:
+
+- **Name**: Text input for user's name
+- **Email**: Email input with validation
+- **Username**: Text input for username
+- **Password**: Password input that triggers eye closing animation

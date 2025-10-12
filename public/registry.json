@@ -4258,6 +4258,65 @@
       ]
     },
     {
+      "name": "mouse-spark",
+      "type": "registry:ui",
+      "title": "Mouse Spark",
+      "description": "Interactive mouse-following particle effect with customizable colors and themes.",
+      "files": [
+        {
+          "path": "registry/ruixenui/mouse-spark.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/mouse-spark.tsx"
+        }
+      ]
+    },
+    {
+      "name": "rising-glow",
+      "type": "registry:ui",
+      "title": "Rising Glow",
+      "description": "Animated rising particle effect with customizable colors and particle count.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/rising-glow.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/rising-glow.tsx"
+        }
+      ]
+    },
+    {
+      "name": "project-progress-card",
+      "type": "registry:ui",
+      "title": "Project Progress Card",
+      "description": "Interactive project progress card with milestone tracking and timeline visualization.",
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/project-progress-card.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/project-progress-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "cloud-watch-form",
+      "type": "registry:ui",
+      "title": "Cloud Watch Form",
+      "description": "Interactive form with animated cloud character that reacts to user input.",
+      "files": [
+        {
+          "path": "registry/ruixenui/cloud-watch-form.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/cloud-watch-form.tsx"
+        }
+      ]
+    },
+    {
       "name": "staggered-faq-section-demo",
       "type": "registry:example",
       "title": "StaggeredFAQSection Demo",
@@ -8190,6 +8249,70 @@
           "path": "registry/example/ripple-circles-demo.tsx",
           "type": "registry:example",
           "target": "components/ripple-circles-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "mouse-spark-demo",
+      "type": "registry:example",
+      "title": "Mouse Spark Demo",
+      "description": "Example showing interactive mouse-following particle effects with customizable themes.",
+      "registryDependencies": [
+        "https://ruixen.com/r/mouse-spark"
+      ],
+      "files": [
+        {
+          "path": "registry/example/mouse-spark-demo.tsx",
+          "type": "registry:example",
+          "target": "components/mouse-spark-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "rising-glow-demo",
+      "type": "registry:example",
+      "title": "Rising Glow Demo",
+      "description": "Example showing animated rising particle effects with customizable colors.",
+      "registryDependencies": [
+        "https://ruixen.com/r/rising-glow"
+      ],
+      "files": [
+        {
+          "path": "registry/example/rising-glow-demo.tsx",
+          "type": "registry:example",
+          "target": "components/rising-glow-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "project-progress-card-demo",
+      "type": "registry:example",
+      "title": "Project Progress Card Demo",
+      "description": "Example showing interactive project progress tracking with milestone visualization.",
+      "registryDependencies": [
+        "https://ruixen.com/r/project-progress-card"
+      ],
+      "files": [
+        {
+          "path": "registry/example/project-progress-card-demo.tsx",
+          "type": "registry:example",
+          "target": "components/project-progress-card-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "cloud-watch-form-demo",
+      "type": "registry:example",
+      "title": "Cloud Watch Form Demo",
+      "description": "Example showing interactive form with animated cloud character that reacts to user input.",
+      "registryDependencies": [
+        "https://ruixen.com/r/cloud-watch-form"
+      ],
+      "files": [
+        {
+          "path": "registry/example/cloud-watch-form-demo.tsx",
+          "type": "registry:example",
+          "target": "components/cloud-watch-form-demo.tsx"
         }
       ]
     },
