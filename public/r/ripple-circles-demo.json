@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/ripple-circles-demo.tsx",
-      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { RippleCircles } from \"@/registry/ruixenui/ripple-circles\";\r\n\r\nexport default function RippleCirclesDemo() {\r\n  return (\r\n    <div className=\"flex min-h-screen items-center justify-center transition-colors\">\r\n      <RippleCircles />\r\n    </div>\r\n  );\r\n}\r\n",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { RippleCircles } from \"@/registry/ruixenui/ripple-circles\";\n\nexport default function RippleCirclesDemo() {\n  return (\n    <div className=\"flex min-h-screen items-center justify-center transition-colors\">\n      <RippleCircles />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/ripple-circles-demo.tsx"
     }

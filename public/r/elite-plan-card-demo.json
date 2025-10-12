@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/elite-plan-card-demo.tsx",
-      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { ElitePlanCard } from \"@/registry/ruixenui/elite-plan-card\";\r\n\r\nexport default function ProductShowcaseDemo() {\r\n  return (\r\n    <div className=\"flex min-h-screen items-center justify-center bg-background p-6\">\r\n      <ElitePlanCard\r\n        imageUrl=\"https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/ruixen_moon.png\"\r\n        title=\"Lunar Series\"\r\n        subtitle=\"Ruixen Collection\"\r\n        description=\"Experience the fusion of art and design with the Lunar Series. Minimalist, bold, and timeless.\"\r\n        onAction={() => alert(\"Learn more clicked!\")}\r\n      />\r\n    </div>\r\n  );\r\n}\r\n",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { ElitePlanCard } from \"@/registry/ruixenui/elite-plan-card\";\n\nexport default function ProductShowcaseDemo() {\n  return (\n    <div className=\"flex min-h-screen items-center justify-center bg-background p-6\">\n      <ElitePlanCard\n        imageUrl=\"https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/ruixen_moon.png\"\n        title=\"Lunar Series\"\n        subtitle=\"Ruixen Collection\"\n        description=\"Experience the fusion of art and design with the Lunar Series. Minimalist, bold, and timeless.\"\n        onAction={() => alert(\"Learn more clicked!\")}\n      />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/elite-plan-card-demo.tsx"
     }

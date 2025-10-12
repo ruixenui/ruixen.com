@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/product-bounce-card-demo.tsx",
-      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { ProductBounceCard } from \"@/registry/ruixenui/product-bounce-card\";\r\n\r\nexport default function ProductBounceDemo() {\r\n  return (\r\n    <div className=\"flex min-h-screen items-center justify-center\">\r\n      <ProductBounceCard\r\n        imageUrl=\"https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/ruixen_shirt_product.png\"\r\n        alt=\"Ruixen Shirt\"\r\n      />\r\n    </div>\r\n  );\r\n}\r\n",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { ProductBounceCard } from \"@/registry/ruixenui/product-bounce-card\";\n\nexport default function ProductBounceDemo() {\n  return (\n    <div className=\"flex min-h-screen items-center justify-center\">\n      <ProductBounceCard\n        imageUrl=\"https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/ruixen_shirt_product.png\"\n        alt=\"Ruixen Shirt\"\n      />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/product-bounce-card-demo.tsx"
     }

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "rising-glow",
+  "type": "registry:ui",
+  "title": "Rising Glow",
+  "description": "Animated rising particle effect with customizable colors and particle count.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/rising-glow.tsx",
+      "content": "\"use client\";\n\nimport React, { useEffect, useState } from \"react\";\nimport { motion } from \"framer-motion\";\nimport { cn } from \"@/lib/utils\";\n\ntype RisingGlowProps = {\n  width?: number | string;\n  height?: number | string;\n  particleCount?: number;\n  particleColor?: string;\n  className?: string;\n};\n\nexport const RisingGlow: React.FC<RisingGlowProps> = ({\n  width = \"100%\",\n  height = 120,\n  particleCount = 20,\n  particleColor = \"#00f7ff\",\n  className,\n}) => {\n  const [particles, setParticles] = useState<\n    { left: number; size: number; delay: number }[]\n  >([]);\n\n  useEffect(() => {\n    const arr = Array.from({ length: particleCount }, () => ({\n      left: Math.random() * 100,\n      size: Math.random() * 6 + 4,\n      delay: Math.random() * 2,\n    }));\n    setParticles(arr);\n  }, [particleCount]);\n\n  return (\n    <div\n      className={cn(\"relative overflow-hidden\", className)}\n      style={{ width, height }}\n    >\n      {particles.map((p, i) => (\n        <motion.div\n          key={i}\n          className=\"absolute bottom-0 rounded-full\"\n          style={{\n            left: `${p.left}%`,\n            width: p.size,\n            height: p.size,\n            backgroundColor: particleColor,\n          }}\n          animate={{ y: [-10, -height, -10], opacity: [0, 1, 0] }}\n          transition={{\n            duration: 3 + Math.random() * 2,\n            repeat: Infinity,\n            delay: p.delay,\n            ease: \"easeInOut\",\n          }}\n        />\n      ))}\n    </div>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/rising-glow.tsx"
+    }
+  ]
+}

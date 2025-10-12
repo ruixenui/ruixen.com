@@ -1,0 +1,90 @@
+---
+title: Mouse Spark
+date: 2024-12-29
+description: Interactive mouse-following particle effect with customizable colors and themes
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="mouse-spark-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/mouse-spark"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="mouse-spark" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop     | Type                | Default              | Description                              |
+| -------- | ------------------- | -------------------- | ---------------------------------------- |
+| `width`  | `number`            | `window.innerWidth`  | Canvas width in pixels                   |
+| `height` | `number`            | `window.innerHeight` | Canvas height in pixels                  |
+| `theme`  | `"light" \| "dark"` | `"light"`            | Color theme for particles and background |
+
+## Features
+
+- **Mouse Tracking**: Particles spawn at mouse cursor position
+- **Smooth Animation**: Particles fade out with physics-based movement
+- **Theme Support**: Light and dark color schemes
+- **Performance Optimized**: Automatic particle cleanup and efficient rendering
+- **Responsive**: Adapts to any canvas size
+
+## Usage Examples
+
+### Basic Usage
+
+```tsx
+import MouseSpark from "@/components/mouse-spark";
+
+export default function App() {
+  return (
+    <div className="relative h-screen">
+      <MouseSpark />
+      <div className="relative z-10 p-8">
+        <h1>Your content here</h1>
+      </div>
+    </div>
+  );
+}
+```
+
+### Custom Size and Theme
+
+```tsx
+import MouseSpark from "@/components/mouse-spark";
+
+export default function App() {
+  return (
+    <div className="relative h-96 w-full">
+      <MouseSpark width={800} height={400} theme="dark" />
+    </div>
+  );
+}
+```

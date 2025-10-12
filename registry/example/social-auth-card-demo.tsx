@@ -61,7 +61,7 @@ export default function DemoSocialAuthPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900 p-4">
+    <div className="flex items-center justify-center p-4">
       <SocialAuthCard
         socialProviders={socialProviders}
         formInputs={formInputs}

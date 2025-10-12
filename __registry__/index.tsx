@@ -5893,6 +5893,102 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "mouse-spark": {
+    name: "mouse-spark",
+    description:
+      "Interactive mouse-following particle effect with customizable colors and themes.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/mouse-spark.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/mouse-spark.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/mouse-spark.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "rising-glow": {
+    name: "rising-glow",
+    description:
+      "Animated rising particle effect with customizable colors and particle count.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/rising-glow.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/rising-glow.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/rising-glow.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "project-progress-card": {
+    name: "project-progress-card",
+    description:
+      "Interactive project progress card with milestone tracking and timeline visualization.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/project-progress-card.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/project-progress-card.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/project-progress-card.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "cloud-watch-form": {
+    name: "cloud-watch-form",
+    description:
+      "Interactive form with animated cloud character that reacts to user input.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/cloud-watch-form.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/cloud-watch-form.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/cloud-watch-form.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "staggered-faq-section-demo": {
     name: "staggered-faq-section-demo",
     description:
@@ -11973,6 +12069,104 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/ripple-circles-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "mouse-spark-demo": {
+    name: "mouse-spark-demo",
+    description:
+      "Example showing interactive mouse-following particle effects with customizable themes.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/mouse-spark"],
+    files: [
+      {
+        path: "registry/example/mouse-spark-demo.tsx",
+        type: "registry:example",
+        target: "components/mouse-spark-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/mouse-spark-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "rising-glow-demo": {
+    name: "rising-glow-demo",
+    description:
+      "Example showing animated rising particle effects with customizable colors.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/rising-glow"],
+    files: [
+      {
+        path: "registry/example/rising-glow-demo.tsx",
+        type: "registry:example",
+        target: "components/rising-glow-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/rising-glow-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "project-progress-card-demo": {
+    name: "project-progress-card-demo",
+    description:
+      "Example showing interactive project progress tracking with milestone visualization.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/project-progress-card"],
+    files: [
+      {
+        path: "registry/example/project-progress-card-demo.tsx",
+        type: "registry:example",
+        target: "components/project-progress-card-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/project-progress-card-demo.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "cloud-watch-form-demo": {
+    name: "cloud-watch-form-demo",
+    description:
+      "Example showing interactive form with animated cloud character that reacts to user input.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/cloud-watch-form"],
+    files: [
+      {
+        path: "registry/example/cloud-watch-form-demo.tsx",
+        type: "registry:example",
+        target: "components/cloud-watch-form-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/cloud-watch-form-demo.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>

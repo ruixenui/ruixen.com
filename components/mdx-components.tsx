@@ -18,6 +18,7 @@ import { ComponentPreview } from "@/components/component-preview";
 import { ComponentSource } from "@/components/component-source";
 import { CopyButton } from "@/components/copy-button";
 import { TemplateOpen } from "@/components/template-open";
+import { SimpleComponentsShowcase } from "@/components/simple-components-showcase";
 
 const CustomLink = (props: any) => {
   const href = props.href;
@@ -49,6 +50,7 @@ const components = {
   Image,
   ComponentPreview,
   ComponentSource: (props: any) => <ComponentSource {...props} />,
+  SimpleComponentsShowcase,
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1
       className={cn(
