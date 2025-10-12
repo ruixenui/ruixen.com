@@ -12,6 +12,7 @@ export default function CloudWatchForm() {
   const [blink, setBlink] = useState(false);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
     const handleMouse = (e: MouseEvent) =>
       setCursor({ x: e.clientX, y: e.clientY });
     window.addEventListener("mousemove", handleMouse);
@@ -19,6 +20,7 @@ export default function CloudWatchForm() {
   }, []);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
     const offsetX = (cursor.x / window.innerWidth - 0.5) * 40; // bigger range
     const offsetY = (cursor.y / window.innerHeight - 0.5) * 20;
     setEyePos({ x: offsetX, y: offsetY });
