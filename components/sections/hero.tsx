@@ -118,7 +118,7 @@ function Home() {
                 className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-start gap-3 sm:gap-4 mb-10"
               >
                 <Button asChild size="lg" className="rounded-xl px-5 text-base">
-                  <Link href="/docs/components/social-card">Get Started</Link>
+                  <Link href="/docs/components">Get Started</Link>
                 </Button>
                 <Button
                   asChild
