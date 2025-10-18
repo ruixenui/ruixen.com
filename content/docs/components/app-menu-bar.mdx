@@ -1,0 +1,95 @@
+---
+title: App Menu Bar
+date: 2024-06-01
+description: Desktop-style application menu bar with File, Edit, View, and Help menus
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="app-menu-bar-demo" category="menu" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/app-menu-bar"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="app-menu-bar" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import AppMenuBar from "@/components/ruixen/app-menu-bar";
+
+export default function App() {
+  return (
+    <div className="min-h-screen">
+      <AppMenuBar />
+      {/* Your app content */}
+    </div>
+  );
+}
+```
+
+## Features
+
+- **Desktop-Style Menu**: Traditional application menu structure
+- **Multiple Menus**: File, Edit, View, Help sections
+- **Keyboard Shortcuts**: Display shortcut keys for actions
+- **Nested Submenus**: Support for submenu items
+- **Separator Lines**: Visual grouping of menu items
+- **Icon Integration**: Lucide icons for menu items
+
+## Menu Structure
+
+- **File Menu**: New, Open, Save, Export, Print, Exit
+- **Edit Menu**: Undo, Redo, Cut, Copy, Paste, Find
+- **View Menu**: Zoom, Layout options, Refresh
+- **Help Menu**: Documentation, Support, About
+
+## Customization
+
+You can customize the menu items by modifying the component:
+
+```tsx
+// Add custom menu items
+{
+  title: "Custom Action",
+  shortcut: "Ctrl+K",
+  onClick: () => console.log("Custom action")
+}
+```
+
+## Use Cases
+
+Perfect for:
+
+- **Desktop Applications**: Native app-like experience
+- **Web IDEs**: Code editors and development tools
+- **Content Management**: Document editing applications
+- **Design Tools**: Creative software interfaces
+- **Professional Software**: Business applications

@@ -1,0 +1,117 @@
+---
+title: Action Toolbar
+date: 2024-06-01
+description: Versatile toolbar component with action buttons and dropdown menus for common operations
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="action-toolbar-demo" category="menu" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/action-toolbar"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="action-toolbar" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import ActionToolbar from "@/components/ruixen/action-toolbar";
+
+export default function App() {
+  return (
+    <div className="p-4">
+      <ActionToolbar />
+    </div>
+  );
+}
+```
+
+## Features
+
+- **Action Buttons**: Primary action buttons with icons
+- **Dropdown Menus**: Additional actions in dropdown format
+- **Icon Integration**: Lucide icons for all actions
+- **Responsive Design**: Adapts to different screen sizes
+- **State Management**: Active/inactive button states
+- **Keyboard Navigation**: Full keyboard accessibility
+
+## Toolbar Actions
+
+- **Primary Actions**: Save, Delete, Share, Export
+- **Secondary Actions**: Copy, Move, Archive, Settings
+- **Dropdown Actions**: Additional contextual options
+
+## Customization
+
+You can customize the toolbar actions:
+
+```tsx
+const actions = [
+  {
+    icon: <Save />,
+    label: "Save",
+    onClick: () => handleSave(),
+    variant: "default",
+  },
+  {
+    icon: <Delete />,
+    label: "Delete",
+    onClick: () => handleDelete(),
+    variant: "destructive",
+  },
+];
+```
+
+## Event Handlers
+
+```tsx
+const handleSave = () => {
+  // Save logic
+};
+
+const handleDelete = () => {
+  // Delete logic
+};
+
+const handleShare = () => {
+  // Share logic
+};
+```
+
+## Use Cases
+
+Perfect for:
+
+- **Content Editors**: Document editing toolbars
+- **File Managers**: File operation actions
+- **Data Tables**: Bulk action toolbars
+- **Admin Panels**: Management action bars
+- **Media Players**: Playback control toolbars

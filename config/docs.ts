@@ -398,6 +398,12 @@ export const docsConfig: DocsConfig = {
               items: [],
               label: "New",
             },
+            {
+              title: "Solar Loader",
+              href: `/docs/components/solar-loader`,
+              items: [],
+              label: "New",
+            },
           ],
         },
         {
@@ -412,6 +418,12 @@ export const docsConfig: DocsConfig = {
             {
               title: "Identity Verification Dialog",
               href: `/docs/components/identity-verification-dialog`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Add Task Sheet",
+              href: `/docs/components/add-task-sheet`,
               items: [],
               label: "New",
             },
@@ -443,6 +455,17 @@ export const docsConfig: DocsConfig = {
               href: `/docs/components/timeline-upload`,
               items: [],
               label: "",
+            },
+          ],
+        },
+        {
+          title: "Breadcrumb",
+          items: [
+            {
+              title: "Smart Breadcrumb",
+              href: `/docs/components/smart-breadcrumb`,
+              items: [],
+              label: "New",
             },
           ],
         },
@@ -697,6 +720,12 @@ export const docsConfig: DocsConfig = {
               label: "New",
             },
             {
+              title: "Solar Loader",
+              href: `/docs/components/solar-loader`,
+              items: [],
+              label: "New",
+            },
+            {
               title: "Tour Popover",
               href: `/docs/components/tour-popover`,
               items: [],
@@ -755,6 +784,24 @@ export const docsConfig: DocsConfig = {
               items: [],
               label: "",
             },
+            {
+              title: "App Menu Bar",
+              href: `/docs/components/app-menu-bar`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Account Menu",
+              href: `/docs/components/account-menu`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Action Toolbar",
+              href: `/docs/components/action-toolbar`,
+              items: [],
+              label: "New",
+            },
           ],
         },
         {
@@ -765,6 +812,12 @@ export const docsConfig: DocsConfig = {
               href: `/docs/components/advanced-context-menu`,
               items: [],
               label: "",
+            },
+            {
+              title: "User Context Menu",
+              href: `/docs/components/user-context-menu`,
+              items: [],
+              label: "New",
             },
           ],
         },
@@ -1793,6 +1846,29 @@ export const docsConfig: DocsConfig = {
               href: `/docs/components/pricing-with-user-scaling`,
               items: [],
               label: "",
+            },
+            {
+              title: "Pricing Tiers",
+              href: `/docs/components/pricing-tiers`,
+              items: [],
+              label: "New",
+            },
+          ],
+        },
+        {
+          title: "Effects",
+          items: [
+            {
+              title: "Container Text Scroll",
+              href: `/docs/components/container-text-scroll`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Globe",
+              href: `/docs/components/globe`,
+              items: [],
+              label: "New",
             },
           ],
         },

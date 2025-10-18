@@ -1,0 +1,149 @@
+---
+title: Tag Cloud Select
+date: 2024-06-01
+description: Interactive tag selection component with cloud-style layout and multi-select functionality
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="tag-cloud-select-demo" category="select" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/tag-cloud-select"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="tag-cloud-select" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import TagCloudSelect from "@/components/ruixen/tag-cloud-select";
+
+const tags = [
+  "React",
+  "TypeScript",
+  "Next.js",
+  "Tailwind CSS",
+  "JavaScript",
+  "Node.js",
+  "Python",
+  "Docker",
+  "AWS",
+  "GraphQL",
+  "MongoDB",
+  "PostgreSQL",
+];
+
+export default function App() {
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+
+  return (
+    <div className="p-6">
+      <TagCloudSelect
+        tags={tags}
+        selectedTags={selectedTags}
+        onSelectionChange={setSelectedTags}
+        placeholder="Select your skills..."
+      />
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop                | Type                       | Default            | Description                     |
+| ------------------- | -------------------------- | ------------------ | ------------------------------- |
+| `tags`              | `string[]`                 | -                  | Available tags to select from   |
+| `selectedTags`      | `string[]`                 | `[]`               | Currently selected tags         |
+| `onSelectionChange` | `(tags: string[]) => void` | -                  | Callback when selection changes |
+| `placeholder`       | `string`                   | `"Select tags..."` | Placeholder text                |
+| `maxSelections`     | `number`                   | -                  | Maximum number of selections    |
+
+## Features
+
+- **Multi-Select**: Select multiple tags at once
+- **Visual Feedback**: Selected tags are highlighted
+- **Popover Interface**: Clean dropdown with tag cloud
+- **Search Functionality**: Filter tags by typing
+- **Remove Tags**: Click X to remove selected tags
+- **Keyboard Navigation**: Full keyboard accessibility
+
+## Tag Display
+
+- **Selected Tags**: Displayed as badges with remove buttons
+- **Available Tags**: Shown in cloud layout in popover
+- **Hover Effects**: Visual feedback on tag interaction
+- **Responsive Layout**: Adapts to different screen sizes
+
+## Customization
+
+You can customize the appearance and behavior:
+
+```tsx
+// Limited selections
+<TagCloudSelect
+  tags={tags}
+  selectedTags={selectedTags}
+  onSelectionChange={setSelectedTags}
+  maxSelections={5}
+  placeholder="Choose up to 5 skills"
+/>
+
+// Custom styling
+<TagCloudSelect
+  tags={tags}
+  selectedTags={selectedTags}
+  onSelectionChange={setSelectedTags}
+  className="max-w-md"
+/>
+```
+
+## Event Handling
+
+```tsx
+const handleTagSelection = (newTags: string[]) => {
+  console.log("Selected tags:", newTags);
+  setSelectedTags(newTags);
+};
+
+const handleMaxReached = () => {
+  toast.error("Maximum selections reached");
+};
+```
+
+## Use Cases
+
+Perfect for:
+
+- **Skill Selection**: Developer portfolios, job applications
+- **Category Filters**: E-commerce product filtering
+- **Interest Selection**: User preference settings
+- **Content Tagging**: Blog posts, articles
+- **Search Filters**: Advanced search interfaces

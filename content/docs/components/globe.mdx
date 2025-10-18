@@ -1,0 +1,138 @@
+---
+title: Globe
+date: 2024-06-01
+description: Animated 3D Earth globe with rotating continents and atmospheric effects
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="globe-demo" category="effects" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/globe"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="globe" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Add the required CSS animations</Step>
+
+<Step>
+  Add the following animations to your global CSS file inside the `@layer base`
+  block (e.g., `app/globals.css` or similar)
+</Step>
+
+```css title="app/globals.css" {1-2,4-18}
+@keyframes earthRotate {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 360px 0;
+  }
+}
+
+@keyframes atmosphereGlow {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import Globe from "@/components/ruixen/globe";
+
+export default function App() {
+  return (
+    <div className="flex items-center justify-center min-h-screen bg-black">
+      <Globe />
+    </div>
+  );
+}
+```
+
+## Features
+
+- **3D Earth Appearance**: Realistic globe with continent textures
+- **Continuous Rotation**: Smooth 360-degree rotation animation
+- **Atmospheric Glow**: Subtle glow effect around the globe
+- **CSS-Only Animation**: No JavaScript required for animation
+- **Responsive Design**: Scales with container size
+- **Dark Theme Optimized**: Looks great on dark backgrounds
+
+## Animation Details
+
+- **Earth Rotation**: 20-second continuous rotation cycle
+- **Atmosphere Effect**: Pulsing glow with 3-second cycle
+- **Smooth Transitions**: Linear animation for consistent speed
+- **Background Texture**: Continent silhouettes on blue base
+
+## Customization
+
+You can customize the globe appearance:
+
+```tsx
+// Custom container styling
+<div className="relative">
+  <Globe />
+  <div className="absolute inset-0 bg-gradient-to-t from-transparent to-blue-900/20" />
+</div>
+
+// Different sizes
+<div className="scale-75">
+  <Globe />
+</div>
+```
+
+## CSS Variables
+
+You can override the animation timing:
+
+```css
+.globe-container {
+  --rotation-duration: 30s; /* Slower rotation */
+  --glow-duration: 2s; /* Faster glow */
+}
+```
+
+## Use Cases
+
+Perfect for:
+
+- **Global Services**: Worldwide reach visualization
+- **Travel Websites**: International destinations
+- **Environmental Apps**: Earth and climate themes
+- **Space Applications**: Astronomy and science
+- **Loading Screens**: Unique loading animations
+- **Hero Sections**: Eye-catching visual elements

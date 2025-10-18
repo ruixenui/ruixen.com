@@ -1,0 +1,107 @@
+---
+title: Solar Loader
+date: 2024-06-01
+description: Animated solar system loading spinner with orbiting planets and customizable speed
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="solar-loader-demo" category="loaders" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/solar-loader"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="solar-loader" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import SolarLoader from "@/components/ruixen/solar-loader";
+
+export default function App() {
+  return (
+    <div className="flex items-center justify-center min-h-screen">
+      <SolarLoader size={100} speed={1} />
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop        | Type     | Default | Description                        |
+| ----------- | -------- | ------- | ---------------------------------- |
+| `size`      | `number` | `80`    | Size of the solar system in pixels |
+| `speed`     | `number` | `1`     | Animation speed multiplier         |
+| `className` | `string` | -       | Additional CSS classes             |
+
+## Features
+
+- **Solar System Animation**: Central sun with orbiting planets
+- **Customizable Size**: Adjustable loader dimensions
+- **Variable Speed**: Control animation speed
+- **Smooth Rotation**: CSS-based smooth animations
+- **Responsive**: Scales with container size
+- **Lightweight**: Pure CSS animations, no JavaScript
+
+## Animation Details
+
+- **Sun**: Central golden orb with subtle glow
+- **Inner Planet**: Fast orbit, small size
+- **Outer Planet**: Slower orbit, larger size
+- **Orbital Paths**: Visible dotted orbit lines
+
+## Customization
+
+You can customize the appearance:
+
+```tsx
+// Large, slow loader
+<SolarLoader size={150} speed={0.5} />
+
+// Small, fast loader
+<SolarLoader size={60} speed={2} />
+
+// Custom styling
+<SolarLoader
+  size={100}
+  className="opacity-75"
+/>
+```
+
+## Use Cases
+
+Perfect for:
+
+- **Loading Screens**: App initialization
+- **Data Processing**: Long-running operations
+- **Space-themed Apps**: Astronomy or science apps
+- **Creative Interfaces**: Unique loading experience
+- **Dashboard Loading**: System status indicators

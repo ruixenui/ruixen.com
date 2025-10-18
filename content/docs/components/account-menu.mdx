@@ -1,0 +1,100 @@
+---
+title: Account Menu
+date: 2024-06-01
+description: User account dropdown menu with profile options, settings, and logout functionality
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="account-menu-demo" category="menu" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/account-menu"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="account-menu" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import AccountMenu from "@/components/ruixen/account-menu";
+
+export default function App() {
+  return (
+    <div className="flex justify-end p-4">
+      <AccountMenu />
+    </div>
+  );
+}
+```
+
+## Features
+
+- **User Avatar**: Profile picture display
+- **Dropdown Menu**: Clean dropdown interface
+- **Profile Section**: User name and email display
+- **Menu Items**: Profile, Settings, Support, Logout options
+- **Keyboard Navigation**: Arrow key support
+- **Icon Integration**: Lucide icons for all menu items
+
+## Menu Options
+
+- **Profile**: View and edit user profile
+- **Settings**: Account settings and preferences
+- **Support**: Help and support resources
+- **Logout**: Sign out functionality
+
+## Customization
+
+You can customize the user data and menu items:
+
+```tsx
+const userData = {
+  name: "John Doe",
+  email: "john@example.com",
+  avatar: "/path/to/avatar.jpg"
+};
+
+// Add custom menu items
+{
+  icon: <CustomIcon />,
+  label: "Custom Option",
+  onClick: () => handleCustomAction()
+}
+```
+
+## Use Cases
+
+Perfect for:
+
+- **Web Applications**: User account management
+- **Dashboard Headers**: Navigation and user options
+- **Admin Panels**: User session management
+- **SaaS Platforms**: Account and billing access
+- **E-commerce Sites**: User profile and orders

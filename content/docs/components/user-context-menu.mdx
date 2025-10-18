@@ -1,0 +1,115 @@
+---
+title: User Context Menu
+date: 2024-06-01
+description: Right-click context menu for user interactions with profile actions and user management options
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="user-context-menu-demo" category="context-menu" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/user-context-menu"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="user-context-menu" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import UserContextMenu from "@/components/ruixen/user-context-menu";
+
+export default function App() {
+  return (
+    <div className="p-8">
+      <UserContextMenu />
+    </div>
+  );
+}
+```
+
+## Features
+
+- **Right-Click Activation**: Context menu on right-click
+- **User Avatar**: Profile picture display
+- **Context Actions**: View Profile, Send Message, Block User
+- **Separator Lines**: Visual grouping of actions
+- **Icon Integration**: Lucide icons for all actions
+- **Keyboard Navigation**: Arrow key and Enter support
+
+## Context Actions
+
+- **View Profile**: Navigate to user's profile page
+- **Send Message**: Open messaging interface
+- **Block User**: Block/unblock user functionality
+
+## Customization
+
+You can customize the user data and context actions:
+
+```tsx
+const user = {
+  name: "Jane Smith",
+  avatar: "/path/to/avatar.jpg",
+  status: "online"
+};
+
+// Add custom context actions
+{
+  icon: <CustomIcon />,
+  label: "Custom Action",
+  onClick: () => handleCustomAction()
+}
+```
+
+## Event Handlers
+
+```tsx
+const handleViewProfile = (userId: string) => {
+  // Navigate to profile
+};
+
+const handleSendMessage = (userId: string) => {
+  // Open chat
+};
+
+const handleBlockUser = (userId: string) => {
+  // Block user
+};
+```
+
+## Use Cases
+
+Perfect for:
+
+- **User Lists**: Team member directories
+- **Chat Applications**: User interaction menus
+- **Social Platforms**: Profile management
+- **Admin Panels**: User moderation tools
+- **Collaboration Tools**: Team member actions

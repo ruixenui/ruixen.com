@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "solar-loader-demo",
+  "type": "registry:example",
+  "title": "Solar Loader Demo",
+  "description": "Example showing animated solar system loading spinner with orbiting planets and customizable speed.",
+  "registryDependencies": [
+    "https://ruixen.com/r/solar-loader"
+  ],
+  "files": [
+    {
+      "path": "registry/example/solar-loader-demo.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport SolarLoader from \"@/registry/ruixenui/solar-loader\";\n\nconst SolarLoaderDemo = () => {\n  return (\n    <div className=\"flex flex-col items-center justify-center p-10\">\n      <SolarLoader size={40} speed={1} />\n      <p className=\"mt-6 text-center text-sm opacity-80\">\n        Auto adapts to your system theme and configure 🌙☀️\n      </p>\n    </div>\n  );\n};\n\nexport default SolarLoaderDemo;\n",
+      "type": "registry:example",
+      "target": "components/solar-loader-demo.tsx"
+    }
+  ]
+}

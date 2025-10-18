@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "app-menu-bar-demo",
+  "type": "registry:example",
+  "title": "App Menu Bar Demo",
+  "description": "Example showing desktop-style application menu bar with File, Edit, View, and Help menus.",
+  "registryDependencies": [
+    "https://ruixen.com/r/app-menu-bar"
+  ],
+  "files": [
+    {
+      "path": "registry/example/app-menu-bar-demo.tsx",
+      "content": "\"use client\";\n\nimport AppMenuBar from \"@/registry/ruixenui/app-menu-bar\";\n\nexport default function MenuDemoPage() {\n  return (\n    <div className=\"p-6\">\n      <AppMenuBar />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/app-menu-bar-demo.tsx"
+    }
+  ]
+}
