@@ -236,7 +236,7 @@ export default function TemplatesPage() {
             updates!
           </p>
           <Link
-            href="https://github.com/ruixenui/ruixen-ui"
+            href="https://github.com/ruixenui/ruixen.com"
             target="_blank"
             className={cn(buttonVariants({ variant: "outline" }), "gap-2")}
           >

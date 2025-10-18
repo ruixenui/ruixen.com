@@ -1,0 +1,121 @@
+---
+title: Pricing Tiers
+date: 2024-06-01
+description: Modern pricing component with customizable tiers, features, and glass morphism design
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="pricing-tiers-demo" category="pricing" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/pricing-tiers"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="pricing-tiers" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import Pricing, { Plan } from "@/components/ruixen/pricing-tiers";
+
+const plans: Plan[] = [
+  {
+    title: "Starter",
+    price: "$0",
+    period: "/mo",
+    description: "For individuals starting out",
+    features: [
+      "Access to core features",
+      "Community support",
+      "Limited projects (up to 3)",
+    ],
+  },
+  {
+    title: "Professional",
+    price: "$29",
+    period: "/mo",
+    description: "For freelancers and small teams",
+    features: [
+      "All Starter features",
+      "Priority support",
+      "Unlimited projects",
+    ],
+    badge: "Popular",
+  },
+];
+
+export default function App() {
+  return (
+    <Pricing
+      plans={plans}
+      heading="Choose the Right Plan"
+      subheading="Flexible pricing that scales with your business"
+    />
+  );
+}
+```
+
+## Props
+
+| Prop         | Type     | Default | Description                   |
+| ------------ | -------- | ------- | ----------------------------- |
+| `plans`      | `Plan[]` | -       | Array of pricing plan objects |
+| `heading`    | `string` | -       | Main heading text             |
+| `subheading` | `string` | -       | Subtitle text                 |
+
+## Plan Object
+
+| Property      | Type       | Description         |
+| ------------- | ---------- | ------------------- |
+| `title`       | `string`   | Plan name           |
+| `price`       | `string`   | Price display       |
+| `period`      | `string`   | Billing period      |
+| `description` | `string`   | Plan description    |
+| `features`    | `string[]` | List of features    |
+| `badge`       | `string`   | Optional badge text |
+
+## Features
+
+- **Glass Morphism Design**: Modern translucent card styling
+- **Responsive Layout**: Adapts to different screen sizes
+- **Feature Lists**: Checkmark icons for feature items
+- **Badge Support**: Highlight popular or recommended plans
+- **Customizable**: Easy to modify colors and styling
+- **TypeScript Support**: Full type safety
+
+## Use Cases
+
+Perfect for:
+
+- **SaaS Pricing Pages**: Software subscription tiers
+- **Service Packages**: Different service levels
+- **Product Variants**: Multiple product options
+- **Membership Plans**: Subscription-based services
+- **Feature Comparison**: Side-by-side plan comparison

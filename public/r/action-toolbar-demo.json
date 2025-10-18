@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "action-toolbar-demo",
+  "type": "registry:example",
+  "title": "Action Toolbar Demo",
+  "description": "Example showing versatile toolbar component with action buttons and dropdown menus for common operations.",
+  "registryDependencies": [
+    "https://ruixen.com/r/action-toolbar"
+  ],
+  "files": [
+    {
+      "path": "registry/example/action-toolbar-demo.tsx",
+      "content": "import {\n  AlignLeft,\n  AlignCenter,\n  AlignRight,\n  Edit3,\n  MoreHorizontal,\n} from \"lucide-react\";\nimport { ActionToolbar } from \"@/registry/ruixenui/action-toolbar\";\n\nexport default function ToolbarDemo() {\n  return (\n    <div className=\"p-6\">\n      <ActionToolbar\n        buttons={[\n          { label: \"Left\", icon: <AlignLeft className=\"size-4\" /> },\n          { label: \"Center\", icon: <AlignCenter className=\"size-4\" /> },\n          { label: \"Right\", icon: <AlignRight className=\"size-4\" /> },\n          {\n            label: \"Edit\",\n            icon: <Edit3 className=\"size-4\" />,\n            dropdownItems: [\"Rename\", \"Duplicate\", \"Move to…\"],\n          },\n          {\n            label: \"More\",\n            icon: <MoreHorizontal className=\"size-4\" />,\n            dropdownItems: [\"Settings\", \"Export\", \"Archive\"],\n          },\n        ]}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/action-toolbar-demo.tsx"
+    }
+  ]
+}

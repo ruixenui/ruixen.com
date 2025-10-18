@@ -1,0 +1,120 @@
+---
+title: Container Text Scroll
+date: 2024-06-01
+description: Scroll-triggered text animation component with smooth parallax effects using Framer Motion
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="container-text-scroll-demo" category="effects" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/container-text-scroll"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="container-text-scroll" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Install required dependencies</Step>
+
+```bash
+npm install framer-motion
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { ContainerTextScroll } from "@/components/ruixen/container-text-scroll";
+
+export default function App() {
+  return (
+    <ContainerTextScroll
+      titleComponent={
+        <h1 className="text-4xl font-bold">Scroll to see the magic</h1>
+      }
+    >
+      <div className="h-screen bg-gradient-to-b from-blue-500 to-purple-600">
+        <p className="text-white text-xl p-8">
+          This content will animate as you scroll
+        </p>
+      </div>
+    </ContainerTextScroll>
+  );
+}
+```
+
+## Props
+
+| Prop             | Type        | Default | Description              |
+| ---------------- | ----------- | ------- | ------------------------ |
+| `titleComponent` | `ReactNode` | -       | Title element to animate |
+| `children`       | `ReactNode` | -       | Content to display       |
+| `className`      | `string`    | -       | Additional CSS classes   |
+
+## Features
+
+- **Scroll-Triggered Animation**: Responds to scroll position
+- **Framer Motion Integration**: Smooth, performant animations
+- **Parallax Effects**: Multi-layer animation depths
+- **Responsive Design**: Works on all screen sizes
+- **Customizable**: Easy to modify animation parameters
+- **TypeScript Support**: Full type safety
+
+## Animation Behavior
+
+- **Title Animation**: Scales and transforms based on scroll
+- **Content Reveal**: Smooth content appearance
+- **Parallax Scrolling**: Different elements move at different speeds
+- **Smooth Transitions**: Eased animation curves
+
+## Customization
+
+You can customize the animation parameters:
+
+```tsx
+// Custom scroll range and animation
+<ContainerTextScroll
+  titleComponent={
+    <h1 className="text-6xl font-black bg-gradient-to-r from-pink-500 to-violet-500 bg-clip-text text-transparent">
+      Amazing Title
+    </h1>
+  }
+>
+  <div className="min-h-screen">{/* Your content */}</div>
+</ContainerTextScroll>
+```
+
+## Use Cases
+
+Perfect for:
+
+- **Landing Pages**: Hero section animations
+- **Storytelling**: Narrative scroll experiences
+- **Product Showcases**: Feature reveals
+- **Portfolio Sites**: Creative scroll effects
+- **Marketing Pages**: Engaging user experiences

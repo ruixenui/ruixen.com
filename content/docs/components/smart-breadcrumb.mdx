@@ -1,0 +1,116 @@
+---
+title: Smart Breadcrumb
+date: 2024-06-01
+description: Intelligent breadcrumb navigation with ellipsis for long paths and responsive design
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="smart-breadcrumb-demo" category="navigation" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/smart-breadcrumb"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="smart-breadcrumb" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import SmartBreadcrumb from "@/components/ruixen/smart-breadcrumb";
+
+const breadcrumbItems = [
+  { label: "Home", href: "/" },
+  { label: "Products", href: "/products" },
+  { label: "Electronics", href: "/products/electronics" },
+  { label: "Laptops", href: "/products/electronics/laptops" },
+  { label: "Gaming Laptops" }, // Current page (no href)
+];
+
+export default function App() {
+  return (
+    <div className="p-4">
+      <SmartBreadcrumb items={breadcrumbItems} />
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop        | Type               | Default | Description                           |
+| ----------- | ------------------ | ------- | ------------------------------------- |
+| `items`     | `BreadcrumbItem[]` | -       | Array of breadcrumb items             |
+| `maxItems`  | `number`           | `3`     | Maximum items to show before ellipsis |
+| `separator` | `ReactNode`        | `/`     | Custom separator component            |
+
+## BreadcrumbItem Object
+
+| Property | Type     | Description                               |
+| -------- | -------- | ----------------------------------------- |
+| `label`  | `string` | Display text for the breadcrumb           |
+| `href`   | `string` | Optional link URL (omit for current page) |
+
+## Features
+
+- **Smart Truncation**: Shows ellipsis for long navigation paths
+- **Responsive Design**: Adapts to different screen sizes
+- **Current Page Indicator**: Last item shows current page
+- **Clickable Links**: Navigate to previous pages
+- **Customizable Separator**: Use custom separator icons
+- **Accessible**: Full keyboard and screen reader support
+
+## Customization
+
+You can customize the appearance and behavior:
+
+```tsx
+// Custom separator
+<SmartBreadcrumb
+  items={items}
+  separator={<ChevronRight className="h-4 w-4" />}
+  maxItems={5}
+/>
+
+// Custom styling
+<SmartBreadcrumb
+  items={items}
+  className="bg-gray-100 p-2 rounded"
+/>
+```
+
+## Use Cases
+
+Perfect for:
+
+- **E-commerce Sites**: Product category navigation
+- **File Systems**: Folder path navigation
+- **Multi-level Menus**: Deep navigation structures
+- **Documentation**: Section and page navigation
+- **Admin Panels**: Hierarchical page navigation

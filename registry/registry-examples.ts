@@ -3697,4 +3697,184 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "add-task-sheet-demo",
+    type: "registry:example",
+    title: "Add Task Sheet Demo",
+    description:
+      "Example showing a comprehensive task creation sheet with form fields for task details, assignee, category, due date, and priority.",
+    registryDependencies: ["https://ruixen.com/r/add-task-sheet"],
+    files: [
+      {
+        path: "registry/example/add-task-sheet-demo.tsx",
+        type: "registry:example",
+        target: "components/add-task-sheet-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "pricing-tiers-demo",
+    type: "registry:example",
+    title: "Pricing Tiers Demo",
+    description:
+      "Example showing modern pricing component with customizable tiers, features, and glass morphism design.",
+    registryDependencies: ["https://ruixen.com/r/pricing-tiers"],
+    files: [
+      {
+        path: "registry/example/pricing-tiers-demo.tsx",
+        type: "registry:example",
+        target: "components/pricing-tiers-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "app-menu-bar-demo",
+    type: "registry:example",
+    title: "App Menu Bar Demo",
+    description:
+      "Example showing desktop-style application menu bar with File, Edit, View, and Help menus.",
+    registryDependencies: ["https://ruixen.com/r/app-menu-bar"],
+    files: [
+      {
+        path: "registry/example/app-menu-bar-demo.tsx",
+        type: "registry:example",
+        target: "components/app-menu-bar-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "account-menu-demo",
+    type: "registry:example",
+    title: "Account Menu Demo",
+    description:
+      "Example showing user account dropdown menu with profile options, settings, and logout functionality.",
+    registryDependencies: ["https://ruixen.com/r/account-menu"],
+    files: [
+      {
+        path: "registry/example/account-menu-demo.tsx",
+        type: "registry:example",
+        target: "components/account-menu-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "user-context-menu-demo",
+    type: "registry:example",
+    title: "User Context Menu Demo",
+    description:
+      "Example showing right-click context menu for user interactions with profile actions and user management options.",
+    registryDependencies: ["https://ruixen.com/r/user-context-menu"],
+    files: [
+      {
+        path: "registry/example/user-context-menu-demo.tsx",
+        type: "registry:example",
+        target: "components/user-context-menu-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "action-toolbar-demo",
+    type: "registry:example",
+    title: "Action Toolbar Demo",
+    description:
+      "Example showing versatile toolbar component with action buttons and dropdown menus for common operations.",
+    registryDependencies: ["https://ruixen.com/r/action-toolbar"],
+    files: [
+      {
+        path: "registry/example/action-toolbar-demo.tsx",
+        type: "registry:example",
+        target: "components/action-toolbar-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "smart-breadcrumb-demo",
+    type: "registry:example",
+    title: "Smart Breadcrumb Demo",
+    description:
+      "Example showing intelligent breadcrumb navigation with ellipsis for long paths and responsive design.",
+    registryDependencies: ["https://ruixen.com/r/smart-breadcrumb"],
+    files: [
+      {
+        path: "registry/example/smart-breadcrumb-demo.tsx",
+        type: "registry:example",
+        target: "components/smart-breadcrumb-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "solar-loader-demo",
+    type: "registry:example",
+    title: "Solar Loader Demo",
+    description:
+      "Example showing animated solar system loading spinner with orbiting planets and customizable speed.",
+    registryDependencies: ["https://ruixen.com/r/solar-loader"],
+    files: [
+      {
+        path: "registry/example/solar-loader-demo.tsx",
+        type: "registry:example",
+        target: "components/solar-loader-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "container-text-scroll-demo",
+    type: "registry:example",
+    title: "Container Text Scroll Demo",
+    description:
+      "Example showing scroll-triggered text animation component with smooth parallax effects using Framer Motion.",
+    registryDependencies: ["https://ruixen.com/r/container-text-scroll"],
+    files: [
+      {
+        path: "registry/example/container-text-scroll-demo.tsx",
+        type: "registry:example",
+        target: "components/container-text-scroll-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "ruixen-moon-chat-demo",
+    type: "registry:example",
+    title: "Ruixen Moon Chat Demo",
+    description:
+      "Example showing modern chat interface with message bubbles, typing indicators, and smooth animations.",
+    registryDependencies: ["https://ruixen.com/r/ruixen-moon-chat"],
+    files: [
+      {
+        path: "registry/example/ruixen-moon-chat-demo.tsx",
+        type: "registry:example",
+        target: "components/ruixen-moon-chat-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "globe-demo",
+    type: "registry:example",
+    title: "Globe Demo",
+    description:
+      "Example showing animated 3D Earth globe with rotating continents and atmospheric effects.",
+    registryDependencies: ["https://ruixen.com/r/globe"],
+    files: [
+      {
+        path: "registry/example/globe-demo.tsx",
+        type: "registry:example",
+        target: "components/globe-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "tag-cloud-select-demo",
+    type: "registry:example",
+    title: "Tag Cloud Select Demo",
+    description:
+      "Example showing interactive tag selection component with cloud-style layout and multi-select functionality.",
+    registryDependencies: ["https://ruixen.com/r/tag-cloud-select"],
+    files: [
+      {
+        path: "registry/example/tag-cloud-select-demo.tsx",
+        type: "registry:example",
+        target: "components/tag-cloud-select-demo.tsx",
+      },
+    ],
+  },
 ];

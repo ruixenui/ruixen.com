@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/mouse-spark-demo.tsx",
-      "content": "\"use client\";\n\nimport React, { useState } from \"react\";\nimport MouseSpark from \"@/registry/ruixenui/mouse-spark\";\n\nexport default function HomePage() {\n  const [theme, setTheme] = useState<\"light\" | \"dark\">(\"dark\");\n\n  return (\n    <div style={{ width: \"100vw\", height: \"100vh\", overflow: \"hidden\" }}>\n      <MouseSpark />\n      <div\n        style={{\n          position: \"absolute\",\n          top: \"50%\",\n          left: \"50%\",\n          transform: \"translate(-50%, -50%)\",\n          color: theme === \"dark\" ? \"#000\" : \"#fff\",\n          fontSize: \"1rem\",\n          textAlign: \"center\",\n        }}\n      >\n        Move your mouse to see the splash effect!\n      </div>\n    </div>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport MouseSpark from \"@/registry/ruixenui/mouse-spark\";\n\nexport default function MouseSparkDemo() {\n  return (\n    <div className=\"relative w-full h-96 overflow-hidden rounded-lg border\">\n      <MouseSpark width={800} height={400} theme=\"dark\" />\n      <div className=\"absolute inset-0 flex items-center justify-center pointer-events-none\">\n        <p className=\"text-white text-lg font-medium text-center px-4\">\n          Move your mouse to see the spark effect!\n        </p>\n      </div>\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/mouse-spark-demo.tsx"
     }

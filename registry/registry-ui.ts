@@ -3773,4 +3773,230 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "add-task-sheet",
+    type: "registry:ui",
+    title: "Add Task Sheet",
+    description:
+      "A comprehensive task creation sheet with form fields for task details, assignee, category, due date, and priority.",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/add-task-sheet.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/add-task-sheet.tsx",
+      },
+    ],
+  },
+  {
+    name: "pricing-tiers",
+    type: "registry:ui",
+    title: "Pricing Tiers",
+    description:
+      "Modern pricing component with customizable tiers, features, and glass morphism design.",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/pricing-tiers.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/pricing-tiers.tsx",
+      },
+    ],
+  },
+  {
+    name: "app-menu-bar",
+    type: "registry:ui",
+    title: "App Menu Bar",
+    description:
+      "Desktop-style application menu bar with File, Edit, View, and Help menus.",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/app-menu-bar.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/app-menu-bar.tsx",
+      },
+    ],
+  },
+  {
+    name: "account-menu",
+    type: "registry:ui",
+    title: "Account Menu",
+    description:
+      "User account dropdown menu with profile options, settings, and logout functionality.",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/account-menu.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/account-menu.tsx",
+      },
+    ],
+  },
+  {
+    name: "user-context-menu",
+    type: "registry:ui",
+    title: "User Context Menu",
+    description:
+      "Right-click context menu for user interactions with profile actions and user management options.",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/user-context-menu.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/user-context-menu.tsx",
+      },
+    ],
+  },
+  {
+    name: "action-toolbar",
+    type: "registry:ui",
+    title: "Action Toolbar",
+    description:
+      "Versatile toolbar component with action buttons and dropdown menus for common operations.",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/action-toolbar.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/action-toolbar.tsx",
+      },
+    ],
+  },
+  {
+    name: "smart-breadcrumb",
+    type: "registry:ui",
+    title: "Smart Breadcrumb",
+    description:
+      "Intelligent breadcrumb navigation with ellipsis for long paths and responsive design.",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/smart-breadcrumb.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/smart-breadcrumb.tsx",
+      },
+    ],
+  },
+  {
+    name: "solar-loader",
+    type: "registry:ui",
+    title: "Solar Loader",
+    description:
+      "Animated solar system loading spinner with orbiting planets and customizable speed.",
+    files: [
+      {
+        path: "registry/ruixenui/solar-loader.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/solar-loader.tsx",
+      },
+    ],
+    cssVars: {
+      theme: {
+        "animate-earth-rotate": "earthRotate 20s linear infinite",
+        "animate-atmosphere-glow": "atmosphereGlow 3s ease-in-out infinite",
+      },
+    },
+    css: {
+      "@keyframes earthRotate": {
+        "0%": {
+          "background-position": "0 0",
+        },
+        "100%": {
+          "background-position": "360px 0",
+        },
+      },
+      "@keyframes atmosphereGlow": {
+        "0%, 100%": {
+          opacity: "0.6",
+        },
+        "50%": {
+          opacity: "0.9",
+        },
+      },
+    },
+  },
+  {
+    name: "container-text-scroll",
+    type: "registry:ui",
+    title: "Container Text Scroll",
+    description:
+      "Scroll-triggered text animation component with smooth parallax effects using Framer Motion.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/ruixenui/container-text-scroll.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/container-text-scroll.tsx",
+      },
+    ],
+  },
+  {
+    name: "ruixen-moon-chat",
+    type: "registry:ui",
+    title: "Ruixen Moon Chat",
+    description:
+      "Modern chat interface with message bubbles, typing indicators, and smooth animations.",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/ruixen-moon-chat.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/ruixen-moon-chat.tsx",
+      },
+    ],
+  },
+  {
+    name: "globe",
+    type: "registry:ui",
+    title: "Globe",
+    description:
+      "Animated 3D Earth globe with rotating continents and atmospheric effects.",
+    files: [
+      {
+        path: "registry/ruixenui/globe.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/globe.tsx",
+      },
+    ],
+    cssVars: {
+      theme: {
+        "animate-earth-rotate": "earthRotate 20s linear infinite",
+        "animate-atmosphere-glow": "atmosphereGlow 3s ease-in-out infinite",
+      },
+    },
+    css: {
+      "@keyframes earthRotate": {
+        "0%": {
+          "background-position": "0 0",
+        },
+        "100%": {
+          "background-position": "360px 0",
+        },
+      },
+      "@keyframes atmosphereGlow": {
+        "0%, 100%": {
+          opacity: "0.6",
+        },
+        "50%": {
+          opacity: "0.9",
+        },
+      },
+    },
+  },
+  {
+    name: "tag-cloud-select",
+    type: "registry:ui",
+    title: "Tag Cloud Select",
+    description:
+      "Interactive tag selection component with cloud-style layout and multi-select functionality.",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/tag-cloud-select.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/tag-cloud-select.tsx",
+      },
+    ],
+  },
 ];
