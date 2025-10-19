@@ -523,3 +523,15 @@
     background-position: 0% 50%;
   }
 }
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  25% { transform: translateY(-4px); }
+  50% { transform: translateY(-8px); }
+  75% { transform: translateY(-4px); }
+}
+
+.bounce-once {
+  display: inline-flex; /* needed for transform */
+  animation: bounce 0.6s ease-in-out 3; /* 3 times */
+}

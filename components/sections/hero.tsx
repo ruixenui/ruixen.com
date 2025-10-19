@@ -66,14 +66,14 @@ function Home() {
 
   return (
     <section>
-      <div className="flex justify-center my-24 xs:my-16 items-center mx-auto bg-white dark:bg-black text-black dark:text-white transition-all duration-300">
-        <div className="relative bg-white dark:bg-black">
+      <div className="flex justify-center items-center mx-auto my-16 xs:my-12 bg-white dark:bg-black text-black dark:text-white transition-all duration-300 px-4 sm:px-6 lg:px-8">
+        <div className="relative w-full max-w-6xl">
           {/* Decorative Borders */}
           {/* Main Content */}
-          <div className="relative z-10 text-left mx-auto max-w-5xl flex flex-col md:flex-row gap-8 md:gap-12 items-center">
-            <div className="flex-1">
+          <div className="relative z-10 flex flex-col md:flex-row items-center gap-8 md:gap-12 text-left mx-auto">
+            <div className="flex-1 w-full">
               <AnimatedGroup preset="fade">
-                <h1 className="relative text-[2rem] xs:text-[4rem] sm:text-[4rem] md:text-[6rem] lg:text-[6rem] xl:text-[6rem] font-semibold leading-[1.1] tracking-tight">
+                <h1 className="relative text-[3rem] xs:text-[3rem] sm:text-[4rem] md:text-[5rem] lg:text-[5.5rem] xl:text-[6rem] font-semibold leading-[1.1] tracking-tight">
                   Customizable React UI Library <br />
                   <span className="inline-block whitespace-nowrap relative z-10">
                     <span className="ruixen-gradient-text">&</span>
@@ -84,13 +84,13 @@ function Home() {
                         src="https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/ruixen-object.png"
                         alt="3D Element"
                         className="
-                        absolute 
-                        -top-16 sm:-top-20 md:-top-24 lg:-top-28 xl:-top-32 
-                        left-1/2 -translate-x-1/2 
-                        w-[120px] sm:w-[160px] md:w-[200px] lg:w-[240px] xl:w-[280px] 
-                        z-10 
-                        animate-floating
-                      "
+                          absolute 
+                          -top-12 xs:-top-16 sm:-top-20 md:-top-24 lg:-top-28 xl:-top-32 
+                          left-1/2 -translate-x-1/2 
+                          w-[100px] xs:w-[140px] sm:w-[160px] md:w-[200px] lg:w-[240px] xl:w-[280px] 
+                          z-10 
+                          animate-floating
+                        "
                         priority
                       />
                       <span className="relative z-20">Tailwind Templates</span>
@@ -117,12 +117,12 @@ function Home() {
                 }}
                 className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-start gap-3 sm:gap-4 mb-10"
               >
-                <Button asChild size="lg" className="rounded-xl px-5 text-base">
+                <Button asChild size="md" className="rounded-xl px-5 text-base">
                   <Link href="/docs/components">Get Started</Link>
                 </Button>
                 <Button
                   asChild
-                  size="lg"
+                  size="md"
                   variant="outline"
                   className="rounded-xl px-5 text-base"
                 >

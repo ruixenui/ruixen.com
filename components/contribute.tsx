@@ -11,7 +11,7 @@ export function Contribute({ doc }: { doc: Doc }) {
       icon: BugIcon,
       href: getGitHubIssueUrl({
         owner: "ruixenui",
-        repo: "ruixen",
+        repo: "ruixen.com",
         title: `[bug]: ${doc.slug}`,
         labels: ["bug", "documentation"],
         template: "bug_report.md",
@@ -22,7 +22,7 @@ export function Contribute({ doc }: { doc: Doc }) {
       icon: LightbulbIcon,
       href: getGitHubIssueUrl({
         owner: "ruixenui",
-        repo: "ruixen",
+        repo: "ruixen.com",
         title: `[feat]: ${doc.slug}`,
         labels: ["enhancement"],
         template: "feature_request.md",

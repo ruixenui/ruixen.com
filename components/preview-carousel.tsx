@@ -40,9 +40,7 @@ const PreviewCarousel = ({
   const [canScrollNext, setCanScrollNext] = useState(false);
 
   useEffect(() => {
-    if (!carouselApi) {
-      return;
-    }
+    if (!carouselApi) return;
     const updateSelection = () => {
       setCanScrollPrev(carouselApi.canScrollPrev());
       setCanScrollNext(carouselApi.canScrollNext());
@@ -54,9 +52,7 @@ const PreviewCarousel = ({
     };
   }, [carouselApi]);
 
-  if (!items || items.length === 0) {
-    return null;
-  }
+  if (!items || items.length === 0) return null;
 
   return (
     <section>
@@ -95,7 +91,7 @@ const PreviewCarousel = ({
         </div>
       </div>
 
-      <div className="w-full ml-8">
+      <div className="w-full">
         <Carousel
           setApi={setCarouselApi}
           opts={{
@@ -105,51 +101,46 @@ const PreviewCarousel = ({
               },
             },
           }}
-          className="relative left-[-1rem]"
+          className="w-full"
         >
-          <CarouselContent className="gap-2 ml-4">
+          <CarouselContent className="-mx-4 md:-mx-8">
             {items.map((item) => (
               <CarouselItem
                 key={item.id}
-                className="border-3 p-0 rounded-[10%] md:max-w-64 overflow-hidden"
+                className="basis-full sm:basis-3/4 md:basis-1/2 lg:basis-1/3 p-2"
               >
                 <Link
                   href={item.url}
-                  className="group flex flex-col justify-between"
+                  className=" p-0 border rounded-[12%] group flex flex-col h-full"
                 >
-                  <div>
-                    <div className="flex max-w-64 border overflow-clip rounded-[10%] bg-muted hover:shadow-[0_20px_40px_rgba(0,0,0,0.2)] hover:-translate-y-1 transition-all duration-300">
-                      <div className="flex-1">
-                        <div className="relative w-full aspect-[4/3] overflow-hidden rounded-xl group">
-                          <Image
-                            src={item.image_light}
-                            alt={item.title}
-                            fill
-                            className="object-cover object-center dark:hidden transition-transform duration-300 group-hover:scale-105"
-                            loading="lazy"
-                          />
-                          <Image
-                            src={item.image_dark}
-                            alt={item.title}
-                            fill
-                            className="object-cover object-center hidden dark:block transition-transform duration-300 group-hover:scale-105"
-                            loading="lazy"
-                          />
-                        </div>
+                  <div className="flex-1">
+                    <div className="w-full border-4 overflow-hidden rounded-[12%] bg-muted transition-all duration-300 hover:shadow-[0_20px_40px_rgba(0,0,0,0.2)] hover:-translate-y-1 hover:scale-105">
+                      <div className="relative w-full aspect-[4/3] sm:aspect-[16/9] md:aspect-[4/3] overflow-hidden">
+                        <Image
+                          src={item.image_light}
+                          alt={item.title}
+                          fill
+                          className="object-cover object-center dark:hidden transition-transform duration-300"
+                          loading="lazy"
+                        />
+                        <Image
+                          src={item.image_dark}
+                          alt={item.title}
+                          fill
+                          className="object-cover object-center hidden dark:block transition-transform duration-300"
+                          loading="lazy"
+                        />
                       </div>
                     </div>
                   </div>
-                  <div className="px-3 pt-1">
-                    <div className="text-gray-600 line-clamp-3 break-words text-md font-medium md:mb-3 md:text-md">
+
+                  <div className="p-4">
+                    <div className="text-foreground line-clamp-2 break-words text-base font-semibold mb-2">
                       {item.title}
                     </div>
-                    <div className="mb-4 line-clamp-2 text-sm text-muted-foreground md:text-sm">
+                    <div className="line-clamp-2 text-sm text-muted-foreground">
                       {item.summary}
                     </div>
-                    {/* <div className="flex items-center text-xs font-medium">
-                      View Component{" "}
-                      <ArrowRight className="ml-2 size-4 transition-transform group-hover:translate-x-1" />
-                    </div> */}
                   </div>
                 </Link>
               </CarouselItem>

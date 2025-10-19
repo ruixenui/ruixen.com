@@ -15,7 +15,7 @@ export async function SiteHeader() {
 
   try {
     const response = await fetch(
-      "https://api.github.com/repos/ruixenui/ruixen-ui",
+      "https://api.github.com/repos/ruixenui/ruixen.com",
       {
         headers: process.env.GITHUB_OAUTH_TOKEN
           ? {
@@ -26,12 +26,12 @@ export async function SiteHeader() {
         next: {
           revalidate: 3600,
         },
-      },
+      }
     );
 
     if (response.ok) {
       const data = await response.json();
-      stars = data.stargazers_count || stars; // Update stars if API response is valid
+      stars = data.watchers || stars;
     }
   } catch (error) {
     console.error("Error fetching GitHub stars:", error);
@@ -40,7 +40,7 @@ export async function SiteHeader() {
   return (
     <header
       className={cn(
-        "supports-backdrop-blur:bg-background/90 sticky top-0 z-40 w-full border-b border-border bg-background/40 backdrop-blur-lg",
+        "supports-backdrop-blur:bg-background/90 sticky top-0 z-40 w-full border-b border-border bg-background/40 backdrop-blur-lg"
       )}
     >
       <div className="container flex h-16 items-center">
@@ -52,15 +52,15 @@ export async function SiteHeader() {
               buttonVariants({
                 variant: "rainbow",
               }),
-              "hidden md:inline-flex",
+              "hidden md:inline-flex bounce-once" // add bounce-once here
             )}
             target="_blank"
             href={siteConfig.links.github}
           >
             <div className="flex items-center">
               <Icons.gitHub className="size-4" />
-              <span className="ml-1 lg:hidden">Star</span>
-              <span className="ml-1 hidden lg:inline">Star on GitHub</span>{" "}
+              <span className="ml-2 lg:hidden">Star</span>
+              <span className="ml-2 hidden lg:inline">Star on GitHub</span>{" "}
             </div>
             <div className="ml-2 flex items-center gap-1 text-sm md:flex">
               <StarIcon className="size-4 text-gray-500 transition-all duration-300 group-hover:text-yellow-300" />
@@ -81,7 +81,7 @@ export async function SiteHeader() {
                   buttonVariants({
                     variant: "ghost",
                   }),
-                  "w-9 px-0",
+                  "w-9 px-0"
                 )}
               >
                 <Icons.discord className="size-4" />
@@ -98,7 +98,7 @@ export async function SiteHeader() {
                   buttonVariants({
                     variant: "ghost",
                   }),
-                  "w-9 px-0",
+                  "w-9 px-0"
                 )}
               >
                 <Icons.gitHub className="size-4" />
@@ -115,7 +115,7 @@ export async function SiteHeader() {
                   buttonVariants({
                     variant: "ghost",
                   }),
-                  "w-9 px-0",
+                  "w-9 px-0"
                 )}
               >
                 <Icons.twitter className="size-4 fill-current" />
