@@ -118,7 +118,7 @@ export default function FAQScrollAccordion({
     >
       <h2 className="text-3xl font-bold mb-2">
         <Link
-          href="https://github.com/ruixenui/ruixen-free-components"
+          href="https://github.com/ruixenui/ruixen.com"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:text-blue-400 transition-colors"
