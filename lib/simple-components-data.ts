@@ -69,7 +69,7 @@ export const componentsData: ComponentCategory[] = [
         summary: "Ripple distortion with smooth animations and hover effects",
         url: "/docs/components/ripple-distortion",
         image_dark:
-          "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/popular/ripple-distortion-dark.jpg",
+          "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/popular/ripple-distortion-dark.png",
         image_light:
           "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/popular/ripple-distortion-light.jpg",
       },
@@ -107,7 +107,7 @@ export const componentsData: ComponentCategory[] = [
         title: "Hover Play Card",
         summary:
           "Interactive media card with play button overlay and hover animations",
-        url: "/docs/components/hover-play-card",
+        url: "/docs/components/health-stats-card",
         image_dark:
           "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/cards/health-stats-card-dark.jpg",
         image_light:

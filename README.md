@@ -14,6 +14,7 @@ Ruixen UI is a collection of copy-and-paste components for building beautiful la
 -  **Dark Mode Support** - All components support light and dark themes
 -  **Accessible** - Built with accessibility in mind
 -  **Responsive** - Mobile-first design approach
+-  **Gradient Collection** - Curated high-quality gradients for your designs
 
 ---
 
@@ -37,6 +38,20 @@ We believe UI components should be:
 - Built for collaboration between designers and engineers  
 
 Ruixen UI exists to empower teams to create **consistent, modern, and scalable UIs** — faster.
+
+---
+
+##  Gradients
+
+Explore our curated collection of beautiful, high-quality gradients perfect for modern web designs.
+
+👉 [Browse Gradients](https://ruixen.com/gradients)
+
+Features:
+- **23+ Premium Gradients** - Organized in 5 distinct collections
+- **4K Resolution** - 3840 × 2160 pixels for crisp display on any screen
+- **Free to Download** - All gradients are free for personal and commercial use
+- **Multiple Categories** - Fractional Walls, Hero Gradients, Hue Flows, Moon Backgrounds, and Shade Shifters
 
 ---
 

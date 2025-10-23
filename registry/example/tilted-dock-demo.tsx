@@ -11,7 +11,7 @@ const customItems: DockItem[] = [
 
 export default function TiltedDockDemo() {
   return (
-    <div className="h-screen w-full flex items-center justify-center bg-gradient-to-br from-purple-500 via-indigo-500 to-blue-500">
+    <div className="w-full py-8 flex items-center justify-center">
       <TiltedDock
         items={customItems}
         tilt={{ baseX: 20, maxY: 15 }}

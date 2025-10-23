@@ -6,7 +6,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function RotatingGradientRight() {
   return (
-    <section className="min-h-screen w-full bg-white dark:bg-black text-black dark:text-white px-8 py-16 md:px-16">
+    <section className="min-h-screen w-full bg-white dark:bg-black text-black dark:text-white px-8 py-16">
       <div className="mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-2">
         {/* LEFT: Text */}
         <div className="relative mx-auto flex h-[40rem] w-full max-w-[60rem] items-center justify-center overflow-hidden rounded-3xl">

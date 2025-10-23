@@ -2,7 +2,7 @@ import SlidingTabs from "@/registry/ruixenui/sliding-tabs";
 
 export default function DemoOne() {
   return (
-    <div className="flex items-center justify-center h-screen bg-background">
+    <div className="flex items-center justify-center">
       <SlidingTabs
         defaultIndex={0}
         items={[

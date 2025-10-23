@@ -2,7 +2,7 @@ import PillMorphTabs from "@/registry/ruixenui/pill-morph-tabs";
 
 export default function DemoOne() {
   return (
-    <div className="flex h-screen w-full items-center justify-center bg-background">
+    <div className="flex w-full items-center justify-center">
       <PillMorphTabs
         defaultValue="overview"
         className="max-w-md"

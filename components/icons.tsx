@@ -75,7 +75,7 @@ export const Icons = {
         >
           <stop stopColor="#9E7AFF" />
           <stop offset="0.333333" stopColor="#FE8BBB" />
-          <stop offset="0.666667" stopColor="#FFBD7A" />
+          <stop offset="0.666667" stopColor="#0034ff" />
           <stop offset="1" stopColor="#F8EAC3" />
         </linearGradient>
       </defs>

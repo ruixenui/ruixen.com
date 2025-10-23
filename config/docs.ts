@@ -17,6 +17,12 @@ export const docsConfig: DocsConfig = {
       event: "header_cta_clicked",
       label: "",
     },
+    {
+      title: "Gradients",
+      href: "/gradients",
+      event: "gradients_clicked",
+      label: "New",
+    },
     // {
     //   title: "Blog",
     //   href: "/blog",
