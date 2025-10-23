@@ -7,7 +7,7 @@ export default function DemoPagination() {
   const [page, setPage] = useState(1);
 
   return (
-    <div className="mt-10">
+    <div className="flex flex-col items-center justify-center mt-10">
       <SlidingPagination
         totalPages={120}
         currentPage={page}

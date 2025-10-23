@@ -82,12 +82,12 @@ export function DocsSidebarNavItems({
                 <span className="relative shrink-0">{item.title}</span>
                 <div className="flex items-center">
                   {item.label && (
-                    <span className="ml-2 rounded-md bg-[#FFBD7A] px-1.5 py-0.5 text-[0.85rem] leading-none text-[#000000] no-underline">
+                    <span className="ml-2 rounded-md bg-[var(--color-sidebar-label)] px-1.5 py-0.5 text-[0.85rem] leading-none text-[var(--color-sidebar-label-foreground)] no-underline">
                       {item.label}
                     </span>
                   )}
                   {item.paid && (
-                    <span className="ml-2 rounded-md bg-[#4ade80] px-1.5 py-0.5 text-[0.65rem] leading-none text-[#000000] no-underline">
+                    <span className="ml-2 rounded-md bg-[var(--color-sidebar-label)] px-1.5 py-0.5 text-[0.65rem] leading-none text-[var(--color-sidebar-label-foreground)] no-underline">
                       Pro
                     </span>
                   )}
@@ -127,12 +127,12 @@ export function DocsSidebarNavItems({
               <span className="relative shrink-0">{item.title}</span>
               <div>
                 {item.label && (
-                  <span className="ml-2 rounded-md bg-[#FFBD7A] px-1.5 py-0.5 text-[0.85rem] leading-none text-[#000000] no-underline">
+                  <span className="ml-2 rounded-md bg-[var(--color-sidebar-label)] px-1.5 py-0.5 text-[0.85rem] leading-none text-[var(--color-sidebar-label-foreground)] no-underline">
                     {item.label}
                   </span>
                 )}
                 {item.paid && (
-                  <span className="ml-2 rounded-md bg-[#4ade80] px-1.5 py-0.5 text-[0.65rem] leading-none text-[#000000] no-underline">
+                  <span className="ml-2 rounded-md bg-[var(--color-sidebar-label)] px-1.5 py-0.5 text-[0.65rem] leading-none text-[var(--color-sidebar-label-foreground)] no-underline">
                     Pro
                   </span>
                 )}
@@ -153,12 +153,12 @@ export function DocsSidebarNavItems({
           >
             {item.title}
             {item.label && (
-              <span className="ml-2 rounded-md bg-muted px-1.5 py-0.5 text-[0.85rem] leading-none text-muted-foreground no-underline group-hover:no-underline">
+              <span className="ml-2 rounded-md bg-[var(--color-sidebar-label)] px-1.5 py-0.5 text-[0.85rem] leading-none text-[var(--color-sidebar-label-foreground)] no-underline group-hover:no-underline">
                 {item.label}
               </span>
             )}
             {item.paid && (
-              <span className="ml-2 rounded-md bg-[#4ade80] px-1.5 py-0.5 text-[0.65rem] leading-none text-[#000000] no-underline group-hover:no-underline">
+              <span className="ml-2 rounded-md bg-[var(--color-sidebar-label)] px-1.5 py-0.5 text-[0.65rem] leading-none text-[var(--color-sidebar-label-foreground)] no-underline group-hover:no-underline">
                 Pro
               </span>
             )}

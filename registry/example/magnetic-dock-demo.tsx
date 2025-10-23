@@ -11,7 +11,7 @@ const customItems: DockItem[] = [
 
 export default function MagneticDockDemo() {
   return (
-    <div className="h-screen w-full flex items-center justify-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+    <div className="w-full py-8 flex items-center justify-center">
       <MagneticDock
         items={customItems}
         position="bottom"

@@ -12,13 +12,8 @@ export default function DragAndDropTabsDemoPage() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-gray-50 dark:bg-gray-900">
-      <h1 className="text-2xl font-bold mb-6 text-center">
-        Drag & Drop Tabs Demo
-      </h1>
-      <div className="w-full max-w-xl">
-        <DragAndDropTabs items={demoItems} defaultValue="tab1" />
-      </div>
+    <div className="flex flex-col items-center justify-center">
+      <DragAndDropTabs items={demoItems} defaultValue="tab1" />
     </div>
   );
 }

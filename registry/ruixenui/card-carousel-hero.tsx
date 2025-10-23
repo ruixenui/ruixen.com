@@ -82,7 +82,7 @@ export default function CardCarouselHero({
   }, [activeIndex]);
 
   return (
-    <section className="py-20 px-4 bg-white dark:bg-gray-900 transition-colors duration-300">
+    <section className="py-20 px-4 bg-white dark:bg-black transition-colors duration-300">
       <div className="max-w-6xl mx-auto flex flex-col items-center text-center space-y-5">
         {/* Category */}
         <Button className="text-sm font-medium shadow-none text-white dark:text-white transition-colors duration-300 group relative inline-flex h-9 animate-rainbow cursor-pointer items-center justify-center rounded-3xl px-4">
@@ -114,7 +114,7 @@ export default function CardCarouselHero({
                 className="absolute"
                 style={{ zIndex: data.length - distance }}
               >
-                <Card className="w-[90vw] sm:w-80 md:w-[50vw] h-60 sm:h-64 md:h-[30vw] bg-white dark:bg-gray-800 overflow-hidden transition-colors duration-300 border-4 dark:border-gray-700">
+                <Card className="w-[90vw] sm:w-80 md:w-[50vw] h-60 sm:h-64 md:h-[30vw] bg-white dark:bg-black overflow-hidden transition-colors duration-300 border-4 dark:border-gray-700">
                   <CardContent className="flex items-center justify-center p-0 h-full">
                     {card.src && (
                       <Image

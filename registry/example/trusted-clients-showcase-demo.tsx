@@ -68,10 +68,6 @@ export default function DemoPage() {
 
   return (
     <main className="bg-gray-50 dark:bg-gray-900 min-h-screen py-20">
-      <h1 className="text-4xl font-bold text-center text-gray-900 dark:text-white mb-12">
-        Trusted By Leading Companies
-      </h1>
-
       {/* Using default logos */}
       <TrustedClientsShowcase />
 

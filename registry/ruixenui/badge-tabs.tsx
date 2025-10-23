@@ -54,17 +54,17 @@ export default function BadgeTabs({
       <Tabs
         value={active}
         onValueChange={setActive}
-        className="w-full max-w-lg"
+        className="w-full"
       >
         {/* Tabs */}
-        <TabsList className="relative flex gap-2 bg-background/30 p-2 rounded-xl border">
+        <TabsList className="relative flex gap-2 bg-background/30 p-4 rounded-xl border">
           {items.map((item) => {
             const isActive = item.value === active;
             return (
               <TabsTrigger key={item.value} value={item.value} asChild>
                 <motion.button
                   className={cn(
-                    "relative flex-1 flex justify-between items-center px-4 py-2 rounded-lg text-sm font-medium transition-colors",
+                    "relative flex-1 flex justify-between items-center h-8 rounded-lg text-sm font-medium transition-colors",
                     isActive ? "text-white" : "text-foreground/80",
                   )}
                   whileHover={{ scale: 1.05 }}
@@ -93,7 +93,7 @@ export default function BadgeTabs({
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
                         exit={{ scale: 0 }}
-                        className="ml-2 relative z-10 inline-flex items-center justify-center min-w-[20px] h-5 px-2 rounded-full bg-blue-500 text-white text-xs font-bold"
+                        className="ml-2 relative z-10 inline-flex items-center justify-center min-w-[20px] h-6 px-2 rounded-full bg-blue-500 text-white text-xs font-bold"
                       >
                         {item.badge}
                       </motion.span>
@@ -106,7 +106,7 @@ export default function BadgeTabs({
         </TabsList>
 
         {/* Tab Content */}
-        <div className="mt-4 w-full max-w-lg">
+        <div className="mt-4 w-full">
           {items.map((item) => (
             <TabsContent key={item.value} value={item.value}>
               <div className="p-4 bg-card rounded-lg">{item.content}</div>
