@@ -1,0 +1,529 @@
+---
+title: "Accessibility for UI Engineers: Designing and Building Inclusive React Components"
+description: "A practical guide for React/Next.js engineers to ship accessible components: semantics, keyboard, focus, ARIA, forms, color/contrast, motion, dialogs, menus, tables, charts, testing, and CI."
+image: https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/gradients/shade_shiters/shade-shifters-01.png
+author: Sri Somanaath
+tag: Accessibility
+publishedOn: 2025-10-24T12:02:00.000Z
+featured: false
+---
+
+Inclusive products are **faster, clearer, and easier to use for everyone**. Accessibility (a11y) isn’t a checklist you bolt on at the end—it’s a **design and engineering discipline** you practice from the first component. This guide gives UI engineers a **component‑level playbook** for React and Next.js (App Router): semantics, keyboard & focus patterns, ARIA, forms, motion, and a **testing + CI pipeline** that prevents regressions.
+
+> **You’ll build:** accessible Buttons, Links, Forms, Dialogs, Menus, and data displays—plus a small a11y toolkit (Skip Link, VisuallyHidden, LiveRegion) and reproducible tests with jest‑axe and Playwright.
+
+---
+
+## Table of Contents
+
+1. [Principles & Standards (WCAG 2.2 AA)](#principles--standards-wcag-22-aa)
+2. [Semantic HTML First](#semantic-html-first)
+3. [Keyboard Support Patterns](#keyboard-support-patterns)
+4. [Focus Management & Styles](#focus-management--styles)
+5. [Forms: Labels, Errors, and Live Announcements](#forms-labels-errors-and-live-announcements)
+6. [Color, Contrast, and Dark Mode](#color-contrast-and-dark-mode)
+7. [Motion & Reduced Motion](#motion--reduced-motion)
+8. [Dialogs, Menus, and Listboxes (Radix/shadcn)](#dialogs-menus-and-listboxes-radixshadcn)
+9. [Landmarks, Headings & Skip Links](#landmarks-headings--skip-links)
+10. [Media, Icons, and Images](#media-icons-and-images)
+11. [Tables, Charts, and Data‑Viz](#tables-charts-and-data-viz)
+12. [Virtualization & Infinite Scroll](#virtualization--infinite-scroll)
+13. [i18n/RTL & Logical CSS](#i18nrtl--logical-css)
+14. [Testing Playbook (jest‑axe, RTL, Playwright, Storybook)](#testing-playbook-jestaxe-rtl-playwright-storybook)
+15. [Next.js App Router & SSR Notes](#nextjs-app-router--ssr-notes)
+16. [Designing Accessible Component APIs (TypeScript)](#designing-accessible-component-apis-typescript)
+17. [CI/CD Gates & Regression Guardrails](#cicd-gates--regression-guardrails)
+18. [Reference Folder Structure](#reference-folder-structure)
+19. [FAQ](#faq)
+
+---
+
+## Principles & Standards (WCAG 2.2 AA)
+
+- **Perceivable, Operable, Understandable, Robust (POUR)**: use it to reason about every component.
+- Target **WCAG 2.2 AA**. 2.2 adds pointer target size, dragging alternatives, and more.
+- Test with **keyboard only**, **screen readers**, **high zoom (200–400%)**, **reduced motion**, and **RTL**.
+
+---
+
+## Semantic HTML First
+
+Prefer **native elements**; add ARIA only when necessary.
+
+**Bad**
+
+```tsx
+<div onClick={save} role="button" tabIndex={0}>
+  Save
+</div>
+```
+
+**Good**
+
+```tsx
+<button type="button" onClick={save}>
+  Save
+</button>
+```
+
+**Links vs Buttons**
+
+```tsx
+// Navigation
+<a href="/pricing">Pricing</a>
+// In‑page action
+<button type="button" onClick={doThing}>Do thing</button>
+```
+
+**Icon‑only buttons**
+
+```tsx
+type IconButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+  "aria-label": string; // required for icon-only
+};
+export function IconButton(props: IconButtonProps) {
+  return <button {...props} />;
+}
+```
+
+---
+
+## Keyboard Support Patterns
+
+- **Tab/Shift+Tab** through focusable elements in logical order.
+- **Enter/Space** activates buttons.
+- **Arrow keys** for listbox/menu/select patterns (use headless libs when possible).
+- **Escape** closes dialogs/menus/tooltips.
+- **Home/End/PageUp/PageDown** for long lists and tabs.
+
+**Roving tabindex (simplified example)**
+
+```tsx
+"use client";
+import * as React from "react";
+
+export function RovingList({ items }: { items: string[] }) {
+  const [idx, setIdx] = React.useState(0);
+  return (
+    <ul
+      role="listbox"
+      aria-activedescendant={`opt-${idx}`}
+      className="outline-none"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === "ArrowDown")
+          setIdx((i) => Math.min(items.length - 1, i + 1));
+        if (e.key === "ArrowUp") setIdx((i) => Math.max(0, i - 1));
+      }}
+    >
+      {items.map((text, i) => (
+        <li
+          id={`opt-${i}`}
+          role="option"
+          aria-selected={i === idx}
+          className={`rounded px-2 py-1 ${i === idx ? "bg-black/10" : ""}`}
+          key={text}
+        >
+          {text}
+        </li>
+      ))}
+    </ul>
+  );
+}
+```
+
+---
+
+## Focus Management & Styles
+
+- Use **`:focus-visible`** for elegant outlines; never remove focus entirely.
+- Return focus to the trigger when closing dialogs/menus.
+- Avoid **focus traps** unless in modals; then ensure **Shift+Tab** works.
+
+```css
+/* globals.css */
+:where(button, a, input, [tabindex]) {
+  outline: none;
+}
+:where(button, a, input, [tabindex]):focus-visible {
+  outline: 2px solid var(--focus-ring, #2563eb);
+  outline-offset: 2px;
+}
+```
+
+**Skip focus jumps**
+
+```tsx
+// Restore focus to trigger after async actions
+const btnRef = React.useRef<HTMLButtonElement>(null);
+// ... after close
+btnRef.current?.focus();
+```
+
+---
+
+## Forms: Labels, Errors, and Live Announcements
+
+- Always pair **`<label>` with `for`** and keep placeholder as hint, not label.
+- Tie help and error text with **`aria-describedby`**.
+- Announce async results with **live regions**.
+
+```tsx
+export function FormField({
+  id,
+  label,
+  hint,
+  error,
+  children,
+}: {
+  id: string;
+  label: string;
+  hint?: string;
+  error?: string;
+  children: React.ReactNode;
+}) {
+  const described =
+    [hint ? `${id}-hint` : null, error ? `${id}-err` : null]
+      .filter(Boolean)
+      .join(" ") || undefined;
+  return (
+    <div className="mb-4">
+      <label htmlFor={id} className="block text-sm font-medium">
+        {label}
+      </label>
+      <div className="mt-1">{children}</div>
+      {hint && !error && (
+        <p id={`${id}-hint`} className="mt-1 text-xs text-neutral-600">
+          {hint}
+        </p>
+      )}
+      {error && (
+        <p id={`${id}-err`} role="alert" className="mt-1 text-xs text-red-600">
+          {error}
+        </p>
+      )}
+    </div>
+  );
+}
+```
+
+**Live region**
+
+```tsx
+export function LiveStatus({ text }: { text: string }) {
+  return (
+    <div role="status" aria-live="polite" className="sr-only">
+      {text}
+    </div>
+  );
+}
+```
+
+**Visually hidden utility**
+
+```css
+/* sr-only utilities */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  overflow: hidden;
+  white-space: nowrap;
+}
+```
+
+---
+
+## Color, Contrast, and Dark Mode
+
+- Aim for **WCAG AA**: 4.5:1 for body text; 3:1 for large text/interactive UI.
+- Don’t communicate state **by color alone**; add icon/text cues.
+- In dark mode, increase text contrast and avoid pure black/white extremes.
+
+```css
+/* Example tokens */
+:root {
+  --fg: #111;
+  --fg-muted: #555;
+  --bg: #fff;
+}
+[data-theme="dark"] {
+  --fg: #f3f4f6;
+  --fg-muted: #cbd5e1;
+  --bg: #0b0c0f;
+}
+```
+
+---
+
+## Motion & Reduced Motion
+
+- Use motion to **clarify** state/space, not to decorate.
+- Respect `prefers-reduced-motion`; provide non‑animated fallbacks.
+
+```css
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+```
+
+---
+
+## Dialogs, Menus, and Listboxes (Radix/shadcn)
+
+Use **headless libraries** to get focus‑trapping, aria, and keyboard behavior correct.
+
+```tsx
+"use client";
+import * as Dialog from "@radix-ui/react-dialog";
+
+export function Modal({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <Dialog.Root>
+      <Dialog.Trigger asChild>
+        <button className="rounded bg-black px-3 py-2 text-white">Open</button>
+      </Dialog.Trigger>
+      <Dialog.Portal>
+        <Dialog.Overlay className="fixed inset-0 bg-black/50" />
+        <Dialog.Content
+          className="fixed left-1/2 top-1/2 w-[92vw] max-w-md -translate-x-1/2 -translate-y-1/2 rounded bg-white p-6 shadow-xl focus:outline-none"
+          aria-describedby={undefined}
+        >
+          <Dialog.Title className="text-lg font-semibold">{title}</Dialog.Title>
+          <div className="mt-3">{children}</div>
+          <Dialog.Close asChild>
+            <button className="mt-5 rounded border px-3 py-2">Close</button>
+          </Dialog.Close>
+        </Dialog.Content>
+      </Dialog.Portal>
+    </Dialog.Root>
+  );
+}
+```
+
+**Dropdown menus**: prefer Radix `@radix-ui/react-dropdown-menu`.  
+**Combobox/listbox**: prefer Radix `@radix-ui/react-select` or React Aria if you need full combobox support.
+
+---
+
+## Landmarks, Headings & Skip Links
+
+- Provide **landmarks**: `header`, `nav`, `main`, `aside`, `footer`.
+- Keep a clear **heading hierarchy** (`h1` → `h2` → `h3`).
+- Add a **Skip to main content** link as the first focusable element.
+
+```tsx
+export function SkipLink() {
+  return (
+    <a
+      href="#main"
+      className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:rounded focus:bg-black focus:px-3 focus:py-2 focus:text-white"
+    >
+      Skip to main content
+    </a>
+  );
+}
+```
+
+---
+
+## Media, Icons, and Images
+
+- **Images** need informative `alt` text; decorative images should be `alt=""`.
+- **SVG icons** in buttons/links need an accessible name via adjacent text or `aria-label`.
+- **Video/audio**: provide captions, transcripts, and visible controls.
+
+```tsx
+// Icon with hidden label
+<button aria-label="Close"><svg aria-hidden="true" ... /></button>
+```
+
+---
+
+## Tables, Charts, and Data‑Viz
+
+- Tables: use `<table>`, `<thead>`, `<tbody>`, `<th scope="col|row">`. Add captions.
+- Charts: provide **textual summaries**, a **data table fallback** (hidden but accessible), or `aria‑describedby` to a detailed description.
+
+```tsx
+<figure>
+  <svg role="img" aria-labelledby="salesTitle" aria-describedby="salesDesc">
+    ...
+  </svg>
+  <figcaption id="salesTitle">Monthly sales, 2024</figcaption>
+  <p id="salesDesc" className="sr-only">
+    Sales peaked in July at 1200 units; lowest in Feb at 260.
+  </p>
+</figure>
+```
+
+---
+
+## Virtualization & Infinite Scroll
+
+- Virtual lists complicate a11y. Prefer **“Load more”** buttons and **pagination**.
+- If you must virtualize, maintain **consistent focus management** and avoid shifting focus targets offscreen mid‑interaction.
+- Announce new content via live regions when loading more items.
+
+---
+
+## i18n/RTL & Logical CSS
+
+- Toggle `dir="rtl"` for RTL locales.
+- Use **logical properties** (`margin-inline`, `padding-inline`, `inset-inline`) and `:dir(rtl)` selectors so layouts flip correctly.
+- Date/number formats and reading order affect **ARIA labels**; use locale‑aware strings.
+
+```css
+.card {
+  padding-inline: 1rem;
+}
+:dir(rtl) .chevron {
+  transform: scaleX(-1);
+}
+```
+
+---
+
+## Testing Playbook (jest‑axe, RTL, Playwright, Storybook)
+
+**Unit/a11y**
+
+```bash
+pnpm add -D @testing-library/react jest-axe axe-core vitest jsdom
+```
+
+```ts
+// Button.a11y.test.tsx
+import { render } from "@testing-library/react";
+import { axe } from "jest-axe";
+import { Button } from "./Button";
+
+test("has no a11y violations", async () => {
+  const { container } = render(<Button>Submit</Button>);
+  expect(await axe(container)).toHaveNoViolations();
+});
+```
+
+**E2E**
+
+```ts
+// Playwright: reduced motion & keyboard nav
+await page.emulateMedia({ reducedMotion: "reduce" });
+await page.keyboard.press("Tab"); // assert visible focus
+```
+
+**Storybook**
+
+- Add stories per component/variant.
+- Run a11y addon in CI; capture screenshots for **visual regression** (light/dark, 200% zoom).
+
+---
+
+## Next.js App Router & SSR Notes
+
+- Keep interactive components as **Client Components**; avoid `window` at module scope.
+- Use route **groups/parallel routes** for shareable modals.
+- Stream with **`<Suspense>`** and provide **`loading.tsx`** skeletons with accessible names (e.g., `aria-busy`).
+- For images, use `next/image` and provide **meaningful alt**.
+
+---
+
+## Designing Accessible Component APIs (TypeScript)
+
+Design props to **force good patterns**.
+
+**Require a name for icon‑only buttons**
+
+```ts
+type TextChild = { children: string };
+type IconOnly = { children?: never; "aria-label": string };
+
+export type A11yButtonProps = (TextChild | IconOnly) &
+  Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "aria-label" | "children">;
+
+export function A11yButton(props: A11yButtonProps) {
+  return <button {...(props as any)} />;
+}
+```
+
+**Combobox contract**
+
+```ts
+type ComboboxProps = {
+  label: string; // visible label
+  items: Array<{ id: string; label: string }>;
+  onSelect(id: string): void;
+  "aria-describedby"?: string;
+};
+```
+
+Force app teams to pass labels and descriptions—your types become **guardrails**.
+
+---
+
+## CI/CD Gates & Regression Guardrails
+
+- **jest‑axe** in CI for core components.
+- **Playwright** E2E with reduced motion and 200% zoom snapshots.
+- **Lighthouse** budgets for accessibility.
+- **PR checklist**: keyboard path, focus return, labels, reduced motion, contrast.
+
+---
+
+## Reference Folder Structure
+
+```
+a11y-toolkit/
+├─ components/
+│  ├─ Button.tsx
+│  ├─ IconButton.tsx
+│  ├─ Modal.tsx
+│  ├─ RovingList.tsx
+│  ├─ FormField.tsx
+│  ├─ SkipLink.tsx
+│  ├─ LiveStatus.tsx
+│  └─ VisuallyHidden.css
+├─ tests/
+│  ├─ Button.a11y.test.tsx
+│  └─ Modal.a11y.test.tsx
+├─ app/
+│  ├─ layout.tsx
+│  └─ page.tsx
+└─ package.json
+```
+
+---
+
+## FAQ
+
+**Is ARIA still necessary if I use semantic HTML?**  
+Often **no**—native elements come with built‑in semantics. Use ARIA to **add** semantics or behavior that HTML can’t express (e.g., `role="dialog"` content).
+
+**How do I balance motion and accessibility?**  
+Use motion to clarify changes; keep it subtle and fast. Always support **reduced motion** and ensure focus visibility.
+
+**Are headless UI libraries worth it?**  
+Yes. Libraries like **Radix UI** and **shadcn/ui** provide robust keyboard/focus behavior so you can focus on styling and tokens.
+
+---
+
+### Next steps
+
+- Audit one flow **keyboard‑only** and fix focus/labels.
+- Replace hand‑rolled modals/menus with **Radix** primitives.
+- Add **jest‑axe** and a Playwright test with reduced motion in CI.
+- Document your a11y conventions in Storybook (light/dark, 200% zoom).

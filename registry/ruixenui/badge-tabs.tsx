@@ -51,11 +51,7 @@ export default function BadgeTabs({
         className,
       )}
     >
-      <Tabs
-        value={active}
-        onValueChange={setActive}
-        className="w-full"
-      >
+      <Tabs value={active} onValueChange={setActive} className="w-full">
         {/* Tabs */}
         <TabsList className="relative flex gap-2 bg-background/30 p-4 rounded-xl border">
           {items.map((item) => {

@@ -1,0 +1,244 @@
+---
+title: "Managing State in Large-Scale React Apps: From Context to Zustand to React Server State"
+description: "A practical guide to choosing and structuring state in big React/Next.js apps—local UI state, URL state, server cache, global client stores (Zustand), RSC data, performance, and testing."
+image: https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/gradients/shade_shiters/shade-shifters-01.png
+author: Sri Somanaath
+tag: Architecture
+publishedOn: 2025-10-24T12:44:00.000Z
+featured: false
+---
+
+In large applications, “state” isn’t one thing. It’s a **portfolio of concerns**: component‑local, URL, server‑derived, in‑memory caches, persistent preferences, and domain state shared across features. This guide helps you **choose the right tool**—**Context**, **reducers**, **Zustand**, and **React Server State** (App Router)—and combine them into a system that scales.
+
+> **You’ll get:** a taxonomy of state, selection heuristics, performance patterns (context splitting, selectors), SSR/RSC notes, a small Zustand store, and testing strategies.
+
+---
+
+## Table of Contents
+
+1. [State taxonomy (know what you’re managing)](#state-taxonomy-know-what-youre-managing)
+2. [Heuristics: which tool when](#heuristics-which-tool-when)
+3. [Context & reducers for cross‑cutting UI](#context--reducers-for-cross-cutting-ui)
+4. [Zustand for global client state (selectors & persistence)](#zustand-for-global-client-state-selectors--persistence)
+5. [React Server State (App Router): fetch on the server, hydrate small](#react-server-state-app-router-fetch-on-the-server-hydrate-small)
+6. [URL/search params as state](#urlsearch-params-as-state)
+7. [Performance: render isolation & memoization](#performance-render-isolation--memoization)
+8. [Testing stores and components](#testing-stores-and-components)
+9. [Reference folder layout](#reference-folder-layout)
+10. [FAQ](#faq)
+
+---
+
+## State taxonomy (know what you’re managing)
+
+- **Local UI state** – input values, toggles, disclosure. Keep **inside** components.
+- **URL state** – filters, sort, pagination; must be shareable/bookmarkable.
+- **Server cache** – data from APIs/DB. In App Router: **fetch on the server**; or use a client cache (TanStack Query) where client mutations need it.
+- **Global client state** – user preferences, ephemeral feature flags, cross‑feature selections. Use a **lightweight store** (e.g., Zustand).
+- **Persistent state** – settings saved to `localStorage`/IndexedDB.
+- **Derived/computed** – values computed from other state; avoid duplication.
+
+**Principle:** **Own state at the smallest reasonable boundary**, lift only when multiple consumers coordinate.
+
+---
+
+## Heuristics: which tool when
+
+| Need                             | Use                                 | Why                               |
+| -------------------------------- | ----------------------------------- | --------------------------------- |
+| One component’s UI               | `useState`                          | Zero indirection, easiest to test |
+| Cross‑cutting UI (theme, toasts) | Context (split providers)           | Rare updates, many readers        |
+| Domain selection across routes   | Zustand store + selectors           | Fine‑grained subscriptions        |
+| Server data list/detail          | Server Components (fetch on server) | Smaller bundles; streaming        |
+| Client‑side mutations/caching    | TanStack Query                      | Stale‑while‑revalidate, retries   |
+| Shareable filters                | URL/search params                   | Deep links & Back/Forward         |
+| Persisted preferences            | Zustand `persist` middleware        | Durable, selective serialization  |
+
+---
+
+## Context & reducers for cross‑cutting UI
+
+Context is great for **rarely changing** values read by many nodes (e.g., theme). Avoid putting **rapidly updating** state in Context—**every consumer re‑renders**.
+
+```tsx
+// theme-context.tsx
+"use client";
+import * as React from "react";
+
+type Theme = "light" | "dark";
+export const ThemeContext = React.createContext<{
+  theme: Theme;
+  setTheme(t: Theme): void;
+} | null>(null);
+
+export function ThemeProvider({ children }: { children: React.ReactNode }) {
+  const [theme, setTheme] = React.useState<Theme>("light");
+  const value = React.useMemo(() => ({ theme, setTheme }), [theme]);
+  return (
+    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
+  );
+}
+```
+
+For complex transitions, prefer **reducers** to keep updates predictable.
+
+---
+
+## Zustand for global client state (selectors & persistence)
+
+Zustand gives **fine‑grained subscriptions**—components re‑render only on **selected slices**.
+
+```bash
+pnpm add zustand zustand/middleware
+```
+
+```ts
+// stores/selection.ts
+import { create } from "zustand";
+import { persist, createJSONStorage } from "zustand/middleware";
+
+type SelState = {
+  selectedIds: Set<string>;
+  toggle(id: string): void;
+  clear(): void;
+};
+
+export const useSelection = create<SelState>()(
+  persist(
+    (set, get) => ({
+      selectedIds: new Set<string>(),
+      toggle: (id) =>
+        set((s) => {
+          const next = new Set(s.selectedIds);
+          next.has(id) ? next.delete(id) : next.add(id);
+          return { selectedIds: next };
+        }),
+      clear: () => set({ selectedIds: new Set() }),
+    }),
+    {
+      name: "app-selection",
+      version: 1,
+      storage: createJSONStorage(() => localStorage),
+      // persist Sets as arrays
+      partialize: (s) => ({ selectedIds: Array.from(s.selectedIds) as any }),
+      onRehydrateStorage: () => (state, error) => {
+        if (!error && state && Array.isArray((state as any).selectedIds)) {
+          (state as any).selectedIds = new Set((state as any).selectedIds);
+        }
+      },
+    },
+  ),
+);
+```
+
+**Selectors** avoid over‑rendering:
+
+```ts
+const count = useSelection((s) => s.selectedIds.size);
+```
+
+**Server/SSR note:** Access Zustand only in **Client Components**; derive initial props on the server and feed into the store if needed.
+
+---
+
+## React Server State (App Router): fetch on the server, hydrate small
+
+- Data fetching in **Server Components** keeps bundles smaller and allows **streaming**.
+- Use `revalidate`/tags for caching; use **Server Actions** for mutations, then `revalidatePath/tag` to refresh.
+- Hydrate small client islands for interactions (`"use client"`).
+
+```tsx
+// app/items/page.tsx (server)
+export const revalidate = 300;
+async function getItems() {
+  return fetch("https://api.example.com/items", {
+    next: { revalidate: 300, tags: ["items"] },
+  }).then((r) => r.json());
+}
+export default async function Page() {
+  const items = await getItems();
+  return <ItemsList initialItems={items} />; // client island
+}
+```
+
+---
+
+## URL/search params as state
+
+Use **search params** for list view state (q, sort, page). The App Router passes them to your page; keep **source of truth** in the URL.
+
+```tsx
+// app/items/page.tsx
+export default function ItemsPage({
+  searchParams,
+}: {
+  searchParams: { q?: string; page?: string };
+}) {
+  const q = searchParams.q ?? "";
+  const page = Number(searchParams.page ?? 1);
+  // ...
+}
+```
+
+Update via `useRouter().replace` with a new query object.
+
+---
+
+## Performance: render isolation & memoization
+
+- Split contexts: `ThemeProvider`, `ToastProvider`, not one giant root.
+- In Zustand, **select** minimal state and pass **stable callbacks**.
+- Virtualize long lists; avoid re‑render storms from scroll/drag.
+- Memoize expensive selectors and derived state.
+
+---
+
+## Testing stores and components
+
+- Test stores **outside React** (call actions; assert state).
+- Component tests: mount with minimal providers; use **role‑based queries**.
+- Integration/e2e: assert URL state survives **Back/Forward** and refresh.
+
+```ts
+import { act } from "react-dom/test-utils";
+import { useSelection } from "./stores/selection";
+
+act(() => useSelection.getState().toggle("a"));
+expect(useSelection.getState().selectedIds.has("a")).toBe(true);
+```
+
+---
+
+## Reference folder layout
+
+```
+src/
+  app/                   # App Router routes
+  stores/                # Zustand stores
+  components/            # UI
+  lib/                   # fetchers, adapters
+  hooks/                 # custom hooks
+tests/
+  unit/  e2e/
+```
+
+---
+
+## FAQ
+
+**Redux?**  
+Redux is still viable for very complex workflows or sophisticated devtools. For many teams, **Zustand + server state** is smaller and simpler.
+
+**When is Context enough?**  
+If updates are **rare** and read‑mostly, Context is fine. If a value changes often or many components subscribe, prefer a **store with selectors**.
+
+**Do I need TanStack Query with RSC?**  
+For server‑only reads, not always. For **client‑side mutations**, offline support, or cache orchestration, it’s extremely useful.
+
+---
+
+### Next steps
+
+- Inventory state by **type**.
+- Move server data to **Server Components**; shrink client islands.
+- Introduce a **Zustand** store for shared selections/preferences with selectors and persistence.

@@ -1,0 +1,293 @@
+---
+title: "Offline‑First & PWA Techniques for React and Next.js: Component Patterns and Caching Strategies"
+description: "Ship resilient apps: Workbox service workers, precache/route caching, IndexedDB with idb, background sync for POST, offline fallbacks, conflict resolution, and Lighthouse PWA checks."
+image: https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/gradients/shade_shiters/shade-shifters-01.png
+author: Sri Somanaath
+tag: PWA
+publishedOn: 2025-10-24T12:45:00.000Z
+featured: false
+---
+
+Offline isn’t a niche—**mobile networks flap all the time**. An offline‑first PWA gives users **continuity**: core screens load, edits queue, and data syncs when the network returns. This guide shows how to add a pragmatic PWA layer to **Next.js** and React components using a **Workbox** service worker, **IndexedDB** caching, and **background sync**—without over‑engineering.
+
+> **You’ll get:** a production‑lean service worker, caching recipes (precache, stale‑while‑revalidate, cache‑first), request queues, an offline fallback page, and test/CI tips.
+
+---
+
+## Table of Contents
+
+1. [App capabilities & threat model](#app-capabilities--threat-model)
+2. [Manifest & installability](#manifest--installability)
+3. [Service worker: Workbox setup](#service-worker-workbox-setup)
+4. [Caching strategies by asset type](#caching-strategies-by-asset-type)
+5. [Background sync for POST & mutation queues](#background-sync-for-post--mutation-queues)
+6. [IndexedDB for offline data](#indexeddb-for-offline-data)
+7. [Offline UI patterns & fallbacks](#offline-ui-patterns--fallbacks)
+8. [Security & privacy considerations](#security--privacy-considerations)
+9. [Testing & CI](#testing--ci)
+10. [Reference layout](#reference-layout)
+11. [FAQ](#faq)
+
+---
+
+## App capabilities & threat model
+
+Decide what must work offline:
+
+- **Shell** (navigation, home, settings)
+- **Read‑only data** (recent items)
+- **Edits** (queue while offline)
+- **Media** (thumbnails only? full assets?)
+
+Consider risks: **stale data**, **conflicts**, **sensitive info at rest** (encrypt or avoid caching).
+
+---
+
+## Manifest & installability
+
+Create `app/manifest.webmanifest`:
+
+```json
+{
+  "name": "Example App",
+  "short_name": "Example",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#111111",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
+```
+
+Link in `app/layout.tsx`:
+
+```tsx
+export const metadata = { manifest: "/manifest.webmanifest" };
+```
+
+---
+
+## Service worker: Workbox setup
+
+Use a custom SW with **Workbox**.
+
+```bash
+pnpm add -D workbox-cli workbox-build
+```
+
+`public/sw.js` (simplified):
+
+```js
+import { precacheAndRoute } from "workbox-precaching";
+import { registerRoute } from "workbox-routing";
+import {
+  StaleWhileRevalidate,
+  CacheFirst,
+  NetworkOnly,
+} from "workbox-strategies";
+import { ExpirationPlugin } from "workbox-expiration";
+
+// self.__WB_MANIFEST is replaced at build with files to precache
+precacheAndRoute(self.__WB_MANIFEST || []);
+
+// pages & JSON GET
+registerRoute(
+  ({ request }) =>
+    request.destination === "document" || request.destination === "empty",
+  new StaleWhileRevalidate({ cacheName: "pages" }),
+);
+
+// images
+registerRoute(
+  ({ request }) => request.destination === "image",
+  new CacheFirst({
+    cacheName: "images",
+    plugins: [
+      new ExpirationPlugin({
+        maxEntries: 200,
+        maxAgeSeconds: 60 * 60 * 24 * 30,
+      }),
+    ],
+  }),
+);
+```
+
+Inject the manifest during build (e.g., a simple script using `workbox-build` in `postbuild`). Register the SW in a client component:
+
+```tsx
+// components/ServiceWorkerRegister.tsx
+"use client";
+import { useEffect } from "react";
+export function ServiceWorkerRegister() {
+  useEffect(() => {
+    if ("serviceWorker" in navigator)
+      navigator.serviceWorker.register("/sw.js");
+  }, []);
+  return null;
+}
+```
+
+Include `<ServiceWorkerRegister />` in `app/layout.tsx`.
+
+---
+
+## Caching strategies by asset type
+
+| Asset                     | Strategy                              | Why                                           |
+| ------------------------- | ------------------------------------- | --------------------------------------------- |
+| App shell & static routes | **precache + stale‑while‑revalidate** | Instant starts + fresh on background          |
+| JSON GET APIs             | **stale‑while‑revalidate**            | Show cached data then update                  |
+| Images                    | **cache‑first** with expiration       | Save bandwidth; bounded growth                |
+| Fonts                     | **cache‑first**                       | Deterministic layout                          |
+| Authenticated APIs        | **network‑only** + app‑level cache    | Respect auth/CSRF; SW shouldn’t cache secrets |
+| POST/PUT/DELETE           | **background sync** queue             | Offline edits                                 |
+
+---
+
+## Background sync for POST & mutation queues
+
+Queue writes while offline; replay when online.
+
+```js
+// in sw.js (sketch)
+import { Queue } from "workbox-background-sync";
+const writeQueue = new Queue("writes");
+
+self.addEventListener("fetch", (event) => {
+  const req = event.request;
+  if (req.method === "POST" && new URL(req.url).pathname.startsWith("/api/")) {
+    event.respondWith(
+      (async () => {
+        try {
+          return await fetch(req.clone());
+        } catch {
+          await writeQueue.pushRequest({ request: req });
+          return new Response(JSON.stringify({ queued: true }), {
+            status: 202,
+            headers: { "Content-Type": "application/json" },
+          });
+        }
+      })(),
+    );
+  }
+});
+```
+
+In the UI, show **queued** status and reconcile server responses when replayed.
+
+---
+
+## IndexedDB for offline data
+
+Use a tiny wrapper like **`idb`** for structured storage.
+
+```bash
+pnpm add idb
+```
+
+```ts
+// lib/db.ts
+import { openDB } from "idb";
+export async function getDB() {
+  return openDB("app-db", 1, {
+    upgrade(db) {
+      db.createObjectStore("items", { keyPath: "id" });
+    },
+  });
+}
+```
+
+Sync logic: on successful GET, **cache** in IndexedDB; offline, **read** from it. Annotate records with `updatedAt` for conflict resolution.
+
+---
+
+## Offline UI patterns & fallbacks
+
+- **Offline banner/toast** when `navigator.onLine === false`.
+- **Optimistic UI** for edits with eventual reconciliation.
+- **/offline** route with support tips; SW returns it when navigation fails.
+- Disable only what truly requires network.
+
+```tsx
+"use client";
+export function NetworkStatus() {
+  const [online, setOnline] = useState(true);
+  useEffect(() => {
+    const on = () => setOnline(true),
+      off = () => setOnline(false);
+    window.addEventListener("online", on);
+    window.addEventListener("offline", off);
+    return () => {
+      window.removeEventListener("online", on);
+      window.removeEventListener("offline", off);
+    };
+  }, []);
+  if (online) return null;
+  return (
+    <div className="fixed bottom-2 left-1/2 -translate-x-1/2 rounded bg-black px-3 py-2 text-white">
+      You’re offline. Changes will sync later.
+    </div>
+  );
+}
+```
+
+---
+
+## Security & privacy considerations
+
+- Don’t cache **PII** or **auth tokens** in the SW.
+- Encrypt sensitive IndexedDB data or avoid offline caching for it.
+- Respect **CSP**; host SW & manifest on the same origin.
+- Allow users to **clear** app data easily.
+
+---
+
+## Testing & CI
+
+- **Lighthouse** PWA category in CI for installability.
+- **Playwright**: emulate offline with `page.context().setOffline(true)`.
+- **Manual** radio‑off tests on devices.
+- Monitor **sync failures** and queue sizes.
+
+---
+
+## Reference layout
+
+```
+app/
+  layout.tsx
+  offline/page.tsx
+public/
+  sw.js
+  manifest.webmanifest
+  icons/
+components/
+  ServiceWorkerRegister.tsx
+lib/
+  db.ts
+```
+
+---
+
+## FAQ
+
+**Do I need `next-pwa`?**  
+Plugins help, but a small **Workbox** setup is easy and keeps you in control.
+
+**How big should the cache be?**  
+Bound caches with **ExpirationPlugin** and purge on app updates.
+
+**What about Server Components?**  
+RSC plays fine with PWA—cache **HTML & JSON** responses; keep auth-sensitive routes network‑only.
+
+---
+
+### Next steps
+
+- Add a manifest & icons.
+- Ship a Workbox SW with precache + stale‑while‑revalidate for GET.
+- Introduce `idb` caching and a background write queue.
+- Add Lighthouse PWA checks to CI.

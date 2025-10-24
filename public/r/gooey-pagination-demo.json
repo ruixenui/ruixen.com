@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/gooey-pagination-demo.tsx",
-      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport GooeyPagination from \"@/registry/ruixenui/gooey-pagination\";\nimport { Card, CardContent } from \"@/components/ui/card\";\n\nexport default function GooeyPaginationDemo() {\n  return (\n    <main className=\"flex flex-col items-center justify-center min-h-screen bg-background px-4\">\n      <h1 className=\"text-3xl font-bold mb-8 text-center\">\n        Gooey Pagination Demo\n      </h1>\n\n      {/* GooeyPagination component */}\n      <GooeyPagination totalPages={7} className=\"mb-12\" />\n\n      {/* Info card */}\n      <Card className=\"max-w-md shadow-md\">\n        <CardContent className=\"p-6 text-center space-y-3\">\n          <h2 className=\"text-xl font-semibold\">How to Use</h2>\n          <p className=\"text-muted-foreground\">\n            Click the dots to switch pages, or use the arrows to navigate\n            between pages.\n          </p>\n          <p className=\"text-muted-foreground\">\n            Notice the gooey animation effect when the active dot moves.\n          </p>\n        </CardContent>\n      </Card>\n    </main>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport GooeyPagination from \"@/registry/ruixenui/gooey-pagination\";\n\nexport default function GooeyPaginationDemo() {\n  return (\n    <div className=\"flex flex-col items-center justify-center\">\n      <GooeyPagination totalPages={7} className=\"mb-12\" />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/gooey-pagination-demo.tsx"
     }

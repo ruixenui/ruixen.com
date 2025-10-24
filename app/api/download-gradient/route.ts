@@ -19,7 +19,7 @@ export async function GET(request: NextRequest) {
     if (!response.ok) {
       return NextResponse.json(
         { error: "Failed to fetch image" },
-        { status: response.status }
+        { status: response.status },
       );
     }
 
@@ -41,7 +41,7 @@ export async function GET(request: NextRequest) {
           transformer = transformer.resize(
             width ? parseInt(width) : null,
             height ? parseInt(height) : null,
-            { fit: "inside", withoutEnlargement: true }
+            { fit: "inside", withoutEnlargement: true },
           );
         }
 
@@ -76,7 +76,7 @@ export async function GET(request: NextRequest) {
     console.error("Download error:", error);
     return NextResponse.json(
       { error: "Failed to download image" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

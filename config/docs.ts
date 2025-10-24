@@ -23,12 +23,12 @@ export const docsConfig: DocsConfig = {
       event: "gradients_clicked",
       label: "New",
     },
-    // {
-    //   title: "Blog",
-    //   href: "/blog",
-    //   event: "header_cta_clicked",
-    //   label: "",
-    // },
+    {
+      title: "Blog",
+      href: "/blog",
+      event: "header_cta_clicked",
+      label: "",
+    },
   ],
   sidebarNav: [
     {

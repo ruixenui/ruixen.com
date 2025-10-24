@@ -1,0 +1,448 @@
+---
+title: "Dark Mode, Theming and Typography in Web Apps: How to Get It Right in 2025"
+description: "A practical 2025 guide to color systems, dark mode architecture, CSS variables, Tailwind tokens, OKLCH, variable fonts, and Next.js App Router with accessibility and performance baked in."
+image: https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/gradients/shade_shiters/shade-shifters-01.png
+author: Sri Somanaath
+tag: Design Systems
+publishedOn: 2025-10-24T11:48:00.000Z
+featured: false
+---
+
+Design that _feels right_ in 2025 balances **readability**, **brand expression**, and **energy efficiency**—especially in **dark mode**. This guide shows how to build a **token-driven** color and type system using **CSS variables**, **Tailwind**, **OKLCH color space**, **variable fonts**, and the **Next.js App Router**. You’ll get copy‑paste snippets, a11y tips, and performance practices that scale across products.
+
+> **You’ll build:** A dual‑theme token set (light/dark), Tailwind mappings, a theme toggle that syncs with system settings, fluid typography with variable fonts, and checks that keep contrast and layout stable.
+
+---
+
+## Table of Contents
+
+1. [Principles: Comfort, Contrast, and Consistency](#principles-comfort-contrast-and-consistency)
+2. [Color Tokens with CSS Variables (OKLCH‑first)](#color-tokens-with-css-variables-oklch-first)
+3. [Tailwind Mapping and Dark Mode Strategies](#tailwind-mapping-and-dark-mode-strategies)
+4. [Deriving Surfaces: Hover, Active, Border, and States](#deriving-surfaces-hover-active-border-and-states)
+5. [Theming in Next.js (App Router + next-themes)](#theming-in-nextjs-app-router--next-themes)
+6. [Typography Tokens & Fluid Scales](#typography-tokens--fluid-scales)
+7. [Variable Fonts: Performance and Polish](#variable-fonts-performance-and-polish)
+8. [Accessibility: Contrast, Motion, and Reading Comfort](#accessibility-contrast-motion-and-reading-comfort)
+9. [Testing, Linting, and Visual Regression](#testing-linting-and-visual-regression)
+10. [Reference Folder Structure](#reference-folder-structure)
+11. [FAQ](#faq)
+
+---
+
+## Principles: Comfort, Contrast, and Consistency
+
+- **Comfort first**: Dark themes aren’t just inverted light themes. Use **higher contrast for text**, lower chroma for large surfaces, and avoid pure black/white extremes to reduce eye strain.
+- **Predictable states**: Encode hover/active/focus/disabled with **systematic deltas** (lightness and chroma changes), not ad‑hoc colors.
+- **Consistency through tokens**: Designers edit tokens, engineers map tokens—components consume variables, not raw values.
+
+---
+
+## Color Tokens with CSS Variables (OKLCH‑first)
+
+The **OKLCH** color space tracks _perceptual_ lightness (L) and chroma (C) better than HSL—great for dark‑mode adjustments.
+
+**tokens.json (excerpt)**
+
+```json
+{
+  "color": {
+    "bg": {
+      "default": {
+        "light": "oklch(99% 0.01 95)",
+        "dark": "oklch(14% 0.01 95)"
+      },
+      "raised": { "light": "oklch(98% 0.01 95)", "dark": "oklch(18% 0.01 95)" }
+    },
+    "fg": {
+      "default": {
+        "light": "oklch(20% 0.02 95)",
+        "dark": "oklch(96% 0.02 95)"
+      },
+      "muted": { "light": "oklch(45% 0.02 95)", "dark": "oklch(70% 0.02 95)" }
+    },
+    "brand": {
+      "primary": {
+        "light": "oklch(62% 0.16 260)",
+        "dark": "oklch(70% 0.18 260)"
+      }
+    },
+    "danger": {
+      "default": { "light": "oklch(60% 0.18 25)", "dark": "oklch(65% 0.20 25)" }
+    }
+  },
+  "radius": { "sm": 6, "md": 10, "lg": 14, "full": 9999 },
+  "space": { "1": 4, "2": 8, "3": 12, "4": 16, "5": 24, "6": 32 }
+}
+```
+
+**Build tokens → CSS variables**
+
+```ts
+// scripts/build-tokens.ts (simplified)
+import fs from "node:fs";
+const tokens = JSON.parse(fs.readFileSync("tokens.json", "utf8"));
+
+function toVars(
+  obj: any,
+  path: string[] = [],
+  out: Record<string, string> = {},
+) {
+  for (const [k, v] of Object.entries(obj)) {
+    const p = [...path, k];
+    if (typeof v === "object" && v && "light" in v && "dark" in v) {
+      const name = `--${p.join("-")}`;
+      out[`${name}-light`] = v.light as string;
+      out[`${name}-dark`] = v.dark as string;
+    } else if (typeof v === "object" && v) {
+      toVars(v, p, out);
+    } else {
+      out[`--${p.join("-")}`] = String(v);
+    }
+  }
+  return out;
+}
+
+const vars = toVars(tokens);
+const css: string[] = [];
+css.push(":root{");
+for (const [k, val] of Object.entries(vars)) {
+  if (k.endsWith("-light")) css.push(`${k.replace("-light", "")}:${val};`);
+  else if (!k.endsWith("-dark")) css.push(`${k}:${val};`);
+}
+css.push("}");
+css.push(`[data-theme="dark"]{`);
+for (const [k, val] of Object.entries(vars)) {
+  if (k.endsWith("-dark")) css.push(`${k.replace("-dark", "")}:${val};`);
+}
+css.push("}");
+fs.writeFileSync("src/styles/tokens.css", css.join(""));
+```
+
+**Notes**
+
+- OKLCH has **excellent perceptual control**. Where unsupported, browsers fall back (ensure sensible defaults during design).
+- Prefer **alpha overlays** (`color-mix()`) for subtle surfaces in dark mode.
+
+---
+
+## Tailwind Mapping and Dark Mode Strategies
+
+Map CSS variables to Tailwind so utilities pull from tokens.
+
+```ts
+// tailwind.config.ts
+import type { Config } from "tailwindcss";
+
+export default {
+  darkMode: ["class", '[data-theme="dark"]'],
+  content: ["./app/**/*.{ts,tsx,mdx}", "./components/**/*.{ts,tsx,mdx}"],
+  theme: {
+    extend: {
+      colors: {
+        bg: {
+          DEFAULT: "var(--color-bg-default)",
+          raised: "var(--color-bg-raised)",
+        },
+        fg: {
+          DEFAULT: "var(--color-fg-default)",
+          muted: "var(--color-fg-muted)",
+        },
+        brand: { DEFAULT: "var(--color-brand-primary)" },
+        danger: { DEFAULT: "var(--color-danger-default)" },
+      },
+      borderRadius: {
+        sm: "var(--radius-sm)",
+        md: "var(--radius-md)",
+        lg: "var(--radius-lg)",
+        full: "var(--radius-full)",
+      },
+      spacing: {
+        1: "calc(var(--space-1) * 1px)",
+        2: "calc(var(--space-2) * 1px)",
+        3: "calc(var(--space-3) * 1px)",
+        4: "calc(var(--space-4) * 1px)",
+        5: "calc(var(--space-5) * 1px)",
+        6: "calc(var(--space-6) * 1px)",
+      },
+    },
+  },
+  plugins: [],
+} satisfies Config;
+```
+
+**Dark mode approaches**
+
+- **Class/Attribute toggle** (recommended): toggle `class="dark"` or `data-theme="dark"` for reliable hydration.
+- **Media query only**: respects system preference; add a toggle that overrides with a class.
+
+---
+
+## Deriving Surfaces: Hover, Active, Border, and States
+
+Use `color-mix()` to compute variants from your base tokens (keeps deltas consistent).
+
+```css
+:root {
+  --surface: var(--color-bg-default);
+  --surface-hover: color-mix(in oklch, var(--surface), white 4%);
+  --surface-active: color-mix(in oklch, var(--surface), black 4%);
+  --border-subtle: color-mix(in oklch, var(--surface), black 12%);
+}
+[data-theme="dark"] {
+  --surface-hover: color-mix(in oklch, var(--surface), white 6%);
+  --surface-active: color-mix(in oklch, var(--surface), black 6%);
+  --border-subtle: color-mix(in oklch, var(--surface), white 12%);
+}
+```
+
+This avoids hand‑picking dozens of colors and keeps _relative_ contrast stable across themes.
+
+---
+
+## Theming in Next.js (App Router + next-themes)
+
+```tsx
+// app/providers.tsx
+"use client";
+import { ThemeProvider } from "next-themes";
+
+export function Providers({ children }: { children: React.ReactNode }) {
+  return (
+    <ThemeProvider attribute="data-theme" defaultTheme="system" enableSystem>
+      {children}
+    </ThemeProvider>
+  );
+}
+```
+
+```tsx
+// components/ThemeToggle.tsx
+"use client";
+import { useTheme } from "next-themes";
+
+export function ThemeToggle() {
+  const { resolvedTheme, setTheme } = useTheme();
+  const isDark = resolvedTheme === "dark";
+  return (
+    <button
+      onClick={() => setTheme(isDark ? "light" : "dark")}
+      className="rounded-md border border-fg/20 px-3 py-2"
+      aria-pressed={isDark}
+    >
+      {isDark ? "Switch to Light" : "Switch to Dark"}
+    </button>
+  );
+}
+```
+
+**Tips**
+
+- Add a **no‑flash** strategy: set initial class via inline script to match system preference before hydration.
+- Keep themes **token‑driven** so components don’t care which theme is active.
+
+---
+
+## Typography Tokens & Fluid Scales
+
+Define semantic text roles: `display`, `headline`, `title`, `body`, `caption`, `code`—each maps to size/line height/weight/letter‑spacing.
+
+**tokens.type.json (excerpt)**
+
+```json
+{
+  "type": {
+    "fontFamily": { "sans": "var(--font-sans)", "mono": "var(--font-mono)" },
+    "scale": {
+      "display": { "size": { "min": 36, "max": 64 }, "lh": 1.1, "weight": 700 },
+      "title": { "size": { "min": 24, "max": 32 }, "lh": 1.2, "weight": 600 },
+      "body": { "size": { "min": 14, "max": 16 }, "lh": 1.55, "weight": 400 }
+    }
+  }
+}
+```
+
+**Fluid type with `clamp()`**
+
+```css
+:root {
+  --font-sans:
+    "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  --font-mono:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+
+  /* 320px → 1280px viewport range */
+  --fs-display: clamp(36px, 2.2vw + 28px, 64px);
+  --lh-display: 1.1;
+  --fs-title: clamp(24px, 1.1vw + 18px, 32px);
+  --lh-title: 1.2;
+  --fs-body: clamp(14px, 0.4vw + 12px, 16px);
+  --lh-body: 1.55;
+}
+```
+
+**Tailwind utilities referencing tokens**
+
+```ts
+// tailwind.config.ts (typography excerpt)
+export default {
+  theme: {
+    extend: {
+      fontFamily: { sans: "var(--font-sans)", mono: "var(--font-mono)" },
+      fontSize: {
+        display: [
+          "var(--fs-display)",
+          { lineHeight: "var(--lh-display)", fontWeight: "700" },
+        ],
+        title: [
+          "var(--fs-title)",
+          { lineHeight: "var(--lh-title)", fontWeight: "600" },
+        ],
+        body: [
+          "var(--fs-body)",
+          { lineHeight: "var(--lh-body)", fontWeight: "400" },
+        ],
+      },
+    },
+  },
+};
+```
+
+---
+
+## Variable Fonts: Performance and Polish
+
+Use **`next/font`** to self‑host variable fonts with subset and display strategies.
+
+```tsx
+// app/fonts.ts
+import { Inter, JetBrains_Mono } from "next/font/google";
+
+export const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-sans",
+  axes: ["wght"], // variable axis
+});
+
+export const mono = JetBrains_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-mono",
+});
+```
+
+```tsx
+// app/layout.tsx
+import { inter, mono } from "./fonts";
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en" className={`${inter.variable} ${mono.variable}`}>
+      <body>{children}</body>
+    </html>
+  );
+}
+```
+
+**Guidelines**
+
+- Prefer **variable fonts** (one file; multiple weights).
+- Use `display: swap` for fast text render; consider `optional` for secondary fonts.
+- Keep **line length ~45–75ch**; adjust letter‑spacing for heavy weights.
+- Stabilize metrics to avoid **CLS** (use `next/font`’s automatic metric adjustment).
+
+---
+
+## Accessibility: Contrast, Motion, and Reading Comfort
+
+- **Contrast**: Aim **WCAG AA** (4.5:1 body, 3:1 large text). With OKLCH, tweak **L** (lightness) to fix contrast _without_ shifting hue drastically.
+- **States**: Ensure focus styles are visible on dark backgrounds (e.g., `outline-offset`, `ring` tokens).
+- **Reduced motion**: Respect `prefers-reduced-motion`; use transform/opacity and keep durations 150–250ms for routine actions.
+- **Dyslexia-friendly options**: Allow alternate fonts and increased line spacing via settings.
+
+```css
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+```
+
+---
+
+## Testing, Linting, and Visual Regression
+
+- **jest-axe / axe-core** for a11y assertions on contrast/roles.
+- **Playwright**: snapshot light/dark, reduced motion on/off.
+- **Storybook**: build MDX docs for tokens, color swatches, and text roles; run a11y and visual tests in CI.
+- **Lighthouse** (or Web Vitals) to monitor CLS/LCP impacts of fonts and theme scripts.
+
+```ts
+// Playwright example: test both themes
+await page.goto("/");
+await page.evaluate(() =>
+  document.documentElement.setAttribute("data-theme", "light"),
+);
+await expect(page).toHaveScreenshot("home-light.png");
+await page.evaluate(() =>
+  document.documentElement.setAttribute("data-theme", "dark"),
+);
+await expect(page).toHaveScreenshot("home-dark.png");
+```
+
+---
+
+## Reference Folder Structure
+
+```
+design-system/
+├─ tokens.json
+├─ scripts/
+│  └─ build-tokens.ts
+├─ src/
+│  ├─ styles/
+│  │  ├─ tokens.css
+│  │  └─ typography.css
+│  ├─ components/
+│  ├─ utils/
+│  └─ index.ts
+├─ app/
+│  ├─ fonts.ts
+│  ├─ layout.tsx
+│  └─ providers.tsx
+├─ tailwind.config.ts
+└─ package.json
+```
+
+---
+
+## FAQ
+
+**Is pure black `#000` bad for dark mode?**  
+Not always, but it can cause **halation** and perceived glare. Slightly raising lightness (e.g., OKLCH L≈10–18%) often improves comfort, especially on OLED.
+
+**Can I support multiple brand themes?**  
+Yes—create **semantic tokens** and swap their values per theme (brand A/B/C). Keep component styles token‑only.
+
+**What if OKLCH isn’t supported in some browsers?**  
+Use progressive enhancement: precompute sRGB fallbacks where necessary and prefer `color-mix()`/OKLCH in modern browsers.
+
+**Do variable fonts always help performance?**  
+They reduce the number of files, but file size can be larger than a single static weight. Subset to the chars you need and keep weights to a sensible range.
+
+---
+
+### Next steps
+
+- Define your **color and type tokens**; generate CSS variables.
+- Map **Tailwind** to tokens; implement a **dark mode toggle** with system sync.
+- Add **fluid typography**, **variable fonts**, and **contrast checks** in CI.
+- Document tokens and sample components in **Storybook**; capture light/dark visual baselines.

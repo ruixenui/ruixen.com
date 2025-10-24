@@ -1,0 +1,614 @@
+---
+title: "Prototyping to Production: Transitioning Your UI Kit into a Next.js Component Library"
+description: "A hands‑on playbook for converting Figma/Storybook prototypes into a typed, tree‑shakable Next.js component library: tokens, RSC/SSR safety, packaging, docs, tests, CI/CD, and versioning."
+image: https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/gradients/shade_shiters/shade-shifters-03.png
+author: Sri Somanaath
+tag: Component Libraries
+publishedOn: 2025-10-24T12:15:00.000Z
+featured: false
+---
+
+Turning a polished **UI kit prototype** into a **production‑ready component library** is less about restyling pixels and more about **contracts**: tokens, API surfaces, accessibility, and release discipline. This guide gives you a **step‑by‑step blueprint** for building a reusable library that **slots cleanly into Next.js (App Router)**, stays **tree‑shakable**, and remains **easy to maintain** as your product grows.
+
+> **You’ll build:** a token pipeline (Figma → JSON → CSS variables), a typed React component library with per‑component entries, Storybook docs, a11y + visual tests, and a CI/CD release flow using Changesets.
+
+> **Related reading:**
+>
+> - [Web Application Design](https://ruixen.com/blog/web-application-design)
+> - [UI Libraries](https://ruixen.com/blog/ui-libraries)
+> - [React UI Animation Techniques](https://ruixen.com/blog/react-ui-animation)
+> - [Tailwind CSS Components](https://ruixen.com/blog/tailwind-css-components)
+
+---
+
+## Table of Contents
+
+1. [Groundwork: Audit your kit & define tokens](#groundwork-audit-your-kit--define-tokens)
+2. [Repo strategy: Monorepo, workspaces, and layout](#repo-strategy-monorepo-workspaces-and-layout)
+3. [Tokens pipeline: JSON → CSS variables → Tailwind](#tokens-pipeline-json--css-variables--tailwind)
+4. [Library packaging: ESM/CJS, exports map, SSR safety](#library-packaging-esmcjs-exports-map-ssr-safety)
+5. [Building components: headless primitives + variants](#building-components-headless-primitives--variants)
+6. [Storybook documentation (MDX) with live props](#storybook-documentation-mdx-with-live-props)
+7. [Testing: unit, a11y, visual, and e2e](#testing-unit-a11y-visual-and-e2e)
+8. [Performance: bundle size, tree‑shaking, and budgets](#performance-bundle-size-tree-shaking-and-budgets)
+9. [Next.js App Router integration (RSC + client islands)](#nextjs-app-router-integration-rsc--client-islands)
+10. [Versioning & releases (Changesets + GitHub Actions)](#versioning--releases-changesets--github-actions)
+11. [Migration plan: prototype → library in phases](#migration-plan-prototype--library-in-phases)
+12. [Governance: API changes, design reviews, ownership](#governance-api-changes-design-reviews-ownership)
+13. [Reference folder structures](#reference-folder-structures)
+14. [Checklists](#checklists)
+15. [FAQ](#faq)
+
+---
+
+## Groundwork: Audit your kit & define tokens
+
+Before writing code, **catalog what exists** in the prototype:
+
+- **Primitives:** Button, Link, Input, Textarea, Select, Checkbox, Radio, Switch, Dialog/Modal, Tooltip, Popover, Tabs, Accordion, Toast.
+- **Patterns:** Form field groups, page headers, cards, table scaffolds.
+- **Motion:** Durations, easings, micro‑interaction rules.
+- **Themes:** Light/dark, brand variants.
+
+Convert shared values into **design tokens** (color, spacing, radius, typography, shadows, motion). Agree on **naming** and **scales** your team will keep.
+
+> Aim for **semantic tokens** (e.g., `color.fg/default`, `color.bg/raised`) over raw hex usage in components.
+
+---
+
+## Repo strategy: Monorepo, workspaces, and layout
+
+Use a **pnpm workspace** with one consumer app and one (or more) packages:
+
+```
+.
+├─ apps/
+│  └─ web/                # Next.js consumer
+├─ packages/
+│  ├─ ui/                 # your component library
+│  ├─ tokens/             # tokens + build script
+│  └─ configs/            # shared tsconfig/eslint/prettier
+├─ .github/workflows/
+└─ pnpm-workspace.yaml
+```
+
+**pnpm-workspace.yaml**
+
+```yaml
+packages:
+  - "apps/*"
+  - "packages/*"
+```
+
+This structure allows **local linking** and fast iteration.
+
+---
+
+## Tokens pipeline: JSON → CSS variables → Tailwind
+
+Keep tokens source‑controlled as JSON and **generate CSS variables** your runtime reads.
+
+**packages/tokens/tokens.json (excerpt)**
+
+```json
+{
+  "color": {
+    "bg": {
+      "default": { "light": "#ffffff", "dark": "#0b0c0f" },
+      "raised": { "light": "#f9fafb", "dark": "#121417" }
+    },
+    "fg": {
+      "default": { "light": "#0b0c0f", "dark": "#f5f6f7" },
+      "muted": { "light": "#4b5563", "dark": "#9ca3af" }
+    },
+    "brand": { "primary": { "light": "#2563eb", "dark": "#60a5fa" } }
+  },
+  "radius": { "sm": 6, "md": 10, "lg": 14, "full": 9999 },
+  "space": { "1": 4, "2": 8, "3": 12, "4": 16, "5": 24 },
+  "motion": { "duration": { "fast": 150, "base": 250, "slow": 400 } }
+}
+```
+
+**packages/tokens/scripts/build.ts (simplified)**
+
+```ts
+import fs from "node:fs";
+const tokens = JSON.parse(fs.readFileSync("tokens.json", "utf8"));
+
+function flatten(
+  obj: any,
+  path: string[] = [],
+  out: Record<string, string> = {},
+) {
+  for (const [k, v] of Object.entries(obj)) {
+    const p = [...path, k];
+    if (typeof v === "object" && v && "light" in v && "dark" in v) {
+      const name = `--${p.join("-")}`;
+      out[`${name}-light`] = v.light as string;
+      out[`${name}-dark`] = v.dark as string;
+    } else if (typeof v === "object" && v) {
+      flatten(v, p, out);
+    } else {
+      out[`--${p.join("-")}`] = String(v);
+    }
+  }
+  return out;
+}
+
+const vars = flatten(tokens);
+const css: string[] = [];
+css.push(":root{");
+for (const [k, val] of Object.entries(vars)) {
+  if (k.endsWith("-light")) css.push(`${k.replace("-light", "")}:${val};`);
+  else if (!k.endsWith("-dark")) css.push(`${k}:${val};`);
+}
+css.push("}");
+css.push(`[data-theme="dark"]{`);
+for (const [k, val] of Object.entries(vars)) {
+  if (k.endsWith("-dark")) css.push(`${k.replace("-dark", "")}:${val};`);
+}
+css.push("}");
+fs.mkdirSync("dist", { recursive: true });
+fs.writeFileSync("dist/tokens.css", css.join(""));
+```
+
+**Tailwind mapping (consumer & library)**
+
+```ts
+// tailwind.config.ts (excerpt)
+export default {
+  darkMode: ["class", '[data-theme="dark"]'],
+  content: ["./app/**/*.{ts,tsx,mdx}", "./packages/ui/src/**/*.{ts,tsx}"],
+  theme: {
+    extend: {
+      colors: {
+        bg: {
+          DEFAULT: "var(--color-bg-default)",
+          raised: "var(--color-bg-raised)",
+        },
+        fg: {
+          DEFAULT: "var(--color-fg-default)",
+          muted: "var(--color-fg-muted)",
+        },
+        brand: { DEFAULT: "var(--color-brand-primary)" },
+      },
+      borderRadius: {
+        sm: "var(--radius-sm)",
+        md: "var(--radius-md)",
+        lg: "var(--radius-lg)",
+        full: "var(--radius-full)",
+      },
+      transitionDuration: {
+        fast: "var(--motion-duration-fast)",
+        base: "var(--motion-duration-base)",
+        slow: "var(--motion-duration-slow)",
+      },
+    },
+  },
+};
+```
+
+---
+
+## Library packaging: ESM/CJS, exports map, SSR safety
+
+**packages/ui/package.json**
+
+```json
+{
+  "name": "@acme/ui",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./button": {
+      "types": "./dist/button/index.d.ts",
+      "import": "./dist/button/index.js",
+      "require": "./dist/button/index.cjs"
+    },
+    "./dialog": {
+      "types": "./dist/dialog/index.d.ts",
+      "import": "./dist/dialog/index.js",
+      "require": "./dist/dialog/index.cjs"
+    },
+    "./styles.css": "./dist/styles.css"
+  },
+  "sideEffects": ["*.css"],
+  "files": ["dist"],
+  "peerDependencies": { "react": ">=18", "react-dom": ">=18" }
+}
+```
+
+**Build tool (tsup)**
+
+```ts
+// packages/ui/tsup.config.ts
+import { defineConfig } from "tsup";
+export default defineConfig({
+  entry: ["src/index.ts", "src/button/index.ts", "src/dialog/index.ts"],
+  format: ["esm", "cjs"],
+  dts: true,
+  splitting: true,
+  treeshake: true,
+  sourcemap: true,
+  clean: true,
+  minify: true,
+  external: ["react", "react-dom"],
+});
+```
+
+**SSR safety tips**
+
+- Avoid `window/document` at module scope.
+- Mark interactive files with `"use client"` **at the file top** (not the whole lib).
+- Provide extracted CSS (`dist/styles.css`) and let consumers opt in: `import "@acme/ui/styles.css"`.
+
+---
+
+## Building components: headless primitives + variants
+
+Use **Radix UI** or similar headless primitives for a11y behavior, then compose with Tailwind and a variant system.
+
+```bash
+pnpm add @radix-ui/react-dialog class-variance-authority
+```
+
+**Button (variants)**
+
+```tsx
+// packages/ui/src/button/Button.tsx
+import * as React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
+
+const styles = cva(
+  "inline-flex items-center justify-center rounded-md font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-brand/40 disabled:opacity-50 disabled:pointer-events-none transition-colors",
+  {
+    variants: {
+      variant: {
+        solid: "bg-brand text-white hover:bg-brand/90",
+        outline: "border border-fg/20 text-fg hover:bg-fg/5",
+        ghost: "text-fg hover:bg-fg/5",
+      },
+      size: {
+        sm: "h-8 px-3 text-sm",
+        md: "h-10 px-4 text-sm",
+        lg: "h-12 px-6 text-base",
+      },
+    },
+    defaultVariants: { variant: "solid", size: "md" },
+  },
+);
+
+export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
+  VariantProps<typeof styles>;
+
+export function Button({ className, variant, size, ...props }: ButtonProps) {
+  return <button className={styles({ variant, size, className })} {...props} />;
+}
+```
+
+**Dialog (Radix)**
+
+```tsx
+// packages/ui/src/dialog/Dialog.tsx
+"use client";
+import * as Dialog from "@radix-ui/react-dialog";
+export function Modal({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <Dialog.Root>
+      <Dialog.Trigger asChild>
+        <button className="rounded-md bg-brand px-4 py-2 text-white">
+          Open
+        </button>
+      </Dialog.Trigger>
+      <Dialog.Portal>
+        <Dialog.Overlay className="fixed inset-0 bg-black/50" />
+        <Dialog.Content
+          className="fixed left-1/2 top-1/2 w-[92vw] max-w-md -translate-x-1/2 -translate-y-1/2 rounded-lg bg-bg p-6 shadow-xl focus:outline-none"
+          aria-describedby={undefined}
+        >
+          <Dialog.Title className="text-lg font-semibold text-fg">
+            {title}
+          </Dialog.Title>
+          <div className="mt-3">{children}</div>
+          <Dialog.Close asChild>
+            <button className="mt-5 rounded border border-fg/20 px-3 py-2">
+              Close
+            </button>
+          </Dialog.Close>
+        </Dialog.Content>
+      </Dialog.Portal>
+    </Dialog.Root>
+  );
+}
+```
+
+**Barrel exports**
+
+```ts
+// packages/ui/src/index.ts
+export { Button } from "./button";
+export { Modal } from "./dialog";
+```
+
+---
+
+## Storybook documentation (MDX) with live props
+
+```bash
+pnpm dlx storybook@latest init
+```
+
+**Button.stories.mdx (excerpt)**
+
+```mdx
+import { Meta, Story, Canvas, ArgsTable } from "@storybook/blocks";
+import { Button } from "@acme/ui/button";
+
+<Meta title="Primitives/Button" of={Button} />
+
+# Button
+
+Primary action button with `solid | outline | ghost` and sizes `sm | md | lg`.
+
+<Canvas>
+  <Story
+    name="Playground"
+    args={{ variant: "solid", size: "md", children: "Click me" }}
+  />
+</Canvas>
+
+<ArgsTable of={Button} />
+```
+
+Document **a11y notes**, **dos/don’ts**, and link to Figma frames when relevant.
+
+---
+
+## Testing: unit, a11y, visual, and e2e
+
+- **Unit**: Vitest/Jest + React Testing Library.
+- **a11y**: jest‑axe for violations.
+- **Visual**: Storybook snapshots or Chromatic.
+- **E2E**: Playwright for keyboard flows and reduced‑motion.
+
+```bash
+pnpm add -D vitest @testing-library/react jsdom jest-axe axe-core @storybook/test-runner playwright
+```
+
+**Button.a11y.test.tsx**
+
+```ts
+import { render } from "@testing-library/react";
+import { axe } from "jest-axe";
+import { Button } from "./Button";
+test("no a11y violations", async () => {
+  const { container } = render(<Button>Submit</Button>);
+  expect(await axe(container)).toHaveNoViolations();
+});
+```
+
+**Playwright: reduced motion**
+
+```ts
+await page.emulateMedia({ reducedMotion: "reduce" });
+```
+
+---
+
+## Performance: bundle size, tree‑shaking, and budgets
+
+- Provide **subpath exports** (`@acme/ui/button`) and mark `"sideEffects": ["*.css"]`.
+- Avoid top‑level side effects; don’t inject CSS on import.
+- Add **size‑limit** budgets and a bundle analyzer.
+
+```json
+// packages/ui/package.json (excerpt)
+"size-limit": [
+  { "path": "dist/index.js", "limit": "8 KB" },
+  { "path": "dist/button.js", "limit": "3 KB" }
+],
+"scripts": { "size": "size-limit" }
+```
+
+---
+
+## Next.js App Router integration (RSC + client islands)
+
+- Keep components **RSC‑safe** by default; only interactive parts have `"use client"`.
+- In the consumer app, import tokens and CSS **once** in `app/layout.tsx` or `app/globals.css`.
+
+**apps/web/app/layout.tsx (excerpt)**
+
+```tsx
+import "@acme/tokens/dist/tokens.css";
+import "@acme/ui/dist/styles.css";
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  );
+}
+```
+
+**Using the library**
+
+```tsx
+// apps/web/app/page.tsx
+import { Button } from "@acme/ui/button";
+export default function Page() {
+  return <Button variant="solid">Get Started</Button>;
+}
+```
+
+---
+
+## Versioning & releases (Changesets + GitHub Actions)
+
+Use **Changesets** to record changes and publish semver versions.
+
+```bash
+pnpm add -D @changesets/cli
+pnpm changeset init
+```
+
+**.github/workflows/release.yml (excerpt)**
+
+```yaml
+name: Release
+on:
+  push:
+    branches: [main]
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          {
+            node-version: 20,
+            cache: "pnpm",
+            registry-url: "https://registry.npmjs.org",
+          }
+      - run: corepack enable
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: pnpm size
+      - name: Create Release PR or Publish
+        uses: changesets/action@v1
+        with:
+          publish: pnpm -r publish --access public
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+```
+
+---
+
+## Migration plan: prototype → library in phases
+
+1. **Inventory & tokens**: finalize names/scales; generate CSS variables.
+2. **Primitives first**: Button/Input/Modal with docs + a11y tests.
+3. **Adopt in one feature**: integrate the lib into a single Next.js route.
+4. **Harden**: add CI budgets, visual baselines, and publish a canary.
+5. **Expand**: add patterns (forms, table shell), deprecate old code with codemods if needed.
+
+---
+
+## Governance: API changes, design reviews, ownership
+
+- **CODEOWNERS** for `/packages/ui` require **design + engineering** review.
+- Maintain a **changelog** and migration notes per release.
+- Enforce **semantic versioning**; breaking changes require a migration doc and examples.
+- Hold **monthly audits** of tokens and component coverage.
+
+---
+
+## Reference folder structures
+
+**Component library**
+
+```
+packages/ui/
+├─ src/
+│  ├─ button/
+│  │  ├─ Button.tsx
+│  │  └─ index.ts
+│  ├─ dialog/
+│  │  ├─ Dialog.tsx
+│  │  └─ index.ts
+│  ├─ index.ts
+│  └─ styles.css
+├─ tsup.config.ts
+├─ package.json
+└─ README.md
+```
+
+**Consumer app (Next.js)**
+
+```
+apps/web/
+├─ app/
+│  ├─ layout.tsx
+│  └─ page.tsx
+├─ styles/globals.css
+└─ tailwind.config.ts
+```
+
+---
+
+## Checklists
+
+**Design & tokens**
+
+- [ ] Semantic tokens with light/dark values.
+- [ ] Motion durations/easing documented.
+- [ ] Typography roles and scale agreed.
+
+**Components & APIs**
+
+- [ ] Props typed with sensible defaults.
+- [ ] Variants consistent via `cva`.
+- [ ] A11y: labels, roles, keyboard paths, focus management.
+
+**Packaging & perf**
+
+- [ ] ESM/CJS outputs + subpath exports.
+- [ ] `"sideEffects": ["*.css"]` and no top‑level side effects.
+- [ ] Size budgets and analyzer reports.
+
+**Docs & tests**
+
+- [ ] Storybook MDX with usage, a11y notes.
+- [ ] jest‑axe + Playwright (reduced‑motion) in CI.
+- [ ] Visual snapshots (light/dark).
+
+**Releases**
+
+- [ ] Changesets entries per PR.
+- [ ] Release workflow publishes + updates changelog.
+- [ ] Migration guides for breaking changes.
+
+---
+
+## FAQ
+
+**Do I need a monorepo?**  
+Not strictly, but it simplifies local development and reuse across apps. For multi‑app orgs, monorepo + workspaces is the pragmatic default.
+
+**Tailwind required?**  
+No. The approach works with any CSS strategy. Tailwind maps well to tokenized variables and encourages consistency.
+
+**How do I ensure RSC compatibility?**  
+Keep non‑interactive exports server‑safe, and isolate interactive components behind `"use client"`. Avoid `window` at module scope.
+
+**What about animations?**  
+Use subtle micro‑interactions. If you add Framer Motion, make it a **peerDependency** and keep motion optional per component.
+
+---
+
+### Next steps
+
+- Stand up the **tokens** package; generate `dist/tokens.css`.
+- Scaffold **Button** and **Dialog** with docs + tests.
+- Wire **Changesets** and a **Release** workflow.
+- Integrate the library into one Next.js page, analyze bundle impact, and iterate.
