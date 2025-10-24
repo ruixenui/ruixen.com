@@ -33,7 +33,9 @@ export default function GradientsPage() {
   const [downloadFormat, setDownloadFormat] = useState<string>("png");
   const [downloadSize, setDownloadSize] = useState<string>("original");
   const [loadingId, setLoadingId] = useState<string | null>(null);
-  const [loadingType, setLoadingType] = useState<"quick" | "advanced" | null>(null);
+  const [loadingType, setLoadingType] = useState<"quick" | "advanced" | null>(
+    null,
+  );
 
   const filteredGradients =
     selectedCategory === "all"
@@ -44,7 +46,7 @@ export default function GradientsPage() {
     gradient: Gradient,
     format?: string,
     size?: string,
-    type: "quick" | "advanced" = "quick"
+    type: "quick" | "advanced" = "quick",
   ) => {
     const selectedFormat = format || downloadFormat;
     const selectedSize = size || downloadSize;
@@ -205,8 +207,12 @@ export default function GradientsPage() {
                   <Button
                     size="lg"
                     className="w-full"
-                    onClick={() => handleDownload(gradient, undefined, undefined, "quick")}
-                    disabled={loadingId === gradient.id && loadingType === "quick"}
+                    onClick={() =>
+                      handleDownload(gradient, undefined, undefined, "quick")
+                    }
+                    disabled={
+                      loadingId === gradient.id && loadingType === "quick"
+                    }
                   >
                     {loadingId === gradient.id && loadingType === "quick" ? (
                       <Loader2 className="mr-2 h-5 w-5 animate-spin" />
@@ -244,7 +250,9 @@ export default function GradientsPage() {
                               <SelectValue placeholder="Select format" />
                             </SelectTrigger>
                             <SelectContent>
-                              <SelectItem value="png">PNG (Lossless)</SelectItem>
+                              <SelectItem value="png">
+                                PNG (Lossless)
+                              </SelectItem>
                               <SelectItem value="jpg">JPG (Smaller)</SelectItem>
                               <SelectItem value="webp">
                                 WebP (Modern)
@@ -266,8 +274,12 @@ export default function GradientsPage() {
                               <SelectItem value="original">
                                 Original (3840 × 2160)
                               </SelectItem>
-                              <SelectItem value="4k">4K (3840 × 2160)</SelectItem>
-                              <SelectItem value="2k">2K (2560 × 1440)</SelectItem>
+                              <SelectItem value="4k">
+                                4K (3840 × 2160)
+                              </SelectItem>
+                              <SelectItem value="2k">
+                                2K (2560 × 1440)
+                              </SelectItem>
                               <SelectItem value="1080p">
                                 1080p (1920 × 1080)
                               </SelectItem>
@@ -286,17 +298,22 @@ export default function GradientsPage() {
                               gradient,
                               downloadFormat,
                               downloadSize,
-                              "advanced"
+                              "advanced",
                             )
                           }
-                          disabled={loadingId === gradient.id && loadingType === "advanced"}
+                          disabled={
+                            loadingId === gradient.id &&
+                            loadingType === "advanced"
+                          }
                         >
-                          {loadingId === gradient.id && loadingType === "advanced" ? (
+                          {loadingId === gradient.id &&
+                          loadingType === "advanced" ? (
                             <Loader2 className="mr-2 h-5 w-5 animate-spin" />
                           ) : (
                             <Download className="mr-2 h-5 w-5" />
                           )}
-                          {loadingId === gradient.id && loadingType === "advanced"
+                          {loadingId === gradient.id &&
+                          loadingType === "advanced"
                             ? "Downloading..."
                             : `Download ${downloadFormat.toUpperCase()}`}
                         </Button>

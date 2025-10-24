@@ -1,0 +1,381 @@
+---
+title: "Prototyping to Production: Transitioning Your UI Kit into a Next.js Component Library"
+description: "A step-by-step playbook to turn a prototype UI kit into a production-grade React/Next.js component library with tokens, a11y, Storybook, packaging, and CI/CD."
+image: https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/gradients/shade_shiters/shade-shifters-03.png
+author: Sri Somanaath
+tag: Component Libraries
+publishedOn: 2025-10-24T12:14:00.000Z
+featured: false
+---
+
+Turning a polished **prototype** into a **production component library** means answering hard questions: _How do we enforce consistency? How do we ship lean bundles? How do we guarantee accessibility?_ This playbook walks you through a pragmatic, **Next.js App Router‑friendly** approach—**tokens → primitives → docs → releases**—that scales.
+
+> **You’ll build:** a monorepo (pnpm workspaces), a token pipeline (Figma → JSON → CSS variables), a Tailwind‑mapped theme, accessible primitives (Radix/shadcn), Storybook docs, tsup/Rollup packaging, and a CI pipeline with size/a11y checks.
+
+---
+
+## Table of Contents
+
+1. [Decide the Architecture (mono vs single repo)](#decide-the-architecture-mono-vs-single-repo)
+2. [Define Tokens: Color, Type, Space, Radius, Motion](#define-tokens-color-type-space-radius-motion)
+3. [Map Tokens to Tailwind & CSS Variables](#map-tokens-to-tailwind--css-variables)
+4. [Pick Primitives & A11y Strategy (Radix/shadcn)](#pick-primitives--a11y-strategy-radixshadcn)
+5. [Component Patterns (buttons, inputs, dialog)](#component-patterns-buttons-inputs-dialog)
+6. [Documentation with Storybook (MDX) + Examples](#documentation-with-storybook-mdx--examples)
+7. [Packaging for Consumers (ESM, exports, sideEffects)](#packaging-for-consumers-esm-exports-sideeffects)
+8. [SSR/RSC Safety for Next.js App Router](#ssrrsc-safety-for-nextjs-app-router)
+9. [Versioning, Releases, and Changelogs](#versioning-releases-and-changelogs)
+10. [Adoption & Migration Plan](#adoption--migration-plan)
+11. [Reference Folder Structure](#reference-folder-structure)
+12. [FAQ](#faq)
+
+---
+
+## Decide the Architecture (mono vs single repo)
+
+**Monorepo (recommended)** with **pnpm workspaces** keeps your library, docs site, and example apps in sync.
+
+```json
+// package.json (root)
+{
+  "private": true,
+  "name": "design-system",
+  "workspaces": ["packages/*", "apps/*"],
+  "packageManager": "pnpm@9"
+}
+```
+
+```
+packages/
+  ui/          # component library
+  tokens/      # token JSON + build scripts
+apps/
+  docs/        # Storybook or Next.js docs site
+  example/     # demo Next.js app
+```
+
+> Consider **Turborepo** for caching and pipelines; keep CI simple at first.
+
+---
+
+## Define Tokens: Color, Type, Space, Radius, Motion
+
+Align design & code with a shared **tokens.json** (or Figma Variables export). Prefer **semantic** names over raw values.
+
+```json
+{
+  "color": {
+    "bg": { "default": { "light": "#ffffff", "dark": "#0b0c0f" } },
+    "fg": {
+      "default": { "light": "#0b0c0f", "dark": "#f5f6f7" },
+      "muted": { "light": "#60646c", "dark": "#cbd5e1" }
+    },
+    "brand": { "primary": { "light": "#2563eb", "dark": "#60a5fa" } }
+  },
+  "radius": { "sm": 6, "md": 10, "lg": 14, "full": 9999 },
+  "space": { "1": 4, "2": 8, "3": 12, "4": 16, "5": 24 },
+  "motion": { "duration": { "fast": 150, "base": 250, "slow": 400 } }
+}
+```
+
+Generate **CSS variables** at build time (Style Dictionary or a tiny script) and commit the result for deterministic builds.
+
+---
+
+## Map Tokens to Tailwind & CSS Variables
+
+```ts
+// tailwind.config.ts
+import type { Config } from "tailwindcss";
+
+export default {
+  darkMode: ["class", '[data-theme="dark"]'],
+  content: ["./packages/ui/src/**/*.{ts,tsx,mdx}", "./apps/**/*.{ts,tsx,mdx}"],
+  theme: {
+    extend: {
+      colors: {
+        bg: { DEFAULT: "var(--color-bg-default)" },
+        fg: {
+          DEFAULT: "var(--color-fg-default)",
+          muted: "var(--color-fg-muted)",
+        },
+        brand: { DEFAULT: "var(--color-brand-primary)" },
+      },
+      borderRadius: {
+        sm: "var(--radius-sm)",
+        md: "var(--radius-md)",
+        lg: "var(--radius-lg)",
+        full: "var(--radius-full)",
+      },
+      transitionDuration: {
+        fast: "var(--motion-duration-fast)",
+        base: "var(--motion-duration-base)",
+      },
+    },
+  },
+} satisfies Config;
+```
+
+Place the generated `tokens.css` in a global stylesheet and import it before Tailwind layers.
+
+---
+
+## Pick Primitives & A11y Strategy (Radix/shadcn)
+
+- **Radix UI**: unstyled, accessible **primitives** (Dialog, Dropdown, Tooltip).
+- **shadcn/ui**: **ownable** components built on Radix + Tailwind (copy code into your repo).
+- Validate with **jest‑axe** and **Playwright** (keyboard + reduced motion).
+
+```bash
+pnpm add @radix-ui/react-dialog @radix-ui/react-dropdown-menu @radix-ui/react-tooltip
+pnpm dlx shadcn@latest init
+pnpm dlx shadcn add button dialog input dropdown-menu tooltip
+```
+
+---
+
+## Component Patterns (buttons, inputs, dialog)
+
+Use **CVA (class-variance-authority)** to standardize variants and sizes.
+
+```tsx
+// packages/ui/src/button/Button.tsx
+import { cva, type VariantProps } from "class-variance-authority";
+
+const styles = cva(
+  "inline-flex items-center justify-center rounded-md font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/40 disabled:opacity-50 transition-colors",
+  {
+    variants: {
+      variant: {
+        primary: "bg-brand text-white hover:bg-brand/90",
+        outline: "border border-fg/20 text-fg hover:bg-fg/5",
+      },
+      size: {
+        sm: "h-8 px-3 text-sm",
+        md: "h-10 px-4 text-sm",
+        lg: "h-12 px-6 text-base",
+      },
+    },
+    defaultVariants: { variant: "primary", size: "md" },
+  },
+);
+
+export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
+  VariantProps<typeof styles>;
+export function Button({ className, variant, size, ...props }: ButtonProps) {
+  return <button className={styles({ variant, size, className })} {...props} />;
+}
+```
+
+**Dialog**: compose Radix behavior with your tokens.
+
+```tsx
+// packages/ui/src/dialog/Modal.tsx
+"use client";
+import * as Dialog from "@radix-ui/react-dialog";
+export function Modal({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <Dialog.Root>
+      <Dialog.Trigger asChild>
+        <button className="rounded bg-brand px-4 py-2 text-white">Open</button>
+      </Dialog.Trigger>
+      <Dialog.Portal>
+        <Dialog.Overlay className="fixed inset-0 bg-black/50" />
+        <Dialog.Content className="fixed left-1/2 top-1/2 w-[92vw] max-w-md -translate-x-1/2 -translate-y-1/2 rounded-lg bg-bg p-6 shadow-xl">
+          <Dialog.Title className="text-lg font-semibold text-fg">
+            {title}
+          </Dialog.Title>
+          <div className="mt-3">{children}</div>
+          <Dialog.Close asChild>
+            <button className="mt-5 rounded border px-3 py-2">Close</button>
+          </Dialog.Close>
+        </Dialog.Content>
+      </Dialog.Portal>
+    </Dialog.Root>
+  );
+}
+```
+
+---
+
+## Documentation with Storybook (MDX) + Examples
+
+Initialize Storybook and author **MDX** stories with props tables and live playgrounds.
+
+```bash
+pnpm dlx storybook@latest init
+```
+
+```mdx
+import { Meta, Story, Canvas, ArgsTable } from "@storybook/blocks";
+import { Button } from "./Button";
+
+<Meta title="Primitives/Button" of={Button} /># Button Primary action button
+with `primary | outline` variants.
+<Canvas>
+  <Story
+    name="Playground"
+    args={{ variant: "primary", size: "md", children: "Click me" }}
+  />
+</Canvas>
+<ArgsTable of={Button} />
+```
+
+Host docs in an **app** under `apps/docs` or use Storybook’s static build.
+
+---
+
+## Packaging for Consumers (ESM, exports, sideEffects)
+
+Package for tree‑shaking and SSR safety.
+
+```json
+// packages/ui/package.json (excerpt)
+{
+  "name": "@org/ui",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./button": {
+      "types": "./dist/button/index.d.ts",
+      "import": "./dist/button/index.js",
+      "require": "./dist/button/index.cjs"
+    },
+    "./dialog": {
+      "types": "./dist/dialog/index.d.ts",
+      "import": "./dist/dialog/index.js",
+      "require": "./dist/dialog/index.cjs"
+    },
+    "./styles.css": "./dist/styles.css"
+  },
+  "sideEffects": ["*.css"],
+  "peerDependencies": { "react": ">=18", "react-dom": ">=18" }
+}
+```
+
+**tsup config**
+
+```ts
+// packages/ui/tsup.config.ts
+import { defineConfig } from "tsup";
+export default defineConfig({
+  entry: ["src/index.ts", "src/button/index.ts", "src/dialog/index.ts"],
+  format: ["esm", "cjs"],
+  dts: true,
+  treeshake: true,
+  splitting: true,
+  sourcemap: true,
+  clean: true,
+  external: ["react", "react-dom"],
+});
+```
+
+---
+
+## SSR/RSC Safety for Next.js App Router
+
+- Avoid `window`/`document` at module scope.
+- Mark interactive components with `"use client"` **only where needed**.
+- Keep server components **data‑only**, pass serializable props to client primitives.
+- Provide extracted CSS (`dist/styles.css`) to simplify SSR.
+
+---
+
+## Versioning, Releases, and Changelogs
+
+Use **Changesets** for semantic versioning and automated release notes.
+
+```bash
+pnpm add -D @changesets/cli
+pnpm changeset init
+```
+
+GitHub Action (simplified):
+
+```yaml
+name: release
+on: [push]
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20, cache: "pnpm" }
+      - run: corepack enable
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: pnpm changeset version
+      - run: pnpm -r publish --access public
+```
+
+---
+
+## Adoption & Migration Plan
+
+1. **Inventory** prototype components; pick 3–5 highest ROI (Button, Input, Dialog, Menu).
+2. **Tokenize** colors/space/type; remove hard‑coded values.
+3. **Replace** risky widgets with Radix primitives.
+4. **Document** in Storybook; add **jest‑axe** smoke tests.
+5. **Release** `0.1` canary → integrate in one Next.js route → fix ergonomics → `0.2`.
+6. **Communicate** deprecations and provide codemods for renames.
+
+---
+
+## Reference Folder Structure
+
+```
+design-system/
+├─ packages/
+│  ├─ tokens/
+│  │  ├─ tokens.json
+│  │  └─ build-tokens.ts
+│  └─ ui/
+│     ├─ src/
+│     │  ├─ button/
+│     │  ├─ dialog/
+│     │  ├─ index.ts
+│     │  └─ styles.css
+│     ├─ tsup.config.ts
+│     └─ package.json
+├─ apps/
+│  ├─ docs/      # Storybook or Next.js docs
+│  └─ example/   # consumer app
+└─ package.json
+```
+
+---
+
+## FAQ
+
+**Why not ship a styled kit instead?**  
+Styled kits are fast to start but hard to align with a unique brand. A token‑driven, headless approach keeps control in your hands.
+
+**Do we need Storybook if we have a docs site?**  
+Storybook excels at **isolated states/props** and visual regression. Many teams run both: docs for narratives, Storybook for engineering.
+
+**How do we keep bundles small?**  
+ESM‑first, per‑component exports, no top‑level side effects, extracted CSS, and peer heavy deps.
+
+---
+
+### Next steps
+
+- Lock tokens and generate CSS vars.
+- Ship 3 primitives with stories and a11y tests.
+- Package with tsup and verify bundle via an analyzer.
+- Cut a canary and integrate into one Next.js route, then iterate.

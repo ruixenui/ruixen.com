@@ -1,0 +1,233 @@
+---
+title: "Internationalization and Right‑to‑Left (RTL) UI in React: Patterns, Testing, and Edge Cases"
+description: "Ship fully localized React/Next.js apps: routing & locale detection, formatting with Intl, dir/RTL patterns, logical CSS, bidi text, icons, and robust tests for accessibility & layout."
+image: https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/gradients/shade_shiters/shade-shifters-01.png
+author: Sri Somanaath
+tag: Internationalization
+publishedOn: 2025-10-24T12:47:00.000Z
+featured: false
+---
+
+Localization is more than string translation. You must handle **routing**, **pluralization**, **dates/numbers**, and **directionality**. This guide shows production patterns for **Next.js App Router** and plain React: locale routing, server‑first translations, **RTL** support with **logical CSS**, bidirectional text edge cases, and testing strategies.
+
+> **You’ll get:** a locale segment layout, middleware detection, `Intl.*` formatting, `dir`/`:dir()` patterns, flipping icons, and Playwright tests for RTL & 200% zoom.
+
+---
+
+## Table of Contents
+
+1. [Locale routing & detection](#locale-routing--detection)
+2. [Loading translations](#loading-translations)
+3. [Formatting with `Intl`](#formatting-with-intl)
+4. [Directionality (`dir`) & logical CSS](#directionality-dir--logical-css)
+5. [Icons, illustrations & charts in RTL](#icons-illustrations--charts-in-rtl)
+6. [Bidi (bidirectional) text edge cases](#bidi-bidirectional-text-edge-cases)
+7. [Forms & input carets](#forms--input-carets)
+8. [Testing: Playwright & visual diffs](#testing-playwright--visual-diffs)
+9. [Reference layout](#reference-layout)
+10. [FAQ](#faq)
+
+---
+
+## Locale routing & detection
+
+Use a **locale segment** in the App Router:
+
+```
+app/
+  [locale]/
+    layout.tsx
+    page.tsx
+```
+
+**Middleware** can redirect `/` → `/ar` based on `Accept-Language` with a whitelist.
+
+```ts
+// middleware.ts (sketch)
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+
+const locales = ["en", "ar", "fr"];
+export function middleware(req: NextRequest) {
+  const { pathname } = req.nextUrl;
+  if (pathname === "/") {
+    const pref = req.headers.get("Accept-Language") || "";
+    const chosen = locales.find((l) => pref.includes(l)) || "en";
+    return NextResponse.redirect(new URL(`/${chosen}`, req.url));
+  }
+  return NextResponse.next();
+}
+```
+
+Set `<html lang dir>` per locale:
+
+```tsx
+// app/[locale]/layout.tsx
+export default function LocaleLayout({
+  children,
+  params,
+}: {
+  children: React.ReactNode;
+  params: { locale: string };
+}) {
+  const dir = params.locale === "ar" || params.locale === "he" ? "rtl" : "ltr";
+  return (
+    <html lang={params.locale} dir={dir}>
+      <body>{children}</body>
+    </html>
+  );
+}
+```
+
+---
+
+## Loading translations
+
+Prefer **server‑side loading** so strings render with HTML.
+
+- Store messages as JSON per locale.
+- For dynamic content, stream with `<Suspense>`.
+
+```ts
+// lib/i18n.ts
+export async function loadMessages(locale: string) {
+  return (await import(`../messages/${locale}.json`)).default;
+}
+```
+
+Pass messages via props/context to client islands if needed.
+
+---
+
+## Formatting with `Intl`
+
+Use **Intl.DateTimeFormat**, **Intl.NumberFormat**, **Intl.PluralRules** for locale‑aware output.
+
+```ts
+export function formatCurrency(
+  amount: number,
+  locale: string,
+  currency: string,
+) {
+  return new Intl.NumberFormat(locale, { style: "currency", currency }).format(
+    amount,
+  );
+}
+```
+
+Pluralization:
+
+```ts
+const pr = new Intl.PluralRules(locale);
+const cat = pr.select(count); // "one" | "other" | etc.
+```
+
+---
+
+## Directionality (`dir`) & logical CSS
+
+Set document direction via `<html dir>` and prefer **logical properties** so layouts flip automatically.
+
+```css
+.card {
+  padding-inline: 1rem;
+  border-inline-start: 1px solid var(--border);
+}
+:dir(rtl) .chevron {
+  transform: scaleX(-1);
+} /* flip icons */
+```
+
+Avoid hardcoded `left/right`; use `inline-start/end` and `block-start/end`.
+
+---
+
+## Icons, illustrations & charts in RTL
+
+- Mirror **chevrons/arrows**. Keep **play/volume** icons LTR (industry convention).
+- For charts, swap default origin if it encodes direction (e.g., waterfall). Always keep **numerals** readable; switch locale for axis formatting.
+
+---
+
+## Bidi (bidirectional) text edge cases
+
+When mixing RTL text with LTR codes/URLs:
+
+- Wrap LTR fragments with `<bdi dir="ltr">code-123</bdi>`.
+- Use `unicode-bidi: plaintext` on inputs so pasted text flows correctly.
+- Avoid inserting punctuation between opposite‑direction fragments without **bidi isolation**.
+
+```html
+<p><bdi dir="ltr">https://example.com</bdi> ‏تم النسخ</p>
+```
+
+---
+
+## Forms & input carets
+
+For numeric/technical fields, force LTR:
+
+```tsx
+<input inputMode="numeric" dir="ltr" className="text-end" />
+```
+
+Keep validation/error messages localized and maintain **focus order**.
+
+---
+
+## Testing: Playwright & visual diffs
+
+```ts
+import { test, expect } from "@playwright/test";
+
+test("RTL layout and strings", async ({ page }) => {
+  await page.goto("/ar");
+  const dir = await page.getAttribute("html", "dir");
+  expect(dir).toBe("rtl");
+  await expect(page).toHaveScreenshot("home-ar-rtl.png");
+});
+```
+
+- Test **light/dark** + RTL snapshots.
+- Increase zoom to **200%** to reveal overflow issues.
+- Keyboard test: Arrow keys in RTL may map opposite for carousels—verify behavior.
+
+---
+
+## Reference layout
+
+```
+app/
+  [locale]/
+    layout.tsx
+    page.tsx
+  api/
+lib/
+  i18n.ts
+messages/
+  en.json
+  ar.json
+public/
+  flags/
+```
+
+---
+
+## FAQ
+
+**Do I need separate fonts for RTL?**  
+Often yes—choose fonts with good Arabic/Hebrew support; use `next/font` with subsets.
+
+**How do I handle mixed numerals?**  
+Use `Intl.NumberFormat` with the correct locale; consider forcing LTR for account numbers.
+
+**What library should I use?**  
+Any established i18n library works. With the App Router, **server‑first loading** of messages is key; client libraries manage interpolation and hooks.
+
+---
+
+### Next steps
+
+- Add a `[locale]` segment and middleware detection.
+- Switch to **logical CSS** and audit left/right uses.
+- Snapshot RTL screens and fix flipped icons and overflow.

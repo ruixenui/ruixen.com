@@ -1,0 +1,464 @@
+---
+title: "10 Common UI/UX Mistakes in Web Apps and How to Fix Them with Component‑Driven Design"
+description: "Identify and fix the top UI/UX pitfalls using component-driven design: React/Next.js patterns, Tailwind CSS tokens, accessible primitives (Radix), testing, and Storybook docs."
+image: https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/gradients/shade_shiters/shade-shifters-03.png
+author: Sri Somanaath
+tag: UI/UX
+publishedOn: 2025-10-24T10:50:00.000Z
+featured: false
+---
+
+Modern web apps often fail not because of a lack of features, but because **basic UI/UX principles** are inconsistently applied. The fastest way to raise quality is to **treat UI as a system**: define tokens, compose accessible primitives, document component contracts, and ship through versioned releases.
+
+This guide lists **10 common UI/UX mistakes** and shows how to **fix each with component‑driven design**—using **React/Next.js**, **Tailwind CSS**, and **headless primitives** (e.g., **Radix UI**). You’ll get quick checklists, code snippets, and recommended patterns you can roll into your own design system.
+
+> **Related reading** (internal):
+>
+> - [Web Design Best Practices](https://ruixen.com/blog/web-design-best-practices)
+> - [Web Application Design](https://ruixen.com/blog/web-application-design)
+> - [UI Libraries](https://ruixen.com/blog/ui-libraries)
+> - [UI Animation](https://ruixen.com/blog/ui-animation)
+
+---
+
+## Table of Contents
+
+1. [Inconsistent spacing, typography, and color](#1-inconsistent-spacing-typography-and-color)
+2. [Non‑accessible dialogs, menus, and tooltips](#2-non-accessible-dialogs-menus-and-tooltips)
+3. [Weak feedback: loading, errors, and success states](#3-weak-feedback-loading-errors-and-success-states)
+4. [Ambiguous affordances and poor emphasis](#4-ambiguous-affordances-and-poor-emphasis)
+5. [Broken forms: labels, validation, and help text](#5-broken-forms-labels-validation-and-help-text)
+6. [Overloaded layouts and information hierarchy issues](#6-overloaded-layouts-and-information-hierarchy-issues)
+7. [Navigation that loses state or breaks deep‑links](#7-navigation-that-loses-state-or-breaks-deep-links)
+8. [Motion misuse (too much, too little, or inaccessible)](#8-motion-misuse-too-much-too-little-or-inaccessible)
+9. [Unresponsive UI and tiny touch targets](#9-unresponsive-ui-and-tiny-touch-targets)
+10. [Fragmented components without docs or tests](#10-fragmented-components-without-docs-or-tests)
+
+---
+
+## 1) Inconsistent spacing, typography, and color
+
+**What it looks like**  
+Pages feel messy. Buttons don’t align. Font sizes vary arbitrarily. Colors near‑match but aren’t exact.
+
+**Why it hurts**  
+Users perceive the product as unreliable. Teams ship slower because every screen restyles basics.
+
+**Fix (component‑driven)**  
+Adopt **design tokens** for spacing, radii, color, and typography. Generate **CSS variables** and point **Tailwind** to them.
+
+```ts
+// tailwind.config.ts (excerpt)
+export default {
+  darkMode: ["class", '[data-theme="dark"]'],
+  theme: {
+    extend: {
+      colors: {
+        bg: { DEFAULT: "var(--color-bg-default)" },
+        fg: {
+          DEFAULT: "var(--color-fg-default)",
+          muted: "var(--color-fg-muted)",
+        },
+        brand: { DEFAULT: "var(--color-brand-primary)" },
+      },
+      spacing: {
+        1: "calc(var(--space-1) * 1px)",
+        2: "calc(var(--space-2) * 1px)",
+        3: "calc(var(--space-3) * 1px)",
+      },
+      borderRadius: {
+        sm: "var(--radius-sm)",
+        md: "var(--radius-md)",
+        lg: "var(--radius-lg)",
+      },
+    },
+  },
+};
+```
+
+**Checklist**
+
+- [ ] Define token JSON → build to CSS vars.
+- [ ] Reference vars in Tailwind.
+- [ ] Lint spacing/typography via story visual tests.
+
+---
+
+## 2) Non‑accessible dialogs, menus, and tooltips
+
+**What it looks like**  
+Custom modals that trap focus or close unexpectedly; menus that aren’t keyboard‑navigable; tooltips that block content.
+
+**Why it hurts**  
+Accessibility failures, support tickets, and lower conversions on keyboard/AT users.
+
+**Fix (component‑driven)**  
+Use **headless primitives** (e.g., **Radix UI**) for focus management, aria attributes, and keyboard behavior. Style with Tailwind.
+
+```tsx
+import * as Dialog from "@radix-ui/react-dialog";
+
+export function Modal({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <Dialog.Root>
+      <Dialog.Trigger className="rounded-md bg-brand text-white px-4 py-2">
+        Open
+      </Dialog.Trigger>
+      <Dialog.Portal>
+        <Dialog.Overlay className="fixed inset-0 bg-black/50" />
+        <Dialog.Content className="fixed left-1/2 top-1/2 w-[92vw] max-w-md -translate-x-1/2 -translate-y-1/2 rounded-lg bg-bg p-6 shadow-xl focus:outline-none">
+          <Dialog.Title className="text-lg font-semibold text-fg">
+            {title}
+          </Dialog.Title>
+          <div className="mt-4">{children}</div>
+          <Dialog.Close className="mt-6 h-10 rounded-md border border-fg/20 px-4">
+            Close
+          </Dialog.Close>
+        </Dialog.Content>
+      </Dialog.Portal>
+    </Dialog.Root>
+  );
+}
+```
+
+**Checklist**
+
+- [ ] Prefer Radix/Headless UI for complex interactions.
+- [ ] Test keyboard flows: Tab/Shift+Tab/Escape/Arrows.
+- [ ] Provide titles, roles, and dismiss patterns.
+
+---
+
+## 3) Weak feedback: loading, errors, and success states
+
+**What it looks like**  
+Buttons do nothing on click. Forms fail silently. Long fetches show blank screens.
+
+**Why it hurts**  
+Users abandon tasks; perceived slowness increases.
+
+**Fix (component‑driven)**  
+Create **Feedback primitives**: `Spinner`, `Skeleton`, `InlineError`, `Toast`. Use `aria-busy` and disable actions while pending.
+
+```tsx
+export function LoadingButton({ loading, children, ...props }: any) {
+  return (
+    <button
+      aria-busy={loading}
+      disabled={loading}
+      className="inline-flex items-center gap-2 rounded-md bg-brand px-4 py-2 text-white disabled:opacity-60"
+      {...props}
+    >
+      {loading && (
+        <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/70 border-t-transparent" />
+      )}
+      {children}
+    </button>
+  );
+}
+```
+
+**Checklist**
+
+- [ ] Show progress within 150–300ms.
+- [ ] Disable while pending; prevent double submits.
+- [ ] Use optimistic UI only when safe to roll back.
+
+---
+
+## 4) Ambiguous affordances and poor emphasis
+
+**What it looks like**  
+Everything looks the same; users can’t tell primary vs secondary actions. Links styled like buttons and vice‑versa.
+
+**Why it hurts**  
+Decision friction; accidental destructive clicks.
+
+**Fix (component‑driven)**  
+Unify actions with a **variant system** (e.g., **class‑variance‑authority**). Make **Link** and **Button** distinct and consistent.
+
+```tsx
+import { cva, type VariantProps } from "class-variance-authority";
+
+const button = cva(
+  "inline-flex items-center justify-center rounded-md font-medium focus:outline-none focus-visible:ring-2 transition-colors",
+  {
+    variants: {
+      variant: {
+        primary: "bg-brand text-white hover:bg-brand/90",
+        secondary: "border border-fg/20 text-fg hover:bg-fg/5",
+        danger: "bg-red-600 text-white hover:bg-red-700",
+      },
+      size: {
+        sm: "h-8 px-3 text-sm",
+        md: "h-10 px-4 text-sm",
+        lg: "h-12 px-6 text-base",
+      },
+    },
+    defaultVariants: { variant: "primary", size: "md" },
+  },
+);
+```
+
+**Checklist**
+
+- [ ] One primary action per surface.
+- [ ] Use consistent variants across the app.
+- [ ] Keep destructive actions visually distinct.
+
+---
+
+## 5) Broken forms: labels, validation, and help text
+
+**What it looks like**  
+Placeholder‑only inputs; unclear errors; submit buttons that do nothing.
+
+**Why it hurts**  
+Lower completion rates; inaccessible for screen readers.
+
+**Fix (component‑driven)**  
+Wrap inputs in a **FormField** with label, description, and error region. Validate on blur/submit; keep errors near fields.
+
+```tsx
+export function FormField({
+  id,
+  label,
+  hint,
+  error,
+  children,
+}: {
+  id: string;
+  label: string;
+  hint?: string;
+  error?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="mb-4">
+      <label htmlFor={id} className="block text-sm font-medium text-fg">
+        {label}
+      </label>
+      <div className="mt-1">{children}</div>
+      {hint && !error && (
+        <p id={`${id}-hint`} className="mt-1 text-xs text-fg/70">
+          {hint}
+        </p>
+      )}
+      {error && (
+        <p role="alert" className="mt-1 text-xs text-red-600">
+          {error}
+        </p>
+      )}
+    </div>
+  );
+}
+```
+
+**Checklist**
+
+- [ ] Use `<label for>`; don’t rely on placeholders.
+- [ ] Provide inline errors + a summary for large forms.
+- [ ] Announce errors via `role="alert"` or ARIA live regions.
+
+---
+
+## 6) Overloaded layouts and information hierarchy issues
+
+**What it looks like**  
+Everything fights for attention; walls of text; important CTAs buried.
+
+**Why it hurts**  
+Cognitive overload; users ignore key actions.
+
+**Fix (component‑driven)**  
+Create **Layout primitives**: `Page`, `Section`, `Stack`, `Sidebar`, `Toolbar`. Enforce spacing scales and heading levels.
+
+```tsx
+export function Section({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <section className="mb-10">
+      <h2 className="mb-3 text-xl font-semibold text-fg">{title}</h2>
+      <div className="space-y-4">{children}</div>
+    </section>
+  );
+}
+```
+
+**Checklist**
+
+- [ ] One idea per section; progressive disclosure (Tabs/Accordion).
+- [ ] Visual hierarchy via size, weight, and whitespace.
+- [ ] Limit line length (45–75ch) for readability.
+
+---
+
+## 7) Navigation that loses state or breaks deep‑links
+
+**What it looks like**  
+Page refresh resets filters; modals hide URLs; back button behaves oddly.
+
+**Why it hurts**  
+Users can’t share exact views; QA and analytics suffer.
+
+**Fix (component‑driven)**  
+Use **Next.js App Router** with **route segments** and **search params**. Persist view state in the URL, not in ad‑hoc globals.
+
+```tsx
+// app/items/page.tsx (Next.js 14+)
+export default async function ItemsPage({
+  searchParams,
+}: {
+  searchParams: { q?: string; sort?: string };
+}) {
+  const { q = "", sort = "recent" } = searchParams;
+  // fetch data using q/sort; render UI
+  return <div>{/* ... */}</div>;
+}
+```
+
+**Checklist**
+
+- [ ] Encode filters/sort/view in the URL.
+- [ ] Use route groups for modals/sheets when possible.
+- [ ] Test Back/Forward between key screens.
+
+---
+
+## 8) Motion misuse (too much, too little, or inaccessible)
+
+**What it looks like**  
+Flashy transitions everywhere or no feedback at all. Motion ignores user preferences.
+
+**Why it hurts**  
+Motion sickness for some users; performance hits; noisy UI.
+
+**Fix (component‑driven)**  
+Use **micro‑interactions** and respect `prefers-reduced-motion`. Prefer `transform`/`opacity`, 150–250ms for routine UI, 300–400ms for large context switches.
+
+```css
+/* globals.css */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+```
+
+**Checklist**
+
+- [ ] Motion supports meaning (focus/feedback), not decoration.
+- [ ] Keep durations consistent; avoid layout‑thrashing animations.
+- [ ] Test with reduced‑motion enabled.
+
+---
+
+## 9) Unresponsive UI and tiny touch targets
+
+**What it looks like**  
+Cramped mobile views; tap targets smaller than 44×44px; horizontal scroll traps.
+
+**Why it hurts**  
+Frustrated users, accidental taps, and poor mobile conversions.
+
+**Fix (component‑driven)**  
+Set **responsive breakpoints**, ensure **hit‑area sizing**, and prefer **flex/grid** layouts that reflow cleanly.
+
+```tsx
+export function Card({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="rounded-lg border border-fg/15 p-4 md:p-6">{children}</div>
+  );
+}
+/* Example target */
+<button className="min-h-[44px] min-w-[44px] rounded-md px-3 py-2">
+  Tap me
+</button>;
+```
+
+**Checklist**
+
+- [ ] Minimum touch target: **44×44px**.
+- [ ] Avoid horizontal-only gestures for core tasks.
+- [ ] Test on small devices and varied DPIs.
+
+---
+
+## 10) Fragmented components without docs or tests
+
+**What it looks like**  
+Similar components behave differently; breaking changes land unnoticed; teams copy/paste code.
+
+**Why it hurts**  
+Hard to maintain; regressions; inconsistent UX.
+
+**Fix (component‑driven)**  
+Centralize components in a **package** with **Storybook** docs, **unit/a11y tests**, and **visual regression**. Version with Changesets; consume via your registry.
+
+```yaml
+# .github/workflows/ci.yml (excerpt)
+name: ci
+on: [push, pull_request]
+jobs:
+  build_test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20, cache: "pnpm" }
+      - run: corepack enable
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build && pnpm test
+```
+
+**Checklist**
+
+- [ ] Storybook stories for every component & variant.
+- [ ] Jest/RTL + axe for behavior and a11y.
+- [ ] Visual diffs in CI before publishing.
+
+---
+
+## Component‑Driven Workflow (putting it all together)
+
+1. **Tokenize** the basics (color/space/type/radius).
+2. **Compose** primitives (Button, Input, Dialog) with variants.
+3. **Document** in Storybook (usage, a11y notes, dos/don’ts).
+4. **Test** behavior (unit), a11y (axe), visuals (regression).
+5. **Release** via CI (version, changelog), and consume as a package.
+6. **Observe** production UX (analytics, session replays), iterate on patterns.
+
+---
+
+## FAQ
+
+**Is component‑driven design overkill for small apps?**  
+Not if you keep it lean. Even a **minimal token file**, 3–5 primitives, and Storybook pages will dramatically improve consistency.
+
+**Do I need a full design system?**  
+Start with **tokens + primitives**. Add patterns later. Systems grow with products—don’t over‑specify on day one.
+
+**What about shadcn/ui or Radix UI?**  
+Use them as a **behavioral foundation** and customize styling via Tailwind and tokens. You keep visual control while inheriting robust a11y.
+
+---
+
+### Keep learning
+
+- [How To Make An Interactive Website](https://ruixen.com/blog/how-to-make-an-interactive-website)
+- [Web Design Trends](https://ruixen.com/blog/web-design-trends)
+- [Tailwind CSS Components](https://ruixen.com/blog/tailwind-css-components)
+- [React UI Animation Techniques](https://ruixen.com/blog/react-ui-animation)

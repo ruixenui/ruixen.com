@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/spotlight-background-demo.tsx",
-      "content": "import SpotlightBackground from \"@/registry/ruixenui/spotlight-background\";\n\nexport default function Demo() {\n  return (\n    <div className=\"relative w-full h-screen bg-white dark:bg-slate-950 overflow-hidden\">\n      <SpotlightBackground />\n      <div className=\"relative z-10 flex items-center justify-center h-full\">\n        <p className=\"text-lg text-gray-700 dark:text-slate-300 md:text-xl text-center\">\n          A smooth glowing light that follows your cursor.\n        </p>\n      </div>\n    </div>\n  );\n}\n",
+      "content": "import SpotlightBackground from \"@/registry/ruixenui/spotlight-background\";\n\nexport default function Demo() {\n  return (\n    <div className=\"relative w-full overflow-hidden\">\n      <SpotlightBackground />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/spotlight-background-demo.tsx"
     }

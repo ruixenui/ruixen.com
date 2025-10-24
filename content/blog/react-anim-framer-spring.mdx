@@ -1,0 +1,422 @@
+---
+title: "Animating Components in React: Best Practices with Framer Motion and React Spring"
+description: "A practical, code-heavy guide to building smooth, accessible animations in React using Framer Motion and React Spring—covering performance, gestures, layout transitions, scroll effects, a11y, and testing."
+image: https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/gradients/shade_shiters/shade-shifters-01.png
+author: Sri Somanaath
+tag: React Animation
+publishedOn: 2025-10-24T10:58:00.000Z
+featured: false
+---
+
+Well-crafted motion turns static UIs into **intuitive, responsive experiences**. In React, two heavy-hitters lead the way: **Framer Motion** and **React Spring**. This guide shows **when to use which**, how to build common patterns (enter/exit, lists, dialogs, shared element transitions), and how to ship animations that are **accessible, performant, and testable**.
+
+> **Related reading** (internal):
+>
+> - [React UI Animation Techniques](https://ruixen.com/blog/react-ui-animation)
+> - [Web Design Trends](https://ruixen.com/blog/web-design-trends)
+> - [How To Make An Interactive Website](https://ruixen.com/blog/how-to-make-an-interactive-website)
+
+---
+
+## Table of Contents
+
+1. [When to use Framer Motion vs React Spring](#when-to-use-framer-motion-vs-react-spring)
+2. [Setup with pnpm](#setup-with-pnpm)
+3. [Design principles for motion](#design-principles-for-motion)
+4. [Shared best practices (for both libraries)](#shared-best-practices-for-both-libraries)
+5. [Framer Motion recipes](#framer-motion-recipes)
+6. [React Spring recipes](#react-spring-recipes)
+7. [Gestures & drag (Framer Motion) and use-gesture (React Spring)](#gestures--drag-framer-motion-and-use-gesture-react-spring)
+8. [Scroll-based effects & parallax](#scroll-based-effects--parallax)
+9. [Layout & shared element transitions](#layout--shared-element-transitions)
+10. [Next.js & SSR considerations](#nextjs--ssr-considerations)
+11. [Accessibility: reduced motion & focus](#accessibility-reduced-motion--focus)
+12. [Testing animations (unit, e2e, visual)](#testing-animations-unit-e2e-visual)
+13. [Troubleshooting & performance tuning](#troubleshooting--performance-tuning)
+14. [FAQ](#faq)
+
+---
+
+## When to use Framer Motion vs React Spring
+
+**Framer Motion**
+
+- **Best for:** UI transitions, page/route animations, micro-interactions, layout animations, shared element transitions.
+- **Model:** Declarative variants + spring/transition props.
+- **Strengths:** `AnimatePresence`, `layout`, `layoutId`, `useScroll`/`useTransform`, easy orchestration/stagger.
+
+**React Spring**
+
+- **Best for:** **Physics-driven** sequences, complex choreography, canvas/SVG/3D scenes, custom gesture physics.
+- **Model:** Hook-based springs (`useSpring`, `useTransition`, `useSprings`, `useTrail`).
+- **Strengths:** Detailed control over **mass/tension/friction**, interpolation chains, works great with **@use-gesture/react**.
+
+> Rule of thumb: if you need **UI primitives to “just animate well”**, start with **Framer Motion**. If you need **fine-grained physics** and **full control**, go with **React Spring**.
+
+---
+
+## Setup with pnpm
+
+```bash
+# Framer Motion
+pnpm add framer-motion
+
+# React Spring (and optional gesture helpers)
+pnpm add @react-spring/web @use-gesture/react
+```
+
+---
+
+## Design principles for motion
+
+- **Purposeful, not decorative:** Motion should clarify **state changes**, **spatial relationships**, or **feedback**.
+- **Use the right duration:** 150–250ms for micro UI changes; 250–400ms for large context switches; longer for intros only.
+- **Ease & physics:** Springs feel natural; easing curves suit simple fades/slides.
+- **Prefer transform/opacity:** Avoid animating layout-affecting properties (top/left/width/height) unless using FLIP or `layout`.
+- **Respect accessibility:** Honor `prefers-reduced-motion` and keep focus rings visible during transitions.
+
+---
+
+## Shared best practices (for both libraries)
+
+- **Animate presence**: For mount/unmount transitions, wrap lists and conditionals with a provider (`AnimatePresence` in FM, `useTransition` in Spring).
+- **Stagger responsibly**: Small staggering (40–80ms) guides the eye without feeling slow.
+- **Keep state local**: Animation controls near the animated node reduce re-renders.
+- **Avoid layout thrash**: Batch reads/writes; prefer transforms; minimize expensive shadows/filters.
+- **Limit simultaneous motion**: Competing elements create noise; animate one primary focus per surface.
+
+---
+
+## Framer Motion recipes
+
+### Enter/Exit with `AnimatePresence` (drawer)
+
+```tsx
+import { motion, AnimatePresence } from "framer-motion";
+
+export function Drawer({
+  open,
+  onClose,
+  children,
+}: {
+  open: boolean;
+  onClose: () => void;
+  children: React.ReactNode;
+}) {
+  return (
+    <AnimatePresence>
+      {open && (
+        <motion.aside
+          initial={{ x: "100%", opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          exit={{ x: "100%", opacity: 0 }}
+          transition={{ type: "spring", stiffness: 380, damping: 32 }}
+          className="fixed inset-y-0 right-0 w-[360px] bg-white shadow-xl"
+          role="dialog"
+          aria-modal="true"
+        >
+          <button
+            className="absolute right-3 top-3"
+            onClick={onClose}
+            aria-label="Close panel"
+          >
+            ✕
+          </button>
+          {children}
+        </motion.aside>
+      )}
+    </AnimatePresence>
+  );
+}
+```
+
+### Variants and stagger (list reveal)
+
+```tsx
+import { motion } from "framer-motion";
+
+const list = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.06, delayChildren: 0.04 },
+  },
+};
+
+const item = {
+  hidden: { y: 8, opacity: 0 },
+  show: { y: 0, opacity: 1 },
+};
+
+export function StaggeredList({ items }: { items: string[] }) {
+  return (
+    <motion.ul
+      variants={list}
+      initial="hidden"
+      animate="show"
+      className="space-y-2"
+    >
+      {items.map((text) => (
+        <motion.li key={text} variants={item} className="rounded-md border p-3">
+          {text}
+        </motion.li>
+      ))}
+    </motion.ul>
+  );
+}
+```
+
+### Layout animation (auto-measure + FLIP)
+
+```tsx
+import { motion } from "framer-motion";
+
+export function Expander({ open }: { open: boolean }) {
+  return (
+    <motion.div layout className="rounded-md border p-4">
+      <motion.h3 layout className="font-semibold">
+        Details
+      </motion.h3>
+      {open && (
+        <motion.p layout className="mt-2 text-sm text-neutral-600">
+          Auto-layout animations use FLIP under the hood when you pass `layout`.
+        </motion.p>
+      )}
+    </motion.div>
+  );
+}
+```
+
+### Scroll-based animation (`useScroll` + `useTransform`)
+
+```tsx
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+
+export function ScaleOnScroll() {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const scale = useTransform(scrollYProgress, [0, 1], [0.95, 1.05]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [0.7, 1]);
+
+  return (
+    <motion.div
+      ref={ref}
+      style={{ scale, opacity }}
+      className="h-64 rounded-xl bg-neutral-100"
+    />
+  );
+}
+```
+
+---
+
+## React Spring recipes
+
+### Basic spring (`useSpring`)
+
+```tsx
+import { useSpring, animated } from "@react-spring/web";
+
+export function FadeUp({ children }: { children: React.ReactNode }) {
+  const styles = useSpring({
+    from: { opacity: 0, y: 24 },
+    to: { opacity: 1, y: 0 },
+    config: { tension: 280, friction: 24 },
+  });
+  return (
+    <animated.div
+      style={{
+        opacity: styles.opacity,
+        transform: styles.y.to((v) => `translateY(${v}px)`),
+      }}
+    >
+      {children}
+    </animated.div>
+  );
+}
+```
+
+### List mount/unmount (`useTransition`)
+
+```tsx
+import { useTransition, animated } from "@react-spring/web";
+
+export function TodoList({
+  items,
+}: {
+  items: { id: string; title: string }[];
+}) {
+  const transitions = useTransition(items, {
+    keys: (item) => item.id,
+    from: { opacity: 0, transform: "translateY(8px)" },
+    enter: { opacity: 1, transform: "translateY(0)" },
+    leave: { opacity: 0, transform: "translateY(-8px)" },
+  });
+  return (
+    <ul className="space-y-2">
+      {transitions((style, item) => (
+        <animated.li
+          key={item.id}
+          style={style}
+          className="rounded-md border p-3"
+        >
+          {item.title}
+        </animated.li>
+      ))}
+    </ul>
+  );
+}
+```
+
+### Coordinated gestures (with `@use-gesture/react`)
+
+```tsx
+import { useSpring, animated } from "@react-spring/web";
+import { useGesture } from "@use-gesture/react";
+
+export function DraggableCard() {
+  const [{ x, y, scale }, api] = useSpring(() => ({ x: 0, y: 0, scale: 1 }));
+  const bind = useGesture({
+    onDrag: ({ offset: [dx, dy] }) => api.start({ x: dx, y: dy }),
+    onPinch: ({ offset: [d] }) => api.start({ scale: 1 + d / 200 }),
+  });
+  return (
+    <animated.div
+      {...bind()}
+      style={{ x, y, scale }}
+      className="h-32 w-48 rounded-xl bg-indigo-500"
+    />
+  );
+}
+```
+
+---
+
+## Gestures & drag (Framer Motion) and use-gesture (React Spring)
+
+**Framer Motion** has built-in `drag`, momentum, constraints, and `dragElastic`—ideal for drawers, sliders, and cards.  
+**React Spring** pairs with **@use-gesture/react** for unified **drag/pinch/wheel** handlers that feed spring updates—perfect for bespoke physics.
+
+> Tip: Clamp draggable ranges; add snap points; disable drag for keyboard-only users or provide alternative controls.
+
+```tsx
+// Framer Motion draggable
+<motion.div
+  drag
+  dragConstraints={{ left: -100, right: 100, top: 0, bottom: 0 }}
+  dragElastic={0.12}
+/>
+```
+
+---
+
+## Scroll-based effects & parallax
+
+- **Framer Motion**: `useScroll` + `useTransform` simplifies parallax and progress-linked UI.
+- **React Spring**: wire scroll position to `useSpring` values and interpolate style outputs.
+
+Avoid heavy parallax on content essential for comprehension; offer reduced-motion respect.
+
+---
+
+## Layout & shared element transitions
+
+**Framer Motion:**
+
+- `layout` for auto-resizing & FLIP.
+- `layoutId` to animate **shared elements** between routes or states (e.g., card → modal).
+- `AnimatePresence` with `mode="wait"` to ensure exit completes before enter.
+
+**React Spring:**
+
+- Simulate shared transitions with `useTransition` keyed by element identity; animate transforms/opacity between states.
+
+> Keep **aspect ratios** and **origin points** consistent for believable morphs.
+
+---
+
+## Next.js & SSR considerations
+
+- **Hydration safety:** Trigger client-only animations in `useEffect` or guard with `useMounted` flags to avoid server/client mismatch.
+- **Route transitions:** Use a **layout** wrapper with Framer Motion `AnimatePresence` to animate between pages.
+- **Server Components:** Confine animated pieces to **Client Components**; pass only serializable props.
+- **Image & LCP:** Animate after critical content has rendered; don’t delay LCP.
+
+---
+
+## Accessibility: reduced motion & focus
+
+Respect user preferences and keep focus visible during transitions.
+
+```tsx
+// Framer Motion: reduce motion
+import { useReducedMotion } from "framer-motion";
+const shouldReduce = useReducedMotion();
+const transition = shouldReduce
+  ? { duration: 0 }
+  : { type: "spring", stiffness: 400, damping: 30 };
+```
+
+```css
+/* CSS fallback */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+```
+
+- Maintain **focus order**; avoid moving focus targets mid-transition.
+- Provide **non-animated** equivalents of critical interactions.
+
+---
+
+## Testing animations (unit, e2e, visual)
+
+- **Unit:** mock time and assert final styles or class toggles.
+- **E2E (Playwright/Cypress):** set `prefers-reduced-motion: reduce`, wait for stable states, and assert visibility/placement.
+- **Visual regression:** Storybook captures across themes and motion preferences.
+
+```ts
+// Example: Playwright test setting reduced motion
+await page.emulateMedia({ reducedMotion: "reduce" });
+```
+
+---
+
+## Troubleshooting & performance tuning
+
+- **Jank on scroll:** Avoid animating expensive properties; debounce scroll handlers; prefer `useScroll`.
+- **Layout shifts:** Use `layout` (FM) or FLIP techniques; reserve space with aspect-ratio or fixed heights.
+- **Too bouncy/slow:** Tweak spring **stiffness/damping** (FM) or **tension/friction/mass** (Spring).
+- **Conflicting transitions:** Sequence animations; avoid simultaneous transforms on parent/child unless intentional.
+- **Large bundles:** Import from `framer-motion` or `@react-spring/web` only; lazy-load heavy animated routes.
+
+---
+
+## FAQ
+
+**Is Framer Motion overkill for simple fades?**  
+No, but for very basic effects, CSS transitions may suffice—save libraries for orchestrated or gesture/scroll-linked animations.
+
+**Can I mix Framer Motion and React Spring?**  
+Yes, at **route or feature boundaries**. Avoid animating the same element with both to prevent conflicts.
+
+**How do I support reduced motion?**  
+Check `prefers-reduced-motion`, provide faster/no-op transitions, and keep focus/ARIA feedback intact.
+
+**What about performance on low-end devices?**  
+Prefer transforms/opacity, limit blur/shadows/filters, and reduce simultaneous animations.
+
+---
+
+### Keep learning
+
+- [Web Animation Tools](https://ruixen.com/blog/web-animation-tools)
+- [React UI Animation Techniques](https://ruixen.com/blog/react-ui-animation)
+- [Website Animation Examples](https://ruixen.com/blog/website-animation-examples)

@@ -15,7 +15,7 @@
     "build": "next build",
     "build:registry": "npx tsx ./scripts/build-registry.mts && pnpm format:fix",
     "shadcn:build": "shadcn build",
-    "build:docs": "content-collections build",
+    "build:docs": "pnpm exec content-collections build",
     "typecheck": "pnpm build:docs && tsc --noEmit",
     "start": "next start",
     "lint": "next lint",

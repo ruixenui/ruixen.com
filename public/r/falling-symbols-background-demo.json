@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/falling-symbols-background-demo.tsx",
-      "content": "import FallingSymbolsBackground from \"@/registry/ruixenui/falling-symbols-background\";\n\nexport default function DemoOne() {\n  return (\n    <div className=\"relative w-full h-screen overflow-hidden\">\n      <FallingSymbolsBackground />\n      <div className=\"relative z-10 flex items-center justify-center h-full\">\n        <h1 className=\"text-5xl text-white\"> Foreground Content </h1>\n      </div>\n    </div>\n  );\n}\n",
+      "content": "import FallingSymbolsBackground from \"@/registry/ruixenui/falling-symbols-background\";\n\nexport default function DemoOne() {\n  return (\n    <div className=\"relative w-full overflow-hidden\">\n      <FallingSymbolsBackground />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/falling-symbols-background-demo.tsx"
     }
