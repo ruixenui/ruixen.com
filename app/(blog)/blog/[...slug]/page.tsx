@@ -104,7 +104,7 @@ const components = {
   ),
   pre: ({ children, ...props }: ComponentProps<"pre">) => (
     <pre
-      className="flex h-fit items-center justify-start gap-x-2 overflow-x-auto rounded-md border border-border bg-primary/5 px-2 py-1 font-mono text-sm text-secondary-foreground"
+      className="flex h-fit items-center justify-start gap-x-2 overflow-x-auto rounded-md border border-border bg-primary dark:bg-primary/5 px-2 py-1 font-mono text-sm text-secondary-foreground"
       {...props}
     >
       {children}
