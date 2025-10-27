@@ -3,7 +3,6 @@
 import Link from "next/link";
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { AnimatedGroup } from "../animated-group";
 import { trackCTAClick } from "@/lib/ga-events";
 import ComponentShowcaseSection from "./component-showcase-section";
 
@@ -44,11 +43,10 @@ const ruixenFaqData = [
 function Home() {
   return (
     <main className="flex flex-col items-center justify-center w-full overflow-hidden bg-white dark:bg-black text-black dark:text-white transition-all duration-300">
-      {/* HERO SECTION */}
+      {/* HERO SECTION */}  
       <section className="flex flex-col justify-center items-center w-full min-h-screen px-4 sm:px-6 lg:px-8">
         <div className="relative w-full container mx-auto flex flex-col items-center justify-center text-center">
           {/* Hero Text */}
-          <AnimatedGroup preset="fade">
             <h1
               className="relative font-semibold leading-[1.1] tracking-tight text-center mx-auto
               text-[2rem] xs:text-[2rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[4rem] xl:text-[5rem]"
@@ -61,20 +59,9 @@ function Home() {
               library built with Tailwind CSS, TypeScript, and accessibility in
               mind.
             </p>
-          </AnimatedGroup>
 
           {/* CTA Buttons */}
-          <AnimatedGroup
-            variants={{
-              container: {
-                visible: {
-                  transition: {
-                    staggerChildren: 0.05,
-                    delayChildren: 0.75,
-                  },
-                },
-              },
-            }}
+            <div
             className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4"
           >
             <Button
@@ -105,7 +92,7 @@ function Home() {
             >
               <Link href="/templates">Get Templates</Link>
             </Button>
-          </AnimatedGroup>
+          </div>
         </div>
       </section>
 
