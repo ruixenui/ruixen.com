@@ -19,7 +19,7 @@ export default function DemoOne() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
+    <div className="min-h-screen flex items-center justify-center p-4">
       <SuccessLoginCard
         title="Create Your Account"
         description="Fill in the details below to get started"

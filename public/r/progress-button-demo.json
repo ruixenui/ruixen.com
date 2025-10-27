@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/progress-button-demo.tsx",
-      "content": "import ProgressButton from \"@/registry/ruixenui/progress-button\";\n\nexport default function DemoProgressButton() {\n  return (\n    <div className=\"flex gap-6 flex-wrap\">\n      <ProgressButton label=\"Submit\" />\n      <ProgressButton label=\"Pay\" loadingLabel=\"Processing Payment\" />\n      <ProgressButton label=\"Upload\" showBar duration={3000} />\n    </div>\n  );\n}\n",
+      "content": "import ProgressButton from \"@/registry/ruixenui/progress-button\";\n\nexport default function DemoProgressButton() {\n  return (\n    <div className=\"flex gap-6 flex-wrap p-6 flex-col items-center justify-center min-h-screen\">\n      <ProgressButton label=\"Submit\" />\n      <ProgressButton label=\"Pay\" loadingLabel=\"Processing Payment\" />\n      <ProgressButton label=\"Upload\" showBar duration={3000} />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/progress-button-demo.tsx"
     }

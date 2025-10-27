@@ -5,7 +5,7 @@ import VoiceMessageBubble from "@/registry/ruixenui/voice-message-bubble";
 
 export default function DemoVoiceMessageBubble() {
   return (
-    <div className="flex flex-col gap-4 p-6 max-w-md mx-auto">
+    <div className="flex flex-col gap-4 p-6 max-w-md mx-auto min-h-screen">
       <h2 className="text-2xl font-semibold mb-4 text-center text-black dark:text-white">
         Voice Message Bubble Demo
       </h2>

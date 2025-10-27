@@ -13,7 +13,7 @@ export default function DemoAudioTimelineWithChapters() {
   ];
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center min-h-screen">
       <h2 className="text-xl font-bold text-black dark:text-white">
         Podcast Player with Chapters
       </h2>

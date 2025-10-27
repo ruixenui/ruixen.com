@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/centered-feedback-drawer-demo.tsx",
-      "content": "import CenteredFeedbackDrawer from \"../ruixenui/centered-feedback-drawer\";\n\nexport default function CenteredFeedbackDrawerDemo() {\n  return <CenteredFeedbackDrawer />;\n}\n",
+      "content": "import CenteredFeedbackDrawer from \"../ruixenui/centered-feedback-drawer\";\n\nexport default function CenteredFeedbackDrawerDemo() {\n  return (\n    <div className=\"flex items-center justify-center min-h-screen p-2\">\n      <CenteredFeedbackDrawer />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/centered-feedback-drawer-demo.tsx"
     }

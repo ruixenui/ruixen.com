@@ -1,7 +1,6 @@
 "use client";
 
 import MotionFileTree, { FileNode } from "@/registry/ruixenui/motion-file-tree";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const demoTree: FileNode[] = [
   {
@@ -35,15 +34,11 @@ export default function MotionFileTreeDemoPage() {
 
   return (
     <div className="p-8 flex flex-col items-center gap-6">
-      <Card className="w-full max-w-3xl">
-        <CardContent>
-          <MotionFileTree
-            data={demoTree}
-            defaultExpanded={{ "1": true, "1-1": true }}
-            onSelect={handleSelect}
-          />
-        </CardContent>
-      </Card>
+      <MotionFileTree
+        data={demoTree}
+        defaultExpanded={{ "1": true, "1-1": true }}
+        onSelect={handleSelect}
+      />
     </div>
   );
 }

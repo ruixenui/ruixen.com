@@ -13,34 +13,36 @@ export default function DemoGamifiedLoginCard() {
   };
 
   return (
-    <GamifiedLoginCard
-      title="Login to Gamify!"
-      successMessage="🎉 Welcome to the Game!"
-      inputs={[
-        {
-          id: "email",
-          type: "email",
-          label: "Email",
-          placeholder: "you@example.com",
-        },
-        {
-          id: "password",
-          type: "password",
-          label: "Password",
-          placeholder: "********",
-        },
-        {
-          id: "username",
-          type: "text",
-          label: "Username",
-          placeholder: "Your username",
-        },
-      ]}
-      buttonText="Play & Login"
-      confettiColors={["#f59e0b", "#10b981", "#3b82f6", "#f472b6"]}
-      confettiCount={50}
-      onChange={handleChange}
-      onSubmit={handleSubmit}
-    />
+    <div className="flex items-center justify-center min-h-screen">
+      <GamifiedLoginCard
+        title="Login to Gamify!"
+        successMessage="🎉 Welcome to the Game!"
+        inputs={[
+          {
+            id: "email",
+            type: "email",
+            label: "Email",
+            placeholder: "you@example.com",
+          },
+          {
+            id: "password",
+            type: "password",
+            label: "Password",
+            placeholder: "********",
+          },
+          {
+            id: "username",
+            type: "text",
+            label: "Username",
+            placeholder: "Your username",
+          },
+        ]}
+        buttonText="Play & Login"
+        confettiColors={["#f59e0b", "#10b981", "#3b82f6", "#f472b6"]}
+        confettiCount={50}
+        onChange={handleChange}
+        onSubmit={handleSubmit}
+      />
+    </div>
   );
 }

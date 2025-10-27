@@ -6277,6 +6277,80 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "color-emotion-select": {
+    name: "color-emotion-select",
+    description:
+      "A select component that displays options with color indicators and optional emojis for emotional context.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/color-emotion-select.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/color-emotion-select.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/color-emotion-select.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "live-preview-style-select": {
+    name: "live-preview-style-select",
+    description:
+      "A select component with live preview functionality that shows a visual representation of the selected style option.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/live-preview-style-select.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/live-preview-style-select.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/ruixenui/live-preview-style-select.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "hero-title-slide": {
+    name: "hero-title-slide",
+    description:
+      "An animated hero section component with customizable slide animations and preset effects for creating engaging landing page headers.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/hero-title-slide.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/hero-title-slide.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/hero-title-slide.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "staggered-faq-section-demo": {
     name: "staggered-faq-section-demo",
     description:
@@ -12745,6 +12819,82 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/tag-cloud-select-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "color-emotion-select-demo": {
+    name: "color-emotion-select-demo",
+    description:
+      "Example showing a select component with color indicators and optional emojis for emotional context.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/color-emotion-select"],
+    files: [
+      {
+        path: "registry/example/color-emotion-select-demo.tsx",
+        type: "registry:example",
+        target: "components/color-emotion-select-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/color-emotion-select-demo.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "live-preview-style-select-demo": {
+    name: "live-preview-style-select-demo",
+    description:
+      "Example showing a select component with live preview functionality for style options.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/live-preview-style-select"],
+    files: [
+      {
+        path: "registry/example/live-preview-style-select-demo.tsx",
+        type: "registry:example",
+        target: "components/live-preview-style-select-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/live-preview-style-select-demo.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "hero-title-slide-demo": {
+    name: "hero-title-slide-demo",
+    description:
+      "Example showing an animated hero section component with customizable slide animations and preset effects.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/hero-title-slide"],
+    files: [
+      {
+        path: "registry/example/hero-title-slide-demo.tsx",
+        type: "registry:example",
+        target: "components/hero-title-slide-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/hero-title-slide-demo.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>

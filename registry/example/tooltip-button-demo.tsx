@@ -2,7 +2,7 @@ import TooltipButton from "@/registry/ruixenui/tooltip-button";
 
 export default function DemoTooltipButton() {
   return (
-    <div className="flex gap-4">
+    <div className="flex p-6 flex-col items-center justify-center min-h-screen">
       <TooltipButton
         label="Info"
         tooltip="More information about this action"

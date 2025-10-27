@@ -56,7 +56,7 @@ export default function SmartBreadcrumbDemo() {
   ];
 
   return (
-    <div className="flex flex-col items-center justify-center space-y-12 p-6">
+    <div className="flex flex-col items-center justify-center space-y-12 min-h-screen">
       <div className="text-center">
         <h1 className="text-3xl font-semibold mb-2">Smart Breadcrumb Demo</h1>
         <p className="text-gray-600 max-w-lg mx-auto">

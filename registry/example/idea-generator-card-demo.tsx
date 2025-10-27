@@ -1,5 +1,9 @@
-import IdeaGeneratorCard from "../ruixenui/idea-generator-card";
+import IdeaGeneratorCard from "@/registry/ruixenui/idea-generator-card";
 
 export default function IdeaGeneratorCardDemo() {
-  return <IdeaGeneratorCard />;
+  return (
+    <div className="flex items-center justify-center py-8">
+      <IdeaGeneratorCard />
+    </div>
+  );
 }

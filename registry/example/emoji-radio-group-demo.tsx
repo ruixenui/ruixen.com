@@ -4,7 +4,7 @@ import { RadioGroup, EmojiRadio } from "@/registry/ruixenui/emoji-radio-group";
 
 function DemoPage() {
   return (
-    <div className="max-w-sm space-y-6">
+    <div className="flex items-center justify-center min-h-screen max-w-sm space-y-6">
       <h2 className="text-lg font-semibold">How was your experience?</h2>
       <p className="text-sm text-muted-foreground">
         Select the emoji that best describes your feeling.

@@ -4551,6 +4551,48 @@
       ]
     },
     {
+      "name": "color-emotion-select",
+      "type": "registry:ui",
+      "title": "Color Emotion Select",
+      "description": "A select component that displays options with color indicators and optional emojis for emotional context.",
+      "files": [
+        {
+          "path": "registry/ruixenui/color-emotion-select.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/color-emotion-select.tsx"
+        }
+      ]
+    },
+    {
+      "name": "live-preview-style-select",
+      "type": "registry:ui",
+      "title": "Live Preview Style Select",
+      "description": "A select component with live preview functionality that shows a visual representation of the selected style option.",
+      "files": [
+        {
+          "path": "registry/ruixenui/live-preview-style-select.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/live-preview-style-select.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hero-title-slide",
+      "type": "registry:ui",
+      "title": "Hero Title Slide",
+      "description": "An animated hero section component with customizable slide animations and preset effects for creating engaging landing page headers.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/hero-title-slide.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/hero-title-slide.tsx"
+        }
+      ]
+    },
+    {
       "name": "staggered-faq-section-demo",
       "type": "registry:example",
       "title": "StaggeredFAQSection Demo",
@@ -8739,6 +8781,54 @@
           "path": "registry/example/tag-cloud-select-demo.tsx",
           "type": "registry:example",
           "target": "components/tag-cloud-select-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "color-emotion-select-demo",
+      "type": "registry:example",
+      "title": "Color Emotion Select Demo",
+      "description": "Example showing a select component with color indicators and optional emojis for emotional context.",
+      "registryDependencies": [
+        "https://ruixen.com/r/color-emotion-select"
+      ],
+      "files": [
+        {
+          "path": "registry/example/color-emotion-select-demo.tsx",
+          "type": "registry:example",
+          "target": "components/color-emotion-select-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "live-preview-style-select-demo",
+      "type": "registry:example",
+      "title": "Live Preview Style Select Demo",
+      "description": "Example showing a select component with live preview functionality for style options.",
+      "registryDependencies": [
+        "https://ruixen.com/r/live-preview-style-select"
+      ],
+      "files": [
+        {
+          "path": "registry/example/live-preview-style-select-demo.tsx",
+          "type": "registry:example",
+          "target": "components/live-preview-style-select-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hero-title-slide-demo",
+      "type": "registry:example",
+      "title": "Hero Title Slide Demo",
+      "description": "Example showing an animated hero section component with customizable slide animations and preset effects.",
+      "registryDependencies": [
+        "https://ruixen.com/r/hero-title-slide"
+      ],
+      "files": [
+        {
+          "path": "registry/example/hero-title-slide-demo.tsx",
+          "type": "registry:example",
+          "target": "components/hero-title-slide-demo.tsx"
         }
       ]
     },

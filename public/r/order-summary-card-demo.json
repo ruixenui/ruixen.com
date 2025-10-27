@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/order-summary-card-demo.tsx",
-      "content": "\"use client\";\n\nimport OrderSummaryCard from \"../ruixenui/order-summary-card\";\n\nexport default function Demo() {\n  return (\n    <div className=\"flex flex-col gap-6 justify-center items-center w-full\">\n      <OrderSummaryCard\n        items={[\n          {\n            label: \"AI Pro Membership\",\n            count: 1,\n            cost: 79.99,\n          },\n        ]}\n        deliveryFee={0}\n        serviceCharge={4.99}\n        coupon={{ label: \"NEWUSER\", value: 10 }}\n        currency=\"USD\"\n        onPlaceOrder={() => {}}\n      />\n    </div>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport OrderSummaryCard from \"../ruixenui/order-summary-card\";\n\nexport default function Demo() {\n  return (\n    <div className=\"flex flex-col gap-6 justify-center items-center w-full py-8\">\n      <OrderSummaryCard\n        items={[\n          {\n            label: \"AI Pro Membership\",\n            count: 1,\n            cost: 79.99,\n          },\n        ]}\n        deliveryFee={0}\n        serviceCharge={4.99}\n        coupon={{ label: \"NEWUSER\", value: 10 }}\n        currency=\"USD\"\n        onPlaceOrder={() => {}}\n      />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/order-summary-card-demo.tsx"
     }

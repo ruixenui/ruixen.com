@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/advanced-context-menu-demo.tsx",
-      "content": "import AdvancedContextMenu from \"../ruixenui/advanced-context-menu\";\n\nexport default function AdvancedContextMenuDemo() {\n  return <AdvancedContextMenu />;\n}\n",
+      "content": "import AdvancedContextMenu from \"../ruixenui/advanced-context-menu\";\n\nexport default function AdvancedContextMenuDemo() {\n  return (\n    <div className=\"flex flex-col items-center justify-center p-2 gap-6\">\n      <AdvancedContextMenu />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/advanced-context-menu-demo.tsx"
     }

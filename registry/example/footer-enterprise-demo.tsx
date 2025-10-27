@@ -19,9 +19,11 @@ export default function FooterEnterpriseDemo() {
       <div className="mt-20">
         <FooterEnterprise
           logo={{
-            srcDark: "/custom_dark.png",
-            srcLight: "/custom_light.png",
-            alt: "MyCompany Logo",
+            srcDark:
+              "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/ruixen-light.png",
+            srcLight:
+              "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/ruixen-dark.png",
+            alt: "ruixen",
           }}
           description="Custom description: AI-powered UI components for teams."
           sections={[
@@ -54,7 +56,7 @@ export default function FooterEnterpriseDemo() {
               ],
             },
           ]}
-          copyrightText="© 2025 MyCompany. All rights reserved."
+          copyrightText="© 2025 ruixen. All rights reserved."
         />
       </div>
     </main>

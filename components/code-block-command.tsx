@@ -6,6 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useConfig } from "@/hooks/use-config";
 import { useMounted } from "@/hooks/use-mounted";
 import { NpmCommands } from "@/types/unist";
+import { trackCopyCommand } from "@/lib/ga-events";
 import { CheckIcon, ClipboardIcon } from "lucide-react";
 import * as React from "react";
 
@@ -50,6 +51,14 @@ export function CodeBlockCommand({
         pm: packageManager,
       },
     });
+
+    // Track to GA4
+    trackCopyCommand({
+      command,
+      component_type: "component",
+      label: packageManager,
+    });
+
     setHasCopied(true);
   }, [packageManager, tabs]);
 

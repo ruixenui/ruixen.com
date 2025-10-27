@@ -47,7 +47,7 @@ export default function DemoMusicEqualizerUpload() {
   };
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="flex flex-col items-center justify-center space-y-6 min-h-screen">
       <h1 className="text-2xl font-semibold">
         Music Equalizer Upload Demo (Audio Only)
       </h1>

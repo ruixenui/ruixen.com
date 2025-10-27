@@ -1,7 +1,7 @@
 ---
 title: "Web Application Design: Patterns That Scale (2025)"
 description: "Designing robust web apps: navigation systems, data-heavy UIs, forms, realtime, error states, and performance—combined with Next.js patterns that hold up in production."
-image: https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/gradients/shade_shifters/shade-shifters-07.png
+image: https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/gradients/shade_shiters/shade-shifters-04.png
 author: Sri Somanaath
 tag: Web Design
 publishedOn: 2025-10-25T10:11:00.000Z
@@ -16,62 +16,64 @@ Modern web apps succeed when **tasks are obvious**, **state is predictable**, an
 
 ## 1) Navigation That Scales
 
-- Primary nav for **core objects** (e.g., Projects, Reports).  
-- Secondary nav for **contextual tasks** (e.g., Settings per project).  
-- Keep global search omnipresent (Cmd/Ctrl + K).  
+- Primary nav for **core objects** (e.g., Projects, Reports).
+- Secondary nav for **contextual tasks** (e.g., Settings per project).
+- Keep global search omnipresent (Cmd/Ctrl + K).
 - For multi-tenant apps, make tenant switch **fast and obvious**.
 
 **Command palette (skeleton)**
 
 ```tsx
 // app/components/command-palette.tsx
-export function CommandPalette() { /* implement with kbar or your own */ return null; }
+export function CommandPalette() {
+  /* implement with kbar or your own */ return null;
+}
 ```
 
 ---
 
 ## 2) Data Tables (real-world patterns)
 
-- Progressive disclosure: concise default view, expandable rows for detail.  
-- **Column presets** by role (Owner, Analyst, Support).  
-- Sticky header + first column improves orientation.  
-- Inline edit only for **atomic fields**; use modals/drawers for complex edits.  
+- Progressive disclosure: concise default view, expandable rows for detail.
+- **Column presets** by role (Owner, Analyst, Support).
+- Sticky header + first column improves orientation.
+- Inline edit only for **atomic fields**; use modals/drawers for complex edits.
 - Bulk actions: show them **after** selection.
 
 **Empty, loading, error**
 
-- Empty: teach with examples and a primary CTA.  
-- Loading: skeletons with consistent dimensions.  
+- Empty: teach with examples and a primary CTA.
+- Loading: skeletons with consistent dimensions.
 - Error: retry inline; log a correlation ID.
 
 ---
 
 ## 3) Forms Users Can Trust
 
-- Group fields into **logical sections**; keep forms short.  
-- Use **inline validation** on blur; avoid full-page scroll to errors.  
-- Autosave drafts on long forms.  
+- Group fields into **logical sections**; keep forms short.
+- Use **inline validation** on blur; avoid full-page scroll to errors.
+- Autosave drafts on long forms.
 - Review step for **destructive** or **irreversible** actions.
 
 **Optimistic updates**
 
-- Update UI first; reconcile with server response.  
+- Update UI first; reconcile with server response.
 - On failure, revert and show a clear reason + retry.
 
 ---
 
 ## 4) Realtime UX Without the Noise
 
-- Reflect server events in UI unobtrusively (toasts, subtle badges).  
-- Timestamps: display **relative** (e.g., “2m ago”), reveal absolute on hover.  
+- Reflect server events in UI unobtrusively (toasts, subtle badges).
+- Timestamps: display **relative** (e.g., “2m ago”), reveal absolute on hover.
 - Rate-limit toast spam; coalesce repeated messages.
 
 ---
 
 ## 5) Error States, Empty States, Limits
 
-- Create a **gallery** of system messages and their remedies.  
-- Use different tones for **validation vs. system** errors.  
+- Create a **gallery** of system messages and their remedies.
+- Use different tones for **validation vs. system** errors.
 - Don’t make users retype long inputs; keep context.
 
 ---
@@ -80,7 +82,7 @@ export function CommandPalette() { /* implement with kbar or your own */ return 
 
 **Data fetching**
 
-- Default to **Server Components** for data-heavy screens.  
+- Default to **Server Components** for data-heavy screens.
 - Cache where possible; revalidate precisely.
 
 ```tsx
@@ -88,7 +90,9 @@ export function CommandPalette() { /* implement with kbar or your own */ return 
 export const revalidate = 30;
 
 async function getProjects() {
-  const res = await fetch(process.env.API_URL + "/projects", { next: { revalidate: 30 } });
+  const res = await fetch(process.env.API_URL + "/projects", {
+    next: { revalidate: 30 },
+  });
   return res.json();
 }
 
@@ -105,7 +109,9 @@ export default async function Page() {
 ```tsx
 // app/actions/create-project.ts
 "use server";
-export async function createProject(formData: FormData) { /* ... */ }
+export async function createProject(formData: FormData) {
+  /* ... */
+}
 ```
 
 **Loading & error boundaries**
@@ -116,43 +122,43 @@ export async function createProject(formData: FormData) { /* ... */ }
 
 ## 7) State Management (pragmatic)
 
-- Co-locate state with components; lift only when needed.  
-- Use URL for shareable state (filters, sorting).  
+- Co-locate state with components; lift only when needed.
+- Use URL for shareable state (filters, sorting).
 - Reach for global stores **sparingly**; server as source of truth.
 
 ---
 
 ## 8) Authorization & Auditing
 
-- Design for **RBAC** first; map permissions to UI affordances.  
-- Disable and explain inaccessible actions; don’t hide everything.  
+- Design for **RBAC** first; map permissions to UI affordances.
+- Disable and explain inaccessible actions; don’t hide everything.
 - Keep an **audit trail** for key objects; show who changed what, when.
 
 ---
 
 ## 9) Performance & Perceived Speed
 
-- Stream large lists: virtualize on the client when necessary.  
-- Preload likely routes on hover/viewport.  
-- Keep interactions **under 100ms** when possible; show progress otherwise.  
+- Stream large lists: virtualize on the client when necessary.
+- Preload likely routes on hover/viewport.
+- Keep interactions **under 100ms** when possible; show progress otherwise.
 - Measure with field data; don’t rely on lab-only results.
 
 ---
 
 ## 10) Dark Mode & Themes
 
-- Provide an explicit theme switch; persist per user.  
-- Avoid pure black/white; use soft neutrals for comfort.  
+- Provide an explicit theme switch; persist per user.
+- Avoid pure black/white; use soft neutrals for comfort.
 - Ensure charts and data viz work in both themes.
 
 ---
 
 ## Review Checklist
 
-- [ ] Core tasks visible within 1–2 clicks  
-- [ ] Clear empty/loading/error patterns  
-- [ ] Keyboard + screen reader flows verified  
-- [ ] Server actions covered with optimistic UI + rollback  
+- [ ] Core tasks visible within 1–2 clicks
+- [ ] Clear empty/loading/error patterns
+- [ ] Keyboard + screen reader flows verified
+- [ ] Server actions covered with optimistic UI + rollback
 - [ ] Measured, not guessed: UX metrics tracked
 
 ---

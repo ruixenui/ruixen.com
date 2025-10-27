@@ -35,8 +35,7 @@ export default function JobCardDemoPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 p-8">
-      <h1 className="mb-6 text-3xl font-bold text-center">JobCard Demo</h1>
+    <div className="flex items-center justify-center py-10">
       <div className="flex flex-wrap justify-center gap-6">
         {demoJobs.map((job, index) => (
           <JobCard key={index} {...job} />

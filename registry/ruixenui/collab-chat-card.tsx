@@ -103,7 +103,7 @@ export default function CollabChatCard({
       {/* Body */}
       <main className="flex flex-1 overflow-hidden rounded-xl border border-gray-300 dark:border-gray-700">
         {/* Participants List */}
-        <aside className="w-56 bg-gray-50 dark:bg-gray-900 border-r border-gray-300 dark:border-gray-700 p-4 overflow-y-auto">
+        <aside className="w-56 bg-gray-50 dark:bg-black border-r border-gray-300 dark:border-gray-700 p-4 overflow-y-auto">
           {uniqueSenders.map((sender) => {
             const isSelected = selectedSender === sender.name;
             return (
@@ -116,7 +116,7 @@ export default function CollabChatCard({
                   "flex items-center gap-3 w-full p-3 mb-3 rounded-lg transition-colors",
                   isSelected
                     ? "bg-black dark:bg-white text-white dark:text-black"
-                    : "hover:bg-gray-200 dark:hover:bg-gray-800 text-gray-900 dark:text-gray-300",
+                    : "hover:bg-gray-200 dark:hover:bg-gray-950 text-gray-900 dark:text-gray-300",
                 )}
               >
                 <div className="relative">
@@ -191,8 +191,8 @@ export default function CollabChatCard({
                         className={cn(
                           "px-2 py-1 rounded-md text-sm transition-colors",
                           reaction.reacted
-                            ? "bg-gray-300 dark:bg-gray-700 text-black dark:text-white"
-                            : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-400",
+                            ? "bg-gray-300 dark:bg-black text-black dark:text-white"
+                            : "bg-gray-100 dark:bg-black text-gray-700 dark:text-gray-400",
                           "hover:bg-gray-200 dark:hover:bg-gray-600",
                         )}
                       >
@@ -211,7 +211,7 @@ export default function CollabChatCard({
       <footer className="mt-6 flex items-center gap-4 border-t border-gray-300 dark:border-gray-700 pt-4">
         <button
           aria-label="Add emoji"
-          className="p-3 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition"
+          className="p-3 rounded-full bg-gray-100 dark:bg-black hover:bg-gray-200 dark:hover:bg-gray-700 transition"
         >
           <SmilePlus className="w-6 h-6 text-gray-600 dark:text-gray-300" />
         </button>

@@ -63,11 +63,10 @@ export default function RuixenMoonChat() {
 
   return (
     <div
-      className="relative w-full h-screen bg-cover bg-center flex flex-col items-center"
+      className="relative w-full min-h-[600px] bg-cover bg-center flex flex-col items-center py-12"
       style={{
         backgroundImage:
           "url('https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/ruixen_moon_2.png')",
-        backgroundAttachment: "fixed",
       }}
     >
       {/* Centered AI Title */}
@@ -83,7 +82,7 @@ export default function RuixenMoonChat() {
       </div>
 
       {/* Input Box Section */}
-      <div className="w-full max-w-3xl mb-[20vh]">
+      <div className="w-full max-w-3xl mb-12">
         <div className="relative bg-black/60 backdrop-blur-md rounded-xl border border-neutral-700">
           <Textarea
             ref={textareaRef}

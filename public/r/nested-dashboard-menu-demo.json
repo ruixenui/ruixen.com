@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/nested-dashboard-menu-demo.tsx",
-      "content": "import NestedDashboardMenu from \"../ruixenui/nested-dashboard-menu\";\n\nexport default function NestedDashboardMenuDemo() {\n  return <NestedDashboardMenu />;\n}\n",
+      "content": "import NestedDashboardMenu from \"../ruixenui/nested-dashboard-menu\";\n\nexport default function NestedDashboardMenuDemo() {\n  return (\n    <div className=\"flex flex-col items-center justify-center p-2 gap-6\">\n      <NestedDashboardMenu />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/nested-dashboard-menu-demo.tsx"
     }

@@ -31,7 +31,7 @@ export default function NotificationDemo() {
   ];
 
   return (
-    <div className="flex flex-col items-center justify-center p-12 gap-6">
+    <div className="flex flex-col items-center justify-center p-6 gap-6 min-h-screen">
       <h1 className="text-2xl font-bold">Notification Demo</h1>
 
       <Notifications items={demoItems} />

@@ -1,7 +1,6 @@
 "use client";
 
 import FileTree, { FileNode } from "@/registry/ruixenui/file-tree-manager";
-import { Card, CardContent } from "@/components/ui/card";
 
 const demoTree: FileNode[] = [
   {
@@ -31,23 +30,19 @@ const demoTree: FileNode[] = [
 export default function FileTreeDemoPage() {
   return (
     <div className="p-8 flex flex-col items-center gap-6">
-      <Card className="w-full max-w-3xl">
-        <CardContent>
-          <FileTree
-            treeData={demoTree}
-            initialExpanded={["1", "1-1"]}
-            initialSelected={"1-1-1"}
-            onSelect={(node) => console.log("Selected:", node)}
-            onDelete={(node) => console.log("Deleted:", node)}
-            onCreate={(parent, type, name) =>
-              console.log("Created:", { parent, type, name })
-            }
-            onRename={(node, newName) =>
-              console.log("Renamed:", node, "to", newName)
-            }
-          />
-        </CardContent>
-      </Card>
+      <FileTree
+        treeData={demoTree}
+        initialExpanded={["1", "1-1"]}
+        initialSelected={"1-1-1"}
+        onSelect={(node) => console.log("Selected:", node)}
+        onDelete={(node) => console.log("Deleted:", node)}
+        onCreate={(parent, type, name) =>
+          console.log("Created:", { parent, type, name })
+        }
+        onRename={(node, newName) =>
+          console.log("Renamed:", node, "to", newName)
+        }
+      />
     </div>
   );
 }

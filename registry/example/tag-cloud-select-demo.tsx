@@ -28,7 +28,7 @@ export default function DemoTagCloudSelect() {
   const [selectedTags, setSelectedTags] = React.useState<string[]>([]);
 
   return (
-    <div className="p-4 flex flex-col gap-4">
+    <div className="p-4 flex flex-col items-center justify-center gap-4 min-h-screen">
       <TagCloudSelect
         options={tagOptions}
         placeholder="Pick your skills..."

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hero-title-slide-demo",
+  "type": "registry:example",
+  "title": "Hero Title Slide Demo",
+  "description": "Example showing an animated hero section component with customizable slide animations and preset effects.",
+  "registryDependencies": [
+    "https://ruixen.com/r/hero-title-slide"
+  ],
+  "files": [
+    {
+      "path": "registry/example/hero-title-slide-demo.tsx",
+      "content": "import HeroTitleSlide from \"@/registry/ruixenui/hero-title-slide\";\n\nexport default function DemoOne() {\n  return (\n    <div className=\"flex items-center justify-center min-h-screen\">\n      <HeroTitleSlide />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/hero-title-slide-demo.tsx"
+    }
+  ]
+}

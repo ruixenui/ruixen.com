@@ -52,7 +52,7 @@ export async function SiteHeader() {
               buttonVariants({
                 variant: "rainbow",
               }),
-              "hidden md:inline-flex bounce-once", // add bounce-once here
+              "hidden md:inline-flex", // add bounce-once here
             )}
             target="_blank"
             href={siteConfig.links.github}

@@ -7,7 +7,7 @@ export default function SegmentedButtonGroupDemo() {
   const [period, setPeriod] = useState("Day");
 
   return (
-    <div className="p-6 flex flex-col gap-4">
+    <div className="p-6 flex flex-col justify-center items-center min-h-screen gap-4">
       <SegmentedButtonGroup
         options={["Day", "Week", "Month"]}
         selected={period}

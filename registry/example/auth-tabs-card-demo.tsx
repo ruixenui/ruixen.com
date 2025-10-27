@@ -15,58 +15,60 @@ export default function DemoAuthTabsCard() {
   };
 
   return (
-    <AuthTabsCard
-      socialButtons={[
-        {
-          id: "google",
-          label: "Sign in with Google",
-          icon: FaGoogle,
-          onClick: () => alert("Google Login"),
-        },
-        {
-          id: "github",
-          label: "Sign in with GitHub",
-          icon: FaGithub,
-          onClick: () => alert("GitHub Login"),
-        },
-        {
-          id: "linkedin",
-          label: "Sign in with LinkedIn",
-          icon: FaLinkedin,
-          onClick: () => alert("LinkedIn Login"),
-        },
-      ]}
-      signInFields={[
-        {
-          id: "email",
-          label: "Email",
-          type: "email",
-          placeholder: "you@example.com",
-        },
-        {
-          id: "password",
-          label: "Password",
-          type: "password",
-          placeholder: "********",
-        },
-      ]}
-      signUpFields={[
-        { id: "name", label: "Name", type: "text", placeholder: "Your Name" },
-        {
-          id: "email",
-          label: "Email",
-          type: "email",
-          placeholder: "you@example.com",
-        },
-        {
-          id: "password",
-          label: "Password",
-          type: "password",
-          placeholder: "********",
-        },
-      ]}
-      onSignIn={handleSignIn}
-      onSignUp={handleSignUp}
-    />
+    <div className="flex items-center justify-center min-h-screen">
+      <AuthTabsCard
+        socialButtons={[
+          {
+            id: "google",
+            label: "Sign in with Google",
+            icon: FaGoogle,
+            onClick: () => alert("Google Login"),
+          },
+          {
+            id: "github",
+            label: "Sign in with GitHub",
+            icon: FaGithub,
+            onClick: () => alert("GitHub Login"),
+          },
+          {
+            id: "linkedin",
+            label: "Sign in with LinkedIn",
+            icon: FaLinkedin,
+            onClick: () => alert("LinkedIn Login"),
+          },
+        ]}
+        signInFields={[
+          {
+            id: "email",
+            label: "Email",
+            type: "email",
+            placeholder: "you@example.com",
+          },
+          {
+            id: "password",
+            label: "Password",
+            type: "password",
+            placeholder: "********",
+          },
+        ]}
+        signUpFields={[
+          { id: "name", label: "Name", type: "text", placeholder: "Your Name" },
+          {
+            id: "email",
+            label: "Email",
+            type: "email",
+            placeholder: "you@example.com",
+          },
+          {
+            id: "password",
+            label: "Password",
+            type: "password",
+            placeholder: "********",
+          },
+        ]}
+        onSignIn={handleSignIn}
+        onSignUp={handleSignUp}
+      />
+    </div>
   );
 }

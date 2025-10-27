@@ -4,7 +4,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { fontMono, fontSans } from "@/lib/fonts";
-import { absoluteUrl, cn, constructMetadata } from "@/lib/utils";
+import { absoluteUrl, cn } from "@/lib/utils";
 import { Provider as JotaiProvider } from "jotai";
 
 import "@/styles/globals.css";
@@ -72,7 +72,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head />
       <body
         className={cn(
           "relative flex w-full flex-col justify-center overflow-x-hidden scroll-smooth bg-background font-sans antialiased",

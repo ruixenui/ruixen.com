@@ -82,7 +82,10 @@ export default function FeatureCarousel() {
         </p>
 
         {/* Carousel */}
-        <div ref={sliderRef} className="relative h-[80vh] overflow-hidden">
+        <div
+          ref={sliderRef}
+          className="relative h-[40vh] md:h-[60vh] overflow-hidden"
+        >
           <div className="absolute inset-0 flex items-center justify-center">
             {dashboardTabs.map((tab, index) => {
               const position = index - currentSlide;

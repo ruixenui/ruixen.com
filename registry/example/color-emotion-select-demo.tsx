@@ -17,7 +17,7 @@ export default function DemoColorEmotionSelect() {
   const [selectedMood, setSelectedMood] = React.useState<string | undefined>();
 
   return (
-    <div className="p-4 flex flex-col gap-4">
+    <div className="p-4 flex flex-col gap-4 min-h-screen items-center justify-center">
       <ColorEmotionSelect
         options={moodOptions}
         label="Select Your Mood"

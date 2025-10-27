@@ -12,7 +12,7 @@ export default function DemoIconGridButton() {
   ];
 
   return (
-    <div className="flex gap-4">
+    <div className="flex gap-4 flex-col items-center justify-center min-h-screen">
       <IconGridButton label="Quick Actions" icons={icons} />
     </div>
   );

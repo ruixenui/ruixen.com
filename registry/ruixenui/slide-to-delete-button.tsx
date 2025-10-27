@@ -12,6 +12,7 @@ interface SlideToDeleteButtonProps
   deletedLabel?: string;
   icon?: React.ReactNode;
   dragLimit?: number;
+  handleClassName?: string; // 👈 added this line
 }
 
 export default function SlideToDeleteButton({
@@ -20,6 +21,7 @@ export default function SlideToDeleteButton({
   icon = <Trash2 className="w-4 h-4" />,
   dragLimit = 140,
   className,
+  handleClassName, // 👈 receive it here
   onClick,
   ...props
 }: SlideToDeleteButtonProps) {
@@ -27,26 +29,27 @@ export default function SlideToDeleteButton({
 
   return (
     <div className="relative w-[180px] h-11">
-      {/* Draggable Delete Handle */}
+      {/* 🟥 Draggable Delete Handle */}
       <motion.div
         drag="x"
         dragConstraints={{ left: 0, right: dragLimit }}
         onDragEnd={(_, info) => {
           if (info.point.x > dragLimit - 20) {
             setConfirmed(true);
-            onClick?.({} as any); // call onClick when fully confirmed
+            onClick?.({} as any);
           }
         }}
         className={cn(
           "absolute top-0 left-0 h-full w-[40px]",
           "flex items-center justify-center",
           "bg-red-500 text-white rounded-xl cursor-pointer z-10",
+          handleClassName, // 👈 apply custom handle styling
         )}
       >
         {icon}
       </motion.div>
 
-      {/* Main Button */}
+      {/* 🔴 Main Button */}
       <Button
         disabled={confirmed}
         className={cn(

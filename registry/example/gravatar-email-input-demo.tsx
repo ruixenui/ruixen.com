@@ -1,6 +1,6 @@
 "use client";
 
-import GravatarEmailInput from "../ruixenui/gravatar-email-input";
+import GravatarEmailInput from "@/registry/ruixenui/gravatar-email-input";
 
 export default function Demo() {
   const handleEmailChange = (email: string) => {
@@ -8,7 +8,7 @@ export default function Demo() {
   };
 
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex items-center justify-center min-h-screen">
       <GravatarEmailInput
         initialValue="test@example.com"
         onChange={handleEmailChange}
