@@ -4,7 +4,7 @@ import SplitActionButton from "@/registry/ruixenui/split-action-button";
 
 export default function DemoSplitActionButton() {
   return (
-    <div className="flex gap-4">
+    <div className="flex p-6 flex-col items-center justify-center min-h-screen">
       <SplitActionButton
         mainLabel="Save"
         mainAction={() => alert("Saved!")}

@@ -29,5 +29,9 @@ export default function DemoPlaylistCarousel() {
     },
   ];
 
-  return <PlaylistCarousel items={items} width={180} height={260} />;
+  return (
+    <div className="flex flex-col items-center justify-center min-h-screen">
+      <PlaylistCarousel items={items} width={180} height={260} />
+    </div>
+  );
 }

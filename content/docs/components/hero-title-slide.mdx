@@ -1,0 +1,214 @@
+---
+title: Hero Title Slide
+description: An animated hero section component with customizable slide animations and preset effects for creating engaging landing page headers.
+component: true
+---
+
+<ComponentPreview name="hero-title-slide-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn-ui@latest add "https://ruixen.com/r/hero-title-slide.json"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the required dependencies:</Step>
+
+```bash
+npm install framer-motion
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="hero-title-slide" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { HeroTitleSlide } from "@/components/ruixen/hero-title-slide";
+
+export function HeroSection() {
+  return (
+    <HeroTitleSlide
+      title="Welcome to Our Platform"
+      subtitle="Build amazing experiences with our tools"
+      description="Get started today and transform your ideas into reality with our comprehensive suite of development tools."
+      preset="slide"
+    />
+  );
+}
+```
+
+## Props
+
+| Prop                  | Type         | Default                                             | Description                            |
+| --------------------- | ------------ | --------------------------------------------------- | -------------------------------------- |
+| `title`               | `string`     | `"Build Something Amazing"`                         | Main hero title text                   |
+| `subtitle`            | `string`     | `"Create, innovate, and inspire with our platform"` | Subtitle text below the title          |
+| `description`         | `string`     | `"Join thousands of creators..."`                   | Description paragraph                  |
+| `preset`              | `PresetType` | `"blur-slide"`                                      | Animation preset for the hero elements |
+| `primaryButtonText`   | `string`     | `"Get Started"`                                     | Text for the primary CTA button        |
+| `secondaryButtonText` | `string`     | `"Learn More"`                                      | Text for the secondary button          |
+| `onPrimaryClick`      | `() => void` | -                                                   | Callback for primary button click      |
+| `onSecondaryClick`    | `() => void` | -                                                   | Callback for secondary button click    |
+| `className`           | `string`     | -                                                   | Additional CSS classes                 |
+
+## Animation Presets
+
+The component supports various animation presets:
+
+| Preset       | Description                    |
+| ------------ | ------------------------------ |
+| `fade`       | Simple fade-in animation       |
+| `slide`      | Slide up from bottom           |
+| `scale`      | Scale up from smaller size     |
+| `blur`       | Blur to clear transition       |
+| `blur-slide` | Combined blur and slide effect |
+| `zoom`       | Zoom in with spring animation  |
+| `flip`       | 3D flip animation              |
+| `bounce`     | Bouncy spring animation        |
+| `rotate`     | Rotation with spring           |
+| `swing`      | Subtle swing motion            |
+
+## Examples
+
+### Basic Usage
+
+<ComponentPreview name="hero-title-slide-demo" />
+
+### Different Animation Presets
+
+```tsx
+// Fade animation
+<HeroTitleSlide
+  title="Smooth Fade In"
+  subtitle="Elegant and subtle entrance"
+  preset="fade"
+/>
+
+// Bounce animation
+<HeroTitleSlide
+  title="Bouncy Entrance"
+  subtitle="Playful and energetic"
+  preset="bounce"
+/>
+
+// Zoom animation
+<HeroTitleSlide
+  title="Zoom Into Action"
+  subtitle="Dynamic and impactful"
+  preset="zoom"
+/>
+```
+
+### Custom Content
+
+```tsx
+<HeroTitleSlide
+  title="Transform Your Business"
+  subtitle="AI-Powered Solutions for Modern Enterprises"
+  description="Leverage cutting-edge artificial intelligence to streamline operations, boost productivity, and drive innovation across your organization."
+  primaryButtonText="Start Free Trial"
+  secondaryButtonText="Watch Demo"
+  preset="blur-slide"
+  onPrimaryClick={() => console.log("Starting trial...")}
+  onSecondaryClick={() => console.log("Playing demo...")}
+/>
+```
+
+### Minimal Version
+
+```tsx
+<HeroTitleSlide
+  title="Simple & Clean"
+  subtitle="Less is more"
+  description="Focus on what matters most with our minimalist approach."
+  preset="scale"
+/>
+```
+
+## AnimatedGroup Component
+
+The component also exports an `AnimatedGroup` utility for creating custom animated sections:
+
+```tsx
+import { AnimatedGroup } from "@/components/ruixen/hero-title-slide";
+
+<AnimatedGroup preset="slide" className="space-y-4">
+  <h2>Animated Section</h2>
+  <p>This content will animate in with the slide preset.</p>
+  <button>Call to Action</button>
+</AnimatedGroup>;
+```
+
+### AnimatedGroup Props
+
+| Prop        | Type                                      | Description                   |
+| ----------- | ----------------------------------------- | ----------------------------- |
+| `children`  | `ReactNode`                               | Content to animate            |
+| `className` | `string`                                  | Additional CSS classes        |
+| `preset`    | `PresetType`                              | Animation preset to use       |
+| `variants`  | `{container?: Variants, item?: Variants}` | Custom Framer Motion variants |
+
+## Customization
+
+### Custom Animation Variants
+
+```tsx
+const customVariants = {
+  container: {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2 }
+    }
+  },
+  item: {
+    hidden: { opacity: 0, x: -50 },
+    visible: { opacity: 1, x: 0 }
+  }
+}
+
+<AnimatedGroup variants={customVariants}>
+  <h1>Custom Animation</h1>
+  <p>With custom timing and effects</p>
+</AnimatedGroup>
+```
+
+### Styling
+
+The component uses Tailwind CSS classes and can be customized by:
+
+1. **Adding custom classes**: Use the `className` prop
+2. **Modifying the source**: Edit colors, spacing, and typography
+3. **CSS variables**: Override default values in your CSS
+
+```css
+.hero-section {
+  --hero-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --hero-text-color: white;
+}
+```

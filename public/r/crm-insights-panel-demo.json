@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/crm-insights-panel-demo.tsx",
-      "content": "\"use client\";\n\nimport CRMInsightsPanel from \"../ruixenui/crm-insights-panel\";\n\nexport default function DemoCRMInsightsPanel() {\n  return (\n    <main className=\"bg-background flex flex-col items-center justify-center w-full\">\n      <CRMInsightsPanel />\n    </main>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport CRMInsightsPanel from \"../ruixenui/crm-insights-panel\";\n\nexport default function DemoCRMInsightsPanel() {\n  return (\n    <main className=\"bg-background flex flex-col items-center justify-center w-full p-4\">\n      <CRMInsightsPanel />\n    </main>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/crm-insights-panel-demo.tsx"
     }

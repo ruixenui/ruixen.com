@@ -38,7 +38,7 @@ export default function DemoNotificationsPage() {
   ];
 
   return (
-    <div className="flex flex-col items-center justify-center p-12 gap-6">
+    <div className="flex flex-col items-center justify-center gap-6">
       <div className="space-y-4">
         <h1 className="text-xl font-bold text-gray-800">
           Notifications With Actions Demo

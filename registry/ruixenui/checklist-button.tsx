@@ -40,7 +40,7 @@ export default function ChecklistButton({
   return (
     <Button
       variant={done ? "secondary" : "default"}
-      className={`relative w-40 flex bg-white text-black dark:bg-black dark:text-white border hover:bg-white justify-center items-center ${className}`}
+      className={`relative w-40 flex bg-white text-black dark:bg-black hover:bg-gray-100 dark:hover:bg-gray-950 dark:text-white border justify-center items-center cursor-pointer ${className}`}
       onClick={handleClick}
     >
       <AnimatePresence mode="wait" initial={false}>

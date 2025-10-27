@@ -18,7 +18,7 @@ import { Textarea } from "@/components/ui/textarea";
 
 export default function BottomDrawers() {
   return (
-    <div className="flex flex-col items-center justify-center h-screen gap-4">
+    <div className="flex flex-col items-center justify-center py-12 gap-4">
       <h2 className="text-2xl font-semibold">Bottom Drawers Example</h2>
       <p className="text-gray-500 text-center max-w-md">
         Each button opens a drawer from the bottom with different content.

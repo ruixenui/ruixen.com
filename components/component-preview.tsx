@@ -1,3 +1,5 @@
+"use client";
+
 import { Index } from "@/__registry__";
 import { ComponentWrapper } from "@/components/component-wrapper";
 import { Icons } from "@/components/icons";
@@ -68,6 +70,7 @@ export function ComponentPreview({
             </TabsList>
           </div>
         )}
+
         <TabsContent value="preview" className="relative rounded-md">
           <ComponentWrapper name={name} className="overflow-hidden">
             <React.Suspense
@@ -82,6 +85,7 @@ export function ComponentPreview({
             </React.Suspense>
           </ComponentWrapper>
         </TabsContent>
+
         <TabsContent value="code">
           <div className="flex flex-col space-y-4">
             <div className="w-full rounded-md [&_pre]:my-0 [&_pre]:max-h-[350px] [&_pre]:overflow-auto">

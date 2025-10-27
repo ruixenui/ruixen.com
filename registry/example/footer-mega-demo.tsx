@@ -5,7 +5,7 @@ import FooterMega from "../ruixenui/footer-mega";
 
 export default function FooterMegaDemo() {
   return (
-    <main className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <main className="min-h-screen bg-gray-50 dark:bg-black">
       <div className="text-center py-20">
         <h1 className="text-4xl font-bold text-gray-900 dark:text-white">
           Footer Mega Demo
@@ -80,7 +80,7 @@ export default function FooterMegaDemo() {
               ],
             },
           ]}
-          copyright="© 2025 21st.dev. All rights reserved."
+          copyright="© 2025 ruixen ui. All rights reserved."
           bottomLinks={[
             { text: "Terms", url: "#" },
             { text: "Privacy", url: "#" },

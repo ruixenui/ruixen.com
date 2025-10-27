@@ -1,0 +1,122 @@
+---
+title: Color Emotion Select
+description: A select component that displays options with color indicators and optional emojis for emotional context.
+component: true
+---
+
+<ComponentPreview name="color-emotion-select-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn-ui@latest add "https://ruixen.com/r/color-emotion-select.json"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="color-emotion-select" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { ColorEmotionSelect } from "@/components/ruixen/color-emotion-select";
+
+const moodOptions = [
+  { value: "happy", label: "Happy", color: "#22c55e", emoji: "😊" },
+  { value: "sad", label: "Sad", color: "#3b82f6", emoji: "😢" },
+  { value: "angry", label: "Angry", color: "#ef4444", emoji: "😠" },
+  { value: "excited", label: "Excited", color: "#f59e0b", emoji: "🤩" },
+];
+
+export function MoodSelector() {
+  return (
+    <ColorEmotionSelect
+      options={moodOptions}
+      label="How are you feeling?"
+      placeholder="Select your mood..."
+      onChange={(value) => console.log("Selected:", value)}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop           | Type                      | Default       | Description                                                   |
+| -------------- | ------------------------- | ------------- | ------------------------------------------------------------- |
+| `options`      | `ColorEmotionOption[]`    | -             | Array of options with value, label, color, and optional emoji |
+| `label`        | `string`                  | -             | Optional label for the select group                           |
+| `placeholder`  | `string`                  | `"Select..."` | Placeholder text when no option is selected                   |
+| `onChange`     | `(value: string) => void` | -             | Callback function when selection changes                      |
+| `defaultValue` | `string`                  | -             | Default selected value                                        |
+
+## ColorEmotionOption
+
+| Property | Type     | Description                             |
+| -------- | -------- | --------------------------------------- |
+| `value`  | `string` | The value of the option                 |
+| `label`  | `string` | Display text for the option             |
+| `color`  | `string` | Color indicator (Tailwind color or hex) |
+| `emoji`  | `string` | Optional emoji for visual context       |
+
+## Examples
+
+### Basic Usage
+
+<ComponentPreview name="color-emotion-select-demo" />
+
+### Priority Levels
+
+```tsx
+const priorityOptions = [
+  { value: "low", label: "Low Priority", color: "#22c55e" },
+  { value: "medium", label: "Medium Priority", color: "#f59e0b" },
+  { value: "high", label: "High Priority", color: "#ef4444" },
+  { value: "critical", label: "Critical", color: "#dc2626" },
+]
+
+<ColorEmotionSelect
+  options={priorityOptions}
+  label="Task Priority"
+  placeholder="Select priority level..."
+/>
+```
+
+### Status Indicators
+
+```tsx
+const statusOptions = [
+  { value: "active", label: "Active", color: "#10b981", emoji: "✅" },
+  { value: "pending", label: "Pending", color: "#f59e0b", emoji: "⏳" },
+  { value: "inactive", label: "Inactive", color: "#6b7280", emoji: "⏸️" },
+  { value: "error", label: "Error", color: "#ef4444", emoji: "❌" },
+]
+
+<ColorEmotionSelect
+  options={statusOptions}
+  placeholder="Select status..."
+/>
+```

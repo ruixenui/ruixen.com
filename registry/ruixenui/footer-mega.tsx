@@ -75,7 +75,7 @@ export default function FooterMega({
       ],
     },
   ],
-  copyright = "© 2024 21st.dev. All rights reserved.",
+  copyright = "© 2024 ruixen ui. All rights reserved.",
   bottomLinks = [
     { text: "Terms", url: "#" },
     { text: "Privacy", url: "#" },
@@ -84,26 +84,36 @@ export default function FooterMega({
   ],
 }) {
   return (
-    <footer className="bg-white dark:bg-gray-950 py-16 border-t border-gray-200 dark:border-gray-800">
+    <footer className="bg-white dark:bg-black py-16 border-t border-gray-200 dark:border-gray-800">
       <div className="container mx-auto px-6">
         {/* --- Branding & Status --- */}
         <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start gap-10">
           {/* Logo + tagline */}
           <div className="max-w-sm text-center lg:text-left">
             <Image
-              src="https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/21st-logo-dark.png"
-              alt="21st.dev logo"
-              title="21st.dev"
-              width={100}
-              height={100}
-              className="h-auto w-12 mx-auto lg:mx-0 mb-4"
+              src={
+                "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/ruixen-light.png"
+              }
+              alt="Ruixen Logo"
+              width={40}
+              height={40}
+              className="rounded-full h-10 w-10 dark:block hidden"
+            />
+            <Image
+              src={
+                "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/ruixen-dark.png"
+              }
+              alt="Ruixen Logo"
+              width={40}
+              height={40}
+              className="rounded-full h-10 w-10 dark:hidden block"
             />
             <div className="lg:col-span-2">
               <h3 className="mb-3 text-sm font-semibold text-gray-900 dark:text-gray-100">
-                About 21st.dev
+                About ruixen ui
               </h3>
               <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                21st.dev is pioneering modern developer experiences with a
+                ruixen ui is pioneering modern developer experiences with a
                 platform built for scalability, reliability, and speed. From
                 startups to global enterprises, we empower teams to ship better
                 products faster with open source tools and AI-driven

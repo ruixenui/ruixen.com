@@ -5,7 +5,7 @@ import ChecklistButton from "@/registry/ruixenui/checklist-button";
 
 export default function ChecklistDemo() {
   return (
-    <div className="p-6 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+    <div className="p-6 grid gap-4 sm:grid-cols-2 md:grid-cols-3 justify-center items-center min-h-screen">
       <ChecklistButton
         label="Mark as Done"
         doneLabel="Completed"

@@ -21,7 +21,7 @@ export default function PodcastCardPlayerDemo() {
   ];
 
   return (
-    <div className="p-6 flex flex-wrap gap-6 justify-center">
+    <div className="p-6 flex flex-wrap gap-6 justify-center items-center min-h-screen">
       {podcasts.map((p, idx) => (
         <PodcastCardPlayer
           key={idx}

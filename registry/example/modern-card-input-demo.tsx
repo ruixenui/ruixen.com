@@ -11,7 +11,7 @@ export default function CardDemoPage() {
   });
 
   return (
-    <div className="flex flex-col items-center justify-center p-12 gap-6">
+    <div className="flex flex-col items-center justify-center min-h-screen p-12 gap-6">
       <h1 className="text-2xl font-bold">Modern Card Input Demo</h1>
 
       <ModernCardInput

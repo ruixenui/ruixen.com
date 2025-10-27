@@ -1,8 +1,8 @@
-import GlowLinkButton from "../ruixenui/glow-link-button";
+import GlowLinkButton from "@/registry/ruixenui/glow-link-button";
 
 export default function DemoGlowLinkButton() {
   return (
-    <main className="flex flex-col items-center justify-center gap-6">
+    <main className="flex flex-col items-center justify-center gap-6 min-h-screen">
       {/* Custom label + link */}
       <GlowLinkButton label="Visit Docs" href="https://docs.ruixenui.com" />
 

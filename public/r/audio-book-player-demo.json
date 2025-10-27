@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/audio-book-player-demo.tsx",
-      "content": "\"use client\";\n\nimport AudioBookPlayer from \"@/registry/ruixenui/audio-book-player\";\n\nexport default function DemoAudioBook() {\n  return (\n    <div className=\"flex flex-col items-center justify-center\">\n      <AudioBookPlayer\n        audioSrc=\"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3\"\n        chapterTitle=\"Chapter 2: The Journey Continues\"\n        author=\"Jane Smith\"\n      />\n    </div>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport AudioBookPlayer from \"@/registry/ruixenui/audio-book-player\";\n\nexport default function DemoAudioBook() {\n  return (\n    <div className=\"flex flex-col items-center justify-center min-h-screen\">\n      <AudioBookPlayer\n        audioSrc=\"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3\"\n        chapterTitle=\"Chapter 2: The Journey Continues\"\n        author=\"Jane Smith\"\n      />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/audio-book-player-demo.tsx"
     }

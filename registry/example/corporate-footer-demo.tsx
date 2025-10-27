@@ -41,12 +41,12 @@ export default function FooterDemo() {
           tagline="Custom Footer Tagline"
           menuItems={customMenu}
           bottomLinks={customBottomLinks}
-          copyright="© 2025 MyCompany. All rights reserved."
+          copyright="© 2025 ruixen. All rights reserved."
           logo={{
-            url: "https://example.com",
-            src: "/custom_logo.png",
-            alt: "Custom Logo",
-            title: "MyCompany",
+            url: "https://www.ruixen.com/",
+            src: "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/ruixen-dark.png",
+            alt: "ruixen",
+            title: "ruixen",
           }}
         />
       </div>

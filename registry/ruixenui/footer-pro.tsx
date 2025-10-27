@@ -26,14 +26,14 @@ interface FooterProProps {
 
 const defaultProps: FooterProProps = {
   description:
-    "21st.dev empowers developers with modern tools, scalable infrastructure, and a vibrant community to build, ship, and grow faster.",
+    "ruixen ui empowers developers with modern tools, scalable infrastructure, and a vibrant community to build, ship, and grow faster.",
   logo: {
-    dark: "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/21st-logo-dark.png",
+    dark: "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/ruixen-dark.png",
     light:
-      "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/21st-logo-white.png",
+      "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/ruixen-light.png",
   },
   contact: {
-    email: "support@21st.dev",
+    email: "support@ruixen ui",
     phone: "+1 (555) 123-4567",
   },
   socials: [
@@ -71,7 +71,7 @@ const defaultProps: FooterProProps = {
       ],
     },
   ],
-  copyright: "© 2024 21st.dev. All rights reserved.",
+  copyright: "© 2024 ruixen ui. All rights reserved.",
 };
 
 export default function FooterPro(props?: FooterProProps) {

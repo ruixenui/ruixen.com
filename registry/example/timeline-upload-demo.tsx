@@ -47,7 +47,7 @@ export default function DemoTimelineUpload() {
   };
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="flex flex-col items-center justify-center min-h-screen space-y-6">
       <h1 className="text-2xl font-medium">Timeline Upload Demo</h1>
 
       {/* Hidden file inputs */}

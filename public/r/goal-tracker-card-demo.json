@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/goal-tracker-card-demo.tsx",
-      "content": "import GoalTrackerCard from \"../ruixenui/goal-tracker-card\";\n\nexport default function GoalTrackerCardDemo() {\n  return <GoalTrackerCard />;\n}\n",
+      "content": "import GoalTrackerCard from \"@/registry/ruixenui/goal-tracker-card\";\n\nexport default function GoalTrackerCardDemo() {\n  return (\n    <div className=\"flex items-center justify-center py-8\">\n      <GoalTrackerCard />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/goal-tracker-card-demo.tsx"
     }

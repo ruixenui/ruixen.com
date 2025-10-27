@@ -24,13 +24,8 @@ const customFAQ = [
 
 export default function FAQScrollAccordionDemo() {
   return (
-    <main className="min-h-[50vh] dark:bg-black text-gray-900 dark:text-white">
+    <main className="min-h-[50vh] dark:bg-black text-gray-900 dark:text-white p-4">
       <section className="py-20">
-        {/* Using custom data */}
-        {/* <FAQScrollAccordion data={customFAQ} />
-        <div className="mt-20" /> */}
-
-        {/* Using default data */}
         <FAQScrollAccordion />
       </section>
     </main>

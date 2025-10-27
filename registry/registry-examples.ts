@@ -3877,4 +3877,49 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "color-emotion-select-demo",
+    type: "registry:example",
+    title: "Color Emotion Select Demo",
+    description:
+      "Example showing a select component with color indicators and optional emojis for emotional context.",
+    registryDependencies: ["https://ruixen.com/r/color-emotion-select"],
+    files: [
+      {
+        path: "registry/example/color-emotion-select-demo.tsx",
+        type: "registry:example",
+        target: "components/color-emotion-select-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "live-preview-style-select-demo",
+    type: "registry:example",
+    title: "Live Preview Style Select Demo",
+    description:
+      "Example showing a select component with live preview functionality for style options.",
+    registryDependencies: ["https://ruixen.com/r/live-preview-style-select"],
+    files: [
+      {
+        path: "registry/example/live-preview-style-select-demo.tsx",
+        type: "registry:example",
+        target: "components/live-preview-style-select-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "hero-title-slide-demo",
+    type: "registry:example",
+    title: "Hero Title Slide Demo",
+    description:
+      "Example showing an animated hero section component with customizable slide animations and preset effects.",
+    registryDependencies: ["https://ruixen.com/r/hero-title-slide"],
+    files: [
+      {
+        path: "registry/example/hero-title-slide-demo.tsx",
+        type: "registry:example",
+        target: "components/hero-title-slide-demo.tsx",
+      },
+    ],
+  },
 ];

@@ -6,7 +6,7 @@ export default function DemoCircularStepper() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center gap-6">
+    <div className="flex flex-col items-center justify-center gap-6 min-h-screen">
       {/* <CircularStepperInput onChange={handleChange} /> */}
       <CircularStepperInput
         min={10}

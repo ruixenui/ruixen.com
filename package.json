@@ -91,6 +91,7 @@
     "ogl": "^1.0.11",
     "postcss": "8.4.39",
     "posthog-js": "^1.144.2",
+    "posthog-node": "^5.10.3",
     "react": "18.3.1",
     "react-aria-components": "^1.13.0",
     "react-countup": "^6.5.3",

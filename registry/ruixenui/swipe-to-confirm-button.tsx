@@ -51,8 +51,8 @@ export default function SwipeToConfirmButton({
         asChild
         variant="default"
         className="absolute top-0 left-0 z-10 p-0 rounded-full w-full h-full
-                   bg-white text-gray-900 dark:bg-gray-900 dark:text-white
-                   border border-gray-300 dark:border-gray-700
+                   bg-white text-gray-900 dark:bg-black dark:text-white
+                   border border-gray-300 dark:border-black
                    hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
       >
         <motion.div

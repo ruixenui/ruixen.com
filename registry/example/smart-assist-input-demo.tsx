@@ -14,7 +14,7 @@ export default function SmartAssistDemo() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center p-12 gap-6 space-y-8">
+    <div className="flex flex-col items-center justify-center min-h-screen p-12 gap-6 space-y-8">
       <h1 className="text-2xl font-bold">Smart Assist Input Demo</h1>
 
       <SmartAssistInput

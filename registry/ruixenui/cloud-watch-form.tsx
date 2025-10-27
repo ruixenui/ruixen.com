@@ -36,7 +36,7 @@ export default function CloudWatchForm() {
   }, []);
 
   return (
-    <div className="flex items-center justify-center min-h-screen p-4">
+    <div className="flex items-center justify-center py-12 p-4">
       <div className="bg-white/30 backdrop-blur-md rounded-xl shadow-xl p-8 flex flex-col items-center gap-6 w-md border">
         {/* Cartoon Face */}
         <div className="relative w-70 h-40">

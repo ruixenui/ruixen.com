@@ -2,7 +2,7 @@ import PortfolioCard from "../ruixenui/portfolio-card";
 
 export default function PortfolioCardDemo() {
   return (
-    <div className="flex items-center justify-center h-screen">
+    <div className="flex items-center justify-center py-10">
       <PortfolioCard
         name="Ruixen"
         role="Software Developer Engineer"

@@ -37,7 +37,7 @@ export default function DemoLivePreviewStyleSelect() {
   const [style, setStyle] = React.useState<string>("");
 
   return (
-    <div className="p-4 space-y-4">
+    <div className="flex flex-col gap-4 min-h-screen items-center justify-center space-y-4">
       <LivePreviewStyleSelect
         options={gradientOptions}
         label="Select Gradient"

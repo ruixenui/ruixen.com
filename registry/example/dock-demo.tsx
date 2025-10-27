@@ -25,5 +25,9 @@ export default function DemoOne() {
     },
   ];
 
-  return <Dock items={dockItems} />;
+  return (
+    <div className="p-8 flex flex-col items-center gap-6">
+      <Dock items={dockItems} />
+    </div>
+  );
 }

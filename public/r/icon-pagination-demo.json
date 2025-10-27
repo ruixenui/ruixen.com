@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/icon-pagination-demo.tsx",
-      "content": "\"use client\";\n\nimport IconPagination from \"@/registry/ruixenui/icon-pagination\";\n\nexport default function IconPaginationDemo() {\n  return (\n    <div className=\"flex flex-col items-center justify-center\">\n      <IconPagination totalPages={200} maxVisible={7} className=\"mb-10\" />\n    </div>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport IconPagination from \"@/registry/ruixenui/icon-pagination\";\n\nexport default function IconPaginationDemo() {\n  return (\n    <div className=\"flex flex-col items-center justify-center min-h-screen\">\n      <IconPagination totalPages={200} maxVisible={7} className=\"mb-10\" />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/icon-pagination-demo.tsx"
     }

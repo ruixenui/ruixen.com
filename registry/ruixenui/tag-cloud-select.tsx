@@ -98,7 +98,7 @@ export const TagCloudSelect: React.FC<TagCloudSelectProps> = ({
                   "transition-all rounded-full px-3 py-1 font-medium cursor-pointer border",
                   selected.includes(opt.value)
                     ? "bg-primary text-primary-foreground border-primary"
-                    : "bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700",
+                    : "bg-gray-100 hover:bg-gray-200 dark:bg-black dark:hover:bg-gray-950",
                 )}
                 style={{
                   fontSize: getFontSize(opt.popularity),
