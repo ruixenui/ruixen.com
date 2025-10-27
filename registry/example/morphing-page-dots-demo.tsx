@@ -6,7 +6,7 @@ import MorphingPageDots from "@/registry/ruixenui/morphing-page-dots";
 export default function DemoPagination() {
   const [page, setPage] = useState(0);
   return (
-    <div className="flex flex-col items-center gap-4 mt-20">
+    <div className="flex justify-center items-center min-h-screen">
       <MorphingPageDots total={5} initialPage={page} onPageChange={setPage} />
     </div>
   );

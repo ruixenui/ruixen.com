@@ -30,9 +30,11 @@ const demoFeatures: FeatureItem[] = [
 
 export default function DemoPage() {
   return (
-    <FeaturedHighlights
-      heading="Next-Level Features for Modern Teams"
-      features={demoFeatures}
-    />
+    <div className="flex flex-col items-center justify-center min-h-screen p-2">
+      <FeaturedHighlights
+        heading="Next-Level Features for Modern Teams"
+        features={demoFeatures}
+      />
+    </div>
   );
 }

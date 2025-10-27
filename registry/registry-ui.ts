@@ -3999,4 +3999,47 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "color-emotion-select",
+    type: "registry:ui",
+    title: "Color Emotion Select",
+    description:
+      "A select component that displays options with color indicators and optional emojis for emotional context.",
+    files: [
+      {
+        path: "registry/ruixenui/color-emotion-select.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/color-emotion-select.tsx",
+      },
+    ],
+  },
+  {
+    name: "live-preview-style-select",
+    type: "registry:ui",
+    title: "Live Preview Style Select",
+    description:
+      "A select component with live preview functionality that shows a visual representation of the selected style option.",
+    files: [
+      {
+        path: "registry/ruixenui/live-preview-style-select.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/live-preview-style-select.tsx",
+      },
+    ],
+  },
+  {
+    name: "hero-title-slide",
+    type: "registry:ui",
+    title: "Hero Title Slide",
+    description:
+      "An animated hero section component with customizable slide animations and preset effects for creating engaging landing page headers.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/ruixenui/hero-title-slide.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/hero-title-slide.tsx",
+      },
+    ],
+  },
 ];

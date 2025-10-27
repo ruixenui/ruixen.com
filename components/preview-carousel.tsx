@@ -103,7 +103,7 @@ const PreviewCarousel = ({
           }}
           className="w-full"
         >
-          <CarouselContent className="-mx-4 md:-mx-8">
+          <CarouselContent className="ml-4 md:ml-8">
             {items.map((item) => (
               <CarouselItem
                 key={item.id}

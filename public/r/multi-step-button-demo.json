@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/multi-step-button-demo.tsx",
-      "content": "import MultiStepButton from \"@/registry/ruixenui/multi-step-button\";\n\nexport default function DemoMultiStepButton() {\n  const steps = [\"Step 1: Fill Info\", \"Step 2: Confirm\", \"Step 3: Done\"];\n\n  return (\n    <div className=\"flex gap-4\">\n      <MultiStepButton steps={steps} />\n    </div>\n  );\n}\n",
+      "content": "import MultiStepButton from \"@/registry/ruixenui/multi-step-button\";\n\nexport default function DemoMultiStepButton() {\n  const steps = [\"Step 1: Fill Info\", \"Step 2: Confirm\", \"Step 3: Done\"];\n\n  return (\n    <div className=\"flex p-6 flex-col items-center justify-center min-h-screen\">\n      <MultiStepButton steps={steps} />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/multi-step-button-demo.tsx"
     }

@@ -5,7 +5,7 @@ import { Laptop, SunMedium, Moon } from "lucide-react";
 
 function DemoPage() {
   return (
-    <div className="max-w-md space-y-6">
+    <div className="flex items-center justify-center min-h-screen max-w-md space-y-6 p-2">
       <p className="text-sm text-muted-foreground">
         Select the theme that best matches your environment.
       </p>

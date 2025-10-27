@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/color-picker-input-demo.tsx",
-      "content": "\"use client\";\n\nimport ColorPickerInput from \"../ruixenui/color-picker-input\";\n\nexport default function DemoColorPicker() {\n  const handleColorChange = (color: string, opacity: number) => {\n    console.log(\"Selected:\", color, \"Opacity:\", opacity);\n  };\n\n  return (\n    <div className=\"flex items-center justify-center\">\n      <ColorPickerInput\n        initialColor=\"#EC4899\"\n        initialOpacity={80}\n        onChange={handleColorChange}\n      />\n    </div>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport ColorPickerInput from \"@/registry/ruixenui/color-picker-input\";\n\nexport default function DemoColorPicker() {\n  const handleColorChange = (color: string, opacity: number) => {\n    console.log(\"Selected:\", color, \"Opacity:\", opacity);\n  };\n\n  return (\n    <div className=\"flex items-center justify-center min-h-screen\">\n      <ColorPickerInput\n        initialColor=\"#EC4899\"\n        initialOpacity={80}\n        onChange={handleColorChange}\n      />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/color-picker-input-demo.tsx"
     }

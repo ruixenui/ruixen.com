@@ -1,8 +1,8 @@
-import TeamProjectCard from "../ruixenui/team-project-card";
+import TeamProjectCard from "@/registry/ruixenui/team-project-card";
 
 export default function TeamProjectCardDemo() {
   return (
-    <div className="flex items-center justify-center h-screen">
+    <div className="flex items-center justify-center py-10">
       <TeamProjectCard
         projectName="Ruixen UI"
         description="Modernize and refactor the UI for performance and accessibility."

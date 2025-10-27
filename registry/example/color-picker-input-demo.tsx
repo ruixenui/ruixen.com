@@ -1,6 +1,6 @@
 "use client";
 
-import ColorPickerInput from "../ruixenui/color-picker-input";
+import ColorPickerInput from "@/registry/ruixenui/color-picker-input";
 
 export default function DemoColorPicker() {
   const handleColorChange = (color: string, opacity: number) => {
@@ -8,7 +8,7 @@ export default function DemoColorPicker() {
   };
 
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex items-center justify-center min-h-screen">
       <ColorPickerInput
         initialColor="#EC4899"
         initialOpacity={80}

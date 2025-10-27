@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/automated-tasks-panel-demo.tsx",
-      "content": "\"use client\";\n\nimport AutomatedTasksPanel from \"../ruixenui/automated-tasks-panel\";\n\nexport default function DemoAutomatedTasksPanel() {\n  return (\n    <main className=\"bg-background flex flex-col items-center justify-center w-full\">\n      <AutomatedTasksPanel />\n    </main>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport AutomatedTasksPanel from \"../ruixenui/automated-tasks-panel\";\n\nexport default function DemoAutomatedTasksPanel() {\n  return (\n    <main className=\"bg-background flex flex-col items-center justify-center w-full p-4\">\n      <AutomatedTasksPanel />\n    </main>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/automated-tasks-panel-demo.tsx"
     }

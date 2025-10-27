@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/user-context-menu-demo.tsx",
-      "content": "import UserContextMenu from \"@/registry/ruixenui/user-context-menu\";\n\nexport default function UserContextMenuDemo() {\n  return (\n    <div className=\"flex items-center justify-center\">\n      <div className=\"text-center\">\n        <UserContextMenu />\n        <p className=\"text-muted-foreground mt-8\">\n          Right-click the card below to explore user options.\n        </p>\n      </div>\n    </div>\n  );\n}\n",
+      "content": "import UserContextMenu from \"@/registry/ruixenui/user-context-menu\";\n\nexport default function UserContextMenuDemo() {\n  return (\n    <div className=\"flex items-center justify-center min-h-screen p-2\">\n      <div className=\"text-center\">\n        <UserContextMenu />\n        <p className=\"text-muted-foreground mt-8\">\n          Right-click the card below to explore user options.\n        </p>\n      </div>\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/user-context-menu-demo.tsx"
     }

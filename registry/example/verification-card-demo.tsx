@@ -7,7 +7,7 @@ export default function IdentityCardDemo() {
   return (
     <div className="flex min-h-[400px] w-full items-center justify-center bg-muted/30">
       <a
-        href="https://www.ruixen.com/?utm_source=21st.dev"
+        href="https://www.ruixen.com"
         target="_blank"
         rel="noopener noreferrer"
       >

@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/wheel-pagination-demo.tsx",
-      "content": "import WheelPagination from \"@/registry/ruixenui/wheel-pagination\";\n\nexport default function DemoOne() {\n  return (\n    <div className=\"flex flex-col items-center justify-center\">\n      <WheelPagination\n        totalPages={50} // Total number of pages\n        visibleCount={7} // Number of pages visible at once\n        className=\"bg-white dark:bg-gray-800\"\n      />\n    </div>\n  );\n}\n",
+      "content": "import WheelPagination from \"@/registry/ruixenui/wheel-pagination\";\n\nexport default function DemoOne() {\n  return (\n    <div className=\"flex flex-col items-center justify-center min-h-screen\">\n      <WheelPagination\n        totalPages={50} // Total number of pages\n        visibleCount={7} // Number of pages visible at once\n        className=\"bg-white dark:bg-gray-800\"\n      />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/wheel-pagination-demo.tsx"
     }

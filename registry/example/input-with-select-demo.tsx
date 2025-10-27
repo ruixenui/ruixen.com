@@ -4,7 +4,7 @@ import InputWithSelect from "@/registry/ruixenui/input-with-select";
 
 export default function InputWithSelectDemoPage() {
   return (
-    <main className="flex flex-col items-center justify-center p-8">
+    <main className="flex flex-col items-center justify-center min-h-screen p-8">
       <h1 className="text-2xl font-bold mb-6">Input with Select Demo</h1>
 
       <div className="w-full max-w-md space-y-6 bg-white p-6 rounded-xl shadow">

@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/scroll-pagination-demo.tsx",
-      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport ScrollPagination from \"@/registry/ruixenui/scroll-pagination\";\n\nexport default function ScrollPaginationDemo() {\n  return (\n    <div className=\"flex flex-col items-center justify-center\">\n      <ScrollPagination totalPages={20} className=\"mb-10\" />\n    </div>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport ScrollPagination from \"@/registry/ruixenui/scroll-pagination\";\n\nexport default function ScrollPaginationDemo() {\n  return (\n    <div className=\"flex flex-col items-center justify-center min-h-screen\">\n      <ScrollPagination totalPages={20} className=\"mb-10\" />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/scroll-pagination-demo.tsx"
     }

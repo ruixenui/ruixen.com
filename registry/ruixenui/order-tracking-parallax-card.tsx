@@ -23,7 +23,7 @@ export const OrderTrackingParallaxCard = React.forwardRef<
       product,
       status,
       eta,
-      imageUrl = "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/ruixen_truck.png",
+      imageUrl = "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/delivery-man.png",
       className,
     },
     ref,

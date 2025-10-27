@@ -1,10 +1,11 @@
 "use client";
 
-import SlideToDeleteButton from "../ruixenui/slide-to-delete-button";
+import { Archive } from "lucide-react";
+import SlideToDeleteButton from "@/registry/ruixenui/slide-to-delete-button";
 
 export default function DemoSlideToDelete() {
   return (
-    <main className="flex flex-col items-center justify-center gap-8 p-6">
+    <main className="flex flex-col items-center justify-center gap-8 min-h-screen">
       <SlideToDeleteButton
         label="Remove Item"
         deletedLabel="Removed!"
@@ -12,9 +13,11 @@ export default function DemoSlideToDelete() {
       />
 
       <SlideToDeleteButton
-        className="bg-yellow-100 text-yellow-700 hover:bg-yellow-200"
+        className="bg-blue-100 text-blue-700 hover:bg-blue-200"
         label="Slide to Archive"
         deletedLabel="Archived"
+        icon={<Archive className="w-5 h-5" />}
+        handleClassName="bg-blue-500 hover:bg-blue-600"
       />
     </main>
   );

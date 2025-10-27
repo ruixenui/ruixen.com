@@ -4,7 +4,7 @@ import HoverPreviewButton from "@/registry/ruixenui/hover-preview-button";
 
 export default function HoverPreviewButtonDemo() {
   return (
-    <div className="p-6 flex flex-col gap-6">
+    <div className="p-6 flex flex-col justify-center items-center min-h-screen gap-6">
       <HoverPreviewButton
         label="View Report"
         previewContent={

@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/sign-in-card-demo.tsx",
-      "content": "import SignInCard from \"@/registry/ruixenui/sign-in-card\";\n\nexport default function DemoOne() {\n  return <SignInCard />;\n}\n",
+      "content": "import SignInCard from \"@/registry/ruixenui/sign-in-card\";\n\nexport default function DemoOne() {\n  return (\n    <div className=\"flex items-center justify-center p-2\">\n      <SignInCard />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/sign-in-card-demo.tsx"
     }

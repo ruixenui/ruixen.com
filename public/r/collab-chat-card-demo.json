@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/collab-chat-card-demo.tsx",
-      "content": "import CollabChatCard from \"../ruixenui/collab-chat-card\";\n\nexport default function CollabChatCardDemo() {\n  return <CollabChatCard />;\n}\n",
+      "content": "import CollabChatCard from \"@/registry/ruixenui/collab-chat-card\";\n\nexport default function CollabChatCardDemo() {\n  return (\n    <div className=\"flex items-center justify-center py-10\">\n      <CollabChatCard />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/collab-chat-card-demo.tsx"
     }

@@ -154,11 +154,7 @@ export default function VisionaryHeroSection({
             />
             <div className="inset-shadow-2xs max-h-[40vh] ring-background dark:inset-shadow-white/20 bg-background relative mx-auto max-w-5xl overflow-hidden rounded-t-2xl border border-gray-50 border-b-0 p-4 shadow-lg shadow-zinc-950/15 ring-1">
               {images.map((img, idx) => (
-                <Link
-                  key={idx}
-                  href="https://ruixen.com?utm_source=21st.dev&utm_medium=hero_section_05&utm_campaign=ruixen"
-                  target="_blank"
-                >
+                <Link key={idx} href="https://ruixen.com" target="_blank">
                   <Image
                     className={cn(
                       "bg-background aspect-15/8 relative rounded-2xl",

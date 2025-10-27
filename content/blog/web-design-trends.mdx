@@ -1,7 +1,7 @@
 ---
 title: "Web Design Trends 2025: What Matters, What Lasts"
 description: "The 2025 web design trends that actually ship—accessible motion, variable type, fluid theming, subtle 3D, AI-assisted workflows, and performance-first UX. Real patterns, not fads."
-image: https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/gradients/shade_shifters/shade-shifters-13.png
+image: https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/gradients/shade_shiters/shade-shifters-04.png
 author: Sri Somanaath
 tag: Web Design
 publishedOn: 2025-10-25T12:05:00.000Z
@@ -36,14 +36,22 @@ Trend roundups can be noisy. This one focuses on **what teams are actually shipp
   --dur-s: 160ms;
   --dur-m: 240ms;
 }
-.motion-enter { opacity: 0; transform: translateY(6px); }
+.motion-enter {
+  opacity: 0;
+  transform: translateY(6px);
+}
 .motion-enter-active {
-  opacity: 1; transform: translateY(0);
-  transition: opacity var(--dur-m) var(--ease-out),
-              transform var(--dur-m) var(--ease-out);
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity var(--dur-m) var(--ease-out),
+    transform var(--dur-m) var(--ease-out);
 }
 @media (prefers-reduced-motion: reduce) {
-  * { animation: none !important; transition: none !important; }
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
 }
 ```
 
@@ -60,8 +68,13 @@ Trend roundups can be noisy. This one focuses on **what teams are actually shipp
   --step-0: clamp(1rem, 0.95rem + 0.3vw, 1.125rem);
   --step-3: clamp(1.75rem, 1.2rem + 2.2vw, 3rem);
 }
-h1 { font-size: var(--step-3); line-height: 1.05; }
-body { font-size: var(--step-0); }
+h1 {
+  font-size: var(--step-3);
+  line-height: 1.05;
+}
+body {
+  font-size: var(--step-0);
+}
 ```
 
 **Tip:** Use **variable fonts** with optical sizing for crisp text at all sizes.
@@ -91,10 +104,20 @@ export default {
   },
 };
 ```
+
 ```css
 /* app/globals.css */
-:root { --bg: #ffffff; --fg: #0b0b0b; --brand: oklch(56% 0.2 262); --radius-lg: 14px; }
-:root[data-theme="dark"] { --bg: #0b0b0b; --fg: #f5f5f5; --brand: oklch(70% 0.18 262); }
+:root {
+  --bg: #ffffff;
+  --fg: #0b0b0b;
+  --brand: oklch(56% 0.2 262);
+  --radius-lg: 14px;
+}
+:root[data-theme="dark"] {
+  --bg: #0b0b0b;
+  --fg: #f5f5f5;
+  --brand: oklch(70% 0.18 262);
+}
 ```
 
 ---
@@ -108,7 +131,7 @@ export default {
 ```css
 :root {
   --brand-1: oklch(86% 0.06 262);
-  --brand-6: oklch(56% 0.20 262);
+  --brand-6: oklch(56% 0.2 262);
   --brand-9: oklch(30% 0.16 262);
 }
 ```
@@ -134,7 +157,14 @@ import { useScroll, useTransform, motion } from "framer-motion";
 export function Ambient({ src }: { src: string }) {
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 1], ["0px", "40px"]);
-  return <motion.img src={src} style={{ y }} alt="" className="pointer-events-none" />;
+  return (
+    <motion.img
+      src={src}
+      style={{ y }}
+      alt=""
+      className="pointer-events-none"
+    />
+  );
 }
 ```
 
@@ -191,19 +221,19 @@ export function Ambient({ src }: { src: string }) {
 
 ## Practical stack (2025)
 
-- **Next.js 14/15** (App Router, Server Components)  
-- **Tailwind + shadcn/ui + Radix** (ownable components with a11y)  
-- **Framer Motion** (targeted UI motion) or **CSS-only** for micro cases  
+- **Next.js 14/15** (App Router, Server Components)
+- **Tailwind + shadcn/ui + Radix** (ownable components with a11y)
+- **Framer Motion** (targeted UI motion) or **CSS-only** for micro cases
 - **Playwright + jest-axe** (tests), **Plausible** (analytics)
 
 ---
 
 ## Review checklist
 
-- [ ] Tokens control color/space/radius/motion  
-- [ ] Reduced motion respected  
-- [ ] LCP image optimized; no CLS  
-- [ ] Keyboard flow verified end-to-end  
+- [ ] Tokens control color/space/radius/motion
+- [ ] Reduced motion respected
+- [ ] LCP image optimized; no CLS
+- [ ] Keyboard flow verified end-to-end
 - [ ] One library per surface; Radix for primitives
 
 ---

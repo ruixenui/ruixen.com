@@ -7,7 +7,7 @@ export default function DemoOTP() {
   const [otp, setOtp] = useState("");
 
   return (
-    <div className="flex flex-col items-center justify-center gap-6">
+    <div className="flex flex-col items-center justify-center min-h-screen gap-6">
       <h2 className="text-lg font-semibold text-zinc-800 dark:text-white">
         Enter OTP
       </h2>

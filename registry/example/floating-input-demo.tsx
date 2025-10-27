@@ -5,7 +5,7 @@ import { User, Lock, Mail } from "lucide-react";
 
 export default function FloatingInputDemoPage() {
   return (
-    <main className="flex flex-col items-center justify-center p-12 mx-auto">
+    <main className="flex flex-col items-center justify-center min-h-screen p-12 mx-auto">
       <h1 className="text-2xl font-bold mb-6">Floating Input Demo</h1>
 
       <div className="w-full max-w-md space-y-6 mx-auto">

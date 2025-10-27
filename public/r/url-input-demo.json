@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/url-input-demo.tsx",
-      "content": "import UrlInput from \"@/registry/ruixenui/url-input\";\n\nexport default function DemoOne() {\n  return (\n    <div className=\"flex items-center justify-center p-12\">\n      <UrlInput />\n    </div>\n  );\n}\n",
+      "content": "import UrlInput from \"@/registry/ruixenui/url-input\";\n\nexport default function DemoOne() {\n  return (\n    <div className=\"flex items-center justify-center min-h-screen p-12\">\n      <UrlInput />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/url-input-demo.tsx"
     }

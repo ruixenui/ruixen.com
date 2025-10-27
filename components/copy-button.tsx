@@ -6,6 +6,7 @@ import { CheckIcon, ClipboardIcon } from "lucide-react";
 import { NpmCommands } from "types/unist";
 
 import { Event, trackEvent } from "@/lib/events";
+import { trackComponentCodeCopy, trackCopyCommand } from "@/lib/ga-events";
 import { cn } from "@/lib/utils";
 import { Button, ButtonProps } from "@/components/ui/button";
 import {

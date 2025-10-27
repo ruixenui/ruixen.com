@@ -1,12 +1,12 @@
 "use client";
 
 import ExpandableContentButton from "@/registry/ruixenui/expandable-content-button";
-import { ChevronDown, ChevronUp, Twitter, Linkedin, Copy } from "lucide-react";
+import { Twitter, Linkedin, Copy } from "lucide-react";
 
 // Demo Usage
 export default function Demo() {
   return (
-    <div className="flex gap-4">
+    <div className="flex p-6 flex-col items-center justify-center min-h-screen">
       <ExpandableContentButton
         label="Filters"
         options={[

@@ -46,7 +46,7 @@ export default function DemoStackedCardsUpload() {
   };
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="flex flex-col items-center justify-center min-h-screen space-y-6">
       <h1 className="text-2xl font-semibold">Stacked Cards Upload Demo</h1>
 
       <input

@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/confetti-button-demo.tsx",
-      "content": "\"use client\";\n\nimport ConfettiButton from \"@/registry/ruixenui/confetti-button\";\n\nexport default function ConfettiButtonDemo() {\n  return (\n    <div className=\"p-6 flex flex-col gap-4\">\n      <ConfettiButton label=\"Level Up!\" />\n      <ConfettiButton label=\"Achievement Unlocked\" />\n      <ConfettiButton label=\"Submit\" />\n    </div>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport ConfettiButton from \"@/registry/ruixenui/confetti-button\";\n\nexport default function ConfettiButtonDemo() {\n  return (\n    <div className=\"p-6 flex flex-col justify-center items-center min-h-screen gap-4\">\n      <ConfettiButton label=\"Level Up!\" />\n      <ConfettiButton label=\"Achievement Unlocked\" />\n      <ConfettiButton label=\"Submit\" />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/confetti-button-demo.tsx"
     }

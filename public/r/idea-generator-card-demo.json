@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/idea-generator-card-demo.tsx",
-      "content": "import IdeaGeneratorCard from \"../ruixenui/idea-generator-card\";\n\nexport default function IdeaGeneratorCardDemo() {\n  return <IdeaGeneratorCard />;\n}\n",
+      "content": "import IdeaGeneratorCard from \"@/registry/ruixenui/idea-generator-card\";\n\nexport default function IdeaGeneratorCardDemo() {\n  return (\n    <div className=\"flex items-center justify-center py-8\">\n      <IdeaGeneratorCard />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/idea-generator-card-demo.tsx"
     }
