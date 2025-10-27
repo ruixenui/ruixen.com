@@ -43,27 +43,25 @@ const ruixenFaqData = [
 function Home() {
   return (
     <main className="flex flex-col items-center justify-center w-full overflow-hidden bg-white dark:bg-black text-black dark:text-white transition-all duration-300">
-      {/* HERO SECTION */}  
+      {/* HERO SECTION */}
       <section className="flex flex-col justify-center items-center w-full min-h-screen px-4 sm:px-6 lg:px-8">
         <div className="relative w-full container mx-auto flex flex-col items-center justify-center text-center">
           {/* Hero Text */}
-            <h1
-              className="relative font-semibold leading-[1.1] tracking-tight text-center mx-auto
+          <h1
+            className="relative font-semibold leading-[1.1] tracking-tight text-center mx-auto
               text-[2rem] xs:text-[2rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[4rem] xl:text-[5rem]"
-            >
-              Ruixen UI: Lightweight & Customizable React Library
-            </h1>
+          >
+            Ruixen UI: Lightweight & Customizable React Library
+          </h1>
 
-            <p className="mt-6 mx-auto max-w-2xl text-center text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-200">
-              Ruixen UI is a modern, fast, and customizable React component
-              library built with Tailwind CSS, TypeScript, and accessibility in
-              mind.
-            </p>
+          <p className="mt-6 mx-auto max-w-2xl text-center text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-200">
+            Ruixen UI is a modern, fast, and customizable React component
+            library built with Tailwind CSS, TypeScript, and accessibility in
+            mind.
+          </p>
 
           {/* CTA Buttons */}
-            <div
-            className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4"
-          >
+          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
             <Button
               asChild
               size="md"
