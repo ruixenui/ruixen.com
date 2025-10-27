@@ -68,3 +68,7 @@ Thumbs.db
 
 # Turbo
 .turbo
+
+# Deployment logs
+logs/
+*.log

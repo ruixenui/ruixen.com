@@ -17,8 +17,8 @@ This guide takes you from **blank repo to interactive site** with a production s
 
 ## 1) Plan the interactions
 
-- Define **top 3 tasks** users must complete.  
-- Identify **moments for feedback**: nav, form submission, errors, success.  
+- Define **top 3 tasks** users must complete.
+- Identify **moments for feedback**: nav, form submission, errors, success.
 - Decide which interactions need **URLs** (modals/drawers via parallel routes).
 
 ---
@@ -47,14 +47,23 @@ Configure Tailwind `content` to include `app` and `components`.
 ```css
 /* app/globals.css */
 :root {
-  --bg: #ffffff; --fg: #0b0b0b; --brand: oklch(56% 0.2 262);
+  --bg: #ffffff;
+  --fg: #0b0b0b;
+  --brand: oklch(56% 0.2 262);
   --radius: 12px;
 }
 :root[data-theme="dark"] {
-  --bg: #0b0b0b; --fg: #f5f5f5; --brand: oklch(70% 0.18 262);
+  --bg: #0b0b0b;
+  --fg: #f5f5f5;
+  --brand: oklch(70% 0.18 262);
 }
-html { color-scheme: light dark; }
-body { background: var(--bg); color: var(--fg); }
+html {
+  color-scheme: light dark;
+}
+body {
+  background: var(--bg);
+  color: var(--fg);
+}
 ```
 
 ```ts
@@ -95,11 +104,19 @@ export function Nav() {
   return (
     <header className="sticky top-0 z-40 border-b bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/50 dark:bg-black/30">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-        <Link href="/" className="font-semibold">Ruixen</Link>
+        <Link href="/" className="font-semibold">
+          Ruixen
+        </Link>
         <nav className="flex items-center gap-2">
-          <Link href="/work" className="px-3 py-2">Work</Link>
-          <Link href="/blog" className="px-3 py-2">Blog</Link>
-          <Button asChild><Link href="/contact">Contact</Link></Button>
+          <Link href="/work" className="px-3 py-2">
+            Work
+          </Link>
+          <Link href="/blog" className="px-3 py-2">
+            Blog
+          </Link>
+          <Button asChild>
+            <Link href="/contact">Contact</Link>
+          </Button>
           <ThemeToggle />
         </nav>
       </div>
@@ -118,7 +135,12 @@ Use **shadcn/ui** components (built on Radix) for a11y‑correct behavior you st
 // app/demo/page.tsx (excerpt)
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 export default function Demo() {
   return (
@@ -140,7 +162,9 @@ export default function Demo() {
       </TooltipProvider>
 
       <Dialog>
-        <DialogTrigger className="rounded-md border px-3 py-2">Open modal</DialogTrigger>
+        <DialogTrigger className="rounded-md border px-3 py-2">
+          Open modal
+        </DialogTrigger>
         <DialogContent>Dialog content</DialogContent>
       </Dialog>
     </div>
@@ -168,7 +192,12 @@ export function ScrollProgress() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-  return <div className="fixed inset-x-0 top-0 h-1 bg-brand" style={{ width: w + "%" }} />;
+  return (
+    <div
+      className="fixed inset-x-0 top-0 h-1 bg-brand"
+      style={{ width: w + "%" }}
+    />
+  );
 }
 ```
 
@@ -206,8 +235,14 @@ export function SignupForm() {
         aria-invalid={!!error}
         aria-describedby={error ? "email-err" : undefined}
       />
-      {error && <p id="email-err" className="text-sm text-red-600">{error}</p>}
-      <button className="rounded-md bg-brand px-4 py-2 text-white">Sign up</button>
+      {error && (
+        <p id="email-err" className="text-sm text-red-600">
+          {error}
+        </p>
+      )}
+      <button className="rounded-md bg-brand px-4 py-2 text-white">
+        Sign up
+      </button>
     </form>
   );
 }
@@ -217,36 +252,36 @@ export function SignupForm() {
 
 ## 8) Performance & a11y guardrails
 
-- Serve optimized images with `next/image` and proper `sizes`.  
-- Keep client bundle **lean** with Server Components.  
-- Honor `prefers-reduced-motion`; keep focus outlines visible.  
+- Serve optimized images with `next/image` and proper `sizes`.
+- Keep client bundle **lean** with Server Components.
+- Honor `prefers-reduced-motion`; keep focus outlines visible.
 - One primary UI library; use Radix primitives where needed.
 
 ---
 
 ## 9) Testing & monitoring
 
-- **jest-axe** for a11y.  
-- **Playwright** for end‑to‑end flows (set reduced motion).  
-- **Plausible/Analytics** for behavior; **Sentry** for errors.  
+- **jest-axe** for a11y.
+- **Playwright** for end‑to‑end flows (set reduced motion).
+- **Plausible/Analytics** for behavior; **Sentry** for errors.
 
 ---
 
 ## 10) Deploy
 
-- **Vercel** is the fastest route (SSR, images, edge).  
-- For **EC2 + Nginx**, run a systemd service for the Next.js server, reverse proxy through Nginx, and terminate TLS (or use Cloudflare Full/Strict).  
+- **Vercel** is the fastest route (SSR, images, edge).
+- For **EC2 + Nginx**, run a systemd service for the Next.js server, reverse proxy through Nginx, and terminate TLS (or use Cloudflare Full/Strict).
 - Use **PM2** or systemd to keep the Node process alive.
 
 ---
 
 ## Checklist
 
-- [ ] Tokens & dark mode wired  
-- [ ] Navigation with feedback  
-- [ ] Tabs/tooltip/dialog a11y‑correct  
-- [ ] Scroll progress & subtle motion in place  
-- [ ] Forms with inline validation  
+- [ ] Tokens & dark mode wired
+- [ ] Navigation with feedback
+- [ ] Tabs/tooltip/dialog a11y‑correct
+- [ ] Scroll progress & subtle motion in place
+- [ ] Forms with inline validation
 - [ ] Performance budget & tests added
 
 ---

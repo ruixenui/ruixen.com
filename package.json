@@ -68,7 +68,6 @@
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
     "cobe": "^0.6.3",
-    "concurrently": "^9.0.1",
     "crisp-sdk-web": "^1.0.25",
     "critters": "^0.0.24",
     "date-fns": "^2.30.0",
@@ -114,8 +113,7 @@
     "ts-morph": "^23.0.0",
     "tw-animate-css": "^1.2.5",
     "uuid": "^13.0.0",
-    "vaul": "^1.1.2",
-    "zod": "^3.23.8"
+    "vaul": "^1.1.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",
@@ -139,6 +137,7 @@
     "@types/uuid": "^11.0.0",
     "chalk": "^5.6.0",
     "commander": "^14.0.0",
+    "concurrently": "^9.0.1",
     "content-collections": "^0.2.1",
     "cssnano": "^6.0.3",
     "eslint": "^8.55.0",
@@ -165,7 +164,8 @@
     "tsx": "^4.11.0",
     "typescript": "^5.7.3",
     "unist-builder": "4.0.0",
-    "unist-util-visit": "^5.0.0"
+    "unist-util-visit": "^5.0.0",
+    "zod": "^3.23.8"
   },
   "engines": {
     "node": ">=20.6.1",

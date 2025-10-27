@@ -16,11 +16,11 @@ UI libraries accelerate delivery—**if** you pick the right level of abstractio
 
 ## Headless vs. Styled vs. Hybrids
 
-| Type | Examples | Pros | Cons |
-| ---- | -------- | ---- | ---- |
-| **Headless** | Radix, Headless UI | Max control, a11y guarantees | You own all styling |
-| **Styled** | MUI, Chakra, AntD, Mantine | Faster to ship, theme systems | Visual drift if themeing is shallow |
-| **Hybrid / Code-gen** | shadcn/ui | Own the source, Radix under the hood | You maintain the copies |
+| Type                  | Examples                   | Pros                                 | Cons                                |
+| --------------------- | -------------------------- | ------------------------------------ | ----------------------------------- |
+| **Headless**          | Radix, Headless UI         | Max control, a11y guarantees         | You own all styling                 |
+| **Styled**            | MUI, Chakra, AntD, Mantine | Faster to ship, theme systems        | Visual drift if themeing is shallow |
+| **Hybrid / Code-gen** | shadcn/ui                  | Own the source, Radix under the hood | You maintain the copies             |
 
 Pick based on **brand control** needs, team skill, and time-to-market.
 
@@ -28,12 +28,12 @@ Pick based on **brand control** needs, team skill, and time-to-market.
 
 ## Evaluation Criteria (deep cut)
 
-- **API ergonomics**: props that map to intention, not paint.  
-- **A11y**: keyboard order, focus traps, screen reader naming.  
-- **Theming**: tokens for color/space/radius; dark mode support.  
-- **Motion**: sensible transitions; easy to disable for reduced motion.  
-- **Docs & community**: recency, examples, maintenance.  
-- **Bundle impact**: ESM, treeshaking, partial imports.  
+- **API ergonomics**: props that map to intention, not paint.
+- **A11y**: keyboard order, focus traps, screen reader naming.
+- **Theming**: tokens for color/space/radius; dark mode support.
+- **Motion**: sensible transitions; easy to disable for reduced motion.
+- **Docs & community**: recency, examples, maintenance.
+- **Bundle impact**: ESM, treeshaking, partial imports.
 - **Interop**: Tailwind, CSS-in-JS, or vanilla CSS.
 
 ---
@@ -71,7 +71,7 @@ const theme = createTheme({
 });
 
 export function MuiThemeProvider({ children }: { children: React.ReactNode }) {
-  return <ThemeProvider theme={theme}>{ children }</ThemeProvider>;
+  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 }
 ```
 
@@ -87,7 +87,9 @@ export function Confirm({ open, onOpenChange, onConfirm }) {
       <Dialog.Content className="rounded-xl bg-white p-6 shadow-xl">
         <Dialog.Title>Confirm deletion</Dialog.Title>
         <div className="mt-4 flex gap-3">
-          <button className="btn-primary" onClick={onConfirm}>Yes</button>
+          <button className="btn-primary" onClick={onConfirm}>
+            Yes
+          </button>
           <Dialog.Close className="btn">Cancel</Dialog.Close>
         </div>
       </Dialog.Content>
@@ -100,37 +102,37 @@ export function Confirm({ open, onOpenChange, onConfirm }) {
 
 ## Customization Strategy
 
-1. Define **tokens first** (color, space, radius, shadows, motion).  
-2. Theming pass (global), **then** component-level overrides.  
-3. Create a **“playground” route** to audition states (hover, focus, error).  
+1. Define **tokens first** (color, space, radius, shadows, motion).
+2. Theming pass (global), **then** component-level overrides.
+3. Create a **“playground” route** to audition states (hover, focus, error).
 4. Build **compound components** for repeated patterns (FilterBar, Toolbar).
 
 ---
 
 ## Migration Without a Rewrite
 
-- **Strangle pattern**: wrap old components with adapters; swap incrementally.  
-- Route-by-route replacement; keep styles side-by-side temporarily.  
-- Snapshot test visual regressions; lock down critical flows with e2e.  
+- **Strangle pattern**: wrap old components with adapters; swap incrementally.
+- Route-by-route replacement; keep styles side-by-side temporarily.
+- Snapshot test visual regressions; lock down critical flows with e2e.
 - Document **mapping**: Old → New components; agree on “good enough.”
 
 ---
 
 ## Pitfalls to Avoid
 
-- Mixing multiple heavy kits on one surface.  
-- Overriding styles via specificity wars; prefer tokens/vars.  
-- Loading entire icon packs; import per icon.  
+- Mixing multiple heavy kits on one surface.
+- Overriding styles via specificity wars; prefer tokens/vars.
+- Loading entire icon packs; import per icon.
 - Ignoring `prefers-reduced-motion` and keyboard paths.
 
 ---
 
 ## Checklist
 
-- [ ] Tokens set and documented  
-- [ ] A11y verified for key components  
-- [ ] Imports optimized (tree-shake friendly)  
-- [ ] Theming unified across routes  
+- [ ] Tokens set and documented
+- [ ] A11y verified for key components
+- [ ] Imports optimized (tree-shake friendly)
+- [ ] Theming unified across routes
 - [ ] Migration plan with milestones
 
 ---

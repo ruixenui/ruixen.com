@@ -17,17 +17,17 @@ Motion should **clarify intent** and **reduce cognitive load**, not decorate. Th
 
 ## Table of Contents
 
-1. [Why motion (and when not to use it)](#why-motion-and-when-not-to-use-it)  
-2. [Durations, easings, and motion tokens](#durations-easings-and-motion-tokens)  
-3. [CSS first: fast, simple wins](#css-first-fast-simple-wins)  
-4. [Framer Motion: variants, presence, gestures](#framer-motion-variants-presence-gestures)  
-5. [Route transitions in the App Router](#route-transitions-in-the-app-router)  
-6. [Micro-interactions that matter](#micro-interactions-that-matter)  
-7. [Reduced motion & accessibility](#reduced-motion--accessibility)  
-8. [Performance guardrails](#performance-guardrails)  
-9. [Testing motion (unit, a11y, e2e)](#testing-motion-unit-a11y-e2e)  
-10. [Patterns catalog (copy-ready)](#patterns-catalog-copy-ready)  
-11. [Decision matrix: CSS vs Framer Motion vs others](#decision-matrix-css-vs-framer-motion-vs-others)  
+1. [Why motion (and when not to use it)](#why-motion-and-when-not-to-use-it)
+2. [Durations, easings, and motion tokens](#durations-easings-and-motion-tokens)
+3. [CSS first: fast, simple wins](#css-first-fast-simple-wins)
+4. [Framer Motion: variants, presence, gestures](#framer-motion-variants-presence-gestures)
+5. [Route transitions in the App Router](#route-transitions-in-the-app-router)
+6. [Micro-interactions that matter](#micro-interactions-that-matter)
+7. [Reduced motion & accessibility](#reduced-motion--accessibility)
+8. [Performance guardrails](#performance-guardrails)
+9. [Testing motion (unit, a11y, e2e)](#testing-motion-unit-a11y-e2e)
+10. [Patterns catalog (copy-ready)](#patterns-catalog-copy-ready)
+11. [Decision matrix: CSS vs Framer Motion vs others](#decision-matrix-css-vs-framer-motion-vs-others)
 12. [FAQ](#faq)
 
 ---
@@ -36,8 +36,8 @@ Motion should **clarify intent** and **reduce cognitive load**, not decorate. Th
 
 Use motion to **explain state changes** (open/close, success/error), **guide focus**, and **express hierarchy** (parent → child reveal). Avoid motion that **blocks tasks**, loops without purpose, or triggers **vestibular discomfort**.
 
-- Animate **entrances/exits** of overlays, toasts, drawers.  
-- Convey **continuity** with directional transitions (from the source).  
+- Animate **entrances/exits** of overlays, toasts, drawers.
+- Convey **continuity** with directional transitions (from the source).
 - Prefer **small distances** and **low amplitude**; subtle beats show confidence.
 
 ---
@@ -50,11 +50,11 @@ Create motion tokens you can reference in CSS/JS so timing is **consistent** acr
 /* tokens.css */
 :root {
   --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
-  --ease-in: cubic-bezier(0.4, 0.0, 1, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
   --ease-spring: cubic-bezier(0.25, 1, 0.5, 1);
-  --dur-1: 150ms;   /* micro: hover, tap */
-  --dur-2: 220ms;   /* UI elements */
-  --dur-3: 320ms;   /* overlays */
+  --dur-1: 150ms; /* micro: hover, tap */
+  --dur-2: 220ms; /* UI elements */
+  --dur-3: 320ms; /* overlays */
 }
 ```
 
@@ -83,20 +83,32 @@ CSS handles **hover, focus, and small reveals** with near‑zero JS.
     transform var(--dur-1) var(--ease-out),
     box-shadow var(--dur-1) var(--ease-out);
 }
-.btn:hover { transform: translateY(-1px); }
-.btn:active { transform: translateY(1px); }
+.btn:hover {
+  transform: translateY(-1px);
+}
+.btn:active {
+  transform: translateY(1px);
+}
 ```
 
 ```tsx
 // app/components/Accordion.tsx (details/summary baseline)
-export function Accordion({ title, children }: { title: string; children: React.ReactNode }) {
+export function Accordion({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
   return (
     <details className="group rounded-lg border p-3 open:shadow-sm">
       <summary className="cursor-pointer select-none font-medium outline-none transition-colors group-open:text-foreground">
         {title}
       </summary>
-      <div className="mt-2 overflow-hidden will-change-transform
-        data-[open=true]:animate-in data-[open=false]:animate-out">
+      <div
+        className="mt-2 overflow-hidden will-change-transform
+        data-[open=true]:animate-in data-[open=false]:animate-out"
+      >
         {children}
       </div>
     </details>
@@ -124,8 +136,8 @@ import { motion } from "framer-motion";
 
 const card = {
   initial: { opacity: 0, y: 8 },
-  enter:   { opacity: 1, y: 0, transition: { duration: 0.22 } },
-  exit:    { opacity: 0, y: 8, transition: { duration: 0.18 } },
+  enter: { opacity: 1, y: 0, transition: { duration: 0.22 } },
+  exit: { opacity: 0, y: 8, transition: { duration: 0.18 } },
 };
 
 export function FadeCard({ children }: { children: React.ReactNode }) {
@@ -143,7 +155,11 @@ export function FadeCard({ children }: { children: React.ReactNode }) {
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
 
-export function Toasts({ items }: { items: Array<{ id: string; text: string }> }) {
+export function Toasts({
+  items,
+}: {
+  items: Array<{ id: string; text: string }>;
+}) {
   return (
     <div className="fixed bottom-4 right-4 space-y-2">
       <AnimatePresence initial={false}>
@@ -220,10 +236,10 @@ export function RouteTransition({ children }: { children: React.ReactNode }) {
 
 ## Micro-interactions that matter
 
-- **Inputs**: subtle focus ring grow/shrink (`box-shadow` change), debounce highlight on valid.  
-- **Tabs**: sliding underline tied to selected tab’s x/width.  
-- **Menus**: scale/opacity entrance; fine-tuned origin to match trigger.  
-- **Buttons**: tap compress (96–98%) + quick rebound.  
+- **Inputs**: subtle focus ring grow/shrink (`box-shadow` change), debounce highlight on valid.
+- **Tabs**: sliding underline tied to selected tab’s x/width.
+- **Menus**: scale/opacity entrance; fine-tuned origin to match trigger.
+- **Buttons**: tap compress (96–98%) + quick rebound.
 - **Cards**: parallax tilt on pointer move (1–2°), **never** block clicks.
 
 ---
@@ -234,7 +250,10 @@ Honor user preferences and keep focus visible.
 
 ```css
 @media (prefers-reduced-motion: reduce) {
-  * { animation: none !important; transition: none !important; }
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
 }
 ```
 
@@ -246,26 +265,26 @@ export function MotionToggle() {
 }
 ```
 
-- Avoid large zooms/long parallax.  
+- Avoid large zooms/long parallax.
 - Ensure **trap focus** in modals; escape and outside click should close.
 
 ---
 
 ## Performance guardrails
 
-- Animate **transform** and **opacity**, not layout.  
-- Limit concurrent animations; **stagger** lists for readability.  
-- Use `will-change` **sparingly** for complex scenes.  
-- Keep durations short; long easing feels sluggish.  
+- Animate **transform** and **opacity**, not layout.
+- Limit concurrent animations; **stagger** lists for readability.
+- Use `will-change` **sparingly** for complex scenes.
+- Keep durations short; long easing feels sluggish.
 - Defer non-critical JS; prefer **server components** with small client islands.
 
 ---
 
 ## Testing motion (unit, a11y, e2e)
 
-- **jest-axe**: accessibility violations.  
-- **React Testing Library**: roles/labels and visible states.  
-- **Playwright**: keyboard paths + visual regression on transitions.  
+- **jest-axe**: accessibility violations.
+- **React Testing Library**: roles/labels and visible states.
+- **Playwright**: keyboard paths + visual regression on transitions.
 - Snapshot states for **open/closed** and **hover/focus/active**.
 
 ```ts
@@ -352,8 +371,15 @@ export function Tabs({ tabs }: { tabs: string[] }) {
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
 
-export function Drawer({ open, onClose, children }:
-  { open: boolean; onClose: () => void; children: React.ReactNode }) {
+export function Drawer({
+  open,
+  onClose,
+  children,
+}: {
+  open: boolean;
+  onClose: () => void;
+  children: React.ReactNode;
+}) {
   return (
     <AnimatePresence>
       {open && (
@@ -385,12 +411,12 @@ export function Drawer({ open, onClose, children }:
 
 ## Decision matrix: CSS vs Framer Motion vs others
 
-| Approach            | Best for                                | Pros                                  | Considerations                    |
-|--------------------|------------------------------------------|---------------------------------------|-----------------------------------|
-| **CSS transitions**| Hovers, small reveals, focus/active      | Zero deps, fast, declarative          | Limited orchestration/gestures    |
-| **Framer Motion**  | Presence, variants, gestures, orchestration | Powerful API, great DX, SSR‑friendly  | Adds a dependency                 |
-| **React Spring**   | Physics‑heavy, chained springs            | Natural feel, composition             | API style preference, bundle      |
-| **Motion One**     | Web Animations API wrapper                | Tiny, native WAAPI                    | Smaller ecosystem                 |
+| Approach            | Best for                                    | Pros                                 | Considerations                 |
+| ------------------- | ------------------------------------------- | ------------------------------------ | ------------------------------ |
+| **CSS transitions** | Hovers, small reveals, focus/active         | Zero deps, fast, declarative         | Limited orchestration/gestures |
+| **Framer Motion**   | Presence, variants, gestures, orchestration | Powerful API, great DX, SSR‑friendly | Adds a dependency              |
+| **React Spring**    | Physics‑heavy, chained springs              | Natural feel, composition            | API style preference, bundle   |
+| **Motion One**      | Web Animations API wrapper                  | Tiny, native WAAPI                   | Smaller ecosystem              |
 
 ---
 
@@ -409,6 +435,6 @@ Layer motion on top of components—**don’t fork** the kit. Prefer class hooks
 
 ### Next steps
 
-- Add **motion tokens** to your design system.  
-- Implement **route transitions** and a **toast system** with presence.  
+- Add **motion tokens** to your design system.
+- Implement **route transitions** and a **toast system** with presence.
 - Build a **patterns gallery** (tabs underline, drawer, stagger list) to reuse across your app.

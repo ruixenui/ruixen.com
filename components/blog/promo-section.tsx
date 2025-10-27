@@ -64,7 +64,7 @@ export default function PromoSection() {
     async function fetchStars() {
       try {
         const response = await fetch(
-          "https://api.github.com/repos/ruixenui/ruixen.com"
+          "https://api.github.com/repos/ruixenui/ruixen.com",
         );
         if (!response.ok) throw new Error("Failed to fetch GitHub stars");
         const data = await response.json();
@@ -94,8 +94,8 @@ export default function PromoSection() {
       </h2>
 
       <p className="text-base md:text-md max-w-xl">
-        Browse beautifully designed React components, Tailwind CSS sections, and blog templates.
-        Preview the website or explore the code on GitHub.
+        Browse beautifully designed React components, Tailwind CSS sections, and
+        blog templates. Preview the website or explore the code on GitHub.
       </p>
 
       <div className="flex flex-col w-full gap-3 mt-4">
@@ -106,7 +106,10 @@ export default function PromoSection() {
           </Link>
         </Button>
 
-        <Button variant="outline" className="flex-1 justify-around gap-2 relative">
+        <Button
+          variant="outline"
+          className="flex-1 justify-around gap-2 relative"
+        >
           <div className="flex items-center gap-2 z-10">
             <svg
               className="w-5 h-5"

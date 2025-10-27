@@ -28,7 +28,6 @@ export const gradientCategories = [
 ] as const;
 
 export const gradients: Gradient[] = [
-  
   // Shade Shifters
   {
     id: "shade-shifters-01",
@@ -236,7 +235,7 @@ export const gradients: Gradient[] = [
     resolution: "3840 × 2160",
     fileSize: "2.9 MB",
   },
-  
+
   // Fractional Walls
   {
     id: "fractional-walls-01",
