@@ -5,10 +5,11 @@ export const siteConfig = {
   description:
     "Beautifully designed landing page components built with React & Tailwind CSS.",
   links: {
-    twitter: "https://twitter.com/ruixenui",
-    discord: "https://discord.gg/j9fVZm2D",
+    twitter: "https://twitter.com/ruixen_ui",
+    discord: "https://discord.gg/bYexWzUa6G",
     github: "https://github.com/ruixenui/ruixen.com",
-    instagram: "https://instagram.com/ruixenui/",
+    instagram:
+      "https://www.instagram.com/ruixen_ui?igsh=MTh1aXdnemt1dDF5cg%3D%3D&utm_source=qr",
   },
   keywords: [
     "React",

@@ -123,6 +123,23 @@ export async function SiteHeader() {
               </div>
             </Link>
             <ModeToggle />
+            <Link
+              href={siteConfig.links.instagram}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <div
+                className={cn(
+                  buttonVariants({
+                    variant: "ghost",
+                  }),
+                  "w-9 px-0",
+                )}
+              >
+                <Icons.instagram className="size-4" />
+                <span className="sr-only">Instagram</span>
+              </div>
+            </Link>
           </nav>
         </div>
       </div>
