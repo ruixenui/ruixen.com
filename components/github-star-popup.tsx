@@ -1,164 +1,123 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { Star, X } from "lucide-react";
 
-const COOKIE_NAME = "github_star_popup_shown";
-const COOKIE_DISMISSED = "github_star_popup_dismissed";
-const COOKIE_EXPIRY_DAYS = 30; // Don't show again for 30 days
-const ENGAGEMENT_TIME = 45000; // 45 seconds
 const GITHUB_URL = "https://github.com/ruixenui/ruixen.com";
+const DISMISS_COOKIE = "github_star_popup_dismissed";
+const DISMISS_DAYS = 30;
+const DELAY_MS = 60_000; // 60 seconds
 
 function setCookie(name: string, value: string, days: number) {
-  const expires = new Date();
-  expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
-  document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
+  try {
+    const expires = new Date(Date.now() + days * 864e5).toUTCString();
+    const secure =
+      typeof window !== "undefined" && window.location.protocol === "https:"
+        ? ";secure"
+        : "";
+    document.cookie = `${name}=${encodeURIComponent(
+      value,
+    )};expires=${expires};path=/;samesite=Lax${secure}`;
+  } catch {}
 }
-
 function getCookie(name: string): string | null {
-  const nameEQ = name + "=";
-  const ca = document.cookie.split(";");
-  for (let i = 0; i < ca.length; i++) {
-    let c = ca[i];
-    while (c.charAt(0) === " ") c = c.substring(1, c.length);
-    if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
-  }
+  try {
+    const prefix = `${name}=`;
+    const parts = document.cookie.split("; ");
+    for (const part of parts)
+      if (part.startsWith(prefix))
+        return decodeURIComponent(part.slice(prefix.length));
+  } catch {}
   return null;
 }
 
-function getSessionStorage(key: string): string | null {
-  if (typeof window === "undefined") return null;
-  return sessionStorage.getItem(key);
-}
-
-function setSessionStorage(key: string, value: string) {
-  if (typeof window === "undefined") return;
-  sessionStorage.setItem(key, value);
-}
-
 export default function GitHubStarPopup() {
+  const [mounted, setMounted] = useState(false);
   const [visible, setVisible] = useState(false);
-  const [shouldShow, setShouldShow] = useState(false);
 
+  // Don’t run inside an iframe (only show on the top window)
   useEffect(() => {
-    // Check if already shown or dismissed
-    const wasShown = getCookie(COOKIE_NAME);
-    const wasDismissed = getCookie(COOKIE_DISMISSED);
-
-    if (wasDismissed === "true") {
-      return; // User dismissed it, don't show again
-    }
-
-    // Track page views in session
-    const pageViews = parseInt(getSessionStorage("page_views") || "0") + 1;
-    setSessionStorage("page_views", pageViews.toString());
-
-    // Track engagement time
-    let engagementTimer: NodeJS.Timeout;
-    let hasShownByTime = false;
-
-    // 1. Show after 45 seconds of engagement
-    engagementTimer = setTimeout(() => {
-      if (!hasShownByTime && !wasShown) {
-        hasShownByTime = true;
-        setShouldShow(true);
-        setVisible(true);
-        setCookie(COOKIE_NAME, "true", COOKIE_EXPIRY_DAYS);
-      }
-    }, ENGAGEMENT_TIME);
-
-    // 2. Show after user interactions (copy, click demo buttons)
-    const handleInteraction = (e: Event) => {
-      const target = e.target as HTMLElement;
-
-      // Check if user copied code (copy button clicked)
-      if (
-        target.closest("[data-copy-button]") ||
-        target.closest('button[aria-label*="Copy"]') ||
-        target.closest(".copy-button")
-      ) {
-        if (!wasShown && !hasShownByTime) {
-          clearTimeout(engagementTimer);
-          setShouldShow(true);
-          setVisible(true);
-          setCookie(COOKIE_NAME, "true", COOKIE_EXPIRY_DAYS);
-        }
-      }
-
-      // Check if user clicked "Try Demo", "Open in Sandbox", etc.
-      if (
-        target.closest('[href*="sandbox"]') ||
-        target.textContent?.includes("Try Demo") ||
-        target.textContent?.includes("Open in Sandbox") ||
-        target.textContent?.includes("View Demo")
-      ) {
-        if (!wasShown && !hasShownByTime) {
-          clearTimeout(engagementTimer);
-          setShouldShow(true);
-          setVisible(true);
-          setCookie(COOKIE_NAME, "true", COOKIE_EXPIRY_DAYS);
-        }
-      }
-    };
-
-    // 3. Show on exit intent
-    const handleExitIntent = (e: MouseEvent) => {
-      if (e.clientY <= 0 && !wasShown && !hasShownByTime) {
-        clearTimeout(engagementTimer);
-        setShouldShow(true);
-        setVisible(true);
-        setCookie(COOKIE_NAME, "true", COOKIE_EXPIRY_DAYS);
-      }
-    };
-
-    // 4. Show after 2nd or 3rd page view
-    if ((pageViews === 2 || pageViews === 3) && !wasShown && !hasShownByTime) {
-      setShouldShow(true);
-      setVisible(true);
-      setCookie(COOKIE_NAME, "true", COOKIE_EXPIRY_DAYS);
-    }
-
-    // Defer event listeners to avoid blocking initial paint (use requestIdleCallback if available)
-    const scheduleListeners = window.requestIdleCallback || setTimeout;
-    const listenerId = scheduleListeners(() => {
-      document.addEventListener("click", handleInteraction);
-      document.addEventListener("mouseleave", handleExitIntent);
-    });
-
-    return () => {
-      clearTimeout(engagementTimer);
-      if (typeof listenerId === "number") {
-        (window.cancelIdleCallback || clearTimeout)(listenerId);
-      }
-      document.removeEventListener("click", handleInteraction);
-      document.removeEventListener("mouseleave", handleExitIntent);
-    };
+    if (typeof window !== "undefined" && window.self !== window.top) return; // in an iframe
+    setMounted(true);
   }, []);
 
-  const handleDismiss = () => {
+  // visible-tab timer with pause/resume
+  const timerRef = useRef<number | null>(null);
+  const startedAtRef = useRef<number | null>(null);
+  const remainingRef = useRef<number>(DELAY_MS);
+  const hasShownRef = useRef(false);
+
+  useEffect(() => {
+    if (!mounted) return;
+    if (getCookie(DISMISS_COOKIE) === "true") return;
+
+    const clearTimer = () => {
+      if (timerRef.current != null) {
+        window.clearTimeout(timerRef.current);
+        timerRef.current = null;
+      }
+    };
+    const show = () => {
+      hasShownRef.current = true;
+      clearTimer();
+      setVisible(true);
+    };
+    const start = () => {
+      if (hasShownRef.current || getCookie(DISMISS_COOKIE) === "true") return;
+      if (remainingRef.current <= 0) return show();
+      startedAtRef.current = Date.now();
+      timerRef.current = window.setTimeout(show, remainingRef.current);
+    };
+    const onVis = () => {
+      if (document.visibilityState === "hidden") {
+        if (startedAtRef.current != null) {
+          const elapsed = Date.now() - startedAtRef.current;
+          remainingRef.current = Math.max(0, remainingRef.current - elapsed);
+        }
+        clearTimer();
+      } else {
+        start();
+      }
+    };
+
+    if (document.visibilityState === "visible") start();
+    document.addEventListener("visibilitychange", onVis);
+    return () => {
+      clearTimer();
+      document.removeEventListener("visibilitychange", onVis);
+    };
+  }, [mounted]);
+
+  const dismiss = () => {
+    setCookie(DISMISS_COOKIE, "true", DISMISS_DAYS);
     setVisible(false);
-    setCookie(COOKIE_DISMISSED, "true", COOKIE_EXPIRY_DAYS);
   };
-
-  const handleStarClick = () => {
+  const handleStar = () => {
     window.open(GITHUB_URL, "_blank", "noopener,noreferrer");
-    handleDismiss();
+    dismiss();
   };
 
-  if (!shouldShow || !visible) return null;
+  if (!mounted || !visible) return null;
 
-  return (
-    <div className="fixed inset-0 z-[99] bg-black/40 backdrop-blur-sm animate-in fade-in duration-300">
-      <div className="fixed bottom-6 right-6 z-[100] animate-in slide-in-from-bottom-5 fade-in duration-500">
+  // Render at the end of <body> to avoid clipping/stacking issues
+  return createPortal(
+    <div
+      className="fixed inset-0 z-[2147483647] bg-black/40 backdrop-blur-sm animate-in fade-in duration-300"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="gh-star-title"
+    >
+      <div className="fixed bottom-6 right-6 z-[2147483647] animate-in slide-in-from-bottom-5 fade-in duration-500">
         <Card className="w-[380px] shadow-2xl rounded-3xl border-2 border-primary/20 bg-background/90 backdrop-blur-xl p-0">
           <CardContent className="p-3">
             <div className="flex flex-col space-y-2">
               <div className="flex items-start justify-end">
                 <button
-                  onClick={handleDismiss}
+                  onClick={dismiss}
                   className="text-muted-foreground hover:text-foreground transition-colors"
                   aria-label="Dismiss"
                 >
@@ -166,13 +125,16 @@ export default function GitHubStarPopup() {
                 </button>
               </div>
 
+              <h2 id="gh-star-title" className="sr-only">
+                Support Ruixen UI on GitHub
+              </h2>
               <p className="text-md font-semibold text-muted-foreground leading-relaxed -mt-4">
-                It takes 1 second to star. It means the world to us 🌎
+                It takes 1 second to star. It means the world to us.
               </p>
 
               <div className="flex gap-3 pt-2">
                 <Button
-                  onClick={handleStarClick}
+                  onClick={handleStar}
                   className={cn(
                     "flex-1 rounded-lg font-semibold",
                     "bg-[var(--color-sidebar-label)]",
@@ -185,7 +147,7 @@ export default function GitHubStarPopup() {
                 </Button>
                 <Button
                   variant="ghost"
-                  onClick={handleDismiss}
+                  onClick={dismiss}
                   className="rounded-lg text-muted-foreground hover:text-foreground"
                 >
                   Maybe later
@@ -195,6 +157,7 @@ export default function GitHubStarPopup() {
           </CardContent>
         </Card>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }

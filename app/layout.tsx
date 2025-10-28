@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { fontMono, fontSans } from "@/lib/fonts";
 import { absoluteUrl, cn } from "@/lib/utils";
 import { Provider as JotaiProvider } from "jotai";
+import GitHubStarPopup from "@/components/github-star-popup";
 
 import "@/styles/globals.css";
 
@@ -86,6 +87,7 @@ export default function RootLayout({
                 {children}
                 <Toaster />
                 <Analytics />
+                <GitHubStarPopup />
               </TooltipProvider>
             </ThemeProvider>
           </PHProvider>
