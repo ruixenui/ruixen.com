@@ -1,0 +1,331 @@
+---
+title: Product Image Card
+date: 2024-11-01
+description: A product showcase card with scrollable image gallery, color selection, and interactive features for e-commerce applications.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="product-image-card-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/product-image-card"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="product-image-card" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import ProductImageCard from "@/components/ruixen/product-image-card";
+
+export default function App() {
+  const product = {
+    images: [
+      "/products/shoe-front.jpg",
+      "/products/shoe-side.jpg",
+      "/products/shoe-back.jpg",
+    ],
+    title: "Premium Running Shoe",
+    price: "$129.99",
+    rating: 4.5,
+    reviews: 128,
+    colors: [
+      { name: "Black", value: "#000000" },
+      { name: "White", value: "#FFFFFF" },
+      { name: "Blue", value: "#3B82F6" },
+    ],
+    sizes: ["7", "8", "9", "10", "11"],
+  };
+
+  return <ProductImageCard {...product} />;
+}
+```
+
+## Props
+
+| Prop          | Type         | Default  | Description                 |
+| ------------- | ------------ | -------- | --------------------------- |
+| `images`      | `string[]`   | Required | Array of product image URLs |
+| `title`       | `string`     | Required | Product name                |
+| `price`       | `string`     | Required | Product price               |
+| `rating`      | `number`     | -        | Star rating (0-5)           |
+| `reviews`     | `number`     | -        | Number of reviews           |
+| `colors`      | `Color[]`    | -        | Available color options     |
+| `sizes`       | `string[]`   | -        | Available size options      |
+| `description` | `string`     | -        | Product description         |
+| `onAddToCart` | `() => void` | -        | Add to cart callback        |
+| `onBuyNow`    | `() => void` | -        | Buy now callback            |
+
+### Color Type
+
+```tsx
+type Color = {
+  name: string;
+  value: string; // Hex color code
+};
+```
+
+## Features
+
+- **Image Gallery**: Scrollable horizontal image carousel
+- **Color Selection**: Interactive color swatches
+- **Size Selection**: Size picker with availability
+- **Star Rating**: Visual rating display
+- **Review Count**: Customer review statistics
+- **Responsive Design**: Mobile-first layout
+- **Smooth Scrolling**: Native scroll snap behavior
+- **Add to Cart**: Quick purchase actions
+- **Wishlist**: Save for later functionality
+
+## Image Gallery
+
+### Features
+
+- **Horizontal Scroll**: Smooth snap scrolling
+- **Indicators**: Dot navigation for current image
+- **Touch Gestures**: Swipe to navigate
+- **Keyboard**: Arrow keys for navigation
+- **Auto-sizing**: Images fill container
+- **Lazy Loading**: Efficient image loading
+
+### Customization
+
+```tsx
+// Multiple images
+images={[
+  "/product-1.jpg",
+  "/product-2.jpg",
+  "/product-3.jpg",
+  "/product-4.jpg"
+]}
+
+// Single image
+images={["/product-main.jpg"]}
+```
+
+## Color Selection
+
+### Features
+
+- **Visual Swatches**: Circular color indicators
+- **Selected State**: Border highlight
+- **Hover Effects**: Scale animation
+- **Color Names**: Accessible labels
+- **Multiple Options**: Support for many colors
+
+### Example
+
+```tsx
+colors={[
+  { name: "Midnight Black", value: "#1a1a1a" },
+  { name: "Pure White", value: "#ffffff" },
+  { name: "Ocean Blue", value: "#0ea5e9" },
+  { name: "Forest Green", value: "#10b981" },
+  { name: "Sunset Red", value: "#ef4444" },
+]}
+```
+
+## Size Selection
+
+### Features
+
+- **Button Grid**: Clean size layout
+- **Selected State**: Highlighted selection
+- **Disabled States**: Out of stock indication
+- **Hover Effects**: Interactive feedback
+- **Flexible Sizes**: Any size format
+
+### Example
+
+```tsx
+// Shoe sizes
+sizes={["7", "7.5", "8", "8.5", "9", "9.5", "10", "10.5", "11"]}
+
+// Clothing sizes
+sizes={["XS", "S", "M", "L", "XL", "XXL"]}
+
+// Custom sizes
+sizes={["Small", "Medium", "Large"]}
+```
+
+## Rating Display
+
+### Features
+
+- **Star Icons**: Visual star rating
+- **Half Stars**: Precise rating display
+- **Review Count**: Number of reviews
+- **Clickable**: Link to reviews section
+
+### Format
+
+```tsx
+rating={4.5}  // Shows 4.5 stars
+reviews={128} // Shows "(128 reviews)"
+```
+
+## Action Buttons
+
+### Add to Cart
+
+```tsx
+onAddToCart={() => {
+  console.log("Added to cart");
+  // Your cart logic here
+}}
+```
+
+### Buy Now
+
+```tsx
+onBuyNow={() => {
+  console.log("Proceeding to checkout");
+  // Your checkout logic here
+}}
+```
+
+### Wishlist
+
+```tsx
+// Built-in wishlist toggle
+// Saves to local storage by default
+```
+
+## Customization
+
+### Full Example
+
+```tsx
+<ProductImageCard
+  images={[
+    "/products/watch-1.jpg",
+    "/products/watch-2.jpg",
+    "/products/watch-3.jpg",
+  ]}
+  title="Luxury Smartwatch Pro"
+  price="$399.99"
+  rating={4.8}
+  reviews={2456}
+  description="Premium smartwatch with advanced health tracking"
+  colors={[
+    { name: "Space Gray", value: "#4a5568" },
+    { name: "Silver", value: "#cbd5e0" },
+    { name: "Gold", value: "#d69e2e" },
+  ]}
+  sizes={["40mm", "44mm"]}
+  onAddToCart={() => addToCart(product)}
+  onBuyNow={() => checkout(product)}
+/>
+```
+
+## Styling
+
+### Card Layout
+
+- **Max Width**: 400px
+- **Border**: Subtle border
+- **Rounded**: Rounded corners
+- **Shadow**: Elevated appearance
+- **Padding**: Generous spacing
+
+### Image Section
+
+- **Aspect Ratio**: 1:1 square
+- **Background**: Light gray
+- **Scroll**: Horizontal with snap
+- **Indicators**: Bottom-centered dots
+
+### Content Section
+
+- **Spacing**: Consistent padding
+- **Typography**: Clear hierarchy
+- **Colors**: Theme-aware
+- **Buttons**: Full-width CTAs
+
+## Use Cases
+
+- **E-commerce Sites**: Product detail pages
+- **Fashion Stores**: Clothing and accessories
+- **Electronics**: Tech product showcases
+- **Furniture**: Home decor items
+- **Jewelry**: Luxury item displays
+- **Footwear**: Shoe collections
+
+## Examples
+
+### Fashion Product
+
+```tsx
+<ProductImageCard
+  images={["/dress-1.jpg", "/dress-2.jpg", "/dress-3.jpg"]}
+  title="Summer Floral Dress"
+  price="$79.99"
+  rating={4.6}
+  reviews={342}
+  colors={[
+    { name: "Coral", value: "#ff6b6b" },
+    { name: "Sky Blue", value: "#4ecdc4" },
+  ]}
+  sizes={["XS", "S", "M", "L", "XL"]}
+/>
+```
+
+### Electronics
+
+```tsx
+<ProductImageCard
+  images={["/headphones-1.jpg", "/headphones-2.jpg"]}
+  title="Wireless Noise-Canceling Headphones"
+  price="$299.99"
+  rating={4.9}
+  reviews={1823}
+  description="Premium audio with 30-hour battery life"
+  colors={[
+    { name: "Black", value: "#000000" },
+    { name: "Silver", value: "#c0c0c0" },
+  ]}
+/>
+```
+
+## Performance
+
+- **Optimized Images**: Next.js Image component
+- **Lazy Loading**: Images load on demand
+- **Efficient Scrolling**: Native scroll snap
+- **Minimal Re-renders**: Optimized state management
+
+## Accessibility
+
+- **Keyboard Navigation**: Full keyboard support
+- **Screen Readers**: Descriptive labels
+- **Focus Management**: Clear focus indicators
+- **Color Contrast**: WCAG AA compliant
+- **Touch Targets**: Minimum 44x44px
+- **ARIA Labels**: Proper accessibility attributes

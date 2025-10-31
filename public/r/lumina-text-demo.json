@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "lumina-text-demo",
+  "type": "registry:example",
+  "title": "Lumina Text Demo",
+  "description": "Example showing an animated text effect with rising glow particles creating a luminous, ethereal visual effect.",
+  "registryDependencies": [
+    "https://ruixen.com/r/lumina-text"
+  ],
+  "files": [
+    {
+      "path": "registry/example/lumina-text-demo.tsx",
+      "content": "\"use client\";\r\n\r\nimport React from \"react\";\r\nimport { RisingGlow } from \"@/registry/ruixenui/lumina-text\";\r\n\r\nexport default function RisingGlowDemo() {\r\n  return (\r\n    <div className=\"flex flex-col items-center justify-center p-6\">\r\n      <h1 className=\"text-6xl md:text-8xl font-bold relative z-10\">\r\n        Lumina\r\n      </h1>\r\n      {/* Rising Glow animation below text */}\r\n      <div className=\"w-full max-w-4xl\">\r\n        <RisingGlow\r\n          particleCount={80}\r\n          particleColor=\"#7CF734\"\r\n          height={100}\r\n          width=\"100%\"\r\n        />\r\n      </div>\r\n    </div>\r\n  );\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/lumina-text-demo.tsx"
+    }
+  ]
+}

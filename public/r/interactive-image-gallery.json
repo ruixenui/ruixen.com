@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "interactive-image-gallery",
+  "type": "registry:ui",
+  "title": "Interactive Image Gallery",
+  "description": "A responsive image gallery component with hover effects, expandable views, and smooth animations.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/interactive-image-gallery.tsx",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport Image from \"next/image\";\r\nimport { cn } from \"@/lib/utils\";\r\nimport { Card, CardContent } from \"@/components/ui/card\";\r\n\r\nexport interface GalleryItem {\r\n  id: string;\r\n  type: \"image\" | \"text\";\r\n  src?: string;\r\n  text?: string;\r\n  position?: string; // optional Tailwind position classes\r\n}\r\n\r\ninterface InteractiveImageGalleryProps {\r\n  items: GalleryItem[];\r\n  className?: string;\r\n}\r\n\r\nexport function InteractiveImageGallery({\r\n  items,\r\n  className,\r\n}: InteractiveImageGalleryProps) {\r\n  const [hoveredId, setHoveredId] = React.useState<string | null>(null);\r\n\r\n  return (\r\n    <div\r\n      className={cn(\r\n        \"relative w-full min-h-screen bg-muted/10 flex flex-wrap justify-center items-center gap-8 p-10 transition-colors\",\r\n        className\r\n      )}\r\n    >\r\n      {items.map((item) =>\r\n        item.type === \"image\" ? (\r\n          <div\r\n            key={item.id}\r\n            className={cn(\r\n              \"relative transition-all duration-300 ease-in-out rounded-xl overflow-hidden\",\r\n              \"hover:scale-105\",\r\n              hoveredId && hoveredId !== item.id ? \"blur-sm opacity-50\" : \"opacity-100\"\r\n            )}\r\n            onMouseEnter={() => setHoveredId(item.id)}\r\n            onMouseLeave={() => setHoveredId(null)}\r\n          >\r\n            {item.src && (\r\n              <Image\r\n                src={item.src}\r\n                alt=\"gallery item\"\r\n                width={200}\r\n                height={200}\r\n                unoptimized\r\n                className=\"object-cover w-40 h-40 md:w-48 md:h-48 rounded-xl\"\r\n              />\r\n            )}\r\n          </div>\r\n        ) : (\r\n          <Card\r\n            key={item.id}\r\n            className=\"w-72 bg-background shadow-md border border-muted text-center\"\r\n          >\r\n            <CardContent className=\"p-4 text-sm text-muted-foreground\">\r\n              {item.text}\r\n            </CardContent>\r\n          </Card>\r\n        )\r\n      )}\r\n    </div>\r\n  );\r\n}\r\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/interactive-image-gallery.tsx"
+    }
+  ]
+}

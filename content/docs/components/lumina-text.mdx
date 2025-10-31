@@ -1,0 +1,205 @@
+---
+title: Lumina Text
+date: 2024-11-01
+description: An animated text effect component with rising glow particles that creates a luminous, ethereal visual effect.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="lumina-text-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/lumina-text"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="lumina-text" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { RisingGlow } from "@/components/ruixen/lumina-text";
+
+export default function App() {
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-background">
+      <RisingGlow
+        width="100%"
+        height={120}
+        particleCount={20}
+        particleColor="#00f7ff"
+      />
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop            | Type             | Default     | Description                          |
+| --------------- | ---------------- | ----------- | ------------------------------------ |
+| `width`         | `number\|string` | `"100%"`    | Width of the effect container        |
+| `height`        | `number\|string` | `120`       | Height of the effect container       |
+| `particleCount` | `number`         | `20`        | Number of rising particles           |
+| `particleColor` | `string`         | `"#00f7ff"` | Color of the glow particles          |
+| `className`     | `string`         | -           | Additional CSS classes for container |
+
+## Features
+
+- **Rising Particles**: Animated particles that rise from bottom to top
+- **Customizable Colors**: Set particle colors to match your design
+- **Adjustable Density**: Control the number of particles
+- **Smooth Animations**: Uses Framer Motion for fluid animations
+- **Responsive**: Adapts to container dimensions
+- **Performance Optimized**: Efficient animation with hardware acceleration
+
+## Animation Details
+
+### Particle Movement
+
+- **Vertical Motion**: Particles rise from bottom (-10px) to top (-height)
+- **Opacity Fade**: Particles fade in and out (0 → 1 → 0)
+- **Duration**: 3-5 seconds per cycle (randomized)
+- **Infinite Loop**: Continuous animation with staggered delays
+- **Easing**: Smooth ease-in-out transitions
+
+### Randomization
+
+- **Position**: Random horizontal placement (0-100%)
+- **Size**: Random particle size (4-10px)
+- **Delay**: Staggered start times (0-2 seconds)
+- **Duration**: Variable animation speed for natural effect
+
+## Customization
+
+### Custom Colors
+
+```tsx
+// Cyan glow
+<RisingGlow particleColor="#00f7ff" />
+
+// Purple glow
+<RisingGlow particleColor="#a855f7" />
+
+// Gold glow
+<RisingGlow particleColor="#fbbf24" />
+
+// Green glow
+<RisingGlow particleColor="#10b981" />
+```
+
+### Particle Density
+
+```tsx
+// Sparse particles
+<RisingGlow particleCount={10} />
+
+// Dense particles
+<RisingGlow particleCount={50} />
+
+// Very dense
+<RisingGlow particleCount={100} />
+```
+
+### Container Sizing
+
+```tsx
+// Fixed dimensions
+<RisingGlow width={400} height={200} />
+
+// Full width, custom height
+<RisingGlow width="100%" height={300} />
+
+// Viewport height
+<RisingGlow width="100vw" height="100vh" />
+```
+
+## Use Cases
+
+- **Text Backgrounds**: Add luminous effect behind headings
+- **Hero Sections**: Create ethereal atmosphere in landing pages
+- **Loading States**: Ambient animation during content loading
+- **Decorative Elements**: Enhance visual appeal of sections
+- **Interactive Backgrounds**: Dynamic visual feedback
+- **Brand Identity**: Signature visual effect for your brand
+
+## Examples
+
+### Behind Text
+
+```tsx
+<div className="relative">
+  <RisingGlow
+    width="100%"
+    height={120}
+    particleCount={30}
+    particleColor="#00f7ff"
+    className="absolute inset-0"
+  />
+  <h1 className="relative z-10 text-6xl font-bold text-center">Lumina Text</h1>
+</div>
+```
+
+### Multiple Colors
+
+```tsx
+<div className="space-y-8">
+  <RisingGlow particleColor="#00f7ff" height={100} />
+  <RisingGlow particleColor="#a855f7" height={100} />
+  <RisingGlow particleColor="#fbbf24" height={100} />
+</div>
+```
+
+### Full Screen Background
+
+```tsx
+<div className="relative min-h-screen">
+  <RisingGlow
+    width="100vw"
+    height="100vh"
+    particleCount={50}
+    particleColor="#00f7ff"
+    className="fixed inset-0 -z-10"
+  />
+  <div className="relative z-10">{/* Your content here */}</div>
+</div>
+```
+
+## Performance
+
+- **Hardware Accelerated**: Uses CSS transforms for smooth animations
+- **Efficient Rendering**: Minimal DOM updates with Framer Motion
+- **Optimized Particles**: Reasonable default particle count
+- **No Layout Shifts**: Absolute positioning prevents reflows
+
+## Accessibility
+
+- **Decorative Only**: Purely visual effect, no semantic meaning
+- **Reduced Motion**: Consider adding prefers-reduced-motion support
+- **No Interaction Required**: Passive animation, no user input needed
+- **Background Element**: Doesn't interfere with content accessibility

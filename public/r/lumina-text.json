@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "lumina-text",
+  "type": "registry:ui",
+  "title": "Lumina Text",
+  "description": "An animated text effect component with rising glow particles that creates a luminous, ethereal visual effect.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/lumina-text.tsx",
+      "content": "\"use client\";\r\n\r\nimport React, { useEffect, useState } from \"react\";\r\nimport { motion } from \"framer-motion\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ntype RisingGlowProps = {\r\n  width?: number | string;\r\n  height?: number | string;\r\n  particleCount?: number;\r\n  particleColor?: string;\r\n  className?: string;\r\n};\r\n\r\nexport const RisingGlow: React.FC<RisingGlowProps> = ({\r\n  width = \"100%\",\r\n  height = 120,\r\n  particleCount = 20,\r\n  particleColor = \"#00f7ff\",\r\n  className,\r\n}) => {\r\n  const [particles, setParticles] = useState<\r\n    { left: number; size: number; delay: number }[]\r\n  >([]);\r\n\r\n  useEffect(() => {\r\n    const arr = Array.from({ length: particleCount }, () => ({\r\n      left: Math.random() * 100,\r\n      size: Math.random() * 6 + 4,\r\n      delay: Math.random() * 2,\r\n    }));\r\n    setParticles(arr);\r\n  }, [particleCount]);\r\n\r\n  return (\r\n    <div\r\n      className={cn(\"relative overflow-hidden\", className)}\r\n      style={{ width, height }}\r\n    >\r\n      {particles.map((p, i) => (\r\n        <motion.div\r\n          key={i}\r\n          className=\"absolute bottom-0 rounded-full\"\r\n          style={{\r\n            left: `${p.left}%`,\r\n            width: p.size,\r\n            height: p.size,\r\n            backgroundColor: particleColor,\r\n          }}\r\n          animate={{ y: [-10, -height, -10], opacity: [0, 1, 0] }}\r\n          transition={{\r\n            duration: 3 + Math.random() * 2,\r\n            repeat: Infinity,\r\n            delay: p.delay,\r\n            ease: \"easeInOut\",\r\n          }}\r\n        />\r\n      ))}\r\n    </div>\r\n  );\r\n};\r\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/lumina-text.tsx"
+    }
+  ]
+}

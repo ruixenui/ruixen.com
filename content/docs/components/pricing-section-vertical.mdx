@@ -1,0 +1,371 @@
+---
+title: Pricing Section Vertical
+date: 2024-11-01
+description: A vertical pricing section component with feature comparisons, plan cards, and call-to-action buttons.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="pricing-section-vertical-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/pricing-section-vertical"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="pricing-section-vertical" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import PricingSectionVertical from "@/components/ruixen/pricing-section-vertical";
+
+export default function App() {
+  const plans = [
+    {
+      name: "Starter",
+      price: "$9",
+      period: "/month",
+      description: "Perfect for individuals",
+      features: [
+        "5 Projects",
+        "10GB Storage",
+        "Basic Support",
+        "Community Access",
+      ],
+      cta: "Start Free Trial",
+      popular: false,
+    },
+    {
+      name: "Professional",
+      price: "$29",
+      period: "/month",
+      description: "For growing teams",
+      features: [
+        "Unlimited Projects",
+        "100GB Storage",
+        "Priority Support",
+        "Advanced Analytics",
+        "Custom Domain",
+      ],
+      cta: "Get Started",
+      popular: true,
+    },
+    {
+      name: "Enterprise",
+      price: "$99",
+      period: "/month",
+      description: "For large organizations",
+      features: [
+        "Everything in Pro",
+        "Unlimited Storage",
+        "24/7 Support",
+        "Custom Integration",
+        "Dedicated Manager",
+      ],
+      cta: "Contact Sales",
+      popular: false,
+    },
+  ];
+
+  return <PricingSectionVertical plans={plans} />;
+}
+```
+
+## Props
+
+### PricingSectionVertical Props
+
+| Prop    | Type     | Default  | Description            |
+| ------- | -------- | -------- | ---------------------- |
+| `plans` | `Plan[]` | Required | Array of pricing plans |
+| `title` | `string` | -        | Optional section title |
+
+### Plan Props
+
+| Prop          | Type         | Default | Description                   |
+| ------------- | ------------ | ------- | ----------------------------- |
+| `name`        | `string`     | -       | Plan name                     |
+| `price`       | `string`     | -       | Plan price                    |
+| `period`      | `string`     | -       | Billing period (e.g., /month) |
+| `description` | `string`     | -       | Short plan description        |
+| `features`    | `string[]`   | -       | List of plan features         |
+| `cta`         | `string`     | -       | Call-to-action button text    |
+| `popular`     | `boolean`    | `false` | Highlight as popular plan     |
+| `onSelect`    | `() => void` | -       | Callback when plan selected   |
+
+## Features
+
+- **Vertical Layout**: Stacked card design
+- **Popular Badge**: Highlight recommended plans
+- **Feature Lists**: Checkmark icon lists
+- **Responsive Design**: Mobile-first approach
+- **Dark Mode Support**: Theme-aware styling
+- **Hover Effects**: Interactive card animations
+- **Flexible Pricing**: Support for any currency
+- **Custom CTAs**: Unique button text per plan
+
+## Card Design
+
+### Layout
+
+- **Vertical Stack**: Cards arranged vertically
+- **Equal Height**: Consistent card heights
+- **Spacing**: Generous padding and gaps
+- **Borders**: Subtle card borders
+- **Shadows**: Elevated appearance
+
+### Popular Plan
+
+- **Badge**: "Most Popular" indicator
+- **Border**: Highlighted border color
+- **Background**: Subtle accent background
+- **Emphasis**: Stands out from other plans
+
+### Typography
+
+- **Plan Name**: Large, bold heading
+- **Price**: Extra large, prominent
+- **Period**: Muted, smaller text
+- **Description**: Medium, muted
+- **Features**: Small, with icons
+
+## Customization
+
+### Custom Titles
+
+```tsx
+<PricingSectionVertical title="Choose Your Plan" plans={plans} />
+```
+
+### Custom Pricing
+
+```tsx
+const plans = [
+  {
+    name: "Free",
+    price: "$0",
+    period: "/forever",
+    // ...
+  },
+  {
+    name: "Pro",
+    price: "$49",
+    period: "/year",
+    // ...
+  },
+];
+```
+
+### Custom Features
+
+```tsx
+features={[
+  "✓ Feature with custom icon",
+  "Unlimited everything",
+  "24/7 Premium Support",
+  "Advanced Security",
+  "Custom Integrations",
+  "Dedicated Account Manager",
+]}
+```
+
+### Custom CTAs
+
+```tsx
+cta = "Try Free for 14 Days";
+cta = "Contact Sales Team";
+cta = "Upgrade Now";
+```
+
+### With Callbacks
+
+```tsx
+onSelect={() => {
+  console.log("Plan selected");
+  // Navigate to checkout
+  router.push("/checkout?plan=pro");
+}}
+```
+
+## Styling
+
+### Card Styling
+
+- **Background**: Card background color
+- **Border**: 1px solid border
+- **Radius**: Rounded corners (lg)
+- **Padding**: 6 (p-6)
+- **Shadow**: Subtle elevation
+
+### Popular Plan Styling
+
+- **Border**: Primary color border
+- **Background**: Subtle primary tint
+- **Badge**: Primary colored badge
+- **Emphasis**: Visually distinct
+
+### Button Styling
+
+- **Width**: Full width
+- **Padding**: Generous vertical padding
+- **Hover**: Scale and color change
+- **Focus**: Clear focus ring
+
+## Feature Icons
+
+### Checkmark Icons
+
+- **Icon**: Lucide Check icon
+- **Color**: Success green
+- **Size**: Small (16px)
+- **Position**: Left of text
+
+### Custom Icons
+
+```tsx
+// Modify in component
+import { Check, X, Star } from "lucide-react";
+
+// Use different icons per feature
+```
+
+## Use Cases
+
+- **SaaS Pricing**: Software subscription plans
+- **Membership Sites**: Tiered membership levels
+- **Service Packages**: Professional service tiers
+- **Product Bundles**: Package comparisons
+- **Subscription Boxes**: Monthly box options
+- **Course Pricing**: Educational program tiers
+
+## Examples
+
+### SaaS Pricing
+
+```tsx
+const saasPlans = [
+  {
+    name: "Basic",
+    price: "$19",
+    period: "/month",
+    description: "Essential features for startups",
+    features: [
+      "Up to 10 users",
+      "50GB storage",
+      "Email support",
+      "Basic analytics",
+    ],
+    cta: "Start Trial",
+  },
+  {
+    name: "Business",
+    price: "$49",
+    period: "/month",
+    description: "Advanced features for teams",
+    features: [
+      "Up to 50 users",
+      "500GB storage",
+      "Priority support",
+      "Advanced analytics",
+      "API access",
+    ],
+    cta: "Get Started",
+    popular: true,
+  },
+];
+```
+
+### Membership Tiers
+
+```tsx
+const membershipPlans = [
+  {
+    name: "Silver",
+    price: "$9.99",
+    period: "/month",
+    description: "Basic membership benefits",
+    features: ["Access to community", "Monthly newsletter", "10% discount"],
+    cta: "Join Silver",
+  },
+  {
+    name: "Gold",
+    price: "$19.99",
+    period: "/month",
+    description: "Premium membership benefits",
+    features: [
+      "Everything in Silver",
+      "Exclusive content",
+      "20% discount",
+      "Priority support",
+    ],
+    cta: "Join Gold",
+    popular: true,
+  },
+];
+```
+
+### Annual Pricing
+
+```tsx
+const annualPlans = [
+  {
+    name: "Monthly",
+    price: "$29",
+    period: "/month",
+    description: "Billed monthly",
+    features: ["All features", "Cancel anytime"],
+    cta: "Start Monthly",
+  },
+  {
+    name: "Annual",
+    price: "$290",
+    period: "/year",
+    description: "Save $58 per year",
+    features: ["All features", "2 months free", "Priority support"],
+    cta: "Save with Annual",
+    popular: true,
+  },
+];
+```
+
+## Performance
+
+- **Static Rendering**: Pre-rendered at build time
+- **Minimal JavaScript**: Lightweight component
+- **Efficient Rendering**: Optimized re-renders
+- **Fast Load**: Quick initial paint
+
+## Accessibility
+
+- **Keyboard Navigation**: Full keyboard support
+- **Screen Readers**: Descriptive labels
+- **Focus Management**: Clear focus indicators
+- **ARIA Labels**: Proper accessibility attributes
+- **Color Contrast**: WCAG AA compliant
+- **Touch Targets**: Minimum 44x44px buttons
