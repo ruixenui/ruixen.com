@@ -3922,4 +3922,139 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "lumina-text-demo",
+    type: "registry:example",
+    title: "Lumina Text Demo",
+    description:
+      "Example showing an animated text effect with rising glow particles creating a luminous, ethereal visual effect.",
+    registryDependencies: ["https://ruixen.com/r/lumina-text"],
+    files: [
+      {
+        path: "registry/example/lumina-text-demo.tsx",
+        type: "registry:example",
+        target: "components/lumina-text-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "core-value-stats-demo",
+    type: "registry:example",
+    title: "Core Value Stats Demo",
+    description:
+      "Example showing a responsive stats section showcasing core values with optional images and animated cards.",
+    registryDependencies: ["https://ruixen.com/r/core-value-stats"],
+    files: [
+      {
+        path: "registry/example/core-value-stats-demo.tsx",
+        type: "registry:example",
+        target: "components/core-value-stats-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "hero-section-glass-web-demo",
+    type: "registry:example",
+    title: "Hero Section Glass Web Demo",
+    description:
+      "Example showing a modern hero section with glassmorphism effects and image background for professional landing pages.",
+    registryDependencies: ["https://ruixen.com/r/hero-section-glass-web"],
+    files: [
+      {
+        path: "registry/example/hero-section-glass-web-demo.tsx",
+        type: "registry:example",
+        target: "components/hero-section-glass-web-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "interactive-image-gallery-demo",
+    type: "registry:example",
+    title: "Interactive Image Gallery Demo",
+    description:
+      "Example showing a responsive image gallery with hover effects, expandable views, and smooth animations.",
+    registryDependencies: ["https://ruixen.com/r/interactive-image-gallery"],
+    files: [
+      {
+        path: "registry/example/interactive-image-gallery-demo.tsx",
+        type: "registry:example",
+        target: "components/interactive-image-gallery-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "product-image-card-demo",
+    type: "registry:example",
+    title: "Product Image Card Demo",
+    description:
+      "Example showing a product showcase card with scrollable image gallery and color selection for e-commerce.",
+    registryDependencies: ["https://ruixen.com/r/product-image-card"],
+    files: [
+      {
+        path: "registry/example/product-image-card-demo.tsx",
+        type: "registry:example",
+        target: "components/product-image-card-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "pricing-section-vertical-demo",
+    type: "registry:example",
+    title: "Pricing Section Vertical Demo",
+    description:
+      "Example showing a vertical pricing section with feature comparisons and plan cards.",
+    registryDependencies: ["https://ruixen.com/r/pricing-section-vertical"],
+    files: [
+      {
+        path: "registry/example/pricing-section-vertical-demo.tsx",
+        type: "registry:example",
+        target: "components/pricing-section-vertical-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "precision-card-demo",
+    type: "registry:example",
+    title: "Precision Card Demo",
+    description:
+      "Example showing a detailed information card with badges, feature lists, and action buttons.",
+    registryDependencies: ["https://ruixen.com/r/precision-card"],
+    files: [
+      {
+        path: "registry/example/precision-card-demo.tsx",
+        type: "registry:example",
+        target: "components/precision-card-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "feature-slide-showcase-demo",
+    type: "registry:example",
+    title: "Feature Slide Showcase Demo",
+    description:
+      "Example showing a tabbed feature showcase with image previews and detailed descriptions.",
+    registryDependencies: ["https://ruixen.com/r/feature-slide-showcase"],
+    files: [
+      {
+        path: "registry/example/feature-slide-showcase-demo.tsx",
+        type: "registry:example",
+        target: "components/feature-slide-showcase-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "health-stat-card-demo",
+    type: "registry:example",
+    title: "Health Stat Card Demo",
+    description:
+      "Example showing an interactive health statistics card with animated progress rings and trend indicators.",
+    registryDependencies: ["https://ruixen.com/r/health-stat-card"],
+    files: [
+      {
+        path: "registry/example/health-stat-card-demo.tsx",
+        type: "registry:example",
+        target: "components/health-stat-card-demo.tsx",
+      },
+    ],
+  },
 ];

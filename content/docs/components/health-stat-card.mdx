@@ -1,0 +1,400 @@
+---
+title: Health Stat Card
+date: 2024-11-01
+description: An interactive health statistics card with animated progress rings, trend indicators, and detailed metrics display.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="health-stat-card-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/health-stat-card"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="health-stat-card" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import HealthStatCard from "@/components/ruixen/health-stat-card";
+
+export default function App() {
+  return (
+    <HealthStatCard
+      title="Heart Rate"
+      value={72}
+      unit="bpm"
+      target={80}
+      trend="up"
+      trendValue={5}
+      status="good"
+      description="Your heart rate is within healthy range"
+      history={[68, 70, 72, 71, 73, 72, 74]}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop          | Type                              | Default | Description                       |
+| ------------- | --------------------------------- | ------- | --------------------------------- |
+| `title`       | `string`                          | -       | Stat title (e.g., "Heart Rate")   |
+| `value`       | `number`                          | -       | Current value                     |
+| `unit`        | `string`                          | -       | Unit of measurement (e.g., "bpm") |
+| `target`      | `number`                          | -       | Target or goal value              |
+| `trend`       | `"up" \| "down" \| "stable"`      | -       | Trend direction                   |
+| `trendValue`  | `number`                          | -       | Trend change amount               |
+| `status`      | `"good" \| "warning" \| "danger"` | -       | Health status indicator           |
+| `description` | `string`                          | -       | Additional context text           |
+| `history`     | `number[]`                        | -       | Historical data points            |
+| `icon`        | `ReactNode`                       | -       | Optional icon element             |
+| `onClick`     | `() => void`                      | -       | Click handler                     |
+
+## Features
+
+- **Animated Progress Ring**: Circular progress indicator
+- **Trend Indicators**: Up/down/stable arrows
+- **Status Colors**: Visual health status
+- **Historical Chart**: Mini sparkline chart
+- **Tooltips**: Detailed information on hover
+- **Interactive**: Clickable for more details
+- **Responsive**: Adapts to container size
+- **Dark Mode**: Theme-aware styling
+
+## Progress Ring
+
+### Features
+
+- **Circular Design**: SVG-based ring
+- **Animated Fill**: Smooth progress animation
+- **Color-coded**: Status-based colors
+- **Percentage Display**: Shows completion %
+- **Customizable**: Adjustable size and stroke
+
+### Colors
+
+- **Good**: Green (#10b981)
+- **Warning**: Yellow (#f59e0b)
+- **Danger**: Red (#ef4444)
+
+## Trend Display
+
+### Indicators
+
+- **Up Trend**: ↑ arrow with green color
+- **Down Trend**: ↓ arrow with red color
+- **Stable**: → arrow with gray color
+
+### Format
+
+```tsx
+// Shows: "+5 bpm" with up arrow
+trend="up"
+trendValue={5}
+unit="bpm"
+
+// Shows: "-3 kg" with down arrow
+trend="down"
+trendValue={3}
+unit="kg"
+```
+
+## Status System
+
+### Good Status
+
+- **Color**: Green
+- **Meaning**: Within healthy range
+- **Ring**: Green progress ring
+
+### Warning Status
+
+- **Color**: Yellow/Orange
+- **Meaning**: Needs attention
+- **Ring**: Yellow progress ring
+
+### Danger Status
+
+- **Color**: Red
+- **Meaning**: Requires immediate attention
+- **Ring**: Red progress ring
+
+## Customization
+
+### With Icon
+
+```tsx
+import { Heart } from "lucide-react";
+
+<HealthStatCard
+  icon={<Heart className="w-6 h-6" />}
+  title="Heart Rate"
+  value={72}
+  unit="bpm"
+  // ... other props
+/>;
+```
+
+### Different Metrics
+
+```tsx
+// Steps
+<HealthStatCard
+  title="Steps"
+  value={8500}
+  unit="steps"
+  target={10000}
+  trend="up"
+  trendValue={1200}
+  status="good"
+/>
+
+// Weight
+<HealthStatCard
+  title="Weight"
+  value={75}
+  unit="kg"
+  target={70}
+  trend="down"
+  trendValue={2}
+  status="good"
+/>
+
+// Sleep
+<HealthStatCard
+  title="Sleep"
+  value={7.5}
+  unit="hours"
+  target={8}
+  trend="stable"
+  status="warning"
+/>
+```
+
+### With Click Handler
+
+```tsx
+<HealthStatCard
+  title="Blood Pressure"
+  value={120}
+  unit="mmHg"
+  onClick={() => {
+    router.push("/health/blood-pressure");
+  }}
+/>
+```
+
+## Historical Chart
+
+### Features
+
+- **Sparkline**: Mini line chart
+- **Trend Visualization**: Shows data over time
+- **Smooth Curves**: Bezier curve interpolation
+- **Responsive**: Scales to container
+- **Animated**: Smooth draw animation
+
+### Data Format
+
+```tsx
+// Last 7 days
+history={[68, 70, 72, 71, 73, 72, 74]}
+
+// Last 30 days
+history={[/* 30 data points */]}
+```
+
+## Styling
+
+### Card Layout
+
+- **Padding**: Generous spacing (p-6)
+- **Border**: Subtle border
+- **Radius**: Rounded corners (lg)
+- **Shadow**: Elevated appearance
+- **Hover**: Interactive feedback
+
+### Typography
+
+- **Title**: Medium, semibold
+- **Value**: Extra large, bold
+- **Unit**: Small, muted
+- **Description**: Small, muted
+
+### Progress Ring
+
+- **Size**: 80px diameter
+- **Stroke Width**: 8px
+- **Background**: Light gray
+- **Foreground**: Status color
+
+## Use Cases
+
+- **Health Apps**: Track fitness metrics
+- **Wellness Dashboards**: Monitor health data
+- **Fitness Trackers**: Display activity stats
+- **Medical Apps**: Patient health monitoring
+- **Sports Apps**: Performance tracking
+- **Nutrition Apps**: Dietary tracking
+
+## Examples
+
+### Fitness Metrics
+
+```tsx
+import { Activity, Heart, Footprints } from "lucide-react";
+
+<div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+  <HealthStatCard
+    icon={<Heart />}
+    title="Heart Rate"
+    value={72}
+    unit="bpm"
+    target={80}
+    trend="stable"
+    status="good"
+    history={[68, 70, 72, 71, 73, 72, 74]}
+  />
+
+  <HealthStatCard
+    icon={<Footprints />}
+    title="Steps"
+    value={8500}
+    unit="steps"
+    target={10000}
+    trend="up"
+    trendValue={1200}
+    status="warning"
+    history={[7000, 7500, 8000, 8200, 8500, 8300, 8500]}
+  />
+
+  <HealthStatCard
+    icon={<Activity />}
+    title="Calories"
+    value={2100}
+    unit="kcal"
+    target={2500}
+    trend="down"
+    trendValue={200}
+    status="good"
+    history={[2300, 2200, 2100, 2150, 2100, 2050, 2100]}
+  />
+</div>;
+```
+
+### Health Monitoring
+
+```tsx
+<HealthStatCard
+  title="Blood Pressure"
+  value={120}
+  unit="mmHg"
+  target={120}
+  trend="stable"
+  status="good"
+  description="Systolic pressure is normal"
+  history={[118, 120, 122, 119, 121, 120, 120]}
+  onClick={() => viewDetails("blood-pressure")}
+/>
+```
+
+### Sleep Tracking
+
+```tsx
+import { Moon } from "lucide-react";
+
+<HealthStatCard
+  icon={<Moon />}
+  title="Sleep Duration"
+  value={7.5}
+  unit="hours"
+  target={8}
+  trend="up"
+  trendValue={0.5}
+  status="warning"
+  description="Almost reaching your goal"
+  history={[6.5, 7, 7.2, 7, 7.5, 7.3, 7.5]}
+/>;
+```
+
+### Nutrition Tracking
+
+```tsx
+<HealthStatCard
+  title="Water Intake"
+  value={6}
+  unit="glasses"
+  target={8}
+  trend="up"
+  trendValue={2}
+  status="warning"
+  description="2 more glasses to reach your goal"
+  history={[4, 5, 6, 5, 7, 6, 6]}
+/>
+```
+
+## Animation Details
+
+### Progress Ring
+
+- **Duration**: 1 second
+- **Easing**: Ease-out
+- **Delay**: Staggered for multiple cards
+- **Spring**: Smooth spring animation
+
+### Trend Arrow
+
+- **Bounce**: Subtle bounce on mount
+- **Color**: Animated color transition
+- **Scale**: Slight scale effect
+
+### Chart
+
+- **Draw**: Path draws from left to right
+- **Duration**: 1.5 seconds
+- **Easing**: Ease-in-out
+
+## Performance
+
+- **SVG Rendering**: Hardware accelerated
+- **Efficient Updates**: Only re-render on data change
+- **Optimized Animations**: CSS-based where possible
+- **Lazy Loading**: Chart renders on demand
+
+## Accessibility
+
+- **Keyboard Navigation**: Focusable if clickable
+- **Screen Readers**: Descriptive labels
+- **ARIA Labels**: Proper accessibility attributes
+- **Color Contrast**: WCAG AA compliant
+- **Focus Indicators**: Clear focus states
+- **Tooltips**: Additional context on hover
+- **Semantic HTML**: Proper structure

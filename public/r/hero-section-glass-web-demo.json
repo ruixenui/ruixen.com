@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hero-section-glass-web-demo",
+  "type": "registry:example",
+  "title": "Hero Section Glass Web Demo",
+  "description": "Example showing a modern hero section with glassmorphism effects and image background for professional landing pages.",
+  "registryDependencies": [
+    "https://ruixen.com/r/hero-section-glass-web"
+  ],
+  "files": [
+    {
+      "path": "registry/example/hero-section-glass-web-demo.tsx",
+      "content": "// app/hero-demo/page.tsx\r\nimport { HeroSection } from \"@/registry/ruixenui/hero-section-glass-web\";\r\n\r\nexport default function Page() {\r\n  return (\r\n     <HeroSection\r\n      imageSrc=\"https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/screen-website-template.png\"\r\n      imageAlt=\"Design in motion\"\r\n      kicker=\"Category: Creative Systems\"\r\n      title=\"Create experiences at the speed \"\r\n      description=\"An AI design workspace that helps you sketch ideas, evolve layouts, and ship complete interfaces—without breaking flow.\"\r\n      primaryAction={{ href: \"#start\", label: \"Start free\" }}\r\n      secondaryAction={{ href: \"#plans\", label: \"See pricing\" }}\r\n      coordinates={\"34°N 118°W\\nLos Angeles, US\"}\r\n      metaLeft=\"Vol. 05 / 2025\"\r\n      metaCenter=\"AI study: Motion & form\"\r\n      metaRight=\"scroll to explore\"\r\n    />\r\n  );\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/hero-section-glass-web-demo.tsx"
+    }
+  ]
+}

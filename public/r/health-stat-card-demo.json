@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "health-stat-card-demo",
+  "type": "registry:example",
+  "title": "Health Stat Card Demo",
+  "description": "Example showing an interactive health statistics card with animated progress rings and trend indicators.",
+  "registryDependencies": [
+    "https://ruixen.com/r/health-stat-card"
+  ],
+  "files": [
+    {
+      "path": "registry/example/health-stat-card-demo.tsx",
+      "content": "import { Dumbbell } from \"lucide-react\"\r\nimport { HealthStatCard } from \"@/registry/ruixenui/health-stat-card\"\r\nimport { StatData, HealthGraphData } from \"@/registry/ruixenui/health-stat-card\"\r\n\r\nexport default function DemoHealthStats() {\r\n  const stats: StatData[] = [\r\n    { title: \"Sleep\", value: 7.5, unit: \"h\", changePercent: 5, changeDirection: \"up\" },\r\n    { title: \"Hydration\", value: 2.3, unit: \"L\", changePercent: -3, changeDirection: \"down\" },\r\n    { title: \"Steps\", value: 10400, unit: \"\", changePercent: 8, changeDirection: \"up\" },\r\n  ]\r\n\r\n  const graphData: HealthGraphData[] = [\r\n    { label: \"Deep Sleep\", value: 80, color: \"#3B82F6\", description: \"Time in restorative sleep\" },\r\n    { label: \"Hydration\", value: 65, color: \"#22C55E\", description: \"Water intake level\" },\r\n    { label: \"Exercise\", value: 55, color: \"#F59E0B\", description: \"Active minutes today\" },\r\n    { label: \"Nutrition\", value: 90, color: \"#EF4444\", description: \"Daily nutrition goal met\" },\r\n  ]\r\n\r\n  return (\r\n    <div className=\"flex justify-center py-10\">\r\n      <HealthStatCard\r\n        headerIcon={<Dumbbell className=\"h-6 w-6\" />}\r\n        title=\"Daily Health Overview\"\r\n        stats={stats}\r\n        graphData={graphData}\r\n        graphHeight={120}\r\n      />\r\n    </div>\r\n  )\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/health-stat-card-demo.tsx"
+    }
+  ]
+}

@@ -86,10 +86,13 @@ const footerSections = [
     links: [
       { label: "Documentation", href: "/docs" },
       { label: "Blog", href: "/blog" },
-      { label: "Discord Server", href: "https://discord.gg/j9fVZm2D" },
+      { label: "Discord Server", href: "https://discord.gg/bYexWzUa6G" },
       { label: "GitHub", href: "https://github.com/ruixenui/ruixen.com" },
-      { label: "Twitter", href: "https://twitter.com/ruixenui" },
-      { label: "Instagram", href: "https://instagram.com/ruixenui/" },
+      { label: "Twitter", href: "https://x.com/ruixen_ui" },
+      {
+        label: "Instagram",
+        href: "https://www.instagram.com/ruixen_ui?igsh=MTh1aXdnemt1dDF5cg%3D%3D&utm_source=qr",
+      },
     ],
   },
 ];

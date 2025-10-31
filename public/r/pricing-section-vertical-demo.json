@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pricing-section-vertical-demo",
+  "type": "registry:example",
+  "title": "Pricing Section Vertical Demo",
+  "description": "Example showing a vertical pricing section with feature comparisons and plan cards.",
+  "registryDependencies": [
+    "https://ruixen.com/r/pricing-section-vertical"
+  ],
+  "files": [
+    {
+      "path": "registry/example/pricing-section-vertical-demo.tsx",
+      "content": "\"use client\";\r\n\r\nimport { PricingSectionVertical } from \"@/registry/ruixenui/pricing-section-vertical\";\r\n\r\nexport default function PricingPage() {\r\n  return (\r\n    <main className=\"min-h-screen bg-background text-foreground\">\r\n      <PricingSectionVertical />\r\n    </main>\r\n  );\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/pricing-section-vertical-demo.tsx"
+    }
+  ]
+}

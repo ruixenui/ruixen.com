@@ -4042,4 +4042,138 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "lumina-text",
+    type: "registry:ui",
+    title: "Lumina Text",
+    description:
+      "An animated text effect component with rising glow particles that creates a luminous, ethereal visual effect.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/ruixenui/lumina-text.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/lumina-text.tsx",
+      },
+    ],
+  },
+  {
+    name: "core-value-stats",
+    type: "registry:ui",
+    title: "Core Value Stats",
+    description:
+      "A responsive stats section component showcasing core values with optional images, animated cards, and customizable content.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/ruixenui/core-value-stats.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/core-value-stats.tsx",
+      },
+    ],
+  },
+  {
+    name: "hero-section-glass-web",
+    type: "registry:ui",
+    title: "Hero Section Glass Web",
+    description:
+      "A modern hero section with glassmorphism effects, image background, and metadata display for professional landing pages.",
+    files: [
+      {
+        path: "registry/ruixenui/hero-section-glass-web.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/hero-section-glass-web.tsx",
+      },
+    ],
+  },
+  {
+    name: "interactive-image-gallery",
+    type: "registry:ui",
+    title: "Interactive Image Gallery",
+    description:
+      "A responsive image gallery component with hover effects, expandable views, and smooth animations.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/ruixenui/interactive-image-gallery.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/interactive-image-gallery.tsx",
+      },
+    ],
+  },
+  {
+    name: "product-image-card",
+    type: "registry:ui",
+    title: "Product Image Card",
+    description:
+      "A product showcase card with scrollable image gallery, color selection, and interactive features for e-commerce applications.",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/product-image-card.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/product-image-card.tsx",
+      },
+    ],
+  },
+  {
+    name: "pricing-section-vertical",
+    type: "registry:ui",
+    title: "Pricing Section Vertical",
+    description:
+      "A vertical pricing section component with feature comparisons, plan cards, and call-to-action buttons.",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/pricing-section-vertical.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/pricing-section-vertical.tsx",
+      },
+    ],
+  },
+  {
+    name: "precision-card",
+    type: "registry:ui",
+    title: "Precision Card",
+    description:
+      "A detailed information card component with badges, feature lists, and action buttons for showcasing products or services.",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/precision-card.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/precision-card.tsx",
+      },
+    ],
+  },
+  {
+    name: "feature-slide-showcase",
+    type: "registry:ui",
+    title: "Feature Slide Showcase",
+    description:
+      "A tabbed feature showcase component with image previews and detailed descriptions for highlighting product features.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/ruixenui/feature-slide-showcase.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/feature-slide-showcase.tsx",
+      },
+    ],
+  },
+  {
+    name: "health-stat-card",
+    type: "registry:ui",
+    title: "Health Stat Card",
+    description:
+      "An interactive health statistics card with animated progress rings, trend indicators, and detailed metrics display.",
+    dependencies: ["motion", "lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/health-stat-card.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/health-stat-card.tsx",
+      },
+    ],
+  },
 ];

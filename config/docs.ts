@@ -113,6 +113,12 @@ export const docsConfig: DocsConfig = {
           title: "Cards",
           items: [
             {
+              title: "Precision Card",
+              href: `/docs/components/precision-card`,
+              items: [],
+              label: "",
+            },
+            {
               title: "Social Card",
               href: `/docs/components/social-card`,
               items: [],
@@ -232,6 +238,12 @@ export const docsConfig: DocsConfig = {
               items: [],
               label: "",
             },
+            {
+              title: "Health Stat Card",
+              href: `/docs/components/health-stat-card`,
+              items: [],
+              label: "",
+            }
           ],
         },
         {
@@ -1292,6 +1304,18 @@ export const docsConfig: DocsConfig = {
               items: [],
               label: "",
             },
+            {
+              title: "Interactive Image Gallery",
+              href: `/docs/components/interactive-image-gallery`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Product Image Card",
+              href: `/docs/components/product-image-card`,
+              items: [],
+              label: "",
+            },
           ],
         },
         {
@@ -1323,6 +1347,12 @@ export const docsConfig: DocsConfig = {
             {
               title: "Globe",
               href: `/docs/components/globe`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Lumina Text",
+              href: `/docs/components/lumina-text`,
               items: [],
               label: "",
             },
@@ -1648,6 +1678,12 @@ export const docsConfig: DocsConfig = {
               items: [],
               label: "",
             },
+            {
+              title: "Hero Section Glass Web",
+              href: `/docs/components/hero-section-glass-web`,
+              items: [],
+              label: "",
+            },
           ],
         },
         {
@@ -1740,6 +1776,18 @@ export const docsConfig: DocsConfig = {
             {
               title: "Case Studies",
               href: `/docs/components/case-studies`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Core Value Stats",
+              href: `/docs/components/core-value-stats`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Feature Slide Showcase",
+              href: `/docs/components/feature-slide-showcase`,
               items: [],
               label: "",
             },
@@ -1868,6 +1916,12 @@ export const docsConfig: DocsConfig = {
             {
               title: "Pricing Tiers",
               href: `/docs/components/pricing-tiers`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Pricing Section Vertical",
+              href: `/docs/components/pricing-section-vertical`,
               items: [],
               label: "",
             },

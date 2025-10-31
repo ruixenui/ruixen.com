@@ -6351,6 +6351,230 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "lumina-text": {
+    name: "lumina-text",
+    description:
+      "An animated text effect component with rising glow particles that creates a luminous, ethereal visual effect.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/lumina-text.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/lumina-text.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/lumina-text.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "core-value-stats": {
+    name: "core-value-stats",
+    description:
+      "A responsive stats section component showcasing core values with optional images, animated cards, and customizable content.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/core-value-stats.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/core-value-stats.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/core-value-stats.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "hero-section-glass-web": {
+    name: "hero-section-glass-web",
+    description:
+      "A modern hero section with glassmorphism effects, image background, and metadata display for professional landing pages.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/hero-section-glass-web.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/hero-section-glass-web.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/ruixenui/hero-section-glass-web.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "interactive-image-gallery": {
+    name: "interactive-image-gallery",
+    description:
+      "A responsive image gallery component with hover effects, expandable views, and smooth animations.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/interactive-image-gallery.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/interactive-image-gallery.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/ruixenui/interactive-image-gallery.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "product-image-card": {
+    name: "product-image-card",
+    description:
+      "A product showcase card with scrollable image gallery, color selection, and interactive features for e-commerce applications.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/product-image-card.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/product-image-card.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/product-image-card.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "pricing-section-vertical": {
+    name: "pricing-section-vertical",
+    description:
+      "A vertical pricing section component with feature comparisons, plan cards, and call-to-action buttons.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/pricing-section-vertical.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/pricing-section-vertical.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/ruixenui/pricing-section-vertical.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "precision-card": {
+    name: "precision-card",
+    description:
+      "A detailed information card component with badges, feature lists, and action buttons for showcasing products or services.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/precision-card.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/precision-card.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/precision-card.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "feature-slide-showcase": {
+    name: "feature-slide-showcase",
+    description:
+      "A tabbed feature showcase component with image previews and detailed descriptions for highlighting product features.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/feature-slide-showcase.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/feature-slide-showcase.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/ruixenui/feature-slide-showcase.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "health-stat-card": {
+    name: "health-stat-card",
+    description:
+      "An interactive health statistics card with animated progress rings, trend indicators, and detailed metrics display.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/health-stat-card.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/health-stat-card.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/health-stat-card.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "staggered-faq-section-demo": {
     name: "staggered-faq-section-demo",
     description:
@@ -12895,6 +13119,232 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/hero-title-slide-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "lumina-text-demo": {
+    name: "lumina-text-demo",
+    description:
+      "Example showing an animated text effect with rising glow particles creating a luminous, ethereal visual effect.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/lumina-text"],
+    files: [
+      {
+        path: "registry/example/lumina-text-demo.tsx",
+        type: "registry:example",
+        target: "components/lumina-text-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/lumina-text-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "core-value-stats-demo": {
+    name: "core-value-stats-demo",
+    description:
+      "Example showing a responsive stats section showcasing core values with optional images and animated cards.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/core-value-stats"],
+    files: [
+      {
+        path: "registry/example/core-value-stats-demo.tsx",
+        type: "registry:example",
+        target: "components/core-value-stats-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/core-value-stats-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "hero-section-glass-web-demo": {
+    name: "hero-section-glass-web-demo",
+    description:
+      "Example showing a modern hero section with glassmorphism effects and image background for professional landing pages.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/hero-section-glass-web"],
+    files: [
+      {
+        path: "registry/example/hero-section-glass-web-demo.tsx",
+        type: "registry:example",
+        target: "components/hero-section-glass-web-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/hero-section-glass-web-demo.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "interactive-image-gallery-demo": {
+    name: "interactive-image-gallery-demo",
+    description:
+      "Example showing a responsive image gallery with hover effects, expandable views, and smooth animations.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/interactive-image-gallery"],
+    files: [
+      {
+        path: "registry/example/interactive-image-gallery-demo.tsx",
+        type: "registry:example",
+        target: "components/interactive-image-gallery-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/interactive-image-gallery-demo.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "product-image-card-demo": {
+    name: "product-image-card-demo",
+    description:
+      "Example showing a product showcase card with scrollable image gallery and color selection for e-commerce.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/product-image-card"],
+    files: [
+      {
+        path: "registry/example/product-image-card-demo.tsx",
+        type: "registry:example",
+        target: "components/product-image-card-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/product-image-card-demo.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "pricing-section-vertical-demo": {
+    name: "pricing-section-vertical-demo",
+    description:
+      "Example showing a vertical pricing section with feature comparisons and plan cards.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/pricing-section-vertical"],
+    files: [
+      {
+        path: "registry/example/pricing-section-vertical-demo.tsx",
+        type: "registry:example",
+        target: "components/pricing-section-vertical-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/pricing-section-vertical-demo.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "precision-card-demo": {
+    name: "precision-card-demo",
+    description:
+      "Example showing a detailed information card with badges, feature lists, and action buttons.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/precision-card"],
+    files: [
+      {
+        path: "registry/example/precision-card-demo.tsx",
+        type: "registry:example",
+        target: "components/precision-card-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/precision-card-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "feature-slide-showcase-demo": {
+    name: "feature-slide-showcase-demo",
+    description:
+      "Example showing a tabbed feature showcase with image previews and detailed descriptions.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/feature-slide-showcase"],
+    files: [
+      {
+        path: "registry/example/feature-slide-showcase-demo.tsx",
+        type: "registry:example",
+        target: "components/feature-slide-showcase-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/feature-slide-showcase-demo.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "health-stat-card-demo": {
+    name: "health-stat-card-demo",
+    description:
+      "Example showing an interactive health statistics card with animated progress rings and trend indicators.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/health-stat-card"],
+    files: [
+      {
+        path: "registry/example/health-stat-card-demo.tsx",
+        type: "registry:example",
+        target: "components/health-stat-card-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/health-stat-card-demo.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>

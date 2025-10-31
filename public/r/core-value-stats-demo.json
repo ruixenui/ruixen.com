@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "core-value-stats-demo",
+  "type": "registry:example",
+  "title": "Core Value Stats Demo",
+  "description": "Example showing a responsive stats section showcasing core values with optional images and animated cards.",
+  "registryDependencies": [
+    "https://ruixen.com/r/core-value-stats"
+  ],
+  "files": [
+    {
+      "path": "registry/example/core-value-stats-demo.tsx",
+      "content": "\"use client\";\r\n\r\nimport CoreValueStats, { CoreStat } from \"@/registry/ruixenui/core-value-stats\";\r\n\r\nexport default function CoreValueStatsDemo() {\r\n  const stats: CoreStat[] = [\r\n    {\r\n      value: \"8+\",\r\n      label: \"Years of Innovation\",\r\n      description: \"Over eight years of building design systems that empower developers and designers.\",\r\n    },\r\n    {\r\n      value: \"32+\",\r\n      label: \"Industries Served\",\r\n      description: \"From fintech to healthcare, we build adaptive digital frameworks for every challenge.\",\r\n    },\r\n    {\r\n      value: \"20+\",\r\n      label: \"Creative Partners\",\r\n      description: \"We work with studios and startups to transform bold ideas into exceptional results.\",\r\n      image: \"https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/abstract-bg_11zon.jpg\",\r\n    },\r\n    {\r\n      value: \"19+\",\r\n      label: \"Expert Teams\",\r\n      description: \"A collective of engineers, designers, and strategists united by a shared goal.\",\r\n    },\r\n    {\r\n      value: \"100+\",\r\n      label: \"Delivered Projects\",\r\n      description: \"Every launch is proof of our dedication to craft, performance, and seamless user experience.\",\r\n    },\r\n  ];\r\n\r\n  return <CoreValueStats stats={stats} />;\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/core-value-stats-demo.tsx"
+    }
+  ]
+}

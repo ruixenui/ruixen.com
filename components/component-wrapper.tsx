@@ -139,6 +139,42 @@ function IFramePortal({
     }
   }, []);
 
+  // Separate effect to sync theme changes
+  React.useEffect(() => {
+    const iframe = iframeRef.current;
+    if (!iframe) return;
+
+    const doc = iframe.contentDocument;
+    if (!doc) return;
+
+    // Sync theme function
+    const syncTheme = () => {
+      if (!doc || !doc.documentElement) return;
+      // Sync html classes (this is where "dark" class is added by next-themes)
+      doc.documentElement.className = document.documentElement.className;
+      // Also sync any data attributes that might be used for theming
+      Array.from(document.documentElement.attributes).forEach((attr) => {
+        if (attr.name.startsWith("data-") || attr.name === "style") {
+          doc.documentElement.setAttribute(attr.name, attr.value);
+        }
+      });
+    };
+
+    // Initial sync
+    syncTheme();
+
+    // Watch for changes
+    const observer = new MutationObserver(syncTheme);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class", "data-theme", "style"],
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [mountNode]);
+
   // Width is driven by parent; height is set from inside the iframe.
   return (
     <>

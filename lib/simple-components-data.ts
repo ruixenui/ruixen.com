@@ -76,6 +76,56 @@ export const componentsData: ComponentCategory[] = [
     ],
   },
   {
+    id: "new components",
+    name: "New Components",
+    viewAllUrl: "/docs/components/interactive-image-gallery",
+    components: [
+      {
+        id: "precision-card",
+        title: "Precision Card",
+        summary: "Precision card with smooth animations and hover effects",
+        url: "/docs/components/precision-card",
+        image_dark:
+          "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/cards/precision-card-dark.webp",
+        image_light:
+          "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/cards/precision-card-light.webp",
+      },
+      {
+        id: "lumina-text",
+        title: "Lumina Text",
+        summary:
+          "Modern card with animated gradient blob background for visual appeal",
+        url: "/docs/components/lumina-text",
+        image_dark:
+          "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/texts/lumina-dark.png",
+        image_light:
+          "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/texts/lumina-light.png",
+      },
+      {
+        id: "product-image-card",
+        title: "Product Image Card",
+        summary:
+          "Interactive media card with play button overlay and hover animations",
+        url: "/docs/components/product-image-card",
+        image_dark:
+          "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/cards/product-image-card-dark.webp",
+        image_light:
+          "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/cards/product-image-card-light.webp",
+      },
+      {
+        id: "interactive-image-gallery",
+        title: "Interactive Image Gallery",
+        summary:
+          "Interactive image gallery with smooth animations and hover effects",
+        url: "/docs/components/interactive-image-gallery",
+        image_dark:
+          "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/images/interactive-image-gallery-dark.webp",
+        image_light:
+          "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/images/interactive-image-gallery-light.webp",
+      },
+    ],
+  },
+  {
     id: "cards",
     name: "Card Components",
     viewAllUrl: "/docs/components/elite-plan-card",
@@ -107,7 +157,7 @@ export const componentsData: ComponentCategory[] = [
         title: "Hover Play Card",
         summary:
           "Interactive media card with play button overlay and hover animations",
-        url: "/docs/components/health-stats-card",
+        url: "/docs/components/health-stat-card",
         image_dark:
           "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/cards/health-stats-card-dark.jpg",
         image_light:
@@ -116,8 +166,7 @@ export const componentsData: ComponentCategory[] = [
       {
         id: "credit-card-hero",
         title: "Credit Card Hero",
-        summary:
-          "Professional portfolio card with project showcase and interaction effects",
+        summary: "Credit card hero with smooth animations and hover effects",
         url: "/docs/components/credit-card-hero",
         image_dark:
           "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/cards/credit-card-hero-dark.jpg",
@@ -156,8 +205,7 @@ export const componentsData: ComponentCategory[] = [
       {
         id: "otp-input",
         title: "OTP Input",
-        summary:
-          "Advanced color picker with multiple formats, gradients, and accessibility features",
+        summary: "OTP input with smooth animations and keyboard shortcuts",
         url: "/docs/components/otp-input",
         image_dark:
           "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/inputs/otp-input-dark.jpg",
@@ -179,7 +227,7 @@ export const componentsData: ComponentCategory[] = [
         id: "modern-card-input",
         title: "Modern Card Input",
         summary:
-          "Password input with real-time strength validation and security indicators",
+          "Modern card input with smooth animations and keyboard shortcuts",
         url: "/docs/components/modern-card-input",
         image_dark:
           "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/inputs/modern-card-input-dark.jpg",
@@ -230,7 +278,7 @@ export const componentsData: ComponentCategory[] = [
         id: "icon-grid-button",
         title: "Icon Grid Button",
         summary:
-          "Animated GitHub button with smooth morphing transitions and hover effects",
+          "Icon grid button with smooth animations and keyboard shortcuts",
         url: "/docs/components/icon-grid-button",
         image_dark:
           "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/buttons/icon-grid-button-dark.jpg",

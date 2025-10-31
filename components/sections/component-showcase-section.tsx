@@ -145,7 +145,7 @@ export default function ComponentShowcaseSection() {
 
           {/* Health Stats Card - Bottom Left */}
           <Link
-            href="/docs/components/health-stats-card"
+            href="/docs/components/health-stat-card"
             className="absolute left-[0%] md:left-[-4%] lg:left-[-8%] bottom-[8%] md:bottom-[10%] lg:bottom-[15%] h-[110px] w-[165px] md:h-[130px] md:w-[195px] lg:h-[140px] lg:w-52 z-25 rounded-xl shadow-lg animate-float-up overflow-hidden cursor-pointer hover:scale-105 hover:z-50 transition-all duration-300"
             style={{
               animationDelay: "-4.2s",
@@ -345,7 +345,7 @@ export default function ComponentShowcaseSection() {
 
           {/* Feature Section 08 - Bottom Center Left */}
           <Link
-            href="/docs/components/feature-section-08"
+            href="/docs/components/feature-slide-showcase"
             className="absolute left-[20%] md:left-[22%] lg:left-[28%] bottom-[5%] md:bottom-[8%] lg:bottom-[12%] h-[90px] w-[135px] md:h-[105px] md:w-[155px] lg:h-[115px] lg:w-[165px] z-22 rounded-xl shadow-lg animate-float-up overflow-hidden cursor-pointer hover:scale-105 hover:z-50 transition-all duration-300"
             style={{
               animationDelay: "-5.8s",
@@ -365,7 +365,7 @@ export default function ComponentShowcaseSection() {
 
           {/* Integration Section - Top Left Lower */}
           <Link
-            href="/docs/components/integration-section"
+            href="/docs/components/multi-orbit-semi-circle"
             className="absolute left-[0%] md:left-[3%] lg:left-[6%] top-[45%] md:top-[48%] lg:top-[52%] h-[95px] w-[140px] md:h-[110px] md:w-[160px] lg:h-[120px] lg:w-[175px] z-14 rounded-xl shadow-lg animate-float-up overflow-hidden cursor-pointer hover:scale-105 hover:z-50 transition-all duration-300"
             style={{
               animationDelay: "-6.5s",
@@ -730,7 +730,7 @@ export default function ComponentShowcaseSection() {
 
           {/* Health Stats Card - Bottom Left */}
           <Link
-            href="/docs/components/health-stats-card"
+            href="/docs/components/health-stat-card"
             className="absolute left-[-6%] md:left-[-8%] lg:left-[-10%] bottom-[8%] md:bottom-[10%] lg:bottom-[15%] h-[110px] w-[165px] md:h-[130px] md:w-[195px] lg:h-[140px] lg:w-52 z-25 rounded-xl shadow-lg animate-float-up overflow-hidden cursor-pointer hover:scale-105 hover:z-50 transition-all duration-300"
             style={{
               animationDelay: "-4.2s",
@@ -930,7 +930,7 @@ export default function ComponentShowcaseSection() {
 
           {/* Feature Section 08 - Bottom Center Left */}
           <Link
-            href="/docs/components/feature-section-08"
+            href="/docs/components/feature-slide-showcase"
             className="absolute left-[20%] md:left-[22%] lg:left-[28%] bottom-[5%] md:bottom-[8%] lg:bottom-[12%] h-[90px] w-[135px] md:h-[105px] md:w-[155px] lg:h-[115px] lg:w-[165px] z-22 rounded-xl shadow-lg animate-float-up overflow-hidden cursor-pointer hover:scale-105 hover:z-50 transition-all duration-300"
             style={{
               animationDelay: "-5.8s",
@@ -950,7 +950,7 @@ export default function ComponentShowcaseSection() {
 
           {/* Integration Section - Top Left Lower */}
           <Link
-            href="/docs/components/integration-section"
+            href="/docs/components/multi-orbit-semi-circle"
             className="absolute left-[2%] md:left-[4%] lg:left-[8%] top-[58%] md:top-[60%] lg:top-[62%] h-[95px] w-[140px] md:h-[110px] md:w-[160px] lg:h-[120px] lg:w-[175px] z-14 rounded-xl shadow-lg animate-float-up overflow-hidden cursor-pointer hover:scale-105 hover:z-50 transition-all duration-300"
             style={{
               animationDelay: "-6.5s",
