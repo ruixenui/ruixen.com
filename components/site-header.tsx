@@ -122,7 +122,6 @@ export async function SiteHeader() {
                 <span className="sr-only">Twitter</span>
               </div>
             </Link>
-            <ModeToggle />
             <Link
               href={siteConfig.links.instagram}
               target="_blank"
@@ -140,6 +139,7 @@ export async function SiteHeader() {
                 <span className="sr-only">Instagram</span>
               </div>
             </Link>
+            <ModeToggle />
           </nav>
         </div>
       </div>

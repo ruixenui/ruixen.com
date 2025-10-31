@@ -11,6 +11,7 @@ import { allBlogs } from "content-collections";
 import { ArrowLeftIcon } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import type { ComponentProps } from "react";
 
 const components = {
@@ -192,6 +193,10 @@ export default async function BlogPage({
   );
   const post = allBlogs[currentIndex];
 
+  if (!post) {
+    notFound();
+  }
+
   // Initialize with empty headings array - they will be populated after render
   const headings: string[] = [];
 
@@ -207,41 +212,39 @@ export default async function BlogPage({
         </Link>
       </div>
       <article className="mx-auto mt-5 max-w-6xl rounded-xl border border-border">
-        {post && (
-          <div>
-            <div className="relative overflow-hidden rounded-xl p-5 md:p-10">
-              <img
-                src={post.image}
-                alt={post.title}
-                className="size-full rounded-xl border border-border object-cover object-left"
-              />
-            </div>
-            <div className="mx-auto flex flex-col items-center justify-center gap-y-2 border-y border-border p-5">
-              <div className="mx-auto flex max-w-4xl flex-col items-center justify-center gap-y-2">
-                <h1 className="text-balance text-center text-3xl font-semibold tracking-tighter md:text-5xl">
-                  {post.title}
-                </h1>
-                <p className="text-balance text-center text-secondary-foreground md:text-lg">
-                  {post.description}
-                </p>
-              </div>
-            </div>
-            <div className="flex items-center justify-center gap-x-2 border-b border-border p-3 text-sm text-secondary-foreground">
-              <span>{getReadingTime(post.body.raw)} min read</span>
-              {post.tag && (
-                <>
-                  <span>·</span>
-                  <span className="rounded-full border border-border bg-primary/5 px-2.5 py-0.5">
-                    {post.tag}
-                  </span>
-                </>
-              )}
+        <div>
+          <div className="relative overflow-hidden rounded-xl p-5 md:p-10">
+            <img
+              src={post.image}
+              alt={post.title}
+              className="size-full rounded-xl border border-border object-cover object-left"
+            />
+          </div>
+          <div className="mx-auto flex flex-col items-center justify-center gap-y-2 border-y border-border p-5">
+            <div className="mx-auto flex max-w-4xl flex-col items-center justify-center gap-y-2">
+              <h1 className="text-balance text-center text-3xl font-semibold tracking-tighter md:text-5xl">
+                {post.title}
+              </h1>
+              <p className="text-balance text-center text-secondary-foreground md:text-lg">
+                {post.description}
+              </p>
             </div>
           </div>
-        )}
+          <div className="flex items-center justify-center gap-x-2 border-b border-border p-3 text-sm text-secondary-foreground">
+            <span>{getReadingTime(post.body.raw)} min read</span>
+            {post.tag && (
+              <>
+                <span>·</span>
+                <span className="rounded-full border border-border bg-primary/5 px-2.5 py-0.5">
+                  {post.tag}
+                </span>
+              </>
+            )}
+          </div>
+        </div>
         <div className="grid grid-cols-1 gap-x-1 lg:grid-cols-7">
           <div className="article-content col-span-5 border-border p-5 lg:border-r lg:p-10">
-            <MDXContent code={post?.body.code} components={components} />
+            <MDXContent code={post.body.code} components={components} />
           </div>
           <div className="sticky top-16 col-span-2 hidden h-fit w-full flex-col items-start justify-start p-5 text-primary lg:flex ">
             <PromoSection />
@@ -251,7 +254,7 @@ export default async function BlogPage({
           </div>
         </div>
       </article>
-      {post && <MoreArticles currentPost={post} />}
+      <MoreArticles currentPost={post} />
     </div>
   );
 }
