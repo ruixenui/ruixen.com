@@ -13,7 +13,6 @@ import {
   logger,
   tryPro,
 } from "@/src/utils/logger";
-import { posthog } from "@/src/utils/posthog";
 import {
   fetchTree,
   fetchTreeFromShadcn,
@@ -295,16 +294,6 @@ export const add = new Command()
           }
         }
       }
-
-      posthog.capture({
-        event: "cli_add",
-        distinctId: generateDistinctId(),
-        properties: {
-          components: selectedComponents,
-          style: config.style,
-          baseColor: config.tailwind.baseColor,
-        },
-      });
 
       spinner.succeed(`Done.`);
     } catch (error) {

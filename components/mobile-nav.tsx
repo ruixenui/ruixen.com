@@ -2,7 +2,6 @@
 
 import Link, { LinkProps } from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import posthog from "posthog-js";
 import * as React from "react";
 import {
   ChevronDownIcon,
@@ -177,7 +176,6 @@ function MobileSidebarNavItems({ items }: MobileSidebarNavItemsProps) {
             <MobileLink
               key={index}
               href={item.href}
-              onClick={() => item.event && posthog.capture(item.event)}
               className={cn(
                 "flex justify-between text-muted-foreground px-2 py-1.5",
                 item.disabled && "cursor-not-allowed opacity-60",

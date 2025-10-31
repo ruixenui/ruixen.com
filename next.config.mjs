@@ -51,8 +51,8 @@ const nextConfig = {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://us-assets.i.posthog.com https://www.googletagmanager.com https://www.google-analytics.com",
-              "connect-src 'self' https://us.i.posthog.com https://us-assets.i.posthog.com https://www.google-analytics.com https://analytics.google.com",
+              "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com",
+              "connect-src 'self' https://www.google-analytics.com https://analytics.google.com",
               "img-src 'self' data: blob: https:",
               "style-src 'self' 'unsafe-inline'",
               "font-src 'self' data:",

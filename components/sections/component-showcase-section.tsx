@@ -33,11 +33,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/globe-light.jpg"
+              src="/landing-page-images/globe-light.webp"
               alt="Globe Component"
               fill
               sizes="(max-width: 768px) 240px, (max-width: 1200px) 300px, 330px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -52,11 +53,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/ruixen-moon-chat.jpg"
+              src="/landing-page-images/ruixen-moon-chat.webp"
               alt="Ruixen Moon Chat"
               fill
               sizes="(max-width: 768px) 165px, (max-width: 1200px) 195px, 52px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -71,11 +73,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/three-dwall-calendar-light.jpg"
+              src="/landing-page-images/three-dwall-calendar-light.webp"
               alt="3D Wall Calendar"
               fill
               sizes="(max-width: 768px) 150px, (max-width: 1200px) 180px, 192px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -90,11 +93,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/elite-plan-card-light.jpg"
+              src="/landing-page-images/elite-plan-card-light.webp"
               alt="Elite Plan Card"
               fill
               sizes="(max-width: 768px) 185px, (max-width: 1200px) 225px, 240px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -109,11 +113,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/credit-card-hero-light.jpg"
+              src="/landing-page-images/credit-card-hero-light.webp"
               alt="Credit Card Hero"
               fill
               sizes="(max-width: 768px) 175px, (max-width: 1200px) 210px, 224px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -128,11 +133,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/input-with-select-light.jpg"
+              src="/landing-page-images/input-with-select-light.webp"
               alt="Input With Select"
               fill
               sizes="(max-width: 768px) 145px, (max-width: 1200px) 175px, 192px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -147,11 +153,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/health-stats-card-light.jpg"
+              src="/landing-page-images/health-stats-card-light.webp"
               alt="Health Stats Card"
               fill
               sizes="(max-width: 768px) 165px, (max-width: 1200px) 195px, 208px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -166,11 +173,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/tag-cloud-select-light.jpg"
+              src="/landing-page-images/tag-cloud-select-light.webp"
               alt="Tag Cloud Select"
               fill
               sizes="(max-width: 768px) 130px, (max-width: 1200px) 160px, 176px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -185,11 +193,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/shirt-parallax-card-light.jpg"
+              src="/landing-page-images/shirt-parallax-card-light.webp"
               alt="Shirt Parallax Card"
               fill
               sizes="(max-width: 768px) 165px, (max-width: 1200px) 195px, 52px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -204,11 +213,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/url-input-light.jpg"
+              src="/landing-page-images/url-input-light.webp"
               alt="URL Input"
               fill
               sizes="(max-width: 768px) 145px, (max-width: 1200px) 170px, 185px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -223,11 +233,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/multi-month-calendar-light.png"
+              src="/landing-page-images/multi-month-calendar-light.webp"
               alt="Multi Month Calendar"
               fill
               sizes="(max-width: 768px) 140px, (max-width: 1200px) 160px, 175px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -242,11 +253,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/task-orbit-calendar-light.png"
+              src="/landing-page-images/task-orbit-calendar-light.webp"
               alt="Task Orbit Calendar"
               fill
               sizes="(max-width: 768px) 145px, (max-width: 1200px) 170px, 185px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -261,11 +273,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/feature-carousel-light.png"
+              src="/landing-page-images/feature-carousel-light.webp"
               alt="Feature Carousel"
               fill
               sizes="(max-width: 768px) 140px, (max-width: 1200px) 160px, 175px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -280,11 +293,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/ripple-distortion-light.jpg"
+              src="/landing-page-images/ripple-distortion-light.webp"
               alt="Ripple Distortion"
               fill
               sizes="(max-width: 768px) 140px, (max-width: 1200px) 160px, 175px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -299,11 +313,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/icon-grid-button-light.jpg"
+              src="/landing-page-images/icon-grid-button-light.webp"
               alt="Icon Grid Button"
               fill
               sizes="(max-width: 768px) 140px, (max-width: 1200px) 160px, 175px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -318,11 +333,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/calendar-light.png"
+              src="/landing-page-images/calendar-light.webp"
               alt="Calendar"
               fill
               sizes="(max-width: 768px) 125px, (max-width: 1200px) 145px, 155px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -337,11 +353,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/feature-08-light.png"
+              src="/landing-page-images/feature-08-light.webp"
               alt="Feature Section 08"
               fill
               sizes="(max-width: 768px) 135px, (max-width: 1200px) 155px, 165px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -356,11 +373,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/integration-light.png"
+              src="/landing-page-images/integration-light.webp"
               alt="Integration Section"
               fill
               sizes="(max-width: 768px) 140px, (max-width: 1200px) 160px, 175px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -375,11 +393,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/feature-06-light.png"
+              src="/landing-page-images/feature-06-light.webp"
               alt="Feature Section 06"
               fill
               sizes="(max-width: 768px) 145px, (max-width: 1200px) 170px, 185px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -394,11 +413,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/glass-wall-light.png"
+              src="/landing-page-images/glass-wall-light.webp"
               alt="Glass Wall Hero"
               fill
               sizes="(max-width: 768px) 165px, (max-width: 1200px) 195px, 52px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -413,11 +433,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/lumina-light.png"
+              src="/landing-page-images/lumina-light.webp"
               alt="Lumina Text"
               fill
               sizes="(max-width: 768px) 130px, (max-width: 1200px) 160px, 44px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -432,11 +453,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/pricing-with-user-section-light.png"
+              src="/landing-page-images/pricing-with-user-section-light.webp"
               alt="Pricing With User Section"
               fill
               sizes="(max-width: 768px) 140px, (max-width: 1200px) 160px, 175px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -451,11 +473,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/event-aquarium-calendar-light.png"
+              src="/landing-page-images/event-aquarium-calendar-light.webp"
               alt="Event Aquarium Calendar"
               fill
               sizes="(max-width: 768px) 130px, (max-width: 1200px) 150px, 165px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -470,11 +493,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/sliding-pagination-light.jpg"
+              src="/landing-page-images/sliding-pagination-light.webp"
               alt="Sliding Pagination"
               fill
               sizes="(max-width: 768px) 125px, (max-width: 1200px) 145px, 155px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -489,11 +513,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/stack-pagination-light.jpg"
+              src="/landing-page-images/stack-pagination-light.webp"
               alt="Stack Pagination"
               fill
               sizes="(max-width: 768px) 130px, (max-width: 1200px) 150px, 165px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -508,11 +533,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/gooey-pagination-light.jpg"
+              src="/landing-page-images/gooey-pagination-light.webp"
               alt="Gooey Pagination"
               fill
               sizes="(max-width: 768px) 125px, (max-width: 1200px) 145px, 155px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -527,11 +553,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/confetti-button-light.jpg"
+              src="/landing-page-images/confetti-button-light.webp"
               alt="Confetti Button"
               fill
               sizes="(max-width: 768px) 125px, (max-width: 1200px) 145px, 155px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -546,11 +573,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/countdown-button-light.jpg"
+              src="/landing-page-images/countdown-button-light.webp"
               alt="Countdown Button"
               fill
               sizes="(max-width: 768px) 125px, (max-width: 1200px) 145px, 155px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -565,11 +593,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/checklist-button-light.jpg"
+              src="/landing-page-images/checklist-button-light.webp"
               alt="Checklist Button"
               fill
               sizes="(max-width: 768px) 125px, (max-width: 1200px) 145px, 155px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -589,11 +618,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/globe-dark.jpg"
+              src="/landing-page-images/globe-dark.webp"
               alt="Globe Component"
               fill
               sizes="(max-width: 768px) 240px, (max-width: 1200px) 300px, 330px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -608,11 +638,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/ruixen-moon-chat.jpg"
+              src="/landing-page-images/ruixen-moon-chat.webp"
               alt="Ruixen Moon Chat"
               fill
               sizes="(max-width: 768px) 165px, (max-width: 1200px) 195px, 52px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -627,11 +658,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/three-dwall-calendar-dark.jpg"
+              src="/landing-page-images/three-dwall-calendar-dark.webp"
               alt="3D Wall Calendar"
               fill
               sizes="(max-width: 768px) 150px, (max-width: 1200px) 180px, 48px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -646,11 +678,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/elite-plan-card-dark.jpg"
+              src="/landing-page-images/elite-plan-card-dark.webp"
               alt="Elite Plan Card"
               fill
               sizes="(max-width: 768px) 185px, (max-width: 1200px) 225px, 60px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -665,11 +698,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/credit-card-hero-dark.jpg"
+              src="/landing-page-images/credit-card-hero-dark.webp"
               alt="Credit Card Hero"
               fill
               sizes="(max-width: 768px) 175px, (max-width: 1200px) 210px, 56px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -684,11 +718,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/input-with-select-dark.jpg"
+              src="/landing-page-images/input-with-select-dark.webp"
               alt="Input With Select"
               fill
               sizes="(max-width: 768px) 145px, (max-width: 1200px) 175px, 48px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -703,11 +738,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/health-stats-card-dark.jpg"
+              src="/landing-page-images/health-stats-card-dark.webp"
               alt="Health Stats Card"
               fill
               sizes="(max-width: 768px) 165px, (max-width: 1200px) 195px, 52px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -722,11 +758,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/tag-cloud-select-dark.jpg"
+              src="/landing-page-images/tag-cloud-select-dark.webp"
               alt="Tag Cloud Select"
               fill
               sizes="(max-width: 768px) 130px, (max-width: 1200px) 160px, 44px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -741,11 +778,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/shirt-parallax-card-light.jpg"
+              src="/landing-page-images/shirt-parallax-card-light.webp"
               alt="Shirt Parallax Card"
               fill
               sizes="(max-width: 768px) 165px, (max-width: 1200px) 195px, 208px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -760,11 +798,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/url-input-dark.jpg"
+              src="/landing-page-images/url-input-dark.webp"
               alt="URL Input"
               fill
               sizes="(max-width: 768px) 145px, (max-width: 1200px) 175px, 48px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -779,11 +818,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/multi-month-calendar-dark.png"
+              src="/landing-page-images/multi-month-calendar-dark.webp"
               alt="Multi Month Calendar"
               fill
               sizes="(max-width: 768px) 140px, (max-width: 1200px) 160px, 175px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -798,11 +838,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/task-orbit-calendar-dark.png"
+              src="/landing-page-images/task-orbit-calendar-dark.webp"
               alt="Task Orbit Calendar"
               fill
               sizes="(max-width: 768px) 145px, (max-width: 1200px) 175px, 48px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -817,11 +858,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/feature-carousel-dark.png"
+              src="/landing-page-images/feature-carousel-dark.webp"
               alt="Feature Carousel"
               fill
               sizes="(max-width: 768px) 140px, (max-width: 1200px) 160px, 175px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -836,11 +878,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/ripple-distortion-dark.png"
+              src="/landing-page-images/ripple-distortion-dark.webp"
               alt="Ripple Distortion"
               fill
               sizes="(max-width: 768px) 130px, (max-width: 1200px) 160px, 44px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -855,11 +898,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/icon-grid-button-dark.jpg"
+              src="/landing-page-images/icon-grid-button-dark.webp"
               alt="Icon Grid Button"
               fill
               sizes="(max-width: 768px) 140px, (max-width: 1200px) 160px, 175px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -874,11 +918,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/calendar-dark.png"
+              src="/landing-page-images/calendar-dark.webp"
               alt="Calendar"
               fill
               sizes="(max-width: 768px) 125px, (max-width: 1200px) 145px, 155px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -893,11 +938,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/feature-08-dark.png"
+              src="/landing-page-images/feature-08-dark.webp"
               alt="Feature Section 08"
               fill
               sizes="(max-width: 768px) 135px, (max-width: 1200px) 155px, 165px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -912,11 +958,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/integration-dark.png"
+              src="/landing-page-images/integration-dark.webp"
               alt="Integration Section"
               fill
               sizes="(max-width: 768px) 140px, (max-width: 1200px) 160px, 175px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -931,11 +978,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/feature-06-dark.png"
+              src="/landing-page-images/feature-06-dark.webp"
               alt="Feature Section 06"
               fill
               sizes="(max-width: 768px) 145px, (max-width: 1200px) 175px, 185px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -950,11 +998,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/glass-wall-dark.png"
+              src="/landing-page-images/glass-wall-dark.webp"
               alt="Glass Wall Hero"
               fill
               sizes="(max-width: 768px) 165px, (max-width: 1200px) 195px, 52px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -969,11 +1018,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/lumina-dark.png"
+              src="/landing-page-images/lumina-dark.webp"
               alt="Lumina Text"
               fill
               sizes="(max-width: 768px) 130px, (max-width: 1200px) 160px, 44px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -988,11 +1038,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/pricing-with-user-section-dark.png"
+              src="/landing-page-images/pricing-with-user-section-dark.webp"
               alt="Pricing With User Section"
               fill
               sizes="(max-width: 768px) 140px, (max-width: 1200px) 160px, 175px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -1007,11 +1058,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/event-aquarium-calendar-dark.png"
+              src="/landing-page-images/event-aquarium-calendar-dark.webp"
               alt="Event Aquarium Calendar"
               fill
               sizes="(max-width: 768px) 130px, (max-width: 1200px) 150px, 165px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -1026,11 +1078,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/sliding-pagination-dark.jpg"
+              src="/landing-page-images/sliding-pagination-dark.webp"
               alt="Sliding Pagination"
               fill
               sizes="(max-width: 768px) 125px, (max-width: 1200px) 145px, 155px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -1045,11 +1098,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/stack-pagination-dark.jpg"
+              src="/landing-page-images/stack-pagination-dark.webp"
               alt="Stack Pagination"
               fill
               sizes="(max-width: 768px) 130px, (max-width: 1200px) 150px, 165px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -1064,11 +1118,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/gooey-pagination-dark.jpg"
+              src="/landing-page-images/gooey-pagination-dark.webp"
               alt="Gooey Pagination"
               fill
               sizes="(max-width: 768px) 125px, (max-width: 1200px) 145px, 155px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -1083,11 +1138,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/confetti-button-dark.jpg"
+              src="/landing-page-images/confetti-button-dark.webp"
               alt="Confetti Button"
               fill
               sizes="(max-width: 768px) 125px, (max-width: 1200px) 145px, 155px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -1102,11 +1158,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/countdown-button-dark.jpg"
+              src="/landing-page-images/countdown-button-dark.webp"
               alt="Countdown Button"
               fill
               sizes="(max-width: 768px) 125px, (max-width: 1200px) 145px, 155px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>
@@ -1121,11 +1178,12 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/checklist-button-dark.jpg"
+              src="/landing-page-images/checklist-button-dark.webp"
               alt="Checklist Button"
               fill
               sizes="(max-width: 768px) 125px, (max-width: 1200px) 145px, 155px"
               className="object-cover rounded-xl"
+              loading="lazy"
               unoptimized
             />
           </Link>

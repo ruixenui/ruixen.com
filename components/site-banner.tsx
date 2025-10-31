@@ -2,7 +2,6 @@
 
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
-import posthog from "posthog-js";
 
 export function ProBanner() {
   return (
@@ -10,7 +9,6 @@ export function ProBanner() {
       <div className="container flex flex-col items-center justify-center gap-4 md:h-12 md:flex-row">
         <Link
           href="https://ruixen.com"
-          onClick={() => posthog.capture("banner_cta_clicked")}
           target="_blank"
           className="inline-flex text-xs leading-normal md:text-sm"
         >
@@ -34,7 +32,6 @@ export function ProductHuntBanner() {
       <div className="container flex flex-col items-center justify-center gap-4 md:h-12 md:flex-row">
         <Link
           href="https://www.producthunt.com/posts/ruixen-ui-2?utm_source=site-banner&utm_medium=banner&utm_campaign=product-hunt-banner"
-          onClick={() => posthog.capture("product_hunt_banner_clicked")}
           target="_blank"
           className="inline-flex text-xs leading-normal md:text-sm"
         >

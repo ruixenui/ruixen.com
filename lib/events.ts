@@ -1,4 +1,3 @@
-import posthog from "posthog-js";
 import { z } from "zod";
 import { sendGAEvent } from "./ga-events";
 
@@ -47,14 +46,11 @@ const eventSchema = z.object({
 export type Event = z.infer<typeof eventSchema>;
 
 /**
- * Track an event to both PostHog and Google Analytics 4
+ * Track an event to Google Analytics 4
  */
 export function trackEvent(input: Event): void {
   const event = eventSchema.parse(input);
   if (event) {
-    // Send to PostHog
-    posthog.capture(event.name, event.properties);
-
     // Send to GA4
     sendGAEvent(event.name, event.properties || {});
   }

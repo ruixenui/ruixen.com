@@ -8,7 +8,6 @@ import {
 } from "@radix-ui/react-icons";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import posthog from "posthog-js";
 import { useState } from "react";
 
 import { cn } from "@/lib/utils";
@@ -113,7 +112,6 @@ export function DocsSidebarNavItems({
             <Link
               key={index}
               href={item.href}
-              onClick={() => item.event && posthog.capture(item.event)}
               className={cn(
                 "group relative flex h-8 w-full items-center justify-between rounded-lg px-2 font-normal text-foreground",
                 "transition-transform duration-200 hover:translate-x-px hover:text-accent-foreground",
