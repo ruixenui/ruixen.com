@@ -243,7 +243,7 @@ export const docsConfig: DocsConfig = {
               href: `/docs/components/health-stat-card`,
               items: [],
               label: "",
-            }
+            },
           ],
         },
         {

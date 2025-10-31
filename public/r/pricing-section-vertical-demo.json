@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/pricing-section-vertical-demo.tsx",
-      "content": "\"use client\";\r\n\r\nimport { PricingSectionVertical } from \"@/registry/ruixenui/pricing-section-vertical\";\r\n\r\nexport default function PricingPage() {\r\n  return (\r\n    <main className=\"min-h-screen bg-background text-foreground\">\r\n      <PricingSectionVertical />\r\n    </main>\r\n  );\r\n}\r\n",
+      "content": "\"use client\";\n\nimport { PricingSectionVertical } from \"@/registry/ruixenui/pricing-section-vertical\";\n\nexport default function PricingPage() {\n  return (\n    <main className=\"min-h-screen bg-background text-foreground\">\n      <PricingSectionVertical />\n    </main>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/pricing-section-vertical-demo.tsx"
     }

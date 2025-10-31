@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/lumina-text-demo.tsx",
-      "content": "\"use client\";\r\n\r\nimport React from \"react\";\r\nimport { RisingGlow } from \"@/registry/ruixenui/lumina-text\";\r\n\r\nexport default function RisingGlowDemo() {\r\n  return (\r\n    <div className=\"flex flex-col items-center justify-center p-6\">\r\n      <h1 className=\"text-6xl md:text-8xl font-bold relative z-10\">\r\n        Lumina\r\n      </h1>\r\n      {/* Rising Glow animation below text */}\r\n      <div className=\"w-full max-w-4xl\">\r\n        <RisingGlow\r\n          particleCount={80}\r\n          particleColor=\"#7CF734\"\r\n          height={100}\r\n          width=\"100%\"\r\n        />\r\n      </div>\r\n    </div>\r\n  );\r\n}\r\n",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport { RisingGlow } from \"@/registry/ruixenui/lumina-text\";\n\nexport default function RisingGlowDemo() {\n  return (\n    <div className=\"flex flex-col items-center justify-center min-h-screen p-6\">\n      <h1 className=\"text-6xl md:text-8xl font-bold relative z-10\">Lumina</h1>\n      {/* Rising Glow animation below text */}\n      <div className=\"w-full max-w-xs\">\n        <RisingGlow\n          particleCount={80}\n          particleColor=\"#7CF734\"\n          height={100}\n          width=\"100%\"\n        />\n      </div>\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/lumina-text-demo.tsx"
     }
