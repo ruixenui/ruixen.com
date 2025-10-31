@@ -1,5 +1,4 @@
 import { Analytics } from "@/components/analytics";
-import { PHProvider } from "@/components/posthog-provider";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -81,16 +80,14 @@ export default function RootLayout({
         )}
       >
         <JotaiProvider>
-          <PHProvider>
-            <ThemeProvider attribute="class" defaultTheme="light">
-              <TooltipProvider>
-                {children}
-                <Toaster />
-                <Analytics />
-                <GitHubStarPopup />
-              </TooltipProvider>
-            </ThemeProvider>
-          </PHProvider>
+          <ThemeProvider attribute="class" defaultTheme="light">
+            <TooltipProvider>
+              {children}
+              <Toaster />
+              <Analytics />
+              <GitHubStarPopup />
+            </TooltipProvider>
+          </ThemeProvider>
         </JotaiProvider>
       </body>
     </html>

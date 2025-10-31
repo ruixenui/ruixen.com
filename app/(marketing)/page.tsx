@@ -8,39 +8,45 @@ export default function Home() {
   const faqItems: FAQItem[] = [
     {
       id: "installation",
-      question: "How do I install Ruixen UI in a Next.js project?",
+      question: "How do I install Ruixen UI in my project?",
       answer:
-        "Install the package, add the provider, and import components on demand. Tree-shaking keeps bundles small. See the quickstart in our docs for step-by-step commands.",
+        "Run `npm i ruixen-ui` or `yarn add ruixen-ui`, wrap your app with the provider, and start importing components. It works seamlessly with Next.js and React.",
     },
     {
-      id: "theming",
-      question: "Does Ruixen UI support dark mode and custom themes?",
+      id: "customization",
+      question: "Can I customize components and themes?",
       answer:
-        "Yes. Toggle light/dark out of the box and extend brand tokens (colors, fonts, radius) via a single theme config. No app-wide refactors required.",
+        "Yes. Every component supports easy customization through classNames and tokens. You can also extend or override the theme globally.",
     },
     {
-      id: "a11y",
-      question: "What accessibility features are built in?",
+      id: "compatibility",
+      question: "Does Ruixen UI work with Next.js and TypeScript?",
       answer:
-        "Components ship with ARIA attributes, focus management, keyboard navigation, and reduced-motion support so your UI is usable by everyone.",
+        "Yes. Ruixen UI is built for modern stacks — fully typed with TypeScript and optimized for SSR and App Router in Next.js.",
     },
     {
-      id: "performance",
-      question: "How does Ruixen UI keep performance high?",
+      id: "updates",
+      question: "How often are new components added?",
       answer:
-        "We favor zero-runtime styles where possible, lean dependencies, and memoized patterns. Most components are tree-shakeable and SSR-friendly.",
+        "We roll out new components and improvements regularly based on developer feedback and trending design patterns.",
     },
     {
-      id: "licensing",
-      question: "Is Ruixen UI free for commercial use?",
+      id: "issues",
+      question: "I found a bug — where can I report it?",
       answer:
-        "A permissive license covers most use cases. For priority support and private components, upgrade to our Pro plan.",
+        "You can open an issue on our GitHub repository or contact us directly. We actively fix and ship updates quickly.",
     },
     {
-      id: "integration",
-      question: "Will it work with my existing stack?",
+      id: "usage",
+      question: "Can I use Ruixen UI in commercial projects?",
       answer:
-        "Yes. Ruixen UI plays well with Next.js, React Query/TanStack, React Hook Form, Zod, and common charting/auth libraries.",
+        "Yes. Ruixen UI is free to use in both personal and commercial projects. No license or subscription required.",
+    },
+    {
+      id: "future",
+      question: "Is a Pro version or premium components planned?",
+      answer:
+        "Yes. A Pro version with advanced templates, layouts, and design systems is planned for the future — but the core Ruixen UI library will always remain free. We’ll also keep adding more open-source components and content regularly.",
     },
   ];
 

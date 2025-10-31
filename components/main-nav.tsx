@@ -13,7 +13,6 @@ import { cn } from "@/lib/utils";
 import { ExternalLinkIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import posthog from "posthog-js";
 import Image from "next/image";
 
 function copyLogoAsSVG(path: string) {
@@ -106,7 +105,6 @@ export function MainNav() {
             key={item.href}
             href={item.href!}
             aria-label={item.title}
-            onClick={() => item.event && posthog.capture(item.event)}
             target={item.external ? "_blank" : undefined}
             className={cn(
               "flex items-center justify-center transition-colors hover:text-foreground/80",
