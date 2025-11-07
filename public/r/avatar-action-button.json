@@ -5,6 +5,10 @@
   "title": "Avatar Action Button",
   "description": "Button with integrated avatar image for user actions.",
   "dependencies": [],
+  "registryDependencies": [
+    "button",
+    "avatar"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/avatar-action-button.tsx",

@@ -7,6 +7,10 @@
   "dependencies": [
     "framer-motion"
   ],
+  "registryDependencies": [
+    "button",
+    "card"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/stack-pagination.tsx",

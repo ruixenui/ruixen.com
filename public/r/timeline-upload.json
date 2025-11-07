@@ -7,6 +7,11 @@
   "dependencies": [
     "lucide-react"
   ],
+  "registryDependencies": [
+    "card",
+    "button",
+    "progress"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/timeline-upload.tsx",

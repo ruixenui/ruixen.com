@@ -7,6 +7,10 @@
   "dependencies": [
     "lucide-react"
   ],
+  "registryDependencies": [
+    "button",
+    "dropdown-menu"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/account-menu.tsx",

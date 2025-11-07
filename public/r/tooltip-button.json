@@ -7,6 +7,10 @@
   "dependencies": [
     "lucide-react"
   ],
+  "registryDependencies": [
+    "button",
+    "tooltip"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/tooltip-button.tsx",

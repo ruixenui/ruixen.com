@@ -7,6 +7,11 @@
   "dependencies": [
     "lucide-react"
   ],
+  "registryDependencies": [
+    "popover",
+    "badge",
+    "button"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/notifications-filter.tsx",

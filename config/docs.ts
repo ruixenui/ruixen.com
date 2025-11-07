@@ -727,12 +727,6 @@ export const docsConfig: DocsConfig = {
               label: "",
             },
             {
-              title: "Solar Loader",
-              href: `/docs/components/solar-loader`,
-              items: [],
-              label: "",
-            },
-            {
               title: "Tour Popover",
               href: `/docs/components/tour-popover`,
               items: [],
@@ -1347,12 +1341,6 @@ export const docsConfig: DocsConfig = {
             {
               title: "Globe",
               href: `/docs/components/globe`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Lumina Text",
-              href: `/docs/components/lumina-text`,
               items: [],
               label: "",
             },

@@ -8,6 +8,9 @@
     "framer-motion",
     "lucide-react"
   ],
+  "registryDependencies": [
+    "button"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/checklist-button.tsx",

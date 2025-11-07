@@ -8,6 +8,9 @@
     "lucide-react",
     "motion"
   ],
+  "registryDependencies": [
+    "menubar"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/nested-dashboard-menu.tsx",

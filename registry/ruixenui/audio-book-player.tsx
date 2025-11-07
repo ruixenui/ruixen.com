@@ -64,7 +64,7 @@ export default function AudioBookPlayer({
   return (
     <div
       className={cn(
-        "fixed bottom-4 left-1/2 -translate-x-1/2 border dark:border-gray-700 shadow-lg rounded-xl p-4 flex flex-col gap-3 w-[350px]",
+        "relative border dark:border-gray-700 shadow-lg rounded-xl p-4 flex flex-col gap-3 w-[350px]",
         className,
       )}
     >

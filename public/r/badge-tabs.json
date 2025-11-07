@@ -7,6 +7,9 @@
   "dependencies": [
     "framer-motion"
   ],
+  "registryDependencies": [
+    "tabs"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/badge-tabs.tsx",

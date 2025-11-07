@@ -7,6 +7,10 @@
   "dependencies": [
     "lucide-react"
   ],
+  "registryDependencies": [
+    "button",
+    "dropdown"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/split-action-button.tsx",

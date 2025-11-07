@@ -5,6 +5,9 @@
   "title": "Waveform Player",
   "description": "Audio player with visual waveform representation and seek controls.",
   "dependencies": [],
+  "registryDependencies": [
+    "button"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/waveform-player.tsx",

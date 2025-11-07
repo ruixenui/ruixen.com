@@ -7,6 +7,10 @@
   "dependencies": [
     "lucide-react"
   ],
+  "registryDependencies": [
+    "tooltip",
+    "button"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/icon-pagination.tsx",

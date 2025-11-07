@@ -7,6 +7,11 @@
   "dependencies": [
     "lucide-react"
   ],
+  "registryDependencies": [
+    "popover",
+    "badge",
+    "card"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/notifications-carousel.tsx",

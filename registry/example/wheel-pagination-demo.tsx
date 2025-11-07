@@ -6,7 +6,7 @@ export default function DemoOne() {
       <WheelPagination
         totalPages={50} // Total number of pages
         visibleCount={7} // Number of pages visible at once
-        className="bg-white dark:bg-gray-800"
+        className=""
       />
     </div>
   );

@@ -5,6 +5,9 @@
   "title": "Audio Timeline With Chapters",
   "description": "Interactive audio player with timeline and chapter navigation.",
   "dependencies": [],
+  "registryDependencies": [
+    "button"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/audio-timeline-with-chapters.tsx",

@@ -8,6 +8,9 @@
     "motion",
     "lucide-react"
   ],
+  "registryDependencies": [
+    "tooltip"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/health-stat-card.tsx",

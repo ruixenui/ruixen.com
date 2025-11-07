@@ -15,17 +15,46 @@ export const Index: Record<string, any> = {
     component: null,
     meta: undefined,
   },
+  "blurred-stagger-text": {
+    name: "blurred-stagger-text",
+    description:
+      "An animated text component with staggered blur reveal effect using Framer Motion.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "components/ui/blurred-stagger-text.tsx",
+        type: "registry:ui",
+        target: "components/ui/blurred-stagger-text.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/components/ui/blurred-stagger-text.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "staggered-faq-section": {
     name: "staggered-faq-section",
     description:
       "A responsive FAQ component with animated text reveals and customizable content.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["accordion"],
     files: [
       {
         path: "registry/ruixenui/staggered-faq-section.tsx",
         type: "registry:ui",
         target: "components/ruixen/staggered-faq-section.tsx",
+      },
+      {
+        path: "components/ui/blurred-stagger-text.tsx",
+        type: "registry:ui",
+        target: "components/ui/blurred-stagger-text.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -1302,6 +1331,11 @@ export const Index: Record<string, any> = {
         type: "registry:ui",
         target: "components/ruixen/color-picker-input.tsx",
       },
+      {
+        path: "hooks/use-copy-to-clipboard.ts",
+        type: "registry:hook",
+        target: "hooks/use-copy-to-clipboard.ts",
+      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/ruixenui/color-picker-input.tsx");
@@ -1318,7 +1352,7 @@ export const Index: Record<string, any> = {
     name: "gravatar-email-input",
     description: "An email input that displays Gravatar avatar preview.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["input", "label"],
     files: [
       {
         path: "registry/ruixenui/gravatar-email-input.tsx",
@@ -1411,7 +1445,7 @@ export const Index: Record<string, any> = {
     description:
       "A clean and minimal tag input component for adding multiple values.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["label"],
     files: [
       {
         path: "registry/ruixenui/clean-tag-input.tsx",
@@ -1435,7 +1469,7 @@ export const Index: Record<string, any> = {
     description:
       "A search input component with category filtering functionality.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button", "input", "label", "select"],
     files: [
       {
         path: "registry/ruixenui/search-with-category.tsx",
@@ -1459,7 +1493,7 @@ export const Index: Record<string, any> = {
     description:
       "An advanced context menu component with nested items and keyboard navigation.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["context-menu"],
     files: [
       {
         path: "registry/ruixenui/advanced-context-menu.tsx",
@@ -1482,7 +1516,7 @@ export const Index: Record<string, any> = {
     name: "nested-dashboard-menu",
     description: "A nested navigation menu component for dashboard layouts.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["menubar"],
     files: [
       {
         path: "registry/ruixenui/nested-dashboard-menu.tsx",
@@ -1505,7 +1539,7 @@ export const Index: Record<string, any> = {
     name: "drawer-inner-content",
     description: "A drawer component with customizable inner content layout.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["drawer", "button", "input", "label"],
     files: [
       {
         path: "registry/ruixenui/drawer-inner-content.tsx",
@@ -1529,7 +1563,7 @@ export const Index: Record<string, any> = {
     description:
       "A centered drawer component designed for feedback collection.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["drawer", "button", "input", "label", "text-area"],
     files: [
       {
         path: "registry/ruixenui/centered-feedback-drawer.tsx",
@@ -1555,7 +1589,7 @@ export const Index: Record<string, any> = {
     description:
       "A bottom drawer component that slides up from the bottom of the screen.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["drawer", "button", "input", "label", "text-area"],
     files: [
       {
         path: "registry/ruixenui/bottom-drawers.tsx",
@@ -1865,7 +1899,7 @@ export const Index: Record<string, any> = {
     description:
       "A modern input field with an integrated select dropdown for currency or unit selection.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["input", "label", "select"],
     files: [
       {
         path: "registry/ruixenui/input-with-select.tsx",
@@ -1889,7 +1923,7 @@ export const Index: Record<string, any> = {
     description:
       "A dual-range slider with numeric inputs and increment/decrement controls.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["input", "label"],
     files: [
       {
         path: "registry/ruixenui/range-slider-input.tsx",
@@ -1913,7 +1947,7 @@ export const Index: Record<string, any> = {
     description:
       "A smart URL input field that automatically displays website favicons.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["input", "label"],
     files: [
       {
         path: "registry/ruixenui/url-input.tsx",
@@ -1937,7 +1971,7 @@ export const Index: Record<string, any> = {
     description:
       "A modern input field with floating label animation and icon support.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["input", "label"],
     files: [
       {
         path: "registry/ruixenui/floating-input.tsx",
@@ -1961,7 +1995,7 @@ export const Index: Record<string, any> = {
     description:
       "A time input field with dynamic icons that change based on the selected time.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["input", "label"],
     files: [
       {
         path: "registry/ruixenui/time-with-icon.tsx",
@@ -1985,7 +2019,7 @@ export const Index: Record<string, any> = {
     description:
       "A customizable OTP (One-Time Password) input field with auto-focus and paste support.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["label"],
     files: [
       {
         path: "registry/ruixenui/otp-field.tsx",
@@ -2009,7 +2043,7 @@ export const Index: Record<string, any> = {
     description:
       "A sophisticated credit card input with real-time validation and card type detection.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["input", "label"],
     files: [
       {
         path: "registry/ruixenui/modern-card-input.tsx",
@@ -2033,7 +2067,7 @@ export const Index: Record<string, any> = {
     description:
       "An advanced password input with strength meter, validation checklist, and password generation.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["input", "label", "button"],
     files: [
       {
         path: "registry/ruixenui/password-field.tsx",
@@ -2057,7 +2091,7 @@ export const Index: Record<string, any> = {
     description:
       "An intelligent input field with history tracking, validation, and quick actions.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["input", "label"],
     files: [
       {
         path: "registry/ruixenui/smart-assist-input.tsx",
@@ -2081,7 +2115,7 @@ export const Index: Record<string, any> = {
     description:
       "A versatile input field with customizable action buttons and status indicators.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["input", "label", "button"],
     files: [
       {
         path: "registry/ruixenui/action-hub-input.tsx",
@@ -2129,7 +2163,7 @@ export const Index: Record<string, any> = {
     description:
       "A notification badge component with animated count display and different notification types.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/notification-badge.tsx",
@@ -2153,7 +2187,7 @@ export const Index: Record<string, any> = {
     description:
       "A dropdown menu component for displaying notifications with different types and read states.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["dropdown-menu"],
     files: [
       {
         path: "registry/ruixenui/notifications-popover.tsx",
@@ -2177,7 +2211,7 @@ export const Index: Record<string, any> = {
     description:
       "A clean notification popover component with title, description, and timestamp display.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["popover", "card", "badge"],
     files: [
       {
         path: "registry/ruixenui/notification.tsx",
@@ -2201,7 +2235,7 @@ export const Index: Record<string, any> = {
     description:
       "An enhanced notification component with info tooltips, clickable links, and different notification types.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["popover", "badge", "card", "tooltip"],
     files: [
       {
         path: "registry/ruixenui/notification-alt.tsx",
@@ -2225,7 +2259,7 @@ export const Index: Record<string, any> = {
     description:
       "Interactive notification component with swipe-to-reveal actions like archive and delete.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["popover", "badge", "card"],
     files: [
       {
         path: "registry/ruixenui/notifications-with-actions.tsx",
@@ -2251,7 +2285,7 @@ export const Index: Record<string, any> = {
     description:
       "A carousel-style notification component that displays one notification at a time with navigation controls.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["popover", "badge", "card"],
     files: [
       {
         path: "registry/ruixenui/notifications-carousel.tsx",
@@ -2277,7 +2311,7 @@ export const Index: Record<string, any> = {
     description:
       "A versatile notification component that toggles between carousel and list view modes.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["popover", "badge", "card", "button"],
     files: [
       {
         path: "registry/ruixenui/notification-toggle.tsx",
@@ -2301,7 +2335,7 @@ export const Index: Record<string, any> = {
     description:
       "A notification component with category filtering to organize notifications by type.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["popover", "badge", "button"],
     files: [
       {
         path: "registry/ruixenui/notifications-filter.tsx",
@@ -2325,7 +2359,7 @@ export const Index: Record<string, any> = {
     description:
       "A notification component that displays user avatars with messages and animated status indicators.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["popover", "button", "avatar"],
     files: [
       {
         path: "registry/ruixenui/avatar-notifications.tsx",
@@ -3365,7 +3399,7 @@ export const Index: Record<string, any> = {
     description:
       "A tab component with nested sub-tabs that expand with smooth animations.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["tabs"],
     files: [
       {
         path: "registry/ruixenui/nested-tabs.tsx",
@@ -3389,7 +3423,7 @@ export const Index: Record<string, any> = {
     description:
       "A tab component with 3D zoom and depth effects for enhanced visual appeal.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["tabs"],
     files: [
       {
         path: "registry/ruixenui/zoom-depth-tabs.tsx",
@@ -3413,7 +3447,7 @@ export const Index: Record<string, any> = {
     description:
       "Tab component with animated badges showing counts or notifications.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["tabs"],
     files: [
       {
         path: "registry/ruixenui/badge-tabs.tsx",
@@ -3437,7 +3471,7 @@ export const Index: Record<string, any> = {
     description:
       "Scrollable capsule-style tabs with pagination dots and navigation arrows.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button", "tabs"],
     files: [
       {
         path: "registry/ruixenui/capsule-tabs.tsx",
@@ -3461,7 +3495,7 @@ export const Index: Record<string, any> = {
     description:
       "Tab component with magnetic hover effects and smooth indicator animations.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["tabs"],
     files: [
       {
         path: "registry/ruixenui/magnetic-tabs.tsx",
@@ -3485,7 +3519,7 @@ export const Index: Record<string, any> = {
     description:
       "Tab component with fade and slide animations for smooth content transitions.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["tabs"],
     files: [
       {
         path: "registry/ruixenui/fade-slide-tabs.tsx",
@@ -3509,7 +3543,7 @@ export const Index: Record<string, any> = {
     description:
       "Tab component that shows icons only by default and expands to show labels on hover.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["tabs"],
     files: [
       {
         path: "registry/ruixenui/hybrid-tabs.tsx",
@@ -3533,7 +3567,7 @@ export const Index: Record<string, any> = {
     description:
       "Elegant tab component with morphing pill indicator and glassmorphism effects.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["tabs"],
     files: [
       {
         path: "registry/ruixenui/pill-morph-tabs.tsx",
@@ -3557,7 +3591,7 @@ export const Index: Record<string, any> = {
     description:
       "Tab component with sliding gradient indicator and keyboard navigation support.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/sliding-tabs.tsx",
@@ -3581,7 +3615,7 @@ export const Index: Record<string, any> = {
     description:
       "Interactive pagination component with mouse wheel support and animated page numbers.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/wheel-pagination.tsx",
@@ -3605,7 +3639,7 @@ export const Index: Record<string, any> = {
     description:
       "Minimalist pagination with mouse wheel navigation and animated number carousel.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/scroll-pagination.tsx",
@@ -3629,7 +3663,7 @@ export const Index: Record<string, any> = {
     description:
       "Pagination component with colorful icon indicators and tooltip labels.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["tooltip", "button"],
     files: [
       {
         path: "registry/ruixenui/icon-pagination.tsx",
@@ -3653,7 +3687,7 @@ export const Index: Record<string, any> = {
     description:
       "Pagination component with liquid gooey effects using SVG filters.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/gooey-pagination.tsx",
@@ -3677,7 +3711,7 @@ export const Index: Record<string, any> = {
     description:
       "3D card stack pagination with flip animations and perspective effects.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button", "card"],
     files: [
       {
         path: "registry/ruixenui/stack-pagination.tsx",
@@ -3701,7 +3735,7 @@ export const Index: Record<string, any> = {
     description:
       "A card component that displays numbers with smooth flip animations.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["card"],
     files: [
       {
         path: "registry/ruixenui/animated-number-flip.tsx",
@@ -3749,7 +3783,7 @@ export const Index: Record<string, any> = {
     description:
       "Pagination component with sliding underline indicator and smart page grouping.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/sliding-pagination.tsx",
@@ -3773,7 +3807,7 @@ export const Index: Record<string, any> = {
     description:
       "Advanced chat input with slash commands, emoji picker, file upload, and AI features.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button", "textarea", "badge", "popover", "command"],
     files: [
       {
         path: "registry/ruixenui/ai-chat-input.tsx",
@@ -3797,7 +3831,7 @@ export const Index: Record<string, any> = {
     description:
       "macOS-style dock with magnetic hover effects and smooth icon animations.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["card"],
     files: [
       {
         path: "registry/ruixenui/magnetic-dock.tsx",
@@ -3821,7 +3855,7 @@ export const Index: Record<string, any> = {
     description:
       "Dock component with liquid gooey blob effects using SVG filters.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["tooltip", "button"],
     files: [
       {
         path: "registry/ruixenui/gooey-dock.tsx",
@@ -3869,7 +3903,7 @@ export const Index: Record<string, any> = {
     description:
       "Morphing dock with glassmorphism bubbles and flexible positioning.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["tooltip", "button"],
     files: [
       {
         path: "registry/ruixenui/dock-morph.tsx",
@@ -3893,7 +3927,7 @@ export const Index: Record<string, any> = {
     description:
       "Classic dock component with floating animation and glow effects.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["tooltip", "button"],
     files: [
       {
         path: "registry/ruixenui/dock.tsx",
@@ -3917,7 +3951,7 @@ export const Index: Record<string, any> = {
     description:
       "Upload component with animated equalizer bars for audio files.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["card", "button"],
     files: [
       {
         path: "registry/ruixenui/music-equalizer-upload.tsx",
@@ -3943,7 +3977,7 @@ export const Index: Record<string, any> = {
     description:
       "Creative dropzone with sketchpad-style grid background and sticky note file cards.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["card", "button"],
     files: [
       {
         path: "registry/ruixenui/sketchpad-dropzone.tsx",
@@ -3967,7 +4001,7 @@ export const Index: Record<string, any> = {
     description:
       "Upload component with stacked card layout and progress indicators.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["card", "button"],
     files: [
       {
         path: "registry/ruixenui/stacked-cards-upload.tsx",
@@ -3991,7 +4025,7 @@ export const Index: Record<string, any> = {
     description:
       "Upload component with timeline layout showing upload progress and status.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["card", "button", "progress"],
     files: [
       {
         path: "registry/ruixenui/timeline-upload.tsx",
@@ -4015,7 +4049,7 @@ export const Index: Record<string, any> = {
     description:
       "Interactive audio player with timeline and chapter navigation.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/audio-timeline-with-chapters.tsx",
@@ -4041,7 +4075,7 @@ export const Index: Record<string, any> = {
     description:
       "Horizontal scrolling playlist with individual audio players and progress indicators.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/playlist-carousel.tsx",
@@ -4065,7 +4099,7 @@ export const Index: Record<string, any> = {
     description:
       "Chat-style voice message bubble with waveform visualization and playback controls.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/voice-message-bubble.tsx",
@@ -4089,7 +4123,7 @@ export const Index: Record<string, any> = {
     description:
       "Compact audio button with animated equalizer bars visualization.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/visualizer-button.tsx",
@@ -4113,7 +4147,7 @@ export const Index: Record<string, any> = {
     description:
       "Fixed-position audiobook player with chapter info, speed control, and progress tracking.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button", "slider"],
     files: [
       {
         path: "registry/ruixenui/audio-book-player.tsx",
@@ -4137,7 +4171,7 @@ export const Index: Record<string, any> = {
     description:
       "Card-style podcast player with cover art, episode info, and audio controls.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/podcast-card-player.tsx",
@@ -4161,7 +4195,7 @@ export const Index: Record<string, any> = {
     description:
       "Audio player with visual waveform representation and seek controls.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/waveform-player.tsx",
@@ -4280,7 +4314,7 @@ export const Index: Record<string, any> = {
     description:
       "Animated button that morphs through different states - idle, loading, success, and error.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/multi-state-morph-button.tsx",
@@ -4306,7 +4340,7 @@ export const Index: Record<string, any> = {
     description:
       "Button that cycles through different status states with icons and colors.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/dynamic-status-button.tsx",
@@ -4329,7 +4363,7 @@ export const Index: Record<string, any> = {
     name: "hover-preview-button",
     description: "Button with hover-triggered preview content display.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/hover-preview-button.tsx",
@@ -4353,7 +4387,7 @@ export const Index: Record<string, any> = {
     description:
       "Group of connected buttons for single selection with smooth animations.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/segmented-button-group.tsx",
@@ -4379,7 +4413,7 @@ export const Index: Record<string, any> = {
     description:
       "Celebration button that triggers animated confetti particles on click.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/confetti-button.tsx",
@@ -4402,7 +4436,7 @@ export const Index: Record<string, any> = {
     name: "swipe-to-confirm-button",
     description: "Interactive button requiring swipe gesture for confirmation.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/swipe-to-confirm-button.tsx",
@@ -4428,7 +4462,7 @@ export const Index: Record<string, any> = {
     description:
       "Button with animated status indicator dot for live/idle/offline states.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/status-button.tsx",
@@ -4451,7 +4485,7 @@ export const Index: Record<string, any> = {
     name: "checklist-button",
     description: "Toggle button with checkmark animation for task completion.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/checklist-button.tsx",
@@ -4475,7 +4509,7 @@ export const Index: Record<string, any> = {
     description:
       "Button with countdown timer that disables for specified duration.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/countdown-button.tsx",
@@ -4498,7 +4532,7 @@ export const Index: Record<string, any> = {
     name: "icon-grid-button",
     description: "Button that reveals a grid of icon options on click.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/icon-grid-button.tsx",
@@ -4522,7 +4556,7 @@ export const Index: Record<string, any> = {
     description:
       "Button that cycles through multiple steps/labels on each click.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/multi-step-button.tsx",
@@ -4545,7 +4579,7 @@ export const Index: Record<string, any> = {
     name: "tooltip-button",
     description: "Button with integrated tooltip for additional context.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button", "tooltip"],
     files: [
       {
         path: "registry/ruixenui/tooltip-button.tsx",
@@ -4569,7 +4603,7 @@ export const Index: Record<string, any> = {
     description:
       "Button with notification badge for counts or status indicators.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button", "badge"],
     files: [
       {
         path: "registry/ruixenui/badge-button-combo.tsx",
@@ -4618,7 +4652,7 @@ export const Index: Record<string, any> = {
     description:
       "Button with notification badge count for alerts and messages.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button", "badge"],
     files: [
       {
         path: "registry/ruixenui/notification-button.tsx",
@@ -4642,7 +4676,7 @@ export const Index: Record<string, any> = {
     description:
       "Safety button that requires confirmation before executing destructive actions.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/confirmation-button.tsx",
@@ -4665,7 +4699,7 @@ export const Index: Record<string, any> = {
     name: "avatar-action-button",
     description: "Button with integrated avatar image for user actions.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button", "avatar"],
     files: [
       {
         path: "registry/ruixenui/avatar-action-button.tsx",
@@ -4689,7 +4723,7 @@ export const Index: Record<string, any> = {
     description:
       "Button with primary action and dropdown for secondary options.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button", "dropdown"],
     files: [
       {
         path: "registry/ruixenui/split-action-button.tsx",
@@ -4736,7 +4770,7 @@ export const Index: Record<string, any> = {
     description:
       "Comprehensive button with icon, main label, and subtext for detailed actions.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["badge", "tooltip"],
     files: [
       {
         path: "registry/ruixenui/icon-label-subtext-button.tsx",
@@ -4881,7 +4915,7 @@ export const Index: Record<string, any> = {
     description:
       "Interactive tabs component with drag-and-drop reordering functionality.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["tabs"],
     files: [
       {
         path: "registry/ruixenui/drag-and-drop-tabs.tsx",
@@ -5946,7 +5980,7 @@ export const Index: Record<string, any> = {
     description:
       "Interactive project progress card with milestone tracking and timeline visualization.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["card", "button", "separator"],
     files: [
       {
         path: "registry/ruixenui/project-progress-card.tsx",
@@ -5994,7 +6028,15 @@ export const Index: Record<string, any> = {
     description:
       "A comprehensive task creation sheet with form fields for task details, assignee, category, due date, and priority.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: [
+      "button",
+      "input",
+      "label",
+      "select",
+      "sheet",
+      "popover",
+      "calendar",
+    ],
     files: [
       {
         path: "registry/ruixenui/add-task-sheet.tsx",
@@ -6042,7 +6084,7 @@ export const Index: Record<string, any> = {
     description:
       "Desktop-style application menu bar with File, Edit, View, and Help menus.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["menubar"],
     files: [
       {
         path: "registry/ruixenui/app-menu-bar.tsx",
@@ -6066,7 +6108,7 @@ export const Index: Record<string, any> = {
     description:
       "User account dropdown menu with profile options, settings, and logout functionality.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button", "dropdown-menu"],
     files: [
       {
         path: "registry/ruixenui/account-menu.tsx",
@@ -6090,7 +6132,7 @@ export const Index: Record<string, any> = {
     description:
       "Right-click context menu for user interactions with profile actions and user management options.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["avatar", "context-menu"],
     files: [
       {
         path: "registry/ruixenui/user-context-menu.tsx",
@@ -6114,7 +6156,7 @@ export const Index: Record<string, any> = {
     description:
       "Versatile toolbar component with action buttons and dropdown menus for common operations.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button", "dropdown-menu", "badge"],
     files: [
       {
         path: "registry/ruixenui/action-toolbar.tsx",
@@ -6138,7 +6180,7 @@ export const Index: Record<string, any> = {
     description:
       "Intelligent breadcrumb navigation with ellipsis for long paths and responsive design.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["breadcrumb"],
     files: [
       {
         path: "registry/ruixenui/smart-breadcrumb.tsx",
@@ -6210,7 +6252,7 @@ export const Index: Record<string, any> = {
     description:
       "Modern chat interface with message bubbles, typing indicators, and smooth animations.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button", "textarea"],
     files: [
       {
         path: "registry/ruixenui/ruixen-moon-chat.tsx",
@@ -6258,7 +6300,7 @@ export const Index: Record<string, any> = {
     description:
       "Interactive tag selection component with cloud-style layout and multi-select functionality.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["popover", "select", "button", "scroll-area"],
     files: [
       {
         path: "registry/ruixenui/tag-cloud-select.tsx",
@@ -6282,7 +6324,7 @@ export const Index: Record<string, any> = {
     description:
       "A select component that displays options with color indicators and optional emojis for emotional context.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["select"],
     files: [
       {
         path: "registry/ruixenui/color-emotion-select.tsx",
@@ -6306,7 +6348,7 @@ export const Index: Record<string, any> = {
     description:
       "A select component with live preview functionality that shows a visual representation of the selected style option.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["select"],
     files: [
       {
         path: "registry/ruixenui/live-preview-style-select.tsx",
@@ -6342,30 +6384,6 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/ruixenui/hero-title-slide.tsx");
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object",
-        ) || item.name;
-      return { default: mod.default || mod[exportName] };
-    }),
-    meta: undefined,
-  },
-  "lumina-text": {
-    name: "lumina-text",
-    description:
-      "An animated text effect component with rising glow particles that creates a luminous, ethereal visual effect.",
-    type: "registry:ui",
-    registryDependencies: undefined,
-    files: [
-      {
-        path: "registry/ruixenui/lumina-text.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/lumina-text.tsx",
-      },
-    ],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/ruixenui/lumina-text.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -6430,7 +6448,7 @@ export const Index: Record<string, any> = {
     description:
       "A responsive image gallery component with hover effects, expandable views, and smooth animations.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["card"],
     files: [
       {
         path: "registry/ruixenui/interactive-image-gallery.tsx",
@@ -6456,7 +6474,13 @@ export const Index: Record<string, any> = {
     description:
       "A product showcase card with scrollable image gallery, color selection, and interactive features for e-commerce applications.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: [
+      "button",
+      "card",
+      "scroll-area",
+      "aspect-ratio",
+      "separator",
+    ],
     files: [
       {
         path: "registry/ruixenui/product-image-card.tsx",
@@ -6506,7 +6530,7 @@ export const Index: Record<string, any> = {
     description:
       "A detailed information card component with badges, feature lists, and action buttons for showcasing products or services.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button", "badge", "card"],
     files: [
       {
         path: "registry/ruixenui/precision-card.tsx",
@@ -6556,7 +6580,7 @@ export const Index: Record<string, any> = {
     description:
       "An interactive health statistics card with animated progress rings, trend indicators, and detailed metrics display.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["tooltip"],
     files: [
       {
         path: "registry/ruixenui/health-stat-card.tsx",
@@ -13119,30 +13143,6 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/hero-title-slide-demo.tsx");
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object",
-        ) || item.name;
-      return { default: mod.default || mod[exportName] };
-    }),
-    meta: undefined,
-  },
-  "lumina-text-demo": {
-    name: "lumina-text-demo",
-    description:
-      "Example showing an animated text effect with rising glow particles creating a luminous, ethereal visual effect.",
-    type: "registry:example",
-    registryDependencies: ["https://ruixen.com/r/lumina-text"],
-    files: [
-      {
-        path: "registry/example/lumina-text-demo.tsx",
-        type: "registry:example",
-        target: "components/lumina-text-demo.tsx",
-      },
-    ],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/example/lumina-text-demo.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>

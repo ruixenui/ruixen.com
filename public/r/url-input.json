@@ -7,6 +7,10 @@
   "dependencies": [
     "lucide-react"
   ],
+  "registryDependencies": [
+    "input",
+    "label"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/url-input.tsx",

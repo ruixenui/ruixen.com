@@ -8,6 +8,13 @@
     "@radix-ui/react-dialog",
     "motion"
   ],
+  "registryDependencies": [
+    "drawer",
+    "button",
+    "input",
+    "label",
+    "text-area"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/bottom-drawers.tsx",

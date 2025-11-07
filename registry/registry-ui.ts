@@ -23,12 +23,17 @@ export const ui: Registry["items"] = [
     description:
       "A responsive FAQ component with animated text reveals and customizable content.",
     dependencies: ["motion"],
-    registryDependencies: ["accordion", "blurred-stagger-text"],
+    registryDependencies: ["accordion"],
     files: [
       {
         path: "registry/ruixenui/staggered-faq-section.tsx",
         type: "registry:ui",
         target: "components/ruixen/staggered-faq-section.tsx",
+      },
+      {
+        path: "components/ui/blurred-stagger-text.tsx",
+        type: "registry:ui",
+        target: "components/ui/blurred-stagger-text.tsx",
       },
     ],
   },
@@ -835,6 +840,11 @@ export const ui: Registry["items"] = [
         type: "registry:ui",
         target: "components/ruixen/color-picker-input.tsx",
       },
+      {
+        path: "hooks/use-copy-to-clipboard.ts",
+        type: "registry:hook",
+        target: "hooks/use-copy-to-clipboard.ts",
+      },
     ],
   },
   {
@@ -843,6 +853,7 @@ export const ui: Registry["items"] = [
     title: "Gravatar Email Input",
     description: "An email input that displays Gravatar avatar preview.",
     dependencies: ["md5"],
+    registryDependencies: ["input", "label"],
     files: [
       {
         path: "registry/ruixenui/gravatar-email-input.tsx",
@@ -900,6 +911,7 @@ export const ui: Registry["items"] = [
     description:
       "A clean and minimal tag input component for adding multiple values.",
     dependencies: ["lucide-react"],
+    registryDependencies: ["label"],
     files: [
       {
         path: "registry/ruixenui/clean-tag-input.tsx",
@@ -915,6 +927,7 @@ export const ui: Registry["items"] = [
     description:
       "A search input component with category filtering functionality.",
     dependencies: ["lucide-react"],
+    registryDependencies: ["button", "input", "label", "select"],
     files: [
       {
         path: "registry/ruixenui/search-with-category.tsx",
@@ -930,6 +943,7 @@ export const ui: Registry["items"] = [
     description:
       "An advanced context menu component with nested items and keyboard navigation.",
     dependencies: ["@radix-ui/react-dropdown-menu"],
+    registryDependencies: ["context-menu"],
     files: [
       {
         path: "registry/ruixenui/advanced-context-menu.tsx",
@@ -944,6 +958,7 @@ export const ui: Registry["items"] = [
     title: "Nested Dashboard Menu",
     description: "A nested navigation menu component for dashboard layouts.",
     dependencies: ["lucide-react", "motion"],
+    registryDependencies: ["menubar"],
     files: [
       {
         path: "registry/ruixenui/nested-dashboard-menu.tsx",
@@ -958,6 +973,7 @@ export const ui: Registry["items"] = [
     title: "Drawer Inner Content",
     description: "A drawer component with customizable inner content layout.",
     dependencies: ["@radix-ui/react-dialog", "motion"],
+    registryDependencies: ["drawer", "button", "input", "label"],
     files: [
       {
         path: "registry/ruixenui/drawer-inner-content.tsx",
@@ -973,6 +989,7 @@ export const ui: Registry["items"] = [
     description:
       "A centered drawer component designed for feedback collection.",
     dependencies: ["@radix-ui/react-dialog", "motion"],
+    registryDependencies: ["drawer", "button", "input", "label", "text-area"],
     files: [
       {
         path: "registry/ruixenui/centered-feedback-drawer.tsx",
@@ -988,6 +1005,7 @@ export const ui: Registry["items"] = [
     description:
       "A bottom drawer component that slides up from the bottom of the screen.",
     dependencies: ["@radix-ui/react-dialog", "motion"],
+    registryDependencies: ["drawer", "button", "input", "label", "text-area"],
     files: [
       {
         path: "registry/ruixenui/bottom-drawers.tsx",
@@ -1183,6 +1201,7 @@ export const ui: Registry["items"] = [
     description:
       "A modern input field with an integrated select dropdown for currency or unit selection.",
     dependencies: ["lucide-react"],
+    registryDependencies: ["input", "label", "select"],
     files: [
       {
         path: "registry/ruixenui/input-with-select.tsx",
@@ -1198,6 +1217,7 @@ export const ui: Registry["items"] = [
     description:
       "A dual-range slider with numeric inputs and increment/decrement controls.",
     dependencies: ["lucide-react"],
+    registryDependencies: ["input", "label"],
     files: [
       {
         path: "registry/ruixenui/range-slider-input.tsx",
@@ -1213,6 +1233,7 @@ export const ui: Registry["items"] = [
     description:
       "A smart URL input field that automatically displays website favicons.",
     dependencies: ["lucide-react"],
+    registryDependencies: ["input", "label"],
     files: [
       {
         path: "registry/ruixenui/url-input.tsx",
@@ -1228,6 +1249,7 @@ export const ui: Registry["items"] = [
     description:
       "A modern input field with floating label animation and icon support.",
     dependencies: ["lucide-react"],
+    registryDependencies: ["input", "label"],
     files: [
       {
         path: "registry/ruixenui/floating-input.tsx",
@@ -1243,6 +1265,7 @@ export const ui: Registry["items"] = [
     description:
       "A time input field with dynamic icons that change based on the selected time.",
     dependencies: ["lucide-react"],
+    registryDependencies: ["input", "label"],
     files: [
       {
         path: "registry/ruixenui/time-with-icon.tsx",
@@ -1258,6 +1281,7 @@ export const ui: Registry["items"] = [
     description:
       "A customizable OTP (One-Time Password) input field with auto-focus and paste support.",
     dependencies: ["lucide-react"],
+    registryDependencies: ["label"],
     files: [
       {
         path: "registry/ruixenui/otp-field.tsx",
@@ -1273,6 +1297,7 @@ export const ui: Registry["items"] = [
     description:
       "A sophisticated credit card input with real-time validation and card type detection.",
     dependencies: ["react-payment-inputs"],
+    registryDependencies: ["input", "label"],
     files: [
       {
         path: "registry/ruixenui/modern-card-input.tsx",
@@ -1288,6 +1313,7 @@ export const ui: Registry["items"] = [
     description:
       "An advanced password input with strength meter, validation checklist, and password generation.",
     dependencies: ["lucide-react"],
+    registryDependencies: ["input", "label", "button"],
     files: [
       {
         path: "registry/ruixenui/password-field.tsx",
@@ -1303,6 +1329,7 @@ export const ui: Registry["items"] = [
     description:
       "An intelligent input field with history tracking, validation, and quick actions.",
     dependencies: ["lucide-react"],
+    registryDependencies: ["input", "label"],
     files: [
       {
         path: "registry/ruixenui/smart-assist-input.tsx",
@@ -1318,6 +1345,7 @@ export const ui: Registry["items"] = [
     description:
       "A versatile input field with customizable action buttons and status indicators.",
     dependencies: ["lucide-react"],
+    registryDependencies: ["input", "label", "button"],
     files: [
       {
         path: "registry/ruixenui/action-hub-input.tsx",
@@ -1348,6 +1376,7 @@ export const ui: Registry["items"] = [
     description:
       "A notification badge component with animated count display and different notification types.",
     dependencies: ["lucide-react"],
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/notification-badge.tsx",
@@ -1363,6 +1392,7 @@ export const ui: Registry["items"] = [
     description:
       "A dropdown menu component for displaying notifications with different types and read states.",
     dependencies: ["lucide-react"],
+    registryDependencies: ["dropdown-menu"],
     files: [
       {
         path: "registry/ruixenui/notifications-popover.tsx",
@@ -1378,6 +1408,7 @@ export const ui: Registry["items"] = [
     description:
       "A clean notification popover component with title, description, and timestamp display.",
     dependencies: ["lucide-react"],
+    registryDependencies: ["popover", "card", "badge"],
     files: [
       {
         path: "registry/ruixenui/notification.tsx",
@@ -1392,7 +1423,8 @@ export const ui: Registry["items"] = [
     title: "Notification Alt",
     description:
       "An enhanced notification component with info tooltips, clickable links, and different notification types.",
-    dependencies: ["lucide-react", "next"],
+    dependencies: ["lucide-react"],
+    registryDependencies: ["popover", "badge", "card", "tooltip"],
     files: [
       {
         path: "registry/ruixenui/notification-alt.tsx",
@@ -1408,6 +1440,7 @@ export const ui: Registry["items"] = [
     description:
       "Interactive notification component with swipe-to-reveal actions like archive and delete.",
     dependencies: ["lucide-react", "framer-motion"],
+    registryDependencies: ["popover", "badge", "card"],
     files: [
       {
         path: "registry/ruixenui/notifications-with-actions.tsx",
@@ -1423,6 +1456,7 @@ export const ui: Registry["items"] = [
     description:
       "A carousel-style notification component that displays one notification at a time with navigation controls.",
     dependencies: ["lucide-react"],
+    registryDependencies: ["popover", "badge", "card"],
     files: [
       {
         path: "registry/ruixenui/notifications-carousel.tsx",
@@ -1438,6 +1472,7 @@ export const ui: Registry["items"] = [
     description:
       "A versatile notification component that toggles between carousel and list view modes.",
     dependencies: ["lucide-react"],
+    registryDependencies: ["popover", "badge", "card", "button"],
     files: [
       {
         path: "registry/ruixenui/notification-toggle.tsx",
@@ -1453,6 +1488,7 @@ export const ui: Registry["items"] = [
     description:
       "A notification component with category filtering to organize notifications by type.",
     dependencies: ["lucide-react"],
+    registryDependencies: ["popover", "badge", "button"],
     files: [
       {
         path: "registry/ruixenui/notifications-filter.tsx",
@@ -1468,6 +1504,7 @@ export const ui: Registry["items"] = [
     description:
       "A notification component that displays user avatars with messages and animated status indicators.",
     dependencies: ["lucide-react"],
+    registryDependencies: ["popover", "button", "avatar"],
     files: [
       {
         path: "registry/ruixenui/avatar-notifications.tsx",
@@ -2141,6 +2178,7 @@ export const ui: Registry["items"] = [
     description:
       "A tab component with nested sub-tabs that expand with smooth animations.",
     dependencies: ["framer-motion"],
+    registryDependencies: ["tabs"],
     files: [
       {
         path: "registry/ruixenui/nested-tabs.tsx",
@@ -2156,6 +2194,7 @@ export const ui: Registry["items"] = [
     description:
       "A tab component with 3D zoom and depth effects for enhanced visual appeal.",
     dependencies: ["framer-motion"],
+    registryDependencies: ["tabs"],
     files: [
       {
         path: "registry/ruixenui/zoom-depth-tabs.tsx",
@@ -2171,6 +2210,7 @@ export const ui: Registry["items"] = [
     description:
       "Tab component with animated badges showing counts or notifications.",
     dependencies: ["framer-motion"],
+    registryDependencies: ["tabs"],
     files: [
       {
         path: "registry/ruixenui/badge-tabs.tsx",
@@ -2186,6 +2226,7 @@ export const ui: Registry["items"] = [
     description:
       "Scrollable capsule-style tabs with pagination dots and navigation arrows.",
     dependencies: ["framer-motion", "lucide-react"],
+    registryDependencies: ["button", "tabs"],
     files: [
       {
         path: "registry/ruixenui/capsule-tabs.tsx",
@@ -2201,6 +2242,7 @@ export const ui: Registry["items"] = [
     description:
       "Tab component with magnetic hover effects and smooth indicator animations.",
     dependencies: ["framer-motion"],
+    registryDependencies: ["tabs"],
     files: [
       {
         path: "registry/ruixenui/magnetic-tabs.tsx",
@@ -2216,6 +2258,7 @@ export const ui: Registry["items"] = [
     description:
       "Tab component with fade and slide animations for smooth content transitions.",
     dependencies: ["framer-motion"],
+    registryDependencies: ["tabs"],
     files: [
       {
         path: "registry/ruixenui/fade-slide-tabs.tsx",
@@ -2231,6 +2274,7 @@ export const ui: Registry["items"] = [
     description:
       "Tab component that shows icons only by default and expands to show labels on hover.",
     dependencies: ["framer-motion", "lucide-react"],
+    registryDependencies: ["tabs"],
     files: [
       {
         path: "registry/ruixenui/hybrid-tabs.tsx",
@@ -2246,6 +2290,7 @@ export const ui: Registry["items"] = [
     description:
       "Elegant tab component with morphing pill indicator and glassmorphism effects.",
     dependencies: ["framer-motion"],
+    registryDependencies: ["tabs"],
     files: [
       {
         path: "registry/ruixenui/pill-morph-tabs.tsx",
@@ -2261,6 +2306,7 @@ export const ui: Registry["items"] = [
     description:
       "Tab component with sliding gradient indicator and keyboard navigation support.",
     dependencies: ["framer-motion"],
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/sliding-tabs.tsx",
@@ -2276,6 +2322,7 @@ export const ui: Registry["items"] = [
     description:
       "Interactive pagination component with mouse wheel support and animated page numbers.",
     dependencies: ["framer-motion", "lucide-react"],
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/wheel-pagination.tsx",
@@ -2291,6 +2338,7 @@ export const ui: Registry["items"] = [
     description:
       "Minimalist pagination with mouse wheel navigation and animated number carousel.",
     dependencies: ["framer-motion", "lucide-react"],
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/scroll-pagination.tsx",
@@ -2306,6 +2354,7 @@ export const ui: Registry["items"] = [
     description:
       "Pagination component with colorful icon indicators and tooltip labels.",
     dependencies: ["lucide-react"],
+    registryDependencies: ["tooltip", "button"],
     files: [
       {
         path: "registry/ruixenui/icon-pagination.tsx",
@@ -2321,6 +2370,7 @@ export const ui: Registry["items"] = [
     description:
       "Pagination component with liquid gooey effects using SVG filters.",
     dependencies: ["framer-motion", "lucide-react"],
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/gooey-pagination.tsx",
@@ -2336,6 +2386,7 @@ export const ui: Registry["items"] = [
     description:
       "3D card stack pagination with flip animations and perspective effects.",
     dependencies: ["framer-motion"],
+    registryDependencies: ["button", "card"],
     files: [
       {
         path: "registry/ruixenui/stack-pagination.tsx",
@@ -2351,6 +2402,7 @@ export const ui: Registry["items"] = [
     description:
       "A card component that displays numbers with smooth flip animations.",
     dependencies: ["framer-motion"],
+    registryDependencies: ["card"],
     files: [
       {
         path: "registry/ruixenui/animated-number-flip.tsx",
@@ -2381,6 +2433,7 @@ export const ui: Registry["items"] = [
     description:
       "Pagination component with sliding underline indicator and smart page grouping.",
     dependencies: ["framer-motion"],
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/sliding-pagination.tsx",
@@ -2396,6 +2449,7 @@ export const ui: Registry["items"] = [
     description:
       "Advanced chat input with slash commands, emoji picker, file upload, and AI features.",
     dependencies: ["lucide-react"],
+    registryDependencies: ["button", "textarea", "badge", "popover", "command"],
     files: [
       {
         path: "registry/ruixenui/ai-chat-input.tsx",
@@ -2411,6 +2465,7 @@ export const ui: Registry["items"] = [
     description:
       "macOS-style dock with magnetic hover effects and smooth icon animations.",
     dependencies: ["framer-motion", "lucide-react"],
+    registryDependencies: ["card"],
     files: [
       {
         path: "registry/ruixenui/magnetic-dock.tsx",
@@ -2426,6 +2481,7 @@ export const ui: Registry["items"] = [
     description:
       "Dock component with liquid gooey blob effects using SVG filters.",
     dependencies: ["framer-motion", "lucide-react"],
+    registryDependencies: ["tooltip", "button"],
     files: [
       {
         path: "registry/ruixenui/gooey-dock.tsx",
@@ -2456,6 +2512,7 @@ export const ui: Registry["items"] = [
     description:
       "Morphing dock with glassmorphism bubbles and flexible positioning.",
     dependencies: ["framer-motion", "lucide-react"],
+    registryDependencies: ["tooltip", "button"],
     files: [
       {
         path: "registry/ruixenui/dock-morph.tsx",
@@ -2471,6 +2528,7 @@ export const ui: Registry["items"] = [
     description:
       "Classic dock component with floating animation and glow effects.",
     dependencies: ["framer-motion", "lucide-react"],
+    registryDependencies: ["tooltip", "button"],
     files: [
       {
         path: "registry/ruixenui/dock.tsx",
@@ -2479,7 +2537,6 @@ export const ui: Registry["items"] = [
       },
     ],
   },
-  // Upload Components
   {
     name: "music-equalizer-upload",
     type: "registry:ui",
@@ -2487,6 +2544,7 @@ export const ui: Registry["items"] = [
     description:
       "Upload component with animated equalizer bars for audio files.",
     dependencies: ["framer-motion", "lucide-react"],
+    registryDependencies: ["card", "button"],
     files: [
       {
         path: "registry/ruixenui/music-equalizer-upload.tsx",
@@ -2502,6 +2560,7 @@ export const ui: Registry["items"] = [
     description:
       "Creative dropzone with sketchpad-style grid background and sticky note file cards.",
     dependencies: ["framer-motion", "lucide-react"],
+    registryDependencies: ["card", "button"],
     files: [
       {
         path: "registry/ruixenui/sketchpad-dropzone.tsx",
@@ -2517,6 +2576,7 @@ export const ui: Registry["items"] = [
     description:
       "Upload component with stacked card layout and progress indicators.",
     dependencies: ["framer-motion", "lucide-react"],
+    registryDependencies: ["card", "button"],
     files: [
       {
         path: "registry/ruixenui/stacked-cards-upload.tsx",
@@ -2532,6 +2592,7 @@ export const ui: Registry["items"] = [
     description:
       "Upload component with timeline layout showing upload progress and status.",
     dependencies: ["lucide-react"],
+    registryDependencies: ["card", "button", "progress"],
     files: [
       {
         path: "registry/ruixenui/timeline-upload.tsx",
@@ -2548,6 +2609,7 @@ export const ui: Registry["items"] = [
     description:
       "Interactive audio player with timeline and chapter navigation.",
     dependencies: [],
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/audio-timeline-with-chapters.tsx",
@@ -2563,6 +2625,7 @@ export const ui: Registry["items"] = [
     description:
       "Horizontal scrolling playlist with individual audio players and progress indicators.",
     dependencies: ["lucide-react"],
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/playlist-carousel.tsx",
@@ -2578,6 +2641,7 @@ export const ui: Registry["items"] = [
     description:
       "Chat-style voice message bubble with waveform visualization and playback controls.",
     dependencies: ["lucide-react"],
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/voice-message-bubble.tsx",
@@ -2593,6 +2657,7 @@ export const ui: Registry["items"] = [
     description:
       "Compact audio button with animated equalizer bars visualization.",
     dependencies: [],
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/visualizer-button.tsx",
@@ -2608,6 +2673,7 @@ export const ui: Registry["items"] = [
     description:
       "Fixed-position audiobook player with chapter info, speed control, and progress tracking.",
     dependencies: [],
+    registryDependencies: ["button", "slider"],
     files: [
       {
         path: "registry/ruixenui/audio-book-player.tsx",
@@ -2623,6 +2689,7 @@ export const ui: Registry["items"] = [
     description:
       "Card-style podcast player with cover art, episode info, and audio controls.",
     dependencies: [],
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/podcast-card-player.tsx",
@@ -2638,6 +2705,7 @@ export const ui: Registry["items"] = [
     description:
       "Audio player with visual waveform representation and seek controls.",
     dependencies: [],
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/waveform-player.tsx",
@@ -2714,6 +2782,7 @@ export const ui: Registry["items"] = [
     description:
       "Animated button that morphs through different states - idle, loading, success, and error.",
     dependencies: ["framer-motion", "react-icons"],
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/multi-state-morph-button.tsx",
@@ -2729,6 +2798,7 @@ export const ui: Registry["items"] = [
     description:
       "Button that cycles through different status states with icons and colors.",
     dependencies: ["framer-motion"],
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/dynamic-status-button.tsx",
@@ -2743,6 +2813,7 @@ export const ui: Registry["items"] = [
     title: "Hover Preview Button",
     description: "Button with hover-triggered preview content display.",
     dependencies: [],
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/hover-preview-button.tsx",
@@ -2758,6 +2829,7 @@ export const ui: Registry["items"] = [
     description:
       "Group of connected buttons for single selection with smooth animations.",
     dependencies: [],
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/segmented-button-group.tsx",
@@ -2773,6 +2845,7 @@ export const ui: Registry["items"] = [
     description:
       "Celebration button that triggers animated confetti particles on click.",
     dependencies: ["framer-motion"],
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/confetti-button.tsx",
@@ -2787,6 +2860,7 @@ export const ui: Registry["items"] = [
     title: "Swipe To Confirm Button",
     description: "Interactive button requiring swipe gesture for confirmation.",
     dependencies: ["framer-motion"],
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/swipe-to-confirm-button.tsx",
@@ -2802,6 +2876,7 @@ export const ui: Registry["items"] = [
     description:
       "Button with animated status indicator dot for live/idle/offline states.",
     dependencies: ["framer-motion"],
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/status-button.tsx",
@@ -2816,6 +2891,7 @@ export const ui: Registry["items"] = [
     title: "Checklist Button",
     description: "Toggle button with checkmark animation for task completion.",
     dependencies: ["framer-motion", "lucide-react"],
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/checklist-button.tsx",
@@ -2831,6 +2907,7 @@ export const ui: Registry["items"] = [
     description:
       "Button with countdown timer that disables for specified duration.",
     dependencies: [],
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/countdown-button.tsx",
@@ -2845,6 +2922,7 @@ export const ui: Registry["items"] = [
     title: "Icon Grid Button",
     description: "Button that reveals a grid of icon options on click.",
     dependencies: [],
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/icon-grid-button.tsx",
@@ -2860,6 +2938,7 @@ export const ui: Registry["items"] = [
     description:
       "Button that cycles through multiple steps/labels on each click.",
     dependencies: [],
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/multi-step-button.tsx",
@@ -2874,6 +2953,7 @@ export const ui: Registry["items"] = [
     title: "Tooltip Button",
     description: "Button with integrated tooltip for additional context.",
     dependencies: ["lucide-react"],
+    registryDependencies: ["button", "tooltip"],
     files: [
       {
         path: "registry/ruixenui/tooltip-button.tsx",
@@ -2889,6 +2969,7 @@ export const ui: Registry["items"] = [
     description:
       "Button with notification badge for counts or status indicators.",
     dependencies: [],
+    registryDependencies: ["button", "badge"],
     files: [
       {
         path: "registry/ruixenui/badge-button-combo.tsx",
@@ -2918,6 +2999,7 @@ export const ui: Registry["items"] = [
     description:
       "Button with notification badge count for alerts and messages.",
     dependencies: ["lucide-react"],
+    registryDependencies: ["button", "badge"],
     files: [
       {
         path: "registry/ruixenui/notification-button.tsx",
@@ -2933,6 +3015,7 @@ export const ui: Registry["items"] = [
     description:
       "Safety button that requires confirmation before executing destructive actions.",
     dependencies: [],
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/confirmation-button.tsx",
@@ -2947,6 +3030,7 @@ export const ui: Registry["items"] = [
     title: "Avatar Action Button",
     description: "Button with integrated avatar image for user actions.",
     dependencies: [],
+    registryDependencies: ["button", "avatar"],
     files: [
       {
         path: "registry/ruixenui/avatar-action-button.tsx",
@@ -2962,6 +3046,7 @@ export const ui: Registry["items"] = [
     description:
       "Button with primary action and dropdown for secondary options.",
     dependencies: ["lucide-react"],
+    registryDependencies: ["button", "dropdown"],
     files: [
       {
         path: "registry/ruixenui/split-action-button.tsx",
@@ -2991,6 +3076,7 @@ export const ui: Registry["items"] = [
     description:
       "Comprehensive button with icon, main label, and subtext for detailed actions.",
     dependencies: ["lucide-react"],
+    registryDependencies: ["badge", "tooltip"],
     files: [
       {
         path: "registry/ruixenui/icon-label-subtext-button.tsx",
@@ -3082,6 +3168,7 @@ export const ui: Registry["items"] = [
     description:
       "Interactive tabs component with drag-and-drop reordering functionality.",
     dependencies: ["@dnd-kit/core", "@dnd-kit/sortable", "@dnd-kit/utilities"],
+    registryDependencies: ["tabs"],
     files: [
       {
         path: "registry/ruixenui/drag-and-drop-tabs.tsx",
@@ -3702,6 +3789,18 @@ export const ui: Registry["items"] = [
         target: "components/ruixen/loading-circle.tsx",
       },
     ],
+    css: {
+      "@keyframes ripple": {
+        "0%, 100%": {
+          transform: "scale(1)",
+          "box-shadow": "0 10px 10px rgba(0, 0, 0, 0.3)",
+        },
+        "50%": {
+          transform: "scale(1.3)",
+          "box-shadow": "0 30px 20px rgba(0, 0, 0, 0.3)",
+        },
+      },
+    },
   },
   {
     name: "load-ripple",
@@ -3716,6 +3815,21 @@ export const ui: Registry["items"] = [
         target: "components/ruixen/load-ripple.tsx",
       },
     ],
+    css: {
+      "@keyframes ripple": {
+        "0%": {
+          transform: "scale(0.2)",
+          opacity: "0.8",
+        },
+        "70%": {
+          transform: "scale(1)",
+          opacity: "0",
+        },
+        "100%": {
+          opacity: "0",
+        },
+      },
+    },
   },
   {
     name: "ripple-circles",
@@ -3730,6 +3844,18 @@ export const ui: Registry["items"] = [
         target: "components/ruixen/ripple-circles.tsx",
       },
     ],
+    css: {
+      "@keyframes ripple": {
+        "0%, 100%": {
+          transform: "scale(1)",
+          "box-shadow": "0 10px 10px rgba(0, 0, 0, 0.3)",
+        },
+        "50%": {
+          transform: "scale(1.3)",
+          "box-shadow": "0 30px 20px rgba(0, 0, 0, 0.3)",
+        },
+      },
+    },
   },
   {
     name: "mouse-spark",
@@ -3767,6 +3893,7 @@ export const ui: Registry["items"] = [
     description:
       "Interactive project progress card with milestone tracking and timeline visualization.",
     dependencies: ["motion", "lucide-react"],
+    registryDependencies: ["card", "button", "separator"],
     files: [
       {
         path: "registry/ruixenui/project-progress-card.tsx",
@@ -3796,6 +3923,15 @@ export const ui: Registry["items"] = [
     description:
       "A comprehensive task creation sheet with form fields for task details, assignee, category, due date, and priority.",
     dependencies: ["lucide-react"],
+    registryDependencies: [
+      "button",
+      "input",
+      "label",
+      "select",
+      "sheet",
+      "popover",
+      "calendar",
+    ],
     files: [
       {
         path: "registry/ruixenui/add-task-sheet.tsx",
@@ -3826,6 +3962,7 @@ export const ui: Registry["items"] = [
     description:
       "Desktop-style application menu bar with File, Edit, View, and Help menus.",
     dependencies: ["lucide-react"],
+    registryDependencies: ["menubar"],
     files: [
       {
         path: "registry/ruixenui/app-menu-bar.tsx",
@@ -3841,6 +3978,7 @@ export const ui: Registry["items"] = [
     description:
       "User account dropdown menu with profile options, settings, and logout functionality.",
     dependencies: ["lucide-react"],
+    registryDependencies: ["button", "dropdown-menu"],
     files: [
       {
         path: "registry/ruixenui/account-menu.tsx",
@@ -3856,6 +3994,7 @@ export const ui: Registry["items"] = [
     description:
       "Right-click context menu for user interactions with profile actions and user management options.",
     dependencies: ["lucide-react"],
+    registryDependencies: ["avatar", "context-menu"],
     files: [
       {
         path: "registry/ruixenui/user-context-menu.tsx",
@@ -3871,6 +4010,7 @@ export const ui: Registry["items"] = [
     description:
       "Versatile toolbar component with action buttons and dropdown menus for common operations.",
     dependencies: ["lucide-react"],
+    registryDependencies: ["button", "dropdown-menu", "badge"],
     files: [
       {
         path: "registry/ruixenui/action-toolbar.tsx",
@@ -3886,6 +4026,7 @@ export const ui: Registry["items"] = [
     description:
       "Intelligent breadcrumb navigation with ellipsis for long paths and responsive design.",
     dependencies: ["lucide-react"],
+    registryDependencies: ["breadcrumb"],
     files: [
       {
         path: "registry/ruixenui/smart-breadcrumb.tsx",
@@ -3954,6 +4095,7 @@ export const ui: Registry["items"] = [
     description:
       "Modern chat interface with message bubbles, typing indicators, and smooth animations.",
     dependencies: ["lucide-react"],
+    registryDependencies: ["button", "textarea"],
     files: [
       {
         path: "registry/ruixenui/ruixen-moon-chat.tsx",
@@ -4007,6 +4149,7 @@ export const ui: Registry["items"] = [
     description:
       "Interactive tag selection component with cloud-style layout and multi-select functionality.",
     dependencies: ["lucide-react"],
+    registryDependencies: ["popover", "select", "button", "scroll-area"],
     files: [
       {
         path: "registry/ruixenui/tag-cloud-select.tsx",
@@ -4021,6 +4164,7 @@ export const ui: Registry["items"] = [
     title: "Color Emotion Select",
     description:
       "A select component that displays options with color indicators and optional emojis for emotional context.",
+    registryDependencies: ["select"],
     files: [
       {
         path: "registry/ruixenui/color-emotion-select.tsx",
@@ -4035,6 +4179,7 @@ export const ui: Registry["items"] = [
     title: "Live Preview Style Select",
     description:
       "A select component with live preview functionality that shows a visual representation of the selected style option.",
+    registryDependencies: ["select"],
     files: [
       {
         path: "registry/ruixenui/live-preview-style-select.tsx",
@@ -4055,21 +4200,6 @@ export const ui: Registry["items"] = [
         path: "registry/ruixenui/hero-title-slide.tsx",
         type: "registry:ui",
         target: "components/ruixen/hero-title-slide.tsx",
-      },
-    ],
-  },
-  {
-    name: "lumina-text",
-    type: "registry:ui",
-    title: "Lumina Text",
-    description:
-      "An animated text effect component with rising glow particles that creates a luminous, ethereal visual effect.",
-    dependencies: ["motion"],
-    files: [
-      {
-        path: "registry/ruixenui/lumina-text.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/lumina-text.tsx",
       },
     ],
   },
@@ -4109,6 +4239,7 @@ export const ui: Registry["items"] = [
     description:
       "A responsive image gallery component with hover effects, expandable views, and smooth animations.",
     dependencies: ["motion"],
+    registryDependencies: ["card"],
     files: [
       {
         path: "registry/ruixenui/interactive-image-gallery.tsx",
@@ -4124,6 +4255,13 @@ export const ui: Registry["items"] = [
     description:
       "A product showcase card with scrollable image gallery, color selection, and interactive features for e-commerce applications.",
     dependencies: ["lucide-react"],
+    registryDependencies: [
+      "button",
+      "card",
+      "scroll-area",
+      "aspect-ratio",
+      "separator",
+    ],
     files: [
       {
         path: "registry/ruixenui/product-image-card.tsx",
@@ -4154,6 +4292,7 @@ export const ui: Registry["items"] = [
     description:
       "A detailed information card component with badges, feature lists, and action buttons for showcasing products or services.",
     dependencies: ["lucide-react"],
+    registryDependencies: ["button", "badge", "card"],
     files: [
       {
         path: "registry/ruixenui/precision-card.tsx",
@@ -4184,6 +4323,7 @@ export const ui: Registry["items"] = [
     description:
       "An interactive health statistics card with animated progress rings, trend indicators, and detailed metrics display.",
     dependencies: ["motion", "lucide-react"],
+    registryDependencies: ["tooltip"],
     files: [
       {
         path: "registry/ruixenui/health-stat-card.tsx",

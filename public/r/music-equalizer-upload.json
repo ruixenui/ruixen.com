@@ -8,6 +8,10 @@
     "framer-motion",
     "lucide-react"
   ],
+  "registryDependencies": [
+    "card",
+    "button"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/music-equalizer-upload.tsx",

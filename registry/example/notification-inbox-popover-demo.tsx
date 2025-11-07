@@ -4,7 +4,7 @@ import {
   NotificationInboxPopover,
   Notification,
 } from "@/registry/ruixenui/notification-inbox-popover";
-import { Bell, GitMerge, FileText } from "lucide-react";
+import { GitMerge, FileText } from "lucide-react";
 
 const demoNotifications: Notification[] = [
   {

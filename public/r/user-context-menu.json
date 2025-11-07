@@ -7,6 +7,10 @@
   "dependencies": [
     "lucide-react"
   ],
+  "registryDependencies": [
+    "avatar",
+    "context-menu"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/user-context-menu.tsx",

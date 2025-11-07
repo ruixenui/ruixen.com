@@ -17,6 +17,22 @@
       "cssVars": {}
     },
     {
+      "name": "blurred-stagger-text",
+      "type": "registry:ui",
+      "title": "Blurred Stagger Text",
+      "description": "An animated text component with staggered blur reveal effect using Framer Motion.",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "files": [
+        {
+          "path": "components/ui/blurred-stagger-text.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/blurred-stagger-text.tsx"
+        }
+      ]
+    },
+    {
       "name": "staggered-faq-section",
       "type": "registry:ui",
       "title": "StaggeredFAQSection",
@@ -24,11 +40,19 @@
       "dependencies": [
         "motion"
       ],
+      "registryDependencies": [
+        "accordion"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/staggered-faq-section.tsx",
           "type": "registry:ui",
           "target": "components/ruixen/staggered-faq-section.tsx"
+        },
+        {
+          "path": "components/ui/blurred-stagger-text.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/blurred-stagger-text.tsx"
         }
       ]
     },
@@ -932,6 +956,11 @@
           "path": "registry/ruixenui/color-picker-input.tsx",
           "type": "registry:ui",
           "target": "components/ruixen/color-picker-input.tsx"
+        },
+        {
+          "path": "hooks/use-copy-to-clipboard.ts",
+          "type": "registry:hook",
+          "target": "hooks/use-copy-to-clipboard.ts"
         }
       ]
     },
@@ -942,6 +971,10 @@
       "description": "An email input that displays Gravatar avatar preview.",
       "dependencies": [
         "md5"
+      ],
+      "registryDependencies": [
+        "input",
+        "label"
       ],
       "files": [
         {
@@ -1007,6 +1040,9 @@
       "dependencies": [
         "lucide-react"
       ],
+      "registryDependencies": [
+        "label"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/clean-tag-input.tsx",
@@ -1023,6 +1059,12 @@
       "dependencies": [
         "lucide-react"
       ],
+      "registryDependencies": [
+        "button",
+        "input",
+        "label",
+        "select"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/search-with-category.tsx",
@@ -1038,6 +1080,9 @@
       "description": "An advanced context menu component with nested items and keyboard navigation.",
       "dependencies": [
         "@radix-ui/react-dropdown-menu"
+      ],
+      "registryDependencies": [
+        "context-menu"
       ],
       "files": [
         {
@@ -1056,6 +1101,9 @@
         "lucide-react",
         "motion"
       ],
+      "registryDependencies": [
+        "menubar"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/nested-dashboard-menu.tsx",
@@ -1072,6 +1120,12 @@
       "dependencies": [
         "@radix-ui/react-dialog",
         "motion"
+      ],
+      "registryDependencies": [
+        "drawer",
+        "button",
+        "input",
+        "label"
       ],
       "files": [
         {
@@ -1090,6 +1144,13 @@
         "@radix-ui/react-dialog",
         "motion"
       ],
+      "registryDependencies": [
+        "drawer",
+        "button",
+        "input",
+        "label",
+        "text-area"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/centered-feedback-drawer.tsx",
@@ -1106,6 +1167,13 @@
       "dependencies": [
         "@radix-ui/react-dialog",
         "motion"
+      ],
+      "registryDependencies": [
+        "drawer",
+        "button",
+        "input",
+        "label",
+        "text-area"
       ],
       "files": [
         {
@@ -1322,6 +1390,11 @@
       "dependencies": [
         "lucide-react"
       ],
+      "registryDependencies": [
+        "input",
+        "label",
+        "select"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/input-with-select.tsx",
@@ -1337,6 +1410,10 @@
       "description": "A dual-range slider with numeric inputs and increment/decrement controls.",
       "dependencies": [
         "lucide-react"
+      ],
+      "registryDependencies": [
+        "input",
+        "label"
       ],
       "files": [
         {
@@ -1354,6 +1431,10 @@
       "dependencies": [
         "lucide-react"
       ],
+      "registryDependencies": [
+        "input",
+        "label"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/url-input.tsx",
@@ -1369,6 +1450,10 @@
       "description": "A modern input field with floating label animation and icon support.",
       "dependencies": [
         "lucide-react"
+      ],
+      "registryDependencies": [
+        "input",
+        "label"
       ],
       "files": [
         {
@@ -1386,6 +1471,10 @@
       "dependencies": [
         "lucide-react"
       ],
+      "registryDependencies": [
+        "input",
+        "label"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/time-with-icon.tsx",
@@ -1401,6 +1490,9 @@
       "description": "A customizable OTP (One-Time Password) input field with auto-focus and paste support.",
       "dependencies": [
         "lucide-react"
+      ],
+      "registryDependencies": [
+        "label"
       ],
       "files": [
         {
@@ -1418,6 +1510,10 @@
       "dependencies": [
         "react-payment-inputs"
       ],
+      "registryDependencies": [
+        "input",
+        "label"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/modern-card-input.tsx",
@@ -1433,6 +1529,11 @@
       "description": "An advanced password input with strength meter, validation checklist, and password generation.",
       "dependencies": [
         "lucide-react"
+      ],
+      "registryDependencies": [
+        "input",
+        "label",
+        "button"
       ],
       "files": [
         {
@@ -1450,6 +1551,10 @@
       "dependencies": [
         "lucide-react"
       ],
+      "registryDependencies": [
+        "input",
+        "label"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/smart-assist-input.tsx",
@@ -1465,6 +1570,11 @@
       "description": "A versatile input field with customizable action buttons and status indicators.",
       "dependencies": [
         "lucide-react"
+      ],
+      "registryDependencies": [
+        "input",
+        "label",
+        "button"
       ],
       "files": [
         {
@@ -1499,6 +1609,9 @@
       "dependencies": [
         "lucide-react"
       ],
+      "registryDependencies": [
+        "button"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/notification-badge.tsx",
@@ -1514,6 +1627,9 @@
       "description": "A dropdown menu component for displaying notifications with different types and read states.",
       "dependencies": [
         "lucide-react"
+      ],
+      "registryDependencies": [
+        "dropdown-menu"
       ],
       "files": [
         {
@@ -1531,6 +1647,11 @@
       "dependencies": [
         "lucide-react"
       ],
+      "registryDependencies": [
+        "popover",
+        "card",
+        "badge"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/notification.tsx",
@@ -1545,8 +1666,13 @@
       "title": "Notification Alt",
       "description": "An enhanced notification component with info tooltips, clickable links, and different notification types.",
       "dependencies": [
-        "lucide-react",
-        "next"
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "popover",
+        "badge",
+        "card",
+        "tooltip"
       ],
       "files": [
         {
@@ -1565,6 +1691,11 @@
         "lucide-react",
         "framer-motion"
       ],
+      "registryDependencies": [
+        "popover",
+        "badge",
+        "card"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/notifications-with-actions.tsx",
@@ -1580,6 +1711,11 @@
       "description": "A carousel-style notification component that displays one notification at a time with navigation controls.",
       "dependencies": [
         "lucide-react"
+      ],
+      "registryDependencies": [
+        "popover",
+        "badge",
+        "card"
       ],
       "files": [
         {
@@ -1597,6 +1733,12 @@
       "dependencies": [
         "lucide-react"
       ],
+      "registryDependencies": [
+        "popover",
+        "badge",
+        "card",
+        "button"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/notification-toggle.tsx",
@@ -1613,6 +1755,11 @@
       "dependencies": [
         "lucide-react"
       ],
+      "registryDependencies": [
+        "popover",
+        "badge",
+        "button"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/notifications-filter.tsx",
@@ -1628,6 +1775,11 @@
       "description": "A notification component that displays user avatars with messages and animated status indicators.",
       "dependencies": [
         "lucide-react"
+      ],
+      "registryDependencies": [
+        "popover",
+        "button",
+        "avatar"
       ],
       "files": [
         {
@@ -2443,6 +2595,9 @@
       "dependencies": [
         "framer-motion"
       ],
+      "registryDependencies": [
+        "tabs"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/nested-tabs.tsx",
@@ -2459,6 +2614,9 @@
       "dependencies": [
         "framer-motion"
       ],
+      "registryDependencies": [
+        "tabs"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/zoom-depth-tabs.tsx",
@@ -2474,6 +2632,9 @@
       "description": "Tab component with animated badges showing counts or notifications.",
       "dependencies": [
         "framer-motion"
+      ],
+      "registryDependencies": [
+        "tabs"
       ],
       "files": [
         {
@@ -2492,6 +2653,10 @@
         "framer-motion",
         "lucide-react"
       ],
+      "registryDependencies": [
+        "button",
+        "tabs"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/capsule-tabs.tsx",
@@ -2508,6 +2673,9 @@
       "dependencies": [
         "framer-motion"
       ],
+      "registryDependencies": [
+        "tabs"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/magnetic-tabs.tsx",
@@ -2523,6 +2691,9 @@
       "description": "Tab component with fade and slide animations for smooth content transitions.",
       "dependencies": [
         "framer-motion"
+      ],
+      "registryDependencies": [
+        "tabs"
       ],
       "files": [
         {
@@ -2541,6 +2712,9 @@
         "framer-motion",
         "lucide-react"
       ],
+      "registryDependencies": [
+        "tabs"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/hybrid-tabs.tsx",
@@ -2557,6 +2731,9 @@
       "dependencies": [
         "framer-motion"
       ],
+      "registryDependencies": [
+        "tabs"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/pill-morph-tabs.tsx",
@@ -2572,6 +2749,9 @@
       "description": "Tab component with sliding gradient indicator and keyboard navigation support.",
       "dependencies": [
         "framer-motion"
+      ],
+      "registryDependencies": [
+        "button"
       ],
       "files": [
         {
@@ -2590,6 +2770,9 @@
         "framer-motion",
         "lucide-react"
       ],
+      "registryDependencies": [
+        "button"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/wheel-pagination.tsx",
@@ -2607,6 +2790,9 @@
         "framer-motion",
         "lucide-react"
       ],
+      "registryDependencies": [
+        "button"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/scroll-pagination.tsx",
@@ -2622,6 +2808,10 @@
       "description": "Pagination component with colorful icon indicators and tooltip labels.",
       "dependencies": [
         "lucide-react"
+      ],
+      "registryDependencies": [
+        "tooltip",
+        "button"
       ],
       "files": [
         {
@@ -2640,6 +2830,9 @@
         "framer-motion",
         "lucide-react"
       ],
+      "registryDependencies": [
+        "button"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/gooey-pagination.tsx",
@@ -2656,6 +2849,10 @@
       "dependencies": [
         "framer-motion"
       ],
+      "registryDependencies": [
+        "button",
+        "card"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/stack-pagination.tsx",
@@ -2671,6 +2868,9 @@
       "description": "A card component that displays numbers with smooth flip animations.",
       "dependencies": [
         "framer-motion"
+      ],
+      "registryDependencies": [
+        "card"
       ],
       "files": [
         {
@@ -2705,6 +2905,9 @@
       "dependencies": [
         "framer-motion"
       ],
+      "registryDependencies": [
+        "button"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/sliding-pagination.tsx",
@@ -2720,6 +2923,13 @@
       "description": "Advanced chat input with slash commands, emoji picker, file upload, and AI features.",
       "dependencies": [
         "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "textarea",
+        "badge",
+        "popover",
+        "command"
       ],
       "files": [
         {
@@ -2738,6 +2948,9 @@
         "framer-motion",
         "lucide-react"
       ],
+      "registryDependencies": [
+        "card"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/magnetic-dock.tsx",
@@ -2754,6 +2967,10 @@
       "dependencies": [
         "framer-motion",
         "lucide-react"
+      ],
+      "registryDependencies": [
+        "tooltip",
+        "button"
       ],
       "files": [
         {
@@ -2789,6 +3006,10 @@
         "framer-motion",
         "lucide-react"
       ],
+      "registryDependencies": [
+        "tooltip",
+        "button"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/dock-morph.tsx",
@@ -2805,6 +3026,10 @@
       "dependencies": [
         "framer-motion",
         "lucide-react"
+      ],
+      "registryDependencies": [
+        "tooltip",
+        "button"
       ],
       "files": [
         {
@@ -2823,6 +3048,10 @@
         "framer-motion",
         "lucide-react"
       ],
+      "registryDependencies": [
+        "card",
+        "button"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/music-equalizer-upload.tsx",
@@ -2839,6 +3068,10 @@
       "dependencies": [
         "framer-motion",
         "lucide-react"
+      ],
+      "registryDependencies": [
+        "card",
+        "button"
       ],
       "files": [
         {
@@ -2857,6 +3090,10 @@
         "framer-motion",
         "lucide-react"
       ],
+      "registryDependencies": [
+        "card",
+        "button"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/stacked-cards-upload.tsx",
@@ -2873,6 +3110,11 @@
       "dependencies": [
         "lucide-react"
       ],
+      "registryDependencies": [
+        "card",
+        "button",
+        "progress"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/timeline-upload.tsx",
@@ -2887,6 +3129,9 @@
       "title": "Audio Timeline With Chapters",
       "description": "Interactive audio player with timeline and chapter navigation.",
       "dependencies": [],
+      "registryDependencies": [
+        "button"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/audio-timeline-with-chapters.tsx",
@@ -2902,6 +3147,9 @@
       "description": "Horizontal scrolling playlist with individual audio players and progress indicators.",
       "dependencies": [
         "lucide-react"
+      ],
+      "registryDependencies": [
+        "button"
       ],
       "files": [
         {
@@ -2919,6 +3167,9 @@
       "dependencies": [
         "lucide-react"
       ],
+      "registryDependencies": [
+        "button"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/voice-message-bubble.tsx",
@@ -2933,6 +3184,9 @@
       "title": "Visualizer Button",
       "description": "Compact audio button with animated equalizer bars visualization.",
       "dependencies": [],
+      "registryDependencies": [
+        "button"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/visualizer-button.tsx",
@@ -2947,6 +3201,10 @@
       "title": "Audio Book Player",
       "description": "Fixed-position audiobook player with chapter info, speed control, and progress tracking.",
       "dependencies": [],
+      "registryDependencies": [
+        "button",
+        "slider"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/audio-book-player.tsx",
@@ -2961,6 +3219,9 @@
       "title": "Podcast Card Player",
       "description": "Card-style podcast player with cover art, episode info, and audio controls.",
       "dependencies": [],
+      "registryDependencies": [
+        "button"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/podcast-card-player.tsx",
@@ -2975,6 +3236,9 @@
       "title": "Waveform Player",
       "description": "Audio player with visual waveform representation and seek controls.",
       "dependencies": [],
+      "registryDependencies": [
+        "button"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/waveform-player.tsx",
@@ -3056,6 +3320,9 @@
         "framer-motion",
         "react-icons"
       ],
+      "registryDependencies": [
+        "button"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/multi-state-morph-button.tsx",
@@ -3072,6 +3339,9 @@
       "dependencies": [
         "framer-motion"
       ],
+      "registryDependencies": [
+        "button"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/dynamic-status-button.tsx",
@@ -3086,6 +3356,9 @@
       "title": "Hover Preview Button",
       "description": "Button with hover-triggered preview content display.",
       "dependencies": [],
+      "registryDependencies": [
+        "button"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/hover-preview-button.tsx",
@@ -3100,6 +3373,9 @@
       "title": "Segmented Button Group",
       "description": "Group of connected buttons for single selection with smooth animations.",
       "dependencies": [],
+      "registryDependencies": [
+        "button"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/segmented-button-group.tsx",
@@ -3115,6 +3391,9 @@
       "description": "Celebration button that triggers animated confetti particles on click.",
       "dependencies": [
         "framer-motion"
+      ],
+      "registryDependencies": [
+        "button"
       ],
       "files": [
         {
@@ -3132,6 +3411,9 @@
       "dependencies": [
         "framer-motion"
       ],
+      "registryDependencies": [
+        "button"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/swipe-to-confirm-button.tsx",
@@ -3147,6 +3429,9 @@
       "description": "Button with animated status indicator dot for live/idle/offline states.",
       "dependencies": [
         "framer-motion"
+      ],
+      "registryDependencies": [
+        "button"
       ],
       "files": [
         {
@@ -3165,6 +3450,9 @@
         "framer-motion",
         "lucide-react"
       ],
+      "registryDependencies": [
+        "button"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/checklist-button.tsx",
@@ -3179,6 +3467,9 @@
       "title": "Countdown Button",
       "description": "Button with countdown timer that disables for specified duration.",
       "dependencies": [],
+      "registryDependencies": [
+        "button"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/countdown-button.tsx",
@@ -3193,6 +3484,9 @@
       "title": "Icon Grid Button",
       "description": "Button that reveals a grid of icon options on click.",
       "dependencies": [],
+      "registryDependencies": [
+        "button"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/icon-grid-button.tsx",
@@ -3207,6 +3501,9 @@
       "title": "Multi Step Button",
       "description": "Button that cycles through multiple steps/labels on each click.",
       "dependencies": [],
+      "registryDependencies": [
+        "button"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/multi-step-button.tsx",
@@ -3223,6 +3520,10 @@
       "dependencies": [
         "lucide-react"
       ],
+      "registryDependencies": [
+        "button",
+        "tooltip"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/tooltip-button.tsx",
@@ -3237,6 +3538,10 @@
       "title": "Badge Button Combo",
       "description": "Button with notification badge for counts or status indicators.",
       "dependencies": [],
+      "registryDependencies": [
+        "button",
+        "badge"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/badge-button-combo.tsx",
@@ -3269,6 +3574,10 @@
       "dependencies": [
         "lucide-react"
       ],
+      "registryDependencies": [
+        "button",
+        "badge"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/notification-button.tsx",
@@ -3283,6 +3592,9 @@
       "title": "Confirmation Button",
       "description": "Safety button that requires confirmation before executing destructive actions.",
       "dependencies": [],
+      "registryDependencies": [
+        "button"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/confirmation-button.tsx",
@@ -3297,6 +3609,10 @@
       "title": "Avatar Action Button",
       "description": "Button with integrated avatar image for user actions.",
       "dependencies": [],
+      "registryDependencies": [
+        "button",
+        "avatar"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/avatar-action-button.tsx",
@@ -3312,6 +3628,10 @@
       "description": "Button with primary action and dropdown for secondary options.",
       "dependencies": [
         "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "dropdown"
       ],
       "files": [
         {
@@ -3344,6 +3664,10 @@
       "description": "Comprehensive button with icon, main label, and subtext for detailed actions.",
       "dependencies": [
         "lucide-react"
+      ],
+      "registryDependencies": [
+        "badge",
+        "tooltip"
       ],
       "files": [
         {
@@ -3434,6 +3758,9 @@
         "@dnd-kit/core",
         "@dnd-kit/sortable",
         "@dnd-kit/utilities"
+      ],
+      "registryDependencies": [
+        "tabs"
       ],
       "files": [
         {
@@ -4229,7 +4556,19 @@
           "type": "registry:ui",
           "target": "components/ruixen/loading-circle.tsx"
         }
-      ]
+      ],
+      "css": {
+        "@keyframes ripple": {
+          "0%, 100%": {
+            "transform": "scale(1)",
+            "box-shadow": "0 10px 10px rgba(0, 0, 0, 0.3)"
+          },
+          "50%": {
+            "transform": "scale(1.3)",
+            "box-shadow": "0 30px 20px rgba(0, 0, 0, 0.3)"
+          }
+        }
+      }
     },
     {
       "name": "load-ripple",
@@ -4242,7 +4581,22 @@
           "type": "registry:ui",
           "target": "components/ruixen/load-ripple.tsx"
         }
-      ]
+      ],
+      "css": {
+        "@keyframes ripple": {
+          "0%": {
+            "transform": "scale(0.2)",
+            "opacity": "0.8"
+          },
+          "70%": {
+            "transform": "scale(1)",
+            "opacity": "0"
+          },
+          "100%": {
+            "opacity": "0"
+          }
+        }
+      }
     },
     {
       "name": "ripple-circles",
@@ -4255,7 +4609,19 @@
           "type": "registry:ui",
           "target": "components/ruixen/ripple-circles.tsx"
         }
-      ]
+      ],
+      "css": {
+        "@keyframes ripple": {
+          "0%, 100%": {
+            "transform": "scale(1)",
+            "box-shadow": "0 10px 10px rgba(0, 0, 0, 0.3)"
+          },
+          "50%": {
+            "transform": "scale(1.3)",
+            "box-shadow": "0 30px 20px rgba(0, 0, 0, 0.3)"
+          }
+        }
+      }
     },
     {
       "name": "mouse-spark",
@@ -4295,6 +4661,11 @@
         "motion",
         "lucide-react"
       ],
+      "registryDependencies": [
+        "card",
+        "button",
+        "separator"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/project-progress-card.tsx",
@@ -4323,6 +4694,15 @@
       "description": "A comprehensive task creation sheet with form fields for task details, assignee, category, due date, and priority.",
       "dependencies": [
         "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "input",
+        "label",
+        "select",
+        "sheet",
+        "popover",
+        "calendar"
       ],
       "files": [
         {
@@ -4356,6 +4736,9 @@
       "dependencies": [
         "lucide-react"
       ],
+      "registryDependencies": [
+        "menubar"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/app-menu-bar.tsx",
@@ -4371,6 +4754,10 @@
       "description": "User account dropdown menu with profile options, settings, and logout functionality.",
       "dependencies": [
         "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "dropdown-menu"
       ],
       "files": [
         {
@@ -4388,6 +4775,10 @@
       "dependencies": [
         "lucide-react"
       ],
+      "registryDependencies": [
+        "avatar",
+        "context-menu"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/user-context-menu.tsx",
@@ -4404,6 +4795,11 @@
       "dependencies": [
         "lucide-react"
       ],
+      "registryDependencies": [
+        "button",
+        "dropdown-menu",
+        "badge"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/action-toolbar.tsx",
@@ -4419,6 +4815,9 @@
       "description": "Intelligent breadcrumb navigation with ellipsis for long paths and responsive design.",
       "dependencies": [
         "lucide-react"
+      ],
+      "registryDependencies": [
+        "breadcrumb"
       ],
       "files": [
         {
@@ -4489,6 +4888,10 @@
       "dependencies": [
         "lucide-react"
       ],
+      "registryDependencies": [
+        "button",
+        "textarea"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/ruixen-moon-chat.tsx",
@@ -4542,6 +4945,12 @@
       "dependencies": [
         "lucide-react"
       ],
+      "registryDependencies": [
+        "popover",
+        "select",
+        "button",
+        "scroll-area"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/tag-cloud-select.tsx",
@@ -4555,6 +4964,9 @@
       "type": "registry:ui",
       "title": "Color Emotion Select",
       "description": "A select component that displays options with color indicators and optional emojis for emotional context.",
+      "registryDependencies": [
+        "select"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/color-emotion-select.tsx",
@@ -4568,6 +4980,9 @@
       "type": "registry:ui",
       "title": "Live Preview Style Select",
       "description": "A select component with live preview functionality that shows a visual representation of the selected style option.",
+      "registryDependencies": [
+        "select"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/live-preview-style-select.tsx",
@@ -4589,22 +5004,6 @@
           "path": "registry/ruixenui/hero-title-slide.tsx",
           "type": "registry:ui",
           "target": "components/ruixen/hero-title-slide.tsx"
-        }
-      ]
-    },
-    {
-      "name": "lumina-text",
-      "type": "registry:ui",
-      "title": "Lumina Text",
-      "description": "An animated text effect component with rising glow particles that creates a luminous, ethereal visual effect.",
-      "dependencies": [
-        "motion"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/lumina-text.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/lumina-text.tsx"
         }
       ]
     },
@@ -4645,6 +5044,9 @@
       "dependencies": [
         "motion"
       ],
+      "registryDependencies": [
+        "card"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/interactive-image-gallery.tsx",
@@ -4660,6 +5062,13 @@
       "description": "A product showcase card with scrollable image gallery, color selection, and interactive features for e-commerce applications.",
       "dependencies": [
         "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "card",
+        "scroll-area",
+        "aspect-ratio",
+        "separator"
       ],
       "files": [
         {
@@ -4693,6 +5102,11 @@
       "dependencies": [
         "lucide-react"
       ],
+      "registryDependencies": [
+        "button",
+        "badge",
+        "card"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/precision-card.tsx",
@@ -4725,6 +5139,9 @@
       "dependencies": [
         "motion",
         "lucide-react"
+      ],
+      "registryDependencies": [
+        "tooltip"
       ],
       "files": [
         {
@@ -8971,22 +9388,6 @@
           "path": "registry/example/hero-title-slide-demo.tsx",
           "type": "registry:example",
           "target": "components/hero-title-slide-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "lumina-text-demo",
-      "type": "registry:example",
-      "title": "Lumina Text Demo",
-      "description": "Example showing an animated text effect with rising glow particles creating a luminous, ethereal visual effect.",
-      "registryDependencies": [
-        "https://ruixen.com/r/lumina-text"
-      ],
-      "files": [
-        {
-          "path": "registry/example/lumina-text-demo.tsx",
-          "type": "registry:example",
-          "target": "components/lumina-text-demo.tsx"
         }
       ]
     },

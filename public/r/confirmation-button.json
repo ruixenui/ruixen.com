@@ -5,6 +5,9 @@
   "title": "Confirmation Button",
   "description": "Safety button that requires confirmation before executing destructive actions.",
   "dependencies": [],
+  "registryDependencies": [
+    "button"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/confirmation-button.tsx",

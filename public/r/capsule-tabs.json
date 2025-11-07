@@ -8,6 +8,10 @@
     "framer-motion",
     "lucide-react"
   ],
+  "registryDependencies": [
+    "button",
+    "tabs"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/capsule-tabs.tsx",

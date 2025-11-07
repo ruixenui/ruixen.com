@@ -91,11 +91,11 @@ export const componentsData: ComponentCategory[] = [
           "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/cards/precision-card-light.webp",
       },
       {
-        id: "lumina-text",
+        id: "rising-text",
         title: "Lumina Text",
         summary:
           "Modern card with animated gradient blob background for visual appeal",
-        url: "/docs/components/lumina-text",
+        url: "/docs/components/rising-glow",
         image_dark:
           "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/texts/lumina-dark.png",
         image_light:

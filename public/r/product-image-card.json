@@ -7,6 +7,13 @@
   "dependencies": [
     "lucide-react"
   ],
+  "registryDependencies": [
+    "button",
+    "card",
+    "scroll-area",
+    "aspect-ratio",
+    "separator"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/product-image-card.tsx",

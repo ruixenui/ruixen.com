@@ -5,6 +5,9 @@
   "title": "Podcast Card Player",
   "description": "Card-style podcast player with cover art, episode info, and audio controls.",
   "dependencies": [],
+  "registryDependencies": [
+    "button"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/podcast-card-player.tsx",

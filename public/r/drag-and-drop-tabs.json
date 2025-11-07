@@ -9,6 +9,9 @@
     "@dnd-kit/sortable",
     "@dnd-kit/utilities"
   ],
+  "registryDependencies": [
+    "tabs"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/drag-and-drop-tabs.tsx",

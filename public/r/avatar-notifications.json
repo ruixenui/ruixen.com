@@ -7,6 +7,11 @@
   "dependencies": [
     "lucide-react"
   ],
+  "registryDependencies": [
+    "popover",
+    "button",
+    "avatar"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/avatar-notifications.tsx",
