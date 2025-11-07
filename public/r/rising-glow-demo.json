@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/rising-glow-demo.tsx",
-      "content": "\"use client\";\n\nimport React from \"react\";\nimport { RisingGlow } from \"@/registry/ruixenui/rising-glow\";\n\nexport default function RisingGlowDemo() {\n  return (\n    <div className=\"flex flex-col items-center justify-center p-6\">\n      <h1 className=\"text-6xl md:text-8xl font-bold relative z-10\">Lumina</h1>\n      {/* Rising Glow animation below text */}\n      <div className=\"w-full\">\n        <RisingGlow\n          particleCount={80}\n          particleColor=\"#7CF734\"\n          height={100}\n          width=\"100%\"\n        />\n      </div>\n    </div>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport { RisingGlow } from \"@/registry/ruixenui/rising-glow\";\n\nexport default function RisingGlowDemo() {\n  return (\n    <div className=\"flex flex-col items-center justify-center p-6\">\n      <h1 className=\"text-6xl md:text-8xl font-bold relative z-10\">Lumina</h1>\n      {/* Rising Glow animation below text */}\n      <div className=\"w-sm\">\n        <RisingGlow\n          particleCount={80}\n          particleColor=\"#7CF734\"\n          height={100}\n          width=\"100%\"\n        />\n      </div>\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/rising-glow-demo.tsx"
     }

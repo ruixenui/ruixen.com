@@ -2178,6 +2178,7 @@ export const ui: Registry["items"] = [
     description:
       "A tab component with nested sub-tabs that expand with smooth animations.",
     dependencies: ["framer-motion"],
+    registryDependencies: ["tabs"],
     files: [
       {
         path: "registry/ruixenui/nested-tabs.tsx",
@@ -2193,6 +2194,7 @@ export const ui: Registry["items"] = [
     description:
       "A tab component with 3D zoom and depth effects for enhanced visual appeal.",
     dependencies: ["framer-motion"],
+    registryDependencies: ["tabs"],
     files: [
       {
         path: "registry/ruixenui/zoom-depth-tabs.tsx",
@@ -2208,6 +2210,7 @@ export const ui: Registry["items"] = [
     description:
       "Tab component with animated badges showing counts or notifications.",
     dependencies: ["framer-motion"],
+    registryDependencies: ["tabs"],
     files: [
       {
         path: "registry/ruixenui/badge-tabs.tsx",
@@ -2223,6 +2226,7 @@ export const ui: Registry["items"] = [
     description:
       "Scrollable capsule-style tabs with pagination dots and navigation arrows.",
     dependencies: ["framer-motion", "lucide-react"],
+    registryDependencies: ["button", "tabs"],
     files: [
       {
         path: "registry/ruixenui/capsule-tabs.tsx",
@@ -2238,6 +2242,7 @@ export const ui: Registry["items"] = [
     description:
       "Tab component with magnetic hover effects and smooth indicator animations.",
     dependencies: ["framer-motion"],
+    registryDependencies: ["tabs"],
     files: [
       {
         path: "registry/ruixenui/magnetic-tabs.tsx",
@@ -2253,6 +2258,7 @@ export const ui: Registry["items"] = [
     description:
       "Tab component with fade and slide animations for smooth content transitions.",
     dependencies: ["framer-motion"],
+    registryDependencies: ["tabs"],
     files: [
       {
         path: "registry/ruixenui/fade-slide-tabs.tsx",
@@ -2268,6 +2274,7 @@ export const ui: Registry["items"] = [
     description:
       "Tab component that shows icons only by default and expands to show labels on hover.",
     dependencies: ["framer-motion", "lucide-react"],
+    registryDependencies: ["tabs"],
     files: [
       {
         path: "registry/ruixenui/hybrid-tabs.tsx",
@@ -2283,6 +2290,7 @@ export const ui: Registry["items"] = [
     description:
       "Elegant tab component with morphing pill indicator and glassmorphism effects.",
     dependencies: ["framer-motion"],
+    registryDependencies: ["tabs"],
     files: [
       {
         path: "registry/ruixenui/pill-morph-tabs.tsx",
@@ -2298,6 +2306,7 @@ export const ui: Registry["items"] = [
     description:
       "Tab component with sliding gradient indicator and keyboard navigation support.",
     dependencies: ["framer-motion"],
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/sliding-tabs.tsx",
@@ -2313,6 +2322,7 @@ export const ui: Registry["items"] = [
     description:
       "Interactive pagination component with mouse wheel support and animated page numbers.",
     dependencies: ["framer-motion", "lucide-react"],
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/wheel-pagination.tsx",
@@ -2328,6 +2338,7 @@ export const ui: Registry["items"] = [
     description:
       "Minimalist pagination with mouse wheel navigation and animated number carousel.",
     dependencies: ["framer-motion", "lucide-react"],
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/scroll-pagination.tsx",
@@ -2343,6 +2354,7 @@ export const ui: Registry["items"] = [
     description:
       "Pagination component with colorful icon indicators and tooltip labels.",
     dependencies: ["lucide-react"],
+    registryDependencies: ["tooltip", "button"],
     files: [
       {
         path: "registry/ruixenui/icon-pagination.tsx",
@@ -2358,6 +2370,7 @@ export const ui: Registry["items"] = [
     description:
       "Pagination component with liquid gooey effects using SVG filters.",
     dependencies: ["framer-motion", "lucide-react"],
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/gooey-pagination.tsx",
@@ -2373,6 +2386,7 @@ export const ui: Registry["items"] = [
     description:
       "3D card stack pagination with flip animations and perspective effects.",
     dependencies: ["framer-motion"],
+    registryDependencies: ["button", "card"],
     files: [
       {
         path: "registry/ruixenui/stack-pagination.tsx",
@@ -2388,6 +2402,7 @@ export const ui: Registry["items"] = [
     description:
       "A card component that displays numbers with smooth flip animations.",
     dependencies: ["framer-motion"],
+    registryDependencies: ["card"],
     files: [
       {
         path: "registry/ruixenui/animated-number-flip.tsx",
@@ -2418,6 +2433,7 @@ export const ui: Registry["items"] = [
     description:
       "Pagination component with sliding underline indicator and smart page grouping.",
     dependencies: ["framer-motion"],
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/sliding-pagination.tsx",
@@ -2433,6 +2449,7 @@ export const ui: Registry["items"] = [
     description:
       "Advanced chat input with slash commands, emoji picker, file upload, and AI features.",
     dependencies: ["lucide-react"],
+    registryDependencies: ["button", "textarea", "badge", "popover", "command"],
     files: [
       {
         path: "registry/ruixenui/ai-chat-input.tsx",
@@ -2448,6 +2465,7 @@ export const ui: Registry["items"] = [
     description:
       "macOS-style dock with magnetic hover effects and smooth icon animations.",
     dependencies: ["framer-motion", "lucide-react"],
+    registryDependencies: ["card"],
     files: [
       {
         path: "registry/ruixenui/magnetic-dock.tsx",
@@ -2463,6 +2481,7 @@ export const ui: Registry["items"] = [
     description:
       "Dock component with liquid gooey blob effects using SVG filters.",
     dependencies: ["framer-motion", "lucide-react"],
+    registryDependencies: ["tooltip", "button"],
     files: [
       {
         path: "registry/ruixenui/gooey-dock.tsx",
@@ -2493,6 +2512,7 @@ export const ui: Registry["items"] = [
     description:
       "Morphing dock with glassmorphism bubbles and flexible positioning.",
     dependencies: ["framer-motion", "lucide-react"],
+    registryDependencies: ["tooltip", "button"],
     files: [
       {
         path: "registry/ruixenui/dock-morph.tsx",
@@ -2508,6 +2528,7 @@ export const ui: Registry["items"] = [
     description:
       "Classic dock component with floating animation and glow effects.",
     dependencies: ["framer-motion", "lucide-react"],
+    registryDependencies: ["tooltip", "button"],
     files: [
       {
         path: "registry/ruixenui/dock.tsx",
@@ -3147,6 +3168,7 @@ export const ui: Registry["items"] = [
     description:
       "Interactive tabs component with drag-and-drop reordering functionality.",
     dependencies: ["@dnd-kit/core", "@dnd-kit/sortable", "@dnd-kit/utilities"],
+    registryDependencies: ["tabs"],
     files: [
       {
         path: "registry/ruixenui/drag-and-drop-tabs.tsx",
@@ -4182,21 +4204,6 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "lumina-text",
-    type: "registry:ui",
-    title: "Lumina Text",
-    description:
-      "An animated text effect component with rising glow particles that creates a luminous, ethereal visual effect.",
-    dependencies: ["motion"],
-    files: [
-      {
-        path: "registry/ruixenui/lumina-text.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/lumina-text.tsx",
-      },
-    ],
-  },
-  {
     name: "core-value-stats",
     type: "registry:ui",
     title: "Core Value Stats",
@@ -4232,6 +4239,7 @@ export const ui: Registry["items"] = [
     description:
       "A responsive image gallery component with hover effects, expandable views, and smooth animations.",
     dependencies: ["motion"],
+    registryDependencies: ["card"],
     files: [
       {
         path: "registry/ruixenui/interactive-image-gallery.tsx",
@@ -4247,6 +4255,13 @@ export const ui: Registry["items"] = [
     description:
       "A product showcase card with scrollable image gallery, color selection, and interactive features for e-commerce applications.",
     dependencies: ["lucide-react"],
+    registryDependencies: [
+      "button",
+      "card",
+      "scroll-area",
+      "aspect-ratio",
+      "separator",
+    ],
     files: [
       {
         path: "registry/ruixenui/product-image-card.tsx",

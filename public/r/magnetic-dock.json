@@ -8,6 +8,9 @@
     "framer-motion",
     "lucide-react"
   ],
+  "registryDependencies": [
+    "card"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/magnetic-dock.tsx",

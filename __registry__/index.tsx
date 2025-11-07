@@ -3399,7 +3399,7 @@ export const Index: Record<string, any> = {
     description:
       "A tab component with nested sub-tabs that expand with smooth animations.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["tabs"],
     files: [
       {
         path: "registry/ruixenui/nested-tabs.tsx",
@@ -3423,7 +3423,7 @@ export const Index: Record<string, any> = {
     description:
       "A tab component with 3D zoom and depth effects for enhanced visual appeal.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["tabs"],
     files: [
       {
         path: "registry/ruixenui/zoom-depth-tabs.tsx",
@@ -3447,7 +3447,7 @@ export const Index: Record<string, any> = {
     description:
       "Tab component with animated badges showing counts or notifications.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["tabs"],
     files: [
       {
         path: "registry/ruixenui/badge-tabs.tsx",
@@ -3471,7 +3471,7 @@ export const Index: Record<string, any> = {
     description:
       "Scrollable capsule-style tabs with pagination dots and navigation arrows.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button", "tabs"],
     files: [
       {
         path: "registry/ruixenui/capsule-tabs.tsx",
@@ -3495,7 +3495,7 @@ export const Index: Record<string, any> = {
     description:
       "Tab component with magnetic hover effects and smooth indicator animations.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["tabs"],
     files: [
       {
         path: "registry/ruixenui/magnetic-tabs.tsx",
@@ -3519,7 +3519,7 @@ export const Index: Record<string, any> = {
     description:
       "Tab component with fade and slide animations for smooth content transitions.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["tabs"],
     files: [
       {
         path: "registry/ruixenui/fade-slide-tabs.tsx",
@@ -3543,7 +3543,7 @@ export const Index: Record<string, any> = {
     description:
       "Tab component that shows icons only by default and expands to show labels on hover.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["tabs"],
     files: [
       {
         path: "registry/ruixenui/hybrid-tabs.tsx",
@@ -3567,7 +3567,7 @@ export const Index: Record<string, any> = {
     description:
       "Elegant tab component with morphing pill indicator and glassmorphism effects.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["tabs"],
     files: [
       {
         path: "registry/ruixenui/pill-morph-tabs.tsx",
@@ -3591,7 +3591,7 @@ export const Index: Record<string, any> = {
     description:
       "Tab component with sliding gradient indicator and keyboard navigation support.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/sliding-tabs.tsx",
@@ -3615,7 +3615,7 @@ export const Index: Record<string, any> = {
     description:
       "Interactive pagination component with mouse wheel support and animated page numbers.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/wheel-pagination.tsx",
@@ -3639,7 +3639,7 @@ export const Index: Record<string, any> = {
     description:
       "Minimalist pagination with mouse wheel navigation and animated number carousel.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/scroll-pagination.tsx",
@@ -3663,7 +3663,7 @@ export const Index: Record<string, any> = {
     description:
       "Pagination component with colorful icon indicators and tooltip labels.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["tooltip", "button"],
     files: [
       {
         path: "registry/ruixenui/icon-pagination.tsx",
@@ -3687,7 +3687,7 @@ export const Index: Record<string, any> = {
     description:
       "Pagination component with liquid gooey effects using SVG filters.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/gooey-pagination.tsx",
@@ -3711,7 +3711,7 @@ export const Index: Record<string, any> = {
     description:
       "3D card stack pagination with flip animations and perspective effects.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button", "card"],
     files: [
       {
         path: "registry/ruixenui/stack-pagination.tsx",
@@ -3735,7 +3735,7 @@ export const Index: Record<string, any> = {
     description:
       "A card component that displays numbers with smooth flip animations.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["card"],
     files: [
       {
         path: "registry/ruixenui/animated-number-flip.tsx",
@@ -3783,7 +3783,7 @@ export const Index: Record<string, any> = {
     description:
       "Pagination component with sliding underline indicator and smart page grouping.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/sliding-pagination.tsx",
@@ -3807,7 +3807,7 @@ export const Index: Record<string, any> = {
     description:
       "Advanced chat input with slash commands, emoji picker, file upload, and AI features.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button", "textarea", "badge", "popover", "command"],
     files: [
       {
         path: "registry/ruixenui/ai-chat-input.tsx",
@@ -3831,7 +3831,7 @@ export const Index: Record<string, any> = {
     description:
       "macOS-style dock with magnetic hover effects and smooth icon animations.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["card"],
     files: [
       {
         path: "registry/ruixenui/magnetic-dock.tsx",
@@ -3855,7 +3855,7 @@ export const Index: Record<string, any> = {
     description:
       "Dock component with liquid gooey blob effects using SVG filters.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["tooltip", "button"],
     files: [
       {
         path: "registry/ruixenui/gooey-dock.tsx",
@@ -3903,7 +3903,7 @@ export const Index: Record<string, any> = {
     description:
       "Morphing dock with glassmorphism bubbles and flexible positioning.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["tooltip", "button"],
     files: [
       {
         path: "registry/ruixenui/dock-morph.tsx",
@@ -3927,7 +3927,7 @@ export const Index: Record<string, any> = {
     description:
       "Classic dock component with floating animation and glow effects.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["tooltip", "button"],
     files: [
       {
         path: "registry/ruixenui/dock.tsx",
@@ -4915,7 +4915,7 @@ export const Index: Record<string, any> = {
     description:
       "Interactive tabs component with drag-and-drop reordering functionality.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["tabs"],
     files: [
       {
         path: "registry/ruixenui/drag-and-drop-tabs.tsx",
@@ -6393,30 +6393,6 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
-  "lumina-text": {
-    name: "lumina-text",
-    description:
-      "An animated text effect component with rising glow particles that creates a luminous, ethereal visual effect.",
-    type: "registry:ui",
-    registryDependencies: undefined,
-    files: [
-      {
-        path: "registry/ruixenui/lumina-text.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/lumina-text.tsx",
-      },
-    ],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/ruixenui/lumina-text.tsx");
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object",
-        ) || item.name;
-      return { default: mod.default || mod[exportName] };
-    }),
-    meta: undefined,
-  },
   "core-value-stats": {
     name: "core-value-stats",
     description:
@@ -6472,7 +6448,7 @@ export const Index: Record<string, any> = {
     description:
       "A responsive image gallery component with hover effects, expandable views, and smooth animations.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["card"],
     files: [
       {
         path: "registry/ruixenui/interactive-image-gallery.tsx",
@@ -6498,7 +6474,13 @@ export const Index: Record<string, any> = {
     description:
       "A product showcase card with scrollable image gallery, color selection, and interactive features for e-commerce applications.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: [
+      "button",
+      "card",
+      "scroll-area",
+      "aspect-ratio",
+      "separator",
+    ],
     files: [
       {
         path: "registry/ruixenui/product-image-card.tsx",
@@ -13161,30 +13143,6 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/hero-title-slide-demo.tsx");
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object",
-        ) || item.name;
-      return { default: mod.default || mod[exportName] };
-    }),
-    meta: undefined,
-  },
-  "lumina-text-demo": {
-    name: "lumina-text-demo",
-    description:
-      "Example showing an animated text effect with rising glow particles creating a luminous, ethereal visual effect.",
-    type: "registry:example",
-    registryDependencies: ["https://ruixen.com/r/lumina-text"],
-    files: [
-      {
-        path: "registry/example/lumina-text-demo.tsx",
-        type: "registry:example",
-        target: "components/lumina-text-demo.tsx",
-      },
-    ],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/example/lumina-text-demo.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>

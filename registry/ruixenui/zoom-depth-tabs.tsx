@@ -58,7 +58,7 @@ export default function ZoomDepthTabs({
         className="w-full max-w-3xl"
       >
         {/* Tab List */}
-        <TabsList className="flex gap-4 p-2 overflow-x-auto rounded-xl bg-background/30 scrollbar-none">
+        <TabsList className="flex gap-4 p-2 overflow-x-auto rounded-xl scrollbar-none">
           {items.map((item) => {
             const isActive = item.value === active;
             return (

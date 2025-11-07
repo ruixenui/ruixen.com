@@ -2595,6 +2595,9 @@
       "dependencies": [
         "framer-motion"
       ],
+      "registryDependencies": [
+        "tabs"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/nested-tabs.tsx",
@@ -2611,6 +2614,9 @@
       "dependencies": [
         "framer-motion"
       ],
+      "registryDependencies": [
+        "tabs"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/zoom-depth-tabs.tsx",
@@ -2626,6 +2632,9 @@
       "description": "Tab component with animated badges showing counts or notifications.",
       "dependencies": [
         "framer-motion"
+      ],
+      "registryDependencies": [
+        "tabs"
       ],
       "files": [
         {
@@ -2644,6 +2653,10 @@
         "framer-motion",
         "lucide-react"
       ],
+      "registryDependencies": [
+        "button",
+        "tabs"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/capsule-tabs.tsx",
@@ -2660,6 +2673,9 @@
       "dependencies": [
         "framer-motion"
       ],
+      "registryDependencies": [
+        "tabs"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/magnetic-tabs.tsx",
@@ -2675,6 +2691,9 @@
       "description": "Tab component with fade and slide animations for smooth content transitions.",
       "dependencies": [
         "framer-motion"
+      ],
+      "registryDependencies": [
+        "tabs"
       ],
       "files": [
         {
@@ -2693,6 +2712,9 @@
         "framer-motion",
         "lucide-react"
       ],
+      "registryDependencies": [
+        "tabs"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/hybrid-tabs.tsx",
@@ -2709,6 +2731,9 @@
       "dependencies": [
         "framer-motion"
       ],
+      "registryDependencies": [
+        "tabs"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/pill-morph-tabs.tsx",
@@ -2724,6 +2749,9 @@
       "description": "Tab component with sliding gradient indicator and keyboard navigation support.",
       "dependencies": [
         "framer-motion"
+      ],
+      "registryDependencies": [
+        "button"
       ],
       "files": [
         {
@@ -2742,6 +2770,9 @@
         "framer-motion",
         "lucide-react"
       ],
+      "registryDependencies": [
+        "button"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/wheel-pagination.tsx",
@@ -2759,6 +2790,9 @@
         "framer-motion",
         "lucide-react"
       ],
+      "registryDependencies": [
+        "button"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/scroll-pagination.tsx",
@@ -2774,6 +2808,10 @@
       "description": "Pagination component with colorful icon indicators and tooltip labels.",
       "dependencies": [
         "lucide-react"
+      ],
+      "registryDependencies": [
+        "tooltip",
+        "button"
       ],
       "files": [
         {
@@ -2792,6 +2830,9 @@
         "framer-motion",
         "lucide-react"
       ],
+      "registryDependencies": [
+        "button"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/gooey-pagination.tsx",
@@ -2808,6 +2849,10 @@
       "dependencies": [
         "framer-motion"
       ],
+      "registryDependencies": [
+        "button",
+        "card"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/stack-pagination.tsx",
@@ -2823,6 +2868,9 @@
       "description": "A card component that displays numbers with smooth flip animations.",
       "dependencies": [
         "framer-motion"
+      ],
+      "registryDependencies": [
+        "card"
       ],
       "files": [
         {
@@ -2857,6 +2905,9 @@
       "dependencies": [
         "framer-motion"
       ],
+      "registryDependencies": [
+        "button"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/sliding-pagination.tsx",
@@ -2872,6 +2923,13 @@
       "description": "Advanced chat input with slash commands, emoji picker, file upload, and AI features.",
       "dependencies": [
         "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "textarea",
+        "badge",
+        "popover",
+        "command"
       ],
       "files": [
         {
@@ -2890,6 +2948,9 @@
         "framer-motion",
         "lucide-react"
       ],
+      "registryDependencies": [
+        "card"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/magnetic-dock.tsx",
@@ -2906,6 +2967,10 @@
       "dependencies": [
         "framer-motion",
         "lucide-react"
+      ],
+      "registryDependencies": [
+        "tooltip",
+        "button"
       ],
       "files": [
         {
@@ -2941,6 +3006,10 @@
         "framer-motion",
         "lucide-react"
       ],
+      "registryDependencies": [
+        "tooltip",
+        "button"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/dock-morph.tsx",
@@ -2957,6 +3026,10 @@
       "dependencies": [
         "framer-motion",
         "lucide-react"
+      ],
+      "registryDependencies": [
+        "tooltip",
+        "button"
       ],
       "files": [
         {
@@ -3685,6 +3758,9 @@
         "@dnd-kit/core",
         "@dnd-kit/sortable",
         "@dnd-kit/utilities"
+      ],
+      "registryDependencies": [
+        "tabs"
       ],
       "files": [
         {
@@ -4932,22 +5008,6 @@
       ]
     },
     {
-      "name": "lumina-text",
-      "type": "registry:ui",
-      "title": "Lumina Text",
-      "description": "An animated text effect component with rising glow particles that creates a luminous, ethereal visual effect.",
-      "dependencies": [
-        "motion"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/lumina-text.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/lumina-text.tsx"
-        }
-      ]
-    },
-    {
       "name": "core-value-stats",
       "type": "registry:ui",
       "title": "Core Value Stats",
@@ -4984,6 +5044,9 @@
       "dependencies": [
         "motion"
       ],
+      "registryDependencies": [
+        "card"
+      ],
       "files": [
         {
           "path": "registry/ruixenui/interactive-image-gallery.tsx",
@@ -4999,6 +5062,13 @@
       "description": "A product showcase card with scrollable image gallery, color selection, and interactive features for e-commerce applications.",
       "dependencies": [
         "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "card",
+        "scroll-area",
+        "aspect-ratio",
+        "separator"
       ],
       "files": [
         {
@@ -9318,22 +9388,6 @@
           "path": "registry/example/hero-title-slide-demo.tsx",
           "type": "registry:example",
           "target": "components/hero-title-slide-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "lumina-text-demo",
-      "type": "registry:example",
-      "title": "Lumina Text Demo",
-      "description": "Example showing an animated text effect with rising glow particles creating a luminous, ethereal visual effect.",
-      "registryDependencies": [
-        "https://ruixen.com/r/lumina-text"
-      ],
-      "files": [
-        {
-          "path": "registry/example/lumina-text-demo.tsx",
-          "type": "registry:example",
-          "target": "components/lumina-text-demo.tsx"
         }
       ]
     },

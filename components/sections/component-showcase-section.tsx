@@ -425,7 +425,7 @@ export default function ComponentShowcaseSection() {
 
           {/* Lumina Text - Left Lower */}
           <Link
-            href="/docs/components/lumina-text"
+            href="/docs/components/rising-luma"
             className="absolute left-[4%] md:left-[6%] lg:left-[10%] bottom-[48%] md:bottom-[50%] lg:bottom-[52%] h-[90px] w-[130px] md:h-[110px] md:w-[160px] lg:h-[120px] lg:w-44 z-12 rounded-xl shadow-lg animate-float-up overflow-hidden cursor-pointer hover:scale-105 hover:z-50 transition-all duration-300"
             style={{
               animationDelay: "-8.5s",
@@ -1010,7 +1010,7 @@ export default function ComponentShowcaseSection() {
 
           {/* Lumina Text - Left Lower */}
           <Link
-            href="/docs/components/lumina-text"
+            href="/docs/components/rising-glow"
             className="absolute left-[0%] md:left-[2%] lg:left-[4%] bottom-[72%] md:bottom-[74%] lg:bottom-[76%] h-[90px] w-[130px] md:h-[110px] md:w-[160px] lg:h-[120px] lg:w-44 z-12 rounded-xl shadow-lg animate-float-up overflow-hidden cursor-pointer hover:scale-105 hover:z-50 transition-all duration-300"
             style={{
               animationDelay: "-8.5s",

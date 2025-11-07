@@ -1344,12 +1344,6 @@ export const docsConfig: DocsConfig = {
               items: [],
               label: "",
             },
-            {
-              title: "Lumina Text",
-              href: `/docs/components/lumina-text`,
-              items: [],
-              label: "",
-            },
           ],
         },
         {

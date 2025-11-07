@@ -8,6 +8,9 @@
     "framer-motion",
     "lucide-react"
   ],
+  "registryDependencies": [
+    "tabs"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/hybrid-tabs.tsx",

@@ -8,6 +8,10 @@
     "framer-motion",
     "lucide-react"
   ],
+  "registryDependencies": [
+    "tooltip",
+    "button"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/dock-morph.tsx",

@@ -3923,21 +3923,6 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "lumina-text-demo",
-    type: "registry:example",
-    title: "Lumina Text Demo",
-    description:
-      "Example showing an animated text effect with rising glow particles creating a luminous, ethereal visual effect.",
-    registryDependencies: ["https://ruixen.com/r/lumina-text"],
-    files: [
-      {
-        path: "registry/example/lumina-text-demo.tsx",
-        type: "registry:example",
-        target: "components/lumina-text-demo.tsx",
-      },
-    ],
-  },
-  {
     name: "core-value-stats-demo",
     type: "registry:example",
     title: "Core Value Stats Demo",
