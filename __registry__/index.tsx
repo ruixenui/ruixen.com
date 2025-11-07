@@ -15,12 +15,36 @@ export const Index: Record<string, any> = {
     component: null,
     meta: undefined,
   },
+  "blurred-stagger-text": {
+    name: "blurred-stagger-text",
+    description:
+      "An animated text component with staggered blur reveal effect using Framer Motion.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "components/ui/blurred-stagger-text.tsx",
+        type: "registry:ui",
+        target: "components/ui/blurred-stagger-text.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/components/ui/blurred-stagger-text.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "staggered-faq-section": {
     name: "staggered-faq-section",
     description:
       "A responsive FAQ component with animated text reveals and customizable content.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["accordion", "blurred-stagger-text"],
     files: [
       {
         path: "registry/ruixenui/staggered-faq-section.tsx",

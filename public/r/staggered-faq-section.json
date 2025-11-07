@@ -7,6 +7,10 @@
   "dependencies": [
     "motion"
   ],
+  "registryDependencies": [
+    "accordion",
+    "blurred-stagger-text"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/staggered-faq-section.tsx",
