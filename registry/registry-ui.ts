@@ -23,12 +23,17 @@ export const ui: Registry["items"] = [
     description:
       "A responsive FAQ component with animated text reveals and customizable content.",
     dependencies: ["motion"],
-    registryDependencies: ["accordion", "blurred-stagger-text"],
+    registryDependencies: ["accordion"],
     files: [
       {
         path: "registry/ruixenui/staggered-faq-section.tsx",
         type: "registry:ui",
         target: "components/ruixen/staggered-faq-section.tsx",
+      },
+      {
+        path: "components/ui/blurred-stagger-text.tsx",
+        type: "registry:ui",
+        target: "components/ui/blurred-stagger-text.tsx",
       },
     ],
   },
