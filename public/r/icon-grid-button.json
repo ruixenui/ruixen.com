@@ -5,6 +5,9 @@
   "title": "Icon Grid Button",
   "description": "Button that reveals a grid of icon options on click.",
   "dependencies": [],
+  "registryDependencies": [
+    "button"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/icon-grid-button.tsx",

@@ -8,6 +8,11 @@
     "motion",
     "lucide-react"
   ],
+  "registryDependencies": [
+    "card",
+    "button",
+    "separator"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/project-progress-card.tsx",

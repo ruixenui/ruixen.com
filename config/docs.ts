@@ -727,12 +727,6 @@ export const docsConfig: DocsConfig = {
               label: "",
             },
             {
-              title: "Solar Loader",
-              href: `/docs/components/solar-loader`,
-              items: [],
-              label: "",
-            },
-            {
               title: "Tour Popover",
               href: `/docs/components/tour-popover`,
               items: [],

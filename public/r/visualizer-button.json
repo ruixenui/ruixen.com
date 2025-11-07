@@ -5,6 +5,9 @@
   "title": "Visualizer Button",
   "description": "Compact audio button with animated equalizer bars visualization.",
   "dependencies": [],
+  "registryDependencies": [
+    "button"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/visualizer-button.tsx",

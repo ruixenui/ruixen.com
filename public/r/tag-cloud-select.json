@@ -7,6 +7,12 @@
   "dependencies": [
     "lucide-react"
   ],
+  "registryDependencies": [
+    "popover",
+    "select",
+    "button",
+    "scroll-area"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/tag-cloud-select.tsx",

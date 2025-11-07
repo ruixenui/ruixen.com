@@ -7,6 +7,9 @@
   "dependencies": [
     "@radix-ui/react-dropdown-menu"
   ],
+  "registryDependencies": [
+    "context-menu"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/advanced-context-menu.tsx",

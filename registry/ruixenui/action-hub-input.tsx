@@ -1,13 +1,7 @@
 "use client";
 
 import { useId, useState, useRef, useEffect } from "react";
-import {
-  Loader2Icon,
-  CheckCircle2Icon,
-  XCircleIcon,
-  CopyIcon,
-  Trash2Icon,
-} from "lucide-react";
+import { Loader2Icon, CheckCircle2Icon, XCircleIcon } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";

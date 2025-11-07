@@ -7,6 +7,10 @@
   "dependencies": [
     "md5"
   ],
+  "registryDependencies": [
+    "input",
+    "label"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/gravatar-email-input.tsx",

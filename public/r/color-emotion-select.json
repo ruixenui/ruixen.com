@@ -4,6 +4,9 @@
   "type": "registry:ui",
   "title": "Color Emotion Select",
   "description": "A select component that displays options with color indicators and optional emojis for emotional context.",
+  "registryDependencies": [
+    "select"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/color-emotion-select.tsx",

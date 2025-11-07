@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/badge-button-combo-demo.tsx",
-      "content": "import BadgeButtonCombo from \"@/registry/ruixenui/badge-button-combo\";\n\nexport default function DemoBadgeButtonCombo() {\n  return (\n    <div className=\"flex p-6 flex-col items-center justify-center min-h-screen\">\n      <BadgeButtonCombo label=\"Messages\" badge={3} />\n      <BadgeButtonCombo label=\"Notifications\" badge=\"New\" />\n      <BadgeButtonCombo label=\"Beta Feature\" badge=\"Beta\" size=\"lg\" />\n    </div>\n  );\n}\n",
+      "content": "import BadgeButtonCombo from \"@/registry/ruixenui/badge-button-combo\";\n\nexport default function DemoBadgeButtonCombo() {\n  return (\n    <div className=\"flex p-6 gap-6 flex-col items-center justify-center min-h-screen\">\n      <BadgeButtonCombo label=\"Messages\" badge={3} />\n      <BadgeButtonCombo label=\"Notifications\" badge=\"New\" />\n      <BadgeButtonCombo label=\"Beta Feature\" badge=\"Beta\" size=\"lg\" />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/badge-button-combo-demo.tsx"
     }

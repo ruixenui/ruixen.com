@@ -7,6 +7,10 @@
   "dependencies": [
     "react-payment-inputs"
   ],
+  "registryDependencies": [
+    "input",
+    "label"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/modern-card-input.tsx",

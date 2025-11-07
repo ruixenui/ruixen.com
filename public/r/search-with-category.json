@@ -7,6 +7,12 @@
   "dependencies": [
     "lucide-react"
   ],
+  "registryDependencies": [
+    "button",
+    "input",
+    "label",
+    "select"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/search-with-category.tsx",

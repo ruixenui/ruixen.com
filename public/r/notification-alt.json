@@ -5,8 +5,13 @@
   "title": "Notification Alt",
   "description": "An enhanced notification component with info tooltips, clickable links, and different notification types.",
   "dependencies": [
-    "lucide-react",
-    "next"
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "popover",
+    "badge",
+    "card",
+    "tooltip"
   ],
   "files": [
     {

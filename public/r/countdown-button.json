@@ -5,6 +5,9 @@
   "title": "Countdown Button",
   "description": "Button with countdown timer that disables for specified duration.",
   "dependencies": [],
+  "registryDependencies": [
+    "button"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/countdown-button.tsx",

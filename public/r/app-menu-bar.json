@@ -7,6 +7,9 @@
   "dependencies": [
     "lucide-react"
   ],
+  "registryDependencies": [
+    "menubar"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/app-menu-bar.tsx",

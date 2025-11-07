@@ -7,6 +7,11 @@
   "dependencies": [
     "lucide-react"
   ],
+  "registryDependencies": [
+    "button",
+    "dropdown-menu",
+    "badge"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/action-toolbar.tsx",

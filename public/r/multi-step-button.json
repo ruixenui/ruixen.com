@@ -5,6 +5,9 @@
   "title": "Multi Step Button",
   "description": "Button that cycles through multiple steps/labels on each click.",
   "dependencies": [],
+  "registryDependencies": [
+    "button"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/multi-step-button.tsx",

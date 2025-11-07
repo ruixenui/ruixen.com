@@ -5,6 +5,9 @@
   "title": "Segmented Button Group",
   "description": "Group of connected buttons for single selection with smooth animations.",
   "dependencies": [],
+  "registryDependencies": [
+    "button"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/segmented-button-group.tsx",

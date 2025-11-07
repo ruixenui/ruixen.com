@@ -7,6 +7,11 @@
   "dependencies": [
     "lucide-react"
   ],
+  "registryDependencies": [
+    "button",
+    "badge",
+    "card"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/precision-card.tsx",

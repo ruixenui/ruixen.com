@@ -7,6 +7,9 @@
   "dependencies": [
     "lucide-react"
   ],
+  "registryDependencies": [
+    "label"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/clean-tag-input.tsx",

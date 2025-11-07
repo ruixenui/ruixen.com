@@ -7,6 +7,10 @@
   "dependencies": [
     "lucide-react"
   ],
+  "registryDependencies": [
+    "badge",
+    "tooltip"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/icon-label-subtext-button.tsx",

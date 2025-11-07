@@ -8,6 +8,9 @@
     "framer-motion",
     "react-icons"
   ],
+  "registryDependencies": [
+    "button"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/multi-state-morph-button.tsx",

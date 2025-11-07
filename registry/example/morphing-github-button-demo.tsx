@@ -2,7 +2,7 @@ import MorphingGithubButton from "../ruixenui/morphing-github-button";
 
 export default function DemoMorphingGithubButton() {
   return (
-    <main className="flex flex-col items-center justify-center gap-6">
+    <main className="flex flex-col items-center justify-center min-h-screen gap-6">
       {/* Default */}
       <MorphingGithubButton />
 

@@ -5,6 +5,10 @@
   "title": "Badge Button Combo",
   "description": "Button with notification badge for counts or status indicators.",
   "dependencies": [],
+  "registryDependencies": [
+    "button",
+    "badge"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/badge-button-combo.tsx",

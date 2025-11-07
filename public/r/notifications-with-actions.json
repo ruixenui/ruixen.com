@@ -8,6 +8,11 @@
     "lucide-react",
     "framer-motion"
   ],
+  "registryDependencies": [
+    "popover",
+    "badge",
+    "card"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/notifications-with-actions.tsx",

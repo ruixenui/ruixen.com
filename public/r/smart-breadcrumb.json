@@ -7,6 +7,9 @@
   "dependencies": [
     "lucide-react"
   ],
+  "registryDependencies": [
+    "breadcrumb"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/smart-breadcrumb.tsx",

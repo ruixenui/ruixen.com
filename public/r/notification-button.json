@@ -7,6 +7,10 @@
   "dependencies": [
     "lucide-react"
   ],
+  "registryDependencies": [
+    "button",
+    "badge"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/notification-button.tsx",

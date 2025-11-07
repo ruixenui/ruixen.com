@@ -7,6 +7,15 @@
   "dependencies": [
     "lucide-react"
   ],
+  "registryDependencies": [
+    "button",
+    "input",
+    "label",
+    "select",
+    "sheet",
+    "popover",
+    "calendar"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/add-task-sheet.tsx",

@@ -7,6 +7,11 @@
   "dependencies": [
     "lucide-react"
   ],
+  "registryDependencies": [
+    "input",
+    "label",
+    "select"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/input-with-select.tsx",

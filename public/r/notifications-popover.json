@@ -7,6 +7,9 @@
   "dependencies": [
     "lucide-react"
   ],
+  "registryDependencies": [
+    "dropdown-menu"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/notifications-popover.tsx",

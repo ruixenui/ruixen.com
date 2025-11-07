@@ -4,6 +4,9 @@
   "type": "registry:ui",
   "title": "Live Preview Style Select",
   "description": "A select component with live preview functionality that shows a visual representation of the selected style option.",
+  "registryDependencies": [
+    "select"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/live-preview-style-select.tsx",

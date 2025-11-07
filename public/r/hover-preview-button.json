@@ -5,6 +5,9 @@
   "title": "Hover Preview Button",
   "description": "Button with hover-triggered preview content display.",
   "dependencies": [],
+  "registryDependencies": [
+    "button"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/hover-preview-button.tsx",
