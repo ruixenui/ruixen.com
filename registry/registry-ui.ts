@@ -2,12 +2,28 @@ import { type Registry } from "shadcn/registry";
 
 export const ui: Registry["items"] = [
   {
+    name: "blurred-stagger-text",
+    type: "registry:ui",
+    title: "Blurred Stagger Text",
+    description:
+      "An animated text component with staggered blur reveal effect using Framer Motion.",
+    dependencies: ["framer-motion"],
+    files: [
+      {
+        path: "components/ui/blurred-stagger-text.tsx",
+        type: "registry:ui",
+        target: "components/ui/blurred-stagger-text.tsx",
+      },
+    ],
+  },
+  {
     name: "staggered-faq-section",
     type: "registry:ui",
     title: "StaggeredFAQSection",
     description:
       "A responsive FAQ component with animated text reveals and customizable content.",
     dependencies: ["motion"],
+    registryDependencies: ["accordion", "blurred-stagger-text"],
     files: [
       {
         path: "registry/ruixenui/staggered-faq-section.tsx",
