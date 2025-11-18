@@ -3790,16 +3790,20 @@ export const ui: Registry["items"] = [
       },
     ],
     css: {
-      "@keyframes ripple": {
-        "0%, 100%": {
-          transform: "scale(1)",
-          "box-shadow": "0 10px 10px rgba(0, 0, 0, 0.3)",
+      "loading-circles": {
+        "0%": {
+          "transform": "scale(1)",
+          "box-shadow": "0 10px 10px rgba(0, 0, 0, 0.3)"
         },
         "50%": {
-          transform: "scale(1.3)",
-          "box-shadow": "0 30px 20px rgba(0, 0, 0, 0.3)",
+          "transform": "scale(1.3)",
+          "box-shadow": "0 30px 20px rgba(0, 0, 0, 0.3)"
         },
-      },
+        "100%": {
+          "transform": "scale(1)",
+          "box-shadow": "0 10px 10px rgba(0, 0, 0, 0.3)"
+        }
+      }
     },
   },
   {
@@ -3816,19 +3820,19 @@ export const ui: Registry["items"] = [
       },
     ],
     css: {
-      "@keyframes ripple": {
+      "load-ripple": {
         "0%": {
-          transform: "scale(0.2)",
-          opacity: "0.8",
+          "transform": "scale(0.2)",
+          "opacity": "0.8"
         },
         "70%": {
-          transform: "scale(1)",
-          opacity: "0",
+          "transform": "scale(1)",
+          "opacity": "0"
         },
         "100%": {
-          opacity: "0",
-        },
-      },
+          "opacity": "0"
+        }
+      }
     },
   },
   {
@@ -3845,16 +3849,20 @@ export const ui: Registry["items"] = [
       },
     ],
     css: {
-      "@keyframes ripple": {
-        "0%, 100%": {
-          transform: "scale(1)",
-          "box-shadow": "0 10px 10px rgba(0, 0, 0, 0.3)",
+      "ripple-circles": {
+        "0%": {
+          "transform": "scale(1)",
+          "box-shadow": "0 10px 10px rgba(0, 0, 0, 0.3)"
         },
         "50%": {
-          transform: "scale(1.3)",
-          "box-shadow": "0 30px 20px rgba(0, 0, 0, 0.3)",
+          "transform": "scale(1.3)",
+          "box-shadow": "0 30px 20px rgba(0, 0, 0, 0.3)"
         },
-      },
+        "100%": {
+          "transform": "scale(1)",
+          "box-shadow": "0 10px 10px rgba(0, 0, 0, 0.3)"
+        }
+      }
     },
   },
   {
