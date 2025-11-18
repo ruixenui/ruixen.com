@@ -100,10 +100,10 @@ export default function GitHubStarPopup() {
     dismiss();
   };
 
-  // if (!mounted || !visible) return null;
+  // if (!mounted) return null;
 
   // Render at the end of <body> - floating without blocking content
-  return createPortal(
+  return (
     <div
       className="fixed bottom-4 right-4 z-[2147483647] pointer-events-none"
       role="status"
@@ -166,7 +166,6 @@ export default function GitHubStarPopup() {
           </div>
         </div>
       </div>
-    </div>,
-    document.body,
+    </div>
   );
 }
