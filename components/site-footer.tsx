@@ -105,7 +105,7 @@ export default function SiteFooter() {
           <div className="flex items-center space-x-1">
             <Image
               src={
-                "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/ruixen-light.png"
+                "/ruixen-ui-nw-light.png"
               }
               alt="Ruixen Logo"
               width={40}
@@ -114,7 +114,7 @@ export default function SiteFooter() {
             />
             <Image
               src={
-                "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/ruixen-dark.png"
+                "/ruixen-ui-nw.png"
               }
               alt="Ruixen Logo"
               width={40}

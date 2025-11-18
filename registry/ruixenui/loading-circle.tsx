@@ -22,7 +22,7 @@ export const LoadingCircle: React.FC = () => {
             inset: `${i * 5}%`,
             zIndex: 99 - i,
             borderColor: `rgba(100,100,100,${0.9 - i * 0.1})`,
-            animation: `ripple 2s infinite ease-in-out ${i * 0.15}s`,
+            animation: `loading-circles 2s infinite ease-in-out ${i * 0.15}s`,
           }}
         />
       ))}

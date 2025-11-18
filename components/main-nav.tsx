@@ -44,20 +44,20 @@ export function MainNav() {
     <div className="mr-4 hidden md:flex">
       <ContextMenu>
         <ContextMenuTrigger asChild>
-          <Link href="/" className="relative mr-6 flex items-center space-x-2">
+          <Link href="/" className="relative mr-6 flex items-center">
             <Image
-              src="https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/ruixen-dark.png"
+              src="/ruixen-ui-nw.png"
               alt="Ruixen Logo"
-              width={40}
-              height={40}
-              className="rounded-full h-10 w-10 block dark:hidden"
+              width={60}
+              height={60}
+              className="rounded-full h-11 w-11 block dark:hidden"
             />
             <Image
-              src="/ruixen_light.png"
+              src="/ruixen-ui-nw-light.png"
               alt="Ruixen Logo"
-              width={40}
-              height={40}
-              className="rounded-full h-10 w-10 hidden dark:block"
+              width={60}
+              height={60}
+              className="rounded-full h-11 w-11 hidden dark:block"
             />
             <span className="hidden font-semibold md:inline-block">
               {siteConfig.name}
@@ -69,12 +69,12 @@ export function MainNav() {
             className="flex items-center gap-2"
             onClick={() =>
               copyLogoAsSVG(
-                "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/ruixen-dark.png",
+                "/ruixen-ui-nw.png",
               )
             }
           >
             <Image
-              src="https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/ruixen-dark.png"
+              src="/ruixen-ui-nw.png"
               alt="Logo"
               width={28}
               height={28}
@@ -85,12 +85,12 @@ export function MainNav() {
             className="flex items-center gap-2"
             onClick={() =>
               copyLogoAsPNG(
-                "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/ruixen-icon.png",
+                "/ruixen-ui-nw.png",
               )
             }
           >
             <Image
-              src="https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/ruixen-icon.png"
+              src="/ruixen-ui-nw.png"
               alt="Logo"
               width={28}
               height={28}
