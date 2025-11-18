@@ -75,9 +75,17 @@ export function ComponentPreview({
           <ComponentWrapper name={name} className="overflow-hidden">
             <React.Suspense
               fallback={
-                <div className="flex items-center text-sm text-muted-foreground">
-                  <Icons.spinner className="mr-2 size-4 animate-spin" />
-                  Loading...
+                <div className="flex min-h-[360px] items-center justify-center">
+                  <div className="flex flex-col items-center gap-3">
+                    <img
+                      src="/ruixen_logo_blue_1024.svg"
+                      alt="Loading"
+                      className="size-12 animate-pulse"
+                    />
+                    <span className="text-sm text-muted-foreground">
+                      Loading...
+                    </span>
+                  </div>
                 </div>
               }
             >

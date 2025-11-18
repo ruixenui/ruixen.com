@@ -3,7 +3,7 @@
 import { OpenInV0Button } from "@/components/open-in-v0-button";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { RotateCcw, Maximize2, Minimize2, X } from "lucide-react";
+import { RotateCcw, Maximize2, Minimize2, X, Smartphone, Tablet, Monitor, Laptop } from "lucide-react";
 import * as React from "react";
 import { createPortal } from "react-dom";
 
@@ -238,15 +238,17 @@ export const ComponentWrapper = ({
     _setWidth(val);
   }, []);
 
-  const PRESETS: Array<{ label: string; value: PreviewWidth; title?: string }> =
-    [
+  const PRESETS: Array<{
+    label?: string;
+    icon?: React.ComponentType<{ className?: string }>;
+    value: PreviewWidth;
+    title?: string
+  }> = [
       { label: "Auto", value: "auto", title: "Use container width" },
-      { label: "375", value: 375, title: "Mobile (375px)" },
-      { label: "sm", value: 640, title: "sm (640px)" },
-      { label: "md", value: 768, title: "md (768px)" },
-      { label: "lg", value: 1024, title: "lg (1024px)" },
-      // { label: "xl", value: 1280, title: "xl (1280px)" },
-      // { label: "2xl", value: 1536, title: "2xl (1536px)" },
+      { icon: Smartphone, value: 375, title: "Mobile (375px)" },
+      { icon: Tablet, value: 640, title: "Tablet Small (640px)" },
+      { icon: Tablet, value: 768, title: "Tablet (768px)" },
+      { icon: Laptop, value: 1024, title: "Laptop (1024px)" },
     ];
 
   const compress = () => setWidthImmediate(375);
@@ -335,11 +337,12 @@ export const ComponentWrapper = ({
     <div className="flex w-full flex-wrap items-center gap-2">
       {/* Left side: width presets */}
       <div className="inline-flex flex-wrap items-center gap-1 text-xs">
-        {PRESETS.map((p) => {
+        {PRESETS.map((p, index) => {
           const isActive = width === p.value;
+          const Icon = p.icon;
           return (
             <button
-              key={p.label}
+              key={`${p.value}-${index}`}
               type="button"
               title={p.title || p.label}
               className={cn(
@@ -350,7 +353,7 @@ export const ComponentWrapper = ({
               )}
               onClick={() => setWidthImmediate(p.value)}
             >
-              {p.label}
+              {Icon ? <Icon className="h-4 w-4" /> : p.label}
             </button>
           );
         })}
@@ -358,7 +361,7 @@ export const ComponentWrapper = ({
 
       {/* Right side: util buttons */}
       <div className="ml-auto inline-flex items-center gap-1">
-        <div className="inline-flex rounded border border-border bg-background">
+        {/* <div className="inline-flex rounded border border-border bg-background">
           <button
             type="button"
             className="px-2 py-1 hover:bg-muted text-xs"
@@ -376,8 +379,8 @@ export const ComponentWrapper = ({
           >
             +100
           </button>
-        </div>
-
+        </div> */}
+{/* 
         <Button
           onClick={compress}
           size="sm"
@@ -400,9 +403,9 @@ export const ComponentWrapper = ({
 
         <div className="ml-2 rounded border border-border px-2 py-1 text-xs text-muted-foreground">
           {width === "auto" ? "auto" : `${width}px`}
-        </div>
+        </div> */}
 
-        <div className="mx-2 h-4 w-px bg-border" />
+        {/* <div className="mx-2 h-4 w-px bg-border" /> */}
 
         <OpenInV0Button url={`https://ruixen.com/r/${name}.json`} />
 

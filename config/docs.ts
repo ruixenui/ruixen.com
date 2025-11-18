@@ -27,6 +27,12 @@ export const docsConfig: DocsConfig = {
       title: "Blog",
       href: "/blog",
       event: "header_cta_clicked",
+      label: "",
+    },
+    {
+      title: "Supporter Wall",
+      href: "/supporters",
+      event: "header_cta_clicked",
       label: "New",
     },
   ],

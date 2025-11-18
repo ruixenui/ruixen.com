@@ -28,7 +28,20 @@ import {
 export function CommandMenu({ ...props }: DialogProps) {
   const router = useRouter();
   const [open, setOpen] = React.useState(false);
+  const [selectedCategory, setSelectedCategory] = React.useState<string>("all");
   const { setTheme } = useTheme();
+
+  // Extract component categories from Components section
+  const componentCategories = React.useMemo(() => {
+    const componentsGroup = docsConfig.sidebarNav.find(
+      (group) => group.title === "Components"
+    );
+    if (!componentsGroup?.items) return [];
+    
+    return componentsGroup.items
+      .filter((item) => item.items && item.items.length > 0 && !item.href)
+      .map((item) => item.title);
+  }, []);
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -74,6 +87,40 @@ export function CommandMenu({ ...props }: DialogProps) {
       </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
         <CommandInput placeholder="Type a command or search..." />
+        
+        {/* Category Filter Buttons - horizontal scroll */}
+        <div className="border-b bg-background">
+          <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-muted scrollbar-track-transparent">
+            <div className="flex gap-1.5 px-3 py-2 min-w-max">
+              <Button
+                variant={selectedCategory === "all" ? "default" : "outline"}
+                size="sm"
+                className="h-7 text-xs shrink-0"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setSelectedCategory("all");
+                }}
+              >
+                All
+              </Button>
+              {componentCategories.map((category) => (
+                <Button
+                  key={category}
+                  variant={selectedCategory === category ? "default" : "outline"}
+                  size="sm"
+                  className="h-7 text-xs shrink-0"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setSelectedCategory(category);
+                  }}
+                >
+                  {category}
+                </Button>
+              ))}
+            </div>
+          </div>
+        </div>
+
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup heading="Links">
@@ -92,24 +139,70 @@ export function CommandMenu({ ...props }: DialogProps) {
                 </CommandItem>
               ))}
           </CommandGroup>
-          {docsConfig.sidebarNav.map((group) => (
-            <CommandGroup key={group.title} heading={group.title}>
-              {group.items?.map((navItem) => (
-                <CommandItem
-                  key={navItem.href}
-                  value={navItem.title}
-                  onSelect={() => {
-                    runCommand(() => router.push(navItem.href as string));
-                  }}
-                >
-                  <div className="mr-2 flex size-4 items-center justify-center">
-                    <CircleIcon className="size-3" />
-                  </div>
-                  {navItem.title}
-                </CommandItem>
-              ))}
-            </CommandGroup>
-          ))}
+          {docsConfig.sidebarNav.map((group) => {
+            // Skip non-component groups if a specific category is selected
+            if (selectedCategory !== "all" && group.title !== "Components") {
+              return null;
+            }
+
+            // Filter items based on selected category
+            const filteredItems = group.items?.filter((navItem) => {
+              if (selectedCategory === "all") return true;
+              if (group.title !== "Components") return true;
+              return navItem.title === selectedCategory;
+            });
+
+            // Don't show empty groups
+            if (!filteredItems || filteredItems.length === 0) return null;
+
+            return (
+              <CommandGroup key={group.title} heading={group.title}>
+                {filteredItems.map((navItem) => {
+                  // If item has children (subcategories), show them with breadcrumb
+                  if (navItem.items && navItem.items.length > 0 && !navItem.href) {
+                    return navItem.items.map((subItem) => (
+                      <CommandItem
+                        key={subItem.href}
+                        value={`${group.title} ${navItem.title} ${subItem.title}`}
+                        onSelect={() => {
+                          runCommand(() => router.push(subItem.href as string));
+                        }}
+                      >
+                        <div className="mr-2 flex size-4 items-center justify-center">
+                          <CircleIcon className="size-3" />
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          <span className="text-muted-foreground text-xs">
+                            {navItem.title}
+                          </span>
+                          <span className="text-muted-foreground">/</span>
+                          <span>{subItem.title}</span>
+                        </div>
+                      </CommandItem>
+                    ));
+                  }
+                  // Regular item with href
+                  if (navItem.href) {
+                    return (
+                      <CommandItem
+                        key={navItem.href}
+                        value={navItem.title}
+                        onSelect={() => {
+                          runCommand(() => router.push(navItem.href as string));
+                        }}
+                      >
+                        <div className="mr-2 flex size-4 items-center justify-center">
+                          <CircleIcon className="size-3" />
+                        </div>
+                        {navItem.title}
+                      </CommandItem>
+                    );
+                  }
+                  return null;
+                })}
+              </CommandGroup>
+            );
+          })}
           <CommandSeparator />
           <CommandGroup heading="Theme">
             <CommandItem onSelect={() => runCommand(() => setTheme("light"))}>

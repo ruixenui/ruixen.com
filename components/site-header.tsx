@@ -31,6 +31,7 @@ export async function SiteHeader() {
 
     if (response.ok) {
       const data = await response.json();
+      console.log("stars_github:", data);
       stars = data.watchers || stars;
     }
   } catch (error) {
@@ -64,6 +65,7 @@ export async function SiteHeader() {
             </div>
             <div className="ml-2 flex items-center gap-1 text-sm md:flex">
               <StarIcon className="size-4 text-gray-500 transition-all duration-300 group-hover:text-yellow-300" />
+              <span>{stars}</span>
             </div>
           </Link>
 
