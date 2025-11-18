@@ -563,3 +563,13 @@
     box-shadow: 0 30px 20px rgba(0, 0, 0, 0.3);
   }
 }
+
+@keyframes orbit3d {
+  0% { transform: rotateX(20deg) rotateY(0deg); }
+  100% { transform: rotateX(20deg) rotateY(-360deg); }
+}
+
+@keyframes tilt {
+  0%, 100% { transform: rotateX(10deg) rotateY(0deg); }
+  50% { transform: rotateX(-10deg) rotateY(10deg); }
+}
