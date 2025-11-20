@@ -19,9 +19,9 @@ export async function SiteHeader() {
       {
         headers: process.env.GITHUB_OAUTH_TOKEN
           ? {
-              Authorization: `Bearer ${process.env.GITHUB_OAUTH_TOKEN}`,
-              "Content-Type": "application/json",
-            }
+            Authorization: `Bearer ${process.env.GITHUB_OAUTH_TOKEN}`,
+            "Content-Type": "application/json",
+          }
           : {},
         next: {
           revalidate: 3600,
@@ -31,7 +31,7 @@ export async function SiteHeader() {
 
     if (response.ok) {
       const data = await response.json();
-      console.log("stars_github:", data);
+      // console.log("stars_github:", data);
       stars = data.watchers || stars;
     }
   } catch (error) {
@@ -48,7 +48,7 @@ export async function SiteHeader() {
         <MainNav />
         <MobileNav />
         <div className="flex flex-1 items-center justify-between gap-2 md:justify-end">
-          <Link
+          {/* <Link
             className={cn(
               buttonVariants({
                 variant: "rainbow",
@@ -67,7 +67,7 @@ export async function SiteHeader() {
               <StarIcon className="size-4 text-gray-500 transition-all duration-300 group-hover:text-yellow-300" />
               <span>{stars}</span>
             </div>
-          </Link>
+          </Link> */}
 
           <div className="w-full flex-1 md:w-auto md:flex-none">
             <CommandMenu />

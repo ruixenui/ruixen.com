@@ -21,7 +21,29 @@ export const docsConfig: DocsConfig = {
       title: "Gradients",
       href: "/gradients",
       event: "gradients_clicked",
+      label: "",
+    },
+    {
+      title: "Generator",
+      href: "/glass-morphism",
+      event: "header_cta_clicked",
       label: "New",
+      items: [
+        {
+          title: "Glass Morphism",
+          href: "/generator/glass-morphism",
+        },
+        {
+          title: "Shadow Generator",
+          href: "/generator/shadow-generator",
+          label: "Soon",
+        },
+        {
+          title: "Gradient Generator",
+          href: "/generator/gradient-generator",
+          label: "Soon",
+        },
+      ],
     },
     {
       title: "Blog",
@@ -30,7 +52,7 @@ export const docsConfig: DocsConfig = {
       label: "",
     },
     {
-      title: "Supporter Wall",
+      title: "Supporters",
       href: "/supporters",
       event: "header_cta_clicked",
       label: "New",
