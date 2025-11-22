@@ -2562,6 +2562,19 @@
       ]
     },
     {
+      "name": "particle-text-dots",
+      "type": "registry:ui",
+      "title": "Particle Text Dots",
+      "description": "Text rendered as interactive particle dots that react to cursor movement, similar to Gemini's background effect.",
+      "files": [
+        {
+          "path": "registry/ruixenui/particle-text-dots.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/particle-text-dots.tsx"
+        }
+      ]
+    },
+    {
       "name": "rain-background",
       "type": "registry:ui",
       "title": "Rain Background",
@@ -7300,6 +7313,22 @@
           "path": "registry/example/particle-field-demo.tsx",
           "type": "registry:example",
           "target": "components/particle-field-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "particle-text-dots-demo",
+      "type": "registry:example",
+      "title": "Particle Text Dots Demo",
+      "description": "Example showing text rendered as interactive particle dots with cursor effects.",
+      "registryDependencies": [
+        "https://ruixen.com/r/particle-text-dots"
+      ],
+      "files": [
+        {
+          "path": "registry/example/particle-text-dots-demo.tsx",
+          "type": "registry:example",
+          "target": "components/particle-text-dots-demo.tsx"
         }
       ]
     },

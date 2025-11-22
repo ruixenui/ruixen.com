@@ -2145,6 +2145,20 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "particle-text-dots",
+    type: "registry:ui",
+    title: "Particle Text Dots",
+    description:
+      "Text rendered as interactive particle dots that react to cursor movement, similar to Gemini's background effect.",
+    files: [
+      {
+        path: "registry/ruixenui/particle-text-dots.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/particle-text-dots.tsx",
+      },
+    ],
+  },
+  {
     name: "rain-background",
     type: "registry:ui",
     title: "Rain Background",
