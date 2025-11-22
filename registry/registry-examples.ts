@@ -1996,6 +1996,21 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "particle-text-dots-demo",
+    type: "registry:example",
+    title: "Particle Text Dots Demo",
+    description:
+      "Example showing text rendered as interactive particle dots with cursor effects.",
+    registryDependencies: ["https://ruixen.com/r/particle-text-dots"],
+    files: [
+      {
+        path: "registry/example/particle-text-dots-demo.tsx",
+        type: "registry:example",
+        target: "components/particle-text-dots-demo.tsx",
+      },
+    ],
+  },
+  {
     name: "rain-background-demo",
     type: "registry:example",
     title: "Rain Background Demo",

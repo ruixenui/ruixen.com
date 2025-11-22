@@ -3345,6 +3345,30 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "particle-text-dots": {
+    name: "particle-text-dots",
+    description:
+      "Text rendered as interactive particle dots that react to cursor movement, similar to Gemini's background effect.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/particle-text-dots.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/particle-text-dots.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/particle-text-dots.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "rain-background": {
     name: "rain-background",
     description: "A neon rain effect with animated streaks and glow orbs.",
@@ -9928,6 +9952,32 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/particle-field-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "particle-text-dots-demo": {
+    name: "particle-text-dots-demo",
+    description:
+      "Example showing text rendered as interactive particle dots with cursor effects.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/particle-text-dots"],
+    files: [
+      {
+        path: "registry/example/particle-text-dots-demo.tsx",
+        type: "registry:example",
+        target: "components/particle-text-dots-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/particle-text-dots-demo.tsx"
+      );
       const exportName =
         Object.keys(mod).find(
           (key) =>

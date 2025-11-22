@@ -34,10 +34,10 @@ export function CommandMenu({ ...props }: DialogProps) {
   // Extract component categories from Components section
   const componentCategories = React.useMemo(() => {
     const componentsGroup = docsConfig.sidebarNav.find(
-      (group) => group.title === "Components"
+      (group) => group.title === "Components",
     );
     if (!componentsGroup?.items) return [];
-    
+
     return componentsGroup.items
       .filter((item) => item.items && item.items.length > 0 && !item.href)
       .map((item) => item.title);
@@ -87,7 +87,7 @@ export function CommandMenu({ ...props }: DialogProps) {
       </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
         <CommandInput placeholder="Type a command or search..." />
-        
+
         {/* Category Filter Buttons - horizontal scroll */}
         <div className="border-b bg-background">
           <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-muted scrollbar-track-transparent">
@@ -106,7 +106,9 @@ export function CommandMenu({ ...props }: DialogProps) {
               {componentCategories.map((category) => (
                 <Button
                   key={category}
-                  variant={selectedCategory === category ? "default" : "outline"}
+                  variant={
+                    selectedCategory === category ? "default" : "outline"
+                  }
                   size="sm"
                   className="h-7 text-xs shrink-0"
                   onClick={(e) => {
@@ -159,7 +161,11 @@ export function CommandMenu({ ...props }: DialogProps) {
               <CommandGroup key={group.title} heading={group.title}>
                 {filteredItems.map((navItem) => {
                   // If item has children (subcategories), show them with breadcrumb
-                  if (navItem.items && navItem.items.length > 0 && !navItem.href) {
+                  if (
+                    navItem.items &&
+                    navItem.items.length > 0 &&
+                    !navItem.href
+                  ) {
                     return navItem.items.map((subItem) => (
                       <CommandItem
                         key={subItem.href}
