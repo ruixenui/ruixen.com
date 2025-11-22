@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "particle-text-dots-demo",
+  "type": "registry:example",
+  "title": "Particle Text Dots Demo",
+  "description": "Example showing text rendered as interactive particle dots with cursor effects.",
+  "registryDependencies": [
+    "https://ruixen.com/r/particle-text-dots"
+  ],
+  "files": [
+    {
+      "path": "registry/example/particle-text-dots-demo.tsx",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { ParticleTextDots } from \"@/registry/ruixenui/particle-text-dots\";\r\n\r\nexport default function ParticleTextDotsDemo() {\r\n  return (\r\n    <div className=\"relative flex justify-center\">\r\n      <ParticleTextDots text=\"3\" variant=\"dark\" />\r\n    </div>\r\n  );\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/particle-text-dots-demo.tsx"
+    }
+  ]
+}
