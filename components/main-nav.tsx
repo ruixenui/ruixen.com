@@ -67,34 +67,16 @@ export function MainNav() {
         <ContextMenuContent>
           <ContextMenuItem
             className="flex items-center gap-2"
-            onClick={() =>
-              copyLogoAsSVG(
-                "/ruixen-ui-nw.png",
-              )
-            }
+            onClick={() => copyLogoAsSVG("/ruixen-ui-nw.png")}
           >
-            <Image
-              src="/ruixen-ui-nw.png"
-              alt="Logo"
-              width={28}
-              height={28}
-            />
+            <Image src="/ruixen-ui-nw.png" alt="Logo" width={28} height={28} />
             <span>Copy Logo as SVG</span>
           </ContextMenuItem>
           <ContextMenuItem
             className="flex items-center gap-2"
-            onClick={() =>
-              copyLogoAsPNG(
-                "/ruixen-ui-nw.png",
-              )
-            }
+            onClick={() => copyLogoAsPNG("/ruixen-ui-nw.png")}
           >
-            <Image
-              src="/ruixen-ui-nw.png"
-              alt="Logo"
-              width={28}
-              height={28}
-            />
+            <Image src="/ruixen-ui-nw.png" alt="Logo" width={28} height={28} />
             <span>Copy Logo as PNG</span>
           </ContextMenuItem>
         </ContextMenuContent>

@@ -104,18 +104,14 @@ export default function SiteFooter() {
         <div className="flex flex-col md:flex-row justify-between items-start mb-12 space-y-4 md:space-y-0 border-b pb-6">
           <div className="flex items-center space-x-1">
             <Image
-              src={
-                "/ruixen-ui-nw-light.png"
-              }
+              src={"/ruixen-ui-nw-light.png"}
               alt="Ruixen Logo"
               width={40}
               height={40}
               className="rounded-full h-10 w-10 dark:block hidden"
             />
             <Image
-              src={
-                "/ruixen-ui-nw.png"
-              }
+              src={"/ruixen-ui-nw.png"}
               alt="Ruixen Logo"
               width={40}
               height={40}

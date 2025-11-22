@@ -2,7 +2,7 @@
 
 import { Index } from "@/__registry__";
 import { ComponentWrapper } from "@/components/component-wrapper";
-import { Icons } from "@/components/icons";
+import Image from "next/image";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 import * as React from "react";
@@ -77,10 +77,12 @@ export function ComponentPreview({
               fallback={
                 <div className="flex min-h-[360px] items-center justify-center">
                   <div className="flex flex-col items-center gap-3">
-                    <img
+                    <Image
                       src="/ruixen_logo_blue_1024.svg"
                       alt="Loading"
                       className="size-12 animate-pulse"
+                      width={1024}
+                      height={1024}
                     />
                     <span className="text-sm text-muted-foreground">
                       Loading...
