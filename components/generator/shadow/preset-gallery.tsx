@@ -1,9 +1,7 @@
-// components/shadow/PresetGallery.tsx
 "use client"
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
-import { Button } from "@/components/ui/button"
 import { ShadowState, materialElevation, neumorph, glassShadow, hardShadow, floatingCard, buttonShadow } from "@/lib/shadow"
 
 export default function PresetGallery({ state, setState }: { state: ShadowState; setState: (s: ShadowState) => void }) {
@@ -25,12 +23,12 @@ export default function PresetGallery({ state, setState }: { state: ShadowState;
       <CardContent>
         <Tabs defaultValue="material">
           <TabsList className="flex-wrap">
-            <TabsTrigger value="material">Material Elevation 1–24</TabsTrigger>
+            <TabsTrigger value="material">Material Elevation 1-24</TabsTrigger>
             <TabsTrigger value="soft">Soft UI (Neumorphism)</TabsTrigger>
             <TabsTrigger value="hard">Hard Shadows</TabsTrigger>
             <TabsTrigger value="floating">Floating Cards</TabsTrigger>
             <TabsTrigger value="button">Button Shadows</TabsTrigger>
-            <TabsTrigger value="glass">Glass‑compatible</TabsTrigger>
+            <TabsTrigger value="glass">Glass-compatible</TabsTrigger>
           </TabsList>
 
           <TabsContent value="material" className="mt-4">

@@ -50,14 +50,14 @@ export function MainNav() {
               alt="Ruixen Logo"
               width={60}
               height={60}
-              className="rounded-full h-11 w-11 block dark:hidden"
+              className="rounded-full h-9 w-9 block dark:hidden"
             />
             <Image
               src="/ruixen-ui-nw-light.png"
               alt="Ruixen Logo"
               width={60}
               height={60}
-              className="rounded-full h-11 w-11 hidden dark:block"
+              className="rounded-full h-9 w-9 hidden dark:block"
             />
             <span className="hidden font-semibold md:inline-block">
               {siteConfig.name}

@@ -25,7 +25,7 @@ export const docsConfig: DocsConfig = {
     },
     {
       title: "Generator",
-      href: "/glass-morphism",
+      href: "/",
       event: "header_cta_clicked",
       label: "New",
       items: [
@@ -36,12 +36,12 @@ export const docsConfig: DocsConfig = {
         {
           title: "Shadow Generator",
           href: "/generator/shadow-generator",
-          label: "Soon",
+          label: "",
         },
         {
-          title: "Gradient Generator",
-          href: "/generator/gradient-generator",
-          label: "Soon",
+          title: "CSS Gradient Generator",
+          href: "/generator/css-generator",
+          label: "",
         },
       ],
     },
