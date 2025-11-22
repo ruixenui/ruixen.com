@@ -3,7 +3,16 @@
 import { OpenInV0Button } from "@/components/open-in-v0-button";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { RotateCcw, Maximize2, Minimize2, X, Smartphone, Tablet, Monitor, Laptop } from "lucide-react";
+import {
+  RotateCcw,
+  Maximize2,
+  Minimize2,
+  X,
+  Smartphone,
+  Tablet,
+  Monitor,
+  Laptop,
+} from "lucide-react";
 import * as React from "react";
 import { createPortal } from "react-dom";
 
@@ -242,14 +251,14 @@ export const ComponentWrapper = ({
     label?: string;
     icon?: React.ComponentType<{ className?: string }>;
     value: PreviewWidth;
-    title?: string
+    title?: string;
   }> = [
-      { label: "Auto", value: "auto", title: "Use container width" },
-      { icon: Smartphone, value: 375, title: "Mobile (375px)" },
-      { icon: Tablet, value: 640, title: "Tablet Small (640px)" },
-      { icon: Tablet, value: 768, title: "Tablet (768px)" },
-      { icon: Laptop, value: 1024, title: "Laptop (1024px)" },
-    ];
+    { label: "Auto", value: "auto", title: "Use container width" },
+    { icon: Smartphone, value: 375, title: "Mobile (375px)" },
+    { icon: Tablet, value: 640, title: "Tablet Small (640px)" },
+    { icon: Tablet, value: 768, title: "Tablet (768px)" },
+    { icon: Laptop, value: 1024, title: "Laptop (1024px)" },
+  ];
 
   const compress = () => setWidthImmediate(375);
   const expand = () => setWidthImmediate("auto");
@@ -380,7 +389,7 @@ export const ComponentWrapper = ({
             +100
           </button>
         </div> */}
-{/* 
+        {/* 
         <Button
           onClick={compress}
           size="sm"

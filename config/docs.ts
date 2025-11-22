@@ -1398,6 +1398,12 @@ export const docsConfig: DocsConfig = {
               label: "",
             },
             {
+              title: "Particle Text Dots",
+              href: `/docs/components/particle-text-dots`,
+              items: [],
+              label: "New",
+            },
+            {
               title: "Rain Background",
               href: `/docs/components/rain-background`,
               items: [],
