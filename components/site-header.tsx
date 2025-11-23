@@ -86,7 +86,7 @@ export async function SiteHeader() {
                   "w-9 px-0",
                 )}
               >
-                <Icons.discord className="size-4" />
+                <Icons.discord className="size-5" />
                 <span className="sr-only">Discord</span>
               </div>
             </Link>
@@ -108,7 +108,7 @@ export async function SiteHeader() {
                   alt="GitHub"
                   width={28}
                   height={28}
-                  className="size-6"
+                  className="size-5"
                 />
                 <span className="sr-only">GitHub</span>
               </div>
@@ -143,7 +143,7 @@ export async function SiteHeader() {
                   "w-9 px-0",
                 )}
               >
-                <Icons.instagram className="size-4" />
+                <Icons.instagram className="size-5" />
                 <span className="sr-only">Instagram</span>
               </div>
             </Link>

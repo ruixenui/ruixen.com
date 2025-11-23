@@ -1,0 +1,539 @@
+---
+title: "The Harsh Truth: 90% of React UI Libraries Slow You Down — Here’s How I Fixed It"
+description: "Why most React UI libraries quietly destroy developer productivity and UI performance, and a practical approach to building fast UI components for React, Next.js, Tailwind, and modern design systems."
+image: https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/gradients/shade_shiters/shade-shifters-01.png
+author: Sri Somanaath
+tag: Architecture
+publishedOn: 2025-10-24T12:36:00.000Z
+featured: false
+---
+
+Most teams think they have a **React problem**.
+
+They don’t.
+
+They have a **React UI library** problem.
+
+Every sprint feels slower, every new screen fights you, and you quietly accept the lag because _“at least we’re using a component library, that’s what serious teams do.”_
+
+Here’s the uncomfortable truth: **for most React / Next.js apps, the UI library is the biggest drag on developer productivity and UI performance.**
+
+I’ve been on both sides of this. I’ve shipped with all the usual suspects. I’ve had the “why is this simple change a 2‑day task?” argument too many times.
+
+Eventually I stopped blaming React and started treating UI libraries as a performance bottleneck like any other.
+
+This is what I found and how I fixed it.
+
+---
+
+## The real metric: time to ship a boring screen
+
+Ignore the marketing site components. Ignore the landing page hero.
+
+The only metric that matters:
+
+> **How long does it take to ship a boring, real screen using your React UI library?**
+
+Example screen:
+
+- Table with server‑side pagination and filters  
+- Inline edit modal  
+- Toasts on success/error  
+- User menu in the header
+
+If that takes **days** instead of **hours**, your UI stack is working against you.
+
+The usual symptoms:
+
+- You keep **fighting the abstraction**: variants that don’t match your design system, layout hacks, prop soup.
+- Simple changes require **digging into the library source** to understand what’s actually happening.
+- Performance “tuning” means **turning off features** instead of making fast UI components the default.
+
+That’s not “engineering with leverage”. That’s vendor lock‑in disguised as productivity.
+
+---
+
+## How React UI libraries quietly slow you down
+
+Most libraries slow you down in 3 ways at the same time:
+
+1. **Cognitive overhead**
+2. **Styling and theming friction**
+3. **Runtime and bundle bloat**
+
+### 1. Cognitive overhead: you’re learning _their_ React
+
+You already know React, Next.js, and Tailwind.
+
+But the library makes you learn:
+
+- Its own prop naming scheme  
+- Its own layout primitives  
+- Its own “design language”  
+- Its own state abstractions and hooks
+
+Instead of:
+
+```tsx
+<button className="px-3 py-1.5 rounded border text-sm">
+  Save
+</button>
+```
+
+You end up with:
+
+```tsx
+<Button
+  variant="primary"
+  size="sm"
+  intent="solid"
+  tone="brand"
+  leftIcon={<SaveIcon />}
+  isLoading={isSaving}
+>
+  Save
+</Button>
+```
+
+Looks harmless, until:
+
+- `variant` + `size` collide with your design tokens  
+- Default spacing doesn’t match your Figma spec  
+- The loading state injects extra DOM and ARIA you can’t control  
+- You need a **slightly different** button and end up duplicating the component internally
+
+Every “simple” component becomes **yet another DSL** you have to memorize before you can move fast.
+
+### 2. Styling friction: Tailwind vs theme objects vs “just override it”
+
+If your stack is **Next.js + Tailwind**, most UI libraries are fundamentally misaligned with how you want to work.
+
+Common patterns:
+
+- Theme objects and design tokens defined in JS/TS, incompatible with Tailwind’s config
+- “Override CSS class” escape hatches that create selector hell
+- Runtime theming (CSS‑in‑JS) that fights Next.js streaming / RSC
+
+You’ve probably seen this:
+
+```tsx
+<Card
+  className="!bg-slate-950 !border-slate-800" // please don’t
+  styles={{
+    header: { paddingBottom: 4 },
+    body: { paddingTop: 0 },
+  }}
+>
+  ...
+</Card>
+```
+
+This is how design systems **rot**:
+
+- The library defines one world of styles.  
+- Tailwind defines another.  
+- Your app ends up with a **third**, unmaintainable mess of overrides.
+
+### 3. Runtime + bundle bloat: UI performance death by a thousand cuts
+
+Most React UI libraries were designed when:
+
+- Everything was CSR
+- Nobody cared about RSC boundaries
+- Bundle size was “someone else’s problem”
+
+Today, with Next.js app router and server components, that model is obsolete.
+
+You still see:
+
+- Huge, tree‑shaky‑in‑theory-but-not-really bundles  
+- Deep component trees for trivial UI (5+ nested wrappers for a button)  
+- CSS‑in‑JS with runtime style generation  
+- A context provider for every basic interaction (theme, modal, toaster, etc.)
+
+Under real load, this turns into:
+
+- Janky interactions on low‑end devices  
+- Hydration warnings because the library wasn’t built with RSC in mind  
+- Slow initial render because your “simple screen” pulls half the library
+
+That’s not “just how React is”. That’s bad architecture.
+
+---
+
+## Why “just pick a popular React UI library” fails in practice
+
+Popular ≠ aligned with your constraints.
+
+Most libraries optimize for:
+
+- **Showcase demos** (dense component grids, pretty dashboards)  
+- **Design team checkboxes** (tokens, themes, Figma kits)  
+- **Marketing** (“1,000+ components!”)
+
+They do **not** optimize for:
+
+- **Boring product work** that teams actually ship
+- **Strict UI performance budgets** on real hardware
+- **Next.js app router + RSC** realities
+- **Incremental migration** from legacy UI without rewrites
+
+The failure modes show up as:
+
+- “We can’t change that component because it’s used everywhere”  
+- “We can’t upgrade the library because we forked half of it”  
+- “We can’t move to server components because our UI library assumes everything is client‑side”
+
+At that point, your React UI library isn’t a dependency. It’s **infrastructure** you’re stuck maintaining.
+
+---
+
+## My breaking point: one screen, three rewrites
+
+The moment I lost patience was a fairly standard screen:
+
+- Filters on the left  
+- Paginated table on the right  
+- Batch actions  
+- A slide‑over details panel
+
+I had to:
+
+1. Implement it with the “blessed” React UI library.  
+2. Rewrite parts to match the actual design system.  
+3. Rewrite **again** to make it not feel slow on low‑end laptops.
+
+Each rewrite ripped out more of the library until all that remained were a couple of headless primitives.
+
+At that point, the question became:
+
+> Why am I pulling an entire React UI library to use 5–10 headless patterns?
+
+That’s when I started from zero and defined what a **good** UI layer actually looks like for a modern React / Next.js stack.
+
+This thinking eventually led me to build Ruixen UI.
+
+---
+
+## The approach that finally worked
+
+The fix was not “build yet another React UI library.”
+
+The fix was:
+
+> **Treat UI as a small, sharp standard library, not a kitchen sink.**
+
+The constraints:
+
+- Must play perfectly with **Next.js app router** and **server components**.
+- Must assume **Tailwind** as the styling layer (or at least utility‑first CSS).
+- Must default to **fast UI components** without extra work.
+- Must be **delete‑friendly**: any piece can be replaced with a hand‑rolled component.
+
+From those constraints, a concrete approach emerged.
+
+### Core idea: headless + data attributes + Tailwind
+
+The pattern that kept winning:
+
+- **Headless components**: provide behavior and wiring, _not_ styles.
+- **Data attributes for state**: `data-state="open"`, `data-variant="ghost"`, etc.
+- **Tailwind as the styling DSL**: no theme objects, no runtime styling.
+
+Example:
+
+```tsx
+// Headless toggle
+function ToggleRoot(props: { onChange: (value: boolean) => void; defaultOn?: boolean }) {
+  // internal state + a11y
+  // ...
+}
+
+// Presentation
+function Toggle(props: { label: string; defaultOn?: boolean }) {
+  return (
+    <ToggleRoot defaultOn={props.defaultOn} onChange={(v) => console.log(v)}>
+      {(state) => (
+        <button
+          type="button"
+          data-state={state.on ? "on" : "off"}
+          className={cn(
+            "inline-flex items-center rounded-full px-3 py-1 text-xs",
+            "transition-colors",
+            "data-[state=on]:bg-emerald-500 data-[state=on]:text-white",
+            "data-[state=off]:bg-slate-800 data-[state=off]:text-slate-300",
+          )}
+        >
+          {props.label}
+        </button>
+      )}
+    </ToggleRoot>
+  );
+}
+```
+
+No theming API. No magic variants.
+
+Just:
+
+- A tiny headless primitive  
+- Clear UI state via `data-*`  
+- Tailwind classes you can reason about
+
+These principles are baked into Ruixen UI components.
+
+---
+
+## A simple framework for evaluating any React UI library
+
+Before adding any React UI library, I now ask **five** questions.
+
+If the answer to any of these is “no”, it’s a red flag.
+
+### 1. Can I use it in a Next.js server components world?
+
+- Does it **document** RSC compatibility?  
+- Can core primitives live on the server, with small client wrappers?  
+- Does it avoid forcing `use client` all the way down the tree?
+
+If the library assumes a 100% client hierarchy, expect trouble.
+
+### 2. Can I style everything with Tailwind (or equivalent) without fighting it?
+
+- Can I express states purely via `data-*` and class names?  
+- Can I drop in my own Tailwind config without touching their theme objects?  
+- Can I **delete** their CSS and still have usable, accessible components?
+
+If “styling” means “learn our custom theming engine”, pass.
+
+### 3. Is UI performance a first‑class concern?
+
+Look for:
+
+- Minimal wrappers and provider trees  
+- No runtime CSS‑in‑JS by default  
+- Clear story for **code splitting** and tree shaking  
+- No “one import to rule them all” index that drags everything in
+
+If the docs never mention UI performance, they didn’t design for it.
+
+### 4. Is the API boring?
+
+Good APIs are **boring**:
+
+- Props that map 1:1 to DOM / ARIA concepts  
+- No overlapping prop meanings  
+- No magical prop combos unlocking hidden behaviors
+
+Bad APIs are “clever”:
+
+```tsx
+<Card tone="info" emphasis="high" mode="outline" density="compact" />
+```
+
+You shouldn’t need a glossary to render a `div`.
+
+### 5. Can I eject individual components without breaking the world?
+
+- Can I **replace just the Table** implementation and keep using their Modal?  
+- Can I copy a component’s source into my repo without dragging a dependency graph with it?  
+- Does the library rely on a global theme provider for everything?
+
+If the answer is no, you’re locking your future velocity to their roadmap.
+
+---
+
+## What I actually changed in my stack
+
+I ended up with a few concrete rules for every new project.
+
+### Rule 1: UI library as “std lib”, not “framework”
+
+The UI layer exposes:
+
+- **10–20 primitives**, not 200–300  
+- A small set of **layout patterns** (stack, cluster, grid)  
+- A consistent way to handle focus, keyboard, and ARIA
+
+The rest lives in the app, close to the domain.
+
+### Rule 2: Components are either server‑safe or clearly client‑only
+
+Every component falls into one of two buckets:
+
+- **Server‑safe**: data display, layout, typography, icons
+- **Client‑only**: anything with local interaction (dialogs, menus, comboboxes, etc.)
+
+No ambiguity. No accidental `use client` at the top of your entire layout because a button needed a ripple effect.
+
+### Rule 3: No global theme dependency
+
+Design tokens live in Tailwind + CSS, not in a global JS theme object.
+
+- Colors = CSS variables or Tailwind tokens  
+- Spacing/typography = Tailwind scales  
+- Dark mode = CSS or Tailwind variant, not JS context
+
+This removes an entire class of problems around nested providers and runtime theme switching.
+
+### Rule 4: Everything must be copy‑pastable
+
+You should be able to:
+
+- Open the source of any component  
+- Copy it into your project  
+- Rename it  
+- Keep shipping
+
+If copying a component feels scary, you’ve given the library too much power over your codebase.
+
+---
+
+## How this led to Ruixen UI
+
+Once I’d followed these rules on a few projects, a pattern emerged:
+
+- The same **headless primitives** kept showing up (popover, listbox, dialog, command palette, sortable list, etc.).  
+- The same **fast UI components** were being built on top using Tailwind patterns.  
+- The same **Next.js‑specific constraints** (RSC boundaries, streaming, layouts) needed to be respected.
+
+At some point, it made sense to formalize those patterns instead of re‑implementing them from scratch on every project.
+
+This thinking eventually led me to build Ruixen UI.
+
+The goal wasn’t to build a shiny new React UI library.
+
+The goal was to:
+
+- Ship a **small set of primitives** focused on developer productivity  
+- Make every component **friendly to Next.js** and modern routing  
+- Keep styling **100% Tailwind‑compatible**, no surprises  
+- Bake UI performance into the defaults instead of as an afterthought
+
+These principles are baked into Ruixen UI components.
+
+---
+
+## Example: a dialog that doesn’t fight you
+
+Here’s the kind of DX I was aiming for.
+
+What I **don’t** want:
+
+```tsx
+// too much magic
+<Dialog
+  isOpen={isOpen}
+  onClose={setOpen}
+  position="right"
+  size="lg"
+  tone="default"
+  withBackdrop
+  trapFocus
+  scrollLock
+  zIndex={1300}
+>
+  <Dialog.Header title="Edit user" subtitle="Manage account settings" />
+  <Dialog.Body>
+    <UserForm />
+  </Dialog.Body>
+  <Dialog.Footer
+    primaryAction={{ label: "Save", onClick: handleSave }}
+    secondaryAction={{ label: "Cancel", onClick: () => setOpen(false) }}
+  />
+</Dialog>
+```
+
+Too many opinions. Too many props. Hard to integrate with your own layout.
+
+What I **do** want:
+
+```tsx
+// headless + Tailwind
+<DialogRoot open={open} onOpenChange={setOpen}>
+  <DialogTrigger asChild>
+    <button className="btn btn-primary">Edit</button>
+  </DialogTrigger>
+
+  <DialogPortal>
+    <DialogOverlay className="fixed inset-0 bg-black/60" />
+
+    <DialogContent
+      className={cn(
+        "fixed inset-y-0 right-0 w-full max-w-md",
+        "bg-slate-950 border-l border-slate-800",
+        "shadow-xl flex flex-col",
+      )}
+    >
+      <header className="border-b border-slate-800 px-4 py-3">
+        <h2 className="text-sm font-medium">Edit user</h2>
+      </header>
+
+      <main className="flex-1 overflow-y-auto px-4 py-3">
+        <UserForm />
+      </main>
+
+      <footer className="border-t border-slate-800 px-4 py-3 flex justify-end gap-2">
+        <button className="btn btn-ghost" onClick={() => setOpen(false)}>
+          Cancel
+        </button>
+        <button className="btn btn-primary" onClick={handleSave}>
+          Save
+        </button>
+      </footer>
+    </DialogContent>
+  </DialogPortal>
+</DialogRoot>
+```
+
+Behavior lives in a **small headless core**. Everything else is just React + Tailwind.
+
+This is how a React UI library should feel in 2025.
+
+---
+
+## Pulling this into your own stack (with or without Ruixen UI)
+
+You don’t have to adopt a new library to benefit from this.
+
+Start with these steps:
+
+1. **Audit your current stack**
+
+   - List where your React UI library is used.  
+   - Find the top 10 most painful components (modals, tables, forms, etc.).  
+   - Check bundle impact: what’s actually pulled into a boring screen?
+
+2. **Introduce headless primitives in parallel**
+
+   - Build or pull in headless components for dialogs, popovers, menus.  
+   - Style them with Tailwind and data attributes.  
+   - Replace the worst offenders first.
+
+3. **Move layout and typography out of the library**
+
+   - Create your own `Stack`, `Cluster`, `Page`, `Section` components.  
+   - Stop relying on the library’s layout primitives.  
+   - Keep those near your app, not in a dependency.
+
+4. **Set performance budgets**
+
+   - Decide what “fast UI components” means for you (e.g., main screen under X KB, interaction under Y ms).  
+   - Treat blowing that budget as a regression, not “we’ll fix it later.”
+
+If you want a reference implementation, that’s exactly what Ruixen UI is trying to be: a concrete, opinionated version of these ideas.
+
+---
+
+## Where to go from here
+
+If any of this felt uncomfortably familiar, you probably already know the answer:
+
+Your React UI library isn’t saving you time anymore.
+
+You can:
+
+- Keep patching over its limitations, or  
+- Start moving toward a smaller, sharper set of primitives that actually respect how React, Next.js, and Tailwind apps are built today.
+
+If you’re curious how far you can push this approach, go open Ruixen UI and look at the source and examples with your own eyes. Don’t take the claims at face value—inspect the components, check how they behave in a Next.js app, and decide whether this is closer to how **you** want to build UI.
