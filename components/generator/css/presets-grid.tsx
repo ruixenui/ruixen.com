@@ -4,7 +4,7 @@ import * as React from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Shuffle, Sparkles } from "lucide-react";
+import { Shuffle } from "lucide-react";
 import { gradientToCSSValue } from "@/utils/generate-css";
 import { PRESET_CATEGORIES, PRESET_GRADIENTS, type GradientPreset } from "@/utils/preset-gradients";
 
@@ -19,7 +19,6 @@ export function PresetsGrid({ onSelectPreset, onRandom }: PresetsGridProps) {
       <CardHeader className="pb-3">
         <div className="flex items-center justify-between">
           <CardTitle className="text-lg flex items-center gap-2">
-            <Sparkles className="h-4 w-4" />
             Presets
           </CardTitle>
           <Button size="sm" variant="outline" onClick={onRandom} className="gap-2">
@@ -30,7 +29,7 @@ export function PresetsGrid({ onSelectPreset, onRandom }: PresetsGridProps) {
       </CardHeader>
       <CardContent>
         <Tabs defaultValue="Trending">
-          <TabsList className="grid w-full grid-cols-4">
+          <TabsList className="grid w-full grid-cols-8">
             {PRESET_CATEGORIES.map((cat) => (
               <TabsTrigger key={cat} value={cat} className="text-xs">
                 {cat}
@@ -38,7 +37,7 @@ export function PresetsGrid({ onSelectPreset, onRandom }: PresetsGridProps) {
             ))}
           </TabsList>
           {PRESET_CATEGORIES.map((cat) => (
-            <TabsContent key={cat} value={cat} className="mt-3">
+            <TabsContent key={cat} value={cat} className="mt-6">
               <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
                 {PRESET_GRADIENTS.filter((p) => p.category === cat).map((preset) => (
                   <a href="#generator" key={preset.id}>

@@ -12,7 +12,7 @@ interface TypeSelectorProps {
 export function TypeSelector({ value, onChange }: TypeSelectorProps) {
   return (
     <div className="space-y-2">
-      <p className="text-xs font-medium text-slate-300">Type</p>
+      <p className="text-xs font-medium text-slate-500">Type</p>
       <Tabs value={value} onValueChange={(v) => onChange(v as GradientType)}>
         <TabsList className="grid w-full grid-cols-3">
           <TabsTrigger value="linear">Linear</TabsTrigger>

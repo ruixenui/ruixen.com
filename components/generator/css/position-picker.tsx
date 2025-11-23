@@ -37,7 +37,7 @@ export function PositionPicker({ origin, onChange }: PositionPickerProps) {
 
   return (
     <div className="space-y-2">
-      <p className="text-xs font-medium text-slate-300">Origin</p>
+      <p className="text-xs font-medium text-slate-500">Origin</p>
       <div
         ref={ref}
         className="relative h-28 w-full cursor-crosshair rounded-md border border-white/10 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"

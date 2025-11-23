@@ -22,7 +22,7 @@ export default function PresetGallery({ state, setState }: { state: ShadowState;
       </CardHeader>
       <CardContent>
         <Tabs defaultValue="material">
-          <TabsList className="flex-wrap">
+          <TabsList className="flex-wrap w-fit">
             <TabsTrigger value="material">Material Elevation 1-24</TabsTrigger>
             <TabsTrigger value="soft">Soft UI (Neumorphism)</TabsTrigger>
             <TabsTrigger value="hard">Hard Shadows</TabsTrigger>

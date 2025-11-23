@@ -27,7 +27,7 @@ export function ColorStopList({
   return (
     <div className="space-y-3">
       <div className="flex items-center justify-between">
-        <p className="text-xs font-semibold text-slate-200">Color Stops</p>
+        <p className="text-xs font-semibold text-slate-500">Color Stops</p>
         <Button size="sm" variant="outline" onClick={onAddStop}>
           + Add Stop
         </Button>

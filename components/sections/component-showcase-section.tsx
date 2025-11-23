@@ -385,7 +385,7 @@ export default function ComponentShowcaseSection() {
 
           {/* Feature Section 06 - Right Mid */}
           <Link
-            href="/docs/components/feature-section-06"
+            href="/docs/components/rotating-gradient-right"
             className="absolute right-[16%] md:right-[18%] lg:right-[24%] top-[52%] md:top-[55%] lg:top-[58%] h-[100px] w-[145px] md:h-[115px] md:w-[170px] lg:h-[125px] lg:w-[185px] z-18 rounded-xl shadow-lg animate-float-up overflow-hidden cursor-pointer hover:scale-105 hover:z-50 transition-all duration-300"
             style={{
               animationDelay: "-7.2s",
@@ -425,7 +425,7 @@ export default function ComponentShowcaseSection() {
 
           {/* Lumina Text - Left Lower */}
           <Link
-            href="/docs/components/rising-luma"
+            href="/docs/components/rising-glow"
             className="absolute left-[4%] md:left-[6%] lg:left-[10%] bottom-[48%] md:bottom-[50%] lg:bottom-[52%] h-[90px] w-[130px] md:h-[110px] md:w-[160px] lg:h-[120px] lg:w-44 z-12 rounded-xl shadow-lg animate-float-up overflow-hidden cursor-pointer hover:scale-105 hover:z-50 transition-all duration-300"
             style={{
               animationDelay: "-8.5s",
@@ -970,7 +970,7 @@ export default function ComponentShowcaseSection() {
 
           {/* Feature Section 06 - Right Mid */}
           <Link
-            href="/docs/components/feature-section-06"
+            href="/docs/components/rotating-gradient-right"
             className="absolute right-[10%] md:right-[12%] lg:right-[16%] top-[68%] md:top-[70%] lg:top-[72%] h-[100px] w-[145px] md:h-[115px] md:w-[170px] lg:h-[125px] lg:w-[185px] z-18 rounded-xl shadow-lg animate-float-up overflow-hidden cursor-pointer hover:scale-105 hover:z-50 transition-all duration-300"
             style={{
               animationDelay: "-7.2s",

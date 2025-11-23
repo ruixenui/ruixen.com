@@ -23,7 +23,7 @@ export function AngleControl({ value, onChange }: AngleControlProps) {
 
   return (
     <div className="space-y-2">
-      <div className="flex items-center justify-between text-xs font-medium text-slate-300">
+      <div className="flex items-center justify-between text-xs font-medium text-slate-500">
         <span>Angle</span>
         <span>{Math.round(value)}°</span>
       </div>

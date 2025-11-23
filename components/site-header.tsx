@@ -1,4 +1,3 @@
-import { StarIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
 
 import { CommandMenu } from "@/components/command-menu";
@@ -9,6 +8,7 @@ import { ModeToggle } from "@/components/mode-toggle";
 import { buttonVariants } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 export async function SiteHeader() {
   let stars = 300; // Default value
@@ -103,7 +103,7 @@ export async function SiteHeader() {
                   "w-9 px-0",
                 )}
               >
-                <Icons.gitHub className="size-4" />
+                <Image src="/github_gold.png" alt="GitHub" width={28} height={28} className="size-6" />
                 <span className="sr-only">GitHub</span>
               </div>
             </Link>

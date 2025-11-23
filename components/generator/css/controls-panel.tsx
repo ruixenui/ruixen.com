@@ -43,10 +43,12 @@ export function ControlsPanel({
   onRandom,
 }: ControlsPanelProps) {
   return (
-    <div className="space-y-4 rounded-xl border border-white/10 p-4 shadow-[0_18px_60px_rgba(0,0,0,0.7)] backdrop-blur-xl">
+    <div className="space-y-4 rounded-xl border border-white/10 p-4 backdrop-blur-xl">
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <TypeSelector value={gradient.type} onChange={onTypeChange} />
-        <PositionPicker origin={gradient.origin} onChange={onOriginChange} />
+        {(gradient.type === "radial" || gradient.type === "conic") && (
+          <PositionPicker origin={gradient.origin} onChange={onOriginChange} />
+        )}
       </div>
 
       {gradient.type === "linear" && (
@@ -63,7 +65,7 @@ export function ControlsPanel({
 
       <div className="grid gap-4 md:grid-cols-2">
         <div className="space-y-2">
-          <p className="text-xs font-medium text-slate-300">Blend Mode</p>
+          <p className="text-xs font-medium text-slate-500">Blend Mode</p>
           <Select
             value={gradient.blendMode}
             onValueChange={(v) => onBlendModeChange(v as BlendMode)}
@@ -79,13 +81,13 @@ export function ControlsPanel({
               ))}
             </SelectContent>
           </Select>
-          <p className="text-[10px] text-slate-500">
-            Useful when layering the gradient above content.
+          <p className="text-[10px] text-slate-400">
+            Blends gradient with black background layer.
           </p>
         </div>
 
         <div className="space-y-2">
-          <div className="flex items-center justify-between text-xs font-medium text-slate-300">
+          <div className="flex items-center justify-between text-xs font-medium text-slate-500">
             <span>Smoothness</span>
             <span>{Math.round(gradient.smoothness * 100)}%</span>
           </div>
