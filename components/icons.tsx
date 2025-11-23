@@ -31,7 +31,7 @@ export type IconProps = React.SVGProps<SVGSVGElement> & {
 };
 
 export const Icons = {
-  logo: ({ className, width = 60, height = 60, ...props }: IconProps) => (
+  logo: ({ className, width = 120, height = 120, ...props }: IconProps) => (
     <div className={className}>
       <Image
         src="/ruixen-ui-nw.png"

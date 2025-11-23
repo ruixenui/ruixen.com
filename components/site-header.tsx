@@ -1,4 +1,3 @@
-import { StarIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
 
 import { CommandMenu } from "@/components/command-menu";
@@ -9,6 +8,7 @@ import { ModeToggle } from "@/components/mode-toggle";
 import { buttonVariants } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 export async function SiteHeader() {
   let stars = 300; // Default value
@@ -19,9 +19,9 @@ export async function SiteHeader() {
       {
         headers: process.env.GITHUB_OAUTH_TOKEN
           ? {
-              Authorization: `Bearer ${process.env.GITHUB_OAUTH_TOKEN}`,
-              "Content-Type": "application/json",
-            }
+            Authorization: `Bearer ${process.env.GITHUB_OAUTH_TOKEN}`,
+            "Content-Type": "application/json",
+          }
           : {},
         next: {
           revalidate: 3600,
@@ -31,7 +31,7 @@ export async function SiteHeader() {
 
     if (response.ok) {
       const data = await response.json();
-      console.log("stars_github:", data);
+      // console.log("stars_github:", data);
       stars = data.watchers || stars;
     }
   } catch (error) {
@@ -48,7 +48,7 @@ export async function SiteHeader() {
         <MainNav />
         <MobileNav />
         <div className="flex flex-1 items-center justify-between gap-2 md:justify-end">
-          <Link
+          {/* <Link
             className={cn(
               buttonVariants({
                 variant: "rainbow",
@@ -67,7 +67,7 @@ export async function SiteHeader() {
               <StarIcon className="size-4 text-gray-500 transition-all duration-300 group-hover:text-yellow-300" />
               <span>{stars}</span>
             </div>
-          </Link>
+          </Link> */}
 
           <div className="w-full flex-1 md:w-auto md:flex-none">
             <CommandMenu />
@@ -103,7 +103,7 @@ export async function SiteHeader() {
                   "w-9 px-0",
                 )}
               >
-                <Icons.gitHub className="size-4" />
+                <Image src="/github_gold.png" alt="GitHub" width={28} height={28} className="size-6" />
                 <span className="sr-only">GitHub</span>
               </div>
             </Link>

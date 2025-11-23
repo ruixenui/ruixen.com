@@ -72,7 +72,7 @@ export function MobileNav() {
           }}
           className="flex items-center h-16 px-4 border-b border-border"
         >
-          <Icons.logo className="mr-2 size-4" />
+          <Icons.logo className="mr-2 size-8" />
           <span className="font-bold">{siteConfig.name}</span>
         </Link>
         <ScrollArea className="h-[calc(100vh-4rem)] p-4">

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Star } from "lucide-react";
+import Link from "next/link";
 
 const GITHUB_URL = "https://github.com/ruixenui/ruixen.com";
 
@@ -59,9 +60,7 @@ export default function GitHubStarPopup() {
               <div className="flex flex-col space-y-2">
                 <p className="text-[11px] text-muted-foreground leading-snug">
                   Star us & join{" "}
-                  <a
-                    href="/supporters"
-                  <a
+                  <Link
                     href="/supporters"
                     className="text-blue-600 underline font-medium"
                     onClick={(e) => {
@@ -69,7 +68,7 @@ export default function GitHubStarPopup() {
                     }}
                   >
                     supporters page
-                  </a>
+                  </Link>
                 </p>
 
                 <Button
@@ -91,7 +90,6 @@ export default function GitHubStarPopup() {
           </div>
         </div>
       </div>
-    </div>
     </div>
   );
 }
