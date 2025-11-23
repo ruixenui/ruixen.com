@@ -1,10 +1,14 @@
-"use client"
+"use client";
 
-import { useEffect, useMemo } from "react"
-import { RGBA } from "@/lib/glass"
-import { Label } from "@/components/ui/label"
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
-import { Button } from "@/components/ui/button"
+import { useEffect, useMemo } from "react";
+import { RGBA } from "@/lib/glass";
+import { Label } from "@/components/ui/label";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { Button } from "@/components/ui/button";
 import {
   ColorPicker as UIColorPicker,
   ColorPickerSelection,
@@ -12,19 +16,24 @@ import {
   ColorPickerAlpha,
   ColorPickerOutput,
   ColorPickerFormat,
-} from "@/components/ui/color-picker"
+} from "@/components/ui/color-picker";
 
 type Props = {
-  label: string
-  value: RGBA
-  onChange: (c: RGBA) => void
-}
+  label: string;
+  value: RGBA;
+  onChange: (c: RGBA) => void;
+};
 
 export default function ColorPicker({ label, value, onChange }: Props) {
   // Convert RGBA to format the color picker expects
   const colorValue = useMemo(() => {
-    return [value.r, value.g, value.b, value.a] as [number, number, number, number]
-  }, [value.r, value.g, value.b, value.a])
+    return [value.r, value.g, value.b, value.a] as [
+      number,
+      number,
+      number,
+      number,
+    ];
+  }, [value.r, value.g, value.b, value.a]);
 
   const handleColorChange = (newColor: [number, number, number, number]) => {
     onChange({
@@ -32,10 +41,10 @@ export default function ColorPicker({ label, value, onChange }: Props) {
       g: Math.round(newColor[1]),
       b: Math.round(newColor[2]),
       a: newColor[3],
-    })
-  }
+    });
+  };
 
-  const displayColor = `rgba(${value.r}, ${value.g}, ${value.b}, ${value.a})`
+  const displayColor = `rgba(${value.r}, ${value.g}, ${value.b}, ${value.a})`;
 
   return (
     <div className="space-y-3">
@@ -58,7 +67,7 @@ export default function ColorPicker({ label, value, onChange }: Props) {
             value={colorValue}
             onChange={(color) => {
               if (Array.isArray(color) && color.length === 4) {
-                handleColorChange(color as [number, number, number, number])
+                handleColorChange(color as [number, number, number, number]);
               }
             }}
             className="w-full"
@@ -78,5 +87,5 @@ export default function ColorPicker({ label, value, onChange }: Props) {
         </PopoverContent>
       </Popover>
     </div>
-  )
+  );
 }

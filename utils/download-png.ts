@@ -106,7 +106,8 @@ export function downloadPNG(state: GradientState, filename = "gradient.png") {
 function sampleStops(stops: ColorStop[], t: number): string {
   if (!stops.length) return "transparent";
   if (t <= stops[0].position) return stopColor(stops[0]);
-  if (t >= stops[stops.length - 1].position) return stopColor(stops[stops.length - 1]);
+  if (t >= stops[stops.length - 1].position)
+    return stopColor(stops[stops.length - 1]);
 
   for (let i = 0; i < stops.length - 1; i++) {
     const a = stops[i];

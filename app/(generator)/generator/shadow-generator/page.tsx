@@ -1,5 +1,5 @@
-import ShadowGeneratorPage from "@/components/generator/shadow/shadow-generator-page"
-import type { Metadata } from "next"
+import ShadowGeneratorPage from "@/components/generator/shadow/shadow-generator-page";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Shadow Generator — Beautiful Shadows in Seconds | Ruixen UI (2025)",
@@ -24,8 +24,8 @@ export const metadata: Metadata = {
     type: "website",
   },
   alternates: { canonical: "https://www.ruixen.com/tools/shadow" },
-}
+};
 
 export default function Page() {
-  return <ShadowGeneratorPage />
+  return <ShadowGeneratorPage />;
 }

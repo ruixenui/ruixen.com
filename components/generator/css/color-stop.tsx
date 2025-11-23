@@ -5,7 +5,11 @@ import type { ColorStop } from "@/lib/use-gradient";
 import { Slider } from "@/components/ui/slider";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+} from "@/components/ui/popover";
 import { GripVertical, Lock, Unlock, Pipette, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -94,7 +98,7 @@ export function ColorStopRow({
     <div className="flex items-start gap-3 rounded-lg border bg-card px-3 py-3">
       <button
         className={cn(
-          "mt-1 cursor-grab text-muted-foreground hover:text-foreground active:cursor-grabbing"
+          "mt-1 cursor-grab text-muted-foreground hover:text-foreground active:cursor-grabbing",
         )}
         {...dragHandleProps}
       >
@@ -130,7 +134,11 @@ export function ColorStopRow({
               />
               <Popover>
                 <PopoverTrigger asChild>
-                  <Button variant="outline" size="icon" className="h-8 w-8 text-xs">
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="h-8 w-8 text-xs"
+                  >
                     {mode.toUpperCase()}
                   </Button>
                 </PopoverTrigger>
@@ -233,7 +241,11 @@ export function ColorStopRow({
                 onClick={onToggleLock}
                 title={stop.locked ? "Unlock" : "Lock"}
               >
-                {stop.locked ? <Lock className="h-3 w-3" /> : <Unlock className="h-3 w-3" />}
+                {stop.locked ? (
+                  <Lock className="h-3 w-3" />
+                ) : (
+                  <Unlock className="h-3 w-3" />
+                )}
               </Button>
               <Button
                 variant="outline"

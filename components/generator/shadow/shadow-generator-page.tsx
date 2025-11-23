@@ -203,7 +203,8 @@ function SeoArticle() {
 
       <h3>Exporting CSS & Tailwind Shadow Classes</h3>
       <p>
-        Ruixen UI allows you to copy a production-ready CSS <code>box-shadow</code> 
+        Ruixen UI allows you to copy a production-ready CSS{" "}
+        <code>box-shadow</code>
         block or generate a Tailwind class using an arbitrary{" "}
         <code>shadow-[...]</code> value. Multiple comma-separated layers are
         included automatically. If you generate dynamic classes in a Tailwind

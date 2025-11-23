@@ -4,7 +4,8 @@ import { PRESET_GRADIENTS, presetToState } from "./preset-gradients";
 
 export function getRandomGradient(current?: GradientState): GradientState {
   // simple: pick a random preset; keep locked stops where possible
-  const preset = PRESET_GRADIENTS[Math.floor(Math.random() * PRESET_GRADIENTS.length)];
+  const preset =
+    PRESET_GRADIENTS[Math.floor(Math.random() * PRESET_GRADIENTS.length)];
   const base = presetToState(preset);
   if (!current) return base;
 
@@ -16,12 +17,7 @@ export function getRandomGradient(current?: GradientState): GradientState {
   locked.forEach((ls, i) => {
     merged.push({
       ...ls,
-      position:
-        i === 0
-          ? 0
-          : i === locked.length - 1
-          ? 1
-          : ls.position,
+      position: i === 0 ? 0 : i === locked.length - 1 ? 1 : ls.position,
     });
   });
   unlocked.forEach((us) => merged.push(us));

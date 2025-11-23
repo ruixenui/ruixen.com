@@ -31,14 +31,14 @@ export function GeneratorMenu() {
       <button
         className={cn(
           "flex items-center gap-1 text-sm font-medium transition-colors hover:text-foreground/80",
-          isOpen ? "text-foreground" : "text-foreground/60"
+          isOpen ? "text-foreground" : "text-foreground/60",
         )}
       >
         Generator
         <ChevronDown
           className={cn(
             "h-3 w-3 transition-transform duration-200",
-            isOpen && "rotate-180"
+            isOpen && "rotate-180",
           )}
         />
       </button>

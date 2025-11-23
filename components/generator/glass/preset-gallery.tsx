@@ -1,29 +1,35 @@
 // components/glass/PresetGallery.tsx
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { GlassState, rgba } from "@/lib/glass"
-import type { NamedPreset } from "@/data/presets"
-import Link from 'next/link';
+import { useEffect, useState } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { GlassState, rgba } from "@/lib/glass";
+import type { NamedPreset } from "@/data/presets";
+import Link from "next/link";
 
 type Props = {
-  builtins: NamedPreset[]
-  current: GlassState
-  onApply: (state: GlassState) => void
-}
+  builtins: NamedPreset[];
+  current: GlassState;
+  onApply: (state: GlassState) => void;
+};
 
-type CustomPreset = { id: string; name: string; state: GlassState }
+type CustomPreset = { id: string; name: string; state: GlassState };
 
-const LS_KEY = "glass-custom-presets-v1"
+const LS_KEY = "glass-custom-presets-v1";
 
-function PresetCard({ preset, onClick }: { preset: NamedPreset; onClick: () => void }) {
-  const { state } = preset
-  const bgColor = rgba(state.bgColor)
-  const borderColor = rgba(state.borderColor)
-  const sat = state.saturate / 100
+function PresetCard({
+  preset,
+  onClick,
+}: {
+  preset: NamedPreset;
+  onClick: () => void;
+}) {
+  const { state } = preset;
+  const bgColor = rgba(state.bgColor);
+  const borderColor = rgba(state.borderColor);
+  const sat = state.saturate / 100;
 
   const cardStyle: React.CSSProperties = {
     background: bgColor,
@@ -31,11 +37,13 @@ function PresetCard({ preset, onClick }: { preset: NamedPreset; onClick: () => v
     WebkitBackdropFilter: `blur(${state.blur}px) saturate(${sat})`,
     border: `${state.borderWidth}px solid ${borderColor}`,
     borderRadius: `${state.radius}px`,
-    boxShadow: state.shadow ? `0 8px 24px rgba(0,0,0,${0.06 + state.shadowIntensity * 0.2})` : "none",
-  }
+    boxShadow: state.shadow
+      ? `0 8px 24px rgba(0,0,0,${0.06 + state.shadowIntensity * 0.2})`
+      : "none",
+  };
 
   // Generate unique background based on preset colors
-  const bgGradient = `radial-gradient(circle at 20% 30%, ${rgba({ ...state.bgColor, a: 0.4 })}, transparent 50%), radial-gradient(circle at 80% 70%, ${rgba({ ...state.borderColor, a: 0.3 })}, transparent 50%)`
+  const bgGradient = `radial-gradient(circle at 20% 30%, ${rgba({ ...state.bgColor, a: 0.4 })}, transparent 50%), radial-gradient(circle at 80% 70%, ${rgba({ ...state.borderColor, a: 0.3 })}, transparent 50%)`;
 
   return (
     <Link href="#generator">
@@ -69,34 +77,40 @@ function PresetCard({ preset, onClick }: { preset: NamedPreset; onClick: () => v
         </div>
       </button>
     </Link>
-  )
+  );
 }
 
 export default function PresetGallery({ builtins, current, onApply }: Props) {
-  const [name, setName] = useState("")
-  const [custom, setCustom] = useState<CustomPreset[]>([])
+  const [name, setName] = useState("");
+  const [custom, setCustom] = useState<CustomPreset[]>([]);
 
   useEffect(() => {
-    const raw = localStorage.getItem(LS_KEY)
+    const raw = localStorage.getItem(LS_KEY);
     if (raw) {
-      try { setCustom(JSON.parse(raw)) } catch { }
+      try {
+        setCustom(JSON.parse(raw));
+      } catch {}
     }
-  }, [])
+  }, []);
 
   const saveCustom = () => {
-    if (!name.trim()) return
-    const np: CustomPreset = { id: crypto.randomUUID(), name: name.trim(), state: current }
-    const next = [np, ...custom].slice(0, 40)
-    setCustom(next)
-    localStorage.setItem(LS_KEY, JSON.stringify(next))
-    setName("")
-  }
+    if (!name.trim()) return;
+    const np: CustomPreset = {
+      id: crypto.randomUUID(),
+      name: name.trim(),
+      state: current,
+    };
+    const next = [np, ...custom].slice(0, 40);
+    setCustom(next);
+    localStorage.setItem(LS_KEY, JSON.stringify(next));
+    setName("");
+  };
 
   const removeCustom = (id: string) => {
-    const next = custom.filter(c => c.id !== id)
-    setCustom(next)
-    localStorage.setItem(LS_KEY, JSON.stringify(next))
-  }
+    const next = custom.filter((c) => c.id !== id);
+    setCustom(next);
+    localStorage.setItem(LS_KEY, JSON.stringify(next));
+  };
 
   return (
     <Card>
@@ -109,7 +123,7 @@ export default function PresetGallery({ builtins, current, onApply }: Props) {
             placeholder="Name your preset..."
             value={name}
             onChange={(e) => setName(e.target.value)}
-            onKeyDown={(e) => e.key === 'Enter' && saveCustom()}
+            onKeyDown={(e) => e.key === "Enter" && saveCustom()}
             className="flex-1"
           />
           <Button onClick={saveCustom} disabled={!name.trim()}>
@@ -121,7 +135,11 @@ export default function PresetGallery({ builtins, current, onApply }: Props) {
           <h3 className="text-sm font-semibold mb-3">Built-in Presets</h3>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
             {builtins.map((p) => (
-              <PresetCard key={p.id} preset={p} onClick={() => onApply(p.state)} />
+              <PresetCard
+                key={p.id}
+                preset={p}
+                onClick={() => onApply(p.state)}
+              />
             ))}
           </div>
         </div>
@@ -138,8 +156,8 @@ export default function PresetGallery({ builtins, current, onApply }: Props) {
                     variant="destructive"
                     className="absolute top-1 right-1 h-6 w-6 p-0 opacity-0 group-hover:opacity-100 transition-opacity"
                     onClick={(e) => {
-                      e.stopPropagation()
-                      removeCustom(p.id)
+                      e.stopPropagation();
+                      removeCustom(p.id);
                     }}
                   >
                     ×
@@ -151,5 +169,5 @@ export default function PresetGallery({ builtins, current, onApply }: Props) {
         )}
       </CardContent>
     </Card>
-  )
+  );
 }

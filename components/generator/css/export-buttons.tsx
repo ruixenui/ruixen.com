@@ -20,8 +20,14 @@ export function ExportButtons({ gradient }: ExportButtonsProps) {
   const [copiedTailwind, setCopiedTailwind] = React.useState(false);
   const [activeTab, setActiveTab] = React.useState("css");
 
-  const cssCode = React.useMemo(() => generateGradientCSS(gradient), [gradient]);
-  const tailwindCode = React.useMemo(() => generateTailwindClass(gradient), [gradient]);
+  const cssCode = React.useMemo(
+    () => generateGradientCSS(gradient),
+    [gradient],
+  );
+  const tailwindCode = React.useMemo(
+    () => generateTailwindClass(gradient),
+    [gradient],
+  );
 
   const copyCss = async () => {
     if (navigator.clipboard?.writeText) {
@@ -50,8 +56,17 @@ export function ExportButtons({ gradient }: ExportButtonsProps) {
             <FileCode className="h-4 w-4" />
             Export Code
           </CardTitle>
-          <Button size="sm" variant="outline" onClick={copyActive} className="gap-2">
-            {isCopied ? <Check className="h-3 w-3" /> : <Copy className="h-3 w-3" />}
+          <Button
+            size="sm"
+            variant="outline"
+            onClick={copyActive}
+            className="gap-2"
+          >
+            {isCopied ? (
+              <Check className="h-3 w-3" />
+            ) : (
+              <Copy className="h-3 w-3" />
+            )}
             {isCopied ? "Copied!" : "Copy"}
           </Button>
         </div>
@@ -69,7 +84,9 @@ export function ExportButtons({ gradient }: ExportButtonsProps) {
           </TabsContent>
           <TabsContent value="tailwind" className="mt-3">
             <div className="relative rounded-lg bg-muted p-4 font-mono text-xs overflow-x-auto">
-              <pre className="whitespace-pre-wrap break-all">{tailwindCode}</pre>
+              <pre className="whitespace-pre-wrap break-all">
+                {tailwindCode}
+              </pre>
             </div>
           </TabsContent>
         </Tabs>

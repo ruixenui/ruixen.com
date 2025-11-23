@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/particle-text-dots-demo.tsx",
-      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { ParticleTextDots } from \"@/registry/ruixenui/particle-text-dots\";\r\n\r\nexport default function ParticleTextDotsDemo() {\r\n  return (\r\n    <div className=\"relative flex justify-center\">\r\n      <ParticleTextDots text=\"3\" variant=\"dark\" />\r\n    </div>\r\n  );\r\n}\r\n",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { ParticleTextDots } from \"@/registry/ruixenui/particle-text-dots\";\n\nexport default function ParticleTextDotsDemo() {\n  return (\n    <div className=\"relative flex justify-center pt-3 px-3\">\n      <ParticleTextDots text=\"UI/UX\" variant=\"dark\" />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/particle-text-dots-demo.tsx"
     }

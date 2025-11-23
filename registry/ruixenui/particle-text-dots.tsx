@@ -61,7 +61,7 @@ export function ParticleTextDots({
     const createParticlesFromText = (
       w: number,
       h: number,
-      raw: string
+      raw: string,
     ): Particle[] => {
       const label = raw.trim() || "3";
 
@@ -78,7 +78,7 @@ export function ParticleTextDots({
       const targetWidth = w * 0.8;
       const fontSize = Math.min(
         maxFontHeight,
-        targetWidth / Math.max(1, label.length * approxCharWidth)
+        targetWidth / Math.max(1, label.length * approxCharWidth),
       );
 
       octx.fillStyle = variant === "dark" ? "#ffffff" : "#020617";
@@ -212,13 +212,10 @@ export function ParticleTextDots({
         const dx = p.x - mouse.x;
         const dy = p.y - mouse.y;
         const dist = Math.sqrt(dx * dx + dy * dy) || 1;
-        const near = mouse.active
-          ? Math.max(0, 1 - dist / influenceRadius)
-          : 0;
+        const near = mouse.active ? Math.max(0, 1 - dist / influenceRadius) : 0;
 
         // subtle, slow twinkle
-        const flickerBase =
-          (Math.sin(t * 1.0 + p.phase * 1.7) + 1) * 0.5; // 0..1
+        const flickerBase = (Math.sin(t * 1.0 + p.phase * 1.7) + 1) * 0.5; // 0..1
         const flicker = 0.85 + 0.15 * flickerBase; // 0.85..1.0
 
         const depthFactor = 0.55 + p.depth * 0.45;
@@ -275,7 +272,7 @@ export function ParticleTextDots({
         variant === "dark"
           ? "border-slate-800 bg-black"
           : "border-slate-200 bg-slate-50",
-        className
+        className,
       )}
     >
       <canvas

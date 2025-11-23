@@ -1,28 +1,41 @@
 // components/glass/SliderControl.tsx
-"use client"
+"use client";
 
-import { Slider } from "@/components/ui/slider"
-import { Label } from "@/components/ui/label"
-import { cn } from "@/lib/utils"
+import { Slider } from "@/components/ui/slider";
+import { Label } from "@/components/ui/label";
+import { cn } from "@/lib/utils";
 
 type Props = {
-  label: string
-  min: number
-  max: number
-  step?: number
-  value: number[]
-  onValueChange: (v: number[]) => void
-  suffix?: string
-  disabled?: boolean
-  className?: string
-}
+  label: string;
+  min: number;
+  max: number;
+  step?: number;
+  value: number[];
+  onValueChange: (v: number[]) => void;
+  suffix?: string;
+  disabled?: boolean;
+  className?: string;
+};
 
-export default function SliderControl({ label, min, max, step=1, value, onValueChange, suffix, disabled, className }: Props) {
+export default function SliderControl({
+  label,
+  min,
+  max,
+  step = 1,
+  value,
+  onValueChange,
+  suffix,
+  disabled,
+  className,
+}: Props) {
   return (
     <div className={cn("space-y-2", className)}>
       <div className="flex items-center justify-between">
         <Label className="text-sm font-medium">{label}</Label>
-        <span className="text-xs text-muted-foreground font-mono">{value[0]}{suffix}</span>
+        <span className="text-xs text-muted-foreground font-mono">
+          {value[0]}
+          {suffix}
+        </span>
       </div>
       <Slider
         aria-label={label}
@@ -35,5 +48,5 @@ export default function SliderControl({ label, min, max, step=1, value, onValueC
         className="w-full"
       />
     </div>
-  )
+  );
 }

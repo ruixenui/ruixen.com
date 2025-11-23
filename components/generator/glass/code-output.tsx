@@ -1,32 +1,53 @@
-"use client"
+"use client";
 
-import { useMemo, useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
-import { Button } from "@/components/ui/button"
-import { generatePureCss, generateTailwindSnippet, formatCssBlock, downloadFile, copyToClipboard, GlassState } from "@/lib/glass"
-import { Textarea } from "@/components/ui/textarea"
+import { useMemo, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { Button } from "@/components/ui/button";
+import {
+  generatePureCss,
+  generateTailwindSnippet,
+  formatCssBlock,
+  downloadFile,
+  copyToClipboard,
+  GlassState,
+} from "@/lib/glass";
+import { Textarea } from "@/components/ui/textarea";
 
-type Props = { value: GlassState; shareUrl: string }
+type Props = { value: GlassState; shareUrl: string };
 
 export default function CodeOutput({ value, shareUrl }: Props) {
-  const [tab, setTab] = useState<"tailwind" | "css">("tailwind")
-  const [clicked, setClicked] = useState<string | null>(null)
+  const [tab, setTab] = useState<"tailwind" | "css">("tailwind");
+  const [clicked, setClicked] = useState<string | null>(null);
 
-  const tailwindSnippet = useMemo(() => generateTailwindSnippet(value), [value])
-  const cssSnippet = useMemo(() => formatCssBlock(generatePureCss(value)), [value])
+  const tailwindSnippet = useMemo(
+    () => generateTailwindSnippet(value),
+    [value],
+  );
+  const cssSnippet = useMemo(
+    () => formatCssBlock(generatePureCss(value)),
+    [value],
+  );
 
   const animate = (key: string) => {
-    setClicked(key)
-    setTimeout(() => setClicked(null), 1200)
-  }
+    setClicked(key);
+    setTimeout(() => setClicked(null), 1200);
+  };
 
   return (
     <Card>
       <CardHeader className="pb-3">
         <CardTitle className="text-lg">Code Output</CardTitle>
-        <CardDescription>Copy Tailwind snippet or download a .css file.</CardDescription>
+        <CardDescription>
+          Copy Tailwind snippet or download a .css file.
+        </CardDescription>
       </CardHeader>
 
       <CardContent className="space-y-4">
@@ -50,8 +71,8 @@ export default function CodeOutput({ value, shareUrl }: Props) {
                 size="sm"
                 className="cursor-pointer"
                 onClick={() => {
-                  copyToClipboard(tailwindSnippet)
-                  animate("copy-tw")
+                  copyToClipboard(tailwindSnippet);
+                  animate("copy-tw");
                 }}
               >
                 <AnimatePresence mode="wait">
@@ -82,8 +103,12 @@ export default function CodeOutput({ value, shareUrl }: Props) {
                 variant="outline"
                 className="cursor-pointer"
                 onClick={() => {
-                  downloadFile("glass-tailwind.html", tailwindSnippet, "text/html")
-                  animate("download-tw")
+                  downloadFile(
+                    "glass-tailwind.html",
+                    tailwindSnippet,
+                    "text/html",
+                  );
+                  animate("download-tw");
                 }}
               >
                 <AnimatePresence mode="wait">
@@ -124,8 +149,8 @@ export default function CodeOutput({ value, shareUrl }: Props) {
                 size="sm"
                 className="cursor-pointer"
                 onClick={() => {
-                  copyToClipboard(cssSnippet)
-                  animate("copy-css")
+                  copyToClipboard(cssSnippet);
+                  animate("copy-css");
                 }}
               >
                 <AnimatePresence mode="wait">
@@ -150,8 +175,8 @@ export default function CodeOutput({ value, shareUrl }: Props) {
                 variant="outline"
                 className="cursor-pointer"
                 onClick={() => {
-                  downloadFile("glass.css", cssSnippet, "text/css")
-                  animate("download-css")
+                  downloadFile("glass.css", cssSnippet, "text/css");
+                  animate("download-css");
                 }}
               >
                 <AnimatePresence mode="wait">
@@ -165,7 +190,9 @@ export default function CodeOutput({ value, shareUrl }: Props) {
                       Downloaded ↓
                     </motion.span>
                   ) : (
-                    <motion.span key="download-css-idle">Download .css</motion.span>
+                    <motion.span key="download-css-idle">
+                      Download .css
+                    </motion.span>
                   )}
                 </AnimatePresence>
               </Button>
@@ -180,8 +207,8 @@ export default function CodeOutput({ value, shareUrl }: Props) {
             variant="secondary"
             className="w-full sm:w-auto cursor-pointer"
             onClick={() => {
-              copyToClipboard(shareUrl)
-              animate("share")
+              copyToClipboard(shareUrl);
+              animate("share");
             }}
           >
             <AnimatePresence mode="wait">
@@ -202,9 +229,11 @@ export default function CodeOutput({ value, shareUrl }: Props) {
         </div>
 
         <p className="text-xs text-muted-foreground leading-relaxed">
-          Note: If you generate Tailwind classes at runtime, consider safelisting arbitrary values in your Tailwind config for production builds.
+          Note: If you generate Tailwind classes at runtime, consider
+          safelisting arbitrary values in your Tailwind config for production
+          builds.
         </p>
       </CardContent>
     </Card>
-  )
+  );
 }

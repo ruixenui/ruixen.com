@@ -1,10 +1,14 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Label } from "@/components/ui/label"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
+import { useState } from "react";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import {
   ColorPicker as UIColorPicker,
   ColorPickerSelection,
@@ -12,18 +16,26 @@ import {
   ColorPickerAlpha,
   ColorPickerOutput,
   ColorPickerFormat,
-} from "@/components/ui/color-picker"
+} from "@/components/ui/color-picker";
 
-export default function ColorPicker({ label, value, onHex }: { label: string; value: string; onHex: (hex: string) => void }) {
-  const [open, setOpen] = useState(false)
+export default function ColorPicker({
+  label,
+  value,
+  onHex,
+}: {
+  label: string;
+  value: string;
+  onHex: (hex: string) => void;
+}) {
+  const [open, setOpen] = useState(false);
 
   const handleColorChange = (color: [number, number, number, number]) => {
-    const r = Math.round(color[0])
-    const g = Math.round(color[1])
-    const b = Math.round(color[2])
-    const hex = `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`
-    onHex(hex)
-  }
+    const r = Math.round(color[0]);
+    const g = Math.round(color[1]);
+    const b = Math.round(color[2]);
+    const hex = `#${r.toString(16).padStart(2, "0")}${g.toString(16).padStart(2, "0")}${b.toString(16).padStart(2, "0")}`;
+    onHex(hex);
+  };
 
   return (
     <div className="space-y-3">
@@ -46,7 +58,7 @@ export default function ColorPicker({ label, value, onHex }: { label: string; va
             defaultValue={value}
             onChange={(color) => {
               if (Array.isArray(color) && color.length === 4) {
-                handleColorChange(color as [number, number, number, number])
+                handleColorChange(color as [number, number, number, number]);
               }
             }}
             className="w-full"
@@ -66,5 +78,5 @@ export default function ColorPicker({ label, value, onHex }: { label: string; va
         </PopoverContent>
       </Popover>
     </div>
-  )
+  );
 }

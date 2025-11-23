@@ -33,7 +33,6 @@ export default function GitHubStarPopup() {
           <div className="absolute -inset-1 bg-gradient-to-br from-primary/30 via-primary/10 to-transparent rounded-xl blur-md opacity-70 group-hover:opacity-90 transition-all duration-500" />
           <div className="absolute -inset-0.5 bg-gradient-to-tr from-background/40 via-background/20 to-transparent rounded-xl blur-sm" />
 
-
           <div className="relative w-[220px] rounded-xl border border-blue-600 bg-background/80 backdrop-blur-xl shadow-2xl overflow-hidden">
             {/* Liquid wave animation */}
             <div className="absolute inset-0 opacity-20 pointer-events-none">
@@ -54,7 +53,6 @@ export default function GitHubStarPopup() {
                 style={{ animationDuration: "4s", animationDelay: "1s" }}
               />
             </div>
-
 
             <div className="relative p-3">
               <div className="flex flex-col space-y-2">

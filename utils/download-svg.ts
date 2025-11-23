@@ -3,7 +3,7 @@ import type { GradientState, ColorStop } from "@/lib/use-gradient";
 function stopToSvg(stop: ColorStop): string {
   const offset = (stop.position * 100).toFixed(2) + "%";
   return `<stop offset="${offset}" stop-color="${stop.color}" stop-opacity="${stop.opacity.toFixed(
-    3
+    3,
   )}"/>`;
 }
 

@@ -84,7 +84,7 @@ export function MainNav() {
       <nav className="hidden items-center space-x-6 text-sm font-medium xl:flex">
         {docsConfig.mainNav.map((item) => {
           const hasDropdown = item.items && item.items.length > 0;
-          
+
           if (hasDropdown) {
             return (
               <div key={item.href} className="relative group">
@@ -105,7 +105,7 @@ export function MainNav() {
                     </span>
                   )}
                 </Link>
-                
+
                 {/* Dropdown Menu */}
                 <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-out">
                   <div className="bg-background/95 backdrop-blur-sm border border-border rounded-lg shadow-lg overflow-hidden min-w-[200px]">
@@ -133,7 +133,7 @@ export function MainNav() {
               </div>
             );
           }
-          
+
           return (
             <Link
               key={item.href}

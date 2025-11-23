@@ -19,9 +19,9 @@ export async function SiteHeader() {
       {
         headers: process.env.GITHUB_OAUTH_TOKEN
           ? {
-            Authorization: `Bearer ${process.env.GITHUB_OAUTH_TOKEN}`,
-            "Content-Type": "application/json",
-          }
+              Authorization: `Bearer ${process.env.GITHUB_OAUTH_TOKEN}`,
+              "Content-Type": "application/json",
+            }
           : {},
         next: {
           revalidate: 3600,
@@ -103,7 +103,13 @@ export async function SiteHeader() {
                   "w-9 px-0",
                 )}
               >
-                <Image src="/github_gold.png" alt="GitHub" width={28} height={28} className="size-6" />
+                <Image
+                  src="/github_gold.png"
+                  alt="GitHub"
+                  width={28}
+                  height={28}
+                  className="size-6"
+                />
                 <span className="sr-only">GitHub</span>
               </div>
             </Link>

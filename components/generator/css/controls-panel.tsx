@@ -1,12 +1,22 @@
 "use client";
 
 import * as React from "react";
-import type { GradientState, GradientType, BlendMode } from "@/lib/use-gradient";
+import type {
+  GradientState,
+  GradientType,
+  BlendMode,
+} from "@/lib/use-gradient";
 import { AngleControl } from "./angle-control";
 import { TypeSelector } from "./type-selector";
 import { PositionPicker } from "./position-picker";
 import { Slider } from "@/components/ui/slider";
-import { Select, SelectTrigger, SelectContent, SelectItem, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectTrigger,
+  SelectContent,
+  SelectItem,
+  SelectValue,
+} from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 
 interface ControlsPanelProps {

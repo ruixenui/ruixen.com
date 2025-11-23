@@ -33,7 +33,8 @@ export function PositionPicker({ origin, onChange }: PositionPickerProps) {
     handle(e.clientX, e.clientY);
   };
 
-  const onPointerUp: React.PointerEventHandler<HTMLDivElement> = () => setDragging(false);
+  const onPointerUp: React.PointerEventHandler<HTMLDivElement> = () =>
+    setDragging(false);
 
   return (
     <div className="space-y-2">
@@ -49,7 +50,7 @@ export function PositionPicker({ origin, onChange }: PositionPickerProps) {
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_0_0,rgba(255,255,255,0.25),transparent_45%),radial-gradient(circle_at_100%_100%,rgba(15,23,42,0.9),transparent_40%)] mix-blend-screen" />
         <div
           className={cn(
-            "pointer-events-none absolute z-10 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/80 shadow-[0_0_0_4px_rgba(0,0,0,0.55)] bg-white/80"
+            "pointer-events-none absolute z-10 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/80 shadow-[0_0_0_4px_rgba(0,0,0,0.55)] bg-white/80",
           )}
           style={{
             left: `${origin.x * 100}%`,

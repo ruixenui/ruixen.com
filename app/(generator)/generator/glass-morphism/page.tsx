@@ -1,9 +1,10 @@
 // app/glass/page.tsx
-import GlassGeneratorPage from "@/components/generator/glass/glass-generator-page"
-import type { Metadata } from "next"
+import GlassGeneratorPage from "@/components/generator/glass/glass-generator-page";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Glassmorphism Generator – Free CSS & Tailwind Tool (2025) | Ruixen UI",
+  title:
+    "Glassmorphism Generator – Free CSS & Tailwind Tool (2025) | Ruixen UI",
   description:
     "Generate beautiful glassmorphism UI instantly. Customize blur, transparency, borders, shadows and gradients. Export CSS & Tailwind. 100% free, modern, fast and easy.",
   keywords: [
@@ -25,8 +26,8 @@ export const metadata: Metadata = {
     type: "website",
   },
   alternates: { canonical: "https://www.ruixen.com/tools/glass" },
-}
+};
 
 export default function Page() {
-  return <GlassGeneratorPage />
+  return <GlassGeneratorPage />;
 }

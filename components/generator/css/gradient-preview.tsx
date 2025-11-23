@@ -71,7 +71,7 @@ export function GradientPreview({
           <div
             className={cn(
               "pointer-events-none absolute z-10 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/80",
-              dragging ? "bg-white" : "bg-white/70"
+              dragging ? "bg-white" : "bg-white/70",
             )}
             style={originStyle}
           >

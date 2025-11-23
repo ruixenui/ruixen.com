@@ -2,7 +2,11 @@
 "use client";
 
 import { useCallback, useMemo, useState } from "react";
-import { PRESET_GRADIENTS, presetToState, type GradientPreset } from "@/utils/preset-gradients";
+import {
+  PRESET_GRADIENTS,
+  presetToState,
+  type GradientPreset,
+} from "@/utils/preset-gradients";
 import { getRandomGradient } from "@/utils/random-gradient";
 
 export type GradientType = "linear" | "radial" | "conic";
@@ -82,7 +86,9 @@ function createDefaultState(): GradientState {
 }
 
 export function useGradient(): UseGradientResult {
-  const [gradient, setGradient] = useState<GradientState>(() => createDefaultState());
+  const [gradient, setGradient] = useState<GradientState>(() =>
+    createDefaultState(),
+  );
 
   const setType = useCallback((type: GradientType) => {
     setGradient((g) => ({ ...g, type }));
@@ -90,7 +96,7 @@ export function useGradient(): UseGradientResult {
 
   const setAngle = useCallback((angle: number) => {
     setGradient((g) =>
-      g.type === "linear" || g.type === "conic" ? { ...g, angle } : g
+      g.type === "linear" || g.type === "conic" ? { ...g, angle } : g,
     );
   }, []);
 
@@ -110,8 +116,8 @@ export function useGradient(): UseGradientResult {
         typeof position === "number"
           ? position
           : g.stops.length >= 2
-          ? (g.stops[0].position + g.stops[g.stops.length - 1].position) / 2
-          : 0.5;
+            ? (g.stops[0].position + g.stops[g.stops.length - 1].position) / 2
+            : 0.5;
       const id = crypto.randomUUID?.() ?? Math.random().toString(36).slice(2);
       const newStop: ColorStop = {
         id,
@@ -119,7 +125,9 @@ export function useGradient(): UseGradientResult {
         opacity: 1,
         position: Math.min(1, Math.max(0, newPos)),
       };
-      const stops = [...g.stops, newStop].sort((a, b) => a.position - b.position);
+      const stops = [...g.stops, newStop].sort(
+        (a, b) => a.position - b.position,
+      );
       return { ...g, stops };
     });
   }, []);
@@ -179,7 +187,9 @@ export function useGradient(): UseGradientResult {
         const j = Math.floor(Math.random() * (i + 1));
         [unlocked[i], unlocked[j]] = [unlocked[j], unlocked[i]];
       }
-      const combined = [...locked, ...unlocked].sort((a, b) => a.position - b.position);
+      const combined = [...locked, ...unlocked].sort(
+        (a, b) => a.position - b.position,
+      );
       return { ...g, stops: combined };
     });
   }, []);
@@ -187,7 +197,9 @@ export function useGradient(): UseGradientResult {
   const toggleStopLock = useCallback((id: string) => {
     setGradient((g) => ({
       ...g,
-      stops: g.stops.map((s) => (s.id === id ? { ...s, locked: !s.locked } : s)),
+      stops: g.stops.map((s) =>
+        s.id === id ? { ...s, locked: !s.locked } : s,
+      ),
     }));
   }, []);
 
