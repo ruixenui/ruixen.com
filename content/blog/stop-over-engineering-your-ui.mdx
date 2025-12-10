@@ -33,15 +33,15 @@ They ship slow because they:
 
 You’ve seen patterns like:
 
-- `BaseButton` → `AppButton` → `PrimaryButton` → `SubmitButton`  
+- `BaseButton` → `AppButton` → `PrimaryButton` → `SubmitButton`
 - `Layout` → `PageLayout` → `DashboardLayout` → `DashboardSettingsLayout`
 
 All to render a `<button>` and a div with some padding.
 
 On top of this, Next.js gets dragged into it:
 
-- Everything is a **client component** “just in case”.  
-- Shared “UI abstractions” leak into data fetching.  
+- Everything is a **client component** “just in case”.
+- Shared “UI abstractions” leak into data fetching.
 - “Reusable” Next.js components become impossible to change without breaking half the app.
 
 That’s not fast UI development. That’s architecture cosplay.
@@ -56,8 +56,8 @@ Over-engineering feels smart until you look at the bill.
 
 Every extra abstraction is another thing a new engineer has to learn:
 
-- What does `SmartForm` actually do?  
-- Why do we have `AppTable`, `DataTable`, and `SmartTable`?  
+- What does `SmartForm` actually do?
+- Why do we have `AppTable`, `DataTable`, and `SmartTable`?
 - Which `Button` is the “right” one?
 
 Your **developer productivity** tanks because nobody can predict behavior without diving into the source.
@@ -97,8 +97,8 @@ These are the principles I use now.
 
 Build **one screen** first.
 
-- Hard-code what you need.  
-- Use raw HTML + Tailwind + tiny helpers.  
+- Hard-code what you need.
+- Use raw HTML + Tailwind + tiny helpers.
 - Don’t extract “reusable” components yet.
 
 Only after the screen works and feels right do you look for **patterns worth extracting**.
@@ -107,8 +107,8 @@ Only after the screen works and feels right do you look for **patterns worth ext
 
 > Don’t build a reusable abstraction until you have **three real use cases**.
 
-- One use case = duplication.  
-- Two use cases = probably coincidence.  
+- One use case = duplication.
+- Two use cases = probably coincidence.
 - Three use cases = actual pattern.
 
 Until you hit three, keep things local:
@@ -120,15 +120,11 @@ function NotificationsPage() {
     <section className="space-y-6">
       <header>
         <h1 className="text-lg font-semibold">Notifications</h1>
-        <p className="text-sm text-slate-500">
-          Control how we notify you.
-        </p>
+        <p className="text-sm text-slate-500">Control how we notify you.</p>
       </header>
 
       {/* local, boring UI – not a “NotificationPreferencesForm” library */}
-      <form className="space-y-4">
-        {/* ... */}
-      </form>
+      <form className="space-y-4">{/* ... */}</form>
     </section>
   );
 }
@@ -182,8 +178,8 @@ Stop building theme engines unless you actually need them.
 
 Use **Tailwind UI classes** as your primary styling surface:
 
-- `className` is your “variant” API.  
-- `data-*` attributes communicate state.  
+- `className` is your “variant” API.
+- `data-*` attributes communicate state.
 - Design tokens live in Tailwind config / CSS custom properties.
 
 Example:
@@ -194,7 +190,7 @@ Example:
   className={cn(
     "inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium",
     "bg-emerald-500 text-white hover:bg-emerald-400",
-    "disabled:opacity-50 disabled:cursor-not-allowed"
+    "disabled:opacity-50 disabled:cursor-not-allowed",
   )}
 >
   Save
@@ -213,8 +209,8 @@ With Next.js:
 
 Example pattern:
 
-- `page.tsx` (server): fetch data, layout, pass props.  
-- `FiltersClient.tsx` (client): search input, dropdowns, URL syncing.  
+- `page.tsx` (server): fetch data, layout, pass props.
+- `FiltersClient.tsx` (client): search input, dropdowns, URL syncing.
 - `Table.tsx` (server or client): render hydrated data, no extra magic.
 
 Next.js components stay understandable because each has a clear job.
@@ -249,7 +245,7 @@ For most product work, a non-trivial screen should fit into ~1 day of UI enginee
 
 Define:
 
-- **Morning:** align on UX, implement the layout and states.  
+- **Morning:** align on UX, implement the layout and states.
 - **Afternoon:** refine styles, wiring, QA, and edge cases.
 
 If it doesn’t fit:
@@ -264,10 +260,10 @@ Use the constraint to force simpler **React UI** instead of more clever architec
 
 Before extracting a component:
 
-1. Do we have **3+ real call sites** that need it?  
-2. Do they share the **same semantics**, not just similar visuals?  
-3. Will this abstraction **reduce** future complexity, or just hide it?  
-4. Can I explain its API in **under 30 seconds** to another engineer?  
+1. Do we have **3+ real call sites** that need it?
+2. Do they share the **same semantics**, not just similar visuals?
+3. Will this abstraction **reduce** future complexity, or just hide it?
+4. Can I explain its API in **under 30 seconds** to another engineer?
 5. Can it be **deleted or replaced** without massive fallout?
 
 If the answer to any of these is “no”, keep the code local.
@@ -276,8 +272,8 @@ If the answer to any of these is “no”, keep the code local.
 
 Instead of perfecting each widget, get the **layout shell** right:
 
-- Build a `Page` shell (header, content, actions).  
-- Establish a handful of common sections: `PageHeader`, `PageBody`, `PageFooter`.  
+- Build a `Page` shell (header, content, actions).
+- Establish a handful of common sections: `PageHeader`, `PageBody`, `PageFooter`.
 - Use those across screens before abstracting anything else.
 
 Your Next.js components become:
@@ -302,13 +298,13 @@ You get consistent structure without locking yourself into an over-generalized �
 
 Ban “hero” components that try to do everything:
 
-- `SmartForm` that handles every field and validation strategy.  
-- `DataGrid` that handles every interaction ever dreamed of.  
+- `SmartForm` that handles every field and validation strategy.
+- `DataGrid` that handles every interaction ever dreamed of.
 - `LayoutManager` that renders arbitrary page config JSON.
 
 Instead:
 
-- Build **narrow, boring** components that do one thing well.  
+- Build **narrow, boring** components that do one thing well.
 - Compose them into more complex UIs close to the feature, not in a “core” directory.
 
 Ruixen UI follows this exact simplicity-over-complexity philosophy.
@@ -325,15 +321,15 @@ On a real product, we had:
 
 We reset with the 1/10th-time principles:
 
-- Deleted entire folders of unused abstractions.  
-- Created a small set of **layout primitives** (`Page`, `Section`, `Stack`).  
-- Replaced custom theming with straight **Tailwind UI** classes.  
+- Deleted entire folders of unused abstractions.
+- Created a small set of **layout primitives** (`Page`, `Section`, `Stack`).
+- Replaced custom theming with straight **Tailwind UI** classes.
 - Split big, client-heavy components into server-first Next.js components plus tiny client islands.
 
 The effect:
 
-- A new, non-trivial screen went from **3–4 days** to **less than a day**.  
-- Refactors stopped feeling like surgery.  
+- A new, non-trivial screen went from **3–4 days** to **less than a day**.
+- Refactors stopped feeling like surgery.
 - The UI performance got better because we weren’t hauling around unnecessary wrappers and providers.
 
 I ended up applying the same approach across multiple apps.
@@ -352,17 +348,17 @@ Ruixen UI isn’t about clever design tokens or 200 pre-styled widgets.
 
 It’s about:
 
-- Small, **composable building blocks**.  
-- Tailwind-first styling, no fragile theme engines.  
-- Server-friendly patterns that respect how modern Next.js apps work.  
+- Small, **composable building blocks**.
+- Tailwind-first styling, no fragile theme engines.
+- Server-friendly patterns that respect how modern Next.js apps work.
 - Components that are easy to read, easy to copy, and easy to delete.
 
 Ruixen UI follows this exact simplicity-over-complexity philosophy.
 
 If you inspect the components, you’ll see the same ideas you just read:
 
-- Concrete first, abstraction later.  
-- Composition over configuration.  
+- Concrete first, abstraction later.
+- Composition over configuration.
 - Delete-friendly, not “enterprise” clever.
 
 ---
@@ -373,15 +369,15 @@ If you’re honest with yourself, you probably know whether your UI is over-engi
 
 Ask:
 
-- Does a new screen feel like **plugging pieces together**, or **negotiating with old decisions**?  
-- Are you building product, or maintaining a fragile internal framework?  
+- Does a new screen feel like **plugging pieces together**, or **negotiating with old decisions**?
+- Are you building product, or maintaining a fragile internal framework?
 - Can a new engineer ship a meaningful change in their first week?
 
 If not, start applying the 1/10th-time principles:
 
-- Build one screen plainly.  
-- Delay abstractions.  
-- Let Tailwind and simple Next.js components do the heavy lifting.  
+- Build one screen plainly.
+- Delay abstractions.
+- Let Tailwind and simple Next.js components do the heavy lifting.
 - Make deletion safe, not scary.
 
 And if you’re curious what a UI layer built from day one with these constraints looks like in practice, go skim Ruixen UI—look at the source, the patterns, and how little machinery is actually required to build fast, reliable interfaces.
