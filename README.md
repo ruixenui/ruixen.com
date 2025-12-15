@@ -1,5 +1,7 @@
 # 🪐 Ruixen UI
 
+⭐ **If Ruixen helped you, a star means a lot — it directly funds future components.**
+
 **Beautifully designed landing page components built with React & Tailwind CSS.**
 
 Ruixen UI is a collection of copy-and-paste components for building beautiful landing pages and web applications. Built with React, TypeScript, and Tailwind CSS.
