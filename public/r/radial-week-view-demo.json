@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/radial-week-view-demo.tsx",
-      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport {\n  RadialWeekView,\n  CalendarEvent,\n} from \"@/registry/ruixenui/radial-week-view\";\n\nexport default function RadialWeekViewDemo() {\n  const [events, setEvents] = React.useState<CalendarEvent[]>([]);\n\n  const handleAddEvent = (event: CalendarEvent) => {\n    setEvents((prev) => [...prev, event]);\n  };\n\n  const handleRemoveEvent = (id: string) => {\n    setEvents((prev) => prev.filter((e) => e.id !== id));\n  };\n\n  return (\n    <div className=\"p-4\">\n      <h2 className=\"text-lg font-semibold mb-4\">Radial Week View Demo</h2>\n      <RadialWeekView\n        events={events}\n        onAddEvent={handleAddEvent}\n        onRemoveEvent={handleRemoveEvent}\n      />\n    </div>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport {\n  RadialWeekView,\n  CalendarEvent,\n} from \"@/registry/ruixenui/radial-week-view\";\n\nexport default function RadialWeekViewDemo() {\n  const [events, setEvents] = React.useState<CalendarEvent[]>([]);\n\n  const handleAddEvent = (event: CalendarEvent) => {\n    setEvents((prev) => [...prev, event]);\n  };\n\n  const handleRemoveEvent = (id: string) => {\n    setEvents((prev) => prev.filter((e) => e.id !== id));\n  };\n\n  return (\n    <div className=\"p-4\">\n      <RadialWeekView\n        events={events}\n        onAddEvent={handleAddEvent}\n        onRemoveEvent={handleRemoveEvent}\n      />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/radial-week-view-demo.tsx"
     }

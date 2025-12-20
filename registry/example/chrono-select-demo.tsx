@@ -7,7 +7,7 @@ export default function ChronoSelectDemo() {
   const [date, setDate] = React.useState<Date | undefined>();
 
   return (
-    <div className="p-8 space-y-6">
+    <div className="p-8 flex flex-col justify-center items-center space-y-6 mx-auto">
       <h1 className="text-xl font-semibold">Date Picker Demo</h1>
 
       <ChronoSelect value={date} onChange={setDate} yearRange={[1990, 2035]} />

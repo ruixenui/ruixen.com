@@ -61,7 +61,7 @@ export default function DemoSocialAuthPage() {
   };
 
   return (
-    <div className="flex items-center justify-center p-4">
+    <div className="flex items-center justify-center py-16">
       <SocialAuthCard
         socialProviders={socialProviders}
         formInputs={formInputs}

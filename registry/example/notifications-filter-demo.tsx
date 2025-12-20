@@ -42,9 +42,9 @@ export default function DemoNotificationsFilter() {
   ];
 
   return (
-    <div className="flex flex-col items-center justify-center p-2 gap-6">
+    <div className="flex flex-col items-center justify-center p-2 gap-6 min-h-screen">
       <div className="space-y-4 w-full max-w-md">
-        <h1 className="text-xl font-bold text-gray-800 text-center">
+        <h1 className="text-xl font-bold text-primary text-center">
           Notifications Filter Demo
         </h1>
 

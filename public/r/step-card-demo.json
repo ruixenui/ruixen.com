@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/step-card-demo.tsx",
-      "content": "\"use client\";\n\nimport StepCard from \"@/registry/ruixenui/step-card\";\n\nexport default function StepCardDemoPage() {\n  const handleComplete = (data: {\n    email: string;\n    password: string;\n    otp: string;\n  }) => {\n    console.log(\"Form Completed ✅\", data);\n    alert(\n      `Form Completed!\\nEmail: ${data.email}\\nPassword: ${data.password}\\nOTP: ${data.otp}`,\n    );\n  };\n\n  return (\n    <main className=\"min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900 p-4\">\n      <StepCard onComplete={handleComplete} />\n    </main>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport StepCard from \"@/registry/ruixenui/step-card\";\n\nexport default function StepCardDemoPage() {\n  const handleComplete = (data: {\n    email: string;\n    password: string;\n    otp: string;\n  }) => {\n    console.log(\"Form Completed ✅\", data);\n    alert(\n      `Form Completed!\\nEmail: ${data.email}\\nPassword: ${data.password}\\nOTP: ${data.otp}`,\n    );\n  };\n\n  return (\n    <main className=\"min-h-screen flex items-center justify-center py-16\">\n      <StepCard onComplete={handleComplete} />\n    </main>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/step-card-demo.tsx"
     }

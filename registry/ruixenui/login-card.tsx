@@ -68,11 +68,11 @@ export default function LoginCard({
   return (
     <div
       className={cn(
-        "relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-gray-100 dark:bg-gray-900",
+        "relative w-full flex items-center justify-center overflow-hidden bg-background",
         className,
       )}
     >
-      <div className="relative bg-white dark:bg-gray-800 w-full max-w-md p-8 rounded-xl shadow-lg z-10 flex flex-col gap-6">
+      <div className="relative border w-full max-w-md p-8 rounded-2xl shadow-lg z-10 flex flex-col gap-6">
         {logo && <div className="flex justify-center mb-4">{logo}</div>}
         <h2 className="text-2xl font-bold text-center text-gray-900 dark:text-gray-100">
           {title}

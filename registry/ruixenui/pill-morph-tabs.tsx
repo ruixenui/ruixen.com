@@ -104,9 +104,9 @@ export default function PillMorphTabs({
           className={cn(
             "relative",
             // glass + subtle gradient
-            "inline-flex items-center gap-2",
+            "inline-flex items-center gap-2 w-fit",
             "bg-white/6 dark:bg-white/3 backdrop-blur-sm",
-            "border border-white/6 dark:border-white/6",
+            "",
           )}
           style={{
             // optional soft gradient overlay (works both light/dark)

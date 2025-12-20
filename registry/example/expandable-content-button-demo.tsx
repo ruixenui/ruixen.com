@@ -6,7 +6,7 @@ import { Twitter, Linkedin, Copy } from "lucide-react";
 // Demo Usage
 export default function Demo() {
   return (
-    <div className="flex p-6 flex-col items-center justify-center min-h-screen">
+    <div className="flex p-6 flex-col items-center justify-center min-h-screen space-y-6">
       <ExpandableContentButton
         label="Filters"
         options={[

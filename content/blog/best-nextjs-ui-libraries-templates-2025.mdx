@@ -54,18 +54,46 @@ canonical: "https://www.ruixen.com/blog/best-nextjs-ui-libraries-templates-2025"
 >
   <p className="mb-2 font-medium">On this page</p>
   <ul className="flex flex-wrap gap-3">
-    <li><a href="#tldr-the-short-recommendation">TL;DR</a></li>
-    <li><a href="#what-makes-a-great-nextjs-ui-library-in-2025">What makes a great library</a></li>
-    <li><a href="#top-nextjs-ui-libraries">Top libraries</a></li>
-    <li><a href="#best-nextjs-templates-starters">Templates & starters</a></li>
-    <li><a href="#choosing-a-primary-ui-library">Choosing a primary UI library</a></li>
-    <li><a href="#how-to-pick-the-right-library-for-your-nextjs-project">How to pick</a></li>
-    <li><a href="#setup-starter-guide">Setup guide</a></li>
-    <li><a href="#pricing-licensing-community">Pricing & community</a></li>
-    <li><a href="#harsh-truths-nextjs-ui-stacks">Harsh truths</a></li>
-    <li><a href="#faq">FAQ</a></li>
-    <li><a href="#final-recommendation-1-click-freebies">Final recommendation</a></li>
-    <li><a href="#references-further-reading">References</a></li>
+    <li>
+      <a href="#tldr-the-short-recommendation">TL;DR</a>
+    </li>
+    <li>
+      <a href="#what-makes-a-great-nextjs-ui-library-in-2025">
+        What makes a great library
+      </a>
+    </li>
+    <li>
+      <a href="#top-nextjs-ui-libraries">Top libraries</a>
+    </li>
+    <li>
+      <a href="#best-nextjs-templates-starters">Templates & starters</a>
+    </li>
+    <li>
+      <a href="#choosing-a-primary-ui-library">Choosing a primary UI library</a>
+    </li>
+    <li>
+      <a href="#how-to-pick-the-right-library-for-your-nextjs-project">
+        How to pick
+      </a>
+    </li>
+    <li>
+      <a href="#setup-starter-guide">Setup guide</a>
+    </li>
+    <li>
+      <a href="#pricing-licensing-community">Pricing & community</a>
+    </li>
+    <li>
+      <a href="#harsh-truths-nextjs-ui-stacks">Harsh truths</a>
+    </li>
+    <li>
+      <a href="#faq">FAQ</a>
+    </li>
+    <li>
+      <a href="#final-recommendation-1-click-freebies">Final recommendation</a>
+    </li>
+    <li>
+      <a href="#references-further-reading">References</a>
+    </li>
   </ul>
 </nav>
 
@@ -92,8 +120,8 @@ A realistic default for modern SaaS:
 
 > **Fast lane stack**
 >
-> - New SaaS: Next.js 15 + Tailwind + shadcn/ui + one SaaS kit (Tailwind UI, Flowbite, etc.)  
-> - Landing only: Tailwind + Magic UI or selected Tailwind UI components  
+> - New SaaS: Next.js 15 + Tailwind + shadcn/ui + one SaaS kit (Tailwind UI, Flowbite, etc.)
+> - Landing only: Tailwind + Magic UI or selected Tailwind UI components
 > - Heavy internal tools: Chakra or MUI + a few Tailwind components for marketing
 
 </section>
@@ -134,7 +162,8 @@ If a library makes App Router, Tailwind, or accessibility harder, it becomes a t
   className="mb-10 w-full text-sm"
 >
   <caption className="mb-2 text-left text-xs text-muted-foreground">
-    High-level comparison of popular Next.js–ready UI libraries and templates in 2025.
+    High-level comparison of popular Next.js–ready UI libraries and templates in
+    2025.
   </caption>
   <thead>
     <tr>
@@ -233,14 +262,14 @@ shadcn/ui is a **copy‑paste component library** built on Radix + Tailwind. You
 
 **Pros**
 
-- Built on Radix ⇒ strong accessibility and behavior.  
-- You own the code — easy to fork and customize deeply.  
+- Built on Radix ⇒ strong accessibility and behavior.
+- You own the code — easy to fork and customize deeply.
 - Fits App Router + Tailwind workflows perfectly.
 
 **Cons**
 
-- No one‑click upgrade; you maintain your copies.  
-- Limited high‑level SaaS / marketing sections — you compose them yourself.  
+- No one‑click upgrade; you maintain your copies.
+- Limited high‑level SaaS / marketing sections — you compose them yourself.
 
 **Install + basic usage**
 
@@ -252,7 +281,13 @@ pnpm dlx shadcn add card button
 ```tsx
 "use client";
 
-import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+  CardFooter,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 export function ShadcnQuickCard() {
@@ -284,13 +319,13 @@ Chakra UI is a **prop-based React component library** with a design-token theme 
 
 **Pros**
 
-- Developer-friendly APIs (`<Button colorScheme="blue" />`).  
-- Mature docs and ecosystem.  
+- Developer-friendly APIs (`<Button colorScheme="blue" />`).
+- Mature docs and ecosystem.
 - Familiar to teams that already use design tokens.
 
 **Cons**
 
-- CSS-in-JS (Emotion) runtime overhead vs Tailwind-only stacks.  
+- CSS-in-JS (Emotion) runtime overhead vs Tailwind-only stacks.
 - RSC/App Router setups need some extra care.
 
 **Install + basic usage**
@@ -325,13 +360,13 @@ HeroUI (NextUI) is a **React Aria–powered library** with Tailwind-based stylin
 
 **Pros**
 
-- React Aria ⇒ strong keyboard and screen reader behavior.  
-- Good theming APIs and visual consistency.  
+- React Aria ⇒ strong keyboard and screen reader behavior.
+- Good theming APIs and visual consistency.
 - Tailwind-friendly.
 
 **Cons**
 
-- Opinionated look — heavy re‑theming takes work.  
+- Opinionated look — heavy re‑theming takes work.
 - Smaller ecosystem than Chakra/MUI.
 
 **Install + basic usage**
@@ -364,13 +399,13 @@ Flowbite React is a **Tailwind-based React UI library** backed by the Flowbite e
 
 **Pros**
 
-- Large component surface: nav, forms, tables, modals.  
-- Works well with Tailwind and Next.js.  
+- Large component surface: nav, forms, tables, modals.
+- Works well with Tailwind and Next.js.
 - Optional Pro templates and Figma kit.
 
 **Cons**
 
-- Opinionated styling; deep theming takes effort.  
+- Opinionated styling; deep theming takes effort.
 
 **Install + basic usage**
 
@@ -384,11 +419,7 @@ pnpm add flowbite-react
 import { Button } from "flowbite-react";
 
 export function FlowbiteButtonExample() {
-  return (
-    <Button size="sm">
-      View report
-    </Button>
-  );
+  return <Button size="sm">View report</Button>;
 }
 ```
 
@@ -402,12 +433,12 @@ daisyUI is a **Tailwind plugin** that gives you component classes (`btn`, `card`
 
 **Pros**
 
-- Pure Tailwind plugin — no extra JS.  
-- Many built‑in themes.  
+- Pure Tailwind plugin — no extra JS.
+- Many built‑in themes.
 
 **Cons**
 
-- Accessibility depends on your own markup and behavior.  
+- Accessibility depends on your own markup and behavior.
 - No React APIs; you wire state yourself.
 
 **Install + basic usage**
@@ -444,12 +475,12 @@ Magic UI is a **motion-focused Tailwind kit** with animated sections like marque
 
 **Pros**
 
-- Many animated building blocks.  
-- Fits nicely with Tailwind + shadcn stacks.  
+- Many animated building blocks.
+- Fits nicely with Tailwind + shadcn stacks.
 
 **Cons**
 
-- Easy to overdo animation and hurt Core Web Vitals.  
+- Easy to overdo animation and hurt Core Web Vitals.
 
 **Install + basic usage**
 
@@ -483,12 +514,12 @@ Tailwind UI is a commercial **component and template kit** from the Tailwind tea
 
 **Pros**
 
-- Very polished marketing, app, and e‑commerce sections.  
-- Excellent responsive and semantic patterns.  
+- Very polished marketing, app, and e‑commerce sections.
+- Excellent responsive and semantic patterns.
 
 **Cons**
 
-- Paid license.  
+- Paid license.
 - Markup-based; you still wire data and behavior.
 
 </section>
@@ -503,25 +534,25 @@ You don’t need to hand‑roll everything. Start from a template and layer your
 
 ### Startup SaaS Template (Next.js)
 
-- **Use-case:** SaaS landing + simple dashboard in one repo.  
-- **Stack:** Next.js 15, Tailwind, one of the Tailwind-based UI kits listed above.  
-- **Demo:** `https://www.ruixen.com/templates/startup`  
-- **License:** Check template author’s license before commercial use.  
+- **Use-case:** SaaS landing + simple dashboard in one repo.
+- **Stack:** Next.js 15, Tailwind, one of the Tailwind-based UI kits listed above.
+- **Demo:** `https://www.ruixen.com/templates/startup`
+- **License:** Check template author’s license before commercial use.
 
 ---
 
 ### Flowbite React Admin Dashboard
 
-- **Use-case:** Admin dashboards & internal tools.  
-- **Stack:** Next.js + Tailwind + Flowbite React.  
-- **License:** MIT.  
+- **Use-case:** Admin dashboards & internal tools.
+- **Stack:** Next.js + Tailwind + Flowbite React.
+- **License:** MIT.
 
 ---
 
 ### Minimal Next.js SaaS Website Starter
 
-- **Use-case:** SaaS marketing site with hero, features, pricing, FAQ, blog.  
-- **Stack:** Next.js App Router, Tailwind.  
+- **Use-case:** SaaS marketing site with hero, features, pricing, FAQ, blog.
+- **Stack:** Next.js App Router, Tailwind.
 - **Source:** Vercel templates gallery, open source.
 
 </section>
@@ -587,8 +618,8 @@ export function SaaSStarterSection() {
           <CardTitle className="text-base">Production-ready UI</CardTitle>
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground">
-          Use shadcn/ui for primitives, a Tailwind kit for sections, and
-          wire everything up to your own data model and auth.
+          Use shadcn/ui for primitives, a Tailwind kit for sections, and wire
+          everything up to your own data model and auth.
         </CardContent>
         <CardFooter>
           <Button size="sm">View component docs</Button>
@@ -609,25 +640,25 @@ export function SaaSStarterSection() {
 
 Use this quick decision checklist:
 
-1. **Tailwind or not?**  
-   - Tailwind: shadcn/ui, Magic UI, Flowbite, daisyUI, Tailwind UI, many SaaS starters.  
+1. **Tailwind or not?**
+   - Tailwind: shadcn/ui, Magic UI, Flowbite, daisyUI, Tailwind UI, many SaaS starters.
    - No Tailwind: Chakra, MUI, HeroUI (although HeroUI can work alongside Tailwind).
 
-2. **What are you really building?**  
-   - SaaS dashboard + marketing: shadcn/ui + a SaaS kit (Tailwind UI, Flowbite Pro, or a Next.js SaaS starter).  
-   - Mostly marketing pages: Tailwind UI, Magic UI, or a dedicated landing-page template.  
+2. **What are you really building?**
+   - SaaS dashboard + marketing: shadcn/ui + a SaaS kit (Tailwind UI, Flowbite Pro, or a Next.js SaaS starter).
+   - Mostly marketing pages: Tailwind UI, Magic UI, or a dedicated landing-page template.
    - Internal tools: Chakra or MUI + a light layer of Tailwind for marketing.
 
-3. **How opinionated do you want the design?**  
-   - Strong brand team: shadcn/ui primitives + custom Tailwind design system.  
+3. **How opinionated do you want the design?**
+   - Strong brand team: shadcn/ui primitives + custom Tailwind design system.
    - “Just don’t look broken”: HeroUI, Flowbite, or a polished SaaS starter.
 
-4. **How much code ownership do you want?**  
-   - Full control: shadcn/ui + copy‑paste sections from kits.  
+4. **How much code ownership do you want?**
+   - Full control: shadcn/ui + copy‑paste sections from kits.
    - Managed: Chakra, HeroUI, Flowbite React, commercial SaaS starters.
 
-5. **Do you need a template?**  
-   - Need auth + billing + DB: a full Next.js SaaS starter.  
+5. **Do you need a template?**
+   - Need auth + billing + DB: a full Next.js SaaS starter.
    - Just UI: Tailwind‑based kits + your own backend.
 
 </section>
@@ -660,10 +691,7 @@ Update `tailwind.config.ts`:
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  content: [
-    "./app/**/*.{ts,tsx,mdx}",
-    "./components/**/*.{ts,tsx,mdx}",
-  ],
+  content: ["./app/**/*.{ts,tsx,mdx}", "./components/**/*.{ts,tsx,mdx}"],
   theme: {
     extend: {},
   },
@@ -690,10 +718,15 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "My SaaS — Next.js 15 + shadcn/ui",
-  description: "Next.js 15 SaaS starter using Tailwind and shadcn/ui components.",
+  description:
+    "Next.js 15 SaaS starter using Tailwind and shadcn/ui components.",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <body className="min-h-screen bg-background text-foreground antialiased">
@@ -756,7 +789,8 @@ export default function Page() {
             </CardTitle>
           </CardHeader>
           <CardContent className="text-xs text-muted-foreground">
-            Own your component code so you can evolve your design system over time.
+            Own your component code so you can evolve your design system over
+            time.
           </CardContent>
           <CardFooter>
             <Button size="sm" variant="outline">
@@ -772,7 +806,8 @@ export default function Page() {
             </CardTitle>
           </CardHeader>
           <CardContent className="text-xs text-muted-foreground">
-            Build on top of accessible primitives and verify with automated checks.
+            Build on top of accessible primitives and verify with automated
+            checks.
           </CardContent>
           <CardFooter>
             <Button size="sm" variant="outline">
@@ -805,25 +840,25 @@ pnpm dev
 
 Most popular libraries are **free and open source**:
 
-- **shadcn/ui:** “copy‑paste” OSS model (you own the code).  
-- **Chakra UI:** MIT-licensed, large community.  
-- **HeroUI (NextUI):** Open source, React Aria-based.  
-- **Flowbite React core:** MIT license (Pro add-ons available).  
-- **daisyUI:** MIT-licensed Tailwind plugin.  
+- **shadcn/ui:** “copy‑paste” OSS model (you own the code).
+- **Chakra UI:** MIT-licensed, large community.
+- **HeroUI (NextUI):** Open source, React Aria-based.
+- **Flowbite React core:** MIT license (Pro add-ons available).
+- **daisyUI:** MIT-licensed Tailwind plugin.
 
 ### Commercial kits & templates
 
-- **Tailwind UI:** One-time paid license, commercial use allowed.  
-- **Magic UI Pro packs:** Paid motion-heavy sections.  
+- **Tailwind UI:** One-time paid license, commercial use allowed.
+- **Magic UI Pro packs:** Paid motion-heavy sections.
 - **Next.js SaaS starters:** Often paid, sometimes MIT or GPL. Check terms carefully.
 
 Example snapshot:
 
-| Tier             | Ideal for                 | What you get                                              |
-| ---------------- | ------------------------- | --------------------------------------------------------- |
-| Free OSS         | Solo devs, students       | Core components, basic templates, docs, community         |
-| Commercial kits  | SaaS teams, agencies      | Extra layouts, advanced patterns, long-term maintenance   |
-| Full SaaS starter| Startups, client projects | Auth, billing, DB, and a wired-up design system          |
+| Tier              | Ideal for                 | What you get                                            |
+| ----------------- | ------------------------- | ------------------------------------------------------- |
+| Free OSS          | Solo devs, students       | Core components, basic templates, docs, community       |
+| Commercial kits   | SaaS teams, agencies      | Extra layouts, advanced patterns, long-term maintenance |
+| Full SaaS starter | Startups, client projects | Auth, billing, DB, and a wired-up design system         |
 
 </section>
 
@@ -870,9 +905,9 @@ There’s no single winner. **Headless or CSS-only** setups like Radix primitive
 
 Migrate gradually:
 
-1. Replace Chakra layout primitives with Tailwind containers.  
-2. Swap Chakra buttons, cards, and navbars for Tailwind-based equivalents (e.g. shadcn/ui).  
-3. Move theme tokens into Tailwind config.  
+1. Replace Chakra layout primitives with Tailwind containers.
+2. Swap Chakra buttons, cards, and navbars for Tailwind-based equivalents (e.g. shadcn/ui).
+3. Move theme tokens into Tailwind config.
 4. Keep Chakra only where necessary and remove it once the main surfaces are migrated.
 
 Running both libraries side by side for a while is normal — just have a clear end state.
@@ -1082,3 +1117,4 @@ Then layer in your chosen UI library, Tailwind config, and any templates you lik
 
 </article>
 </main>
+

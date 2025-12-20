@@ -43,7 +43,7 @@ function DrawerInnerContent() {
 
 export default function FourSideDrawers() {
   return (
-    <div className="flex flex-wrap gap-4 items-center justify-center min-h-screen">
+    <div className="flex flex-wrap gap-4 items-center justify-center">
       {/* Bottom Drawer */}
       <Drawer>
         <DrawerTrigger asChild>

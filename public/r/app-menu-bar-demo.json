@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/app-menu-bar-demo.tsx",
-      "content": "\"use client\";\n\nimport AppMenuBar from \"@/registry/ruixenui/app-menu-bar\";\n\nexport default function MenuDemoPage() {\n  return (\n    <div className=\"p-6\">\n      <AppMenuBar />\n    </div>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport AppMenuBar from \"@/registry/ruixenui/app-menu-bar\";\n\nexport default function MenuDemoPage() {\n  return (\n    <div className=\"min-h-screen flex items-center justify-center\">\n      <AppMenuBar />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/app-menu-bar-demo.tsx"
     }

@@ -7,7 +7,7 @@ export default function DemoSidePanelMultiCalendar() {
   const [dates, setDates] = useState<Date[]>([]);
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="flex flex-col justify-center items-center p-6 space-y-6">
       <h2 className="text-lg font-semibold">
         Configurable Side Panel Multi-Select Calendar
       </h2>

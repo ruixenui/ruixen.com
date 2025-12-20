@@ -92,12 +92,12 @@ export function ParticleFlowCalendar({
   };
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col justify-center items-center gap-6">
       {/* Add Event Form */}
       <Card className="p-2">
         <CardContent>
           <div className="flex flex-wrap items-end gap-4">
-            <div className="flex-1 min-w-[200px]">
+            <div className="flex-1">
               <Label>Event Title</Label>
               <Input
                 placeholder="Enter event title"
@@ -110,15 +110,16 @@ export function ParticleFlowCalendar({
               <Label>Date</Label>
               <Popover>
                 <PopoverTrigger asChild>
-                  <Button variant="outline" className="mt-1 w-[160px]">
+                  <Button variant="outline" className="mt-1">
                     {selectedDate ? selectedDate.toDateString() : "Pick a date"}
                   </Button>
                 </PopoverTrigger>
-                <PopoverContent className="p-0">
+                <PopoverContent className="p-0 w-fit">
                   <Calendar
                     mode="single"
                     selected={selectedDate}
                     onSelect={setSelectedDate}
+                    className="w-fit"
                   />
                 </PopoverContent>
               </Popover>

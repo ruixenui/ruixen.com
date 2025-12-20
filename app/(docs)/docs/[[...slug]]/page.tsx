@@ -83,8 +83,8 @@ export default async function DocPage({ params }: DocPageProps) {
   const toc = await getTableOfContents(doc.body.raw);
 
   return (
-    <main className="relative lg:gap-10 xl:grid xl:grid-cols-[1fr_300px]">
-      <div className="mx-auto w-full min-w-0 max-w-3xl py-6 lg:py-8">
+    <main className="relative lg:gap-0 xl:grid xl:grid-cols-[minmax(0,1fr)_220px]">
+      <div className="mx-auto w-full min-w-0 max-w-4xl py-6 lg:py-8">
         <div className="mb-4 flex items-center space-x-1 text-sm text-muted-foreground">
           <div className="truncate">Docs</div>
           <ChevronRightIcon className="size-4" />

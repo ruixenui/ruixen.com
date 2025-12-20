@@ -53,23 +53,26 @@ export default function BadgeTabs({
     >
       <Tabs value={active} onValueChange={setActive} className="w-full">
         {/* Tabs */}
-        <TabsList className="relative flex gap-2 bg-background/30 p-4 rounded-xl border">
+        <TabsList className="relative flex items-center gap-2 bg-background/30 p-4 rounded-xl border">
           {items.map((item) => {
             const isActive = item.value === active;
             return (
               <TabsTrigger key={item.value} value={item.value} asChild>
                 <motion.button
                   className={cn(
-                    "relative flex-1 flex justify-between items-center h-8 rounded-lg text-sm font-medium transition-colors",
-                    isActive ? "text-white" : "text-foreground/80",
+                    "relative flex-1 flex justify-between items-center h-12 rounded-lg text-sm font-medium transition-all duration-200 ease-in-out",
+                    isActive
+                      ? "text-white bg-primary/60 shadow-md"
+                      : "text-foreground/80 bg-background/30 hover:bg-background/50",
                   )}
                   whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 >
                   {/* Active background pill */}
                   {isActive && (
                     <motion.div
                       layoutId="active-pill"
-                      className="absolute inset-0 bg-primary/10 rounded-lg z-0"
+                      className="absolute inset-0 bg-primary/20 rounded-lg z-0"
                       initial={false}
                       transition={{
                         type: "spring",

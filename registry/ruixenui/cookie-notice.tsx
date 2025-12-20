@@ -39,10 +39,7 @@ export default function CookieNotice() {
               <Button
                 size="sm"
                 onClick={() => setVisible(false)}
-                className={cn(
-                  "rounded-lg px-4 py-1 text-white",
-                  "bg-primary hover:bg-primary/90",
-                )}
+                className={cn("rounded-lg")}
               >
                 Accept
               </Button>

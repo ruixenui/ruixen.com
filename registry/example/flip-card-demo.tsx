@@ -40,7 +40,7 @@ export default function DemoFlipCard() {
   );
 
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex items-center justify-center py-16">
       <FlipCard
         frontTitle="Hello! Welcome to MyApp"
         frontDescription="Click below to login"

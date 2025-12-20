@@ -29,10 +29,10 @@ const demoNotifications: Notification[] = [
 
 export default function NotificationsDemoPage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-50">
+    <div className="flex min-h-screen items-center justify-center bg-background">
       <NotificationInboxPopover
         notifications={demoNotifications}
-        triggerLabel="Notifications"
+        triggerLabel=""
         onMarkAll={(notifs) => console.log("Marked all as read:", notifs)}
         onMarkAsRead={(id) => console.log("Marked as read:", id)}
         onViewAll={() => console.log("View all clicked")}

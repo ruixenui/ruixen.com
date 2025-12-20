@@ -11,8 +11,20 @@ export default function PricingScalingDemo() {
       monthlyPrice: 5,
       annuallyPrice: 54,
       desc: "Perfect for individuals",
-      features: ["5 projects per month", "Community support"],
+      features: [
+        "5 projects per month",
+        "Community support",
+        "Basic analytics",
+      ],
       buttonText: "Subscribe Solo",
+    },
+    {
+      title: "Creator",
+      monthlyPrice: 10,
+      annuallyPrice: 108,
+      desc: "For freelancers and creators",
+      features: ["15 projects per month", "Email support", "Custom themes"],
+      buttonText: "Subscribe Creator",
     },
     {
       title: "Team",
@@ -23,8 +35,35 @@ export default function PricingScalingDemo() {
         "Unlimited projects",
         "Priority support",
         "Team collaboration",
+        "Shared workspaces",
       ],
       buttonText: "Subscribe Team",
+    },
+    {
+      title: "Growth",
+      monthlyPrice: 35,
+      annuallyPrice: 378,
+      desc: "For growing teams",
+      features: [
+        "Unlimited projects",
+        "Advanced analytics",
+        "Role-based access",
+        "Faster support",
+      ],
+      buttonText: "Subscribe Growth",
+    },
+    {
+      title: "Business",
+      monthlyPrice: 60,
+      annuallyPrice: 648,
+      desc: "For established companies",
+      features: [
+        "Everything in Growth",
+        "Security controls",
+        "Team permissions",
+        "Dedicated support",
+      ],
+      buttonText: "Subscribe Business",
     },
   ];
 

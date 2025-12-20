@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Popover,
@@ -19,73 +19,146 @@ import {
   Settings,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 interface VideoPlayerProProps {
   src: string;
+  poster?: string;
+  className?: string;
 }
 
 const formatTime = (seconds: number) => {
+  if (!isFinite(seconds) || seconds < 0) return "0:00";
   const m = Math.floor(seconds / 60);
   const s = Math.floor(seconds % 60);
   return `${m}:${s.toString().padStart(2, "0")}`;
 };
 
-const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src }) => {
+const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({
+  src,
+  poster,
+  className,
+}) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const lastVolumeRef = useRef<number>(1);
 
-  const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  const [isEnded, setIsEnded] = useState<boolean>(false);
-  const [volume, setVolume] = useState<number>(1);
-  const [isMuted, setIsMuted] = useState<boolean>(false);
-  const [progress, setProgress] = useState<number>(0);
-  const [currentTime, setCurrentTime] = useState<number>(0);
-  const [duration, setDuration] = useState<number>(0);
-  const [showControls, setShowControls] = useState<boolean>(true);
-  const [playbackSpeed, setPlaybackSpeed] = useState<number>(1);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isEnded, setIsEnded] = useState(false);
 
-  // Play / Pause / Restart
-  const togglePlay = () => {
-    if (!videoRef.current) return;
+  const [volume, setVolume] = useState(1);
+  const [isMuted, setIsMuted] = useState(false);
+
+  const [progress, setProgress] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+
+  const [showControls, setShowControls] = useState(true);
+  const [playbackSpeed, setPlaybackSpeed] = useState(1);
+
+  const [loadError, setLoadError] = useState<string | null>(null);
+
+  // Reload/reset cleanly when src changes
+  useEffect(() => {
+    const v = videoRef.current;
+    setLoadError(null);
+    setIsPlaying(false);
+    setIsEnded(false);
+    setProgress(0);
+    setCurrentTime(0);
+    setDuration(0);
+
+    if (!v) return;
+    try {
+      v.pause();
+      v.load(); // important when using <source> or when src changes
+    } catch {
+      // ignore
+    }
+  }, [src]);
+
+  const updateTimeState = () => {
+    const v = videoRef.current;
+    if (!v) return;
+
+    const d = v.duration;
+    const t = v.currentTime;
+
+    setDuration(isFinite(d) ? d : 0);
+    setCurrentTime(isFinite(t) ? t : 0);
+
+    const prog = d > 0 ? (t / d) * 100 : 0;
+    setProgress(isFinite(prog) ? prog : 0);
+  };
+
+  // Robust play with catch (prevents "Uncaught (in promise)")
+  const safePlay = async () => {
+    const v = videoRef.current;
+    if (!v) return;
+
+    try {
+      await v.play();
+      // state will be updated by onPlay handler
+    } catch (err: any) {
+      // This is where your error originates
+      console.error("video.play() failed:", err);
+
+      const mediaErr = v.error;
+      const code = mediaErr?.code;
+
+      // Helpful message based on MediaError codes
+      // 1: aborted, 2: network, 3: decode, 4: src not supported
+      const msg =
+        code === 2
+          ? "Network error while loading video (blocked/404/403/CSP?)."
+          : code === 3
+            ? "Decode error (codec not supported or corrupted file)."
+            : code === 4
+              ? "Source not supported (bad URL/HTML response/wrong MIME/codec)."
+              : "Playback failed.";
+
+      setLoadError(msg);
+      setIsPlaying(false);
+    }
+  };
+
+  const togglePlay = async () => {
+    const v = videoRef.current;
+    if (!v) return;
+
+    // If ended, restart
     if (isEnded) {
-      videoRef.current.currentTime = 0;
+      v.currentTime = 0;
       setIsEnded(false);
     }
-    isPlaying ? videoRef.current.pause() : videoRef.current.play();
-    setIsPlaying(!isPlaying);
+
+    if (v.paused) {
+      await safePlay();
+    } else {
+      v.pause();
+    }
   };
 
-  // Update progress and time
-  const handleTimeUpdate = () => {
-    if (!videoRef.current) return;
-    const prog =
-      (videoRef.current.currentTime / videoRef.current.duration) * 100;
-    setProgress(isFinite(prog) ? prog : 0);
-    setCurrentTime(videoRef.current.currentTime);
-    setDuration(videoRef.current.duration || 0);
-  };
-
-  // Video ended
-  const handleEnded = () => {
-    setIsEnded(true);
-    setIsPlaying(false);
-  };
-
-  // Seek
   const handleSeek = (percent: number) => {
-    if (!videoRef.current) return;
-    const time = (percent / 100) * (videoRef.current.duration || 0);
-    if (isFinite(time)) videoRef.current.currentTime = time;
-    setProgress(percent);
+    const v = videoRef.current;
+    if (!v) return;
+
+    const d = v.duration || 0;
+    const time = (percent / 100) * d;
+
+    if (isFinite(time)) {
+      v.currentTime = time;
+      setProgress(percent);
+      setCurrentTime(time);
+    }
   };
 
-  // Fullscreen
   const toggleFullscreen = () => {
-    if (!containerRef.current) return;
+    const el = containerRef.current;
+    if (!el) return;
 
-    // Must be called inside a user-initiated event
     if (!document.fullscreenElement) {
-      containerRef.current.requestFullscreen().catch((err) => {
+      el.requestFullscreen().catch((err) => {
         console.error("Fullscreen request failed:", err);
       });
     } else {
@@ -95,40 +168,134 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src }) => {
     }
   };
 
-  // Toggle mute
-  const toggleMute = () => {
-    if (!videoRef.current) return;
-    videoRef.current.muted = !isMuted;
-    setIsMuted(!isMuted);
-    setVolume(!isMuted ? 0 : 1);
-    if (!isMuted) videoRef.current.volume = 0;
-    else videoRef.current.volume = 1;
+  const setVideoVolume = (v: number) => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const clamped = Math.min(1, Math.max(0, v));
+    video.volume = clamped;
+
+    setVolume(clamped);
+    const mutedNow = clamped === 0;
+    setIsMuted(mutedNow);
+    video.muted = mutedNow;
+
+    if (!mutedNow) lastVolumeRef.current = clamped;
   };
+
+  const toggleMute = () => {
+    const v = videoRef.current;
+    if (!v) return;
+
+    if (v.muted || volume === 0) {
+      // unmute -> restore last volume
+      v.muted = false;
+      const restore = lastVolumeRef.current > 0 ? lastVolumeRef.current : 1;
+      setVideoVolume(restore);
+    } else {
+      // mute
+      lastVolumeRef.current = volume;
+      v.muted = true;
+      setIsMuted(true);
+      setVolume(0);
+      v.volume = 0;
+    }
+  };
+
+  const VolumeIcon =
+    isMuted || volume === 0 ? VolumeX : volume > 0.5 ? Volume2 : Volume1;
 
   return (
     <motion.div
       ref={containerRef}
-      className="relative w-full max-w-5xl mx-auto overflow-hidden rounded-xl"
+      className={cn(
+        "relative w-full max-w-5xl mx-auto overflow-hidden rounded-xl bg-black",
+        className,
+      )}
       onMouseEnter={() => setShowControls(true)}
       onMouseLeave={() => setShowControls(false)}
+      onTouchStart={() => setShowControls(true)}
     >
       <video
         ref={videoRef}
-        className="w-full"
-        src={src}
-        onTimeUpdate={handleTimeUpdate}
-        onEnded={handleEnded}
+        className="w-full h-auto"
+        poster={poster}
+        preload="metadata"
+        playsInline
+        // crossOrigin can help in some environments (esp. if later you draw to canvas)
+        crossOrigin="anonymous"
         onClick={togglePlay}
-      />
+        onTimeUpdate={updateTimeState}
+        onLoadedMetadata={updateTimeState}
+        onDurationChange={updateTimeState}
+        onPlay={() => {
+          setIsPlaying(true);
+          setLoadError(null);
+        }}
+        onPause={() => setIsPlaying(false)}
+        onEnded={() => {
+          setIsEnded(true);
+          setIsPlaying(false);
+        }}
+        onError={() => {
+          const v = videoRef.current;
+          const code = v?.error?.code;
+
+          console.error("Video element error:", {
+            code,
+            src,
+            networkState: v?.networkState,
+            readyState: v?.readyState,
+            currentSrc: v?.currentSrc,
+          });
+
+          const msg =
+            code === 2
+              ? "Network error while loading video (blocked/404/403/CSP?)."
+              : code === 3
+                ? "Decode error (codec not supported or corrupted file)."
+                : code === 4
+                  ? "Source not supported (bad URL/HTML response/wrong MIME/codec)."
+                  : "Video failed to load.";
+
+          setLoadError(msg);
+          setIsPlaying(false);
+        }}
+      >
+        {/* Using <source> helps some browsers pick types more reliably */}
+        <source src={src} type="video/mp4" />
+      </video>
+
+      {/* Error overlay (so you know instantly what happened) */}
+      {loadError && (
+        <div className="absolute inset-0 flex items-center justify-center p-4 bg-black/70">
+          <div className="max-w-md text-center text-white space-y-2">
+            <div className="text-sm font-semibold">Video can’t be played</div>
+            <div className="text-xs opacity-90">{loadError}</div>
+            <div className="text-[11px] opacity-70 break-all">{src}</div>
+            <Button
+              variant="secondary"
+              size="sm"
+              onClick={() => {
+                setLoadError(null);
+                videoRef.current?.load();
+              }}
+            >
+              Retry
+            </Button>
+          </div>
+        </div>
+      )}
 
       {/* Controls */}
       <AnimatePresence>
-        {showControls && (
+        {showControls && !loadError && (
           <motion.div
-            className="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-[95%] backdrop-blur-xl bg-white/10 rounded-2xl p-3 flex flex-col gap-3"
+            className="absolute bottom-4 left-1/2 -translate-x-1/2 w-[95%] backdrop-blur-xl bg-white/10 rounded-2xl p-3 flex flex-col gap-3"
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 20, opacity: 0 }}
+            onClick={(e) => e.stopPropagation()}
           >
             {/* Progress */}
             <div
@@ -145,10 +312,10 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src }) => {
               />
             </div>
 
-            {/* Control Row */}
+            {/* Row */}
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                {/* Play / Pause / Restart */}
+                {/* Play/Pause/Restart */}
                 <Button
                   variant="ghost"
                   size="icon"
@@ -167,25 +334,21 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src }) => {
                 {/* Volume */}
                 <Popover>
                   <PopoverTrigger asChild>
-                    <Button variant="ghost" size="icon" className="text-white">
-                      {isMuted ? (
-                        <VolumeX className="w-5 h-5" />
-                      ) : volume > 0.5 ? (
-                        <Volume2 className="w-5 h-5" />
-                      ) : (
-                        <Volume1 className="w-5 h-5" />
-                      )}
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="text-white"
+                      onClick={toggleMute}
+                    >
+                      <VolumeIcon className="w-5 h-5" />
                     </Button>
                   </PopoverTrigger>
+
                   <PopoverContent className="w-32 bg-transparent border-none p-2">
                     <Slider
-                      value={[volume * 100]}
+                      value={[Math.round(volume * 100)]}
                       onValueChange={(val: number[]) => {
-                        const newVolume = val[0] / 100;
-                        if (videoRef.current)
-                          videoRef.current.volume = newVolume;
-                        setVolume(newVolume);
-                        setIsMuted(newVolume === 0);
+                        setVideoVolume((val?.[0] ?? 0) / 100);
                       }}
                       step={1}
                       min={0}
@@ -195,8 +358,8 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src }) => {
                   </PopoverContent>
                 </Popover>
 
-                {/* Timer */}
-                <span className="text-white text-sm">
+                {/* Time */}
+                <span className="text-white text-sm tabular-nums">
                   {formatTime(currentTime)} / {formatTime(duration)}
                 </span>
               </div>
@@ -221,20 +384,14 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src }) => {
                           size="sm"
                           className="w-full"
                           onClick={() => {
-                            if (videoRef.current)
-                              videoRef.current.playbackRate = s;
+                            const v = videoRef.current;
+                            if (v) v.playbackRate = s;
                             setPlaybackSpeed(s);
                           }}
                         >
                           {s}x
                         </Button>
                       ))}
-                      <span className="text-sm font-medium text-muted-foreground mt-2">
-                        Captions
-                      </span>
-                      <Button variant="outline" size="sm" className="w-full">
-                        Off
-                      </Button>
                     </div>
                   </PopoverContent>
                 </Popover>

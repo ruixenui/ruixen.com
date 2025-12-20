@@ -175,7 +175,7 @@ export default function PricingTiers({
           {plans.map((plan, idx) => (
             <Card key={idx}>
               <Header glassEffect>
-                <div className="flex items-center justify-between">
+                <div className="flex flex-col items-start justify-between">
                   <PlanName>
                     {plan.title} {plan.badge && <Badge>{plan.badge}</Badge>}
                   </PlanName>

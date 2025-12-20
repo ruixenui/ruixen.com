@@ -21,7 +21,7 @@ export default function ParticleFlowDemoPage() {
   ]);
 
   return (
-    <div className="container mx-auto p-6">
+    <div className="flex flex-col justify-center items-center mx-auto p-6">
       <h1 className="text-2xl font-bold mb-4">Particle Flow Calendar Demo</h1>
       <ParticleFlowCalendar
         initialEvents={events}

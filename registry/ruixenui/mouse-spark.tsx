@@ -25,7 +25,6 @@ const MouseSpark: React.FC<MouseSparkProps> = ({
     if (!ctx) return;
 
     // Theme colors
-    const backgroundColor = theme === "dark" ? "#0a0a0a" : "#f5f5f5";
     const colors =
       theme === "dark"
         ? ["#ff6b6b", "#feca57", "#48dbfb", "#1dd1a1", "#5f27cd"]
@@ -63,8 +62,7 @@ const MouseSpark: React.FC<MouseSparkProps> = ({
     const animate = () => {
       if (!ctx) return;
 
-      ctx.fillStyle = backgroundColor;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       particles.forEach((p, i) => {
         p.x += p.dx;

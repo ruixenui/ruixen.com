@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/calendar-twin-demo.tsx",
-      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { CalendarTwin } from \"@/registry/ruixenui/calendar-twin\";\n\nexport default function CalendarTwinDemo() {\n  const [date, setDate] = React.useState<Date>();\n\n  return (\n    <div className=\"p-8 flex flex-col items-start space-y-4\">\n      <CalendarTwin value={date} onChange={setDate} />\n      <p className=\"text-xs text-muted-foreground mt-2\">\n        {date ? `Selected: ${date.toDateString()}` : \"No date selected\"} —{\" \"}\n        <a\n          href=\"https://www.ruixen.com/\"\n          target=\"_blank\"\n          rel=\"noopener noreferrer\"\n          className=\"underline\"\n        >\n          ruixen.com\n        </a>\n      </p>\n    </div>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { CalendarTwin } from \"@/registry/ruixenui/calendar-twin\";\nimport Link from \"next/link\";\n\nexport default function CalendarTwinDemo() {\n  const [date, setDate] = React.useState<Date>();\n\n  return (\n    <div className=\"p-8 flex flex-col justify-center items-start space-y-4\">\n      <CalendarTwin value={date} onChange={setDate} />\n      <p className=\"text-xs text-muted-foreground mt-2 mx-auto\">\n        {date ? `Selected: ${date.toDateString()}` : \"No date selected\"} —{\" \"}\n        <Link\n          href=\"https://www.ruixen.com/\"\n          target=\"_blank\"\n          rel=\"noopener noreferrer\"\n          className=\"underline\"\n        >\n          ruixen.com\n        </Link>\n      </p>\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/calendar-twin-demo.tsx"
     }

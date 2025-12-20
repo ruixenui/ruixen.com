@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/image-cropper-demo.tsx",
-      "content": "import ImageCropper from \"@/registry/ruixenui/image-cropper\";\n\nexport default function DemoOne() {\n  return (\n    <div className=\"p-4 max-w-xl mx-auto\">\n      <ImageCropper />\n    </div>\n  );\n}\n",
+      "content": "import ImageCropper from \"@/registry/ruixenui/image-cropper\";\n\nexport default function DemoOne() {\n  return (\n    <div className=\"min-h-screen flex items-center justify-center p-4\">\n      <div className=\"w-full\">\n        <ImageCropper />\n      </div>\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/image-cropper-demo.tsx"
     }

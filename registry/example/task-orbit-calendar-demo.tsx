@@ -24,7 +24,6 @@ export default function TaskOrbitCalendarDemo() {
 
   return (
     <div className="p-4">
-      <h1 className="text-lg font-semibold mb-4">Task Orbit Calendar Demo</h1>
       <TaskOrbitCalendar
         events={events}
         onAddEvent={handleAddEvent}

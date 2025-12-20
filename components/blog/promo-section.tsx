@@ -12,9 +12,9 @@ export default async function PromoSection() {
       {
         headers: process.env.GITHUB_OAUTH_TOKEN
           ? {
-            Authorization: `Bearer ${process.env.GITHUB_OAUTH_TOKEN}`,
-            "Content-Type": "application/json",
-          }
+              Authorization: `Bearer ${process.env.GITHUB_OAUTH_TOKEN}`,
+              "Content-Type": "application/json",
+            }
           : {},
         next: {
           revalidate: 3600,
@@ -84,7 +84,6 @@ export default async function PromoSection() {
             </div>
           </Button>
         </Link>
-
       </div>
     </section>
   );

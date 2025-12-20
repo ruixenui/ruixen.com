@@ -4,13 +4,25 @@ import React from "react";
 import { CorporateFooter } from "../ruixenui/corporate-footer";
 
 export default function FooterDemo() {
-  const customMenu = [
+  const menuItems = [
     {
-      title: "Explore",
+      title: "Product",
       links: [
-        { text: "Docs", url: "#" },
-        { text: "Tutorials", url: "#" },
-        { text: "Community", url: "#" },
+        { text: "Features", url: "#" },
+        { text: "Integrations", url: "#" },
+        { text: "Pricing", url: "#" },
+        { text: "Changelog", url: "#" },
+        { text: "Roadmap", url: "#" },
+      ],
+    },
+    {
+      title: "Developers",
+      links: [
+        { text: "Documentation", url: "#" },
+        { text: "API Reference", url: "#" },
+        { text: "SDKs & Tools", url: "#" },
+        { text: "Guides & Tutorials", url: "#" },
+        { text: "Status Page", url: "#" },
       ],
     },
     {
@@ -19,37 +31,57 @@ export default function FooterDemo() {
         { text: "About Us", url: "#" },
         { text: "Careers", url: "#" },
         { text: "Blog", url: "#" },
+        { text: "Press Kit", url: "#" },
+        { text: "Contact", url: "#" },
+      ],
+    },
+    {
+      title: "Support",
+      links: [
+        { text: "Help Center", url: "#" },
+        { text: "Community", url: "#" },
+        { text: "Report an Issue", url: "#" },
+        { text: "System Status", url: "#" },
+        { text: "Security", url: "#" },
       ],
     },
   ];
 
-  const customBottomLinks = [
+  const bottomLinks = [
+    { text: "Privacy Policy", url: "#" },
+    { text: "Terms of Service", url: "#" },
     { text: "Cookie Policy", url: "#" },
     { text: "Legal", url: "#" },
   ];
 
   return (
-    <main className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      <div className="text-center py-20">
-        <h1 className="text-4xl font-bold text-gray-900 dark:text-white">
-          Footer Component Demo
-        </h1>
-      </div>
-      {/* Custom Footer */}
-      <div className="mt-20">
-        <CorporateFooter
-          tagline="Custom Footer Tagline"
-          menuItems={customMenu}
-          bottomLinks={customBottomLinks}
-          copyright="© 2025 ruixen. All rights reserved."
-          logo={{
-            url: "https://www.ruixen.com/",
-            src: "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/ruixen-dark.png",
-            alt: "ruixen",
-            title: "ruixen",
-          }}
-        />
-      </div>
+    <main className="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900">
+      {/* Page Content */}
+      <section className="flex-grow flex items-center justify-center text-center px-4">
+        <div>
+          <h1 className="text-4xl font-bold text-gray-900 dark:text-white">
+            Corporate Footer Demo
+          </h1>
+          <p className="mt-4 text-gray-600 dark:text-gray-400 max-w-xl mx-auto">
+            A scalable, enterprise-ready footer component designed for SaaS,
+            startups, and corporate websites.
+          </p>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <CorporateFooter
+        tagline="Building modern web experiences with scalable UI systems."
+        menuItems={menuItems}
+        bottomLinks={bottomLinks}
+        copyright="© 2025 Ruixen UI. All rights reserved."
+        logo={{
+          url: "https://www.ruixen.com/",
+          src: "/ruixen-ui-nw-light.png",
+          alt: "Ruixen",
+          title: "Ruixen UI",
+        }}
+      />
     </main>
   );
 }

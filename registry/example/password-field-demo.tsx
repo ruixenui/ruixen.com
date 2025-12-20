@@ -17,7 +17,7 @@ export default function PasswordDemoPage() {
         showChecklist={true}
       />
 
-      <div className="w-full max-w-md p-4 rounded-xl border bg-white shadow-md">
+      <div className="w-full max-w-md p-4 rounded-xl border bg-white dark:bg-black shadow-md">
         <h2 className="text-lg font-medium mb-2">Current Password Value:</h2>
         <p className="text-sm text-muted-foreground">{password || "—"}</p>
       </div>

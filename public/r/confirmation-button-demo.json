@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/confirmation-button-demo.tsx",
-      "content": "\"use client\";\n\nimport ConfirmationButton from \"@/registry/ruixenui/confirmation-button\";\n\nexport default function DemoConfirmationButton() {\n  return (\n    <div className=\"flex p-6 flex-col items-center justify-center min-h-screen\">\n      <ConfirmationButton label=\"Delete\" onConfirm={() => alert(\"Deleted!\")} />\n      <ConfirmationButton\n        label=\"Archive\"\n        confirmLabel=\"Really archive?\"\n        onConfirm={() => alert(\"Archived!\")}\n        size=\"lg\"\n      />\n    </div>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport ConfirmationButton from \"@/registry/ruixenui/confirmation-button\";\n\nexport default function DemoConfirmationButton() {\n  return (\n    <div className=\"flex p-6 flex-col items-center justify-center min-h-screen space-y-6\">\n      <ConfirmationButton label=\"Delete\" onConfirm={() => alert(\"Deleted!\")} />\n      <ConfirmationButton\n        label=\"Archive\"\n        confirmLabel=\"Really archive?\"\n        onConfirm={() => alert(\"Archived!\")}\n        size=\"lg\"\n      />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/confirmation-button-demo.tsx"
     }

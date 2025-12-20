@@ -5,7 +5,7 @@ import { FaUserCircle } from "react-icons/fa";
 
 export default function DemoLoginCard() {
   return (
-    <div className="flex items-center justify-center min-h-screen">
+    <div className="flex items-center justify-center min-h-screen py-16">
       <LoginCard
         title="Welcome Back!"
         logo={<FaUserCircle size={48} className="text-blue-500" />}

@@ -7,7 +7,7 @@ export default function DemoDropdownRangeDatePicker() {
   const [range, setRange] = useState<{ from?: Date; to?: Date }>();
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="flex flex-col justify-center items-center p-6 space-y-6 min-h-screen">
       <h2 className="text-lg font-semibold">
         Configurable Dropdown Range Picker
       </h2>
@@ -22,7 +22,7 @@ export default function DemoDropdownRangeDatePicker() {
         clearable
       />
 
-      <div className="mt-4 text-sm text-muted-foreground">
+      <div className=" text-sm text-muted-foreground">
         Selected Range:{" "}
         {range?.from
           ? range.to

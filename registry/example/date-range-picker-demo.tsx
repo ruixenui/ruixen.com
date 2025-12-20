@@ -10,7 +10,7 @@ export default function DateRangePickerDemo() {
   >();
 
   return (
-    <div className="p-8 space-y-6">
+    <div className="flex flex-col justify-center items-center p-8 space-y-6">
       <h1 className="text-2xl font-bold">Date Range Picker Demo</h1>
 
       <div className="space-y-4">

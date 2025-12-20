@@ -95,7 +95,7 @@ export default function MinimisableTable<T extends { id: string }>({
   };
 
   return (
-    <div className="w-full space-y-4 px-4 max-w-xl">
+    <div className="w-full space-y-4 px-4">
       {/* Manage Columns Dropdown */}
       <div className="flex justify-end">
         <DropdownMenu>

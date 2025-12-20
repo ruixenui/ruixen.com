@@ -7,7 +7,7 @@ import {
 
 function DemoPage() {
   return (
-    <div className="flex items-center justify-center min-h-screen max-w-md space-y-6">
+    <div className="flex flex-col items-center justify-center min-h-screen space-y-6 py-16">
       <h2 className="text-lg font-semibold">How did it go?</h2>
       <p className="text-sm text-muted-foreground">
         Select the option that best reflects your experience.

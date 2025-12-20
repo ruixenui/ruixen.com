@@ -9,7 +9,7 @@ export default function MagicTreeDemoPage() {
   };
 
   return (
-    <div className="p-8 flex flex-col items-center gap-6">
+    <div className="py-16 flex flex-col items-center gap-6">
       <MagicTree onSelect={handleSelect} />
 
       <p className="text-sm text-gray-500 dark:text-gray-400">
