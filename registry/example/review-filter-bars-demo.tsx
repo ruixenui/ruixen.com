@@ -9,7 +9,7 @@ function DemoPage() {
   const total = 12921;
 
   return (
-    <div className="flex items-center justify-center min-h-screen space-y-4">
+    <div className="flex flex-col items-center justify-center min-h-screen space-y-4">
       <h2 className="text-lg font-semibold">Filter by rating</h2>
       <p className="text-sm text-muted-foreground">
         Select a review group to filter results.

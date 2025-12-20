@@ -13,7 +13,7 @@ export default function DemoGamifiedLoginCard() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
+    <div className="flex items-center justify-center">
       <GamifiedLoginCard
         title="Login to Gamify!"
         successMessage="🎉 Welcome to the Game!"

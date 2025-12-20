@@ -17,13 +17,12 @@ export default function SignInCard() {
 
   const handleNext = () => {
     console.log("Email entered:", email);
-    // Add authentication logic here
   };
 
   return (
     <div className="flex items-center justify-center">
-      <Card className="w-full max-w-md rounded-xl shadow-md bg-white dark:bg-gray-800">
-        <CardHeader>
+      <Card className="w-md rounded-xl border border-border bg-background shadow-sm">
+        <CardHeader className="space-y-4">
           <div className="flex items-center gap-2">
             <Image
               src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg"
@@ -32,38 +31,36 @@ export default function SignInCard() {
               height={20}
               priority
             />
-            <span className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+            <span className="text-lg font-semibold text-foreground">
               Microsoft
             </span>
           </div>
-          <CardTitle className="text-2xl font-semibold text-gray-900 dark:text-gray-100 mt-4">
+
+          <CardTitle className="text-2xl font-semibold text-foreground">
             Sign in
           </CardTitle>
         </CardHeader>
 
-        <CardContent>
-          <Input
-            type="text"
-            placeholder="E-mail, phone, or Skype"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="mt-2 dark:bg-gray-700 dark:text-gray-100"
-          />
-          <div className="mt-4 text-sm">
-            <p className="text-gray-600 dark:text-gray-400">
+        <CardContent className="space-y-4">
+          <div className="space-y-2">
+            <Input
+              type="text"
+              placeholder="E-mail, phone, or Skype"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="bg-background"
+            />
+          </div>
+
+          <div className="text-sm text-muted-foreground space-y-1">
+            <p>
               No account?{" "}
-              <a
-                href="#"
-                className="text-blue-600 hover:underline dark:text-blue-400"
-              >
+              <a href="#" className="text-primary hover:underline">
                 Create one!
               </a>
             </p>
-            <p className="mt-1">
-              <a
-                href="#"
-                className="text-blue-600 hover:underline dark:text-blue-400"
-              >
+            <p>
+              <a href="#" className="text-primary hover:underline">
                 Can’t access your account?
               </a>
             </p>
@@ -71,18 +68,8 @@ export default function SignInCard() {
         </CardContent>
 
         <CardFooter className="flex justify-end gap-2">
-          <Button
-            variant="secondary"
-            className="bg-gray-300 text-gray-800 hover:bg-gray-400 dark:bg-gray-600 dark:text-gray-200 dark:hover:bg-gray-500"
-          >
-            Back
-          </Button>
-          <Button
-            onClick={handleNext}
-            className="bg-blue-600 hover:bg-blue-700 text-white"
-          >
-            Next
-          </Button>
+          <Button variant="secondary">Back</Button>
+          <Button onClick={handleNext}>Next</Button>
         </CardFooter>
       </Card>
     </div>

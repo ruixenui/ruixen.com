@@ -38,8 +38,8 @@ export default function StepCard({ onComplete }: StepCardProps) {
 
   return (
     <div className="flex items-center justify-center">
-      <div className="w-md bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8">
-        <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-6 text-center">
+      <div className="w-md bg-background rounded-2xl shadow-lg p-8 border">
+        <h2 className="text-2xl font-semibold text-foreground mb-6 text-center">
           {step === 1
             ? "Step 1: Email"
             : step === 2

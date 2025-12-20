@@ -58,7 +58,7 @@ export function CalendarLume({
 
   return (
     <div
-      className={`rounded-xl bg-background/80 backdrop-blur-md ${className ?? "w-[380px]"}`}
+      className={`rounded-xl bg-background/80 backdrop-blur-md ${className ?? "w-[380px] mx-auto"}`}
     >
       {/* Header */}
       <div className="flex justify-between items-center mb-3">

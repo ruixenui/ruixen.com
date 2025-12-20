@@ -9,43 +9,60 @@ export default function DemoUniversalDatePicker() {
   const [selectedRange, setSelectedRange] = useState<DateRange>();
 
   return (
-    <div className="space-y-6 p-6">
-      <h2 className="text-lg font-semibold">Single Date Picker</h2>
-      <UniversalDatePicker
-        mode="single"
-        selected={selectedSingle}
-        onChange={(value) => {
-          // Ensure only Date is passed for single mode
-          if (value instanceof Date || value === undefined) {
-            setSelectedSingle(value);
-          }
-        }}
-        className="max-w-sm"
-        label="Pick a single date"
-      />
+    <div className="min-h-screen bg-background px-4 py-10">
+      {/* Container */}
+      <div className="mx-auto max-w-xl space-y-10">
+        {/* Single Picker */}
+        <section className="space-y-4">
+          <h2 className="text-lg font-semibold">Single Date Picker</h2>
 
-      <h2 className="text-lg font-semibold mt-6">Range Date Picker</h2>
-      <UniversalDatePicker
-        mode="range"
-        selected={selectedRange}
-        onChange={(value) => {
-          // Ensure only DateRange is passed for range mode
-          if (!value || ("from" in value && "to" in value)) {
-            setSelectedRange(value as DateRange);
-          }
-        }}
-        className="max-w-sm"
-        label="Pick a date range"
-      />
+          <UniversalDatePicker
+            mode="single"
+            selected={selectedSingle}
+            onChange={(value) => {
+              if (value instanceof Date || value === undefined) {
+                setSelectedSingle(value);
+              }
+            }}
+            label="Pick a single date"
+            className="w-full"
+          />
+        </section>
 
-      <div className="mt-4 text-sm text-muted-foreground">
-        Selected Single:{" "}
-        {selectedSingle ? selectedSingle.toDateString() : "None"}
-        <br />
-        Selected Range:{" "}
-        {selectedRange
-          ? `${selectedRange.from?.toDateString() ?? "—"} – ${selectedRange.to?.toDateString() ?? "—"}`
-          : "None"}
+        {/* Range Picker */}
+        <section className="space-y-4">
+          <h2 className="text-lg font-semibold">Range Date Picker</h2>
+
+          <UniversalDatePicker
+            mode="range"
+            selected={selectedRange}
+            onChange={(value) => {
+              if (!value || ("from" in value && "to" in value)) {
+                setSelectedRange(value as DateRange);
+              }
+            }}
+            label="Pick a date range"
+            className="w-full"
+          />
+        </section>
+
+        {/* Output */}
+        <section className="rounded-lg border bg-muted/40 p-4 text-sm">
+          <div className="space-y-1">
+            <div>
+              <span className="font-medium">Selected Single:</span>{" "}
+              {selectedSingle ? selectedSingle.toDateString() : "None"}
+            </div>
+            <div>
+              <span className="font-medium">Selected Range:</span>{" "}
+              {selectedRange
+                ? `${selectedRange.from?.toDateString() ?? "—"} – ${
+                    selectedRange.to?.toDateString() ?? "—"
+                  }`
+                : "None"}
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   );

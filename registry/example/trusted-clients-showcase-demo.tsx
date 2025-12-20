@@ -67,18 +67,9 @@ export default function DemoPage() {
   ];
 
   return (
-    <main className="bg-gray-50 dark:bg-gray-900 min-h-screen py-20">
+    <main className="bg-background min-h-screen">
       {/* Using default logos */}
       <TrustedClientsShowcase />
-
-      {/* Custom logos */}
-      <div className="mt-20">
-        <TrustedClientsShowcase
-          logos={customLogos}
-          defaultHeight={24}
-          defaultWidth={80}
-        />
-      </div>
     </main>
   );
 }

@@ -71,7 +71,7 @@ export default function SplitLoginCard({
   return (
     <div
       className={cn(
-        "flex flex-col md:flex-row w-full max-w-4xl mx-auto shadow-lg rounded-lg overflow-hidden bg-white border dark:bg-gray-800",
+        "flex flex-col md:flex-row w-full max-w-3xl mx-auto shadow-lg rounded-3xl overflow-hidden bg-background border",
         className,
       )}
     >

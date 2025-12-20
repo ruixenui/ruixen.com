@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/chrono-select-demo.tsx",
-      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { ChronoSelect } from \"@/registry/ruixenui/chrono-select\";\n\nexport default function ChronoSelectDemo() {\n  const [date, setDate] = React.useState<Date | undefined>();\n\n  return (\n    <div className=\"p-8 space-y-6\">\n      <h1 className=\"text-xl font-semibold\">Date Picker Demo</h1>\n\n      <ChronoSelect value={date} onChange={setDate} yearRange={[1990, 2035]} />\n\n      {date && (\n        <p className=\"text-sm text-muted-foreground\">\n          You selected: {date.toDateString()}\n        </p>\n      )}\n    </div>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { ChronoSelect } from \"@/registry/ruixenui/chrono-select\";\n\nexport default function ChronoSelectDemo() {\n  const [date, setDate] = React.useState<Date | undefined>();\n\n  return (\n    <div className=\"p-8 flex flex-col justify-center items-center space-y-6 mx-auto\">\n      <h1 className=\"text-xl font-semibold\">Date Picker Demo</h1>\n\n      <ChronoSelect value={date} onChange={setDate} yearRange={[1990, 2035]} />\n\n      {date && (\n        <p className=\"text-sm text-muted-foreground\">\n          You selected: {date.toDateString()}\n        </p>\n      )}\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/chrono-select-demo.tsx"
     }

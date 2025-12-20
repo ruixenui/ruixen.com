@@ -65,7 +65,7 @@ export default function MultiStepLogin({
   return (
     <div
       className={cn(
-        "w-full max-w-md mx-auto bg-white dark:bg-gray-800 border rounded-lg shadow-md overflow-hidden p-6 flex flex-col gap-6",
+        "w-full max-w-md mx-auto bg-background border rounded-lg shadow-md overflow-hidden p-6 flex flex-col gap-6",
         className,
       )}
     >

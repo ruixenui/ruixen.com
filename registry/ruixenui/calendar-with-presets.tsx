@@ -3,6 +3,7 @@
 import * as React from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { DayPicker } from "react-day-picker";
+
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 
@@ -20,7 +21,7 @@ function Calendar({
     month: "w-full",
     month_caption:
       "relative mb-2 flex h-9 items-center justify-center text-base font-semibold text-foreground",
-    caption_label: "text-sm font-medium",
+    caption_label: "text-center text-sm font-medium",
     nav: "absolute top-1 flex w-full justify-between px-2 z-10",
     button_previous: cn(
       buttonVariants({ variant: "ghost", size: "icon" }),
@@ -30,33 +31,47 @@ function Calendar({
       buttonVariants({ variant: "ghost", size: "icon" }),
       "size-8 rounded-full text-muted-foreground hover:text-foreground",
     ),
+
+    // ✅ keep 7 columns aligned with day cell width
     weekdays:
       "grid grid-cols-7 text-center text-xs font-medium uppercase text-muted-foreground/80",
-    weekday: "py-1",
+    weekday: "py-1 w-10",
+
+    // ✅ this is where “too close” usually comes from (no gap + small cells)
+    // Fix: make each day cell slightly bigger (w/h) and center the button inside it.
     week: "grid grid-cols-7",
+    day: "group relative flex size-10 items-center justify-center p-0 text-center",
+
+    // ✅ button remains slightly smaller than the cell, creating natural spacing
     day_button:
       "relative flex size-9 items-center justify-center rounded-full text-sm transition-all " +
       "hover:bg-accent hover:text-accent-foreground " +
       "focus:outline-none focus-visible:ring-2 focus-visible:ring-ring/70 " +
-      // ✅ clear strong selection
       "group-data-[selected]:bg-black group-data-[selected]:text-white " +
       "dark:group-data-[selected]:bg-white dark:group-data-[selected]:text-black " +
       "group-data-[selected]:shadow-md " +
-      "group-data-[disabled]:opacity-40 group-data-[disabled]:cursor-not-allowed group-data-[disabled]:hover:bg-transparent group-data-[disabled]:hover:text-muted-foreground/40",
-    day: "text-center",
+      "group-data-[disabled]:opacity-40 group-data-[disabled]:cursor-not-allowed " +
+      "group-data-[disabled]:hover:bg-transparent group-data-[disabled]:hover:text-muted-foreground/40",
+
+    // Range styles (these apply to the day cell modifier in DayPicker)
     range_start:
       "rounded-l-full bg-black text-white dark:bg-white dark:text-black shadow-md",
     range_end:
       "rounded-r-full bg-black text-white dark:bg-white dark:text-black shadow-md",
     range_middle:
       "bg-black/10 text-foreground dark:bg-white/20 rounded-none transition-colors",
+
+    // Today dot (works reliably because day is `relative`)
     today:
       "after:absolute after:bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-1.5 after:h-1.5 after:rounded-full after:bg-primary",
+
     outside:
       "text-muted-foreground/50 hover:text-accent-foreground hover:bg-accent/30",
     hidden: "invisible",
-    week_number: "size-9 p-0 text-xs font-medium text-muted-foreground/80",
-  };
+
+    week_number:
+      "flex size-10 items-center justify-center p-0 text-xs font-medium text-muted-foreground/80",
+  } as const;
 
   const mergedClassNames = (
     Object.keys(defaultClassNames) as Array<keyof typeof defaultClassNames>
@@ -65,6 +80,7 @@ function Calendar({
       const userClassName = classNames?.[key as keyof typeof classNames] as
         | string
         | undefined;
+
       return {
         ...acc,
         [key]: userClassName
@@ -76,9 +92,11 @@ function Calendar({
   );
 
   const defaultComponents = {
-    Chevron: ({ orientation, ...props }: any) => {
+    Chevron: ({ orientation, ...iconProps }: any) => {
       const Icon = orientation === "left" ? ChevronLeft : ChevronRight;
-      return <Icon size={18} strokeWidth={2} {...props} aria-hidden="true" />;
+      return (
+        <Icon size={18} strokeWidth={2} {...iconProps} aria-hidden="true" />
+      );
     },
   };
 
@@ -97,6 +115,7 @@ function Calendar({
     />
   );
 }
+
 Calendar.displayName = "Calendar";
 
 export { Calendar };

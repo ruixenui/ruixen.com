@@ -295,6 +295,109 @@ pnpm run release:cli
 
 The CLI in development uses index.json from default `3000` port on localhost. Otherwise [https://ruixen.com](https://ruixen.com/registry/index.json)
 
+## Adding Component Preview Images/Videos
+
+When adding a new component, you should also add a preview image or video that will be displayed in the component gallery. This helps users quickly identify and browse components.
+
+### 1. Upload Preview Assets
+
+Upload your preview image or video to the R2 CDN:
+- **Images**: Upload both light and dark theme variants
+- **Videos**: A single video works for both themes
+
+**Naming convention:**
+```
+components-preview/{category}/{component-slug}-light.{jpg|png|webp}
+components-preview/{category}/{component-slug}-dark.{jpg|png|webp}
+components-preview/{category}/{component-slug}.mp4
+```
+
+**Example paths:**
+```
+components-preview/cards/my-card-light.jpg
+components-preview/cards/my-card-dark.jpg
+components-preview/buttons/my-button.mp4
+```
+
+### 2. Register Preview in Data File
+
+Add your component preview to `lib/component-preview-data.ts`:
+
+1. Find the appropriate category object (e.g., `cardsPreview`, `buttonsPreview`)
+2. Add your component entry:
+
+**For images (light + dark):**
+```typescript
+"my-component": {
+  light: `${BASE_URL}/category/my-component-light.jpg`,
+  dark: `${BASE_URL}/category/my-component-dark.jpg`,
+},
+```
+
+**For video only:**
+```typescript
+"my-component": {
+  video: `${BASE_URL}/category/my-component.mp4`,
+},
+```
+
+**For both image and video:**
+```typescript
+"my-component": {
+  light: `${BASE_URL}/category/my-component-light.jpg`,
+  dark: `${BASE_URL}/category/my-component-dark.jpg`,
+  video: `${BASE_URL}/category/my-component.mp4`,
+},
+```
+
+### 3. Preview Requirements
+
+- **Image dimensions**: Recommended 800x600px (4:3 aspect ratio)
+- **Image formats**: `.jpg`, `.png`, `.webp` (prefer `.webp` for smaller file size)
+- **Video formats**: `.mp4` (H.264 codec recommended)
+- **Video duration**: Keep under 10 seconds
+- **File size**: Keep images under 200KB, videos under 2MB
+
+### 4. Categories Reference
+
+| Category | Object Name | Path |
+|----------|-------------|------|
+| Cards | `cardsPreview` | `/docs/components/[slug]` |
+| Buttons | `buttonsPreview` | `/docs/components/[slug]` |
+| Loaders | `loadersPreview` | `/docs/components/[slug]` |
+| Dialogs | `dialogsPreview` | `/docs/components/[slug]` |
+| Upload Components | `uploadPreview` | `/docs/components/[slug]` |
+| Breadcrumb | `breadcrumbPreview` | `/docs/components/[slug]` |
+| Audio & Media | `audioMediaPreview` | `/docs/components/[slug]` |
+| Select Components | `selectPreview` | `/docs/components/[slug]` |
+| Chat Components | `chatPreview` | `/docs/components/[slug]` |
+| Inputs | `inputsPreview` | `/docs/components/[slug]` |
+| Notifications | `notificationsPreview` | `/docs/components/[slug]` |
+| Menu | `menuPreview` | `/docs/components/[slug]` |
+| Context Menu | `contextMenuPreview` | `/docs/components/[slug]` |
+| Drawer | `drawerPreview` | `/docs/components/[slug]` |
+| Forms | `formsPreview` | `/docs/components/[slug]` |
+| File Management | `fileManagementPreview` | `/docs/components/[slug]` |
+| Tables | `tablesPreview` | `/docs/components/[slug]` |
+| Date Pickers | `datePickersPreview` | `/docs/components/[slug]` |
+| Calendars | `calendarsPreview` | `/docs/components/[slug]` |
+| Event Calendars | `eventCalendarsPreview` | `/docs/components/[slug]` |
+| Image Tools | `imageToolsPreview` | `/docs/components/[slug]` |
+| Video Players | `videoPlayersPreview` | `/docs/components/[slug]` |
+| Effects | `effectsPreview` | `/docs/components/[slug]` |
+| Backgrounds | `backgroundsPreview` | `/docs/components/[slug]` |
+| Tabs | `tabsPreview` | `/docs/components/[slug]` |
+| Pagination | `paginationPreview` | `/docs/components/[slug]` |
+| Docks | `docksPreview` | `/docs/components/[slug]` |
+| AI Chat Inputs | `aiChatInputsPreview` | `/docs/components/[slug]` |
+| FAQs | `faqsPreview` | `/docs/sections/[slug]` |
+| Hero Sections | `heroSectionsPreview` | `/docs/components/[slug]` |
+| Featured Section | `featuredSectionPreview` | `/docs/components/[slug]` |
+| Client Section | `clientSectionPreview` | `/docs/components/[slug]` |
+| Footer Section | `footerSectionPreview` | `/docs/components/[slug]` |
+| Navigation Section | `navigationSectionPreview` | `/docs/components/[slug]` |
+| Pricing Section | `pricingSectionPreview` | `/docs/components/[slug]` |
+
 ## Ask for Help
 
 For any help or questions, please open a new GitHub issue.

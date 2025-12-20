@@ -68,7 +68,7 @@ export function MultiSelectCalendarCard({
           mode="multiple"
           selected={dates}
           onSelect={handleSelect}
-          className={cn("rounded-md border", calendarClassName)}
+          className={cn("rounded-md border w-fit", calendarClassName)}
         />
 
         {/* Selected dates list */}

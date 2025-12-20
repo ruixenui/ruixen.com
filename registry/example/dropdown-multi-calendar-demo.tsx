@@ -20,7 +20,7 @@ export default function DemoDropdownMultiCalendar() {
         maxSelectable={10}
         label="Select your important dates"
         monthFormat="MMM"
-        className="max-w-md"
+        className="max-w-md w-fit mx-auto"
       />
 
       <div className="mt-4 text-sm text-muted-foreground">

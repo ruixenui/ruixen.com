@@ -19,7 +19,6 @@ export default function RadialWeekViewDemo() {
 
   return (
     <div className="p-4">
-      <h2 className="text-lg font-semibold mb-4">Radial Week View Demo</h2>
       <RadialWeekView
         events={events}
         onAddEvent={handleAddEvent}

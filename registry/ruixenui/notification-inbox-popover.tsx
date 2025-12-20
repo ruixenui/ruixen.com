@@ -9,7 +9,7 @@ import {
   PopoverContent,
 } from "@/components/ui/popover";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { LucideIcon } from "lucide-react";
+import { Bell, LucideIcon } from "lucide-react";
 
 export interface Notification {
   id: number;
@@ -23,7 +23,7 @@ export interface Notification {
 
 interface NotificationInboxPopoverProps {
   notifications: Notification[];
-  triggerLabel?: string;
+  triggerLabel?: React.ReactNode;
   popoverWidth?: string;
   onMarkAll?: (notifications: Notification[]) => void;
   onMarkAsRead?: (id: number) => void;
@@ -33,7 +33,7 @@ interface NotificationInboxPopoverProps {
 
 export function NotificationInboxPopover({
   notifications: initialNotifications,
-  triggerLabel = "",
+  triggerLabel = <Bell />,
   popoverWidth = "w-[380px]",
   onMarkAll,
   onMarkAsRead,
@@ -71,7 +71,9 @@ export function NotificationInboxPopover({
           className="relative"
           aria-label="Open notifications"
         >
-          <span>{triggerLabel || <span />} </span>
+          <span>
+            <Bell />
+          </span>
           {unreadCount > 0 && (
             <Badge className="absolute -top-2 left-full min-w-5 -translate-x-1/2 px-1">
               {unreadCount > 99 ? "99+" : unreadCount}

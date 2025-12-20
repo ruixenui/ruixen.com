@@ -25,7 +25,7 @@ export default function SmartAssistDemo() {
         validate={validateEmail}
       />
 
-      <div className="w-full max-w-md p-4 rounded-xl border bg-white shadow-md">
+      <div className="w-full max-w-md p-4 rounded-xl border bg-white dark:bg-black shadow-md">
         <h2 className="text-lg font-medium mb-2">Current Value:</h2>
         <p className="text-sm text-muted-foreground">{email || "—"}</p>
       </div>

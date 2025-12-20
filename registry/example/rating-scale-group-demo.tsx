@@ -7,9 +7,9 @@ import {
 
 function DemoPage() {
   return (
-    <div className="flex items-center justify-center min-h-screen max-w-md space-y-6">
+    <div className="flex flex-col items-center justify-center min-h-screen max-w-md mx-auto space-y-6 py-16">
       <h2 className="text-lg font-semibold">How satisfied are you?</h2>
-      <p className="text-sm text-muted-foreground">
+      <p className="text-sm text-muted-foreground text-center max-w-xs">
         Choose a number between 1 and 10 that best reflects your experience.
       </p>
 

@@ -14,7 +14,7 @@ import {
 export default function AdvancedContextMenu() {
   return (
     <ContextMenu>
-      <ContextMenuTrigger className="grid h-[160px] w-[320px] place-items-center rounded-lg border-2 border-dashed p-4 text-center text-sm hover:bg-gray-50 cursor-pointer">
+      <ContextMenuTrigger className="grid h-[160px] w-[320px] place-items-center rounded-lg border-2 border-dashed p-4 text-center text-sm cursor-pointer">
         Right click here to open the advanced actions menu
       </ContextMenuTrigger>
 

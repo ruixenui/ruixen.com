@@ -26,7 +26,7 @@ const demoItems: NestedTabItem[] = [
       {
         value: "profile",
         label: "Profile",
-        content: " Manage your profile details.",
+        content: "Manage your profile details.",
       },
       {
         value: "account",
@@ -56,5 +56,11 @@ const demoItems: NestedTabItem[] = [
 ];
 
 export default function DemoOne() {
-  return <NestedTabs items={demoItems} defaultValue="dashboard" />;
+  return (
+    <div className="min-h-screen flex items-center justify-center p-6">
+      <div className="w-full max-w-4xl">
+        <NestedTabs items={demoItems} defaultValue="dashboard" />
+      </div>
+    </div>
+  );
 }

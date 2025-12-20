@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/create-account-form-demo.tsx",
-      "content": "import CreateAccountForm from \"@/registry/ruixenui/create-account-form\";\n\nexport default function DemoOne() {\n  return (\n    <div className=\"flex items-center justify-center p-2\">\n      <CreateAccountForm />\n    </div>\n  );\n}\n",
+      "content": "import CreateAccountForm from \"@/registry/ruixenui/create-account-form\";\n\nexport default function DemoOne() {\n  return (\n    <div className=\"flex items-center justify-center py-16\">\n      <CreateAccountForm />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/create-account-form-demo.tsx"
     }

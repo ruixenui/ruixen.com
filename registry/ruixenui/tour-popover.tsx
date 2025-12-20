@@ -55,7 +55,7 @@ export function TourPopover({
       >
         {/* Step header */}
         <div className="flex items-center gap-3">
-          <div className="flex size-9 items-center justify-center rounded-md bg-primary/10 text-primary">
+          <div className="flex size-9 items-center justify-center rounded-md bg-background text-primary">
             <Icon size={20} />
           </div>
           <div>

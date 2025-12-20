@@ -27,7 +27,7 @@ import {
 
 export default function AppMenuBar() {
   return (
-    <Menubar className="bg-white border-b border-slate-200 shadow-sm rounded-b-lg">
+    <Menubar className="bg-background w-fit border-b border-slate-200 shadow-sm rounded-b-lg">
       {/* Projects Menu */}
       <MenubarMenu>
         <MenubarTrigger className="flex items-center gap-2">

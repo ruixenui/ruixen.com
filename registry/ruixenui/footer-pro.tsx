@@ -28,9 +28,8 @@ const defaultProps: FooterProProps = {
   description:
     "ruixen ui empowers developers with modern tools, scalable infrastructure, and a vibrant community to build, ship, and grow faster.",
   logo: {
-    dark: "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/ruixen-dark.png",
-    light:
-      "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/ruixen-light.png",
+    dark: "/ruixen-ui-nw-light.png",
+    light: "/ruixen-ui-nw.png",
   },
   contact: {
     email: "support@ruixen ui",

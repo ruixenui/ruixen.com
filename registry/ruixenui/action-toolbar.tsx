@@ -46,7 +46,7 @@ export function ActionToolbar({
   return (
     <div
       className={cn(
-        "relative z-0 flex flex-wrap items-center rounded-2xl border border-muted bg-gradient-to-b from-background to-muted/30 p-1 shadow-sm",
+        "relative z-0 flex w-fit flex-wrap items-center rounded-2xl border border-muted bg-gradient-to-b from-background to-muted/30 p-1 shadow-sm",
         className,
       )}
     >

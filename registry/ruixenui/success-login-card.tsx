@@ -45,7 +45,7 @@ export default function SuccessLoginCard({
 
   return (
     <motion.div
-      className="relative w-lg bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8 flex flex-col gap-6"
+      className="relative w-lg bg-background rounded-2xl shadow-2xl p-8 flex flex-col gap-6 border"
       animate={
         success && animationType === "color-shift"
           ? { backgroundColor: "#d1fae5" } // green-100
@@ -53,10 +53,10 @@ export default function SuccessLoginCard({
       }
       transition={{ duration: 0.6 }}
     >
-      <h2 className="text-3xl font-semibold text-center text-gray-900 dark:text-gray-100">
+      <h2 className="text-3xl font-semibold text-center text-foreground">
         {success ? successMessage : title}
       </h2>
-      <p className="text-center text-gray-500 dark:text-gray-300">
+      <p className="text-center text-muted-foreground">
         {!success && description}
       </p>
 
@@ -104,7 +104,7 @@ export default function SuccessLoginCard({
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-16 w-16 text-green-500"
+            className="h-16 w-16 text-emerald-500"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"

@@ -32,7 +32,7 @@ export default function DemoNotificationsCarousel() {
   ];
 
   return (
-    <div className="flex flex-col items-center justify-center gap-6 p-2">
+    <div className="flex flex-col items-center justify-center gap-6 min-h-screen">
       <div className="space-y-4">
         <div className="mx-auto">
           <NotificationsCarousel items={demoNotifications} placement="bottom" />

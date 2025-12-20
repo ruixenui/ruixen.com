@@ -124,7 +124,7 @@ export function DropdownMultiCalendar({
             setMonthState(date.getMonth());
             setYearState(date.getFullYear());
           }}
-          className={cn("rounded-md border", calendarClassName)}
+          className={cn("rounded-md border w-fit", calendarClassName)}
         />
 
         {/* Selected Dates */}

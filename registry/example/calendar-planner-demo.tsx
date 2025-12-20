@@ -17,7 +17,7 @@ export default function CalendarPlannerDemo() {
   }
 
   return (
-    <div className="p-4 space-y-6">
+    <div className="flex flex-col justify-center items-center py-16 space-y-6">
       <CalendarPlanner
         value={selected}
         onChange={setSelected}

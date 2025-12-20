@@ -82,6 +82,7 @@ export default function FlipCard({
     e.preventDefault();
     setLoading(true);
     setError("");
+
     try {
       if (onLogin) {
         const result = await onLogin(formData);
@@ -95,11 +96,15 @@ export default function FlipCard({
         setSuccess(true);
         setFlipped(false);
       }
-    } catch (err) {
+    } catch {
       setError("Login failed");
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
+
+  const SurfaceCardClass =
+    "absolute w-full h-full backface-hidden rounded-2xl border border-border bg-background shadow-sm";
 
   return (
     <div
@@ -113,55 +118,79 @@ export default function FlipCard({
         style={{ transformStyle: "preserve-3d" }}
       >
         {/* FRONT SIDE */}
-        <Card className="absolute w-full h-full backface-hidden bg-white shadow-md rounded-2xl p-4 flex flex-col justify-center items-center">
+        {/* FRONT SIDE */}
+        <Card
+          className={cn(
+            SurfaceCardClass,
+            "flex flex-col items-center justify-center px-6 text-center",
+          )}
+        >
           {!success ? (
             <>
               {frontIllustration ?? (
-                <div className="w-20 h-20 bg-blue-100 rounded-full mb-4" />
+                <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 ring-1 ring-primary/15">
+                  👋
+                </div>
               )}
-              <CardHeader>
-                <CardTitle className="text-lg font-semibold text-center">
-                  {frontTitle}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="text-center text-sm text-gray-600">
-                {frontDescription}
-              </CardContent>
-              <Button className="mt-4" onClick={() => setFlipped(true)}>
-                {loginButtonText}
+
+              <h2 className="text-xl font-semibold tracking-tight text-foreground">
+                Welcome back
+              </h2>
+
+              <p className="mt-2 max-w-[240px] text-sm leading-relaxed text-muted-foreground">
+                Sign in to access your account and continue where you left off.
+              </p>
+
+              <Button
+                className="mt-6 w-full"
+                size="lg"
+                onClick={() => setFlipped(true)}
+              >
+                Continue to login
               </Button>
             </>
           ) : (
             <>
               {successIllustration ?? (
-                <div className="w-20 h-20 bg-green-100 rounded-full mb-4" />
+                <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-emerald-500/10 ring-1 ring-emerald-500/20">
+                  ✅
+                </div>
               )}
-              <CardHeader>
-                <CardTitle className="text-lg font-semibold text-center">
-                  {successTitle}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="text-center text-sm text-gray-600">
-                {successDescription}
-              </CardContent>
-              <Button className="mt-4 w-full">{successButtonText}</Button>
+
+              <h2 className="text-xl font-semibold tracking-tight text-foreground">
+                You’re signed in
+              </h2>
+
+              <p className="mt-2 max-w-[240px] text-sm leading-relaxed text-muted-foreground">
+                Your account has been successfully authenticated.
+              </p>
+
+              <Button className="mt-6 w-full" size="lg">
+                Go to dashboard
+              </Button>
             </>
           )}
         </Card>
 
-        {/* BACK SIDE */}
         <Card
-          className="absolute w-full h-full backface-hidden bg-white shadow-md rounded-2xl p-6 flex flex-col justify-center"
+          className={cn(SurfaceCardClass, "flex flex-col justify-center px-6")}
           style={{ transform: "rotateY(180deg)" }}
         >
-          {backIllustration}
-          <h3 className="text-lg font-semibold mb-2">{backTitle}</h3>
-          <p className="text-sm text-gray-600 mb-4">{backDescription}</p>
+          <div className="mb-6 text-center">
+            <h3 className="text-xl font-semibold tracking-tight text-foreground">
+              Sign in
+            </h3>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Enter your credentials to continue
+            </p>
+          </div>
 
-          <form onSubmit={handleSubmit} className="space-y-3">
+          <form onSubmit={handleSubmit} className="space-y-4">
             {fields.map((field) => (
-              <div key={field.name} className="flex flex-col">
-                <label className="text-sm font-medium">{field.label}</label>
+              <div key={field.name} className="space-y-1.5">
+                <label className="text-sm font-medium text-foreground">
+                  {field.label}
+                </label>
                 <Input
                   name={field.name}
                   type={field.type || "text"}
@@ -171,17 +200,27 @@ export default function FlipCard({
                 />
               </div>
             ))}
-            {error && <p className="text-sm text-red-500">{error}</p>}
-            <Button type="submit" className="w-full" disabled={loading}>
-              {loading ? "Loading..." : loginButtonText}
+
+            {error && (
+              <p className="text-center text-sm text-destructive">{error}</p>
+            )}
+
+            <Button
+              type="submit"
+              size="lg"
+              className="w-full"
+              disabled={loading}
+            >
+              {loading ? "Signing in…" : "Sign in"}
             </Button>
+
             <Button
               type="button"
-              variant="outline"
+              variant="ghost"
               className="w-full"
               onClick={() => setFlipped(false)}
             >
-              {backButtonText}
+              ← Back
             </Button>
           </form>
         </Card>

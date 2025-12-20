@@ -4,7 +4,7 @@ import AppMenuBar from "@/registry/ruixenui/app-menu-bar";
 
 export default function MenuDemoPage() {
   return (
-    <div className="p-6">
+    <div className="min-h-screen flex items-center justify-center">
       <AppMenuBar />
     </div>
   );

@@ -33,7 +33,7 @@ export default function NotificationsAltDemo() {
   ];
 
   return (
-    <div className="flex flex-col items-center justify-center gap-6">
+    <div className="flex flex-col items-center justify-center min-h-screen gap-6">
       <h1 className="text-2xl font-bold text-center">NotificationsAlt Demo</h1>
 
       <NotificationsAlt items={demoItems} />

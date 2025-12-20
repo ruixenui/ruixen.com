@@ -15,7 +15,7 @@ export default function DemoAuthTabsCard() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
+    <div className="flex items-center justify-center min-h-screen py-16">
       <AuthTabsCard
         socialButtons={[
           {

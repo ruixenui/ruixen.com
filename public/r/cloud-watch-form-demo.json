@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/cloud-watch-form-demo.tsx",
-      "content": "\"use client\";\n\nimport CloudWatchForm from \"@/registry/ruixenui/cloud-watch-form\";\n\nexport default function CloudWatchFormDemo() {\n  return (\n    <div style={{ display: \"flex\", justifyContent: \"center\", marginTop: 100 }}>\n      <CloudWatchForm />\n    </div>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport CloudWatchForm from \"@/registry/ruixenui/cloud-watch-form\";\n\nexport default function CloudWatchFormDemo() {\n  return (\n    <div className=\"flex justify-center py-16\">\n      <CloudWatchForm />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/cloud-watch-form-demo.tsx"
     }

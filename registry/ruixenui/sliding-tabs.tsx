@@ -76,7 +76,7 @@ export default function SlidingTabs({
   };
 
   return (
-    <div className={cn("w-full mx-auto", className)}>
+    <div className={cn("w-full mx-auto max-w-md", className)}>
       {/* Tab list */}
       <div
         ref={containerRef}

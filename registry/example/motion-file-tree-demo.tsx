@@ -33,7 +33,7 @@ export default function MotionFileTreeDemoPage() {
   };
 
   return (
-    <div className="p-8 flex flex-col items-center gap-6">
+    <div className="flex flex-col items-center py-16">
       <MotionFileTree
         data={demoTree}
         defaultExpanded={{ "1": true, "1-1": true }}

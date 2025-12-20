@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/aurora-flow-demo.tsx",
-      "content": "import AuroraFlow from \"@/registry/ruixenui/aurora-flow\";\n\nexport default function DemoOne() {\n  return (\n    <main>\n      <AuroraFlow />\n    </main>\n  );\n}\n",
+      "content": "import AuroraFlow from \"@/registry/ruixenui/aurora-flow\";\n\nexport default function DemoOne() {\n  return (\n    <main className=\"flex flex-col justify-center items-cennter rounded-xl\">\n      <AuroraFlow />\n    </main>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/aurora-flow-demo.tsx"
     }

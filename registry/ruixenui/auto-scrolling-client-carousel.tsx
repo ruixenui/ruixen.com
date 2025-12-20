@@ -29,17 +29,10 @@ export const AutoScrollingClientCarousel: React.FC<
   heading = "Trusted by global leaders",
   logos = [
     {
-      src: "/slack.svg",
-      alt: "Slack Logo",
-      href: "https://slack.com",
-      width: 46,
-      height: 24,
-    },
-    {
-      src: "/amazon.svg",
-      alt: "Amazon Logo",
-      href: "https://amazon.com",
-      width: 100,
+      src: "https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg",
+      alt: "GitHub Logo",
+      href: "https://github.com",
+      width: 54,
       height: 24,
     },
     {
@@ -50,51 +43,52 @@ export const AutoScrollingClientCarousel: React.FC<
       height: 24,
     },
     {
-      src: "/playstation.svg",
-      alt: "PlayStation Logo",
-      href: "https://playstation.com",
-      width: 64,
+      src: "https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg",
+      alt: "GitHub Logo",
+      href: "https://github.com",
+      width: 54,
       height: 24,
     },
     {
-      src: "/ibm.svg",
-      alt: "IBM Logo",
-      href: "https://ibm.com",
-      width: 80,
+      src: "https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg",
+      alt: "GitHub Logo",
+      href: "https://github.com",
+      width: 54,
       height: 24,
     },
     {
-      src: "/ebay.svg",
-      alt: "Ebay Logo",
-      href: "https://ebay.com",
-      width: 80,
+      src: "https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg",
+      alt: "GitHub Logo",
+      href: "https://github.com",
+      width: 54,
       height: 24,
     },
     {
-      src: "/meta.svg",
-      alt: "Meta Logo",
-      href: "https://meta.com",
-      width: 60,
+      src: "https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg",
+      alt: "GitHub Logo",
+      href: "https://github.com",
+      width: 54,
       height: 24,
     },
     {
-      src: "/adobe.svg",
-      alt: "Adobe Logo",
-      href: "https://adobe.com",
-      width: 46,
-      height: 10,
+      src: "https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg",
+      alt: "GitHub Logo",
+      href: "https://github.com",
+      width: 54,
+      height: 24,
+    },
+    {
+      src: "https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg",
+      alt: "GitHub Logo",
+      href: "https://github.com",
+      width: 54,
+      height: 24,
     },
   ],
   speed = 2,
 }) => {
   return (
     <section className="py-20">
-      <div className="container flex flex-col items-center text-center px-4">
-        <h2 className="my-6 text-2xl font-medium text-pretty md:text-3xl lg:text-4xl">
-          {heading}
-        </h2>
-      </div>
-
       <div className="pt-8 md:pt-12 lg:pt-16">
         <div className="relative mx-auto flex items-center justify-center max-w-7xl px-4">
           <Carousel

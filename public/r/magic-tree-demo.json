@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/magic-tree-demo.tsx",
-      "content": "\"use client\";\n\nimport React from \"react\";\nimport MagicTree, { MagicNode } from \"@/registry/ruixenui/magic-tree\";\n\nexport default function MagicTreeDemoPage() {\n  const handleSelect = (node: MagicNode) => {\n    console.log(\"✨ Selected Magic Node:\", node);\n  };\n\n  return (\n    <div className=\"p-8 flex flex-col items-center gap-6\">\n      <MagicTree onSelect={handleSelect} />\n\n      <p className=\"text-sm text-gray-500 dark:text-gray-400\">\n        Click folders to expand/collapse. Selected items sparkle ✨ in the\n        console!\n      </p>\n    </div>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport MagicTree, { MagicNode } from \"@/registry/ruixenui/magic-tree\";\n\nexport default function MagicTreeDemoPage() {\n  const handleSelect = (node: MagicNode) => {\n    console.log(\"✨ Selected Magic Node:\", node);\n  };\n\n  return (\n    <div className=\"py-16 flex flex-col items-center gap-6\">\n      <MagicTree onSelect={handleSelect} />\n\n      <p className=\"text-sm text-gray-500 dark:text-gray-400\">\n        Click folders to expand/collapse. Selected items sparkle ✨ in the\n        console!\n      </p>\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/magic-tree-demo.tsx"
     }

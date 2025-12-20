@@ -39,7 +39,7 @@ export default function ClientCarouselDemo() {
   ];
 
   return (
-    <main className="bg-gray-50 dark:bg-gray-900 min-h-screen py-20">
+    <main className="bg-background min-h-screen py-16">
       <h1 className="text-4xl font-bold text-center text-gray-900 dark:text-white mb-12">
         Client Carousel Showcase
       </h1>

@@ -9,7 +9,7 @@ import { ActionToolbar } from "@/registry/ruixenui/action-toolbar";
 
 export default function ToolbarDemo() {
   return (
-    <div className="p-6">
+    <div className="flex items-center justify-center min-h-screen">
       <ActionToolbar
         buttons={[
           { label: "Left", icon: <AlignLeft className="size-4" /> },

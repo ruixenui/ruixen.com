@@ -125,7 +125,10 @@ export function CalendarTwin({
 
   return (
     <div
-      className={cn("rounded-lg border bg-background p-3 w-[600px]", className)}
+      className={cn(
+        "rounded-lg border bg-background p-3 w-[600px] mx-auto",
+        className,
+      )}
     >
       <div className="flex items-center justify-between mb-2">
         <Button

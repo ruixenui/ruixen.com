@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { motion, AnimatePresence } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 export interface LoginInput {
   id: string;
@@ -27,8 +28,6 @@ interface GamifiedLoginCardProps {
 
 interface ConfettiParticle {
   id: number;
-  x: number;
-  y: number;
   rotate: number;
   color: string;
 }
@@ -76,63 +75,82 @@ export default function GamifiedLoginCard({
   };
 
   const handleLogin = () => {
-    if (Object.values(values).some((v) => !v)) return; // All fields must have input
+    if (Object.values(values).some((v) => !v)) return;
 
     onSubmit?.(values);
 
-    // Trigger confetti
     const newParticles: ConfettiParticle[] = Array.from({
       length: confettiCount,
     }).map((_, i) => ({
       id: Date.now() + i,
-      x: 0,
-      y: 0,
       rotate: Math.random() * 360,
       color: confettiColors[Math.floor(Math.random() * confettiColors.length)],
     }));
+
     setParticles(newParticles);
     setSuccess(true);
 
-    setTimeout(() => setParticles([]), 1000);
+    setTimeout(() => setParticles([]), 1100);
   };
 
   return (
     <div
-      className={`relative w-full min-h-screen flex items-center justify-center overflow-hidden ${className || ""}`}
+      className={cn(
+        "relative w-full flex items-center justify-center overflow-hidden rounded-2xl",
+        "border border-border bg-background/50",
+        "p-6 sm:p-10",
+        className,
+      )}
     >
       {/* Confetti */}
       <AnimatePresence>
         {particles.map((p) => (
           <motion.div
             key={p.id}
-            className="absolute w-3 h-3 rounded-full"
+            className="absolute h-3 w-3 rounded-full"
             style={{ backgroundColor: p.color }}
-            initial={{ x: 0, y: 0, scale: 1, opacity: 1, rotate: p.rotate }}
+            initial={{ x: 0, y: 20, scale: 1, opacity: 1, rotate: p.rotate }}
             animate={{
-              x: (Math.random() - 0.5) * 150,
-              y: -Math.random() * 200,
+              x: (Math.random() - 0.5) * 260,
+              y: -Math.random() * 260 - 40,
               scale: 0,
               opacity: 0,
               rotate: p.rotate + Math.random() * 360,
             }}
-            transition={{ duration: 1, ease: "easeOut" }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.05, ease: "easeOut" }}
           />
         ))}
       </AnimatePresence>
 
       {/* Login Card */}
       <motion.div
-        initial={{ scale: 0.95, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        className="relative z-10 w-full max-w-md bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8 flex flex-col gap-6"
+        initial={{ scale: 0.97, opacity: 0, y: 8 }}
+        animate={{ scale: 1, opacity: 1, y: 0 }}
+        transition={{ duration: 0.25, ease: "easeOut" }}
+        className={cn(
+          "relative z-10 w-full max-w-md rounded-2xl",
+          "border border-border bg-background shadow-sm",
+          "p-7 sm:p-8",
+          "flex flex-col",
+        )}
       >
-        <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-gray-100">
-          {success ? successMessage : title}
-        </h2>
+        {/* Title */}
+        <div className="text-center">
+          <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-foreground">
+            {success ? successMessage : title}
+          </h2>
+          <p className="mt-2 text-sm text-muted-foreground">
+            {success
+              ? "You’re in. Enjoy exploring!"
+              : "Enter your details to continue."}
+          </p>
+        </div>
 
-        <div className="flex flex-col gap-4 mt-2">
+        {/* Form */}
+        <div className="mt-6 flex flex-col gap-4">
           {inputs.map((input) => (
-            <div key={input.id}>
+            <div key={input.id} className="space-y-1.5">
               <Label htmlFor={input.id}>{input.label}</Label>
               <Input
                 id={input.id}
@@ -140,23 +158,26 @@ export default function GamifiedLoginCard({
                 placeholder={input.placeholder}
                 value={values[input.id]}
                 onChange={(e) => handleChange(input.id, e.target.value)}
-                className="hover:scale-105 transition-transform duration-200"
+                className="transition-transform duration-150 hover:scale-[1.01] focus-visible:scale-[1.01]"
               />
             </div>
           ))}
         </div>
 
+        {/* CTA */}
         <Button
-          className="w-full mt-4 hover:scale-110 transition-transform duration-200"
+          className="mt-6 w-full"
+          size="lg"
           onClick={handleLogin}
+          disabled={success}
         >
-          {success ? "Logged In!" : buttonText}
+          {success ? "Logged in!" : buttonText}
         </Button>
 
         {!success && (
-          <p className="text-center text-sm text-gray-500 dark:text-gray-300 mt-2">
+          <p className="mt-4 text-center text-sm text-muted-foreground">
             Don’t have an account?{" "}
-            <a href="#" className="text-purple-500 hover:underline">
+            <a href="#" className="font-medium text-primary hover:underline">
               Sign up
             </a>
           </p>

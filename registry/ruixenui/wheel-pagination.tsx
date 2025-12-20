@@ -95,7 +95,7 @@ export default function WheelPagination({
             className={cn(
               "w-10 h-10 flex items-center justify-center rounded-full font-medium min-h-[40px]",
               active === p
-                ? "bg-primary text-white border border-primary"
+                ? "bg-background text-white border border-primary"
                 : "bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200",
             )}
             onClick={() => setActive(p)}
