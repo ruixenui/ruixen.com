@@ -122,6 +122,10 @@ export const cardsPreview: ComponentPreviewMap = {
     light: `${BASE_URL}/cards/health-stats-card-light.jpg`,
     dark: `${BASE_URL}/cards/health-stats-card-dark.jpg`,
   },
+  "card-stack": {
+    light: `/preview_images/cards/card-stack-light.png`,
+    dark: `/preview_images/cards/card-stack-dark.png`,
+  }
 };
 
 /**
