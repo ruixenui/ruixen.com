@@ -17,26 +17,48 @@ interface Stargazer {
 
 async function getStargazers(): Promise<Stargazer[]> {
   try {
-    const response = await fetch(
-      "https://api.github.com/repos/ruixenui/ruixen.com/stargazers",
-      {
-        headers: process.env.GITHUB_OAUTH_TOKEN
-          ? {
-              Authorization: `Bearer ${process.env.GITHUB_OAUTH_TOKEN}`,
-              "Content-Type": "application/json",
-            }
-          : {},
-        next: {
-          revalidate: 3600, // Revalidate every hour
-        },
-      },
-    );
+    const allStargazers: Stargazer[] = [];
+    let page = 1;
+    const perPage = 1000; // GitHub API max per page (default is 30)
 
-    if (response.ok) {
-      const data = await response.json();
-      return data;
+    // Fetch all pages of stargazers to handle pagination
+    while (true) {
+      const response = await fetch(
+        `https://api.github.com/repos/ruixenui/ruixen.com/stargazers?per_page=${perPage}&page=${page}`,
+        {
+          headers: process.env.GITHUB_OAUTH_TOKEN
+            ? {
+                Authorization: `Bearer ${process.env.GITHUB_OAUTH_TOKEN}`,
+                "Content-Type": "application/json",
+              }
+            : {},
+          next: {
+            revalidate: 3600, // Revalidate every hour
+          },
+        },
+      );
+
+      if (!response.ok) {
+        break;
+      }
+
+      const data: Stargazer[] = await response.json();
+
+      if (data.length === 0) {
+        break; // No more stargazers
+      }
+
+      allStargazers.push(...data);
+
+      // If we got less than perPage, we've reached the last page
+      if (data.length < perPage) {
+        break;
+      }
+
+      page++;
     }
-    return [];
+
+    return allStargazers;
   } catch (error) {
     console.error("Error fetching stargazers:", error);
     return [];
@@ -84,7 +106,7 @@ export default async function SupportersPage() {
             href={stargazer.html_url}
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative"
+            className="group relative hover:z-10"
             title={stargazer.login}
           >
             <div className="relative size-12 md:size-14 lg:size-16 rounded-full overflow-hidden ring-2 ring-border transition-all duration-200 hover:ring-4 hover:ring-primary hover:scale-110">
@@ -96,8 +118,8 @@ export default async function SupportersPage() {
                 sizes="(max-width: 768px) 48px, (max-width: 1024px) 56px, 64px"
               />
             </div>
-            <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
-              <span className="text-xs font-medium bg-popover text-popover-foreground px-2 py-1 rounded-md shadow-md">
+            <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap z-20 pointer-events-none">
+              <span className="text-xs font-medium bg-popover text-popover-foreground px-2 py-1 rounded-md shadow-md border">
                 {stargazer.login}
               </span>
             </div>

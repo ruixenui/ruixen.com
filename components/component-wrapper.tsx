@@ -18,33 +18,22 @@ import { createPortal } from "react-dom";
 
 /* ------------------------------- IFramePortal ------------------------------ */
 /** Mounts children inside an iframe and copies global styles + theme classes.
- *  SUPER-FAST autosize: the height is measured INSIDE the iframe and applied
- *  directly to frameElement (no cross-doc reads). */
+ *  Uses a fixed height with internal scrolling - no dynamic resizing. */
 function IFramePortal({
   width,
-  minHeight = 320,
-  autoHeight = true, // pause autosize (e.g., while dragging)
+  height = 500,
   className,
   title = "Component preview frame",
   children,
 }: {
   width: number | "auto";
-  minHeight?: number;
-  autoHeight?: boolean;
+  height?: number;
   className?: string;
   title?: string;
   children: React.ReactNode;
 }) {
   const iframeRef = React.useRef<HTMLIFrameElement | null>(null);
   const [mountNode, setMountNode] = React.useState<HTMLElement | null>(null);
-
-  // Keep data attrs in sync so the in-frame script can honor them without re-injecting.
-  React.useEffect(() => {
-    const iframe = iframeRef.current;
-    if (!iframe) return;
-    iframe.setAttribute("data-min-height", String(minHeight));
-    iframe.setAttribute("data-auto-height", autoHeight ? "1" : "0");
-  }, [minHeight, autoHeight]);
 
   React.useEffect(() => {
     const iframe = iframeRef.current;
@@ -59,7 +48,7 @@ function IFramePortal({
       doc.write(`<!doctype html>
 <html>
   <head><meta charset="utf-8" /></head>
-  <body class="bg-background"><div id="__frame-root"></div></body>
+  <body class="bg-background"><div id="__frame-root" style="min-height: 100%; display: flex; align-items: center; justify-content: center;"></div></body>
 </html>`);
       doc.close();
 
@@ -75,74 +64,11 @@ function IFramePortal({
       doc.documentElement.className = document.documentElement.className;
       doc.body.className = (document.body.className || "") + " bg-background";
 
-      // Hygiene to avoid inner scrollbars/jitter
-      doc.documentElement.style.overflow = "hidden";
+      // Allow scrolling within the iframe for larger components
+      doc.documentElement.style.height = "100%";
+      doc.body.style.height = "100%";
       doc.body.style.margin = "0";
-      doc.body.style.overflow = "hidden";
-
-      // Inject a self-sizing script that sets frame height from inside the iframe.
-      const script = doc.createElement("script");
-      script.type = "text/javascript";
-      script.text = `
-(function () {
-  var root = document.getElementById("__frame-root") || document.body;
-  var body = document.body;
-  var frame = window.frameElement;
-
-  function getMin() {
-    if (!frame) return 0;
-    var v = parseInt(frame.getAttribute("data-min-height") || "0", 10);
-    return isNaN(v) ? 0 : v;
-  }
-  function isAuto() {
-    if (!frame) return true;
-    return frame.getAttribute("data-auto-height") !== "0";
-  }
-
-  var raf = null;
-  function setH(next) {
-    if (!frame || !isAuto()) return;
-    var h = Math.max(getMin(), Math.ceil(next));
-    if (frame.style.height !== h + "px") {
-      frame.style.height = h + "px";
-    }
-  }
-
-  function measure() {
-    // Use scrollingElement for broadest correctness
-    var scroller = document.scrollingElement || document.documentElement;
-    var h = Math.max(
-      root ? root.scrollHeight : 0,
-      scroller ? scroller.scrollHeight : 0
-    );
-    setH(h);
-  }
-
-  // ResizeObserver on root and body (covers most layout changes)
-  var ro = new ResizeObserver(function () {
-    if (raf != null) return;
-    raf = requestAnimationFrame(function () {
-      raf = null;
-      measure();
-    });
-  });
-  ro.observe(root);
-  ro.observe(body);
-
-  // Re-measure on viewport width changes of the iframe
-  window.addEventListener("resize", measure);
-
-  // After fonts/load settle, re-measure (prevents late "snap")
-  if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(measure);
-    document.fonts.addEventListener && document.fonts.addEventListener("loadingdone", measure);
-  }
-  window.addEventListener("load", measure);
-
-  // Initial measure
-  measure();
-})();`;
-      doc.head.appendChild(script);
+      doc.body.style.overflow = "auto";
 
       setMountNode(doc.getElementById("__frame-root") as HTMLElement);
     }
@@ -184,13 +110,16 @@ function IFramePortal({
     };
   }, [mountNode]);
 
-  // Width is driven by parent; height is set from inside the iframe.
+  // Fixed height - no dynamic resizing
   return (
     <>
       <iframe
         ref={iframeRef}
         title={title}
-        style={{ width: width === "auto" ? "100%" : `${width}px`, minHeight }}
+        style={{
+          width: width === "auto" ? "100%" : `${width}px`,
+          height,
+        }}
         className={cn(
           "block w-full rounded-md border bg-background shadow-sm ring-1 ring-border",
           className,
@@ -484,8 +413,7 @@ export const ComponentWrapper = ({
             >
               <IFramePortal
                 width={width}
-                minHeight={360}
-                autoHeight={!dragging}
+                height={500}
                 className="bg-background"
               >
                 {children}
@@ -546,8 +474,7 @@ export const ComponentWrapper = ({
         >
           <IFramePortal
             width={width}
-            minHeight={360}
-            autoHeight={!dragging}
+            height={500}
             className="bg-background"
           >
             {children}
