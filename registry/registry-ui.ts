@@ -4354,4 +4354,19 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "card-stack",
+    type: "registry:ui",
+    title: "Card Stack",
+    description:
+      "An interactive 3D card stack carousel with fan-out animation, drag gestures, and auto-advance support.",
+    dependencies: ["framer-motion", "lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/card-stack.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/card-stack.tsx",
+      },
+    ],
+  },
 ];

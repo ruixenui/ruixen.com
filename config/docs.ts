@@ -272,6 +272,12 @@ export const docsConfig: DocsConfig = {
               items: [],
               label: "",
             },
+            {
+              title: "Card Stack",
+              href: `/docs/components/card-stack`,
+              items: [],
+              label: "New",
+            },
           ],
         },
         {

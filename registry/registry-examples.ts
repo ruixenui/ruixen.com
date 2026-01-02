@@ -4057,4 +4057,19 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "card-stack-demo",
+    type: "registry:example",
+    title: "Card Stack Demo",
+    description:
+      "Example showing an interactive 3D card stack carousel with fan-out animation and drag gestures.",
+    registryDependencies: ["https://ruixen.com/r/card-stack"],
+    files: [
+      {
+        path: "registry/example/card-stack-demo.tsx",
+        type: "registry:example",
+        target: "components/card-stack-demo.tsx",
+      },
+    ],
+  },
 ];

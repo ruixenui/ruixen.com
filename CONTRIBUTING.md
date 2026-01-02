@@ -168,7 +168,17 @@ npx shadcn@latest add "https://ruixen.com/r/example-component"
 | `color` | `String` | `"blue"` | The color of the component |
 ````
 
-### 5. Update Registry
+### 5. Take a Screenshot
+
+Take a screenshot of your component and add it to the `public/newest/` directory:
+
+1. **Run the dev server** and navigate to your component demo page
+2. **Take a screenshot** of the component in action (recommended: 800x600px or similar aspect ratio)
+3. **Save the screenshot** as `public/newest/your-component-name.png`
+
+This screenshot will be used to showcase your component in the "Newest" section of the website.
+
+### 6. Update Registry
 
 Export your component and example in the registry files:
 
@@ -234,13 +244,13 @@ export const examples: Registry = [
 
 Make sure to add any necessary dependencies, tailwind configurations, or other properties as needed for your specific component.
 
-### 6. Build registry
+### 7. Build registry
 
 ```bash
 pnpm build:registry
 ```
 
-### 7. Format and fix linting before committing
+### 8. Format and fix linting before committing
 
 ```bash
 pnpm format:write

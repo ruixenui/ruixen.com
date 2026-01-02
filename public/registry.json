@@ -5173,6 +5173,23 @@
       ]
     },
     {
+      "name": "card-stack",
+      "type": "registry:ui",
+      "title": "Card Stack",
+      "description": "An interactive 3D card stack carousel with fan-out animation, drag gestures, and auto-advance support.",
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/card-stack.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/card-stack.tsx"
+        }
+      ]
+    },
+    {
       "name": "staggered-faq-section-demo",
       "type": "registry:example",
       "title": "StaggeredFAQSection Demo",
@@ -9553,6 +9570,22 @@
           "path": "registry/example/health-stat-card-demo.tsx",
           "type": "registry:example",
           "target": "components/health-stat-card-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "card-stack-demo",
+      "type": "registry:example",
+      "title": "Card Stack Demo",
+      "description": "Example showing an interactive 3D card stack carousel with fan-out animation and drag gestures.",
+      "registryDependencies": [
+        "https://ruixen.com/r/card-stack"
+      ],
+      "files": [
+        {
+          "path": "registry/example/card-stack-demo.tsx",
+          "type": "registry:example",
+          "target": "components/card-stack-demo.tsx"
         }
       ]
     },
