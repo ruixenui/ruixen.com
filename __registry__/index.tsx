@@ -6623,6 +6623,30 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "card-stack": {
+    name: "card-stack",
+    description:
+      "An interactive 3D card stack carousel with fan-out animation, drag gestures, and auto-advance support.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/card-stack.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/card-stack.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/card-stack.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "staggered-faq-section-demo": {
     name: "staggered-faq-section-demo",
     description:
@@ -13395,6 +13419,30 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/health-stat-card-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "card-stack-demo": {
+    name: "card-stack-demo",
+    description:
+      "Example showing an interactive 3D card stack carousel with fan-out animation and drag gestures.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/card-stack"],
+    files: [
+      {
+        path: "registry/example/card-stack-demo.tsx",
+        type: "registry:example",
+        target: "components/card-stack-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/card-stack-demo.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>

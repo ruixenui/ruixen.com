@@ -1,0 +1,218 @@
+---
+title: Card Stack
+date: 2024-06-01
+description: An interactive 3D card stack carousel with fan-out animation, drag gestures, and auto-advance support.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="card-stack-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/card-stack"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="card-stack" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { CardStack, CardStackItem } from "@/components/ruixen/card-stack";
+
+const items: CardStackItem[] = [
+  {
+    id: 1,
+    title: "Luxury Performance",
+    description: "Experience the thrill of precision engineering",
+    imageSrc: "/images/card-01.jpg",
+    href: "#",
+  },
+  {
+    id: 2,
+    title: "Elegant Design",
+    description: "Where beauty meets functionality",
+    imageSrc: "/images/card-02.jpg",
+    href: "#",
+  },
+  {
+    id: 3,
+    title: "Power & Speed",
+    description: "Unleash the true potential of the road",
+    imageSrc: "/images/card-03.jpg",
+    href: "#",
+  },
+];
+
+export default function App() {
+  return (
+    <div className="min-h-screen w-full bg-zinc-950 text-white p-8">
+      <CardStack
+        items={items}
+        initialIndex={0}
+        autoAdvance
+        intervalMs={3000}
+        pauseOnHover
+        showDots
+      />
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop              | Type                         | Default | Description                                    |
+| ----------------- | ---------------------------- | ------- | ---------------------------------------------- |
+| `items`           | `CardStackItem[]`            | -       | Array of card items to display                 |
+| `initialIndex`    | `number`                     | `0`     | Initial active card index                      |
+| `maxVisible`      | `number`                     | `7`     | Number of cards visible around the active card |
+| `cardWidth`       | `number`                     | `520`   | Width of each card in pixels                   |
+| `cardHeight`      | `number`                     | `320`   | Height of each card in pixels                  |
+| `overlap`         | `number`                     | `0.48`  | How much cards overlap (0-0.8)                 |
+| `spreadDeg`       | `number`                     | `48`    | Total fan angle in degrees                     |
+| `perspectivePx`   | `number`                     | `1100`  | 3D perspective value                           |
+| `depthPx`         | `number`                     | `140`   | Depth offset for inactive cards                |
+| `tiltXDeg`        | `number`                     | `12`    | X-axis tilt for inactive cards                 |
+| `activeLiftPx`    | `number`                     | `22`    | Vertical lift for active card                  |
+| `activeScale`     | `number`                     | `1.03`  | Scale of active card                           |
+| `inactiveScale`   | `number`                     | `0.94`  | Scale of inactive cards                        |
+| `springStiffness` | `number`                     | `280`   | Spring animation stiffness                     |
+| `springDamping`   | `number`                     | `28`    | Spring animation damping                       |
+| `loop`            | `boolean`                    | `true`  | Enable infinite loop navigation                |
+| `autoAdvance`     | `boolean`                    | `false` | Auto-advance to next card                      |
+| `intervalMs`      | `number`                     | `2800`  | Auto-advance interval in ms                    |
+| `pauseOnHover`    | `boolean`                    | `true`  | Pause auto-advance on hover                    |
+| `showDots`        | `boolean`                    | `true`  | Show navigation dots                           |
+| `className`       | `string`                     | -       | Additional CSS classes                         |
+| `onChangeIndex`   | `(index, item) => void`      | -       | Callback when active card changes              |
+| `renderCard`      | `(item, state) => ReactNode` | -       | Custom card renderer                           |
+
+## CardStackItem Type
+
+```tsx
+type CardStackItem = {
+  id: string | number;
+  title: string;
+  description?: string;
+  imageSrc?: string;
+  href?: string;
+  ctaLabel?: string;
+  tag?: string;
+};
+```
+
+## Features
+
+- **3D Fan Layout**: Cards fan out in a 3D arc with perspective
+- **Drag Gestures**: Swipe left/right on active card to navigate
+- **Keyboard Navigation**: Arrow keys to navigate when focused
+- **Auto-Advance**: Optional automatic carousel behavior
+- **Spring Animations**: Smooth physics-based transitions
+- **Reduced Motion**: Respects user accessibility preferences
+- **Custom Rendering**: Override default card appearance
+
+## Interactions
+
+### Drag Navigation
+
+The active card supports drag gestures:
+
+- Drag right to go to previous card
+- Drag left to go to next card
+- Release with velocity for momentum-based navigation
+
+### Keyboard Navigation
+
+When the component is focused:
+
+- `ArrowLeft`: Previous card
+- `ArrowRight`: Next card
+
+### Click Navigation
+
+- Click on any visible card to make it active
+- Click on dot indicators for direct navigation
+
+## Customization
+
+### Custom Card Renderer
+
+```tsx
+<CardStack
+  items={items}
+  renderCard={(item, { active }) => (
+    <div className={`p-6 ${active ? "bg-blue-500" : "bg-gray-800"}`}>
+      <h3 className="text-xl font-bold">{item.title}</h3>
+      <p className="text-sm opacity-80">{item.description}</p>
+    </div>
+  )}
+/>
+```
+
+### Adjust Fan Spread
+
+```tsx
+// Wider fan spread
+<CardStack items={items} spreadDeg={72} overlap={0.3} />
+
+// Tighter stack
+<CardStack items={items} spreadDeg={24} overlap={0.6} />
+```
+
+### Custom Dimensions
+
+```tsx
+// Larger cards
+<CardStack items={items} cardWidth={640} cardHeight={400} />
+
+// Smaller cards
+<CardStack items={items} cardWidth={320} cardHeight={200} />
+```
+
+## Use Cases
+
+- **Image Galleries**: Showcase products or portfolio items
+- **Testimonials**: Display customer reviews
+- **Team Members**: Highlight team profiles
+- **Featured Content**: Hero section carousels
+- **Product Showcases**: E-commerce product displays
+
+## Performance
+
+- Uses `will-change-transform` for GPU acceleration
+- AnimatePresence for efficient mount/unmount
+- Only renders visible cards (within maxVisible range)
+- Respects `prefers-reduced-motion` media query
+
+## Accessibility
+
+- Keyboard navigable with arrow keys
+- Focus management with tabIndex
+- ARIA labels on navigation dots
+- Respects reduced motion preferences

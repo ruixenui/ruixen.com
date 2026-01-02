@@ -78,8 +78,17 @@ export const componentsData: ComponentCategory[] = [
   {
     id: "new components",
     name: "New Components",
-    viewAllUrl: "/docs/components/interactive-image-gallery",
+    viewAllUrl: "/docs/components/card-stack",
     components: [
+      {
+        id: "card-stack",
+        title: "Card Stack",
+        summary:
+          "Interactive 3D card stack carousel with fan-out animation and drag gestures",
+        url: "/docs/components/card-stack",
+        image_dark: "/preview_images/cards/card-stack-dark.png",
+        image_light: "/preview_images/cards/card-stack-light.png",
+      },
       {
         id: "precision-card",
         title: "Precision Card",
