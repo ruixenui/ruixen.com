@@ -472,11 +472,7 @@ export const ComponentWrapper = ({
             willChange: dragging ? "width" : undefined,
           }}
         >
-          <IFramePortal
-            width={width}
-            height={500}
-            className="bg-background"
-          >
+          <IFramePortal width={width} height={500} className="bg-background">
             {children}
           </IFramePortal>
 

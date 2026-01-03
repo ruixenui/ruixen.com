@@ -281,7 +281,7 @@ affiliation: YC S25, raised $10M
 
 ### 2. Create an image
 
-Upload an image of your site to `public/showcase/website-name.png`
+Upload an image of your site to `public/showcase/component-name.png`
 
 ## How to use CLI
 

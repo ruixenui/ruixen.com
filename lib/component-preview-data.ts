@@ -125,7 +125,7 @@ export const cardsPreview: ComponentPreviewMap = {
   "card-stack": {
     light: `/preview_images/cards/card-stack-light.png`,
     dark: `/preview_images/cards/card-stack-dark.png`,
-  }
+  },
 };
 
 /**

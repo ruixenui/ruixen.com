@@ -5,7 +5,7 @@ import { RisingGlow } from "@/registry/ruixenui/rising-glow";
 
 export default function RisingGlowDemo() {
   return (
-    <div className="flex flex-col items-center justify-center p-6">
+    <div className="flex flex-col items-center min-h-screen justify-center p-6">
       <h1 className="text-6xl md:text-8xl font-bold relative z-10">Lumina</h1>
       {/* Rising Glow animation below text */}
       <div className="w-sm">

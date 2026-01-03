@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/ripple-distortion-demo.tsx",
-      "content": "\"use client\";\n\nimport RippleDistortion from \"@/registry/ruixenui/ripple-distortion\";\n\nexport default function DemoOne() {\n  return (\n    <div className=\"flex items-center justify-center\">\n      <RippleDistortion\n        imageSrc=\"https://images.unsplash.com/photo-1507525428034-b723cf961d3e\"\n        width=\"90vw\"\n        height=\"60vh\"\n        frequency={25}\n        amplitude={0.03}\n        speed={6.0}\n        className=\"rounded-xl shadow-lg\"\n      />\n    </div>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport RippleDistortion from \"@/registry/ruixenui/ripple-distortion\";\n\nexport default function DemoOne() {\n  return (\n    <div className=\"flex items-center justify-center min-h-screen\">\n      <RippleDistortion\n        imageSrc=\"https://images.unsplash.com/photo-1507525428034-b723cf961d3e\"\n        width=\"90vw\"\n        height=\"60vh\"\n        frequency={25}\n        amplitude={0.03}\n        speed={6.0}\n        className=\"rounded-xl shadow-lg\"\n      />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/ripple-distortion-demo.tsx"
     }

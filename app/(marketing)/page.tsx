@@ -1,8 +1,9 @@
 import Hero from "@/components/sections/hero";
-import Testimonials from "@/components/sections/testimonials";
-import VideoTestimonials from "@/components/sections/video-testimonials";
 import FAQSection from "@/components/sections/faq-section";
 import { FAQItem } from "@/components/sections/faq-section";
+import WallOfLove from "@/components/sections/wall-of-love";
+import VideoShowcaseGrid from "@/components/sections/video-showcase-grid";
+import InspirationsSection from "@/components/sections/inspirations-section";
 
 export default function Home() {
   const faqItems: FAQItem[] = [
@@ -31,12 +32,6 @@ export default function Home() {
         "We roll out new components and improvements regularly based on developer feedback and trending design patterns.",
     },
     {
-      id: "issues",
-      question: "I found a bug — where can I report it?",
-      answer:
-        "You can open an issue on our GitHub repository or contact us directly. We actively fix and ship updates quickly.",
-    },
-    {
       id: "usage",
       question: "Can I use Ruixen UI in commercial projects?",
       answer:
@@ -46,16 +41,17 @@ export default function Home() {
       id: "future",
       question: "Is a Pro version or premium components planned?",
       answer:
-        "Yes. A Pro version with advanced templates, layouts, and design systems is planned for the future — but the core Ruixen UI library will always remain free. We’ll also keep adding more open-source components and content regularly.",
+        "Yes. A Pro version with advanced templates, layouts, and design systems is planned for the future — but the core Ruixen UI library will always remain free. We'll also keep adding more open-source components and content regularly.",
     },
   ];
 
   return (
     <>
       <Hero />
+      {/* <VideoShowcaseGrid /> */}
+      <InspirationsSection />
+      <WallOfLove />
       <FAQSection faqItems={faqItems} className="py-16 md:py-24" />
-      {/* <Testimonials /> */}
-      {/* <VideoTestimonials /> */}
     </>
   );
 }

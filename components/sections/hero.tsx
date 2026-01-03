@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { trackCTAClick } from "@/lib/ga-events";
 import ComponentShowcaseSection from "./component-showcase-section";
@@ -41,27 +42,51 @@ const ruixenFaqData = [
 ];
 
 function Home() {
+  const [showScrollIndicator, setShowScrollIndicator] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollIndicator(window.scrollY < 50);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <main className="flex flex-col items-center justify-center w-full overflow-hidden bg-white dark:bg-black text-black dark:text-white transition-all duration-300">
+    <main className="flex flex-col items-center justify-center w-full overflow-hidden bg-background text-black dark:text-white transition-all duration-300">
       {/* HERO SECTION */}
-      <section className="flex flex-col justify-center items-center w-full min-h-screen px-4 sm:px-6 lg:px-8">
-        <div className="relative w-full container mx-auto flex flex-col items-center justify-center text-center">
+      <section className="relative flex flex-col justify-center items-center w-full min-h-screen px-4 sm:px-6 lg:px-8">
+        <div className="w-full container mx-auto flex flex-col items-center justify-center text-center">
           {/* Hero Text */}
-          <h1
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className="relative font-semibold leading-[1.1] tracking-tight text-center mx-auto
               text-[2rem] xs:text-[2rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[4rem] xl:text-[5rem]"
           >
             Ruixen UI: Lightweight & Customizable React Library
-          </h1>
+          </motion.h1>
 
-          <p className="mt-6 mx-auto max-w-2xl text-center text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-200">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
+            className="mt-6 mx-auto max-w-2xl text-center text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-200"
+          >
             Ruixen UI is a modern, fast, and customizable React component
             library built with Tailwind CSS, TypeScript, and accessibility in
             mind.
-          </p>
+          </motion.p>
 
           {/* CTA Buttons */}
-          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+            className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4"
+          >
             <Button
               asChild
               size="md"
@@ -90,8 +115,31 @@ function Home() {
             >
               <Link href="/templates">Get Templates</Link>
             </Button>
-          </div>
+          </motion.div>
         </div>
+
+        {/* Scroll Indicator - positioned at bottom of section */}
+        <AnimatePresence>
+          {showScrollIndicator && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="absolute bottom-20 left-1/2 -translate-x-1/2 flex flex-col items-center"
+            >
+              <motion.div
+                animate={{ y: [0, 8, 0] }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="w-[1px] h-16 bg-gradient-to-b from-transparent via-foreground/40 to-foreground/60"
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </section>
 
       {/* COMPONENT SHOWCASE SECTION */}

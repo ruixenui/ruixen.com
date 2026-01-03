@@ -19,7 +19,7 @@ export default function ComponentShowcaseSection() {
   }, []);
 
   return (
-    <section className="relative w-full bg-white dark:bg-black">
+    <section className="relative w-full bg-background">
       {/* Floating Components - Light Mode */}
       <div className="relative z-0 h-[900px] md:h-[1000px] lg:h-[1100px] flex items-center justify-center dark:hidden">
         <div className="relative h-full w-full min-w-[640px] md:min-w-[768px] lg:min-w-0 max-w-7xl px-6">
