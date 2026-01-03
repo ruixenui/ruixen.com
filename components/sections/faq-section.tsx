@@ -69,7 +69,7 @@ export default function FAQSection({
   }, [faqItems, enableStructuredData]);
 
   return (
-    <section className={cn("py-16 md:py-24", className)}>
+    <section className={cn("bg-background py-16 md:py-24", className)}>
       {/* Primary heading on top for SEO and screen readers */}
       <div className="mx-auto max-w-5xl px-6">
         <header className="mb-8 md:mb-12 text-center">

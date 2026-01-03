@@ -8,7 +8,6 @@ export default function ShowcaseCardDemo() {
       <ShowcaseCard
         title="Build Stunning Interfaces"
         subtitle="Harness the power of elegant components built for speed and clarity with RUIXEN UI"
-        image="https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/ruixen_hero_gradient.jpg"
         badge={{ text: "New", variant: "orange" }}
         href="#"
         id="showcase-card"

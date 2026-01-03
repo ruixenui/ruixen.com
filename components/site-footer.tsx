@@ -99,7 +99,7 @@ const footerSections = [
 
 export default function SiteFooter() {
   return (
-    <footer className="relative bg-white dark:bg-black pt-24 pb-12 overflow-hidden text-sm text-black dark:text-white">
+    <footer className="relative bg-gray-50 dark:bg-black pt-24 pb-12 overflow-hidden text-sm text-black dark:text-white">
       <div className="relative max-w-7xl mx-auto px-4 md:px-6 z-10">
         <div className="flex flex-col md:flex-row justify-between items-start mb-12 space-y-4 md:space-y-0 border-b pb-6">
           <div className="flex items-center space-x-1">

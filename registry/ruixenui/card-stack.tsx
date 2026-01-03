@@ -1,13 +1,28 @@
 "use client";
 
 import * as React from "react";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  useReducedMotion,
+  type PanInfo,
+} from "framer-motion";
 import { SquareArrowOutUpRight } from "lucide-react";
 import Link from "next/link";
 
 function cn(...classes: Array<string | undefined | null | false>) {
   return classes.filter(Boolean).join(" ");
 }
+
+// Memoized spring config to prevent object recreation
+const createSpringTransition = (stiffness: number, damping: number) => ({
+  type: "spring" as const,
+  stiffness,
+  damping,
+});
+
+// Stable drag constraints - never changes
+const DRAG_CONSTRAINTS = { left: 0, right: 0 } as const;
 
 export type CardStackItem = {
   id: string | number;
@@ -84,6 +99,156 @@ function signedOffset(i: number, active: number, len: number, loop: boolean) {
   return Math.abs(alt) < Math.abs(raw) ? alt : raw;
 }
 
+/** Memoized individual card - prevents re-renders when sibling cards change */
+type StackCardProps<T extends CardStackItem> = {
+  item: T;
+  index: number;
+  isActive: boolean;
+  cardWidth: number;
+  cardHeight: number;
+  x: number;
+  y: number;
+  z: number;
+  lift: number;
+  rotateX: number;
+  rotateZ: number;
+  scale: number;
+  zIndex: number;
+  reduceMotion: boolean | null;
+  springTransition: { type: "spring"; stiffness: number; damping: number };
+  handleDragEnd: (
+    e: MouseEvent | TouchEvent | PointerEvent,
+    info: PanInfo,
+  ) => void;
+  onSelect: (index: number) => void;
+  renderCard?: (item: T, state: { active: boolean }) => React.ReactNode;
+};
+
+const StackCard = React.memo(function StackCard<T extends CardStackItem>({
+  item,
+  index,
+  isActive,
+  cardWidth,
+  cardHeight,
+  x,
+  y,
+  z,
+  lift,
+  rotateX,
+  rotateZ,
+  scale,
+  zIndex,
+  reduceMotion,
+  springTransition,
+  handleDragEnd,
+  onSelect,
+  renderCard,
+}: StackCardProps<T>) {
+  const handleClick = React.useCallback(() => {
+    onSelect(index);
+  }, [onSelect, index]);
+
+  return (
+    <motion.div
+      className={cn(
+        "absolute bottom-0 rounded-2xl border-4 border-black/10 dark:border-white/10 overflow-hidden shadow-xl",
+        "will-change-transform select-none",
+        isActive ? "cursor-grab active:cursor-grabbing" : "cursor-pointer",
+      )}
+      style={{
+        width: cardWidth,
+        height: cardHeight,
+        zIndex,
+        transformStyle: "preserve-3d",
+      }}
+      initial={
+        reduceMotion
+          ? false
+          : {
+              opacity: 0,
+              y: y + 40,
+              x,
+              rotateZ,
+              rotateX,
+              scale,
+            }
+      }
+      animate={{
+        opacity: 1,
+        x,
+        y: y + lift,
+        rotateZ,
+        rotateX,
+        scale,
+      }}
+      transition={springTransition}
+      onClick={handleClick}
+      drag={isActive ? "x" : false}
+      dragConstraints={isActive ? DRAG_CONSTRAINTS : undefined}
+      dragElastic={isActive ? 0.18 : undefined}
+      onDragEnd={isActive ? handleDragEnd : undefined}
+    >
+      <div
+        className="h-full w-full"
+        style={{
+          transform: `translateZ(${z}px)`,
+          transformStyle: "preserve-3d",
+        }}
+      >
+        {renderCard ? (
+          renderCard(item, { active: isActive })
+        ) : (
+          <DefaultFanCard item={item} active={isActive} />
+        )}
+      </div>
+    </motion.div>
+  );
+}) as <T extends CardStackItem>(props: StackCardProps<T>) => React.ReactElement;
+
+/** Memoized default card content */
+const DefaultFanCard = React.memo(function DefaultFanCard({
+  item,
+}: {
+  item: CardStackItem;
+  active: boolean;
+}) {
+  return (
+    <div className="relative h-full w-full">
+      {/* image */}
+      <div className="absolute inset-0">
+        {item.imageSrc ? (
+          <img
+            src={item.imageSrc}
+            alt={item.title}
+            className="h-full w-full object-cover"
+            draggable={false}
+            loading="eager"
+          />
+        ) : (
+          <div className="flex h-full w-full items-center justify-center bg-secondary text-sm text-muted-foreground">
+            No image
+          </div>
+        )}
+      </div>
+
+      {/* subtle gradient overlay at bottom for text readability */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+
+      {/* content */}
+      <div className="relative z-10 flex h-full flex-col justify-end p-5">
+        <div className="truncate text-lg font-semibold text-white">
+          {item.title}
+        </div>
+        {item.description ? (
+          <div className="mt-1 line-clamp-2 text-sm text-white/80">
+            {item.description}
+          </div>
+        ) : null}
+      </div>
+    </div>
+  );
+});
+
 export function CardStack<T extends CardStackItem>({
   items,
   initialIndex = 0,
@@ -136,33 +301,62 @@ export function CardStack<T extends CardStackItem>({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [active]);
 
-  const maxOffset = Math.max(0, Math.floor(maxVisible / 2));
+  // Memoize computed geometry values - these only change when props change
+  const { maxOffset, cardSpacing, stepDeg } = React.useMemo(
+    () => ({
+      maxOffset: Math.max(0, Math.floor(maxVisible / 2)),
+      cardSpacing: Math.max(10, Math.round(cardWidth * (1 - overlap))),
+      stepDeg:
+        Math.floor(maxVisible / 2) > 0
+          ? spreadDeg / Math.floor(maxVisible / 2)
+          : 0,
+    }),
+    [maxVisible, cardWidth, overlap, spreadDeg],
+  );
 
-  const cardSpacing = Math.max(10, Math.round(cardWidth * (1 - overlap)));
-  const stepDeg = maxOffset > 0 ? spreadDeg / maxOffset : 0;
+  // Memoize spring transition to prevent object recreation on every render
+  const springTransition = React.useMemo(
+    () => createSpringTransition(springStiffness, springDamping),
+    [springStiffness, springDamping],
+  );
 
   const canGoPrev = loop || active > 0;
   const canGoNext = loop || active < len - 1;
 
   const prev = React.useCallback(() => {
     if (!len) return;
-    if (!canGoPrev) return;
-    setActive((a) => wrapIndex(a - 1, len));
-  }, [canGoPrev, len]);
+    setActive((a) => (loop || a > 0 ? wrapIndex(a - 1, len) : a));
+  }, [loop, len]);
 
   const next = React.useCallback(() => {
     if (!len) return;
-    if (!canGoNext) return;
-    setActive((a) => wrapIndex(a + 1, len));
-  }, [canGoNext, len]);
+    setActive((a) => (loop || a < len - 1 ? wrapIndex(a + 1, len) : a));
+  }, [loop, len]);
 
-  // keyboard navigation (when container focused)
-  const onKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "ArrowLeft") prev();
-    if (e.key === "ArrowRight") next();
-  };
+  // Memoized keyboard handler
+  const onKeyDown = React.useCallback(
+    (e: React.KeyboardEvent) => {
+      if (e.key === "ArrowLeft") prev();
+      if (e.key === "ArrowRight") next();
+    },
+    [prev, next],
+  );
 
-  // autoplay
+  // Memoized drag end handler - stable reference prevents motion.div re-renders
+  const handleDragEnd = React.useCallback(
+    (_e: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
+      if (reduceMotion) return;
+      const travel = info.offset.x;
+      const v = info.velocity.x;
+      const threshold = Math.min(160, cardWidth * 0.22);
+
+      if (travel > threshold || v > 650) prev();
+      else if (travel < -threshold || v < -650) next();
+    },
+    [reduceMotion, cardWidth, prev, next],
+  );
+
+  // autoplay - removed `active` from deps to prevent effect restart on every card change
   React.useEffect(() => {
     if (!autoAdvance) return;
     if (reduceMotion) return;
@@ -171,7 +365,7 @@ export function CardStack<T extends CardStackItem>({
 
     const id = window.setInterval(
       () => {
-        if (loop || active < len - 1) next();
+        setActive((a) => (loop || a < len - 1 ? wrapIndex(a + 1, len) : a));
       },
       Math.max(700, intervalMs),
     );
@@ -185,8 +379,6 @@ export function CardStack<T extends CardStackItem>({
     reduceMotion,
     len,
     loop,
-    active,
-    next,
   ]);
 
   if (!len) return null;
@@ -246,90 +438,28 @@ export function CardStack<T extends CardStackItem>({
 
               const zIndex = 100 - abs;
 
-              // drag only on the active card
-              const dragProps = isActive
-                ? {
-                    drag: "x" as const,
-                    dragConstraints: { left: 0, right: 0 },
-                    dragElastic: 0.18,
-                    onDragEnd: (
-                      _e: any,
-                      info: { offset: { x: number }; velocity: { x: number } },
-                    ) => {
-                      if (reduceMotion) return;
-                      const travel = info.offset.x;
-                      const v = info.velocity.x;
-                      const threshold = Math.min(160, cardWidth * 0.22);
-
-                      // swipe logic
-                      if (travel > threshold || v > 650) prev();
-                      else if (travel < -threshold || v < -650) next();
-                    },
-                  }
-                : {};
-
               return (
-                <motion.div
+                <StackCard
                   key={item.id}
-                  className={cn(
-                    "absolute bottom-0 rounded-2xl border-4 border-black/10 dark:border-white/10 overflow-hidden shadow-xl",
-                    "will-change-transform select-none",
-                    isActive
-                      ? "cursor-grab active:cursor-grabbing"
-                      : "cursor-pointer",
-                  )}
-                  style={{
-                    width: cardWidth,
-                    height: cardHeight,
-                    zIndex,
-                    transformStyle: "preserve-3d",
-                  }}
-                  initial={
-                    reduceMotion
-                      ? false
-                      : {
-                          opacity: 0,
-                          y: y + 40,
-                          x,
-                          rotateZ,
-                          rotateX,
-                          scale,
-                        }
-                  }
-                  animate={{
-                    opacity: 1,
-                    x,
-                    y: y + lift,
-                    rotateZ,
-                    rotateX,
-                    // framer doesn't support translateZ directly in animate on all setups,
-                    // so we use a custom transform via style below.
-                    scale,
-                  }}
-                  transition={{
-                    type: "spring",
-                    stiffness: springStiffness,
-                    damping: springDamping,
-                  }}
-                  // translateZ via style transform (kept stable w/ motion values above)
-                  // We apply translateZ by using a CSS transform in a child wrapper.
-                  onClick={() => setActive(i)}
-                  {...dragProps}
-                >
-                  <div
-                    className="h-full w-full"
-                    style={{
-                      transform: `translateZ(${z}px)`,
-                      transformStyle: "preserve-3d",
-                    }}
-                  >
-                    {renderCard ? (
-                      renderCard(item, { active: isActive })
-                    ) : (
-                      <DefaultFanCard item={item} active={isActive} />
-                    )}
-                  </div>
-                </motion.div>
+                  item={item}
+                  index={i}
+                  isActive={isActive}
+                  cardWidth={cardWidth}
+                  cardHeight={cardHeight}
+                  x={x}
+                  y={y}
+                  z={z}
+                  lift={lift}
+                  rotateX={rotateX}
+                  rotateZ={rotateZ}
+                  scale={scale}
+                  zIndex={zIndex}
+                  reduceMotion={reduceMotion}
+                  springTransition={springTransition}
+                  handleDragEnd={handleDragEnd}
+                  onSelect={setActive}
+                  renderCard={renderCard}
+                />
               );
             })}
           </AnimatePresence>
@@ -370,44 +500,6 @@ export function CardStack<T extends CardStackItem>({
           ) : null}
         </div>
       ) : null}
-    </div>
-  );
-}
-
-function DefaultFanCard({ item }: { item: CardStackItem; active: boolean }) {
-  return (
-    <div className="relative h-full w-full">
-      {/* image */}
-      <div className="absolute inset-0">
-        {item.imageSrc ? (
-          <img
-            src={item.imageSrc}
-            alt={item.title}
-            className="h-full w-full object-cover"
-            draggable={false}
-            loading="eager"
-          />
-        ) : (
-          <div className="flex h-full w-full items-center justify-center bg-secondary text-sm text-muted-foreground">
-            No image
-          </div>
-        )}
-      </div>
-
-      {/* subtle gradient overlay at bottom for text readability */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-
-      {/* content */}
-      <div className="relative z-10 flex h-full flex-col justify-end p-5">
-        <div className="truncate text-lg font-semibold text-white">
-          {item.title}
-        </div>
-        {item.description ? (
-          <div className="mt-1 line-clamp-2 text-sm text-white/80">
-            {item.description}
-          </div>
-        ) : null}
-      </div>
     </div>
   );
 }

@@ -1,25 +1,34 @@
 "use client";
 
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Sparkles } from "lucide-react";
 import Link from "next/link";
+import { toast } from "sonner";
 
 export function ProBanner() {
+  const handleClick = () => {
+    toast("Thank you for your love!", {
+      description: "Ruixen Pro is coming very soon. Stay tuned!",
+      duration: 5000,
+      icon: <Sparkles className="h-5 w-5 text-blue-500" />,
+      position: "top-right",
+    });
+  };
+
   return (
-    <div className="group relative top-0 bg-indigo-600 py-3 text-white transition-all duration-300 md:py-0">
+    <div className="group relative top-0 bg-blue-600 py-3 text-white transition-all duration-300 md:py-0">
       <div className="container flex flex-col items-center justify-center gap-4 md:h-12 md:flex-row">
-        <Link
-          href="https://ruixen.com"
-          target="_blank"
-          className="inline-flex text-xs leading-normal md:text-sm"
+        <button
+          onClick={handleClick}
+          className="inline-flex text-xs leading-normal md:text-sm cursor-pointer"
         >
-          ✨{" "}
-          <span className="ml-1 font-[580] dark:font-[550]">
-            {" "}
-            Introducing Ruixen UI Pro - 50+ blocks and templates to build
-            beautiful landing pages in minutes.
-          </span>{" "}
+          <span className="font-[580] dark:font-[550]">
+            Ruixen Pro, coming soon.
+          </span>
+          <span className="ml-2 text-white/70">
+            Built from insights of 1000+ developers, refined component by component, including templates.
+          </span>
           <ChevronRight className="ml-1 mt-[3px] hidden size-4 transition-all duration-300 ease-out group-hover:translate-x-1 lg:inline-block" />
-        </Link>
+        </button>
       </div>
       <hr className="absolute bottom-0 m-0 h-px w-full bg-neutral-200/30" />
     </div>
@@ -35,12 +44,10 @@ export function ProductHuntBanner() {
           target="_blank"
           className="inline-flex text-xs leading-normal md:text-sm"
         >
-          ✨{" "}
           <span className="ml-1 font-[580] dark:font-[550]">
-            {" "}
             Ruixen UI is live on Product Hunt Today! Show your support and vote
             for us.
-          </span>{" "}
+          </span>
           <ChevronRight className="ml-1 mt-[3px] hidden size-4 transition-all duration-300 ease-out group-hover:translate-x-1 lg:inline-block" />
         </Link>
       </div>

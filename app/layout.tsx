@@ -1,5 +1,7 @@
 import { Analytics } from "@/components/analytics";
 import { ThemeProvider } from "@/components/theme-provider";
+import { SmoothScrollProvider } from "@/components/smooth-scroll-provider";
+import { SiteBanner } from "@/components/site-banner";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { fontMono, fontSans } from "@/lib/fonts";
@@ -26,16 +28,16 @@ export const metadata: Metadata = {
     siteName: "Ruixen",
     images: [
       {
-        url: absoluteUrl("/og"), // keeps your original constructMetadata image
+        url: "https://ruixen.com/website_preview.png",
         width: 1200,
         height: 630,
-        alt: "Ruixen",
+        alt: "Ruixen UI",
       },
       {
-        url: "https://ruixen.com/ruixen_light.png", // explicit static image
+        url: absoluteUrl("/og"),
         width: 1200,
         height: 630,
-        alt: "Ruixen",
+        alt: "Ruixen UI",
       },
     ],
     locale: "en_US",
@@ -48,7 +50,7 @@ export const metadata: Metadata = {
       "Collection of customizable and open source components made with Next.js, Tailwind, Typescript, and Framer Motion.",
     images: [
       {
-        url: "https://ruixen.com/ruixen_light.png",
+        url: "https://ruixen.com/website_preview.png",
         width: 1200,
         height: 630,
         alt: "Ruixen",
@@ -81,12 +83,15 @@ export default function RootLayout({
       >
         <JotaiProvider>
           <ThemeProvider attribute="class" defaultTheme="light">
-            <TooltipProvider>
-              {children}
-              <Toaster />
-              <Analytics />
-              <GitHubStarPopup />
-            </TooltipProvider>
+            <SmoothScrollProvider>
+              <TooltipProvider>
+                <SiteBanner />
+                {children}
+                <Toaster />
+                <Analytics />
+                <GitHubStarPopup />
+              </TooltipProvider>
+            </SmoothScrollProvider>
           </ThemeProvider>
         </JotaiProvider>
       </body>

@@ -25,5 +25,9 @@ export default function DemoOne() {
     },
   ];
 
-  return <GooeyDock items={dockItems} />;
+  return (
+    <div className="flex min-h-screen justify-center items-center">
+      <GooeyDock items={dockItems} />
+    </div>
+  );
 }
