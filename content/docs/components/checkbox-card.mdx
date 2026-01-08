@@ -1,0 +1,79 @@
+---
+title: Checkbox Card
+date: 2024-06-01
+description: A card-style checkbox with icon, title, and description for rich selections.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="checkbox-card-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/checkbox-card"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="checkbox-card" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import CheckboxCard from "@/components/ruixen/checkbox-card";
+import { Zap } from "lucide-react";
+
+export default function MyComponent() {
+  return (
+    <CheckboxCard
+      title="Performance"
+      description="Optimized for speed and efficiency"
+      icon={<Zap className="size-5" />}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop              | Type                         | Default | Description                 |
+| ----------------- | ---------------------------- | ------- | --------------------------- |
+| `checked`         | `boolean`                    | -       | Controlled checked state    |
+| `defaultChecked`  | `boolean`                    | `false` | Default checked state       |
+| `onCheckedChange` | `(checked: boolean) => void` | -       | Callback when state changes |
+| `title`           | `string`                     | -       | Card title (required)       |
+| `description`     | `string`                     | -       | Card description            |
+| `icon`            | `React.ReactNode`            | -       | Optional icon element       |
+| `disabled`        | `boolean`                    | `false` | Disable the checkbox        |
+| `className`       | `string`                     | -       | Additional CSS classes      |
+
+## Features
+
+- Card-style selection UI
+- Icon, title, and description support
+- Active state with border highlight
+- Round checkbox indicator
+- Light and dark mode support

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar-icon-demo",
+  "type": "registry:example",
+  "title": "Avatar with Icon Demo",
+  "description": "Example showing an avatar with a user icon fallback.",
+  "registryDependencies": [
+    "https://ruixen.com/r/avatar-icon"
+  ],
+  "files": [
+    {
+      "path": "registry/example/avatar-icon-demo.tsx",
+      "content": "import AvatarIcon from \"@/registry/ruixenui/avatar-icon\";\n\nexport default function AvatarIconDemo() {\n  return (\n    <div className=\"flex min-h-[350px] w-full items-center justify-center p-4\">\n      <AvatarIcon />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/avatar-icon-demo.tsx"
+    }
+  ]
+}

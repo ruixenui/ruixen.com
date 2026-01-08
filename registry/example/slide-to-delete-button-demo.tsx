@@ -5,7 +5,7 @@ import SlideToDeleteButton from "@/registry/ruixenui/slide-to-delete-button";
 
 export default function DemoSlideToDelete() {
   return (
-    <main className="flex flex-col items-center justify-center gap-8 min-h-screen">
+    <main className="flex min-h-[350px] w-full flex-col items-center justify-center gap-8">
       <SlideToDeleteButton
         label="Remove Item"
         deletedLabel="Removed!"

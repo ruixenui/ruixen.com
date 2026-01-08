@@ -1,0 +1,83 @@
+---
+title: Breadcrumb Boxed
+date: 2025-01-08
+description: Breadcrumb navigation wrapped in a styled container with multiple variants.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="breadcrumb-boxed-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/breadcrumb-boxed"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="breadcrumb-boxed" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import BreadcrumbBoxed from "@/components/ruixen/breadcrumb-boxed";
+
+const items = [
+  { label: "Home", href: "/" },
+  { label: "Components", href: "/components" },
+  { label: "Breadcrumb" },
+];
+
+export default function MyBreadcrumb() {
+  return <BreadcrumbBoxed items={items} variant="filled" rounded="full" />;
+}
+```
+
+## Props
+
+| Prop           | Type                                            | Default     | Description                  |
+| -------------- | ----------------------------------------------- | ----------- | ---------------------------- |
+| `items`        | `BreadcrumbBoxedItem[]`                         | -           | Array of breadcrumb items    |
+| `variant`      | `"default" \| "filled" \| "outline" \| "ghost"` | `"default"` | Container style variant      |
+| `showHomeIcon` | `boolean`                                       | `true`      | Show home icon on first item |
+| `rounded`      | `"sm" \| "md" \| "lg" \| "full"`                | `"lg"`      | Border radius style          |
+| `className`    | `string`                                        | -           | Additional CSS classes       |
+
+### BreadcrumbBoxedItem
+
+| Property | Type     | Description               |
+| -------- | -------- | ------------------------- |
+| `label`  | `string` | Display text for the item |
+| `href`   | `string` | Optional link URL         |
+
+## Variants
+
+| Variant   | Description                       |
+| --------- | --------------------------------- |
+| `default` | Border with background and shadow |
+| `filled`  | Muted background fill             |
+| `outline` | Border only, no background        |
+| `ghost`   | Subtle muted background           |

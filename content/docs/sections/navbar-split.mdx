@@ -1,0 +1,68 @@
+---
+title: Navbar Split
+date: 2024-06-01
+description: A navbar with navigation links split between left and right sides of the logo.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="navbar-split-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/navbar-split"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="navbar-split" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import NavbarSplit from "@/components/ruixen/navbar-split";
+
+export default function MyNavbar() {
+  return <NavbarSplit />;
+}
+```
+
+## Props
+
+| Prop         | Type                                                  | Default       | Description                    |
+| ------------ | ----------------------------------------------------- | ------------- | ------------------------------ |
+| `logo`       | `React.ReactNode`                                     | Default logo  | Custom logo element (centered) |
+| `leftLinks`  | `{ label: string; href: string; active?: boolean }[]` | Default links | Links on the left side         |
+| `rightLinks` | `{ label: string; href: string; active?: boolean }[]` | Default links | Links on the right side        |
+| `className`  | `string`                                              | -             | Additional CSS classes         |
+
+## Features
+
+- Centered logo design
+- Split navigation layout
+- Links on both sides
+- Balanced visual layout
+- Light and dark mode support

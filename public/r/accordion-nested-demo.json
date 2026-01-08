@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "accordion-nested-demo",
+  "type": "registry:example",
+  "title": "Nested Accordion Demo",
+  "description": "Example showing an accordion with nested sub-accordions.",
+  "registryDependencies": [
+    "https://ruixen.com/r/accordion-nested"
+  ],
+  "files": [
+    {
+      "path": "registry/example/accordion-nested-demo.tsx",
+      "content": "import AccordionNested from \"@/registry/ruixenui/accordion-nested\";\n\nconst items = [\n  {\n    id: \"1\",\n    title: \"Account Settings\",\n    content: \"Manage your account preferences and security settings.\",\n    subItems: [\n      {\n        id: \"1-1\",\n        title: \"Profile Information\",\n        content: \"Update your name, email, and profile picture.\",\n      },\n      {\n        id: \"1-2\",\n        title: \"Security\",\n        content: \"Change password and enable two-factor authentication.\",\n      },\n    ],\n  },\n  {\n    id: \"2\",\n    title: \"Billing & Subscription\",\n    content: \"View and manage your billing information.\",\n    subItems: [\n      {\n        id: \"2-1\",\n        title: \"Payment Methods\",\n        content: \"Add or remove payment methods from your account.\",\n      },\n      {\n        id: \"2-2\",\n        title: \"Invoices\",\n        content: \"Download past invoices and billing statements.\",\n      },\n    ],\n  },\n];\n\nexport default function AccordionNestedDemo() {\n  return (\n    <div className=\"flex min-h-[350px] w-full items-center justify-center p-4\">\n      <div className=\"w-full max-w-md\">\n        <AccordionNested items={items} defaultValue=\"1\" />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/accordion-nested-demo.tsx"
+    }
+  ]
+}

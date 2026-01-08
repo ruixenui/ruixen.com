@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "badge-icon",
+  "type": "registry:ui",
+  "title": "Badge with Icon",
+  "description": "Badge component with customizable icon and position.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "badge"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/badge-icon.tsx",
+      "content": "\"use client\";\n\nimport { Badge } from \"@/components/ui/badge\";\nimport { cn } from \"@/lib/utils\";\nimport {\n  Zap,\n  Star,\n  Check,\n  AlertTriangle,\n  Info,\n  type LucideIcon,\n} from \"lucide-react\";\n\ntype BadgeVariant = \"default\" | \"secondary\" | \"destructive\" | \"outline\";\n\ninterface BadgeIconProps {\n  icon?: LucideIcon;\n  children?: React.ReactNode;\n  variant?: BadgeVariant;\n  iconPosition?: \"left\" | \"right\";\n  className?: string;\n}\n\nexport default function BadgeIcon({\n  icon: Icon = Zap,\n  children = \"Badge\",\n  variant = \"default\",\n  iconPosition = \"left\",\n  className,\n}: BadgeIconProps) {\n  return (\n    <Badge variant={variant} className={cn(\"gap-1.5\", className)}>\n      {iconPosition === \"left\" && <Icon className=\"size-3\" />}\n      {children}\n      {iconPosition === \"right\" && <Icon className=\"size-3\" />}\n    </Badge>\n  );\n}\n\nexport { BadgeIcon, type BadgeIconProps };\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/badge-icon.tsx"
+    }
+  ]
+}

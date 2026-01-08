@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "accordion-minimal-demo",
+  "type": "registry:example",
+  "title": "Minimal Accordion Demo",
+  "description": "Example showing a minimal accordion with show/hide text toggle.",
+  "registryDependencies": [
+    "https://ruixen.com/r/accordion-minimal"
+  ],
+  "files": [
+    {
+      "path": "registry/example/accordion-minimal-demo.tsx",
+      "content": "import AccordionMinimal from \"@/registry/ruixenui/accordion-minimal\";\n\nconst items = [\n  {\n    id: \"1\",\n    title: \"What browsers are supported?\",\n    content:\n      \"We support all modern browsers including Chrome, Firefox, Safari, and Edge. IE11 is not supported.\",\n  },\n  {\n    id: \"2\",\n    title: \"Is the code open source?\",\n    content:\n      \"Yes, all components are open source and available on GitHub. Feel free to contribute or customize as needed.\",\n  },\n  {\n    id: \"3\",\n    title: \"How often do you release updates?\",\n    content:\n      \"We release updates weekly with bug fixes and new features. Major versions are released quarterly.\",\n  },\n];\n\nexport default function AccordionMinimalDemo() {\n  return (\n    <div className=\"flex min-h-[350px] w-full items-center justify-center p-4\">\n      <div className=\"w-full max-w-md\">\n        <AccordionMinimal items={items} defaultValue=\"1\" />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/accordion-minimal-demo.tsx"
+    }
+  ]
+}

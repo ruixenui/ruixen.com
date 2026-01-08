@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "banner-announcement-demo",
+  "type": "registry:example",
+  "title": "Banner Announcement Demo",
+  "description": "Example showing announcement banners with various variants.",
+  "registryDependencies": [
+    "https://ruixen.com/r/banner-announcement"
+  ],
+  "files": [
+    {
+      "path": "registry/example/banner-announcement-demo.tsx",
+      "content": "\"use client\";\n\nimport BannerAnnouncement from \"@/registry/ruixenui/banner-announcement\";\nimport { Sparkles, Megaphone, Zap } from \"lucide-react\";\n\nexport default function BannerAnnouncementDemo() {\n  return (\n    <div className=\"flex min-h-[400px] w-full flex-col gap-4 p-4\">\n      <BannerAnnouncement\n        variant=\"default\"\n        icon={<Sparkles className=\"size-4\" />}\n        actionLabel=\"Learn more\"\n        actionHref=\"#\"\n      >\n        Introducing our new feature: Real-time collaboration is now available!\n      </BannerAnnouncement>\n\n      <BannerAnnouncement\n        variant=\"gradient\"\n        icon={<Megaphone className=\"size-4\" />}\n        actionLabel=\"Try it now\"\n        actionHref=\"#\"\n      >\n        Big announcement: We just launched v2.0 with amazing new features.\n      </BannerAnnouncement>\n\n      <BannerAnnouncement\n        variant=\"minimal\"\n        icon={<Zap className=\"size-4\" />}\n        actionLabel=\"Upgrade\"\n        actionHref=\"#\"\n      >\n        Your trial ends in 3 days. Upgrade to continue using all features.\n      </BannerAnnouncement>\n\n      <BannerAnnouncement\n        variant=\"accent\"\n        actionLabel=\"Get started\"\n        actionHref=\"#\"\n      >\n        New: AI-powered suggestions are now available in your dashboard.\n      </BannerAnnouncement>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/banner-announcement-demo.tsx"
+    }
+  ]
+}

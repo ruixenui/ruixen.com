@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "navbar-ecommerce-demo",
+  "type": "registry:example",
+  "title": "Navbar E-commerce Demo",
+  "description": "Example showing an e-commerce navbar with category dropdowns, search bar, cart, and wishlist.",
+  "registryDependencies": [
+    "https://ruixen.com/r/navbar-ecommerce"
+  ],
+  "files": [
+    {
+      "path": "registry/example/navbar-ecommerce-demo.tsx",
+      "content": "\"use client\";\n\nimport NavbarEcommerce from \"@/registry/ruixenui/navbar-ecommerce\";\nimport { Store } from \"lucide-react\";\n\nexport default function NavbarEcommerceDemo() {\n  return (\n    <div className=\"flex min-h-[400px] w-full flex-col items-center justify-start\">\n      <NavbarEcommerce\n        logo={\n          <div className=\"flex items-center gap-2\">\n            <Store className=\"size-6 text-primary\" />\n            <span className=\"text-xl font-bold\">ShopNow</span>\n          </div>\n        }\n        categories={[\n          {\n            label: \"Products\",\n            href: \"#\",\n            subcategories: [\n              { label: \"New Arrivals\", href: \"#\" },\n              { label: \"Best Sellers\", href: \"#\" },\n              { label: \"Sale\", href: \"#\" },\n            ],\n          },\n          {\n            label: \"Categories\",\n            href: \"#\",\n            subcategories: [\n              { label: \"Electronics\", href: \"#\" },\n              { label: \"Clothing\", href: \"#\" },\n              { label: \"Home & Garden\", href: \"#\" },\n            ],\n          },\n          { label: \"Deals\", href: \"#\" },\n        ]}\n        cartCount={3}\n        wishlistCount={5}\n        onSearch={(query) => console.log(\"Search:\", query)}\n      />\n      <div className=\"flex flex-1 items-center justify-center p-8\">\n        <p className=\"text-muted-foreground\">\n          E-commerce content goes here\n        </p>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/navbar-ecommerce-demo.tsx"
+    }
+  ]
+}

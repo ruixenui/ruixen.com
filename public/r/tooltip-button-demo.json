@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/tooltip-button-demo.tsx",
-      "content": "import TooltipButton from \"@/registry/ruixenui/tooltip-button\";\n\nexport default function DemoTooltipButton() {\n  return (\n    <div className=\"flex p-6 flex-col items-center justify-center min-h-screen gap-6\">\n      <TooltipButton\n        label=\"Info\"\n        tooltip=\"More information about this action\"\n      />\n      <TooltipButton\n        label=\"Help\"\n        tooltip=\"Get help or documentation\"\n        size=\"lg\"\n      />\n      <TooltipButton\n        label=\"Settings\"\n        tooltip=\"Adjust your preferences\"\n        size=\"sm\"\n      />\n    </div>\n  );\n}\n",
+      "content": "import TooltipButton from \"@/registry/ruixenui/tooltip-button\";\n\nexport default function DemoTooltipButton() {\n  return (\n    <div className=\"flex min-h-[350px] w-full flex-col items-center justify-center gap-6\">\n      <TooltipButton\n        label=\"Info\"\n        tooltip=\"More information about this action\"\n      />\n      <TooltipButton\n        label=\"Help\"\n        tooltip=\"Get help or documentation\"\n        size=\"lg\"\n      />\n      <TooltipButton\n        label=\"Settings\"\n        tooltip=\"Adjust your preferences\"\n        size=\"sm\"\n      />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/tooltip-button-demo.tsx"
     }

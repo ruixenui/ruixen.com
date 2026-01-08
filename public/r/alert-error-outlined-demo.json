@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "alert-error-outlined-demo",
+  "type": "registry:example",
+  "title": "Error Alert Outlined Demo",
+  "description": "Example showing an error alert with outlined border style.",
+  "registryDependencies": [
+    "https://ruixen.com/r/alert-error-outlined"
+  ],
+  "files": [
+    {
+      "path": "registry/example/alert-error-outlined-demo.tsx",
+      "content": "import AlertErrorOutlined from \"@/registry/ruixenui/alert-error-outlined\";\n\nexport default function AlertErrorOutlinedDemo() {\n  return (\n    <div className=\"flex min-h-[350px] w-full items-center justify-center p-4\">\n      <div className=\"w-full max-w-md\">\n        <AlertErrorOutlined\n          title=\"Error\"\n          message=\"Failed to save changes. Please check your connection and try again.\"\n        />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/alert-error-outlined-demo.tsx"
+    }
+  ]
+}

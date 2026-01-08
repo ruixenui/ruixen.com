@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "badge-removable",
+  "type": "registry:ui",
+  "title": "Badge Removable",
+  "description": "Badge with a remove button for dismissible tags and filters.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "badge"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/badge-removable.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { Badge } from \"@/components/ui/badge\";\nimport { cn } from \"@/lib/utils\";\nimport { X } from \"lucide-react\";\n\ntype BadgeVariant = \"default\" | \"secondary\" | \"destructive\" | \"outline\";\n\ninterface BadgeRemovableProps {\n  children?: React.ReactNode;\n  variant?: BadgeVariant;\n  onRemove?: () => void;\n  className?: string;\n}\n\nexport default function BadgeRemovable({\n  children = \"Badge\",\n  variant = \"secondary\",\n  onRemove,\n  className,\n}: BadgeRemovableProps) {\n  return (\n    <Badge variant={variant} className={cn(\"gap-1 pr-1\", className)}>\n      {children}\n      <button\n        type=\"button\"\n        onClick={onRemove}\n        className=\"ml-0.5 rounded-full p-0.5 transition-colors hover:bg-foreground/10 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1\"\n        aria-label=\"Remove\"\n      >\n        <X className=\"size-3\" />\n      </button>\n    </Badge>\n  );\n}\n\nexport { BadgeRemovable, type BadgeRemovableProps };\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/badge-removable.tsx"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+---
+title: Banner Announcement
+date: 2025-01-08
+description: A dismissible announcement banner with multiple variants and action links.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="banner-announcement-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/banner-announcement"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="banner-announcement" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import BannerAnnouncement from "@/components/ruixen/banner-announcement";
+import { Sparkles } from "lucide-react";
+
+export default function MyBanner() {
+  return (
+    <BannerAnnouncement
+      variant="gradient"
+      icon={<Sparkles className="size-4" />}
+      actionLabel="Learn more"
+      actionHref="/features"
+    >
+      Introducing our new feature: Real-time collaboration is now available!
+    </BannerAnnouncement>
+  );
+}
+```
+
+## Props
+
+| Prop          | Type                                               | Default     | Description                     |
+| ------------- | -------------------------------------------------- | ----------- | ------------------------------- |
+| `children`    | `React.ReactNode`                                  | -           | The announcement message        |
+| `variant`     | `"default" \| "gradient" \| "minimal" \| "accent"` | `"default"` | Visual style of the banner      |
+| `icon`        | `React.ReactNode`                                  | -           | Icon to display before message  |
+| `actionLabel` | `string`                                           | -           | Text for the action link        |
+| `actionHref`  | `string`                                           | -           | URL for the action link         |
+| `dismissible` | `boolean`                                          | `true`      | Whether banner can be dismissed |
+| `onDismiss`   | `() => void`                                       | -           | Callback when dismissed         |
+| `className`   | `string`                                           | -           | Additional CSS classes          |
+
+## Variants
+
+| Variant    | Description                                  |
+| ---------- | -------------------------------------------- |
+| `default`  | Primary background color                     |
+| `gradient` | Purple to indigo gradient                    |
+| `minimal`  | Muted background with border                 |
+| `accent`   | Amber to orange gradient for urgent messages |

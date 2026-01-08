@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar-fallback-demo",
+  "type": "registry:example",
+  "title": "Avatar Fallback Demo",
+  "description": "Example showing an avatar with fallback initials only.",
+  "registryDependencies": [
+    "https://ruixen.com/r/avatar-fallback"
+  ],
+  "files": [
+    {
+      "path": "registry/example/avatar-fallback-demo.tsx",
+      "content": "import AvatarFallbackOnly from \"@/registry/ruixenui/avatar-fallback\";\n\nexport default function AvatarFallbackDemo() {\n  return (\n    <div className=\"flex min-h-[350px] w-full items-center justify-center p-4\">\n      <AvatarFallbackOnly fallback=\"KK\" />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/avatar-fallback-demo.tsx"
+    }
+  ]
+}

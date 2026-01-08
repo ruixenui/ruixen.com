@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "breadcrumb-boxed",
+  "type": "registry:ui",
+  "title": "Breadcrumb Boxed",
+  "description": "Breadcrumb navigation wrapped in a styled container with multiple variants.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/breadcrumb-boxed.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { ChevronRight, Home } from \"lucide-react\";\n\ninterface BreadcrumbBoxedItem {\n  label: string;\n  href?: string;\n}\n\ntype BoxedVariant = \"default\" | \"filled\" | \"outline\" | \"ghost\";\n\ninterface BreadcrumbBoxedProps {\n  items: BreadcrumbBoxedItem[];\n  variant?: BoxedVariant;\n  showHomeIcon?: boolean;\n  rounded?: \"sm\" | \"md\" | \"lg\" | \"full\";\n  className?: string;\n}\n\nconst variantStyles: Record<BoxedVariant, string> = {\n  default: \"border bg-background shadow-sm\",\n  filled: \"bg-muted\",\n  outline: \"border-2 border-border\",\n  ghost: \"bg-muted/50\",\n};\n\nconst roundedStyles = {\n  sm: \"rounded-sm\",\n  md: \"rounded-md\",\n  lg: \"rounded-lg\",\n  full: \"rounded-full\",\n};\n\nexport default function BreadcrumbBoxed({\n  items,\n  variant = \"default\",\n  showHomeIcon = true,\n  rounded = \"lg\",\n  className,\n}: BreadcrumbBoxedProps) {\n  return (\n    <nav\n      aria-label=\"Breadcrumb\"\n      className={cn(\n        \"inline-flex px-4 py-2\",\n        variantStyles[variant],\n        roundedStyles[rounded],\n        className,\n      )}\n    >\n      <ol className=\"flex flex-wrap items-center gap-1.5 text-sm\">\n        {items.map((item, index) => {\n          const isLast = index === items.length - 1;\n          const isFirst = index === 0;\n\n          return (\n            <li key={index} className=\"inline-flex items-center gap-1.5\">\n              {item.href && !isLast ? (\n                <a\n                  href={item.href}\n                  className=\"inline-flex items-center gap-1.5 text-muted-foreground transition-colors hover:text-foreground\"\n                >\n                  {isFirst && showHomeIcon && <Home className=\"size-4\" />}\n                  <span>{item.label}</span>\n                </a>\n              ) : (\n                <span\n                  className={cn(\n                    \"inline-flex items-center gap-1.5\",\n                    isLast\n                      ? \"font-medium text-foreground\"\n                      : \"text-muted-foreground\",\n                  )}\n                >\n                  {isFirst && showHomeIcon && <Home className=\"size-4\" />}\n                  <span>{item.label}</span>\n                </span>\n              )}\n              {!isLast && (\n                <ChevronRight\n                  className=\"mx-0.5 size-4 text-muted-foreground/60\"\n                  aria-hidden=\"true\"\n                />\n              )}\n            </li>\n          );\n        })}\n      </ol>\n    </nav>\n  );\n}\n\nexport { BreadcrumbBoxed, type BreadcrumbBoxedProps, type BreadcrumbBoxedItem };\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/breadcrumb-boxed.tsx"
+    }
+  ]
+}

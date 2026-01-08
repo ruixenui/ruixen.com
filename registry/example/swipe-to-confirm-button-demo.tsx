@@ -6,7 +6,7 @@ export default function SwipeToConfirmDemo() {
   const handleConfirm = () => alert("Payment Confirmed!");
 
   return (
-    <div className="p-6 flex flex-col gap-6 items-center justify-center min-h-screen">
+    <div className="flex min-h-[350px] w-full flex-col items-center justify-center gap-6">
       <SwipeToConfirmButton onConfirm={handleConfirm} />
       <SwipeToConfirmButton
         label="Swipe to Submit"

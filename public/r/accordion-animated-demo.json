@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "accordion-animated-demo",
+  "type": "registry:example",
+  "title": "Animated Accordion Demo",
+  "description": "Example showing an accordion with Framer Motion animations.",
+  "registryDependencies": [
+    "https://ruixen.com/r/accordion-animated"
+  ],
+  "files": [
+    {
+      "path": "registry/example/accordion-animated-demo.tsx",
+      "content": "import AccordionAnimated from \"@/registry/ruixenui/accordion-animated\";\n\nconst items = [\n  {\n    id: \"1\",\n    title: \"What animations are included?\",\n    content:\n      \"This accordion uses Framer Motion for smooth expand/collapse animations. The icon also animates on state change.\",\n  },\n  {\n    id: \"2\",\n    title: \"Is it accessible?\",\n    content:\n      \"Yes, the accordion maintains full keyboard navigation and screen reader support while adding visual enhancements.\",\n  },\n  {\n    id: \"3\",\n    title: \"Can I customize the animation?\",\n    content:\n      \"Absolutely! You can modify the duration, easing, and animation properties by adjusting the Framer Motion config.\",\n  },\n];\n\nexport default function AccordionAnimatedDemo() {\n  return (\n    <div className=\"flex min-h-[350px] w-full items-center justify-center p-4\">\n      <div className=\"w-full max-w-md\">\n        <AccordionAnimated items={items} defaultValue=\"1\" />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/accordion-animated-demo.tsx"
+    }
+  ]
+}

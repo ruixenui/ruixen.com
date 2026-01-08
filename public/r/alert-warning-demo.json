@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "alert-warning-demo",
+  "type": "registry:example",
+  "title": "Warning Alert Demo",
+  "description": "Example showing a warning alert with amber styling.",
+  "registryDependencies": [
+    "https://ruixen.com/r/alert-warning"
+  ],
+  "files": [
+    {
+      "path": "registry/example/alert-warning-demo.tsx",
+      "content": "import AlertWarning from \"@/registry/ruixenui/alert-warning\";\n\nexport default function AlertWarningDemo() {\n  return (\n    <div className=\"flex min-h-[350px] w-full items-center justify-center p-4\">\n      <div className=\"w-full max-w-md\">\n        <AlertWarning\n          title=\"Warning\"\n          message=\"Some information is missing! Please check your input and try again.\"\n        />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/alert-warning-demo.tsx"
+    }
+  ]
+}

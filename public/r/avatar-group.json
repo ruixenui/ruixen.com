@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar-group",
+  "type": "registry:ui",
+  "title": "Avatar Group",
+  "description": "A group of overlapping avatars with hover effects and configurable sizes.",
+  "registryDependencies": [
+    "avatar"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/avatar-group.tsx",
+      "content": "\"use client\";\n\nimport { Avatar, AvatarFallback, AvatarImage } from \"@/components/ui/avatar\";\nimport { cn } from \"@/lib/utils\";\n\ninterface AvatarData {\n  src?: string;\n  alt?: string;\n  fallback: string;\n}\n\ninterface AvatarGroupProps {\n  avatars: AvatarData[];\n  max?: number;\n  size?: \"sm\" | \"md\" | \"lg\";\n  className?: string;\n}\n\nconst sizeClasses = {\n  sm: \"size-8\",\n  md: \"size-10\",\n  lg: \"size-12\",\n};\n\nconst spacingClasses = {\n  sm: \"-space-x-2\",\n  md: \"-space-x-3\",\n  lg: \"-space-x-4\",\n};\n\nexport default function AvatarGroup({\n  avatars,\n  max = 4,\n  size = \"md\",\n  className,\n}: AvatarGroupProps) {\n  const displayAvatars = avatars.slice(0, max);\n\n  return (\n    <div className={cn(\"flex\", spacingClasses[size], className)}>\n      {displayAvatars.map((avatar, index) => (\n        <Avatar\n          key={index}\n          className={cn(\n            sizeClasses[size],\n            \"ring-2 ring-background transition-transform hover:z-10 hover:scale-110\",\n          )}\n        >\n          <AvatarImage src={avatar.src} alt={avatar.alt || avatar.fallback} />\n          <AvatarFallback className=\"text-xs font-medium\">\n            {avatar.fallback}\n          </AvatarFallback>\n        </Avatar>\n      ))}\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/avatar-group.tsx"
+    }
+  ]
+}

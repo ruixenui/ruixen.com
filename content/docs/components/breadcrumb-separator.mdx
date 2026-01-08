@@ -1,0 +1,82 @@
+---
+title: Breadcrumb Separator
+date: 2025-01-08
+description: Breadcrumb navigation with customizable separators (chevron, slash, dot, arrow, dash).
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="breadcrumb-separator-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/breadcrumb-separator"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="breadcrumb-separator" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import BreadcrumbSeparator from "@/components/ruixen/breadcrumb-separator";
+
+const items = [
+  { label: "Home", href: "/" },
+  { label: "Products", href: "/products" },
+  { label: "Electronics" },
+];
+
+export default function MyBreadcrumb() {
+  return <BreadcrumbSeparator items={items} separator="slash" />;
+}
+```
+
+## Props
+
+| Prop        | Type                                                 | Default     | Description               |
+| ----------- | ---------------------------------------------------- | ----------- | ------------------------- |
+| `items`     | `BreadcrumbItem[]`                                   | -           | Array of breadcrumb items |
+| `separator` | `"chevron" \| "slash" \| "dot" \| "arrow" \| "dash"` | `"chevron"` | Separator style           |
+| `className` | `string`                                             | -           | Additional CSS classes    |
+
+### BreadcrumbItem
+
+| Property | Type     | Description               |
+| -------- | -------- | ------------------------- |
+| `label`  | `string` | Display text for the item |
+| `href`   | `string` | Optional link URL         |
+
+## Separator Styles
+
+| Style     | Preview |
+| --------- | ------- |
+| `chevron` | `>`     |
+| `slash`   | `/`     |
+| `dot`     | `·`     |
+| `arrow`   | `→`     |
+| `dash`    | `—`     |

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "accordion-highlight-demo",
+  "type": "registry:example",
+  "title": "Highlight Accordion Demo",
+  "description": "Example showing an accordion with primary color highlight.",
+  "registryDependencies": [
+    "https://ruixen.com/r/accordion-highlight"
+  ],
+  "files": [
+    {
+      "path": "registry/example/accordion-highlight-demo.tsx",
+      "content": "import AccordionHighlight from \"@/registry/ruixenui/accordion-highlight\";\n\nconst items = [\n  {\n    id: \"1\",\n    title: \"How does pricing work?\",\n    content:\n      \"We offer flexible pricing based on usage. Start with our free tier and scale as you grow. No hidden costs.\",\n  },\n  {\n    id: \"2\",\n    title: \"Can I cancel anytime?\",\n    content:\n      \"Yes, you can cancel your subscription at any time. No cancellation fees or long-term commitments required.\",\n  },\n  {\n    id: \"3\",\n    title: \"Do you offer refunds?\",\n    content:\n      \"We offer a 30-day money-back guarantee on all paid plans. If you're not satisfied, we'll refund your purchase.\",\n  },\n];\n\nexport default function AccordionHighlightDemo() {\n  return (\n    <div className=\"w-full max-w-md\">\n      <AccordionHighlight items={items} defaultValue=\"1\" />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/accordion-highlight-demo.tsx"
+    }
+  ]
+}
