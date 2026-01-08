@@ -148,6 +148,417 @@
       ]
     },
     {
+      "name": "accordion-simple",
+      "type": "registry:ui",
+      "title": "Simple Accordion",
+      "description": "A basic accordion component with clean styling and smooth expand/collapse animations.",
+      "registryDependencies": [
+        "accordion"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/accordion-simple.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/accordion-simple.tsx"
+        }
+      ]
+    },
+    {
+      "name": "accordion-bordered",
+      "type": "registry:ui",
+      "title": "Bordered Accordion",
+      "description": "An accordion with bordered card-style items and highlighted open state backgrounds.",
+      "registryDependencies": [
+        "accordion"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/accordion-bordered.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/accordion-bordered.tsx"
+        }
+      ]
+    },
+    {
+      "name": "accordion-icon",
+      "type": "registry:ui",
+      "title": "Icon Accordion",
+      "description": "An accordion with leading icons for each item, perfect for categorized content.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "accordion"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/accordion-icon.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/accordion-icon.tsx"
+        }
+      ]
+    },
+    {
+      "name": "accordion-arrow",
+      "type": "registry:ui",
+      "title": "Arrow Accordion",
+      "description": "An accordion with a right-pointing arrow indicator that rotates on expand.",
+      "dependencies": [
+        "@radix-ui/react-accordion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/accordion-arrow.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/accordion-arrow.tsx"
+        }
+      ]
+    },
+    {
+      "name": "accordion-plus",
+      "type": "registry:ui",
+      "title": "Plus/Minus Accordion",
+      "description": "An accordion with plus/minus toggle icons for expand and collapse states.",
+      "dependencies": [
+        "@radix-ui/react-accordion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/accordion-plus.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/accordion-plus.tsx"
+        }
+      ]
+    },
+    {
+      "name": "accordion-badge",
+      "type": "registry:ui",
+      "title": "Badge Accordion",
+      "description": "An accordion with optional badges on items for highlighting new, important, or beta content.",
+      "registryDependencies": [
+        "accordion",
+        "badge"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/accordion-badge.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/accordion-badge.tsx"
+        }
+      ]
+    },
+    {
+      "name": "accordion-nested",
+      "type": "registry:ui",
+      "title": "Nested Accordion",
+      "description": "An accordion that supports nested sub-accordions for hierarchical content organization.",
+      "registryDependencies": [
+        "accordion"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/accordion-nested.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/accordion-nested.tsx"
+        }
+      ]
+    },
+    {
+      "name": "accordion-minimal",
+      "type": "registry:ui",
+      "title": "Minimal Accordion",
+      "description": "A minimal accordion with show/hide text toggle instead of icons.",
+      "dependencies": [
+        "@radix-ui/react-accordion"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/accordion-minimal.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/accordion-minimal.tsx"
+        }
+      ]
+    },
+    {
+      "name": "accordion-animated",
+      "type": "registry:ui",
+      "title": "Animated Accordion",
+      "description": "An accordion with smooth Framer Motion animations for expand/collapse transitions.",
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/accordion-animated.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/accordion-animated.tsx"
+        }
+      ]
+    },
+    {
+      "name": "alert-warning",
+      "type": "registry:ui",
+      "title": "Warning Alert",
+      "description": "A warning alert component with amber background and triangle alert icon.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/alert-warning.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/alert-warning.tsx"
+        }
+      ]
+    },
+    {
+      "name": "alert-warning-outlined",
+      "type": "registry:ui",
+      "title": "Warning Alert Outlined",
+      "description": "A warning alert component with outlined border style and triangle alert icon.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/alert-warning-outlined.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/alert-warning-outlined.tsx"
+        }
+      ]
+    },
+    {
+      "name": "alert-error",
+      "type": "registry:ui",
+      "title": "Error Alert",
+      "description": "An error alert component with red background and circle alert icon.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/alert-error.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/alert-error.tsx"
+        }
+      ]
+    },
+    {
+      "name": "alert-error-outlined",
+      "type": "registry:ui",
+      "title": "Error Alert Outlined",
+      "description": "An error alert component with outlined border style and circle alert icon.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/alert-error-outlined.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/alert-error-outlined.tsx"
+        }
+      ]
+    },
+    {
+      "name": "alert-success",
+      "type": "registry:ui",
+      "title": "Success Alert",
+      "description": "A success alert component with emerald background and circle check icon.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/alert-success.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/alert-success.tsx"
+        }
+      ]
+    },
+    {
+      "name": "alert-success-outlined",
+      "type": "registry:ui",
+      "title": "Success Alert Outlined",
+      "description": "A success alert component with outlined border style and circle check icon.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/alert-success-outlined.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/alert-success-outlined.tsx"
+        }
+      ]
+    },
+    {
+      "name": "avatar-badge",
+      "type": "registry:ui",
+      "title": "Avatar with Badge",
+      "description": "An avatar component with a notification badge showing a count.",
+      "registryDependencies": [
+        "avatar",
+        "badge"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/avatar-badge.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/avatar-badge.tsx"
+        }
+      ]
+    },
+    {
+      "name": "avatar-basic",
+      "type": "registry:ui",
+      "title": "Basic Avatar",
+      "description": "A basic avatar component with image and fallback support.",
+      "registryDependencies": [
+        "avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/avatar-basic.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/avatar-basic.tsx"
+        }
+      ]
+    },
+    {
+      "name": "avatar-fallback",
+      "type": "registry:ui",
+      "title": "Avatar Fallback",
+      "description": "An avatar component displaying only fallback text initials.",
+      "registryDependencies": [
+        "avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/avatar-fallback.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/avatar-fallback.tsx"
+        }
+      ]
+    },
+    {
+      "name": "avatar-group",
+      "type": "registry:ui",
+      "title": "Avatar Group",
+      "description": "A group of overlapping avatars with hover effects and configurable sizes.",
+      "registryDependencies": [
+        "avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/avatar-group.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/avatar-group.tsx"
+        }
+      ]
+    },
+    {
+      "name": "avatar-group-count",
+      "type": "registry:ui",
+      "title": "Avatar Group with Count",
+      "description": "A group of overlapping avatars with a count indicator for remaining members.",
+      "registryDependencies": [
+        "avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/avatar-group-count.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/avatar-group-count.tsx"
+        }
+      ]
+    },
+    {
+      "name": "avatar-icon",
+      "type": "registry:ui",
+      "title": "Avatar with Icon",
+      "description": "An avatar component with a user icon as fallback.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/avatar-icon.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/avatar-icon.tsx"
+        }
+      ]
+    },
+    {
+      "name": "avatar-online",
+      "type": "registry:ui",
+      "title": "Avatar Online",
+      "description": "An avatar component with an online status indicator.",
+      "registryDependencies": [
+        "avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/avatar-online.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/avatar-online.tsx"
+        }
+      ]
+    },
+    {
+      "name": "avatar-status",
+      "type": "registry:ui",
+      "title": "Avatar with Status",
+      "description": "An avatar component with customizable status indicator (online, offline, busy, away).",
+      "registryDependencies": [
+        "avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/avatar-status.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/avatar-status.tsx"
+        }
+      ]
+    },
+    {
+      "name": "avatar-verified",
+      "type": "registry:ui",
+      "title": "Verified Avatar",
+      "description": "An avatar component with a verified badge indicator.",
+      "registryDependencies": [
+        "avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/avatar-verified.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/avatar-verified.tsx"
+        }
+      ]
+    },
+    {
+      "name": "avatar-trust-badge",
+      "type": "registry:ui",
+      "title": "Avatar Trust Badge",
+      "description": "A trust badge component with avatar group and customizable count text.",
+      "registryDependencies": [
+        "avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/avatar-trust-badge.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/avatar-trust-badge.tsx"
+        }
+      ]
+    },
+    {
       "name": "aurora-hero-section",
       "type": "registry:ui",
       "title": "Aurora Hero Section",
@@ -3325,45 +3736,6 @@
       ]
     },
     {
-      "name": "multi-state-morph-button",
-      "type": "registry:ui",
-      "title": "Multi State Morph Button",
-      "description": "Animated button that morphs through different states - idle, loading, success, and error.",
-      "dependencies": [
-        "framer-motion",
-        "react-icons"
-      ],
-      "registryDependencies": [
-        "button"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/multi-state-morph-button.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/multi-state-morph-button.tsx"
-        }
-      ]
-    },
-    {
-      "name": "dynamic-status-button",
-      "type": "registry:ui",
-      "title": "Dynamic Status Button",
-      "description": "Button that cycles through different status states with icons and colors.",
-      "dependencies": [
-        "framer-motion"
-      ],
-      "registryDependencies": [
-        "button"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/dynamic-status-button.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/dynamic-status-button.tsx"
-        }
-      ]
-    },
-    {
       "name": "hover-preview-button",
       "type": "registry:ui",
       "title": "Hover Preview Button",
@@ -3560,6 +3932,238 @@
           "path": "registry/ruixenui/badge-button-combo.tsx",
           "type": "registry:ui",
           "target": "components/ruixen/badge-button-combo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "badge-icon",
+      "type": "registry:ui",
+      "title": "Badge with Icon",
+      "description": "Badge component with customizable icon and position.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "badge"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/badge-icon.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/badge-icon.tsx"
+        }
+      ]
+    },
+    {
+      "name": "badge-counter",
+      "type": "registry:ui",
+      "title": "Badge Counter",
+      "description": "Compact circular badge for displaying notification counts.",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/ruixenui/badge-counter.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/badge-counter.tsx"
+        }
+      ]
+    },
+    {
+      "name": "badge-status",
+      "type": "registry:ui",
+      "title": "Badge Status",
+      "description": "Status badge with dot or icon indicator for success, pending, warning, and error states.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "badge"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/badge-status.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/badge-status.tsx"
+        }
+      ]
+    },
+    {
+      "name": "badge-removable",
+      "type": "registry:ui",
+      "title": "Badge Removable",
+      "description": "Badge with a remove button for dismissible tags and filters.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "badge"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/badge-removable.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/badge-removable.tsx"
+        }
+      ]
+    },
+    {
+      "name": "banner-announcement",
+      "type": "registry:ui",
+      "title": "Banner Announcement",
+      "description": "A dismissible announcement banner with multiple variants and action links.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/banner-announcement.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/banner-announcement.tsx"
+        }
+      ]
+    },
+    {
+      "name": "banner-cookie",
+      "type": "registry:ui",
+      "title": "Banner Cookie",
+      "description": "A cookie consent banner with accept, decline, and preferences options.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/banner-cookie.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/banner-cookie.tsx"
+        }
+      ]
+    },
+    {
+      "name": "banner-promo",
+      "type": "registry:ui",
+      "title": "Banner Promo",
+      "description": "A promotional banner with badge, title, and call-to-action button.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/banner-promo.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/banner-promo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "banner-newsletter",
+      "type": "registry:ui",
+      "title": "Banner Newsletter",
+      "description": "A newsletter subscription banner with email input and submit button.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "input"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/banner-newsletter.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/banner-newsletter.tsx"
+        }
+      ]
+    },
+    {
+      "name": "banner-countdown",
+      "type": "registry:ui",
+      "title": "Banner Countdown",
+      "description": "A countdown timer banner for sales, launches, and time-sensitive promotions.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/banner-countdown.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/banner-countdown.tsx"
+        }
+      ]
+    },
+    {
+      "name": "breadcrumb-separator",
+      "type": "registry:ui",
+      "title": "Breadcrumb Separator",
+      "description": "Breadcrumb navigation with customizable separators (chevron, slash, dot, arrow, dash).",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/breadcrumb-separator.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/breadcrumb-separator.tsx"
+        }
+      ]
+    },
+    {
+      "name": "breadcrumb-icon",
+      "type": "registry:ui",
+      "title": "Breadcrumb Icon",
+      "description": "Breadcrumb navigation with icons for each item.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/breadcrumb-icon.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/breadcrumb-icon.tsx"
+        }
+      ]
+    },
+    {
+      "name": "breadcrumb-dropdown",
+      "type": "registry:ui",
+      "title": "Breadcrumb Dropdown",
+      "description": "Breadcrumb navigation that collapses middle items into a dropdown menu.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "dropdown-menu"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/breadcrumb-dropdown.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/breadcrumb-dropdown.tsx"
+        }
+      ]
+    },
+    {
+      "name": "breadcrumb-boxed",
+      "type": "registry:ui",
+      "title": "Breadcrumb Boxed",
+      "description": "Breadcrumb navigation wrapped in a styled container with multiple variants.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/breadcrumb-boxed.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/breadcrumb-boxed.tsx"
         }
       ]
     },
@@ -5190,6 +5794,495 @@
       ]
     },
     {
+      "name": "navbar-simple",
+      "type": "registry:ui",
+      "title": "Navbar Simple",
+      "description": "A clean, simple navigation bar with logo, links, and action buttons.",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/navbar-simple.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/navbar-simple.tsx"
+        }
+      ]
+    },
+    {
+      "name": "navbar-centered",
+      "type": "registry:ui",
+      "title": "Navbar Centered",
+      "description": "A navigation bar with centered navigation links between logo and actions.",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/navbar-centered.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/navbar-centered.tsx"
+        }
+      ]
+    },
+    {
+      "name": "navbar-with-search",
+      "type": "registry:ui",
+      "title": "Navbar With Search",
+      "description": "A navigation bar with integrated search input and keyboard shortcut indicator.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/navbar-with-search.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/navbar-with-search.tsx"
+        }
+      ]
+    },
+    {
+      "name": "navbar-user-menu",
+      "type": "registry:ui",
+      "title": "Navbar User Menu",
+      "description": "A navigation bar with user avatar, dropdown menu, and notification bell.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "avatar",
+        "dropdown-menu"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/navbar-user-menu.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/navbar-user-menu.tsx"
+        }
+      ]
+    },
+    {
+      "name": "navbar-status",
+      "type": "registry:ui",
+      "title": "Navbar Status",
+      "description": "A navigation bar with status indicator and real-time metrics display.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/navbar-status.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/navbar-status.tsx"
+        }
+      ]
+    },
+    {
+      "name": "navbar-breadcrumb",
+      "type": "registry:ui",
+      "title": "Navbar Breadcrumb",
+      "description": "A navigation bar with breadcrumb navigation for multi-level hierarchy.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/navbar-breadcrumb.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/navbar-breadcrumb.tsx"
+        }
+      ]
+    },
+    {
+      "name": "navbar-floating",
+      "type": "registry:ui",
+      "title": "Navbar Floating",
+      "description": "A floating pill-shaped navigation bar with rounded corners and backdrop blur.",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/navbar-floating.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/navbar-floating.tsx"
+        }
+      ]
+    },
+    {
+      "name": "navbar-tabs",
+      "type": "registry:ui",
+      "title": "Navbar Tabs",
+      "description": "A two-tier navigation bar with main header and tabbed navigation below.",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/navbar-tabs.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/navbar-tabs.tsx"
+        }
+      ]
+    },
+    {
+      "name": "navbar-minimal",
+      "type": "registry:ui",
+      "title": "Navbar Minimal",
+      "description": "An ultra-minimal navigation bar with just logo, few links, and single CTA.",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/navbar-minimal.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/navbar-minimal.tsx"
+        }
+      ]
+    },
+    {
+      "name": "navbar-split",
+      "type": "registry:ui",
+      "title": "Navbar Split",
+      "description": "A navigation bar with links split between left and right sections.",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/navbar-split.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/navbar-split.tsx"
+        }
+      ]
+    },
+    {
+      "name": "navbar-icon-links",
+      "type": "registry:ui",
+      "title": "Navbar Icon Links",
+      "description": "A navigation bar with social media icon links and primary CTA.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/navbar-icon-links.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/navbar-icon-links.tsx"
+        }
+      ]
+    },
+    {
+      "name": "button-variants",
+      "type": "registry:ui",
+      "title": "Button Variants",
+      "description": "A versatile button component with multiple variants including primary, secondary, destructive, outline, ghost, and link.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/button-variants.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/button-variants.tsx"
+        }
+      ]
+    },
+    {
+      "name": "button-icon",
+      "type": "registry:ui",
+      "title": "Button Icon",
+      "description": "Icon-only buttons with multiple variants for toolbar actions and compact UI.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/button-icon.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/button-icon.tsx"
+        }
+      ]
+    },
+    {
+      "name": "button-loading",
+      "type": "registry:ui",
+      "title": "Button Loading",
+      "description": "A button with loading, success, and error states for async operations.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/button-loading.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/button-loading.tsx"
+        }
+      ]
+    },
+    {
+      "name": "button-social",
+      "type": "registry:ui",
+      "title": "Button Social",
+      "description": "Social login buttons for Google, GitHub, Twitter, Facebook, and Apple.",
+      "files": [
+        {
+          "path": "registry/ruixenui/button-social.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/button-social.tsx"
+        }
+      ]
+    },
+    {
+      "name": "button-copy",
+      "type": "registry:ui",
+      "title": "Button Copy",
+      "description": "A copy-to-clipboard button with visual feedback on copy success.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/button-copy.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/button-copy.tsx"
+        }
+      ]
+    },
+    {
+      "name": "button-dropdown",
+      "type": "registry:ui",
+      "title": "Button Dropdown",
+      "description": "A button with an integrated dropdown menu for action selection.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "dropdown-menu"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/button-dropdown.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/button-dropdown.tsx"
+        }
+      ]
+    },
+    {
+      "name": "button-toggle-group",
+      "type": "registry:ui",
+      "title": "Button Toggle Group",
+      "description": "A toggle group component for single or multiple selections.",
+      "files": [
+        {
+          "path": "registry/ruixenui/button-toggle-group.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/button-toggle-group.tsx"
+        }
+      ]
+    },
+    {
+      "name": "button-file-upload",
+      "type": "registry:ui",
+      "title": "Button File Upload",
+      "description": "A file upload trigger button with customizable accept types.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/button-file-upload.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/button-file-upload.tsx"
+        }
+      ]
+    },
+    {
+      "name": "button-split",
+      "type": "registry:ui",
+      "title": "Button Split",
+      "description": "A split button with primary action and dropdown for secondary options.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "dropdown-menu"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/button-split.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/button-split.tsx"
+        }
+      ]
+    },
+    {
+      "name": "button-badge",
+      "type": "registry:ui",
+      "title": "Button Badge",
+      "description": "A button with an integrated badge for notifications or counts.",
+      "files": [
+        {
+          "path": "registry/ruixenui/button-badge.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/button-badge.tsx"
+        }
+      ]
+    },
+    {
+      "name": "button-rounded",
+      "type": "registry:ui",
+      "title": "Button Rounded",
+      "description": "Pill-shaped buttons with rounded corners for a softer aesthetic.",
+      "files": [
+        {
+          "path": "registry/ruixenui/button-rounded.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/button-rounded.tsx"
+        }
+      ]
+    },
+    {
+      "name": "checkbox-simple",
+      "type": "registry:ui",
+      "title": "Checkbox Simple",
+      "description": "A simple checkbox component with label and optional description.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/checkbox-simple.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/checkbox-simple.tsx"
+        }
+      ]
+    },
+    {
+      "name": "checkbox-indeterminate",
+      "type": "registry:ui",
+      "title": "Checkbox Indeterminate",
+      "description": "A checkbox with three states: checked, unchecked, and indeterminate.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/checkbox-indeterminate.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/checkbox-indeterminate.tsx"
+        }
+      ]
+    },
+    {
+      "name": "checkbox-colored",
+      "type": "registry:ui",
+      "title": "Checkbox Colored",
+      "description": "A checkbox with customizable color themes including blue, green, red, and more.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/checkbox-colored.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/checkbox-colored.tsx"
+        }
+      ]
+    },
+    {
+      "name": "checkbox-todo",
+      "type": "registry:ui",
+      "title": "Checkbox Todo",
+      "description": "A todo-style checkbox with animated strikethrough effect when checked.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/checkbox-todo.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/checkbox-todo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "checkbox-terms",
+      "type": "registry:ui",
+      "title": "Checkbox Terms",
+      "description": "A checkbox for accepting terms of service and privacy policy with linked text.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/checkbox-terms.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/checkbox-terms.tsx"
+        }
+      ]
+    },
+    {
+      "name": "checkbox-group",
+      "type": "registry:ui",
+      "title": "Checkbox Group",
+      "description": "A group of checkboxes for multi-selection with horizontal or vertical layout.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/checkbox-group.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/checkbox-group.tsx"
+        }
+      ]
+    },
+    {
+      "name": "checkbox-card",
+      "type": "registry:ui",
+      "title": "Checkbox Card",
+      "description": "A card-style checkbox with icon, title, and description for rich selections.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/checkbox-card.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/checkbox-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "checkbox-tree",
+      "type": "registry:ui",
+      "title": "Checkbox Tree",
+      "description": "A hierarchical tree checkbox for nested selections with expand/collapse.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/checkbox-tree.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/checkbox-tree.tsx"
+        }
+      ]
+    },
+    {
       "name": "staggered-faq-section-demo",
       "type": "registry:example",
       "title": "StaggeredFAQSection Demo",
@@ -5266,6 +6359,406 @@
           "path": "registry/example/compact-accordion-demo.tsx",
           "type": "registry:example",
           "target": "components/compact-accordion-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "accordion-simple-demo",
+      "type": "registry:example",
+      "title": "Simple Accordion Demo",
+      "description": "Example showing a basic accordion with clean styling.",
+      "registryDependencies": [
+        "https://ruixen.com/r/accordion-simple"
+      ],
+      "files": [
+        {
+          "path": "registry/example/accordion-simple-demo.tsx",
+          "type": "registry:example",
+          "target": "components/accordion-simple-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "accordion-bordered-demo",
+      "type": "registry:example",
+      "title": "Bordered Accordion Demo",
+      "description": "Example showing an accordion with bordered card-style items.",
+      "registryDependencies": [
+        "https://ruixen.com/r/accordion-bordered"
+      ],
+      "files": [
+        {
+          "path": "registry/example/accordion-bordered-demo.tsx",
+          "type": "registry:example",
+          "target": "components/accordion-bordered-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "accordion-icon-demo",
+      "type": "registry:example",
+      "title": "Icon Accordion Demo",
+      "description": "Example showing an accordion with leading icons.",
+      "registryDependencies": [
+        "https://ruixen.com/r/accordion-icon"
+      ],
+      "files": [
+        {
+          "path": "registry/example/accordion-icon-demo.tsx",
+          "type": "registry:example",
+          "target": "components/accordion-icon-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "accordion-arrow-demo",
+      "type": "registry:example",
+      "title": "Arrow Accordion Demo",
+      "description": "Example showing an accordion with arrow indicators.",
+      "registryDependencies": [
+        "https://ruixen.com/r/accordion-arrow"
+      ],
+      "files": [
+        {
+          "path": "registry/example/accordion-arrow-demo.tsx",
+          "type": "registry:example",
+          "target": "components/accordion-arrow-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "accordion-plus-demo",
+      "type": "registry:example",
+      "title": "Plus/Minus Accordion Demo",
+      "description": "Example showing an accordion with plus/minus toggle icons.",
+      "registryDependencies": [
+        "https://ruixen.com/r/accordion-plus"
+      ],
+      "files": [
+        {
+          "path": "registry/example/accordion-plus-demo.tsx",
+          "type": "registry:example",
+          "target": "components/accordion-plus-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "accordion-badge-demo",
+      "type": "registry:example",
+      "title": "Badge Accordion Demo",
+      "description": "Example showing an accordion with badges on items.",
+      "registryDependencies": [
+        "https://ruixen.com/r/accordion-badge"
+      ],
+      "files": [
+        {
+          "path": "registry/example/accordion-badge-demo.tsx",
+          "type": "registry:example",
+          "target": "components/accordion-badge-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "accordion-nested-demo",
+      "type": "registry:example",
+      "title": "Nested Accordion Demo",
+      "description": "Example showing an accordion with nested sub-accordions.",
+      "registryDependencies": [
+        "https://ruixen.com/r/accordion-nested"
+      ],
+      "files": [
+        {
+          "path": "registry/example/accordion-nested-demo.tsx",
+          "type": "registry:example",
+          "target": "components/accordion-nested-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "accordion-minimal-demo",
+      "type": "registry:example",
+      "title": "Minimal Accordion Demo",
+      "description": "Example showing a minimal accordion with show/hide text toggle.",
+      "registryDependencies": [
+        "https://ruixen.com/r/accordion-minimal"
+      ],
+      "files": [
+        {
+          "path": "registry/example/accordion-minimal-demo.tsx",
+          "type": "registry:example",
+          "target": "components/accordion-minimal-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "accordion-animated-demo",
+      "type": "registry:example",
+      "title": "Animated Accordion Demo",
+      "description": "Example showing an accordion with Framer Motion animations.",
+      "registryDependencies": [
+        "https://ruixen.com/r/accordion-animated"
+      ],
+      "files": [
+        {
+          "path": "registry/example/accordion-animated-demo.tsx",
+          "type": "registry:example",
+          "target": "components/accordion-animated-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "alert-warning-demo",
+      "type": "registry:example",
+      "title": "Warning Alert Demo",
+      "description": "Example showing a warning alert with amber styling.",
+      "registryDependencies": [
+        "https://ruixen.com/r/alert-warning"
+      ],
+      "files": [
+        {
+          "path": "registry/example/alert-warning-demo.tsx",
+          "type": "registry:example",
+          "target": "components/alert-warning-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "alert-warning-outlined-demo",
+      "type": "registry:example",
+      "title": "Warning Alert Outlined Demo",
+      "description": "Example showing a warning alert with outlined border style.",
+      "registryDependencies": [
+        "https://ruixen.com/r/alert-warning-outlined"
+      ],
+      "files": [
+        {
+          "path": "registry/example/alert-warning-outlined-demo.tsx",
+          "type": "registry:example",
+          "target": "components/alert-warning-outlined-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "alert-error-demo",
+      "type": "registry:example",
+      "title": "Error Alert Demo",
+      "description": "Example showing an error alert with red styling.",
+      "registryDependencies": [
+        "https://ruixen.com/r/alert-error"
+      ],
+      "files": [
+        {
+          "path": "registry/example/alert-error-demo.tsx",
+          "type": "registry:example",
+          "target": "components/alert-error-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "alert-error-outlined-demo",
+      "type": "registry:example",
+      "title": "Error Alert Outlined Demo",
+      "description": "Example showing an error alert with outlined border style.",
+      "registryDependencies": [
+        "https://ruixen.com/r/alert-error-outlined"
+      ],
+      "files": [
+        {
+          "path": "registry/example/alert-error-outlined-demo.tsx",
+          "type": "registry:example",
+          "target": "components/alert-error-outlined-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "alert-success-demo",
+      "type": "registry:example",
+      "title": "Success Alert Demo",
+      "description": "Example showing a success alert with emerald styling.",
+      "registryDependencies": [
+        "https://ruixen.com/r/alert-success"
+      ],
+      "files": [
+        {
+          "path": "registry/example/alert-success-demo.tsx",
+          "type": "registry:example",
+          "target": "components/alert-success-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "alert-success-outlined-demo",
+      "type": "registry:example",
+      "title": "Success Alert Outlined Demo",
+      "description": "Example showing a success alert with outlined border style.",
+      "registryDependencies": [
+        "https://ruixen.com/r/alert-success-outlined"
+      ],
+      "files": [
+        {
+          "path": "registry/example/alert-success-outlined-demo.tsx",
+          "type": "registry:example",
+          "target": "components/alert-success-outlined-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "avatar-badge-demo",
+      "type": "registry:example",
+      "title": "Avatar with Badge Demo",
+      "description": "Example showing an avatar with a notification badge.",
+      "registryDependencies": [
+        "https://ruixen.com/r/avatar-badge"
+      ],
+      "files": [
+        {
+          "path": "registry/example/avatar-badge-demo.tsx",
+          "type": "registry:example",
+          "target": "components/avatar-badge-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "avatar-basic-demo",
+      "type": "registry:example",
+      "title": "Basic Avatar Demo",
+      "description": "Example showing a basic avatar with image and fallback.",
+      "registryDependencies": [
+        "https://ruixen.com/r/avatar-basic"
+      ],
+      "files": [
+        {
+          "path": "registry/example/avatar-basic-demo.tsx",
+          "type": "registry:example",
+          "target": "components/avatar-basic-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "avatar-fallback-demo",
+      "type": "registry:example",
+      "title": "Avatar Fallback Demo",
+      "description": "Example showing an avatar with fallback initials only.",
+      "registryDependencies": [
+        "https://ruixen.com/r/avatar-fallback"
+      ],
+      "files": [
+        {
+          "path": "registry/example/avatar-fallback-demo.tsx",
+          "type": "registry:example",
+          "target": "components/avatar-fallback-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "avatar-group-demo",
+      "type": "registry:example",
+      "title": "Avatar Group Demo",
+      "description": "Example showing overlapping avatar groups in different sizes.",
+      "registryDependencies": [
+        "https://ruixen.com/r/avatar-group"
+      ],
+      "files": [
+        {
+          "path": "registry/example/avatar-group-demo.tsx",
+          "type": "registry:example",
+          "target": "components/avatar-group-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "avatar-group-count-demo",
+      "type": "registry:example",
+      "title": "Avatar Group with Count Demo",
+      "description": "Example showing avatar groups with remaining member count.",
+      "registryDependencies": [
+        "https://ruixen.com/r/avatar-group-count"
+      ],
+      "files": [
+        {
+          "path": "registry/example/avatar-group-count-demo.tsx",
+          "type": "registry:example",
+          "target": "components/avatar-group-count-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "avatar-icon-demo",
+      "type": "registry:example",
+      "title": "Avatar with Icon Demo",
+      "description": "Example showing an avatar with a user icon fallback.",
+      "registryDependencies": [
+        "https://ruixen.com/r/avatar-icon"
+      ],
+      "files": [
+        {
+          "path": "registry/example/avatar-icon-demo.tsx",
+          "type": "registry:example",
+          "target": "components/avatar-icon-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "avatar-online-demo",
+      "type": "registry:example",
+      "title": "Avatar Online Demo",
+      "description": "Example showing an avatar with online status indicator.",
+      "registryDependencies": [
+        "https://ruixen.com/r/avatar-online"
+      ],
+      "files": [
+        {
+          "path": "registry/example/avatar-online-demo.tsx",
+          "type": "registry:example",
+          "target": "components/avatar-online-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "avatar-status-demo",
+      "type": "registry:example",
+      "title": "Avatar with Status Demo",
+      "description": "Example showing avatars with different status indicators.",
+      "registryDependencies": [
+        "https://ruixen.com/r/avatar-status"
+      ],
+      "files": [
+        {
+          "path": "registry/example/avatar-status-demo.tsx",
+          "type": "registry:example",
+          "target": "components/avatar-status-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "avatar-verified-demo",
+      "type": "registry:example",
+      "title": "Verified Avatar Demo",
+      "description": "Example showing an avatar with a verified badge.",
+      "registryDependencies": [
+        "https://ruixen.com/r/avatar-verified"
+      ],
+      "files": [
+        {
+          "path": "registry/example/avatar-verified-demo.tsx",
+          "type": "registry:example",
+          "target": "components/avatar-verified-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "avatar-trust-badge-demo",
+      "type": "registry:example",
+      "title": "Avatar Trust Badge Demo",
+      "description": "Example showing avatar trust badges with count text.",
+      "registryDependencies": [
+        "https://ruixen.com/r/avatar-trust-badge"
+      ],
+      "files": [
+        {
+          "path": "registry/example/avatar-trust-badge-demo.tsx",
+          "type": "registry:example",
+          "target": "components/avatar-trust-badge-demo.tsx"
         }
       ]
     },
@@ -8358,22 +9851,6 @@
       ]
     },
     {
-      "name": "multi-state-morph-button-demo",
-      "type": "registry:example",
-      "title": "Multi State Morph Button Demo",
-      "description": "Example showing a button that morphs between different states.",
-      "registryDependencies": [
-        "https://ruixen.com/r/multi-state-morph-button"
-      ],
-      "files": [
-        {
-          "path": "registry/example/multi-state-morph-button-demo.tsx",
-          "type": "registry:example",
-          "target": "components/multi-state-morph-button-demo.tsx"
-        }
-      ]
-    },
-    {
       "name": "multi-step-login-demo",
       "type": "registry:example",
       "title": "Multi Step Login Demo",
@@ -8418,6 +9895,214 @@
           "path": "registry/example/badge-button-combo-demo.tsx",
           "type": "registry:example",
           "target": "components/badge-button-combo-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "badge-icon-demo",
+      "type": "registry:example",
+      "title": "Badge Icon Demo",
+      "description": "Example showing badges with various icons and positions.",
+      "registryDependencies": [
+        "https://ruixen.com/r/badge-icon"
+      ],
+      "files": [
+        {
+          "path": "registry/example/badge-icon-demo.tsx",
+          "type": "registry:example",
+          "target": "components/badge-icon-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "badge-counter-demo",
+      "type": "registry:example",
+      "title": "Badge Counter Demo",
+      "description": "Example showing counter badges with various sizes and variants.",
+      "registryDependencies": [
+        "https://ruixen.com/r/badge-counter"
+      ],
+      "files": [
+        {
+          "path": "registry/example/badge-counter-demo.tsx",
+          "type": "registry:example",
+          "target": "components/badge-counter-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "badge-status-demo",
+      "type": "registry:example",
+      "title": "Badge Status Demo",
+      "description": "Example showing status badges with dot and icon indicators.",
+      "registryDependencies": [
+        "https://ruixen.com/r/badge-status"
+      ],
+      "files": [
+        {
+          "path": "registry/example/badge-status-demo.tsx",
+          "type": "registry:example",
+          "target": "components/badge-status-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "badge-removable-demo",
+      "type": "registry:example",
+      "title": "Badge Removable Demo",
+      "description": "Example showing removable badges for tags and filters.",
+      "registryDependencies": [
+        "https://ruixen.com/r/badge-removable"
+      ],
+      "files": [
+        {
+          "path": "registry/example/badge-removable-demo.tsx",
+          "type": "registry:example",
+          "target": "components/badge-removable-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "banner-announcement-demo",
+      "type": "registry:example",
+      "title": "Banner Announcement Demo",
+      "description": "Example showing announcement banners with various variants.",
+      "registryDependencies": [
+        "https://ruixen.com/r/banner-announcement"
+      ],
+      "files": [
+        {
+          "path": "registry/example/banner-announcement-demo.tsx",
+          "type": "registry:example",
+          "target": "components/banner-announcement-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "banner-cookie-demo",
+      "type": "registry:example",
+      "title": "Banner Cookie Demo",
+      "description": "Example showing cookie consent banners with different positions.",
+      "registryDependencies": [
+        "https://ruixen.com/r/banner-cookie"
+      ],
+      "files": [
+        {
+          "path": "registry/example/banner-cookie-demo.tsx",
+          "type": "registry:example",
+          "target": "components/banner-cookie-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "banner-promo-demo",
+      "type": "registry:example",
+      "title": "Banner Promo Demo",
+      "description": "Example showing promotional banners with various styles.",
+      "registryDependencies": [
+        "https://ruixen.com/r/banner-promo"
+      ],
+      "files": [
+        {
+          "path": "registry/example/banner-promo-demo.tsx",
+          "type": "registry:example",
+          "target": "components/banner-promo-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "banner-newsletter-demo",
+      "type": "registry:example",
+      "title": "Banner Newsletter Demo",
+      "description": "Example showing newsletter subscription banners.",
+      "registryDependencies": [
+        "https://ruixen.com/r/banner-newsletter"
+      ],
+      "files": [
+        {
+          "path": "registry/example/banner-newsletter-demo.tsx",
+          "type": "registry:example",
+          "target": "components/banner-newsletter-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "banner-countdown-demo",
+      "type": "registry:example",
+      "title": "Banner Countdown Demo",
+      "description": "Example showing countdown timer banners for promotions.",
+      "registryDependencies": [
+        "https://ruixen.com/r/banner-countdown"
+      ],
+      "files": [
+        {
+          "path": "registry/example/banner-countdown-demo.tsx",
+          "type": "registry:example",
+          "target": "components/banner-countdown-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "breadcrumb-separator-demo",
+      "type": "registry:example",
+      "title": "Breadcrumb Separator Demo",
+      "description": "Example showing breadcrumbs with different separator styles.",
+      "registryDependencies": [
+        "https://ruixen.com/r/breadcrumb-separator"
+      ],
+      "files": [
+        {
+          "path": "registry/example/breadcrumb-separator-demo.tsx",
+          "type": "registry:example",
+          "target": "components/breadcrumb-separator-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "breadcrumb-icon-demo",
+      "type": "registry:example",
+      "title": "Breadcrumb Icon Demo",
+      "description": "Example showing breadcrumbs with icons.",
+      "registryDependencies": [
+        "https://ruixen.com/r/breadcrumb-icon"
+      ],
+      "files": [
+        {
+          "path": "registry/example/breadcrumb-icon-demo.tsx",
+          "type": "registry:example",
+          "target": "components/breadcrumb-icon-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "breadcrumb-dropdown-demo",
+      "type": "registry:example",
+      "title": "Breadcrumb Dropdown Demo",
+      "description": "Example showing breadcrumbs with collapsed items in dropdown.",
+      "registryDependencies": [
+        "https://ruixen.com/r/breadcrumb-dropdown"
+      ],
+      "files": [
+        {
+          "path": "registry/example/breadcrumb-dropdown-demo.tsx",
+          "type": "registry:example",
+          "target": "components/breadcrumb-dropdown-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "breadcrumb-boxed-demo",
+      "type": "registry:example",
+      "title": "Breadcrumb Boxed Demo",
+      "description": "Example showing boxed breadcrumbs with different variants.",
+      "registryDependencies": [
+        "https://ruixen.com/r/breadcrumb-boxed"
+      ],
+      "files": [
+        {
+          "path": "registry/example/breadcrumb-boxed-demo.tsx",
+          "type": "registry:example",
+          "target": "components/breadcrumb-boxed-demo.tsx"
         }
       ]
     },
@@ -8530,22 +10215,6 @@
           "path": "registry/example/drag-and-drop-tabs-demo.tsx",
           "type": "registry:example",
           "target": "components/drag-and-drop-tabs-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "dynamic-status-button-demo",
-      "type": "registry:example",
-      "title": "Dynamic Status Button Demo",
-      "description": "Example showing a button with dynamic status indicators.",
-      "registryDependencies": [
-        "https://ruixen.com/r/dynamic-status-button"
-      ],
-      "files": [
-        {
-          "path": "registry/example/dynamic-status-button-demo.tsx",
-          "type": "registry:example",
-          "target": "components/dynamic-status-button-demo.tsx"
         }
       ]
     },
@@ -9586,6 +11255,486 @@
           "path": "registry/example/card-stack-demo.tsx",
           "type": "registry:example",
           "target": "components/card-stack-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "navbar-simple-demo",
+      "type": "registry:example",
+      "title": "Navbar Simple Demo",
+      "description": "Example showing a simple navigation bar.",
+      "registryDependencies": [
+        "https://ruixen.com/r/navbar-simple"
+      ],
+      "files": [
+        {
+          "path": "registry/example/navbar-simple-demo.tsx",
+          "type": "registry:example",
+          "target": "components/navbar-simple-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "navbar-centered-demo",
+      "type": "registry:example",
+      "title": "Navbar Centered Demo",
+      "description": "Example showing a navigation bar with centered links.",
+      "registryDependencies": [
+        "https://ruixen.com/r/navbar-centered"
+      ],
+      "files": [
+        {
+          "path": "registry/example/navbar-centered-demo.tsx",
+          "type": "registry:example",
+          "target": "components/navbar-centered-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "navbar-with-search-demo",
+      "type": "registry:example",
+      "title": "Navbar With Search Demo",
+      "description": "Example showing a navigation bar with integrated search.",
+      "registryDependencies": [
+        "https://ruixen.com/r/navbar-with-search"
+      ],
+      "files": [
+        {
+          "path": "registry/example/navbar-with-search-demo.tsx",
+          "type": "registry:example",
+          "target": "components/navbar-with-search-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "navbar-user-menu-demo",
+      "type": "registry:example",
+      "title": "Navbar User Menu Demo",
+      "description": "Example showing a navigation bar with user dropdown.",
+      "registryDependencies": [
+        "https://ruixen.com/r/navbar-user-menu"
+      ],
+      "files": [
+        {
+          "path": "registry/example/navbar-user-menu-demo.tsx",
+          "type": "registry:example",
+          "target": "components/navbar-user-menu-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "navbar-status-demo",
+      "type": "registry:example",
+      "title": "Navbar Status Demo",
+      "description": "Example showing a navigation bar with status indicators.",
+      "registryDependencies": [
+        "https://ruixen.com/r/navbar-status"
+      ],
+      "files": [
+        {
+          "path": "registry/example/navbar-status-demo.tsx",
+          "type": "registry:example",
+          "target": "components/navbar-status-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "navbar-breadcrumb-demo",
+      "type": "registry:example",
+      "title": "Navbar Breadcrumb Demo",
+      "description": "Example showing a navigation bar with breadcrumb navigation.",
+      "registryDependencies": [
+        "https://ruixen.com/r/navbar-breadcrumb"
+      ],
+      "files": [
+        {
+          "path": "registry/example/navbar-breadcrumb-demo.tsx",
+          "type": "registry:example",
+          "target": "components/navbar-breadcrumb-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "navbar-floating-demo",
+      "type": "registry:example",
+      "title": "Navbar Floating Demo",
+      "description": "Example showing a floating pill-shaped navigation bar.",
+      "registryDependencies": [
+        "https://ruixen.com/r/navbar-floating"
+      ],
+      "files": [
+        {
+          "path": "registry/example/navbar-floating-demo.tsx",
+          "type": "registry:example",
+          "target": "components/navbar-floating-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "navbar-tabs-demo",
+      "type": "registry:example",
+      "title": "Navbar Tabs Demo",
+      "description": "Example showing a navigation bar with tabbed navigation.",
+      "registryDependencies": [
+        "https://ruixen.com/r/navbar-tabs"
+      ],
+      "files": [
+        {
+          "path": "registry/example/navbar-tabs-demo.tsx",
+          "type": "registry:example",
+          "target": "components/navbar-tabs-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "navbar-minimal-demo",
+      "type": "registry:example",
+      "title": "Navbar Minimal Demo",
+      "description": "Example showing an ultra-minimal navigation bar.",
+      "registryDependencies": [
+        "https://ruixen.com/r/navbar-minimal"
+      ],
+      "files": [
+        {
+          "path": "registry/example/navbar-minimal-demo.tsx",
+          "type": "registry:example",
+          "target": "components/navbar-minimal-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "navbar-split-demo",
+      "type": "registry:example",
+      "title": "Navbar Split Demo",
+      "description": "Example showing a navigation bar with split links.",
+      "registryDependencies": [
+        "https://ruixen.com/r/navbar-split"
+      ],
+      "files": [
+        {
+          "path": "registry/example/navbar-split-demo.tsx",
+          "type": "registry:example",
+          "target": "components/navbar-split-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "navbar-icon-links-demo",
+      "type": "registry:example",
+      "title": "Navbar Icon Links Demo",
+      "description": "Example showing a navigation bar with social icon links.",
+      "registryDependencies": [
+        "https://ruixen.com/r/navbar-icon-links"
+      ],
+      "files": [
+        {
+          "path": "registry/example/navbar-icon-links-demo.tsx",
+          "type": "registry:example",
+          "target": "components/navbar-icon-links-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "button-variants-demo",
+      "type": "registry:example",
+      "title": "Button Variants Demo",
+      "description": "Example showing buttons with different variants and sizes.",
+      "registryDependencies": [
+        "https://ruixen.com/r/button-variants"
+      ],
+      "files": [
+        {
+          "path": "registry/example/button-variants-demo.tsx",
+          "type": "registry:example",
+          "target": "components/button-variants-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "button-icon-demo",
+      "type": "registry:example",
+      "title": "Button Icon Demo",
+      "description": "Example showing icon-only buttons with different variants.",
+      "registryDependencies": [
+        "https://ruixen.com/r/button-icon"
+      ],
+      "files": [
+        {
+          "path": "registry/example/button-icon-demo.tsx",
+          "type": "registry:example",
+          "target": "components/button-icon-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "button-loading-demo",
+      "type": "registry:example",
+      "title": "Button Loading Demo",
+      "description": "Example showing buttons with loading, success, and error states.",
+      "registryDependencies": [
+        "https://ruixen.com/r/button-loading"
+      ],
+      "files": [
+        {
+          "path": "registry/example/button-loading-demo.tsx",
+          "type": "registry:example",
+          "target": "components/button-loading-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "button-social-demo",
+      "type": "registry:example",
+      "title": "Button Social Demo",
+      "description": "Example showing social login buttons for various providers.",
+      "registryDependencies": [
+        "https://ruixen.com/r/button-social"
+      ],
+      "files": [
+        {
+          "path": "registry/example/button-social-demo.tsx",
+          "type": "registry:example",
+          "target": "components/button-social-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "button-copy-demo",
+      "type": "registry:example",
+      "title": "Button Copy Demo",
+      "description": "Example showing copy-to-clipboard buttons with feedback.",
+      "registryDependencies": [
+        "https://ruixen.com/r/button-copy"
+      ],
+      "files": [
+        {
+          "path": "registry/example/button-copy-demo.tsx",
+          "type": "registry:example",
+          "target": "components/button-copy-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "button-dropdown-demo",
+      "type": "registry:example",
+      "title": "Button Dropdown Demo",
+      "description": "Example showing buttons with dropdown menus.",
+      "registryDependencies": [
+        "https://ruixen.com/r/button-dropdown"
+      ],
+      "files": [
+        {
+          "path": "registry/example/button-dropdown-demo.tsx",
+          "type": "registry:example",
+          "target": "components/button-dropdown-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "button-toggle-group-demo",
+      "type": "registry:example",
+      "title": "Button Toggle Group Demo",
+      "description": "Example showing toggle group buttons for single and multiple selections.",
+      "registryDependencies": [
+        "https://ruixen.com/r/button-toggle-group"
+      ],
+      "files": [
+        {
+          "path": "registry/example/button-toggle-group-demo.tsx",
+          "type": "registry:example",
+          "target": "components/button-toggle-group-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "button-file-upload-demo",
+      "type": "registry:example",
+      "title": "Button File Upload Demo",
+      "description": "Example showing file upload trigger buttons.",
+      "registryDependencies": [
+        "https://ruixen.com/r/button-file-upload"
+      ],
+      "files": [
+        {
+          "path": "registry/example/button-file-upload-demo.tsx",
+          "type": "registry:example",
+          "target": "components/button-file-upload-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "button-split-demo",
+      "type": "registry:example",
+      "title": "Button Split Demo",
+      "description": "Example showing split buttons with dropdown options.",
+      "registryDependencies": [
+        "https://ruixen.com/r/button-split"
+      ],
+      "files": [
+        {
+          "path": "registry/example/button-split-demo.tsx",
+          "type": "registry:example",
+          "target": "components/button-split-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "button-badge-demo",
+      "type": "registry:example",
+      "title": "Button Badge Demo",
+      "description": "Example showing buttons with notification badges.",
+      "registryDependencies": [
+        "https://ruixen.com/r/button-badge"
+      ],
+      "files": [
+        {
+          "path": "registry/example/button-badge-demo.tsx",
+          "type": "registry:example",
+          "target": "components/button-badge-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "button-rounded-demo",
+      "type": "registry:example",
+      "title": "Button Rounded Demo",
+      "description": "Example showing pill-shaped rounded buttons.",
+      "registryDependencies": [
+        "https://ruixen.com/r/button-rounded"
+      ],
+      "files": [
+        {
+          "path": "registry/example/button-rounded-demo.tsx",
+          "type": "registry:example",
+          "target": "components/button-rounded-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "checkbox-simple-demo",
+      "type": "registry:example",
+      "title": "Checkbox Simple Demo",
+      "description": "Example showing simple checkboxes with labels and descriptions.",
+      "registryDependencies": [
+        "https://ruixen.com/r/checkbox-simple"
+      ],
+      "files": [
+        {
+          "path": "registry/example/checkbox-simple-demo.tsx",
+          "type": "registry:example",
+          "target": "components/checkbox-simple-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "checkbox-indeterminate-demo",
+      "type": "registry:example",
+      "title": "Checkbox Indeterminate Demo",
+      "description": "Example showing checkboxes with indeterminate state for parent-child selection.",
+      "registryDependencies": [
+        "https://ruixen.com/r/checkbox-indeterminate"
+      ],
+      "files": [
+        {
+          "path": "registry/example/checkbox-indeterminate-demo.tsx",
+          "type": "registry:example",
+          "target": "components/checkbox-indeterminate-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "checkbox-colored-demo",
+      "type": "registry:example",
+      "title": "Checkbox Colored Demo",
+      "description": "Example showing checkboxes with different color themes.",
+      "registryDependencies": [
+        "https://ruixen.com/r/checkbox-colored"
+      ],
+      "files": [
+        {
+          "path": "registry/example/checkbox-colored-demo.tsx",
+          "type": "registry:example",
+          "target": "components/checkbox-colored-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "checkbox-todo-demo",
+      "type": "registry:example",
+      "title": "Checkbox Todo Demo",
+      "description": "Example showing todo-style checkboxes with strikethrough animation.",
+      "registryDependencies": [
+        "https://ruixen.com/r/checkbox-todo"
+      ],
+      "files": [
+        {
+          "path": "registry/example/checkbox-todo-demo.tsx",
+          "type": "registry:example",
+          "target": "components/checkbox-todo-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "checkbox-terms-demo",
+      "type": "registry:example",
+      "title": "Checkbox Terms Demo",
+      "description": "Example showing terms and privacy policy acceptance checkbox.",
+      "registryDependencies": [
+        "https://ruixen.com/r/checkbox-terms"
+      ],
+      "files": [
+        {
+          "path": "registry/example/checkbox-terms-demo.tsx",
+          "type": "registry:example",
+          "target": "components/checkbox-terms-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "checkbox-group-demo",
+      "type": "registry:example",
+      "title": "Checkbox Group Demo",
+      "description": "Example showing checkbox groups with horizontal and vertical layouts.",
+      "registryDependencies": [
+        "https://ruixen.com/r/checkbox-group"
+      ],
+      "files": [
+        {
+          "path": "registry/example/checkbox-group-demo.tsx",
+          "type": "registry:example",
+          "target": "components/checkbox-group-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "checkbox-card-demo",
+      "type": "registry:example",
+      "title": "Checkbox Card Demo",
+      "description": "Example showing card-style checkboxes with icons and descriptions.",
+      "registryDependencies": [
+        "https://ruixen.com/r/checkbox-card"
+      ],
+      "files": [
+        {
+          "path": "registry/example/checkbox-card-demo.tsx",
+          "type": "registry:example",
+          "target": "components/checkbox-card-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "checkbox-tree-demo",
+      "type": "registry:example",
+      "title": "Checkbox Tree Demo",
+      "description": "Example showing hierarchical tree checkboxes with nested selections.",
+      "registryDependencies": [
+        "https://ruixen.com/r/checkbox-tree"
+      ],
+      "files": [
+        {
+          "path": "registry/example/checkbox-tree-demo.tsx",
+          "type": "registry:example",
+          "target": "components/checkbox-tree-demo.tsx"
         }
       ]
     },

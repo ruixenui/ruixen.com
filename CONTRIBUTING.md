@@ -372,6 +372,8 @@ Add your component preview to `lib/component-preview-data.ts`:
 
 | Category | Object Name | Path |
 |----------|-------------|------|
+| Accordions | `accordionsPreview` | `/docs/components/[slug]` |
+| Alerts | `alertsPreview` | `/docs/components/[slug]` |
 | Cards | `cardsPreview` | `/docs/components/[slug]` |
 | Buttons | `buttonsPreview` | `/docs/components/[slug]` |
 | Loaders | `loadersPreview` | `/docs/components/[slug]` |

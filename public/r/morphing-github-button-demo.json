@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/morphing-github-button-demo.tsx",
-      "content": "import MorphingGithubButton from \"../ruixenui/morphing-github-button\";\n\nexport default function DemoMorphingGithubButton() {\n  return (\n    <main className=\"flex flex-col items-center justify-center min-h-screen gap-6\">\n      {/* Default */}\n      <MorphingGithubButton />\n\n      {/* Custom Label + Link */}\n      <MorphingGithubButton\n        label=\"Source Code\"\n        href=\"https://github.com/vercel/next.js\"\n      />\n\n      {/* Custom Tailwind styling */}\n      <MorphingGithubButton className=\"hover:from-indigo-700 hover:to-indigo-900\" />\n    </main>\n  );\n}\n",
+      "content": "import MorphingGithubButton from \"../ruixenui/morphing-github-button\";\n\nexport default function DemoMorphingGithubButton() {\n  return (\n    <main className=\"flex min-h-[350px] w-full flex-col items-center justify-center gap-6\">\n      {/* Default */}\n      <MorphingGithubButton />\n\n      {/* Custom Label + Link */}\n      <MorphingGithubButton\n        label=\"Source Code\"\n        href=\"https://github.com/vercel/next.js\"\n      />\n\n      {/* Custom Tailwind styling */}\n      <MorphingGithubButton className=\"hover:from-indigo-700 hover:to-indigo-900\" />\n    </main>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/morphing-github-button-demo.tsx"
     }
