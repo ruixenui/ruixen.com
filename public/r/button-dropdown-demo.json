@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-dropdown-demo",
+  "type": "registry:example",
+  "title": "Button Dropdown Demo",
+  "description": "Example showing buttons with dropdown menus.",
+  "registryDependencies": [
+    "https://ruixen.com/r/button-dropdown"
+  ],
+  "files": [
+    {
+      "path": "registry/example/button-dropdown-demo.tsx",
+      "content": "\"use client\";\n\nimport ButtonDropdown from \"@/registry/ruixenui/button-dropdown\";\n\nexport default function ButtonDropdownDemo() {\n  const items = [\n    { label: \"Edit\", onClick: () => console.log(\"Edit\") },\n    { label: \"Duplicate\", onClick: () => console.log(\"Duplicate\") },\n    { label: \"Archive\", onClick: () => console.log(\"Archive\") },\n    {\n      label: \"Delete\",\n      onClick: () => console.log(\"Delete\"),\n      destructive: true,\n    },\n  ];\n\n  return (\n    <div className=\"flex flex-wrap items-center justify-center gap-4 p-4\">\n      <ButtonDropdown label=\"Actions\" items={items} />\n      <ButtonDropdown label=\"More Options\" items={items} variant=\"outline\" />\n      <ButtonDropdown label=\"Settings\" items={items} variant=\"secondary\" />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/button-dropdown-demo.tsx"
+    }
+  ]
+}

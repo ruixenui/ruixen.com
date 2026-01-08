@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-badge-demo",
+  "type": "registry:example",
+  "title": "Button Badge Demo",
+  "description": "Example showing buttons with notification badges.",
+  "registryDependencies": [
+    "https://ruixen.com/r/button-badge"
+  ],
+  "files": [
+    {
+      "path": "registry/example/button-badge-demo.tsx",
+      "content": "\"use client\";\n\nimport ButtonBadge from \"@/registry/ruixenui/button-badge\";\nimport { Bell, Mail, ShoppingCart } from \"lucide-react\";\n\nexport default function ButtonBadgeDemo() {\n  return (\n    <div className=\"flex flex-wrap items-center justify-center gap-4 p-4\">\n      <ButtonBadge badge={3} leftIcon={<Bell className=\"size-4\" />}>\n        Notifications\n      </ButtonBadge>\n      <ButtonBadge\n        badge={12}\n        variant=\"outline\"\n        leftIcon={<Mail className=\"size-4\" />}\n      >\n        Messages\n      </ButtonBadge>\n      <ButtonBadge\n        badge={99}\n        variant=\"secondary\"\n        leftIcon={<ShoppingCart className=\"size-4\" />}\n      >\n        Cart\n      </ButtonBadge>\n      <ButtonBadge badge=\"New\" variant=\"ghost\">\n        Features\n      </ButtonBadge>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/button-badge-demo.tsx"
+    }
+  ]
+}

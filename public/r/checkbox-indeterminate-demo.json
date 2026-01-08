@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "checkbox-indeterminate-demo",
+  "type": "registry:example",
+  "title": "Checkbox Indeterminate Demo",
+  "description": "Example showing checkboxes with indeterminate state for parent-child selection.",
+  "registryDependencies": [
+    "https://ruixen.com/r/checkbox-indeterminate"
+  ],
+  "files": [
+    {
+      "path": "registry/example/checkbox-indeterminate-demo.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport CheckboxIndeterminate from \"@/registry/ruixenui/checkbox-indeterminate\";\n\nexport default function CheckboxIndeterminateDemo() {\n  const [parentChecked, setParentChecked] = React.useState<\n    boolean | \"indeterminate\"\n  >(\"indeterminate\");\n  const [child1, setChild1] = React.useState(true);\n  const [child2, setChild2] = React.useState(false);\n\n  React.useEffect(() => {\n    if (child1 && child2) {\n      setParentChecked(true);\n    } else if (!child1 && !child2) {\n      setParentChecked(false);\n    } else {\n      setParentChecked(\"indeterminate\");\n    }\n  }, [child1, child2]);\n\n  const handleParentChange = (checked: boolean | \"indeterminate\") => {\n    if (checked === true) {\n      setChild1(true);\n      setChild2(true);\n    } else {\n      setChild1(false);\n      setChild2(false);\n    }\n  };\n\n  return (\n    <div className=\"flex min-h-[350px] w-full items-center justify-center\">\n      <div className=\"flex flex-col gap-2\">\n        <CheckboxIndeterminate\n          checked={parentChecked}\n          onCheckedChange={handleParentChange}\n          label=\"Select all\"\n        />\n        <div className=\"ml-6 flex flex-col gap-2\">\n          <CheckboxIndeterminate\n            checked={child1}\n            onCheckedChange={(c) => setChild1(c === true)}\n            label=\"Option 1\"\n          />\n          <CheckboxIndeterminate\n            checked={child2}\n            onCheckedChange={(c) => setChild2(c === true)}\n            label=\"Option 2\"\n          />\n        </div>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/checkbox-indeterminate-demo.tsx"
+    }
+  ]
+}

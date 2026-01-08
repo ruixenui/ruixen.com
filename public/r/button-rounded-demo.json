@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-rounded-demo",
+  "type": "registry:example",
+  "title": "Button Rounded Demo",
+  "description": "Example showing pill-shaped rounded buttons.",
+  "registryDependencies": [
+    "https://ruixen.com/r/button-rounded"
+  ],
+  "files": [
+    {
+      "path": "registry/example/button-rounded-demo.tsx",
+      "content": "\"use client\";\n\nimport ButtonRounded from \"@/registry/ruixenui/button-rounded\";\nimport { ArrowRight, Plus, Heart } from \"lucide-react\";\n\nexport default function ButtonRoundedDemo() {\n  return (\n    <div className=\"flex flex-wrap items-center justify-center gap-4 p-4\">\n      <ButtonRounded>Get Started</ButtonRounded>\n      <ButtonRounded variant=\"secondary\">Learn More</ButtonRounded>\n      <ButtonRounded variant=\"outline\">Contact Us</ButtonRounded>\n      <ButtonRounded variant=\"ghost\">Cancel</ButtonRounded>\n      <ButtonRounded\n        variant=\"default\"\n        rightIcon={<ArrowRight className=\"size-4\" />}\n      >\n        Continue\n      </ButtonRounded>\n      <ButtonRounded variant=\"secondary\" leftIcon={<Plus className=\"size-4\" />}>\n        Add Item\n      </ButtonRounded>\n      <ButtonRounded\n        variant=\"destructive\"\n        leftIcon={<Heart className=\"size-4\" />}\n      >\n        Like\n      </ButtonRounded>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/button-rounded-demo.tsx"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-toggle-group-demo",
+  "type": "registry:example",
+  "title": "Button Toggle Group Demo",
+  "description": "Example showing toggle group buttons for single and multiple selections.",
+  "registryDependencies": [
+    "https://ruixen.com/r/button-toggle-group"
+  ],
+  "files": [
+    {
+      "path": "registry/example/button-toggle-group-demo.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport ButtonToggleGroup from \"@/registry/ruixenui/button-toggle-group\";\nimport {\n  AlignLeft,\n  AlignCenter,\n  AlignRight,\n  Bold,\n  Italic,\n  Underline,\n} from \"lucide-react\";\n\nexport default function ButtonToggleGroupDemo() {\n  const [alignment, setAlignment] = React.useState(\"left\");\n  const [formatting, setFormatting] = React.useState<string[]>([]);\n\n  const alignOptions = [\n    { value: \"left\", icon: <AlignLeft className=\"size-4\" /> },\n    { value: \"center\", icon: <AlignCenter className=\"size-4\" /> },\n    { value: \"right\", icon: <AlignRight className=\"size-4\" /> },\n  ];\n\n  const formatOptions = [\n    { value: \"bold\", icon: <Bold className=\"size-4\" /> },\n    { value: \"italic\", icon: <Italic className=\"size-4\" /> },\n    { value: \"underline\", icon: <Underline className=\"size-4\" /> },\n  ];\n\n  return (\n    <div className=\"flex flex-wrap items-center justify-center gap-6 p-4\">\n      <ButtonToggleGroup\n        options={alignOptions}\n        value={alignment}\n        onValueChange={setAlignment}\n      />\n      <ButtonToggleGroup\n        options={formatOptions}\n        value={formatting}\n        onValueChange={setFormatting}\n        multiple\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/button-toggle-group-demo.tsx"
+    }
+  ]
+}

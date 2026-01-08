@@ -1,0 +1,73 @@
+---
+title: Button Copy
+date: 2024-06-01
+description: A copy-to-clipboard button with visual feedback on copy success.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="button-copy-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/button-copy"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="button-copy" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import ButtonCopy from "@/components/ruixen/button-copy";
+
+export default function MyComponent() {
+  return (
+    <div className="flex gap-4">
+      <ButtonCopy value="npm install ruixen-ui" />
+      <ButtonCopy value="Copy this text" variant="outline" />
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop        | Type                                | Default     | Description            |
+| ----------- | ----------------------------------- | ----------- | ---------------------- |
+| `value`     | `string`                            | -           | Text to copy           |
+| `variant`   | `"default" \| "outline" \| "ghost"` | `"default"` | Button style variant   |
+| `size`      | `"sm" \| "md" \| "lg"`              | `"md"`      | Button size            |
+| `className` | `string`                            | -           | Additional CSS classes |
+
+## Features
+
+- One-click copy to clipboard
+- Visual feedback with checkmark icon
+- Automatic reset after copy
+- Uses modern Clipboard API
+- Light and dark mode support

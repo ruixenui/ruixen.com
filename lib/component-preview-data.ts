@@ -272,6 +272,23 @@ export const navbarsPreview: ComponentPreviewMap = {
     light: `/preview_images/navbars/navbar-icon-links-light.png`,
     dark: `/preview_images/navbars/navbar-icon-links-dark.png`,
   },
+  // Navigation sections (formerly separate)
+  "hover-gradient-navbar": {
+    light: `/preview_images/navbars/hover-gradient-navbar-light.png`,
+    dark: `/preview_images/navbars/hover-gradient-navbar-dark.png`,
+  },
+  "floating-navbar": {
+    light: `/preview_images/navbars/floating-navbar-light.png`,
+    dark: `/preview_images/navbars/floating-navbar-dark.png`,
+  },
+  "luma-bar": {
+    light: `/preview_images/navbars/luma-bar-light.png`,
+    dark: `/preview_images/navbars/luma-bar-dark.png`,
+  },
+  "promote-header": {
+    light: `/preview_images/navbars/promote-header-light.png`,
+    dark: `/preview_images/navbars/promote-header-dark.png`,
+  },
 };
 
 /**
@@ -473,6 +490,89 @@ export const buttonsPreview: ComponentPreviewMap = {
   "icon-label-subtext-button": {
     light: `/preview_images/buttons/icon-label-subtext-button-light.png`,
     dark: `/preview_images/buttons/icon-label-subtext-button-dark.png`,
+  },
+  "button-variants": {
+    light: `/preview_images/buttons/button-variants-light.png`,
+    dark: `/preview_images/buttons/button-variants-dark.png`,
+  },
+  "button-icon": {
+    light: `/preview_images/buttons/button-icon-light.png`,
+    dark: `/preview_images/buttons/button-icon-dark.png`,
+  },
+  "button-loading": {
+    light: `/preview_images/buttons/button-loading-light.png`,
+    dark: `/preview_images/buttons/button-loading-dark.png`,
+  },
+  "button-social": {
+    light: `/preview_images/buttons/button-social-light.png`,
+    dark: `/preview_images/buttons/button-social-dark.png`,
+  },
+  "button-copy": {
+    light: `/preview_images/buttons/button-copy-light.png`,
+    dark: `/preview_images/buttons/button-copy-dark.png`,
+  },
+  "button-dropdown": {
+    light: `/preview_images/buttons/button-dropdown-light.png`,
+    dark: `/preview_images/buttons/button-dropdown-dark.png`,
+  },
+  "button-split": {
+    light: `/preview_images/buttons/button-split-light.png`,
+    dark: `/preview_images/buttons/button-split-dark.png`,
+  },
+  "button-badge": {
+    light: `/preview_images/buttons/button-badge-light.png`,
+    dark: `/preview_images/buttons/button-badge-dark.png`,
+  },
+  "button-file-upload": {
+    light: `/preview_images/buttons/button-file-upload-light.png`,
+    dark: `/preview_images/buttons/button-file-upload-dark.png`,
+  },
+  "button-rounded": {
+    light: `/preview_images/buttons/button-rounded-light.png`,
+    dark: `/preview_images/buttons/button-rounded-dark.png`,
+  },
+  "button-toggle-group": {
+    light: `/preview_images/buttons/button-toggle-group-light.png`,
+    dark: `/preview_images/buttons/button-toggle-group-dark.png`,
+  },
+};
+
+/**
+ * Checkboxes - Checkbox components with various styles
+ * Path: /docs/components/[slug]
+ */
+export const checkboxesPreview: ComponentPreviewMap = {
+  "checkbox-simple": {
+    light: `/preview_images/checkboxes/checkbox-simple-light.png`,
+    dark: `/preview_images/checkboxes/checkbox-simple-dark.png`,
+  },
+  "checkbox-colored": {
+    light: `/preview_images/checkboxes/checkbox-colored-light.png`,
+    dark: `/preview_images/checkboxes/checkbox-colored-dark.png`,
+  },
+  "checkbox-group": {
+    light: `/preview_images/checkboxes/checkbox-group-light.png`,
+    dark: `/preview_images/checkboxes/checkbox-group-dark.png`,
+  },
+  "checkbox-indeterminate": {
+    light: `/preview_images/checkboxes/checkbox-indeterminate-light.png`,
+    dark: `/preview_images/checkboxes/checkbox-indeterminate-dark.png`,
+  },
+  "checkbox-card": {
+    light: `/preview_images/checkboxes/checkbox-card-light.png`,
+    dark: `/preview_images/checkboxes/checkbox-card-dark.png`,
+  },
+  "checkbox-terms": {
+    light: `/preview_images/checkboxes/checkbox-terms-light.png`,
+    dark: `/preview_images/checkboxes/checkbox-terms-dark.png`,
+  },
+  "checkbox-todo": {
+    light: `/preview_images/checkboxes/checkbox-todo-light.png`,
+    dark: `/preview_images/checkboxes/checkbox-todo-dark.png`,
+  },
+  "checkbox-tree": {
+    light: `/preview_images/checkboxes/checkbox-tree-light.png`,
+    dark: `/preview_images/checkboxes/checkbox-tree-dark.png`,
   },
 };
 
@@ -1558,29 +1658,6 @@ export const footerSectionPreview: ComponentPreviewMap = {
 };
 
 /**
- * Navigation Section - Navigation bar components
- * Path: /docs/components/[slug]
- */
-export const navigationSectionPreview: ComponentPreviewMap = {
-  "hover-gradient-navbar": {
-    light: `/preview_images/navigation-sections/hover-gradient-navbar-light.png`,
-    dark: `/preview_images/navigation-sections/hover-gradient-navbar-dark.png`,
-  },
-  "floating-navbar": {
-    light: `/preview_images/navigation-sections/floating-navbar-light.png`,
-    dark: `/preview_images/navigation-sections/floating-navbar-dark.png`,
-  },
-  "luma-bar": {
-    light: `/preview_images/navigation-sections/luma-bar-light.png`,
-    dark: `/preview_images/navigation-sections/luma-bar-dark.png`,
-  },
-  "promote-header": {
-    light: `/preview_images/navigation-sections/promote-header-light.png`,
-    dark: `/preview_images/navigation-sections/promote-header-dark.png`,
-  },
-};
-
-/**
  * Pricing Section - Pricing table components
  * Path: /docs/components/[slug]
  */
@@ -1630,6 +1707,7 @@ export const allComponentPreviews: ComponentPreviewMap = {
   ...navbarsPreview,
   ...cardsPreview,
   ...buttonsPreview,
+  ...checkboxesPreview,
   ...loadersPreview,
   ...dialogsPreview,
   ...uploadPreview,
@@ -1665,7 +1743,6 @@ export const allSectionPreviews: ComponentPreviewMap = {
   ...featuredSectionPreview,
   ...clientSectionPreview,
   ...footerSectionPreview,
-  ...navigationSectionPreview,
   ...pricingSectionPreview,
   ...navbarsPreview,
 };
@@ -1758,6 +1835,7 @@ export function getCategoryPreviews(category: string): ComponentPreviewMap {
     navbars: navbarsPreview,
     cards: cardsPreview,
     buttons: buttonsPreview,
+    checkboxes: checkboxesPreview,
     loaders: loadersPreview,
     dialogs: dialogsPreview,
     "upload-components": uploadPreview,
@@ -1790,7 +1868,6 @@ export function getCategoryPreviews(category: string): ComponentPreviewMap {
     "featured-section": featuredSectionPreview,
     "client-section": clientSectionPreview,
     "footer-section": footerSectionPreview,
-    "navigation-section": navigationSectionPreview,
     "pricing-section": pricingSectionPreview,
   };
 

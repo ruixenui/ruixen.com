@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "navbar-icon-links-demo",
+  "type": "registry:example",
+  "title": "Navbar Icon Links Demo",
+  "description": "Example showing a navigation bar with social icon links.",
+  "registryDependencies": [
+    "https://ruixen.com/r/navbar-icon-links"
+  ],
+  "files": [
+    {
+      "path": "registry/example/navbar-icon-links-demo.tsx",
+      "content": "import NavbarIconLinks from \"@/registry/ruixenui/navbar-icon-links\";\n\nexport default function NavbarIconLinksDemo() {\n  return (\n    <div className=\"w-full\">\n      <NavbarIconLinks />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/navbar-icon-links-demo.tsx"
+    }
+  ]
+}

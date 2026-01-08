@@ -1,0 +1,83 @@
+---
+title: Banner Cookie
+date: 2025-01-08
+description: A cookie consent banner with accept, decline, and preferences options.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="banner-cookie-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/banner-cookie"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="banner-cookie" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import BannerCookie from "@/components/ruixen/banner-cookie";
+
+export default function MyCookieBanner() {
+  return (
+    <BannerCookie
+      position="bottom"
+      onAccept={() => console.log("Cookies accepted")}
+      onDecline={() => console.log("Cookies declined")}
+      onSettings={() => console.log("Open preferences")}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop            | Type                                                   | Default                   | Description                    |
+| --------------- | ------------------------------------------------------ | ------------------------- | ------------------------------ |
+| `title`         | `string`                                               | `"We value your privacy"` | The banner title               |
+| `description`   | `string`                                               | -                         | The privacy message            |
+| `acceptLabel`   | `string`                                               | `"Accept all"`            | Accept button text             |
+| `declineLabel`  | `string`                                               | `"Decline"`               | Decline button text            |
+| `settingsLabel` | `string`                                               | `"Preferences"`           | Settings button text           |
+| `position`      | `"bottom" \| "top" \| "bottom-left" \| "bottom-right"` | `"bottom"`                | Banner position                |
+| `showSettings`  | `boolean`                                              | `true`                    | Show preferences button        |
+| `onAccept`      | `() => void`                                           | -                         | Callback when accepted         |
+| `onDecline`     | `() => void`                                           | -                         | Callback when declined         |
+| `onSettings`    | `() => void`                                           | -                         | Callback when settings clicked |
+| `className`     | `string`                                               | -                         | Additional CSS classes         |
+
+## Positions
+
+| Position       | Description                          |
+| -------------- | ------------------------------------ |
+| `bottom`       | Fixed to bottom edge, full width     |
+| `top`          | Fixed to top edge, full width        |
+| `bottom-left`  | Floating card at bottom left corner  |
+| `bottom-right` | Floating card at bottom right corner |

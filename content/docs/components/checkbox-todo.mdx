@@ -1,0 +1,80 @@
+---
+title: Checkbox Todo
+date: 2024-06-01
+description: A todo-style checkbox with animated strikethrough effect when checked.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="checkbox-todo-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/checkbox-todo"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="checkbox-todo" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { useState } from "react";
+import CheckboxTodo from "@/components/ruixen/checkbox-todo";
+
+export default function MyComponent() {
+  const [done, setDone] = useState(false);
+
+  return (
+    <CheckboxTodo
+      label="Complete this task"
+      checked={done}
+      onCheckedChange={setDone}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop              | Type                         | Default | Description                    |
+| ----------------- | ---------------------------- | ------- | ------------------------------ |
+| `checked`         | `boolean`                    | -       | Controlled checked state       |
+| `defaultChecked`  | `boolean`                    | `false` | Default checked state          |
+| `onCheckedChange` | `(checked: boolean) => void` | -       | Callback when state changes    |
+| `label`           | `string`                     | -       | Task label (required)          |
+| `animated`        | `boolean`                    | `true`  | Enable strikethrough animation |
+| `disabled`        | `boolean`                    | `false` | Disable the checkbox           |
+| `className`       | `string`                     | -       | Additional CSS classes         |
+
+## Features
+
+- Animated strikethrough effect
+- Round checkbox design for todo style
+- Smooth transitions
+- Green checkmark on completion
+- Light and dark mode support

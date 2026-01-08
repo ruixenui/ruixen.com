@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar-group-count",
+  "type": "registry:ui",
+  "title": "Avatar Group with Count",
+  "description": "A group of overlapping avatars with a count indicator for remaining members.",
+  "registryDependencies": [
+    "avatar"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/avatar-group-count.tsx",
+      "content": "\"use client\";\n\nimport { Avatar, AvatarFallback, AvatarImage } from \"@/components/ui/avatar\";\nimport { cn } from \"@/lib/utils\";\n\ninterface AvatarData {\n  src?: string;\n  alt?: string;\n  fallback: string;\n}\n\ninterface AvatarGroupCountProps {\n  avatars: AvatarData[];\n  max?: number;\n  size?: \"sm\" | \"md\" | \"lg\";\n  className?: string;\n}\n\nconst sizeClasses = {\n  sm: \"size-8\",\n  md: \"size-10\",\n  lg: \"size-12\",\n};\n\nconst spacingClasses = {\n  sm: \"-space-x-2\",\n  md: \"-space-x-3\",\n  lg: \"-space-x-4\",\n};\n\nconst textSizeClasses = {\n  sm: \"text-[10px]\",\n  md: \"text-xs\",\n  lg: \"text-sm\",\n};\n\nexport default function AvatarGroupCount({\n  avatars,\n  max = 4,\n  size = \"md\",\n  className,\n}: AvatarGroupCountProps) {\n  const displayAvatars = avatars.slice(0, max);\n  const remainingCount = avatars.length - max;\n\n  return (\n    <div className={cn(\"flex\", spacingClasses[size], className)}>\n      {displayAvatars.map((avatar, index) => (\n        <Avatar\n          key={index}\n          className={cn(\n            sizeClasses[size],\n            \"ring-2 ring-background transition-transform hover:z-10 hover:scale-110\",\n          )}\n        >\n          <AvatarImage src={avatar.src} alt={avatar.alt || avatar.fallback} />\n          <AvatarFallback className=\"text-xs font-medium\">\n            {avatar.fallback}\n          </AvatarFallback>\n        </Avatar>\n      ))}\n      {remainingCount > 0 && (\n        <Avatar className={cn(sizeClasses[size], \"ring-2 ring-background\")}>\n          <AvatarFallback\n            className={cn(\n              \"bg-muted text-muted-foreground font-medium\",\n              textSizeClasses[size],\n            )}\n          >\n            +{remainingCount}\n          </AvatarFallback>\n        </Avatar>\n      )}\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/avatar-group-count.tsx"
+    }
+  ]
+}

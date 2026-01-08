@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "breadcrumb-separator",
+  "type": "registry:ui",
+  "title": "Breadcrumb Separator",
+  "description": "Breadcrumb navigation with customizable separators (chevron, slash, dot, arrow, dash).",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/breadcrumb-separator.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { ChevronRight, Slash, Minus } from \"lucide-react\";\n\ntype SeparatorType = \"chevron\" | \"slash\" | \"dot\" | \"arrow\" | \"dash\";\n\ninterface BreadcrumbItem {\n  label: string;\n  href?: string;\n}\n\ninterface BreadcrumbSeparatorProps {\n  items: BreadcrumbItem[];\n  separator?: SeparatorType;\n  className?: string;\n}\n\nconst separatorIcons: Record<SeparatorType, React.ReactNode> = {\n  chevron: <ChevronRight className=\"size-4 text-muted-foreground\" />,\n  slash: <span className=\"text-muted-foreground\">/</span>,\n  dot: <span className=\"text-muted-foreground\">·</span>,\n  arrow: <span className=\"text-muted-foreground\">→</span>,\n  dash: <Minus className=\"size-3 text-muted-foreground\" />,\n};\n\nexport default function BreadcrumbSeparator({\n  items,\n  separator = \"chevron\",\n  className,\n}: BreadcrumbSeparatorProps) {\n  return (\n    <nav aria-label=\"Breadcrumb\" className={cn(\"\", className)}>\n      <ol className=\"flex flex-wrap items-center gap-1.5 text-sm\">\n        {items.map((item, index) => {\n          const isLast = index === items.length - 1;\n\n          return (\n            <li key={index} className=\"inline-flex items-center gap-1.5\">\n              {item.href && !isLast ? (\n                <a\n                  href={item.href}\n                  className=\"text-muted-foreground transition-colors hover:text-foreground\"\n                >\n                  {item.label}\n                </a>\n              ) : (\n                <span\n                  className={cn(\n                    isLast\n                      ? \"font-medium text-foreground\"\n                      : \"text-muted-foreground\",\n                  )}\n                >\n                  {item.label}\n                </span>\n              )}\n              {!isLast && (\n                <span className=\"mx-1\" aria-hidden=\"true\">\n                  {separatorIcons[separator]}\n                </span>\n              )}\n            </li>\n          );\n        })}\n      </ol>\n    </nav>\n  );\n}\n\nexport {\n  BreadcrumbSeparator as BreadcrumbSeparatorComponent,\n  type BreadcrumbSeparatorProps,\n};\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/breadcrumb-separator.tsx"
+    }
+  ]
+}

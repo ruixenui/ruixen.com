@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "accordion-minimal",
+  "type": "registry:ui",
+  "title": "Minimal Accordion",
+  "description": "A minimal accordion with show/hide text toggle instead of icons.",
+  "dependencies": [
+    "@radix-ui/react-accordion"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/accordion-minimal.tsx",
+      "content": "\"use client\";\n\nimport * as AccordionPrimitive from \"@radix-ui/react-accordion\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface AccordionMinimalItem {\n  id: string;\n  title: string;\n  content: string;\n}\n\ninterface AccordionMinimalProps {\n  items: AccordionMinimalItem[];\n  defaultValue?: string;\n  className?: string;\n}\n\nexport default function AccordionMinimal({\n  items,\n  defaultValue,\n  className,\n}: AccordionMinimalProps) {\n  return (\n    <AccordionPrimitive.Root\n      type=\"single\"\n      collapsible\n      defaultValue={defaultValue}\n      className={cn(\"divide-y divide-border\", className)}\n    >\n      {items.map((item) => (\n        <AccordionPrimitive.Item key={item.id} value={item.id}>\n          <AccordionPrimitive.Header className=\"flex\">\n            <AccordionPrimitive.Trigger\n              className={cn(\n                \"group flex flex-1 items-center justify-between py-4 text-left text-[15px] font-medium transition-all\",\n              )}\n            >\n              {item.title}\n              <span className=\"text-muted-foreground text-sm font-normal group-data-[state=open]:hidden\">\n                Show\n              </span>\n              <span className=\"text-primary text-sm font-normal hidden group-data-[state=open]:inline\">\n                Hide\n              </span>\n            </AccordionPrimitive.Trigger>\n          </AccordionPrimitive.Header>\n          <AccordionPrimitive.Content className=\"overflow-hidden text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down\">\n            <div className=\"pb-4 text-muted-foreground\">{item.content}</div>\n          </AccordionPrimitive.Content>\n        </AccordionPrimitive.Item>\n      ))}\n    </AccordionPrimitive.Root>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/accordion-minimal.tsx"
+    }
+  ]
+}

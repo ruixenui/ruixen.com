@@ -1,0 +1,74 @@
+---
+title: Navbar User Menu
+date: 2024-06-01
+description: A navbar with user avatar, dropdown menu, and notification bell.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="navbar-user-menu-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/navbar-user-menu"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the required dependencies:</Step>
+
+```bash
+npm install @radix-ui/react-dropdown-menu @radix-ui/react-avatar lucide-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="navbar-user-menu" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import NavbarUserMenu from "@/components/ruixen/navbar-user-menu";
+
+export default function MyNavbar() {
+  return <NavbarUserMenu />;
+}
+```
+
+## Props
+
+| Prop        | Type                                                  | Default       | Description                   |
+| ----------- | ----------------------------------------------------- | ------------- | ----------------------------- |
+| `logo`      | `React.ReactNode`                                     | Default logo  | Custom logo element           |
+| `links`     | `{ label: string; href: string; active?: boolean }[]` | Default links | Navigation links array        |
+| `user`      | `{ name: string; email: string; avatar?: string }`    | Default user  | User information for dropdown |
+| `className` | `string`                                              | -             | Additional CSS classes        |
+
+## Features
+
+- User avatar with dropdown menu
+- Notification bell icon
+- Profile, settings, and logout options
+- Clean dropdown design
+- Light and dark mode support

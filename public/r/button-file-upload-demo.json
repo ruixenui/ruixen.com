@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-file-upload-demo",
+  "type": "registry:example",
+  "title": "Button File Upload Demo",
+  "description": "Example showing file upload trigger buttons.",
+  "registryDependencies": [
+    "https://ruixen.com/r/button-file-upload"
+  ],
+  "files": [
+    {
+      "path": "registry/example/button-file-upload-demo.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport ButtonFileUpload from \"@/registry/ruixenui/button-file-upload\";\n\nexport default function ButtonFileUploadDemo() {\n  const handleFileSelect = (files: FileList | null) => {\n    if (files) {\n      console.log(\n        \"Selected files:\",\n        Array.from(files).map((f) => f.name),\n      );\n    }\n  };\n\n  return (\n    <div className=\"flex flex-wrap items-center justify-center gap-4 p-4\">\n      <ButtonFileUpload onFileSelect={handleFileSelect}>\n        Upload File\n      </ButtonFileUpload>\n      <ButtonFileUpload\n        variant=\"outline\"\n        accept=\"image/*\"\n        onFileSelect={handleFileSelect}\n      >\n        Upload Image\n      </ButtonFileUpload>\n      <ButtonFileUpload\n        variant=\"secondary\"\n        multiple\n        onFileSelect={handleFileSelect}\n      >\n        Upload Multiple\n      </ButtonFileUpload>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/button-file-upload-demo.tsx"
+    }
+  ]
+}
