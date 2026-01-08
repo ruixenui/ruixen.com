@@ -4,34 +4,36 @@ import ButtonSplit from "@/registry/ruixenui/button-split";
 
 export default function ButtonSplitDemo() {
   const saveOptions = [
-    { label: "Save as Draft", value: "draft" },
-    { label: "Save and Publish", value: "publish" },
-    { label: "Save and Schedule", value: "schedule" },
+    { label: "Save as Draft", onClick: () => console.log("Save as Draft") },
+    {
+      label: "Save and Publish",
+      onClick: () => console.log("Save and Publish"),
+    },
+    {
+      label: "Save and Schedule",
+      onClick: () => console.log("Save and Schedule"),
+    },
   ];
 
   const downloadOptions = [
-    { label: "Download as PDF", value: "pdf" },
-    { label: "Download as PNG", value: "png" },
-    { label: "Download as SVG", value: "svg" },
+    { label: "Download as PDF", onClick: () => console.log("Download PDF") },
+    { label: "Download as PNG", onClick: () => console.log("Download PNG") },
+    { label: "Download as SVG", onClick: () => console.log("Download SVG") },
   ];
 
   return (
     <div className="flex flex-wrap items-center justify-center gap-4 p-4">
       <ButtonSplit
+        label="Save"
+        onClick={() => console.log("Save clicked")}
         options={saveOptions}
-        onPrimaryClick={() => console.log("Save clicked")}
-        onOptionSelect={(v) => console.log("Selected:", v)}
-      >
-        Save
-      </ButtonSplit>
+      />
       <ButtonSplit
+        label="Download"
+        onClick={() => console.log("Download clicked")}
         options={downloadOptions}
-        variant="outline"
-        onPrimaryClick={() => console.log("Download clicked")}
-        onOptionSelect={(v) => console.log("Selected:", v)}
-      >
-        Download
-      </ButtonSplit>
+        variant="secondary"
+      />
     </div>
   );
 }
