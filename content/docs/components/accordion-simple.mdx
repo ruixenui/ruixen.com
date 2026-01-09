@@ -1,0 +1,72 @@
+---
+title: Simple Accordion
+date: 2025-01-08
+description: A basic accordion component with clean styling and smooth expand/collapse animations.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="accordion-simple-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/accordion-simple"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="accordion-simple" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import AccordionSimple from "@/components/ruixen/accordion-simple";
+
+const items = [
+  {
+    id: "1",
+    title: "What is the return policy?",
+    content: "You can return any item within 30 days of purchase.",
+  },
+  {
+    id: "2",
+    title: "How long does shipping take?",
+    content: "Standard shipping takes 5-7 business days.",
+  },
+];
+
+export default function MyAccordion() {
+  return <AccordionSimple items={items} defaultValue="1" />;
+}
+```
+
+## Props
+
+| Prop           | Type                    | Default | Description                   |
+| -------------- | ----------------------- | ------- | ----------------------------- |
+| `items`        | `AccordionSimpleItem[]` | -       | Array of accordion items      |
+| `defaultValue` | `string`                | -       | ID of the initially open item |
+| `className`    | `string`                | -       | Additional CSS classes        |

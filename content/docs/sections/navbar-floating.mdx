@@ -1,0 +1,68 @@
+---
+title: Navbar Floating
+date: 2024-06-01
+description: A pill-shaped floating navbar with a clean, modern design.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="navbar-floating-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/navbar-floating"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="navbar-floating" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import NavbarFloating from "@/components/ruixen/navbar-floating";
+
+export default function MyNavbar() {
+  return <NavbarFloating />;
+}
+```
+
+## Props
+
+| Prop        | Type                                                  | Default         | Description            |
+| ----------- | ----------------------------------------------------- | --------------- | ---------------------- |
+| `logo`      | `React.ReactNode`                                     | Default logo    | Custom logo element    |
+| `links`     | `{ label: string; href: string; active?: boolean }[]` | Default links   | Navigation links array |
+| `actions`   | `React.ReactNode`                                     | Default buttons | Custom action buttons  |
+| `className` | `string`                                              | -               | Additional CSS classes |
+
+## Features
+
+- Pill-shaped floating design
+- Centered layout with max-width
+- Rounded corners for modern look
+- Shadow for depth effect
+- Light and dark mode support

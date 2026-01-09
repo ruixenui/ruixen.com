@@ -1,6 +1,5 @@
 import { Analytics } from "@/components/analytics";
 import { ThemeProvider } from "@/components/theme-provider";
-import { SmoothScrollProvider } from "@/components/smooth-scroll-provider";
 import { SiteBanner } from "@/components/site-banner";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -76,22 +75,20 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "relative flex w-full flex-col justify-center overflow-x-hidden scroll-smooth bg-background font-sans antialiased",
+          "relative flex w-full flex-col justify-center overflow-x-hidden bg-background font-sans antialiased",
           fontSans.variable,
           fontMono.variable,
         )}
       >
         <JotaiProvider>
           <ThemeProvider attribute="class" defaultTheme="light">
-            <SmoothScrollProvider>
-              <TooltipProvider>
-                <SiteBanner />
-                {children}
-                <Toaster />
-                <Analytics />
-                <GitHubStarPopup />
-              </TooltipProvider>
-            </SmoothScrollProvider>
+            <TooltipProvider>
+              <SiteBanner />
+              {children}
+              <Toaster />
+              <Analytics />
+              <GitHubStarPopup />
+            </TooltipProvider>
           </ThemeProvider>
         </JotaiProvider>
       </body>

@@ -1,0 +1,87 @@
+---
+title: Banner Countdown
+date: 2025-01-08
+description: A countdown timer banner for sales, launches, and time-sensitive promotions.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="banner-countdown-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/banner-countdown"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="banner-countdown" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import BannerCountdown from "@/components/ruixen/banner-countdown";
+
+// Sale ends in 24 hours
+const saleEndDate = new Date(Date.now() + 24 * 60 * 60 * 1000);
+
+export default function MyCountdownBanner() {
+  return (
+    <BannerCountdown
+      variant="urgent"
+      title="Flash Sale ends in"
+      endDate={saleEndDate}
+      ctaLabel="Shop now"
+      ctaHref="/sale"
+      onExpire={() => console.log("Sale ended!")}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop          | Type                                     | Default      | Description                     |
+| ------------- | ---------------------------------------- | ------------ | ------------------------------- |
+| `title`       | `string`                                 | -            | Text displayed before countdown |
+| `endDate`     | `Date`                                   | -            | When the countdown ends         |
+| `ctaLabel`    | `string`                                 | `"Shop now"` | Call-to-action button text      |
+| `ctaHref`     | `string`                                 | `"#"`        | Call-to-action link URL         |
+| `variant`     | `"default" \| "urgent" \| "celebration"` | `"default"`  | Visual style of the banner      |
+| `showDays`    | `boolean`                                | `true`       | Whether to show days counter    |
+| `dismissible` | `boolean`                                | `true`       | Whether banner can be dismissed |
+| `onExpire`    | `() => void`                             | -            | Callback when countdown ends    |
+| `onCtaClick`  | `() => void`                             | -            | Callback when CTA clicked       |
+| `onDismiss`   | `() => void`                             | -            | Callback when dismissed         |
+| `className`   | `string`                                 | -            | Additional CSS classes          |
+
+## Variants
+
+| Variant       | Description                             |
+| ------------- | --------------------------------------- |
+| `default`     | Primary background color                |
+| `urgent`      | Red gradient with pulsing animation     |
+| `celebration` | Purple to fuchsia gradient for launches |

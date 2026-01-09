@@ -1,0 +1,64 @@
+---
+title: Success Alert Outlined
+date: 2025-01-08
+description: A success alert component with outlined border style and circle check icon.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="alert-success-outlined-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/alert-success-outlined"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="alert-success-outlined" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import AlertSuccessOutlined from "@/components/ruixen/alert-success-outlined";
+
+export default function MySuccess() {
+  return (
+    <AlertSuccessOutlined
+      title="Success"
+      message="Your account has been verified successfully."
+    />
+  );
+}
+```
+
+## Props
+
+| Prop        | Type     | Default | Description                  |
+| ----------- | -------- | ------- | ---------------------------- |
+| `title`     | `string` | -       | Optional title for the alert |
+| `message`   | `string` | -       | The alert message            |
+| `className` | `string` | -       | Additional CSS classes       |

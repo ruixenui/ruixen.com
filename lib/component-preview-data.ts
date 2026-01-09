@@ -30,6 +30,268 @@ export type ComponentPreviewMap = Record<string, ComponentPreview>;
 // ============================================================================
 
 /**
+ * Accordions - Expandable accordion components
+ * Path: /docs/components/[slug]
+ */
+export const accordionsPreview: ComponentPreviewMap = {
+  "accordion-animated": {
+    light: `/preview_images/accordions/accordion-animated-light.png`,
+    dark: `/preview_images/accordions/accordion-animated-dark.png`,
+  },
+  "accordion-arrow": {
+    light: `/preview_images/accordions/accordion-arrow-light.png`,
+    dark: `/preview_images/accordions/accordion-arrow-dark.png`,
+  },
+  "accordion-badge": {
+    light: `/preview_images/accordions/accordion-badge-light.png`,
+    dark: `/preview_images/accordions/accordion-badge-dark.png`,
+  },
+  "accordion-bordered": {
+    light: `/preview_images/accordions/accordion-bordered-light.png`,
+    dark: `/preview_images/accordions/accordion-bordered-dark.png`,
+  },
+  "accordion-icon": {
+    light: `/preview_images/accordions/accordion-icon-light.png`,
+    dark: `/preview_images/accordions/accordion-icon-dark.png`,
+  },
+  "accordion-minimal": {
+    light: `/preview_images/accordions/accordion-minimal-light.png`,
+    dark: `/preview_images/accordions/accordion-minimal-dark.png`,
+  },
+  "accordion-nested": {
+    light: `/preview_images/accordions/accordion-nested-light.png`,
+    dark: `/preview_images/accordions/accordion-nested-dark.png`,
+  },
+  "accordion-plus": {
+    light: `/preview_images/accordions/accordion-plus-light.png`,
+    dark: `/preview_images/accordions/accordion-plus-dark.png`,
+  },
+  "accordion-simple": {
+    light: `/preview_images/accordions/accordion-simple-light.png`,
+    dark: `/preview_images/accordions/accordion-simple-dark.png`,
+  },
+};
+
+/**
+ * Alerts - Alert notification components
+ * Path: /docs/components/[slug]
+ */
+export const alertsPreview: ComponentPreviewMap = {
+  "alert-warning": {
+    light: `/preview_images/alerts/alert-warning-light.png`,
+    dark: `/preview_images/alerts/alert-warning-dark.png`,
+  },
+  "alert-warning-outlined": {
+    light: `/preview_images/alerts/alert-warning-outlined-light.png`,
+    dark: `/preview_images/alerts/alert-warning-outlined-dark.png`,
+  },
+  "alert-error": {
+    light: `/preview_images/alerts/alert-error-light.png`,
+    dark: `/preview_images/alerts/alert-error-dark.png`,
+  },
+  "alert-error-outlined": {
+    light: `/preview_images/alerts/alert-error-outlined-light.png`,
+    dark: `/preview_images/alerts/alert-error-outlined-dark.png`,
+  },
+  "alert-success": {
+    light: `/preview_images/alerts/alert-success-light.png`,
+    dark: `/preview_images/alerts/alert-success-dark.png`,
+  },
+  "alert-success-outlined": {
+    light: `/preview_images/alerts/alert-success-outlined-light.png`,
+    dark: `/preview_images/alerts/alert-success-outlined-dark.png`,
+  },
+};
+
+/**
+ * Avatars - Avatar components with various styles and status indicators
+ * Path: /docs/components/[slug]
+ */
+export const avatarsPreview: ComponentPreviewMap = {
+  "avatar-badge": {
+    light: `/preview_images/avatars/avatar-badge-light.png`,
+    dark: `/preview_images/avatars/avatar-badge-dark.png`,
+  },
+  "avatar-basic": {
+    light: `/preview_images/avatars/avatar-basic-light.png`,
+    dark: `/preview_images/avatars/avatar-basic-dark.png`,
+  },
+  "avatar-fallback": {
+    light: `/preview_images/avatars/avatar-fallback-light.png`,
+    dark: `/preview_images/avatars/avatar-fallback-dark.png`,
+  },
+  "avatar-group": {
+    light: `/preview_images/avatars/avatar-group-light.png`,
+    dark: `/preview_images/avatars/avatar-group-dark.png`,
+  },
+  "avatar-group-count": {
+    light: `/preview_images/avatars/avatar-group-count-light.png`,
+    dark: `/preview_images/avatars/avatar-group-count-dark.png`,
+  },
+  "avatar-icon": {
+    light: `/preview_images/avatars/avatar-icon-light.png`,
+    dark: `/preview_images/avatars/avatar-icon-dark.png`,
+  },
+  "avatar-online": {
+    light: `/preview_images/avatars/avatar-online-light.png`,
+    dark: `/preview_images/avatars/avatar-online-dark.png`,
+  },
+  "avatar-status": {
+    light: `/preview_images/avatars/avatar-status-light.png`,
+    dark: `/preview_images/avatars/avatar-status-dark.png`,
+  },
+  "avatar-verified": {
+    light: `/preview_images/avatars/avatar-verified-light.png`,
+    dark: `/preview_images/avatars/avatar-verified-dark.png`,
+  },
+  "avatar-trust-badge": {
+    light: `/preview_images/avatars/avatar-trust-badge-light.png`,
+    dark: `/preview_images/avatars/avatar-trust-badge-dark.png`,
+  },
+};
+
+/**
+ * Badges - Badge components with icons, counters, and status indicators
+ * Path: /docs/components/[slug]
+ */
+export const badgesPreview: ComponentPreviewMap = {
+  "badge-icon": {
+    light: `/preview_images/badges/badge-icon-light.png`,
+    dark: `/preview_images/badges/badge-icon-dark.png`,
+  },
+  "badge-counter": {
+    light: `/preview_images/badges/badge-counter-light.png`,
+    dark: `/preview_images/badges/badge-counter-dark.png`,
+  },
+  "badge-status": {
+    light: `/preview_images/badges/badge-status-light.png`,
+    dark: `/preview_images/badges/badge-status-dark.png`,
+  },
+  "badge-removable": {
+    light: `/preview_images/badges/badge-removable-light.png`,
+    dark: `/preview_images/badges/badge-removable-dark.png`,
+  },
+};
+
+/**
+ * Banners - Banner components for announcements, promotions, and notifications
+ * Path: /docs/components/[slug]
+ */
+export const bannersPreview: ComponentPreviewMap = {
+  "banner-announcement": {
+    light: `/preview_images/banners/banner-announcement-light.png`,
+    dark: `/preview_images/banners/banner-announcement-dark.png`,
+  },
+  "banner-cookie": {
+    light: `/preview_images/banners/banner-cookie-light.png`,
+    dark: `/preview_images/banners/banner-cookie-dark.png`,
+  },
+  "banner-promo": {
+    light: `/preview_images/banners/banner-promo-light.png`,
+    dark: `/preview_images/banners/banner-promo-dark.png`,
+  },
+  "banner-newsletter": {
+    light: `/preview_images/banners/banner-newsletter-light.png`,
+    dark: `/preview_images/banners/banner-newsletter-dark.png`,
+  },
+  "banner-countdown": {
+    light: `/preview_images/banners/banner-countdown-light.png`,
+    dark: `/preview_images/banners/banner-countdown-dark.png`,
+  },
+};
+
+/**
+ * Breadcrumbs - Breadcrumb navigation components
+ * Path: /docs/components/[slug]
+ */
+export const breadcrumbsPreview: ComponentPreviewMap = {
+  "breadcrumb-separator": {
+    light: `/preview_images/breadcrumbs/breadcrumb-separator-light.png`,
+    dark: `/preview_images/breadcrumbs/breadcrumb-separator-dark.png`,
+  },
+  "breadcrumb-icon": {
+    light: `/preview_images/breadcrumbs/breadcrumb-icon-light.png`,
+    dark: `/preview_images/breadcrumbs/breadcrumb-icon-dark.png`,
+  },
+  "breadcrumb-dropdown": {
+    light: `/preview_images/breadcrumbs/breadcrumb-dropdown-light.png`,
+    dark: `/preview_images/breadcrumbs/breadcrumb-dropdown-dark.png`,
+  },
+  "breadcrumb-boxed": {
+    light: `/preview_images/breadcrumbs/breadcrumb-boxed-light.png`,
+    dark: `/preview_images/breadcrumbs/breadcrumb-boxed-dark.png`,
+  },
+};
+
+/**
+ * Navbars - Navigation bar components
+ * Path: /docs/sections/[slug]
+ */
+export const navbarsPreview: ComponentPreviewMap = {
+  "navbar-simple": {
+    light: `/preview_images/navbars/navbar-simple-light.png`,
+    dark: `/preview_images/navbars/navbar-simple-dark.png`,
+  },
+  "navbar-centered": {
+    light: `/preview_images/navbars/navbar-centered-light.png`,
+    dark: `/preview_images/navbars/navbar-centered-dark.png`,
+  },
+  "navbar-with-search": {
+    light: `/preview_images/navbars/navbar-with-search-light.png`,
+    dark: `/preview_images/navbars/navbar-with-search-dark.png`,
+  },
+  "navbar-user-menu": {
+    light: `/preview_images/navbars/navbar-user-menu-light.png`,
+    dark: `/preview_images/navbars/navbar-user-menu-dark.png`,
+  },
+  "navbar-status": {
+    light: `/preview_images/navbars/navbar-status-light.png`,
+    dark: `/preview_images/navbars/navbar-status-dark.png`,
+  },
+  "navbar-breadcrumb": {
+    light: `/preview_images/navbars/navbar-breadcrumb-light.png`,
+    dark: `/preview_images/navbars/navbar-breadcrumb-dark.png`,
+  },
+  "navbar-floating": {
+    light: `/preview_images/navbars/navbar-floating-light.png`,
+    dark: `/preview_images/navbars/navbar-floating-dark.png`,
+  },
+  "navbar-tabs": {
+    light: `/preview_images/navbars/navbar-tabs-light.png`,
+    dark: `/preview_images/navbars/navbar-tabs-dark.png`,
+  },
+  "navbar-minimal": {
+    light: `/preview_images/navbars/navbar-minimal-light.png`,
+    dark: `/preview_images/navbars/navbar-minimal-dark.png`,
+  },
+  "navbar-split": {
+    light: `/preview_images/navbars/navbar-split-light.png`,
+    dark: `/preview_images/navbars/navbar-split-dark.png`,
+  },
+  "navbar-icon-links": {
+    light: `/preview_images/navbars/navbar-icon-links-light.png`,
+    dark: `/preview_images/navbars/navbar-icon-links-dark.png`,
+  },
+  // Navigation sections (formerly separate)
+  "hover-gradient-navbar": {
+    light: `/preview_images/navbars/hover-gradient-navbar-light.png`,
+    dark: `/preview_images/navbars/hover-gradient-navbar-dark.png`,
+  },
+  "floating-navbar": {
+    light: `/preview_images/navbars/floating-navbar-light.png`,
+    dark: `/preview_images/navbars/floating-navbar-dark.png`,
+  },
+  "luma-bar": {
+    light: `/preview_images/navbars/luma-bar-light.png`,
+    dark: `/preview_images/navbars/luma-bar-dark.png`,
+  },
+  "promote-header": {
+    light: `/preview_images/navbars/promote-header-light.png`,
+    dark: `/preview_images/navbars/promote-header-dark.png`,
+  },
+};
+
+/**
  * Cards - Card components for various use cases
  * Path: /docs/components/[slug]
  */
@@ -228,6 +490,89 @@ export const buttonsPreview: ComponentPreviewMap = {
   "icon-label-subtext-button": {
     light: `/preview_images/buttons/icon-label-subtext-button-light.png`,
     dark: `/preview_images/buttons/icon-label-subtext-button-dark.png`,
+  },
+  "button-variants": {
+    light: `/preview_images/buttons/button-variants-light.png`,
+    dark: `/preview_images/buttons/button-variants-dark.png`,
+  },
+  "button-icon": {
+    light: `/preview_images/buttons/button-icon-light.png`,
+    dark: `/preview_images/buttons/button-icon-dark.png`,
+  },
+  "button-loading": {
+    light: `/preview_images/buttons/button-loading-light.png`,
+    dark: `/preview_images/buttons/button-loading-dark.png`,
+  },
+  "button-social": {
+    light: `/preview_images/buttons/button-social-light.png`,
+    dark: `/preview_images/buttons/button-social-dark.png`,
+  },
+  "button-copy": {
+    light: `/preview_images/buttons/button-copy-light.png`,
+    dark: `/preview_images/buttons/button-copy-dark.png`,
+  },
+  "button-dropdown": {
+    light: `/preview_images/buttons/button-dropdown-light.png`,
+    dark: `/preview_images/buttons/button-dropdown-dark.png`,
+  },
+  "button-split": {
+    light: `/preview_images/buttons/button-split-light.png`,
+    dark: `/preview_images/buttons/button-split-dark.png`,
+  },
+  "button-badge": {
+    light: `/preview_images/buttons/button-badge-light.png`,
+    dark: `/preview_images/buttons/button-badge-dark.png`,
+  },
+  "button-file-upload": {
+    light: `/preview_images/buttons/button-file-upload-light.png`,
+    dark: `/preview_images/buttons/button-file-upload-dark.png`,
+  },
+  "button-rounded": {
+    light: `/preview_images/buttons/button-rounded-light.png`,
+    dark: `/preview_images/buttons/button-rounded-dark.png`,
+  },
+  "button-toggle-group": {
+    light: `/preview_images/buttons/button-toggle-group-light.png`,
+    dark: `/preview_images/buttons/button-toggle-group-dark.png`,
+  },
+};
+
+/**
+ * Checkboxes - Checkbox components with various styles
+ * Path: /docs/components/[slug]
+ */
+export const checkboxesPreview: ComponentPreviewMap = {
+  "checkbox-simple": {
+    light: `/preview_images/checkboxes/checkbox-simple-light.png`,
+    dark: `/preview_images/checkboxes/checkbox-simple-dark.png`,
+  },
+  "checkbox-colored": {
+    light: `/preview_images/checkboxes/checkbox-colored-light.png`,
+    dark: `/preview_images/checkboxes/checkbox-colored-dark.png`,
+  },
+  "checkbox-group": {
+    light: `/preview_images/checkboxes/checkbox-group-light.png`,
+    dark: `/preview_images/checkboxes/checkbox-group-dark.png`,
+  },
+  "checkbox-indeterminate": {
+    light: `/preview_images/checkboxes/checkbox-indeterminate-light.png`,
+    dark: `/preview_images/checkboxes/checkbox-indeterminate-dark.png`,
+  },
+  "checkbox-card": {
+    light: `/preview_images/checkboxes/checkbox-card-light.png`,
+    dark: `/preview_images/checkboxes/checkbox-card-dark.png`,
+  },
+  "checkbox-terms": {
+    light: `/preview_images/checkboxes/checkbox-terms-light.png`,
+    dark: `/preview_images/checkboxes/checkbox-terms-dark.png`,
+  },
+  "checkbox-todo": {
+    light: `/preview_images/checkboxes/checkbox-todo-light.png`,
+    dark: `/preview_images/checkboxes/checkbox-todo-dark.png`,
+  },
+  "checkbox-tree": {
+    light: `/preview_images/checkboxes/checkbox-tree-light.png`,
+    dark: `/preview_images/checkboxes/checkbox-tree-dark.png`,
   },
 };
 
@@ -1313,29 +1658,6 @@ export const footerSectionPreview: ComponentPreviewMap = {
 };
 
 /**
- * Navigation Section - Navigation bar components
- * Path: /docs/components/[slug]
- */
-export const navigationSectionPreview: ComponentPreviewMap = {
-  "hover-gradient-navbar": {
-    light: `/preview_images/navigation-sections/hover-gradient-navbar-light.png`,
-    dark: `/preview_images/navigation-sections/hover-gradient-navbar-dark.png`,
-  },
-  "floating-navbar": {
-    light: `/preview_images/navigation-sections/floating-navbar-light.png`,
-    dark: `/preview_images/navigation-sections/floating-navbar-dark.png`,
-  },
-  "luma-bar": {
-    light: `/preview_images/navigation-sections/luma-bar-light.png`,
-    dark: `/preview_images/navigation-sections/luma-bar-dark.png`,
-  },
-  "promote-header": {
-    light: `/preview_images/navigation-sections/promote-header-light.png`,
-    dark: `/preview_images/navigation-sections/promote-header-dark.png`,
-  },
-};
-
-/**
  * Pricing Section - Pricing table components
  * Path: /docs/components/[slug]
  */
@@ -1376,8 +1698,16 @@ export const pricingSectionPreview: ComponentPreviewMap = {
 
 /** All component previews combined */
 export const allComponentPreviews: ComponentPreviewMap = {
+  ...accordionsPreview,
+  ...alertsPreview,
+  ...avatarsPreview,
+  ...badgesPreview,
+  ...bannersPreview,
+  ...breadcrumbsPreview,
+  ...navbarsPreview,
   ...cardsPreview,
   ...buttonsPreview,
+  ...checkboxesPreview,
   ...loadersPreview,
   ...dialogsPreview,
   ...uploadPreview,
@@ -1413,8 +1743,8 @@ export const allSectionPreviews: ComponentPreviewMap = {
   ...featuredSectionPreview,
   ...clientSectionPreview,
   ...footerSectionPreview,
-  ...navigationSectionPreview,
   ...pricingSectionPreview,
+  ...navbarsPreview,
 };
 
 /** All previews (components + sections) */
@@ -1496,8 +1826,16 @@ export function hasComponentPreview(componentSlug: string): boolean {
 export function getCategoryPreviews(category: string): ComponentPreviewMap {
   const categoryMap: Record<string, ComponentPreviewMap> = {
     // Components
+    accordions: accordionsPreview,
+    alerts: alertsPreview,
+    avatars: avatarsPreview,
+    badges: badgesPreview,
+    banners: bannersPreview,
+    breadcrumbs: breadcrumbsPreview,
+    navbars: navbarsPreview,
     cards: cardsPreview,
     buttons: buttonsPreview,
+    checkboxes: checkboxesPreview,
     loaders: loadersPreview,
     dialogs: dialogsPreview,
     "upload-components": uploadPreview,
@@ -1530,7 +1868,6 @@ export function getCategoryPreviews(category: string): ComponentPreviewMap {
     "featured-section": featuredSectionPreview,
     "client-section": clientSectionPreview,
     "footer-section": footerSectionPreview,
-    "navigation-section": navigationSectionPreview,
     "pricing-section": pricingSectionPreview,
   };
 

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "accordion-gradient",
+  "type": "registry:ui",
+  "title": "Gradient Accordion",
+  "description": "An accordion with subtle gradient backgrounds that change on expand.",
+  "dependencies": [
+    "@radix-ui/react-accordion",
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/accordion-gradient.tsx",
+      "content": "\"use client\";\n\nimport * as AccordionPrimitive from \"@radix-ui/react-accordion\";\nimport { ChevronDown } from \"lucide-react\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface AccordionGradientItem {\n  id: string;\n  title: string;\n  content: string;\n}\n\ninterface AccordionGradientProps {\n  items: AccordionGradientItem[];\n  defaultValue?: string;\n  className?: string;\n}\n\nexport default function AccordionGradient({\n  items,\n  defaultValue,\n  className,\n}: AccordionGradientProps) {\n  return (\n    <AccordionPrimitive.Root\n      type=\"single\"\n      collapsible\n      defaultValue={defaultValue}\n      className={cn(\"space-y-3\", className)}\n    >\n      {items.map((item) => (\n        <AccordionPrimitive.Item\n          key={item.id}\n          value={item.id}\n          className=\"rounded-xl overflow-hidden border border-border/50 bg-gradient-to-r from-background to-muted/30 data-[state=open]:from-primary/5 data-[state=open]:to-primary/10 transition-all duration-300\"\n        >\n          <AccordionPrimitive.Header className=\"flex\">\n            <AccordionPrimitive.Trigger\n              className={cn(\n                \"flex flex-1 items-center justify-between px-5 py-4 text-left text-[15px] font-medium transition-all\",\n                \"[&[data-state=open]>svg]:rotate-180\",\n              )}\n            >\n              {item.title}\n              <ChevronDown className=\"h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-300\" />\n            </AccordionPrimitive.Trigger>\n          </AccordionPrimitive.Header>\n          <AccordionPrimitive.Content className=\"overflow-hidden text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down\">\n            <div className=\"px-5 pb-4 text-muted-foreground\">\n              {item.content}\n            </div>\n          </AccordionPrimitive.Content>\n        </AccordionPrimitive.Item>\n      ))}\n    </AccordionPrimitive.Root>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/accordion-gradient.tsx"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "navbar-icon-links",
+  "type": "registry:ui",
+  "title": "Navbar Icon Links",
+  "description": "A navigation bar with social media icon links and primary CTA.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/navbar-icon-links.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport Link from \"next/link\";\nimport { Github, Twitter } from \"lucide-react\";\nimport { cn } from \"@/lib/utils\";\nimport { Button } from \"@/components/ui/button\";\n\nexport interface NavbarIconLinksProps {\n  logo?: React.ReactNode;\n  links?: { label: string; href: string; active?: boolean }[];\n  socials?: { icon: \"github\" | \"twitter\"; href: string; label: string }[];\n  cta?: { label: string; href: string };\n  className?: string;\n}\n\nconst iconMap = {\n  github: Github,\n  twitter: Twitter,\n};\n\nexport default function NavbarIconLinks({\n  logo = <span className=\"font-semibold\">Logo</span>,\n  links = [\n    { label: \"Features\", href: \"#\" },\n    { label: \"Pricing\", href: \"#\" },\n    { label: \"Blog\", href: \"#\" },\n  ],\n  socials = [\n    { icon: \"github\", href: \"#\", label: \"GitHub\" },\n    { icon: \"twitter\", href: \"#\", label: \"Twitter\" },\n  ],\n  cta = { label: \"Get Started\", href: \"#\" },\n  className,\n}: NavbarIconLinksProps) {\n  return (\n    <header className={cn(\"w-full border-b\", className)}>\n      <div className=\"flex h-14 items-center justify-between px-4\">\n        <div className=\"flex items-center gap-8\">\n          <Link href=\"/\" className=\"flex items-center\">\n            {logo}\n          </Link>\n          <nav className=\"hidden items-center gap-6 md:flex\">\n            {links.map((link) => (\n              <Link\n                key={link.href + link.label}\n                href={link.href}\n                className={cn(\n                  \"text-sm transition-colors hover:text-foreground\",\n                  link.active ? \"text-foreground\" : \"text-muted-foreground\",\n                )}\n              >\n                {link.label}\n              </Link>\n            ))}\n          </nav>\n        </div>\n        <div className=\"flex items-center gap-1\">\n          {socials.map((social) => {\n            const Icon = iconMap[social.icon];\n            return (\n              <Button key={social.href} variant=\"ghost\" size=\"icon\" asChild>\n                <a\n                  href={social.href}\n                  target=\"_blank\"\n                  rel=\"noopener noreferrer\"\n                  aria-label={social.label}\n                >\n                  <Icon className=\"size-4\" />\n                </a>\n              </Button>\n            );\n          })}\n          <Button size=\"sm\" className=\"ml-2\" asChild>\n            <Link href={cta.href}>{cta.label}</Link>\n          </Button>\n        </div>\n      </div>\n    </header>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/navbar-icon-links.tsx"
+    }
+  ]
+}

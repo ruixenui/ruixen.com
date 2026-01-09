@@ -1,0 +1,85 @@
+---
+title: Badge Accordion
+date: 2025-01-08
+description: An accordion with optional badges on items for highlighting new, important, or beta content.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="accordion-badge-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/accordion-badge"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="accordion-badge" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import AccordionBadge from "@/components/ruixen/accordion-badge";
+
+const items = [
+  {
+    id: "1",
+    title: "New Feature: Dark Mode",
+    badge: "New",
+    badgeVariant: "default",
+    content: "We've added a beautiful dark mode.",
+  },
+  {
+    id: "2",
+    title: "API Rate Limits",
+    badge: "Important",
+    badgeVariant: "destructive",
+    content: "Free tier users are limited to 100 API calls per minute.",
+  },
+];
+
+export default function MyAccordion() {
+  return <AccordionBadge items={items} defaultValue="1" />;
+}
+```
+
+## Props
+
+| Prop           | Type                   | Default | Description                   |
+| -------------- | ---------------------- | ------- | ----------------------------- |
+| `items`        | `AccordionBadgeItem[]` | -       | Array of accordion items      |
+| `defaultValue` | `string`               | -       | ID of the initially open item |
+| `className`    | `string`               | -       | Additional CSS classes        |
+
+## Badge Variants
+
+| Variant       | Description           |
+| ------------- | --------------------- |
+| `default`     | Primary colored badge |
+| `secondary`   | Muted/secondary badge |
+| `destructive` | Red/warning badge     |
+| `outline`     | Outlined badge        |

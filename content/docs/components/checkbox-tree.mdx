@@ -1,0 +1,101 @@
+---
+title: Checkbox Tree
+date: 2024-06-01
+description: A hierarchical tree checkbox for nested selections with expand/collapse.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="checkbox-tree-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/checkbox-tree"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="checkbox-tree" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { useState } from "react";
+import CheckboxTree from "@/components/ruixen/checkbox-tree";
+
+const nodes = [
+  {
+    id: "src",
+    label: "src",
+    children: [
+      {
+        id: "components",
+        label: "components",
+        children: [
+          { id: "button", label: "button.tsx" },
+          { id: "input", label: "input.tsx" },
+        ],
+      },
+    ],
+  },
+];
+
+export default function MyComponent() {
+  const [selected, setSelected] = useState<string[]>([]);
+
+  return (
+    <CheckboxTree nodes={nodes} value={selected} onValueChange={setSelected} />
+  );
+}
+```
+
+## Props
+
+| Prop            | Type                        | Default | Description                 |
+| --------------- | --------------------------- | ------- | --------------------------- |
+| `nodes`         | `TreeNode[]`                | -       | Tree structure (required)   |
+| `value`         | `string[]`                  | -       | Controlled selected IDs     |
+| `defaultValue`  | `string[]`                  | `[]`    | Default selected IDs        |
+| `onValueChange` | `(value: string[]) => void` | -       | Callback when value changes |
+| `className`     | `string`                    | -       | Additional CSS classes      |
+
+### TreeNode Type
+
+```ts
+interface TreeNode {
+  id: string;
+  label: string;
+  children?: TreeNode[];
+}
+```
+
+## Features
+
+- Hierarchical nested structure
+- Expand/collapse nodes
+- Parent-child selection cascade
+- Indeterminate state for partial selection
+- Light and dark mode support

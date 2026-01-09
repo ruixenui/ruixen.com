@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "navbar-centered-demo",
+  "type": "registry:example",
+  "title": "Navbar Centered Demo",
+  "description": "Example showing a navigation bar with centered links.",
+  "registryDependencies": [
+    "https://ruixen.com/r/navbar-centered"
+  ],
+  "files": [
+    {
+      "path": "registry/example/navbar-centered-demo.tsx",
+      "content": "import NavbarCentered from \"@/registry/ruixenui/navbar-centered\";\n\nexport default function NavbarCenteredDemo() {\n  return (\n    <div className=\"relative w-full\">\n      <NavbarCentered />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/navbar-centered-demo.tsx"
+    }
+  ]
+}

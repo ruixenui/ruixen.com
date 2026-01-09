@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "navbar-floating-demo",
+  "type": "registry:example",
+  "title": "Navbar Floating Demo",
+  "description": "Example showing a floating pill-shaped navigation bar.",
+  "registryDependencies": [
+    "https://ruixen.com/r/navbar-floating"
+  ],
+  "files": [
+    {
+      "path": "registry/example/navbar-floating-demo.tsx",
+      "content": "import NavbarFloating from \"@/registry/ruixenui/navbar-floating\";\n\nexport default function NavbarFloatingDemo() {\n  return (\n    <div className=\"w-full bg-muted/30\">\n      <NavbarFloating />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/navbar-floating-demo.tsx"
+    }
+  ]
+}

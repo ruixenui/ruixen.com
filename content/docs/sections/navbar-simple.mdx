@@ -1,0 +1,68 @@
+---
+title: Navbar Simple
+date: 2024-06-01
+description: A clean, simple navbar with logo, navigation links, and action buttons.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="navbar-simple-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/navbar-simple"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="navbar-simple" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import NavbarSimple from "@/components/ruixen/navbar-simple";
+
+export default function MyNavbar() {
+  return <NavbarSimple />;
+}
+```
+
+## Props
+
+| Prop        | Type                                                  | Default         | Description            |
+| ----------- | ----------------------------------------------------- | --------------- | ---------------------- |
+| `logo`      | `React.ReactNode`                                     | Default logo    | Custom logo element    |
+| `links`     | `{ label: string; href: string; active?: boolean }[]` | Default links   | Navigation links array |
+| `actions`   | `React.ReactNode`                                     | Default buttons | Custom action buttons  |
+| `className` | `string`                                              | -               | Additional CSS classes |
+
+## Features
+
+- Clean, minimal design
+- Responsive layout
+- Customizable logo, links, and actions
+- Active link highlighting
+- Light and dark mode support

@@ -1,7 +1,6 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import NumberFlow from "@number-flow/react";
 import { AnimatePresence, motion } from "framer-motion";
 import { CheckIcon } from "lucide-react";
 import { useState } from "react";
@@ -116,6 +115,9 @@ export default function PricingFlow({
 }
 
 const PlanCard = ({ plan, billPlan }: { plan: PLAN; billPlan: PlanType }) => {
+  const price = billPlan === "monthly" ? plan.monthlyPrice : plan.annuallyPrice;
+  const suffix = billPlan === "monthly" ? "/mo" : "/yr";
+
   return (
     <div
       className={cn(
@@ -132,20 +134,17 @@ const PlanCard = ({ plan, billPlan }: { plan: PLAN; billPlan: PlanType }) => {
       <div className="p-6 md:p-8 flex flex-col items-start w-full">
         <h2 className="font-medium text-xl text-foreground">{plan.title}</h2>
         <h3 className="mt-3 text-2xl font-bold md:text-5xl">
-          <NumberFlow
-            value={
-              billPlan === "monthly" ? plan.monthlyPrice : plan.annuallyPrice
-            }
-            suffix={billPlan === "monthly" ? "/mo" : "/yr"}
-            format={{
-              currency: "USD",
-              style: "currency",
-              currencySign: "standard",
-              minimumFractionDigits: 0,
-              maximumFractionDigits: 0,
-              currencyDisplay: "narrowSymbol",
-            }}
-          />
+          <AnimatePresence mode="wait">
+            <motion.span
+              key={price}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2 }}
+            >
+              ${price}{suffix}
+            </motion.span>
+          </AnimatePresence>
         </h3>
         <p className="text-sm md:text-base text-muted-foreground mt-2">
           {plan.desc}

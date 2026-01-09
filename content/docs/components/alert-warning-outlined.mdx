@@ -1,0 +1,64 @@
+---
+title: Warning Alert Outlined
+date: 2025-01-08
+description: A warning alert component with outlined border style and triangle alert icon.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="alert-warning-outlined-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/alert-warning-outlined"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="alert-warning-outlined" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import AlertWarningOutlined from "@/components/ruixen/alert-warning-outlined";
+
+export default function MyWarning() {
+  return (
+    <AlertWarningOutlined
+      title="Warning"
+      message="Your session is about to expire. Please save your work."
+    />
+  );
+}
+```
+
+## Props
+
+| Prop        | Type     | Default | Description                  |
+| ----------- | -------- | ------- | ---------------------------- |
+| `title`     | `string` | -       | Optional title for the alert |
+| `message`   | `string` | -       | The alert message            |
+| `className` | `string` | -       | Additional CSS classes       |

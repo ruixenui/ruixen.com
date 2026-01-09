@@ -1,0 +1,79 @@
+---
+title: Button Dropdown
+date: 2024-06-01
+description: A button with an integrated dropdown menu for action selection.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="button-dropdown-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/button-dropdown"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="button-dropdown" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import ButtonDropdown from "@/components/ruixen/button-dropdown";
+
+const options = [
+  { label: "Edit", value: "edit" },
+  { label: "Duplicate", value: "duplicate" },
+  { label: "Archive", value: "archive" },
+  { label: "Delete", value: "delete", destructive: true },
+];
+
+export default function MyComponent() {
+  return (
+    <ButtonDropdown options={options} onSelect={(value) => console.log(value)}>
+      Actions
+    </ButtonDropdown>
+  );
+}
+```
+
+## Props
+
+| Prop        | Type                                                        | Default     | Description                      |
+| ----------- | ----------------------------------------------------------- | ----------- | -------------------------------- |
+| `options`   | `{ label: string; value: string; destructive?: boolean }[]` | -           | Dropdown menu options            |
+| `onSelect`  | `(value: string) => void`                                   | -           | Callback when option is selected |
+| `variant`   | `"default" \| "outline" \| "secondary"`                     | `"default"` | Button style variant             |
+| `className` | `string`                                                    | -           | Additional CSS classes           |
+
+## Features
+
+- Integrated dropdown menu
+- Support for destructive actions
+- Chevron indicator for dropdown
+- Keyboard navigation support
+- Light and dark mode support

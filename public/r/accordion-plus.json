@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "accordion-plus",
+  "type": "registry:ui",
+  "title": "Plus/Minus Accordion",
+  "description": "An accordion with plus/minus toggle icons for expand and collapse states.",
+  "dependencies": [
+    "@radix-ui/react-accordion",
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/accordion-plus.tsx",
+      "content": "\"use client\";\n\nimport * as AccordionPrimitive from \"@radix-ui/react-accordion\";\nimport { Plus, Minus } from \"lucide-react\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface AccordionPlusItem {\n  id: string;\n  title: string;\n  content: string;\n}\n\ninterface AccordionPlusProps {\n  items: AccordionPlusItem[];\n  defaultValue?: string;\n  className?: string;\n}\n\nexport default function AccordionPlus({\n  items,\n  defaultValue,\n  className,\n}: AccordionPlusProps) {\n  return (\n    <AccordionPrimitive.Root\n      type=\"single\"\n      collapsible\n      defaultValue={defaultValue}\n      className={className}\n    >\n      {items.map((item) => (\n        <AccordionPrimitive.Item\n          key={item.id}\n          value={item.id}\n          className=\"border-b last:border-b-0\"\n        >\n          <AccordionPrimitive.Header className=\"flex\">\n            <AccordionPrimitive.Trigger\n              className={cn(\n                \"group flex flex-1 items-center justify-between py-4 text-left text-[15px] font-medium transition-all hover:underline\",\n              )}\n            >\n              {item.title}\n              <Plus className=\"h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200 group-data-[state=open]:hidden\" />\n              <Minus className=\"h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200 hidden group-data-[state=open]:block\" />\n            </AccordionPrimitive.Trigger>\n          </AccordionPrimitive.Header>\n          <AccordionPrimitive.Content className=\"overflow-hidden text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down\">\n            <div className=\"pb-4 text-muted-foreground\">{item.content}</div>\n          </AccordionPrimitive.Content>\n        </AccordionPrimitive.Item>\n      ))}\n    </AccordionPrimitive.Root>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/accordion-plus.tsx"
+    }
+  ]
+}

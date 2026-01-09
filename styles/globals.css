@@ -336,7 +336,6 @@
     @apply border-border;
   }
   html {
-    @apply scroll-smooth;
   }
 
   body {

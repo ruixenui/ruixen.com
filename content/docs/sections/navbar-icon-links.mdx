@@ -1,0 +1,75 @@
+---
+title: Navbar Icon Links
+date: 2024-06-01
+description: A navbar with social media icon links for quick access to external profiles.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="navbar-icon-links-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/navbar-icon-links"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the required dependencies:</Step>
+
+```bash
+npm install lucide-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="navbar-icon-links" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import NavbarIconLinks from "@/components/ruixen/navbar-icon-links";
+
+export default function MyNavbar() {
+  return <NavbarIconLinks />;
+}
+```
+
+## Props
+
+| Prop        | Type                                                   | Default         | Description             |
+| ----------- | ------------------------------------------------------ | --------------- | ----------------------- |
+| `logo`      | `React.ReactNode`                                      | Default logo    | Custom logo element     |
+| `links`     | `{ label: string; href: string; active?: boolean }[]`  | Default links   | Navigation links array  |
+| `socials`   | `{ icon: ElementType; href: string; label: string }[]` | Default icons   | Social media icon links |
+| `actions`   | `React.ReactNode`                                      | Default buttons | Custom action buttons   |
+| `className` | `string`                                               | -               | Additional CSS classes  |
+
+## Features
+
+- Social media icon links
+- GitHub, Twitter, LinkedIn icons
+- Clean icon button design
+- Hover effects on icons
+- Light and dark mode support

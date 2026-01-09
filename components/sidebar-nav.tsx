@@ -95,7 +95,14 @@ export function DocsSidebarNavItems({
                 isActive && "bg-accent font-medium text-accent-foreground",
               )}
             >
-              <span className="relative shrink-0">{item.title}</span>
+              <span className="relative shrink-0 flex items-center gap-1.5">
+                {item.title}
+                {item.label && (
+                  <span className="rounded-md bg-[var(--color-sidebar-label)] px-1.5 py-0.5 text-[0.65rem] leading-none text-[var(--color-sidebar-label-foreground)]">
+                    {item.label}
+                  </span>
+                )}
+              </span>
               <span className="text-xs text-muted-foreground bg-muted px-2 py-0.5 rounded-full">
                 {count}
               </span>

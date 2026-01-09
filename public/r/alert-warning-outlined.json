@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "alert-warning-outlined",
+  "type": "registry:ui",
+  "title": "Warning Alert Outlined",
+  "description": "A warning alert component with outlined border style and triangle alert icon.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/alert-warning-outlined.tsx",
+      "content": "\"use client\";\n\nimport { TriangleAlert } from \"lucide-react\";\nimport { cn } from \"@/lib/utils\";\n\ninterface AlertWarningOutlinedProps {\n  title?: string;\n  message: string;\n  className?: string;\n}\n\nexport default function AlertWarningOutlined({\n  title,\n  message,\n  className,\n}: AlertWarningOutlinedProps) {\n  return (\n    <div\n      role=\"alert\"\n      className={cn(\n        \"rounded-lg border border-amber-500/50 px-4 py-3 text-amber-600 dark:text-amber-500\",\n        className,\n      )}\n    >\n      <div className=\"flex gap-3\">\n        <TriangleAlert\n          className=\"mt-0.5 shrink-0 opacity-60\"\n          size={16}\n          strokeWidth={2}\n          aria-hidden=\"true\"\n        />\n        <div className=\"flex grow flex-col gap-1\">\n          {title && <p className=\"text-sm font-medium\">{title}</p>}\n          <p className=\"text-sm opacity-90\">{message}</p>\n        </div>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/alert-warning-outlined.tsx"
+    }
+  ]
+}

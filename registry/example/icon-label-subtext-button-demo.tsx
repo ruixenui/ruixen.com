@@ -5,7 +5,7 @@ import { DownloadCloud, Loader2, Check } from "lucide-react";
 
 export default function DemoIconLabelSubtextButton() {
   return (
-    <div className="flex flex-col gap-4 p-6 flex-col items-center justify-center min-h-screen">
+    <div className="flex min-h-[400px] w-full flex-col items-center justify-center gap-4">
       <div className="flex gap-4 items-center">
         <IconLabelSubtextButton
           icon={<DownloadCloud />}

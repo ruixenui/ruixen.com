@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "checkbox-terms-demo",
+  "type": "registry:example",
+  "title": "Checkbox Terms Demo",
+  "description": "Example showing terms and privacy policy acceptance checkbox.",
+  "registryDependencies": [
+    "https://ruixen.com/r/checkbox-terms"
+  ],
+  "files": [
+    {
+      "path": "registry/example/checkbox-terms-demo.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport CheckboxTerms from \"@/registry/ruixenui/checkbox-terms\";\n\nexport default function CheckboxTermsDemo() {\n  const [accepted, setAccepted] = React.useState(false);\n\n  return (\n    <div className=\"flex min-h-[350px] w-full items-center justify-center\">\n      <div className=\"flex flex-col gap-4\">\n        <CheckboxTerms\n          checked={accepted}\n          onCheckedChange={setAccepted}\n          termsText=\"Terms of Service\"\n          termsLink=\"#\"\n          privacyText=\"Privacy Policy\"\n          privacyLink=\"#\"\n          required\n        />\n        <button\n          disabled={!accepted}\n          className=\"w-fit rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground disabled:opacity-50\"\n        >\n          Continue\n        </button>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/checkbox-terms-demo.tsx"
+    }
+  ]
+}

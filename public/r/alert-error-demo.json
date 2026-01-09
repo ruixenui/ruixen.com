@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "alert-error-demo",
+  "type": "registry:example",
+  "title": "Error Alert Demo",
+  "description": "Example showing an error alert with red styling.",
+  "registryDependencies": [
+    "https://ruixen.com/r/alert-error"
+  ],
+  "files": [
+    {
+      "path": "registry/example/alert-error-demo.tsx",
+      "content": "import AlertError from \"@/registry/ruixenui/alert-error\";\n\nexport default function AlertErrorDemo() {\n  return (\n    <div className=\"flex min-h-[350px] w-full items-center justify-center p-4\">\n      <div className=\"w-full max-w-md\">\n        <AlertError\n          title=\"Error\"\n          message=\"An error occurred while processing your request. Please try again.\"\n        />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/alert-error-demo.tsx"
+    }
+  ]
+}

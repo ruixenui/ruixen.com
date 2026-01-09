@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "navbar-with-search",
+  "type": "registry:ui",
+  "title": "Navbar With Search",
+  "description": "A navigation bar with integrated search input and keyboard shortcut indicator.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/navbar-with-search.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport Link from \"next/link\";\nimport { Search } from \"lucide-react\";\nimport { cn } from \"@/lib/utils\";\nimport { Button } from \"@/components/ui/button\";\n\nexport interface NavbarWithSearchProps {\n  logo?: React.ReactNode;\n  links?: { label: string; href: string; active?: boolean }[];\n  placeholder?: string;\n  shortcut?: string;\n  onSearch?: (value: string) => void;\n  actions?: React.ReactNode;\n  className?: string;\n}\n\nexport default function NavbarWithSearch({\n  logo = <span className=\"font-semibold\">Logo</span>,\n  links = [\n    { label: \"Home\", href: \"#\", active: true },\n    { label: \"Docs\", href: \"#\" },\n    { label: \"Components\", href: \"#\" },\n  ],\n  placeholder = \"Search...\",\n  shortcut = \"⌘K\",\n  onSearch,\n  actions,\n  className,\n}: NavbarWithSearchProps) {\n  const [value, setValue] = React.useState(\"\");\n\n  return (\n    <header className={cn(\"w-full border-b\", className)}>\n      <div className=\"flex h-14 items-center justify-between gap-4 px-4\">\n        <div className=\"flex items-center gap-6\">\n          <Link href=\"/\" className=\"flex items-center\">\n            {logo}\n          </Link>\n          <nav className=\"hidden items-center gap-6 md:flex\">\n            {links.map((link) => (\n              <Link\n                key={link.href + link.label}\n                href={link.href}\n                className={cn(\n                  \"text-sm transition-colors hover:text-foreground\",\n                  link.active ? \"text-foreground\" : \"text-muted-foreground\",\n                )}\n              >\n                {link.label}\n              </Link>\n            ))}\n          </nav>\n        </div>\n        <div className=\"flex flex-1 items-center justify-end gap-4\">\n          <div className=\"relative hidden w-full max-w-sm md:block\">\n            <Search className=\"absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground\" />\n            <input\n              type=\"text\"\n              placeholder={placeholder}\n              value={value}\n              onChange={(e) => {\n                setValue(e.target.value);\n                onSearch?.(e.target.value);\n              }}\n              className=\"h-9 w-full rounded-md border bg-transparent pl-9 pr-12 text-sm outline-none transition-colors placeholder:text-muted-foreground focus:border-foreground/20\"\n            />\n            <kbd className=\"pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 rounded border bg-muted px-1.5 text-xs text-muted-foreground\">\n              {shortcut}\n            </kbd>\n          </div>\n          {actions ?? <Button size=\"sm\">Sign In</Button>}\n        </div>\n      </div>\n    </header>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/navbar-with-search.tsx"
+    }
+  ]
+}

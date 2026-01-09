@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/icon-grid-button-demo.tsx",
-      "content": "\"use client\";\n\nimport IconGridButton from \"@/registry/ruixenui/icon-grid-button\";\nimport { MonitorDown, Settings, Star, Heart } from \"lucide-react\";\n\nexport default function DemoIconGridButton() {\n  const icons = [\n    { icon: <MonitorDown className=\"w-5 h-5\" />, onClick: () => {} },\n    { icon: <Star className=\"w-5 h-5\" />, onClick: () => {} },\n    { icon: <Heart className=\"w-5 h-5\" />, onClick: () => {} },\n    { icon: <Settings className=\"w-5 h-5\" />, onClick: () => {} },\n  ];\n\n  return (\n    <div className=\"flex gap-4 flex-col items-center justify-center min-h-screen\">\n      <IconGridButton label=\"Quick Actions\" icons={icons} />\n    </div>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport IconGridButton from \"@/registry/ruixenui/icon-grid-button\";\nimport { MonitorDown, Settings, Star, Heart } from \"lucide-react\";\n\nexport default function DemoIconGridButton() {\n  const icons = [\n    { icon: <MonitorDown className=\"w-5 h-5\" />, onClick: () => {} },\n    { icon: <Star className=\"w-5 h-5\" />, onClick: () => {} },\n    { icon: <Heart className=\"w-5 h-5\" />, onClick: () => {} },\n    { icon: <Settings className=\"w-5 h-5\" />, onClick: () => {} },\n  ];\n\n  return (\n    <div className=\"flex min-h-[350px] w-full flex-col items-center justify-center gap-4\">\n      <IconGridButton label=\"Quick Actions\" icons={icons} />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/icon-grid-button-demo.tsx"
     }

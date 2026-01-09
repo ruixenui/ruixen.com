@@ -34,6 +34,7 @@ function IFramePortal({
 }) {
   const iframeRef = React.useRef<HTMLIFrameElement | null>(null);
   const [mountNode, setMountNode] = React.useState<HTMLElement | null>(null);
+  const [isReady, setIsReady] = React.useState(false);
 
   React.useEffect(() => {
     const iframe = iframeRef.current;
@@ -47,8 +48,22 @@ function IFramePortal({
       doc.open();
       doc.write(`<!doctype html>
 <html>
-  <head><meta charset="utf-8" /></head>
-  <body class="bg-background"><div id="__frame-root" style="min-height: 100%; display: flex; align-items: center; justify-content: center;"></div></body>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      *, *::before, *::after { box-sizing: border-box; }
+      html, body { height: 100%; width: 100%; margin: 0; padding: 0; }
+      #__frame-root {
+        min-height: 100%;
+        width: 100%;
+        display: grid;
+        align-content: center;
+      }
+    </style>
+  </head>
+  <body class="bg-background">
+    <div id="__frame-root"></div>
+  </body>
 </html>`);
       doc.close();
 
@@ -62,15 +77,13 @@ function IFramePortal({
 
       // Mirror theme/root classes (e.g., "dark")
       doc.documentElement.className = document.documentElement.className;
-      doc.body.className = (document.body.className || "") + " bg-background";
-
-      // Allow scrolling within the iframe for larger components
-      doc.documentElement.style.height = "100%";
-      doc.body.style.height = "100%";
-      doc.body.style.margin = "0";
-      doc.body.style.overflow = "auto";
+      doc.body.className = (doc.body.className || "") + " bg-background";
 
       setMountNode(doc.getElementById("__frame-root") as HTMLElement);
+      // Mark as ready after styles are applied
+      requestAnimationFrame(() => {
+        setIsReady(true);
+      });
     }
   }, []);
 
@@ -110,15 +123,17 @@ function IFramePortal({
     };
   }, [mountNode]);
 
-  // Fixed height - no dynamic resizing
+  // Fixed height - no dynamic resizing, hide until ready to prevent layout shift
   return (
-    <>
+    <div className="relative" style={{ height }}>
       <iframe
         ref={iframeRef}
         title={title}
         style={{
           width: width === "auto" ? "100%" : `${width}px`,
           height,
+          opacity: isReady ? 1 : 0,
+          transition: "opacity 0.1s ease-out",
         }}
         className={cn(
           "block w-full rounded-md border bg-background shadow-sm ring-1 ring-border",
@@ -126,7 +141,7 @@ function IFramePortal({
         )}
       />
       {mountNode ? createPortal(children, mountNode) : null}
-    </>
+    </div>
   );
 }
 

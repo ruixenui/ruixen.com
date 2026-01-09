@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar-offline-demo",
+  "type": "registry:example",
+  "title": "Avatar Offline Demo",
+  "description": "Example showing an avatar with offline status indicator.",
+  "registryDependencies": [
+    "https://ruixen.com/r/avatar-offline"
+  ],
+  "files": [
+    {
+      "path": "registry/example/avatar-offline-demo.tsx",
+      "content": "import AvatarOffline from \"@/registry/ruixenui/avatar-offline\";\n\nexport default function AvatarOfflineDemo() {\n  return (\n    <div className=\"flex min-h-[350px] w-full items-center justify-center p-4\">\n      <AvatarOffline\n        src=\"https://github.com/shadcn.png\"\n        alt=\"shadcn\"\n        fallback=\"CN\"\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/avatar-offline-demo.tsx"
+    }
+  ]
+}

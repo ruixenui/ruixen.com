@@ -1,0 +1,69 @@
+---
+title: Navbar Tabs
+date: 2024-06-01
+description: A two-tier navbar with primary navigation and secondary tabbed navigation.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="navbar-tabs-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/navbar-tabs"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="navbar-tabs" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import NavbarTabs from "@/components/ruixen/navbar-tabs";
+
+export default function MyNavbar() {
+  return <NavbarTabs />;
+}
+```
+
+## Props
+
+| Prop        | Type                                                  | Default         | Description              |
+| ----------- | ----------------------------------------------------- | --------------- | ------------------------ |
+| `logo`      | `React.ReactNode`                                     | Default logo    | Custom logo element      |
+| `links`     | `{ label: string; href: string; active?: boolean }[]` | Default links   | Primary navigation links |
+| `tabs`      | `{ label: string; href: string; active?: boolean }[]` | Default tabs    | Secondary tab navigation |
+| `actions`   | `React.ReactNode`                                     | Default buttons | Custom action buttons    |
+| `className` | `string`                                              | -               | Additional CSS classes   |
+
+## Features
+
+- Two-tier navigation structure
+- Primary navigation with logo and actions
+- Secondary tabbed navigation
+- Active tab highlighting with underline
+- Light and dark mode support

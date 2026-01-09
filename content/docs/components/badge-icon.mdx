@@ -1,0 +1,72 @@
+---
+title: Badge Icon
+date: 2025-01-08
+description: A badge component with customizable icons and position options.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="badge-icon-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/badge-icon"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="badge-icon" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import BadgeIcon from "@/components/ruixen/badge-icon";
+import { Zap, Star, Check } from "lucide-react";
+
+export default function MyBadge() {
+  return (
+    <div className="flex gap-2">
+      <BadgeIcon icon={Zap}>Featured</BadgeIcon>
+      <BadgeIcon icon={Star} variant="secondary">
+        Popular
+      </BadgeIcon>
+      <BadgeIcon icon={Check} iconPosition="right" variant="outline">
+        Verified
+      </BadgeIcon>
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop           | Type                                                     | Default     | Description             |
+| -------------- | -------------------------------------------------------- | ----------- | ----------------------- |
+| `icon`         | `LucideIcon`                                             | `Zap`       | The icon to display     |
+| `children`     | `React.ReactNode`                                        | `"Badge"`   | The badge text content  |
+| `variant`      | `"default" \| "secondary" \| "destructive" \| "outline"` | `"default"` | The badge variant style |
+| `iconPosition` | `"left" \| "right"`                                      | `"left"`    | Position of the icon    |
+| `className`    | `string`                                                 | -           | Additional CSS classes  |

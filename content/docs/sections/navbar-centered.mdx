@@ -1,0 +1,68 @@
+---
+title: Navbar Centered
+date: 2024-06-01
+description: A navbar with centered navigation links and logo on the left.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="navbar-centered-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/navbar-centered"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="navbar-centered" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import NavbarCentered from "@/components/ruixen/navbar-centered";
+
+export default function MyNavbar() {
+  return <NavbarCentered />;
+}
+```
+
+## Props
+
+| Prop        | Type                                                  | Default         | Description            |
+| ----------- | ----------------------------------------------------- | --------------- | ---------------------- |
+| `logo`      | `React.ReactNode`                                     | Default logo    | Custom logo element    |
+| `links`     | `{ label: string; href: string; active?: boolean }[]` | Default links   | Navigation links array |
+| `actions`   | `React.ReactNode`                                     | Default buttons | Custom action buttons  |
+| `className` | `string`                                              | -               | Additional CSS classes |
+
+## Features
+
+- Centered navigation links
+- Logo positioned on the left
+- Actions on the right
+- Clean typography
+- Responsive design

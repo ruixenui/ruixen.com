@@ -1,0 +1,76 @@
+---
+title: Breadcrumb Dropdown
+date: 2025-01-08
+description: Breadcrumb navigation that collapses middle items into a dropdown menu.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="breadcrumb-dropdown-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/breadcrumb-dropdown"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="breadcrumb-dropdown" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import BreadcrumbDropdown from "@/components/ruixen/breadcrumb-dropdown";
+
+const items = [
+  { label: "Home", href: "/" },
+  { label: "Products", href: "/products" },
+  { label: "Electronics", href: "/products/electronics" },
+  { label: "Computers", href: "/products/electronics/computers" },
+  { label: "Laptops", href: "/products/electronics/computers/laptops" },
+  { label: "Gaming Laptops" },
+];
+
+export default function MyBreadcrumb() {
+  return <BreadcrumbDropdown items={items} maxVisible={3} />;
+}
+```
+
+## Props
+
+| Prop           | Type                       | Default  | Description                   |
+| -------------- | -------------------------- | -------- | ----------------------------- |
+| `items`        | `BreadcrumbDropdownItem[]` | -        | Array of breadcrumb items     |
+| `maxVisible`   | `number`                   | `3`      | Max items before collapsing   |
+| `dropdownIcon` | `"dots" \| "folder"`       | `"dots"` | Icon for the dropdown trigger |
+| `className`    | `string`                   | -        | Additional CSS classes        |
+
+### BreadcrumbDropdownItem
+
+| Property | Type     | Description               |
+| -------- | -------- | ------------------------- |
+| `label`  | `string` | Display text for the item |
+| `href`   | `string` | Optional link URL         |

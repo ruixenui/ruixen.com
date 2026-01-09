@@ -1,0 +1,77 @@
+---
+title: Checkbox Colored
+date: 2024-06-01
+description: A checkbox with customizable color themes including blue, green, red, and more.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="checkbox-colored-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/checkbox-colored"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="checkbox-colored" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import CheckboxColored from "@/components/ruixen/checkbox-colored";
+
+export default function MyComponent() {
+  return (
+    <div className="flex gap-4">
+      <CheckboxColored label="Blue" color="blue" />
+      <CheckboxColored label="Green" color="green" />
+      <CheckboxColored label="Red" color="red" />
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop              | Type                                                                        | Default     | Description                 |
+| ----------------- | --------------------------------------------------------------------------- | ----------- | --------------------------- |
+| `checked`         | `boolean`                                                                   | -           | Controlled checked state    |
+| `defaultChecked`  | `boolean`                                                                   | `false`     | Default checked state       |
+| `onCheckedChange` | `(checked: boolean) => void`                                                | -           | Callback when state changes |
+| `label`           | `string`                                                                    | -           | Label text                  |
+| `color`           | `"default" \| "blue" \| "green" \| "red" \| "yellow" \| "purple" \| "pink"` | `"default"` | Checkbox color theme        |
+| `disabled`        | `boolean`                                                                   | `false`     | Disable the checkbox        |
+| `className`       | `string`                                                                    | -           | Additional CSS classes      |
+
+## Features
+
+- Seven color themes available
+- Consistent styling across colors
+- Color-matched focus rings
+- Accessible focus states
+- Light and dark mode support

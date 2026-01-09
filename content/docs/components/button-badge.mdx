@@ -1,0 +1,82 @@
+---
+title: Button Badge
+date: 2024-06-01
+description: A button with an integrated badge for notifications or counts.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="button-badge-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/button-badge"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="button-badge" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import ButtonBadge from "@/components/ruixen/button-badge";
+import { Bell, Mail, ShoppingCart } from "lucide-react";
+
+export default function MyComponent() {
+  return (
+    <div className="flex gap-4">
+      <ButtonBadge badge={3} leftIcon={<Bell className="size-4" />}>
+        Notifications
+      </ButtonBadge>
+      <ButtonBadge badge={12} leftIcon={<Mail className="size-4" />}>
+        Messages
+      </ButtonBadge>
+      <ButtonBadge badge="New" variant="ghost">
+        Features
+      </ButtonBadge>
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop        | Type                                               | Default     | Description            |
+| ----------- | -------------------------------------------------- | ----------- | ---------------------- |
+| `badge`     | `number \| string`                                 | -           | Badge content          |
+| `leftIcon`  | `React.ReactNode`                                  | -           | Icon on the left side  |
+| `rightIcon` | `React.ReactNode`                                  | -           | Icon on the right side |
+| `variant`   | `"default" \| "outline" \| "secondary" \| "ghost"` | `"default"` | Button style variant   |
+| `className` | `string`                                           | -           | Additional CSS classes |
+
+## Features
+
+- Numeric or text badges
+- Positioned badge indicator
+- Support for left/right icons
+- Multiple style variants
+- Light and dark mode support
