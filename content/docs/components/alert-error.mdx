@@ -1,0 +1,64 @@
+---
+title: Error Alert
+date: 2025-01-08
+description: An error alert component with red background and circle alert icon.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="alert-error-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/alert-error"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="alert-error" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import AlertError from "@/components/ruixen/alert-error";
+
+export default function MyError() {
+  return (
+    <AlertError
+      title="Error"
+      message="An error occurred while processing your request."
+    />
+  );
+}
+```
+
+## Props
+
+| Prop        | Type     | Default | Description                  |
+| ----------- | -------- | ------- | ---------------------------- |
+| `title`     | `string` | -       | Optional title for the alert |
+| `message`   | `string` | -       | The alert message            |
+| `className` | `string` | -       | Additional CSS classes       |

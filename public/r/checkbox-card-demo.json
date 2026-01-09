@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "checkbox-card-demo",
+  "type": "registry:example",
+  "title": "Checkbox Card Demo",
+  "description": "Example showing card-style checkboxes with icons and descriptions.",
+  "registryDependencies": [
+    "https://ruixen.com/r/checkbox-card"
+  ],
+  "files": [
+    {
+      "path": "registry/example/checkbox-card-demo.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport CheckboxCard from \"@/registry/ruixenui/checkbox-card\";\nimport { Zap, Shield, Rocket, Sparkles } from \"lucide-react\";\n\nexport default function CheckboxCardDemo() {\n  const [selected, setSelected] = React.useState<string[]>([\"performance\"]);\n\n  const features = [\n    {\n      id: \"performance\",\n      title: \"Performance\",\n      description: \"Optimized for speed and efficiency\",\n      icon: <Zap className=\"size-5\" />,\n    },\n    {\n      id: \"security\",\n      title: \"Security\",\n      description: \"Enterprise-grade protection\",\n      icon: <Shield className=\"size-5\" />,\n    },\n    {\n      id: \"scalability\",\n      title: \"Scalability\",\n      description: \"Grow without limits\",\n      icon: <Rocket className=\"size-5\" />,\n    },\n    {\n      id: \"ai\",\n      title: \"AI Features\",\n      description: \"Smart automation tools\",\n      icon: <Sparkles className=\"size-5\" />,\n    },\n  ];\n\n  const toggleFeature = (id: string) => {\n    setSelected((prev) =>\n      prev.includes(id) ? prev.filter((f) => f !== id) : [...prev, id],\n    );\n  };\n\n  return (\n    <div className=\"flex min-h-[400px] w-full items-center justify-center p-4\">\n      <div className=\"grid gap-3 sm:grid-cols-2\">\n        {features.map((feature) => (\n          <CheckboxCard\n            key={feature.id}\n            title={feature.title}\n            description={feature.description}\n            icon={feature.icon}\n            checked={selected.includes(feature.id)}\n            onCheckedChange={() => toggleFeature(feature.id)}\n          />\n        ))}\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/checkbox-card-demo.tsx"
+    }
+  ]
+}

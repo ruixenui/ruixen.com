@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "navbar-dashboard-demo",
+  "type": "registry:example",
+  "title": "Navbar Dashboard Demo",
+  "description": "Example showing a dashboard navbar with user profile, notifications, and theme toggle.",
+  "registryDependencies": [
+    "https://ruixen.com/r/navbar-dashboard"
+  ],
+  "files": [
+    {
+      "path": "registry/example/navbar-dashboard-demo.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport NavbarDashboard from \"@/registry/ruixenui/navbar-dashboard\";\nimport { LayoutDashboard } from \"lucide-react\";\n\nexport default function NavbarDashboardDemo() {\n  const [isDark, setIsDark] = React.useState(false);\n\n  return (\n    <div className=\"flex min-h-[400px] w-full flex-col items-center justify-start\">\n      <NavbarDashboard\n        logo={\n          <div className=\"flex items-center gap-2\">\n            <LayoutDashboard className=\"size-6 text-primary\" />\n            <span className=\"text-xl font-bold\">Dashboard</span>\n          </div>\n        }\n        user={{\n          name: \"John Doe\",\n          email: \"john@example.com\",\n          initials: \"JD\",\n        }}\n        notifications={[\n          {\n            id: \"1\",\n            title: \"New message\",\n            description: \"You have a new message from Sarah\",\n            time: \"5 min ago\",\n            read: false,\n          },\n          {\n            id: \"2\",\n            title: \"Task completed\",\n            description: \"Project review has been completed\",\n            time: \"1 hour ago\",\n            read: false,\n          },\n          {\n            id: \"3\",\n            title: \"Meeting reminder\",\n            description: \"Team standup in 15 minutes\",\n            time: \"2 hours ago\",\n            read: true,\n          },\n        ]}\n        showThemeToggle\n        isDarkMode={isDark}\n        onThemeToggle={() => setIsDark(!isDark)}\n        onLogout={() => console.log(\"Logout\")}\n      />\n      <div className=\"flex flex-1 items-center justify-center p-8\">\n        <p className=\"text-muted-foreground\">\n          Dashboard content goes here\n        </p>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/navbar-dashboard-demo.tsx"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar-rounded",
+  "type": "registry:ui",
+  "title": "Rounded Avatar",
+  "description": "An avatar component with rounded corners instead of circular.",
+  "registryDependencies": [
+    "avatar"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/avatar-rounded.tsx",
+      "content": "\"use client\";\n\nimport {\n  Avatar,\n  AvatarFallback,\n  AvatarImage,\n} from \"@/components/ui/avatar\";\nimport { cn } from \"@/lib/utils\";\n\ninterface AvatarRoundedProps {\n  src?: string;\n  alt?: string;\n  fallback?: string;\n  className?: string;\n}\n\nexport default function AvatarRounded({\n  src = \"https://github.com/shadcn.png\",\n  alt = \"User\",\n  fallback = \"U\",\n  className,\n}: AvatarRoundedProps) {\n  return (\n    <Avatar className={cn(\"size-10 rounded-lg\", className)}>\n      <AvatarImage src={src} alt={alt} />\n      <AvatarFallback className=\"rounded-lg\">{fallback}</AvatarFallback>\n    </Avatar>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/avatar-rounded.tsx"
+    }
+  ]
+}

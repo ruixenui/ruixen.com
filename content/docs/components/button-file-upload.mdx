@@ -1,0 +1,90 @@
+---
+title: Button File Upload
+date: 2024-06-01
+description: A file upload trigger button with customizable accept types.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="button-file-upload-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/button-file-upload"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="button-file-upload" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import ButtonFileUpload from "@/components/ruixen/button-file-upload";
+
+export default function MyComponent() {
+  const handleFileSelect = (files: FileList | null) => {
+    if (files) {
+      console.log(
+        "Selected files:",
+        Array.from(files).map((f) => f.name),
+      );
+    }
+  };
+
+  return (
+    <div className="flex gap-4">
+      <ButtonFileUpload onFileSelect={handleFileSelect}>
+        Upload File
+      </ButtonFileUpload>
+      <ButtonFileUpload accept="image/*" onFileSelect={handleFileSelect}>
+        Upload Image
+      </ButtonFileUpload>
+      <ButtonFileUpload multiple onFileSelect={handleFileSelect}>
+        Upload Multiple
+      </ButtonFileUpload>
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop           | Type                                    | Default     | Description                  |
+| -------------- | --------------------------------------- | ----------- | ---------------------------- |
+| `onFileSelect` | `(files: FileList \| null) => void`     | -           | Callback with selected files |
+| `accept`       | `string`                                | -           | Accepted file types          |
+| `multiple`     | `boolean`                               | `false`     | Allow multiple files         |
+| `variant`      | `"default" \| "outline" \| "secondary"` | `"default"` | Button style variant         |
+| `className`    | `string`                                | -           | Additional CSS classes       |
+
+## Features
+
+- Hidden file input with styled button
+- Accept attribute for file type filtering
+- Single or multiple file selection
+- Upload icon indicator
+- Light and dark mode support

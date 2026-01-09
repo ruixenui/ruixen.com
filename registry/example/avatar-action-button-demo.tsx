@@ -2,7 +2,7 @@ import AvatarActionButton from "@/registry/ruixenui/avatar-action-button";
 
 export default function DemoAvatarActionButton() {
   return (
-    <div className="flex gap-4 p-6 flex-col items-center justify-center min-h-screen">
+    <div className="flex min-h-[350px] w-full flex-col items-center justify-center gap-4">
       <AvatarActionButton label="Continue as John" size="sm" />
       <AvatarActionButton label="Continue as Jane" size="md" />
       <AvatarActionButton label="Continue as Guest" size="lg" />

@@ -1,0 +1,67 @@
+---
+title: Badge Counter
+date: 2025-01-08
+description: A compact circular badge for displaying notification counts with size and variant options.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="badge-counter-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/badge-counter"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="badge-counter" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import BadgeCounter from "@/components/ruixen/badge-counter";
+
+export default function MyCounter() {
+  return (
+    <div className="flex gap-4">
+      <BadgeCounter count={5} />
+      <BadgeCounter count={12} size="lg" variant="destructive" />
+      <BadgeCounter count={150} max={99} />
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop        | Type                                                     | Default     | Description                      |
+| ----------- | -------------------------------------------------------- | ----------- | -------------------------------- |
+| `count`     | `number`                                                 | -           | The count number to display      |
+| `max`       | `number`                                                 | `99`        | Maximum count before showing "+" |
+| `size`      | `"sm" \| "md" \| "lg"`                                   | `"md"`      | Size of the counter badge        |
+| `variant`   | `"default" \| "secondary" \| "destructive" \| "success"` | `"default"` | Color variant of the badge       |
+| `className` | `string`                                                 | -           | Additional CSS classes           |

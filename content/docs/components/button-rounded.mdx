@@ -1,0 +1,79 @@
+---
+title: Button Rounded
+date: 2024-06-01
+description: Pill-shaped buttons with rounded corners for a softer aesthetic.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="button-rounded-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/button-rounded"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="button-rounded" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import ButtonRounded from "@/components/ruixen/button-rounded";
+import { ArrowRight, Plus } from "lucide-react";
+
+export default function MyComponent() {
+  return (
+    <div className="flex gap-4">
+      <ButtonRounded>Get Started</ButtonRounded>
+      <ButtonRounded variant="secondary">Learn More</ButtonRounded>
+      <ButtonRounded variant="outline">Contact Us</ButtonRounded>
+      <ButtonRounded rightIcon={<ArrowRight className="size-4" />}>
+        Continue
+      </ButtonRounded>
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop        | Type                                                                | Default     | Description            |
+| ----------- | ------------------------------------------------------------------- | ----------- | ---------------------- |
+| `variant`   | `"default" \| "secondary" \| "outline" \| "ghost" \| "destructive"` | `"default"` | Button style variant   |
+| `size`      | `"sm" \| "md" \| "lg"`                                              | `"md"`      | Button size            |
+| `leftIcon`  | `React.ReactNode`                                                   | -           | Icon on the left side  |
+| `rightIcon` | `React.ReactNode`                                                   | -           | Icon on the right side |
+| `className` | `string`                                                            | -           | Additional CSS classes |
+
+## Features
+
+- Pill-shaped design with full border radius
+- Five distinct variants
+- Three size options
+- Support for left and right icons
+- Light and dark mode support

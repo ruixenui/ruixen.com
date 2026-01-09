@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "breadcrumb-separator-demo",
+  "type": "registry:example",
+  "title": "Breadcrumb Separator Demo",
+  "description": "Example showing breadcrumbs with different separator styles.",
+  "registryDependencies": [
+    "https://ruixen.com/r/breadcrumb-separator"
+  ],
+  "files": [
+    {
+      "path": "registry/example/breadcrumb-separator-demo.tsx",
+      "content": "\"use client\";\n\nimport BreadcrumbSeparator from \"@/registry/ruixenui/breadcrumb-separator\";\n\nconst items = [\n  { label: \"Home\", href: \"/\" },\n  { label: \"Products\", href: \"/products\" },\n  { label: \"Electronics\", href: \"/products/electronics\" },\n  { label: \"Smartphones\" },\n];\n\nexport default function BreadcrumbSeparatorDemo() {\n  return (\n    <div className=\"flex min-h-[350px] w-full flex-col items-center justify-center gap-8 p-4\">\n      <div className=\"space-y-2 text-center\">\n        <p className=\"text-sm font-medium text-muted-foreground\">Chevron</p>\n        <BreadcrumbSeparator items={items} separator=\"chevron\" />\n      </div>\n\n      <div className=\"space-y-2 text-center\">\n        <p className=\"text-sm font-medium text-muted-foreground\">Slash</p>\n        <BreadcrumbSeparator items={items} separator=\"slash\" />\n      </div>\n\n      <div className=\"space-y-2 text-center\">\n        <p className=\"text-sm font-medium text-muted-foreground\">Dot</p>\n        <BreadcrumbSeparator items={items} separator=\"dot\" />\n      </div>\n\n      <div className=\"space-y-2 text-center\">\n        <p className=\"text-sm font-medium text-muted-foreground\">Arrow</p>\n        <BreadcrumbSeparator items={items} separator=\"arrow\" />\n      </div>\n\n      <div className=\"space-y-2 text-center\">\n        <p className=\"text-sm font-medium text-muted-foreground\">Dash</p>\n        <BreadcrumbSeparator items={items} separator=\"dash\" />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/breadcrumb-separator-demo.tsx"
+    }
+  ]
+}

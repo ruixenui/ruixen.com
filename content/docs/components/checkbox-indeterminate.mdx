@@ -1,0 +1,81 @@
+---
+title: Checkbox Indeterminate
+date: 2024-06-01
+description: A checkbox with three states - checked, unchecked, and indeterminate.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="checkbox-indeterminate-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/checkbox-indeterminate"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="checkbox-indeterminate" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { useState } from "react";
+import CheckboxIndeterminate from "@/components/ruixen/checkbox-indeterminate";
+
+export default function MyComponent() {
+  const [checked, setChecked] = useState<boolean | "indeterminate">(
+    "indeterminate",
+  );
+
+  return (
+    <CheckboxIndeterminate
+      checked={checked}
+      onCheckedChange={setChecked}
+      label="Select all"
+    />
+  );
+}
+```
+
+## Props
+
+| Prop              | Type                                            | Default | Description                 |
+| ----------------- | ----------------------------------------------- | ------- | --------------------------- |
+| `checked`         | `boolean \| "indeterminate"`                    | -       | Controlled checked state    |
+| `defaultChecked`  | `boolean \| "indeterminate"`                    | `false` | Default checked state       |
+| `onCheckedChange` | `(checked: boolean \| "indeterminate") => void` | -       | Callback when state changes |
+| `label`           | `string`                                        | -       | Label text                  |
+| `disabled`        | `boolean`                                       | `false` | Disable the checkbox        |
+| `className`       | `string`                                        | -       | Additional CSS classes      |
+
+## Features
+
+- Three-state checkbox (checked, unchecked, indeterminate)
+- Perfect for "select all" parent checkboxes
+- Visual minus icon for indeterminate state
+- Accessible focus states
+- Light and dark mode support

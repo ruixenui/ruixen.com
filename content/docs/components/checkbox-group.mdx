@@ -1,0 +1,87 @@
+---
+title: Checkbox Group
+date: 2024-06-01
+description: A group of checkboxes for multi-selection with horizontal or vertical layout.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="checkbox-group-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/checkbox-group"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="checkbox-group" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { useState } from "react";
+import CheckboxGroup from "@/components/ruixen/checkbox-group";
+
+const options = [
+  { value: "react", label: "React" },
+  { value: "vue", label: "Vue" },
+  { value: "angular", label: "Angular" },
+];
+
+export default function MyComponent() {
+  const [selected, setSelected] = useState<string[]>(["react"]);
+
+  return (
+    <CheckboxGroup
+      label="Select frameworks"
+      options={options}
+      value={selected}
+      onValueChange={setSelected}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop            | Type                                                                           | Default      | Description                 |
+| --------------- | ------------------------------------------------------------------------------ | ------------ | --------------------------- |
+| `options`       | `{ value: string; label: string; description?: string; disabled?: boolean }[]` | -            | Checkbox options            |
+| `value`         | `string[]`                                                                     | -            | Controlled selected values  |
+| `defaultValue`  | `string[]`                                                                     | `[]`         | Default selected values     |
+| `onValueChange` | `(value: string[]) => void`                                                    | -            | Callback when value changes |
+| `label`         | `string`                                                                       | -            | Group label                 |
+| `orientation`   | `"horizontal" \| "vertical"`                                                   | `"vertical"` | Layout orientation          |
+| `className`     | `string`                                                                       | -            | Additional CSS classes      |
+
+## Features
+
+- Multi-selection support
+- Horizontal or vertical layout
+- Optional descriptions per option
+- Individual option disable
+- Light and dark mode support

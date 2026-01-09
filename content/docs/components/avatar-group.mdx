@@ -1,0 +1,75 @@
+---
+title: Avatar Group
+date: 2025-01-08
+description: A group of overlapping avatars with hover effects and configurable sizes.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="avatar-group-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/avatar-group"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="avatar-group" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import AvatarGroup from "@/components/ruixen/avatar-group";
+
+const avatars = [
+  { src: "https://example.com/user1.jpg", alt: "User 1", fallback: "JD" },
+  { src: "https://example.com/user2.jpg", alt: "User 2", fallback: "AS" },
+  { src: "https://example.com/user3.jpg", alt: "User 3", fallback: "MK" },
+  { src: "https://example.com/user4.jpg", alt: "User 4", fallback: "RB" },
+];
+
+export default function MyAvatarGroup() {
+  return <AvatarGroup avatars={avatars} max={4} size="md" />;
+}
+```
+
+## Props
+
+| Prop        | Type                   | Default | Description                |
+| ----------- | ---------------------- | ------- | -------------------------- |
+| `avatars`   | `AvatarData[]`         | -       | Array of avatar objects    |
+| `max`       | `number`               | `4`     | Maximum avatars to display |
+| `size`      | `"sm" \| "md" \| "lg"` | `"md"`  | Size of the avatars        |
+| `className` | `string`               | -       | Additional CSS classes     |
+
+### AvatarData
+
+| Property   | Type     | Description                 |
+| ---------- | -------- | --------------------------- |
+| `src`      | `string` | Image source URL (optional) |
+| `alt`      | `string` | Alt text for the image      |
+| `fallback` | `string` | Fallback initials           |

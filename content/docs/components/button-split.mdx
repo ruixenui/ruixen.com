@@ -1,0 +1,83 @@
+---
+title: Button Split
+date: 2024-06-01
+description: A split button with primary action and dropdown for secondary options.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="button-split-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/button-split"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="button-split" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import ButtonSplit from "@/components/ruixen/button-split";
+
+const saveOptions = [
+  { label: "Save as Draft", value: "draft" },
+  { label: "Save and Publish", value: "publish" },
+  { label: "Save and Schedule", value: "schedule" },
+];
+
+export default function MyComponent() {
+  return (
+    <ButtonSplit
+      options={saveOptions}
+      onPrimaryClick={() => console.log("Save clicked")}
+      onOptionSelect={(value) => console.log("Selected:", value)}
+    >
+      Save
+    </ButtonSplit>
+  );
+}
+```
+
+## Props
+
+| Prop             | Type                                 | Default     | Description                     |
+| ---------------- | ------------------------------------ | ----------- | ------------------------------- |
+| `options`        | `{ label: string; value: string }[]` | -           | Dropdown options                |
+| `onPrimaryClick` | `() => void`                         | -           | Callback for primary action     |
+| `onOptionSelect` | `(value: string) => void`            | -           | Callback for dropdown selection |
+| `variant`        | `"default" \| "outline"`             | `"default"` | Button style variant            |
+| `className`      | `string`                             | -           | Additional CSS classes          |
+
+## Features
+
+- Combined primary action and dropdown
+- Visual separation between actions
+- Seamless appearance when combined
+- Keyboard navigation support
+- Light and dark mode support

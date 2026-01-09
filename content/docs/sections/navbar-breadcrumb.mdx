@@ -1,0 +1,74 @@
+---
+title: Navbar Breadcrumb
+date: 2024-06-01
+description: A navbar with breadcrumb-style navigation for hierarchical page structures.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="navbar-breadcrumb-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/navbar-breadcrumb"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the required dependencies:</Step>
+
+```bash
+npm install lucide-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="navbar-breadcrumb" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import NavbarBreadcrumb from "@/components/ruixen/navbar-breadcrumb";
+
+export default function MyNavbar() {
+  return <NavbarBreadcrumb />;
+}
+```
+
+## Props
+
+| Prop          | Type                                | Default         | Description                 |
+| ------------- | ----------------------------------- | --------------- | --------------------------- |
+| `logo`        | `React.ReactNode`                   | Default logo    | Custom logo element         |
+| `breadcrumbs` | `{ label: string; href: string }[]` | Default crumbs  | Breadcrumb navigation items |
+| `actions`     | `React.ReactNode`                   | Default buttons | Custom action buttons       |
+| `className`   | `string`                            | -               | Additional CSS classes      |
+
+## Features
+
+- Breadcrumb-style navigation
+- Chevron separators
+- Hierarchical structure display
+- Clean, minimal design
+- Light and dark mode support

@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/notification-button-demo.tsx",
-      "content": "import NotificationButton from \"@/registry/ruixenui/notification-button\";\n\nexport default function DemoNotificationButton() {\n  return (\n    <div className=\"flex gap-4 min-h-screen flex-col items-center justify-center p-6\">\n      <NotificationButton count={5} />\n      <NotificationButton count={12} size=\"lg\" />\n      <NotificationButton count={0} />\n    </div>\n  );\n}\n",
+      "content": "import NotificationButton from \"@/registry/ruixenui/notification-button\";\n\nexport default function DemoNotificationButton() {\n  return (\n    <div className=\"flex min-h-[350px] w-full flex-col items-center justify-center gap-4\">\n      <NotificationButton count={5} />\n      <NotificationButton count={12} size=\"lg\" />\n      <NotificationButton count={0} />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/notification-button-demo.tsx"
     }

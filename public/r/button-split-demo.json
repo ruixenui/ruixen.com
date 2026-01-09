@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-split-demo",
+  "type": "registry:example",
+  "title": "Button Split Demo",
+  "description": "Example showing split buttons with dropdown options.",
+  "registryDependencies": [
+    "https://ruixen.com/r/button-split"
+  ],
+  "files": [
+    {
+      "path": "registry/example/button-split-demo.tsx",
+      "content": "\"use client\";\n\nimport ButtonSplit from \"@/registry/ruixenui/button-split\";\n\nexport default function ButtonSplitDemo() {\n  const saveOptions = [\n    { label: \"Save as Draft\", onClick: () => console.log(\"Save as Draft\") },\n    {\n      label: \"Save and Publish\",\n      onClick: () => console.log(\"Save and Publish\"),\n    },\n    {\n      label: \"Save and Schedule\",\n      onClick: () => console.log(\"Save and Schedule\"),\n    },\n  ];\n\n  const downloadOptions = [\n    { label: \"Download as PDF\", onClick: () => console.log(\"Download PDF\") },\n    { label: \"Download as PNG\", onClick: () => console.log(\"Download PNG\") },\n    { label: \"Download as SVG\", onClick: () => console.log(\"Download SVG\") },\n  ];\n\n  return (\n    <div className=\"flex flex-wrap items-center justify-center gap-4 p-4\">\n      <ButtonSplit\n        label=\"Save\"\n        onClick={() => console.log(\"Save clicked\")}\n        options={saveOptions}\n      />\n      <ButtonSplit\n        label=\"Download\"\n        onClick={() => console.log(\"Download clicked\")}\n        options={downloadOptions}\n        variant=\"secondary\"\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/button-split-demo.tsx"
+    }
+  ]
+}

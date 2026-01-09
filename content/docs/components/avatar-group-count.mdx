@@ -1,0 +1,78 @@
+---
+title: Avatar Group with Count
+date: 2025-01-08
+description: A group of overlapping avatars with a count indicator for remaining members.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="avatar-group-count-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/avatar-group-count"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="avatar-group-count" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import AvatarGroupCount from "@/components/ruixen/avatar-group-count";
+
+const avatars = [
+  { src: "https://example.com/user1.jpg", fallback: "JD" },
+  { src: "https://example.com/user2.jpg", fallback: "AS" },
+  { src: "https://example.com/user3.jpg", fallback: "MK" },
+  { src: "https://example.com/user4.jpg", fallback: "RB" },
+  { fallback: "EW" },
+  { fallback: "TN" },
+  { fallback: "PL" },
+];
+
+export default function MyAvatarGroup() {
+  return <AvatarGroupCount avatars={avatars} max={4} />;
+}
+```
+
+## Props
+
+| Prop        | Type                   | Default | Description                          |
+| ----------- | ---------------------- | ------- | ------------------------------------ |
+| `avatars`   | `AvatarData[]`         | -       | Array of avatar objects              |
+| `max`       | `number`               | `4`     | Maximum avatars before showing count |
+| `size`      | `"sm" \| "md" \| "lg"` | `"md"`  | Size of the avatars                  |
+| `className` | `string`               | -       | Additional CSS classes               |
+
+### AvatarData
+
+| Property   | Type     | Description                 |
+| ---------- | -------- | --------------------------- |
+| `src`      | `string` | Image source URL (optional) |
+| `alt`      | `string` | Alt text for the image      |
+| `fallback` | `string` | Fallback initials           |

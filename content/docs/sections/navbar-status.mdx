@@ -1,0 +1,69 @@
+---
+title: Navbar Status
+date: 2024-06-01
+description: A navbar with status indicator and metrics display showing uptime and latency.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="navbar-status-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/navbar-status"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="navbar-status" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import NavbarStatus from "@/components/ruixen/navbar-status";
+
+export default function MyNavbar() {
+  return <NavbarStatus />;
+}
+```
+
+## Props
+
+| Prop        | Type                                                  | Default         | Description               |
+| ----------- | ----------------------------------------------------- | --------------- | ------------------------- |
+| `logo`      | `React.ReactNode`                                     | Default logo    | Custom logo element       |
+| `links`     | `{ label: string; href: string; active?: boolean }[]` | Default links   | Navigation links array    |
+| `status`    | `"operational" \| "degraded" \| "down"`               | "operational"   | System status indicator   |
+| `metrics`   | `{ uptime: string; latency: string }`                 | Default metrics | System metrics to display |
+| `className` | `string`                                              | -               | Additional CSS classes    |
+
+## Features
+
+- Status indicator with color coding
+- System metrics display (uptime, latency)
+- Clean, professional design
+- Real-time status updates
+- Light and dark mode support

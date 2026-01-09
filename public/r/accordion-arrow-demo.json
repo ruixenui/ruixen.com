@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "accordion-arrow-demo",
+  "type": "registry:example",
+  "title": "Arrow Accordion Demo",
+  "description": "Example showing an accordion with arrow indicators.",
+  "registryDependencies": [
+    "https://ruixen.com/r/accordion-arrow"
+  ],
+  "files": [
+    {
+      "path": "registry/example/accordion-arrow-demo.tsx",
+      "content": "import AccordionArrow from \"@/registry/ruixenui/accordion-arrow\";\n\nconst items = [\n  {\n    id: \"1\",\n    title: \"Getting Started\",\n    content:\n      \"Begin by installing the package with npm or yarn. Then import the components you need into your project.\",\n  },\n  {\n    id: \"2\",\n    title: \"Configuration\",\n    content:\n      \"Customize the components using props or by modifying the default theme. All components support dark mode out of the box.\",\n  },\n  {\n    id: \"3\",\n    title: \"Deployment\",\n    content:\n      \"Build your project and deploy to your preferred hosting platform. The components are optimized for production.\",\n  },\n];\n\nexport default function AccordionArrowDemo() {\n  return (\n    <div className=\"flex min-h-[350px] w-full items-center justify-center p-4\">\n      <div className=\"w-full max-w-md\">\n        <AccordionArrow items={items} defaultValue=\"1\" />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/accordion-arrow-demo.tsx"
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+---
+title: Banner Promo
+date: 2025-01-08
+description: A promotional banner with badge, title, and call-to-action button.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="banner-promo-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/banner-promo"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="banner-promo" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import BannerPromo from "@/components/ruixen/banner-promo";
+
+export default function MyPromoBanner() {
+  return (
+    <BannerPromo
+      variant="festive"
+      badge="Limited Time"
+      title="Get 30% off"
+      description="on all annual plans. Use code: SAVE30"
+      ctaLabel="Claim offer"
+      ctaHref="/pricing"
+    />
+  );
+}
+```
+
+## Props
+
+| Prop          | Type                                                | Default      | Description                     |
+| ------------- | --------------------------------------------------- | ------------ | ------------------------------- |
+| `badge`       | `string`                                            | -            | Badge text above the title      |
+| `title`       | `string`                                            | -            | Main promotional title          |
+| `description` | `string`                                            | -            | Supporting description text     |
+| `ctaLabel`    | `string`                                            | `"Shop now"` | Call-to-action button text      |
+| `ctaHref`     | `string`                                            | `"#"`        | Call-to-action link URL         |
+| `variant`     | `"default" \| "festive" \| "minimal" \| "gradient"` | `"default"`  | Visual style of the banner      |
+| `dismissible` | `boolean`                                           | `true`       | Whether banner can be dismissed |
+| `onDismiss`   | `() => void`                                        | -            | Callback when dismissed         |
+| `onCtaClick`  | `() => void`                                        | -            | Callback when CTA clicked       |
+| `className`   | `string`                                            | -            | Additional CSS classes          |
+
+## Variants
+
+| Variant    | Description                         |
+| ---------- | ----------------------------------- |
+| `default`  | Primary background color            |
+| `festive`  | Red to rose gradient for sales      |
+| `minimal`  | Secondary background with border    |
+| `gradient` | Emerald to cyan gradient for offers |

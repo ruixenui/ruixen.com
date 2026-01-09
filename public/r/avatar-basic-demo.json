@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar-basic-demo",
+  "type": "registry:example",
+  "title": "Basic Avatar Demo",
+  "description": "Example showing a basic avatar with image and fallback.",
+  "registryDependencies": [
+    "https://ruixen.com/r/avatar-basic"
+  ],
+  "files": [
+    {
+      "path": "registry/example/avatar-basic-demo.tsx",
+      "content": "import AvatarBasic from \"@/registry/ruixenui/avatar-basic\";\n\nexport default function AvatarBasicDemo() {\n  return (\n    <div className=\"flex min-h-[350px] w-full items-center justify-center p-4\">\n      <AvatarBasic\n        src=\"https://github.com/shadcn.png\"\n        alt=\"shadcn\"\n        fallback=\"CN\"\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/avatar-basic-demo.tsx"
+    }
+  ]
+}

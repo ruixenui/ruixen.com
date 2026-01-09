@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/visualizer-button-demo.tsx",
-      "content": "\"use client\";\n\nimport VisualizerButton from \"@/registry/ruixenui/visualizer-button\";\n\nexport default function DemoVisualizer() {\n  return (\n    <div className=\"flex flex-col items-center justify-center min-h-screen gap-6 p-6\">\n      <h2 className=\"text-xl font-semibold\">Visualizer Button Demo</h2>\n\n      <VisualizerButton\n        audioSrc=\"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3\" // put a valid mp3 file in public folder\n        height={30}\n        width={140}\n      />\n\n      <VisualizerButton\n        audioSrc=\"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3\"\n        height={25}\n        width={120}\n      />\n\n      <p className=\"text-sm text-gray-500 dark:text-gray-400\">\n        Click the buttons to play/pause and see live waveform animation.\n      </p>\n    </div>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport VisualizerButton from \"@/registry/ruixenui/visualizer-button\";\n\nexport default function DemoVisualizer() {\n  return (\n    <div className=\"flex min-h-[350px] w-full flex-col items-center justify-center gap-6\">\n      <VisualizerButton\n        audioSrc=\"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3\"\n        height={30}\n        width={140}\n      />\n\n      <VisualizerButton\n        audioSrc=\"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3\"\n        height={25}\n        width={120}\n      />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/visualizer-button-demo.tsx"
     }

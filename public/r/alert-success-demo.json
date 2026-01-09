@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "alert-success-demo",
+  "type": "registry:example",
+  "title": "Success Alert Demo",
+  "description": "Example showing a success alert with emerald styling.",
+  "registryDependencies": [
+    "https://ruixen.com/r/alert-success"
+  ],
+  "files": [
+    {
+      "path": "registry/example/alert-success-demo.tsx",
+      "content": "import AlertSuccess from \"@/registry/ruixenui/alert-success\";\n\nexport default function AlertSuccessDemo() {\n  return (\n    <div className=\"flex min-h-[350px] w-full items-center justify-center p-4\">\n      <div className=\"w-full max-w-md\">\n        <AlertSuccess\n          title=\"Success\"\n          message=\"Your changes have been saved successfully.\"\n        />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/alert-success-demo.tsx"
+    }
+  ]
+}

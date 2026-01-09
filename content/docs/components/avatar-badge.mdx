@@ -1,0 +1,68 @@
+---
+title: Avatar with Badge
+date: 2025-01-08
+description: An avatar component with a notification badge showing a count.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="avatar-badge-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/avatar-badge"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="avatar-badge" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import AvatarBadge from "@/components/ruixen/avatar-badge";
+
+export default function MyAvatar() {
+  return (
+    <AvatarBadge
+      src="https://github.com/shadcn.png"
+      alt="User"
+      fallback="CN"
+      count={6}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop        | Type     | Default                           | Description                       |
+| ----------- | -------- | --------------------------------- | --------------------------------- |
+| `src`       | `string` | `"https://github.com/shadcn.png"` | The image source URL              |
+| `alt`       | `string` | `"User"`                          | Alt text for the avatar image     |
+| `fallback`  | `string` | `"U"`                             | Fallback text when image fails    |
+| `count`     | `number` | `6`                               | The notification count to display |
+| `className` | `string` | -                                 | Additional CSS classes            |

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "navbar-minimal",
+  "type": "registry:ui",
+  "title": "Navbar Minimal",
+  "description": "An ultra-minimal navigation bar with just logo, few links, and single CTA.",
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/navbar-minimal.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport Link from \"next/link\";\nimport { cn } from \"@/lib/utils\";\nimport { Button } from \"@/components/ui/button\";\n\nexport interface NavbarMinimalProps {\n  logo?: React.ReactNode;\n  links?: { label: string; href: string }[];\n  cta?: { label: string; href: string };\n  className?: string;\n}\n\nexport default function NavbarMinimal({\n  logo = <span className=\"font-semibold\">Logo</span>,\n  links = [\n    { label: \"Docs\", href: \"#\" },\n    { label: \"Pricing\", href: \"#\" },\n  ],\n  cta = { label: \"Sign In\", href: \"#\" },\n  className,\n}: NavbarMinimalProps) {\n  return (\n    <header className={cn(\"w-full border-b\", className)}>\n      <div className=\"flex h-14 items-center justify-between px-4\">\n        <div className=\"flex items-center gap-6\">\n          <Link href=\"/\" className=\"flex items-center\">\n            {logo}\n          </Link>\n          <nav className=\"hidden items-center gap-4 md:flex\">\n            {links.map((link) => (\n              <Link\n                key={link.href + link.label}\n                href={link.href}\n                className=\"text-sm text-muted-foreground transition-colors hover:text-foreground\"\n              >\n                {link.label}\n              </Link>\n            ))}\n          </nav>\n        </div>\n        <Button variant=\"ghost\" size=\"sm\" asChild>\n          <Link href={cta.href}>{cta.label}</Link>\n        </Button>\n      </div>\n    </header>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/navbar-minimal.tsx"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "navbar-status",
+  "type": "registry:ui",
+  "title": "Navbar Status",
+  "description": "A navigation bar with status indicator and real-time metrics display.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/navbar-status.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport Link from \"next/link\";\nimport { Activity, Circle, Zap } from \"lucide-react\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface NavbarStatusProps {\n  logo?: React.ReactNode;\n  links?: { label: string; href: string; active?: boolean }[];\n  status?: {\n    label: string;\n    state: \"online\" | \"offline\" | \"busy\";\n  };\n  metrics?: {\n    uptime?: string;\n    latency?: string;\n  };\n  className?: string;\n}\n\nconst statusColors = {\n  online: \"text-green-500\",\n  offline: \"text-muted-foreground\",\n  busy: \"text-yellow-500\",\n};\n\nexport default function NavbarStatus({\n  logo = <span className=\"font-semibold\">Logo</span>,\n  links = [\n    { label: \"Dashboard\", href: \"#\", active: true },\n    { label: \"Analytics\", href: \"#\" },\n    { label: \"Reports\", href: \"#\" },\n  ],\n  status = { label: \"Online\", state: \"online\" },\n  metrics = { uptime: \"99.9%\", latency: \"45ms\" },\n  className,\n}: NavbarStatusProps) {\n  return (\n    <header className={cn(\"w-full border-b\", className)}>\n      <div className=\"flex h-14 items-center justify-between px-4\">\n        <div className=\"flex items-center gap-6\">\n          <Link href=\"/\" className=\"flex items-center\">\n            {logo}\n          </Link>\n          <nav className=\"hidden items-center gap-6 md:flex\">\n            {links.map((link) => (\n              <Link\n                key={link.href + link.label}\n                href={link.href}\n                className={cn(\n                  \"text-sm transition-colors hover:text-foreground\",\n                  link.active ? \"text-foreground\" : \"text-muted-foreground\",\n                )}\n              >\n                {link.label}\n              </Link>\n            ))}\n          </nav>\n        </div>\n        <div className=\"flex items-center gap-4\">\n          {metrics && (\n            <div className=\"hidden items-center gap-4 text-sm md:flex\">\n              {metrics.uptime && (\n                <div className=\"flex items-center gap-1.5 text-muted-foreground\">\n                  <Activity className=\"size-3.5\" />\n                  <span>{metrics.uptime} uptime</span>\n                </div>\n              )}\n              {metrics.latency && (\n                <div className=\"flex items-center gap-1.5 text-muted-foreground\">\n                  <Zap className=\"size-3.5\" />\n                  <span>{metrics.latency}</span>\n                </div>\n              )}\n            </div>\n          )}\n          <div className=\"flex items-center gap-1.5\">\n            <Circle\n              className={cn(\"size-2 fill-current\", statusColors[status.state])}\n            />\n            <span className=\"text-sm\">{status.label}</span>\n          </div>\n        </div>\n      </div>\n    </header>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/navbar-status.tsx"
+    }
+  ]
+}

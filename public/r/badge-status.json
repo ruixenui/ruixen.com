@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "badge-status",
+  "type": "registry:ui",
+  "title": "Badge Status",
+  "description": "Status badge with dot or icon indicator for success, pending, warning, and error states.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "badge"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/badge-status.tsx",
+      "content": "\"use client\";\n\nimport { Badge } from \"@/components/ui/badge\";\nimport { cn } from \"@/lib/utils\";\nimport { Check, Clock, AlertTriangle, X, Loader2 } from \"lucide-react\";\n\ntype Status = \"success\" | \"pending\" | \"warning\" | \"error\" | \"loading\";\n\ninterface BadgeStatusProps {\n  status?: Status;\n  children?: React.ReactNode;\n  showIcon?: boolean;\n  showDot?: boolean;\n  className?: string;\n}\n\nconst statusConfig = {\n  success: {\n    icon: Check,\n    dotColor: \"bg-emerald-500\",\n    badgeClass:\n      \"bg-emerald-500/10 text-emerald-600 border-emerald-500/20 hover:bg-emerald-500/20\",\n    label: \"Success\",\n  },\n  pending: {\n    icon: Clock,\n    dotColor: \"bg-blue-500\",\n    badgeClass:\n      \"bg-blue-500/10 text-blue-600 border-blue-500/20 hover:bg-blue-500/20\",\n    label: \"Pending\",\n  },\n  warning: {\n    icon: AlertTriangle,\n    dotColor: \"bg-amber-500\",\n    badgeClass:\n      \"bg-amber-500/10 text-amber-600 border-amber-500/20 hover:bg-amber-500/20\",\n    label: \"Warning\",\n  },\n  error: {\n    icon: X,\n    dotColor: \"bg-red-500\",\n    badgeClass:\n      \"bg-red-500/10 text-red-600 border-red-500/20 hover:bg-red-500/20\",\n    label: \"Error\",\n  },\n  loading: {\n    icon: Loader2,\n    dotColor: \"bg-gray-500\",\n    badgeClass:\n      \"bg-gray-500/10 text-gray-600 border-gray-500/20 hover:bg-gray-500/20\",\n    label: \"Loading\",\n  },\n};\n\nexport default function BadgeStatus({\n  status = \"success\",\n  children,\n  showIcon = false,\n  showDot = true,\n  className,\n}: BadgeStatusProps) {\n  const config = statusConfig[status];\n  const Icon = config.icon;\n  const isLoading = status === \"loading\";\n\n  return (\n    <Badge\n      variant=\"outline\"\n      className={cn(\"gap-1.5 font-medium\", config.badgeClass, className)}\n    >\n      {showDot && !showIcon && (\n        <span\n          className={cn(\n            \"size-2 rounded-full\",\n            config.dotColor,\n            isLoading && \"animate-pulse\",\n          )}\n        />\n      )}\n      {showIcon && (\n        <Icon className={cn(\"size-3\", isLoading && \"animate-spin\")} />\n      )}\n      {children || config.label}\n    </Badge>\n  );\n}\n\nexport { BadgeStatus, type BadgeStatusProps };\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/badge-status.tsx"
+    }
+  ]
+}

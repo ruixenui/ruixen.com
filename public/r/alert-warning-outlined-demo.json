@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "alert-warning-outlined-demo",
+  "type": "registry:example",
+  "title": "Warning Alert Outlined Demo",
+  "description": "Example showing a warning alert with outlined border style.",
+  "registryDependencies": [
+    "https://ruixen.com/r/alert-warning-outlined"
+  ],
+  "files": [
+    {
+      "path": "registry/example/alert-warning-outlined-demo.tsx",
+      "content": "import AlertWarningOutlined from \"@/registry/ruixenui/alert-warning-outlined\";\n\nexport default function AlertWarningOutlinedDemo() {\n  return (\n    <div className=\"flex min-h-[350px] w-full items-center justify-center p-4\">\n      <div className=\"w-full max-w-md\">\n        <AlertWarningOutlined\n          title=\"Warning\"\n          message=\"Your session is about to expire. Please save your work.\"\n        />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/alert-warning-outlined-demo.tsx"
+    }
+  ]
+}

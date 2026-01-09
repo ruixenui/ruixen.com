@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "banner-announcement",
+  "type": "registry:ui",
+  "title": "Banner Announcement",
+  "description": "A dismissible announcement banner with multiple variants and action links.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/banner-announcement.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { X, ArrowRight, Sparkles, Megaphone, Zap } from \"lucide-react\";\n\ntype BannerVariant = \"default\" | \"gradient\" | \"minimal\" | \"accent\";\n\ninterface BannerAnnouncementProps {\n  children: React.ReactNode;\n  variant?: BannerVariant;\n  icon?: React.ReactNode;\n  actionLabel?: string;\n  actionHref?: string;\n  dismissible?: boolean;\n  onDismiss?: () => void;\n  className?: string;\n}\n\nconst variantStyles = {\n  default: \"bg-primary text-primary-foreground\",\n  gradient:\n    \"bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600 text-white\",\n  minimal: \"bg-muted/50 text-foreground border-b\",\n  accent: \"bg-gradient-to-r from-amber-500 to-orange-500 text-white\",\n};\n\nexport default function BannerAnnouncement({\n  children,\n  variant = \"default\",\n  icon,\n  actionLabel,\n  actionHref,\n  dismissible = true,\n  onDismiss,\n  className,\n}: BannerAnnouncementProps) {\n  const [isVisible, setIsVisible] = React.useState(true);\n\n  const handleDismiss = () => {\n    setIsVisible(false);\n    onDismiss?.();\n  };\n\n  if (!isVisible) return null;\n\n  return (\n    <div\n      className={cn(\n        \"relative flex items-center justify-center gap-x-3 px-4 py-2.5 text-sm\",\n        variantStyles[variant],\n        className,\n      )}\n    >\n      {icon && <span className=\"shrink-0\">{icon}</span>}\n      <p className=\"text-center font-medium\">{children}</p>\n      {actionLabel && actionHref && (\n        <a\n          href={actionHref}\n          className=\"group inline-flex items-center gap-1 font-semibold underline-offset-4 hover:underline\"\n        >\n          {actionLabel}\n          <ArrowRight className=\"size-3.5 transition-transform group-hover:translate-x-0.5\" />\n        </a>\n      )}\n      {dismissible && (\n        <button\n          type=\"button\"\n          onClick={handleDismiss}\n          className=\"absolute right-3 top-1/2 -translate-y-1/2 rounded-full p-1 transition-colors hover:bg-white/20\"\n          aria-label=\"Dismiss\"\n        >\n          <X className=\"size-4\" />\n        </button>\n      )}\n    </div>\n  );\n}\n\nexport { BannerAnnouncement, type BannerAnnouncementProps };\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/banner-announcement.tsx"
+    }
+  ]
+}
