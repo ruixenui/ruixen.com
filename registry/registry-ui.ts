@@ -3238,9 +3238,17 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Three D Wall Calendar",
     description:
-      "Interactive 3D wall-style calendar with tilt controls and drag interactions.",
+      "Interactive 3D wall-style calendar with tilt/drag controls, event management, and shadcn calendar for seamless date selection.",
     dependencies: ["date-fns", "lucide-react", "uuid"],
-    registryDependencies: ["card", "button", "input", "popover", "hover-card"],
+    registryDependencies: [
+      "card",
+      "button",
+      "popover",
+      "hover-card",
+      "calendar",
+      "dialog",
+      "label",
+    ],
     files: [
       {
         path: "registry/ruixenui/three-dwall-calendar.tsx",

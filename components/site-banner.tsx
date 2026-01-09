@@ -25,7 +25,8 @@ export function ProBanner() {
             Ruixen Pro, coming soon.
           </span>
           <span className="ml-2 text-white/70">
-            Built from insights of 1000+ developers, refined component by component, including templates.
+            Built from insights of 1000+ developers, refined component by
+            component, including templates.
           </span>
           <ChevronRight className="ml-1 mt-[3px] hidden size-4 transition-all duration-300 ease-out group-hover:translate-x-1 lg:inline-block" />
         </button>

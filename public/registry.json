@@ -3840,7 +3840,7 @@
       "name": "three-dwall-calendar",
       "type": "registry:ui",
       "title": "Three D Wall Calendar",
-      "description": "Interactive 3D wall-style calendar with tilt controls and drag interactions.",
+      "description": "Interactive 3D wall-style calendar with tilt/drag controls, event management, and shadcn calendar for seamless date selection.",
       "dependencies": [
         "date-fns",
         "lucide-react",
@@ -3849,9 +3849,11 @@
       "registryDependencies": [
         "card",
         "button",
-        "input",
         "popover",
-        "hover-card"
+        "hover-card",
+        "calendar",
+        "dialog",
+        "label"
       ],
       "files": [
         {

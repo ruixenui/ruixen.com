@@ -30,7 +30,9 @@ export default function Demo3DWallCalendar() {
 
   return (
     <div className="p-6">
-      <h1 className="text-2xl font-semibold mb-4">3D Wall Calendar Demo</h1>
+      <h1 className="text-3xl font-bold mb-6 text-center">
+        3D Wall Calendar Demo
+      </h1>
       <ThreeDWallCalendar
         events={events}
         onAddEvent={addEvent}
