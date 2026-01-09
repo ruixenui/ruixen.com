@@ -31,6 +31,7 @@ import {
   eachDayOfInterval,
   format,
   parseISO,
+  getDay,
 } from "date-fns";
 
 export type CalendarEvent = {
@@ -45,7 +46,7 @@ interface ThreeDWallCalendarProps {
   onRemoveEvent?: (id: string) => void;
   panelWidth?: number;
   panelHeight?: number;
-  columns?: number;
+  columns?: number; 
 }
 
 export function ThreeDWallCalendar({
@@ -73,17 +74,37 @@ export function ThreeDWallCalendar({
   const isDragging = React.useRef(false);
   const dragStart = React.useRef<{ x: number; y: number } | null>(null);
 
-  // Current month days
-  const days = eachDayOfInterval({
-    start: startOfMonth(dateRef),
-    end: endOfMonth(dateRef),
-  });
+  // Get all days of the month
+  const monthStart = startOfMonth(dateRef);
+  const monthEnd = endOfMonth(dateRef);
+  const daysInMonth = eachDayOfInterval({ start: monthStart, end: monthEnd });
 
-  const eventsForDay = (d: Date) =>
-    events.filter(
+  // Leading blanks (Sunday = 0)
+  const startingWeekday = getDay(monthStart);
+  const leadingBlanks = Array.from({ length: startingWeekday }, () => null);
+
+  // Always force 6 rows → 42 cells total
+  const allCells = [...leadingBlanks, ...daysInMonth];
+  const totalCellsNeeded = 42; // 6 × 7
+  const trailingBlanksNeeded = Math.max(0, totalCellsNeeded - allCells.length);
+  const trailingBlanks = Array.from(
+    { length: trailingBlanksNeeded },
+    () => null,
+  );
+
+  const paddedCells = [...allCells, ...trailingBlanks];
+
+  // Fixed 6 rows for consistent height & visibility
+  const rowCount = 6;
+  const wallCenterRow = (rowCount - 1) / 2; // 2.5
+
+  const eventsForDay = (d: Date | null) => {
+    if (!d) return [];
+    return events.filter(
       (ev) =>
         format(parseISO(ev.date), "yyyy-MM-dd") === format(d, "yyyy-MM-dd"),
     );
+  };
 
   // Add event
   const handleAddEvent = () => {
@@ -100,9 +121,9 @@ export function ThreeDWallCalendar({
     setIsDialogOpen(false);
   };
 
-  // Wheel & drag tilt handlers (unchanged)
+  // Wheel & drag tilt handlers (with safer limits)
   const onWheel = (e: React.WheelEvent) => {
-    setTiltX((t) => Math.max(0, Math.min(50, t + e.deltaY * 0.02)));
+    setTiltX((t) => Math.max(5, Math.min(40, t + e.deltaY * 0.02)));
     setTiltY((t) => Math.max(-45, Math.min(45, t + e.deltaX * 0.05)));
   };
 
@@ -117,7 +138,7 @@ export function ThreeDWallCalendar({
     const dx = e.clientX - dragStart.current.x;
     const dy = e.clientY - dragStart.current.y;
     setTiltY((t) => Math.max(-60, Math.min(60, t + dx * 0.1)));
-    setTiltX((t) => Math.max(0, Math.min(60, t - dy * 0.1)));
+    setTiltX((t) => Math.max(5, Math.min(45, t - dy * 0.1)));
     dragStart.current = { x: e.clientX, y: e.clientY };
   };
 
@@ -127,8 +148,6 @@ export function ThreeDWallCalendar({
   };
 
   const gap = 12;
-  const rowCount = Math.ceil(days.length / columns);
-  const wallCenterRow = (rowCount - 1) / 2;
 
   return (
     <div className="space-y-6">
@@ -156,7 +175,7 @@ export function ThreeDWallCalendar({
       </div>
 
       {/* Interactive Calendar for adding events */}
-      <div className="flex justify-center">
+      <div className="flex justify-center flex-wrap gap-4">
         <Popover>
           <PopoverTrigger asChild>
             <Button variant="outline">
@@ -178,11 +197,9 @@ export function ThreeDWallCalendar({
           </PopoverContent>
         </Popover>
 
-        {/* Dialog for entering title after date selection */}
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger asChild>
             <Button
-              className="ml-4"
               disabled={!selectedDate}
               onClick={() => selectedDate && setIsDialogOpen(true)}
             >
@@ -217,7 +234,7 @@ export function ThreeDWallCalendar({
         </Dialog>
       </div>
 
-      {/* 3D Wall */}
+      {/* Wall container */}
       <div
         ref={wallRef}
         onWheel={onWheel}
@@ -225,15 +242,18 @@ export function ThreeDWallCalendar({
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
         onPointerCancel={onPointerUp}
-        className="w-full overflow-auto"
-        style={{ perspective: 1200 }}
+        className="w-full "
+        style={{ perspective: 1200 }} 
       >
         <div
-          className="mx-auto transition-transform duration-100"
+          className="inline-block"
           style={{
             width: columns * (panelWidth + gap),
-            transformStyle: "preserve-3d",
+            marginLeft: "200px",
+                      transformStyle: "preserve-3d",
             transform: `rotateX(${tiltX}deg) rotateY(${tiltY}deg)`,
+            transition: isDragging.current ? "none" : "transform 120ms linear",
+            minWidth: "fit-content",
           }}
         >
           <div
@@ -247,12 +267,31 @@ export function ThreeDWallCalendar({
               transformStyle: "preserve-3d",
             }}
           >
-            {days.map((day, idx) => {
+            {paddedCells.map((day, idx) => {
               const row = Math.floor(idx / columns);
               const rowOffset = row - wallCenterRow;
               const z = Math.max(-80, 40 - Math.abs(rowOffset) * 20);
               const dayEvents = eventsForDay(day);
 
+              // Blank cells (leading + trailing)
+              if (day === null) {
+                return (
+                  <div
+                    key={`blank-${idx}`}
+                    className="relative"
+                    style={{
+                      transform: `translateZ(${z}px)`,
+                      zIndex: Math.round(100 - Math.abs(rowOffset)),
+                    }}
+                  >
+                    <Card className="h-full bg-transparent border-dashed border-muted opacity-30 cursor-default">
+                      <CardContent className="p-3 h-full" />
+                    </Card>
+                  </div>
+                );
+              }
+
+              // Real day cells
               return (
                 <div
                   key={day.toISOString()}
@@ -328,8 +367,7 @@ export function ThreeDWallCalendar({
                       </div>
 
                       <div className="mt-auto text-xs text-muted-foreground">
-                        {dayEvents.length} event
-                        {dayEvents.length !== 1 ? "s" : ""}
+                        {dayEvents.length} event{dayEvents.length !== 1 ? "s" : ""}
                       </div>
                     </CardContent>
                   </Card>
