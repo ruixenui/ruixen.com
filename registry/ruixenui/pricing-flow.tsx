@@ -142,7 +142,8 @@ const PlanCard = ({ plan, billPlan }: { plan: PLAN; billPlan: PlanType }) => {
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2 }}
             >
-              ${price}{suffix}
+              ${price}
+              {suffix}
             </motion.span>
           </AnimatePresence>
         </h3>

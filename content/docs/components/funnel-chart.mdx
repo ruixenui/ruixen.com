@@ -1,0 +1,226 @@
+---
+title: Funnel Chart
+date: 2025-01-14
+description: A versatile funnel chart component for visualizing conversion flows, sales pipelines, and sequential data with multiple variants and tooltip styles.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="funnel-chart-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/funnel-chart"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the required dependencies</Step>
+
+```bash
+npm install recharts
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="funnel-chart" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import {
+  FunnelChart,
+  FunnelLabelChart,
+  FunnelStackedLegendChart,
+  FunnelCustomLabelChart,
+  FunnelActiveChart,
+} from "@/components/ruixen/funnel-chart";
+```
+
+```tsx
+const data = [
+  { name: "Visitors", value: 10000 },
+  { name: "Leads", value: 6500 },
+  { name: "Qualified", value: 3200 },
+  { name: "Proposals", value: 1800 },
+  { name: "Closed", value: 1200 },
+]
+
+// Default with value labels
+<FunnelChart data={data} className="h-[280px]" />
+
+// With name labels on the side
+<FunnelLabelChart data={data} className="h-[280px]" />
+
+// With bottom legend
+<FunnelStackedLegendChart data={data} className="h-[300px]" />
+
+// Custom with center labels
+<FunnelCustomLabelChart data={data} showBorder={true} />
+
+// Interactive with click handling
+<FunnelActiveChart
+  data={data}
+  activeIndex={activeIndex}
+  onSegmentClick={(item, index) => setActiveIndex(index)}
+/>
+```
+
+## Examples
+
+### Default Funnel
+
+The default funnel chart displays value labels on the right side with smooth animations.
+
+```tsx
+<FunnelChart data={salesData} className="h-[280px]" />
+```
+
+### With Name Labels
+
+Display stage names instead of values for better context.
+
+```tsx
+<FunnelLabelChart data={salesData} className="h-[280px]" />
+```
+
+### With Legend
+
+Add a legend at the bottom or top for color reference.
+
+```tsx
+<FunnelStackedLegendChart
+  data={salesData}
+  legendPosition="bottom"
+  className="h-[300px]"
+/>
+```
+
+### Center Labels with Borders
+
+Display labels in the center of each segment with optional borders.
+
+```tsx
+<FunnelCustomLabelChart
+  data={salesData}
+  showBorder={true}
+  strokeWidth={2}
+  className="h-[280px]"
+/>
+```
+
+### Interactive Selection
+
+Enable click-to-select functionality with visual feedback.
+
+```tsx
+const [activeIndex, setActiveIndex] = useState<number | undefined>()
+
+<FunnelActiveChart
+  data={salesData}
+  activeIndex={activeIndex}
+  onSegmentClick={(item, index) =>
+    setActiveIndex(activeIndex === index ? undefined : index)
+  }
+/>
+```
+
+### Tooltip Indicators
+
+The component supports three tooltip indicator styles matching shadcn/ui charts:
+
+```tsx
+// Dot indicator (default)
+<FunnelChart data={data} tooltipIndicator="dot" />
+
+// Line indicator
+<FunnelChart data={data} tooltipIndicator="line" />
+
+// Dashed indicator
+<FunnelChart data={data} tooltipIndicator="dashed" />
+```
+
+### Custom Value Formatter
+
+Format values with a custom function:
+
+```tsx
+<FunnelChart
+  data={data}
+  valueFormatter={(value) => `$${value.toLocaleString()}`}
+/>
+```
+
+## Props
+
+### FunnelChart
+
+| Prop               | Type                          | Default   | Description                             |
+| ------------------ | ----------------------------- | --------- | --------------------------------------- |
+| `data`             | `FunnelDataItem[]`            | Required  | Array of data items with name and value |
+| `className`        | `string`                      | -         | Additional CSS classes                  |
+| `showTooltip`      | `boolean`                     | `true`    | Show tooltip on hover                   |
+| `tooltipIndicator` | `"dot" \| "line" \| "dashed"` | `"dot"`   | Tooltip indicator style                 |
+| `valueFormatter`   | `(value: number) => string`   | -         | Custom value formatter                  |
+| `labelPosition`    | `"left" \| "right"`           | `"right"` | Label position                          |
+| `labelOffset`      | `number`                      | `12`      | Label offset from segment               |
+
+### FunnelLabelChart
+
+Same props as FunnelChart. Displays name labels instead of values.
+
+### FunnelStackedLegendChart
+
+| Prop             | Type                | Default    | Description     |
+| ---------------- | ------------------- | ---------- | --------------- |
+| `legendPosition` | `"top" \| "bottom"` | `"bottom"` | Legend position |
+
+Plus all FunnelChartBaseProps.
+
+### FunnelCustomLabelChart
+
+| Prop              | Type      | Default | Description                   |
+| ----------------- | --------- | ------- | ----------------------------- |
+| `showBorder`      | `boolean` | `true`  | Show borders between segments |
+| `strokeWidth`     | `number`  | `1`     | Border stroke width           |
+| `strokeDasharray` | `string`  | -       | SVG stroke dasharray          |
+
+Plus all FunnelChartBaseProps.
+
+### FunnelActiveChart
+
+| Prop             | Type                    | Default | Description                    |
+| ---------------- | ----------------------- | ------- | ------------------------------ |
+| `activeIndex`    | `number`                | -       | Currently active segment index |
+| `onSegmentClick` | `(item, index) => void` | -       | Click handler for segments     |
+
+Plus all FunnelChartBaseProps.
+
+### FunnelDataItem
+
+| Property | Type     | Description                |
+| -------- | -------- | -------------------------- |
+| `name`   | `string` | Stage name                 |
+| `value`  | `number` | Numeric value              |
+| `fill`   | `string` | Optional custom fill color |

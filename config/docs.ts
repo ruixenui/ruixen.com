@@ -799,6 +799,42 @@ export const docsConfig: DocsConfig = {
           ],
         },
         {
+          title: "Charts",
+          label: "New",
+          items: [
+            {
+              title: "Funnel Chart",
+              href: `/docs/components/funnel-chart`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Waterfall Chart",
+              href: `/docs/components/waterfall-chart`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Bubble Chart",
+              href: `/docs/components/bubble-chart`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Stream Chart",
+              href: `/docs/components/stream-chart`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Bullet Chart",
+              href: `/docs/components/bullet-chart`,
+              items: [],
+              label: "New",
+            },
+          ],
+        },
+        {
           title: "Cards",
           items: [
             {

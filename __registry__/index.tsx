@@ -15,6 +15,126 @@ export const Index: Record<string, any> = {
     component: null,
     meta: undefined,
   },
+  "funnel-chart": {
+    name: "funnel-chart",
+    description:
+      "A versatile funnel chart component for visualizing conversion flows, sales pipelines, and sequential data with multiple variants and tooltip styles.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/funnel-chart.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/funnel-chart.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/funnel-chart.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "waterfall-chart": {
+    name: "waterfall-chart",
+    description:
+      "A versatile waterfall chart component for visualizing cumulative effects, financial changes, and sequential data with multiple variants and tooltip styles.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/waterfall-chart.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/waterfall-chart.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/waterfall-chart.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "bubble-chart": {
+    name: "bubble-chart",
+    description:
+      "A versatile bubble chart component for visualizing three-dimensional data with position (x, y) and size (z) dimensions. Includes multiple variants with labels, legends, grouping, and interactive features.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/bubble-chart.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/bubble-chart.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/bubble-chart.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "stream-chart": {
+    name: "stream-chart",
+    description:
+      "A versatile stream chart component for visualizing continuous data flows over time. Includes multiple variants: wiggle (streamgraph), silhouette (centered), expanded (100% stacked), stacked (normal), interactive, and legend variants.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/stream-chart.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/stream-chart.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/stream-chart.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "bullet-chart": {
+    name: "bullet-chart",
+    description:
+      "A versatile bullet chart component for comparing actual values against targets with qualitative ranges. Includes horizontal, vertical, compact, interactive, legend, and custom color variants.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/bullet-chart.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/bullet-chart.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/bullet-chart.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "blurred-stagger-text": {
     name: "blurred-stagger-text",
     description:
@@ -8215,6 +8335,126 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/ruixenui/checkbox-tree.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "funnel-chart-demo": {
+    name: "funnel-chart-demo",
+    description:
+      "Example showing various funnel chart variants for visualizing conversion flows.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/funnel-chart"],
+    files: [
+      {
+        path: "registry/example/funnel-chart-demo.tsx",
+        type: "registry:example",
+        target: "components/funnel-chart-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/funnel-chart-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "waterfall-chart-demo": {
+    name: "waterfall-chart-demo",
+    description:
+      "Example showing various waterfall chart variants for visualizing cumulative effects and financial data.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/waterfall-chart"],
+    files: [
+      {
+        path: "registry/example/waterfall-chart-demo.tsx",
+        type: "registry:example",
+        target: "components/waterfall-chart-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/waterfall-chart-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "bubble-chart-demo": {
+    name: "bubble-chart-demo",
+    description:
+      "Example showing various bubble chart variants for visualizing three-dimensional data with position and size dimensions.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/bubble-chart"],
+    files: [
+      {
+        path: "registry/example/bubble-chart-demo.tsx",
+        type: "registry:example",
+        target: "components/bubble-chart-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/bubble-chart-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "stream-chart-demo": {
+    name: "stream-chart-demo",
+    description:
+      "Example showing various stream chart variants for visualizing continuous data flows over time with wiggle, silhouette, expanded, stacked, and interactive variants.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/stream-chart"],
+    files: [
+      {
+        path: "registry/example/stream-chart-demo.tsx",
+        type: "registry:example",
+        target: "components/stream-chart-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/stream-chart-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "bullet-chart-demo": {
+    name: "bullet-chart-demo",
+    description:
+      "Example showing various bullet chart variants for comparing actual values against targets with qualitative ranges.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/bullet-chart"],
+    files: [
+      {
+        path: "registry/example/bullet-chart-demo.tsx",
+        type: "registry:example",
+        target: "components/bullet-chart-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/bullet-chart-demo.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>

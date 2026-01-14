@@ -1,0 +1,246 @@
+---
+title: Bullet Chart
+date: 2025-01-14
+description: A versatile bullet chart component for comparing actual values against targets with qualitative ranges. Includes horizontal, vertical, compact, interactive, legend, and custom color variants.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="bullet-chart-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/bullet-chart"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the required dependencies</Step>
+
+```bash
+npm install recharts
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="bullet-chart" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import {
+  BulletChart,
+  BulletLegendChart,
+  BulletVerticalChart,
+  BulletCompactChart,
+  BulletInteractiveChart,
+  BulletCustomChart,
+} from "@/components/ruixen/bullet-chart";
+```
+
+```tsx
+const data = [
+  { name: "Revenue", actual: 275, target: 250, ranges: [150, 225, 300] },
+  { name: "Profit", actual: 85, target: 100, ranges: [50, 75, 100] },
+  { name: "Orders", actual: 180, target: 200, ranges: [100, 150, 200] },
+]
+
+// Default bullet chart (horizontal)
+<BulletChart data={data} className="h-[200px]" />
+
+// With legend
+<BulletLegendChart data={data} className="h-[280px]" />
+
+// Vertical layout
+<BulletVerticalChart data={data} className="h-[320px]" />
+
+// Interactive (hover to highlight)
+<BulletInteractiveChart data={data} className="h-[240px]" />
+
+// Compact single row
+<BulletCompactChart
+  name="Revenue"
+  actual={275}
+  target={250}
+  ranges={[150, 225, 300]}
+/>
+
+// Custom colors
+<BulletCustomChart
+  data={data}
+  rangeColors={["#e8f4ff", "#8ec5ff", "#2b7fff"]}
+  actualColor="#1a5fd1"
+/>
+```
+
+## Examples
+
+### Default Bullet
+
+The default bullet chart displays horizontal bars comparing actual values against targets with qualitative ranges (poor, satisfactory, good).
+
+```tsx
+<BulletChart data={salesData} className="h-[200px]" />
+```
+
+### With Legend
+
+Display a legend showing actual, target, and range indicators.
+
+```tsx
+<BulletLegendChart
+  data={performanceData}
+  legendPosition="bottom"
+  className="h-[280px]"
+/>
+```
+
+### Vertical
+
+Vertical orientation for different layout requirements.
+
+```tsx
+<BulletVerticalChart data={quarterlyData} className="h-[320px]" />
+```
+
+### Interactive
+
+Enable hover effects to highlight individual metrics.
+
+```tsx
+<BulletInteractiveChart data={kpiData} className="h-[240px]" />
+```
+
+### Compact
+
+Single row compact style, perfect for dashboards.
+
+```tsx
+<BulletCompactChart
+  name="Revenue"
+  actual={275}
+  target={250}
+  ranges={[150, 225, 300]}
+/>
+```
+
+### Custom Colors
+
+Use custom colors for ranges and actual values.
+
+```tsx
+<BulletCustomChart
+  data={data}
+  rangeColors={["#e8f4ff", "#8ec5ff", "#2b7fff"]}
+  actualColor="#1a5fd1"
+  className="h-[280px]"
+/>
+```
+
+### Tooltip Indicators
+
+The component supports three tooltip indicator styles matching shadcn/ui charts:
+
+```tsx
+// Dot indicator (default)
+<BulletChart data={data} tooltipIndicator="dot" />
+
+// Line indicator
+<BulletChart data={data} tooltipIndicator="line" />
+
+// Dashed indicator
+<BulletChart data={data} tooltipIndicator="dashed" />
+```
+
+### Custom Value Formatter
+
+Format values with a custom function:
+
+```tsx
+<BulletChart
+  data={data}
+  valueFormatter={(value) => `$${value.toLocaleString()}`}
+/>
+```
+
+## Props
+
+### BulletChart
+
+| Prop               | Type                          | Default  | Description                           |
+| ------------------ | ----------------------------- | -------- | ------------------------------------- |
+| `data`             | `BulletDataItem[]`            | Required | Array of bullet data items            |
+| `className`        | `string`                      | -        | Additional CSS classes                |
+| `showTooltip`      | `boolean`                     | `true`   | Show tooltip on hover                 |
+| `tooltipIndicator` | `"dot" \| "line" \| "dashed"` | `"dot"`  | Tooltip indicator style               |
+| `valueFormatter`   | `(value: number) => string`   | -        | Custom value formatter                |
+| `barSize`          | `number`                      | `32`     | Size of the range bars (pixels)       |
+| `actualBarSize`    | `number`                      | `12`     | Size of the actual value bar (pixels) |
+
+### BulletLegendChart
+
+| Prop             | Type                | Default    | Description     |
+| ---------------- | ------------------- | ---------- | --------------- |
+| `legendPosition` | `"top" \| "bottom"` | `"bottom"` | Legend position |
+
+Plus all BulletChart props.
+
+### BulletVerticalChart
+
+Same props as BulletChart. Displays bars vertically instead of horizontally.
+
+### BulletCompactChart
+
+| Prop             | Type                        | Default  | Description                |
+| ---------------- | --------------------------- | -------- | -------------------------- |
+| `name`           | `string`                    | Required | Metric name                |
+| `actual`         | `number`                    | Required | Actual value               |
+| `target`         | `number`                    | Required | Target value               |
+| `ranges`         | `[number, number, number]`  | Required | Poor, satisfactory, good   |
+| `className`      | `string`                    | -        | Additional CSS classes     |
+| `valueFormatter` | `(value: number) => string` | -        | Custom value formatter     |
+| `showLabel`      | `boolean`                   | `true`   | Show name and values label |
+
+### BulletInteractiveChart
+
+Same props as BulletChart. Adds hover highlighting effect.
+
+### BulletCustomChart
+
+| Prop          | Type                       | Default         | Description                |
+| ------------- | -------------------------- | --------------- | -------------------------- |
+| `rangeColors` | `[string, string, string]` | Default palette | Colors for poor, sat, good |
+| `actualColor` | `string`                   | `"#2b7fff"`     | Color for actual bar       |
+| `targetColor` | `string`                   | Default         | Color for target marker    |
+
+Plus all BulletChart props.
+
+### BulletDataItem
+
+| Property | Type                       | Description                             |
+| -------- | -------------------------- | --------------------------------------- |
+| `name`   | `string`                   | Metric name                             |
+| `actual` | `number`                   | Actual/current value                    |
+| `target` | `number`                   | Target/goal value                       |
+| `ranges` | `[number, number, number]` | [poor, satisfactory, good] range values |
