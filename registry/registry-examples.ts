@@ -2,6 +2,81 @@ import { type Registry } from "shadcn/registry";
 
 export const examples: Registry["items"] = [
   {
+    name: "funnel-chart-demo",
+    type: "registry:example",
+    title: "Funnel Chart Demo",
+    description:
+      "Example showing various funnel chart variants for visualizing conversion flows.",
+    registryDependencies: ["https://ruixen.com/r/funnel-chart"],
+    files: [
+      {
+        path: "registry/example/funnel-chart-demo.tsx",
+        type: "registry:example",
+        target: "components/funnel-chart-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "waterfall-chart-demo",
+    type: "registry:example",
+    title: "Waterfall Chart Demo",
+    description:
+      "Example showing various waterfall chart variants for visualizing cumulative effects and financial data.",
+    registryDependencies: ["https://ruixen.com/r/waterfall-chart"],
+    files: [
+      {
+        path: "registry/example/waterfall-chart-demo.tsx",
+        type: "registry:example",
+        target: "components/waterfall-chart-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "bubble-chart-demo",
+    type: "registry:example",
+    title: "Bubble Chart Demo",
+    description:
+      "Example showing various bubble chart variants for visualizing three-dimensional data with position and size dimensions.",
+    registryDependencies: ["https://ruixen.com/r/bubble-chart"],
+    files: [
+      {
+        path: "registry/example/bubble-chart-demo.tsx",
+        type: "registry:example",
+        target: "components/bubble-chart-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "stream-chart-demo",
+    type: "registry:example",
+    title: "Stream Chart Demo",
+    description:
+      "Example showing various stream chart variants for visualizing continuous data flows over time with wiggle, silhouette, expanded, stacked, and interactive variants.",
+    registryDependencies: ["https://ruixen.com/r/stream-chart"],
+    files: [
+      {
+        path: "registry/example/stream-chart-demo.tsx",
+        type: "registry:example",
+        target: "components/stream-chart-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "bullet-chart-demo",
+    type: "registry:example",
+    title: "Bullet Chart Demo",
+    description:
+      "Example showing various bullet chart variants for comparing actual values against targets with qualitative ranges.",
+    registryDependencies: ["https://ruixen.com/r/bullet-chart"],
+    files: [
+      {
+        path: "registry/example/bullet-chart-demo.tsx",
+        type: "registry:example",
+        target: "components/bullet-chart-demo.tsx",
+      },
+    ],
+  },
+  {
     name: "staggered-faq-section-demo",
     type: "registry:example",
     title: "StaggeredFAQSection Demo",

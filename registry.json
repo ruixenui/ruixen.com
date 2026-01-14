@@ -17,6 +17,86 @@
       "cssVars": {}
     },
     {
+      "name": "funnel-chart",
+      "type": "registry:ui",
+      "title": "Funnel Chart",
+      "description": "A versatile funnel chart component for visualizing conversion flows, sales pipelines, and sequential data with multiple variants and tooltip styles.",
+      "dependencies": [
+        "recharts"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/funnel-chart.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/funnel-chart.tsx"
+        }
+      ]
+    },
+    {
+      "name": "waterfall-chart",
+      "type": "registry:ui",
+      "title": "Waterfall Chart",
+      "description": "A versatile waterfall chart component for visualizing cumulative effects, financial changes, and sequential data with multiple variants and tooltip styles.",
+      "dependencies": [
+        "recharts"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/waterfall-chart.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/waterfall-chart.tsx"
+        }
+      ]
+    },
+    {
+      "name": "bubble-chart",
+      "type": "registry:ui",
+      "title": "Bubble Chart",
+      "description": "A versatile bubble chart component for visualizing three-dimensional data with position (x, y) and size (z) dimensions. Includes multiple variants with labels, legends, grouping, and interactive features.",
+      "dependencies": [
+        "recharts"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/bubble-chart.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/bubble-chart.tsx"
+        }
+      ]
+    },
+    {
+      "name": "stream-chart",
+      "type": "registry:ui",
+      "title": "Stream Chart",
+      "description": "A versatile stream chart component for visualizing continuous data flows over time. Includes multiple variants: wiggle (streamgraph), silhouette (centered), expanded (100% stacked), stacked (normal), interactive, and legend variants.",
+      "dependencies": [
+        "recharts"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/stream-chart.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/stream-chart.tsx"
+        }
+      ]
+    },
+    {
+      "name": "bullet-chart",
+      "type": "registry:ui",
+      "title": "Bullet Chart",
+      "description": "A versatile bullet chart component for comparing actual values against targets with qualitative ranges. Includes horizontal, vertical, compact, interactive, legend, and custom color variants.",
+      "dependencies": [
+        "recharts"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/bullet-chart.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/bullet-chart.tsx"
+        }
+      ]
+    },
+    {
       "name": "blurred-stagger-text",
       "type": "registry:ui",
       "title": "Blurred Stagger Text",
@@ -6279,6 +6359,86 @@
           "path": "registry/ruixenui/checkbox-tree.tsx",
           "type": "registry:ui",
           "target": "components/ruixen/checkbox-tree.tsx"
+        }
+      ]
+    },
+    {
+      "name": "funnel-chart-demo",
+      "type": "registry:example",
+      "title": "Funnel Chart Demo",
+      "description": "Example showing various funnel chart variants for visualizing conversion flows.",
+      "registryDependencies": [
+        "https://ruixen.com/r/funnel-chart"
+      ],
+      "files": [
+        {
+          "path": "registry/example/funnel-chart-demo.tsx",
+          "type": "registry:example",
+          "target": "components/funnel-chart-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "waterfall-chart-demo",
+      "type": "registry:example",
+      "title": "Waterfall Chart Demo",
+      "description": "Example showing various waterfall chart variants for visualizing cumulative effects and financial data.",
+      "registryDependencies": [
+        "https://ruixen.com/r/waterfall-chart"
+      ],
+      "files": [
+        {
+          "path": "registry/example/waterfall-chart-demo.tsx",
+          "type": "registry:example",
+          "target": "components/waterfall-chart-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "bubble-chart-demo",
+      "type": "registry:example",
+      "title": "Bubble Chart Demo",
+      "description": "Example showing various bubble chart variants for visualizing three-dimensional data with position and size dimensions.",
+      "registryDependencies": [
+        "https://ruixen.com/r/bubble-chart"
+      ],
+      "files": [
+        {
+          "path": "registry/example/bubble-chart-demo.tsx",
+          "type": "registry:example",
+          "target": "components/bubble-chart-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "stream-chart-demo",
+      "type": "registry:example",
+      "title": "Stream Chart Demo",
+      "description": "Example showing various stream chart variants for visualizing continuous data flows over time with wiggle, silhouette, expanded, stacked, and interactive variants.",
+      "registryDependencies": [
+        "https://ruixen.com/r/stream-chart"
+      ],
+      "files": [
+        {
+          "path": "registry/example/stream-chart-demo.tsx",
+          "type": "registry:example",
+          "target": "components/stream-chart-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "bullet-chart-demo",
+      "type": "registry:example",
+      "title": "Bullet Chart Demo",
+      "description": "Example showing various bullet chart variants for comparing actual values against targets with qualitative ranges.",
+      "registryDependencies": [
+        "https://ruixen.com/r/bullet-chart"
+      ],
+      "files": [
+        {
+          "path": "registry/example/bullet-chart-demo.tsx",
+          "type": "registry:example",
+          "target": "components/bullet-chart-demo.tsx"
         }
       ]
     },

@@ -2,6 +2,81 @@ import { type Registry } from "shadcn/registry";
 
 export const ui: Registry["items"] = [
   {
+    name: "funnel-chart",
+    type: "registry:ui",
+    title: "Funnel Chart",
+    description:
+      "A versatile funnel chart component for visualizing conversion flows, sales pipelines, and sequential data with multiple variants and tooltip styles.",
+    dependencies: ["recharts"],
+    files: [
+      {
+        path: "registry/ruixenui/funnel-chart.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/funnel-chart.tsx",
+      },
+    ],
+  },
+  {
+    name: "waterfall-chart",
+    type: "registry:ui",
+    title: "Waterfall Chart",
+    description:
+      "A versatile waterfall chart component for visualizing cumulative effects, financial changes, and sequential data with multiple variants and tooltip styles.",
+    dependencies: ["recharts"],
+    files: [
+      {
+        path: "registry/ruixenui/waterfall-chart.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/waterfall-chart.tsx",
+      },
+    ],
+  },
+  {
+    name: "bubble-chart",
+    type: "registry:ui",
+    title: "Bubble Chart",
+    description:
+      "A versatile bubble chart component for visualizing three-dimensional data with position (x, y) and size (z) dimensions. Includes multiple variants with labels, legends, grouping, and interactive features.",
+    dependencies: ["recharts"],
+    files: [
+      {
+        path: "registry/ruixenui/bubble-chart.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/bubble-chart.tsx",
+      },
+    ],
+  },
+  {
+    name: "stream-chart",
+    type: "registry:ui",
+    title: "Stream Chart",
+    description:
+      "A versatile stream chart component for visualizing continuous data flows over time. Includes multiple variants: wiggle (streamgraph), silhouette (centered), expanded (100% stacked), stacked (normal), interactive, and legend variants.",
+    dependencies: ["recharts"],
+    files: [
+      {
+        path: "registry/ruixenui/stream-chart.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/stream-chart.tsx",
+      },
+    ],
+  },
+  {
+    name: "bullet-chart",
+    type: "registry:ui",
+    title: "Bullet Chart",
+    description:
+      "A versatile bullet chart component for comparing actual values against targets with qualitative ranges. Includes horizontal, vertical, compact, interactive, legend, and custom color variants.",
+    dependencies: ["recharts"],
+    files: [
+      {
+        path: "registry/ruixenui/bullet-chart.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/bullet-chart.tsx",
+      },
+    ],
+  },
+  {
     name: "blurred-stagger-text",
     type: "registry:ui",
     title: "Blurred Stagger Text",

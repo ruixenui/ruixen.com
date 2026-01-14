@@ -1466,6 +1466,33 @@ export const aiChatInputsPreview: ComponentPreviewMap = {
   },
 };
 
+/**
+ * Charts - Data visualization chart components
+ * Path: /docs/components/[slug]
+ */
+export const chartsPreview: ComponentPreviewMap = {
+  "funnel-chart": {
+    light: `/preview_images/charts/funnel-chart-light.png`,
+    dark: `/preview_images/charts/funnel-chart-dark.png`,
+  },
+  "waterfall-chart": {
+    light: `/preview_images/charts/waterfall-chart-light.png`,
+    dark: `/preview_images/charts/waterfall-chart-dark.png`,
+  },
+  "bubble-chart": {
+    light: `/preview_images/charts/bubble-chart-light.png`,
+    dark: `/preview_images/charts/bubble-chart-dark.png`,
+  },
+  "stream-chart": {
+    light: `/preview_images/charts/stream-chart-light.png`,
+    dark: `/preview_images/charts/stream-chart-dark.png`,
+  },
+  "bullet-chart": {
+    light: `/preview_images/charts/bullet-chart-light.png`,
+    dark: `/preview_images/charts/bullet-chart-dark.png`,
+  },
+};
+
 // ============================================================================
 // SECTIONS
 // ============================================================================
@@ -1734,6 +1761,7 @@ export const allComponentPreviews: ComponentPreviewMap = {
   ...paginationPreview,
   ...docksPreview,
   ...aiChatInputsPreview,
+  ...chartsPreview,
 };
 
 /** All section previews combined */
@@ -1862,6 +1890,7 @@ export function getCategoryPreviews(category: string): ComponentPreviewMap {
     pagination: paginationPreview,
     docks: docksPreview,
     "ai-chat-inputs": aiChatInputsPreview,
+    charts: chartsPreview,
     // Sections
     faqs: faqsPreview,
     "hero-sections": heroSectionsPreview,

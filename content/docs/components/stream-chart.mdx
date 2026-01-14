@@ -1,0 +1,239 @@
+---
+title: Stream Chart
+date: 2025-01-14
+description: A versatile stream chart component for visualizing continuous data flows over time. Includes multiple variants with wiggle (streamgraph), silhouette (centered), expanded (100% stacked), stacked (normal), interactive, and legend variants.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="stream-chart-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/stream-chart"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the required dependencies</Step>
+
+```bash
+npm install recharts
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="stream-chart" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import {
+  StreamChart,
+  StreamLegendChart,
+  StreamExpandedChart,
+  StreamInteractiveChart,
+  StreamSilhouetteChart,
+  StreamStackedChart,
+} from "@/components/ruixen/stream-chart";
+```
+
+```tsx
+const data = [
+  { name: "Jan", Desktop: 4000, Mobile: 2400, Tablet: 1800 },
+  { name: "Feb", Desktop: 3000, Mobile: 1398, Tablet: 2210 },
+  { name: "Mar", Desktop: 2000, Mobile: 9800, Tablet: 2290 },
+  { name: "Apr", Desktop: 2780, Mobile: 3908, Tablet: 2000 },
+]
+
+const keys = ["Desktop", "Mobile", "Tablet"]
+
+// Default stream chart (wiggle/streamgraph)
+<StreamChart data={data} keys={keys} className="h-[300px]" />
+
+// With legend
+<StreamLegendChart data={data} keys={keys} className="h-[320px]" />
+
+// Expanded (100% stacked)
+<StreamExpandedChart data={data} keys={keys} className="h-[320px]" />
+
+// Interactive with hover effects
+<StreamInteractiveChart data={data} keys={keys} className="h-[300px]" />
+
+// Silhouette (centered symmetric)
+<StreamSilhouetteChart data={data} keys={keys} className="h-[300px]" />
+
+// Stacked (normal stacking)
+<StreamStackedChart data={data} keys={keys} className="h-[320px]" />
+```
+
+## Examples
+
+### Default Stream (Wiggle)
+
+The default stream chart uses the wiggle offset algorithm to create a streamgraph visualization that minimizes weighted change in slope.
+
+```tsx
+<StreamChart
+  data={trafficData}
+  keys={["Desktop", "Mobile", "Tablet"]}
+  className="h-[300px]"
+/>
+```
+
+### With Legend
+
+Display a legend showing each data series' name and color.
+
+```tsx
+<StreamLegendChart
+  data={revenueData}
+  keys={["Products", "Services", "Subscriptions"]}
+  legendPosition="bottom"
+  className="h-[320px]"
+/>
+```
+
+### Expanded (100% Stacked)
+
+Shows proportional data with all series stacking to 100% at each point.
+
+```tsx
+<StreamExpandedChart
+  data={usersData}
+  keys={["Active", "Inactive", "New"]}
+  className="h-[320px]"
+/>
+```
+
+### Interactive
+
+Enable hover effects to highlight individual data series.
+
+```tsx
+<StreamInteractiveChart
+  data={trafficData}
+  keys={["Desktop", "Mobile", "Tablet"]}
+  className="h-[300px]"
+/>
+```
+
+### Silhouette (Centered)
+
+Centers the baseline to create a symmetric visualization around the horizontal axis.
+
+```tsx
+<StreamSilhouetteChart
+  data={salesData}
+  keys={["Online", "Retail", "Wholesale"]}
+  className="h-[300px]"
+/>
+```
+
+### Stacked (Normal)
+
+Traditional stacked area chart with values starting from zero.
+
+```tsx
+<StreamStackedChart
+  data={revenueData}
+  keys={["Products", "Services", "Subscriptions"]}
+  className="h-[320px]"
+/>
+```
+
+### Tooltip Indicators
+
+The component supports three tooltip indicator styles matching shadcn/ui charts:
+
+```tsx
+// Dot indicator (default)
+<StreamChart data={data} keys={keys} tooltipIndicator="dot" />
+
+// Line indicator
+<StreamChart data={data} keys={keys} tooltipIndicator="line" />
+
+// Dashed indicator
+<StreamChart data={data} keys={keys} tooltipIndicator="dashed" />
+```
+
+### Custom Value Formatter
+
+Format values with a custom function:
+
+```tsx
+<StreamChart
+  data={data}
+  keys={keys}
+  valueFormatter={(value) => `$${value.toLocaleString()}`}
+/>
+```
+
+## Props
+
+### StreamChart
+
+| Prop               | Type                                             | Default    | Description                  |
+| ------------------ | ------------------------------------------------ | ---------- | ---------------------------- |
+| `data`             | `StreamDataItem[]`                               | Required   | Array of data items          |
+| `keys`             | `string[]`                                       | Required   | Array of data keys to render |
+| `className`        | `string`                                         | -          | Additional CSS classes       |
+| `showTooltip`      | `boolean`                                        | `true`     | Show tooltip on hover        |
+| `tooltipIndicator` | `"dot" \| "line" \| "dashed"`                    | `"dot"`    | Tooltip indicator style      |
+| `valueFormatter`   | `(value: number) => string`                      | -          | Custom value formatter       |
+| `showXAxis`        | `boolean`                                        | `true`     | Show X axis                  |
+| `showYAxis`        | `boolean`                                        | `false`    | Show Y axis                  |
+| `showGrid`         | `boolean`                                        | `false`    | Show grid lines              |
+| `stackOffset`      | `"expand" \| "none" \| "wiggle" \| "silhouette"` | `"wiggle"` | Stack offset algorithm       |
+
+### StreamLegendChart
+
+| Prop             | Type                | Default    | Description     |
+| ---------------- | ------------------- | ---------- | --------------- |
+| `legendPosition` | `"top" \| "bottom"` | `"bottom"` | Legend position |
+
+Plus all StreamChart props.
+
+### StreamExpandedChart
+
+Same base props as StreamChart. Uses `stackOffset="expand"` for 100% stacked visualization.
+
+### StreamInteractiveChart
+
+Same base props as StreamChart. Adds hover highlighting effect.
+
+### StreamSilhouetteChart
+
+Same base props as StreamChart. Uses `stackOffset="silhouette"` for centered visualization.
+
+### StreamStackedChart
+
+Same base props as StreamChart. Uses `stackOffset="none"` for normal stacking with Y axis visible.
+
+### StreamDataItem
+
+| Property | Type               | Description                    |
+| -------- | ------------------ | ------------------------------ |
+| `name`   | `string`           | Data point name (x-axis label) |
+| `[key]`  | `string \| number` | Dynamic data values by key     |

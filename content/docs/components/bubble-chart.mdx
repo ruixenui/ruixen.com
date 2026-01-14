@@ -1,0 +1,261 @@
+---
+title: Bubble Chart
+date: 2025-01-14
+description: A versatile bubble chart component for visualizing three-dimensional data with position (x, y) and size (z) dimensions. Includes multiple variants with labels, legends, grouping, and interactive features.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="bubble-chart-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/bubble-chart"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the required dependencies</Step>
+
+```bash
+npm install recharts
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="bubble-chart" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import {
+  BubbleChart,
+  BubbleLabelChart,
+  BubbleLegendChart,
+  BubbleGroupedChart,
+  BubbleInteractiveChart,
+  BubbleSizeLegendChart,
+} from "@/components/ruixen/bubble-chart";
+```
+
+```tsx
+const data = [
+  { name: "Prod A", x: 100, y: 200, z: 400 },
+  { name: "Prod B", x: 120, y: 100, z: 260 },
+  { name: "Prod C", x: 170, y: 300, z: 400 },
+  { name: "Prod D", x: 140, y: 250, z: 280 },
+]
+
+// Default bubble chart
+<BubbleChart data={data} xLabel="Units" yLabel="Revenue" zLabel="Share" className="h-[300px]" />
+
+// With labels inside bubbles
+<BubbleLabelChart data={data} xLabel="Units" yLabel="Revenue" zLabel="Share" className="h-[300px]" />
+
+// With legend
+<BubbleLegendChart data={data} xLabel="Units" yLabel="Revenue" zLabel="Share" className="h-[320px]" />
+
+// Grouped by category
+<BubbleGroupedChart data={categoryData} xLabel="Growth" yLabel="Pop" zLabel="Revenue" className="h-[320px]" />
+
+// Interactive with hover effects
+<BubbleInteractiveChart data={data} xLabel="Week" yLabel="Sales" zLabel="Customers" className="h-[300px]" />
+
+// With size legend
+<BubbleSizeLegendChart data={data} xLabel="Growth" yLabel="Revenue" zLabel="Employees" className="h-[320px]" />
+```
+
+## Examples
+
+### Default Bubble
+
+The default bubble chart displays data points as circles with size proportional to the z value.
+
+```tsx
+<BubbleChart
+  data={salesData}
+  xLabel="Units"
+  yLabel="Revenue"
+  zLabel="Market Share"
+  className="h-[300px]"
+/>
+```
+
+### With Labels
+
+Display labels inside each bubble for easy identification.
+
+```tsx
+<BubbleLabelChart
+  data={performanceData}
+  xLabel="Efficiency"
+  yLabel="Quality"
+  zLabel="Team Size"
+  className="h-[300px]"
+/>
+```
+
+### With Legend
+
+Add a legend showing each data point's name and color.
+
+```tsx
+<BubbleLegendChart
+  data={marketData}
+  xLabel="Growth %"
+  yLabel="Revenue"
+  zLabel="Employees"
+  legendPosition="bottom"
+  className="h-[320px]"
+/>
+```
+
+### Grouped by Category
+
+Group bubbles by category with different colors per group.
+
+```tsx
+const categoryData = [
+  { name: "NYC", x: 40, y: 8500, z: 850, category: "East" },
+  { name: "Boston", x: 35, y: 4200, z: 420, category: "East" },
+  { name: "LA", x: 55, y: 7200, z: 720, category: "West" },
+  { name: "Seattle", x: 48, y: 4800, z: 480, category: "West" },
+]
+
+<BubbleGroupedChart
+  data={categoryData}
+  xLabel="Growth %"
+  yLabel="Population"
+  zLabel="Revenue"
+  className="h-[320px]"
+/>
+```
+
+### Interactive
+
+Enable hover effects to highlight individual bubbles.
+
+```tsx
+<BubbleInteractiveChart
+  data={quarterlyData}
+  xLabel="Week"
+  yLabel="Sales"
+  zLabel="Customers"
+  className="h-[300px]"
+/>
+```
+
+### Size Legend
+
+Display a size legend showing the relationship between bubble size and z values.
+
+```tsx
+<BubbleSizeLegendChart
+  data={marketData}
+  xLabel="Growth %"
+  yLabel="Revenue"
+  zLabel="Employees"
+  className="h-[320px]"
+/>
+```
+
+### Tooltip Indicators
+
+The component supports three tooltip indicator styles matching shadcn/ui charts:
+
+```tsx
+// Dot indicator (default)
+<BubbleChart data={data} tooltipIndicator="dot" />
+
+// Line indicator
+<BubbleChart data={data} tooltipIndicator="line" />
+
+// Dashed indicator
+<BubbleChart data={data} tooltipIndicator="dashed" />
+```
+
+### Custom Value Formatter
+
+Format values with a custom function:
+
+```tsx
+<BubbleChart
+  data={data}
+  valueFormatter={(value) => `$${value.toLocaleString()}`}
+/>
+```
+
+## Props
+
+### BubbleChart
+
+| Prop               | Type                          | Default  | Description                             |
+| ------------------ | ----------------------------- | -------- | --------------------------------------- |
+| `data`             | `BubbleDataItem[]`            | Required | Array of data items with x, y, z values |
+| `className`        | `string`                      | -        | Additional CSS classes                  |
+| `showTooltip`      | `boolean`                     | `true`   | Show tooltip on hover                   |
+| `tooltipIndicator` | `"dot" \| "line" \| "dashed"` | `"dot"`  | Tooltip indicator style                 |
+| `xLabel`           | `string`                      | `"X"`    | Label for X axis values                 |
+| `yLabel`           | `string`                      | `"Y"`    | Label for Y axis values                 |
+| `zLabel`           | `string`                      | `"Size"` | Label for Z (size) values               |
+| `valueFormatter`   | `(value: number) => string`   | -        | Custom value formatter                  |
+| `showXAxis`        | `boolean`                     | `true`   | Show X axis                             |
+| `showYAxis`        | `boolean`                     | `true`   | Show Y axis                             |
+| `showGrid`         | `boolean`                     | `true`   | Show grid lines                         |
+| `minBubbleSize`    | `number`                      | `60`     | Minimum bubble size (area in pixels)    |
+| `maxBubbleSize`    | `number`                      | `400`    | Maximum bubble size (area in pixels)    |
+
+### BubbleLabelChart
+
+Same props as BubbleChart. Displays labels inside each bubble.
+
+### BubbleLegendChart
+
+| Prop             | Type                | Default    | Description     |
+| ---------------- | ------------------- | ---------- | --------------- |
+| `legendPosition` | `"top" \| "bottom"` | `"bottom"` | Legend position |
+
+Plus all BubbleChartBaseProps.
+
+### BubbleGroupedChart
+
+Same base props. Groups bubbles by the `category` field in data items.
+
+### BubbleInteractiveChart
+
+Same base props. Adds hover highlighting effect.
+
+### BubbleSizeLegendChart
+
+Same base props. Displays a size legend showing min, mid, and max bubble sizes.
+
+### BubbleDataItem
+
+| Property   | Type     | Description                            |
+| ---------- | -------- | -------------------------------------- |
+| `name`     | `string` | Data point name (displayed in tooltip) |
+| `x`        | `number` | X-axis value (horizontal position)     |
+| `y`        | `number` | Y-axis value (vertical position)       |
+| `z`        | `number` | Z value (determines bubble size)       |
+| `category` | `string` | Optional category for grouping         |
