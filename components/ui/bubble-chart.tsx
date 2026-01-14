@@ -317,55 +317,61 @@ function BubbleLabelChart({
   const maxZ = Math.max(...zValues);
 
   // Custom shape that renders bubble with label inside
-  const createBubbleShape = (itemIndex: number) => (props: any) => {
-    const { cx, cy, payload, fill } = props;
-    const isHovered = hoveredIndex === itemIndex;
-    const isOtherHovered = hoveredIndex !== null && hoveredIndex !== itemIndex;
+  const createBubbleShape = (itemIndex: number) => {
+    const BubbleShape = (props: any) => {
+      const { cx, cy, payload, fill } = props;
+      const isHovered = hoveredIndex === itemIndex;
+      const isOtherHovered =
+        hoveredIndex !== null && hoveredIndex !== itemIndex;
 
-    // Scale z value to radius
-    const normalizedZ =
-      maxZ === minZ ? 0.5 : (payload.z - minZ) / (maxZ - minZ);
-    const area = minBubbleSize + normalizedZ * (maxBubbleSize - minBubbleSize);
-    const radius = Math.sqrt(area / Math.PI);
+      // Scale z value to radius
+      const normalizedZ =
+        maxZ === minZ ? 0.5 : (payload.z - minZ) / (maxZ - minZ);
+      const area =
+        minBubbleSize + normalizedZ * (maxBubbleSize - minBubbleSize);
+      const radius = Math.sqrt(area / Math.PI);
 
-    return (
-      <g
-        style={{
-          transition: "opacity 150ms, transform 150ms",
-          opacity: isOtherHovered ? 0.4 : 1,
-          cursor: "pointer",
-        }}
-        onMouseEnter={() => setHoveredIndex(itemIndex)}
-        onMouseLeave={() => setHoveredIndex(null)}
-      >
-        <circle
-          cx={cx}
-          cy={cy}
-          r={radius}
-          fill={fill}
-          fillOpacity={isHovered ? 1 : 0.8}
-          stroke={isHovered ? fill : "none"}
-          strokeWidth={isHovered ? 2 : 0}
+      return (
+        <g
           style={{
-            filter: isHovered
-              ? "drop-shadow(0 4px 8px rgba(0,0,0,0.3))"
-              : "none",
+            transition: "opacity 150ms, transform 150ms",
+            opacity: isOtherHovered ? 0.4 : 1,
+            cursor: "pointer",
           }}
-        />
-        <text
-          x={cx}
-          y={cy}
-          textAnchor="middle"
-          dominantBaseline="central"
-          fill="#ffffff"
-          fontSize={11}
-          fontWeight={600}
-          style={{ pointerEvents: "none" }}
+          onMouseEnter={() => setHoveredIndex(itemIndex)}
+          onMouseLeave={() => setHoveredIndex(null)}
         >
-          {payload.name}
-        </text>
-      </g>
-    );
+          <circle
+            cx={cx}
+            cy={cy}
+            r={radius}
+            fill={fill}
+            fillOpacity={isHovered ? 1 : 0.8}
+            stroke={isHovered ? fill : "none"}
+            strokeWidth={isHovered ? 2 : 0}
+            style={{
+              filter: isHovered
+                ? "drop-shadow(0 4px 8px rgba(0,0,0,0.3))"
+                : "none",
+            }}
+          />
+          <text
+            x={cx}
+            y={cy}
+            textAnchor="middle"
+            dominantBaseline="central"
+            fill="#ffffff"
+            fontSize={11}
+            fontWeight={600}
+            style={{ pointerEvents: "none" }}
+          >
+            {payload.name}
+          </text>
+        </g>
+      );
+    };
+    BubbleShape.displayName = `BubbleShape-${itemIndex}`;
+    return BubbleShape;
   };
 
   // Sort data so hovered item renders last (on top)
