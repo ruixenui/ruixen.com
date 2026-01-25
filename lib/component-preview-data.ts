@@ -1429,6 +1429,33 @@ export const paginationPreview: ComponentPreviewMap = {
 };
 
 /**
+ * Stepper - Step indicator and progress components
+ * Path: /docs/components/[slug]
+ */
+export const stepperPreview: ComponentPreviewMap = {
+  "step-indicator": {
+    light: `/preview_images/steppers/step-indicator-light.png`,
+    dark: `/preview_images/steppers/step-indicator-dark.png`,
+  },
+  "wizard-stepper": {
+    light: `/preview_images/steppers/wizard-stepper-light.png`,
+    dark: `/preview_images/steppers/wizard-stepper-dark.png`,
+  },
+  "progress-tracker": {
+    light: `/preview_images/steppers/progress-tracker-light.png`,
+    dark: `/preview_images/steppers/progress-tracker-dark.png`,
+  },
+  "milestone-stepper": {
+    light: `/preview_images/steppers/milestone-stepper-light.png`,
+    dark: `/preview_images/steppers/milestone-stepper-dark.png`,
+  },
+  "nav-stepper": {
+    light: `/preview_images/steppers/nav-stepper-light.png`,
+    dark: `/preview_images/steppers/nav-stepper-dark.png`,
+  },
+};
+
+/**
  * Docks - macOS-style dock components
  * Path: /docs/components/[slug]
  */
@@ -1759,6 +1786,7 @@ export const allComponentPreviews: ComponentPreviewMap = {
   ...backgroundsPreview,
   ...tabsPreview,
   ...paginationPreview,
+  ...stepperPreview,
   ...docksPreview,
   ...aiChatInputsPreview,
   ...chartsPreview,

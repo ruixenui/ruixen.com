@@ -1,0 +1,158 @@
+---
+title: Nav Stepper
+date: 2025-01-22
+description: A navigable stepper with previous/next buttons. Supports numbered, dot, and bar indicator variants with inline or bottom navigation positioning.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="nav-stepper-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/nav-stepper"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the required dependencies</Step>
+
+```bash
+npm install lucide-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="nav-stepper" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { NavStepper, NavStepData } from "@/components/ruixen/nav-stepper";
+```
+
+```tsx
+const steps: NavStepData[] = [
+  { id: 1, label: "Details" },
+  { id: 2, label: "Address" },
+  { id: 3, label: "Payment" },
+  { id: 4, label: "Review" },
+];
+
+<NavStepper
+  steps={steps}
+  currentStep={1}
+  onStepChange={setStep}
+  variant="numbered"
+/>;
+```
+
+## Examples
+
+### Numbered with Inline Arrows
+
+```tsx
+<NavStepper
+  steps={steps}
+  currentStep={1}
+  variant="numbered"
+  navPosition="inline"
+/>
+```
+
+### Dot Indicators
+
+```tsx
+<NavStepper steps={steps} currentStep={2} variant="dots" navPosition="inline" />
+```
+
+### Bar Indicators
+
+```tsx
+<NavStepper steps={steps} currentStep={1} variant="bars" navPosition="inline" />
+```
+
+### Bottom Navigation
+
+```tsx
+<NavStepper
+  steps={steps}
+  currentStep={2}
+  variant="numbered"
+  navPosition="bottom"
+/>
+```
+
+### With Loading State
+
+```tsx
+<NavStepper steps={steps} currentStep={1} loading={isLoading} />
+```
+
+### Without Navigation Buttons
+
+```tsx
+<NavStepper steps={steps} currentStep={1} showNavButtons={false} />
+```
+
+## Props
+
+### NavStepper
+
+| Prop             | Type                             | Default      | Description                |
+| ---------------- | -------------------------------- | ------------ | -------------------------- |
+| `steps`          | `NavStepData[]`                  | Required     | Array of step definitions  |
+| `defaultStep`    | `number`                         | `0`          | Default step index         |
+| `currentStep`    | `number`                         | -            | Controlled step index      |
+| `onStepChange`   | `(step: number) => void`         | -            | Callback when step changes |
+| `loading`        | `boolean`                        | `false`      | Show loading state         |
+| `showNavButtons` | `boolean`                        | `true`       | Show prev/next buttons     |
+| `navPosition`    | `"inline" \| "bottom"`           | `"inline"`   | Navigation button position |
+| `variant`        | `"numbered" \| "dots" \| "bars"` | `"numbered"` | Indicator style variant    |
+
+### NavStepData
+
+| Property | Type               | Description       |
+| -------- | ------------------ | ----------------- |
+| `id`     | `string \| number` | Unique identifier |
+| `label`  | `string`           | Step label        |
+
+## Hooks
+
+### useNavStepper
+
+Access navigation context from child components.
+
+```tsx
+const {
+  currentStep,
+  totalSteps,
+  goToStep,
+  goNext,
+  goPrev,
+  canGoNext,
+  canGoPrev,
+  isLoading,
+} = useNavStepper();
+```

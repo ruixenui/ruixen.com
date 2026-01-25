@@ -2,6 +2,81 @@ import { type Registry } from "shadcn/registry";
 
 export const ui: Registry["items"] = [
   {
+    name: "step-indicator",
+    type: "registry:ui",
+    title: "Step Indicator",
+    description:
+      "A clean step indicator component showing numbered circles with checkmarks for completed steps. Supports horizontal and vertical orientations.",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/step-indicator.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/step-indicator.tsx",
+      },
+    ],
+  },
+  {
+    name: "wizard-stepper",
+    type: "registry:ui",
+    title: "Wizard Stepper",
+    description:
+      "A full-featured wizard stepper with titles and descriptions. Perfect for multi-step forms, checkout flows, and onboarding sequences.",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/wizard-stepper.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/wizard-stepper.tsx",
+      },
+    ],
+  },
+  {
+    name: "progress-tracker",
+    type: "registry:ui",
+    title: "Progress Tracker",
+    description:
+      "A progress tracking component with three variants: segmented bars, continuous progress bar, and dot indicators. Shows step X of Y labels.",
+    dependencies: [],
+    files: [
+      {
+        path: "registry/ruixenui/progress-tracker.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/progress-tracker.tsx",
+      },
+    ],
+  },
+  {
+    name: "milestone-stepper",
+    type: "registry:ui",
+    title: "Milestone Stepper",
+    description:
+      "A vertical timeline-style stepper for showing milestones, order tracking, or project phases. Supports custom icons and multiple variants.",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/milestone-stepper.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/milestone-stepper.tsx",
+      },
+    ],
+  },
+  {
+    name: "nav-stepper",
+    type: "registry:ui",
+    title: "Nav Stepper",
+    description:
+      "A navigable stepper with previous/next buttons. Supports numbered, dot, and bar indicator variants with inline or bottom navigation positioning.",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/nav-stepper.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/nav-stepper.tsx",
+      },
+    ],
+  },
+  {
     name: "funnel-chart",
     type: "registry:ui",
     title: "Funnel Chart",

@@ -1,0 +1,146 @@
+---
+title: Milestone Stepper
+date: 2025-01-22
+description: A vertical timeline-style stepper for showing milestones, order tracking, or project phases. Supports custom icons and multiple variants.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="milestone-stepper-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/milestone-stepper"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the required dependencies</Step>
+
+```bash
+npm install lucide-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="milestone-stepper" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import {
+  MilestoneStepper,
+  MilestoneData,
+} from "@/components/ruixen/milestone-stepper";
+```
+
+```tsx
+const milestones: MilestoneData[] = [
+  {
+    id: 1,
+    title: "Order Placed",
+    description: "Your order has been confirmed",
+  },
+  { id: 2, title: "Shipped", description: "Package handed to courier" },
+  { id: 3, title: "In Transit", description: "On the way to destination" },
+  { id: 4, title: "Delivered", description: "Package delivered" },
+];
+
+<MilestoneStepper milestones={milestones} currentMilestone={2} />;
+```
+
+## Examples
+
+### Order Tracking
+
+```tsx
+const milestones = [
+  { id: 1, title: "Order Placed", description: "Confirmed", date: "Jan 15" },
+  { id: 2, title: "Shipped", description: "Handed to courier", date: "Jan 17" },
+  { id: 3, title: "In Transit", description: "On the way", date: "Jan 18" },
+  { id: 4, title: "Delivered", description: "Complete", date: "Expected" },
+];
+
+<MilestoneStepper
+  milestones={milestones}
+  currentMilestone={2}
+  variant="detailed"
+/>;
+```
+
+### With Custom Icons
+
+```tsx
+import { Package, Truck, Home, CheckCircle } from "lucide-react";
+
+const milestones = [
+  { id: 1, title: "Confirmed", icon: <CheckCircle className="size-4" /> },
+  { id: 2, title: "Packed", icon: <Package className="size-4" /> },
+  { id: 3, title: "Shipped", icon: <Truck className="size-4" /> },
+  { id: 4, title: "Delivered", icon: <Home className="size-4" /> },
+];
+
+<MilestoneStepper milestones={milestones} currentMilestone={1} />;
+```
+
+### Compact Variant
+
+```tsx
+<MilestoneStepper
+  milestones={milestones}
+  currentMilestone={2}
+  variant="compact"
+/>
+```
+
+### Dashed Line Style
+
+```tsx
+<MilestoneStepper
+  milestones={milestones}
+  currentMilestone={1}
+  lineStyle="dashed"
+/>
+```
+
+## Props
+
+### MilestoneStepper
+
+| Prop               | Type                                   | Default     | Description             |
+| ------------------ | -------------------------------------- | ----------- | ----------------------- |
+| `milestones`       | `MilestoneData[]`                      | Required    | Array of milestones     |
+| `currentMilestone` | `number`                               | `0`         | Current milestone index |
+| `variant`          | `"default" \| "compact" \| "detailed"` | `"default"` | Visual style variant    |
+| `lineStyle`        | `"solid" \| "dashed"`                  | `"solid"`   | Connector line style    |
+
+### MilestoneData
+
+| Property      | Type               | Description          |
+| ------------- | ------------------ | -------------------- |
+| `id`          | `string \| number` | Unique identifier    |
+| `title`       | `string`           | Milestone title      |
+| `description` | `string`           | Optional description |
+| `date`        | `string`           | Optional date/time   |
+| `icon`        | `ReactNode`        | Optional custom icon |

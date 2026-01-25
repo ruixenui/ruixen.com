@@ -2,6 +2,81 @@ import { type Registry } from "shadcn/registry";
 
 export const examples: Registry["items"] = [
   {
+    name: "step-indicator-demo",
+    type: "registry:example",
+    title: "Step Indicator Demo",
+    description:
+      "Example showing step indicators with numbered circles and checkmarks in horizontal and vertical layouts.",
+    registryDependencies: ["https://ruixen.com/r/step-indicator"],
+    files: [
+      {
+        path: "registry/example/step-indicator-demo.tsx",
+        type: "registry:example",
+        target: "components/step-indicator-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "wizard-stepper-demo",
+    type: "registry:example",
+    title: "Wizard Stepper Demo",
+    description:
+      "Example showing wizard steppers with titles and descriptions for multi-step forms and checkout flows.",
+    registryDependencies: ["https://ruixen.com/r/wizard-stepper"],
+    files: [
+      {
+        path: "registry/example/wizard-stepper-demo.tsx",
+        type: "registry:example",
+        target: "components/wizard-stepper-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "progress-tracker-demo",
+    type: "registry:example",
+    title: "Progress Tracker Demo",
+    description:
+      "Example showing progress trackers with segmented bars, continuous progress bar, and dot indicator variants.",
+    registryDependencies: ["https://ruixen.com/r/progress-tracker"],
+    files: [
+      {
+        path: "registry/example/progress-tracker-demo.tsx",
+        type: "registry:example",
+        target: "components/progress-tracker-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "milestone-stepper-demo",
+    type: "registry:example",
+    title: "Milestone Stepper Demo",
+    description:
+      "Example showing vertical timeline steppers for order tracking and project milestones.",
+    registryDependencies: ["https://ruixen.com/r/milestone-stepper"],
+    files: [
+      {
+        path: "registry/example/milestone-stepper-demo.tsx",
+        type: "registry:example",
+        target: "components/milestone-stepper-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "nav-stepper-demo",
+    type: "registry:example",
+    title: "Nav Stepper Demo",
+    description:
+      "Example showing navigable steppers with previous/next buttons and various indicator styles.",
+    registryDependencies: ["https://ruixen.com/r/nav-stepper"],
+    files: [
+      {
+        path: "registry/example/nav-stepper-demo.tsx",
+        type: "registry:example",
+        target: "components/nav-stepper-demo.tsx",
+      },
+    ],
+  },
+  {
     name: "funnel-chart-demo",
     type: "registry:example",
     title: "Funnel Chart Demo",
