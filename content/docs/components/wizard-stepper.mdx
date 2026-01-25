@@ -1,0 +1,126 @@
+---
+title: Wizard Stepper
+date: 2025-01-22
+description: A full-featured wizard stepper with titles and descriptions. Perfect for multi-step forms, checkout flows, and onboarding sequences.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="wizard-stepper-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/wizard-stepper"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the required dependencies</Step>
+
+```bash
+npm install lucide-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="wizard-stepper" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import {
+  WizardStepper,
+  WizardStepData,
+} from "@/components/ruixen/wizard-stepper";
+```
+
+```tsx
+const steps: WizardStepData[] = [
+  { id: 1, title: "Account", description: "Create your account" },
+  { id: 2, title: "Profile", description: "Set up your profile" },
+  { id: 3, title: "Preferences", description: "Customize settings" },
+  { id: 4, title: "Complete", description: "Review and finish" },
+];
+
+<WizardStepper steps={steps} currentStep={1} onStepChange={setStep} />;
+```
+
+## Examples
+
+### With Descriptions
+
+```tsx
+const steps = [
+  { id: 1, title: "Account", description: "Create your account" },
+  { id: 2, title: "Profile", description: "Set up your profile" },
+  { id: 3, title: "Complete", description: "Review and finish" },
+];
+
+<WizardStepper steps={steps} currentStep={1} />;
+```
+
+### Vertical Layout
+
+```tsx
+<WizardStepper steps={steps} currentStep={2} orientation="vertical" />
+```
+
+### With Loading State
+
+```tsx
+<WizardStepper steps={steps} currentStep={1} loading={isLoading} />
+```
+
+### Simple Labels Only
+
+```tsx
+const steps = [
+  { id: 1, title: "Welcome" },
+  { id: 2, title: "Setup" },
+  { id: 3, title: "Done" },
+];
+
+<WizardStepper steps={steps} currentStep={0} />;
+```
+
+## Props
+
+### WizardStepper
+
+| Prop           | Type                         | Default        | Description                |
+| -------------- | ---------------------------- | -------------- | -------------------------- |
+| `steps`        | `WizardStepData[]`           | Required       | Array of step definitions  |
+| `defaultStep`  | `number`                     | `0`            | Default active step index  |
+| `currentStep`  | `number`                     | -              | Controlled active step     |
+| `onStepChange` | `(step: number) => void`     | -              | Callback when step changes |
+| `loading`      | `boolean`                    | `false`        | Show loading spinner       |
+| `orientation`  | `"horizontal" \| "vertical"` | `"horizontal"` | Layout orientation         |
+
+### WizardStepData
+
+| Property      | Type               | Description          |
+| ------------- | ------------------ | -------------------- |
+| `id`          | `string \| number` | Unique identifier    |
+| `title`       | `string`           | Step title           |
+| `description` | `string`           | Optional description |

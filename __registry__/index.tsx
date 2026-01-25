@@ -15,6 +15,126 @@ export const Index: Record<string, any> = {
     component: null,
     meta: undefined,
   },
+  "step-indicator": {
+    name: "step-indicator",
+    description:
+      "A clean step indicator component showing numbered circles with checkmarks for completed steps. Supports horizontal and vertical orientations.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/step-indicator.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/step-indicator.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/step-indicator.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "wizard-stepper": {
+    name: "wizard-stepper",
+    description:
+      "A full-featured wizard stepper with titles and descriptions. Perfect for multi-step forms, checkout flows, and onboarding sequences.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/wizard-stepper.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/wizard-stepper.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/wizard-stepper.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "progress-tracker": {
+    name: "progress-tracker",
+    description:
+      "A progress tracking component with three variants: segmented bars, continuous progress bar, and dot indicators. Shows step X of Y labels.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/progress-tracker.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/progress-tracker.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/progress-tracker.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "milestone-stepper": {
+    name: "milestone-stepper",
+    description:
+      "A vertical timeline-style stepper for showing milestones, order tracking, or project phases. Supports custom icons and multiple variants.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/milestone-stepper.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/milestone-stepper.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/milestone-stepper.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "nav-stepper": {
+    name: "nav-stepper",
+    description:
+      "A navigable stepper with previous/next buttons. Supports numbered, dot, and bar indicator variants with inline or bottom navigation positioning.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/nav-stepper.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/nav-stepper.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/nav-stepper.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "funnel-chart": {
     name: "funnel-chart",
     description:
@@ -8335,6 +8455,126 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/ruixenui/checkbox-tree.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "step-indicator-demo": {
+    name: "step-indicator-demo",
+    description:
+      "Example showing step indicators with numbered circles and checkmarks in horizontal and vertical layouts.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/step-indicator"],
+    files: [
+      {
+        path: "registry/example/step-indicator-demo.tsx",
+        type: "registry:example",
+        target: "components/step-indicator-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/step-indicator-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "wizard-stepper-demo": {
+    name: "wizard-stepper-demo",
+    description:
+      "Example showing wizard steppers with titles and descriptions for multi-step forms and checkout flows.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/wizard-stepper"],
+    files: [
+      {
+        path: "registry/example/wizard-stepper-demo.tsx",
+        type: "registry:example",
+        target: "components/wizard-stepper-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/wizard-stepper-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "progress-tracker-demo": {
+    name: "progress-tracker-demo",
+    description:
+      "Example showing progress trackers with segmented bars, continuous progress bar, and dot indicator variants.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/progress-tracker"],
+    files: [
+      {
+        path: "registry/example/progress-tracker-demo.tsx",
+        type: "registry:example",
+        target: "components/progress-tracker-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/progress-tracker-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "milestone-stepper-demo": {
+    name: "milestone-stepper-demo",
+    description:
+      "Example showing vertical timeline steppers for order tracking and project milestones.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/milestone-stepper"],
+    files: [
+      {
+        path: "registry/example/milestone-stepper-demo.tsx",
+        type: "registry:example",
+        target: "components/milestone-stepper-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/milestone-stepper-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "nav-stepper-demo": {
+    name: "nav-stepper-demo",
+    description:
+      "Example showing navigable steppers with previous/next buttons and various indicator styles.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/nav-stepper"],
+    files: [
+      {
+        path: "registry/example/nav-stepper-demo.tsx",
+        type: "registry:example",
+        target: "components/nav-stepper-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/nav-stepper-demo.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>
