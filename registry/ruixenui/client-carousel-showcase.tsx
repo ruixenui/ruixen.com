@@ -119,7 +119,7 @@ export const ClientCarouselShowcase: React.FC<ClientCarouselShowcaseProps> = ({
                 className="rounded-full h-10 w-10 block dark:hidden animate-spin-slow"
               />
               <Image
-                src="/ruixen_light.png"
+                src="/ruixen-ui-nw-light.png"
                 alt="Ruixen Logo"
                 width={40}
                 height={40}

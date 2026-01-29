@@ -28,7 +28,7 @@ interface FooterEnterpriseProps {
 export const FooterEnterprise: React.FC<FooterEnterpriseProps> = ({
   logo = {
     srcDark: "/ruixen_dark.png",
-    srcLight: "/ruixen_light.png",
+    srcLight: "/ruixen-ui-nw-light.png",
     alt: "Ruixen Logo",
   },
   description = "Build better UIs faster with Ruixen – the AI-enhanced component library for modern teams.",

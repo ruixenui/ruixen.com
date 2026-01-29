@@ -109,7 +109,7 @@ export default function FeatureGridSection({
                   className="rounded-full block dark:hidden"
                 />
                 <Image
-                  src={feature.iconDark || "/ruixen_light.png"}
+                  src={feature.iconDark || "/ruixen-ui-nw-light.png"}
                   alt={feature.title}
                   width={80}
                   height={80}

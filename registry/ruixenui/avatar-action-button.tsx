@@ -32,7 +32,7 @@ const sizeConfig = {
 };
 
 const AVATAR_URL =
-  "https://www.ruixen.com/_next/image?url=%2Fruixen_light.png&w=96&q=75";
+  "https://www.ruixen.com/_next/image?url=%2Fruixen-ui-nw-light.png&w=96&q=75";
 
 const AvatarActionButton: React.FC<AvatarActionButtonProps> = ({
   label,

@@ -583,3 +583,45 @@
   0%, 100% { transform: rotateX(10deg) rotateY(0deg); }
   50% { transform: rotateX(-10deg) rotateY(10deg); }
 }
+
+@property --pro-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes pro-border-spin {
+  to {
+    --pro-angle: 360deg;
+  }
+}
+
+@keyframes pro-shine {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes pro-text-shine {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
