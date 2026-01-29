@@ -85,17 +85,27 @@ export function MainNav() {
         {docsConfig.mainNav.map((item) => {
           const hasDropdown = item.items && item.items.length > 0;
 
+          // For dropdown menus, check if any sub-item matches the current path
+          const isDropdownActive = hasDropdown
+            ? item.items!.some((subItem) => pathname?.startsWith(subItem.href!))
+            : false;
+
+          // For regular items, check if path starts with href (but handle "/" specially)
+          const isActive = hasDropdown
+            ? isDropdownActive
+            : item.href === "/"
+              ? pathname === "/"
+              : pathname?.startsWith(item.href!);
+
           if (hasDropdown) {
             return (
               <div key={item.href} className="relative group">
                 <Link
-                  href={item.href!}
+                  href={item.items![0].href!}
                   aria-label={item.title}
                   className={cn(
                     "flex items-center justify-center transition-colors hover:text-foreground/80",
-                    pathname?.startsWith(item.href!)
-                      ? "text-foreground"
-                      : "text-foreground/60",
+                    isActive ? "text-foreground" : "text-foreground/60",
                   )}
                 >
                   <span className="shrink-0">{item.title}</span>
@@ -134,6 +144,30 @@ export function MainNav() {
             );
           }
 
+          if (item.title === "Pro") {
+            return (
+              <Link
+                key={item.href}
+                href={item.href!}
+                aria-label={item.title}
+                target="_blank"
+                className="flex items-center justify-center font-semibold"
+              >
+                <span
+                  className="shrink-0 bg-clip-text text-transparent"
+                  style={{
+                    backgroundImage:
+                      "linear-gradient(110deg, #3b82f6 35%, #e0e7ff 50%, #3b82f6 65%)",
+                    backgroundSize: "200% 100%",
+                    animation: "pro-text-shine 3s ease-in-out infinite",
+                  }}
+                >
+                  {item.title}
+                </span>
+              </Link>
+            );
+          }
+
           return (
             <Link
               key={item.href}
@@ -142,9 +176,7 @@ export function MainNav() {
               target={item.external ? "_blank" : undefined}
               className={cn(
                 "flex items-center justify-center transition-colors hover:text-foreground/80",
-                pathname?.startsWith(item.href!)
-                  ? "text-foreground"
-                  : "text-foreground/60",
+                isActive ? "text-foreground" : "text-foreground/60",
               )}
             >
               <span className="shrink-0">{item.title}</span>

@@ -39,9 +39,9 @@ export default function Home() {
     },
     {
       id: "future",
-      question: "Is a Pro version or premium components planned?",
+      question: "Is there a Pro version available?",
       answer:
-        "Yes. A Pro version with advanced templates, layouts, and design systems is planned for the future — but the core Ruixen UI library will always remain free. We'll also keep adding more open-source components and content regularly.",
+        "Yes! Ruixen Pro is now live at pro.ruixen.com with 50+ premium templates, advanced components, and lifetime updates. The core Ruixen UI library will always remain free and open-source.",
     },
   ];
 

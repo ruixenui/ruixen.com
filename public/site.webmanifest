@@ -3,12 +3,12 @@
   "short_name": "Ruixen UI",
   "icons": [
     {
-      "src": "/android-chrome-192x192.png",
+      "src": "/ruixen-ui-nw-light.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/android-chrome-512x512.png",
+      "src": "/ruixen-ui-nw-light.png",
       "sizes": "512x512",
       "type": "image/png"
     }

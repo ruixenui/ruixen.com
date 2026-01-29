@@ -134,8 +134,8 @@ function TemplateCard({ template }: { template: Template }) {
               </Button>
             ) : (
               <Button asChild size="lg" variant="default" className="gap-2">
-                <Link href="https://ruixen.com/#pricing" target="_blank">
-                  Buy Now
+                <Link href="https://pro.ruixen.com" target="_blank">
+                  Get Pro
                   <ArrowRightIcon className="size-4" />
                 </Link>
               </Button>
@@ -228,21 +228,46 @@ export default function TemplatesPage() {
           ))}
         </div>
 
-        {/* Coming Soon Section */}
-        <div className="text-center space-y-4 py-12 border-t">
-          <h2 className="text-2xl font-bold">More Templates Coming Soon</h2>
-          <p className="text-muted-foreground max-w-md mx-auto">
-            We&apos;re working on more amazing templates. Stay tuned for
-            updates!
-          </p>
-          <Link
-            href="https://github.com/ruixenui/ruixen.com"
-            target="_blank"
-            className={cn(buttonVariants({ variant: "outline" }), "gap-2")}
-          >
-            Follow on GitHub
-            <GitHubLogoIcon className="size-4" />
-          </Link>
+        {/* Pro Templates CTA */}
+        <div className="relative overflow-hidden rounded-2xl bg-zinc-900 p-8 md:p-12 text-center text-white dark:bg-zinc-950">
+          <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-5" />
+          <div className="absolute -top-24 -right-24 size-64 rounded-full bg-emerald-500/10 blur-3xl" />
+          <div className="relative space-y-4">
+            <Badge className="bg-emerald-500/20 text-emerald-400 hover:bg-emerald-500/30 border-0">
+              50+ Premium Templates
+            </Badge>
+            <h2 className="text-2xl md:text-3xl font-bold">
+              Unlock All Pro Templates
+            </h2>
+            <p className="text-zinc-400 max-w-md mx-auto">
+              Get access to our complete collection of premium templates,
+              components, and lifetime updates with Ruixen Pro.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
+              <Link
+                href="https://pro.ruixen.com"
+                target="_blank"
+                className={cn(
+                  buttonVariants({ size: "lg" }),
+                  "bg-white text-zinc-900 hover:bg-zinc-100 gap-2",
+                )}
+              >
+                Explore Ruixen Pro
+                <ArrowRightIcon className="size-4" />
+              </Link>
+              <Link
+                href="https://github.com/ruixenui/ruixen.com"
+                target="_blank"
+                className={cn(
+                  buttonVariants({ variant: "outline", size: "lg" }),
+                  "border-zinc-700 text-zinc-300 hover:bg-zinc-800 gap-2",
+                )}
+              >
+                Star on GitHub
+                <GitHubLogoIcon className="size-4" />
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </div>

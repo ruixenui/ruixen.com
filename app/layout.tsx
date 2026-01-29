@@ -87,7 +87,7 @@ export default function RootLayout({
               {children}
               <Toaster />
               <Analytics />
-              <GitHubStarPopup />
+              {/* <GitHubStarPopup /> */}
             </TooltipProvider>
           </ThemeProvider>
         </JotaiProvider>

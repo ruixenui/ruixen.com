@@ -68,7 +68,7 @@ export const FooterExtended: React.FC<FooterExtendedProps> = ({
               className="rounded-xl dark:hidden"
             />
             <Image
-              src="/ruixen_light.png"
+              src="/ruixen-ui-nw-light.png"
               alt={logo.alt}
               width={60}
               height={60}

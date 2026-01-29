@@ -96,7 +96,7 @@ export const CorporateFooter: React.FC<CorporateFooterProps> = ({
                 className="rounded-full h-10 w-10 block dark:hidden"
               />
               <Image
-                src="/ruixen_light.png"
+                src="/ruixen-ui-nw-light.png"
                 alt={logo.alt}
                 width={40}
                 height={40}

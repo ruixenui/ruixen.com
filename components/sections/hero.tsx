@@ -3,7 +3,6 @@
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Button } from "@/components/ui/button";
 import { trackCTAClick } from "@/lib/ga-events";
 import ComponentShowcaseSection from "./component-showcase-section";
 
@@ -87,34 +86,69 @@ function Home() {
             transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
             className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4"
           >
-            <Button
-              asChild
-              size="md"
-              className="rounded-xl px-5 text-base"
+            <Link
+              href="https://pro.ruixen.com"
+              target="_blank"
+              onClick={() =>
+                trackCTAClick({
+                  location: "Hero",
+                  cta_text: "Get Pro Access",
+                })
+              }
+              className="group/pro relative inline-flex h-11 items-center justify-center overflow-hidden rounded-xl px-6 text-base font-medium text-foreground transition-shadow hover:shadow-lg hover:shadow-blue-500/25"
+            >
+              {/* Rotating blue border */}
+              <span
+                className="absolute inset-0 rounded-xl"
+                style={{
+                  padding: "2px",
+                  background: "linear-gradient(var(--pro-angle, 0deg), #3b82f6, #60a5fa, #3b82f6, #2563eb, #3b82f6)",
+                  WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+                  WebkitMaskComposite: "xor",
+                  maskComposite: "exclude",
+                  animation: "pro-border-spin 3s linear infinite",
+                }}
+              />
+              {/* White inner fill */}
+              <span className="absolute inset-[2px] rounded-[10px] bg-background" />
+              <span className="relative z-10">Get Pro Access</span>
+            </Link>
+
+            <Link
+              href="/docs/components"
               onClick={() =>
                 trackCTAClick({
                   location: "Hero",
                   cta_text: "Get Started",
                 })
               }
+              className="group/start relative inline-flex h-11 items-center justify-center overflow-hidden rounded-xl px-6 text-base font-medium text-white dark:text-black transition-shadow hover:shadow-lg hover:shadow-black/20 dark:hover:shadow-white/20"
             >
-              <Link href="/docs/components">Get Started</Link>
-            </Button>
-
-            <Button
-              asChild
-              size="md"
-              variant="outline"
-              className="rounded-xl px-5 text-base"
-              onClick={() =>
-                trackCTAClick({
-                  location: "Hero",
-                  cta_text: "Get Templates",
-                })
-              }
-            >
-              <Link href="/templates">Get Templates</Link>
-            </Button>
+              {/* Rotating border */}
+              <span
+                className="absolute inset-0 rounded-xl"
+                style={{
+                  padding: "2px",
+                  background: "linear-gradient(var(--pro-angle, 0deg), #000, #555, #000, #333, #000)",
+                  WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+                  WebkitMaskComposite: "xor",
+                  maskComposite: "exclude",
+                  animation: "pro-border-spin 3s linear infinite",
+                }}
+              />
+              {/* Inner fill */}
+              <span className="absolute inset-[2px] rounded-[10px] bg-black dark:bg-white" />
+              {/* Shine sweep */}
+              <span
+                className="absolute inset-[2px] rounded-[10px] opacity-0 group-hover/start:opacity-100"
+                style={{
+                  background: "linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.15) 50%, transparent 60%)",
+                  backgroundSize: "200% 100%",
+                  animation: "pro-shine 2s ease-in-out infinite",
+                }}
+              />
+              <span className="relative z-10">Get Started</span>
+            </Link>
           </motion.div>
         </div>
 
