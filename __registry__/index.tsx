@@ -6118,9 +6118,17 @@ export const Index: Record<string, any> = {
   "three-dwall-calendar": {
     name: "three-dwall-calendar",
     description:
-      "Interactive 3D wall-style calendar with tilt controls and drag interactions.",
+      "Interactive 3D wall-style calendar with tilt/drag controls, event management, and shadcn calendar for seamless date selection.",
     type: "registry:ui",
-    registryDependencies: ["card", "button", "input", "popover", "hover-card"],
+    registryDependencies: [
+      "card",
+      "button",
+      "popover",
+      "hover-card",
+      "calendar",
+      "dialog",
+      "label",
+    ],
     files: [
       {
         path: "registry/ruixenui/three-dwall-calendar.tsx",
