@@ -2,6 +2,7 @@
 
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const COLORS = [
@@ -244,5 +245,12 @@ export function ProductHuntBanner() {
 }
 
 export function SiteBanner() {
+  const pathname = usePathname();
+
+  // Don't render banner on showcase page
+  if (pathname === "/showcase") {
+    return null;
+  }
+
   return <ProBanner />;
 }
