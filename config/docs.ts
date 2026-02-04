@@ -224,40 +224,16 @@ export const docsConfig: DocsConfig = {
           title: "Alerts",
           items: [
             {
-              title: "Error Alert",
-              href: `/docs/components/alert-error`,
+              title: "Alert With Actions",
+              href: `/docs/components/alert-with-actions`,
               items: [],
-              label: "",
+              label: "New",
             },
             {
-              title: "Error Alert Outlined",
-              href: `/docs/components/alert-error-outlined`,
+              title: "Animated Alert",
+              href: `/docs/components/animated-alert`,
               items: [],
-              label: "",
-            },
-            {
-              title: "Success Alert",
-              href: `/docs/components/alert-success`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Success Alert Outlined",
-              href: `/docs/components/alert-success-outlined`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Warning Alert",
-              href: `/docs/components/alert-warning`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Warning Alert Outlined",
-              href: `/docs/components/alert-warning-outlined`,
-              items: [],
-              label: "",
+              label: "New",
             },
           ],
         },
@@ -271,10 +247,10 @@ export const docsConfig: DocsConfig = {
               label: "",
             },
             {
-              title: "Voice Message Bubble",
-              href: `/docs/components/voice-message-bubble`,
+              title: "Live Waveform",
+              href: `/docs/components/live-waveform`,
               items: [],
-              label: "",
+              label: "New",
             },
             {
               title: "Visualizer Button",
@@ -285,12 +261,6 @@ export const docsConfig: DocsConfig = {
             {
               title: "Audio Book Player",
               href: `/docs/components/audio-book-player`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Waveform Player",
-              href: `/docs/components/waveform-player`,
               items: [],
               label: "",
             },

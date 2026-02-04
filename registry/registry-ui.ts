@@ -410,92 +410,32 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "alert-warning",
+    name: "alert-with-actions",
     type: "registry:ui",
-    title: "Warning Alert",
+    title: "Alert With Actions",
     description:
-      "A warning alert component with amber background and triangle alert icon.",
+      "A professional alert component with icon, variant support, and action buttons.",
     dependencies: ["lucide-react"],
     files: [
       {
-        path: "registry/ruixenui/alert-warning.tsx",
+        path: "registry/ruixenui/alert-with-actions.tsx",
         type: "registry:ui",
-        target: "components/ruixen/alert-warning.tsx",
+        target: "components/ruixen/alert-with-actions.tsx",
       },
     ],
   },
   {
-    name: "alert-warning-outlined",
+    name: "animated-alert",
     type: "registry:ui",
-    title: "Warning Alert Outlined",
+    title: "Animated Alert",
     description:
-      "A warning alert component with outlined border style and triangle alert icon.",
-    dependencies: ["lucide-react"],
+      "An animated alert with framer-motion enter/exit transitions and auto-dismiss.",
+    dependencies: ["lucide-react", "framer-motion"],
     files: [
       {
-        path: "registry/ruixenui/alert-warning-outlined.tsx",
+        path: "registry/ruixenui/animated-alert.tsx",
         type: "registry:ui",
-        target: "components/ruixen/alert-warning-outlined.tsx",
-      },
-    ],
-  },
-  {
-    name: "alert-error",
-    type: "registry:ui",
-    title: "Error Alert",
-    description:
-      "An error alert component with red background and circle alert icon.",
-    dependencies: ["lucide-react"],
-    files: [
-      {
-        path: "registry/ruixenui/alert-error.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/alert-error.tsx",
-      },
-    ],
-  },
-  {
-    name: "alert-error-outlined",
-    type: "registry:ui",
-    title: "Error Alert Outlined",
-    description:
-      "An error alert component with outlined border style and circle alert icon.",
-    dependencies: ["lucide-react"],
-    files: [
-      {
-        path: "registry/ruixenui/alert-error-outlined.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/alert-error-outlined.tsx",
-      },
-    ],
-  },
-  {
-    name: "alert-success",
-    type: "registry:ui",
-    title: "Success Alert",
-    description:
-      "A success alert component with emerald background and circle check icon.",
-    dependencies: ["lucide-react"],
-    files: [
-      {
-        path: "registry/ruixenui/alert-success.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/alert-success.tsx",
-      },
-    ],
-  },
-  {
-    name: "alert-success-outlined",
-    type: "registry:ui",
-    title: "Success Alert Outlined",
-    description:
-      "A success alert component with outlined border style and circle check icon.",
-    dependencies: ["lucide-react"],
-    files: [
-      {
-        path: "registry/ruixenui/alert-success-outlined.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/alert-success-outlined.tsx",
+        target: "components/ruixen/animated-alert.tsx",
       },
     ],
   },
@@ -2929,9 +2869,8 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Playlist Carousel",
     description:
-      "Horizontal scrolling playlist with individual audio players and progress indicators.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["button"],
+      "A horizontal carousel of playable tracks with album art, progress bars, and embla-carousel navigation.",
+    dependencies: ["lucide-react", "embla-carousel-react"],
     files: [
       {
         path: "registry/ruixenui/playlist-carousel.tsx",
@@ -2941,18 +2880,17 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "voice-message-bubble",
+    name: "live-waveform",
     type: "registry:ui",
-    title: "Voice Message Bubble",
+    title: "Live Waveform",
     description:
-      "Chat-style voice message bubble with waveform visualization and playback controls.",
+      "Canvas-based real-time waveform visualizer with processing animation, microphone input, and stop controls.",
     dependencies: ["lucide-react"],
-    registryDependencies: ["button"],
     files: [
       {
-        path: "registry/ruixenui/voice-message-bubble.tsx",
+        path: "registry/ruixenui/live-waveform.tsx",
         type: "registry:ui",
-        target: "components/ruixen/voice-message-bubble.tsx",
+        target: "components/ruixen/live-waveform.tsx",
       },
     ],
   },
@@ -2961,9 +2899,8 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Visualizer Button",
     description:
-      "Compact audio button with animated equalizer bars visualization.",
-    dependencies: [],
-    registryDependencies: ["button"],
+      "Compact audio button with canvas-based waveform visualization and play/pause controls.",
+    dependencies: ["lucide-react"],
     files: [
       {
         path: "registry/ruixenui/visualizer-button.tsx",
@@ -2985,22 +2922,6 @@ export const ui: Registry["items"] = [
         path: "registry/ruixenui/audio-book-player.tsx",
         type: "registry:ui",
         target: "components/ruixen/audio-book-player.tsx",
-      },
-    ],
-  },
-  {
-    name: "waveform-player",
-    type: "registry:ui",
-    title: "Waveform Player",
-    description:
-      "Audio player with visual waveform representation and seek controls.",
-    dependencies: [],
-    registryDependencies: ["button"],
-    files: [
-      {
-        path: "registry/ruixenui/waveform-player.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/waveform-player.tsx",
       },
     ],
   },

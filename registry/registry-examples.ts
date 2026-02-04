@@ -354,86 +354,31 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "alert-warning-demo",
+    name: "alert-with-actions-demo",
     type: "registry:example",
-    title: "Warning Alert Demo",
-    description: "Example showing a warning alert with amber styling.",
-    registryDependencies: ["https://ruixen.com/r/alert-warning"],
+    title: "Alert With Actions Demo",
+    description: "Example showing a professional alert with action buttons.",
+    registryDependencies: ["https://ruixen.com/r/alert-with-actions"],
     files: [
       {
-        path: "registry/example/alert-warning-demo.tsx",
+        path: "registry/example/alert-with-actions-demo.tsx",
         type: "registry:example",
-        target: "components/alert-warning-demo.tsx",
+        target: "components/alert-with-actions-demo.tsx",
       },
     ],
   },
   {
-    name: "alert-warning-outlined-demo",
+    name: "animated-alert-demo",
     type: "registry:example",
-    title: "Warning Alert Outlined Demo",
-    description: "Example showing a warning alert with outlined border style.",
-    registryDependencies: ["https://ruixen.com/r/alert-warning-outlined"],
+    title: "Animated Alert Demo",
+    description:
+      "Example showing an animated alert with enter/exit transitions.",
+    registryDependencies: ["https://ruixen.com/r/animated-alert"],
     files: [
       {
-        path: "registry/example/alert-warning-outlined-demo.tsx",
+        path: "registry/example/animated-alert-demo.tsx",
         type: "registry:example",
-        target: "components/alert-warning-outlined-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "alert-error-demo",
-    type: "registry:example",
-    title: "Error Alert Demo",
-    description: "Example showing an error alert with red styling.",
-    registryDependencies: ["https://ruixen.com/r/alert-error"],
-    files: [
-      {
-        path: "registry/example/alert-error-demo.tsx",
-        type: "registry:example",
-        target: "components/alert-error-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "alert-error-outlined-demo",
-    type: "registry:example",
-    title: "Error Alert Outlined Demo",
-    description: "Example showing an error alert with outlined border style.",
-    registryDependencies: ["https://ruixen.com/r/alert-error-outlined"],
-    files: [
-      {
-        path: "registry/example/alert-error-outlined-demo.tsx",
-        type: "registry:example",
-        target: "components/alert-error-outlined-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "alert-success-demo",
-    type: "registry:example",
-    title: "Success Alert Demo",
-    description: "Example showing a success alert with emerald styling.",
-    registryDependencies: ["https://ruixen.com/r/alert-success"],
-    files: [
-      {
-        path: "registry/example/alert-success-demo.tsx",
-        type: "registry:example",
-        target: "components/alert-success-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "alert-success-outlined-demo",
-    type: "registry:example",
-    title: "Success Alert Outlined Demo",
-    description: "Example showing a success alert with outlined border style.",
-    registryDependencies: ["https://ruixen.com/r/alert-success-outlined"],
-    files: [
-      {
-        path: "registry/example/alert-success-outlined-demo.tsx",
-        type: "registry:example",
-        target: "components/alert-success-outlined-demo.tsx",
+        target: "components/animated-alert-demo.tsx",
       },
     ],
   },
@@ -2736,16 +2681,17 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "voice-message-bubble-demo",
+    name: "live-waveform-demo",
     type: "registry:example",
-    title: "Voice Message Bubble Demo",
-    description: "Example showing chat-style voice message with waveform.",
-    registryDependencies: ["https://ruixen.com/r/voice-message-bubble"],
+    title: "Live Waveform Demo",
+    description:
+      "Example showing canvas-based waveform with processing animation and state controls.",
+    registryDependencies: ["https://ruixen.com/r/live-waveform"],
     files: [
       {
-        path: "registry/example/voice-message-bubble-demo.tsx",
+        path: "registry/example/live-waveform-demo.tsx",
         type: "registry:example",
-        target: "components/voice-message-bubble-demo.tsx",
+        target: "components/live-waveform-demo.tsx",
       },
     ],
   },
@@ -2775,20 +2721,6 @@ export const examples: Registry["items"] = [
         path: "registry/example/audio-book-player-demo.tsx",
         type: "registry:example",
         target: "components/audio-book-player-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "waveform-player-demo",
-    type: "registry:example",
-    title: "Waveform Player Demo",
-    description: "Example showing audio player with visual waveform.",
-    registryDependencies: ["https://ruixen.com/r/waveform-player"],
-    files: [
-      {
-        path: "registry/example/waveform-player-demo.tsx",
-        type: "registry:example",
-        target: "components/waveform-player-demo.tsx",
       },
     ],
   },

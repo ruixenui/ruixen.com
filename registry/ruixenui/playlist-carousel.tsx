@@ -1,166 +1,202 @@
 "use client";
 
 import * as React from "react";
-import { Button } from "@/components/ui/button";
+import useEmblaCarousel from "embla-carousel-react";
+import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { LucidePlay, LucidePause } from "lucide-react";
 
-export interface PlaylistItem {
+export interface Track {
   id: string;
   title: string;
+  artist: string;
+  cover: string;
   duration: string;
-  image: string;
-  audioSrc: string;
+  src: string;
 }
 
 interface PlaylistCarouselProps {
-  items: PlaylistItem[];
-  width?: number;
-  height?: number;
+  tracks: Track[];
   className?: string;
 }
 
 export default function PlaylistCarousel({
-  items,
-  width = 200,
-  height = 250,
+  tracks,
   className,
 }: PlaylistCarouselProps) {
-  const [playingId, setPlayingId] = React.useState<string | null>(null);
-  const [progressMap, setProgressMap] = React.useState<Record<string, number>>(
-    {},
-  );
-  const [audioMap, setAudioMap] = React.useState<
-    Record<string, HTMLAudioElement>
-  >({});
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    align: "start",
+    slidesToScroll: 1,
+    containScroll: "trimSnaps",
+  });
 
-  // Setup audio instances and listeners on client side only
+  const audioRef = React.useRef<HTMLAudioElement | null>(null);
+  const [activeTrack, setActiveTrack] = React.useState<string | null>(null);
+  const [isPlaying, setIsPlaying] = React.useState(false);
+  const [progress, setProgress] = React.useState(0);
+  const [currentTime, setCurrentTime] = React.useState("0:00");
+  const [canScrollPrev, setCanScrollPrev] = React.useState(false);
+  const [canScrollNext, setCanScrollNext] = React.useState(false);
+
   React.useEffect(() => {
-    if (typeof window !== "undefined") {
-      const newAudioMap: Record<string, HTMLAudioElement> = {};
+    if (!emblaApi) return;
+    const onSelect = () => {
+      setCanScrollPrev(emblaApi.canScrollPrev());
+      setCanScrollNext(emblaApi.canScrollNext());
+    };
+    emblaApi.on("select", onSelect);
+    emblaApi.on("reInit", onSelect);
+    onSelect();
+    return () => {
+      emblaApi.off("select", onSelect);
+      emblaApi.off("reInit", onSelect);
+    };
+  }, [emblaApi]);
 
-      items.forEach((item) => {
-        const audio = new Audio(item.audioSrc);
-        newAudioMap[item.id] = audio;
+  React.useEffect(() => {
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current.src = "";
+      }
+    };
+  }, []);
 
-        const updateProgress = () => {
-          setProgressMap((prev) => ({
-            ...prev,
-            [item.id]: (audio.currentTime / (audio.duration || 1)) * 100,
-          }));
-        };
-
-        audio.addEventListener("timeupdate", updateProgress);
-        audio.addEventListener("ended", () => setPlayingId(null));
-      });
-
-      setAudioMap(newAudioMap);
-
-      return () => {
-        Object.values(newAudioMap).forEach((audio) => {
-          audio.pause();
-          audio.removeEventListener("timeupdate", () => {});
-          audio.removeEventListener("ended", () => {});
-        });
-      };
-    }
-  }, [items]);
-
-  const togglePlay = (id: string) => {
-    const currentAudio = audioMap[id];
-    if (!currentAudio) return;
-
-    if (playingId && playingId !== id && audioMap[playingId]) {
-      audioMap[playingId].pause();
-      audioMap[playingId].currentTime = 0;
-    }
-
-    if (playingId === id && !currentAudio.paused) {
-      currentAudio.pause();
-      setPlayingId(null);
-    } else {
-      currentAudio.play();
-      setPlayingId(id);
-    }
+  const formatTime = (seconds: number) => {
+    const m = Math.floor(seconds / 60);
+    const s = Math.floor(seconds % 60);
+    return `${m}:${s < 10 ? "0" : ""}${s}`;
   };
 
-  const formatTime = (audio: HTMLAudioElement) => {
-    const minutes = Math.floor(audio.currentTime / 60);
-    const seconds = Math.floor(audio.currentTime % 60);
-    return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+  const handlePlay = (track: Track) => {
+    if (activeTrack === track.id) {
+      if (isPlaying) {
+        audioRef.current?.pause();
+        setIsPlaying(false);
+      } else {
+        audioRef.current?.play().catch(() => {});
+        setIsPlaying(true);
+      }
+      return;
+    }
+
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.src = "";
+    }
+
+    const audio = new Audio(track.src);
+    audioRef.current = audio;
+
+    audio.addEventListener("timeupdate", () => {
+      const pct = (audio.currentTime / (audio.duration || 1)) * 100;
+      setProgress(pct);
+      setCurrentTime(formatTime(audio.currentTime));
+    });
+
+    audio.addEventListener("ended", () => {
+      setIsPlaying(false);
+      setProgress(0);
+      setCurrentTime("0:00");
+    });
+
+    audio.play().catch(() => setIsPlaying(false));
+    setActiveTrack(track.id);
+    setIsPlaying(true);
   };
 
   return (
-    <div className={cn("flex overflow-x-auto gap-4 p-4", className)}>
-      {items.map((item) => {
-        const progress = progressMap[item.id] || 0;
-        const audio = audioMap[item.id];
-        return (
-          <div
-            key={item.id}
-            className="flex-shrink-0 rounded-xl shadow-md bg-white dark:bg-gray-800 flex flex-col items-center p-3"
-            style={{ width, height }}
-          >
-            <img
-              src={item.image}
-              alt={item.title}
-              className="w-full h-32 object-cover rounded-md mb-3"
-            />
-            <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-100 text-center mb-1">
-              {item.title}
-            </h4>
+    <div className={cn("relative", className)}>
+      <div ref={emblaRef} className="overflow-hidden">
+        <div className="-ml-3 flex">
+          {tracks.map((track) => {
+            const isActive = activeTrack === track.id;
+            return (
+              <div key={track.id} className="min-w-0 flex-[0_0_180px] pl-3">
+                <div className="group rounded-xl border border-border/40 bg-card p-2.5 shadow-xs transition-shadow hover:shadow-md">
+                  <div className="relative mb-2.5 overflow-hidden rounded-lg">
+                    <img
+                      src={track.cover}
+                      alt={track.title}
+                      className="aspect-square w-full object-cover"
+                      loading="lazy"
+                    />
+                    <button
+                      onClick={() => handlePlay(track)}
+                      className="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors group-hover:bg-black/25"
+                      aria-label={
+                        isActive && isPlaying
+                          ? `Pause ${track.title}`
+                          : `Play ${track.title}`
+                      }
+                    >
+                      <div
+                        className={cn(
+                          "flex size-10 items-center justify-center rounded-full bg-white shadow-md transition-all",
+                          isActive && isPlaying
+                            ? "scale-100 opacity-100"
+                            : "scale-90 opacity-0 group-hover:scale-100 group-hover:opacity-100",
+                        )}
+                      >
+                        {isActive && isPlaying ? (
+                          <Pause className="size-4 fill-black text-black" />
+                        ) : (
+                          <Play className="ml-0.5 size-4 fill-black text-black" />
+                        )}
+                      </div>
+                    </button>
+                  </div>
 
-            {/* Linear progress */}
-            <div className="w-full h-1 bg-gray-200 dark:bg-gray-700 rounded-full mb-2">
-              <div
-                className="h-full bg-black dark:bg-white rounded-full"
-                style={{ width: `${progress}%` }}
-              />
-            </div>
-            <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">
-              {audio
-                ? `${formatTime(audio)} / ${item.duration}`
-                : `0:00 / ${item.duration}`}
-            </p>
+                  <p className="truncate text-sm font-medium text-card-foreground">
+                    {track.title}
+                  </p>
+                  <p className="truncate text-xs text-muted-foreground">
+                    {track.artist}
+                  </p>
 
-            {/* Circular button with progress */}
-            <div className="relative">
-              <svg className="w-12 h-12">
-                <circle
-                  cx="24"
-                  cy="24"
-                  r="22"
-                  stroke="gray"
-                  strokeWidth="3"
-                  fill="none"
-                />
-                <circle
-                  cx="24"
-                  cy="24"
-                  r="22"
-                  stroke="black"
-                  strokeWidth="3"
-                  fill="none"
-                  strokeDasharray={138.2} // 2πr
-                  strokeDashoffset={138.2 - (138.2 * progress) / 100}
-                  transform="rotate(-90 24 24)"
-                />
-              </svg>
-              <Button
-                className="absolute top-0 left-0 w-12 h-12 flex items-center justify-center rounded-full p-0"
-                onClick={() => togglePlay(item.id)}
-                variant="outline"
-              >
-                {playingId === item.id ? (
-                  <LucidePause className="w-5 h-5" />
-                ) : (
-                  <LucidePlay className="w-5 h-5" />
-                )}
-              </Button>
-            </div>
-          </div>
-        );
-      })}
+                  {isActive && (
+                    <div className="mt-2 space-y-0.5">
+                      <div className="h-[3px] w-full overflow-hidden rounded-full bg-muted">
+                        <div
+                          className="h-full rounded-full bg-foreground transition-[width] duration-200"
+                          style={{ width: `${progress}%` }}
+                        />
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-[10px] tabular-nums text-muted-foreground">
+                          {currentTime}
+                        </span>
+                        <span className="text-[10px] tabular-nums text-muted-foreground">
+                          {track.duration}
+                        </span>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {canScrollPrev && (
+        <button
+          onClick={() => emblaApi?.scrollPrev()}
+          className="absolute -left-3 top-[40%] flex size-7 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-card shadow-sm transition-colors hover:bg-muted"
+          aria-label="Previous"
+        >
+          <ChevronLeft className="size-4 text-muted-foreground" />
+        </button>
+      )}
+
+      {canScrollNext && (
+        <button
+          onClick={() => emblaApi?.scrollNext()}
+          className="absolute -right-3 top-[40%] flex size-7 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-card shadow-sm transition-colors hover:bg-muted"
+          aria-label="Next"
+        >
+          <ChevronRight className="size-4 text-muted-foreground" />
+        </button>
+      )}
     </div>
   );
 }

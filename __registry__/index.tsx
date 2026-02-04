@@ -645,21 +645,21 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
-  "alert-warning": {
-    name: "alert-warning",
+  "alert-with-actions": {
+    name: "alert-with-actions",
     description:
-      "A warning alert component with amber background and triangle alert icon.",
+      "A professional alert component with icon, variant support, and action buttons.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
       {
-        path: "registry/ruixenui/alert-warning.tsx",
+        path: "registry/ruixenui/alert-with-actions.tsx",
         type: "registry:ui",
-        target: "components/ruixen/alert-warning.tsx",
+        target: "components/ruixen/alert-with-actions.tsx",
       },
     ],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/ruixenui/alert-warning.tsx");
+      const mod = await import("@/registry/ruixenui/alert-with-actions.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -669,121 +669,21 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
-  "alert-warning-outlined": {
-    name: "alert-warning-outlined",
+  "animated-alert": {
+    name: "animated-alert",
     description:
-      "A warning alert component with outlined border style and triangle alert icon.",
+      "An animated alert with framer-motion enter/exit transitions and auto-dismiss.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
       {
-        path: "registry/ruixenui/alert-warning-outlined.tsx",
+        path: "registry/ruixenui/animated-alert.tsx",
         type: "registry:ui",
-        target: "components/ruixen/alert-warning-outlined.tsx",
+        target: "components/ruixen/animated-alert.tsx",
       },
     ],
     component: React.lazy(async () => {
-      const mod = await import(
-        "@/registry/ruixenui/alert-warning-outlined.tsx"
-      );
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object",
-        ) || item.name;
-      return { default: mod.default || mod[exportName] };
-    }),
-    meta: undefined,
-  },
-  "alert-error": {
-    name: "alert-error",
-    description:
-      "An error alert component with red background and circle alert icon.",
-    type: "registry:ui",
-    registryDependencies: undefined,
-    files: [
-      {
-        path: "registry/ruixenui/alert-error.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/alert-error.tsx",
-      },
-    ],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/ruixenui/alert-error.tsx");
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object",
-        ) || item.name;
-      return { default: mod.default || mod[exportName] };
-    }),
-    meta: undefined,
-  },
-  "alert-error-outlined": {
-    name: "alert-error-outlined",
-    description:
-      "An error alert component with outlined border style and circle alert icon.",
-    type: "registry:ui",
-    registryDependencies: undefined,
-    files: [
-      {
-        path: "registry/ruixenui/alert-error-outlined.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/alert-error-outlined.tsx",
-      },
-    ],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/ruixenui/alert-error-outlined.tsx");
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object",
-        ) || item.name;
-      return { default: mod.default || mod[exportName] };
-    }),
-    meta: undefined,
-  },
-  "alert-success": {
-    name: "alert-success",
-    description:
-      "A success alert component with emerald background and circle check icon.",
-    type: "registry:ui",
-    registryDependencies: undefined,
-    files: [
-      {
-        path: "registry/ruixenui/alert-success.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/alert-success.tsx",
-      },
-    ],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/ruixenui/alert-success.tsx");
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object",
-        ) || item.name;
-      return { default: mod.default || mod[exportName] };
-    }),
-    meta: undefined,
-  },
-  "alert-success-outlined": {
-    name: "alert-success-outlined",
-    description:
-      "A success alert component with outlined border style and circle check icon.",
-    type: "registry:ui",
-    registryDependencies: undefined,
-    files: [
-      {
-        path: "registry/ruixenui/alert-success-outlined.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/alert-success-outlined.tsx",
-      },
-    ],
-    component: React.lazy(async () => {
-      const mod = await import(
-        "@/registry/ruixenui/alert-success-outlined.tsx"
-      );
+      const mod = await import("@/registry/ruixenui/animated-alert.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4567,9 +4467,9 @@ export const Index: Record<string, any> = {
   "playlist-carousel": {
     name: "playlist-carousel",
     description:
-      "Horizontal scrolling playlist with individual audio players and progress indicators.",
+      "A horizontal carousel of playable tracks with album art, progress bars, and embla-carousel navigation.",
     type: "registry:ui",
-    registryDependencies: ["button"],
+    registryDependencies: undefined,
     files: [
       {
         path: "registry/ruixenui/playlist-carousel.tsx",
@@ -4588,21 +4488,21 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
-  "voice-message-bubble": {
-    name: "voice-message-bubble",
+  "live-waveform": {
+    name: "live-waveform",
     description:
-      "Chat-style voice message bubble with waveform visualization and playback controls.",
+      "Canvas-based real-time waveform visualizer with processing animation, microphone input, and stop controls.",
     type: "registry:ui",
-    registryDependencies: ["button"],
+    registryDependencies: undefined,
     files: [
       {
-        path: "registry/ruixenui/voice-message-bubble.tsx",
+        path: "registry/ruixenui/live-waveform.tsx",
         type: "registry:ui",
-        target: "components/ruixen/voice-message-bubble.tsx",
+        target: "components/ruixen/live-waveform.tsx",
       },
     ],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/ruixenui/voice-message-bubble.tsx");
+      const mod = await import("@/registry/ruixenui/live-waveform.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4615,9 +4515,9 @@ export const Index: Record<string, any> = {
   "visualizer-button": {
     name: "visualizer-button",
     description:
-      "Compact audio button with animated equalizer bars visualization.",
+      "Compact audio button with canvas-based waveform visualization and play/pause controls.",
     type: "registry:ui",
-    registryDependencies: ["button"],
+    registryDependencies: undefined,
     files: [
       {
         path: "registry/ruixenui/visualizer-button.tsx",
@@ -4651,30 +4551,6 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/ruixenui/audio-book-player.tsx");
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object",
-        ) || item.name;
-      return { default: mod.default || mod[exportName] };
-    }),
-    meta: undefined,
-  },
-  "waveform-player": {
-    name: "waveform-player",
-    description:
-      "Audio player with visual waveform representation and seek controls.",
-    type: "registry:ui",
-    registryDependencies: ["button"],
-    files: [
-      {
-        path: "registry/ruixenui/waveform-player.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/waveform-player.tsx",
-      },
-    ],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/ruixenui/waveform-player.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -8611,44 +8487,21 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
-  "alert-warning-demo": {
-    name: "alert-warning-demo",
-    description: "Example showing a warning alert with amber styling.",
+  "alert-with-actions-demo": {
+    name: "alert-with-actions-demo",
+    description: "Example showing a professional alert with action buttons.",
     type: "registry:example",
-    registryDependencies: ["https://ruixen.com/r/alert-warning"],
+    registryDependencies: ["https://ruixen.com/r/alert-with-actions"],
     files: [
       {
-        path: "registry/example/alert-warning-demo.tsx",
+        path: "registry/example/alert-with-actions-demo.tsx",
         type: "registry:example",
-        target: "components/alert-warning-demo.tsx",
-      },
-    ],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/example/alert-warning-demo.tsx");
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object",
-        ) || item.name;
-      return { default: mod.default || mod[exportName] };
-    }),
-    meta: undefined,
-  },
-  "alert-warning-outlined-demo": {
-    name: "alert-warning-outlined-demo",
-    description: "Example showing a warning alert with outlined border style.",
-    type: "registry:example",
-    registryDependencies: ["https://ruixen.com/r/alert-warning-outlined"],
-    files: [
-      {
-        path: "registry/example/alert-warning-outlined-demo.tsx",
-        type: "registry:example",
-        target: "components/alert-warning-outlined-demo.tsx",
+        target: "components/alert-with-actions-demo.tsx",
       },
     ],
     component: React.lazy(async () => {
       const mod = await import(
-        "@/registry/example/alert-warning-outlined-demo.tsx"
+        "@/registry/example/alert-with-actions-demo.tsx"
       );
       const exportName =
         Object.keys(mod).find(
@@ -8659,93 +8512,21 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
-  "alert-error-demo": {
-    name: "alert-error-demo",
-    description: "Example showing an error alert with red styling.",
+  "animated-alert-demo": {
+    name: "animated-alert-demo",
+    description:
+      "Example showing an animated alert with enter/exit transitions.",
     type: "registry:example",
-    registryDependencies: ["https://ruixen.com/r/alert-error"],
+    registryDependencies: ["https://ruixen.com/r/animated-alert"],
     files: [
       {
-        path: "registry/example/alert-error-demo.tsx",
+        path: "registry/example/animated-alert-demo.tsx",
         type: "registry:example",
-        target: "components/alert-error-demo.tsx",
+        target: "components/animated-alert-demo.tsx",
       },
     ],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/alert-error-demo.tsx");
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object",
-        ) || item.name;
-      return { default: mod.default || mod[exportName] };
-    }),
-    meta: undefined,
-  },
-  "alert-error-outlined-demo": {
-    name: "alert-error-outlined-demo",
-    description: "Example showing an error alert with outlined border style.",
-    type: "registry:example",
-    registryDependencies: ["https://ruixen.com/r/alert-error-outlined"],
-    files: [
-      {
-        path: "registry/example/alert-error-outlined-demo.tsx",
-        type: "registry:example",
-        target: "components/alert-error-outlined-demo.tsx",
-      },
-    ],
-    component: React.lazy(async () => {
-      const mod = await import(
-        "@/registry/example/alert-error-outlined-demo.tsx"
-      );
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object",
-        ) || item.name;
-      return { default: mod.default || mod[exportName] };
-    }),
-    meta: undefined,
-  },
-  "alert-success-demo": {
-    name: "alert-success-demo",
-    description: "Example showing a success alert with emerald styling.",
-    type: "registry:example",
-    registryDependencies: ["https://ruixen.com/r/alert-success"],
-    files: [
-      {
-        path: "registry/example/alert-success-demo.tsx",
-        type: "registry:example",
-        target: "components/alert-success-demo.tsx",
-      },
-    ],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/example/alert-success-demo.tsx");
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object",
-        ) || item.name;
-      return { default: mod.default || mod[exportName] };
-    }),
-    meta: undefined,
-  },
-  "alert-success-outlined-demo": {
-    name: "alert-success-outlined-demo",
-    description: "Example showing a success alert with outlined border style.",
-    type: "registry:example",
-    registryDependencies: ["https://ruixen.com/r/alert-success-outlined"],
-    files: [
-      {
-        path: "registry/example/alert-success-outlined-demo.tsx",
-        type: "registry:example",
-        target: "components/alert-success-outlined-demo.tsx",
-      },
-    ],
-    component: React.lazy(async () => {
-      const mod = await import(
-        "@/registry/example/alert-success-outlined-demo.tsx"
-      );
+      const mod = await import("@/registry/example/animated-alert-demo.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -12598,22 +12379,21 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
-  "voice-message-bubble-demo": {
-    name: "voice-message-bubble-demo",
-    description: "Example showing chat-style voice message with waveform.",
+  "live-waveform-demo": {
+    name: "live-waveform-demo",
+    description:
+      "Example showing canvas-based waveform with processing animation and state controls.",
     type: "registry:example",
-    registryDependencies: ["https://ruixen.com/r/voice-message-bubble"],
+    registryDependencies: ["https://ruixen.com/r/live-waveform"],
     files: [
       {
-        path: "registry/example/voice-message-bubble-demo.tsx",
+        path: "registry/example/live-waveform-demo.tsx",
         type: "registry:example",
-        target: "components/voice-message-bubble-demo.tsx",
+        target: "components/live-waveform-demo.tsx",
       },
     ],
     component: React.lazy(async () => {
-      const mod = await import(
-        "@/registry/example/voice-message-bubble-demo.tsx"
-      );
+      const mod = await import("@/registry/example/live-waveform-demo.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -12661,29 +12441,6 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/audio-book-player-demo.tsx");
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object",
-        ) || item.name;
-      return { default: mod.default || mod[exportName] };
-    }),
-    meta: undefined,
-  },
-  "waveform-player-demo": {
-    name: "waveform-player-demo",
-    description: "Example showing audio player with visual waveform.",
-    type: "registry:example",
-    registryDependencies: ["https://ruixen.com/r/waveform-player"],
-    files: [
-      {
-        path: "registry/example/waveform-player-demo.tsx",
-        type: "registry:example",
-        target: "components/waveform-player-demo.tsx",
-      },
-    ],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/example/waveform-player-demo.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>

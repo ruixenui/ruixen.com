@@ -1,0 +1,76 @@
+---
+title: Live Waveform
+date: 2024-06-01
+description: Canvas-based real-time waveform visualizer with processing animation, microphone input, and stop controls.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="live-waveform-demo" category="audio" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/live-waveform"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="live-waveform" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import LiveWaveform from "@/components/ruixen/live-waveform";
+
+export default function App() {
+  return <LiveWaveform processing onStop={() => console.log("stopped")} />;
+}
+```
+
+## Props
+
+| Prop          | Type         | Default | Description                                  |
+| ------------- | ------------ | ------- | -------------------------------------------- |
+| `active`      | `boolean`    | `false` | Enable real-time microphone visualization    |
+| `processing`  | `boolean`    | `false` | Show animated processing wave pattern        |
+| `barWidth`    | `number`     | `3`     | Bar width in pixels                          |
+| `barGap`      | `number`     | `2`     | Gap between bars in pixels                   |
+| `barRadius`   | `number`     | `1.5`   | Bar corner radius                            |
+| `barColor`    | `string`     | -       | Bar color (inherits currentColor when unset) |
+| `height`      | `number`     | `48`    | Waveform height in pixels                    |
+| `fadeEdges`   | `boolean`    | `true`  | Apply gradient fade at edges                 |
+| `fadeWidth`   | `number`     | `24`    | Fade gradient width in pixels                |
+| `sensitivity` | `number`     | `1`     | Microphone sensitivity multiplier            |
+| `onStop`      | `() => void` | -       | Callback when stop button is pressed         |
+| `className`   | `string`     | -       | Additional CSS classes                       |
+
+## States
+
+The component has three visual states:
+
+- **Idle**: Flat minimal bars at low opacity (neither `active` nor `processing`)
+- **Processing**: Animated oscillating wave pattern with stop button
+- **Active**: Real-time microphone frequency visualization with stop button

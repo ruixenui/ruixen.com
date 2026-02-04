@@ -1,7 +1,7 @@
 ---
 title: Playlist Carousel
 date: 2024-06-01
-description: Horizontal scrolling playlist with individual audio players and progress indicators
+description: A horizontal carousel of playable tracks with album art, progress bars, and embla-carousel navigation.
 author: ruixen
 published: true
 ---
@@ -43,56 +43,48 @@ npx shadcn@latest add "https://ruixen.com/r/playlist-carousel"
 ## Usage
 
 ```tsx
-import PlaylistCarousel from "@/components/ruixen/playlist-carousel";
+import PlaylistCarousel, { Track } from "@/components/ruixen/playlist-carousel";
 
-const playlistItems = [
+const tracks: Track[] = [
   {
     id: "1",
-    title: "Song Title 1",
+    title: "Midnight Drive",
+    artist: "Neon Pulse",
+    cover: "/covers/track1.jpg",
     duration: "3:45",
-    image: "https://example.com/cover1.jpg",
-    audioSrc: "https://example.com/song1.mp3",
+    src: "/audio/track1.mp3",
   },
   {
     id: "2",
-    title: "Song Title 2",
-    duration: "4:12",
-    image: "https://example.com/cover2.jpg",
-    audioSrc: "https://example.com/song2.mp3",
+    title: "Ocean Breeze",
+    artist: "Calm Shores",
+    cover: "/covers/track2.jpg",
+    duration: "4:20",
+    src: "/audio/track2.mp3",
   },
 ];
 
 export default function App() {
-  return <PlaylistCarousel items={playlistItems} width={200} height={250} />;
+  return <PlaylistCarousel tracks={tracks} />;
 }
 ```
 
 ## Props
 
-| Prop        | Type             | Default | Description             |
-| ----------- | ---------------- | ------- | ----------------------- |
-| `items`     | `PlaylistItem[]` | -       | Array of playlist items |
-| `width`     | `number`         | `200`   | Width of each card      |
-| `height`    | `number`         | `250`   | Height of each card     |
-| `className` | `string`         | -       | Additional CSS classes  |
+| Prop        | Type      | Default | Description            |
+| ----------- | --------- | ------- | ---------------------- |
+| `tracks`    | `Track[]` | -       | Array of track objects |
+| `className` | `string`  | -       | Additional CSS classes |
 
-## Features
-
-- **Horizontal Scrolling**: Smooth carousel navigation
-- **Individual Players**: Each item has its own play/pause control
-- **Progress Indicators**: Linear and circular progress bars
-- **Album Artwork**: Display cover images
-- **Time Display**: Current time and total duration
-- **Auto-Stop**: Stops other tracks when playing new one
-
-## PlaylistItem Type
+## Track Type
 
 ```typescript
-export interface PlaylistItem {
+export interface Track {
   id: string;
   title: string;
+  artist: string;
+  cover: string;
   duration: string;
-  image: string;
-  audioSrc: string;
+  src: string;
 }
 ```
