@@ -308,18 +308,6 @@ export const cardsPreview: ComponentPreviewMap = {
     light: `/preview_images/cards/portfolio-card-light.png`,
     dark: `/preview_images/cards/portfolio-card-dark.png`,
   },
-  "job-card": {
-    light: `/preview_images/cards/job-card-light.png`,
-    dark: `/preview_images/cards/job-card-dark.png`,
-  },
-  "team-project-card": {
-    light: `/preview_images/cards/team-project-card-light.png`,
-    dark: `/preview_images/cards/team-project-card-dark.png`,
-  },
-  "collab-chat-card": {
-    light: `/preview_images/cards/collab-chat-card-light.png`,
-    dark: `/preview_images/cards/collab-chat-card-dark.png`,
-  },
   "goal-tracker-card": {
     light: `/preview_images/cards/goal-tracker-card-light.png`,
     dark: `/preview_images/cards/goal-tracker-card-dark.png`,
@@ -343,10 +331,6 @@ export const cardsPreview: ComponentPreviewMap = {
   "doctor-profile-card": {
     light: `/preview_images/cards/doctor-profile-card-light.png`,
     dark: `/preview_images/cards/doctor-profile-card-dark.png`,
-  },
-  "gradient-blob-card": {
-    light: `/preview_images/cards/gradient-blob-card-light.png`,
-    dark: `/preview_images/cards/gradient-blob-card-dark.png`,
   },
   "idea-generator-card": {
     light: `/preview_images/cards/idea-generator-card-light.png`,
@@ -657,10 +641,6 @@ export const breadcrumbPreview: ComponentPreviewMap = {
  * Path: /docs/components/[slug]
  */
 export const audioMediaPreview: ComponentPreviewMap = {
-  "audio-timeline-with-chapters": {
-    light: `/preview_images/audio-media/audio-timeline-with-chapters-light.png`,
-    dark: `/preview_images/audio-media/audio-timeline-with-chapters-dark.png`,
-  },
   "playlist-carousel": {
     light: `/preview_images/audio-media/playlist-carousel-light.png`,
     dark: `/preview_images/audio-media/playlist-carousel-dark.png`,
@@ -676,10 +656,6 @@ export const audioMediaPreview: ComponentPreviewMap = {
   "audio-book-player": {
     light: `/preview_images/audio-media/audio-book-player-light.png`,
     dark: `/preview_images/audio-media/audio-book-player-dark.png`,
-  },
-  "podcast-card-player": {
-    light: `/preview_images/audio-media/podcast-card-player-light.png`,
-    dark: `/preview_images/audio-media/podcast-card-player-dark.png`,
   },
   "waveform-player": {
     light: `/preview_images/audio-media/waveform-player-light.png`,
@@ -993,10 +969,6 @@ export const formsPreview: ComponentPreviewMap = {
     light: `/preview_images/forms/multi-step-login-light.png`,
     dark: `/preview_images/forms/multi-step-login-dark.png`,
   },
-  "split-login-card": {
-    light: `/preview_images/forms/split-login-card-light.png`,
-    dark: `/preview_images/forms/split-login-card-dark.png`,
-  },
   "cloud-watch-form": {
     light: `/preview_images/forms/cloud-watch-form-light.png`,
     dark: `/preview_images/forms/cloud-watch-form-dark.png`,
@@ -1008,10 +980,6 @@ export const formsPreview: ComponentPreviewMap = {
  * Path: /docs/components/[slug]
  */
 export const fileManagementPreview: ComponentPreviewMap = {
-  "file-tree-manager": {
-    light: `/preview_images/file-management/file-tree-manager-light.png`,
-    dark: `/preview_images/file-management/file-tree-manager-dark.png`,
-  },
   "motion-file-tree": {
     light: `/preview_images/file-management/motion-file-tree-light.png`,
     dark: `/preview_images/file-management/motion-file-tree-dark.png`,
@@ -1113,10 +1081,6 @@ export const calendarsPreview: ComponentPreviewMap = {
     light: `/preview_images/calendars/universal-date-picker-light.png`,
     dark: `/preview_images/calendars/universal-date-picker-dark.png`,
   },
-  "date-time-input": {
-    light: `/preview_images/calendars/date-time-input-light.png`,
-    dark: `/preview_images/calendars/date-time-input-dark.png`,
-  },
   "dropdown-range-date-picker": {
     light: `/preview_images/calendars/dropdown-range-date-picker-light.png`,
     dark: `/preview_images/calendars/dropdown-range-date-picker-dark.png`,
@@ -1143,10 +1107,6 @@ export const eventCalendarsPreview: ComponentPreviewMap = {
   "event-scheduler": {
     light: `/preview_images/event-calendars/event-scheduler-light.png`,
     dark: `/preview_images/event-calendars/event-scheduler-dark.png`,
-  },
-  scheduler: {
-    light: `/preview_images/event-calendars/scheduler-light.png`,
-    dark: `/preview_images/event-calendars/scheduler-dark.png`,
   },
   "daily-timeline-scheduler": {
     light: `/preview_images/event-calendars/daily-timeline-scheduler-light.png`,
@@ -1296,22 +1256,6 @@ export const backgroundsPreview: ComponentPreviewMap = {
     light: `/preview_images/component-improvement.png`,
     dark: `/preview_images/component-improvement.png`,
   },
-  "aurora-flow": {
-    light: `/preview_images/component-improvement.png`,
-    dark: `/preview_images/component-improvement.png`,
-  },
-  "aurora-waves": {
-    light: `/preview_images/component-improvement.png`,
-    dark: `/preview_images/component-improvement.png`,
-  },
-  "falling-symbols-background": {
-    light: `/preview_images/component-improvement.png`,
-    dark: `/preview_images/component-improvement.png`,
-  },
-  "spotlight-background": {
-    light: `/preview_images/component-improvement.png`,
-    dark: `/preview_images/component-improvement.png`,
-  },
   "ripple-distortion": {
     light: `${BASE_URL}/popular/ripple-distortion-light.jpg`,
     dark: `${BASE_URL}/popular/ripple-distortion-dark.png`,
@@ -1354,10 +1298,6 @@ export const tabsPreview: ComponentPreviewMap = {
   "zoom-depth-tabs": {
     light: `/preview_images/tabs/zoom-depth-tabs-light.png`,
     dark: `/preview_images/tabs/zoom-depth-tabs-dark.png`,
-  },
-  "badge-tabs": {
-    light: `/preview_images/component-improvement.png`,
-    dark: `/preview_images/component-improvement.png`,
   },
   "capsule-tabs": {
     light: `/preview_images/tabs/capsule-tabs-light.png`,
@@ -1460,17 +1400,9 @@ export const stepperPreview: ComponentPreviewMap = {
  * Path: /docs/components/[slug]
  */
 export const docksPreview: ComponentPreviewMap = {
-  "magnetic-dock": {
-    light: `/preview_images/docks/magnetic-dock-light.png`,
-    dark: `/preview_images/docks/magnetic-dock-dark.png`,
-  },
   "gooey-dock": {
     light: `/preview_images/docks/gooey-dock-light.png`,
     dark: `/preview_images/docks/gooey-dock-dark.png`,
-  },
-  "tilted-dock": {
-    light: `/preview_images/docks/tilted-dock-light.png`,
-    dark: `/preview_images/docks/tilted-dock-dark.png`,
   },
   "dock-morph": {
     light: `/preview_images/docks/dock-morph-light.png`,
@@ -1606,10 +1538,6 @@ export const featuredSectionPreview: ComponentPreviewMap = {
   "feature-tabs-showcase": {
     light: `/preview_images/featured-sections/feature-tabs-showcase-light.png`,
     dark: `/preview_images/featured-sections/feature-tabs-showcase-dark.png`,
-  },
-  "composite-feature-showcase": {
-    light: `/preview_images/component-improvement.png`,
-    dark: `/preview_images/component-improvement.png`,
   },
   "integration-and-stats-section": {
     light: `/preview_images/featured-sections/integration-and-stats-section-light.png`,

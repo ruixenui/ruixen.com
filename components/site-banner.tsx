@@ -6,8 +6,16 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const COLORS = [
-  "#facc15", "#ef4444", "#3b82f6", "#22c55e", "#a855f7",
-  "#ec4899", "#f97316", "#06b6d4", "#fbbf24", "#8b5cf6",
+  "#facc15",
+  "#ef4444",
+  "#3b82f6",
+  "#22c55e",
+  "#a855f7",
+  "#ec4899",
+  "#f97316",
+  "#06b6d4",
+  "#fbbf24",
+  "#8b5cf6",
 ];
 
 interface Particle {
@@ -85,7 +93,8 @@ export function ProBanner() {
           <div
             className="absolute inset-0 z-10"
             style={{
-              background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0) 20%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 80%, transparent 100%)",
+              background:
+                "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0) 20%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 80%, transparent 100%)",
               animation: "banner-shine 1.2s ease-out forwards",
             }}
           />
@@ -95,7 +104,8 @@ export function ProBanner() {
           <div
             className="absolute inset-0 z-0"
             style={{
-              background: "radial-gradient(ellipse at center, rgba(96,165,250,0.5) 0%, transparent 70%)",
+              background:
+                "radial-gradient(ellipse at center, rgba(96,165,250,0.5) 0%, transparent 70%)",
               animation: "banner-glow 1.2s ease-out forwards",
             }}
           />
@@ -109,7 +119,10 @@ export function ProBanner() {
         >
           {/* Left cracker origin */}
           {showConfetti && (
-            <span className="pointer-events-none absolute -left-2 top-1/2 z-[9999]" aria-hidden="true">
+            <span
+              className="pointer-events-none absolute -left-2 top-1/2 z-[9999]"
+              aria-hidden="true"
+            >
               {particles
                 .filter((p) => p.side === "left")
                 .map((p) => (
@@ -143,7 +156,10 @@ export function ProBanner() {
 
           {/* Right cracker origin */}
           {showConfetti && (
-            <span className="pointer-events-none absolute -right-2 top-1/2 z-[9999]" aria-hidden="true">
+            <span
+              className="pointer-events-none absolute -right-2 top-1/2 z-[9999]"
+              aria-hidden="true"
+            >
               {particles
                 .filter((p) => p.side === "right")
                 .map((p) => (
@@ -187,8 +203,8 @@ export function ProBanner() {
           }
           100% {
             opacity: 0;
-            transform: translate(var(--cx), var(--cy))
-              rotate(var(--cr)) scale(0.3);
+            transform: translate(var(--cx), var(--cy)) rotate(var(--cr))
+              scale(0.3);
           }
         }
         @keyframes banner-shine {

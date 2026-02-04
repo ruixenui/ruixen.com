@@ -102,8 +102,10 @@ function Home() {
                 className="absolute inset-0 rounded-xl"
                 style={{
                   padding: "2px",
-                  background: "linear-gradient(var(--pro-angle, 0deg), #3b82f6, #60a5fa, #3b82f6, #2563eb, #3b82f6)",
-                  WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+                  background:
+                    "linear-gradient(var(--pro-angle, 0deg), #3b82f6, #60a5fa, #3b82f6, #2563eb, #3b82f6)",
+                  WebkitMask:
+                    "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
                   WebkitMaskComposite: "xor",
                   maskComposite: "exclude",
                   animation: "pro-border-spin 3s linear infinite",
@@ -129,8 +131,10 @@ function Home() {
                 className="absolute inset-0 rounded-xl"
                 style={{
                   padding: "2px",
-                  background: "linear-gradient(var(--pro-angle, 0deg), #000, #555, #000, #333, #000)",
-                  WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+                  background:
+                    "linear-gradient(var(--pro-angle, 0deg), #000, #555, #000, #333, #000)",
+                  WebkitMask:
+                    "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
                   WebkitMaskComposite: "xor",
                   maskComposite: "exclude",
                   animation: "pro-border-spin 3s linear infinite",
@@ -142,7 +146,8 @@ function Home() {
               <span
                 className="absolute inset-[2px] rounded-[10px] opacity-0 group-hover/start:opacity-100"
                 style={{
-                  background: "linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.15) 50%, transparent 60%)",
+                  background:
+                    "linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.15) 50%, transparent 60%)",
                   backgroundSize: "200% 100%",
                   animation: "pro-shine 2s ease-in-out infinite",
                 }}

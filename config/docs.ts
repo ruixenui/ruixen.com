@@ -58,12 +58,12 @@ export const docsConfig: DocsConfig = {
       event: "header_cta_clicked",
       label: "",
     },
-    {
-      title: "Supporters",
-      href: "/supporters",
-      event: "header_cta_clicked",
-      label: "New",
-    },
+    // {
+    //   title: "Supporters",
+    //   href: "/supporters",
+    //   event: "header_cta_clicked",
+    //   label: "New",
+    // },
   ],
   sidebarNav: [
     {
@@ -212,6 +212,12 @@ export const docsConfig: DocsConfig = {
               items: [],
               label: "",
             },
+            {
+              title: "Ruixen Moon Chat",
+              href: `/docs/components/ruixen-moon-chat`,
+              items: [],
+              label: "",
+            },
           ],
         },
         {
@@ -259,12 +265,6 @@ export const docsConfig: DocsConfig = {
           title: "Audio & Media",
           items: [
             {
-              title: "Audio Timeline With Chapters",
-              href: `/docs/components/audio-timeline-with-chapters`,
-              items: [],
-              label: "",
-            },
-            {
               title: "Playlist Carousel",
               href: `/docs/components/playlist-carousel`,
               items: [],
@@ -285,12 +285,6 @@ export const docsConfig: DocsConfig = {
             {
               title: "Audio Book Player",
               href: `/docs/components/audio-book-player`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Podcast Card Player",
-              href: `/docs/components/podcast-card-player`,
               items: [],
               label: "",
             },
@@ -373,30 +367,6 @@ export const docsConfig: DocsConfig = {
             {
               title: "Wave Background",
               href: `/docs/components/wave-background`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Aurora Flow",
-              href: `/docs/components/aurora-flow`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Aurora Waves",
-              href: `/docs/components/aurora-waves`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Falling Symbols Background",
-              href: `/docs/components/falling-symbols-background`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Spotlight Background",
-              href: `/docs/components/spotlight-background`,
               items: [],
               label: "",
             },
@@ -768,12 +738,6 @@ export const docsConfig: DocsConfig = {
               label: "",
             },
             {
-              title: "Date Time Input",
-              href: `/docs/components/date-time-input`,
-              items: [],
-              label: "",
-            },
-            {
               title: "Dropdown Range Date Picker",
               href: `/docs/components/dropdown-range-date-picker`,
               items: [],
@@ -857,24 +821,6 @@ export const docsConfig: DocsConfig = {
               label: "",
             },
             {
-              title: "Job Card",
-              href: `/docs/components/job-card`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Team Project Card",
-              href: `/docs/components/team-project-card`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Collab Chat Card",
-              href: `/docs/components/collab-chat-card`,
-              items: [],
-              label: "",
-            },
-            {
               title: "Goal Tracker Card",
               href: `/docs/components/goal-tracker-card`,
               items: [],
@@ -907,12 +853,6 @@ export const docsConfig: DocsConfig = {
             {
               title: "Doctor Profile Card",
               href: `/docs/components/doctor-profile-card`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Gradient Blob Card",
-              href: `/docs/components/gradient-blob-card`,
               items: [],
               label: "",
             },
@@ -975,17 +915,6 @@ export const docsConfig: DocsConfig = {
               href: `/docs/components/card-stack`,
               items: [],
               label: "New",
-            },
-          ],
-        },
-        {
-          title: "Chat Components",
-          items: [
-            {
-              title: "Ruixen Moon Chat",
-              href: `/docs/components/ruixen-moon-chat`,
-              items: [],
-              label: "",
             },
           ],
         },
@@ -1103,20 +1032,8 @@ export const docsConfig: DocsConfig = {
           title: "Docks",
           items: [
             {
-              title: "Magnetic Dock",
-              href: `/docs/components/magnetic-dock`,
-              items: [],
-              label: "",
-            },
-            {
               title: "Gooey Dock",
               href: `/docs/components/gooey-dock`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Tilted Dock",
-              href: `/docs/components/tilted-dock`,
               items: [],
               label: "",
             },
@@ -1180,12 +1097,6 @@ export const docsConfig: DocsConfig = {
             {
               title: "Event Scheduler",
               href: `/docs/components/event-scheduler`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Scheduler",
-              href: `/docs/components/scheduler`,
               items: [],
               label: "",
             },
@@ -1321,12 +1232,6 @@ export const docsConfig: DocsConfig = {
           title: "File Management",
           items: [
             {
-              title: "File Tree Manager",
-              href: `/docs/components/file-tree-manager`,
-              items: [],
-              label: "",
-            },
-            {
               title: "Motion File Tree",
               href: `/docs/components/motion-file-tree`,
               items: [],
@@ -1448,12 +1353,6 @@ export const docsConfig: DocsConfig = {
             {
               title: "Multi Step Login",
               href: `/docs/components/multi-step-login`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Split Login Card",
-              href: `/docs/components/split-login-card`,
               items: [],
               label: "",
             },
@@ -1959,12 +1858,6 @@ export const docsConfig: DocsConfig = {
               label: "",
             },
             {
-              title: "Badge Tabs",
-              href: `/docs/components/badge-tabs`,
-              items: [],
-              label: "",
-            },
-            {
               title: "Capsule Tabs",
               href: `/docs/components/capsule-tabs`,
               items: [],
@@ -2135,12 +2028,6 @@ export const docsConfig: DocsConfig = {
             {
               title: "Feature Tabs Showcase",
               href: `/docs/components/feature-tabs-showcase`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Composite Feature Showcase",
-              href: `/docs/components/composite-feature-showcase`,
               items: [],
               label: "",
             },

@@ -778,20 +778,6 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "composite-feature-showcase",
-    type: "registry:ui",
-    title: "Composite Feature Showcase",
-    description: "Complex dashboard layout with map, charts, and feature cards",
-    dependencies: ["dotted-map", "recharts"],
-    files: [
-      {
-        path: "registry/ruixenui/composite-feature-showcase.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/composite-feature-showcase.tsx",
-      },
-    ],
-  },
-  {
     name: "integration-and-stats-section",
     type: "registry:ui",
     title: "Integration And Stats Section",
@@ -1568,36 +1554,6 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "team-project-card",
-    type: "registry:ui",
-    title: "Team Project Card",
-    description:
-      "A collaborative project card showing team members and milestones.",
-    dependencies: ["lucide-react"],
-    files: [
-      {
-        path: "registry/ruixenui/team-project-card.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/team-project-card.tsx",
-      },
-    ],
-  },
-  {
-    name: "collab-chat-card",
-    type: "registry:ui",
-    title: "Collab Chat Card",
-    description:
-      "A collaborative chat interface card with participant filtering.",
-    dependencies: ["lucide-react"],
-    files: [
-      {
-        path: "registry/ruixenui/collab-chat-card.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/collab-chat-card.tsx",
-      },
-    ],
-  },
-  {
     name: "goal-tracker-card",
     type: "registry:ui",
     title: "Goal Tracker Card",
@@ -1685,19 +1641,6 @@ export const ui: Registry["items"] = [
         path: "registry/ruixenui/doctor-profile-card.tsx",
         type: "registry:ui",
         target: "components/ruixen/doctor-profile-card.tsx",
-      },
-    ],
-  },
-  {
-    name: "gradient-blob-card",
-    type: "registry:ui",
-    title: "Gradient Blob Card",
-    description: "An animated gradient blob card with glassmorphism effects.",
-    files: [
-      {
-        path: "registry/ruixenui/gradient-blob-card.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/gradient-blob-card.tsx",
       },
     ],
   },
@@ -2097,21 +2040,6 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "job-card",
-    type: "registry:ui",
-    title: "Job Card",
-    description:
-      "A professional job listing card with company info and action buttons.",
-    registryDependencies: ["button", "card", "avatar"],
-    files: [
-      {
-        path: "registry/ruixenui/job-card.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/job-card.tsx",
-      },
-    ],
-  },
-  {
     name: "cookie-notice",
     type: "registry:ui",
     title: "Cookie Notice",
@@ -2123,22 +2051,6 @@ export const ui: Registry["items"] = [
         path: "registry/ruixenui/cookie-notice.tsx",
         type: "registry:ui",
         target: "components/ruixen/cookie-notice.tsx",
-      },
-    ],
-  },
-  {
-    name: "file-tree-manager",
-    type: "registry:ui",
-    title: "File Tree Manager",
-    description:
-      "A comprehensive file tree component with CRUD operations and management features.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["button", "input", "card", "tooltip"],
-    files: [
-      {
-        path: "registry/ruixenui/file-tree-manager.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/file-tree-manager.tsx",
       },
     ],
   },
@@ -2327,28 +2239,6 @@ export const ui: Registry["items"] = [
         path: "registry/ruixenui/event-scheduler.tsx",
         type: "registry:ui",
         target: "components/ruixen/event-scheduler.tsx",
-      },
-    ],
-  },
-  {
-    name: "scheduler",
-    type: "registry:ui",
-    title: "Scheduler",
-    description: "A simple event scheduler with calendar integration.",
-    dependencies: ["lucide-react"],
-    registryDependencies: [
-      "button",
-      "popover",
-      "calendar",
-      "card",
-      "label",
-      "select",
-    ],
-    files: [
-      {
-        path: "registry/ruixenui/scheduler.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/scheduler.tsx",
       },
     ],
   },
@@ -2581,63 +2471,6 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "aurora-flow",
-    type: "registry:ui",
-    title: "Aurora Flow",
-    description:
-      "A beautiful aurora-style background with flowing gradients and noise effects.",
-    dependencies: ["ogl"],
-    files: [
-      {
-        path: "registry/ruixenui/aurora-flow.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/aurora-flow.tsx",
-      },
-    ],
-  },
-  {
-    name: "aurora-waves",
-    type: "registry:ui",
-    title: "Aurora Waves",
-    description:
-      "Aurora-style waves with customizable speed, glow, and theme support.",
-    dependencies: ["ogl"],
-    files: [
-      {
-        path: "registry/ruixenui/aurora-waves.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/aurora-waves.tsx",
-      },
-    ],
-  },
-  {
-    name: "falling-symbols-background",
-    type: "registry:ui",
-    title: "Falling Symbols Background",
-    description:
-      "A Matrix-style falling symbols background with customizable characters and effects.",
-    files: [
-      {
-        path: "registry/ruixenui/falling-symbols-background.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/falling-symbols-background.tsx",
-      },
-    ],
-  },
-  {
-    name: "spotlight-background",
-    type: "registry:ui",
-    title: "Spotlight Background",
-    description: "A mouse-following spotlight effect with smooth animations.",
-    files: [
-      {
-        path: "registry/ruixenui/spotlight-background.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/spotlight-background.tsx",
-      },
-    ],
-  },
-  {
     name: "ripple-distortion",
     type: "registry:ui",
     title: "Ripple Distortion",
@@ -2736,22 +2569,6 @@ export const ui: Registry["items"] = [
         path: "registry/ruixenui/zoom-depth-tabs.tsx",
         type: "registry:ui",
         target: "components/ruixen/zoom-depth-tabs.tsx",
-      },
-    ],
-  },
-  {
-    name: "badge-tabs",
-    type: "registry:ui",
-    title: "Badge Tabs",
-    description:
-      "Tab component with animated badges showing counts or notifications.",
-    dependencies: ["framer-motion"],
-    registryDependencies: ["tabs"],
-    files: [
-      {
-        path: "registry/ruixenui/badge-tabs.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/badge-tabs.tsx",
       },
     ],
   },
@@ -2995,22 +2812,6 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "magnetic-dock",
-    type: "registry:ui",
-    title: "Magnetic Dock",
-    description:
-      "macOS-style dock with magnetic hover effects and smooth icon animations.",
-    dependencies: ["framer-motion", "lucide-react"],
-    registryDependencies: ["card"],
-    files: [
-      {
-        path: "registry/ruixenui/magnetic-dock.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/magnetic-dock.tsx",
-      },
-    ],
-  },
-  {
     name: "gooey-dock",
     type: "registry:ui",
     title: "Gooey Dock",
@@ -3023,21 +2824,6 @@ export const ui: Registry["items"] = [
         path: "registry/ruixenui/gooey-dock.tsx",
         type: "registry:ui",
         target: "components/ruixen/gooey-dock.tsx",
-      },
-    ],
-  },
-  {
-    name: "tilted-dock",
-    type: "registry:ui",
-    title: "Tilted Dock",
-    description:
-      "3D tilted dock with perspective effects and parallax mouse tracking.",
-    dependencies: ["framer-motion", "lucide-react"],
-    files: [
-      {
-        path: "registry/ruixenui/tilted-dock.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/tilted-dock.tsx",
       },
     ],
   },
@@ -3139,22 +2925,6 @@ export const ui: Registry["items"] = [
   },
   // Audio & Media Components
   {
-    name: "audio-timeline-with-chapters",
-    type: "registry:ui",
-    title: "Audio Timeline With Chapters",
-    description:
-      "Interactive audio player with timeline and chapter navigation.",
-    dependencies: [],
-    registryDependencies: ["button"],
-    files: [
-      {
-        path: "registry/ruixenui/audio-timeline-with-chapters.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/audio-timeline-with-chapters.tsx",
-      },
-    ],
-  },
-  {
     name: "playlist-carousel",
     type: "registry:ui",
     title: "Playlist Carousel",
@@ -3215,22 +2985,6 @@ export const ui: Registry["items"] = [
         path: "registry/ruixenui/audio-book-player.tsx",
         type: "registry:ui",
         target: "components/ruixen/audio-book-player.tsx",
-      },
-    ],
-  },
-  {
-    name: "podcast-card-player",
-    type: "registry:ui",
-    title: "Podcast Card Player",
-    description:
-      "Card-style podcast player with cover art, episode info, and audio controls.",
-    dependencies: [],
-    registryDependencies: ["button"],
-    files: [
-      {
-        path: "registry/ruixenui/podcast-card-player.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/podcast-card-player.tsx",
       },
     ],
   },
@@ -3848,21 +3602,6 @@ export const ui: Registry["items"] = [
       },
     ],
   },
-  {
-    name: "split-login-card",
-    type: "registry:ui",
-    title: "Split Login Card",
-    description:
-      "Split-screen login card with branding on one side and form on the other.",
-    dependencies: [],
-    files: [
-      {
-        path: "registry/ruixenui/split-login-card.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/split-login-card.tsx",
-      },
-    ],
-  },
   // Tabs Components
   {
     name: "drag-and-drop-tabs",
@@ -4157,22 +3896,6 @@ export const ui: Registry["items"] = [
         path: "registry/ruixenui/calendar-lume.tsx",
         type: "registry:ui",
         target: "components/ruixen/calendar-lume.tsx",
-      },
-    ],
-  },
-  {
-    name: "date-time-input",
-    type: "registry:ui",
-    title: "Date Time Input",
-    description:
-      "A combined date and time picker with calendar popover and time input field.",
-    dependencies: ["date-fns", "lucide-react"],
-    registryDependencies: ["calendar", "popover", "button", "input", "label"],
-    files: [
-      {
-        path: "registry/ruixenui/date-time-input.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/date-time-input.tsx",
       },
     ],
   },
