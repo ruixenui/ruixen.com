@@ -86,7 +86,7 @@ export function ProCTA() {
     <Link
       href="https://pro.ruixen.com"
       target="_blank"
-      className="group my-6 flex w-full flex-col overflow-hidden rounded-xl bg-card border border-border cursor-pointer transition-all hover:border-primary/50 hover:shadow-md"
+      className="group my-6 flex w-full flex-col overflow-hidden rounded-xl bg-card border border-blue-300 dark:border-blue-600/50 cursor-pointer transition-all hover:border-blue-400 dark:hover:border-blue-500 hover:shadow-md"
     >
       {/* Video Slideshow */}
       <div className="p-2 pb-0">

@@ -2,7 +2,7 @@
 /* eslint-disable @next/next/no-img-element */
 
 import MoreArticles, { getReadingTime } from "@/components/blog/more-articles";
-import PromoSection from "@/components/blog/promo-section";
+import { SidebarCTA } from "@/components/sidebar-cta";
 import BlogTableOfContents from "@/components/blog/table-of-contents";
 import { siteConfig } from "@/config/site";
 import { absoluteUrl } from "@/lib/utils";
@@ -247,7 +247,7 @@ export default async function BlogPage({
             <MDXContent code={post.body.code} components={components} />
           </div>
           <div className="sticky top-16 col-span-2 hidden h-fit w-full flex-col items-start justify-start p-5 text-primary lg:flex ">
-            <PromoSection />
+            <SidebarCTA />
             <div className="mt-10 w-full">
               <BlogTableOfContents headings={headings} />
             </div>
