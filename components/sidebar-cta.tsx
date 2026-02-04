@@ -74,7 +74,9 @@ function VideoSlideshow() {
       <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-[60%] h-1 bg-white/20 rounded-full overflow-hidden">
         <div
           className="h-full bg-white rounded-full transition-all duration-300"
-          style={{ width: `${((currentIndex + 1) / SHOWCASE_VIDEOS.length) * 100}%` }}
+          style={{
+            width: `${((currentIndex + 1) / SHOWCASE_VIDEOS.length) * 100}%`,
+          }}
         />
       </div>
     </div>
@@ -112,7 +114,8 @@ export function ProCTA() {
           <span
             className="text-transparent bg-clip-text"
             style={{
-              backgroundImage: "linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)",
+              backgroundImage:
+                "linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)",
               backgroundSize: "200% 200%",
               animation: "gradient-shift 3s ease infinite",
             }}
@@ -125,9 +128,12 @@ export function ProCTA() {
         {/* Description */}
         <p className="text-xs text-muted-foreground mt-2 mb-3 leading-relaxed">
           Get{" "}
-          <span className="font-semibold text-foreground">30+ premium components</span>,{" "}
-          <span className="font-semibold text-foreground">templates</span>, and{" "}
-          <span className="font-semibold text-foreground">blocks</span> with lifetime updates.
+          <span className="font-semibold text-foreground">
+            30+ premium components
+          </span>
+          , <span className="font-semibold text-foreground">templates</span>,
+          and <span className="font-semibold text-foreground">blocks</span> with
+          lifetime updates.
         </p>
 
         {/* Features - compact */}

@@ -46,7 +46,7 @@ interface ThreeDWallCalendarProps {
   onRemoveEvent?: (id: string) => void;
   panelWidth?: number;
   panelHeight?: number;
-  columns?: number; 
+  columns?: number;
 }
 
 export function ThreeDWallCalendar({
@@ -243,14 +243,14 @@ export function ThreeDWallCalendar({
         onPointerUp={onPointerUp}
         onPointerCancel={onPointerUp}
         className="w-full "
-        style={{ perspective: 1200 }} 
+        style={{ perspective: 1200 }}
       >
         <div
           className="inline-block"
           style={{
             width: columns * (panelWidth + gap),
             marginLeft: "200px",
-                      transformStyle: "preserve-3d",
+            transformStyle: "preserve-3d",
             transform: `rotateX(${tiltX}deg) rotateY(${tiltY}deg)`,
             transition: isDragging.current ? "none" : "transform 120ms linear",
             minWidth: "fit-content",
@@ -367,7 +367,8 @@ export function ThreeDWallCalendar({
                       </div>
 
                       <div className="mt-auto text-xs text-muted-foreground">
-                        {dayEvents.length} event{dayEvents.length !== 1 ? "s" : ""}
+                        {dayEvents.length} event
+                        {dayEvents.length !== 1 ? "s" : ""}
                       </div>
                     </CardContent>
                   </Card>

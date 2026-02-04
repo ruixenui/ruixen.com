@@ -146,13 +146,13 @@ An interface that loads in 200 milliseconds is fundamentally denser than one tha
 
 Research on perceived performance has established clear thresholds for how users experience delay:
 
-| Latency | User Perception | Design Implication |
-|---|---|---|
-| **Under 100ms** | Feels instant | Skip transitions — they add perceived delay |
-| **100ms – 300ms** | Feels responsive | Light transitions acceptable |
-| **300ms – 1s** | Noticeable wait | Show subtle loading feedback |
-| **1s – 5s** | Interrupted flow | Show progress or skeleton screens |
-| **Over 5s** | Broken experience | Let users do other things; notify on completion |
+| Latency           | User Perception   | Design Implication                              |
+| ----------------- | ----------------- | ----------------------------------------------- |
+| **Under 100ms**   | Feels instant     | Skip transitions — they add perceived delay     |
+| **100ms – 300ms** | Feels responsive  | Light transitions acceptable                    |
+| **300ms – 1s**    | Noticeable wait   | Show subtle loading feedback                    |
+| **1s – 5s**       | Interrupted flow  | Show progress or skeleton screens               |
+| **Over 5s**       | Broken experience | Let users do other things; notify on completion |
 
 Every second of latency doesn't just slow things down — it fragments attention. A user waiting for a chart to load loses the mental model they were building from the surrounding data. When the chart finally appears, they have to re-orient. The _effective density_ of the interface drops because the time cost of each piece of information went up.
 

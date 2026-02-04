@@ -724,22 +724,6 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "composite-feature-showcase-demo",
-    type: "registry:example",
-    title: "Composite Feature Showcase Demo",
-    description: "Example of complex dashboard layout with map and charts",
-    registryDependencies: [
-      "https://www.ruixen.com/r/composite-feature-showcase",
-    ],
-    files: [
-      {
-        path: "registry/example/composite-feature-showcase-demo.tsx",
-        type: "registry:example",
-        target: "components/composite-feature-showcase-demo.tsx",
-      },
-    ],
-  },
-  {
     name: "integration-and-stats-section-demo",
     type: "registry:example",
     title: "Integration And Stats Section Demo",
@@ -1478,36 +1462,6 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "team-project-card-demo",
-    type: "registry:example",
-    title: "Team Project Card Demo",
-    description:
-      "Example showing a collaborative project card with team members and milestones.",
-    registryDependencies: ["https://www.ruixen.com/r/team-project-card"],
-    files: [
-      {
-        path: "registry/example/team-project-card-demo.tsx",
-        type: "registry:example",
-        target: "components/team-project-card-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "collab-chat-card-demo",
-    type: "registry:example",
-    title: "Collab Chat Card Demo",
-    description:
-      "Example showing a collaborative chat interface card with participant filtering.",
-    registryDependencies: ["https://www.ruixen.com/r/collab-chat-card"],
-    files: [
-      {
-        path: "registry/example/collab-chat-card-demo.tsx",
-        type: "registry:example",
-        target: "components/collab-chat-card-demo.tsx",
-      },
-    ],
-  },
-  {
     name: "goal-tracker-card-demo",
     type: "registry:example",
     title: "Goal Tracker Card Demo",
@@ -1594,21 +1548,6 @@ export const examples: Registry["items"] = [
         path: "registry/example/doctor-profile-card-demo.tsx",
         type: "registry:example",
         target: "components/doctor-profile-card-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "gradient-blob-card-demo",
-    type: "registry:example",
-    title: "Gradient Blob Card Demo",
-    description:
-      "Example showing an animated gradient blob card with glassmorphism effects.",
-    registryDependencies: ["https://www.ruixen.com/r/gradient-blob-card"],
-    files: [
-      {
-        path: "registry/example/gradient-blob-card-demo.tsx",
-        type: "registry:example",
-        target: "components/gradient-blob-card-demo.tsx",
       },
     ],
   },
@@ -1990,21 +1929,6 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "job-card-demo",
-    type: "registry:example",
-    title: "Job Card Demo",
-    description:
-      "Example showing a professional job listing card with company info and action buttons.",
-    registryDependencies: ["https://www.ruixen.com/r/job-card"],
-    files: [
-      {
-        path: "registry/example/job-card-demo.tsx",
-        type: "registry:example",
-        target: "components/job-card-demo.tsx",
-      },
-    ],
-  },
-  {
     name: "cookie-notice-demo",
     type: "registry:example",
     title: "Cookie Notice Demo",
@@ -2016,21 +1940,6 @@ export const examples: Registry["items"] = [
         path: "registry/example/cookie-notice-demo.tsx",
         type: "registry:example",
         target: "components/cookie-notice-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "file-tree-manager-demo",
-    type: "registry:example",
-    title: "File Tree Manager Demo",
-    description:
-      "Example showing a comprehensive file tree component with CRUD operations and management features.",
-    registryDependencies: ["https://www.ruixen.com/r/file-tree-manager"],
-    files: [
-      {
-        path: "registry/example/file-tree-manager-demo.tsx",
-        type: "registry:example",
-        target: "components/file-tree-manager-demo.tsx",
       },
     ],
   },
@@ -2197,21 +2106,6 @@ export const examples: Registry["items"] = [
         path: "registry/example/event-scheduler-demo.tsx",
         type: "registry:example",
         target: "components/event-scheduler-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "scheduler-demo",
-    type: "registry:example",
-    title: "Scheduler Demo",
-    description:
-      "Example showing a simple event scheduler with calendar integration.",
-    registryDependencies: ["https://www.ruixen.com/r/scheduler"],
-    files: [
-      {
-        path: "registry/example/scheduler-demo.tsx",
-        type: "registry:example",
-        target: "components/scheduler-demo.tsx",
       },
     ],
   },
@@ -2410,64 +2304,6 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "aurora-flow-demo",
-    type: "registry:example",
-    title: "Aurora Flow Demo",
-    description:
-      "Example showing a beautiful aurora-style background with flowing gradients.",
-    registryDependencies: ["https://ruixen.com/r/aurora-flow"],
-    files: [
-      {
-        path: "registry/example/aurora-flow-demo.tsx",
-        type: "registry:example",
-        target: "components/aurora-flow-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "aurora-waves-demo",
-    type: "registry:example",
-    title: "Aurora Waves Demo",
-    description:
-      "Example showing aurora-style waves with customizable properties.",
-    registryDependencies: ["https://ruixen.com/r/aurora-waves"],
-    files: [
-      {
-        path: "registry/example/aurora-waves-demo.tsx",
-        type: "registry:example",
-        target: "components/aurora-waves-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "falling-symbols-background-demo",
-    type: "registry:example",
-    title: "Falling Symbols Background Demo",
-    description: "Example showing a Matrix-style falling symbols background.",
-    registryDependencies: ["https://ruixen.com/r/falling-symbols-background"],
-    files: [
-      {
-        path: "registry/example/falling-symbols-background-demo.tsx",
-        type: "registry:example",
-        target: "components/falling-symbols-background-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "spotlight-background-demo",
-    type: "registry:example",
-    title: "Spotlight Background Demo",
-    description: "Example showing a mouse-following spotlight effect.",
-    registryDependencies: ["https://ruixen.com/r/spotlight-background"],
-    files: [
-      {
-        path: "registry/example/spotlight-background-demo.tsx",
-        type: "registry:example",
-        target: "components/spotlight-background-demo.tsx",
-      },
-    ],
-  },
-  {
     name: "ripple-distortion-demo",
     type: "registry:example",
     title: "Ripple Distortion Demo",
@@ -2566,20 +2402,6 @@ export const examples: Registry["items"] = [
         path: "registry/example/zoom-depth-tabs-demo.tsx",
         type: "registry:example",
         target: "components/zoom-depth-tabs-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "badge-tabs-demo",
-    type: "registry:example",
-    title: "Badge Tabs Demo",
-    description: "Example showing tabs with animated notification badges.",
-    registryDependencies: ["https://ruixen.com/r/badge-tabs"],
-    files: [
-      {
-        path: "registry/example/badge-tabs-demo.tsx",
-        type: "registry:example",
-        target: "components/badge-tabs-demo.tsx",
       },
     ],
   },
@@ -2798,20 +2620,6 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "magnetic-dock-demo",
-    type: "registry:example",
-    title: "Magnetic Dock Demo",
-    description: "Example showing macOS-style dock with magnetic effects.",
-    registryDependencies: ["https://ruixen.com/r/magnetic-dock"],
-    files: [
-      {
-        path: "registry/example/magnetic-dock-demo.tsx",
-        type: "registry:example",
-        target: "components/magnetic-dock-demo.tsx",
-      },
-    ],
-  },
-  {
     name: "gooey-dock-demo",
     type: "registry:example",
     title: "Gooey Dock Demo",
@@ -2822,20 +2630,6 @@ export const examples: Registry["items"] = [
         path: "registry/example/gooey-dock-demo.tsx",
         type: "registry:example",
         target: "components/gooey-dock-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "tilted-dock-demo",
-    type: "registry:example",
-    title: "Tilted Dock Demo",
-    description: "Example showing 3D tilted dock with perspective effects.",
-    registryDependencies: ["https://ruixen.com/r/tilted-dock"],
-    files: [
-      {
-        path: "registry/example/tilted-dock-demo.tsx",
-        type: "registry:example",
-        target: "components/tilted-dock-demo.tsx",
       },
     ],
   },
@@ -2926,22 +2720,6 @@ export const examples: Registry["items"] = [
       },
     ],
   },
-  // Audio & Media Component Demos
-  {
-    name: "audio-timeline-with-chapters-demo",
-    type: "registry:example",
-    title: "Audio Timeline With Chapters Demo",
-    description:
-      "Example showing interactive audio player with chapter navigation.",
-    registryDependencies: ["https://ruixen.com/r/audio-timeline-with-chapters"],
-    files: [
-      {
-        path: "registry/example/audio-timeline-with-chapters-demo.tsx",
-        type: "registry:example",
-        target: "components/audio-timeline-with-chapters-demo.tsx",
-      },
-    ],
-  },
   {
     name: "playlist-carousel-demo",
     type: "registry:example",
@@ -2997,20 +2775,6 @@ export const examples: Registry["items"] = [
         path: "registry/example/audio-book-player-demo.tsx",
         type: "registry:example",
         target: "components/audio-book-player-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "podcast-card-player-demo",
-    type: "registry:example",
-    title: "Podcast Card Player Demo",
-    description: "Example showing podcast player with cover art and controls.",
-    registryDependencies: ["https://ruixen.com/r/podcast-card-player"],
-    files: [
-      {
-        path: "registry/example/podcast-card-player-demo.tsx",
-        type: "registry:example",
-        target: "components/podcast-card-player-demo.tsx",
       },
     ],
   },
@@ -3773,21 +3537,6 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "split-login-card-demo",
-    type: "registry:example",
-    title: "Split Login Card Demo",
-    description:
-      "Example showing a split layout login card with dual sections.",
-    registryDependencies: ["https://ruixen.com/r/split-login-card"],
-    files: [
-      {
-        path: "registry/example/split-login-card-demo.tsx",
-        type: "registry:example",
-        target: "components/split-login-card-demo.tsx",
-      },
-    ],
-  },
-  {
     name: "event-aquarium-calendar-demo",
     type: "registry:example",
     title: "Event Aquarium Calendar Demo",
@@ -3948,21 +3697,6 @@ export const examples: Registry["items"] = [
         path: "registry/example/calendar-lume-demo.tsx",
         type: "registry:example",
         target: "components/calendar-lume-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "date-time-input-demo",
-    type: "registry:example",
-    title: "Date Time Input Demo",
-    description:
-      "Example showing a combined date and time picker with preview display.",
-    registryDependencies: ["https://ruixen.com/r/date-time-input"],
-    files: [
-      {
-        path: "registry/example/date-time-input-demo.tsx",
-        type: "registry:example",
-        target: "components/date-time-input-demo.tsx",
       },
     ],
   },
