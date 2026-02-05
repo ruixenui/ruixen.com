@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "otp-field",
+  "type": "registry:ui",
+  "title": "OTP Field",
+  "description": "A customizable OTP (One-Time Password) input field with auto-focus and paste support.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/ruixenui/otp-field.tsx",
+      "content": "\"use client\";\n\nimport { useId, useState, useRef } from \"react\";\nimport { Label } from \"@/components/ui/label\";\nimport { cn } from \"@/lib/utils\";\nimport { MinusIcon } from \"lucide-react\";\n\ninterface OTPFieldProps {\n  label?: string;\n  length?: number;\n  separator?: boolean;\n  onComplete?: (otp: string) => void;\n}\n\nexport default function OTPField({\n  label = \"Enter OTP\",\n  length = 6,\n  separator = true,\n  onComplete,\n}: OTPFieldProps) {\n  const id = useId();\n  const [values, setValues] = useState(Array(length).fill(\"\"));\n  const inputsRef = useRef<HTMLInputElement[]>([]);\n\n  const handleChange = (idx: number, char: string) => {\n    if (!/^[0-9]?$/.test(char)) return; // allow only digits\n    const newValues = [...values];\n    newValues[idx] = char;\n    setValues(newValues);\n\n    if (char && idx < length - 1) {\n      inputsRef.current[idx + 1]?.focus();\n    }\n\n    if (newValues.every((v) => v !== \"\")) {\n      onComplete?.(newValues.join(\"\"));\n    }\n  };\n\n  const handleKeyDown = (idx: number, e: React.KeyboardEvent) => {\n    if (e.key === \"Backspace\" && !values[idx] && idx > 0) {\n      inputsRef.current[idx - 1]?.focus();\n    }\n  };\n\n  const handlePaste = (e: React.ClipboardEvent) => {\n    const paste = e.clipboardData.getData(\"Text\").slice(0, length).split(\"\");\n    const newValues = [...values];\n    paste.forEach((char, i) => (newValues[i] = char));\n    setValues(newValues);\n    if (paste.length > 0 && paste.length < length) {\n      inputsRef.current[paste.length]?.focus();\n    }\n    if (paste.length === length) onComplete?.(newValues.join(\"\"));\n    e.preventDefault();\n  };\n\n  return (\n    <div className=\"space-y-2 w-full max-w-md\">\n      <Label htmlFor={id}>{label}</Label>\n\n      <div className=\"flex items-center gap-2\" onPaste={handlePaste}>\n        {values.map((val, idx) => (\n          <div key={idx} className=\"flex items-center\">\n            <input\n              ref={(el) => (inputsRef.current[idx] = el!)}\n              type=\"text\"\n              inputMode=\"numeric\"\n              maxLength={1}\n              value={val}\n              onChange={(e) => handleChange(idx, e.target.value)}\n              onKeyDown={(e) => handleKeyDown(idx, e)}\n              className={cn(\n                \"w-12 h-12 text-center text-lg rounded-xl border bg-background font-semibold shadow-sm transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-primary\",\n                val ? \"border-primary\" : \"border-input\",\n              )}\n            />\n            {separator && idx === Math.floor(length / 2) - 1 && (\n              <MinusIcon\n                size={16}\n                aria-hidden=\"true\"\n                className=\"mx-1 text-muted-foreground/60\"\n              />\n            )}\n          </div>\n        ))}\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/otp-field.tsx"
+    },
+    {
+      "path": "components/ui/label.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nfunction Label({ className, ...props }: React.ComponentProps<\"label\">) {\n  return (\n    <label\n      data-slot=\"label\"\n      className={cn(\n        \"flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nexport { Label };\n",
+      "type": "registry:ui",
+      "target": "components/ui/label.tsx"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "wheel-pagination-demo",
+  "type": "registry:example",
+  "title": "Wheel Pagination Demo",
+  "description": "Example showing pagination with mouse wheel support.",
+  "registryDependencies": [
+    "https://ruixen.com/r/wheel-pagination"
+  ],
+  "files": [
+    {
+      "path": "registry/example/wheel-pagination-demo.tsx",
+      "content": "import WheelPagination from \"@/registry/ruixenui/wheel-pagination\";\n\nexport default function DemoOne() {\n  return (\n    <div className=\"flex flex-col items-center justify-center min-h-screen\">\n      <WheelPagination\n        totalPages={50} // Total number of pages\n        visibleCount={7} // Number of pages visible at once\n        className=\"\"\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/wheel-pagination-demo.tsx"
+    }
+  ]
+}

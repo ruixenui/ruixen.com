@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "event-aquarium-calendar-demo",
+  "type": "registry:example",
+  "title": "Event Aquarium Calendar Demo",
+  "description": "Example showing an event aquarium calendar with floating event bubbles.",
+  "registryDependencies": [
+    "https://ruixen.com/r/event-aquarium-calendar"
+  ],
+  "files": [
+    {
+      "path": "registry/example/event-aquarium-calendar-demo.tsx",
+      "content": "\"use client\";\n\nimport { EventAquariumCalendar } from \"@/registry/ruixenui/event-aquarium-calendar\";\n\nexport default function EventAquariumDemoPage() {\n  return (\n    <main className=\"p-8 flex justify-center\">\n      <div className=\"w-full max-w-4xl\">\n        <h1 className=\"text-2xl font-bold mb-6\">\n          🐠 Event Aquarium Calendar Demo\n        </h1>\n        <EventAquariumCalendar bubbleCount={40} width={500} height={500} />\n      </div>\n    </main>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/event-aquarium-calendar-demo.tsx"
+    }
+  ]
+}

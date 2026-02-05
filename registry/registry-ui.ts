@@ -228,13 +228,7 @@ export const ui: Registry["items"] = [
     title: "FAQ Scroll Accordion",
     description:
       "A scroll-triggered FAQ accordion component with smooth GSAP animations and auto-expanding items.",
-    dependencies: [
-      "framer-motion",
-      "@radix-ui/react-accordion",
-      "lucide-react",
-      "gsap",
-      "@gsap/react",
-    ],
+    dependencies: ["framer-motion", "lucide-react", "gsap", "@gsap/react"],
     files: [
       {
         path: "registry/ruixenui/faq-scroll-accordion.tsx",
@@ -249,7 +243,7 @@ export const ui: Registry["items"] = [
     title: "FAQ Auto Accordion",
     description:
       "A scroll-triggered FAQ accordion component with smooth GSAP animations and auto-expanding items.",
-    dependencies: ["@radix-ui/react-accordion"],
+    registryDependencies: ["accordion"],
     files: [
       {
         path: "registry/ruixenui/faq-auto-accordion.tsx",
@@ -264,7 +258,8 @@ export const ui: Registry["items"] = [
     title: "Compact Accordion",
     description:
       "A clean and minimal accordion component with icons and smooth animations for organizing content in collapsible sections.",
-    dependencies: ["@radix-ui/react-accordion", "lucide-react"],
+    dependencies: ["lucide-react"],
+    registryDependencies: ["accordion"],
     files: [
       {
         path: "registry/ruixenui/compact-accordion.tsx",
@@ -325,7 +320,7 @@ export const ui: Registry["items"] = [
     title: "Arrow Accordion",
     description:
       "An accordion with a right-pointing arrow indicator that rotates on expand.",
-    dependencies: ["@radix-ui/react-accordion", "lucide-react"],
+    dependencies: ["lucide-react"],
     files: [
       {
         path: "registry/ruixenui/accordion-arrow.tsx",
@@ -340,7 +335,7 @@ export const ui: Registry["items"] = [
     title: "Plus/Minus Accordion",
     description:
       "An accordion with plus/minus toggle icons for expand and collapse states.",
-    dependencies: ["@radix-ui/react-accordion", "lucide-react"],
+    dependencies: ["lucide-react"],
     files: [
       {
         path: "registry/ruixenui/accordion-plus.tsx",
@@ -385,7 +380,7 @@ export const ui: Registry["items"] = [
     title: "Minimal Accordion",
     description:
       "A minimal accordion with show/hide text toggle instead of icons.",
-    dependencies: ["@radix-ui/react-accordion"],
+    dependencies: [],
     files: [
       {
         path: "registry/ruixenui/accordion-minimal.tsx",
@@ -591,7 +586,8 @@ export const ui: Registry["items"] = [
     title: "Aurora Hero Section",
     description:
       "A beautiful hero section with aurora-style background effects and animated elements",
-    dependencies: ["@radix-ui/react-slot", "lucide-react"],
+    dependencies: ["lucide-react"],
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/aurora-hero-section.tsx",
@@ -606,7 +602,8 @@ export const ui: Registry["items"] = [
     title: "Card Carousel Hero",
     description:
       "An interactive hero section featuring a card carousel with smooth animations",
-    dependencies: ["motion", "@radix-ui/react-slot"],
+    dependencies: ["motion"],
+    registryDependencies: ["button", "card"],
     files: [
       {
         path: "registry/ruixenui/card-carousel-hero.tsx",
@@ -621,7 +618,8 @@ export const ui: Registry["items"] = [
     title: "Gradient Hero Showcase",
     description:
       "A modern hero section with animated gradient background and smooth transitions",
-    dependencies: ["motion", "@radix-ui/react-slot"],
+    dependencies: ["motion"],
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/gradient-hero-showcase.tsx",
@@ -636,7 +634,8 @@ export const ui: Registry["items"] = [
     title: "Spectrum Hero Section",
     description:
       "A vibrant hero section with spectrum color effects and dynamic animations",
-    dependencies: ["motion", "@radix-ui/react-slot"],
+    dependencies: ["motion"],
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/spectrum-hero-section.tsx",
@@ -651,7 +650,8 @@ export const ui: Registry["items"] = [
     title: "Video Hero Showcase",
     description:
       "A dynamic hero section featuring video backgrounds and interactive elements",
-    dependencies: ["motion", "@radix-ui/react-slot"],
+    dependencies: ["motion"],
+    registryDependencies: ["button", "badge"],
     files: [
       {
         path: "registry/ruixenui/video-hero-showcase.tsx",
@@ -666,7 +666,8 @@ export const ui: Registry["items"] = [
     title: "Visionary Hero Section",
     description:
       "A visionary hero section with elegant design and smooth animations",
-    dependencies: ["motion", "@radix-ui/react-slot", "gsap"],
+    dependencies: ["motion", "gsap"],
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/visionary-hero-section.tsx",
@@ -1390,7 +1391,6 @@ export const ui: Registry["items"] = [
     title: "Advanced Context Menu",
     description:
       "An advanced context menu component with nested items and keyboard navigation.",
-    dependencies: ["@radix-ui/react-dropdown-menu"],
     registryDependencies: ["context-menu"],
     files: [
       {
@@ -1420,7 +1420,7 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Drawer Inner Content",
     description: "A drawer component with customizable inner content layout.",
-    dependencies: ["@radix-ui/react-dialog", "motion"],
+    dependencies: ["motion"],
     registryDependencies: ["drawer", "button", "input", "label"],
     files: [
       {
@@ -1436,7 +1436,7 @@ export const ui: Registry["items"] = [
     title: "Centered Feedback Drawer",
     description:
       "A centered drawer component designed for feedback collection.",
-    dependencies: ["@radix-ui/react-dialog", "motion"],
+    dependencies: ["motion"],
     registryDependencies: ["drawer", "button", "input", "label", "text-area"],
     files: [
       {
@@ -1452,7 +1452,7 @@ export const ui: Registry["items"] = [
     title: "Bottom Drawers",
     description:
       "A bottom drawer component that slides up from the bottom of the screen.",
-    dependencies: ["@radix-ui/react-dialog", "motion"],
+    dependencies: ["motion"],
     registryDependencies: ["drawer", "button", "input", "label", "text-area"],
     files: [
       {
@@ -2740,9 +2740,8 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "AI Chat Input",
     description:
-      "Advanced chat input with slash commands, emoji picker, file upload, and AI features.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["button", "textarea", "badge", "popover", "command"],
+      "Vanishing placeholder input with rotating prompts and pixel-scatter submit animation.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/ai-chat-input.tsx",
@@ -3906,7 +3905,7 @@ export const ui: Registry["items"] = [
     title: "Radio Group Card",
     description:
       "A radio group with card-style items featuring icons, titles, descriptions, and animated selection indicator.",
-    dependencies: ["@radix-ui/react-radio-group"],
+    dependencies: [],
     files: [
       {
         path: "registry/ruixenui/radio-group-card.tsx",
@@ -3921,7 +3920,7 @@ export const ui: Registry["items"] = [
     title: "Emoji Radio Group",
     description:
       "A compact radio group with emoji-based options for quick visual feedback selection.",
-    dependencies: ["@radix-ui/react-radio-group"],
+    dependencies: [],
     files: [
       {
         path: "registry/ruixenui/emoji-radio-group.tsx",
@@ -3936,7 +3935,7 @@ export const ui: Registry["items"] = [
     title: "Sentiment Radio Group",
     description:
       "A radio group with sentiment cards featuring emojis, titles, and descriptions for feedback collection.",
-    dependencies: ["@radix-ui/react-radio-group"],
+    dependencies: [],
     files: [
       {
         path: "registry/ruixenui/sentiment-radio-group.tsx",
@@ -3951,7 +3950,7 @@ export const ui: Registry["items"] = [
     title: "Rating Scale Group",
     description:
       "A horizontal rating scale radio group with numbered items and green indicator dots.",
-    dependencies: ["@radix-ui/react-radio-group"],
+    dependencies: [],
     files: [
       {
         path: "registry/ruixenui/rating-scale-group.tsx",
@@ -3966,7 +3965,7 @@ export const ui: Registry["items"] = [
     title: "Review Filter Bars",
     description:
       "A radio group for filtering reviews by star rating with progress bars and counts.",
-    dependencies: ["@radix-ui/react-radio-group", "@remixicon/react"],
+    dependencies: ["@remixicon/react"],
     files: [
       {
         path: "registry/ruixenui/review-filter-bars.tsx",
@@ -4239,8 +4238,8 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Rising Glow",
     description:
-      "Animated rising particle effect with customizable colors and particle count.",
-    dependencies: ["motion"],
+      "Text wrapper with animated rising particles and soft glow effect.",
+    dependencies: [],
     files: [
       {
         path: "registry/ruixenui/rising-glow.tsx",

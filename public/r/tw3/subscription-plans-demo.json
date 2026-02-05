@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "subscription-plans-demo",
+  "type": "registry:example",
+  "title": "Subscription Plans Demo",
+  "description": "Example of subscription-focused pricing component",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/subscription-plans"
+  ],
+  "files": [
+    {
+      "path": "registry/example/subscription-plans-demo.tsx",
+      "content": "\"use client\";\n\nimport SubscriptionPlans from \"../ruixenui/subscription-plans\";\n\nexport default function SubscriptionDemo() {\n  return (\n    <main className=\"p-6\">\n      {/* Custom Plans */}\n      <div>\n        <SubscriptionPlans\n          plans={[\n            {\n              title: \"Basic Plan\",\n              price: \"$9\",\n              billing: \"per month\",\n              features: [\"Access to 10 UI components\", \"Community support\"],\n              button: \"Subscribe\",\n            },\n            {\n              title: \"Premium Plan\",\n              price: \"$29\",\n              billing: \"per month\",\n              recommended: true,\n              features: [\n                \"All Starter features\",\n                \"Priority support\",\n                \"Access to all templates\",\n              ],\n              button: \"Subscribe\",\n            },\n            {\n              title: \"Team Plan\",\n              price: \"$99\",\n              billing: \"per month\",\n              features: [\n                \"Up to 10 team members\",\n                \"Enterprise templates\",\n                \"Dedicated support\",\n              ],\n              button: \"Subscribe\",\n            },\n          ]}\n        />\n      </div>\n    </main>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/subscription-plans-demo.tsx"
+    }
+  ]
+}

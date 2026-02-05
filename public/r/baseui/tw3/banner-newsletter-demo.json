@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "banner-newsletter-demo",
+  "type": "registry:example",
+  "title": "Banner Newsletter Demo",
+  "description": "Example showing newsletter subscription banners.",
+  "registryDependencies": [
+    "https://ruixen.com/r/banner-newsletter"
+  ],
+  "files": [
+    {
+      "path": "registry/example/banner-newsletter-demo.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport BannerNewsletter from \"@/registry/ruixenui/banner-newsletter\";\nimport { Button } from \"@/components/ui/button\";\n\nexport default function BannerNewsletterDemo() {\n  const [showBanner, setShowBanner] = React.useState<\n    \"bottom\" | \"floating\" | null\n  >(null);\n\n  const handleSubmit = async (email: string) => {\n    // Simulate API call\n    await new Promise((resolve) => setTimeout(resolve, 1000));\n    console.log(\"Subscribed:\", email);\n  };\n\n  return (\n    <div className=\"flex min-h-[400px] w-full flex-col items-center justify-center gap-4 p-4\">\n      <div className=\"flex flex-wrap justify-center gap-2\">\n        <Button variant=\"outline\" onClick={() => setShowBanner(\"bottom\")}>\n          Show Bottom Banner\n        </Button>\n        <Button variant=\"outline\" onClick={() => setShowBanner(\"floating\")}>\n          Show Floating Banner\n        </Button>\n      </div>\n\n      <p className=\"text-sm text-muted-foreground\">\n        Click a button above to see different newsletter banner styles\n      </p>\n\n      {showBanner === \"bottom\" && (\n        <BannerNewsletter\n          position=\"bottom\"\n          title=\"Join our newsletter\"\n          description=\"Get weekly updates on the latest features and tips.\"\n          onSubmit={handleSubmit}\n          onDismiss={() => setShowBanner(null)}\n        />\n      )}\n\n      {showBanner === \"floating\" && (\n        <BannerNewsletter\n          position=\"floating\"\n          title=\"Don't miss out!\"\n          description=\"Subscribe for exclusive content and early access.\"\n          submitLabel=\"Join now\"\n          onSubmit={handleSubmit}\n          onDismiss={() => setShowBanner(null)}\n        />\n      )}\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/banner-newsletter-demo.tsx"
+    }
+  ]
+}

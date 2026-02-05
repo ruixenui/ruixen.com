@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "checkbox-todo-demo",
+  "type": "registry:example",
+  "title": "Checkbox Todo Demo",
+  "description": "Example showing todo-style checkboxes with strikethrough animation.",
+  "registryDependencies": [
+    "https://ruixen.com/r/checkbox-todo"
+  ],
+  "files": [
+    {
+      "path": "registry/example/checkbox-todo-demo.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport CheckboxTodo from \"@/registry/ruixenui/checkbox-todo\";\n\nexport default function CheckboxTodoDemo() {\n  const [tasks, setTasks] = React.useState([\n    { id: \"1\", label: \"Review pull requests\", done: false },\n    { id: \"2\", label: \"Update documentation\", done: true },\n    { id: \"3\", label: \"Fix navigation bug\", done: false },\n    { id: \"4\", label: \"Deploy to production\", done: false },\n  ]);\n\n  const toggleTask = (id: string, done: boolean) => {\n    setTasks((prev) =>\n      prev.map((task) => (task.id === id ? { ...task, done } : task)),\n    );\n  };\n\n  return (\n    <div className=\"flex min-h-[350px] w-full items-center justify-center\">\n      <div className=\"flex flex-col gap-1\">\n        {tasks.map((task) => (\n          <CheckboxTodo\n            key={task.id}\n            label={task.label}\n            checked={task.done}\n            onCheckedChange={(done) => toggleTask(task.id, done)}\n          />\n        ))}\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/checkbox-todo-demo.tsx"
+    }
+  ]
+}

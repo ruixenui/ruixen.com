@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "magic-tree-demo",
+  "type": "registry:example",
+  "title": "Magic Tree Demo",
+  "description": "Example showing a magical file tree with sparkle effects and interactive animations.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/magic-tree"
+  ],
+  "files": [
+    {
+      "path": "registry/example/magic-tree-demo.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport MagicTree, { MagicNode } from \"@/registry/ruixenui/magic-tree\";\n\nexport default function MagicTreeDemoPage() {\n  const handleSelect = (node: MagicNode) => {\n    console.log(\"✨ Selected Magic Node:\", node);\n  };\n\n  return (\n    <div className=\"py-16 flex flex-col items-center gap-6\">\n      <MagicTree onSelect={handleSelect} />\n\n      <p className=\"text-sm text-gray-500 dark:text-gray-400\">\n        Click folders to expand/collapse. Selected items sparkle ✨ in the\n        console!\n      </p>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/magic-tree-demo.tsx"
+    }
+  ]
+}

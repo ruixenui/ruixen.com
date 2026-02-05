@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "mouse-spark",
+  "type": "registry:ui",
+  "title": "Mouse Spark",
+  "description": "Interactive mouse-following particle effect with customizable colors and themes.",
+  "files": [
+    {
+      "path": "registry/ruixenui/mouse-spark.tsx",
+      "content": "\"use client\";\n\nimport React, { useEffect, useRef } from \"react\";\n\ninterface MouseSparkProps {\n  width?: number;\n  height?: number;\n  theme?: \"light\" | \"dark\";\n}\n\nconst MouseSpark: React.FC<MouseSparkProps> = ({\n  width = typeof window !== \"undefined\" ? window.innerWidth : 800,\n  height = typeof window !== \"undefined\" ? window.innerHeight : 600,\n  theme = \"light\",\n}) => {\n  const canvasRef = useRef<HTMLCanvasElement | null>(null);\n\n  useEffect(() => {\n    const canvas = canvasRef.current;\n    if (!canvas) return;\n\n    canvas.width = width;\n    canvas.height = height;\n    const ctx = canvas.getContext(\"2d\");\n    if (!ctx) return;\n\n    // Theme colors\n    const colors =\n      theme === \"dark\"\n        ? [\"#ff6b6b\", \"#feca57\", \"#48dbfb\", \"#1dd1a1\", \"#5f27cd\"]\n        : [\"#ff7f50\", \"#ffb347\", \"#00d2ff\", \"#76e4f7\", \"#ff85a2\"];\n\n    // Particles\n    let particles: {\n      x: number;\n      y: number;\n      dx: number;\n      dy: number;\n      color: string;\n    }[] = [];\n\n    const spawnParticles = (x: number, y: number) => {\n      for (let i = 0; i < 3; i++) {\n        const angle = Math.random() * Math.PI * 2;\n        const speed = Math.random() * 3 + 0.5;\n        const color = colors[Math.floor(Math.random() * colors.length)];\n        particles.push({\n          x,\n          y,\n          dx: Math.cos(angle) * speed,\n          dy: Math.sin(angle) * speed,\n          color,\n        });\n      }\n    };\n\n    // Mouse move event\n    const handleMouseMove = (e: MouseEvent) => {\n      spawnParticles(e.clientX, e.clientY);\n    };\n\n    const animate = () => {\n      if (!ctx) return;\n\n      ctx.clearRect(0, 0, canvas.width, canvas.height);\n\n      particles.forEach((p, i) => {\n        p.x += p.dx;\n        p.y += p.dy;\n        p.dx *= 0.92;\n        p.dy *= 0.92;\n\n        ctx.fillStyle = p.color;\n        ctx.beginPath();\n        ctx.arc(p.x, p.y, 4, 0, Math.PI * 2);\n        ctx.fill();\n\n        // Remove slow particles\n        if (Math.abs(p.dx) < 0.05 && Math.abs(p.dy) < 0.05) {\n          particles.splice(i, 1);\n        }\n      });\n\n      requestAnimationFrame(animate);\n    };\n\n    canvas.addEventListener(\"mousemove\", handleMouseMove);\n    animate();\n\n    return () => {\n      canvas.removeEventListener(\"mousemove\", handleMouseMove);\n    };\n  }, [width, height, theme]);\n\n  return <canvas ref={canvasRef} style={{ display: \"block\" }} />;\n};\n\nexport default MouseSpark;\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/mouse-spark.tsx"
+    }
+  ]
+}

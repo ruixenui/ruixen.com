@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "split-action-button-demo",
+  "type": "registry:example",
+  "title": "Split Action Button Demo",
+  "description": "Example showing a split button with multiple action options.",
+  "registryDependencies": [
+    "https://ruixen.com/r/split-action-button"
+  ],
+  "files": [
+    {
+      "path": "registry/example/split-action-button-demo.tsx",
+      "content": "\"use client\";\n\nimport SplitActionButton from \"@/registry/ruixenui/split-action-button\";\n\nexport default function DemoSplitActionButton() {\n  return (\n    <div className=\"flex min-h-[350px] w-full flex-col items-center justify-center gap-6\">\n      <SplitActionButton\n        mainLabel=\"Save\"\n        mainAction={() => alert(\"Saved!\")}\n        secondaryActions={[\n          { label: \"Save As PDF\", onClick: () => alert(\"Saved as PDF\") },\n          { label: \"Save As DOCX\", onClick: () => alert(\"Saved as DOCX\") },\n        ]}\n      />\n\n      <SplitActionButton\n        mainLabel=\"Export\"\n        mainAction={() => alert(\"Exported!\")}\n        secondaryActions={[\n          { label: \"Export CSV\", onClick: () => alert(\"Exported CSV\") },\n          { label: \"Export XLSX\", onClick: () => alert(\"Exported XLSX\") },\n        ]}\n        size=\"lg\"\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/split-action-button-demo.tsx"
+    }
+  ]
+}

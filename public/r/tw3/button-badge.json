@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-badge",
+  "type": "registry:ui",
+  "title": "Button Badge",
+  "description": "A button with an integrated badge for notifications or counts.",
+  "files": [
+    {
+      "path": "registry/ruixenui/button-badge.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\ninterface ButtonBadgeProps\n  extends React.ButtonHTMLAttributes<HTMLButtonElement> {\n  badge?: number | string;\n  badgeVariant?: \"default\" | \"destructive\" | \"success\";\n  variant?: \"default\" | \"outline\" | \"secondary\";\n  size?: \"sm\" | \"md\" | \"lg\";\n  icon?: React.ReactNode;\n}\n\nconst variantStyles = {\n  default: \"bg-primary text-primary-foreground shadow hover:bg-primary/90\",\n  outline:\n    \"border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground\",\n  secondary:\n    \"bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80\",\n};\n\nconst sizeStyles = {\n  sm: \"h-8 px-3 text-xs gap-1.5\",\n  md: \"h-9 px-4 text-sm gap-2\",\n  lg: \"h-10 px-5 text-base gap-2\",\n};\n\nconst badgeVariantStyles = {\n  default: \"bg-primary-foreground text-primary\",\n  destructive: \"bg-destructive text-destructive-foreground\",\n  success: \"bg-emerald-500 text-white\",\n};\n\nexport default function ButtonBadge({\n  badge,\n  badgeVariant = \"default\",\n  variant = \"default\",\n  size = \"md\",\n  icon,\n  className,\n  children,\n  ...props\n}: ButtonBadgeProps) {\n  return (\n    <button\n      className={cn(\n        \"relative inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50\",\n        variantStyles[variant],\n        sizeStyles[size],\n        className,\n      )}\n      {...props}\n    >\n      {icon}\n      {children}\n      {badge !== undefined && (\n        <span\n          className={cn(\n            \"absolute -right-1.5 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full px-1 text-xs font-medium\",\n            badgeVariantStyles[badgeVariant],\n          )}\n        >\n          {badge}\n        </span>\n      )}\n    </button>\n  );\n}\n\nexport { ButtonBadge, type ButtonBadgeProps };\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/button-badge.tsx"
+    }
+  ]
+}

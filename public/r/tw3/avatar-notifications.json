@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar-notifications",
+  "type": "registry:ui",
+  "title": "Avatar Notifications",
+  "description": "A notification component that displays user avatars with messages and animated status indicators.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "popover",
+    "button",
+    "avatar"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/avatar-notifications.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { Bell, X } from \"lucide-react\";\nimport {\n  Popover,\n  PopoverTrigger,\n  PopoverContent,\n} from \"@/components/ui/popover\";\nimport { Avatar, AvatarImage, AvatarFallback } from \"@/components/ui/avatar\";\nimport { Button } from \"@/components/ui/button\";\nimport { cn } from \"@/lib/utils\";\n\ninterface NotificationItem {\n  id: string;\n  user: string;\n  avatarUrl?: string;\n  message: string;\n  time: string;\n}\n\ninterface NotificationsProps {\n  items?: NotificationItem[];\n}\n\nconst defaultNotifications: NotificationItem[] = [\n  {\n    id: \"1\",\n    user: \"Alice\",\n    avatarUrl: \"https://i.pravatar.cc/40?img=1\",\n    message: \"Sent you a message.\",\n    time: \"2m ago\",\n  },\n  {\n    id: \"2\",\n    user: \"Bob\",\n    avatarUrl: \"https://i.pravatar.cc/40?img=2\",\n    message: \"Commented on your post.\",\n    time: \"10m ago\",\n  },\n];\n\nexport default function AvatarNotifications({\n  items = defaultNotifications,\n}: NotificationsProps) {\n  const [notifications, setNotifications] = React.useState(items);\n\n  const clearAll = () => {\n    setNotifications([]);\n  };\n\n  const hasNotifications = notifications.length > 0;\n\n  return (\n    <Popover>\n      <PopoverTrigger asChild>\n        <button className=\"relative inline-flex items-center justify-center rounded-full p-2 hover:bg-muted focus:outline-none border rounded\">\n          <Bell className=\"h-5 w-5\" />\n          {/* Blinking / static status dot */}\n          <span\n            className={cn(\n              \"absolute -top-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-background\",\n              hasNotifications ? \"bg-green-500 animate-ping\" : \"bg-gray-400\",\n            )}\n          />\n        </button>\n      </PopoverTrigger>\n      {/* Align popover to the center of the icon */}\n      <PopoverContent className=\"w-80 p-0\" side=\"bottom\" align=\"center\">\n        <div className=\"max-h-80 overflow-y-auto\">\n          <div className=\"flex justify-between items-center px-4 py-2 border-b\">\n            <h2 className=\"text-sm font-medium\">Notifications</h2>\n            {hasNotifications && (\n              <Button\n                variant=\"ghost\"\n                size=\"icon\"\n                onClick={clearAll}\n                className=\"h-6 w-6 rounded-full\"\n              >\n                <X className=\"h-4 w-4\" />\n              </Button>\n            )}\n          </div>\n          {notifications.length === 0 ? (\n            <div className=\"p-4 text-sm text-muted-foreground text-center\">\n              No messages\n            </div>\n          ) : (\n            <ul className=\"divide-y divide-border\">\n              {notifications.map((item) => (\n                <li\n                  key={item.id}\n                  className=\"flex items-center gap-3 p-4 hover:bg-muted/50 transition\"\n                >\n                  <Avatar className=\"h-8 w-8\">\n                    {item.avatarUrl ? (\n                      <AvatarImage src={item.avatarUrl} alt={item.user} />\n                    ) : (\n                      <AvatarFallback>{item.user[0]}</AvatarFallback>\n                    )}\n                  </Avatar>\n                  <div className=\"flex flex-col text-sm\">\n                    <span className=\"font-medium\">{item.user}</span>\n                    <span className=\"text-muted-foreground text-xs\">\n                      {item.message}\n                    </span>\n                  </div>\n                  <span className=\"ml-auto text-xs text-muted-foreground\">\n                    {item.time}\n                  </span>\n                </li>\n              ))}\n            </ul>\n          )}\n        </div>\n      </PopoverContent>\n    </Popover>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/avatar-notifications.tsx"
+    }
+  ]
+}

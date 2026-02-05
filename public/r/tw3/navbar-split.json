@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "navbar-split",
+  "type": "registry:ui",
+  "title": "Navbar Split",
+  "description": "A navigation bar with links split between left and right sections.",
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/navbar-split.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport Link from \"next/link\";\nimport { cn } from \"@/lib/utils\";\nimport { Button } from \"@/components/ui/button\";\n\nexport interface NavbarSplitProps {\n  logo?: React.ReactNode;\n  leftLinks?: { label: string; href: string; active?: boolean }[];\n  rightLinks?: { label: string; href: string }[];\n  className?: string;\n}\n\nexport default function NavbarSplit({\n  logo = <span className=\"font-semibold\">Logo</span>,\n  leftLinks = [\n    { label: \"Products\", href: \"#\", active: true },\n    { label: \"Solutions\", href: \"#\" },\n    { label: \"Pricing\", href: \"#\" },\n  ],\n  rightLinks = [\n    { label: \"Docs\", href: \"#\" },\n    { label: \"Support\", href: \"#\" },\n  ],\n  className,\n}: NavbarSplitProps) {\n  return (\n    <header className={cn(\"w-full border-b\", className)}>\n      <div className=\"flex h-14 items-center justify-between px-4\">\n        <div className=\"flex items-center gap-8\">\n          <Link href=\"/\" className=\"flex items-center\">\n            {logo}\n          </Link>\n          <nav className=\"hidden items-center gap-6 md:flex\">\n            {leftLinks.map((link) => (\n              <Link\n                key={link.href + link.label}\n                href={link.href}\n                className={cn(\n                  \"text-sm transition-colors hover:text-foreground\",\n                  link.active ? \"text-foreground\" : \"text-muted-foreground\",\n                )}\n              >\n                {link.label}\n              </Link>\n            ))}\n          </nav>\n        </div>\n        <div className=\"flex items-center gap-6\">\n          <nav className=\"hidden items-center gap-6 md:flex\">\n            {rightLinks.map((link) => (\n              <Link\n                key={link.href + link.label}\n                href={link.href}\n                className=\"text-sm text-muted-foreground transition-colors hover:text-foreground\"\n              >\n                {link.label}\n              </Link>\n            ))}\n          </nav>\n          <Button size=\"sm\">Get Started</Button>\n        </div>\n      </div>\n    </header>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/navbar-split.tsx"
+    }
+  ]
+}

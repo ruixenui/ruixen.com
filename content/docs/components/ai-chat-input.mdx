@@ -1,7 +1,7 @@
 ---
 title: AI Chat Input
 date: 2024-06-01
-description: Advanced chat input with slash commands, emoji picker, file upload, and AI features
+description: Vanishing placeholder input with rotating prompts and pixel-scatter submit animation.
 author: ruixen
 published: true
 ---
@@ -37,7 +37,7 @@ npx shadcn@latest add "https://ruixen.com/r/ai-chat-input"
 <Step>Install dependencies</Step>
 
 ```bash
-npm install lucide-react
+npm install motion
 ```
 
 </Steps>
@@ -52,19 +52,14 @@ npm install lucide-react
 import AiChatInput from "@/components/ruixen/ai-chat-input";
 
 export default function App() {
-  const handleSendMessage = (message: string) => {
-    console.log("Sending message:", message);
-  };
-
-  const handleUploadFile = (file: File) => {
-    console.log("Uploading file:", file.name);
-  };
-
   return (
     <AiChatInput
-      onSendMessage={handleSendMessage}
-      onUploadFile={handleUploadFile}
-      isLoading={false}
+      placeholders={[
+        "Ask me anything...",
+        "Describe what you need built",
+        "Write a function that...",
+      ]}
+      onSubmit={(value) => console.log(value)}
     />
   );
 }
@@ -72,31 +67,9 @@ export default function App() {
 
 ## Props
 
-| Prop            | Type       | Default | Description                    |
-| --------------- | ---------- | ------- | ------------------------------ |
-| `onSendMessage` | `function` | -       | Callback when message is sent  |
-| `onUploadFile`  | `function` | -       | Callback when file is uploaded |
-| `isLoading`     | `boolean`  | `false` | Whether AI is processing       |
-
-## Features
-
-- **Slash Commands**: Type "/" to open command picker
-- **Command Tags**: Selected commands appear as removable badges
-- **Emoji Picker**: Click emoji button to add emojis
-- **File Upload**: Paperclip icon for file attachments
-- **Auto-resize**: Textarea grows with content
-- **Keyboard Shortcuts**: Enter to send, Shift+Enter for new line
-- **Loading State**: Shows stop button when processing
-
-## Available Commands
-
-- **Summarize**: `/summarize` - Summarize content
-- **Translate**: `/translate` - Translate text
-- **Explain**: `/explain` - Explain concepts
-
-## Keyboard Shortcuts
-
-- **Enter**: Send message
-- **Shift + Enter**: New line
-- **/** : Open command picker
-- **Escape**: Close popovers
+| Prop           | Type                                         | Default           | Description                   |
+| -------------- | -------------------------------------------- | ----------------- | ----------------------------- |
+| `placeholders` | `string[]`                                   | 6 default prompts | Rotating placeholder strings  |
+| `onSubmit`     | `(value: string) => void`                    | -                 | Callback with submitted value |
+| `onChange`     | `(e: ChangeEvent<HTMLInputElement>) => void` | -                 | Callback on every keystroke   |
+| `className`    | `string`                                     | -                 | Additional CSS classes        |

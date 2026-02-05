@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "fixed-header-footer-table-demo",
+  "type": "registry:example",
+  "title": "Fixed Header Footer Table Demo",
+  "description": "Example showing a table with fixed header and footer, and scrollable body.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/fixed-header-footer-table"
+  ],
+  "files": [
+    {
+      "path": "registry/example/fixed-header-footer-table-demo.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport FixedHeaderFooterTable, {\n  TableItem,\n} from \"@/registry/ruixenui/fixed-header-footer-table\";\n\nexport default function DemoPage() {\n  // Optional: Custom data for demo\n  const customItems: TableItem[] = [\n    {\n      id: \"101\",\n      name: \"Alice Johnson\",\n      email: \"alice.johnson@company.com\",\n      location: \"New York, US\",\n      status: \"Active\",\n      balance: 1200,\n    },\n    {\n      id: \"102\",\n      name: \"Bob Smith\",\n      email: \"bob.smith@company.com\",\n      location: \"London, UK\",\n      status: \"Inactive\",\n      balance: 800,\n    },\n    {\n      id: \"103\",\n      name: \"Charlie Lee\",\n      email: \"charlie.lee@company.com\",\n      location: \"Sydney, AU\",\n      status: \"Active\",\n      balance: 1500,\n    },\n  ];\n\n  return (\n    <div className=\"p-6 space-y-8\">\n      <div>\n        <FixedHeaderFooterTable />\n      </div>\n\n      <div>\n        <FixedHeaderFooterTable\n          items={customItems}\n          title=\"Custom Users Table\"\n          footerTotal={customItems.reduce((acc, item) => acc + item.balance, 0)}\n        />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/fixed-header-footer-table-demo.tsx"
+    }
+  ]
+}

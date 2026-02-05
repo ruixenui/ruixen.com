@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "notification",
+  "type": "registry:ui",
+  "title": "Notification",
+  "description": "A clean notification popover component with title, description, and timestamp display.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "popover",
+    "card",
+    "badge"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/notification.tsx",
+      "content": "import * as React from \"react\";\nimport { Bell } from \"lucide-react\";\nimport {\n  Popover,\n  PopoverContent,\n  PopoverTrigger,\n} from \"@/components/ui/popover\";\nimport { Card } from \"@/components/ui/card\";\nimport { Badge } from \"@/components/ui/badge\";\n\n// Type definition for reusability\ninterface NotificationItem {\n  id: string;\n  title: string;\n  description: string;\n  time: string;\n}\n\ninterface NotificationsProps {\n  items?: NotificationItem[];\n}\n// Define default notifications\nconst defaultNotifications: NotificationItem[] = [\n  {\n    id: \"1\",\n    title: \"Welcome 🎉\",\n    description: \"Thanks for checking out the notifications component!\",\n    time: \"just now\",\n  },\n  {\n    id: \"2\",\n    title: \"System Update\",\n    description: \"We’ve rolled out a new feature for you.\",\n    time: \"1h ago\",\n  },\n  {\n    id: \"3\",\n    title: \"Reminder\",\n    description: \"Don’t forget to finish your profile setup.\",\n    time: \"3h ago\",\n  },\n];\n\nexport default function Notifications({\n  items = defaultNotifications,\n}: NotificationsProps) {\n  return (\n    <Popover>\n      <PopoverTrigger asChild>\n        <button className=\"relative inline-flex items-center justify-center rounded-full p-2 hover:bg-muted\">\n          <Bell className=\"h-5 w-5\" />\n          {items.length > 0 && (\n            <Badge\n              variant=\"default\"\n              className=\"absolute -top-1 -right-1 text-xs px-1.5 py-0\"\n            >\n              {items.length}\n            </Badge>\n          )}\n        </button>\n      </PopoverTrigger>\n      <PopoverContent className=\"w-80 p-0\" align=\"center\" side=\"bottom\">\n        <Card className=\"max-h-80 overflow-y-auto rounded-lg border-none shadow-none\">\n          {items.length === 0 ? (\n            <div className=\"p-4 text-sm text-muted-foreground text-center\">\n              No notifications\n            </div>\n          ) : (\n            <ul className=\"divide-y divide-border\">\n              {items.map((item) => (\n                <li key={item.id} className=\"p-4 hover:bg-muted/50 transition\">\n                  <div className=\"flex justify-between items-center mb-1\">\n                    <span className=\"font-medium text-sm\">{item.title}</span>\n                    <span className=\"text-xs text-muted-foreground\">\n                      {item.time}\n                    </span>\n                  </div>\n                  <p className=\"text-xs text-muted-foreground leading-relaxed\">\n                    {item.description}\n                  </p>\n                </li>\n              ))}\n            </ul>\n          )}\n        </Card>\n      </PopoverContent>\n    </Popover>\n  );\n}\n\n// Example usage\n// <Notifications\n//   items={[\n//     { id: \"1\", title: \"New Message\", description: \"You have a new message from John.\", time: \"2h ago\" },\n//     { id: \"2\", title: \"System Alert\", description: \"Server downtime scheduled at midnight.\", time: \"5h ago\" },\n//     { id: \"3\", title: \"Meeting Reminder\", description: \"Project sync meeting at 3 PM.\", time: \"1d ago\" },\n//   ]}\n// />\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/notification.tsx"
+    }
+  ]
+}

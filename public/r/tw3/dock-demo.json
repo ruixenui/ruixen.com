@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dock-demo",
+  "type": "registry:example",
+  "title": "Dock Demo",
+  "description": "Example showing classic dock with floating animation.",
+  "registryDependencies": [
+    "https://ruixen.com/r/dock"
+  ],
+  "files": [
+    {
+      "path": "registry/example/dock-demo.tsx",
+      "content": "import Dock from \"@/registry/ruixenui/dock\";\nimport { Home, Search, Bell, Settings, User } from \"lucide-react\";\n\nexport default function DemoOne() {\n  const dockItems = [\n    {\n      icon: <Home className=\"h-6 w-6\" />,\n      label: \"Home\",\n    },\n    {\n      icon: <Search className=\"h-6 w-6\" />,\n      label: \"Search\",\n    },\n    {\n      icon: <Bell className=\"h-6 w-6\" />,\n      label: \"Notifications\",\n    },\n    {\n      icon: <User className=\"h-6 w-6\" />,\n      label: \"Profile\",\n    },\n    {\n      icon: <Settings className=\"h-6 w-6\" />,\n      label: \"Settings\",\n    },\n  ];\n\n  return (\n    <div className=\"p-8 flex flex-col items-center gap-6\">\n      <Dock items={dockItems} />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/dock-demo.tsx"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "navbar-user-menu-demo",
+  "type": "registry:example",
+  "title": "Navbar User Menu Demo",
+  "description": "Example showing a navigation bar with user dropdown.",
+  "registryDependencies": [
+    "https://ruixen.com/r/navbar-user-menu"
+  ],
+  "files": [
+    {
+      "path": "registry/example/navbar-user-menu-demo.tsx",
+      "content": "import NavbarUserMenu from \"@/registry/ruixenui/navbar-user-menu\";\n\nexport default function NavbarUserMenuDemo() {\n  return (\n    <div className=\"w-full\">\n      <NavbarUserMenu notificationCount={3} />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/navbar-user-menu-demo.tsx"
+    }
+  ]
+}

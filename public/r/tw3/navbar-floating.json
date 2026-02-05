@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "navbar-floating",
+  "type": "registry:ui",
+  "title": "Navbar Floating",
+  "description": "A floating pill-shaped navigation bar with rounded corners and backdrop blur.",
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/navbar-floating.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport Link from \"next/link\";\nimport { cn } from \"@/lib/utils\";\nimport { Button } from \"@/components/ui/button\";\n\nexport interface NavbarFloatingProps {\n  logo?: React.ReactNode;\n  links?: { label: string; href: string; active?: boolean }[];\n  actions?: React.ReactNode;\n  className?: string;\n}\n\nexport default function NavbarFloating({\n  logo = <span className=\"font-semibold\">Logo</span>,\n  links = [\n    { label: \"Home\", href: \"#\", active: true },\n    { label: \"Features\", href: \"#\" },\n    { label: \"Pricing\", href: \"#\" },\n    { label: \"About\", href: \"#\" },\n  ],\n  actions,\n  className,\n}: NavbarFloatingProps) {\n  return (\n    <div className={cn(\"w-full px-4 py-4\", className)}>\n      <header className=\"mx-auto flex h-12 max-w-4xl items-center justify-between rounded-full border bg-background/80 px-4 shadow-sm backdrop-blur\">\n        <Link href=\"/\" className=\"flex items-center\">\n          {logo}\n        </Link>\n        <nav className=\"hidden items-center gap-1 md:flex\">\n          {links.map((link) => (\n            <Link\n              key={link.href + link.label}\n              href={link.href}\n              className={cn(\n                \"rounded-full px-3 py-1.5 text-sm transition-colors hover:bg-accent\",\n                link.active\n                  ? \"bg-accent text-foreground\"\n                  : \"text-muted-foreground\",\n              )}\n            >\n              {link.label}\n            </Link>\n          ))}\n        </nav>\n        <div className=\"flex items-center gap-2\">\n          {actions ?? (\n            <Button size=\"sm\" className=\"rounded-full\">\n              Get Started\n            </Button>\n          )}\n        </div>\n      </header>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/navbar-floating.tsx"
+    }
+  ]
+}

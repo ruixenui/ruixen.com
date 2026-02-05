@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "multi-state-morph-button",
+  "type": "registry:ui",
+  "title": "Multi State Morph Button",
+  "description": "Animated button that morphs through different states - idle, loading, success, and error.",
+  "dependencies": [
+    "framer-motion",
+    "react-icons"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/multi-state-morph-button.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { Button } from \"@/components/ui/button\";\nimport { motion, AnimatePresence } from \"framer-motion\";\nimport { cn } from \"@/lib/utils\";\nimport { FaCheck, FaTimes } from \"react-icons/fa\";\n\nexport type ButtonState = \"idle\" | \"loading\" | \"success\" | \"error\";\n\ninterface MultiStateMorphButtonProps {\n  label?: string;\n  onClick?: () => Promise<void> | void;\n  className?: string;\n  width?: number;\n  height?: number;\n  colors?: {\n    idle?: string;\n    loading?: string;\n    success?: string;\n    error?: string;\n  };\n}\n\nexport default function MultiStateMorphButton({\n  label = \"Submit\",\n  onClick,\n  className,\n  width = 200,\n  height = 50,\n  colors = {},\n}: MultiStateMorphButtonProps) {\n  const [state, setState] = React.useState<ButtonState>(\"idle\");\n\n  const handleClick = async () => {\n    if (state === \"loading\") return;\n    setState(\"loading\");\n    try {\n      await onClick?.();\n      setState(\"success\");\n      setTimeout(() => setState(\"idle\"), 2000);\n    } catch {\n      setState(\"error\");\n      setTimeout(() => setState(\"idle\"), 2000);\n    }\n  };\n\n  const stateColors = {\n    idle: colors.idle || \"#3b82f6\",\n    loading: colors.loading || \"#2563eb\",\n    success: colors.success || \"#16a34a\",\n    error: colors.error || \"#dc2626\",\n  };\n\n  return (\n    <motion.div\n      className=\"inline-block\"\n      style={{ width, height }}\n      animate={{\n        borderRadius: state === \"success\" || state === \"error\" ? height / 2 : 8,\n      }}\n      transition={{ duration: 0.4 }}\n    >\n      <Button\n        className={cn(\n          \"w-full h-full flex items-center justify-center text-white transition-colors duration-300\",\n          className,\n        )}\n        onClick={handleClick}\n        style={{ backgroundColor: stateColors[state] }}\n      >\n        <AnimatePresence mode=\"wait\">\n          {state === \"idle\" && (\n            <motion.span\n              key=\"idle\"\n              initial={{ opacity: 0, y: -10 }}\n              animate={{ opacity: 1, y: 0 }}\n              exit={{ opacity: 0, y: 10 }}\n              transition={{ duration: 0.3 }}\n            >\n              {label}\n            </motion.span>\n          )}\n          {state === \"loading\" && (\n            <motion.span\n              key=\"loading\"\n              initial={{ opacity: 0 }}\n              animate={{ opacity: 1 }}\n              exit={{ opacity: 0 }}\n              className=\"animate-spin\"\n            >\n              ⏳\n            </motion.span>\n          )}\n          {state === \"success\" && (\n            <motion.span\n              key=\"success\"\n              initial={{ scale: 0 }}\n              animate={{ scale: 1 }}\n              exit={{ scale: 0 }}\n            >\n              <FaCheck />\n            </motion.span>\n          )}\n          {state === \"error\" && (\n            <motion.span\n              key=\"error\"\n              initial={{ scale: 0 }}\n              animate={{ scale: 1 }}\n              exit={{ scale: 0 }}\n            >\n              <FaTimes />\n            </motion.span>\n          )}\n        </AnimatePresence>\n      </Button>\n    </motion.div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/multi-state-morph-button.tsx"
+    }
+  ]
+}

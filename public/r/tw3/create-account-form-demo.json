@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "create-account-form-demo",
+  "type": "registry:example",
+  "title": "Create Account Form Demo",
+  "description": "Example showing a modern account creation form with validation and terms acceptance.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/create-account-form"
+  ],
+  "files": [
+    {
+      "path": "registry/example/create-account-form-demo.tsx",
+      "content": "import CreateAccountForm from \"@/registry/ruixenui/create-account-form\";\n\nexport default function DemoOne() {\n  return (\n    <div className=\"flex items-center justify-center py-16\">\n      <CreateAccountForm />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/create-account-form-demo.tsx"
+    }
+  ]
+}

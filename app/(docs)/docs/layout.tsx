@@ -1,4 +1,5 @@
 import { DocsSidebarNav } from "@/components/sidebar-nav";
+import { TailwindVersionToggle } from "@/components/tailwind-version-toggle";
 import { docsConfig } from "@/config/docs";
 
 export default function DocsLayout({
@@ -14,6 +15,9 @@ export default function DocsLayout({
             className="no-scrollbar h-full overflow-auto py-6 pr-4 lg:py-8"
             data-lenis-prevent
           >
+            <div className="mb-4">
+              <TailwindVersionToggle />
+            </div>
             <DocsSidebarNav items={docsConfig.sidebarNav} />
           </div>
         </aside>

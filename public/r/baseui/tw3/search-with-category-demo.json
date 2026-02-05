@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "search-with-category-demo",
+  "type": "registry:example",
+  "title": "Search With Category Demo",
+  "description": "Example showing a search input component with category filtering functionality.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/search-with-category"
+  ],
+  "files": [
+    {
+      "path": "registry/example/search-with-category-demo.tsx",
+      "content": "\"use client\";\n\nimport SearchWithCategory from \"@/registry/ruixenui/search-with-category\";\n\nexport default function Demo() {\n  return (\n    <div className=\"flex items-center justify-center min-h-screen\">\n      <SearchWithCategory />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/search-with-category-demo.tsx"
+    }
+  ]
+}

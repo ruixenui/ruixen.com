@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "morphing-page-dots",
+  "type": "registry:ui",
+  "title": "Morphing Page Dots",
+  "description": "Pagination dots that morph in width with ripple effects for the active state.",
+  "dependencies": [
+    "framer-motion",
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/morphing-page-dots.tsx",
+      "content": "\"use client\";\n\nimport { useState } from \"react\";\nimport { motion, AnimatePresence } from \"framer-motion\";\nimport { ChevronLeft, ChevronRight } from \"lucide-react\";\n\ninterface MorphingPageDotsProps {\n  total: number;\n  initialPage?: number;\n  onPageChange: (page: number) => void;\n}\n\nexport default function MorphingPageDots({\n  total,\n  initialPage = 0,\n  onPageChange,\n}: MorphingPageDotsProps) {\n  const [page, setPage] = useState(initialPage);\n\n  const goPrev = () => setPage((p) => (p > 0 ? p - 1 : p));\n  const goNext = () => setPage((p) => (p < total - 1 ? p + 1 : p));\n\n  return (\n    <div className=\"flex items-center justify-center gap-6 py-6\">\n      {/* Left Arrow */}\n      <ChevronLeft\n        onClick={goPrev}\n        className={`h-6 w-6 cursor-pointer text-muted-foreground transition hover:text-foreground ${\n          page === 0 ? \"opacity-30 pointer-events-none\" : \"\"\n        }`}\n      />\n\n      {/* Dots */}\n      <div className=\"flex items-center gap-3\">\n        {Array.from({ length: total }).map((_, i) => {\n          const isActive = i === page;\n          return (\n            <motion.div\n              key={i}\n              className={`relative cursor-pointer ${\n                isActive ? \"bg-primary\" : \"bg-muted-foreground/40\"\n              }`}\n              onClick={() => onPageChange(i)}\n              animate={{\n                width: isActive ? 28 : 10,\n                height: 10,\n                borderRadius: 9999,\n              }}\n              transition={{ type: \"spring\", stiffness: 300, damping: 24 }}\n            >\n              {/* Ripple effect for active dot */}\n              {isActive && (\n                <AnimatePresence>\n                  <motion.span\n                    key=\"ripple\"\n                    className=\"absolute inset-0 rounded-full bg-primary/30\"\n                    initial={{ scale: 0.8, opacity: 0.6 }}\n                    animate={{ scale: 1.6, opacity: 0 }}\n                    exit={{ opacity: 0 }}\n                    transition={{ duration: 0.6 }}\n                  />\n                </AnimatePresence>\n              )}\n            </motion.div>\n          );\n        })}\n      </div>\n\n      {/* Right Arrow */}\n      <ChevronRight\n        onClick={goNext}\n        className={`h-6 w-6 cursor-pointer text-muted-foreground transition hover:text-foreground ${\n          page === total - 1 ? \"opacity-30 pointer-events-none\" : \"\"\n        }`}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/morphing-page-dots.tsx"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "better-time-picker-demo",
+  "type": "registry:example",
+  "title": "Better Time Picker Demo",
+  "description": "Example showing an enhanced time picker with improved user experience.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/better-time-picker"
+  ],
+  "files": [
+    {
+      "path": "registry/example/better-time-picker-demo.tsx",
+      "content": "import BetterTimePicker from \"@/registry/ruixenui/better-time-picker\";\n\nexport default function Demo() {\n  return (\n    <div className=\"flex items-center justify-center min-h-screen\">\n      <BetterTimePicker />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/better-time-picker-demo.tsx"
+    }
+  ]
+}

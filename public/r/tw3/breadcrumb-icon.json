@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "breadcrumb-icon",
+  "type": "registry:ui",
+  "title": "Breadcrumb Icon",
+  "description": "Breadcrumb navigation with icons for each item.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/breadcrumb-icon.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport {\n  ChevronRight,\n  Home,\n  Folder,\n  File,\n  Settings,\n  type LucideIcon,\n} from \"lucide-react\";\n\ninterface BreadcrumbIconItem {\n  label: string;\n  href?: string;\n  icon?: LucideIcon;\n}\n\ninterface BreadcrumbIconProps {\n  items: BreadcrumbIconItem[];\n  showHomeIcon?: boolean;\n  iconOnly?: boolean;\n  className?: string;\n}\n\nexport default function BreadcrumbIcon({\n  items,\n  showHomeIcon = true,\n  iconOnly = false,\n  className,\n}: BreadcrumbIconProps) {\n  // Add home icon to first item if not present\n  const itemsWithIcons = items.map((item, index) => ({\n    ...item,\n    icon: item.icon || (index === 0 && showHomeIcon ? Home : undefined),\n  }));\n\n  return (\n    <nav aria-label=\"Breadcrumb\" className={cn(\"\", className)}>\n      <ol className=\"flex flex-wrap items-center gap-1.5 text-sm\">\n        {itemsWithIcons.map((item, index) => {\n          const isLast = index === items.length - 1;\n          const Icon = item.icon;\n\n          return (\n            <li key={index} className=\"inline-flex items-center gap-1.5\">\n              {item.href && !isLast ? (\n                <a\n                  href={item.href}\n                  className=\"inline-flex items-center gap-1.5 text-muted-foreground transition-colors hover:text-foreground\"\n                >\n                  {Icon && <Icon className=\"size-4\" />}\n                  {!iconOnly && <span>{item.label}</span>}\n                </a>\n              ) : (\n                <span\n                  className={cn(\n                    \"inline-flex items-center gap-1.5\",\n                    isLast\n                      ? \"font-medium text-foreground\"\n                      : \"text-muted-foreground\",\n                  )}\n                >\n                  {Icon && <Icon className=\"size-4\" />}\n                  {!iconOnly && <span>{item.label}</span>}\n                </span>\n              )}\n              {!isLast && (\n                <ChevronRight\n                  className=\"mx-1 size-4 text-muted-foreground\"\n                  aria-hidden=\"true\"\n                />\n              )}\n            </li>\n          );\n        })}\n      </ol>\n    </nav>\n  );\n}\n\nexport { BreadcrumbIcon, type BreadcrumbIconProps, type BreadcrumbIconItem };\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/breadcrumb-icon.tsx"
+    }
+  ]
+}

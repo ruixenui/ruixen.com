@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "navbar-status-demo",
+  "type": "registry:example",
+  "title": "Navbar Status Demo",
+  "description": "Example showing a navigation bar with status indicators.",
+  "registryDependencies": [
+    "https://ruixen.com/r/navbar-status"
+  ],
+  "files": [
+    {
+      "path": "registry/example/navbar-status-demo.tsx",
+      "content": "import NavbarStatus from \"@/registry/ruixenui/navbar-status\";\n\nexport default function NavbarStatusDemo() {\n  return (\n    <div className=\"w-full\">\n      <NavbarStatus />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/navbar-status-demo.tsx"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "particle-field-demo",
+  "type": "registry:example",
+  "title": "Particle Field Demo",
+  "description": "Example showing an interactive particle field with mouse attraction.",
+  "registryDependencies": [
+    "https://ruixen.com/r/particle-field"
+  ],
+  "files": [
+    {
+      "path": "registry/example/particle-field-demo.tsx",
+      "content": "\"use client\";\n\nimport ParticleField from \"@/registry/ruixenui/particle-field\";\n\nexport default function DemoOne() {\n  return (\n    <div className=\"w-full flex flex-col items-center justify-center bg-background text-white gap-6\">\n      <div className=\"w-[800px] h-[500px] rounded-2xl overflow-hidden shadow-lg border border-gray-700\">\n        <ParticleField\n          particleCount={120}\n          particleSize={2}\n          particleColor=\"white\"\n          backgroundColor=\"black\"\n          speed={1}\n          connectDistance={150}\n        />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/particle-field-demo.tsx"
+    }
+  ]
+}

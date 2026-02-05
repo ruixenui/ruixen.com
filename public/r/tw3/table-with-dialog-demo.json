@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "table-with-dialog-demo",
+  "type": "registry:example",
+  "title": "Table With Dialog Demo",
+  "description": "Example showing a data table with row details shown in a dialog modal.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/table-with-dialog"
+  ],
+  "files": [
+    {
+      "path": "registry/example/table-with-dialog-demo.tsx",
+      "content": "\"use client\";\n\nimport TableWithDialog, { User } from \"@/registry/ruixenui/table-with-dialog\";\n\nconst customUsers: User[] = [\n  {\n    id: \"101\",\n    name: \"Emma Watson\",\n    email: \"emma.w@company.com\",\n    location: \"London, UK\",\n    status: \"Active\",\n    balance: \"$1,800.00\",\n  },\n  {\n    id: \"102\",\n    name: \"Liam Smith\",\n    email: \"liam.s@company.com\",\n    location: \"New York, US\",\n    status: \"Inactive\",\n    balance: \"$950.00\",\n  },\n  {\n    id: \"103\",\n    name: \"Olivia Brown\",\n    email: \"olivia.b@company.com\",\n    location: \"Toronto, CA\",\n    status: \"Suspended\",\n    balance: \"-$500.00\",\n  },\n];\n\nexport default function TableDemoPage() {\n  return (\n    <div className=\"space-y-10 p-6\">\n      {/* Default Table */}\n      <div>\n        <h1 className=\"text-2xl font-bold mb-4\">\n          Default Table (Uses Default Props)\n        </h1>\n        <TableWithDialog />\n      </div>\n\n      {/* Custom Data Table */}\n      <div>\n        <h1 className=\"text-2xl font-bold mb-4\">Custom Data Table</h1>\n        <TableWithDialog\n          data={customUsers}\n          title=\"Custom User Table\"\n          footerTotal=\"$2,250.00\"\n        />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/table-with-dialog-demo.tsx"
+    }
+  ]
+}

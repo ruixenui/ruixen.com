@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "user-context-menu",
+  "type": "registry:ui",
+  "title": "User Context Menu",
+  "description": "Right-click context menu for user interactions with profile actions and user management options.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "avatar",
+    "context-menu"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/user-context-menu.tsx",
+      "content": "\"use client\";\n\nimport { Avatar, AvatarFallback } from \"@/components/ui/avatar\";\nimport {\n  ContextMenu,\n  ContextMenuContent,\n  ContextMenuItem,\n  ContextMenuSeparator,\n  ContextMenuTrigger,\n} from \"@/components/ui/context-menu\";\nimport {\n  User,\n  Mail,\n  Shield,\n  LogOut,\n  Sparkles,\n  Star,\n  Heart,\n  Camera,\n} from \"lucide-react\";\n\nexport default function UserContextMenu() {\n  return (\n    <ContextMenu>\n      {/* Trigger */}\n      <ContextMenuTrigger className=\"flex cursor-pointer items-center gap-3 rounded-lg border border-border bg-background p-4 transition-all hover:bg-muted/50\">\n        <Avatar className=\"size-10 border border-border\">\n          <AvatarFallback className=\"bg-muted text-foreground font-semibold\">\n            SG\n          </AvatarFallback>\n        </Avatar>\n\n        <div className=\"flex flex-col text-sm\">\n          <span className=\"font-semibold text-foreground\">Srinath G</span>\n          <span className=\"text-muted-foreground text-xs\">\n            Right-click to open menu\n          </span>\n        </div>\n      </ContextMenuTrigger>\n\n      {/* Context Menu */}\n      <ContextMenuContent className=\"w-60 rounded-md border border-border bg-popover text-popover-foreground shadow-md\">\n        <ContextMenuItem className=\"flex items-center gap-2 font-medium focus:bg-muted data-[highlighted]:bg-muted\">\n          <User className=\"size-4\" />\n          View Dashboard\n        </ContextMenuItem>\n\n        <ContextMenuItem className=\"flex items-center gap-2 focus:bg-muted data-[highlighted]:bg-muted\">\n          <Mail className=\"size-4\" />\n          Messages\n        </ContextMenuItem>\n\n        <ContextMenuItem className=\"flex items-center gap-2 focus:bg-muted data-[highlighted]:bg-muted\">\n          <Camera className=\"size-4\" />\n          Update Picture\n        </ContextMenuItem>\n\n        <ContextMenuItem className=\"flex items-center gap-2 focus:bg-muted data-[highlighted]:bg-muted\">\n          <Heart className=\"size-4\" />\n          Liked Posts\n        </ContextMenuItem>\n\n        <ContextMenuSeparator />\n\n        <ContextMenuItem className=\"flex items-center gap-2 focus:bg-muted data-[highlighted]:bg-muted\">\n          <Sparkles className=\"size-4\" />\n          Achievements\n        </ContextMenuItem>\n\n        <ContextMenuItem className=\"flex items-center gap-2 focus:bg-muted data-[highlighted]:bg-muted\">\n          <Star className=\"size-4\" />\n          Upgrade to Pro\n        </ContextMenuItem>\n\n        <ContextMenuSeparator />\n\n        <ContextMenuItem className=\"flex items-center gap-2 focus:bg-muted data-[highlighted]:bg-muted\">\n          <Shield className=\"size-4\" />\n          Account Protection\n        </ContextMenuItem>\n\n        <ContextMenuItem className=\"flex items-center gap-2 focus:bg-muted data-[highlighted]:bg-muted\">\n          <Shield className=\"size-4\" />\n          Privacy & Security\n        </ContextMenuItem>\n\n        <ContextMenuSeparator />\n\n        <ContextMenuItem className=\"flex items-center gap-2 font-medium text-destructive focus:bg-destructive/10 data-[highlighted]:bg-destructive/10\">\n          <LogOut className=\"size-4\" />\n          Sign Out\n        </ContextMenuItem>\n      </ContextMenuContent>\n    </ContextMenu>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/user-context-menu.tsx"
+    }
+  ]
+}

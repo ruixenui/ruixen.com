@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ruixen-moon-chat-demo",
+  "type": "registry:example",
+  "title": "Ruixen Moon Chat Demo",
+  "description": "Example showing modern chat interface with message bubbles, typing indicators, and smooth animations.",
+  "registryDependencies": [
+    "https://ruixen.com/r/ruixen-moon-chat"
+  ],
+  "files": [
+    {
+      "path": "registry/example/ruixen-moon-chat-demo.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport RuixenMoonChat from \"@/registry/ruixenui/ruixen-moon-chat\";\n\nexport default function DemoPage() {\n  return (\n    <main className=\"min-h-screen w-full bg-black text-white\">\n      {/* Chat Component */}\n      <section className=\"flex justify-center items-start w-full\">\n        <RuixenMoonChat />\n      </section>\n\n      {/* Footer */}\n      <footer className=\"text-center text-neutral-500 py-2 mt-10 border-t border-neutral-800 text-sm\">\n        © {new Date().getFullYear()} Ruixen Demo Page\n      </footer>\n    </main>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/ruixen-moon-chat-demo.tsx"
+    }
+  ]
+}

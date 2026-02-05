@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "magic-tree",
+  "type": "registry:ui",
+  "title": "Magic Tree",
+  "description": "A magical file tree with sparkle effects and interactive animations.",
+  "dependencies": [
+    "framer-motion",
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/magic-tree.tsx",
+      "content": "\"use client\";\n\nimport React, { useState } from \"react\";\nimport { motion, AnimatePresence } from \"framer-motion\";\nimport { cn } from \"@/lib/utils\";\nimport { Star, Folder, File } from \"lucide-react\";\n\n// -------- MagicNode Types --------\nexport type MagicNode = {\n  id: string;\n  name: string;\n  type: \"file\" | \"folder\";\n  children?: MagicNode[];\n  sparkle?: boolean;\n};\n\nexport type MagicTreeProps = {\n  data?: MagicNode[];\n  onSelect?: (node: MagicNode) => void;\n};\n\n// -------- Default Data --------\nconst defaultMagicData: MagicNode[] = [\n  {\n    id: \"1\",\n    name: \"Magical Folder\",\n    type: \"folder\",\n    sparkle: true,\n    children: [\n      { id: \"1-1\", name: \"Shiny File.txt\", type: \"file\", sparkle: true },\n      {\n        id: \"1-2\",\n        name: \"Hidden Gems\",\n        type: \"folder\",\n        children: [\n          { id: \"1-2-1\", name: \"Gem.js\", type: \"file\", sparkle: true },\n        ],\n      },\n    ],\n  },\n  { id: \"2\", name: \"Plain File.md\", type: \"file\" },\n];\n\nexport default function MagicTree({\n  data = defaultMagicData,\n  onSelect,\n}: MagicTreeProps) {\n  const [expanded, setExpanded] = useState<Record<string, boolean>>({});\n  const [selected, setSelected] = useState<string | null>(null);\n\n  const toggle = (id: string) => {\n    setExpanded((prev) => ({ ...prev, [id]: !prev[id] }));\n  };\n\n  const renderNodes = (nodes: MagicNode[], level = 0) => {\n    return nodes.map((n) => (\n      <div key={n.id} className=\"relative group\">\n        <motion.div\n          className={cn(\n            \"flex items-center gap-2 px-2 py-1 rounded-md cursor-pointer select-none\",\n            selected === n.id\n              ? \"bg-gray-100 dark:bg-gray-700 text-black dark:text-white\"\n              : \"hover:bg-muted\",\n          )}\n          style={{ paddingLeft: level * 16 + 8 }}\n          onClick={() => {\n            if (n.type === \"folder\") toggle(n.id);\n            setSelected(n.id);\n            onSelect?.(n);\n          }}\n          whileHover={{ scale: 1.03 }}\n          whileTap={{ scale: 0.97 }}\n        >\n          {/* Icon for selected node */}\n          {selected === n.id ? (\n            <Star size={16} className=\"text-yellow-400\" />\n          ) : n.type === \"folder\" ? (\n            <Folder size={16} />\n          ) : (\n            <File size={14} />\n          )}\n          <span className=\"flex-1 truncate\">{n.name}</span>\n        </motion.div>\n\n        <AnimatePresence>\n          {n.children && n.children.length > 0 && expanded[n.id] && (\n            <motion.div\n              role=\"group\"\n              initial={{ height: 0, opacity: 0 }}\n              animate={{ height: \"auto\", opacity: 1 }}\n              exit={{ height: 0, opacity: 0 }}\n              transition={{ duration: 0.3, ease: \"easeInOut\" }}\n              className=\"pl-4 border-l border-purple-300\"\n            >\n              {renderNodes(n.children, level + 1)}\n            </motion.div>\n          )}\n        </AnimatePresence>\n      </div>\n    ));\n  };\n\n  return <div className=\"space-y-1 max-w-sm\">{renderNodes(data)}</div>;\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/magic-tree.tsx"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-carousel-hero-demo",
+  "type": "registry:example",
+  "title": "Card Carousel Hero Demo",
+  "description": "Example showing an interactive hero section with card carousel",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/card-carousel-hero"
+  ],
+  "files": [
+    {
+      "path": "registry/example/card-carousel-hero-demo.tsx",
+      "content": "\"use client\";\n\nimport CardCarouselHero from \"../ruixenui/card-carousel-hero\";\n\nexport default function DemoPage() {\n  return (\n    <CardCarouselHero\n      category=\"Next-Gen UI Library\"\n      title=\"Create Stunning Interfaces\"\n      subtitle=\"Build beautiful, responsive components with our comprehensive design system.\"\n      cards={[\n        { src: \"/cards/card1.jpg\", alt: \"Card 1\" },\n        { src: \"/cards/card2.jpg\", alt: \"Card 2\" },\n        { src: \"/cards/card3.jpg\", alt: \"Card 3\" },\n        { src: \"/cards/card4.jpg\", alt: \"Card 4\" },\n      ]}\n    />\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/card-carousel-hero-demo.tsx"
+    }
+  ]
+}

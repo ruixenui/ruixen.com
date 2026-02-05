@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "animated-alert-demo",
+  "type": "registry:example",
+  "title": "Animated Alert Demo",
+  "description": "Example showing an animated alert with enter/exit transitions.",
+  "registryDependencies": [
+    "https://ruixen.com/r/animated-alert"
+  ],
+  "files": [
+    {
+      "path": "registry/example/animated-alert-demo.tsx",
+      "content": "\"use client\";\n\nimport { useState } from \"react\";\nimport AnimatedAlert from \"@/registry/ruixenui/animated-alert\";\n\nexport default function AnimatedAlertDemo() {\n  const [showSuccess, setShowSuccess] = useState(true);\n  const [showWarning, setShowWarning] = useState(true);\n\n  return (\n    <div className=\"flex min-h-[350px] w-full items-center justify-center p-4\">\n      <div className=\"w-full max-w-lg space-y-3\">\n        <AnimatedAlert\n          variant=\"success\"\n          title=\"Changes saved\"\n          description=\"Your preferences have been updated successfully.\"\n          show={showSuccess}\n          onDismiss={() => setShowSuccess(false)}\n          autoDismiss={6000}\n        />\n        <AnimatedAlert\n          variant=\"warning\"\n          title=\"Session expiring\"\n          description=\"Your session will expire in 5 minutes. Save your work.\"\n          show={showWarning}\n          onDismiss={() => setShowWarning(false)}\n          actions={\n            <button className=\"text-xs font-medium text-card-foreground underline underline-offset-2 hover:no-underline\">\n              Extend session\n            </button>\n          }\n        />\n        {(!showSuccess || !showWarning) && (\n          <button\n            onClick={() => {\n              setShowSuccess(true);\n              setShowWarning(true);\n            }}\n            className=\"text-sm text-muted-foreground underline underline-offset-2 hover:text-foreground\"\n          >\n            Reset alerts\n          </button>\n        )}\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/animated-alert-demo.tsx"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "login-card-demo",
+  "type": "registry:example",
+  "title": "Login Card Demo",
+  "description": "Example showing a login card with form validation and authentication.",
+  "registryDependencies": [
+    "https://ruixen.com/r/login-card"
+  ],
+  "files": [
+    {
+      "path": "registry/example/login-card-demo.tsx",
+      "content": "\"use client\";\n\nimport LoginCard from \"@/registry/ruixenui/login-card\";\nimport { FaUserCircle } from \"react-icons/fa\";\n\nexport default function DemoLoginCard() {\n  return (\n    <div className=\"flex items-center justify-center min-h-screen py-16\">\n      <LoginCard\n        title=\"Welcome Back!\"\n        logo={<FaUserCircle size={48} className=\"text-blue-500\" />}\n        inputs={[\n          {\n            id: \"email\",\n            type: \"email\",\n            label: \"Email\",\n            placeholder: \"you@example.com\",\n          },\n          {\n            id: \"password\",\n            type: \"password\",\n            label: \"Password\",\n            placeholder: \"********\",\n          },\n          {\n            id: \"username\",\n            type: \"text\",\n            label: \"Username\",\n            placeholder: \"Your username\",\n          },\n        ]}\n        buttonText=\"Sign In\"\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/login-card-demo.tsx"
+    }
+  ]
+}

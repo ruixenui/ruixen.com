@@ -115,12 +115,18 @@ export const docsConfig: DocsConfig = {
             },
           ],
         },
-        // {
-        //   title: "Tailwind v4",
-        //   href: "/docs/tailwind-v4",
-        //   items: [],
-        //   label: "",
-        // },
+        {
+          title: "Dual Tailwind",
+          href: "/docs/tailwind-v4",
+          items: [],
+          label: "v3 + v4",
+        },
+        {
+          title: "Swap Primitives",
+          href: "/docs/ui-library",
+          items: [],
+          label: "Radix & Base",
+        },
         // {
         //   title: "MCP",
         //   href: "/docs/mcp",
@@ -353,12 +359,6 @@ export const docsConfig: DocsConfig = {
               label: "",
             },
             {
-              title: "Particle Text Dots",
-              href: `/docs/components/particle-text-dots`,
-              items: [],
-              label: "New",
-            },
-            {
               title: "Rain Background",
               href: `/docs/components/rain-background`,
               items: [],
@@ -376,9 +376,26 @@ export const docsConfig: DocsConfig = {
               items: [],
               label: "",
             },
+          ],
+        },
+        {
+          title: "Text",
+          items: [
             {
               title: "Rising Glow",
               href: `/docs/components/rising-glow`,
+              items: [],
+              label: "Updated",
+            },
+            {
+              title: "Particle Text Dots",
+              href: `/docs/components/particle-text-dots`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Container Text Scroll",
+              href: `/docs/components/container-text-scroll`,
               items: [],
               label: "",
             },
@@ -1047,12 +1064,6 @@ export const docsConfig: DocsConfig = {
         {
           title: "Effects",
           items: [
-            {
-              title: "Container Text Scroll",
-              href: `/docs/components/container-text-scroll`,
-              items: [],
-              label: "",
-            },
             {
               title: "Globe",
               href: `/docs/components/globe`,

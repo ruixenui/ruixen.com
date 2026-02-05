@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import { motion } from "framer-motion";
-import * as Accordion from "@radix-ui/react-accordion";
 import { Minus, Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useGSAP } from "@gsap/react";
@@ -42,7 +41,7 @@ const defaultData: FAQItem[] = [
     id: 3,
     question: "Is Ruixen UI open-source?",
     answer:
-      "Yes, Ruixen UI is completely open-source and available under the MIT license. You’re free to use it in both personal and commercial projects.",
+      "Yes, Ruixen UI is completely open-source and available under the MIT license. You're free to use it in both personal and commercial projects.",
   },
   {
     id: 4,
@@ -107,7 +106,7 @@ export default function FAQScrollAccordion({
     };
   }, [data]);
 
-  const handleAccordionChange = (value: string) => {
+  const handleToggle = (value: string) => {
     setOpenItem(value === openItem ? null : value);
   };
 
@@ -131,31 +130,27 @@ export default function FAQScrollAccordion({
         and licensing.
       </p>
 
-      <Accordion.Root
-        type="single"
-        collapsible
-        value={openItem || ""}
-        onValueChange={handleAccordionChange}
-      >
-        {data.map((item) => (
-          <Accordion.Item
-            value={item.id.toString()}
-            key={item.id}
-            className="mb-6"
-          >
-            <div
-              ref={(el) => {
-                if (el) accordionRefs.current.set(item.id.toString(), el);
-              }}
-              data-id={item.id.toString()}
-              className="relative"
-            >
-              <Accordion.Header>
-                <Accordion.Trigger className="flex w-full items-center justify-start gap-x-4">
+      <div>
+        {data.map((item) => {
+          const isOpen = openItem === item.id.toString();
+          return (
+            <div key={item.id} className="mb-6">
+              <div
+                ref={(el) => {
+                  if (el) accordionRefs.current.set(item.id.toString(), el);
+                }}
+                data-id={item.id.toString()}
+                className="relative"
+              >
+                <button
+                  type="button"
+                  onClick={() => handleToggle(item.id.toString())}
+                  className="flex w-full items-center justify-start gap-x-4"
+                >
                   <div
                     className={cn(
                       "relative flex items-center space-x-2 rounded-xl p-2 transition-colors",
-                      openItem === item.id.toString()
+                      isOpen
                         ? "bg-primary/20 text-primary"
                         : "bg-muted hover:bg-primary/10",
                       questionClassName,
@@ -183,26 +178,22 @@ export default function FAQScrollAccordion({
                   <span
                     className={cn(
                       "text-gray-600 dark:text-gray-200",
-                      openItem === item.id.toString() && "text-primary",
+                      isOpen && "text-primary",
                     )}
                   >
-                    {openItem === item.id.toString() ? (
+                    {isOpen ? (
                       <Minus className="h-5 w-5" />
                     ) : (
                       <Plus className="h-5 w-5" />
                     )}
                   </span>
-                </Accordion.Trigger>
-              </Accordion.Header>
-              <Accordion.Content asChild forceMount>
+                </button>
                 <motion.div
                   ref={(el) => {
                     if (el) contentRefs.current.set(item.id.toString(), el);
                   }}
                   initial="collapsed"
-                  animate={
-                    openItem === item.id.toString() ? "open" : "collapsed"
-                  }
+                  animate={isOpen ? "open" : "collapsed"}
                   variants={{
                     open: { opacity: 1, height: "auto" },
                     collapsed: { opacity: 0, height: 0 },
@@ -221,11 +212,11 @@ export default function FAQScrollAccordion({
                     </div>
                   </div>
                 </motion.div>
-              </Accordion.Content>
+              </div>
             </div>
-          </Accordion.Item>
-        ))}
-      </Accordion.Root>
+          );
+        })}
+      </div>
     </div>
   );
 }

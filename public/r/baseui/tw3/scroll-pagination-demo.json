@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-pagination-demo",
+  "type": "registry:example",
+  "title": "Scroll Pagination Demo",
+  "description": "Example showing minimalist pagination with scroll navigation.",
+  "registryDependencies": [
+    "https://ruixen.com/r/scroll-pagination"
+  ],
+  "files": [
+    {
+      "path": "registry/example/scroll-pagination-demo.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport ScrollPagination from \"@/registry/ruixenui/scroll-pagination\";\n\nexport default function ScrollPaginationDemo() {\n  return (\n    <div className=\"flex flex-col items-center justify-center min-h-screen\">\n      <ScrollPagination totalPages={20} className=\"mb-10\" />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/scroll-pagination-demo.tsx"
+    }
+  ]
+}

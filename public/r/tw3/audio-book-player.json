@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "audio-book-player",
+  "type": "registry:ui",
+  "title": "Audio Book Player",
+  "description": "Fixed-position audiobook player with chapter info, speed control, and progress tracking.",
+  "dependencies": [],
+  "registryDependencies": [
+    "button",
+    "slider"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/audio-book-player.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { Button } from \"@/components/ui/button\";\nimport { Slider } from \"@/components/ui/slider\";\nimport { cn } from \"@/lib/utils\";\n\ninterface AudioBookPlayerProps {\n  audioSrc?: string;\n  chapterTitle?: string;\n  author?: string;\n  className?: string;\n}\n\nexport default function AudioBookPlayer({\n  audioSrc = \"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3\",\n  chapterTitle = \"Chapter 1: The Beginning\",\n  author = \"John Doe\",\n  className,\n}: AudioBookPlayerProps) {\n  const [audio, setAudio] = React.useState<HTMLAudioElement | null>(null);\n  const [isPlaying, setIsPlaying] = React.useState(false);\n  const [progress, setProgress] = React.useState(0);\n  const [speed, setSpeed] = React.useState(1);\n\n  React.useEffect(() => {\n    // Only create Audio instance on client side\n    if (typeof window !== \"undefined\") {\n      const audioElement = new Audio(audioSrc);\n      setAudio(audioElement);\n\n      const updateProgress = () => {\n        setProgress((audioElement.currentTime / audioElement.duration) * 100);\n      };\n\n      audioElement.addEventListener(\"timeupdate\", updateProgress);\n      return () => {\n        audioElement.pause();\n        audioElement.removeEventListener(\"timeupdate\", updateProgress);\n      };\n    }\n  }, [audioSrc]);\n\n  const togglePlay = () => {\n    if (!audio) return;\n    if (isPlaying) audio.pause();\n    else audio.play();\n    setIsPlaying(!isPlaying);\n  };\n\n  const handleSeek = (value: number) => {\n    if (!audio) return;\n    audio.currentTime = (value / 100) * audio.duration;\n    setProgress(value);\n  };\n\n  const changeSpeed = () => {\n    if (!audio) return;\n    const nextSpeed = speed === 1 ? 1.5 : speed === 1.5 ? 2 : 1;\n    audio.playbackRate = nextSpeed;\n    setSpeed(nextSpeed);\n  };\n\n  return (\n    <div\n      className={cn(\n        \"relative border dark:border-gray-700 shadow-lg rounded-xl p-4 flex flex-col gap-3 w-[350px]\",\n        className,\n      )}\n    >\n      <div className=\"flex justify-between items-center\">\n        <div>\n          <p className=\"font-medium text-gray-900 dark:text-gray-100\">\n            {chapterTitle}\n          </p>\n          <p className=\"text-sm text-gray-500 dark:text-gray-300\">{author}</p>\n        </div>\n        <Button size=\"sm\" onClick={togglePlay}>\n          {isPlaying ? \"Pause\" : \"Play\"}\n        </Button>\n      </div>\n\n      <Slider value={[progress]} onValueChange={(val) => handleSeek(val[0])} />\n\n      <div className=\"flex justify-between items-center\">\n        <span className=\"text-sm text-gray-500 dark:text-gray-300\">\n          {progress.toFixed(0)}%\n        </span>\n        <Button size=\"sm\" onClick={changeSpeed}>\n          {speed}x\n        </Button>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/audio-book-player.tsx"
+    }
+  ]
+}

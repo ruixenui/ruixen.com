@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "calendar-planner-demo",
+  "type": "registry:example",
+  "title": "Calendar Planner Demo",
+  "description": "Example showing a comprehensive calendar planner with month/year view switching.",
+  "registryDependencies": [
+    "https://ruixen.com/r/calendar-planner"
+  ],
+  "files": [
+    {
+      "path": "registry/example/calendar-planner-demo.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { CalendarPlanner } from \"@/registry/ruixenui/calendar-planner\";\nimport { format } from \"date-fns\";\n\nexport default function CalendarPlannerDemo() {\n  const [selected, setSelected] = React.useState<Date | undefined>();\n\n  // Mock info per date (e.g. events, availability, etc.)\n  const mockInfo: Record<string, string> = {};\n  for (let i = 0; i < 30; i++) {\n    const d = new Date();\n    d.setDate(d.getDate() + i);\n    const dateKey = format(d, \"yyyy-MM-dd\");\n    mockInfo[dateKey] = i % 2 === 0 ? \" Event\" : \"—\";\n  }\n\n  return (\n    <div className=\"flex flex-col justify-center items-center py-16 space-y-6\">\n      <CalendarPlanner\n        value={selected}\n        onChange={setSelected}\n        info={mockInfo}\n        yearRange={[1995, 2035]}\n      />\n      {selected && (\n        <p className=\"text-sm text-muted-foreground\">\n          Selected: {selected.toDateString()}\n        </p>\n      )}\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/calendar-planner-demo.tsx"
+    }
+  ]
+}

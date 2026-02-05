@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature-highlights",
+  "type": "registry:ui",
+  "title": "Feature Highlights",
+  "description": "A responsive feature highlights component with expandable accordion sections and images.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/feature-highlights.tsx",
+      "content": "\"use client\";\n\nimport {\n  Accordion,\n  AccordionContent,\n  AccordionItem,\n  AccordionTrigger,\n} from \"@/components/ui/accordion\";\nimport Image from \"next/image\";\n\nexport default function FeatureHighlights({ features }: any) {\n  return (\n    <div className=\"flex flex-col w-full max-w-xl mx-auto border rounded-xl shadow-sm bg-white dark:bg-neutral-900 border-gray-200 dark:border-neutral-700 p-4\">\n      <Accordion type=\"single\" collapsible className=\"w-full\">\n        {features.map((feature: any) => (\n          <AccordionItem\n            key={feature.id}\n            value={feature.id}\n            className=\"border-b border-gray-200 dark:border-neutral-700\"\n          >\n            <AccordionTrigger className=\"flex items-center gap-3 py-3 text-left\">\n              <Image\n                src={feature.image}\n                alt={feature.title}\n                width={28}\n                height={28}\n                className=\"rounded-md\"\n              />\n              <span className=\"flex-1 font-medium\">{feature.title}</span>\n              <span className=\"text-xs text-gray-500 dark:text-gray-400\">\n                ({feature.count})\n              </span>\n            </AccordionTrigger>\n\n            <AccordionContent className=\"px-2 pb-4 pt-2 space-y-3\">\n              {/* Big Image when expanded */}\n              <div className=\"w-full flex justify-center\">\n                <Image\n                  src={feature.image}\n                  alt={feature.title}\n                  width={500}\n                  height={300}\n                  className=\"rounded-lg shadow-md object-cover\"\n                />\n              </div>\n              {/* Text below the image */}\n              <p className=\"text-sm text-gray-600 dark:text-gray-400 text-center\">\n                {feature.description}\n              </p>\n            </AccordionContent>\n          </AccordionItem>\n        ))}\n      </Accordion>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/feature-highlights.tsx"
+    }
+  ]
+}

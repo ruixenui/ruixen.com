@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "badge-button-combo",
+  "type": "registry:ui",
+  "title": "Badge Button Combo",
+  "description": "Button with notification badge for counts or status indicators.",
+  "dependencies": [],
+  "registryDependencies": [
+    "button",
+    "badge"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/badge-button-combo.tsx",
+      "content": "import React from \"react\";\nimport { Button } from \"@/components/ui/button\";\nimport { Badge } from \"@/components/ui/badge\";\nimport { cn } from \"@/lib/utils\";\n\ninterface BadgeButtonComboProps\n  extends React.ButtonHTMLAttributes<HTMLButtonElement> {\n  label: string;\n  badge?: string | number;\n  size?: \"sm\" | \"md\" | \"lg\";\n}\n\nconst sizeConfig = {\n  sm: \"px-3 py-1 text-sm\",\n  md: \"px-4 py-2 text-base\",\n  lg: \"px-5 py-3 text-lg\",\n};\n\nexport default function BadgeButtonCombo({\n  label,\n  badge,\n  size = \"md\",\n  className,\n  ...props\n}: BadgeButtonComboProps) {\n  return (\n    <div className=\"relative inline-block\">\n      <Button className={cn(sizeConfig[size], className)} {...props}>\n        {label}\n      </Button>\n      {badge !== undefined && (\n        <span className=\"absolute -top-2 -right-2\">\n          <Badge className=\"p-1 min-w-[1.25rem] h-5 text-[0.65rem] flex items-center justify-center\">\n            {badge}\n          </Badge>\n        </span>\n      )}\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/badge-button-combo.tsx"
+    }
+  ]
+}

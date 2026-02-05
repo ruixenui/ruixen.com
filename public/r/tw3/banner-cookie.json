@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "banner-cookie",
+  "type": "registry:ui",
+  "title": "Banner Cookie",
+  "description": "A cookie consent banner with accept, decline, and preferences options.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/banner-cookie.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { Button } from \"@/components/ui/button\";\nimport { Cookie, X, Settings } from \"lucide-react\";\n\ntype BannerPosition = \"bottom\" | \"top\" | \"bottom-left\" | \"bottom-right\";\n\ninterface BannerCookieProps {\n  title?: string;\n  description?: string;\n  acceptLabel?: string;\n  declineLabel?: string;\n  settingsLabel?: string;\n  position?: BannerPosition;\n  showSettings?: boolean;\n  onAccept?: () => void;\n  onDecline?: () => void;\n  onSettings?: () => void;\n  className?: string;\n}\n\nconst positionStyles: Record<BannerPosition, string> = {\n  bottom: \"fixed inset-x-0 bottom-0\",\n  top: \"fixed inset-x-0 top-0\",\n  \"bottom-left\": \"fixed bottom-4 left-4 max-w-md rounded-xl\",\n  \"bottom-right\": \"fixed bottom-4 right-4 max-w-md rounded-xl\",\n};\n\nexport default function BannerCookie({\n  title = \"We value your privacy\",\n  description = \"We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic. By clicking 'Accept', you consent to our use of cookies.\",\n  acceptLabel = \"Accept all\",\n  declineLabel = \"Decline\",\n  settingsLabel = \"Preferences\",\n  position = \"bottom\",\n  showSettings = true,\n  onAccept,\n  onDecline,\n  onSettings,\n  className,\n}: BannerCookieProps) {\n  const [isVisible, setIsVisible] = React.useState(true);\n\n  const handleAccept = () => {\n    setIsVisible(false);\n    onAccept?.();\n  };\n\n  const handleDecline = () => {\n    setIsVisible(false);\n    onDecline?.();\n  };\n\n  if (!isVisible) return null;\n\n  const isFloating = position === \"bottom-left\" || position === \"bottom-right\";\n\n  return (\n    <div\n      className={cn(\n        \"z-50 border bg-background p-4 shadow-lg\",\n        positionStyles[position],\n        isFloating ? \"border-border\" : \"border-t\",\n        className,\n      )}\n    >\n      <div\n        className={cn(\n          \"flex gap-4\",\n          isFloating ? \"flex-col\" : \"flex-col md:flex-row md:items-center\",\n        )}\n      >\n        <div className=\"flex flex-1 gap-3\">\n          <div className=\"hidden h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary sm:flex\">\n            <Cookie className=\"size-5\" />\n          </div>\n          <div className=\"space-y-1\">\n            <h3 className=\"font-semibold text-foreground\">{title}</h3>\n            <p className=\"text-sm text-muted-foreground\">{description}</p>\n          </div>\n        </div>\n        <div\n          className={cn(\n            \"flex shrink-0 gap-2\",\n            isFloating ? \"flex-col\" : \"flex-row\",\n          )}\n        >\n          {showSettings && (\n            <Button variant=\"ghost\" size=\"sm\" onClick={onSettings}>\n              <Settings className=\"mr-1.5 size-4\" />\n              {settingsLabel}\n            </Button>\n          )}\n          <Button variant=\"outline\" size=\"sm\" onClick={handleDecline}>\n            {declineLabel}\n          </Button>\n          <Button size=\"sm\" onClick={handleAccept}>\n            {acceptLabel}\n          </Button>\n        </div>\n      </div>\n    </div>\n  );\n}\n\nexport { BannerCookie, type BannerCookieProps };\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/banner-cookie.tsx"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "smart-notify-button-demo",
+  "type": "registry:example",
+  "title": "Smart Notify Button Demo",
+  "description": "Example showing a button component that triggers customizable toast notifications with actions and different types.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/smart-notify-button"
+  ],
+  "files": [
+    {
+      "path": "registry/example/smart-notify-button-demo.tsx",
+      "content": "\"use client\";\n\nimport SmartNotifyButton from \"@/registry/ruixenui/smart-notify-button\";\n\nexport default function DemoOne() {\n  const handleUndo = () => {\n    console.log(\"Undo clicked\");\n  };\n\n  return (\n    <div className=\"flex min-h-[400px] w-full flex-col items-center justify-center gap-6\">\n      <div className=\"flex flex-col gap-6\">\n        <SmartNotifyButton />\n\n        <SmartNotifyButton\n          label=\"Save Changes\"\n          message=\"Data saved successfully!\"\n          description=\"Your changes have been stored.\"\n          type=\"success\"\n          actionLabel=\"Undo\"\n          actionCallback={handleUndo}\n          position=\"bottom-left\"\n        />\n\n        <SmartNotifyButton\n          label=\"Delete Item\"\n          message=\"Item could not be deleted\"\n          type=\"error\"\n          variant=\"outline\"\n        />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/smart-notify-button-demo.tsx"
+    }
+  ]
+}

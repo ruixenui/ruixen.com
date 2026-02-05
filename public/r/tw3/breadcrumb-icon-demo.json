@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "breadcrumb-icon-demo",
+  "type": "registry:example",
+  "title": "Breadcrumb Icon Demo",
+  "description": "Example showing breadcrumbs with icons.",
+  "registryDependencies": [
+    "https://ruixen.com/r/breadcrumb-icon"
+  ],
+  "files": [
+    {
+      "path": "registry/example/breadcrumb-icon-demo.tsx",
+      "content": "\"use client\";\n\nimport BreadcrumbIcon from \"@/registry/ruixenui/breadcrumb-icon\";\nimport { Home, Folder, File, Settings, Users } from \"lucide-react\";\n\nconst basicItems = [\n  { label: \"Home\", href: \"/\" },\n  { label: \"Documents\", href: \"/documents\" },\n  { label: \"Projects\", href: \"/documents/projects\" },\n  { label: \"Annual Report\" },\n];\n\nconst customIconItems = [\n  { label: \"Home\", href: \"/\", icon: Home },\n  { label: \"Settings\", href: \"/settings\", icon: Settings },\n  { label: \"Team\", href: \"/settings/team\", icon: Users },\n  { label: \"Members\" },\n];\n\nconst folderItems = [\n  { label: \"Root\", href: \"/\", icon: Home },\n  { label: \"Documents\", href: \"/documents\", icon: Folder },\n  { label: \"Work\", href: \"/documents/work\", icon: Folder },\n  { label: \"Report.pdf\", icon: File },\n];\n\nexport default function BreadcrumbIconDemo() {\n  return (\n    <div className=\"flex min-h-[350px] w-full flex-col items-center justify-center gap-8 p-4\">\n      <div className=\"space-y-2 text-center\">\n        <p className=\"text-sm font-medium text-muted-foreground\">\n          With Home Icon\n        </p>\n        <BreadcrumbIcon items={basicItems} showHomeIcon />\n      </div>\n\n      <div className=\"space-y-2 text-center\">\n        <p className=\"text-sm font-medium text-muted-foreground\">\n          Custom Icons\n        </p>\n        <BreadcrumbIcon items={customIconItems} />\n      </div>\n\n      <div className=\"space-y-2 text-center\">\n        <p className=\"text-sm font-medium text-muted-foreground\">\n          File System Style\n        </p>\n        <BreadcrumbIcon items={folderItems} showHomeIcon={false} />\n      </div>\n\n      <div className=\"space-y-2 text-center\">\n        <p className=\"text-sm font-medium text-muted-foreground\">\n          Icon Only (First Item)\n        </p>\n        <BreadcrumbIcon\n          items={[\n            { label: \"Home\", href: \"/\", icon: Home },\n            { label: \"Products\", href: \"/products\" },\n            { label: \"Details\" },\n          ]}\n          showHomeIcon={false}\n        />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/breadcrumb-icon-demo.tsx"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sortable-table-demo",
+  "type": "registry:example",
+  "title": "Sortable Table Demo",
+  "description": "Example showing a sortable and filterable data table with search functionality.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/sortable-table"
+  ],
+  "files": [
+    {
+      "path": "registry/example/sortable-table-demo.tsx",
+      "content": "\"use client\";\n\nimport SortableTable from \"@/registry/ruixenui/sortable-table\";\n\nexport default function SortableTableDemo() {\n  return (\n    <div className=\"p-8\">\n      <SortableTable />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/sortable-table-demo.tsx"
+    }
+  ]
+}

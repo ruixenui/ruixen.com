@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "reorderable-table-demo",
+  "type": "registry:example",
+  "title": "Reorderable Table Demo",
+  "description": "Example showing a table with column reordering and visibility controls.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/reorderable-table"
+  ],
+  "files": [
+    {
+      "path": "registry/example/reorderable-table-demo.tsx",
+      "content": "\"use client\";\n\nimport ReorderableTable, {\n  ColumnDef,\n} from \"@/registry/ruixenui/reorderable-table\";\n\nexport default function ReorderableTableDemo() {\n  // --- Custom Data Example ---\n  const customData = [\n    {\n      id: 1,\n      name: \"John Doe\",\n      department: \"Engineering\",\n      salary: 90000,\n      status: \"Active\",\n    },\n    {\n      id: 2,\n      name: \"Anna Smith\",\n      department: \"HR\",\n      salary: 70000,\n      status: \"Inactive\",\n    },\n    {\n      id: 3,\n      name: \"Mark Lee\",\n      department: \"Finance\",\n      salary: 80000,\n      status: \"Active\",\n    },\n    {\n      id: 4,\n      name: \"Sophia Liu\",\n      department: \"Marketing\",\n      salary: 75000,\n      status: \"Suspended\",\n    },\n  ];\n\n  const customColumns: ColumnDef<(typeof customData)[0]>[] = [\n    { key: \"name\", label: \"Full Name\", width: \"200px\" },\n    { key: \"department\", label: \"Department\", width: \"150px\" },\n    {\n      key: \"salary\",\n      label: \"Salary\",\n      width: \"120px\",\n      render: (row) => `$${row.salary.toLocaleString()}`,\n    },\n    {\n      key: \"status\",\n      label: \"Status\",\n      width: \"120px\",\n      render: (row) => {\n        const statusColors = {\n          Active: \"bg-green-100 text-green-800\",\n          Inactive: \"bg-gray-100 text-gray-800\",\n          Suspended: \"bg-red-100 text-red-800\",\n        };\n        const status = row.status as keyof typeof statusColors;\n        return (\n          <span\n            className={`inline-block px-2 py-0.5 rounded-md text-sm font-medium ${statusColors[status]}`}\n          >\n            {row.status}\n          </span>\n        );\n      },\n    },\n  ];\n\n  return (\n    <div className=\"p-6 flex flex-col gap-10\">\n      <div>\n        <ReorderableTable title=\"Default Users Table\" />\n      </div>\n\n      <div>\n        <ReorderableTable\n          title=\"Employee Table\"\n          data={customData}\n          columns={customColumns}\n          lsOrderKey=\"employee_table_order\"\n          lsVisibleKey=\"employee_table_visible\"\n        />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/reorderable-table-demo.tsx"
+    }
+  ]
+}

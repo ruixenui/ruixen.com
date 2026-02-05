@@ -5,8 +5,10 @@
   "title": "Gradient Hero Showcase",
   "description": "A modern hero section with animated gradient background and smooth transitions",
   "dependencies": [
-    "motion",
-    "@radix-ui/react-slot"
+    "motion"
+  ],
+  "registryDependencies": [
+    "button"
   ],
   "files": [
     {

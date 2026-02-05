@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "centered-feedback-drawer-demo",
+  "type": "registry:example",
+  "title": "Centered Feedback Drawer Demo",
+  "description": "Example showing a centered drawer component designed for feedback collection.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/centered-feedback-drawer"
+  ],
+  "files": [
+    {
+      "path": "registry/example/centered-feedback-drawer-demo.tsx",
+      "content": "import CenteredFeedbackDrawer from \"../ruixenui/centered-feedback-drawer\";\n\nexport default function CenteredFeedbackDrawerDemo() {\n  return (\n    <div className=\"flex items-center justify-center min-h-screen p-2\">\n      <CenteredFeedbackDrawer />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/centered-feedback-drawer-demo.tsx"
+    }
+  ]
+}

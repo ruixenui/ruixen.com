@@ -1,7 +1,7 @@
 ---
 title: Rising Glow
 date: 2024-12-29
-description: Animated rising particle effect with customizable colors and particle count
+description: Text wrapper with animated rising particles and soft glow effect.
 author: ruixen
 published: true
 ---
@@ -34,93 +34,32 @@ npx shadcn@latest add "https://ruixen.com/r/rising-glow"
 
 <Step>Update the import paths to match your project setup.</Step>
 
-<Step>Install required dependencies</Step>
-
-```bash
-npm install framer-motion
-```
-
 </Steps>
 
 </TabsContent>
 
 </Tabs>
 
+## Usage
+
+```tsx
+import { RisingGlow } from "@/components/ruixen/rising-glow";
+
+export default function App() {
+  return (
+    <RisingGlow color="#7CF734">
+      <h1 className="text-6xl font-bold">Lumina</h1>
+    </RisingGlow>
+  );
+}
+```
+
 ## Props
 
-| Prop            | Type               | Default     | Description                              |
-| --------------- | ------------------ | ----------- | ---------------------------------------- |
-| `width`         | `number \| string` | `"100%"`    | Container width                          |
-| `height`        | `number \| string` | `120`       | Container height                         |
-| `particleCount` | `number`           | `20`        | Number of particles to animate           |
-| `particleColor` | `string`           | `"#00f7ff"` | Color of the particles                   |
-| `className`     | `string`           | `undefined` | Additional CSS classes for the container |
-
-## Features
-
-- **Smooth Animation**: Particles rise with natural easing
-- **Customizable**: Adjust particle count, color, and container size
-- **Responsive**: Works with any container dimensions
-- **Performance Optimized**: Uses Framer Motion for smooth animations
-- **Infinite Loop**: Particles continuously animate in cycles
-
-## Usage Examples
-
-### Basic Usage
-
-```tsx
-import { RisingGlow } from "@/components/rising-glow";
-
-export default function App() {
-  return (
-    <div className="relative">
-      <RisingGlow />
-      <div className="relative z-10 p-8">
-        <h1>Your content here</h1>
-      </div>
-    </div>
-  );
-}
-```
-
-### Custom Configuration
-
-```tsx
-import { RisingGlow } from "@/components/rising-glow";
-
-export default function App() {
-  return (
-    <div className="relative">
-      <RisingGlow
-        width="100vw"
-        height={200}
-        particleCount={30}
-        particleColor="#ff6b6b"
-        className="absolute inset-0"
-      />
-    </div>
-  );
-}
-```
-
-### As Background Effect
-
-```tsx
-import { RisingGlow } from "@/components/rising-glow";
-
-export default function HeroSection() {
-  return (
-    <section className="relative min-h-screen bg-black">
-      <RisingGlow
-        width="100%"
-        height="100vh"
-        particleCount={50}
-        particleColor="#00d2ff"
-      />
-      <div className="relative z-10 flex items-center justify-center min-h-screen">
-        <h1 className="text-6xl font-bold text-white">Welcome</h1>
-      </div>
-    </section>
-  );
-}
-```
+| Prop            | Type              | Default     | Description                  |
+| --------------- | ----------------- | ----------- | ---------------------------- |
+| `children`      | `React.ReactNode` | -           | Text content to wrap         |
+| `color`         | `string`          | `"#3b82f6"` | Glow color (hex)             |
+| `particleCount` | `number`          | `24`        | Number of rising particles   |
+| `spread`        | `number`          | `30`        | Text-shadow spread in pixels |
+| `className`     | `string`          | -           | Additional CSS classes       |

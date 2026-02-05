@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hybrid-tabs-demo",
+  "type": "registry:example",
+  "title": "Hybrid Tabs Demo",
+  "description": "Example showing icon-first tabs that expand labels on hover.",
+  "registryDependencies": [
+    "https://ruixen.com/r/hybrid-tabs"
+  ],
+  "files": [
+    {
+      "path": "registry/example/hybrid-tabs-demo.tsx",
+      "content": "\"use client\";\n\nimport HybridTabs from \"@/registry/ruixenui/hybrid-tabs\";\n\nexport default function HybridTabsDemo() {\n  return (\n    <main className=\"flex flex-col items-center justify-center\">\n      <HybridTabs defaultValue=\"home\" className=\"mb-8\" />\n    </main>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/hybrid-tabs-demo.tsx"
+    }
+  ]
+}

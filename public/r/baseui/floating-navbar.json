@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "floating-navbar",
+  "type": "registry:ui",
+  "title": "Floating Navbar",
+  "description": "A floating navigation bar that appears on scroll with smooth animations.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/floating-navbar.tsx",
+      "content": "\"use client\";\n\nimport React, { useState, useRef, useEffect } from \"react\";\nimport { motion } from \"framer-motion\";\nimport { Home, Search, Bell, User, Settings, Bookmark } from \"lucide-react\";\n\nconst FloatingNav = () => {\n  const [active, setActive] = useState(0);\n  const [indicatorStyle, setIndicatorStyle] = useState({ width: 0, left: 0 });\n  const containerRef = useRef<HTMLDivElement>(null);\n  const btnRefs = useRef<(HTMLButtonElement | null)[]>([]);\n\n  const items = [\n    { id: 0, icon: <Home size={22} />, label: \"Home\" },\n    { id: 1, icon: <Search size={22} />, label: \"Search\" },\n    { id: 2, icon: <Bell size={22} />, label: \"Alerts\" },\n    { id: 3, icon: <User size={22} />, label: \"Profile\" },\n    { id: 4, icon: <Bookmark size={22} />, label: \"Saved\" },\n    { id: 5, icon: <User size={22} />, label: \"Profile\" },\n    { id: 6, icon: <Settings size={22} />, label: \"Settings\" },\n  ];\n\n  // Update indicator position when active changes or resize\n  useEffect(() => {\n    const updateIndicator = () => {\n      if (btnRefs.current[active] && containerRef.current) {\n        const btn = btnRefs.current[active];\n        const container = containerRef.current;\n        if (!btn) return;\n        const btnRect = btn.getBoundingClientRect();\n        const containerRect = container.getBoundingClientRect();\n\n        setIndicatorStyle({\n          width: btnRect.width,\n          left: btnRect.left - containerRect.left,\n        });\n      }\n    };\n\n    updateIndicator();\n    window.addEventListener(\"resize\", updateIndicator);\n    return () => window.removeEventListener(\"resize\", updateIndicator);\n  }, [active]);\n\n  return (\n    <div className=\"fixed bottom-4 left-1/2 -translate-x-1/2 z-50 w-full max-w-lg px-2 mb-64\">\n      <div\n        ref={containerRef}\n        className=\"relative flex items-center justify-between bg-white dark:bg-neutral-900 shadow-xl rounded-full px-1 py-2 border border-gray-200 dark:border-gray-800\"\n      >\n        {items.map((item, index) => (\n          <button\n            key={item.id}\n            ref={(el) => (btnRefs.current[index] = el)}\n            onClick={() => setActive(index)}\n            className=\"relative flex flex-col items-center justify-center flex-1 px-2 py-2 text-sm font-medium text-gray-600 dark:text-gray-300\"\n          >\n            <div className=\"z-10\">{item.icon}</div>\n            {/* hide labels on small screens */}\n            <span className=\"text-xs mt-1 hidden sm:block\">{item.label}</span>\n          </button>\n        ))}\n\n        {/* Sliding Active Indicator */}\n        <motion.div\n          animate={indicatorStyle}\n          transition={{ type: \"spring\", stiffness: 400, damping: 30 }}\n          className=\"absolute top-1 bottom-1 rounded-full bg-blue-500/10 dark:bg-blue-400/20\"\n        />\n      </div>\n    </div>\n  );\n};\n\nexport default FloatingNav;\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/floating-navbar.tsx"
+    }
+  ]
+}

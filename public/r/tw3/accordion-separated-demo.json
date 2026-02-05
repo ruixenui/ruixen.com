@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "accordion-separated-demo",
+  "type": "registry:example",
+  "title": "Separated Accordion Demo",
+  "description": "Example showing an accordion with separated card-style items.",
+  "registryDependencies": [
+    "https://ruixen.com/r/accordion-separated"
+  ],
+  "files": [
+    {
+      "path": "registry/example/accordion-separated-demo.tsx",
+      "content": "import AccordionSeparated from \"@/registry/ruixenui/accordion-separated\";\n\nconst items = [\n  {\n    id: \"1\",\n    title: \"How do I create an account?\",\n    content:\n      \"Click the 'Sign Up' button in the top right corner. Enter your email and create a password to get started.\",\n  },\n  {\n    id: \"2\",\n    title: \"Can I have multiple accounts?\",\n    content:\n      \"Each user is allowed one account. Multiple accounts may be suspended without notice.\",\n  },\n  {\n    id: \"3\",\n    title: \"How do I reset my password?\",\n    content:\n      \"Click 'Forgot Password' on the login page. We'll send you a reset link to your registered email.\",\n  },\n];\n\nexport default function AccordionSeparatedDemo() {\n  return (\n    <div className=\"flex min-h-[350px] w-full items-center justify-center p-4\">\n      <div className=\"w-full max-w-md\">\n        <AccordionSeparated items={items} defaultValue=\"1\" />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/accordion-separated-demo.tsx"
+    }
+  ]
+}

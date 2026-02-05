@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "smart-breadcrumb-demo",
+  "type": "registry:example",
+  "title": "Smart Breadcrumb Demo",
+  "description": "Example showing intelligent breadcrumb navigation with ellipsis for long paths and responsive design.",
+  "registryDependencies": [
+    "https://ruixen.com/r/smart-breadcrumb"
+  ],
+  "files": [
+    {
+      "path": "registry/example/smart-breadcrumb-demo.tsx",
+      "content": "\"use client\";\n\nimport { SmartBreadcrumb } from \"@/registry/ruixenui/smart-breadcrumb\";\nimport { Home, Folder, FileText, BarChart, Settings } from \"lucide-react\";\n\nexport default function SmartBreadcrumbDemo() {\n  const items1 = [\n    {\n      label: \"Home\",\n      href: \"/\",\n      icon: <Home className=\"size-4 stroke-[1.8]\" />,\n    },\n    {\n      label: \"Projects\",\n      href: \"/projects\",\n      icon: <Folder className=\"size-4 stroke-[1.8]\" />,\n    },\n    {\n      label: \"Reports\",\n      href: \"/reports\",\n      icon: <BarChart className=\"size-4 stroke-[1.8]\" />,\n    },\n    {\n      label: \"Overview\",\n      isCurrent: true,\n      icon: <FileText className=\"size-4 stroke-[1.8]\" />,\n    },\n  ];\n\n  const items2 = [\n    {\n      label: \"Dashboard\",\n      href: \"/\",\n      icon: <Home className=\"size-4 stroke-[1.8]\" />,\n    },\n    {\n      label: \"Analytics\",\n      href: \"/analytics\",\n      icon: <BarChart className=\"size-4 stroke-[1.8]\" />,\n    },\n    {\n      label: \"Users\",\n      href: \"/users\",\n      icon: <Folder className=\"size-4 stroke-[1.8]\" />,\n    },\n    {\n      label: \"Reports\",\n      href: \"/reports\",\n      icon: <FileText className=\"size-4 stroke-[1.8]\" />,\n    },\n    {\n      label: \"Settings\",\n      isCurrent: true,\n      icon: <Settings className=\"size-4 stroke-[1.8]\" />,\n    },\n  ];\n\n  return (\n    <div className=\"flex flex-col items-center justify-center space-y-12 min-h-screen\">\n      <div className=\"text-center\">\n        <h1 className=\"text-3xl font-semibold mb-2\">Smart Breadcrumb Demo</h1>\n        <p className=\"text-gray-600 max-w-lg mx-auto\">\n          A dynamic, configurable breadcrumb component built with Lucide icons,\n          tooltips, ellipsis handling, and hover effects for modern interfaces.\n        </p>\n      </div>\n\n      <div className=\"space-y-8\">\n        <div className=\"p-6 w-full max-w-md\">\n          <h2 className=\"font-semibold mb-3\">Basic Breadcrumb</h2>\n          <SmartBreadcrumb items={items1} />\n        </div>\n\n        <div className=\"p-6 w-full max-w-md\">\n          <h2 className=\"font-semibold mb-3\">\n            With Ellipsis & Custom Separator\n          </h2>\n          <SmartBreadcrumb\n            items={items2}\n            showEllipsis\n            maxVisible={4}\n            separator={<span className=\"text-gray-500\">›</span>}\n          />\n        </div>\n\n        <div className=\"p-6 w-full max-w-md\">\n          <h2 className=\"font-semibold mb-3\">Without Icons</h2>\n          <SmartBreadcrumb items={items2} showEllipsis={false} />\n        </div>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/smart-breadcrumb-demo.tsx"
+    }
+  ]
+}

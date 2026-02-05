@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "notification-alt-demo",
+  "type": "registry:example",
+  "title": "Notification Alt Demo",
+  "description": "Example showing an enhanced notification component with info tooltips, clickable links, and different notification types.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/notification-alt"
+  ],
+  "files": [
+    {
+      "path": "registry/example/notification-alt-demo.tsx",
+      "content": "\"use client\";\n\nimport { NotificationItem } from \"@/registry/ruixenui/notification-alt\";\nimport NotificationsAlt from \"@/registry/ruixenui/notification-alt\";\n\nexport default function NotificationsAltDemo() {\n  const demoItems: NotificationItem[] = [\n    {\n      id: \"1\",\n      message: \"Welcome to the platform 🎉\",\n      time: \"just now\",\n      type: \"default\",\n    },\n    {\n      id: \"2\",\n      message: \"Check out our new documentation section\",\n      time: \"10m ago\",\n      type: \"link\",\n      href: \"/docs\",\n    },\n    {\n      id: \"3\",\n      message: \"System maintenance scheduled for tonight\",\n      time: \"2h ago\",\n      type: \"info\",\n    },\n    {\n      id: \"4\",\n      message: \"New features added to your dashboard\",\n      time: \"1d ago\",\n      type: \"default\",\n    },\n  ];\n\n  return (\n    <div className=\"flex flex-col items-center justify-center min-h-screen gap-6\">\n      <h1 className=\"text-2xl font-bold text-center\">NotificationsAlt Demo</h1>\n\n      <NotificationsAlt items={demoItems} />\n\n      <p className=\"text-gray-500 text-sm text-center max-w-md\">\n        Click the bell icon to see notifications. Some notifications are links,\n        some show info tooltips, and others are default messages.\n      </p>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/notification-alt-demo.tsx"
+    }
+  ]
+}

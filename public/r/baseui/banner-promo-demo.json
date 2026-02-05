@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "banner-promo-demo",
+  "type": "registry:example",
+  "title": "Banner Promo Demo",
+  "description": "Example showing promotional banners with various styles.",
+  "registryDependencies": [
+    "https://ruixen.com/r/banner-promo"
+  ],
+  "files": [
+    {
+      "path": "registry/example/banner-promo-demo.tsx",
+      "content": "\"use client\";\n\nimport BannerPromo from \"@/registry/ruixenui/banner-promo\";\n\nexport default function BannerPromoDemo() {\n  return (\n    <div className=\"flex min-h-[400px] w-full flex-col gap-4 p-4\">\n      <BannerPromo\n        variant=\"default\"\n        badge=\"Limited Time\"\n        title=\"Get 30% off\"\n        description=\"on all annual plans. Use code: SAVE30\"\n        ctaLabel=\"Claim offer\"\n        ctaHref=\"#\"\n      />\n\n      <BannerPromo\n        variant=\"festive\"\n        badge=\"Holiday Sale\"\n        title=\"Up to 50% off!\"\n        description=\"Shop our biggest sale of the year.\"\n        ctaLabel=\"Shop now\"\n        ctaHref=\"#\"\n      />\n\n      <BannerPromo\n        variant=\"gradient\"\n        badge=\"New\"\n        title=\"Free shipping\"\n        description=\"on orders over $50\"\n        ctaLabel=\"Start shopping\"\n        ctaHref=\"#\"\n      />\n\n      <BannerPromo\n        variant=\"minimal\"\n        title=\"Members get early access\"\n        description=\"to new arrivals and exclusive deals.\"\n        ctaLabel=\"Join free\"\n        ctaHref=\"#\"\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/banner-promo-demo.tsx"
+    }
+  ]
+}

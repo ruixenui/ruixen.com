@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "visualizer-button-demo",
+  "type": "registry:example",
+  "title": "Visualizer Button Demo",
+  "description": "Example showing compact audio button with equalizer visualization.",
+  "registryDependencies": [
+    "https://ruixen.com/r/visualizer-button"
+  ],
+  "files": [
+    {
+      "path": "registry/example/visualizer-button-demo.tsx",
+      "content": "\"use client\";\n\nimport VisualizerButton from \"@/registry/ruixenui/visualizer-button\";\n\nexport default function VisualizerButtonDemo() {\n  return (\n    <div className=\"flex min-h-[350px] w-full flex-col items-center justify-center gap-4 p-8\">\n      <VisualizerButton audioSrc=\"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3\" />\n      <VisualizerButton\n        audioSrc=\"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3\"\n        bars={18}\n        height={24}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/visualizer-button-demo.tsx"
+    }
+  ]
+}

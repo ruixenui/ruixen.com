@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "otp-field-demo",
+  "type": "registry:example",
+  "title": "OTP Field Demo",
+  "description": "Example showing a customizable OTP (One-Time Password) input field with auto-focus and paste support.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/otp-field"
+  ],
+  "files": [
+    {
+      "path": "registry/example/otp-field-demo.tsx",
+      "content": "\"use client\";\n\nimport { useState } from \"react\";\nimport OTPField from \"@/registry/ruixenui/otp-field\";\n\nexport default function OTPFieldDemoPage() {\n  const [otp, setOtp] = useState(\"\");\n\n  return (\n    <main className=\"flex flex-col items-center justify-center min-h-screen p-12\">\n      <h1 className=\"text-2xl font-bold mb-6\">OTP Input Demo</h1>\n\n      <div className=\"w-full max-w-md space-y-6\">\n        {/* Default OTP input */}\n        <OTPField\n          label=\"Enter OTP\"\n          length={6}\n          separator={true}\n          onComplete={(val) => setOtp(val)}\n        />\n\n        {otp && (\n          <p className=\"text-sm text-gray-700\">\n            Entered OTP: <span className=\"font-semibold\">{otp}</span>\n          </p>\n        )}\n\n        {/* Another example with 4 digits */}\n        <OTPField\n          label=\"4-Digit Code\"\n          length={4}\n          separator={false}\n          onComplete={(val) => console.log(\"4-digit OTP:\", val)}\n        />\n      </div>\n    </main>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/otp-field-demo.tsx"
+    }
+  ]
+}

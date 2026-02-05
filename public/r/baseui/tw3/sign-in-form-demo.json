@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sign-in-form-demo",
+  "type": "registry:example",
+  "title": "Sign In Form Demo",
+  "description": "Example showing a professional sign-in form with email/password fields and social login options.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/sign-in-form"
+  ],
+  "files": [
+    {
+      "path": "registry/example/sign-in-form-demo.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport SignInForm from \"@/registry/ruixenui/sign-in-form\";\n\nexport default function SignInFormDemoPage() {\n  return (\n    <div className=\"flex flex-col items-center justify-center gap-6 py-16\">\n      <SignInForm />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/sign-in-form-demo.tsx"
+    }
+  ]
+}

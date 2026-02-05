@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "mouse-spark-demo",
+  "type": "registry:example",
+  "title": "Mouse Spark Demo",
+  "description": "Example showing interactive mouse-following particle effects with customizable themes.",
+  "registryDependencies": [
+    "https://ruixen.com/r/mouse-spark"
+  ],
+  "files": [
+    {
+      "path": "registry/example/mouse-spark-demo.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport MouseSpark from \"@/registry/ruixenui/mouse-spark\";\n\nexport default function MouseSparkDemo() {\n  return (\n    <div className=\"relative w-full mx-auto overflow-hidden\">\n      <MouseSpark width={1000} height={600} theme=\"light\" />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/mouse-spark-demo.tsx"
+    }
+  ]
+}

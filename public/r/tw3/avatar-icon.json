@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar-icon",
+  "type": "registry:ui",
+  "title": "Avatar with Icon",
+  "description": "An avatar component with a user icon as fallback.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "avatar"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/avatar-icon.tsx",
+      "content": "\"use client\";\n\nimport { Avatar, AvatarFallback } from \"@/components/ui/avatar\";\nimport { UserRound } from \"lucide-react\";\nimport { cn } from \"@/lib/utils\";\n\ninterface AvatarIconProps {\n  className?: string;\n}\n\nexport default function AvatarIcon({ className }: AvatarIconProps) {\n  return (\n    <Avatar className={cn(\"size-10\", className)}>\n      <AvatarFallback>\n        <UserRound\n          className=\"opacity-60\"\n          size={16}\n          strokeWidth={2}\n          aria-hidden=\"true\"\n        />\n      </AvatarFallback>\n    </Avatar>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/avatar-icon.tsx"
+    }
+  ]
+}

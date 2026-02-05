@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "corporate-footer-demo",
+  "type": "registry:example",
+  "title": "Corporate Footer Demo",
+  "description": "Example of a corporate-style footer component",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/corporate-footer"
+  ],
+  "files": [
+    {
+      "path": "registry/example/corporate-footer-demo.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport { CorporateFooter } from \"../ruixenui/corporate-footer\";\n\nexport default function FooterDemo() {\n  const menuItems = [\n    {\n      title: \"Product\",\n      links: [\n        { text: \"Features\", url: \"#\" },\n        { text: \"Integrations\", url: \"#\" },\n        { text: \"Pricing\", url: \"#\" },\n        { text: \"Changelog\", url: \"#\" },\n        { text: \"Roadmap\", url: \"#\" },\n      ],\n    },\n    {\n      title: \"Developers\",\n      links: [\n        { text: \"Documentation\", url: \"#\" },\n        { text: \"API Reference\", url: \"#\" },\n        { text: \"SDKs & Tools\", url: \"#\" },\n        { text: \"Guides & Tutorials\", url: \"#\" },\n        { text: \"Status Page\", url: \"#\" },\n      ],\n    },\n    {\n      title: \"Company\",\n      links: [\n        { text: \"About Us\", url: \"#\" },\n        { text: \"Careers\", url: \"#\" },\n        { text: \"Blog\", url: \"#\" },\n        { text: \"Press Kit\", url: \"#\" },\n        { text: \"Contact\", url: \"#\" },\n      ],\n    },\n    {\n      title: \"Support\",\n      links: [\n        { text: \"Help Center\", url: \"#\" },\n        { text: \"Community\", url: \"#\" },\n        { text: \"Report an Issue\", url: \"#\" },\n        { text: \"System Status\", url: \"#\" },\n        { text: \"Security\", url: \"#\" },\n      ],\n    },\n  ];\n\n  const bottomLinks = [\n    { text: \"Privacy Policy\", url: \"#\" },\n    { text: \"Terms of Service\", url: \"#\" },\n    { text: \"Cookie Policy\", url: \"#\" },\n    { text: \"Legal\", url: \"#\" },\n  ];\n\n  return (\n    <main className=\"min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900\">\n      {/* Page Content */}\n      <section className=\"flex-grow flex items-center justify-center text-center px-4\">\n        <div>\n          <h1 className=\"text-4xl font-bold text-gray-900 dark:text-white\">\n            Corporate Footer Demo\n          </h1>\n          <p className=\"mt-4 text-gray-600 dark:text-gray-400 max-w-xl mx-auto\">\n            A scalable, enterprise-ready footer component designed for SaaS,\n            startups, and corporate websites.\n          </p>\n        </div>\n      </section>\n\n      {/* Footer */}\n      <CorporateFooter\n        tagline=\"Building modern web experiences with scalable UI systems.\"\n        menuItems={menuItems}\n        bottomLinks={bottomLinks}\n        copyright=\"© 2025 Ruixen UI. All rights reserved.\"\n        logo={{\n          url: \"https://www.ruixen.com/\",\n          src: \"/ruixen-ui-nw-light.png\",\n          alt: \"Ruixen\",\n          title: \"Ruixen UI\",\n        }}\n      />\n    </main>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/corporate-footer-demo.tsx"
+    }
+  ]
+}

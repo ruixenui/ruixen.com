@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "footer-pro-demo",
+  "type": "registry:example",
+  "title": "Footer Pro Demo",
+  "description": "Example of a professional footer with comprehensive sections",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/footer-pro"
+  ],
+  "files": [
+    {
+      "path": "registry/example/footer-pro-demo.tsx",
+      "content": "\"use client\";\n\nimport FooterPro from \"../ruixenui/footer-pro\";\nimport { Github, Twitter, Linkedin } from \"lucide-react\";\n\nexport default function FooterProDemo() {\n  return (\n    <main className=\"min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100\">\n      {/* Footer */}\n      <FooterPro\n        description=\"FooterPro is a flexible and production-ready footer component for modern web applications.\"\n        columns={[\n          {\n            title: \"Product\",\n            links: [\n              { label: \"Features\", href: \"#\" },\n              { label: \"Pricing\", href: \"#\" },\n              { label: \"Changelog\", href: \"#\" },\n              { label: \"Roadmap\", href: \"#\" },\n              { label: \"Integrations\", href: \"#\" },\n              { label: \"Releases\", href: \"#\" },\n            ],\n          },\n          {\n            title: \"Resources\",\n            links: [\n              { label: \"Documentation\", href: \"#\" },\n              { label: \"API Reference\", href: \"#\" },\n              { label: \"Developer Guides\", href: \"#\" },\n              { label: \"Tutorials\", href: \"#\" },\n              { label: \"Community\", href: \"#\" },\n              { label: \"Status Page\", href: \"#\" },\n            ],\n          },\n          {\n            title: \"Company\",\n            links: [\n              { label: \"About Us\", href: \"#\" },\n              { label: \"Careers\", href: \"#\" },\n              { label: \"Blog\", href: \"#\" },\n              { label: \"Press Kit\", href: \"#\" },\n              { label: \"Contact\", href: \"#\" },\n              { label: \"Partners\", href: \"#\" },\n            ],\n          },\n          {\n            title: \"Legal\",\n            links: [\n              { label: \"Privacy Policy\", href: \"#\" },\n              { label: \"Terms of Service\", href: \"#\" },\n              { label: \"Cookie Policy\", href: \"#\" },\n              { label: \"Security\", href: \"#\" },\n              { label: \"Compliance\", href: \"#\" },\n            ],\n          },\n        ]}\n        socials={[\n          { icon: Github, href: \"#\" },\n          { icon: Twitter, href: \"#\" },\n          { icon: Linkedin, href: \"#\" },\n        ]}\n        copyright=\"© 2025 Ruixen UI. All rights reserved.\"\n      />\n    </main>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/footer-pro-demo.tsx"
+    }
+  ]
+}

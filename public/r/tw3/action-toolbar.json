@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "action-toolbar",
+  "type": "registry:ui",
+  "title": "Action Toolbar",
+  "description": "Versatile toolbar component with action buttons and dropdown menus for common operations.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "button",
+    "dropdown-menu",
+    "badge"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/action-toolbar.tsx",
+      "content": "\"use client\";\n\nimport { useState } from \"react\";\nimport { Button } from \"@/components/ui/button\";\nimport {\n  DropdownMenu,\n  DropdownMenuContent,\n  DropdownMenuItem,\n  DropdownMenuTrigger,\n} from \"@/components/ui/dropdown-menu\";\nimport { Badge } from \"@/components/ui/badge\";\nimport { ChevronDown } from \"lucide-react\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface ToolbarButton {\n  label: string;\n  icon?: React.ReactNode;\n  count?: number;\n  onClick?: () => void;\n  dropdownItems?: string[];\n  active?: boolean;\n}\n\ninterface ActionToolbarProps {\n  buttons: ToolbarButton[];\n  compact?: boolean;\n  className?: string;\n}\n\nexport function ActionToolbar({\n  buttons,\n  compact = false,\n  className = \"\",\n}: ActionToolbarProps) {\n  const [activeStates, setActiveStates] = useState<boolean[]>(\n    buttons.map((btn) => !!btn.active),\n  );\n\n  const handleToggle = (index: number, onClick?: () => void) => {\n    const updated = [...activeStates];\n    updated[index] = !updated[index];\n    setActiveStates(updated);\n    if (onClick) onClick();\n  };\n\n  return (\n    <div\n      className={cn(\n        \"relative z-0 flex w-fit flex-wrap items-center rounded-2xl border border-muted bg-gradient-to-b from-background to-muted/30 p-1 shadow-sm\",\n        className,\n      )}\n    >\n      {buttons.map((btn, index) => {\n        const isActive = activeStates[index];\n\n        const buttonClasses = cn(\n          \"flex items-center gap-2 px-3 h-9 rounded-xl transition-all duration-200\",\n          isActive\n            ? \"bg-primary text-primary-foreground shadow-sm\"\n            : \"hover:bg-muted/80 hover:text-foreground text-muted-foreground\",\n        );\n\n        if (btn.dropdownItems) {\n          return (\n            <div key={index} className=\"flex items-center\">\n              <Button\n                onClick={() => handleToggle(index, btn.onClick)}\n                variant=\"ghost\"\n                className={cn(buttonClasses, compact && \"px-2\")}\n              >\n                {btn.icon}\n                <span className=\"font-medium\">{btn.label}</span>\n                {btn.count !== undefined && (\n                  <Badge\n                    variant={isActive ? \"secondary\" : \"outline\"}\n                    className=\"text-xs font-mono -me-1\"\n                  >\n                    {btn.count}\n                  </Badge>\n                )}\n              </Button>\n              <DropdownMenu>\n                <DropdownMenuTrigger asChild>\n                  <Button\n                    variant=\"ghost\"\n                    className=\"ml-0.5 h-9 w-8 rounded-xl hover:bg-muted/80\"\n                  >\n                    <ChevronDown className=\"size-4\" />\n                  </Button>\n                </DropdownMenuTrigger>\n                <DropdownMenuContent align=\"end\">\n                  {btn.dropdownItems.map((item, i) => (\n                    <DropdownMenuItem key={i} onClick={() => console.log(item)}>\n                      {item}\n                    </DropdownMenuItem>\n                  ))}\n                </DropdownMenuContent>\n              </DropdownMenu>\n            </div>\n          );\n        }\n\n        return (\n          <Button\n            key={index}\n            onClick={() => handleToggle(index, btn.onClick)}\n            variant=\"ghost\"\n            className={cn(buttonClasses, compact && \"px-2\")}\n          >\n            {btn.icon}\n            <span className=\"font-medium\">{btn.label}</span>\n            {btn.count !== undefined && (\n              <Badge\n                variant={isActive ? \"secondary\" : \"outline\"}\n                className=\"text-xs font-mono -me-1\"\n              >\n                {btn.count}\n              </Badge>\n            )}\n          </Button>\n        );\n      })}\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/action-toolbar.tsx"
+    }
+  ]
+}

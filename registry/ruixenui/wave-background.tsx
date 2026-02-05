@@ -11,7 +11,7 @@ void main() {
 }
 `;
 
-// Prettier flowing waves + noise + vignette + grain
+// Flowing cloud waves + layered noise + grain
 const fragment = `
 #ifdef GL_ES
 precision highp float;
@@ -55,20 +55,20 @@ mat2 rot(float a) {
 }
 
 void main() {
-  // gl_FragCoord is in drawingBuffer pixels, so uResolution must match that
-  vec2 st = gl_FragCoord.xy / uResolution.xy; // 0..1
-  vec2 uv = (st - 0.5) * 2.0;                // -1..1
+  vec2 st = gl_FragCoord.xy / uResolution.xy;
+  vec2 uv = (st - 0.5) * 2.0;
   uv.x *= uResolution.x / uResolution.y;
 
   float t = uTime * 0.25;
 
-  // gentle rotation over time to make it feel "alive"
   uv *= rot(0.08 * sin(t * 1.7));
 
   vec2 p = uv * 1.2;
 
-  float n = fbm(p + vec2(t * 0.8, -t * 0.55));
-  float m = fbm(p * 1.8 - vec2(t * 0.35, t * 0.7));
+  // layered noise for cloud shapes
+  float n  = fbm(p + vec2(t * 0.8, -t * 0.55));
+  float m  = fbm(p * 1.8 - vec2(t * 0.35, t * 0.7));
+  float n2 = fbm(p * 0.6 + vec2(-t * 0.3, t * 0.4) + n * 0.5);
 
   float w = 0.0;
   w += sin(p.x * 2.2 + t * 2.4 + n * 2.0);
@@ -76,12 +76,16 @@ void main() {
   w *= 0.5;
 
   float bands = 0.5 + 0.5 * sin(w * 2.4 + n * 3.2);
-  float glow  = smoothstep(0.25, 0.95, bands);
+  float glow  = smoothstep(0.15, 0.85, bands);
+
+  // secondary glow from the extra noise layer — fills more of the canvas
+  float glow2 = smoothstep(0.3, 0.8, n2);
+  glow = max(glow, glow2 * 0.6);
 
   vec3 lightA = vec3(0.94, 0.97, 1.00);
   vec3 lightB = vec3(0.16, 0.46, 0.95);
 
-  vec3 darkA  = vec3(0.03, 0.05, 0.10);
+  vec3 darkA  = vec3(0.06, 0.09, 0.16);
   vec3 darkB  = vec3(0.10, 0.72, 0.96);
 
   vec3 baseA = mix(lightA, darkA, uTheme);
@@ -89,15 +93,11 @@ void main() {
 
   vec3 col = mix(baseA, baseB, glow);
 
-  // soft highlight and depth
+  // soft highlight
   col += 0.10 * vec3(0.8, 0.9, 1.0) * glow * (0.4 + 0.6 * sin(uTime * 0.6));
 
-  // vignette
-  float vig = smoothstep(1.25, 0.15, length(uv));
-  col *= vig;
-
   // subtle grain
-  float g = (hash(gl_FragCoord.xy + uTime * 60.0) - 0.5) * 0.03;
+  float g = (hash(gl_FragCoord.xy + uTime * 60.0) - 0.5) * 0.025;
   col += g;
 
   gl_FragColor = vec4(col, 1.0);

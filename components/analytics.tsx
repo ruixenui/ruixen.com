@@ -5,18 +5,42 @@ import Script from "next/script";
 export function Analytics() {
   return (
     <>
-      {/* Schema.org Structured Data */}
-      <Script id="structured-data" type="application/ld+json">{`
+      {/* Schema.org — Organization */}
+      <Script id="org-jsonld" type="application/ld+json">{`
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "Ruixen UI",
+          "url": "https://ruixen.com",
+          "logo": "https://ruixen.com/favicon.ico",
+          "description": "600+ free, open-source React components built with Tailwind CSS, TypeScript & Framer Motion.",
+          "sameAs": [
+            "https://twitter.com/ruixen_ui",
+            "https://github.com/ruixenui/ruixen.com",
+            "https://discord.gg/bYexWzUa6G",
+            "https://www.instagram.com/ruixen_ui"
+          ]
+        }
+      `}</Script>
+
+      {/* Schema.org — WebSite with SearchAction */}
+      <Script id="website-jsonld" type="application/ld+json">{`
         {
           "@context": "https://schema.org",
           "@type": "WebSite",
-          "name": "Ruixen",
+          "name": "Ruixen UI",
           "url": "https://ruixen.com",
-          "author": {
-            "@type": "Person",
-            "name": "Srinath"
+          "description": "600+ free, open-source React components built with Tailwind CSS, TypeScript & Framer Motion. Copy-paste into Next.js projects.",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Ruixen UI",
+            "url": "https://ruixen.com"
           },
-          "description": "Beautiful open source UI components built with Tailwind, Next.js, and Framer Motion."
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://ruixen.com/docs?search={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
         }
       `}</Script>
 

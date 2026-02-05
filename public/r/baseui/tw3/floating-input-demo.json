@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "floating-input-demo",
+  "type": "registry:example",
+  "title": "Floating Input Demo",
+  "description": "Example showing a modern input field with floating label animation and icon support.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/floating-input"
+  ],
+  "files": [
+    {
+      "path": "registry/example/floating-input-demo.tsx",
+      "content": "\"use client\";\n\nimport FloatingInput from \"@/registry/ruixenui/floating-input\";\nimport { User, Lock, Mail } from \"lucide-react\";\n\nexport default function FloatingInputDemoPage() {\n  return (\n    <main className=\"flex flex-col items-center justify-center min-h-screen p-12 mx-auto\">\n      <h1 className=\"text-2xl font-bold mb-6\">Floating Input Demo</h1>\n\n      <div className=\"w-full max-w-md space-y-6 mx-auto\">\n        {/* Email input (default) */}\n        <FloatingInput label=\"Email\" type=\"email\" icon={<Mail size={18} />} />\n\n        {/* Username input */}\n        <FloatingInput label=\"Username\" type=\"text\" icon={<User size={18} />} />\n\n        {/* Password input */}\n        <FloatingInput\n          label=\"Password\"\n          type=\"password\"\n          icon={<Lock size={18} />}\n        />\n      </div>\n    </main>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/floating-input-demo.tsx"
+    }
+  ]
+}

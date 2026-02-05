@@ -1,0 +1,142 @@
+---
+title: UI Library
+description: Ruixen UI supports both Radix UI and Base UI primitives. Choose your library and every install command adapts automatically.
+date: 2025-04-08
+---
+
+Ruixen UI components are built on top of **headless UI primitives** — accessible, unstyled building blocks like popovers, dialogs, tabs, and selects.
+
+You can choose between **Radix UI** (default) and **Base UI** as your underlying primitive library. Every install command on the site adapts to your choice.
+
+## Choosing your library
+
+Use the **Primitives toggle** in the sidebar or on any CLI install command to switch between Radix and Base UI.
+
+Your selection is saved and persists across pages.
+
+- **Radix (default)** — Components resolve primitives from [Radix UI](https://www.radix-ui.com/), the library used by shadcn/ui by default.
+- **Base UI** — Components resolve primitives from [Base UI](https://base-ui.com/), a headless library from the MUI team with the same compound-component API.
+
+When you toggle to Base UI, every install command on the site updates:
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/baseui/marquee"
+```
+
+Compare with Radix (default):
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/marquee"
+```
+
+You can combine this with the [Tailwind version toggle](/docs/tailwind-v4):
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/baseui/tw3/marquee"
+```
+
+## Why this works
+
+Ruixen UI components never import Radix or Base UI directly. Instead, they import from **shadcn wrapper components** like `@/components/ui/popover`, `@/components/ui/tabs`, etc.
+
+These wrappers abstract the underlying primitive library. Whether your project uses Radix or Base UI, the Ruixen component code is **identical** — only the wrapper implementation changes.
+
+```
+┌─────────────────────┐
+│  Ruixen Component    │  ← Same code for both
+│  (marquee, card…)    │
+├─────────────────────┤
+│  shadcn Wrappers     │  ← @/components/ui/*
+│  (popover, tabs…)    │
+├──────────┬──────────┤
+│ Radix UI │ Base UI  │  ← You choose this layer
+└──────────┴──────────┘
+```
+
+This means:
+
+- **100% of Ruixen components** work with both Radix and Base UI
+- No component code changes are needed when switching libraries
+- The shadcn CLI resolves the correct primitive based on your project setup
+
+## What each library provides
+
+Both Radix and Base UI offer equivalent primitives for everything Ruixen components use:
+
+| Primitive     | Radix UI                        | Base UI                    |
+| ------------- | ------------------------------- | -------------------------- |
+| Popover       | `@radix-ui/react-popover`       | `@base-ui/react/popover`   |
+| Select        | `@radix-ui/react-select`        | `@base-ui/react/select`    |
+| Tabs          | `@radix-ui/react-tabs`          | `@base-ui/react/tabs`      |
+| Dialog        | `@radix-ui/react-dialog`        | `@base-ui/react/dialog`    |
+| Tooltip       | `@radix-ui/react-tooltip`       | `@base-ui/react/tooltip`   |
+| Accordion     | `@radix-ui/react-accordion`     | `@base-ui/react/accordion` |
+| Dropdown Menu | `@radix-ui/react-dropdown-menu` | `@base-ui/react/menu`      |
+| Checkbox      | `@radix-ui/react-checkbox`      | `@base-ui/react/checkbox`  |
+| Switch        | `@radix-ui/react-switch`        | `@base-ui/react/switch`    |
+| Slider        | `@radix-ui/react-slider`        | `@base-ui/react/slider`    |
+
+Primitives like `button`, `card`, `badge`, `input`, and `table` are pure HTML/CSS — they work identically regardless of your library choice.
+
+## Project setup
+
+<Tabs defaultValue="radix">
+
+<TabsList>
+  <TabsTrigger value="radix">Radix UI</TabsTrigger>
+  <TabsTrigger value="baseui">Base UI</TabsTrigger>
+</TabsList>
+
+<TabsContent value="radix">
+
+Radix is the default for shadcn/ui projects. If you followed the [shadcn/ui installation guide](https://ui.shadcn.com/docs/installation), you're already set up.
+
+Your primitives come from individual `@radix-ui/react-*` packages:
+
+```bash
+npm install @radix-ui/react-popover @radix-ui/react-tabs @radix-ui/react-dialog
+```
+
+No additional configuration is needed — just install Ruixen components and they'll work out of the box.
+
+</TabsContent>
+
+<TabsContent value="baseui">
+
+Base UI ships as a single tree-shakable package:
+
+```bash
+npm install @base-ui/react
+```
+
+To use Base UI with shadcn/ui, follow the [shadcn Base UI setup guide](https://ui.shadcn.com/docs/installation). When initializing your project with `npx shadcn create`, select **Base UI** as your primitive library.
+
+Then switch the Ruixen UI toggle to **Base UI** and install components normally — the CLI delivers the same code, and your shadcn wrappers handle the rest.
+
+</TabsContent>
+
+</Tabs>
+
+## URL structure
+
+The registry serves four variants for every component:
+
+| Variant         | URL pattern            | Description                   |
+| --------------- | ---------------------- | ----------------------------- |
+| Radix + TW v4   | `/r/<name>`            | Default                       |
+| Radix + TW v3   | `/r/tw3/<name>`        | Tailwind v3 transform applied |
+| Base UI + TW v4 | `/r/baseui/<name>`     | For Base UI projects          |
+| Base UI + TW v3 | `/r/baseui/tw3/<name>` | Base UI + Tailwind v3         |
+
+The toggles in the sidebar and on install commands handle this automatically — you don't need to construct URLs manually.
+
+## How it works under the hood
+
+The Base UI registry is generated automatically at build time:
+
+1. Components are authored once using shadcn wrapper imports (`@/components/ui/*`).
+2. During `pnpm build:registry`, the same JSON files are served at both `/r/` and `/r/baseui/`.
+3. The component source code is identical — only the URL signals which primitive library the project uses.
+4. The shadcn CLI (`npx shadcn@latest add`) resolves `registryDependencies` based on the user's project configuration.
+
+This architecture means Ruixen UI gets full Base UI support with zero component-level changes, and the infrastructure is in place for any future library-specific optimizations.

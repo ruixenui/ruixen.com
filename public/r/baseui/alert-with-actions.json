@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "alert-with-actions",
+  "type": "registry:ui",
+  "title": "Alert With Actions",
+  "description": "A professional alert component with icon, variant support, and action buttons.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/alert-with-actions.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport { CircleAlert, CircleCheck, Info, TriangleAlert, X } from \"lucide-react\";\nimport { cn } from \"@/lib/utils\";\n\nconst icons = {\n  info: Info,\n  success: CircleCheck,\n  warning: TriangleAlert,\n  error: CircleAlert,\n};\n\ninterface AlertWithActionsProps {\n  variant?: \"info\" | \"success\" | \"warning\" | \"error\";\n  title: string;\n  description?: string;\n  actions?: React.ReactNode;\n  onDismiss?: () => void;\n  className?: string;\n}\n\nexport default function AlertWithActions({\n  variant = \"info\",\n  title,\n  description,\n  actions,\n  onDismiss,\n  className,\n}: AlertWithActionsProps) {\n  const Icon = icons[variant];\n\n  return (\n    <div\n      role=\"alert\"\n      className={cn(\n        \"relative flex w-full gap-3 rounded-lg border border-border/50 bg-card px-4 py-3 text-sm shadow-xs\",\n        className,\n      )}\n    >\n      <div className=\"flex shrink-0 items-start pt-0.5\">\n        <Icon\n          className={cn(\n            \"size-4\",\n            variant === \"info\" && \"text-muted-foreground\",\n            variant === \"success\" && \"text-emerald-500 dark:text-emerald-400\",\n            variant === \"warning\" && \"text-amber-500 dark:text-amber-400\",\n            variant === \"error\" && \"text-red-500 dark:text-red-400\",\n          )}\n          strokeWidth={2}\n          aria-hidden=\"true\"\n        />\n      </div>\n      <div className=\"flex min-w-0 flex-1 flex-col gap-2\">\n        <div className=\"flex flex-col gap-0.5\">\n          <p className=\"font-medium leading-snug text-card-foreground\">\n            {title}\n          </p>\n          {description && (\n            <p className=\"leading-snug text-muted-foreground\">{description}</p>\n          )}\n        </div>\n        {actions && (\n          <div className=\"flex flex-wrap items-center gap-3\">{actions}</div>\n        )}\n      </div>\n      {onDismiss && (\n        <button\n          onClick={onDismiss}\n          className=\"-mr-1 -mt-0.5 inline-flex size-7 shrink-0 items-center justify-center rounded-md text-muted-foreground/60 transition-colors hover:bg-muted hover:text-foreground\"\n          aria-label=\"Dismiss\"\n        >\n          <X className=\"size-3.5\" strokeWidth={2} />\n        </button>\n      )}\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/alert-with-actions.tsx"
+    }
+  ]
+}

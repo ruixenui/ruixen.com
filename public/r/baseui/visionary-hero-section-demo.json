@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "visionary-hero-section-demo",
+  "type": "registry:example",
+  "title": "Visionary Hero Section Demo",
+  "description": "Example showing a visionary hero section with elegant design",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/visionary-hero-section"
+  ],
+  "files": [
+    {
+      "path": "registry/example/visionary-hero-section-demo.tsx",
+      "content": "\"use client\";\n\nimport VisionaryHeroSection from \"@/registry/ruixenui/visionary-hero-section\";\n\nexport default function DemoPage() {\n  return (\n    <VisionaryHeroSection\n      title=\"Build Stunning Web Experiences\"\n      description=\"Empower your team with design systems that accelerate development and inspire creativity.\"\n      buttons={[\n        { label: \"Get Started\", href: \"/start\", variant: \"default\" },\n        { label: \"Book a Demo\", href: \"/demo\", variant: \"gradient\" },\n      ]}\n      images={[\n        {\n          src: \"https://tailark.com/_next/image?url=%2Fmail2.png&w=3840&q=75\",\n          alt: \"App screen dark\",\n          dark: true,\n        },\n        {\n          src: \"https://tailark.com/_next/image?url=%2Fmail2-light.png&w=3840&q=75\",\n          alt: \"App screen light\",\n          dark: false,\n        },\n      ]}\n      brands={[\n        { name: \"loops\", logo: \"https://assets.rapidui.dev/brands/loops.svg\" },\n        { name: \"pwc\", logo: \"https://assets.rapidui.dev/brands/pwc.svg\" },\n        {\n          name: \"resend\",\n          logo: \"https://assets.rapidui.dev/brands/resend.svg\",\n        },\n        { name: \"udio\", logo: \"https://assets.rapidui.dev/brands/udio.svg\" },\n        { name: \"krea\", logo: \"https://assets.rapidui.dev/brands/krea.svg\" },\n        {\n          name: \"gopuff\",\n          logo: \"https://assets.rapidui.dev/brands/gopuff.svg\",\n        },\n      ]}\n    />\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/visionary-hero-section-demo.tsx"
+    }
+  ]
+}

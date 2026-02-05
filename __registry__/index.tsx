@@ -386,7 +386,7 @@ export const Index: Record<string, any> = {
     description:
       "A scroll-triggered FAQ accordion component with smooth GSAP animations and auto-expanding items.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["accordion"],
     files: [
       {
         path: "registry/ruixenui/faq-auto-accordion.tsx",
@@ -410,7 +410,7 @@ export const Index: Record<string, any> = {
     description:
       "A clean and minimal accordion component with icons and smooth animations for organizing content in collapsible sections.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["accordion"],
     files: [
       {
         path: "registry/ruixenui/compact-accordion.tsx",
@@ -933,7 +933,7 @@ export const Index: Record<string, any> = {
     description:
       "A beautiful hero section with aurora-style background effects and animated elements",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/aurora-hero-section.tsx",
@@ -957,7 +957,7 @@ export const Index: Record<string, any> = {
     description:
       "An interactive hero section featuring a card carousel with smooth animations",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button", "card"],
     files: [
       {
         path: "registry/ruixenui/card-carousel-hero.tsx",
@@ -981,7 +981,7 @@ export const Index: Record<string, any> = {
     description:
       "A modern hero section with animated gradient background and smooth transitions",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/gradient-hero-showcase.tsx",
@@ -1007,7 +1007,7 @@ export const Index: Record<string, any> = {
     description:
       "A vibrant hero section with spectrum color effects and dynamic animations",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/spectrum-hero-section.tsx",
@@ -1031,7 +1031,7 @@ export const Index: Record<string, any> = {
     description:
       "A dynamic hero section featuring video backgrounds and interactive elements",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button", "badge"],
     files: [
       {
         path: "registry/ruixenui/video-hero-showcase.tsx",
@@ -1055,7 +1055,7 @@ export const Index: Record<string, any> = {
     description:
       "A visionary hero section with elegant design and smooth animations",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/visionary-hero-section.tsx",
@@ -4273,9 +4273,9 @@ export const Index: Record<string, any> = {
   "ai-chat-input": {
     name: "ai-chat-input",
     description:
-      "Advanced chat input with slash commands, emoji picker, file upload, and AI features.",
+      "Vanishing placeholder input with rotating prompts and pixel-scatter submit animation.",
     type: "registry:ui",
-    registryDependencies: ["button", "textarea", "badge", "popover", "command"],
+    registryDependencies: undefined,
     files: [
       {
         path: "registry/ruixenui/ai-chat-input.tsx",
@@ -6518,7 +6518,7 @@ export const Index: Record<string, any> = {
   "rising-glow": {
     name: "rising-glow",
     description:
-      "Animated rising particle effect with customizable colors and particle count.",
+      "Text wrapper with animated rising particles and soft glow effect.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [

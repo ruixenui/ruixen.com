@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "schedule-card-demo",
+  "type": "registry:example",
+  "title": "Schedule Card Demo",
+  "description": "Example showing a schedule card component displaying daily events and meetings.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/schedule-card"
+  ],
+  "files": [
+    {
+      "path": "registry/example/schedule-card-demo.tsx",
+      "content": "\"use client\";\n\nimport ScheduleCard from \"../ruixenui/schedule-card\";\n\nexport default function ScheduleCardDemo() {\n  return (\n    <div className=\"flex flex-col gap-6 p-6 w-full\">\n      <ScheduleCard\n        date=\"Today, December 14\"\n        events={[\n          {\n            title: \"Design Review\",\n            time: \"10:00 AM\",\n            attendees: 5,\n            status: \"completed\",\n          },\n          {\n            title: \"Team Sync\",\n            time: \"2:30 PM\",\n            attendees: 8,\n            status: \"inProgress\",\n          },\n          {\n            title: \"Product Planning\",\n            time: \"4:00 PM\",\n            attendees: 12,\n            status: \"upcoming\",\n          },\n        ]}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/schedule-card-demo.tsx"
+    }
+  ]
+}

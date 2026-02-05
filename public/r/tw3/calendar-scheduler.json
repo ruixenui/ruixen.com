@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "calendar-scheduler",
+  "type": "registry:ui",
+  "title": "Calendar Scheduler",
+  "description": "A meeting scheduler with calendar date selection and time slot picker.",
+  "dependencies": [
+    "date-fns"
+  ],
+  "registryDependencies": [
+    "calendar",
+    "button",
+    "card"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/calendar-scheduler.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { format } from \"date-fns\";\nimport { Calendar } from \"@/components/ui/calendar\";\nimport { Button } from \"@/components/ui/button\";\nimport {\n  Card,\n  CardContent,\n  CardFooter,\n  CardHeader,\n  CardTitle,\n} from \"@/components/ui/card\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface CalendarSchedulerProps {\n  timeSlots?: string[];\n  onConfirm?: (value: { date?: Date; time?: string }) => void;\n}\n\nfunction CalendarScheduler({\n  timeSlots = [\n    \"08:00 AM\",\n    \"09:00 AM\",\n    \"10:00 AM\",\n    \"11:00 AM\",\n    \"12:00 PM\",\n    \"01:00 PM\",\n    \"02:00 PM\",\n    \"03:00 PM\",\n    \"04:00 PM\",\n    \"05:00 PM\",\n  ],\n  onConfirm,\n}: CalendarSchedulerProps) {\n  const [date, setDate] = React.useState<Date | undefined>(new Date());\n  const [time, setTime] = React.useState<string | undefined>();\n\n  return (\n    <div>\n      <Card className=\"w-[600px] shadow-none border-none bg-background\">\n        <CardHeader>\n          <CardTitle className=\"text-base\">Schedule a Meeting</CardTitle>\n        </CardHeader>\n        <CardContent className=\"flex gap-4\">\n          {/* Calendar Section */}\n          <div className=\"flex-1 border rounded-md p-2\">\n            <Calendar\n              mode=\"single\"\n              selected={date}\n              onSelect={setDate}\n              className=\"rounded-md\"\n            />\n          </div>\n\n          {/* Time Slots Section */}\n          <div className=\"flex-1 border rounded-md p-2 overflow-y-auto max-h-[320px]\">\n            <p className=\"mb-2 text-sm font-medium text-muted-foreground\">\n              Pick a time\n            </p>\n            <div className=\"grid grid-cols-2 gap-2\">\n              {timeSlots.map((slot) => (\n                <Button\n                  key={slot}\n                  variant={time === slot ? \"default\" : \"outline\"}\n                  size=\"sm\"\n                  className={cn(\n                    \"w-full\",\n                    time === slot && \"ring-2 ring-primary\",\n                  )}\n                  onClick={() => setTime(slot)}\n                >\n                  {slot}\n                </Button>\n              ))}\n            </div>\n          </div>\n        </CardContent>\n        <CardFooter className=\"flex justify-between\">\n          <Button\n            variant=\"ghost\"\n            size=\"sm\"\n            onClick={() => {\n              setDate(undefined);\n              setTime(undefined);\n            }}\n          >\n            Reset\n          </Button>\n          <Button\n            size=\"sm\"\n            onClick={() => onConfirm?.({ date, time })}\n            disabled={!date || !time}\n          >\n            Confirm\n          </Button>\n        </CardFooter>\n      </Card>\n      <div className=\"mt-4 text-xs text-center text-muted-foreground\">\n        Minimal design • made by{\" \"}\n        <a href=\"https://www.ruixen.com\" target=\"_blank\" className=\"underline\">\n          ruixen.com\n        </a>\n      </div>\n    </div>\n  );\n}\n\nexport { CalendarScheduler };\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/calendar-scheduler.tsx"
+    }
+  ]
+}

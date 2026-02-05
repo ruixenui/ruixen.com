@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tag-cloud-select-demo",
+  "type": "registry:example",
+  "title": "Tag Cloud Select Demo",
+  "description": "Example showing interactive tag selection component with cloud-style layout and multi-select functionality.",
+  "registryDependencies": [
+    "https://ruixen.com/r/tag-cloud-select"
+  ],
+  "files": [
+    {
+      "path": "registry/example/tag-cloud-select-demo.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport {\n  TagCloudSelect,\n  TagCloudOption,\n} from \"@/registry/ruixenui/tag-cloud-select\";\n\nconst tagOptions: TagCloudOption[] = [\n  { value: \"ai\", label: \"AI\", popularity: 95, color: \"#ef4444\" },\n  { value: \"nextjs\", label: \"Next.js\", popularity: 85, color: \"#3b82f6\" },\n  { value: \"react\", label: \"React\", popularity: 92, color: \"#06b6d4\" },\n  { value: \"docker\", label: \"Docker\", popularity: 70, color: \"#2563eb\" },\n  {\n    value: \"kubernetes\",\n    label: \"Kubernetes\",\n    popularity: 50,\n    color: \"#8b5cf6\",\n  },\n  { value: \"aws\", label: \"AWS\", popularity: 80, color: \"#f59e0b\" },\n  { value: \"sql\", label: \"SQL\", popularity: 60, color: \"#10b981\" },\n  { value: \"ml\", label: \"Machine Learning\", popularity: 88, color: \"#ec4899\" },\n  { value: \"security\", label: \"Security\", popularity: 40, color: \"#f97316\" },\n  { value: \"linux\", label: \"Linux\", popularity: 65, color: \"#374151\" },\n];\n\nexport default function DemoTagCloudSelect() {\n  const [selectedTags, setSelectedTags] = React.useState<string[]>([]);\n\n  return (\n    <div className=\"p-4 flex flex-col items-center justify-center gap-4 min-h-screen\">\n      <TagCloudSelect\n        options={tagOptions}\n        placeholder=\"Pick your skills...\"\n        onChange={setSelectedTags}\n        defaultSelected={[\"react\", \"aws\"]}\n        minFontSize={12}\n        maxFontSize={28}\n      />\n      {selectedTags.length > 0 && (\n        <div>\n          <p className=\"font-medium\">Selected Tags:</p>\n          <ul className=\"list-disc pl-5\">\n            {selectedTags.map((tag) => (\n              <li key={tag}>{tag}</li>\n            ))}\n          </ul>\n        </div>\n      )}\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/tag-cloud-select-demo.tsx"
+    }
+  ]
+}

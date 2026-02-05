@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "faq-scroll-accordion-demo",
+  "type": "registry:example",
+  "title": "FAQ Scroll Accordion Demo",
+  "description": "Example showing a scroll-triggered FAQ accordion component with smooth GSAP animations and auto-expanding items.",
+  "registryDependencies": [
+    "https://ruixen.com/r/faq-scroll-accordion"
+  ],
+  "files": [
+    {
+      "path": "registry/example/faq-scroll-accordion-demo.tsx",
+      "content": "\"use client\";\n\nimport FAQScrollAccordion from \"../ruixenui/faq-scroll-accordion\";\n\nconst customFAQ = [\n  {\n    id: 1,\n    question: \"What is Next.js?\",\n    answer:\n      \"Next.js is a React framework for building fast and scalable web applications.\",\n  },\n  {\n    id: 2,\n    question: \"Does it support TypeScript?\",\n    answer: \"Yes, Next.js has built-in support for TypeScript.\",\n  },\n  {\n    id: 3,\n    question: \"Can I deploy Next.js apps easily?\",\n    answer:\n      \"Yes, you can deploy on Vercel or any Node.js-compatible hosting platform.\",\n  },\n];\n\nexport default function FAQScrollAccordionDemo() {\n  return (\n    <main className=\"min-h-[50vh] dark:bg-black text-gray-900 dark:text-white p-4\">\n      <section className=\"py-20\">\n        <FAQScrollAccordion />\n      </section>\n    </main>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/faq-scroll-accordion-demo.tsx"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "footer-mega-demo",
+  "type": "registry:example",
+  "title": "Footer Mega Demo",
+  "description": "Example of a mega footer with extensive navigation",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/footer-mega"
+  ],
+  "files": [
+    {
+      "path": "registry/example/footer-mega-demo.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport FooterMega from \"../ruixenui/footer-mega\";\n\nexport default function FooterMegaDemo() {\n  return (\n    <main className=\"min-h-screen bg-gray-50 dark:bg-black\">\n      <div className=\"text-center py-20\">\n        <h1 className=\"text-4xl font-bold text-gray-900 dark:text-white\">\n          Footer Mega Demo\n        </h1>\n        <p className=\"mt-4 text-gray-600 dark:text-gray-300\">\n          Demonstration of a large enterprise-style footer with multiple\n          sections.\n        </p>\n      </div>\n\n      {/* --- Default FooterMega --- */}\n      <FooterMega />\n\n      {/* --- Custom FooterMega Example --- */}\n      <div className=\"mt-20\">\n        <FooterMega\n          menuItems={[\n            {\n              title: \"Platform\",\n              links: [\n                { text: \"Dashboard\", url: \"#\" },\n                { text: \"Analytics\", url: \"#\" },\n                { text: \"Integrations\", url: \"#\" },\n                { text: \"APIs\", url: \"#\" },\n                { text: \"Marketplace\", url: \"#\" },\n              ],\n            },\n            {\n              title: \"Company\",\n              links: [\n                { text: \"About Us\", url: \"#\" },\n                { text: \"Careers\", url: \"#\" },\n                { text: \"Blog\", url: \"#\" },\n              ],\n            },\n            {\n              title: \"Support\",\n              links: [\n                { text: \"Documentation\", url: \"#\" },\n                { text: \"Help Center\", url: \"#\" },\n                { text: \"Contact\", url: \"#\" },\n              ],\n            },\n            {\n              title: \"Legal\",\n              links: [\n                { text: \"Privacy Policy\", url: \"#\" },\n                { text: \"Terms of Service\", url: \"#\" },\n                { text: \"Security\", url: \"#\" },\n              ],\n            },\n            {\n              title: \"Community\",\n              links: [\n                { text: \"GitHub\", url: \"#\" },\n                { text: \"Discord\", url: \"#\" },\n                { text: \"Twitter\", url: \"#\" },\n              ],\n            },\n            {\n              title: \"Solutions\",\n              links: [\n                { text: \"Startups\", url: \"#\" },\n                { text: \"Enterprise\", url: \"#\" },\n              ],\n            },\n            {\n              title: \"Partners\",\n              links: [\n                { text: \"Technology\", url: \"#\" },\n                { text: \"Agencies\", url: \"#\" },\n              ],\n            },\n          ]}\n          copyright=\"© 2025 ruixen ui. All rights reserved.\"\n          bottomLinks={[\n            { text: \"Terms\", url: \"#\" },\n            { text: \"Privacy\", url: \"#\" },\n            { text: \"Security\", url: \"#\" },\n            { text: \"Cookies\", url: \"#\" },\n          ]}\n        />\n      </div>\n    </main>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/footer-mega-demo.tsx"
+    }
+  ]
+}

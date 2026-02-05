@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "notifications-popover",
+  "type": "registry:ui",
+  "title": "Notifications Popover",
+  "description": "A dropdown menu component for displaying notifications with different types and read states.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "dropdown-menu"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/notifications-popover.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport {\n  BellRing,\n  MessageCircle,\n  AlertTriangle,\n  CheckCircle,\n} from \"lucide-react\";\nimport {\n  DropdownMenu,\n  DropdownMenuContent,\n  DropdownMenuItem,\n  DropdownMenuTrigger,\n} from \"@/components/ui/dropdown-menu\";\n\nexport interface Notification {\n  id: number;\n  type: \"message\" | \"alert\" | \"success\";\n  message: string;\n  timestamp?: string;\n  read?: boolean;\n}\n\ninterface NotificationsPopoverProps {\n  notifications?: Notification[];\n  icon?: React.ReactNode;\n  maxHeight?: string;\n}\n\nconst defaultNotifications: Notification[] = [\n  {\n    id: 1,\n    type: \"message\",\n    message: \"New message from John\",\n    timestamp: \"2m ago\",\n  },\n  {\n    id: 2,\n    type: \"success\",\n    message: \"Report generated successfully\",\n    timestamp: \"10m ago\",\n  },\n  {\n    id: 3,\n    type: \"alert\",\n    message: \"Server downtime scheduled\",\n    timestamp: \"1h ago\",\n  },\n];\n\nexport default function NotificationsPopover({\n  notifications = defaultNotifications,\n  icon,\n  maxHeight = \"64\",\n}: NotificationsPopoverProps) {\n  const unreadCount = notifications.filter((n) => !n.read).length;\n\n  const getIcon = (type: string) => {\n    switch (type) {\n      case \"message\":\n        return <MessageCircle className=\"w-5 h-5 text-blue-500\" />;\n      case \"alert\":\n        return <AlertTriangle className=\"w-5 h-5 text-red-500\" />;\n      case \"success\":\n        return <CheckCircle className=\"w-5 h-5 text-green-500\" />;\n      default:\n        return <BellRing className=\"w-5 h-5\" />;\n    }\n  };\n\n  return (\n    <DropdownMenu>\n      <DropdownMenuTrigger className=\"relative p-2 rounded-full border hover:border-gray-200 hover:bg-gray-100 inline-flex items-center justify-center\">\n        {icon || <BellRing className=\"w-5 h-5 text-gray-700\" />}\n        {unreadCount > 0 && (\n          <span className=\"absolute -top-1 -right-1 inline-flex items-center justify-center px-1.5 py-0.5 text-xs font-bold leading-none text-white bg-red-500 rounded-full\">\n            {unreadCount}\n          </span>\n        )}\n      </DropdownMenuTrigger>\n\n      <DropdownMenuContent\n        side=\"bottom\"\n        align=\"center\"\n        className={`w-96 bg-white border border-gray-200 rounded-md shadow-lg max-h-${maxHeight} overflow-y-auto divide-y divide-gray-100`}\n      >\n        {notifications.length === 0 ? (\n          <DropdownMenuItem className=\"text-gray-400 cursor-default\">\n            No notifications\n          </DropdownMenuItem>\n        ) : (\n          notifications.map((n) => (\n            <DropdownMenuItem\n              key={n.id}\n              className={`flex items-start gap-3 p-3 hover:bg-gray-50 cursor-pointer ${\n                n.read ? \"opacity-70\" : \"font-medium\"\n              }`}\n            >\n              <div>{getIcon(n.type)}</div>\n              <div className=\"flex flex-col\">\n                <span>{n.message}</span>\n                {n.timestamp && (\n                  <span className=\"text-xs text-gray-400 mt-1\">\n                    {n.timestamp}\n                  </span>\n                )}\n              </div>\n            </DropdownMenuItem>\n          ))\n        )}\n      </DropdownMenuContent>\n    </DropdownMenu>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/notifications-popover.tsx"
+    }
+  ]
+}

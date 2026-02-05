@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature-highlights-demo",
+  "type": "registry:example",
+  "title": "FeatureHighlights Demo",
+  "description": "Example showing a responsive FAQ component with animated text reveals.",
+  "registryDependencies": [
+    "https://ruixen.com/r/feature-highlights"
+  ],
+  "files": [
+    {
+      "path": "registry/example/feature-highlights-demo.tsx",
+      "content": "import FeatureHighlights from \"../ruixenui/feature-highlights\";\n\nexport default function FeatureHighlightsDemo() {\n  const features = [\n    {\n      id: \"item-1\",\n      title: \"AI-Powered Automation\",\n      count: 24,\n      image:\n        \"https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/dashboard-02.png\",\n      description: \"Streamline workflows with cutting-edge AI solutions.\",\n    },\n    {\n      id: \"item-2\",\n      title: \"Real-Time Analytics\",\n      count: 12,\n      image:\n        \"https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/dashboard-gradient.png\",\n      description: \"Monitor metrics live and make instant decisions.\",\n    },\n    {\n      id: \"item-3\",\n      title: \"Seamless Integrations\",\n      count: 18,\n      image:\n        \"https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/featured-01.png\",\n      description: \"Connect with tools you already use effortlessly.\",\n    },\n    {\n      id: \"item-4\",\n      title: \"Scalable Infrastructure\",\n      count: 30,\n      image:\n        \"https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/featured-06.png\",\n      description: \"Grow without limits with enterprise-grade scalability.\",\n    },\n    {\n      id: \"item-5\",\n      title: \"Advanced Security\",\n      count: 15,\n      image:\n        \"https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/crm-featured.png\",\n      description: \"Protect your data with next-gen encryption & compliance.\",\n    },\n    {\n      id: \"item-6\",\n      title: \"Collaboration Tools\",\n      count: 22,\n      image:\n        \"https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/dashboard-02.png\",\n      description: \"Empower teams with seamless communication & sharing.\",\n    },\n  ];\n\n  return (\n    <div className=\"flex min-h-screen w-full items-center justify-center p-6\">\n      <div className=\"w-full max-w-6xl\">\n        <FeatureHighlights features={features} />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/feature-highlights-demo.tsx"
+    }
+  ]
+}

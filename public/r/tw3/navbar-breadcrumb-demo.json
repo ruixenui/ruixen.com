@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "navbar-breadcrumb-demo",
+  "type": "registry:example",
+  "title": "Navbar Breadcrumb Demo",
+  "description": "Example showing a navigation bar with breadcrumb navigation.",
+  "registryDependencies": [
+    "https://ruixen.com/r/navbar-breadcrumb"
+  ],
+  "files": [
+    {
+      "path": "registry/example/navbar-breadcrumb-demo.tsx",
+      "content": "import NavbarBreadcrumb from \"@/registry/ruixenui/navbar-breadcrumb\";\n\nexport default function NavbarBreadcrumbDemo() {\n  return (\n    <div className=\"w-full\">\n      <NavbarBreadcrumb notificationCount={5} />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/navbar-breadcrumb-demo.tsx"
+    }
+  ]
+}

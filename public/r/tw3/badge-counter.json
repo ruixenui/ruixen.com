@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "badge-counter",
+  "type": "registry:ui",
+  "title": "Badge Counter",
+  "description": "Compact circular badge for displaying notification counts.",
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/ruixenui/badge-counter.tsx",
+      "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\n\ninterface BadgeCounterProps {\n  count: number;\n  max?: number;\n  size?: \"sm\" | \"md\" | \"lg\";\n  variant?: \"default\" | \"secondary\" | \"destructive\" | \"success\";\n  className?: string;\n}\n\nconst sizeClasses = {\n  sm: \"size-5 text-[10px]\",\n  md: \"size-6 text-xs\",\n  lg: \"size-8 text-sm\",\n};\n\nconst variantClasses = {\n  default: \"bg-primary text-primary-foreground\",\n  secondary: \"bg-secondary text-secondary-foreground\",\n  destructive: \"bg-destructive text-white\",\n  success: \"bg-emerald-500 text-white\",\n};\n\nexport default function BadgeCounter({\n  count,\n  max = 99,\n  size = \"md\",\n  variant = \"default\",\n  className,\n}: BadgeCounterProps) {\n  const displayCount = count > max ? `${max}+` : count;\n\n  return (\n    <span\n      className={cn(\n        \"inline-flex items-center justify-center rounded-full font-medium\",\n        sizeClasses[size],\n        variantClasses[variant],\n        className,\n      )}\n    >\n      {displayCount}\n    </span>\n  );\n}\n\nexport { BadgeCounter, type BadgeCounterProps };\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/badge-counter.tsx"
+    }
+  ]
+}

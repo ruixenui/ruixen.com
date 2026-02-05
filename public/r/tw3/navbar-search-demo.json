@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "navbar-search-demo",
+  "type": "registry:example",
+  "title": "Navbar Search Demo",
+  "description": "Example showing a documentation-style navbar with command palette search (Cmd+K).",
+  "registryDependencies": [
+    "https://ruixen.com/r/navbar-search"
+  ],
+  "files": [
+    {
+      "path": "registry/example/navbar-search-demo.tsx",
+      "content": "\"use client\";\n\nimport NavbarSearch from \"@/registry/ruixenui/navbar-search\";\nimport { BookOpen } from \"lucide-react\";\n\nexport default function NavbarSearchDemo() {\n  return (\n    <div className=\"flex min-h-[350px] w-full flex-col items-center justify-start\">\n      <NavbarSearch\n        logo={\n          <div className=\"flex items-center gap-2\">\n            <BookOpen className=\"size-6 text-primary\" />\n            <span className=\"text-xl font-bold\">Docs</span>\n          </div>\n        }\n        items={[\n          { label: \"Documentation\", href: \"#\" },\n          { label: \"Components\", href: \"#\" },\n          { label: \"Examples\", href: \"#\" },\n        ]}\n        suggestions={[\n          {\n            title: \"Getting Started\",\n            items: [\n              { label: \"Introduction\", href: \"#\" },\n              { label: \"Installation\", href: \"#\" },\n              { label: \"Quick Start\", href: \"#\" },\n            ],\n          },\n          {\n            title: \"Popular Components\",\n            items: [\n              { label: \"Button\", href: \"#\" },\n              { label: \"Dialog\", href: \"#\" },\n              { label: \"Dropdown Menu\", href: \"#\" },\n            ],\n          },\n        ]}\n        placeholder=\"Search documentation...\"\n        onSearch={(query) => console.log(\"Search:\", query)}\n      />\n      <div className=\"flex flex-1 items-center justify-center p-8\">\n        <p className=\"text-muted-foreground\">\n          Press Cmd+K or click the search button to open search\n        </p>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/navbar-search-demo.tsx"
+    }
+  ]
+}

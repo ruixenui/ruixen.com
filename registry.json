@@ -259,7 +259,6 @@
       "description": "A scroll-triggered FAQ accordion component with smooth GSAP animations and auto-expanding items.",
       "dependencies": [
         "framer-motion",
-        "@radix-ui/react-accordion",
         "lucide-react",
         "gsap",
         "@gsap/react"
@@ -277,8 +276,8 @@
       "type": "registry:ui",
       "title": "FAQ Auto Accordion",
       "description": "A scroll-triggered FAQ accordion component with smooth GSAP animations and auto-expanding items.",
-      "dependencies": [
-        "@radix-ui/react-accordion"
+      "registryDependencies": [
+        "accordion"
       ],
       "files": [
         {
@@ -294,8 +293,10 @@
       "title": "Compact Accordion",
       "description": "A clean and minimal accordion component with icons and smooth animations for organizing content in collapsible sections.",
       "dependencies": [
-        "@radix-ui/react-accordion",
         "lucide-react"
+      ],
+      "registryDependencies": [
+        "accordion"
       ],
       "files": [
         {
@@ -362,7 +363,6 @@
       "title": "Arrow Accordion",
       "description": "An accordion with a right-pointing arrow indicator that rotates on expand.",
       "dependencies": [
-        "@radix-ui/react-accordion",
         "lucide-react"
       ],
       "files": [
@@ -379,7 +379,6 @@
       "title": "Plus/Minus Accordion",
       "description": "An accordion with plus/minus toggle icons for expand and collapse states.",
       "dependencies": [
-        "@radix-ui/react-accordion",
         "lucide-react"
       ],
       "files": [
@@ -428,9 +427,7 @@
       "type": "registry:ui",
       "title": "Minimal Accordion",
       "description": "A minimal accordion with show/hide text toggle instead of icons.",
-      "dependencies": [
-        "@radix-ui/react-accordion"
-      ],
+      "dependencies": [],
       "files": [
         {
           "path": "registry/ruixenui/accordion-minimal.tsx",
@@ -659,8 +656,10 @@
       "title": "Aurora Hero Section",
       "description": "A beautiful hero section with aurora-style background effects and animated elements",
       "dependencies": [
-        "@radix-ui/react-slot",
         "lucide-react"
+      ],
+      "registryDependencies": [
+        "button"
       ],
       "files": [
         {
@@ -676,8 +675,11 @@
       "title": "Card Carousel Hero",
       "description": "An interactive hero section featuring a card carousel with smooth animations",
       "dependencies": [
-        "motion",
-        "@radix-ui/react-slot"
+        "motion"
+      ],
+      "registryDependencies": [
+        "button",
+        "card"
       ],
       "files": [
         {
@@ -693,8 +695,10 @@
       "title": "Gradient Hero Showcase",
       "description": "A modern hero section with animated gradient background and smooth transitions",
       "dependencies": [
-        "motion",
-        "@radix-ui/react-slot"
+        "motion"
+      ],
+      "registryDependencies": [
+        "button"
       ],
       "files": [
         {
@@ -710,8 +714,10 @@
       "title": "Spectrum Hero Section",
       "description": "A vibrant hero section with spectrum color effects and dynamic animations",
       "dependencies": [
-        "motion",
-        "@radix-ui/react-slot"
+        "motion"
+      ],
+      "registryDependencies": [
+        "button"
       ],
       "files": [
         {
@@ -727,8 +733,11 @@
       "title": "Video Hero Showcase",
       "description": "A dynamic hero section featuring video backgrounds and interactive elements",
       "dependencies": [
-        "motion",
-        "@radix-ui/react-slot"
+        "motion"
+      ],
+      "registryDependencies": [
+        "button",
+        "badge"
       ],
       "files": [
         {
@@ -745,8 +754,10 @@
       "description": "A visionary hero section with elegant design and smooth animations",
       "dependencies": [
         "motion",
-        "@radix-ui/react-slot",
         "gsap"
+      ],
+      "registryDependencies": [
+        "button"
       ],
       "files": [
         {
@@ -1567,9 +1578,6 @@
       "type": "registry:ui",
       "title": "Advanced Context Menu",
       "description": "An advanced context menu component with nested items and keyboard navigation.",
-      "dependencies": [
-        "@radix-ui/react-dropdown-menu"
-      ],
       "registryDependencies": [
         "context-menu"
       ],
@@ -1607,7 +1615,6 @@
       "title": "Drawer Inner Content",
       "description": "A drawer component with customizable inner content layout.",
       "dependencies": [
-        "@radix-ui/react-dialog",
         "motion"
       ],
       "registryDependencies": [
@@ -1630,7 +1637,6 @@
       "title": "Centered Feedback Drawer",
       "description": "A centered drawer component designed for feedback collection.",
       "dependencies": [
-        "@radix-ui/react-dialog",
         "motion"
       ],
       "registryDependencies": [
@@ -1654,7 +1660,6 @@
       "title": "Bottom Drawers",
       "description": "A bottom drawer component that slides up from the bottom of the screen.",
       "dependencies": [
-        "@radix-ui/react-dialog",
         "motion"
       ],
       "registryDependencies": [
@@ -3236,16 +3241,9 @@
       "name": "ai-chat-input",
       "type": "registry:ui",
       "title": "AI Chat Input",
-      "description": "Advanced chat input with slash commands, emoji picker, file upload, and AI features.",
+      "description": "Vanishing placeholder input with rotating prompts and pixel-scatter submit animation.",
       "dependencies": [
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "button",
-        "textarea",
-        "badge",
-        "popover",
-        "command"
+        "motion"
       ],
       "files": [
         {
@@ -4657,9 +4655,7 @@
       "type": "registry:ui",
       "title": "Radio Group Card",
       "description": "A radio group with card-style items featuring icons, titles, descriptions, and animated selection indicator.",
-      "dependencies": [
-        "@radix-ui/react-radio-group"
-      ],
+      "dependencies": [],
       "files": [
         {
           "path": "registry/ruixenui/radio-group-card.tsx",
@@ -4673,9 +4669,7 @@
       "type": "registry:ui",
       "title": "Emoji Radio Group",
       "description": "A compact radio group with emoji-based options for quick visual feedback selection.",
-      "dependencies": [
-        "@radix-ui/react-radio-group"
-      ],
+      "dependencies": [],
       "files": [
         {
           "path": "registry/ruixenui/emoji-radio-group.tsx",
@@ -4689,9 +4683,7 @@
       "type": "registry:ui",
       "title": "Sentiment Radio Group",
       "description": "A radio group with sentiment cards featuring emojis, titles, and descriptions for feedback collection.",
-      "dependencies": [
-        "@radix-ui/react-radio-group"
-      ],
+      "dependencies": [],
       "files": [
         {
           "path": "registry/ruixenui/sentiment-radio-group.tsx",
@@ -4705,9 +4697,7 @@
       "type": "registry:ui",
       "title": "Rating Scale Group",
       "description": "A horizontal rating scale radio group with numbered items and green indicator dots.",
-      "dependencies": [
-        "@radix-ui/react-radio-group"
-      ],
+      "dependencies": [],
       "files": [
         {
           "path": "registry/ruixenui/rating-scale-group.tsx",
@@ -4722,7 +4712,6 @@
       "title": "Review Filter Bars",
       "description": "A radio group for filtering reviews by star rating with progress bars and counts.",
       "dependencies": [
-        "@radix-ui/react-radio-group",
         "@remixicon/react"
       ],
       "files": [
@@ -5027,10 +5016,8 @@
       "name": "rising-glow",
       "type": "registry:ui",
       "title": "Rising Glow",
-      "description": "Animated rising particle effect with customizable colors and particle count.",
-      "dependencies": [
-        "motion"
-      ],
+      "description": "Text wrapper with animated rising particles and soft glow effect.",
+      "dependencies": [],
       "files": [
         {
           "path": "registry/ruixenui/rising-glow.tsx",

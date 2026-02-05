@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "expandable-content-button",
+  "type": "registry:ui",
+  "title": "Expandable Content Button",
+  "description": "Button that expands to show additional content options.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/expandable-content-button.tsx",
+      "content": "\"use client\";\n\nimport React, { useState, useRef, useEffect } from \"react\";\nimport { Button } from \"@/components/ui/button\";\nimport { cn } from \"@/lib/utils\";\nimport { ChevronDown, ChevronUp } from \"lucide-react\";\n\ninterface ExpandableContentButtonProps\n  extends React.ButtonHTMLAttributes<HTMLButtonElement> {\n  label: string;\n  size?: \"sm\" | \"md\" | \"lg\";\n  options?: Array<{\n    label: string;\n    icon?: React.ReactNode;\n    onClick: () => void;\n  }>;\n}\n\nconst sizeConfig = {\n  sm: \"px-3 py-1 text-sm\",\n  md: \"px-4 py-2 text-base\",\n  lg: \"px-5 py-3 text-lg\",\n};\n\nexport default function ExpandableContentButton({\n  label,\n  size = \"md\",\n  options = [],\n  className,\n  ...props\n}: ExpandableContentButtonProps) {\n  const [expanded, setExpanded] = useState(false);\n  const containerRef = useRef<HTMLDivElement>(null);\n\n  useEffect(() => {\n    const handleClickOutside = (event: MouseEvent) => {\n      if (\n        containerRef.current &&\n        !containerRef.current.contains(event.target as Node)\n      ) {\n        setExpanded(false);\n      }\n    };\n    document.addEventListener(\"mousedown\", handleClickOutside);\n    return () => document.removeEventListener(\"mousedown\", handleClickOutside);\n  }, []);\n\n  return (\n    <div ref={containerRef} className=\"inline-block relative\">\n      <Button\n        className={cn(\n          \"flex justify-between items-center w-full\",\n          sizeConfig[size],\n          className,\n        )}\n        onClick={() => setExpanded(!expanded)}\n        {...props}\n      >\n        <span className=\"flex-1 text-left\">{label}</span>\n        <span className=\"flex-shrink-0 ml-2\">\n          {expanded ? (\n            <ChevronUp className=\"w-4 h-4\" />\n          ) : (\n            <ChevronDown className=\"w-4 h-4\" />\n          )}\n        </span>\n      </Button>\n\n      {expanded && options.length > 0 && (\n        <div className=\"absolute mt-2 w-60 bg-white dark:bg-gray-800 shadow-lg rounded-lg p-3 z-50 border border-gray-200 dark:border-gray-700\">\n          {options.map((opt, idx) => (\n            <Button\n              key={idx}\n              variant=\"ghost\"\n              className=\"justify-start w-full flex items-center gap-2\"\n              onClick={() => {\n                opt.onClick();\n                setExpanded(false);\n              }}\n            >\n              {opt.icon && <span className=\"w-5 h-5\">{opt.icon}</span>}\n              <span>{opt.label}</span>\n            </Button>\n          ))}\n        </div>\n      )}\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/expandable-content-button.tsx"
+    }
+  ]
+}

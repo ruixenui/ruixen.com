@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "accordion-separated",
+  "type": "registry:ui",
+  "title": "Separated Accordion",
+  "description": "An accordion with separated card-style items and muted background styling.",
+  "registryDependencies": [
+    "accordion"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/accordion-separated.tsx",
+      "content": "\"use client\";\n\nimport {\n  Accordion,\n  AccordionContent,\n  AccordionItem,\n  AccordionTrigger,\n} from \"@/components/ui/accordion\";\n\nexport interface AccordionSeparatedItem {\n  id: string;\n  title: string;\n  content: string;\n}\n\ninterface AccordionSeparatedProps {\n  items: AccordionSeparatedItem[];\n  defaultValue?: string;\n  className?: string;\n}\n\nexport default function AccordionSeparated({\n  items,\n  defaultValue,\n  className,\n}: AccordionSeparatedProps) {\n  return (\n    <Accordion\n      type=\"single\"\n      collapsible\n      defaultValue={defaultValue}\n      className={className}\n    >\n      {items.map((item) => (\n        <AccordionItem\n          key={item.id}\n          value={item.id}\n          className=\"mb-3 last:mb-0 border-none rounded-lg bg-muted/40 px-4 data-[state=open]:bg-muted\"\n        >\n          <AccordionTrigger className=\"text-left text-[15px] hover:no-underline py-4\">\n            {item.title}\n          </AccordionTrigger>\n          <AccordionContent className=\"text-muted-foreground pb-4\">\n            {item.content}\n          </AccordionContent>\n        </AccordionItem>\n      ))}\n    </Accordion>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/accordion-separated.tsx"
+    }
+  ]
+}

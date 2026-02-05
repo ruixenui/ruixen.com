@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gooey-pagination-demo",
+  "type": "registry:example",
+  "title": "Gooey Pagination Demo",
+  "description": "Example showing pagination with liquid gooey effects.",
+  "registryDependencies": [
+    "https://ruixen.com/r/gooey-pagination"
+  ],
+  "files": [
+    {
+      "path": "registry/example/gooey-pagination-demo.tsx",
+      "content": "\"use client\";\n\nimport GooeyPagination from \"@/registry/ruixenui/gooey-pagination\";\n\nexport default function GooeyPaginationDemo() {\n  return (\n    <div className=\"flex flex-col items-center justify-center min-h-screen\">\n      <GooeyPagination totalPages={7} className=\"mb-12\" />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/gooey-pagination-demo.tsx"
+    }
+  ]
+}

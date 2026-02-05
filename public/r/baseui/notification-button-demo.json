@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "notification-button-demo",
+  "type": "registry:example",
+  "title": "Notification Button Demo",
+  "description": "Example showing a button with notification badge functionality.",
+  "registryDependencies": [
+    "https://ruixen.com/r/notification-button"
+  ],
+  "files": [
+    {
+      "path": "registry/example/notification-button-demo.tsx",
+      "content": "import NotificationButton from \"@/registry/ruixenui/notification-button\";\n\nexport default function DemoNotificationButton() {\n  return (\n    <div className=\"flex min-h-[350px] w-full flex-col items-center justify-center gap-4\">\n      <NotificationButton count={5} />\n      <NotificationButton count={12} size=\"lg\" />\n      <NotificationButton count={0} />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/notification-button-demo.tsx"
+    }
+  ]
+}

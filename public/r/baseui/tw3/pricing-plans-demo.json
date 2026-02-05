@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pricing-plans-demo",
+  "type": "registry:example",
+  "title": "Pricing Plans Demo",
+  "description": "Example of comprehensive pricing plans with multiple tiers",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/pricing-plans"
+  ],
+  "files": [
+    {
+      "path": "registry/example/pricing-plans-demo.tsx",
+      "content": "import Pricing_Plans from \"../ruixenui/pricing-plans\";\n\nexport default function Pricing_Plans_Demo() {\n  return (\n    <main>\n      <Pricing_Plans />\n    </main>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/pricing-plans-demo.tsx"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "slide-to-delete-button",
+  "type": "registry:ui",
+  "title": "Slide To Delete Button",
+  "description": "A draggable button that requires sliding to confirm deletion action.",
+  "dependencies": [
+    "framer-motion",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/slide-to-delete-button.tsx",
+      "content": "\"use client\";\n\nimport { useState } from \"react\";\nimport { Button } from \"@/components/ui/button\";\nimport { cn } from \"@/lib/utils\";\nimport { Trash2 } from \"lucide-react\";\nimport { motion } from \"framer-motion\";\n\ninterface SlideToDeleteButtonProps\n  extends React.ButtonHTMLAttributes<HTMLButtonElement> {\n  label?: string;\n  deletedLabel?: string;\n  icon?: React.ReactNode;\n  dragLimit?: number;\n  handleClassName?: string; // 👈 added this line\n}\n\nexport default function SlideToDeleteButton({\n  label = \"Slide to Delete\",\n  deletedLabel = \"Deleted\",\n  icon = <Trash2 className=\"w-4 h-4\" />,\n  dragLimit = 140,\n  className,\n  handleClassName, // 👈 receive it here\n  onClick,\n  ...props\n}: SlideToDeleteButtonProps) {\n  const [confirmed, setConfirmed] = useState(false);\n\n  return (\n    <div className=\"relative w-[180px] h-11\">\n      {/* 🟥 Draggable Delete Handle */}\n      <motion.div\n        drag=\"x\"\n        dragConstraints={{ left: 0, right: dragLimit }}\n        onDragEnd={(_, info) => {\n          if (info.point.x > dragLimit - 20) {\n            setConfirmed(true);\n            onClick?.({} as any);\n          }\n        }}\n        className={cn(\n          \"absolute top-0 left-0 h-full w-[40px]\",\n          \"flex items-center justify-center\",\n          \"bg-red-500 text-white rounded-xl cursor-pointer z-10\",\n          handleClassName, // 👈 apply custom handle styling\n        )}\n      >\n        {icon}\n      </motion.div>\n\n      {/* 🔴 Main Button */}\n      <Button\n        disabled={confirmed}\n        className={cn(\n          \"w-full h-full rounded-xl pl-[48px] text-red-600 font-medium\",\n          \"bg-red-100 hover:bg-red-200\",\n          confirmed && \"opacity-50 cursor-not-allowed\",\n          className,\n        )}\n        {...props}\n      >\n        {confirmed ? deletedLabel : label}\n      </Button>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/slide-to-delete-button.tsx"
+    }
+  ]
+}

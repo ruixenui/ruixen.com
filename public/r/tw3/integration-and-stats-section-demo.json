@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "integration-and-stats-section-demo",
+  "type": "registry:example",
+  "title": "Integration And Stats Section Demo",
+  "description": "Example of integration showcase with testimonials and stats",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/integration-and-stats-section"
+  ],
+  "files": [
+    {
+      "path": "registry/example/integration-and-stats-section-demo.tsx",
+      "content": "\"use client\";\n\nimport IntegrationAndStatsSection from \"../ruixenui/integration-and-stats-section\";\n\nexport default function DemoIntegrationPage() {\n  return (\n    <main className=\"bg-background flex flex-col items-center justify-center w-full\">\n      <IntegrationAndStatsSection />\n    </main>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/integration-and-stats-section-demo.tsx"
+    }
+  ]
+}

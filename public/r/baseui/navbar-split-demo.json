@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "navbar-split-demo",
+  "type": "registry:example",
+  "title": "Navbar Split Demo",
+  "description": "Example showing a navigation bar with split links.",
+  "registryDependencies": [
+    "https://ruixen.com/r/navbar-split"
+  ],
+  "files": [
+    {
+      "path": "registry/example/navbar-split-demo.tsx",
+      "content": "import NavbarSplit from \"@/registry/ruixenui/navbar-split\";\n\nexport default function NavbarSplitDemo() {\n  return (\n    <div className=\"w-full\">\n      <NavbarSplit />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/navbar-split-demo.tsx"
+    }
+  ]
+}

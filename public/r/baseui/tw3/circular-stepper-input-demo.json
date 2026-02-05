@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "circular-stepper-input-demo",
+  "type": "registry:example",
+  "title": "Circular Stepper Input Demo",
+  "description": "Example showing a circular input component with increment/decrement functionality.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/circular-stepper-input"
+  ],
+  "files": [
+    {
+      "path": "registry/example/circular-stepper-input-demo.tsx",
+      "content": "import CircularStepperInput from \"../ruixenui/circular-stepper-input\";\n\nexport default function DemoCircularStepper() {\n  const handleChange = (value: number) => {\n    console.log(\"Current value:\", value);\n  };\n\n  return (\n    <div className=\"flex flex-col items-center justify-center gap-6 min-h-screen\">\n      {/* <CircularStepperInput onChange={handleChange} /> */}\n      <CircularStepperInput\n        min={10}\n        max={200}\n        step={5}\n        defaultValue={50}\n        size={150}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/circular-stepper-input-demo.tsx"
+    }
+  ]
+}

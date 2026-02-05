@@ -6,8 +6,10 @@
   "description": "A visionary hero section with elegant design and smooth animations",
   "dependencies": [
     "motion",
-    "@radix-ui/react-slot",
     "gsap"
+  ],
+  "registryDependencies": [
+    "button"
   ],
   "files": [
     {

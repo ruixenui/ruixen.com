@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "accordion-badge-demo",
+  "type": "registry:example",
+  "title": "Badge Accordion Demo",
+  "description": "Example showing an accordion with badges on items.",
+  "registryDependencies": [
+    "https://ruixen.com/r/accordion-badge"
+  ],
+  "files": [
+    {
+      "path": "registry/example/accordion-badge-demo.tsx",
+      "content": "import AccordionBadge from \"@/registry/ruixenui/accordion-badge\";\n\nconst items = [\n  {\n    id: \"1\",\n    title: \"New Feature: Dark Mode\",\n    badge: \"New\",\n    badgeVariant: \"default\" as const,\n    content:\n      \"We've added a beautiful dark mode that automatically syncs with your system preferences. Toggle it anytime in settings.\",\n  },\n  {\n    id: \"2\",\n    title: \"API Rate Limits\",\n    badge: \"Important\",\n    badgeVariant: \"destructive\" as const,\n    content:\n      \"Free tier users are limited to 100 API calls per minute. Upgrade to pro for unlimited access.\",\n  },\n  {\n    id: \"3\",\n    title: \"Mobile App\",\n    badge: \"Beta\",\n    badgeVariant: \"secondary\" as const,\n    content:\n      \"Our mobile app is now in beta testing. Join the beta program to get early access and provide feedback.\",\n  },\n];\n\nexport default function AccordionBadgeDemo() {\n  return (\n    <div className=\"flex min-h-[350px] w-full items-center justify-center p-4\">\n      <div className=\"w-full max-w-md\">\n        <AccordionBadge items={items} defaultValue=\"1\" />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/accordion-badge-demo.tsx"
+    }
+  ]
+}

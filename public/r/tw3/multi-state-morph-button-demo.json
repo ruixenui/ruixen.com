@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "multi-state-morph-button-demo",
+  "type": "registry:example",
+  "title": "Multi State Morph Button Demo",
+  "description": "Example showing a button that morphs between different states.",
+  "registryDependencies": [
+    "https://ruixen.com/r/multi-state-morph-button"
+  ],
+  "files": [
+    {
+      "path": "registry/example/multi-state-morph-button-demo.tsx",
+      "content": "\"use client\";\n\nimport MultiStateMorphButton from \"@/registry/ruixenui/multi-state-morph-button\";\n\nexport default function MultiStateMorphButtonDemo() {\n  const simulateAction = () => {\n    return new Promise<void>((resolve, reject) => {\n      setTimeout(() => {\n        Math.random() > 0.5 ? resolve() : reject();\n      }, 1500);\n    });\n  };\n\n  return (\n    <div className=\"p-6 flex flex-col justify-center items-center min-h-screen gap-6\">\n      <MultiStateMorphButton label=\"Submit\" onClick={simulateAction} />\n      <MultiStateMorphButton\n        label=\"Save\"\n        width={200}\n        height={50}\n        onClick={simulateAction}\n        colors={{\n          idle: \"#64748b\",\n          loading: \"#475569\",\n          success: \"#10b981\",\n          error: \"#ef4444\",\n        }}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/multi-state-morph-button-demo.tsx"
+    }
+  ]
+}

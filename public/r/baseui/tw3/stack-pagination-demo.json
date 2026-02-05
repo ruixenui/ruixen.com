@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stack-pagination-demo",
+  "type": "registry:example",
+  "title": "Stack Pagination Demo",
+  "description": "Example showing 3D card stack pagination with flip animations.",
+  "registryDependencies": [
+    "https://ruixen.com/r/stack-pagination"
+  ],
+  "files": [
+    {
+      "path": "registry/example/stack-pagination-demo.tsx",
+      "content": "\"use client\";\n\nimport StackPagination from \"@/registry/ruixenui/stack-pagination\";\n\nexport default function StackPaginationDemo() {\n  return (\n    <div className=\"flex flex-col items-center justify-center\">\n      <StackPagination\n        totalPages={15}\n        visibleCount={5}\n        className=\"w-full max-w-3xl\"\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/stack-pagination-demo.tsx"
+    }
+  ]
+}

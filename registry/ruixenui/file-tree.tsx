@@ -1,6 +1,5 @@
 "use client";
 
-import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import { FileIcon, FolderIcon, FolderOpenIcon } from "lucide-react";
 import React, {
   createContext,
@@ -158,19 +157,13 @@ const Tree = forwardRef<HTMLDivElement, TreeViewProps>(
             className="relative h-full px-2"
             dir={dir as Direction}
           >
-            <AccordionPrimitive.Root
+            <div
               {...props}
-              type="multiple"
-              defaultValue={expandedItems}
-              value={expandedItems}
               className="flex flex-col gap-1"
-              onValueChange={(value) =>
-                setExpandedItems((prev) => [...(prev ?? []), value[0]])
-              }
               dir={dir as Direction}
             >
               {children}
-            </AccordionPrimitive.Root>
+            </div>
           </ScrollArea>
         </div>
       </TreeContext.Provider>
@@ -201,20 +194,15 @@ const TreeIndicator = forwardRef<
 
 TreeIndicator.displayName = "TreeIndicator";
 
-interface FolderComponentProps
-  extends React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item> {}
-
 type FolderProps = {
+  value: string;
   expandedItems?: string[];
   element: string;
   isSelectable?: boolean;
   isSelect?: boolean;
-} & FolderComponentProps;
+} & React.HTMLAttributes<HTMLDivElement>;
 
-const Folder = forwardRef<
-  HTMLDivElement,
-  FolderProps & React.HTMLAttributes<HTMLDivElement>
->(
+const Folder = forwardRef<HTMLDivElement, FolderProps>(
   (
     {
       className,
@@ -232,18 +220,16 @@ const Folder = forwardRef<
       handleExpand,
       expandedItems,
       indicator,
-      setExpandedItems,
       openIcon,
       closeIcon,
     } = useTree();
 
+    const isExpanded = expandedItems?.includes(value);
+
     return (
-      <AccordionPrimitive.Item
-        {...props}
-        value={value}
-        className="relative h-full overflow-hidden"
-      >
-        <AccordionPrimitive.Trigger
+      <div ref={ref} {...props} className="relative h-full overflow-hidden">
+        <button
+          type="button"
           className={cn(
             `flex items-center gap-1 rounded-md text-sm`,
             className,
@@ -256,27 +242,28 @@ const Folder = forwardRef<
           disabled={!isSelectable}
           onClick={() => handleExpand(value)}
         >
-          {expandedItems?.includes(value)
+          {isExpanded
             ? (openIcon ?? <FolderOpenIcon className="size-4" />)
             : (closeIcon ?? <FolderIcon className="size-4" />)}
           <span>{element}</span>
-        </AccordionPrimitive.Trigger>
-        <AccordionPrimitive.Content className="relative h-full overflow-hidden text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
-          {element && indicator && <TreeIndicator aria-hidden="true" />}
-          <AccordionPrimitive.Root
-            dir={direction}
-            type="multiple"
-            className="ml-5 flex flex-col gap-1 py-1 rtl:mr-5 "
-            defaultValue={expandedItems}
-            value={expandedItems}
-            onValueChange={(value) => {
-              setExpandedItems?.((prev) => [...(prev ?? []), value[0]]);
-            }}
-          >
-            {children}
-          </AccordionPrimitive.Root>
-        </AccordionPrimitive.Content>
-      </AccordionPrimitive.Item>
+        </button>
+        <div
+          className={cn(
+            "relative h-full overflow-hidden text-sm transition-[grid-template-rows] duration-200 grid",
+            isExpanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
+          )}
+        >
+          <div className="overflow-hidden">
+            {element && indicator && <TreeIndicator aria-hidden="true" />}
+            <div
+              dir={direction}
+              className="ml-5 flex flex-col gap-1 py-1 rtl:mr-5"
+            >
+              {children}
+            </div>
+          </div>
+        </div>
+      </div>
     );
   },
 );
@@ -360,7 +347,6 @@ const CollapseButton = forwardRef<
   }, []);
 
   useEffect(() => {
-    console.log(expandAll);
     if (expandAll) {
       expendAllTree(elements);
     }

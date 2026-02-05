@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "order-tracking-parallax-card-demo",
+  "type": "registry:example",
+  "title": "Order Tracking Parallax Card Demo",
+  "description": "Example showing a 3D parallax order tracking card with delivery status.",
+  "registryDependencies": [
+    "https://ruixen.com/r/order-tracking-parallax-card"
+  ],
+  "files": [
+    {
+      "path": "registry/example/order-tracking-parallax-card-demo.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { OrderTrackingParallaxCard } from \"@/registry/ruixenui/order-tracking-parallax-card\";\n\nexport default function OrderTrackingParallaxDemo() {\n  return (\n    <div className=\"flex items-center justify-center min-h-screen\">\n      <OrderTrackingParallaxCard\n        orderId=\"4582\"\n        product=\"Wireless Headphones\"\n        status=\"Out for Delivery\"\n        eta=\"Tomorrow, 7 PM\"\n        imageUrl=\"https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/delivery-man.png\"\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/order-tracking-parallax-card-demo.tsx"
+    }
+  ]
+}

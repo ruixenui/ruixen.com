@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dock-morph-demo",
+  "type": "registry:example",
+  "title": "Dock Morph Demo",
+  "description": "Example showing morphing dock with glassmorphism bubbles.",
+  "registryDependencies": [
+    "https://ruixen.com/r/dock-morph"
+  ],
+  "files": [
+    {
+      "path": "registry/example/dock-morph-demo.tsx",
+      "content": "\"use client\";\n\nimport DockMorph from \"@/registry/ruixenui/dock-morph\";\nimport { Home, Search, Bell, User, Settings } from \"lucide-react\";\n\nexport default function DemoOne() {\n  const items = [\n    {\n      icon: <Home className=\"h-6 w-6\" />,\n      label: \"Home\",\n    },\n    {\n      icon: <Search className=\"h-6 w-6\" />,\n      label: \"Search\",\n    },\n    {\n      icon: <Bell className=\"h-6 w-6\" />,\n      label: \"Notifications\",\n    },\n    {\n      icon: <User className=\"h-6 w-6\" />,\n      label: \"Profile\",\n    },\n    {\n      icon: <Settings className=\"h-6 w-6\" />,\n      label: \"Settings\",\n    },\n  ];\n\n  //<DockMorph position=\"bottom\" />\n  // <DockMorph position=\"top\" />\n  // <DockMorph position=\"left\" />\n\n  return <DockMorph items={items} />;\n}\n",
+      "type": "registry:example",
+      "target": "components/dock-morph-demo.tsx"
+    }
+  ]
+}
