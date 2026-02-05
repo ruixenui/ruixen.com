@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "navbar-simple-demo",
+  "type": "registry:example",
+  "title": "Navbar Simple Demo",
+  "description": "Example showing a simple navigation bar.",
+  "registryDependencies": [
+    "https://ruixen.com/r/navbar-simple"
+  ],
+  "files": [
+    {
+      "path": "registry/example/navbar-simple-demo.tsx",
+      "content": "import NavbarSimple from \"@/registry/ruixenui/navbar-simple\";\n\nexport default function NavbarSimpleDemo() {\n  return (\n    <div className=\"w-full\">\n      <NavbarSimple />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/navbar-simple-demo.tsx"
+    }
+  ]
+}

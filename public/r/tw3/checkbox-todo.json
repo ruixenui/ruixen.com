@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "checkbox-todo",
+  "type": "registry:ui",
+  "title": "Checkbox Todo",
+  "description": "A todo-style checkbox with animated strikethrough effect when checked.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/checkbox-todo.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { Check } from \"lucide-react\";\n\ninterface CheckboxTodoProps {\n  checked?: boolean;\n  defaultChecked?: boolean;\n  onCheckedChange?: (checked: boolean) => void;\n  label: string;\n  animated?: boolean;\n  disabled?: boolean;\n  id?: string;\n  className?: string;\n}\n\nexport default function CheckboxTodo({\n  checked,\n  defaultChecked = false,\n  onCheckedChange,\n  label,\n  animated = true,\n  disabled = false,\n  id,\n  className,\n}: CheckboxTodoProps) {\n  const [internalChecked, setInternalChecked] = React.useState(defaultChecked);\n  const isControlled = checked !== undefined;\n  const isChecked = isControlled ? checked : internalChecked;\n  const inputId = id || React.useId();\n\n  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {\n    const newChecked = e.target.checked;\n    if (!isControlled) {\n      setInternalChecked(newChecked);\n    }\n    onCheckedChange?.(newChecked);\n  };\n\n  return (\n    <label\n      htmlFor={inputId}\n      className={cn(\n        \"group inline-flex cursor-pointer items-center gap-3 py-1\",\n        disabled && \"cursor-not-allowed opacity-50\",\n        className,\n      )}\n    >\n      <div className=\"relative flex items-center justify-center\">\n        <input\n          type=\"checkbox\"\n          id={inputId}\n          checked={isChecked}\n          onChange={handleChange}\n          disabled={disabled}\n          className=\"peer sr-only\"\n        />\n        <div\n          className={cn(\n            \"flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 transition-all duration-300\",\n            isChecked\n              ? \"border-green-500 bg-green-500 text-white\"\n              : \"border-muted-foreground/30 bg-background\",\n            !disabled && !isChecked && \"group-hover:border-green-500/50\",\n            \"peer-focus-visible:ring-2 peer-focus-visible:ring-green-500/30 peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-background\",\n          )}\n        >\n          <Check\n            className={cn(\n              \"size-3 stroke-[3] transition-all duration-300\",\n              isChecked ? \"scale-100 opacity-100\" : \"scale-0 opacity-0\",\n            )}\n          />\n        </div>\n      </div>\n      <span className=\"relative text-sm font-medium text-foreground\">\n        <span\n          className={cn(\n            \"transition-all duration-300\",\n            isChecked && \"text-muted-foreground\",\n          )}\n        >\n          {label}\n        </span>\n        {animated && (\n          <span\n            className={cn(\n              \"absolute left-0 top-1/2 h-px bg-muted-foreground transition-all duration-300\",\n              isChecked ? \"w-full\" : \"w-0\",\n            )}\n          />\n        )}\n      </span>\n    </label>\n  );\n}\n\nexport { CheckboxTodo, type CheckboxTodoProps };\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/checkbox-todo.tsx"
+    }
+  ]
+}

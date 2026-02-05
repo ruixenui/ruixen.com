@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "smart-assist-input",
+  "type": "registry:ui",
+  "title": "Smart Assist Input",
+  "description": "An intelligent input field with history tracking, validation, and quick actions.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "input",
+    "label"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/smart-assist-input.tsx",
+      "content": "\"use client\";\n\nimport { useEffect, useId, useRef, useState } from \"react\";\nimport { CircleXIcon, CopyIcon, HistoryIcon } from \"lucide-react\";\nimport { Input } from \"@/components/ui/input\";\nimport { Label } from \"@/components/ui/label\";\n\ninterface SmartAssistInputProps {\n  label?: string;\n  placeholder?: string;\n  type?: \"text\" | \"email\" | \"password\" | \"search\";\n  rememberHistory?: boolean;\n  validate?: (value: string) => string | null; // returns error string or null\n}\n\nexport default function SmartAssistInput({\n  label = \"Smart Assist Input\",\n  placeholder = \"Type something...\",\n  type = \"text\",\n  rememberHistory = true,\n  validate,\n}: SmartAssistInputProps) {\n  const id = useId();\n  const inputRef = useRef<HTMLInputElement>(null);\n  const [value, setValue] = useState(\"\");\n  const [history, setHistory] = useState<string[]>([]);\n  const [error, setError] = useState<string | null>(null);\n  const [showHistory, setShowHistory] = useState(false);\n\n  // Load history from localStorage\n  useEffect(() => {\n    if (rememberHistory) {\n      const saved = localStorage.getItem(`history-${id}`);\n      if (saved) setHistory(JSON.parse(saved));\n    }\n  }, [id, rememberHistory]);\n\n  // Save history on change\n  useEffect(() => {\n    if (rememberHistory && value) {\n      localStorage.setItem(\n        `history-${id}`,\n        JSON.stringify([...new Set([value, ...history])].slice(0, 5)),\n      );\n    }\n  }, [value]);\n\n  // Validation\n  useEffect(() => {\n    if (validate) {\n      setError(validate(value));\n    }\n  }, [value, validate]);\n\n  const handleClear = () => {\n    setValue(\"\");\n    inputRef.current?.focus();\n  };\n\n  const handleCopy = () => {\n    navigator.clipboard.writeText(value);\n  };\n\n  return (\n    <div className=\"flex flex-col gap-2 relative\">\n      {label && <Label htmlFor={id}>{label}</Label>}\n      <div className=\"relative group\">\n        <Input\n          id={id}\n          ref={inputRef}\n          type={type}\n          value={value}\n          placeholder={placeholder}\n          onChange={(e) => setValue(e.target.value)}\n          onFocus={() => setShowHistory(true)}\n          onBlur={() => setTimeout(() => setShowHistory(false), 150)}\n          className=\"pe-20\"\n        />\n\n        {/* Action buttons */}\n        {value && (\n          <div className=\"absolute inset-y-0 right-0 flex items-center gap-1 pr-1\">\n            <button\n              type=\"button\"\n              aria-label=\"Copy input\"\n              onClick={handleCopy}\n              className=\"p-1 text-muted-foreground/70 hover:text-foreground transition-colors\"\n            >\n              <CopyIcon size={16} />\n            </button>\n            <button\n              type=\"button\"\n              aria-label=\"Clear input\"\n              onClick={handleClear}\n              className=\"p-1 text-muted-foreground/70 hover:text-foreground transition-colors\"\n            >\n              <CircleXIcon size={16} />\n            </button>\n          </div>\n        )}\n      </div>\n\n      {/* Error message */}\n      {error && <p className=\"text-sm text-red-500\">{error}</p>}\n\n      {/* History dropdown */}\n      {showHistory && history.length > 0 && (\n        <div className=\"absolute top-full mt-1 w-full rounded-md border bg-background shadow-lg z-10\">\n          {history.map((item, idx) => (\n            <button\n              key={idx}\n              className=\"flex w-full items-center gap-2 px-2 py-1 text-sm hover:bg-accent hover:text-accent-foreground\"\n              onClick={() => setValue(item)}\n              type=\"button\"\n            >\n              <HistoryIcon size={14} /> {item}\n            </button>\n          ))}\n        </div>\n      )}\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/smart-assist-input.tsx"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "inline-copy-input",
+  "type": "registry:ui",
+  "title": "Inline Copy Input",
+  "description": "An input field with inline copy-to-clipboard functionality.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/inline-copy-input.tsx",
+      "content": "\"use client\";\n\nimport { useRef, useState } from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport default function InlineCopyInput() {\n  const inputRef = useRef<HTMLInputElement>(null);\n  const [copied, setCopied] = useState(false);\n\n  const handleCopy = () => {\n    if (inputRef.current) {\n      navigator.clipboard.writeText(inputRef.current.value);\n      setCopied(true);\n      setTimeout(() => setCopied(false), 1500);\n    }\n  };\n\n  return (\n    <div className=\"w-full max-w-md mx-auto\">\n      <div\n        className={cn(\n          \"flex items-center rounded-full border border-black/30 dark:border-white/30 overflow-hidden transition-colors\",\n          copied ? \"bg-emerald-100 dark:bg-emerald-900/30\" : \"bg-transparent\",\n        )}\n      >\n        <input\n          ref={inputRef}\n          readOnly\n          defaultValue=\"npm install ruixen-ui\"\n          className=\"flex-1 px-4 py-2 text-black dark:text-white bg-transparent outline-none\"\n        />\n        <button\n          onClick={handleCopy}\n          className={cn(\n            \"px-4 py-2 text-sm font-medium transition-colors\",\n            copied\n              ? \"text-white dark:text-black\"\n              : \"text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white\",\n          )}\n        >\n          {copied ? \"Copied!\" : \"Copy\"}\n        </button>\n      </div>\n\n      <p className=\"mt-2 text-xs text-black/50 dark:text-white/50\">\n        Click the button to copy the command.\n      </p>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/inline-copy-input.tsx"
+    }
+  ]
+}

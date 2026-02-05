@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "progress-button",
+  "type": "registry:ui",
+  "title": "Progress Button",
+  "description": "Button with built-in progress feedback for async operations.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/progress-button.tsx",
+      "content": "\"use client\";\n\nimport React, { useState } from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { Loader2, Check } from \"lucide-react\";\n\n/**\n * ProgressButton\n *\n * A button that shows progress feedback for async actions.\n * After click, it can display a loading spinner or a progress bar.\n * Useful for actions like Submit, Pay, Upload.\n */\n\ninterface ProgressButtonProps\n  extends React.ButtonHTMLAttributes<HTMLButtonElement> {\n  label: string;\n  loadingLabel?: string;\n  successLabel?: string;\n  showBar?: boolean; // if true, show progress bar instead of spinner\n  duration?: number; // fake progress duration in ms when showBar is true\n}\n\nconst ProgressButton: React.FC<ProgressButtonProps> = ({\n  label,\n  loadingLabel = \"Processing...\",\n  successLabel = \"Done!\",\n  showBar = false,\n  duration = 2000,\n  className,\n  onClick,\n  ...props\n}) => {\n  const [loading, setLoading] = useState(false);\n  const [success, setSuccess] = useState(false);\n  const [progress, setProgress] = useState(0);\n\n  const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {\n    if (loading) return;\n    setLoading(true);\n    setSuccess(false);\n    setProgress(0);\n\n    if (showBar) {\n      let step = 0;\n      const interval = setInterval(() => {\n        step += 100 / (duration / 100);\n        setProgress(Math.min(step, 100));\n      }, 100);\n      setTimeout(() => {\n        clearInterval(interval);\n        setLoading(false);\n        setSuccess(true);\n        setTimeout(() => setSuccess(false), 1500);\n      }, duration);\n    } else {\n      await new Promise((resolve) => setTimeout(resolve, duration));\n      setLoading(false);\n      setSuccess(true);\n      setTimeout(() => setSuccess(false), 1500);\n    }\n\n    onClick?.(e);\n  };\n\n  return (\n    <button\n      type=\"button\"\n      onClick={handleClick}\n      className={cn(\n        \"relative inline-flex items-center justify-center rounded-lg bg-primary text-primary-foreground font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 px-4 py-2 disabled:opacity-60\",\n        className,\n      )}\n      disabled={loading}\n      {...props}\n    >\n      {showBar && loading ? (\n        <div className=\"absolute bottom-0 left-0 h-1 bg-primary-foreground/50 w-full overflow-hidden rounded-b-lg\">\n          <div\n            className=\"h-full bg-primary-foreground transition-all duration-100 ease-linear\"\n            style={{ width: `${progress}%` }}\n          />\n        </div>\n      ) : null}\n\n      <span className=\"flex items-center gap-2\">\n        {loading && !showBar && <Loader2 className=\"w-4 h-4 animate-spin\" />}\n        {success && <Check className=\"w-4 h-4\" />}\n        {!loading && !success && label}\n        {loading && !success && (showBar ? loadingLabel : loadingLabel)}\n        {success && successLabel}\n      </span>\n    </button>\n  );\n};\n\nexport default ProgressButton;\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/progress-button.tsx"
+    }
+  ]
+}

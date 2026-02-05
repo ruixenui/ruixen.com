@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "breadcrumb-boxed-demo",
+  "type": "registry:example",
+  "title": "Breadcrumb Boxed Demo",
+  "description": "Example showing boxed breadcrumbs with different variants.",
+  "registryDependencies": [
+    "https://ruixen.com/r/breadcrumb-boxed"
+  ],
+  "files": [
+    {
+      "path": "registry/example/breadcrumb-boxed-demo.tsx",
+      "content": "\"use client\";\n\nimport BreadcrumbBoxed from \"@/registry/ruixenui/breadcrumb-boxed\";\n\nconst items = [\n  { label: \"Home\", href: \"/\" },\n  { label: \"Components\", href: \"/components\" },\n  { label: \"Breadcrumb\" },\n];\n\nexport default function BreadcrumbBoxedDemo() {\n  return (\n    <div className=\"flex min-h-[350px] w-full flex-col items-center justify-center gap-8 p-4\">\n      <div className=\"space-y-2 text-center\">\n        <p className=\"text-sm font-medium text-muted-foreground\">Default</p>\n        <BreadcrumbBoxed items={items} variant=\"default\" />\n      </div>\n\n      <div className=\"space-y-2 text-center\">\n        <p className=\"text-sm font-medium text-muted-foreground\">Filled</p>\n        <BreadcrumbBoxed items={items} variant=\"filled\" />\n      </div>\n\n      <div className=\"space-y-2 text-center\">\n        <p className=\"text-sm font-medium text-muted-foreground\">Outline</p>\n        <BreadcrumbBoxed items={items} variant=\"outline\" />\n      </div>\n\n      <div className=\"space-y-2 text-center\">\n        <p className=\"text-sm font-medium text-muted-foreground\">Ghost</p>\n        <BreadcrumbBoxed items={items} variant=\"ghost\" />\n      </div>\n\n      <div className=\"space-y-2 text-center\">\n        <p className=\"text-sm font-medium text-muted-foreground\">\n          Rounded Full\n        </p>\n        <BreadcrumbBoxed items={items} variant=\"default\" rounded=\"full\" />\n      </div>\n\n      <div className=\"space-y-2 text-center\">\n        <p className=\"text-sm font-medium text-muted-foreground\">\n          Without Home Icon\n        </p>\n        <BreadcrumbBoxed items={items} variant=\"filled\" showHomeIcon={false} />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/breadcrumb-boxed-demo.tsx"
+    }
+  ]
+}

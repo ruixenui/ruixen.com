@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "theme-cycle-button-demo",
+  "type": "registry:example",
+  "title": "Theme Cycle Button Demo",
+  "description": "Example showing a button that cycles through different theme modes with smooth transitions.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/theme-cycle-button"
+  ],
+  "files": [
+    {
+      "path": "registry/example/theme-cycle-button-demo.tsx",
+      "content": "\"use client\";\n\nimport ThemeCycleButton from \"@/registry/ruixenui/theme-cycle-button\";\n\nexport default function DemoThemeCycleButton() {\n  return (\n    <main className=\"flex min-h-[350px] w-full flex-col items-center justify-center gap-6\">\n      {/* Pill variant with label hidden */}\n      <ThemeCycleButton variant=\"pill\" showLabel={false} />\n    </main>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/theme-cycle-button-demo.tsx"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "container-text-scroll-demo",
+  "type": "registry:example",
+  "title": "Container Text Scroll Demo",
+  "description": "Example showing scroll-triggered text animation component with smooth parallax effects using Framer Motion.",
+  "registryDependencies": [
+    "https://ruixen.com/r/container-text-scroll"
+  ],
+  "files": [
+    {
+      "path": "registry/example/container-text-scroll-demo.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport { ContainerTextScroll } from \"@/registry/ruixenui/container-text-scroll\";\nimport Image from \"next/image\";\n\nexport default function ContainerTextScrollDemo() {\n  return (\n    <div className=\"flex flex-col overflow-hidden pb-[300px]\">\n      <ContainerTextScroll\n        titleComponent={\n          <>\n            <h1 className=\"text-4xl font-semibold text-white\">\n              Explore the realm of <br />\n              <span className=\"text-7xl md:text-[8rem] font-bold mt-1 leading-none\">\n                Infinite Patterns\n              </span>\n              <br />\n              <a\n                href=\"https://www.ruixen.com/\"\n                target=\"_blank\"\n                rel=\"noopener noreferrer\"\n                className=\"block mt-4 text-2xl font-medium text-gray-300 hover:text-white transition-colors\"\n              >\n                Ruixen UI\n              </a>\n            </h1>\n          </>\n        }\n      >\n        <Image\n          src={`https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/abstract-bg_11zon.jpg`}\n          alt=\"hero\"\n          height={720}\n          width={1400}\n          className=\"mx-auto rounded-2xl object-cover h-full object-left-top\"\n          draggable={false}\n        />\n      </ContainerTextScroll>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/container-text-scroll-demo.tsx"
+    }
+  ]
+}

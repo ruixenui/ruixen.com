@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "smart-notify-button",
+  "type": "registry:ui",
+  "title": "Smart Notify Button",
+  "description": "A button component that triggers customizable toast notifications with actions and different types.",
+  "dependencies": [
+    "sonner",
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/smart-notify-button.tsx",
+      "content": "\"use client\";\n\nimport { toast, Toaster } from \"sonner\";\nimport { Button } from \"@/components/ui/button\";\nimport { CheckIcon, XIcon, InfoIcon } from \"lucide-react\";\n\ninterface SmartNotifyButtonProps {\n  label?: string;\n  message?: string;\n  description?: string;\n  type?: \"success\" | \"error\" | \"info\";\n  actionLabel?: string;\n  actionCallback?: () => void;\n  variant?: \"default\" | \"outline\" | \"ghost\";\n  duration?: number;\n  /** Position of toast on screen */\n  position?: any;\n}\n\nconst defaultProps: SmartNotifyButtonProps = {\n  label: \"Notify\",\n  message: \"This is a notification!\",\n  description: \"\",\n  type: \"info\",\n  variant: \"default\",\n  duration: 4000,\n  position: \"top-right\",\n};\n\nexport default function SmartNotifyButton(props: SmartNotifyButtonProps) {\n  const {\n    label,\n    message,\n    description,\n    type,\n    actionLabel,\n    actionCallback,\n    variant,\n    duration,\n    position,\n  } = { ...defaultProps, ...props };\n\n  const icons = {\n    success: <CheckIcon size={16} />,\n    error: <XIcon size={16} />,\n    info: <InfoIcon size={16} />,\n  };\n\n  const handleClick = () => {\n    toast(message!, {\n      description,\n      icon: icons[type!],\n      duration,\n      action: actionLabel\n        ? { label: actionLabel, onClick: actionCallback ?? (() => {}) }\n        : undefined,\n      position,\n    });\n  };\n\n  return (\n    <>\n      <Button variant={variant} onClick={handleClick}>\n        {label}\n      </Button>\n\n      {/* Add the Toaster only once in your app */}\n      <Toaster />\n    </>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/smart-notify-button.tsx"
+    }
+  ]
+}

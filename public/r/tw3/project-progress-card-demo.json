@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "project-progress-card-demo",
+  "type": "registry:example",
+  "title": "Project Progress Card Demo",
+  "description": "Example showing interactive project progress tracking with milestone visualization.",
+  "registryDependencies": [
+    "https://ruixen.com/r/project-progress-card"
+  ],
+  "files": [
+    {
+      "path": "registry/example/project-progress-card-demo.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport { ProjectProgressCard } from \"@/registry/ruixenui/project-progress-card\";\n\nconst ProjectProgressCardDemo = () => {\n  const milestones = [\n    {\n      icon: \"\",\n      title: \"Wireframe Design\",\n      description: \"Initial sketches and design structure completed.\",\n      completed: true,\n    },\n    {\n      icon: \"\",\n      title: \"Frontend Development\",\n      description: \"Integrating layouts and responsive components.\",\n      completed: true,\n    },\n    {\n      icon: \"\",\n      title: \"Backend Setup\",\n      description: \"Database and API routes configuration in progress.\",\n      completed: false,\n    },\n    {\n      icon: \"\",\n      title: \"Final QA & Launch\",\n      description: \"Testing, debugging, and deployment preparation.\",\n      completed: false,\n    },\n  ];\n\n  return (\n    <div className=\"flex min-h-screen items-center justify-center bg-background p-6\">\n      <ProjectProgressCard\n        title=\"Ruvy Project Development\"\n        projectManager=\"Srinath G\"\n        dueDate=\"25 Oct 2025\"\n        milestones={milestones}\n        onNextStep={() => alert(\"Next step clicked!\")}\n      />\n    </div>\n  );\n};\n\nexport default ProjectProgressCardDemo;\n",
+      "type": "registry:example",
+      "target": "components/project-progress-card-demo.tsx"
+    }
+  ]
+}

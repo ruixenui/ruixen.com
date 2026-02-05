@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "navbar-tabs-demo",
+  "type": "registry:example",
+  "title": "Navbar Tabs Demo",
+  "description": "Example showing a navigation bar with tabbed navigation.",
+  "registryDependencies": [
+    "https://ruixen.com/r/navbar-tabs"
+  ],
+  "files": [
+    {
+      "path": "registry/example/navbar-tabs-demo.tsx",
+      "content": "import NavbarTabs from \"@/registry/ruixenui/navbar-tabs\";\n\nexport default function NavbarTabsDemo() {\n  return (\n    <div className=\"w-full\">\n      <NavbarTabs />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/navbar-tabs-demo.tsx"
+    }
+  ]
+}

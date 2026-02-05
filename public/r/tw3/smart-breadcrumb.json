@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "smart-breadcrumb",
+  "type": "registry:ui",
+  "title": "Smart Breadcrumb",
+  "description": "Intelligent breadcrumb navigation with ellipsis for long paths and responsive design.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "breadcrumb"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/smart-breadcrumb.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport {\n  Breadcrumb,\n  BreadcrumbItem,\n  BreadcrumbLink,\n  BreadcrumbList,\n  BreadcrumbPage,\n  BreadcrumbSeparator,\n  BreadcrumbEllipsis,\n} from \"@/components/ui/breadcrumb\";\nimport { ChevronRight } from \"lucide-react\";\n\nexport interface BreadcrumbItemType {\n  label: string;\n  href?: string;\n  isCurrent?: boolean;\n}\n\ninterface SmartBreadcrumbProps {\n  items: BreadcrumbItemType[];\n  showEllipsis?: boolean;\n  separator?: React.ReactNode;\n  maxVisible?: number; // show ellipsis after these many\n  className?: string;\n}\n\nexport function SmartBreadcrumb({\n  items,\n  showEllipsis = true,\n  separator = <ChevronRight className=\"size-4 stroke-2\" />,\n  maxVisible = 4,\n  className = \"\",\n}: SmartBreadcrumbProps) {\n  const visibleItems =\n    showEllipsis && items.length > maxVisible\n      ? [\n          ...items.slice(0, 1),\n          { label: \"...\" },\n          ...items.slice(items.length - (maxVisible - 1)),\n        ]\n      : items;\n\n  return (\n    <Breadcrumb className={className}>\n      <BreadcrumbList>\n        {visibleItems.map((item, index) => {\n          const isLast = index === visibleItems.length - 1;\n          const isEllipsis = (item as any).isEllipsis;\n\n          return (\n            <React.Fragment key={index}>\n              <BreadcrumbItem>\n                {isEllipsis ? (\n                  <BreadcrumbEllipsis />\n                ) : isLast ? (\n                  <BreadcrumbPage className=\"flex items-center gap-1\">\n                    <span>{item.label}</span>\n                  </BreadcrumbPage>\n                ) : (\n                  <BreadcrumbLink\n                    href={item.href}\n                    className=\"flex items-center gap-1 hover:text-primary transition-colors\"\n                  >\n                    <span>{item.label}</span>\n                  </BreadcrumbLink>\n                )}\n              </BreadcrumbItem>\n\n              {!isLast && (\n                <BreadcrumbSeparator>{separator}</BreadcrumbSeparator>\n              )}\n            </React.Fragment>\n          );\n        })}\n      </BreadcrumbList>\n    </Breadcrumb>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/smart-breadcrumb.tsx"
+    }
+  ]
+}

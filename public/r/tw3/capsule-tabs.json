@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "capsule-tabs",
+  "type": "registry:ui",
+  "title": "Capsule Tabs",
+  "description": "Scrollable capsule-style tabs with pagination dots and navigation arrows.",
+  "dependencies": [
+    "framer-motion",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "button",
+    "tabs"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/capsule-tabs.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { Button } from \"@/components/ui/button\";\nimport { Tabs, TabsList, TabsTrigger, TabsContent } from \"@/components/ui/tabs\";\nimport { motion } from \"framer-motion\";\nimport { cn } from \"@/lib/utils\";\nimport { ChevronLeft, ChevronRight } from \"lucide-react\";\n\nexport interface ScrollableTabItem {\n  value: string;\n  label: string;\n  content?: React.ReactNode;\n}\n\ninterface CapsuleTabsProps {\n  items?: ScrollableTabItem[];\n  defaultValue?: string;\n  className?: string;\n  visibleCount?: number; // number of tabs per page\n}\n\nexport default function CapsuleTabs({\n  items = Array.from({ length: 20 }, (_, i) => ({\n    value: `tab${i + 1}`,\n    label: `Tab ${i + 1}`,\n    content: `Content for Tab ${i + 1}`,\n  })),\n  defaultValue,\n  className,\n  visibleCount = 5,\n}: CapsuleTabsProps) {\n  const [active, setActive] = React.useState(defaultValue || items[0].value);\n  const [page, setPage] = React.useState(0);\n\n  const totalPages = Math.ceil(items.length / visibleCount);\n\n  const currentPageTabs = React.useMemo(() => {\n    const start = page * visibleCount;\n    return items.slice(start, start + visibleCount);\n  }, [page, items, visibleCount]);\n\n  const handlePrevPage = () => setPage((p) => Math.max(p - 1, 0));\n  const handleNextPage = () => setPage((p) => Math.min(p + 1, totalPages - 1));\n\n  return (\n    <div className={cn(\"flex flex-col items-center w-full\", className)}>\n      {/* Pagination dots */}\n      {totalPages > 1 && (\n        <div className=\"flex gap-2 my-2\">\n          {Array.from({ length: totalPages }).map((_, idx) => (\n            <span\n              key={idx}\n              onClick={() => setPage(idx)}\n              className={cn(\n                \"w-3 h-3 rounded-full cursor-pointer transition-colors\",\n                idx === page ? \"bg-primary\" : \"bg-foreground/30\",\n              )}\n            />\n          ))}\n        </div>\n      )}\n      <div className=\"flex items-center gap-2 w-full max-w-lg\">\n        {/* Left arrow */}\n        <Button\n          variant=\"ghost\"\n          onClick={handlePrevPage}\n          disabled={page === 0}\n          className=\"p-2 rounded-full bg-background/50 hover:bg-background/70 disabled:opacity-40\"\n        >\n          <ChevronLeft className=\"w-5 h-5\" />\n        </Button>\n\n        <Tabs\n          value={active}\n          onValueChange={setActive}\n          className=\"flex-1 flex   flex-col\"\n        >\n          <TabsList className=\"flex gap-2 w-fit mx-auto justify-center\">\n            {currentPageTabs.map((item) => {\n              const isActive = item.value === active;\n              return (\n                <TabsTrigger key={item.value} value={item.value} asChild>\n                  <motion.button\n                    className={cn(\n                      \"px-4 py-2 rounded-full whitespace-nowrap text-sm font-medium transition-all\",\n                      isActive\n                        ? \"bg-primary text-white shadow-md\"\n                        : \"bg-background/50 text-foreground/70\",\n                    )}\n                    whileHover={{ scale: 1.05 }}\n                  >\n                    {item.label}\n                  </motion.button>\n                </TabsTrigger>\n              );\n            })}\n          </TabsList>\n\n          {items.map((item) => (\n            <TabsContent key={item.value} value={item.value}>\n              <div className=\"p-4 bg-card\">{item.content}</div>\n            </TabsContent>\n          ))}\n        </Tabs>\n\n        {/* Right arrow */}\n        <Button\n          variant=\"ghost\"\n          onClick={handleNextPage}\n          disabled={page === totalPages - 1}\n          className=\"p-2 rounded-full bg-background/50 hover:bg-background/70 disabled:opacity-40\"\n        >\n          <ChevronRight className=\"w-5 h-5\" />\n        </Button>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/capsule-tabs.tsx"
+    }
+  ]
+}

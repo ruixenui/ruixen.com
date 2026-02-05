@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "accordion-gradient-demo",
+  "type": "registry:example",
+  "title": "Gradient Accordion Demo",
+  "description": "Example showing an accordion with gradient backgrounds.",
+  "registryDependencies": [
+    "https://ruixen.com/r/accordion-gradient"
+  ],
+  "files": [
+    {
+      "path": "registry/example/accordion-gradient-demo.tsx",
+      "content": "import AccordionGradient from \"@/registry/ruixenui/accordion-gradient\";\n\nconst items = [\n  {\n    id: \"1\",\n    title: \"What makes this product unique?\",\n    content:\n      \"Our product combines cutting-edge technology with elegant design. We focus on user experience and performance.\",\n  },\n  {\n    id: \"2\",\n    title: \"How do I get started?\",\n    content:\n      \"Simply sign up for a free account and follow our quick-start guide. You'll be up and running in minutes.\",\n  },\n  {\n    id: \"3\",\n    title: \"Is there a community or support?\",\n    content:\n      \"Yes! We have an active Discord community and dedicated support team available 24/7 for all your questions.\",\n  },\n];\n\nexport default function AccordionGradientDemo() {\n  return (\n    <div className=\"w-full max-w-md\">\n      <AccordionGradient items={items} defaultValue=\"1\" />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/accordion-gradient-demo.tsx"
+    }
+  ]
+}

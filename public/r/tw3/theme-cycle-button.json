@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "theme-cycle-button",
+  "type": "registry:ui",
+  "title": "Theme Cycle Button",
+  "description": "A button that cycles through different theme modes with smooth transitions.",
+  "dependencies": [
+    "lucide-react",
+    "next-themes"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/theme-cycle-button.tsx",
+      "content": "\"use client\";\n\nimport { Button } from \"@/components/ui/button\";\nimport { cn } from \"@/lib/utils\";\nimport { Sun, Moon, Laptop } from \"lucide-react\";\nimport { useState } from \"react\";\n\ntype ThemeMode = \"light\" | \"dark\" | \"system\";\n\ninterface ThemeCycleButtonProps\n  extends React.ButtonHTMLAttributes<HTMLButtonElement> {\n  variant?: \"pill\" | \"minimal\" | \"ghost\";\n  size?: \"sm\" | \"default\" | \"lg\";\n  showLabel?: boolean;\n  defaultMode?: ThemeMode;\n  onModeChange?: (mode: ThemeMode) => void;\n}\n\nexport default function ThemeCycleButton({\n  className,\n  variant = \"minimal\",\n  size = \"default\",\n  showLabel = true,\n  defaultMode = \"system\",\n  onModeChange,\n  ...props\n}: ThemeCycleButtonProps) {\n  const [mode, setMode] = useState<ThemeMode>(defaultMode);\n\n  const handleClick = () => {\n    const modes: ThemeMode[] = [\"light\", \"dark\", \"system\"];\n    const currentIndex = modes.indexOf(mode);\n    const nextMode = modes[(currentIndex + 1) % modes.length];\n    setMode(nextMode);\n    onModeChange?.(nextMode);\n  };\n\n  const Icon = mode === \"light\" ? Sun : mode === \"dark\" ? Moon : Laptop;\n\n  const variants = {\n    pill: [\n      \"rounded-full\",\n      \"bg-linear-to-b from-white to-zinc-50\",\n      \"dark:from-zinc-900 dark:to-zinc-800\",\n      \"border border-zinc-200 dark:border-zinc-800\",\n      \"hover:border-zinc-300 dark:hover:border-zinc-700\",\n      \"shadow-xs\",\n    ],\n    minimal: [\n      \"rounded-lg\",\n      \"bg-zinc-100 dark:bg-zinc-800\",\n      \"hover:bg-zinc-200 dark:hover:bg-zinc-700\",\n    ],\n    ghost: [\n      \"rounded-lg\",\n      \"hover:bg-zinc-100 dark:hover:bg-zinc-800\",\n      \"border border-zinc-200 dark:border-zinc-800\",\n    ],\n  };\n\n  const sizes = {\n    sm: \"h-8 px-3 text-sm\",\n    default: \"h-10 px-4\",\n    lg: \"h-11 px-5\",\n  };\n\n  return (\n    <Button\n      className={cn(\n        \"relative group transition-all duration-200\",\n        \"text-zinc-600 dark:text-zinc-300\",\n        variants[variant],\n        sizes[size],\n        className,\n      )}\n      onClick={handleClick}\n      {...props}\n    >\n      <div className=\"flex items-center gap-2 transition-all duration-200\">\n        <Icon\n          className={cn(\n            \"transition-all duration-200\",\n            size === \"sm\" && \"w-3.5 h-3.5\",\n            size === \"default\" && \"w-4 h-4\",\n            size === \"lg\" && \"w-5 h-5\",\n            \"group-hover:rotate-[-8deg] group-hover:scale-110\",\n            \"group-active:scale-95\",\n          )}\n        />\n        {showLabel && <span className=\"capitalize\">{mode}</span>}\n      </div>\n      <span\n        className={cn(\n          \"absolute inset-0\",\n          \"bg-linear-to-r from-zinc-500/0 via-zinc-500/10 to-zinc-500/0\",\n          \"translate-x-[-50%] group-hover:translate-x-[50%]\",\n          \"transition-transform duration-500 ease-out\",\n        )}\n      />\n    </Button>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/theme-cycle-button.tsx"
+    }
+  ]
+}

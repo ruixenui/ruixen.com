@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "video-player-pro-demo",
+  "type": "registry:example",
+  "title": "Video Player Pro Demo",
+  "description": "Example showing a professional video player with custom controls.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/video-player-pro"
+  ],
+  "files": [
+    {
+      "path": "registry/example/video-player-pro-demo.tsx",
+      "content": "import VideoPlayerPro from \"@/registry/ruixenui/video-player-pro\";\n\nexport default function VideoPlayerProDemo() {\n  return (\n    <div className=\"min-h-screen flex items-center justify-center bg-background p-4\">\n      <VideoPlayerPro src=\"/demo-video-player-cmp-src.mp4\" />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/video-player-pro-demo.tsx"
+    }
+  ]
+}

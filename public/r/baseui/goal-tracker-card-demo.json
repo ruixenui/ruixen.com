@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "goal-tracker-card-demo",
+  "type": "registry:example",
+  "title": "Goal Tracker Card Demo",
+  "description": "Example showing an activity and goal tracking card with progress visualization.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/goal-tracker-card"
+  ],
+  "files": [
+    {
+      "path": "registry/example/goal-tracker-card-demo.tsx",
+      "content": "import GoalTrackerCard from \"@/registry/ruixenui/goal-tracker-card\";\n\nexport default function GoalTrackerCardDemo() {\n  return (\n    <div className=\"flex items-center justify-center py-8\">\n      <GoalTrackerCard />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/goal-tracker-card-demo.tsx"
+    }
+  ]
+}

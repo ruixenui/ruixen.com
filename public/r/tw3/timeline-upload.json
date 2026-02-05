@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "timeline-upload",
+  "type": "registry:ui",
+  "title": "Timeline Upload",
+  "description": "Upload component with timeline layout showing upload progress and status.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "card",
+    "button",
+    "progress"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/timeline-upload.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { Progress } from \"@/components/ui/progress\";\nimport { Card, CardContent } from \"@/components/ui/card\";\nimport { Circle, CheckCircle2, Trash2 } from \"lucide-react\";\nimport { Button } from \"@/components/ui/button\";\n\nexport type UploadFile = {\n  id: string;\n  file: File;\n  progress: number;\n  status: \"uploading\" | \"done\";\n};\n\ninterface TimelineUploadProps {\n  files: UploadFile[];\n  onRemove?: (id: string) => void;\n}\n\nexport function TimelineUpload({ files, onRemove }: TimelineUploadProps) {\n  return (\n    <div className=\"flex flex-col gap-6\">\n      {files.map((file, i) => (\n        <div key={file.id} className=\"flex items-start gap-4\">\n          {/* Timeline connector */}\n          <div className=\"flex flex-col items-center\">\n            {file.status === \"done\" ? (\n              <CheckCircle2 className=\"h-6 w-6 text-green-600\" />\n            ) : (\n              <Circle className=\"h-6 w-6 text-blue-500\" />\n            )}\n            {i !== files.length - 1 && <div className=\"w-px flex-1 bg-muted\" />}\n          </div>\n\n          {/* File Card */}\n          <Card className=\"w-full\">\n            <CardContent className=\"p-3 space-y-2\">\n              <div className=\"flex justify-between items-center\">\n                {/* File/Folder Name */}\n                <p className=\"font-medium break-all flex-1 pr-4\">\n                  📄 {file.file.name}\n                </p>\n\n                {/* Status and Remove */}\n                <div className=\"flex items-center gap-2\">\n                  <span className=\"text-sm text-muted-foreground\">\n                    {file.status === \"done\" ? \"Completed\" : \"Uploading...\"}\n                  </span>\n                  {onRemove && (\n                    <Button\n                      variant=\"ghost\"\n                      size=\"icon\"\n                      className=\"h-6 w-6\"\n                      onClick={() => onRemove(file.id)}\n                    >\n                      <Trash2 className=\"h-4 w-4 text-red-500\" />\n                    </Button>\n                  )}\n                </div>\n              </div>\n\n              {/* Progress Bar */}\n              {file.status !== \"done\" && (\n                <Progress value={file.progress} className=\"h-2\" />\n              )}\n            </CardContent>\n          </Card>\n        </div>\n      ))}\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/timeline-upload.tsx"
+    }
+  ]
+}

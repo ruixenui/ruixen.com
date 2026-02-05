@@ -151,7 +151,7 @@ export function ProBanner() {
             Ruixen Pro is now live.
           </span>
           <span className="text-[1rem] ml-2">
-            30+ premium components, templates, blocks, and lifetime updates.
+            40+ premium components, templates, blocks, and lifetime updates.
           </span>
 
           {/* Right cracker origin */}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "live-preview-style-select-demo",
+  "type": "registry:example",
+  "title": "Live Preview Style Select Demo",
+  "description": "Example showing a select component with live preview functionality for style options.",
+  "registryDependencies": [
+    "https://ruixen.com/r/live-preview-style-select"
+  ],
+  "files": [
+    {
+      "path": "registry/example/live-preview-style-select-demo.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport {\n  LivePreviewStyleSelect,\n  StyleOption,\n} from \"@/registry/ruixenui/live-preview-style-select\";\n\nconst gradientOptions: StyleOption[] = [\n  {\n    value: \"sunset\",\n    label: \"Sunset Glow\",\n    previewClass: \"bg-gradient-to-r from-pink-500 via-orange-400 to-yellow-300\",\n    description: \"Warm pink-orange-yellow gradient\",\n  },\n  {\n    value: \"aqua\",\n    label: \"Aqua Breeze\",\n    previewClass: \"bg-gradient-to-r from-teal-400 to-cyan-500\",\n    description: \"Cool teal and cyan tones\",\n  },\n  {\n    value: \"night\",\n    label: \"Night Sky\",\n    previewClass: \"bg-gradient-to-r from-indigo-900 via-purple-800 to-black\",\n    description: \"Dark indigo with deep purple accents\",\n  },\n  {\n    value: \"forest\",\n    label: \"Forest Haze\",\n    previewClass: \"bg-gradient-to-r from-green-600 via-lime-400 to-emerald-500\",\n    description: \"Lush green earthy tones\",\n  },\n];\n\nexport default function DemoLivePreviewStyleSelect() {\n  const [style, setStyle] = React.useState<string>(\"\");\n\n  return (\n    <div className=\"flex flex-col gap-4 min-h-screen items-center justify-center space-y-4\">\n      <LivePreviewStyleSelect\n        options={gradientOptions}\n        label=\"Select Gradient\"\n        placeholder=\"Choose a gradient...\"\n        selectWidth=\"280px\" // fixed width for all options\n        previewHeight=\"180px\"\n      />\n      {style && (\n        <p className=\"text-sm text-gray-700\">\n          Selected style: <span className=\"font-semibold\">{style}</span>\n        </p>\n      )}\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/live-preview-style-select-demo.tsx"
+    }
+  ]
+}

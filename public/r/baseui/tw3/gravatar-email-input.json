@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gravatar-email-input",
+  "type": "registry:ui",
+  "title": "Gravatar Email Input",
+  "description": "An email input that displays Gravatar avatar preview.",
+  "dependencies": [
+    "md5"
+  ],
+  "registryDependencies": [
+    "input"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/gravatar-email-input.tsx",
+      "content": "\"use client\";\n\nimport { useId, useState } from \"react\";\nimport { Input } from \"@/components/ui/input\";\nimport { Label } from \"@/components/ui/label\";\nimport Image from \"next/image\";\nimport md5 from \"md5\";\n\ninterface GravatarEmailInputProps {\n  label?: string;\n  placeholder?: string;\n  initialValue?: string;\n  onChange?: (email: string) => void;\n}\n\nexport default function GravatarEmailInput({\n  label = \"Enter your email\",\n  placeholder = \"you@example.com\",\n  initialValue = \"\",\n  onChange,\n}: GravatarEmailInputProps) {\n  const id = useId();\n  const [email, setEmail] = useState(initialValue);\n\n  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {\n    const val = e.target.value;\n    setEmail(val);\n    onChange?.(val);\n  };\n\n  // Generate gravatar URL if valid email\n  const getAvatar = (email: string) => {\n    if (!email.includes(\"@\")) return null;\n    const hash = md5(email.trim().toLowerCase());\n    return `https://www.gravatar.com/avatar/${hash}?d=identicon`;\n  };\n\n  const avatarUrl = getAvatar(email);\n\n  return (\n    <div className=\"w-full max-w-md mx-auto space-y-2\">\n      <Label htmlFor={id} className=\"text-sm font-medium text-foreground\">\n        {label}\n      </Label>\n      <div className=\"relative group\">\n        {avatarUrl ? (\n          <Image\n            src={avatarUrl}\n            alt=\"Avatar\"\n            width={24}\n            height={24}\n            className=\"absolute left-3 top-1/2 -translate-y-1/2 rounded-full border shadow-sm\"\n          />\n        ) : (\n          <div className=\"absolute left-3 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-muted flex items-center justify-center text-xs text-muted-foreground\">\n            ?\n          </div>\n        )}\n\n        <Input\n          id={id}\n          type=\"email\"\n          value={email}\n          onChange={handleChange}\n          placeholder={placeholder}\n          className=\"pl-12 h-12 rounded-2xl border border-muted bg-background/80 shadow-sm transition-all focus:border-primary focus:ring-2 focus:ring-primary/40\"\n        />\n      </div>\n      <p className=\"text-xs text-muted-foreground\">\n        Stay updated with our latest news & articles.\n      </p>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/gravatar-email-input.tsx"
+    },
+    {
+      "path": "components/ui/label.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nfunction Label({ className, ...props }: React.ComponentProps<\"label\">) {\n  return (\n    <label\n      data-slot=\"label\"\n      className={cn(\n        \"flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nexport { Label };\n",
+      "type": "registry:ui",
+      "target": "components/ui/label.tsx"
+    }
+  ]
+}

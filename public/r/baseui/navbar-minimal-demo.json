@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "navbar-minimal-demo",
+  "type": "registry:example",
+  "title": "Navbar Minimal Demo",
+  "description": "Example showing an ultra-minimal navigation bar.",
+  "registryDependencies": [
+    "https://ruixen.com/r/navbar-minimal"
+  ],
+  "files": [
+    {
+      "path": "registry/example/navbar-minimal-demo.tsx",
+      "content": "import NavbarMinimal from \"@/registry/ruixenui/navbar-minimal\";\n\nexport default function NavbarMinimalDemo() {\n  return (\n    <div className=\"w-full\">\n      <NavbarMinimal />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/navbar-minimal-demo.tsx"
+    }
+  ]
+}

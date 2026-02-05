@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "confetti-button-demo",
+  "type": "registry:example",
+  "title": "Confetti Button Demo",
+  "description": "Example showing a button that triggers confetti animation on click.",
+  "registryDependencies": [
+    "https://ruixen.com/r/confetti-button"
+  ],
+  "files": [
+    {
+      "path": "registry/example/confetti-button-demo.tsx",
+      "content": "\"use client\";\n\nimport ConfettiButton from \"@/registry/ruixenui/confetti-button\";\n\nexport default function ConfettiButtonDemo() {\n  return (\n    <div className=\"flex min-h-[350px] w-full flex-col items-center justify-center gap-4\">\n      <ConfettiButton label=\"Level Up!\" />\n      <ConfettiButton label=\"Achievement Unlocked\" />\n      <ConfettiButton label=\"Submit\" />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/confetti-button-demo.tsx"
+    }
+  ]
+}

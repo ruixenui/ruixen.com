@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar-status-demo",
+  "type": "registry:example",
+  "title": "Avatar with Status Demo",
+  "description": "Example showing avatars with different status indicators.",
+  "registryDependencies": [
+    "https://ruixen.com/r/avatar-status"
+  ],
+  "files": [
+    {
+      "path": "registry/example/avatar-status-demo.tsx",
+      "content": "import AvatarStatus from \"@/registry/ruixenui/avatar-status\";\n\nexport default function AvatarStatusDemo() {\n  return (\n    <div className=\"flex min-h-[350px] w-full items-center justify-center gap-4 p-4\">\n      <AvatarStatus\n        src=\"https://github.com/shadcn.png\"\n        alt=\"shadcn\"\n        fallback=\"CN\"\n        status=\"online\"\n      />\n      <AvatarStatus\n        src=\"https://github.com/shadcn.png\"\n        alt=\"shadcn\"\n        fallback=\"CN\"\n        status=\"busy\"\n      />\n      <AvatarStatus\n        src=\"https://github.com/shadcn.png\"\n        alt=\"shadcn\"\n        fallback=\"CN\"\n        status=\"away\"\n      />\n      <AvatarStatus\n        src=\"https://github.com/shadcn.png\"\n        alt=\"shadcn\"\n        fallback=\"CN\"\n        status=\"offline\"\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/avatar-status-demo.tsx"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "precision-card-demo",
+  "type": "registry:example",
+  "title": "Precision Card Demo",
+  "description": "Example showing a detailed information card with badges, feature lists, and action buttons.",
+  "registryDependencies": [
+    "https://ruixen.com/r/precision-card"
+  ],
+  "files": [
+    {
+      "path": "registry/example/precision-card-demo.tsx",
+      "content": "import PrecisionCard from \"@/registry/ruixenui/precision-card\";\n\nexport default function PrecisionDemoPage() {\n  return (\n    <div className=\"p-10 flex items-center justify-center min-h-screen\">\n      <PrecisionCard\n        leftSubtitle=\"Why Reliability Matters\"\n        leftTitle=\"Building next-gen platforms with unmatched stability\"\n        leftDescription=\"Modern digital systems demand reliability and scalability from day one. With adaptive infrastructure and intelligent monitoring, we ensure every deployment performs flawlessly at scale.\"\n        tags={[\"Scalability\", \"Resilience\", \"Automation\", \"Cloud\", \"Security\"]}\n        leftButton=\"Get Started\"\n        rightTitle=\"Redefining Digital Excellence.\"\n        rightDescription=\"Empowering teams to innovate faster, deploy safer, and deliver exceptional user experiences — all powered by automation and real-time intelligence.\"\n        rightItems={[\"Uptime\", \"Scalability\", \"Innovation\", \"Performance\"]}\n        certificationText=\"ISO Certified Infrastructure\"\n        rightButton=\"Explore Solutions →\"\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/precision-card-demo.tsx"
+    }
+  ]
+}

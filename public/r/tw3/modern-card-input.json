@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "modern-card-input",
+  "type": "registry:ui",
+  "title": "Modern Card Input",
+  "description": "A sophisticated credit card input with real-time validation and card type detection.",
+  "dependencies": [
+    "react-payment-inputs"
+  ],
+  "registryDependencies": [
+    "input",
+    "label"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/modern-card-input.tsx",
+      "content": "\"use client\";\n\nimport { useId, useState } from \"react\";\nimport { Input } from \"@/components/ui/input\";\nimport { Label } from \"@/components/ui/label\";\nimport { CreditCardIcon } from \"lucide-react\";\nimport images, { CardImages } from \"react-payment-inputs/images\";\nimport { usePaymentInputs } from \"react-payment-inputs\";\nimport { cn } from \"@/lib/utils\";\n\ninterface CardInputProps {\n  label?: string;\n  showPreview?: boolean;\n  onChange?: (data: { number: string; expiry: string; cvc: string }) => void;\n}\n\nexport default function ModernCardInput({\n  label = \"Card Information\",\n  showPreview = true,\n  onChange,\n}: CardInputProps) {\n  const id = useId();\n  const [focusedField, setFocusedField] = useState<string | null>(null);\n\n  const [cardNumber, setCardNumber] = useState(\"\");\n  const [expiry, setExpiry] = useState(\"\");\n  const [cvc, setCVC] = useState(\"\");\n\n  const {\n    meta,\n    getCardNumberProps,\n    getExpiryDateProps,\n    getCVCProps,\n    getCardImageProps,\n  } = usePaymentInputs();\n\n  const handleChange = () => {\n    onChange?.({ number: cardNumber, expiry, cvc });\n  };\n\n  return (\n    <div className=\"w-full max-w-md space-y-3\">\n      <Label className=\"text-sm font-medium\">{label}</Label>\n\n      <div\n        className={cn(\n          \"relative rounded-xl border bg-background p-4 shadow-md flex flex-col gap-3 transition-all\",\n          focusedField ? \"ring-2 ring-primary/50\" : \"ring-0\",\n        )}\n      >\n        {/* Card Number */}\n        <div className=\"relative\">\n          <Input\n            {...getCardNumberProps({\n              onChange: (e: React.ChangeEvent<HTMLInputElement>) => {\n                setCardNumber(e.target.value);\n                handleChange();\n              },\n            })}\n            placeholder=\"Card Number\"\n            id={`card-number-${id}`}\n            onFocus={() => setFocusedField(\"number\")}\n            onBlur={() => setFocusedField(null)}\n            className=\"peer rounded-xl pr-12\"\n          />\n          <div className=\"absolute inset-y-0 end-0 flex items-center justify-center pr-3 pointer-events-none text-muted-foreground\">\n            {meta.cardType ? (\n              <svg\n                {...getCardImageProps({\n                  images: images as unknown as CardImages,\n                })}\n                width={24}\n                className=\"overflow-hidden rounded-sm transition-all\"\n              />\n            ) : (\n              <CreditCardIcon size={18} />\n            )}\n          </div>\n        </div>\n\n        {/* Expiry and CVC */}\n        <div className=\"flex gap-2\">\n          <Input\n            {...getExpiryDateProps({\n              onChange: (e: React.ChangeEvent<HTMLInputElement>) => {\n                setExpiry(e.target.value);\n                handleChange();\n              },\n            })}\n            placeholder=\"MM/YY\"\n            id={`expiry-${id}`}\n            onFocus={() => setFocusedField(\"expiry\")}\n            onBlur={() => setFocusedField(null)}\n            className=\"flex-1 rounded-xl\"\n          />\n          <Input\n            {...getCVCProps({\n              onChange: (e: React.ChangeEvent<HTMLInputElement>) => {\n                setCVC(e.target.value);\n                handleChange();\n              },\n            })}\n            placeholder=\"CVC\"\n            id={`cvc-${id}`}\n            onFocus={() => setFocusedField(\"cvc\")}\n            onBlur={() => setFocusedField(null)}\n            className=\"flex-1 rounded-xl\"\n          />\n        </div>\n\n        {/* Optional Preview */}\n        {showPreview && meta.cardType && (\n          <div className=\"absolute top-3 right-3 text-xs text-muted-foreground font-medium\">\n            {meta.cardType.toString().toUpperCase()}\n          </div>\n        )}\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/modern-card-input.tsx"
+    }
+  ]
+}

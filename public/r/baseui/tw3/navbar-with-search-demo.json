@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "navbar-with-search-demo",
+  "type": "registry:example",
+  "title": "Navbar With Search Demo",
+  "description": "Example showing a navigation bar with integrated search.",
+  "registryDependencies": [
+    "https://ruixen.com/r/navbar-with-search"
+  ],
+  "files": [
+    {
+      "path": "registry/example/navbar-with-search-demo.tsx",
+      "content": "import NavbarWithSearch from \"@/registry/ruixenui/navbar-with-search\";\n\nexport default function NavbarWithSearchDemo() {\n  return (\n    <div className=\"w-full\">\n      <NavbarWithSearch />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/navbar-with-search-demo.tsx"
+    }
+  ]
+}

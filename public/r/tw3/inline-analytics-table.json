@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "inline-analytics-table",
+  "type": "registry:ui",
+  "title": "Inline Analytics Table",
+  "description": "A table with inline analytics including progress bars and trend indicators.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "table",
+    "progress"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/inline-analytics-table.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport {\n  Table,\n  TableBody,\n  TableCell,\n  TableFooter,\n  TableHead,\n  TableHeader,\n  TableRow,\n} from \"@/components/ui/table\";\nimport { Progress } from \"@/components/ui/progress\";\nimport { TrendingUp, TrendingDown } from \"lucide-react\";\n\nexport type AnalyticsItem = {\n  id: string;\n  region: string;\n  sales: number;\n  revenue: number;\n  growth: number;\n};\n\nexport type ColumnConfig<T> = {\n  key: keyof T;\n  label: string;\n  showProgress?: boolean;\n  progressValue?: number;\n  align?: string;\n  render?: (item: T) => React.ReactNode;\n};\n\nexport type InlineAnalyticsTableProps<T extends AnalyticsItem> = {\n  data?: T[];\n  columns?: ColumnConfig<T>[];\n  defaultProgress?: number;\n};\n\nconst defaultData: AnalyticsItem[] = [\n  { id: \"1\", region: \"North America\", sales: 1200, revenue: 25000, growth: 12 },\n  { id: \"2\", region: \"Europe\", sales: 900, revenue: 18000, growth: -5 },\n  { id: \"3\", region: \"Asia\", sales: 1500, revenue: 30000, growth: 20 },\n  { id: \"4\", region: \"South America\", sales: 600, revenue: 10000, growth: 8 },\n  { id: \"5\", region: \"Africa\", sales: 400, revenue: 7000, growth: -3 },\n];\n\nconst defaultColumns: ColumnConfig<AnalyticsItem>[] = [\n  { key: \"region\", label: \"Region\", align: \"text-left\" },\n  { key: \"sales\", label: \"Sales\", showProgress: true, progressValue: 70 },\n  { key: \"revenue\", label: \"Revenue\", showProgress: true, progressValue: 60 },\n  { key: \"growth\", label: \"Growth\", showProgress: true, progressValue: 50 },\n  {\n    key: \"growth\",\n    label: \"Trend\",\n    align: \"text-right\",\n    render: (item) =>\n      item.growth >= 0 ? (\n        <TrendingUp className=\"h-4 w-4 text-green-500\" />\n      ) : (\n        <TrendingDown className=\"h-4 w-4 text-red-500\" />\n      ),\n  },\n];\n\nexport default function InlineAnalyticsTable<T extends AnalyticsItem>({\n  data = defaultData as T[],\n  columns = defaultColumns as ColumnConfig<T>[],\n  defaultProgress = 50,\n}: InlineAnalyticsTableProps<T>) {\n  return (\n    <div className=\"bg-background p-4 overflow-x-auto\">\n      <Table className=\"min-w-[600px]\">\n        <TableHeader>\n          <TableRow>\n            {columns.map((col) => (\n              <TableHead key={String(col.key)} className={col.align ?? \"\"}>\n                {col.showProgress ? (\n                  <div className=\"flex flex-col\">\n                    <span>{col.label}</span>\n                    <Progress\n                      value={col.progressValue ?? defaultProgress}\n                      className=\"h-1 mt-1\"\n                    />\n                  </div>\n                ) : (\n                  col.label\n                )}\n              </TableHead>\n            ))}\n          </TableRow>\n        </TableHeader>\n        <TableBody>\n          {data.map((item) => (\n            <TableRow key={item.id}>\n              {columns.map((col) => (\n                <TableCell key={String(col.key)} className={col.align ?? \"\"}>\n                  {col.render ? col.render(item) : (item as any)[col.key]}\n                </TableCell>\n              ))}\n            </TableRow>\n          ))}\n        </TableBody>\n        <TableFooter>\n          <TableRow>\n            <TableCell colSpan={2}>Total</TableCell>\n            <TableCell>\n              $\n              {data.reduce((acc, cur) => acc + cur.revenue, 0).toLocaleString()}\n            </TableCell>\n            <TableCell colSpan={columns.length - 3}></TableCell>\n          </TableRow>\n        </TableFooter>\n      </Table>\n      <p className=\"mt-4 text-center text-sm text-muted-foreground\">\n        Configurable Inline Analytics Table\n      </p>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/inline-analytics-table.tsx"
+    }
+  ]
+}

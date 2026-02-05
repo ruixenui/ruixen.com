@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tour-popover",
+  "type": "registry:ui",
+  "title": "Tour Popover",
+  "description": "A guided tour popover with steps, progress tracking, and navigation controls.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "button",
+    "popover",
+    "progress",
+    "separator"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/tour-popover.tsx",
+      "content": "\"use client\";\n\nimport { useState } from \"react\";\nimport { Button } from \"@/components/ui/button\";\nimport {\n  Popover,\n  PopoverTrigger,\n  PopoverContent,\n} from \"@/components/ui/popover\";\nimport { Progress } from \"@/components/ui/progress\";\nimport { Separator } from \"@/components/ui/separator\";\nimport { LucideIcon } from \"lucide-react\";\n\nexport interface TourStep {\n  icon: LucideIcon;\n  title: string;\n  description: string;\n}\n\ninterface TourPopoverProps {\n  steps: TourStep[];\n  triggerLabel?: string;\n  popoverWidth?: string;\n  side?: \"top\" | \"bottom\" | \"left\" | \"right\";\n  align?: \"start\" | \"center\" | \"end\";\n}\n\nexport function TourPopover({\n  steps,\n  triggerLabel = \"Start tour\",\n  popoverWidth = \"w-80\",\n  side = \"bottom\",\n  align = \"center\",\n}: TourPopoverProps) {\n  const [step, setStep] = useState(0);\n\n  if (!steps || steps.length === 0) return null;\n\n  const Icon = steps[step].icon;\n  const progress = ((step + 1) / steps.length) * 100;\n\n  const next = () => setStep((s) => Math.min(s + 1, steps.length - 1));\n  const prev = () => setStep((s) => Math.max(s - 1, 0));\n  const restart = () => setStep(0);\n\n  return (\n    <Popover>\n      <PopoverTrigger asChild>\n        <Button variant=\"outline\">{triggerLabel}</Button>\n      </PopoverTrigger>\n      <PopoverContent\n        className={`${popoverWidth} space-y-4 p-4`}\n        side={side}\n        align={align}\n      >\n        {/* Step header */}\n        <div className=\"flex items-center gap-3\">\n          <div className=\"flex size-9 items-center justify-center rounded-md bg-background text-primary\">\n            <Icon size={20} />\n          </div>\n          <div>\n            <p className=\"text-sm font-medium\">{steps[step].title}</p>\n            <p className=\"text-xs text-muted-foreground\">\n              Step {step + 1} of {steps.length}\n            </p>\n          </div>\n        </div>\n\n        <Separator />\n\n        {/* Description */}\n        <p className=\"text-sm leading-relaxed\">{steps[step].description}</p>\n\n        {/* Progress bar */}\n        <Progress value={progress} className=\"h-2\" />\n\n        {/* Controls */}\n        <div className=\"flex items-center justify-between pt-1\">\n          {step > 0 ? (\n            <Button variant=\"ghost\" size=\"sm\" onClick={prev}>\n              Back\n            </Button>\n          ) : (\n            <div />\n          )}\n\n          {step === steps.length - 1 ? (\n            <Button size=\"sm\" onClick={restart}>\n              Restart\n            </Button>\n          ) : (\n            <Button size=\"sm\" onClick={next}>\n              Next\n            </Button>\n          )}\n        </div>\n      </PopoverContent>\n    </Popover>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/tour-popover.tsx"
+    }
+  ]
+}

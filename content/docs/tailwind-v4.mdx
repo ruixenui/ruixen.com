@@ -1,19 +1,141 @@
 ---
-title: Tailwind v4
-description: We've released a new version of Ruixen UI that uses Tailwind CSS v4.
+title: Tailwind CSS
+description: Ruixen UI supports both Tailwind CSS v4 and v3. Choose your version and every install command adapts automatically.
 date: 2025-04-08
 ---
 
-Ruixen UI now supports Tailwind v4 and React 19 by default.
+Ruixen UI ships components written for **Tailwind CSS v4** by default, with full **Tailwind CSS v3** support built into the registry.
 
-## How to use Tailwind v4
+You don't need a separate site or branch — every component is available in both versions from the same docs.
 
-You can start by going to any component and following the instructions. Try [marquee](/components/marquee) for example.
+## Choosing your version
 
-## How to use Tailwind v3
+Use the **Tailwind** toggle in the sidebar or on any CLI install command to switch between v4 and v3. You can also choose your [UI primitive library](/docs/ui-library) from the same panel.
 
-If you're using tailwind v3, you can head over to [v3.ruixen.com](https://v3.ruixen.com) and follow the instructions there.
+Your selection is saved and persists across pages.
 
-## How to upgrade your project to Tailwind v4
+- **v4 (default)** — Components use Tailwind v4 conventions, including `@theme` CSS variables and v4-only utilities like `inset-shadow-*`.
+- **v3** — The same components, automatically transformed to use `hsl(var(--token))` syntax and v3-compatible utilities.
 
-If you would like to upgrade your project to Tailwind v4, you can follow the steps here [https://ui.shadcn.com/docs/tailwind-v4](https://ui.shadcn.com/docs/tailwind-v4).
+When you toggle to v3, every install command on the site updates:
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/tw3/marquee"
+```
+
+Compare with v4:
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/marquee"
+```
+
+The CLI delivers the correct code for your chosen version — no manual changes needed.
+
+## What changes between versions
+
+Most components (95%+) produce **identical code** for both v3 and v4. The differences only appear in components that use v4-specific features:
+
+| Pattern             | Tailwind v4                  | Tailwind v3                         |
+| ------------------- | ---------------------------- | ----------------------------------- |
+| Theme CSS variables | `var(--color-border)`        | `hsl(var(--border))`                |
+| Inset shadow        | `inset-shadow-2xs`           | Removed (single `box-shadow` in v3) |
+| Dark inset shadow   | `dark:inset-shadow-white/20` | Removed                             |
+
+Utility classes like `bg-card`, `text-foreground`, `border-border`, and `ring-primary` work identically in both versions — these are mapped through your project's Tailwind theme config.
+
+## Project setup
+
+<Tabs defaultValue="v4">
+
+<TabsList>
+  <TabsTrigger value="v4">Tailwind v4</TabsTrigger>
+  <TabsTrigger value="v3">Tailwind v3</TabsTrigger>
+</TabsList>
+
+<TabsContent value="v4">
+
+Tailwind v4 uses CSS-first configuration. Your `app/globals.css` should include:
+
+```css
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-border: hsl(var(--border));
+  /* ...other tokens */
+}
+```
+
+No `tailwind.config.js` is needed. Follow the [shadcn/ui Tailwind v4 guide](https://ui.shadcn.com/docs/tailwind-v4) for full setup.
+
+</TabsContent>
+
+<TabsContent value="v3">
+
+Tailwind v3 uses a JavaScript config file. Your `tailwind.config.js` should map CSS variables to theme colors:
+
+```js
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        card: "hsl(var(--card))",
+        border: "hsl(var(--border))",
+        // ...other tokens
+      },
+    },
+  },
+};
+```
+
+And your `globals.css` defines the raw HSL values:
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --border: 214.3 31.8% 91.4%;
+    /* ...other tokens */
+  }
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    /* ...dark mode tokens */
+  }
+}
+```
+
+Follow the [shadcn/ui v3 setup guide](https://ui.shadcn.com/docs/installation) for the complete token list.
+
+</TabsContent>
+
+</Tabs>
+
+## Upgrading from v3 to v4
+
+If you want to migrate your project from Tailwind v3 to v4:
+
+1. Follow the official [Tailwind CSS v4 upgrade guide](https://tailwindcss.com/docs/upgrade-guide).
+2. Follow the [shadcn/ui Tailwind v4 migration steps](https://ui.shadcn.com/docs/tailwind-v4).
+3. Switch the Ruixen UI toggle to **v4** and reinstall any components to get the v4-optimized code.
+
+## How it works under the hood
+
+The v3 registry is generated automatically at build time:
+
+1. Components are authored using Tailwind v4 conventions.
+2. During `pnpm build:registry`, a transform converts v4-specific patterns to v3 equivalents.
+3. The transformed files are served at `/r/tw3/<component>.json`.
+4. The CLI (`npx shadcn@latest add`) fetches the right version based on the URL.
+
+The transform only touches known patterns — custom CSS variables, animations, and component logic are never modified.

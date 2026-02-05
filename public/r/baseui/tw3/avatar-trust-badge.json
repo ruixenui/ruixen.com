@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar-trust-badge",
+  "type": "registry:ui",
+  "title": "Avatar Trust Badge",
+  "description": "A trust badge component with avatar group and customizable count text.",
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/ruixenui/avatar-trust-badge.tsx",
+      "content": "\"use client\";\n\nimport { Avatar, AvatarFallback, AvatarImage } from \"@/components/ui/avatar\";\nimport { cn } from \"@/lib/utils\";\n\ninterface AvatarData {\n  src?: string;\n  alt?: string;\n  fallback: string;\n}\n\ninterface AvatarTrustBadgeProps {\n  avatars: AvatarData[];\n  count: string;\n  label?: string;\n  className?: string;\n}\n\nexport default function AvatarTrustBadge({\n  avatars,\n  count,\n  label = \"Trusted by\",\n  className,\n}: AvatarTrustBadgeProps) {\n  const displayAvatars = avatars.slice(0, 5);\n\n  return (\n    <div\n      className={cn(\n        \"inline-flex items-center gap-3 rounded-full border bg-background/80 px-4 py-2 backdrop-blur-sm\",\n        className,\n      )}\n    >\n      <div className=\"flex -space-x-2\">\n        {displayAvatars.map((avatar, index) => (\n          <Avatar key={index} className=\"size-8 ring-2 ring-background\">\n            <AvatarImage src={avatar.src} alt={avatar.alt || avatar.fallback} />\n            <AvatarFallback className=\"text-xs font-medium\">\n              {avatar.fallback}\n            </AvatarFallback>\n          </Avatar>\n        ))}\n      </div>\n      <p className=\"text-sm text-muted-foreground\">\n        {label} <span className=\"font-semibold text-foreground\">{count}</span>\n      </p>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/avatar-trust-badge.tsx"
+    },
+    {
+      "path": "components/ui/avatar.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nfunction Avatar({ className, ...props }: React.ComponentProps<\"span\">) {\n  return (\n    <span\n      data-slot=\"avatar\"\n      className={cn(\n        \"relative flex size-8 shrink-0 overflow-hidden rounded-full\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nfunction AvatarImage({\n  className,\n  src,\n  alt = \"\",\n  onLoadingStatusChange,\n  ...props\n}: React.ComponentProps<\"img\"> & {\n  onLoadingStatusChange?: (status: \"loading\" | \"loaded\" | \"error\") => void;\n}) {\n  const [status, setStatus] = React.useState<\"loading\" | \"loaded\" | \"error\">(\n    \"loading\",\n  );\n\n  React.useEffect(() => {\n    if (!src) {\n      setStatus(\"error\");\n      return;\n    }\n    setStatus(\"loading\");\n    const img = new Image();\n    img.src = src;\n    img.onload = () => {\n      setStatus(\"loaded\");\n      onLoadingStatusChange?.(\"loaded\");\n    };\n    img.onerror = () => {\n      setStatus(\"error\");\n      onLoadingStatusChange?.(\"error\");\n    };\n  }, [src, onLoadingStatusChange]);\n\n  if (status !== \"loaded\") return null;\n\n  return (\n    <img\n      data-slot=\"avatar-image\"\n      className={cn(\"aspect-square size-full\", className)}\n      src={src}\n      alt={alt}\n      {...props}\n    />\n  );\n}\n\nfunction AvatarFallback({\n  className,\n  delayMs,\n  children,\n  ...props\n}: React.ComponentProps<\"span\"> & { delayMs?: number }) {\n  const [show, setShow] = React.useState(!delayMs);\n\n  React.useEffect(() => {\n    if (delayMs) {\n      const timer = setTimeout(() => setShow(true), delayMs);\n      return () => clearTimeout(timer);\n    }\n  }, [delayMs]);\n\n  if (!show) return null;\n\n  return (\n    <span\n      data-slot=\"avatar-fallback\"\n      className={cn(\n        \"bg-muted flex size-full items-center justify-center rounded-full\",\n        className,\n      )}\n      {...props}\n    >\n      {children}\n    </span>\n  );\n}\n\nexport { Avatar, AvatarImage, AvatarFallback };\n",
+      "type": "registry:ui",
+      "target": "components/ui/avatar.tsx"
+    }
+  ]
+}

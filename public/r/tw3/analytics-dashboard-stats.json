@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "analytics-dashboard-stats",
+  "type": "registry:ui",
+  "title": "Analytics Dashboard Stats",
+  "description": "Analytics dashboard with statistics and area chart visualization",
+  "dependencies": [
+    "recharts"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/analytics-dashboard-stats.tsx",
+      "content": "\"use client\";\n\nimport { AreaChart, Area, ResponsiveContainer, Tooltip } from \"recharts\";\n\nexport default function AnalyticsDashboardStats() {\n  const data = [\n    { name: \"Jan\", value: 20 },\n    { name: \"Feb\", value: 40 },\n    { name: \"Mar\", value: 60 },\n    { name: \"Apr\", value: 80 },\n    { name: \"May\", value: 100 },\n    { name: \"Jun\", value: 130 },\n    { name: \"Jul\", value: 160 },\n  ];\n\n  return (\n    <section className=\"w-full max-w-6xl mx-auto text-left py-32\">\n      <div className=\"px-4\">\n        <h3 className=\"text-lg sm:text-xl lg:text-4xl font-medium text-gray-900 dark:text-white mb-16\">\n          Powering teams with real-time insights.{\" \"}\n          <span className=\"text-gray-500 dark:text-gray-400 text-sm sm:text-base lg:text-4xl\">\n            Our next-gen analytics dashboard helps you track performance, manage\n            clients, and make data-driven decisions in seconds.\n          </span>\n        </h3>\n\n        {/* Stats grid */}\n        <div className=\"grid grid-cols-2 sm:grid-cols-4 gap-6 mt-8\">\n          <div>\n            <p className=\"text-3xl font-medium text-gray-900\">50,000+</p>\n            <p className=\"text-gray-500 text-md\">Projects Managed</p>\n          </div>\n          <div>\n            <p className=\"text-3xl font-medium text-gray-900\">99.9%</p>\n            <p className=\"text-gray-500 text-md\">Uptime Guarantee</p>\n          </div>\n          <div>\n            <p className=\"text-3xl font-medium text-gray-900\">1,200+</p>\n            <p className=\"text-gray-500 text-md\">Enterprise Clients</p>\n          </div>\n          <div>\n            <p className=\"text-3xl font-medium text-gray-900\">1.2s</p>\n            <p className=\"text-gray-500 text-md\">Avg. Response Time</p>\n          </div>\n        </div>\n      </div>\n\n      {/* Area Chart */}\n      <div className=\"w-full h-48 mt-8\">\n        <ResponsiveContainer width=\"100%\" height=\"100%\">\n          <AreaChart data={data}>\n            <defs>\n              <linearGradient id=\"colorBlue\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n                <stop offset=\"5%\" stopColor=\"#3b82f6\" stopOpacity={0.4} />\n                <stop offset=\"95%\" stopColor=\"#3b82f6\" stopOpacity={0} />\n              </linearGradient>\n            </defs>\n            <Tooltip />\n            <Area\n              type=\"monotone\"\n              dataKey=\"value\"\n              stroke=\"#3b82f6\"\n              strokeWidth={2}\n              fillOpacity={1}\n              fill=\"url(#colorBlue)\"\n            />\n          </AreaChart>\n        </ResponsiveContainer>\n      </div>\n    </section>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/analytics-dashboard-stats.tsx"
+    }
+  ]
+}

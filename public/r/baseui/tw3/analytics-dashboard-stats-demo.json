@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "analytics-dashboard-stats-demo",
+  "type": "registry:example",
+  "title": "Analytics Dashboard Stats Demo",
+  "description": "Example of analytics dashboard with statistics and charts",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/analytics-dashboard-stats"
+  ],
+  "files": [
+    {
+      "path": "registry/example/analytics-dashboard-stats-demo.tsx",
+      "content": "\"use client\";\n\nimport AnalyticsDashboardStats from \"../ruixenui/analytics-dashboard-stats\";\n\nexport default function DemoAnalyticsDashboard() {\n  return (\n    <main className=\"bg-background flex flex-col items-center justify-center w-full\">\n      <AnalyticsDashboardStats />\n    </main>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/analytics-dashboard-stats-demo.tsx"
+    }
+  ]
+}

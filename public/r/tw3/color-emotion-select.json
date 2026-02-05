@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "color-emotion-select",
+  "type": "registry:ui",
+  "title": "Color Emotion Select",
+  "description": "A select component that displays options with color indicators and optional emojis for emotional context.",
+  "registryDependencies": [
+    "select"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/color-emotion-select.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport {\n  Select,\n  SelectContent,\n  SelectGroup,\n  SelectItem,\n  SelectLabel,\n  SelectTrigger,\n  SelectValue,\n} from \"@/components/ui/select\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface ColorEmotionOption {\n  value: string;\n  label: string;\n  color: string; // Tailwind color or hex\n  emoji?: string; // Optional emoji for visual cue\n}\n\ninterface ColorEmotionSelectProps {\n  options: ColorEmotionOption[];\n  label?: string; // Optional label for the whole group\n  placeholder?: string; // Placeholder text\n  onChange?: (value: string) => void;\n  defaultValue?: string;\n}\n\nexport const ColorEmotionSelect: React.FC<ColorEmotionSelectProps> = ({\n  options,\n  label,\n  placeholder = \"Select...\",\n  onChange,\n  defaultValue,\n}) => {\n  return (\n    <Select defaultValue={defaultValue} onValueChange={onChange}>\n      <SelectTrigger className=\"w-[250px]\">\n        <SelectValue placeholder={placeholder} />\n      </SelectTrigger>\n      <SelectContent>\n        <SelectGroup>\n          {label && <SelectLabel>{label}</SelectLabel>}\n          {options.map((option) => (\n            <SelectItem\n              key={option.value}\n              value={option.value}\n              className={cn(\"flex items-center gap-2\")}\n            >\n              <span\n                className=\"w-3 h-3 rounded-full\"\n                style={{ backgroundColor: option.color }}\n              />\n              {option.emoji && <span>{option.emoji}</span>}\n              {option.label}\n            </SelectItem>\n          ))}\n        </SelectGroup>\n      </SelectContent>\n    </Select>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/color-emotion-select.tsx"
+    }
+  ]
+}

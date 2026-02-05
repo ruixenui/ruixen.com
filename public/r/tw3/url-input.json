@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "url-input",
+  "type": "registry:ui",
+  "title": "URL Input",
+  "description": "A smart URL input field that automatically displays website favicons.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "input",
+    "label"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/url-input.tsx",
+      "content": "\"use client\";\n\nimport { useEffect, useId, useState } from \"react\";\nimport { Input } from \"@/components/ui/input\";\nimport { Label } from \"@/components/ui/label\";\nimport { Globe } from \"lucide-react\";\n\nexport default function UrlInput() {\n  const id = useId();\n  const [url, setUrl] = useState(\"\");\n  const [favicon, setFavicon] = useState<string | null>(null);\n\n  useEffect(() => {\n    if (!url) {\n      setFavicon(null);\n      return;\n    }\n\n    try {\n      const parsedUrl = new URL(\n        url.startsWith(\"http\") ? url : `https://${url}`,\n      );\n      const faviconUrl = `${parsedUrl.origin}/favicon.ico`;\n      setFavicon(faviconUrl);\n    } catch {\n      setFavicon(null);\n    }\n  }, [url]);\n\n  return (\n    <div className=\"space-y-2 max-w-md mx-auto\">\n      <Label htmlFor={id}>Website URL</Label>\n      <div className=\"relative\">\n        <Input\n          id={id}\n          className=\"peer ps-12 rounded-lg\"\n          placeholder=\"example.com\"\n          type=\"text\"\n          value={url}\n          onChange={(e) => setUrl(e.target.value)}\n        />\n        <span className=\"absolute inset-y-0 start-0 flex items-center justify-center ps-3 text-sm peer-disabled:opacity-50\">\n          {favicon ? (\n            <img\n              src={favicon}\n              alt=\"favicon\"\n              className=\"h-5 w-5 rounded-sm\"\n              onError={() => setFavicon(null)} // fallback if favicon missing\n            />\n          ) : (\n            <Globe className=\"h-5 w-5 text-muted-foreground\" />\n          )}\n        </span>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/url-input.tsx"
+    }
+  ]
+}

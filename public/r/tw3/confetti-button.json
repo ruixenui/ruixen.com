@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "confetti-button",
+  "type": "registry:ui",
+  "title": "Confetti Button",
+  "description": "Celebration button that triggers animated confetti particles on click.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/confetti-button.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { Button } from \"@/components/ui/button\";\nimport { motion, AnimatePresence } from \"framer-motion\";\n\ninterface ConfettiButtonProps {\n  label?: string;\n  onClick?: () => void;\n  className?: string;\n}\n\ninterface ConfettiParticle {\n  id: number;\n  rotate: number;\n  color: string;\n}\n\nconst colors = [\"#facc15\", \"#22c55e\", \"#3b82f6\", \"#f472b6\", \"#f97316\"];\n\nexport default function ConfettiButton({\n  label = \"Submit\",\n  onClick,\n  className,\n}: ConfettiButtonProps) {\n  const [particles, setParticles] = React.useState<ConfettiParticle[]>([]);\n  const buttonRef = React.useRef<HTMLButtonElement | null>(null);\n  const [buttonWidth, setButtonWidth] = React.useState(0);\n\n  React.useEffect(() => {\n    if (buttonRef.current) setButtonWidth(buttonRef.current.offsetWidth);\n  }, [buttonRef.current]);\n\n  const fireConfetti = () => {\n    const newParticles: ConfettiParticle[] = Array.from({ length: 20 }).map(\n      (_, i) => ({\n        id: Date.now() + i,\n        rotate: Math.random() * 360,\n        color: colors[Math.floor(Math.random() * colors.length)],\n      }),\n    );\n    setParticles(newParticles);\n    onClick?.();\n    setTimeout(() => setParticles([]), 800);\n  };\n\n  return (\n    <div className=\"relative inline-block\">\n      <Button\n        ref={buttonRef}\n        className={`relative overflow-hidden ${className}`}\n        onClick={fireConfetti}\n      >\n        {label}\n      </Button>\n\n      <AnimatePresence>\n        {particles.map((p) => (\n          <motion.div\n            key={p.id}\n            className=\"absolute w-2 h-2 rounded-full bottom-0\"\n            style={{\n              backgroundColor: p.color,\n              left: buttonWidth / 2,\n              transform: \"translateX(-50%)\",\n            }}\n            initial={{ x: 0, y: 0, scale: 1, opacity: 1, rotate: p.rotate }}\n            animate={{\n              x: (Math.random() - 0.5) * 100, // horizontal spread\n              y: -Math.random() * 100, // vertical spread\n              scale: 0,\n              opacity: 0,\n              rotate: p.rotate + Math.random() * 360,\n            }}\n            transition={{ duration: 0.8, ease: \"easeOut\" }}\n          />\n        ))}\n      </AnimatePresence>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/confetti-button.tsx"
+    }
+  ]
+}

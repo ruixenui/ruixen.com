@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "color-emotion-select-demo",
+  "type": "registry:example",
+  "title": "Color Emotion Select Demo",
+  "description": "Example showing a select component with color indicators and optional emojis for emotional context.",
+  "registryDependencies": [
+    "https://ruixen.com/r/color-emotion-select"
+  ],
+  "files": [
+    {
+      "path": "registry/example/color-emotion-select-demo.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport {\n  ColorEmotionSelect,\n  ColorEmotionOption,\n} from \"@/registry/ruixenui/color-emotion-select\";\n\nconst moodOptions: ColorEmotionOption[] = [\n  { value: \"happy\", label: \"Happy\", color: \"#FFD700\", emoji: \"😄\" },\n  { value: \"sad\", label: \"Sad\", color: \"#1E3A8A\", emoji: \"😢\" },\n  { value: \"angry\", label: \"Angry\", color: \"#DC2626\", emoji: \"😡\" },\n  { value: \"neutral\", label: \"Neutral\", color: \"#9CA3AF\", emoji: \"😐\" },\n];\n\nexport default function DemoColorEmotionSelect() {\n  const [selectedMood, setSelectedMood] = React.useState<string | undefined>();\n\n  return (\n    <div className=\"p-4 flex flex-col gap-4 min-h-screen items-center justify-center\">\n      <ColorEmotionSelect\n        options={moodOptions}\n        label=\"Select Your Mood\"\n        placeholder=\"Choose mood\"\n        onChange={setSelectedMood}\n        defaultValue={selectedMood}\n      />\n      {selectedMood && (\n        <p className=\"text-sm text-gray-700\">\n          You selected: <span className=\"font-semibold\">{selectedMood}</span>\n        </p>\n      )}\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/color-emotion-select-demo.tsx"
+    }
+  ]
+}

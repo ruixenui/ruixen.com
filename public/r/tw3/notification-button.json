@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "notification-button",
+  "type": "registry:ui",
+  "title": "Notification Button",
+  "description": "Button with notification badge count for alerts and messages.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "button",
+    "badge"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/notification-button.tsx",
+      "content": "import React from \"react\";\nimport { Button } from \"@/components/ui/button\";\nimport { Badge } from \"@/components/ui/badge\";\nimport { cn } from \"@/lib/utils\";\nimport { Bell } from \"lucide-react\";\n\n/**\n * NotificationButton\n *\n * Button with a badge count, ideal for notifications, messages, cart items, or tasks.\n * Shows an icon (default: Bell) with optional badge count.\n */\n\ninterface NotificationButtonProps\n  extends React.ButtonHTMLAttributes<HTMLButtonElement> {\n  count?: number;\n  icon?: React.ReactNode;\n  size?: \"sm\" | \"md\" | \"lg\";\n}\n\nconst sizeConfig = {\n  sm: { padding: \"p-2\", icon: \"w-4 h-4\", badge: \"text-xs h-4 min-w-[1rem]\" },\n  md: { padding: \"p-3\", icon: \"w-5 h-5\", badge: \"text-sm h-5 min-w-[1.25rem]\" },\n  lg: { padding: \"p-4\", icon: \"w-6 h-6\", badge: \"text-sm h-5 min-w-[1.25rem]\" },\n};\n\nexport function NotificationButton({\n  count,\n  icon,\n  size = \"md\",\n  className,\n  ...props\n}: NotificationButtonProps) {\n  const s = sizeConfig[size];\n\n  return (\n    <Button\n      className={cn(\n        \"relative inline-flex items-center justify-center rounded-full\",\n        s.padding,\n        className,\n      )}\n      {...props}\n    >\n      {/* Icon */}\n      {icon ?? <Bell className={cn(s.icon)} />}\n\n      {/* Badge */}\n      {count !== undefined && count > 0 && (\n        <span className=\"absolute -top-1 -right-1\">\n          <Badge className={cn(s.badge, \"p-1\")}>{count}</Badge>\n        </span>\n      )}\n    </Button>\n  );\n}\n\nexport default NotificationButton;\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/notification-button.tsx"
+    }
+  ]
+}

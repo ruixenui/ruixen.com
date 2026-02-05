@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stacked-bar-calendar-demo",
+  "type": "registry:example",
+  "title": "Stacked Bar Calendar Demo",
+  "description": "Example showing a calendar with stacked bar visualization and filtering.",
+  "registryDependencies": [
+    "https://ruixen.com/r/stacked-bar-calendar"
+  ],
+  "files": [
+    {
+      "path": "registry/example/stacked-bar-calendar-demo.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport {\n  StackedBarCalendar,\n  CalendarEvent,\n} from \"@/registry/ruixenui/stacked-bar-calendar\";\n\nexport default function StackedBarCalendarDemo() {\n  const [events, setEvents] = React.useState<CalendarEvent[]>([\n    {\n      id: \"1\",\n      title: \"Team Meeting\",\n      date: new Date().toISOString(),\n      category: \"medium\",\n    },\n    {\n      id: \"2\",\n      title: \"Project Deadline\",\n      date: new Date().toISOString(),\n      category: \"high\",\n    },\n    {\n      id: \"3\",\n      title: \"Code Review\",\n      date: new Date().toISOString(),\n      category: \"low\",\n    },\n  ]);\n\n  const handleAddEvent = (event: CalendarEvent) => {\n    setEvents((prev) => [...prev, event]);\n  };\n\n  const handleRemoveEvent = (id: string) => {\n    setEvents((prev) => prev.filter((e) => e.id !== id));\n  };\n\n  return (\n    <div className=\"p-4\">\n      <h1 className=\"text-xl font-semibold mb-4\">Stacked Bar Calendar Demo</h1>\n      <StackedBarCalendar\n        events={events}\n        onAddEvent={handleAddEvent}\n        onRemoveEvent={handleRemoveEvent}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/stacked-bar-calendar-demo.tsx"
+    }
+  ]
+}

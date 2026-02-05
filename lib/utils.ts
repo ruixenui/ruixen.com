@@ -93,17 +93,17 @@ export function constructMetadata({
       title,
       description,
       images: [image],
-      creator: "@dillionverma",
+      creator: "@ruixen_ui",
     },
     icons: "/favicon.ico",
     metadataBase: new URL("https://ruixen.com"),
     authors: [
       {
-        name: "dillionverma",
-        url: "https://twitter.com/dillionverma",
+        name: "Srinath",
+        url: "https://twitter.com/ruixen_ui",
       },
     ],
-    creator: "dillionverma",
+    creator: "Ruixen UI",
     ...props,
   };
 }

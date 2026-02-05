@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar-trust-badge",
+  "type": "registry:ui",
+  "title": "Avatar Trust Badge",
+  "description": "A trust badge component with avatar group and customizable count text.",
+  "registryDependencies": [
+    "avatar"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/avatar-trust-badge.tsx",
+      "content": "\"use client\";\n\nimport { Avatar, AvatarFallback, AvatarImage } from \"@/components/ui/avatar\";\nimport { cn } from \"@/lib/utils\";\n\ninterface AvatarData {\n  src?: string;\n  alt?: string;\n  fallback: string;\n}\n\ninterface AvatarTrustBadgeProps {\n  avatars: AvatarData[];\n  count: string;\n  label?: string;\n  className?: string;\n}\n\nexport default function AvatarTrustBadge({\n  avatars,\n  count,\n  label = \"Trusted by\",\n  className,\n}: AvatarTrustBadgeProps) {\n  const displayAvatars = avatars.slice(0, 5);\n\n  return (\n    <div\n      className={cn(\n        \"inline-flex items-center gap-3 rounded-full border bg-background/80 px-4 py-2 backdrop-blur-sm\",\n        className,\n      )}\n    >\n      <div className=\"flex -space-x-2\">\n        {displayAvatars.map((avatar, index) => (\n          <Avatar key={index} className=\"size-8 ring-2 ring-background\">\n            <AvatarImage src={avatar.src} alt={avatar.alt || avatar.fallback} />\n            <AvatarFallback className=\"text-xs font-medium\">\n              {avatar.fallback}\n            </AvatarFallback>\n          </Avatar>\n        ))}\n      </div>\n      <p className=\"text-sm text-muted-foreground\">\n        {label} <span className=\"font-semibold text-foreground\">{count}</span>\n      </p>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/avatar-trust-badge.tsx"
+    }
+  ]
+}

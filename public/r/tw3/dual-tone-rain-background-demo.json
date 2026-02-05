@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dual-tone-rain-background-demo",
+  "type": "registry:example",
+  "title": "Dual Tone Rain Background Demo",
+  "description": "Example showing a sophisticated rain effect with dual-tone colors.",
+  "registryDependencies": [
+    "https://ruixen.com/r/dual-tone-rain-background"
+  ],
+  "files": [
+    {
+      "path": "registry/example/dual-tone-rain-background-demo.tsx",
+      "content": "\"use client\";\n\nimport DualToneRainBackground from \"@/registry/ruixenui/dual-tone-rain-background\";\n\nexport default function DemoOne() {\n  return <DualToneRainBackground />;\n}\n",
+      "type": "registry:example",
+      "target": "components/dual-tone-rain-background-demo.tsx"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "staggered-faq-section-demo",
+  "type": "registry:example",
+  "title": "StaggeredFAQSection Demo",
+  "description": "Example showing a responsive FAQ component with animated text reveals.",
+  "registryDependencies": [
+    "https://ruixen.com/r/staggered-faq-section"
+  ],
+  "files": [
+    {
+      "path": "registry/example/staggered-faq-section-demo.tsx",
+      "content": "import StaggeredFAQSection from \"../ruixenui/staggered-faq-section\";\n\nexport default function FAQsDemo() {\n  const faqItems = [\n    {\n      id: \"item-1\",\n      question: \"What is Ruixen UI?\",\n      answer:\n        \"Ruixen UI is a modern, fully responsive design system that provides pre-built components, utilities, and layouts to help developers build scalable web applications quickly and efficiently.\",\n    },\n    {\n      id: \"item-2\",\n      question: \"Which platforms does Ruixen UI support?\",\n      answer:\n        \"Ruixen UI is built for web applications and works seamlessly with React, Next.js, and other modern JavaScript frameworks. It also supports dark mode and responsive layouts out of the box.\",\n    },\n    {\n      id: \"item-3\",\n      question: \"Can I customize Ruixen UI components?\",\n      answer:\n        \"Yes! All Ruixen UI components are fully customizable via props, CSS classes, and theme configuration. You can easily adapt colors, spacing, typography, and layout to match your brand.\",\n    },\n    {\n      id: \"item-4\",\n      question: \"Does Ruixen UI provide integration with third-party tools?\",\n      answer:\n        \"Absolutely. Ruixen UI includes ready-to-use integrations and patterns for popular tools and services, making it easier to connect your application with analytics, authentication, and workflow platforms.\",\n    },\n    {\n      id: \"item-5\",\n      question: \"Is there documentation and support available?\",\n      answer:\n        \"Yes, Ruixen UI comes with comprehensive documentation, live examples, and tutorials. Additionally, our community and support channels are available to help you implement components and resolve any issues.\",\n    },\n  ];\n\n  return (\n    <div className=\"relative justify-center\">\n      <StaggeredFAQSection faqItems={faqItems} />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/staggered-faq-section-demo.tsx"
+    }
+  ]
+}

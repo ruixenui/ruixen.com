@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "flexi-filter-table-demo",
+  "type": "registry:example",
+  "title": "Flexi Filter Table Demo",
+  "description": "Example showing a flexible table with multiple filter options.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/flexi-filter-table"
+  ],
+  "files": [
+    {
+      "path": "registry/example/flexi-filter-table-demo.tsx",
+      "content": "\"use client\";\n\nimport FlexiFilterTable from \"@/registry/ruixenui/flexi-filter-table\";\n\nconst customData = [\n  {\n    id: 1,\n    name: \"Evelyn Carter\",\n    email: \"evelyn@company.com\",\n    location: \"Berlin\",\n    status: \"Active\",\n    balance: 900,\n    joined: new Date(2024, 4, 12),\n  },\n  {\n    id: 2,\n    name: \"Mark Lee\",\n    email: \"mark.lee@company.com\",\n    location: \"Tokyo\",\n    status: \"Inactive\",\n    balance: 400,\n    joined: new Date(2023, 7, 3),\n  },\n];\n\nexport default function DemoPage() {\n  return (\n    <div className=\"p-6\">\n      <FlexiFilterTable\n        data={customData}\n        statuses={[\"Active\", \"Inactive\", \"Suspended\"]}\n        locations={[\"Berlin\", \"Tokyo\"]}\n        title=\"Employee Records\"\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/flexi-filter-table-demo.tsx"
+    }
+  ]
+}

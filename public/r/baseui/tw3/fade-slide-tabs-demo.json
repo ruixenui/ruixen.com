@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "fade-slide-tabs-demo",
+  "type": "registry:example",
+  "title": "Fade Slide Tabs Demo",
+  "description": "Example showing tabs with fade and slide animations.",
+  "registryDependencies": [
+    "https://ruixen.com/r/fade-slide-tabs"
+  ],
+  "files": [
+    {
+      "path": "registry/example/fade-slide-tabs-demo.tsx",
+      "content": "// This is a demo file for FadeSlideTabs\n// Users will see this in the preview\n\nimport FadeSlideTabs from \"@/registry/ruixenui/fade-slide-tabs\";\n\nexport default function Demo() {\n  return (\n    <div className=\"flex h-screen w-full items-center justify-center bg-background\">\n      <FadeSlideTabs\n        defaultValue=\"overview\"\n        className=\"max-w-lg\"\n        items={[\n          {\n            value: \"overview\",\n            label: \"Overview\",\n            content: (\n              <div className=\"text-center\">\n                <h2 className=\"text-lg font-semibold\">Overview</h2>\n                <p className=\"text-sm text-muted-foreground\">\n                  This is the overview section of your app.\n                </p>\n              </div>\n            ),\n          },\n          {\n            value: \"activity\",\n            label: \"Activity\",\n            content: (\n              <div className=\"text-center\">\n                <h2 className=\"text-lg font-semibold\">Activity</h2>\n                <p className=\"text-sm text-muted-foreground\">\n                  Track your recent actions and updates here.\n                </p>\n              </div>\n            ),\n          },\n          {\n            value: \"settings\",\n            label: \"Settings\",\n            content: (\n              <div className=\"text-center\">\n                <h2 className=\"text-lg font-semibold\">Settings</h2>\n                <p className=\"text-sm text-muted-foreground\">\n                  Customize your preferences and configurations.\n                </p>\n              </div>\n            ),\n          },\n          {\n            value: \"faq\",\n            label: \"FAQ\",\n            content: (\n              <div className=\"text-center\">\n                <h2 className=\"text-lg font-semibold\">FAQ</h2>\n                <p className=\"text-sm text-muted-foreground\">\n                  Find answers to the most common questions.\n                </p>\n              </div>\n            ),\n          },\n        ]}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/fade-slide-tabs-demo.tsx"
+    }
+  ]
+}

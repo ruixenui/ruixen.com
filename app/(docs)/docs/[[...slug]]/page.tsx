@@ -62,7 +62,10 @@ export async function generateMetadata({
       title: doc.title,
       description: doc.description,
       images: [doc.image],
-      creator: "@dillionverma",
+      creator: "@ruixen_ui",
+    },
+    alternates: {
+      canonical: absoluteUrl(doc.slug),
     },
   };
 }
@@ -82,8 +85,48 @@ export default async function DocPage({ params }: DocPageProps) {
 
   const toc = await getTableOfContents(doc.body.raw);
 
+  // Build BreadcrumbList JSON-LD
+  const slugParts = doc.slugAsParams.split("/");
+  const breadcrumbItems = [
+    { "@type": "ListItem" as const, position: 1, name: "Docs", item: "https://ruixen.com/docs" },
+    ...slugParts.map((part: string, i: number) => ({
+      "@type": "ListItem" as const,
+      position: i + 2,
+      name: i === slugParts.length - 1 ? doc.title : part.charAt(0).toUpperCase() + part.slice(1),
+      item: `https://ruixen.com/docs/${slugParts.slice(0, i + 1).join("/")}`,
+    })),
+  ];
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: breadcrumbItems,
+  };
+
+  const techArticleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    headline: doc.title,
+    description: doc.description,
+    image: doc.image,
+    url: absoluteUrl(doc.slug),
+    publisher: {
+      "@type": "Organization",
+      name: "Ruixen UI",
+      url: "https://ruixen.com",
+    },
+  };
+
   return (
     <main className="relative lg:gap-0 xl:grid xl:grid-cols-[minmax(0,1fr)_220px]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(techArticleJsonLd) }}
+      />
       <div className="mx-auto w-full min-w-0 max-w-4xl py-6 lg:py-8">
         <div className="mb-4 flex items-center space-x-1 text-sm text-muted-foreground">
           <div className="truncate">Docs</div>

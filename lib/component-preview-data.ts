@@ -77,29 +77,13 @@ export const accordionsPreview: ComponentPreviewMap = {
  * Path: /docs/components/[slug]
  */
 export const alertsPreview: ComponentPreviewMap = {
-  "alert-warning": {
-    light: `/preview_images/alerts/alert-warning-light.png`,
-    dark: `/preview_images/alerts/alert-warning-dark.png`,
+  "alert-with-actions": {
+    light: `/preview_images/alerts/alert-with-actions-light.png`,
+    dark: `/preview_images/alerts/alert-with-actions-dark.png`,
   },
-  "alert-warning-outlined": {
-    light: `/preview_images/alerts/alert-warning-outlined-light.png`,
-    dark: `/preview_images/alerts/alert-warning-outlined-dark.png`,
-  },
-  "alert-error": {
-    light: `/preview_images/alerts/alert-error-light.png`,
-    dark: `/preview_images/alerts/alert-error-dark.png`,
-  },
-  "alert-error-outlined": {
-    light: `/preview_images/alerts/alert-error-outlined-light.png`,
-    dark: `/preview_images/alerts/alert-error-outlined-dark.png`,
-  },
-  "alert-success": {
-    light: `/preview_images/alerts/alert-success-light.png`,
-    dark: `/preview_images/alerts/alert-success-dark.png`,
-  },
-  "alert-success-outlined": {
-    light: `/preview_images/alerts/alert-success-outlined-light.png`,
-    dark: `/preview_images/alerts/alert-success-outlined-dark.png`,
+  "animated-alert": {
+    light: `/preview_images/alerts/animated-alert-light.png`,
+    dark: `/preview_images/alerts/animated-alert-dark.png`,
   },
 };
 
@@ -645,9 +629,9 @@ export const audioMediaPreview: ComponentPreviewMap = {
     light: `/preview_images/audio-media/playlist-carousel-light.png`,
     dark: `/preview_images/audio-media/playlist-carousel-dark.png`,
   },
-  "voice-message-bubble": {
-    light: `/preview_images/audio-media/voice-message-bubble-light.png`,
-    dark: `/preview_images/audio-media/voice-message-bubble-dark.png`,
+  "live-waveform": {
+    light: `/preview_images/audio-media/live-waveform-light.png`,
+    dark: `/preview_images/audio-media/live-waveform-dark.png`,
   },
   "visualizer-button": {
     light: `/preview_images/audio-media/visualizer-button-light.png`,
@@ -656,10 +640,6 @@ export const audioMediaPreview: ComponentPreviewMap = {
   "audio-book-player": {
     light: `/preview_images/audio-media/audio-book-player-light.png`,
     dark: `/preview_images/audio-media/audio-book-player-dark.png`,
-  },
-  "waveform-player": {
-    light: `/preview_images/audio-media/waveform-player-light.png`,
-    dark: `/preview_images/audio-media/waveform-player-dark.png`,
   },
 };
 

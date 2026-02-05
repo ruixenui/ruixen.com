@@ -47,7 +47,7 @@ const allTweets = [
   // "https://x.com/_raoufai/status/1850950163051024470",
   // "https://x.com/taishik_/status/1875316979831337058",
   // "https://x.com/rauchg/status/1803626308720796147",
-  // "https://x.com/dillionverma/status/1879324180598165702",
+  // "https://x.com/SriNath693/status/1879324180598165702",
   // "https://x.com/Star_Knight12/status/1861814034363981989",
   // "https://x.com/mohamedzamakhan/status/1859810055924895904",
   // "https://x.com/DutchEngIishman/status/1795888864202043645",

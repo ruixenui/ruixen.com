@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "calendar-scheduler-demo",
+  "type": "registry:example",
+  "title": "Calendar Scheduler Demo",
+  "description": "Example showing a meeting scheduler with calendar and time slot selection.",
+  "registryDependencies": [
+    "https://ruixen.com/r/calendar-scheduler"
+  ],
+  "files": [
+    {
+      "path": "registry/example/calendar-scheduler-demo.tsx",
+      "content": "\"use client\";\n\nimport { CalendarScheduler } from \"@/registry/ruixenui/calendar-scheduler\";\n\nexport default function SchedulerDemoPage() {\n  return (\n    <div className=\"flex min-h-screen flex-col items-center justify-center p-8\">\n      <CalendarScheduler\n        onConfirm={(val) => {\n          console.log(\"Scheduled:\", val);\n        }}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/calendar-scheduler-demo.tsx"
+    }
+  ]
+}

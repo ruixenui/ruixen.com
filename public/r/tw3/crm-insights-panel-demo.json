@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "crm-insights-panel-demo",
+  "type": "registry:example",
+  "title": "CRM Insights Panel Demo",
+  "description": "Example of CRM dashboard with video preview and feature grid",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/crm-insights-panel"
+  ],
+  "files": [
+    {
+      "path": "registry/example/crm-insights-panel-demo.tsx",
+      "content": "\"use client\";\n\nimport CRMInsightsPanel from \"../ruixenui/crm-insights-panel\";\n\nexport default function DemoCRMInsightsPanel() {\n  return (\n    <main className=\"bg-background flex flex-col items-center justify-center w-full p-4\">\n      <CRMInsightsPanel />\n    </main>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/crm-insights-panel-demo.tsx"
+    }
+  ]
+}

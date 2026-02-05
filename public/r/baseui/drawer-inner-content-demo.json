@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "drawer-inner-content-demo",
+  "type": "registry:example",
+  "title": "Drawer Inner Content Demo",
+  "description": "Example showing a drawer component with customizable inner content layout.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/drawer-inner-content"
+  ],
+  "files": [
+    {
+      "path": "registry/example/drawer-inner-content-demo.tsx",
+      "content": "\"use client\";\n\nimport DrawerInnerContent from \"@/registry/ruixenui/drawer-inner-content\";\n\nexport default function DemoDrawerInnerContent() {\n  return (\n    <div className=\"flex flex-col items-center justify-center p-12 gap-6 min-h-screen\">\n      <DrawerInnerContent />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/drawer-inner-content-demo.tsx"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "multi-orbit-semi-circle-demo",
+  "type": "registry:example",
+  "title": "Multi Orbit Semi Circle Demo",
+  "description": "Example of multi-layered semi-circular orbit animation",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/multi-orbit-semi-circle"
+  ],
+  "files": [
+    {
+      "path": "registry/example/multi-orbit-semi-circle-demo.tsx",
+      "content": "\"use client\";\n\nimport MultiOrbitSemiCircle from \"../ruixenui/multi-orbit-semi-circle\";\n\nexport default function DemoMultiOrbitSemiCircle() {\n  return (\n    <main className=\"bg-background flex flex-col items-center justify-center w-full\">\n      <MultiOrbitSemiCircle />\n    </main>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/multi-orbit-semi-circle-demo.tsx"
+    }
+  ]
+}

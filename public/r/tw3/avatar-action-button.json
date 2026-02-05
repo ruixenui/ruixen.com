@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar-action-button",
+  "type": "registry:ui",
+  "title": "Avatar Action Button",
+  "description": "Button with integrated avatar image for user actions.",
+  "dependencies": [],
+  "registryDependencies": [
+    "button",
+    "avatar"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/avatar-action-button.tsx",
+      "content": "import React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { Button } from \"@/components/ui/button\";\nimport { Avatar, AvatarImage, AvatarFallback } from \"@/components/ui/avatar\";\n\ninterface AvatarActionButtonProps\n  extends React.ButtonHTMLAttributes<HTMLButtonElement> {\n  label: string;\n  avatarSrc?: string;\n  size?: \"sm\" | \"md\" | \"lg\";\n}\n\nconst sizeConfig = {\n  sm: {\n    buttonHeight: \"h-8 px-2\",\n    avatar: \"w-6 h-6\",\n    gap: \"gap-2\",\n    font: \"text-sm\",\n  },\n  md: {\n    buttonHeight: \"h-10 px-3\",\n    avatar: \"w-8 h-8\",\n    gap: \"gap-3\",\n    font: \"text-base\",\n  },\n  lg: {\n    buttonHeight: \"h-12 px-4\",\n    avatar: \"w-10 h-10\",\n    gap: \"gap-3\",\n    font: \"text-lg\",\n  },\n};\n\nconst AVATAR_URL =\n  \"https://www.ruixen.com/_next/image?url=%2Fruixen-ui-nw-light.png&w=96&q=75\";\n\nconst AvatarActionButton: React.FC<AvatarActionButtonProps> = ({\n  label,\n  avatarSrc = AVATAR_URL,\n  size = \"md\",\n  className,\n  ...props\n}) => {\n  const config = sizeConfig[size];\n\n  return (\n    <Button\n      className={cn(\n        \"inline-flex items-center rounded-full bg-primary text-primary-foreground font-medium\",\n        config.buttonHeight,\n        config.gap,\n        className,\n      )}\n      {...props}\n    >\n      <Avatar className={cn(\"rounded-full\", config.avatar)}>\n        <AvatarImage src={avatarSrc} />\n      </Avatar>\n      <span className={config.font}>{label}</span>\n    </Button>\n  );\n};\n\nexport default AvatarActionButton;\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/avatar-action-button.tsx"
+    }
+  ]
+}

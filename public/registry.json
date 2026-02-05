@@ -259,7 +259,6 @@
       "description": "A scroll-triggered FAQ accordion component with smooth GSAP animations and auto-expanding items.",
       "dependencies": [
         "framer-motion",
-        "@radix-ui/react-accordion",
         "lucide-react",
         "gsap",
         "@gsap/react"
@@ -277,8 +276,8 @@
       "type": "registry:ui",
       "title": "FAQ Auto Accordion",
       "description": "A scroll-triggered FAQ accordion component with smooth GSAP animations and auto-expanding items.",
-      "dependencies": [
-        "@radix-ui/react-accordion"
+      "registryDependencies": [
+        "accordion"
       ],
       "files": [
         {
@@ -294,8 +293,10 @@
       "title": "Compact Accordion",
       "description": "A clean and minimal accordion component with icons and smooth animations for organizing content in collapsible sections.",
       "dependencies": [
-        "@radix-ui/react-accordion",
         "lucide-react"
+      ],
+      "registryDependencies": [
+        "accordion"
       ],
       "files": [
         {
@@ -362,7 +363,6 @@
       "title": "Arrow Accordion",
       "description": "An accordion with a right-pointing arrow indicator that rotates on expand.",
       "dependencies": [
-        "@radix-ui/react-accordion",
         "lucide-react"
       ],
       "files": [
@@ -379,7 +379,6 @@
       "title": "Plus/Minus Accordion",
       "description": "An accordion with plus/minus toggle icons for expand and collapse states.",
       "dependencies": [
-        "@radix-ui/react-accordion",
         "lucide-react"
       ],
       "files": [
@@ -428,9 +427,7 @@
       "type": "registry:ui",
       "title": "Minimal Accordion",
       "description": "A minimal accordion with show/hide text toggle instead of icons.",
-      "dependencies": [
-        "@radix-ui/react-accordion"
-      ],
+      "dependencies": [],
       "files": [
         {
           "path": "registry/ruixenui/accordion-minimal.tsx",
@@ -457,98 +454,35 @@
       ]
     },
     {
-      "name": "alert-warning",
+      "name": "alert-with-actions",
       "type": "registry:ui",
-      "title": "Warning Alert",
-      "description": "A warning alert component with amber background and triangle alert icon.",
+      "title": "Alert With Actions",
+      "description": "A professional alert component with icon, variant support, and action buttons.",
       "dependencies": [
         "lucide-react"
       ],
       "files": [
         {
-          "path": "registry/ruixenui/alert-warning.tsx",
+          "path": "registry/ruixenui/alert-with-actions.tsx",
           "type": "registry:ui",
-          "target": "components/ruixen/alert-warning.tsx"
+          "target": "components/ruixen/alert-with-actions.tsx"
         }
       ]
     },
     {
-      "name": "alert-warning-outlined",
+      "name": "animated-alert",
       "type": "registry:ui",
-      "title": "Warning Alert Outlined",
-      "description": "A warning alert component with outlined border style and triangle alert icon.",
+      "title": "Animated Alert",
+      "description": "An animated alert with framer-motion enter/exit transitions and auto-dismiss.",
       "dependencies": [
-        "lucide-react"
+        "lucide-react",
+        "framer-motion"
       ],
       "files": [
         {
-          "path": "registry/ruixenui/alert-warning-outlined.tsx",
+          "path": "registry/ruixenui/animated-alert.tsx",
           "type": "registry:ui",
-          "target": "components/ruixen/alert-warning-outlined.tsx"
-        }
-      ]
-    },
-    {
-      "name": "alert-error",
-      "type": "registry:ui",
-      "title": "Error Alert",
-      "description": "An error alert component with red background and circle alert icon.",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/alert-error.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/alert-error.tsx"
-        }
-      ]
-    },
-    {
-      "name": "alert-error-outlined",
-      "type": "registry:ui",
-      "title": "Error Alert Outlined",
-      "description": "An error alert component with outlined border style and circle alert icon.",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/alert-error-outlined.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/alert-error-outlined.tsx"
-        }
-      ]
-    },
-    {
-      "name": "alert-success",
-      "type": "registry:ui",
-      "title": "Success Alert",
-      "description": "A success alert component with emerald background and circle check icon.",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/alert-success.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/alert-success.tsx"
-        }
-      ]
-    },
-    {
-      "name": "alert-success-outlined",
-      "type": "registry:ui",
-      "title": "Success Alert Outlined",
-      "description": "A success alert component with outlined border style and circle check icon.",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/alert-success-outlined.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/alert-success-outlined.tsx"
+          "target": "components/ruixen/animated-alert.tsx"
         }
       ]
     },
@@ -722,8 +656,10 @@
       "title": "Aurora Hero Section",
       "description": "A beautiful hero section with aurora-style background effects and animated elements",
       "dependencies": [
-        "@radix-ui/react-slot",
         "lucide-react"
+      ],
+      "registryDependencies": [
+        "button"
       ],
       "files": [
         {
@@ -739,8 +675,11 @@
       "title": "Card Carousel Hero",
       "description": "An interactive hero section featuring a card carousel with smooth animations",
       "dependencies": [
-        "motion",
-        "@radix-ui/react-slot"
+        "motion"
+      ],
+      "registryDependencies": [
+        "button",
+        "card"
       ],
       "files": [
         {
@@ -756,8 +695,10 @@
       "title": "Gradient Hero Showcase",
       "description": "A modern hero section with animated gradient background and smooth transitions",
       "dependencies": [
-        "motion",
-        "@radix-ui/react-slot"
+        "motion"
+      ],
+      "registryDependencies": [
+        "button"
       ],
       "files": [
         {
@@ -773,8 +714,10 @@
       "title": "Spectrum Hero Section",
       "description": "A vibrant hero section with spectrum color effects and dynamic animations",
       "dependencies": [
-        "motion",
-        "@radix-ui/react-slot"
+        "motion"
+      ],
+      "registryDependencies": [
+        "button"
       ],
       "files": [
         {
@@ -790,8 +733,11 @@
       "title": "Video Hero Showcase",
       "description": "A dynamic hero section featuring video backgrounds and interactive elements",
       "dependencies": [
-        "motion",
-        "@radix-ui/react-slot"
+        "motion"
+      ],
+      "registryDependencies": [
+        "button",
+        "badge"
       ],
       "files": [
         {
@@ -808,8 +754,10 @@
       "description": "A visionary hero section with elegant design and smooth animations",
       "dependencies": [
         "motion",
-        "@radix-ui/react-slot",
         "gsap"
+      ],
+      "registryDependencies": [
+        "button"
       ],
       "files": [
         {
@@ -1630,9 +1578,6 @@
       "type": "registry:ui",
       "title": "Advanced Context Menu",
       "description": "An advanced context menu component with nested items and keyboard navigation.",
-      "dependencies": [
-        "@radix-ui/react-dropdown-menu"
-      ],
       "registryDependencies": [
         "context-menu"
       ],
@@ -1670,7 +1615,6 @@
       "title": "Drawer Inner Content",
       "description": "A drawer component with customizable inner content layout.",
       "dependencies": [
-        "@radix-ui/react-dialog",
         "motion"
       ],
       "registryDependencies": [
@@ -1693,7 +1637,6 @@
       "title": "Centered Feedback Drawer",
       "description": "A centered drawer component designed for feedback collection.",
       "dependencies": [
-        "@radix-ui/react-dialog",
         "motion"
       ],
       "registryDependencies": [
@@ -1717,7 +1660,6 @@
       "title": "Bottom Drawers",
       "description": "A bottom drawer component that slides up from the bottom of the screen.",
       "dependencies": [
-        "@radix-ui/react-dialog",
         "motion"
       ],
       "registryDependencies": [
@@ -3299,16 +3241,9 @@
       "name": "ai-chat-input",
       "type": "registry:ui",
       "title": "AI Chat Input",
-      "description": "Advanced chat input with slash commands, emoji picker, file upload, and AI features.",
+      "description": "Vanishing placeholder input with rotating prompts and pixel-scatter submit animation.",
       "dependencies": [
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "button",
-        "textarea",
-        "badge",
-        "popover",
-        "command"
+        "motion"
       ],
       "files": [
         {
@@ -3469,12 +3404,10 @@
       "name": "playlist-carousel",
       "type": "registry:ui",
       "title": "Playlist Carousel",
-      "description": "Horizontal scrolling playlist with individual audio players and progress indicators.",
+      "description": "A horizontal carousel of playable tracks with album art, progress bars, and embla-carousel navigation.",
       "dependencies": [
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "button"
+        "lucide-react",
+        "embla-carousel-react"
       ],
       "files": [
         {
@@ -3485,21 +3418,18 @@
       ]
     },
     {
-      "name": "voice-message-bubble",
+      "name": "live-waveform",
       "type": "registry:ui",
-      "title": "Voice Message Bubble",
-      "description": "Chat-style voice message bubble with waveform visualization and playback controls.",
+      "title": "Live Waveform",
+      "description": "Canvas-based real-time waveform visualizer with processing animation, microphone input, and stop controls.",
       "dependencies": [
         "lucide-react"
       ],
-      "registryDependencies": [
-        "button"
-      ],
       "files": [
         {
-          "path": "registry/ruixenui/voice-message-bubble.tsx",
+          "path": "registry/ruixenui/live-waveform.tsx",
           "type": "registry:ui",
-          "target": "components/ruixen/voice-message-bubble.tsx"
+          "target": "components/ruixen/live-waveform.tsx"
         }
       ]
     },
@@ -3507,10 +3437,9 @@
       "name": "visualizer-button",
       "type": "registry:ui",
       "title": "Visualizer Button",
-      "description": "Compact audio button with animated equalizer bars visualization.",
-      "dependencies": [],
-      "registryDependencies": [
-        "button"
+      "description": "Compact audio button with canvas-based waveform visualization and play/pause controls.",
+      "dependencies": [
+        "lucide-react"
       ],
       "files": [
         {
@@ -3535,23 +3464,6 @@
           "path": "registry/ruixenui/audio-book-player.tsx",
           "type": "registry:ui",
           "target": "components/ruixen/audio-book-player.tsx"
-        }
-      ]
-    },
-    {
-      "name": "waveform-player",
-      "type": "registry:ui",
-      "title": "Waveform Player",
-      "description": "Audio player with visual waveform representation and seek controls.",
-      "dependencies": [],
-      "registryDependencies": [
-        "button"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/waveform-player.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/waveform-player.tsx"
         }
       ]
     },
@@ -4743,9 +4655,7 @@
       "type": "registry:ui",
       "title": "Radio Group Card",
       "description": "A radio group with card-style items featuring icons, titles, descriptions, and animated selection indicator.",
-      "dependencies": [
-        "@radix-ui/react-radio-group"
-      ],
+      "dependencies": [],
       "files": [
         {
           "path": "registry/ruixenui/radio-group-card.tsx",
@@ -4759,9 +4669,7 @@
       "type": "registry:ui",
       "title": "Emoji Radio Group",
       "description": "A compact radio group with emoji-based options for quick visual feedback selection.",
-      "dependencies": [
-        "@radix-ui/react-radio-group"
-      ],
+      "dependencies": [],
       "files": [
         {
           "path": "registry/ruixenui/emoji-radio-group.tsx",
@@ -4775,9 +4683,7 @@
       "type": "registry:ui",
       "title": "Sentiment Radio Group",
       "description": "A radio group with sentiment cards featuring emojis, titles, and descriptions for feedback collection.",
-      "dependencies": [
-        "@radix-ui/react-radio-group"
-      ],
+      "dependencies": [],
       "files": [
         {
           "path": "registry/ruixenui/sentiment-radio-group.tsx",
@@ -4791,9 +4697,7 @@
       "type": "registry:ui",
       "title": "Rating Scale Group",
       "description": "A horizontal rating scale radio group with numbered items and green indicator dots.",
-      "dependencies": [
-        "@radix-ui/react-radio-group"
-      ],
+      "dependencies": [],
       "files": [
         {
           "path": "registry/ruixenui/rating-scale-group.tsx",
@@ -4808,7 +4712,6 @@
       "title": "Review Filter Bars",
       "description": "A radio group for filtering reviews by star rating with progress bars and counts.",
       "dependencies": [
-        "@radix-ui/react-radio-group",
         "@remixicon/react"
       ],
       "files": [
@@ -5113,10 +5016,8 @@
       "name": "rising-glow",
       "type": "registry:ui",
       "title": "Rising Glow",
-      "description": "Animated rising particle effect with customizable colors and particle count.",
-      "dependencies": [
-        "motion"
-      ],
+      "description": "Text wrapper with animated rising particles and soft glow effect.",
+      "dependencies": [],
       "files": [
         {
           "path": "registry/ruixenui/rising-glow.tsx",
@@ -6515,98 +6416,34 @@
       ]
     },
     {
-      "name": "alert-warning-demo",
+      "name": "alert-with-actions-demo",
       "type": "registry:example",
-      "title": "Warning Alert Demo",
-      "description": "Example showing a warning alert with amber styling.",
+      "title": "Alert With Actions Demo",
+      "description": "Example showing a professional alert with action buttons.",
       "registryDependencies": [
-        "https://ruixen.com/r/alert-warning"
+        "https://ruixen.com/r/alert-with-actions"
       ],
       "files": [
         {
-          "path": "registry/example/alert-warning-demo.tsx",
+          "path": "registry/example/alert-with-actions-demo.tsx",
           "type": "registry:example",
-          "target": "components/alert-warning-demo.tsx"
+          "target": "components/alert-with-actions-demo.tsx"
         }
       ]
     },
     {
-      "name": "alert-warning-outlined-demo",
+      "name": "animated-alert-demo",
       "type": "registry:example",
-      "title": "Warning Alert Outlined Demo",
-      "description": "Example showing a warning alert with outlined border style.",
+      "title": "Animated Alert Demo",
+      "description": "Example showing an animated alert with enter/exit transitions.",
       "registryDependencies": [
-        "https://ruixen.com/r/alert-warning-outlined"
+        "https://ruixen.com/r/animated-alert"
       ],
       "files": [
         {
-          "path": "registry/example/alert-warning-outlined-demo.tsx",
+          "path": "registry/example/animated-alert-demo.tsx",
           "type": "registry:example",
-          "target": "components/alert-warning-outlined-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "alert-error-demo",
-      "type": "registry:example",
-      "title": "Error Alert Demo",
-      "description": "Example showing an error alert with red styling.",
-      "registryDependencies": [
-        "https://ruixen.com/r/alert-error"
-      ],
-      "files": [
-        {
-          "path": "registry/example/alert-error-demo.tsx",
-          "type": "registry:example",
-          "target": "components/alert-error-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "alert-error-outlined-demo",
-      "type": "registry:example",
-      "title": "Error Alert Outlined Demo",
-      "description": "Example showing an error alert with outlined border style.",
-      "registryDependencies": [
-        "https://ruixen.com/r/alert-error-outlined"
-      ],
-      "files": [
-        {
-          "path": "registry/example/alert-error-outlined-demo.tsx",
-          "type": "registry:example",
-          "target": "components/alert-error-outlined-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "alert-success-demo",
-      "type": "registry:example",
-      "title": "Success Alert Demo",
-      "description": "Example showing a success alert with emerald styling.",
-      "registryDependencies": [
-        "https://ruixen.com/r/alert-success"
-      ],
-      "files": [
-        {
-          "path": "registry/example/alert-success-demo.tsx",
-          "type": "registry:example",
-          "target": "components/alert-success-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "alert-success-outlined-demo",
-      "type": "registry:example",
-      "title": "Success Alert Outlined Demo",
-      "description": "Example showing a success alert with outlined border style.",
-      "registryDependencies": [
-        "https://ruixen.com/r/alert-success-outlined"
-      ],
-      "files": [
-        {
-          "path": "registry/example/alert-success-outlined-demo.tsx",
-          "type": "registry:example",
-          "target": "components/alert-success-outlined-demo.tsx"
+          "target": "components/animated-alert-demo.tsx"
         }
       ]
     },
@@ -9107,18 +8944,18 @@
       ]
     },
     {
-      "name": "voice-message-bubble-demo",
+      "name": "live-waveform-demo",
       "type": "registry:example",
-      "title": "Voice Message Bubble Demo",
-      "description": "Example showing chat-style voice message with waveform.",
+      "title": "Live Waveform Demo",
+      "description": "Example showing canvas-based waveform with processing animation and state controls.",
       "registryDependencies": [
-        "https://ruixen.com/r/voice-message-bubble"
+        "https://ruixen.com/r/live-waveform"
       ],
       "files": [
         {
-          "path": "registry/example/voice-message-bubble-demo.tsx",
+          "path": "registry/example/live-waveform-demo.tsx",
           "type": "registry:example",
-          "target": "components/voice-message-bubble-demo.tsx"
+          "target": "components/live-waveform-demo.tsx"
         }
       ]
     },
@@ -9151,22 +8988,6 @@
           "path": "registry/example/audio-book-player-demo.tsx",
           "type": "registry:example",
           "target": "components/audio-book-player-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "waveform-player-demo",
-      "type": "registry:example",
-      "title": "Waveform Player Demo",
-      "description": "Example showing audio player with visual waveform.",
-      "registryDependencies": [
-        "https://ruixen.com/r/waveform-player"
-      ],
-      "files": [
-        {
-          "path": "registry/example/waveform-player-demo.tsx",
-          "type": "registry:example",
-          "target": "components/waveform-player-demo.tsx"
         }
       ]
     },

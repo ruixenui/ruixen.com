@@ -4,6 +4,7 @@ import path from "path";
 import { rimraf } from "rimraf";
 import { registryItemSchema, type Registry } from "shadcn/registry";
 import { z } from "zod";
+import { transformToTw3 } from "./tw-v3-transform";
 
 import { examples } from "../registry/registry-examples";
 import { lib } from "../registry/registry-lib";
@@ -140,6 +141,235 @@ async function buildRegistry() {
   });
 }
 
+async function buildTw3Registry() {
+  const srcDir = path.join(process.cwd(), "public/r");
+  const destDir = path.join(srcDir, "tw3");
+
+  // Clean and recreate tw3 directory.
+  rimraf.sync(destDir);
+  await fs.mkdir(destDir, { recursive: true });
+
+  const files = await fs.readdir(srcDir);
+  const jsonFiles = files.filter((f) => f.endsWith(".json"));
+
+  let transformed = 0;
+
+  for (const file of jsonFiles) {
+    const srcPath = path.join(srcDir, file);
+    const destPath = path.join(destDir, file);
+
+    const raw = await fs.readFile(srcPath, "utf8");
+    const data = JSON.parse(raw);
+
+    // Transform file content strings.
+    let changed = false;
+    if (Array.isArray(data.files)) {
+      for (const entry of data.files) {
+        if (typeof entry.content === "string") {
+          const before = entry.content;
+          entry.content = transformToTw3(before);
+          if (entry.content !== before) changed = true;
+        }
+      }
+    }
+
+    await fs.writeFile(destPath, JSON.stringify(data, null, 2));
+    if (changed) transformed++;
+  }
+
+  console.log(
+    `  → ${jsonFiles.length} files written to public/r/tw3/ (${transformed} transformed)`,
+  );
+}
+
+/**
+ * Shadcn primitives that depend on Radix UI and need Base UI replacements.
+ * Each key is a registryDependency name; the value is the wrapper filename.
+ * Pure-HTML shadcn wrappers (card, input, table, etc.) are NOT listed here
+ * because they don't need replacement — they work as-is from shadcn's registry.
+ */
+const RADIX_DEPENDENT_PRIMITIVES = new Set([
+  "accordion",
+  "aspect-ratio",
+  "avatar",
+  "badge",
+  "breadcrumb",
+  "button",
+  "checkbox",
+  "collapsible",
+  "context-menu",
+  "dialog",
+  "dropdown-menu",
+  "hover-card",
+  "label",
+  "menubar",
+  "popover",
+  "progress",
+  "radio-group",
+  "scroll-area",
+  "select",
+  "separator",
+  "sheet",
+  "slider",
+  "switch",
+  "tabs",
+  "tooltip",
+]);
+
+/**
+ * Primitives whose Base UI wrappers actually import from @base-ui/react.
+ * Pure-HTML replacements (button, badge, etc.) don't need the dep.
+ */
+const NEEDS_BASEUI_DEP = new Set([
+  "accordion",
+  "checkbox",
+  "collapsible",
+  "context-menu",
+  "dialog",
+  "dropdown-menu",
+  "hover-card",
+  "menubar",
+  "popover",
+  "radio-group",
+  "scroll-area",
+  "select",
+  "sheet",
+  "slider",
+  "switch",
+  "tabs",
+  "tooltip",
+]);
+
+/** Cache of Base UI wrapper file contents (read once, reused for all JSONs). */
+const wrapperContentCache = new Map<string, string>();
+
+async function getWrapperContent(name: string): Promise<string> {
+  if (wrapperContentCache.has(name)) {
+    return wrapperContentCache.get(name)!;
+  }
+  const filePath = path.join(
+    process.cwd(),
+    "registry/baseui-wrappers",
+    `${name}.tsx`,
+  );
+  const content = await fs.readFile(filePath, "utf8");
+  wrapperContentCache.set(name, content);
+  return content;
+}
+
+/**
+ * Build Base UI registry variants.
+ *
+ * For each component JSON:
+ * 1. Identify Radix-dependent registryDependencies
+ * 2. Remove them from registryDependencies (so shadcn CLI won't fetch Radix versions)
+ * 3. Inject our Base UI wrapper code as additional files in the JSON
+ * 4. Add @base-ui/react to npm dependencies if needed
+ */
+async function buildBaseUiRegistry() {
+  const rDir = path.join(process.cwd(), "public/r");
+  const baseuiDir = path.join(rDir, "baseui");
+  const baseuiTw3Dir = path.join(baseuiDir, "tw3");
+
+  // Clean and recreate directories.
+  rimraf.sync(baseuiDir);
+  await fs.mkdir(baseuiDir, { recursive: true });
+  await fs.mkdir(baseuiTw3Dir, { recursive: true });
+
+  let injectedCount = 0;
+
+  // Process TW v4 JSONs → /r/baseui/
+  const v4Files = (await fs.readdir(rDir)).filter((f) => f.endsWith(".json"));
+  for (const file of v4Files) {
+    const raw = await fs.readFile(path.join(rDir, file), "utf8");
+    const data = JSON.parse(raw);
+    const modified = await injectBaseUiWrappers(data);
+    if (modified) injectedCount++;
+    await fs.writeFile(path.join(baseuiDir, file), JSON.stringify(data, null, 2));
+  }
+
+  // Process TW v3 JSONs → /r/baseui/tw3/
+  const tw3Dir = path.join(rDir, "tw3");
+  const tw3Files = (await fs.readdir(tw3Dir)).filter((f) =>
+    f.endsWith(".json"),
+  );
+  for (const file of tw3Files) {
+    const raw = await fs.readFile(path.join(tw3Dir, file), "utf8");
+    const data = JSON.parse(raw);
+    await injectBaseUiWrappers(data);
+    await fs.writeFile(path.join(baseuiTw3Dir, file), JSON.stringify(data, null, 2));
+  }
+
+  console.log(
+    `  → ${v4Files.length} files written to public/r/baseui/ (${injectedCount} with Base UI wrappers injected)`,
+  );
+  console.log(
+    `  → ${tw3Files.length} files written to public/r/baseui/tw3/`,
+  );
+}
+
+/**
+ * Mutates a registry JSON object to inject Base UI wrappers.
+ * Returns true if any wrappers were injected.
+ */
+async function injectBaseUiWrappers(data: any): Promise<boolean> {
+  // Always strip @radix-ui/* from npm dependencies in Base UI variants,
+  // even if the component has no Radix registryDependencies (safety net).
+  if (Array.isArray(data.dependencies)) {
+    data.dependencies = data.dependencies.filter(
+      (dep: string) => !dep.startsWith("@radix-ui/"),
+    );
+  }
+
+  const regDeps: string[] = data.registryDependencies ?? [];
+  const radixDeps = regDeps.filter((dep) => RADIX_DEPENDENT_PRIMITIVES.has(dep));
+
+  if (radixDeps.length === 0) return false;
+
+  // Track which deps need @base-ui/react
+  let needsBaseUi = false;
+
+  // Deduplicate — a component might depend on both "dialog" and "sheet",
+  // and they both need separate wrappers.
+  const alreadyInjected = new Set<string>();
+
+  for (const dep of radixDeps) {
+    if (alreadyInjected.has(dep)) continue;
+    alreadyInjected.add(dep);
+
+    // Read the Base UI wrapper content
+    const content = await getWrapperContent(dep);
+
+    // Add the wrapper as an additional file entry
+    if (!Array.isArray(data.files)) data.files = [];
+    data.files.push({
+      path: `components/ui/${dep}.tsx`,
+      content,
+      type: "registry:ui",
+      target: `components/ui/${dep}.tsx`,
+    });
+
+    if (NEEDS_BASEUI_DEP.has(dep)) {
+      needsBaseUi = true;
+    }
+  }
+
+  // Remove Radix-dependent deps from registryDependencies
+  data.registryDependencies = regDeps.filter(
+    (dep) => !RADIX_DEPENDENT_PRIMITIVES.has(dep),
+  );
+
+  // Add @base-ui/react to npm dependencies if needed
+  if (needsBaseUi) {
+    if (!Array.isArray(data.dependencies)) data.dependencies = [];
+    if (!data.dependencies.includes("@base-ui/react")) {
+      data.dependencies.push("@base-ui/react");
+    }
+  }
+
+  return true;
+}
+
 try {
   console.log("🗂️ Building registry/__index__.tsx...");
   await buildRegistryIndex();
@@ -152,6 +382,14 @@ try {
   console.log("🏗️ Building registry...");
   await buildRegistry();
   console.log("✅ Registry build completed");
+
+  console.log("🔄 Generating Tailwind v3 registry variants...");
+  await buildTw3Registry();
+  console.log("✅ Tailwind v3 registry built successfully");
+
+  console.log("🔄 Generating Base UI registry variants...");
+  await buildBaseUiRegistry();
+  console.log("✅ Base UI registry built successfully");
 } catch (error) {
   console.error("❌ Build failed with error:");
   console.error(error);

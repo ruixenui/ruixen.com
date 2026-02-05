@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gooey-dock-demo",
+  "type": "registry:example",
+  "title": "Gooey Dock Demo",
+  "description": "Example showing dock with liquid gooey blob effects.",
+  "registryDependencies": [
+    "https://ruixen.com/r/gooey-dock"
+  ],
+  "files": [
+    {
+      "path": "registry/example/gooey-dock-demo.tsx",
+      "content": "import GooeyDock from \"@/registry/ruixenui/gooey-dock\";\nimport { Home, Search, Bell, Settings, User } from \"lucide-react\";\n\nexport default function DemoOne() {\n  const dockItems = [\n    {\n      icon: <Home className=\"h-6 w-6\" />,\n      label: \"Home\",\n    },\n    {\n      icon: <Search className=\"h-6 w-6\" />,\n      label: \"Search\",\n    },\n    {\n      icon: <Bell className=\"h-6 w-6\" />,\n      label: \"Notifications\",\n    },\n    {\n      icon: <User className=\"h-6 w-6\" />,\n      label: \"Profile\",\n    },\n    {\n      icon: <Settings className=\"h-6 w-6\" />,\n      label: \"Settings\",\n    },\n  ];\n\n  return (\n    <div className=\"flex min-h-screen justify-center items-center\">\n      <GooeyDock items={dockItems} />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/gooey-dock-demo.tsx"
+    }
+  ]
+}

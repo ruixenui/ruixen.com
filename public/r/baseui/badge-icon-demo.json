@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "badge-icon-demo",
+  "type": "registry:example",
+  "title": "Badge Icon Demo",
+  "description": "Example showing badges with various icons and positions.",
+  "registryDependencies": [
+    "https://ruixen.com/r/badge-icon"
+  ],
+  "files": [
+    {
+      "path": "registry/example/badge-icon-demo.tsx",
+      "content": "\"use client\";\n\nimport BadgeIcon from \"@/registry/ruixenui/badge-icon\";\nimport { Zap, Star, Check, AlertTriangle, Info } from \"lucide-react\";\n\nexport default function BadgeIconDemo() {\n  return (\n    <div className=\"flex min-h-[350px] w-full flex-col items-center justify-center gap-6 p-4\">\n      <div className=\"flex flex-wrap items-center justify-center gap-3\">\n        <BadgeIcon icon={Zap}>Featured</BadgeIcon>\n        <BadgeIcon icon={Star} variant=\"secondary\">\n          Popular\n        </BadgeIcon>\n        <BadgeIcon icon={Check} variant=\"outline\">\n          Verified\n        </BadgeIcon>\n        <BadgeIcon icon={AlertTriangle} variant=\"destructive\">\n          Warning\n        </BadgeIcon>\n      </div>\n      <div className=\"flex flex-wrap items-center justify-center gap-3\">\n        <BadgeIcon icon={Info} iconPosition=\"right\">\n          Info\n        </BadgeIcon>\n        <BadgeIcon icon={Star} iconPosition=\"right\" variant=\"secondary\">\n          Starred\n        </BadgeIcon>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/badge-icon-demo.tsx"
+    }
+  ]
+}

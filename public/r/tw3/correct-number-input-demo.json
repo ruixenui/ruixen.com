@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "correct-number-input-demo",
+  "type": "registry:example",
+  "title": "Correct Number Input Demo",
+  "description": "Example showing a number input with validation and correction features.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/correct-number-input"
+  ],
+  "files": [
+    {
+      "path": "registry/example/correct-number-input-demo.tsx",
+      "content": "import CorrectNumberInput from \"@/registry/ruixenui/correct-number-input\";\n\nexport default function Demo() {\n  return (\n    <div className=\"flex items-center justify-center min-h-screen\">\n      <CorrectNumberInput />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/correct-number-input-demo.tsx"
+    }
+  ]
+}

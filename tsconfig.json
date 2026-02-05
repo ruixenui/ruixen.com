@@ -38,5 +38,5 @@
     ".next/types/**/*.ts",
     ".content-colletions/generated"
   ],
-  "exclude": ["node_modules", "packages/**/*", "scripts/**/*"]
+  "exclude": ["node_modules", "packages/**/*", "scripts/**/*", "registry/baseui-wrappers/**/*"]
 }

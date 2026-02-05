@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "chrono-select",
+  "type": "registry:ui",
+  "title": "Chrono Select",
+  "description": "A date picker with integrated year selection dropdown and calendar view.",
+  "dependencies": [
+    "date-fns",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "button",
+    "popover",
+    "calendar",
+    "select"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/chrono-select.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { Calendar as CalendarIcon } from \"lucide-react\";\nimport { cn } from \"@/lib/utils\";\nimport { Button } from \"@/components/ui/button\";\nimport {\n  Popover,\n  PopoverTrigger,\n  PopoverContent,\n} from \"@/components/ui/popover\";\nimport { Calendar } from \"@/components/ui/calendar\";\nimport {\n  Select,\n  SelectTrigger,\n  SelectContent,\n  SelectValue,\n  SelectItem,\n} from \"@/components/ui/select\";\nimport { format } from \"date-fns\";\n\ninterface ChronoSelectProps {\n  value?: Date;\n  onChange?: (date: Date | undefined) => void;\n  placeholder?: string;\n  className?: string;\n  yearRange?: [number, number]; // e.g. [2000, 2030]\n}\n\nexport function ChronoSelect({\n  value,\n  onChange,\n  placeholder = \"Pick a date\",\n  className,\n  yearRange = [1970, 2050],\n}: ChronoSelectProps) {\n  const [open, setOpen] = React.useState(false);\n  const [selected, setSelected] = React.useState<Date | undefined>(value);\n  const [month, setMonth] = React.useState<Date>(selected ?? new Date());\n\n  // years array\n  const years = React.useMemo(() => {\n    const [start, end] = yearRange;\n    return Array.from({ length: end - start + 1 }, (_, i) => start + i);\n  }, [yearRange]);\n\n  const handleSelect = (date: Date | undefined) => {\n    setSelected(date);\n    setOpen(false);\n    onChange?.(date);\n  };\n\n  const handleYearChange = (year: string) => {\n    const newYear = parseInt(year);\n    const newDate = new Date(month);\n    newDate.setFullYear(newYear);\n    setMonth(newDate);\n  };\n\n  return (\n    <Popover open={open} onOpenChange={setOpen}>\n      <PopoverTrigger asChild>\n        <Button\n          variant=\"outline\"\n          className={cn(\n            \"w-[280px] justify-start text-left font-normal\",\n            !selected && \"text-muted-foreground\",\n            className,\n          )}\n        >\n          <CalendarIcon className=\"mr-2 h-4 w-4\" />\n          {selected ? format(selected, \"PPP\") : placeholder}\n        </Button>\n      </PopoverTrigger>\n      <PopoverContent align=\"start\" className=\"p-2 space-y-2 w-auto\">\n        <div className=\"flex items-center justify-between px-1\">\n          <span className=\"text-sm font-medium\">{format(month, \"MMMM\")}</span>\n          <Select\n            defaultValue={String(month.getFullYear())}\n            onValueChange={handleYearChange}\n          >\n            <SelectTrigger className=\"h-7 w-[90px] text-xs\">\n              <SelectValue placeholder=\"Year\" />\n            </SelectTrigger>\n            <SelectContent className=\"max-h-48\">\n              {years.map((year) => (\n                <SelectItem key={year} value={String(year)}>\n                  {year}\n                </SelectItem>\n              ))}\n            </SelectContent>\n          </Select>\n        </div>\n        <Calendar\n          mode=\"single\"\n          selected={selected}\n          onSelect={handleSelect}\n          month={month}\n          onMonthChange={setMonth}\n          className=\"rounded-md border\"\n        />\n      </PopoverContent>\n    </Popover>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/chrono-select.tsx"
+    }
+  ]
+}

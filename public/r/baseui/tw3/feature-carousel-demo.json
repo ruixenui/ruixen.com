@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature-carousel-demo",
+  "type": "registry:example",
+  "title": "Feature Carousel Demo",
+  "description": "Example of interactive carousel showcasing dashboard features",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/feature-carousel"
+  ],
+  "files": [
+    {
+      "path": "registry/example/feature-carousel-demo.tsx",
+      "content": "\"use client\";\n\nimport FeatureCarousel from \"../ruixenui/feature-carousel\";\n\nexport default function DemoFeatureCarousel() {\n  return (\n    <main className=\"bg-background flex flex-col items-center justify-center w-full\">\n      <FeatureCarousel />\n    </main>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/feature-carousel-demo.tsx"
+    }
+  ]
+}

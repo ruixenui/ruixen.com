@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "account-menu-demo",
+  "type": "registry:example",
+  "title": "Account Menu Demo",
+  "description": "Example showing user account dropdown menu with profile options, settings, and logout functionality.",
+  "registryDependencies": [
+    "https://ruixen.com/r/account-menu"
+  ],
+  "files": [
+    {
+      "path": "registry/example/account-menu-demo.tsx",
+      "content": "\"use client\";\n\nimport AccountMenu from \"@/registry/ruixenui/account-menu\";\n\nexport default function AccountMenuDemo() {\n  return (\n    <div className=\"min-h-screen flex flex-col items-center justify-center\">\n      <div className=\"mb-6\">\n        <AccountMenu />\n      </div>\n\n      <div className=\"max-w-md text-center text-slate-500 text-sm\">\n        <p>\n          This menu demonstrates a professional dropdown design with clear\n          icon-text spacing, nested submenus, and hover effects. Ideal for\n          dashboards, team apps, and admin panels.\n        </p>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/account-menu-demo.tsx"
+    }
+  ]
+}

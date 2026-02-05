@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spectrum-hero-section-demo",
+  "type": "registry:example",
+  "title": "Spectrum Hero Section Demo",
+  "description": "Example showing a vibrant hero section with spectrum color effects",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/spectrum-hero-section"
+  ],
+  "files": [
+    {
+      "path": "registry/example/spectrum-hero-section-demo.tsx",
+      "content": "\"use client\";\n\nimport SpectrumHeroSection from \"../ruixenui/spectrum-hero-section\";\n\nexport default function DemoPage() {\n  return (\n    <SpectrumHeroSection\n      title=\"Discover Your Inner Energy\"\n      description=\"Upload your photo and let AI reveal the unseen spectrum of your aura.\"\n      button={{ label: \"Try it now\", href: \"/upload\" }}\n      image={{\n        src: \"https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/screen-website-template.png\",\n        alt: \"Aura preview\",\n      }}\n    />\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/spectrum-hero-section-demo.tsx"
+    }
+  ]
+}

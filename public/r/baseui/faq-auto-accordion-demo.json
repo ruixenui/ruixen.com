@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "faq-auto-accordion-demo",
+  "type": "registry:example",
+  "title": "FAQ Auto Accordion Demo",
+  "description": "Example showing a scroll-triggered FAQ accordion component with smooth GSAP animations and auto-expanding items.",
+  "registryDependencies": [
+    "https://ruixen.com/r/faq-auto-accordion"
+  ],
+  "files": [
+    {
+      "path": "registry/example/faq-auto-accordion-demo.tsx",
+      "content": "\"use client\";\n\nimport FAQAutoAccordion from \"../ruixenui/faq-auto-accordion\";\n\nconst customSections = [\n  {\n    title: \"Getting Started\",\n    items: [\n      {\n        id: \"start-1\",\n        question: \"How do I create an account?\",\n        answer: \"Simply click the signup button and follow the instructions.\",\n      },\n      {\n        id: \"start-2\",\n        question: \"Is there a free trial?\",\n        answer:\n          \"Yes! We offer a 14-day free trial so you can test all features before committing.\",\n      },\n    ],\n  },\n  {\n    title: \"Security\",\n    items: [\n      {\n        id: \"sec-1\",\n        question: \"How secure is my data?\",\n        answer:\n          \"We use enterprise-grade encryption and comply with GDPR standards.\",\n      },\n    ],\n  },\n];\n\nexport default function FAQAutoAccordionDemo() {\n  return (\n    <main className=\"min-h-[50vh] dark:bg-black text-gray-900 dark:text-white\">\n      {/* Custom data */}\n      <FAQAutoAccordion\n        title=\"Need Help?\"\n        description=\"Find quick answers below, or contact our support anytime.\"\n        sections={customSections}\n      />\n\n      {/* Default data (falls back to built-in FAQs) */}\n      <FAQAutoAccordion />\n    </main>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/faq-auto-accordion-demo.tsx"
+    }
+  ]
+}

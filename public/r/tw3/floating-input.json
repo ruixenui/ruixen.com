@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "floating-input",
+  "type": "registry:ui",
+  "title": "Floating Input",
+  "description": "A modern input field with floating label animation and icon support.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "input",
+    "label"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/floating-input.tsx",
+      "content": "\"use client\";\n\nimport { useId, useState } from \"react\";\nimport { Input } from \"@/components/ui/input\";\nimport { Label } from \"@/components/ui/label\";\nimport { Mail } from \"lucide-react\";\nimport { cn } from \"@/lib/utils\"; // optional, for conditional classes\n\ninterface FloatingInputProps {\n  label?: string;\n  type?: string;\n  icon?: React.ReactNode;\n}\n\nexport default function FloatingInput({\n  label = \"Email\",\n  type = \"email\",\n  icon = <Mail size={18} />,\n}: FloatingInputProps) {\n  const id = useId();\n  const [value, setValue] = useState(\"\");\n  const [focused, setFocused] = useState(false);\n\n  const isFloating = focused || value.length > 0;\n\n  return (\n    <div className=\"relative w-full max-w-sm\">\n      {/* Icon */}\n      {icon && (\n        <span className=\"absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground transition-colors\">\n          {icon}\n        </span>\n      )}\n\n      {/* Input */}\n      <Input\n        id={id}\n        type={type}\n        value={value}\n        onChange={(e) => setValue(e.target.value)}\n        onFocus={() => setFocused(true)}\n        onBlur={() => setFocused(false)}\n        placeholder=\" \" // keep placeholder blank for accessibility\n        className={`h-12 rounded-2xl ps-12 pt-4 border-2 border-input \n                    bg-background shadow-sm transition-all \n                    focus:border-primary focus:ring-2 focus:ring-primary/30`}\n      />\n\n      {/* Floating Label */}\n      <Label\n        htmlFor={id}\n        className={cn(\n          \"absolute left-9 text-muted-foreground text-base transition-all pointer-events-none\",\n          isFloating\n            ? \"top-1 text-xs text-primary\"\n            : \"top-1/2 -translate-y-1/2 text-base text-muted-foreground\",\n        )}\n      >\n        {label}\n      </Label>\n\n      {/* Decorative glow */}\n      <div\n        className={cn(\n          \"absolute inset-x-2 -bottom-2 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent transition-opacity\",\n          focused ? \"opacity-100\" : \"opacity-0\",\n        )}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/floating-input.tsx"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tooltip-button-demo",
+  "type": "registry:example",
+  "title": "Tooltip Button Demo",
+  "description": "Example showing a button with tooltip functionality.",
+  "registryDependencies": [
+    "https://ruixen.com/r/tooltip-button"
+  ],
+  "files": [
+    {
+      "path": "registry/example/tooltip-button-demo.tsx",
+      "content": "import TooltipButton from \"@/registry/ruixenui/tooltip-button\";\n\nexport default function DemoTooltipButton() {\n  return (\n    <div className=\"flex min-h-[350px] w-full flex-col items-center justify-center gap-6\">\n      <TooltipButton\n        label=\"Info\"\n        tooltip=\"More information about this action\"\n      />\n      <TooltipButton\n        label=\"Help\"\n        tooltip=\"Get help or documentation\"\n        size=\"lg\"\n      />\n      <TooltipButton\n        label=\"Settings\"\n        tooltip=\"Adjust your preferences\"\n        size=\"sm\"\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/tooltip-button-demo.tsx"
+    }
+  ]
+}

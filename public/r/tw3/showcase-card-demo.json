@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "showcase-card-demo",
+  "type": "registry:example",
+  "title": "Showcase Card Demo",
+  "description": "Example showing a showcase card component for displaying projects and portfolios.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/showcase-card"
+  ],
+  "files": [
+    {
+      "path": "registry/example/showcase-card-demo.tsx",
+      "content": "\"use client\";\n\nimport ShowcaseCard from \"../ruixenui/showcase-card\";\n\nexport default function ShowcaseCardDemo() {\n  return (\n    <div className=\"flex flex-col gap-6 p-6\">\n      <ShowcaseCard\n        title=\"Build Stunning Interfaces\"\n        subtitle=\"Harness the power of elegant components built for speed and clarity with RUIXEN UI\"\n        badge={{ text: \"New\", variant: \"orange\" }}\n        href=\"#\"\n        id=\"showcase-card\"\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/showcase-card-demo.tsx"
+    }
+  ]
+}

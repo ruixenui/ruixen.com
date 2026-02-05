@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pricing-tiers-demo",
+  "type": "registry:example",
+  "title": "Pricing Tiers Demo",
+  "description": "Example showing modern pricing component with customizable tiers, features, and glass morphism design.",
+  "registryDependencies": [
+    "https://ruixen.com/r/pricing-tiers"
+  ],
+  "files": [
+    {
+      "path": "registry/example/pricing-tiers-demo.tsx",
+      "content": "import Pricing, { Plan } from \"@/registry/ruixenui/pricing-tiers\";\n\nconst demoPlans: Plan[] = [\n  {\n    title: \"Starter\",\n    price: \"$0\",\n    period: \"/mo\",\n    description: \"For individuals starting out\",\n    features: [\n      \"Access to core features\",\n      \"Community support\",\n      \"Limited projects (up to 3)\",\n      \"Basic analytics dashboard\",\n      \"5GB Cloud Storage\",\n      \"Email notifications\",\n      \"Standard security\",\n      \"Access to starter templates\",\n      \"Mobile app access (view only)\",\n      \"Monthly product updates\",\n    ],\n  },\n  {\n    title: \"Professional\",\n    price: \"$29\",\n    period: \"/mo\",\n    description: \"For freelancers and small teams\",\n    features: [\n      \"All Starter features\",\n      \"Priority support\",\n      \"Unlimited projects\",\n      \"Custom reports\",\n      \"Advanced analytics\",\n      \"Collaborative team access\",\n      \"Version history and rollback\",\n      \"API access for integrations\",\n      \"Mobile app full access\",\n      \"Custom branding\",\n      \"Monthly product updates\",\n      \"Standard security features\",\n    ],\n    badge: \"Popular\",\n  },\n  {\n    title: \"Enterprise\",\n    price: \"$99\",\n    period: \"/mo\",\n    description: \"For large organizations\",\n    features: [\n      \"All Professional features\",\n      \"Dedicated account manager\",\n      \"Enterprise-grade security\",\n      \"Custom integrations & API\",\n      \"Single Sign-On (SSO)\",\n      \"Advanced reporting & dashboards\",\n      \"Team permissions & roles\",\n      \"Priority 24/7 support\",\n      \"Unlimited projects & users\",\n      \"Dedicated server options\",\n      \"Custom SLAs and contracts\",\n      \"Onboarding & training sessions\",\n      \"Compliance & audit features\",\n      \"Monthly product updates\",\n    ],\n    badge: \"Enterprise\",\n  },\n  {\n    title: \"Ultimate\",\n    price: \"$199\",\n    period: \"/mo\",\n    description: \"For global enterprises and high-scale teams\",\n    features: [\n      \"All Enterprise features\",\n      \"Dedicated infrastructure\",\n      \"High availability SLAs\",\n      \"Custom onboarding & training\",\n      \"Personalized support team\",\n      \"Unlimited API calls & integrations\",\n      \"Advanced automation & workflows\",\n      \"Priority access to beta features\",\n      \"Custom analytics dashboards\",\n      \"Data export and backup options\",\n      \"Full compliance & audit support\",\n    ],\n    badge: \"Best Value\",\n  },\n];\n\nexport default function PricingDemoPage() {\n  return (\n    <main>\n      <Pricing\n        plans={demoPlans}\n        heading=\"Choose the Right Plan for Your Team\"\n        subheading=\"Flexible pricing that scales with your business, from solo developers to large enterprises.\"\n      />\n    </main>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/pricing-tiers-demo.tsx"
+    }
+  ]
+}

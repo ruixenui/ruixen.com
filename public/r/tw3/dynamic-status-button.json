@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dynamic-status-button",
+  "type": "registry:ui",
+  "title": "Dynamic Status Button",
+  "description": "Button that cycles through different status states with icons and colors.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/dynamic-status-button.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { Button } from \"@/components/ui/button\";\nimport { motion, AnimatePresence } from \"framer-motion\";\nimport { cn } from \"@/lib/utils\";\n\nexport type ButtonStatus = {\n  label: string;\n  icon: React.ReactNode;\n  color?: string; // button background\n  textColor?: string; // text/icon color\n};\n\ninterface DynamicStatusButtonProps {\n  statuses: ButtonStatus[];\n  currentIndex?: number;\n  onClick?: (status: ButtonStatus, index: number) => void;\n  className?: string;\n  width?: number;\n}\n\nexport default function DynamicStatusButton({\n  statuses,\n  currentIndex = 0,\n  onClick,\n  className,\n  width = 150,\n}: DynamicStatusButtonProps) {\n  const [activeIndex, setActiveIndex] = React.useState(currentIndex);\n  const activeStatus = statuses[activeIndex];\n\n  const handleClick = () => {\n    const nextIndex = (activeIndex + 1) % statuses.length;\n    setActiveIndex(nextIndex);\n    onClick?.(statuses[nextIndex], nextIndex);\n  };\n\n  return (\n    <Button\n      className={cn(\n        \"relative flex items-center justify-center overflow-hidden transition-colors duration-300\",\n        className,\n      )}\n      style={{\n        width,\n        backgroundColor: activeStatus.color || \"#2563eb\", // default modern blue\n      }}\n      onClick={handleClick}\n    >\n      <AnimatePresence mode=\"wait\">\n        <motion.div\n          key={activeStatus.label}\n          initial={{ opacity: 0, y: -10 }}\n          animate={{ opacity: 1, y: 0 }}\n          exit={{ opacity: 0, y: 10 }}\n          transition={{ duration: 0.3 }}\n          className={cn(\n            \"flex items-center gap-2 font-medium\",\n            activeStatus.textColor || \"#ffffff\",\n          )}\n        >\n          {activeStatus.icon}\n          {activeStatus.label}\n        </motion.div>\n      </AnimatePresence>\n    </Button>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/dynamic-status-button.tsx"
+    }
+  ]
+}

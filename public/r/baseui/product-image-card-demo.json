@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "product-image-card-demo",
+  "type": "registry:example",
+  "title": "Product Image Card Demo",
+  "description": "Example showing a product showcase card with scrollable image gallery and color selection for e-commerce.",
+  "registryDependencies": [
+    "https://ruixen.com/r/product-image-card"
+  ],
+  "files": [
+    {
+      "path": "registry/example/product-image-card-demo.tsx",
+      "content": "// app/product-demo/page.tsx\nimport { ProductImageCard } from \"@/registry/ruixenui/product-image-card\";\nimport type { ProductImage } from \"@/registry/ruixenui/product-image-card\";\n\nexport default function Page() {\n  const images: ProductImage[] = [\n    {\n      src: \"https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/v1.png\",\n      alt: \"Front view\",\n    },\n    {\n      src: \"https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/v2.png\",\n      alt: \"Back view\",\n    },\n    {\n      src: \"https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/v3.png\",\n      alt: \"Side angle\",\n    },\n    {\n      src: \"https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/v4.png\",\n      alt: \"Detail patch\",\n    },\n    {\n      src: \"https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/v1.png\",\n      alt: \"Other view\",\n    },\n  ];\n\n  return (\n    <main>\n      <div className=\"container mx-auto max-w-lg p-4\">\n        <ProductImageCard\n          title=\"Product Details\"\n          images={images}\n          initialIndex={0}\n        />\n      </div>\n    </main>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/product-image-card-demo.tsx"
+    }
+  ]
+}

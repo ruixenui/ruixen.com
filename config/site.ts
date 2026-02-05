@@ -3,7 +3,7 @@ export const siteConfig = {
   url: "https://ruixen.com",
   ogImage: "https://ruixen.com/og",
   description:
-    "Beautifully designed landing page components built with React & Tailwind CSS.",
+    "600+ free, open-source React components built with Tailwind CSS, TypeScript & Framer Motion. Copy-paste into Next.js projects.",
   links: {
     twitter: "https://twitter.com/ruixen_ui",
     discord: "https://discord.gg/bYexWzUa6G",
@@ -12,12 +12,17 @@ export const siteConfig = {
       "https://www.instagram.com/ruixen_ui?igsh=MTh1aXdnemt1dDF5cg%3D%3D&utm_source=qr",
   },
   keywords: [
-    "React",
-    "Tailwind CSS",
-    "Motion",
-    "Landing Page",
-    "Components",
-    "Next.js",
+    "react component library",
+    "tailwind css components",
+    "react ui library",
+    "nextjs components",
+    "shadcn alternative",
+    "free react components",
+    "tailwind ui components",
+    "open source ui kit",
+    "copy paste react components",
+    "typescript react components",
+    "framer motion components",
   ],
 };
 

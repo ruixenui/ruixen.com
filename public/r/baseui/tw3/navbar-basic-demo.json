@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "navbar-basic-demo",
+  "type": "registry:example",
+  "title": "Navbar Basic Demo",
+  "description": "Example showing a responsive navigation bar with logo, navigation links, and action buttons.",
+  "registryDependencies": [
+    "https://ruixen.com/r/navbar-basic"
+  ],
+  "files": [
+    {
+      "path": "registry/example/navbar-basic-demo.tsx",
+      "content": "\"use client\";\n\nimport NavbarBasic from \"@/registry/ruixenui/navbar-basic\";\nimport { Layers } from \"lucide-react\";\n\nexport default function NavbarBasicDemo() {\n  return (\n    <div className=\"flex min-h-[350px] w-full flex-col items-center justify-start\">\n      <NavbarBasic\n        logo={\n          <div className=\"flex items-center gap-2\">\n            <Layers className=\"size-6 text-primary\" />\n            <span className=\"text-xl font-bold\">Acme</span>\n          </div>\n        }\n        items={[\n          { label: \"Home\", href: \"#\", active: true },\n          { label: \"Features\", href: \"#\" },\n          { label: \"Pricing\", href: \"#\" },\n          { label: \"About\", href: \"#\" },\n        ]}\n        primaryAction={{ label: \"Get Started\", href: \"#\" }}\n        secondaryAction={{ label: \"Sign In\", href: \"#\" }}\n      />\n      <div className=\"flex flex-1 items-center justify-center p-8\">\n        <p className=\"text-muted-foreground\">Page content goes here</p>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/navbar-basic-demo.tsx"
+    }
+  ]
+}

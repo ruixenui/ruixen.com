@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "clean-tag-input-demo",
+  "type": "registry:example",
+  "title": "Clean Tag Input Demo",
+  "description": "Example showing a clean and minimal tag input component for adding multiple values.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/clean-tag-input"
+  ],
+  "files": [
+    {
+      "path": "registry/example/clean-tag-input-demo.tsx",
+      "content": "import CleanTagInput from \"@/registry/ruixenui/clean-tag-input\";\n\nexport default function CleanTagInputDemo() {\n  return (\n    <div className=\"flex items-center justify-center min-h-screen\">\n      <CleanTagInput />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/clean-tag-input-demo.tsx"
+    }
+  ]
+}

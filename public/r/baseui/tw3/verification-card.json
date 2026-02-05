@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "verification-card",
+  "type": "registry:ui",
+  "title": "Verification Card",
+  "description": "An animated verification card component with customizable background and content.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/verification-card.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { motion } from \"framer-motion\";\nimport { cn } from \"@/lib/utils\";\n\ninterface VerificationCardProps {\n  backgroundImage?: string;\n  idNumber?: string;\n  name?: string;\n  validThru?: string;\n  label?: string;\n}\n\nexport function VerificationCard({\n  backgroundImage = \"https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/ruixen_moon.png\",\n  idNumber = \"ID **** 4590\",\n  name = \"JANE DOE\",\n  validThru = \"11/29\",\n  label = \"IDENTITY CARD\",\n}: VerificationCardProps) {\n  return (\n    <motion.div\n      initial={{ y: -20, opacity: 0 }}\n      animate={{ y: 0, opacity: 1 }}\n      transition={{ duration: 0.5, ease: \"easeOut\" }}\n      className={cn(\n        \"relative h-52 w-80 rounded-2xl p-6 shadow-2xl text-white flex flex-col justify-between bg-cover bg-center\",\n      )}\n      style={{ backgroundImage: `url(${backgroundImage})` }}\n    >\n      {/* Overlay */}\n      <div className=\"absolute inset-0 bg-black/50 rounded-2xl\" />\n\n      {/* Card Content */}\n      <div className=\"relative z-10 flex justify-between items-start text-xs tracking-wide\">\n        <span>{label}</span>\n        <span>VALID</span>\n      </div>\n\n      <div className=\"relative z-10\">\n        <p className=\"text-lg tracking-widest font-semibold\">{idNumber}</p>\n        <div className=\"flex justify-between text-sm mt-2\">\n          <span>{name}</span>\n          <span>{validThru}</span>\n        </div>\n      </div>\n    </motion.div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/verification-card.tsx"
+    }
+  ]
+}

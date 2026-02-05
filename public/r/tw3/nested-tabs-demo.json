@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "nested-tabs-demo",
+  "type": "registry:example",
+  "title": "Nested Tabs Demo",
+  "description": "Example showing nested tabs with expandable sub-tabs.",
+  "registryDependencies": [
+    "https://ruixen.com/r/nested-tabs"
+  ],
+  "files": [
+    {
+      "path": "registry/example/nested-tabs-demo.tsx",
+      "content": "import NestedTabs, { NestedTabItem } from \"@/registry/ruixenui/nested-tabs\";\n\nconst demoItems: NestedTabItem[] = [\n  {\n    value: \"dashboard\",\n    label: \"Dashboard\",\n    content: \"Main Dashboard Overview\",\n    subTabs: [\n      {\n        value: \"dash-stats\",\n        label: \"Stats\",\n        content: \"Detailed statistics and metrics.\",\n      },\n      {\n        value: \"dash-reports\",\n        label: \"Reports\",\n        content: \"Reports and exports section.\",\n      },\n    ],\n  },\n  {\n    value: \"settings\",\n    label: \"Settings\",\n    content: \"General settings content\",\n    subTabs: [\n      {\n        value: \"profile\",\n        label: \"Profile\",\n        content: \"Manage your profile details.\",\n      },\n      {\n        value: \"account\",\n        label: \"Account\",\n        content: \"Account-related preferences.\",\n      },\n      {\n        value: \"security\",\n        label: \"Security\",\n        content: \"Security and password settings.\",\n      },\n    ],\n  },\n  {\n    value: \"docs\",\n    label: \"Documentation\",\n    content: \"Developer documentation content\",\n    subTabs: [\n      { value: \"api\", label: \"API\", content: \"API reference with endpoints.\" },\n      {\n        value: \"guides\",\n        label: \"Guides\",\n        content: \"Step-by-step guides and tutorials.\",\n      },\n    ],\n  },\n];\n\nexport default function DemoOne() {\n  return (\n    <div className=\"min-h-screen flex items-center justify-center p-6\">\n      <div className=\"w-full max-w-4xl\">\n        <NestedTabs items={demoItems} defaultValue=\"dashboard\" />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/nested-tabs-demo.tsx"
+    }
+  ]
+}

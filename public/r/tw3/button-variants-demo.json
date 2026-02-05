@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-variants-demo",
+  "type": "registry:example",
+  "title": "Button Variants Demo",
+  "description": "Example showing buttons with different variants and sizes.",
+  "registryDependencies": [
+    "https://ruixen.com/r/button-variants"
+  ],
+  "files": [
+    {
+      "path": "registry/example/button-variants-demo.tsx",
+      "content": "\"use client\";\n\nimport ButtonVariants from \"@/registry/ruixenui/button-variants\";\nimport { Mail, ArrowRight } from \"lucide-react\";\n\nexport default function ButtonVariantsDemo() {\n  return (\n    <div className=\"flex flex-wrap items-center justify-center gap-4 p-4\">\n      <ButtonVariants variant=\"primary\">Primary</ButtonVariants>\n      <ButtonVariants variant=\"secondary\">Secondary</ButtonVariants>\n      <ButtonVariants variant=\"destructive\">Destructive</ButtonVariants>\n      <ButtonVariants variant=\"outline\">Outline</ButtonVariants>\n      <ButtonVariants variant=\"ghost\">Ghost</ButtonVariants>\n      <ButtonVariants variant=\"link\">Link</ButtonVariants>\n      <ButtonVariants variant=\"primary\" leftIcon={<Mail className=\"size-4\" />}>\n        With Icon\n      </ButtonVariants>\n      <ButtonVariants\n        variant=\"primary\"\n        rightIcon={<ArrowRight className=\"size-4\" />}\n      >\n        Continue\n      </ButtonVariants>\n      <ButtonVariants variant=\"primary\" loading>\n        Loading\n      </ButtonVariants>\n      <ButtonVariants variant=\"primary\" disabled>\n        Disabled\n      </ButtonVariants>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/button-variants-demo.tsx"
+    }
+  ]
+}

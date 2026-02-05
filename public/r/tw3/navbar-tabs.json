@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "navbar-tabs",
+  "type": "registry:ui",
+  "title": "Navbar Tabs",
+  "description": "A two-tier navigation bar with main header and tabbed navigation below.",
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/navbar-tabs.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport Link from \"next/link\";\nimport { cn } from \"@/lib/utils\";\nimport { Button } from \"@/components/ui/button\";\n\nexport interface NavbarTabsProps {\n  logo?: React.ReactNode;\n  tabs?: { label: string; href: string; active?: boolean; count?: number }[];\n  actions?: React.ReactNode;\n  className?: string;\n}\n\nexport default function NavbarTabs({\n  logo = <span className=\"font-semibold\">Logo</span>,\n  tabs = [\n    { label: \"Overview\", href: \"#\", active: true },\n    { label: \"Analytics\", href: \"#\" },\n    { label: \"Reports\", href: \"#\", count: 3 },\n    { label: \"Settings\", href: \"#\" },\n  ],\n  actions,\n  className,\n}: NavbarTabsProps) {\n  return (\n    <header className={cn(\"w-full\", className)}>\n      <div className=\"flex h-14 items-center justify-between border-b px-4\">\n        <Link href=\"/\" className=\"flex items-center\">\n          {logo}\n        </Link>\n        <div className=\"flex items-center gap-2\">\n          {actions ?? <Button size=\"sm\">New Report</Button>}\n        </div>\n      </div>\n      <div className=\"border-b px-4\">\n        <nav className=\"-mb-px flex gap-6\">\n          {tabs.map((tab) => (\n            <Link\n              key={tab.href + tab.label}\n              href={tab.href}\n              className={cn(\n                \"flex items-center gap-2 border-b-2 py-3 text-sm transition-colors\",\n                tab.active\n                  ? \"border-foreground text-foreground\"\n                  : \"border-transparent text-muted-foreground hover:border-muted-foreground/50 hover:text-foreground\",\n              )}\n            >\n              {tab.label}\n              {tab.count !== undefined && (\n                <span className=\"rounded-full bg-muted px-2 py-0.5 text-xs\">\n                  {tab.count}\n                </span>\n              )}\n            </Link>\n          ))}\n        </nav>\n      </div>\n    </header>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/navbar-tabs.tsx"
+    }
+  ]
+}

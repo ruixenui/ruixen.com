@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "modern-card-input-demo",
+  "type": "registry:example",
+  "title": "Modern Card Input Demo",
+  "description": "Example showing a sophisticated credit card input with real-time validation and card type detection.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/modern-card-input"
+  ],
+  "files": [
+    {
+      "path": "registry/example/modern-card-input-demo.tsx",
+      "content": "\"use client\";\n\nimport { useState } from \"react\";\nimport ModernCardInput from \"@/registry/ruixenui/modern-card-input\";\n\nexport default function CardDemoPage() {\n  const [cardData, setCardData] = useState({\n    number: \"\",\n    expiry: \"\",\n    cvc: \"\",\n  });\n\n  return (\n    <div className=\"flex flex-col items-center justify-center min-h-screen p-12 gap-6\">\n      <h1 className=\"text-2xl font-bold\">Modern Card Input Demo</h1>\n\n      <ModernCardInput\n        label=\"Enter Your Card Details\"\n        showPreview={true}\n        onChange={(data) => setCardData(data)}\n      />\n\n      <div className=\"w-full max-w-md p-4 rounded-xl border\">\n        <h2 className=\"text-lg font-medium\">Card Data Preview:</h2>\n        <p>\n          <strong>Number:</strong> {cardData.number || \"—\"}\n        </p>\n        <p>\n          <strong>Expiry:</strong> {cardData.expiry || \"—\"}\n        </p>\n        <p>\n          <strong>CVC:</strong> {cardData.cvc || \"—\"}\n        </p>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/modern-card-input-demo.tsx"
+    }
+  ]
+}

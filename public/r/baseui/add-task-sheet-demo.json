@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "add-task-sheet-demo",
+  "type": "registry:example",
+  "title": "Add Task Sheet Demo",
+  "description": "Example showing a comprehensive task creation sheet with form fields for task details, assignee, category, due date, and priority.",
+  "registryDependencies": [
+    "https://ruixen.com/r/add-task-sheet"
+  ],
+  "files": [
+    {
+      "path": "registry/example/add-task-sheet-demo.tsx",
+      "content": "\"use client\";\n\nimport AddTaskSheet from \"@/registry/ruixenui/add-task-sheet\";\n\nexport default function TaskSheetDemoPage() {\n  return (\n    <div className=\"flex items-center justify-center p-6 min-h-screen\">\n      <AddTaskSheet />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/add-task-sheet-demo.tsx"
+    }
+  ]
+}

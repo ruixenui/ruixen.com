@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "column-collaboration-table-demo",
+  "type": "registry:example",
+  "title": "Column Collaboration Table Demo",
+  "description": "Example showing a collaborative table with column-level comments.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/column-collaboration-table"
+  ],
+  "files": [
+    {
+      "path": "registry/example/column-collaboration-table-demo.tsx",
+      "content": "\"use client\";\n\nimport ColumnCollaborationTable, {\n  ColumnCollaborationItem,\n} from \"@/registry/ruixenui/column-collaboration-table\";\nimport { Card, CardContent, CardHeader, CardTitle } from \"@/components/ui/card\";\n\nexport default function DemoPage() {\n  const customColumns = [\"Name\", \"Email\", \"Status\"];\n  const customData: ColumnCollaborationItem[] = [\n    {\n      id: \"101\",\n      Name: \"Srinath G\",\n      Email: \"srinath@opencvuniversity.com\",\n      Status: \"Active\",\n    },\n    {\n      id: \"102\",\n      Name: \"Arjun M\",\n      Email: \"arjun@opencvuniversity.com\",\n      Status: \"Inactive\",\n    },\n  ];\n\n  return (\n    <div className=\"space-y-8 p-8\">\n      {/* Default Table */}\n      <Card>\n        <CardHeader>\n          <CardTitle>Default Column Collaboration Table</CardTitle>\n        </CardHeader>\n        <CardContent>\n          <ColumnCollaborationTable />\n        </CardContent>\n      </Card>\n\n      {/* Custom Table */}\n      <Card>\n        <CardHeader>\n          <CardTitle>Custom Column Collaboration Table</CardTitle>\n        </CardHeader>\n        <CardContent>\n          <ColumnCollaborationTable columns={customColumns} data={customData} />\n        </CardContent>\n      </Card>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/column-collaboration-table-demo.tsx"
+    }
+  ]
+}

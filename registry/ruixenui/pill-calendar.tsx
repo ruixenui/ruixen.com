@@ -14,7 +14,7 @@ import {
   RangeCalendar as RangeCalendarPrimitive,
 } from "react-aria-components";
 import { getLocalTimeZone, today } from "@internationalized/date";
-import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { composeRenderProps } from "react-aria-components";
 
 interface BaseCalendarProps {
@@ -34,14 +34,14 @@ const CalendarHeader = () => (
       slot="previous"
       className="rounded-md p-1 text-muted-foreground hover:bg-accent hover:text-foreground"
     >
-      <ChevronLeftIcon className="h-4 w-4" />
+      <ChevronLeft className="h-4 w-4" />
     </Button>
     <Heading className="text-sm font-semibold" />
     <Button
       slot="next"
       className="rounded-md p-1 text-muted-foreground hover:bg-accent hover:text-foreground"
     >
-      <ChevronRightIcon className="h-4 w-4" />
+      <ChevronRight className="h-4 w-4" />
     </Button>
   </header>
 );

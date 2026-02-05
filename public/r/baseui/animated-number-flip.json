@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "animated-number-flip",
+  "type": "registry:ui",
+  "title": "Animated Number Flip",
+  "description": "A card component that displays numbers with smooth flip animations.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "registryDependencies": [
+    "card"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/animated-number-flip.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { motion, AnimatePresence } from \"framer-motion\";\nimport { cn } from \"@/lib/utils\";\nimport { Card, CardContent } from \"@/components/ui/card\";\n\ninterface AnimatedNumberFlipProps {\n  value: number;\n  className?: string;\n}\n\nexport default function AnimatedNumberFlip({\n  value,\n  className,\n}: AnimatedNumberFlipProps) {\n  const [displayValue, setDisplayValue] = React.useState(value);\n\n  React.useEffect(() => {\n    if (value !== displayValue) {\n      const timeout = setTimeout(() => setDisplayValue(value), 300);\n      return () => clearTimeout(timeout);\n    }\n  }, [value, displayValue]);\n\n  return (\n    <Card\n      className={cn(\"w-24 h-24 flex items-center justify-center\", className)}\n    >\n      <CardContent className=\"flex items-center justify-center p-0 text-4xl font-bold\">\n        <div className=\"relative overflow-hidden h-12 w-10\">\n          <AnimatePresence mode=\"popLayout\" initial={false}>\n            <motion.span\n              key={value}\n              initial={{ y: -40, opacity: 0, rotateX: -90 }}\n              animate={{ y: 0, opacity: 1, rotateX: 0 }}\n              exit={{ y: 40, opacity: 0, rotateX: 90 }}\n              transition={{ duration: 0.3 }}\n              className=\"absolute inset-0 flex items-center justify-center\"\n            >\n              {value}\n            </motion.span>\n          </AnimatePresence>\n        </div>\n      </CardContent>\n    </Card>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/animated-number-flip.tsx"
+    }
+  ]
+}

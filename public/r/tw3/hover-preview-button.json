@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hover-preview-button",
+  "type": "registry:ui",
+  "title": "Hover Preview Button",
+  "description": "Button with hover-triggered preview content display.",
+  "dependencies": [],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/hover-preview-button.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { Button } from \"@/components/ui/button\";\nimport { cn } from \"@/lib/utils\";\n\ninterface HoverPreviewButtonProps {\n  label: string;\n  previewContent: React.ReactNode;\n  className?: string;\n}\n\nexport default function HoverPreviewButton({\n  label,\n  previewContent,\n  className,\n}: HoverPreviewButtonProps) {\n  const [isHovered, setIsHovered] = React.useState(false);\n\n  return (\n    <div\n      className=\"relative inline-block\"\n      onMouseEnter={() => setIsHovered(true)}\n      onMouseLeave={() => setIsHovered(false)}\n    >\n      <Button className={cn(\"relative\", className)}>{label}</Button>\n\n      {isHovered && (\n        <div className=\"absolute z-50 top-full mt-2 left-1/2 -translate-x-1/2 w-64 p-2 rounded-lg border bg-background shadow-lg\">\n          {previewContent}\n        </div>\n      )}\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/hover-preview-button.tsx"
+    }
+  ]
+}

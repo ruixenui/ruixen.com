@@ -1,7 +1,7 @@
 ---
 title: Visualizer Button
 date: 2024-06-01
-description: Compact audio button with animated equalizer bars visualization
+description: Compact pill-shaped audio button with animated equalizer bars and play/pause controls.
 author: ruixen
 published: true
 ---
@@ -46,40 +46,18 @@ npx shadcn@latest add "https://ruixen.com/r/visualizer-button"
 import VisualizerButton from "@/components/ruixen/visualizer-button";
 
 export default function App() {
-  return (
-    <VisualizerButton
-      audioSrc="https://example.com/audio.mp3"
-      width={80}
-      height={40}
-    />
-  );
+  return <VisualizerButton audioSrc="/audio/track.mp3" />;
 }
 ```
 
 ## Props
 
-| Prop        | Type     | Default | Description            |
-| ----------- | -------- | ------- | ---------------------- |
-| `audioSrc`  | `string` | -       | URL of the audio file  |
-| `width`     | `number` | `60`    | Width of the button    |
-| `height`    | `number` | `30`    | Height of the button   |
-| `className` | `string` | -       | Additional CSS classes |
-
-## Features
-
-- **Compact Design**: Small button perfect for toolbars
-- **Animated Bars**: Dancing equalizer visualization when playing
-- **Click to Toggle**: Single click to play/pause
-- **Responsive Bars**: Bars animate based on playing state
-- **Customizable Size**: Adjustable width and height
-- **Smooth Transitions**: CSS transitions for bar animations
-
-## Use Cases
-
-Perfect for:
-
-- **Music Players**: Compact play button with visual feedback
-- **Podcast Apps**: Episode play buttons
-- **Audio Previews**: Quick audio sample players
-- **Toolbars**: Space-efficient audio controls
-- **Audio Lists**: Individual track controls
+| Prop        | Type     | Default | Description                |
+| ----------- | -------- | ------- | -------------------------- |
+| `audioSrc`  | `string` | -       | Audio file URL             |
+| `bars`      | `number` | `14`    | Number of equalizer bars   |
+| `barWidth`  | `number` | `3`     | Bar width in pixels        |
+| `barGap`    | `number` | `2`     | Gap between bars in pixels |
+| `barRadius` | `number` | `1.5`   | Bar corner radius          |
+| `height`    | `number` | `20`    | Equalizer height in pixels |
+| `className` | `string` | -       | Additional CSS classes     |

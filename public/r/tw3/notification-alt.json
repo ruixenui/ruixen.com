@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "notification-alt",
+  "type": "registry:ui",
+  "title": "Notification Alt",
+  "description": "An enhanced notification component with info tooltips, clickable links, and different notification types.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "popover",
+    "badge",
+    "card",
+    "tooltip"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/notification-alt.tsx",
+      "content": "import * as React from \"react\";\nimport { Bell, Info } from \"lucide-react\";\nimport {\n  Popover,\n  PopoverContent,\n  PopoverTrigger,\n} from \"@/components/ui/popover\";\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipProvider,\n  TooltipTrigger,\n} from \"@/components/ui/tooltip\";\nimport { Card } from \"@/components/ui/card\";\nimport { Badge } from \"@/components/ui/badge\";\nimport Link from \"next/link\";\n\n// Type definition for reusability\nexport interface NotificationItem {\n  id: string;\n  message: string;\n  time: string;\n  type?: \"info\" | \"link\" | \"default\"; // restrict to these string literals\n  href?: string;\n}\n\ninterface NotificationsProps {\n  items?: NotificationItem[];\n}\n\n// Default notifications\nconst defaultNotifications: NotificationItem[] = [\n  {\n    id: \"1\",\n    message: \"Welcome to the platform 🎉\",\n    time: \"just now\",\n    type: \"default\",\n  },\n  {\n    id: \"2\",\n    message: \"Check out our new documentation section\",\n    time: \"10m ago\",\n    type: \"link\",\n    href: \"/docs\",\n  },\n  {\n    id: \"3\",\n    message: \"System maintenance scheduled for tonight\",\n    time: \"2h ago\",\n    type: \"info\",\n  },\n];\n\nexport default function NotificationsAlt({\n  items = defaultNotifications,\n}: NotificationsProps) {\n  return (\n    <Popover>\n      <PopoverTrigger asChild>\n        <button className=\"relative inline-flex items-center justify-center rounded-full p-2 hover:bg-muted\">\n          <Bell className=\"h-5 w-5\" />\n          {items.length > 0 && (\n            <Badge\n              variant=\"default\"\n              className=\"absolute -top-1 -right-1 text-xs px-1.5 py-0\"\n            >\n              {items.length}\n            </Badge>\n          )}\n        </button>\n      </PopoverTrigger>\n\n      <PopoverContent className=\"w-96 p-0\" align=\"center\" side=\"bottom\">\n        <Card className=\"max-h-80 overflow-y-auto rounded-lg border-none shadow-none\">\n          {items.length === 0 ? (\n            <div className=\"p-4 text-sm text-muted-foreground text-center\">\n              No notifications\n            </div>\n          ) : (\n            <ul className=\"divide-y divide-border\">\n              {items.map((item) => (\n                <li\n                  key={item.id}\n                  className=\"p-4 flex gap-3 hover:bg-muted/50 transition\"\n                >\n                  {item.type === \"info\" ? (\n                    <TooltipProvider>\n                      <Tooltip>\n                        <TooltipTrigger asChild>\n                          <Info className=\"h-4 w-4 text-blue-500 mt-0.5 cursor-pointer\" />\n                        </TooltipTrigger>\n                        <TooltipContent>\n                          <p>Important Information</p>\n                        </TooltipContent>\n                      </Tooltip>\n                    </TooltipProvider>\n                  ) : null}\n\n                  <div className=\"flex-1\">\n                    {item.type === \"link\" && item.href ? (\n                      <Link\n                        href={item.href}\n                        className=\"text-sm font-medium text-blue-600 hover:underline\"\n                      >\n                        {item.message}\n                      </Link>\n                    ) : (\n                      <p className=\"text-sm font-medium\">{item.message}</p>\n                    )}\n                    <span className=\"block text-xs text-muted-foreground\">\n                      {item.time}\n                    </span>\n                  </div>\n                </li>\n              ))}\n            </ul>\n          )}\n        </Card>\n      </PopoverContent>\n    </Popover>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/notification-alt.tsx"
+    }
+  ]
+}

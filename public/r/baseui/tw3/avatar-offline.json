@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar-offline",
+  "type": "registry:ui",
+  "title": "Avatar Offline",
+  "description": "An avatar component with an offline status indicator.",
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/ruixenui/avatar-offline.tsx",
+      "content": "\"use client\";\n\nimport {\n  Avatar,\n  AvatarFallback,\n  AvatarImage,\n} from \"@/components/ui/avatar\";\nimport { cn } from \"@/lib/utils\";\n\ninterface AvatarOfflineProps {\n  src?: string;\n  alt?: string;\n  fallback?: string;\n  className?: string;\n}\n\nexport default function AvatarOffline({\n  src = \"https://github.com/shadcn.png\",\n  alt = \"User\",\n  fallback = \"U\",\n  className,\n}: AvatarOfflineProps) {\n  return (\n    <div className={cn(\"relative\", className)}>\n      <Avatar className=\"size-10 rounded-lg\">\n        <AvatarImage src={src} alt={alt} />\n        <AvatarFallback className=\"rounded-lg\">{fallback}</AvatarFallback>\n      </Avatar>\n      <span className=\"border-background bg-muted-foreground absolute bottom-0 end-0 size-3 rounded-full border-2\">\n        <span className=\"sr-only\">Offline</span>\n      </span>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/avatar-offline.tsx"
+    },
+    {
+      "path": "components/ui/avatar.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nfunction Avatar({ className, ...props }: React.ComponentProps<\"span\">) {\n  return (\n    <span\n      data-slot=\"avatar\"\n      className={cn(\n        \"relative flex size-8 shrink-0 overflow-hidden rounded-full\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nfunction AvatarImage({\n  className,\n  src,\n  alt = \"\",\n  onLoadingStatusChange,\n  ...props\n}: React.ComponentProps<\"img\"> & {\n  onLoadingStatusChange?: (status: \"loading\" | \"loaded\" | \"error\") => void;\n}) {\n  const [status, setStatus] = React.useState<\"loading\" | \"loaded\" | \"error\">(\n    \"loading\",\n  );\n\n  React.useEffect(() => {\n    if (!src) {\n      setStatus(\"error\");\n      return;\n    }\n    setStatus(\"loading\");\n    const img = new Image();\n    img.src = src;\n    img.onload = () => {\n      setStatus(\"loaded\");\n      onLoadingStatusChange?.(\"loaded\");\n    };\n    img.onerror = () => {\n      setStatus(\"error\");\n      onLoadingStatusChange?.(\"error\");\n    };\n  }, [src, onLoadingStatusChange]);\n\n  if (status !== \"loaded\") return null;\n\n  return (\n    <img\n      data-slot=\"avatar-image\"\n      className={cn(\"aspect-square size-full\", className)}\n      src={src}\n      alt={alt}\n      {...props}\n    />\n  );\n}\n\nfunction AvatarFallback({\n  className,\n  delayMs,\n  children,\n  ...props\n}: React.ComponentProps<\"span\"> & { delayMs?: number }) {\n  const [show, setShow] = React.useState(!delayMs);\n\n  React.useEffect(() => {\n    if (delayMs) {\n      const timer = setTimeout(() => setShow(true), delayMs);\n      return () => clearTimeout(timer);\n    }\n  }, [delayMs]);\n\n  if (!show) return null;\n\n  return (\n    <span\n      data-slot=\"avatar-fallback\"\n      className={cn(\n        \"bg-muted flex size-full items-center justify-center rounded-full\",\n        className,\n      )}\n      {...props}\n    >\n      {children}\n    </span>\n  );\n}\n\nexport { Avatar, AvatarImage, AvatarFallback };\n",
+      "type": "registry:ui",
+      "target": "components/ui/avatar.tsx"
+    }
+  ]
+}

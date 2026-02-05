@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "partner-integrations-grid-demo",
+  "type": "registry:example",
+  "title": "Partner Integrations Grid Demo",
+  "description": "Example of grid showcase with partner integrations",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/partner-integrations-grid"
+  ],
+  "files": [
+    {
+      "path": "registry/example/partner-integrations-grid-demo.tsx",
+      "content": "\"use client\";\n\nimport PartnerIntegrationsGrid from \"../ruixenui/partner-integrations-grid\";\n\nexport default function DemoPartnerIntegrations() {\n  return (\n    <main className=\"bg-background flex flex-col items-center justify-center w-full\">\n      <PartnerIntegrationsGrid />\n    </main>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/partner-integrations-grid-demo.tsx"
+    }
+  ]
+}

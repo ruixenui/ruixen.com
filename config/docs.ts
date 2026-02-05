@@ -115,12 +115,18 @@ export const docsConfig: DocsConfig = {
             },
           ],
         },
-        // {
-        //   title: "Tailwind v4",
-        //   href: "/docs/tailwind-v4",
-        //   items: [],
-        //   label: "",
-        // },
+        {
+          title: "Dual Tailwind",
+          href: "/docs/tailwind-v4",
+          items: [],
+          label: "v3 + v4",
+        },
+        {
+          title: "Swap Primitives",
+          href: "/docs/ui-library",
+          items: [],
+          label: "Radix & Base",
+        },
         // {
         //   title: "MCP",
         //   href: "/docs/mcp",
@@ -224,40 +230,16 @@ export const docsConfig: DocsConfig = {
           title: "Alerts",
           items: [
             {
-              title: "Error Alert",
-              href: `/docs/components/alert-error`,
+              title: "Alert With Actions",
+              href: `/docs/components/alert-with-actions`,
               items: [],
-              label: "",
+              label: "New",
             },
             {
-              title: "Error Alert Outlined",
-              href: `/docs/components/alert-error-outlined`,
+              title: "Animated Alert",
+              href: `/docs/components/animated-alert`,
               items: [],
-              label: "",
-            },
-            {
-              title: "Success Alert",
-              href: `/docs/components/alert-success`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Success Alert Outlined",
-              href: `/docs/components/alert-success-outlined`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Warning Alert",
-              href: `/docs/components/alert-warning`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Warning Alert Outlined",
-              href: `/docs/components/alert-warning-outlined`,
-              items: [],
-              label: "",
+              label: "New",
             },
           ],
         },
@@ -271,10 +253,10 @@ export const docsConfig: DocsConfig = {
               label: "",
             },
             {
-              title: "Voice Message Bubble",
-              href: `/docs/components/voice-message-bubble`,
+              title: "Live Waveform",
+              href: `/docs/components/live-waveform`,
               items: [],
-              label: "",
+              label: "New",
             },
             {
               title: "Visualizer Button",
@@ -285,12 +267,6 @@ export const docsConfig: DocsConfig = {
             {
               title: "Audio Book Player",
               href: `/docs/components/audio-book-player`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Waveform Player",
-              href: `/docs/components/waveform-player`,
               items: [],
               label: "",
             },
@@ -383,12 +359,6 @@ export const docsConfig: DocsConfig = {
               label: "",
             },
             {
-              title: "Particle Text Dots",
-              href: `/docs/components/particle-text-dots`,
-              items: [],
-              label: "New",
-            },
-            {
               title: "Rain Background",
               href: `/docs/components/rain-background`,
               items: [],
@@ -406,9 +376,26 @@ export const docsConfig: DocsConfig = {
               items: [],
               label: "",
             },
+          ],
+        },
+        {
+          title: "Text",
+          items: [
             {
               title: "Rising Glow",
               href: `/docs/components/rising-glow`,
+              items: [],
+              label: "Updated",
+            },
+            {
+              title: "Particle Text Dots",
+              href: `/docs/components/particle-text-dots`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Container Text Scroll",
+              href: `/docs/components/container-text-scroll`,
               items: [],
               label: "",
             },
@@ -1077,12 +1064,6 @@ export const docsConfig: DocsConfig = {
         {
           title: "Effects",
           items: [
-            {
-              title: "Container Text Scroll",
-              href: `/docs/components/container-text-scroll`,
-              items: [],
-              label: "",
-            },
             {
               title: "Globe",
               href: `/docs/components/globe`,

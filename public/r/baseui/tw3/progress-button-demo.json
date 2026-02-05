@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "progress-button-demo",
+  "type": "registry:example",
+  "title": "Progress Button Demo",
+  "description": "Example showing a button with progress indicator functionality.",
+  "registryDependencies": [
+    "https://ruixen.com/r/progress-button"
+  ],
+  "files": [
+    {
+      "path": "registry/example/progress-button-demo.tsx",
+      "content": "import ProgressButton from \"@/registry/ruixenui/progress-button\";\n\nexport default function DemoProgressButton() {\n  return (\n    <div className=\"flex min-h-[350px] w-full flex-col items-center justify-center gap-6\">\n      <ProgressButton label=\"Submit\" />\n      <ProgressButton label=\"Pay\" loadingLabel=\"Processing Payment\" />\n      <ProgressButton label=\"Upload\" showBar duration={3000} />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/progress-button-demo.tsx"
+    }
+  ]
+}

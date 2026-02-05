@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "notifications-carousel",
+  "type": "registry:ui",
+  "title": "Notifications Carousel",
+  "description": "A carousel-style notification component that displays one notification at a time with navigation controls.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "popover",
+    "badge",
+    "card"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/notifications-carousel.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { Bell, ChevronLeft, ChevronRight } from \"lucide-react\";\nimport {\n  Popover,\n  PopoverContent,\n  PopoverTrigger,\n} from \"@/components/ui/popover\";\nimport { Badge } from \"@/components/ui/badge\";\nimport { Card } from \"@/components/ui/card\";\nimport { Button } from \"@/components/ui/button\";\n\ninterface NotificationItem {\n  id: string;\n  title: string;\n  description: string;\n  time: string;\n}\n\ninterface NotificationsProps {\n  items?: NotificationItem[];\n  placement?: \"top\" | \"bottom\" | \"left\" | \"right\";\n}\n\nconst defaultNotifications: NotificationItem[] = [\n  {\n    id: \"1\",\n    title: \"🎉 Welcome\",\n    description: \"Thanks for checking out the carousel notifications!\",\n    time: \"just now\",\n  },\n  {\n    id: \"2\",\n    title: \"⚡ System Update\",\n    description: \"A new feature has been rolled out to your account.\",\n    time: \"1h ago\",\n  },\n  {\n    id: \"3\",\n    title: \"⏰ Reminder\",\n    description: \"Don’t forget to complete your profile setup.\",\n    time: \"3h ago\",\n  },\n  {\n    id: \"4\",\n    title: \"📊 Weekly Report\",\n    description: \"Your weekly report is now available.\",\n    time: \"1d ago\",\n  },\n];\n\nexport default function NotificationsCarousel({\n  items = defaultNotifications,\n  placement = \"bottom\",\n}: NotificationsProps) {\n  const [index, setIndex] = React.useState(0);\n\n  const next = () => setIndex((prev) => (prev + 1) % items.length);\n  const prev = () =>\n    setIndex((prev) => (prev - 1 + items.length) % items.length);\n\n  return (\n    <Popover>\n      <PopoverTrigger asChild>\n        <button className=\"relative inline-flex items-center justify-center rounded-full p-2 hover:bg-muted\">\n          <Bell className=\"h-5 w-5\" />\n          {items.length > 0 && (\n            <Badge\n              variant=\"default\"\n              className=\"absolute -top-1 -right-1 text-xs px-1.5 py-0\"\n            >\n              {items.length}\n            </Badge>\n          )}\n        </button>\n      </PopoverTrigger>\n\n      <PopoverContent\n        side={placement}\n        align=\"center\"\n        className=\"w-80 p-0 flex flex-col items-center\"\n      >\n        {items.length === 0 ? (\n          <div className=\"p-4 text-sm text-muted-foreground text-center\">\n            No notifications\n          </div>\n        ) : (\n          <div className=\"relative flex items-center w-full\">\n            {/* Prev button */}\n            <Button\n              variant=\"ghost\"\n              size=\"icon\"\n              className=\"absolute left-0 z-10\"\n              onClick={prev}\n            >\n              <ChevronLeft className=\"h-4 w-4\" />\n            </Button>\n\n            {/* Notification card */}\n            <Card className=\"w-full mx-8 p-4 flex flex-col items-start text-left transition-all duration-300 shadow-none border-0\">\n              <div className=\"flex justify-between w-full items-center mb-2\">\n                <span className=\"font-medium text-sm\">\n                  {items[index].title}\n                </span>\n                <span className=\"text-xs text-muted-foreground\">\n                  {items[index].time}\n                </span>\n              </div>\n              <p className=\"text-sm text-muted-foreground leading-relaxed\">\n                {items[index].description}\n              </p>\n            </Card>\n\n            {/* Next button */}\n            <Button\n              variant=\"ghost\"\n              size=\"icon\"\n              className=\"absolute right-0 z-10\"\n              onClick={next}\n            >\n              <ChevronRight className=\"h-4 w-4\" />\n            </Button>\n          </div>\n        )}\n      </PopoverContent>\n    </Popover>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/notifications-carousel.tsx"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "banner-cookie-demo",
+  "type": "registry:example",
+  "title": "Banner Cookie Demo",
+  "description": "Example showing cookie consent banners with different positions.",
+  "registryDependencies": [
+    "https://ruixen.com/r/banner-cookie"
+  ],
+  "files": [
+    {
+      "path": "registry/example/banner-cookie-demo.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport BannerCookie from \"@/registry/ruixenui/banner-cookie\";\nimport { Button } from \"@/components/ui/button\";\n\nexport default function BannerCookieDemo() {\n  const [activeDemo, setActiveDemo] = React.useState<string | null>(null);\n\n  return (\n    <div className=\"flex min-h-[400px] w-full flex-col items-center justify-center gap-4 p-4\">\n      <div className=\"flex flex-wrap justify-center gap-2\">\n        <Button variant=\"outline\" onClick={() => setActiveDemo(\"bottom\")}>\n          Show Bottom Banner\n        </Button>\n        <Button variant=\"outline\" onClick={() => setActiveDemo(\"bottom-right\")}>\n          Show Floating Banner\n        </Button>\n      </div>\n\n      <p className=\"text-sm text-muted-foreground\">\n        Click a button above to see different cookie banner positions\n      </p>\n\n      {activeDemo === \"bottom\" && (\n        <div className=\"fixed inset-x-0 bottom-0 z-50\">\n          <BannerCookie\n            position=\"bottom\"\n            onAccept={() => setActiveDemo(null)}\n            onDecline={() => setActiveDemo(null)}\n            onSettings={() => console.log(\"Settings clicked\")}\n          />\n        </div>\n      )}\n\n      {activeDemo === \"bottom-right\" && (\n        <BannerCookie\n          position=\"bottom-right\"\n          title=\"Cookie preferences\"\n          description=\"We use cookies to improve your experience and analyze site usage.\"\n          onAccept={() => setActiveDemo(null)}\n          onDecline={() => setActiveDemo(null)}\n          showSettings={false}\n        />\n      )}\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/banner-cookie-demo.tsx"
+    }
+  ]
+}

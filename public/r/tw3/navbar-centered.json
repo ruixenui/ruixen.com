@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "navbar-centered",
+  "type": "registry:ui",
+  "title": "Navbar Centered",
+  "description": "A navigation bar with centered navigation links between logo and actions.",
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/navbar-centered.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport Link from \"next/link\";\nimport { cn } from \"@/lib/utils\";\nimport { Button } from \"@/components/ui/button\";\n\nexport interface NavbarCenteredProps {\n  logo?: React.ReactNode;\n  links?: { label: string; href: string; active?: boolean }[];\n  actions?: React.ReactNode;\n  className?: string;\n}\n\nexport default function NavbarCentered({\n  logo = <span className=\"font-semibold\">Logo</span>,\n  links = [\n    { label: \"Home\", href: \"#\", active: true },\n    { label: \"Features\", href: \"#\" },\n    { label: \"Pricing\", href: \"#\" },\n    { label: \"About\", href: \"#\" },\n  ],\n  actions,\n  className,\n}: NavbarCenteredProps) {\n  return (\n    <header className={cn(\"w-full border-b\", className)}>\n      <div className=\"flex h-14 items-center justify-between px-4\">\n        <Link href=\"/\" className=\"flex items-center\">\n          {logo}\n        </Link>\n        <nav className=\"absolute left-1/2 hidden -translate-x-1/2 items-center gap-6 md:flex\">\n          {links.map((link) => (\n            <Link\n              key={link.href + link.label}\n              href={link.href}\n              className={cn(\n                \"text-sm transition-colors hover:text-foreground\",\n                link.active ? \"text-foreground\" : \"text-muted-foreground\",\n              )}\n            >\n              {link.label}\n            </Link>\n          ))}\n        </nav>\n        <div className=\"flex items-center gap-2\">\n          {actions ?? (\n            <>\n              <Button variant=\"ghost\" size=\"sm\">\n                Sign In\n              </Button>\n              <Button size=\"sm\">Get Started</Button>\n            </>\n          )}\n        </div>\n      </div>\n    </header>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/navbar-centered.tsx"
+    }
+  ]
+}

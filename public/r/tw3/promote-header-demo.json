@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "promote-header-demo",
+  "type": "registry:example",
+  "title": "Promote Header Demo",
+  "description": "Example of a promotional header component",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/promote-header"
+  ],
+  "files": [
+    {
+      "path": "registry/example/promote-header-demo.tsx",
+      "content": "import PromoteHeader from \"../ruixenui/promote-header\";\n\nexport default function DemoPage() {\n  return (\n    <main>\n      <PromoteHeader />\n    </main>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/promote-header-demo.tsx"
+    }
+  ]
+}

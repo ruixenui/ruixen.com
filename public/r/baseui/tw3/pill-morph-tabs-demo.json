@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pill-morph-tabs-demo",
+  "type": "registry:example",
+  "title": "Pill Morph Tabs Demo",
+  "description": "Example showing tabs with morphing pill indicator.",
+  "registryDependencies": [
+    "https://ruixen.com/r/pill-morph-tabs"
+  ],
+  "files": [
+    {
+      "path": "registry/example/pill-morph-tabs-demo.tsx",
+      "content": "import PillMorphTabs from \"@/registry/ruixenui/pill-morph-tabs\";\n\nexport default function DemoOne() {\n  return (\n    <div className=\"flex min-h-screen w-full items-center justify-center p-4\">\n      <PillMorphTabs\n        defaultValue=\"overview\"\n        className=\"w-full max-w-md\"\n        items={[\n          {\n            value: \"overview\",\n            label: \"Overview\",\n            panel: (\n              <div className=\"p-4 text-left\">\n                <h2 className=\"text-lg font-semibold\">Overview</h2>\n                <p className=\"text-sm text-muted-foreground\">\n                  This is the overview section of your app.\n                </p>\n              </div>\n            ),\n          },\n          {\n            value: \"features\",\n            label: \"Features\",\n            panel: (\n              <div className=\"p-4 text-left\">\n                <h2 className=\"text-lg font-semibold\">Features</h2>\n                <p className=\"text-sm text-muted-foreground\">\n                  Cool features listed here.\n                </p>\n              </div>\n            ),\n          },\n          {\n            value: \"pricing\",\n            label: \"Pricing\",\n            panel: (\n              <div className=\"p-4 text-left\">\n                <h2 className=\"text-lg font-semibold\">Pricing</h2>\n                <p className=\"text-sm text-muted-foreground\">\n                  Choose the best plan for you.\n                </p>\n              </div>\n            ),\n          },\n          {\n            value: \"faq\",\n            label: \"FAQ\",\n            panel: (\n              <div className=\"p-4 text-left\">\n                <h2 className=\"text-lg font-semibold\">FAQ</h2>\n                <p className=\"text-sm text-muted-foreground\">\n                  Find answers to common questions here.\n                </p>\n              </div>\n            ),\n          },\n        ]}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/pill-morph-tabs-demo.tsx"
+    }
+  ]
+}

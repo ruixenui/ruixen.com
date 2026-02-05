@@ -174,7 +174,10 @@ export async function generateMetadata({
       title: post.title,
       description: post.description,
       images: [post.image || ""],
-      creator: "@dillionverma",
+      creator: "@ruixen_ui",
+    },
+    alternates: {
+      canonical: absoluteUrl(`/blog/${postSlug}`),
     },
   };
 }
@@ -200,8 +203,52 @@ export default async function BlogPage({
   // Initialize with empty headings array - they will be populated after render
   const headings: string[] = [];
 
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.description,
+    image: post.image,
+    datePublished: post.publishedOn,
+    url: `https://ruixen.com/blog/${postSlug}`,
+    author: {
+      "@type": "Person",
+      name: post.author || "Sri Somanaath",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Ruixen UI",
+      url: "https://ruixen.com",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://ruixen.com/favicon.ico",
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://ruixen.com/blog/${postSlug}`,
+    },
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Blog", item: "https://ruixen.com/blog" },
+      { "@type": "ListItem", position: 2, name: post.title, item: `https://ruixen.com/blog/${postSlug}` },
+    ],
+  };
+
   return (
     <div className="mx-auto mt-5 max-w-6xl px-5 xl:px-0">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <div className="mb-4">
         <Link
           href="/blog"

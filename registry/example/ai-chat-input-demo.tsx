@@ -1,29 +1,20 @@
 "use client";
 
-import { useState } from "react";
 import AiChatInput from "@/registry/ruixenui/ai-chat-input";
 
 export default function AiChatInputDemo() {
-  const [messages, setMessages] = useState<string[]>([]);
-
-  const handleSendMessage = (message: string) => {
-    setMessages((prev) => [...prev, message]);
-    console.log("Sent message:", message);
-  };
-
-  const handleUploadFile = (file: File) => {
-    console.log("Uploaded file:", file.name);
-  };
-
   return (
-    <div className="flex flex-col items-center justify-center p-8 space-y-6 mx-auto">
-      <div className="w-full border p-2">
-        <AiChatInput
-          onSendMessage={handleSendMessage}
-          onUploadFile={handleUploadFile}
-          isLoading={false}
-        />
-      </div>
+    <div className="flex min-h-[200px] w-full flex-col items-center justify-center px-4">
+      <AiChatInput
+        placeholders={[
+          "Ask me anything...",
+          "Describe what you need built",
+          "Write a function that...",
+          "Explain how this works",
+          "Debug this error message",
+        ]}
+        onSubmit={(val) => console.log("submitted:", val)}
+      />
     </div>
   );
 }

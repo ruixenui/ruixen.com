@@ -1,21 +1,19 @@
 "use client";
 
-import React from "react";
 import { RisingGlow } from "@/registry/ruixenui/rising-glow";
 
 export default function RisingGlowDemo() {
   return (
-    <div className="flex flex-col items-center min-h-screen justify-center p-6">
-      <h1 className="text-6xl md:text-8xl font-bold relative z-10">Lumina</h1>
-      {/* Rising Glow animation below text */}
-      <div className="w-sm">
-        <RisingGlow
-          particleCount={80}
-          particleColor="#7CF734"
-          height={100}
-          width="100%"
-        />
-      </div>
+    <div className="flex min-h-[350px] w-full flex-col items-center justify-center gap-12 p-8">
+      <RisingGlow color="#7CF734" spread={40}>
+        <h1 className="text-6xl font-bold tracking-tight text-foreground md:text-8xl">
+          Lumina
+        </h1>
+      </RisingGlow>
+
+      <RisingGlow color="#3b82f6" particleCount={16} spread={25}>
+        <p className="text-2xl font-medium text-foreground">Text that glows</p>
+      </RisingGlow>
     </div>
   );
 }

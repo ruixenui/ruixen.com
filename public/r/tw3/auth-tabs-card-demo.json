@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "auth-tabs-card-demo",
+  "type": "registry:example",
+  "title": "Auth Tabs Card Demo",
+  "description": "Example showing tabbed authentication with social login.",
+  "registryDependencies": [
+    "https://ruixen.com/r/auth-tabs-card"
+  ],
+  "files": [
+    {
+      "path": "registry/example/auth-tabs-card-demo.tsx",
+      "content": "\"use client\";\n\nimport AuthTabsCard from \"@/registry/ruixenui/auth-tabs-card\";\nimport { FaGoogle, FaGithub, FaLinkedin } from \"react-icons/fa\";\n\nexport default function DemoAuthTabsCard() {\n  const handleSignIn = (data: Record<string, string>) => {\n    console.log(\"Sign In Data:\", data);\n    alert(`Signed in as: ${data.email}`);\n  };\n\n  const handleSignUp = (data: Record<string, string>) => {\n    console.log(\"Sign Up Data:\", data);\n    alert(`Signed up with email: ${data.email}`);\n  };\n\n  return (\n    <div className=\"flex items-center justify-center min-h-screen py-16\">\n      <AuthTabsCard\n        socialButtons={[\n          {\n            id: \"google\",\n            label: \"Sign in with Google\",\n            icon: FaGoogle,\n            onClick: () => alert(\"Google Login\"),\n          },\n          {\n            id: \"github\",\n            label: \"Sign in with GitHub\",\n            icon: FaGithub,\n            onClick: () => alert(\"GitHub Login\"),\n          },\n          {\n            id: \"linkedin\",\n            label: \"Sign in with LinkedIn\",\n            icon: FaLinkedin,\n            onClick: () => alert(\"LinkedIn Login\"),\n          },\n        ]}\n        signInFields={[\n          {\n            id: \"email\",\n            label: \"Email\",\n            type: \"email\",\n            placeholder: \"you@example.com\",\n          },\n          {\n            id: \"password\",\n            label: \"Password\",\n            type: \"password\",\n            placeholder: \"********\",\n          },\n        ]}\n        signUpFields={[\n          { id: \"name\", label: \"Name\", type: \"text\", placeholder: \"Your Name\" },\n          {\n            id: \"email\",\n            label: \"Email\",\n            type: \"email\",\n            placeholder: \"you@example.com\",\n          },\n          {\n            id: \"password\",\n            label: \"Password\",\n            type: \"password\",\n            placeholder: \"********\",\n          },\n        ]}\n        onSignIn={handleSignIn}\n        onSignUp={handleSignUp}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/auth-tabs-card-demo.tsx"
+    }
+  ]
+}

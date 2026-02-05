@@ -45,8 +45,35 @@ export default function Home() {
     },
   ];
 
+  const softwareAppJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "Ruixen UI",
+    applicationCategory: "DeveloperApplication",
+    operatingSystem: "Web",
+    url: "https://ruixen.com",
+    description:
+      "600+ free, open-source React components built with Tailwind CSS, TypeScript & Framer Motion. Supports Tailwind v3 + v4, Radix & Base UI primitives.",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+    },
+    author: {
+      "@type": "Organization",
+      name: "Ruixen UI",
+      url: "https://ruixen.com",
+    },
+    programmingLanguage: ["TypeScript", "React", "JavaScript"],
+    license: "https://opensource.org/licenses/MIT",
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareAppJsonLd) }}
+      />
       <Hero />
       {/* <VideoShowcaseGrid /> */}
       <InspirationsSection />

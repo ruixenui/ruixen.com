@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "checkbox-group-demo",
+  "type": "registry:example",
+  "title": "Checkbox Group Demo",
+  "description": "Example showing checkbox groups with horizontal and vertical layouts.",
+  "registryDependencies": [
+    "https://ruixen.com/r/checkbox-group"
+  ],
+  "files": [
+    {
+      "path": "registry/example/checkbox-group-demo.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport CheckboxGroup from \"@/registry/ruixenui/checkbox-group\";\n\nexport default function CheckboxGroupDemo() {\n  const [selected, setSelected] = React.useState<string[]>([\"react\"]);\n\n  const frameworks = [\n    {\n      value: \"react\",\n      label: \"React\",\n      description: \"A JavaScript library for building user interfaces\",\n    },\n    {\n      value: \"nextjs\",\n      label: \"Next.js\",\n      description: \"The React framework for production\",\n    },\n    {\n      value: \"astro\",\n      label: \"Astro\",\n      description: \"Build faster websites with less JavaScript\",\n    },\n    {\n      value: \"remix\",\n      label: \"Remix\",\n      description: \"Full stack web framework\",\n      disabled: true,\n    },\n  ];\n\n  return (\n    <div className=\"flex min-h-[450px] w-full items-center justify-center\">\n      <div className=\"flex flex-col gap-6\">\n        <CheckboxGroup\n          label=\"Select your frameworks\"\n          options={frameworks}\n          value={selected}\n          onValueChange={setSelected}\n        />\n        <CheckboxGroup\n          label=\"Horizontal layout\"\n          options={[\n            { value: \"small\", label: \"Small\" },\n            { value: \"medium\", label: \"Medium\" },\n            { value: \"large\", label: \"Large\" },\n          ]}\n          orientation=\"horizontal\"\n        />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/checkbox-group-demo.tsx"
+    }
+  ]
+}

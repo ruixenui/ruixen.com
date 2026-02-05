@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aurora-hero-section-demo",
+  "type": "registry:example",
+  "title": "Aurora Hero Section Demo",
+  "description": "Example showing a beautiful hero section with aurora-style background effects",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/aurora-hero-section"
+  ],
+  "files": [
+    {
+      "path": "registry/example/aurora-hero-section-demo.tsx",
+      "content": "\"use client\";\n\nimport AuroraHeroSection from \"../ruixenui/aurora-hero-section\";\n\nexport default function DemoPage() {\n  return (\n    <AuroraHeroSection\n      title=\"Next.js + Tailwind + Shadcn = ❤️\"\n      description=\"Speed up your workflow with ready-to-use components.\"\n      githubLink=\"https://github.com/ruixenui/ruixen.com\"\n      githubLabel=\"Star on GitHub\"\n      primaryButton={{ label: \"Install Now\", href: \"/install\" }}\n      secondaryButton={{ label: \"View Docs\", href: \"/docs\" }}\n    />\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/aurora-hero-section-demo.tsx"
+    }
+  ]
+}

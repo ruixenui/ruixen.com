@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-copy",
+  "type": "registry:ui",
+  "title": "Button Copy",
+  "description": "A copy-to-clipboard button with visual feedback on copy success.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "registry/ruixenui/button-copy.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { Copy, Check } from \"lucide-react\";\n\ninterface ButtonCopyProps\n  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, \"children\"> {\n  value: string;\n  variant?: \"default\" | \"outline\" | \"ghost\";\n  showText?: boolean;\n  copyText?: string;\n  copiedText?: string;\n}\n\nconst variantStyles = {\n  default: \"bg-primary text-primary-foreground shadow hover:bg-primary/90\",\n  outline:\n    \"border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground\",\n  ghost: \"hover:bg-accent hover:text-accent-foreground\",\n};\n\nexport default function ButtonCopy({\n  value,\n  variant = \"outline\",\n  showText = true,\n  copyText = \"Copy\",\n  copiedText = \"Copied!\",\n  className,\n  ...props\n}: ButtonCopyProps) {\n  const [copied, setCopied] = React.useState(false);\n\n  const handleCopy = async () => {\n    try {\n      await navigator.clipboard.writeText(value);\n      setCopied(true);\n      setTimeout(() => setCopied(false), 2000);\n    } catch (err) {\n      console.error(\"Failed to copy:\", err);\n    }\n  };\n\n  return (\n    <button\n      className={cn(\n        \"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50\",\n        variantStyles[variant],\n        showText ? \"h-9 px-3\" : \"h-9 w-9\",\n        copied && \"text-emerald-600\",\n        className,\n      )}\n      onClick={handleCopy}\n      {...props}\n    >\n      {copied ? (\n        <>\n          <Check className=\"size-4\" />\n          {showText && <span>{copiedText}</span>}\n        </>\n      ) : (\n        <>\n          <Copy className=\"size-4\" />\n          {showText && <span>{copyText}</span>}\n        </>\n      )}\n    </button>\n  );\n}\n\nexport { ButtonCopy, type ButtonCopyProps };\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/button-copy.tsx"
+    }
+  ]
+}

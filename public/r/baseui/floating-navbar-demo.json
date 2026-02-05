@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "floating-navbar-demo",
+  "type": "registry:example",
+  "title": "Floating Navbar Demo",
+  "description": "Example of a floating navigation bar with scroll animations",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/floating-navbar"
+  ],
+  "files": [
+    {
+      "path": "registry/example/floating-navbar-demo.tsx",
+      "content": "import FloatingNav from \"../ruixenui/floating-navbar\";\n\nexport default function FloatingNavbarDemo() {\n  return (\n    <main className=\"p-2\">\n      <FloatingNav />\n    </main>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/floating-navbar-demo.tsx"
+    }
+  ]
+}

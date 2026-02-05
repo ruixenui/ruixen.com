@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "priority-pyramid-calendar-demo",
+  "type": "registry:example",
+  "title": "Priority Pyramid Calendar Demo",
+  "description": "Example showing a priority pyramid calendar with task prioritization.",
+  "registryDependencies": [
+    "https://ruixen.com/r/priority-pyramid-calendar"
+  ],
+  "files": [
+    {
+      "path": "registry/example/priority-pyramid-calendar-demo.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport {\n  PriorityPyramidCalendar,\n  Event,\n} from \"@/registry/ruixenui/priority-pyramid-calendar\";\n\nexport default function PriorityPyramidDemoPage() {\n  const [events, setEvents] = React.useState<Event[]>([\n    {\n      id: 1,\n      title: \"Launch project\",\n      date: new Date(),\n      priority: 1,\n    },\n    {\n      id: 2,\n      title: \"Team meeting\",\n      date: new Date(new Date().setDate(new Date().getDate() + 1)),\n      priority: 2,\n    },\n  ]);\n\n  return (\n    <div className=\"container mx-auto p-6\">\n      <h1 className=\"text-2xl font-bold mb-4\">\n        Priority Pyramid Calendar Demo\n      </h1>\n      <PriorityPyramidCalendar\n        initialEvents={events}\n        onEventsChange={setEvents}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/priority-pyramid-calendar-demo.tsx"
+    }
+  ]
+}

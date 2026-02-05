@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "solar-loader",
+  "type": "registry:ui",
+  "title": "Solar Loader",
+  "description": "Animated solar system loading spinner with orbiting planets and customizable speed.",
+  "files": [
+    {
+      "path": "registry/ruixenui/solar-loader.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\n\ninterface SolarLoaderProps {\n  size?: number; // size of the sun\n  speed?: number; // animation speed multiplier\n  className?: string;\n}\n\nconst SolarLoader: React.FC<SolarLoaderProps> = ({\n  size = 40,\n  speed = 1,\n  className,\n}) => {\n  const planets = [\n    {\n      name: \"Mercury\",\n      color: \"from-gray-500 to-gray-800 dark:from-gray-300 dark:to-gray-600\",\n      orbit: 2.5,\n      size: 0.3,\n      duration: 2,\n    },\n    {\n      name: \"Venus\",\n      color:\n        \"from-yellow-400 to-yellow-700 dark:from-yellow-200 dark:to-yellow-500\",\n      orbit: 3.5,\n      size: 0.4,\n      duration: 3,\n    },\n    {\n      name: \"Earth\",\n      color: \"from-sky-400 to-blue-900 dark:from-sky-300 dark:to-blue-700\",\n      orbit: 4.5,\n      size: 0.45,\n      duration: 4,\n    },\n    {\n      name: \"Mars\",\n      color: \"from-red-400 to-red-800 dark:from-red-300 dark:to-red-700\",\n      orbit: 5.5,\n      size: 0.4,\n      duration: 5,\n    },\n    {\n      name: \"Jupiter\",\n      color:\n        \"from-amber-400 to-amber-800 dark:from-amber-300 dark:to-amber-700\",\n      orbit: 7,\n      size: 0.8,\n      duration: 6,\n    },\n    {\n      name: \"Saturn\",\n      color:\n        \"from-orange-400 to-orange-800 dark:from-orange-300 dark:to-orange-700\",\n      orbit: 8,\n      size: 0.7,\n      duration: 7,\n      ring: true,\n    },\n    {\n      name: \"Uranus\",\n      color: \"from-teal-300 to-cyan-700 dark:from-teal-200 dark:to-cyan-600\",\n      orbit: 9,\n      size: 0.6,\n      duration: 8,\n    },\n    {\n      name: \"Neptune\",\n      color:\n        \"from-blue-500 to-indigo-900 dark:from-blue-400 dark:to-indigo-700\",\n      orbit: 10,\n      size: 0.6,\n      duration: 9,\n    },\n  ];\n\n  return (\n    <div\n      className={`relative mx-auto flex items-center justify-center ${className}`}\n      style={{\n        width: `${size * 10}px`,\n        height: `${size * 10}px`,\n        perspective: \"1200px\",\n      }}\n    >\n      <div\n        className=\"relative animate-[tilt_10s_infinite_linear] [transform-style:preserve-3d]\"\n        style={{ width: \"100%\", height: \"100%\" }}\n      >\n        {/*  Diagonal Axis Line */}\n        <div\n          className=\"absolute left-1/2 top-40 bg-gradient-to-r from-neutral-300/70 to-neutral-500/70 dark:from-neutral-500/60 dark:to-neutral-300/60\"\n          style={{\n            width: `${size * 10}px`,\n            height: \"1.5px\",\n            transform: \"translate(-50%, -50%) rotate(38deg)\",\n            boxShadow: \"0 0 8px rgba(255,255,255,0.3)\",\n            zIndex: 0,\n          }}\n        />\n\n        {/* Sun */}\n        <div\n          className=\"absolute flex items-center justify-center rounded-full shadow-lg\n                     bg-gradient-to-br from-yellow-300 to-orange-500 dark:from-yellow-200 dark:to-orange-400\"\n          style={{\n            width: `${size}px`,\n            height: `${size}px`,\n            boxShadow:\n              \"0 0 40px rgba(255, 200, 0, 0.7), inset 0 0 15px rgba(255,255,255,0.5)\",\n            transform: \"translateZ(30px)\",\n            zIndex: 10,\n          }}\n        />\n\n        {/* Planets + Orbits */}\n        {planets.map((planet, i) => (\n          <div\n            key={i}\n            className=\"absolute rounded-full border border-neutral-300 dark:border-neutral-700\"\n            style={{\n              width: `${planet.orbit * size}px`,\n              height: `${planet.orbit * size}px`,\n              animation: `orbit3d ${planet.duration / speed}s linear infinite`,\n              transformStyle: \"preserve-3d\",\n              transform: `rotateX(20deg) translateZ(${(i % 2 === 0 ? 1 : -1) * 25}px)`,\n            }}\n          >\n            <div\n              className={`absolute rounded-full bg-gradient-to-br ${planet.color} shadow-inner`}\n              style={{\n                width: `${planet.size * size}px`,\n                height: `${planet.size * size}px`,\n                top: \"50%\",\n                left: \"100%\",\n                transform: \"translate(-50%, -50%) rotateX(15deg)\",\n                boxShadow:\n                  \"inset -6px -6px 12px rgba(0,0,0,0.6), inset 4px 4px 8px rgba(255,255,255,0.2)\",\n              }}\n            >\n              {/* Reflection spot */}\n              <div\n                className=\"absolute rounded-full bg-white/40 blur-[2px]\"\n                style={{\n                  width: `${planet.size * size * 0.3}px`,\n                  height: `${planet.size * size * 0.3}px`,\n                  top: \"25%\",\n                  left: \"25%\",\n                  opacity: 0.6,\n                }}\n              />\n\n              {/* Saturn’s ring */}\n              {planet.ring && (\n                <div\n                  className=\"absolute bg-gradient-to-r from-neutral-300 to-neutral-500 dark:from-neutral-400 dark:to-neutral-200 opacity-80\"\n                  style={{\n                    width: `${planet.size * size * 2}px`,\n                    height: \"1.5px\",\n                    top: \"50%\",\n                    left: \"50%\",\n                    transform: \"translate(-50%, -50%) rotate(25deg)\",\n                  }}\n                />\n              )}\n            </div>\n          </div>\n        ))}\n      </div>\n    </div>\n  );\n};\n\n// Inject keyframes\nconst style = `\n@keyframes orbit3d {\n  0% { transform: rotateX(20deg) rotateY(0deg); }\n  100% { transform: rotateX(20deg) rotateY(-360deg); }\n}\n\n@keyframes tilt {\n  0%, 100% { transform: rotateX(10deg) rotateY(0deg); }\n  50% { transform: rotateX(-10deg) rotateY(10deg); }\n}\n`;\n\nif (\n  typeof document !== \"undefined\" &&\n  !document.getElementById(\"orbit3d-keyframes\")\n) {\n  const styleEl = document.createElement(\"style\");\n  styleEl.id = \"orbit3d-keyframes\";\n  styleEl.innerHTML = style;\n  document.head.appendChild(styleEl);\n}\n\nexport default SolarLoader;\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/solar-loader.tsx"
+    }
+  ],
+  "cssVars": {
+    "theme": {
+      "animate-earth-rotate": "earthRotate 20s linear infinite",
+      "animate-atmosphere-glow": "atmosphereGlow 3s ease-in-out infinite"
+    }
+  },
+  "css": {
+    "@keyframes earthRotate": {
+      "0%": {
+        "background-position": "0 0"
+      },
+      "100%": {
+        "background-position": "360px 0"
+      }
+    },
+    "@keyframes atmosphereGlow": {
+      "0%, 100%": {
+        "opacity": "0.6"
+      },
+      "50%": {
+        "opacity": "0.9"
+      }
+    }
+  }
+}
