@@ -60,7 +60,7 @@ function CopyFileButton({ value }: { value: string }) {
     <Button
       size="icon"
       variant="ghost"
-      className="h-6 w-6 text-zinc-400 hover:bg-zinc-700 hover:text-zinc-50 [&_svg]:h-3 [&_svg]:w-3"
+      className="h-6 w-6 text-zinc-400 hover:bg-zinc-200 hover:text-zinc-800 dark:hover:bg-zinc-700 dark:hover:text-zinc-50 [&_svg]:h-3 [&_svg]:w-3"
       onClick={() => {
         navigator.clipboard.writeText(value);
         setCopied(true);
@@ -72,21 +72,17 @@ function CopyFileButton({ value }: { value: string }) {
   );
 }
 
-function RegistryCodeBlock({
-  file,
-  defaultExpanded,
-}: {
-  file: RegistryFile;
-  defaultExpanded?: boolean;
-}) {
-  const [expanded, setExpanded] = React.useState(defaultExpanded ?? false);
+function RegistryCodeBlock({ file }: { file: RegistryFile }) {
+  const [expanded, setExpanded] = React.useState(false);
   const path = displayPath(file.path);
+  const lineCount = file.content.split("\n").length;
+  const collapsible = lineCount > 15;
 
   return (
-    <div className="overflow-hidden rounded-lg border border-zinc-800 bg-zinc-950 dark:bg-zinc-900">
+    <div className="overflow-hidden rounded-lg border border-zinc-200 bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-900">
       {/* File header */}
-      <div className="flex items-center justify-between border-b border-zinc-800 bg-zinc-900 px-3 py-1.5">
-        <div className="flex items-center gap-2 text-xs text-zinc-400">
+      <div className="flex items-center justify-between border-b border-zinc-200 bg-zinc-50 px-3 py-1.5 dark:border-zinc-800 dark:bg-zinc-800/50">
+        <div className="flex items-center gap-2 text-xs text-zinc-500 dark:text-zinc-400">
           <FileIcon className="h-3 w-3" />
           <span className="font-mono">{path}</span>
         </div>
@@ -98,19 +94,19 @@ function RegistryCodeBlock({
         <div
           className={cn(
             "overflow-hidden transition-all",
-            !expanded && "max-h-72",
+            !expanded && collapsible && "max-h-72",
           )}
         >
-          <pre className="overflow-x-auto p-4">
-            <code className="font-mono text-sm leading-relaxed text-zinc-300 whitespace-pre">
+          <pre className="overflow-x-auto p-4" style={{ filter: "none" }}>
+            <code className="font-mono text-sm leading-relaxed text-zinc-800 dark:text-zinc-300 whitespace-pre">
               {file.content}
             </code>
           </pre>
         </div>
 
-        {/* Expand/collapse overlay */}
-        {!expanded && file.content.split("\n").length > 15 && (
-          <div className="absolute inset-x-0 bottom-0 flex items-end justify-center bg-gradient-to-t from-zinc-950 to-transparent pb-2 pt-16 dark:from-zinc-900">
+        {/* Expand overlay */}
+        {!expanded && collapsible && (
+          <div className="absolute inset-x-0 bottom-0 flex items-end justify-center bg-gradient-to-t from-zinc-100 to-transparent pb-2 pt-16 dark:from-zinc-900">
             <Button
               variant="secondary"
               size="sm"
@@ -122,8 +118,9 @@ function RegistryCodeBlock({
           </div>
         )}
 
-        {expanded && file.content.split("\n").length > 15 && (
-          <div className="flex justify-center border-t border-zinc-800 py-2">
+        {/* Collapse button */}
+        {expanded && collapsible && (
+          <div className="flex justify-center border-t border-zinc-200 py-2 dark:border-zinc-800">
             <Button
               variant="secondary"
               size="sm"
@@ -151,17 +148,17 @@ function RegistryDeps({
   }
 
   return (
-    <div className="mt-3 rounded-lg border border-zinc-800/50 bg-zinc-950/50 p-3 dark:bg-zinc-900/50">
+    <div className="mt-3 rounded-lg border border-zinc-200/50 bg-zinc-100/50 p-3 dark:border-zinc-800/50 dark:bg-zinc-900/50">
       {deps && deps.length > 0 && (
         <div className="mb-2">
-          <span className="text-xs font-medium text-zinc-400">
+          <span className="text-xs font-medium text-zinc-500 dark:text-zinc-400">
             Required shadcn primitives:
           </span>
           <div className="mt-1 flex flex-wrap gap-1.5">
             {deps.map((d) => (
               <span
                 key={d}
-                className="rounded bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-300"
+                className="rounded bg-zinc-200 px-1.5 py-0.5 font-mono text-xs text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300"
               >
                 {d}
               </span>
@@ -171,14 +168,14 @@ function RegistryDeps({
       )}
       {npmDeps && npmDeps.length > 0 && (
         <div>
-          <span className="text-xs font-medium text-zinc-400">
+          <span className="text-xs font-medium text-zinc-500 dark:text-zinc-400">
             npm packages:
           </span>
           <div className="mt-1 flex flex-wrap gap-1.5">
             {npmDeps.map((d) => (
               <span
                 key={d}
-                className="rounded bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-300"
+                className="rounded bg-zinc-200 px-1.5 py-0.5 font-mono text-xs text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300"
               >
                 {d}
               </span>
@@ -238,11 +235,11 @@ export function ComponentSource({
     return (
       <div
         className={cn(
-          "my-6 flex items-center justify-center rounded-lg border border-zinc-800 bg-zinc-950 p-8 dark:bg-zinc-900",
+          "my-6 flex items-center justify-center rounded-lg border border-zinc-200 bg-zinc-100 p-8 dark:border-zinc-800 dark:bg-zinc-900",
           className,
         )}
       >
-        <div className="h-4 w-4 animate-spin rounded-full border-2 border-zinc-600 border-t-zinc-300" />
+        <div className="h-4 w-4 animate-spin rounded-full border-2 border-zinc-300 border-t-zinc-600 dark:border-zinc-600 dark:border-t-zinc-300" />
       </div>
     );
   }
@@ -267,12 +264,8 @@ export function ComponentSource({
       )}
 
       {/* All files from registry */}
-      {registry.files.map((file, i) => (
-        <RegistryCodeBlock
-          key={file.path}
-          file={file}
-          defaultExpanded={i === 0 && registry.files.length === 1}
-        />
+      {registry.files.map((file) => (
+        <RegistryCodeBlock key={file.path} file={file} />
       ))}
 
       {/* Dependencies info */}
