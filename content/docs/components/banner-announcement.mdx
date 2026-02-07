@@ -1,7 +1,7 @@
 ---
 title: Banner Announcement
 date: 2025-01-08
-description: A dismissible announcement banner with multiple variants and action links.
+description: A dismissible announcement banner with shimmer entrance, height-collapse dismiss, and optional badge pill.
 author: ruixen
 published: true
 ---
@@ -44,17 +44,14 @@ npx shadcn@latest add "https://ruixen.com/r/banner-announcement"
 
 ```tsx
 import BannerAnnouncement from "@/components/ruixen/banner-announcement";
-import { Sparkles } from "lucide-react";
 
 export default function MyBanner() {
   return (
     <BannerAnnouncement
-      variant="gradient"
-      icon={<Sparkles className="size-4" />}
-      actionLabel="Learn more"
-      actionHref="/features"
+      badge="New"
+      action={{ label: "Learn more", href: "/features" }}
     >
-      Introducing our new feature: Real-time collaboration is now available!
+      Real-time collaboration is now available for your team.
     </BannerAnnouncement>
   );
 }
@@ -62,22 +59,11 @@ export default function MyBanner() {
 
 ## Props
 
-| Prop          | Type                                               | Default     | Description                     |
-| ------------- | -------------------------------------------------- | ----------- | ------------------------------- |
-| `children`    | `React.ReactNode`                                  | -           | The announcement message        |
-| `variant`     | `"default" \| "gradient" \| "minimal" \| "accent"` | `"default"` | Visual style of the banner      |
-| `icon`        | `React.ReactNode`                                  | -           | Icon to display before message  |
-| `actionLabel` | `string`                                           | -           | Text for the action link        |
-| `actionHref`  | `string`                                           | -           | URL for the action link         |
-| `dismissible` | `boolean`                                          | `true`      | Whether banner can be dismissed |
-| `onDismiss`   | `() => void`                                       | -           | Callback when dismissed         |
-| `className`   | `string`                                           | -           | Additional CSS classes          |
-
-## Variants
-
-| Variant    | Description                                  |
-| ---------- | -------------------------------------------- |
-| `default`  | Primary background color                     |
-| `gradient` | Purple to indigo gradient                    |
-| `minimal`  | Muted background with border                 |
-| `accent`   | Amber to orange gradient for urgent messages |
+| Prop          | Type                                   | Default | Description                                |
+| ------------- | -------------------------------------- | ------- | ------------------------------------------ |
+| `children`    | `React.ReactNode`                      | -       | The announcement message                   |
+| `badge`       | `string`                               | -       | Optional pill label before the message     |
+| `action`      | `{ label: string; href: string }`      | -       | Action link with arrow                     |
+| `dismissible` | `boolean`                              | `true`  | Whether the banner can be dismissed        |
+| `onDismiss`   | `() => void`                           | -       | Callback fired after dismiss animation     |
+| `className`   | `string`                               | -       | Additional CSS classes                     |

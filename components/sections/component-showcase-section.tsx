@@ -43,26 +43,6 @@ export default function ComponentShowcaseSection() {
             />
           </Link>
 
-          {/* Chat Component - Top Left (extends into hero) */}
-          <Link
-            href="/docs/components/ruixen-moon-chat"
-            className="absolute left-[0%] md:-left-[4%] lg:-left-[5%] top-[-10%] md:top-[-8%] lg:top-[-5%] h-[110px] w-[165px] md:h-[130px] md:w-[195px] lg:h-[140px] lg:w-52 z-15 rounded-xl shadow-lg animate-float-up overflow-hidden cursor-pointer hover:scale-105 hover:z-50 transition-all duration-300"
-            style={{
-              animationDelay: "-1.2s",
-              transform: `translate(${mousePosition.x * 0.8}px, ${mousePosition.y * 0.8}px)`,
-            }}
-          >
-            <Image
-              src="/landing-page-images/ruixen-moon-chat.webp"
-              alt="Ruixen Moon Chat"
-              fill
-              sizes="(max-width: 768px) 165px, (max-width: 1200px) 195px, 52px"
-              className="object-cover rounded-xl"
-              loading="lazy"
-              unoptimized
-            />
-          </Link>
-
           {/* 3D Calendar - Top Right (extends into hero) */}
           <Link
             href="/docs/components/three-dwall-calendar"
@@ -622,26 +602,6 @@ export default function ComponentShowcaseSection() {
               alt="Globe Component"
               fill
               sizes="(max-width: 768px) 240px, (max-width: 1200px) 300px, 330px"
-              className="object-cover rounded-xl"
-              loading="lazy"
-              unoptimized
-            />
-          </Link>
-
-          {/* Chat Component - Top Left (extends into hero) */}
-          <Link
-            href="/docs/components/ruixen-moon-chat"
-            className="absolute left-[0%] md:-left-[4%] lg:-left-[5%] top-[-10%] md:top-[-8%] lg:top-[-5%] h-[110px] w-[165px] md:h-[130px] md:w-[195px] lg:h-[140px] lg:w-52 z-15 rounded-xl shadow-lg animate-float-up overflow-hidden cursor-pointer hover:scale-105 hover:z-50 transition-all duration-300"
-            style={{
-              animationDelay: "-1.2s",
-              transform: `translate(${mousePosition.x * 0.8}px, ${mousePosition.y * 0.8}px)`,
-            }}
-          >
-            <Image
-              src="/landing-page-images/ruixen-moon-chat.webp"
-              alt="Ruixen Moon Chat"
-              fill
-              sizes="(max-width: 768px) 165px, (max-width: 1200px) 195px, 52px"
               className="object-cover rounded-xl"
               loading="lazy"
               unoptimized

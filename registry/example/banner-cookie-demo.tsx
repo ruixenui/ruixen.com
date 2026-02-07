@@ -1,48 +1,44 @@
 "use client";
 
-import * as React from "react";
+import { useState, useCallback } from "react";
 import BannerCookie from "@/registry/ruixenui/banner-cookie";
-import { Button } from "@/components/ui/button";
+import { RotateCcw } from "lucide-react";
 
 export default function BannerCookieDemo() {
-  const [activeDemo, setActiveDemo] = React.useState<string | null>(null);
+  const [key, setKey] = useState(0);
+  const [dismissed, setDismissed] = useState(false);
+
+  const replay = useCallback(() => {
+    setKey((k) => k + 1);
+    setDismissed(false);
+  }, []);
 
   return (
-    <div className="flex min-h-[400px] w-full flex-col items-center justify-center gap-4 p-4">
-      <div className="flex flex-wrap justify-center gap-2">
-        <Button variant="outline" onClick={() => setActiveDemo("bottom")}>
-          Show Bottom Banner
-        </Button>
-        <Button variant="outline" onClick={() => setActiveDemo("bottom-right")}>
-          Show Floating Banner
-        </Button>
+    <div className="relative flex min-h-[400px] w-full items-center justify-center overflow-hidden">
+      {/* Ambient glow — makes the card's depth visible */}
+      <div className="pointer-events-none absolute -bottom-8 -left-8 h-56 w-56 rounded-full bg-gradient-to-tr from-primary/[0.07] to-transparent blur-3xl" />
+
+      <div
+        className={`transition-opacity duration-300 ${
+          dismissed ? "opacity-100" : "pointer-events-none opacity-0"
+        }`}
+      >
+        <button
+          onClick={replay}
+          className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+        >
+          <RotateCcw className="size-3.5" />
+          Replay
+        </button>
       </div>
 
-      <p className="text-sm text-muted-foreground">
-        Click a button above to see different cookie banner positions
-      </p>
-
-      {activeDemo === "bottom" && (
-        <div className="fixed inset-x-0 bottom-0 z-50">
-          <BannerCookie
-            position="bottom"
-            onAccept={() => setActiveDemo(null)}
-            onDecline={() => setActiveDemo(null)}
-            onSettings={() => console.log("Settings clicked")}
-          />
-        </div>
-      )}
-
-      {activeDemo === "bottom-right" && (
+      <div className="absolute bottom-5 left-5">
         <BannerCookie
-          position="bottom-right"
-          title="Cookie preferences"
-          description="We use cookies to improve your experience and analyze site usage."
-          onAccept={() => setActiveDemo(null)}
-          onDecline={() => setActiveDemo(null)}
-          showSettings={false}
+          key={key}
+          onAccept={() => setDismissed(true)}
+          onDecline={() => setDismissed(true)}
         />
-      )}
+      </div>
     </div>
   );
 }

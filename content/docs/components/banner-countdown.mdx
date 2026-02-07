@@ -1,7 +1,7 @@
 ---
 title: Banner Countdown
 date: 2025-01-08
-description: A countdown timer banner for sales, launches, and time-sensitive promotions.
+description: A countdown banner with Fluid Numerals — odometer-style rolling digits, colon heartbeat, and height-collapse dismiss.
 author: ruixen
 published: true
 ---
@@ -45,17 +45,14 @@ npx shadcn@latest add "https://ruixen.com/r/banner-countdown"
 ```tsx
 import BannerCountdown from "@/components/ruixen/banner-countdown";
 
-// Sale ends in 24 hours
-const saleEndDate = new Date(Date.now() + 24 * 60 * 60 * 1000);
+const saleEnd = new Date(Date.now() + 24 * 60 * 60 * 1000);
 
-export default function MyCountdownBanner() {
+export default function MyCountdown() {
   return (
     <BannerCountdown
-      variant="urgent"
       title="Flash Sale ends in"
-      endDate={saleEndDate}
-      ctaLabel="Shop now"
-      ctaHref="/sale"
+      endDate={saleEnd}
+      action={{ label: "Shop now", href: "/sale" }}
       onExpire={() => console.log("Sale ended!")}
     />
   );
@@ -64,24 +61,11 @@ export default function MyCountdownBanner() {
 
 ## Props
 
-| Prop          | Type                                     | Default      | Description                     |
-| ------------- | ---------------------------------------- | ------------ | ------------------------------- |
-| `title`       | `string`                                 | -            | Text displayed before countdown |
-| `endDate`     | `Date`                                   | -            | When the countdown ends         |
-| `ctaLabel`    | `string`                                 | `"Shop now"` | Call-to-action button text      |
-| `ctaHref`     | `string`                                 | `"#"`        | Call-to-action link URL         |
-| `variant`     | `"default" \| "urgent" \| "celebration"` | `"default"`  | Visual style of the banner      |
-| `showDays`    | `boolean`                                | `true`       | Whether to show days counter    |
-| `dismissible` | `boolean`                                | `true`       | Whether banner can be dismissed |
-| `onExpire`    | `() => void`                             | -            | Callback when countdown ends    |
-| `onCtaClick`  | `() => void`                             | -            | Callback when CTA clicked       |
-| `onDismiss`   | `() => void`                             | -            | Callback when dismissed         |
-| `className`   | `string`                                 | -            | Additional CSS classes          |
-
-## Variants
-
-| Variant       | Description                             |
-| ------------- | --------------------------------------- |
-| `default`     | Primary background color                |
-| `urgent`      | Red gradient with pulsing animation     |
-| `celebration` | Purple to fuchsia gradient for launches |
+| Prop        | Type                              | Default | Description                            |
+| ----------- | --------------------------------- | ------- | -------------------------------------- |
+| `title`     | `string`                          | -       | Text displayed before the countdown    |
+| `endDate`   | `Date`                            | -       | Target date for the countdown          |
+| `action`    | `{ label: string; href: string }` | -       | Action link with arrow                 |
+| `onExpire`  | `() => void`                      | -       | Callback when countdown reaches zero   |
+| `onDismiss` | `() => void`                      | -       | Callback fired after dismiss animation |
+| `className` | `string`                          | -       | Additional CSS classes                 |

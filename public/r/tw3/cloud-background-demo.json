@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cloud-background-demo",
+  "type": "registry:example",
+  "title": "Cloud Background Demo",
+  "description": "Example showing a flowing cloud background with WebGL shaders.",
+  "registryDependencies": [
+    "https://ruixen.com/r/cloud-background"
+  ],
+  "files": [
+    {
+      "path": "registry/example/cloud-background-demo.tsx",
+      "content": "import CloudBackground from \"@/registry/ruixenui/cloud-background\";\n\nexport default function DemoOne() {\n  return <CloudBackground />;\n}\n",
+      "type": "registry:example",
+      "target": "components/cloud-background-demo.tsx"
+    }
+  ]
+}

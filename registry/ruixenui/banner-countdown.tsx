@@ -2,190 +2,201 @@
 
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import { X, Clock, Flame, Zap } from "lucide-react";
+import { ArrowRight, X } from "lucide-react";
 
-type CountdownVariant = "default" | "urgent" | "celebration";
-
-interface TimeLeft {
-  days: number;
-  hours: number;
-  minutes: number;
-  seconds: number;
-}
+/* ═══════════════════════════════════════════════════════════
+   Fluid Numerals — digits that roll like a physical odometer.
+   Each digit is independent: when 10→09 the tens-place rolls
+   1→0 separately from the ones-place rolling 0→9.
+   ═══════════════════════════════════════════════════════════ */
 
 interface BannerCountdownProps {
   title: string;
   endDate: Date;
-  ctaLabel?: string;
-  ctaHref?: string;
-  variant?: CountdownVariant;
-  showDays?: boolean;
-  dismissible?: boolean;
+  action?: { label: string; href: string };
   onExpire?: () => void;
-  onCtaClick?: () => void;
   onDismiss?: () => void;
   className?: string;
 }
 
-const variantStyles = {
-  default: "bg-primary text-primary-foreground",
-  urgent: "bg-gradient-to-r from-red-600 to-rose-600 text-white",
-  celebration:
-    "bg-gradient-to-r from-violet-600 via-purple-600 to-fuchsia-600 text-white",
-};
-
-const digitStyles = {
-  default: "bg-primary-foreground/20",
-  urgent: "bg-white/20",
-  celebration: "bg-white/20",
-};
-
-function calculateTimeLeft(endDate: Date): TimeLeft {
-  const difference = endDate.getTime() - Date.now();
-
-  if (difference <= 0) {
-    return { days: 0, hours: 0, minutes: 0, seconds: 0 };
-  }
-
+/* ── time math ── */
+function calc(end: Date) {
+  const s = Math.max(0, Math.floor((end.getTime() - Date.now()) / 1000));
   return {
-    days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-    hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-    minutes: Math.floor((difference / (1000 * 60)) % 60),
-    seconds: Math.floor((difference / 1000) % 60),
+    total: s,
+    days: Math.floor(s / 86400),
+    hours: Math.floor((s % 86400) / 3600),
+    minutes: Math.floor((s % 3600) / 60),
+    seconds: s % 60,
   };
 }
 
-function TimeDigit({
-  value,
-  label,
-  variant,
-}: {
-  value: number;
-  label: string;
-  variant: CountdownVariant;
-}) {
+/* ── single rolling digit (0-9) ── */
+function Digit({ value }: { value: number }) {
+  const [cur, setCur] = React.useState(value);
+  const [prev, setPrev] = React.useState<number | null>(null);
+
+  React.useEffect(() => {
+    if (value !== cur) {
+      setPrev(cur);
+      setCur(value);
+      const id = setTimeout(() => setPrev(null), 400);
+      return () => clearTimeout(id);
+    }
+  }, [value, cur]);
+
   return (
-    <div className="flex flex-col items-center gap-0.5">
+    <span className="relative inline-flex h-[1.4em] w-[0.62em] items-center justify-center overflow-hidden">
+      {prev !== null && (
+        <span className="absolute inset-0 flex items-center justify-center animate-[digit-out_0.35s_ease-in_forwards]">
+          {prev}
+        </span>
+      )}
       <span
+        key={cur}
         className={cn(
-          "flex size-10 items-center justify-center rounded-md font-mono text-lg font-bold tabular-nums sm:size-12 sm:text-xl",
-          digitStyles[variant],
+          "absolute inset-0 flex items-center justify-center",
+          prev !== null &&
+            "animate-[digit-in_0.35s_cubic-bezier(0.16,1,0.3,1)]",
         )}
       >
-        {value.toString().padStart(2, "0")}
+        {cur}
       </span>
-      <span className="text-[10px] uppercase tracking-wide opacity-80">
-        {label}
-      </span>
+    </span>
+  );
+}
+
+/* ── digit pair container ── */
+function Pair({ value }: { value: number }) {
+  return (
+    <div className="flex items-center justify-center rounded-md bg-foreground/[0.04] px-2.5 py-1.5 font-mono text-xl font-medium tabular-nums leading-none text-foreground">
+      <Digit value={Math.floor(value / 10)} />
+      <Digit value={value % 10} />
     </div>
   );
 }
 
+/* ── main banner ── */
 export default function BannerCountdown({
   title,
   endDate,
-  ctaLabel = "Shop now",
-  ctaHref = "#",
-  variant = "default",
-  showDays = true,
-  dismissible = true,
+  action,
   onExpire,
-  onCtaClick,
   onDismiss,
   className,
 }: BannerCountdownProps) {
-  const [isVisible, setIsVisible] = React.useState(true);
-  const [timeLeft, setTimeLeft] = React.useState<TimeLeft>(() =>
-    calculateTimeLeft(endDate),
-  );
-  const [isExpired, setIsExpired] = React.useState(false);
+  const [mounted, setMounted] = React.useState(false);
+  const [dismissed, setDismissed] = React.useState(false);
+  const [time, setTime] = React.useState(() => calc(endDate));
+  const expiredRef = React.useRef(false);
+  const onExpireRef = React.useRef(onExpire);
+  onExpireRef.current = onExpire;
 
+  /* entrance expand */
   React.useEffect(() => {
-    const timer = setInterval(() => {
-      const newTimeLeft = calculateTimeLeft(endDate);
-      setTimeLeft(newTimeLeft);
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => setMounted(true));
+    });
+  }, []);
 
-      if (
-        newTimeLeft.days === 0 &&
-        newTimeLeft.hours === 0 &&
-        newTimeLeft.minutes === 0 &&
-        newTimeLeft.seconds === 0
-      ) {
-        setIsExpired(true);
-        onExpire?.();
-        clearInterval(timer);
+  /* tick */
+  React.useEffect(() => {
+    const id = setInterval(() => {
+      const t = calc(endDate);
+      setTime(t);
+      if (t.total <= 0 && !expiredRef.current) {
+        expiredRef.current = true;
+        onExpireRef.current?.();
+        clearInterval(id);
       }
     }, 1000);
-
-    return () => clearInterval(timer);
-  }, [endDate, onExpire]);
+    return () => clearInterval(id);
+  }, [endDate]);
 
   const handleDismiss = () => {
-    setIsVisible(false);
-    onDismiss?.();
+    setDismissed(true);
+    if (onDismiss) setTimeout(onDismiss, 350);
   };
 
-  if (!isVisible || isExpired) return null;
+  const tick = time.seconds % 2 === 0;
+
+  const colonCn = cn(
+    "self-center text-sm font-extralight text-muted-foreground transition-opacity duration-500",
+    tick ? "opacity-30" : "opacity-10",
+  );
+
+  const labelCn =
+    "text-center text-[9px] font-medium uppercase tracking-[0.15em] text-muted-foreground/30";
 
   return (
     <div
       className={cn(
-        "relative overflow-hidden px-4 py-3",
-        variantStyles[variant],
-        className,
+        "grid transition-[grid-template-rows] ease-[cubic-bezier(0.16,1,0.3,1)]",
+        mounted && !dismissed
+          ? "[grid-template-rows:1fr] duration-500"
+          : "[grid-template-rows:0fr] duration-300",
       )}
     >
-      {/* Animated background */}
-      {variant === "urgent" && (
-        <div className="absolute inset-0 animate-pulse bg-gradient-to-r from-transparent via-white/5 to-transparent" />
-      )}
-
-      <div className="relative mx-auto flex max-w-7xl flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
-        <div className="flex items-center gap-2">
-          {variant === "urgent" ? (
-            <Flame className="size-5 animate-pulse" />
-          ) : (
-            <Clock className="size-5" />
+      <div className="overflow-hidden">
+        <div
+          className={cn(
+            "relative flex flex-wrap items-center justify-center gap-x-8 gap-y-3 px-12 py-4",
+            "after:pointer-events-none after:absolute after:bottom-0 after:inset-x-0 after:h-px after:bg-gradient-to-r after:from-transparent after:via-border after:to-transparent",
+            "transition-[opacity,transform] duration-150",
+            dismissed && "opacity-0 -translate-y-1",
+            className,
           )}
-          <span className="font-bold">{title}</span>
-        </div>
-
-        <div className="flex items-center gap-2">
-          {showDays && timeLeft.days > 0 && (
-            <>
-              <TimeDigit value={timeLeft.days} label="days" variant={variant} />
-              <span className="text-xl font-bold opacity-50">:</span>
-            </>
-          )}
-          <TimeDigit value={timeLeft.hours} label="hrs" variant={variant} />
-          <span className="text-xl font-bold opacity-50">:</span>
-          <TimeDigit value={timeLeft.minutes} label="min" variant={variant} />
-          <span className="text-xl font-bold opacity-50">:</span>
-          <TimeDigit value={timeLeft.seconds} label="sec" variant={variant} />
-        </div>
-
-        <Button
-          size="sm"
-          variant="secondary"
-          className="bg-white/20 text-inherit hover:bg-white/30"
-          onClick={onCtaClick}
-          asChild={!!ctaHref}
         >
-          {ctaHref ? <a href={ctaHref}>{ctaLabel}</a> : <span>{ctaLabel}</span>}
-        </Button>
+          {/* title */}
+          <span className="text-sm font-medium text-foreground/70">
+            {title}
+          </span>
+
+          {/* Fluid Numerals — CSS grid keeps colons aligned with pairs,
+              labels in their own row so they don't shift vertical center */}
+          <div className="inline-grid grid-flow-col grid-rows-[auto_auto] items-center gap-x-2 gap-y-1">
+            {time.days > 0 && (
+              <>
+                <Pair value={time.days} />
+                <span className={labelCn}>days</span>
+                <span className={colonCn}>:</span>
+                <span />
+              </>
+            )}
+            <Pair value={time.hours} />
+            <span className={labelCn}>hrs</span>
+            <span className={colonCn}>:</span>
+            <span />
+            <Pair value={time.minutes} />
+            <span className={labelCn}>min</span>
+            <span className={colonCn}>:</span>
+            <span />
+            <Pair value={time.seconds} />
+            <span className={labelCn}>sec</span>
+          </div>
+
+          {/* action */}
+          {action && (
+            <a
+              href={action.href}
+              className="group inline-flex shrink-0 items-center gap-0.5 text-sm font-medium text-foreground/60 transition-colors hover:text-foreground"
+            >
+              {action.label}
+              <ArrowRight className="size-3 transition-transform duration-200 group-hover:translate-x-0.5" />
+            </a>
+          )}
+
+          {/* dismiss */}
+          <button
+            type="button"
+            onClick={handleDismiss}
+            className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full p-1 text-foreground/20 transition-all duration-150 hover:bg-foreground/5 hover:text-foreground/50 active:scale-90"
+            aria-label="Dismiss"
+          >
+            <X className="size-3.5" />
+          </button>
+        </div>
       </div>
-
-      {dismissible && (
-        <button
-          type="button"
-          onClick={handleDismiss}
-          className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full p-1 transition-colors hover:bg-white/20"
-          aria-label="Dismiss"
-        >
-          <X className="size-4" />
-        </button>
-      )}
     </div>
   );
 }

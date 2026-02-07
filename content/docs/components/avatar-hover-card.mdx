@@ -1,0 +1,88 @@
+---
+title: Avatar Hover Card
+date: 2025-05-01
+description: An interactive avatar that reveals a profile card on hover with spring physics, staggered content, and delayed open/close for polished UX.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="avatar-hover-card-demo" category="avatars" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/avatar-hover-card"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="avatar-hover-card" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import AvatarHoverCard from "@/components/ruixen/avatar-hover-card";
+
+export default function App() {
+  return (
+    <AvatarHoverCard
+      imageSrc="https://github.com/shadcn.png"
+      name="shadcn"
+      username="shadcn"
+      description="Creator of shadcn/ui."
+      stats={[
+        { label: "Following", value: "142" },
+        { label: "Followers", value: "28.5k" },
+      ]}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop          | Type                                    | Default   | Description                              |
+| ------------- | --------------------------------------- | --------- | ---------------------------------------- |
+| `imageSrc`    | `string`                                | -         | Avatar image URL (required)              |
+| `imageAlt`    | `string`                                | name      | Alt text for the image                   |
+| `name`        | `string`                                | -         | Display name (required)                  |
+| `username`    | `string`                                | -         | Username or handle                       |
+| `description` | `string`                                | -         | Bio or description text                  |
+| `stats`       | `{ label: string; value: string }[]`    | -         | Stats like followers, following          |
+| `actions`     | `ReactNode`                             | -         | Custom action buttons                    |
+| `size`        | `"sm" \| "md" \| "lg"`                  | `"md"`    | Trigger avatar size (32/40/48px)         |
+| `align`       | `"start" \| "center" \| "end"`          | `"start"` | Card alignment relative to trigger       |
+| `className`   | `string`                                | -         | Additional CSS classes                   |
+
+## Features
+
+- **Delayed Open/Close**: 80ms open delay prevents accidental triggers; 100ms close grace lets cursor travel to the card
+- **Card Below Trigger**: Card appears beneath the avatar, never covering it
+- **Horizontal Header**: Avatar + name side-by-side, matching GitHub/X profile card patterns
+- **Spring Physics**: Snappy scale + position animation (stiffness 500, damping 30)
+- **Staggered Content**: Description, stats, and actions fade in with subtle 40ms intervals
+- **Stats Row**: Optional follower/following counts with bold values
+- **Alignment Control**: `start`, `center`, or `end` positioning with matched transform-origin
+- **Theme-Aware**: Uses `bg-popover`, `border-border`, `text-foreground` tokens

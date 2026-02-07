@@ -1,0 +1,93 @@
+---
+title: Avatar Quick Actions
+date: 2025-05-01
+description: An orbital action ring that blooms outward from the avatar with staggered spring emergence — hover any action and the rest dim, drawing the eye to the focused one.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="avatar-quick-actions-demo" category="avatars" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/avatar-quick-actions"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="avatar-quick-actions" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import AvatarQuickActions from "@/components/ruixen/avatar-quick-actions";
+import { MessageCircle, Phone, UserPlus } from "lucide-react";
+
+export default function App() {
+  return (
+    <AvatarQuickActions
+      avatarSrc="/avatar.jpg"
+      avatarFallback="JD"
+      items={[
+        { icon: <MessageCircle className="size-3.5" />, label: "Message" },
+        { icon: <Phone className="size-3.5" />, label: "Call" },
+        { icon: <UserPlus className="size-3.5" />, label: "Follow" },
+      ]}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop             | Type                       | Default | Description                        |
+| ---------------- | -------------------------- | ------- | ---------------------------------- |
+| `items`          | `AvatarQuickActionsItem[]` | -       | Array of action items (required)   |
+| `avatarSrc`      | `string`                   | -       | Avatar image URL                   |
+| `avatarFallback` | `string`                   | -       | Fallback text when image fails     |
+| `size`           | `number`                   | `44`    | Avatar diameter in pixels          |
+| `className`      | `string`                   | -       | Additional CSS classes             |
+
+## Item Structure
+
+```tsx
+interface AvatarQuickActionsItem {
+  icon: ReactNode; // Icon element to display
+  label: string; // Name shown below action on hover
+  onClick?: () => void; // Click handler
+}
+```
+
+## Features
+
+- **Orbital Bloom**: Actions spring outward from the avatar center with staggered timing (40ms per action)
+- **Focus Dim**: Non-active actions fade to 50% opacity, drawing the eye to the focused action
+- **Avatar Contraction**: Avatar breathes down to 0.92x when releasing actions, signaling state change
+- **Orbit Ring**: Subtle circular guide springs in to connect the action positions
+- **Label Reveal**: Hovering an individual action springs its label into view below
+- **Proportional Scaling**: Orbit radius, action size, container — all derived from `size`
+- **Zero Portals**: No tooltip, no popover — actions exist in the same spatial plane as the avatar
+- **Fallback Initials**: Shows first letter of fallback text when image fails to load

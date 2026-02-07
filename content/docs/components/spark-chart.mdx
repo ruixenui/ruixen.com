@@ -1,0 +1,71 @@
+---
+title: Spark Chart
+date: 2026-02-07
+description: An interactive sparkline with path-following indicator, dual-path color reveal, and draw-in animation. Inspired by Rauno Freiberg's graph slider craft.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="spark-chart-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/spark-chart"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="spark-chart" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import SparkChart from "@/components/ruixen/spark-chart";
+
+export default function Revenue() {
+  return (
+    <SparkChart
+      data={[24, 31, 42, 55, 68, 80, 95]}
+      height={120}
+      color="hsl(160, 84%, 39%)"
+      formatValue={(v) => `$${v.toFixed(0)}k`}
+      onValueChange={(value, index) => console.log(value, index)}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop            | Type                                     | Default               | Description                                        |
+| --------------- | ---------------------------------------- | --------------------- | -------------------------------------------------- |
+| `data`          | `number[]`                               | -                     | Array of values to plot (required)                 |
+| `color`         | `string`                                 | `hsl(217, 91%, 60%)` | Accent color for the active path and indicator     |
+| `height`        | `number`                                 | `160`                 | Height of the chart in pixels                      |
+| `formatValue`   | `(value: number) => string`              | -                     | Format the scrub label. If omitted, label is hidden |
+| `onValueChange` | `(value: number, index: number) => void` | -                     | Callback on scrub with interpolated value          |
+| `onActiveChange`| `(active: boolean) => void`              | -                     | Callback when scrubbing starts or stops            |
+| `className`     | `string`                                 | -                     | Additional CSS classes                             |

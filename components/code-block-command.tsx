@@ -107,7 +107,7 @@ export function CodeBlockCommand({
   }
 
   return (
-    <div className="relative w-full mt-6 max-h-[650px] overflow-hidden rounded-xl border border-zinc-800 bg-zinc-950 dark:bg-zinc-900">
+    <div className="relative w-full mt-6 max-h-[650px] overflow-hidden rounded-xl border border-gray-200 bg-gray-100 dark:border-gray-800 dark:bg-gray-900">
       <Tabs
         className="w-full"
         defaultValue={packageManager}
@@ -118,14 +118,14 @@ export function CodeBlockCommand({
           });
         }}
       >
-        <div className="flex items-start justify-between border-b border-zinc-800 bg-zinc-900 px-3 pt-2.5 w-full">
+        <div className="flex items-start justify-between border-b border-gray-200 bg-gray-200/50 px-3 pt-2.5 w-full dark:border-gray-800 dark:bg-gray-900">
           <TabsList className="h-7 translate-y-[2px] gap-3 bg-transparent p-0 pl-1 w-fit">
             {Object.entries(tabs).map(([key, value]) => {
               return (
                 <TabsTrigger
                   key={key}
                   value={key}
-                  className="rounded-none border-b border-transparent bg-transparent p-0 pb-1.5 font-mono text-zinc-400 data-[state=active]:border-b-zinc-50 data-[state=active]:bg-transparent data-[state=active]:text-zinc-50"
+                  className="rounded-none border-b border-transparent bg-transparent p-0 pb-1.5 font-mono text-gray-400 data-[state=active]:border-b-gray-900 data-[state=active]:bg-transparent data-[state=active]:text-gray-900 dark:text-gray-400 dark:data-[state=active]:border-b-gray-50 dark:data-[state=active]:text-gray-50"
                 >
                   {key}
                 </TabsTrigger>
@@ -142,8 +142,8 @@ export function CodeBlockCommand({
                   onClick={() => setConfig({ ...config, uiLibrary: "radix" })}
                   className={`rounded px-1.5 py-0.5 font-mono text-xs transition-colors ${
                     uiLibrary === "radix"
-                      ? "bg-zinc-700 text-zinc-50"
-                      : "text-zinc-500 hover:text-zinc-300"
+                      ? "bg-gray-300 text-gray-900 dark:bg-gray-700 dark:text-gray-50"
+                      : "text-gray-400 hover:text-gray-700 dark:text-gray-500 dark:hover:text-gray-300"
                   }`}
                 >
                   Radix
@@ -152,8 +152,8 @@ export function CodeBlockCommand({
                   onClick={() => setConfig({ ...config, uiLibrary: "baseui" })}
                   className={`rounded px-1.5 py-0.5 font-mono text-xs transition-colors ${
                     uiLibrary === "baseui"
-                      ? "bg-zinc-700 text-zinc-50"
-                      : "text-zinc-500 hover:text-zinc-300"
+                      ? "bg-gray-300 text-gray-900 dark:bg-gray-700 dark:text-gray-50"
+                      : "text-gray-400 hover:text-gray-700 dark:text-gray-500 dark:hover:text-gray-300"
                   }`}
                 >
                   Base UI
@@ -161,7 +161,7 @@ export function CodeBlockCommand({
               </div>
 
               {/* Separator */}
-              <div className="h-3.5 w-px bg-zinc-700" />
+              <div className="h-3.5 w-px bg-gray-300 dark:bg-gray-700" />
 
               {/* Tailwind version toggle */}
               <div className="flex items-center gap-1">
@@ -169,8 +169,8 @@ export function CodeBlockCommand({
                   onClick={() => setConfig({ ...config, tailwindVersion: "4" })}
                   className={`rounded px-1.5 py-0.5 font-mono text-xs transition-colors ${
                     twVersion === "4"
-                      ? "bg-zinc-700 text-zinc-50"
-                      : "text-zinc-500 hover:text-zinc-300"
+                      ? "bg-gray-300 text-gray-900 dark:bg-gray-700 dark:text-gray-50"
+                      : "text-gray-400 hover:text-gray-700 dark:text-gray-500 dark:hover:text-gray-300"
                   }`}
                 >
                   v4
@@ -179,8 +179,8 @@ export function CodeBlockCommand({
                   onClick={() => setConfig({ ...config, tailwindVersion: "3" })}
                   className={`rounded px-1.5 py-0.5 font-mono text-xs transition-colors ${
                     twVersion === "3"
-                      ? "bg-zinc-700 text-zinc-50"
-                      : "text-zinc-500 hover:text-zinc-300"
+                      ? "bg-gray-300 text-gray-900 dark:bg-gray-700 dark:text-gray-50"
+                      : "text-gray-400 hover:text-gray-700 dark:text-gray-500 dark:hover:text-gray-300"
                   }`}
                 >
                   v3
@@ -194,7 +194,7 @@ export function CodeBlockCommand({
             <TabsContent key={key} value={key} className="mt-0">
               <pre className="px-4 py-5 overflow-x-auto">
                 <code
-                  className="relative font-mono text-sm leading-none"
+                  className="relative font-mono text-sm leading-none text-foreground"
                   data-language="bash"
                 >
                   {value}
@@ -207,7 +207,7 @@ export function CodeBlockCommand({
       <Button
         size="icon"
         variant="ghost"
-        className="absolute right-2.5 top-2 z-10 h-6 w-6 text-zinc-50 hover:bg-zinc-700 hover:text-zinc-50 [&_svg]:h-3 [&_svg]:w-3"
+        className="absolute right-2.5 top-2 z-10 h-6 w-6 text-gray-600 hover:bg-gray-200 hover:text-gray-900 dark:text-gray-50 dark:hover:bg-gray-700 dark:hover:text-gray-50 [&_svg]:h-3 [&_svg]:w-3"
         onClick={copyCommand}
       >
         <span className="sr-only">Copy</span>

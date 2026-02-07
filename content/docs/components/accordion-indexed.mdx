@@ -1,0 +1,112 @@
+---
+title: Indexed Accordion
+date: 2025-05-01
+description: A minimal accordion with auto-generated zero-padded indices, opacity-driven hierarchy, and spring-timed reveal transitions.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="accordion-indexed-demo" category="accordions" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/accordion-indexed"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="accordion-indexed" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import AccordionIndexed from "@/components/ruixen/accordion-indexed";
+
+export default function About() {
+  return <AccordionIndexed />;
+}
+```
+
+## Custom Data
+
+```tsx
+const myItems = [
+  {
+    id: "mission",
+    title: "Our Mission",
+    content: "Building tools that empower creators.",
+  },
+  {
+    id: "vision",
+    title: "Our Vision",
+    content: "A world where great design is accessible.",
+  },
+  {
+    id: "values",
+    title: "Our Values",
+    content: "Simplicity, craft, and attention to detail.",
+  },
+];
+
+<AccordionIndexed items={myItems} defaultValue="mission" />;
+```
+
+## Controlled
+
+```tsx
+const [open, setOpen] = useState("design");
+
+<AccordionIndexed value={open} onValueChange={setOpen} />;
+```
+
+## Props
+
+| Prop            | Type                      | Default         | Description                            |
+| --------------- | ------------------------- | --------------- | -------------------------------------- |
+| `items`         | `AccordionIndexedItem[]`  | Built-in sample | Array of accordion items               |
+| `defaultValue`  | `string`                  | `"engineering"` | ID of the item open by default         |
+| `value`         | `string`                  | -               | Controlled open item ID                |
+| `onValueChange` | `(value: string) => void` | -               | Callback when the open item changes    |
+| `collapsible`   | `boolean`                 | `true`          | Whether the open item can be collapsed |
+| `className`     | `string`                  | -               | Additional CSS classes for container   |
+
+## Item Structure
+
+```tsx
+interface AccordionIndexedItem {
+  id: string;
+  title: string;
+  content: string;
+}
+```
+
+## Features
+
+- **Auto-indexed**: Display numbers are generated from array position, IDs stay semantic
+- **Opacity hierarchy**: Five levels of opacity create depth without color or weight
+- **Spring-timed reveal**: Index number materializes with cubic-bezier(0.16, 1, 0.3, 1) easing
+- **Controlled & uncontrolled**: Works with both `value` and `defaultValue` patterns
+- **No icon**: Interaction is communicated purely through typography and opacity shifts

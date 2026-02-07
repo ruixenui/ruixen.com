@@ -1,0 +1,112 @@
+---
+title: Editorial Accordion
+date: 2025-05-01
+description: A pull-quote-accented accordion with sentence-length titles, hover micro-translation, and opacity-driven hierarchy for editorial layouts.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="accordion-editorial-demo" category="accordions" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/accordion-editorial"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="accordion-editorial" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import AccordionEditorial from "@/components/ruixen/accordion-editorial";
+
+export default function About() {
+  return <AccordionEditorial />;
+}
+```
+
+## Custom Data
+
+```tsx
+const myItems = [
+  {
+    id: "mission",
+    title: "Our Mission",
+    content: "Building tools that empower creators worldwide.",
+  },
+  {
+    id: "vision",
+    title: "Our Vision",
+    content: "A world where great design is accessible to everyone.",
+  },
+  {
+    id: "values",
+    title: "Our Values",
+    content: "Simplicity, craft, and relentless attention to detail.",
+  },
+];
+
+<AccordionEditorial items={myItems} defaultValue="mission" />;
+```
+
+## Controlled
+
+```tsx
+const [open, setOpen] = useState("clarity");
+
+<AccordionEditorial value={open} onValueChange={setOpen} />;
+```
+
+## Props
+
+| Prop            | Type                       | Default         | Description                            |
+| --------------- | -------------------------- | --------------- | -------------------------------------- |
+| `items`         | `AccordionEditorialItem[]` | Built-in sample | Array of accordion items               |
+| `defaultValue`  | `string`                   | `"restraint"`   | ID of the item open by default         |
+| `value`         | `string`                   | -               | Controlled open item ID                |
+| `onValueChange` | `(value: string) => void`  | -               | Callback when the open item changes    |
+| `collapsible`   | `boolean`                  | `true`          | Whether the open item can be collapsed |
+| `className`     | `string`                   | -               | Additional CSS classes for container   |
+
+## Item Structure
+
+```tsx
+interface AccordionEditorialItem {
+  id: string;
+  title: string;
+  content: string;
+}
+```
+
+## Features
+
+- **Pull-quote accent**: Left border on expanded content creates an editorial blockquote feel
+- **Hover micro-translation**: 1px rightward nudge on hover for tactile feedback
+- **Border-less layout**: Items separated by spacing alone, no visible dividers
+- **Spring-timed transitions**: cubic-bezier(0.16, 1, 0.3, 1) easing on all state changes
+- **Controlled & uncontrolled**: Works with both `value` and `defaultValue` patterns

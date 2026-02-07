@@ -1,0 +1,86 @@
+---
+title: Music Player Card
+date: 2024-06-01
+description: A rich music player card with album art, social action pills, seekable progress bar, shuffle, repeat, and full transport controls.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="music-player-card-demo" category="audio" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/music-player-card"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="music-player-card" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import MusicPlayerCard, { Track } from "@/components/ruixen/music-player-card";
+
+const tracks: Track[] = [
+  {
+    id: "1",
+    title: "Running Up That Hill (A Deal With God)",
+    artist: "Kate Bush",
+    cover: "/covers/track1.jpg",
+    duration: "4:59",
+    src: "/audio/track1.mp3",
+    likes: "991k",
+    comments: "6k",
+  },
+];
+
+export default function App() {
+  return <MusicPlayerCard tracks={tracks} />;
+}
+```
+
+## Props
+
+| Prop        | Type      | Default | Description            |
+| ----------- | --------- | ------- | ---------------------- |
+| `tracks`    | `Track[]` | -       | Array of track objects |
+| `className` | `string`  | -       | Additional CSS classes |
+
+## Track Type
+
+```typescript
+export interface Track {
+  id: string;
+  title: string;
+  artist: string;
+  cover: string;
+  duration: string;
+  src: string;
+  likes?: string;
+  comments?: string;
+}
+```

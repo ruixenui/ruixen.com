@@ -8,7 +8,7 @@ export default function GalleryDemoPage() {
     {
       id: "1",
       type: "image",
-      src: "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/popular/ruixen-moon-chat.jpg",
+      src: "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/popular/globe-light.jpg",
     },
     {
       id: "5",

@@ -1,18 +1,6 @@
 "use client";
 
-import { OpenInV0Button } from "@/components/open-in-v0-button";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import {
-  RotateCcw,
-  Maximize2,
-  Minimize2,
-  X,
-  Smartphone,
-  Tablet,
-  Monitor,
-  Laptop,
-} from "lucide-react";
 import * as React from "react";
 import { createPortal } from "react-dom";
 
@@ -52,7 +40,8 @@ function IFramePortal({
     <meta charset="utf-8" />
     <style>
       *, *::before, *::after { box-sizing: border-box; }
-      html, body { height: 100%; width: 100%; margin: 0; padding: 0; }
+      html, body { height: 100%; width: 100%; margin: 0; padding: 0; scrollbar-width: none; -ms-overflow-style: none; }
+      html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; }
       #__frame-root {
         min-height: 100%;
         width: 100%;
@@ -135,10 +124,7 @@ function IFramePortal({
           opacity: isReady ? 1 : 0,
           transition: "opacity 0.1s ease-out",
         }}
-        className={cn(
-          "block w-full rounded-md border bg-background shadow-sm ring-1 ring-border",
-          className,
-        )}
+        className={cn("block w-full rounded-xl bg-background", className)}
       />
       {mountNode ? createPortal(children, mountNode) : null}
     </div>
@@ -147,22 +133,14 @@ function IFramePortal({
 
 /* --------------------------------- Wrapper --------------------------------- */
 
-interface ComponentWrapperProps extends React.HTMLAttributes<HTMLDivElement> {
-  name: string;
-  category?: string;
-}
+interface ComponentWrapperProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-/** ComponentWrapper now owns the responsive controls + drag handle. */
+/** ComponentWrapper renders the preview area with drag-to-resize. */
 export const ComponentWrapper = ({
   className,
-  category,
   children,
-  name,
 }: ComponentWrapperProps) => {
   type PreviewWidth = number | "auto";
-
-  const [key, setKey] = React.useState(0);
-  const [isFullscreen, setIsFullscreen] = React.useState(false);
 
   const containerRef = React.useRef<HTMLDivElement>(null);
 
@@ -190,46 +168,6 @@ export const ComponentWrapper = ({
     widthPending.current = val;
     _setWidth(val);
   }, []);
-
-  const PRESETS: Array<{
-    label?: string;
-    icon?: React.ComponentType<{ className?: string }>;
-    value: PreviewWidth;
-    title?: string;
-  }> = [
-    { label: "Auto", value: "auto", title: "Use container width" },
-    { icon: Smartphone, value: 375, title: "Mobile (375px)" },
-    { icon: Tablet, value: 640, title: "Tablet Small (640px)" },
-    { icon: Tablet, value: 768, title: "Tablet (768px)" },
-    { icon: Laptop, value: 1024, title: "Laptop (1024px)" },
-  ];
-
-  const compress = () => setWidthImmediate(375);
-  const expand = () => setWidthImmediate("auto");
-  const step = (delta: number) => {
-    const base =
-      width === "auto"
-        ? containerRef.current?.clientWidth || 1200
-        : (width as number);
-    const next = Math.min(
-      1920,
-      Math.max(320, Math.round((base + delta) / 10) * 10),
-    );
-    setWidthImmediate(next);
-  };
-
-  const toggleFullscreen = () => setIsFullscreen((prev) => !prev);
-
-  // Escape to exit fullscreen
-  React.useEffect(() => {
-    const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape" && isFullscreen) {
-        setIsFullscreen(false);
-      }
-    };
-    document.addEventListener("keydown", handleEscape);
-    return () => document.removeEventListener("keydown", handleEscape);
-  }, [isFullscreen, category]);
 
   // Drag-to-resize (right handle)
   React.useEffect(() => {
@@ -285,196 +223,17 @@ export const ComponentWrapper = ({
     };
   }, [width, setWidthImmediate, setWidthRaf]);
 
-  /** Toolbar used in both normal and fullscreen modes */
-  const Toolbar = (
-    <div className="flex w-full flex-wrap items-center gap-2">
-      {/* Left side: width presets */}
-      <div className="inline-flex flex-wrap items-center gap-1 text-xs">
-        {PRESETS.map((p, index) => {
-          const isActive = width === p.value;
-          const Icon = p.icon;
-          return (
-            <button
-              key={`${p.value}-${index}`}
-              type="button"
-              title={p.title || p.label}
-              className={cn(
-                "rounded border px-2 py-1 font-medium transition-colors",
-                isActive
-                  ? "border-primary bg-primary/10 text-primary"
-                  : "border-border bg-background hover:bg-muted",
-              )}
-              onClick={() => setWidthImmediate(p.value)}
-            >
-              {Icon ? <Icon className="h-4 w-4" /> : p.label}
-            </button>
-          );
-        })}
-      </div>
-
-      {/* Right side: util buttons */}
-      <div className="ml-auto inline-flex items-center gap-1">
-        {/* <div className="inline-flex rounded border border-border bg-background">
-          <button
-            type="button"
-            className="px-2 py-1 hover:bg-muted text-xs"
-            title="Narrower"
-            onClick={() => step(-100)}
-          >
-            −100
-          </button>
-          <div className="px-2 py-1 text-muted-foreground">|</div>
-          <button
-            type="button"
-            className="px-2 py-1 hover:bg-muted text-xs"
-            title="Wider"
-            onClick={() => step(100)}
-          >
-            +100
-          </button>
-        </div> */}
-        {/* 
-        <Button
-          onClick={compress}
-          size="sm"
-          variant="outline"
-          className="bg-background/80 backdrop-blur-sm"
-          title="Compress (mobile)"
-        >
-          <Minimize2 className="h-4 w-4" />
-        </Button>
-
-        <Button
-          onClick={expand}
-          size="sm"
-          variant="outline"
-          className="bg-background/80 backdrop-blur-sm"
-          title="Expand (auto width)"
-        >
-          <Maximize2 className="h-4 w-4" />
-        </Button>
-
-        <div className="ml-2 rounded border border-border px-2 py-1 text-xs text-muted-foreground">
-          {width === "auto" ? "auto" : `${width}px`}
-        </div> */}
-
-        {/* <div className="mx-2 h-4 w-px bg-border" /> */}
-
-        <OpenInV0Button url={`https://ruixen.com/r/${name}.json`} />
-
-        <Button
-          onClick={() => setKey((prev) => prev + 1)}
-          size="sm"
-          variant="outline"
-          className="bg-background/80 backdrop-blur-sm"
-          title="Restart"
-        >
-          <RotateCcw className="h-4 w-4" />
-        </Button>
-
-        <Button
-          size="sm"
-          variant="outline"
-          onClick={toggleFullscreen}
-          className="bg-background/80 backdrop-blur-sm"
-          title="Fullscreen"
-        >
-          <Maximize2 className="h-4 w-4" />
-        </Button>
-      </div>
-    </div>
-  );
-
-  // Fullscreen overlay
-  if (isFullscreen) {
-    return (
-      <div className="fixed inset-0 z-[9999] bg-background/95 backdrop-blur-sm">
-        <div className="absolute top-4 left-4 right-4 z-50">{Toolbar}</div>
-
-        <div className="absolute top-4 right-4 z-50">
-          <Button
-            size="sm"
-            variant="outline"
-            onClick={toggleFullscreen}
-            className="bg-background/80 backdrop-blur-sm"
-            title="Exit fullscreen"
-          >
-            <X className="h-4 w-4" />
-          </Button>
-        </div>
-
-        <div className="flex h-full w-full items-center justify-center p-8">
-          <div
-            ref={containerRef}
-            key={key}
-            className={cn(
-              "relative mx-auto w-full rounded-xl border bg-muted/20 p-4",
-              dragging ? "overflow-hidden" : "overflow-x-auto",
-            )}
-            style={
-              {
-                scrollbarGutter: "stable",
-                overscrollBehaviorX: "contain",
-                overscrollBehaviorY: "contain",
-              } as React.CSSProperties
-            }
-          >
-            <div
-              className="relative mx-auto"
-              style={{
-                width: width === "auto" ? "100%" : `${width}px`,
-                willChange: dragging ? "width" : undefined,
-              }}
-            >
-              <IFramePortal
-                width={width}
-                height={500}
-                className="bg-background"
-              >
-                {children}
-              </IFramePortal>
-
-              {/* Drag handle */}
-              <div
-                data-resize-handle
-                role="separator"
-                aria-orientation="vertical"
-                aria-label="Resize preview"
-                title="Drag to resize"
-                className={cn(
-                  "absolute right-[-6px] top-0 h-full w-3 cursor-col-resize rounded-sm",
-                  "bg-transparent transition-colors hover:bg-primary/20",
-                )}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  // Normal (inline) wrapper
   return (
-    <div
-      ref={containerRef}
-      className={cn(
-        "max-w-screen relative rounded-xl border bg-background",
-        className,
-      )}
-      key={key}
-    >
-      <div className="flex items-center justify-between gap-2 p-4">
-        {Toolbar}
-      </div>
-
+    <div ref={containerRef} className={cn("relative bg-muted/20", className)}>
       <div
         className={cn(
-          "relative mx-auto w-full rounded-b-xl border-t bg-muted/20 p-4",
+          "relative mx-auto w-full",
           dragging ? "overflow-hidden" : "overflow-x-auto",
         )}
         style={
           {
-            scrollbarGutter: "stable",
+            scrollbarWidth: "none",
+            msOverflowStyle: "none",
             overscrollBehaviorX: "contain",
             overscrollBehaviorY: "contain",
           } as React.CSSProperties

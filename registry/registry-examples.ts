@@ -77,77 +77,17 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "funnel-chart-demo",
+    name: "spark-chart-demo",
     type: "registry:example",
-    title: "Funnel Chart Demo",
+    title: "Spark Chart Demo",
     description:
-      "Example showing various funnel chart variants for visualizing conversion flows.",
-    registryDependencies: ["https://ruixen.com/r/funnel-chart"],
+      "Example showing an interactive sparkline with revenue header, dynamic value scrubbing, and trend-aware color.",
+    registryDependencies: ["https://ruixen.com/r/spark-chart"],
     files: [
       {
-        path: "registry/example/funnel-chart-demo.tsx",
+        path: "registry/example/spark-chart-demo.tsx",
         type: "registry:example",
-        target: "components/funnel-chart-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "waterfall-chart-demo",
-    type: "registry:example",
-    title: "Waterfall Chart Demo",
-    description:
-      "Example showing various waterfall chart variants for visualizing cumulative effects and financial data.",
-    registryDependencies: ["https://ruixen.com/r/waterfall-chart"],
-    files: [
-      {
-        path: "registry/example/waterfall-chart-demo.tsx",
-        type: "registry:example",
-        target: "components/waterfall-chart-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "bubble-chart-demo",
-    type: "registry:example",
-    title: "Bubble Chart Demo",
-    description:
-      "Example showing various bubble chart variants for visualizing three-dimensional data with position and size dimensions.",
-    registryDependencies: ["https://ruixen.com/r/bubble-chart"],
-    files: [
-      {
-        path: "registry/example/bubble-chart-demo.tsx",
-        type: "registry:example",
-        target: "components/bubble-chart-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "stream-chart-demo",
-    type: "registry:example",
-    title: "Stream Chart Demo",
-    description:
-      "Example showing various stream chart variants for visualizing continuous data flows over time with wiggle, silhouette, expanded, stacked, and interactive variants.",
-    registryDependencies: ["https://ruixen.com/r/stream-chart"],
-    files: [
-      {
-        path: "registry/example/stream-chart-demo.tsx",
-        type: "registry:example",
-        target: "components/stream-chart-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "bullet-chart-demo",
-    type: "registry:example",
-    title: "Bullet Chart Demo",
-    description:
-      "Example showing various bullet chart variants for comparing actual values against targets with qualitative ranges.",
-    registryDependencies: ["https://ruixen.com/r/bullet-chart"],
-    files: [
-      {
-        path: "registry/example/bullet-chart-demo.tsx",
-        type: "registry:example",
-        target: "components/bullet-chart-demo.tsx",
+        target: "components/spark-chart-demo.tsx",
       },
     ],
   },
@@ -223,303 +163,6 @@ export const examples: Registry["items"] = [
         path: "registry/example/compact-accordion-demo.tsx",
         type: "registry:example",
         target: "components/compact-accordion-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "accordion-simple-demo",
-    type: "registry:example",
-    title: "Simple Accordion Demo",
-    description: "Example showing a basic accordion with clean styling.",
-    registryDependencies: ["https://ruixen.com/r/accordion-simple"],
-    files: [
-      {
-        path: "registry/example/accordion-simple-demo.tsx",
-        type: "registry:example",
-        target: "components/accordion-simple-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "accordion-bordered-demo",
-    type: "registry:example",
-    title: "Bordered Accordion Demo",
-    description: "Example showing an accordion with bordered card-style items.",
-    registryDependencies: ["https://ruixen.com/r/accordion-bordered"],
-    files: [
-      {
-        path: "registry/example/accordion-bordered-demo.tsx",
-        type: "registry:example",
-        target: "components/accordion-bordered-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "accordion-icon-demo",
-    type: "registry:example",
-    title: "Icon Accordion Demo",
-    description: "Example showing an accordion with leading icons.",
-    registryDependencies: ["https://ruixen.com/r/accordion-icon"],
-    files: [
-      {
-        path: "registry/example/accordion-icon-demo.tsx",
-        type: "registry:example",
-        target: "components/accordion-icon-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "accordion-arrow-demo",
-    type: "registry:example",
-    title: "Arrow Accordion Demo",
-    description: "Example showing an accordion with arrow indicators.",
-    registryDependencies: ["https://ruixen.com/r/accordion-arrow"],
-    files: [
-      {
-        path: "registry/example/accordion-arrow-demo.tsx",
-        type: "registry:example",
-        target: "components/accordion-arrow-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "accordion-plus-demo",
-    type: "registry:example",
-    title: "Plus/Minus Accordion Demo",
-    description: "Example showing an accordion with plus/minus toggle icons.",
-    registryDependencies: ["https://ruixen.com/r/accordion-plus"],
-    files: [
-      {
-        path: "registry/example/accordion-plus-demo.tsx",
-        type: "registry:example",
-        target: "components/accordion-plus-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "accordion-badge-demo",
-    type: "registry:example",
-    title: "Badge Accordion Demo",
-    description: "Example showing an accordion with badges on items.",
-    registryDependencies: ["https://ruixen.com/r/accordion-badge"],
-    files: [
-      {
-        path: "registry/example/accordion-badge-demo.tsx",
-        type: "registry:example",
-        target: "components/accordion-badge-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "accordion-nested-demo",
-    type: "registry:example",
-    title: "Nested Accordion Demo",
-    description: "Example showing an accordion with nested sub-accordions.",
-    registryDependencies: ["https://ruixen.com/r/accordion-nested"],
-    files: [
-      {
-        path: "registry/example/accordion-nested-demo.tsx",
-        type: "registry:example",
-        target: "components/accordion-nested-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "accordion-minimal-demo",
-    type: "registry:example",
-    title: "Minimal Accordion Demo",
-    description:
-      "Example showing a minimal accordion with show/hide text toggle.",
-    registryDependencies: ["https://ruixen.com/r/accordion-minimal"],
-    files: [
-      {
-        path: "registry/example/accordion-minimal-demo.tsx",
-        type: "registry:example",
-        target: "components/accordion-minimal-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "accordion-animated-demo",
-    type: "registry:example",
-    title: "Animated Accordion Demo",
-    description: "Example showing an accordion with Framer Motion animations.",
-    registryDependencies: ["https://ruixen.com/r/accordion-animated"],
-    files: [
-      {
-        path: "registry/example/accordion-animated-demo.tsx",
-        type: "registry:example",
-        target: "components/accordion-animated-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "alert-with-actions-demo",
-    type: "registry:example",
-    title: "Alert With Actions Demo",
-    description: "Example showing a professional alert with action buttons.",
-    registryDependencies: ["https://ruixen.com/r/alert-with-actions"],
-    files: [
-      {
-        path: "registry/example/alert-with-actions-demo.tsx",
-        type: "registry:example",
-        target: "components/alert-with-actions-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "animated-alert-demo",
-    type: "registry:example",
-    title: "Animated Alert Demo",
-    description:
-      "Example showing an animated alert with enter/exit transitions.",
-    registryDependencies: ["https://ruixen.com/r/animated-alert"],
-    files: [
-      {
-        path: "registry/example/animated-alert-demo.tsx",
-        type: "registry:example",
-        target: "components/animated-alert-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "avatar-badge-demo",
-    type: "registry:example",
-    title: "Avatar with Badge Demo",
-    description: "Example showing an avatar with a notification badge.",
-    registryDependencies: ["https://ruixen.com/r/avatar-badge"],
-    files: [
-      {
-        path: "registry/example/avatar-badge-demo.tsx",
-        type: "registry:example",
-        target: "components/avatar-badge-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "avatar-basic-demo",
-    type: "registry:example",
-    title: "Basic Avatar Demo",
-    description: "Example showing a basic avatar with image and fallback.",
-    registryDependencies: ["https://ruixen.com/r/avatar-basic"],
-    files: [
-      {
-        path: "registry/example/avatar-basic-demo.tsx",
-        type: "registry:example",
-        target: "components/avatar-basic-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "avatar-fallback-demo",
-    type: "registry:example",
-    title: "Avatar Fallback Demo",
-    description: "Example showing an avatar with fallback initials only.",
-    registryDependencies: ["https://ruixen.com/r/avatar-fallback"],
-    files: [
-      {
-        path: "registry/example/avatar-fallback-demo.tsx",
-        type: "registry:example",
-        target: "components/avatar-fallback-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "avatar-group-demo",
-    type: "registry:example",
-    title: "Avatar Group Demo",
-    description:
-      "Example showing overlapping avatar groups in different sizes.",
-    registryDependencies: ["https://ruixen.com/r/avatar-group"],
-    files: [
-      {
-        path: "registry/example/avatar-group-demo.tsx",
-        type: "registry:example",
-        target: "components/avatar-group-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "avatar-group-count-demo",
-    type: "registry:example",
-    title: "Avatar Group with Count Demo",
-    description: "Example showing avatar groups with remaining member count.",
-    registryDependencies: ["https://ruixen.com/r/avatar-group-count"],
-    files: [
-      {
-        path: "registry/example/avatar-group-count-demo.tsx",
-        type: "registry:example",
-        target: "components/avatar-group-count-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "avatar-icon-demo",
-    type: "registry:example",
-    title: "Avatar with Icon Demo",
-    description: "Example showing an avatar with a user icon fallback.",
-    registryDependencies: ["https://ruixen.com/r/avatar-icon"],
-    files: [
-      {
-        path: "registry/example/avatar-icon-demo.tsx",
-        type: "registry:example",
-        target: "components/avatar-icon-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "avatar-online-demo",
-    type: "registry:example",
-    title: "Avatar Online Demo",
-    description: "Example showing an avatar with online status indicator.",
-    registryDependencies: ["https://ruixen.com/r/avatar-online"],
-    files: [
-      {
-        path: "registry/example/avatar-online-demo.tsx",
-        type: "registry:example",
-        target: "components/avatar-online-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "avatar-status-demo",
-    type: "registry:example",
-    title: "Avatar with Status Demo",
-    description: "Example showing avatars with different status indicators.",
-    registryDependencies: ["https://ruixen.com/r/avatar-status"],
-    files: [
-      {
-        path: "registry/example/avatar-status-demo.tsx",
-        type: "registry:example",
-        target: "components/avatar-status-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "avatar-verified-demo",
-    type: "registry:example",
-    title: "Verified Avatar Demo",
-    description: "Example showing an avatar with a verified badge.",
-    registryDependencies: ["https://ruixen.com/r/avatar-verified"],
-    files: [
-      {
-        path: "registry/example/avatar-verified-demo.tsx",
-        type: "registry:example",
-        target: "components/avatar-verified-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "avatar-trust-badge-demo",
-    type: "registry:example",
-    title: "Avatar Trust Badge Demo",
-    description: "Example showing avatar trust badges with count text.",
-    registryDependencies: ["https://ruixen.com/r/avatar-trust-badge"],
-    files: [
-      {
-        path: "registry/example/avatar-trust-badge-demo.tsx",
-        type: "registry:example",
-        target: "components/avatar-trust-badge-demo.tsx",
       },
     ],
   },
@@ -1799,21 +1442,6 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "avatar-notifications-demo",
-    type: "registry:example",
-    title: "Avatar Notifications Demo",
-    description:
-      "Example showing a notification component that displays user avatars with messages and animated status indicators.",
-    registryDependencies: ["https://www.ruixen.com/r/avatar-notifications"],
-    files: [
-      {
-        path: "registry/example/avatar-notifications-demo.tsx",
-        type: "registry:example",
-        target: "components/avatar-notifications-demo.tsx",
-      },
-    ],
-  },
-  {
     name: "sign-in-form-demo",
     type: "registry:example",
     title: "Sign In Form Demo",
@@ -2234,17 +1862,17 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "wave-background-demo",
+    name: "cloud-background-demo",
     type: "registry:example",
-    title: "Wave Background Demo",
+    title: "Cloud Background Demo",
     description:
-      "Example showing a flowing wave background with WebGL shaders.",
-    registryDependencies: ["https://ruixen.com/r/wave-background"],
+      "Example showing a flowing cloud background with WebGL shaders.",
+    registryDependencies: ["https://ruixen.com/r/cloud-background"],
     files: [
       {
-        path: "registry/example/wave-background-demo.tsx",
+        path: "registry/example/cloud-background-demo.tsx",
         type: "registry:example",
-        target: "components/wave-background-demo.tsx",
+        target: "components/cloud-background-demo.tsx",
       },
     ],
   },
@@ -2264,21 +1892,6 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "particle-field-demo",
-    type: "registry:example",
-    title: "Particle Field Demo",
-    description:
-      "Example showing an interactive particle field with mouse attraction.",
-    registryDependencies: ["https://ruixen.com/r/particle-field"],
-    files: [
-      {
-        path: "registry/example/particle-field-demo.tsx",
-        type: "registry:example",
-        target: "components/particle-field-demo.tsx",
-      },
-    ],
-  },
-  {
     name: "particle-text-dots-demo",
     type: "registry:example",
     title: "Particle Text Dots Demo",
@@ -2290,20 +1903,6 @@ export const examples: Registry["items"] = [
         path: "registry/example/particle-text-dots-demo.tsx",
         type: "registry:example",
         target: "components/particle-text-dots-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "rain-background-demo",
-    type: "registry:example",
-    title: "Rain Background Demo",
-    description: "Example showing a neon rain effect with animated streaks.",
-    registryDependencies: ["https://ruixen.com/r/rain-background"],
-    files: [
-      {
-        path: "registry/example/rain-background-demo.tsx",
-        type: "registry:example",
-        target: "components/rain-background-demo.tsx",
       },
     ],
   },
@@ -2565,6 +2164,21 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "claude-chat-input-demo",
+    type: "registry:example",
+    title: "Claude Chat Input Demo",
+    description:
+      "Example showing multi-modal chat input with file uploads, model selector, and thinking toggle.",
+    registryDependencies: ["https://ruixen.com/r/claude-chat-input"],
+    files: [
+      {
+        path: "registry/example/claude-chat-input-demo.tsx",
+        type: "registry:example",
+        target: "components/claude-chat-input-demo.tsx",
+      },
+    ],
+  },
+  {
     name: "gooey-dock-demo",
     type: "registry:example",
     title: "Gooey Dock Demo",
@@ -2666,17 +2280,17 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "playlist-carousel-demo",
+    name: "music-player-card-demo",
     type: "registry:example",
-    title: "Playlist Carousel Demo",
+    title: "Music Player Card Demo",
     description:
-      "Example showing horizontal scrolling playlist with audio players.",
-    registryDependencies: ["https://ruixen.com/r/playlist-carousel"],
+      "A rich music player card with album art, social actions, seekable progress, and full transport controls.",
+    registryDependencies: ["https://ruixen.com/r/music-player-card"],
     files: [
       {
-        path: "registry/example/playlist-carousel-demo.tsx",
+        path: "registry/example/music-player-card-demo.tsx",
         type: "registry:example",
-        target: "components/playlist-carousel-demo.tsx",
+        target: "components/music-player-card-demo.tsx",
       },
     ],
   },
@@ -2707,20 +2321,6 @@ export const examples: Registry["items"] = [
         path: "registry/example/visualizer-button-demo.tsx",
         type: "registry:example",
         target: "components/visualizer-button-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "audio-book-player-demo",
-    type: "registry:example",
-    title: "Audio Book Player Demo",
-    description: "Example showing audiobook player with speed control.",
-    registryDependencies: ["https://ruixen.com/r/audio-book-player"],
-    files: [
-      {
-        path: "registry/example/audio-book-player-demo.tsx",
-        type: "registry:example",
-        target: "components/audio-book-player-demo.tsx",
       },
     ],
   },
@@ -3166,59 +2766,17 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "badge-icon-demo",
+    name: "badge-morph-demo",
     type: "registry:example",
-    title: "Badge Icon Demo",
-    description: "Example showing badges with various icons and positions.",
-    registryDependencies: ["https://ruixen.com/r/badge-icon"],
-    files: [
-      {
-        path: "registry/example/badge-icon-demo.tsx",
-        type: "registry:example",
-        target: "components/badge-icon-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "badge-counter-demo",
-    type: "registry:example",
-    title: "Badge Counter Demo",
+    title: "Badge Morph Demo",
     description:
-      "Example showing counter badges with various sizes and variants.",
-    registryDependencies: ["https://ruixen.com/r/badge-counter"],
+      "Example showing a morphing status badge with an interactive deploy sequence.",
+    registryDependencies: ["https://ruixen.com/r/badge-morph"],
     files: [
       {
-        path: "registry/example/badge-counter-demo.tsx",
+        path: "registry/example/badge-morph-demo.tsx",
         type: "registry:example",
-        target: "components/badge-counter-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "badge-status-demo",
-    type: "registry:example",
-    title: "Badge Status Demo",
-    description: "Example showing status badges with dot and icon indicators.",
-    registryDependencies: ["https://ruixen.com/r/badge-status"],
-    files: [
-      {
-        path: "registry/example/badge-status-demo.tsx",
-        type: "registry:example",
-        target: "components/badge-status-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "badge-removable-demo",
-    type: "registry:example",
-    title: "Badge Removable Demo",
-    description: "Example showing removable badges for tags and filters.",
-    registryDependencies: ["https://ruixen.com/r/badge-removable"],
-    files: [
-      {
-        path: "registry/example/badge-removable-demo.tsx",
-        type: "registry:example",
-        target: "components/badge-removable-demo.tsx",
+        target: "components/badge-morph-demo.tsx",
       },
     ],
   },
@@ -3248,20 +2806,6 @@ export const examples: Registry["items"] = [
         path: "registry/example/banner-cookie-demo.tsx",
         type: "registry:example",
         target: "components/banner-cookie-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "banner-promo-demo",
-    type: "registry:example",
-    title: "Banner Promo Demo",
-    description: "Example showing promotional banners with various styles.",
-    registryDependencies: ["https://ruixen.com/r/banner-promo"],
-    files: [
-      {
-        path: "registry/example/banner-promo-demo.tsx",
-        type: "registry:example",
-        target: "components/banner-promo-demo.tsx",
       },
     ],
   },
@@ -3347,21 +2891,6 @@ export const examples: Registry["items"] = [
         path: "registry/example/breadcrumb-boxed-demo.tsx",
         type: "registry:example",
         target: "components/breadcrumb-boxed-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "avatar-action-button-demo",
-    type: "registry:example",
-    title: "Avatar Action Button Demo",
-    description:
-      "Example showing a button with avatar and action functionality.",
-    registryDependencies: ["https://ruixen.com/r/avatar-action-button"],
-    files: [
-      {
-        path: "registry/example/avatar-action-button-demo.tsx",
-        type: "registry:example",
-        target: "components/avatar-action-button-demo.tsx",
       },
     ],
   },
@@ -4172,21 +3701,6 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "ruixen-moon-chat-demo",
-    type: "registry:example",
-    title: "Ruixen Moon Chat Demo",
-    description:
-      "Example showing modern chat interface with message bubbles, typing indicators, and smooth animations.",
-    registryDependencies: ["https://ruixen.com/r/ruixen-moon-chat"],
-    files: [
-      {
-        path: "registry/example/ruixen-moon-chat-demo.tsx",
-        type: "registry:example",
-        target: "components/ruixen-moon-chat-demo.tsx",
-      },
-    ],
-  },
-  {
     name: "globe-demo",
     type: "registry:example",
     title: "Globe Demo",
@@ -4822,6 +4336,111 @@ export const examples: Registry["items"] = [
         path: "registry/example/checkbox-tree-demo.tsx",
         type: "registry:example",
         target: "components/checkbox-tree-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "comment-thread-demo",
+    type: "registry:example",
+    title: "Comment Thread Demo",
+    description:
+      "Example showing threaded comments with nested replies and colored avatars.",
+    registryDependencies: ["https://ruixen.com/r/comment-thread"],
+    files: [
+      {
+        path: "registry/example/comment-thread-demo.tsx",
+        type: "registry:example",
+        target: "components/comment-thread-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "faq-chat-accordion-demo",
+    type: "registry:example",
+    title: "FAQ Chat Accordion Demo",
+    description:
+      "Example showing chat-bubble styled FAQ with emoji stickers and messenger-like answers.",
+    registryDependencies: ["https://ruixen.com/r/faq-chat-accordion"],
+    files: [
+      {
+        path: "registry/example/faq-chat-accordion-demo.tsx",
+        type: "registry:example",
+        target: "components/faq-chat-accordion-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "accordion-editorial-demo",
+    type: "registry:example",
+    title: "Editorial Accordion Demo",
+    description:
+      "Example showing typographic accordion with oversized titles and numbered items.",
+    registryDependencies: ["https://ruixen.com/r/accordion-editorial"],
+    files: [
+      {
+        path: "registry/example/accordion-editorial-demo.tsx",
+        type: "registry:example",
+        target: "components/accordion-editorial-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "accordion-indexed-demo",
+    type: "registry:example",
+    title: "Indexed Accordion Demo",
+    description:
+      "Example showing numbered accordion with boxed plus icon and hover interactions.",
+    registryDependencies: ["https://ruixen.com/r/accordion-indexed"],
+    files: [
+      {
+        path: "registry/example/accordion-indexed-demo.tsx",
+        type: "registry:example",
+        target: "components/accordion-indexed-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "avatar-hover-card-demo",
+    type: "registry:example",
+    title: "Avatar Hover Card Demo",
+    description:
+      "Example showing avatar that expands into a profile card with blur-reveal animations.",
+    registryDependencies: ["https://ruixen.com/r/avatar-hover-card"],
+    files: [
+      {
+        path: "registry/example/avatar-hover-card-demo.tsx",
+        type: "registry:example",
+        target: "components/avatar-hover-card-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "avatar-spring-stack-demo",
+    type: "registry:example",
+    title: "Avatar Spring Stack Demo",
+    description:
+      "Example showing overlapping avatar stack with spring-animated tooltips on hover.",
+    registryDependencies: ["https://ruixen.com/r/avatar-spring-stack"],
+    files: [
+      {
+        path: "registry/example/avatar-spring-stack-demo.tsx",
+        type: "registry:example",
+        target: "components/avatar-spring-stack-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "avatar-quick-actions-demo",
+    type: "registry:example",
+    title: "Avatar Quick Actions Demo",
+    description:
+      "Example showing a circular avatar button with quick-action icons on hover.",
+    registryDependencies: ["https://ruixen.com/r/avatar-quick-actions"],
+    files: [
+      {
+        path: "registry/example/avatar-quick-actions-demo.tsx",
+        type: "registry:example",
+        target: "components/avatar-quick-actions-demo.tsx",
       },
     ],
   },

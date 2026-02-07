@@ -22,7 +22,6 @@ export default function AiChatInput({
     "Summarize this document for me",
     "Write a function that...",
     "Explain how this works",
-    "Debug this error message",
   ],
   onSubmit,
   onChange,
@@ -31,7 +30,14 @@ export default function AiChatInput({
   const canvasRef = React.useRef<HTMLCanvasElement>(null);
   const inputRef = React.useRef<HTMLInputElement>(null);
   const newDataRef = React.useRef<
-    Array<{ x: number; y: number; r: number; color: string }>
+    Array<{
+      x: number;
+      y: number;
+      r: number;
+      color: string;
+      vx: number;
+      vy: number;
+    }>
   >([]);
   const [value, setValue] = React.useState("");
   const [animating, setAnimating] = React.useState(false);
@@ -68,8 +74,14 @@ export default function AiChatInput({
 
     const imageData = ctx.getImageData(0, 0, 800, 800);
     const pixelData = imageData.data;
-    const pixels: Array<{ x: number; y: number; r: number; color: string }> =
-      [];
+    const pixels: Array<{
+      x: number;
+      y: number;
+      r: number;
+      color: string;
+      vx: number;
+      vy: number;
+    }> = [];
 
     for (let y = 0; y < 800; y += 2) {
       for (let x = 0; x < 800; x++) {
@@ -83,18 +95,14 @@ export default function AiChatInput({
             y: y / 2,
             r: 1,
             color: `rgba(${r}, ${g}, ${b}, ${pixelData[idx + 3] / 255})`,
+            vx: (Math.random() - 0.5) * 1.5,
+            vy: -(1.5 + Math.random() * 1.5),
           });
         }
       }
     }
 
-    newDataRef.current = pixels.map(({ x, y, r, color }) => ({
-      x,
-      y,
-      r,
-      color,
-    }));
-
+    newDataRef.current = pixels;
     setAnimating(true);
   }, [value]);
 
@@ -115,7 +123,7 @@ export default function AiChatInput({
 
       for (let i = remaining.length - 1; i >= 0; i--) {
         const p = remaining[i];
-        if (p.x < 0 || p.r <= 0) continue;
+        if (p.x < 0 || p.r <= 0.1) continue;
         alive++;
         ctx.beginPath();
         ctx.rect(p.x, p.y, p.r, p.r);
@@ -123,9 +131,10 @@ export default function AiChatInput({
         ctx.strokeStyle = p.color;
         ctx.stroke();
 
-        p.x += Math.random() > 0.5 ? 1 : -1;
-        p.y -= 1 + Math.random();
-        p.r -= 0.05 * Math.random();
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy *= 0.985;
+        p.r *= 0.97;
       }
 
       if (alive > 0) {
@@ -162,8 +171,8 @@ export default function AiChatInput({
   return (
     <div
       className={cn(
-        "relative mx-auto h-12 w-full max-w-xl overflow-hidden rounded-full bg-card shadow-[0_0_1px_1px_var(--color-border)] transition-shadow duration-200",
-        value && "shadow-[0_0_1px_2px_var(--color-border)]",
+        "relative mx-auto h-12 w-full max-w-xl overflow-hidden rounded-full border border-foreground/[0.08] bg-background transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
+        value && "border-foreground/15",
         className,
       )}
     >
@@ -182,7 +191,7 @@ export default function AiChatInput({
         onChange={handleChange}
         onKeyDown={handleKeyDown}
         className={cn(
-          "relative z-10 h-full w-full rounded-full border-none bg-transparent pl-4 pr-20 text-sm text-foreground focus:outline-none sm:pl-10 sm:text-base",
+          "relative z-10 h-full w-full rounded-full border-none bg-transparent pl-4 pr-20 text-sm tracking-[-0.01em] text-foreground focus:outline-none sm:pl-10 sm:text-[15px]",
           animating && "text-transparent",
         )}
       />
@@ -193,11 +202,11 @@ export default function AiChatInput({
           {!value && (
             <motion.p
               key={`ph-${placeholderIndex}`}
-              initial={{ y: 6, opacity: 0 }}
-              animate={{ y: 0, opacity: 0.5 }}
-              exit={{ y: -6, opacity: 0 }}
-              transition={{ duration: 0.25, ease: "linear" }}
-              className="text-sm font-normal text-muted-foreground sm:text-base"
+              initial={{ y: 5, opacity: 0 }}
+              animate={{ y: 0, opacity: 0.4 }}
+              exit={{ y: -5, opacity: 0 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="text-sm text-foreground sm:text-[15px]"
             >
               {placeholders[placeholderIndex]}
             </motion.p>
@@ -209,7 +218,12 @@ export default function AiChatInput({
       <button
         disabled={!value.trim()}
         onClick={vanishAndSubmit}
-        className="absolute right-2 top-1/2 z-20 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-foreground transition-colors duration-200 disabled:bg-muted-foreground/30"
+        className={cn(
+          "absolute right-2 top-1/2 z-20 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-foreground transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
+          value.trim()
+            ? "scale-100 opacity-100"
+            : "scale-[0.85] opacity-[0.06]",
+        )}
       >
         <motion.svg
           xmlns="http://www.w3.org/2000/svg"

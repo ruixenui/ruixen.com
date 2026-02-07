@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "faq-chat-accordion-demo",
+  "type": "registry:example",
+  "title": "FAQ Chat Accordion Demo",
+  "description": "Example showing chat-bubble styled FAQ with emoji stickers and messenger-like answers.",
+  "registryDependencies": [
+    "https://ruixen.com/r/faq-chat-accordion"
+  ],
+  "files": [
+    {
+      "path": "registry/example/faq-chat-accordion-demo.tsx",
+      "content": "import FaqChatAccordion from \"@/registry/ruixenui/faq-chat-accordion\";\n\nexport default function FaqChatAccordionDemo() {\n  return <FaqChatAccordion className=\"max-w-[700px]\" />;\n}\n",
+      "type": "registry:example",
+      "target": "components/faq-chat-accordion-demo.tsx"
+    }
+  ]
+}

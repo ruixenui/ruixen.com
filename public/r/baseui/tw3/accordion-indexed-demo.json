@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "accordion-indexed-demo",
+  "type": "registry:example",
+  "title": "Indexed Accordion Demo",
+  "description": "Example showing numbered accordion with boxed plus icon and hover interactions.",
+  "registryDependencies": [
+    "https://ruixen.com/r/accordion-indexed"
+  ],
+  "files": [
+    {
+      "path": "registry/example/accordion-indexed-demo.tsx",
+      "content": "import AccordionIndexed from \"@/registry/ruixenui/accordion-indexed\";\n\nexport default function AccordionIndexedDemo() {\n  return <AccordionIndexed />;\n}\n",
+      "type": "registry:example",
+      "target": "components/accordion-indexed-demo.tsx"
+    }
+  ]
+}

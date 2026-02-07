@@ -34,56 +34,13 @@ export type ComponentPreviewMap = Record<string, ComponentPreview>;
  * Path: /docs/components/[slug]
  */
 export const accordionsPreview: ComponentPreviewMap = {
-  "accordion-animated": {
-    light: `/preview_images/accordions/accordion-animated-light.png`,
-    dark: `/preview_images/accordions/accordion-animated-dark.png`,
+  "accordion-editorial": {
+    light: `/preview_images/accordions/accordion-editorial-light.png`,
+    dark: `/preview_images/accordions/accordion-editorial-dark.png`,
   },
-  "accordion-arrow": {
-    light: `/preview_images/accordions/accordion-arrow-light.png`,
-    dark: `/preview_images/accordions/accordion-arrow-dark.png`,
-  },
-  "accordion-badge": {
-    light: `/preview_images/accordions/accordion-badge-light.png`,
-    dark: `/preview_images/accordions/accordion-badge-dark.png`,
-  },
-  "accordion-bordered": {
-    light: `/preview_images/accordions/accordion-bordered-light.png`,
-    dark: `/preview_images/accordions/accordion-bordered-dark.png`,
-  },
-  "accordion-icon": {
-    light: `/preview_images/accordions/accordion-icon-light.png`,
-    dark: `/preview_images/accordions/accordion-icon-dark.png`,
-  },
-  "accordion-minimal": {
-    light: `/preview_images/accordions/accordion-minimal-light.png`,
-    dark: `/preview_images/accordions/accordion-minimal-dark.png`,
-  },
-  "accordion-nested": {
-    light: `/preview_images/accordions/accordion-nested-light.png`,
-    dark: `/preview_images/accordions/accordion-nested-dark.png`,
-  },
-  "accordion-plus": {
-    light: `/preview_images/accordions/accordion-plus-light.png`,
-    dark: `/preview_images/accordions/accordion-plus-dark.png`,
-  },
-  "accordion-simple": {
-    light: `/preview_images/accordions/accordion-simple-light.png`,
-    dark: `/preview_images/accordions/accordion-simple-dark.png`,
-  },
-};
-
-/**
- * Alerts - Alert notification components
- * Path: /docs/components/[slug]
- */
-export const alertsPreview: ComponentPreviewMap = {
-  "alert-with-actions": {
-    light: `/preview_images/alerts/alert-with-actions-light.png`,
-    dark: `/preview_images/alerts/alert-with-actions-dark.png`,
-  },
-  "animated-alert": {
-    light: `/preview_images/alerts/animated-alert-light.png`,
-    dark: `/preview_images/alerts/animated-alert-dark.png`,
+  "accordion-indexed": {
+    light: `/preview_images/accordions/accordion-indexed-light.png`,
+    dark: `/preview_images/accordions/accordion-indexed-dark.png`,
   },
 };
 
@@ -92,45 +49,21 @@ export const alertsPreview: ComponentPreviewMap = {
  * Path: /docs/components/[slug]
  */
 export const avatarsPreview: ComponentPreviewMap = {
-  "avatar-badge": {
-    light: `/preview_images/avatars/avatar-badge-light.png`,
-    dark: `/preview_images/avatars/avatar-badge-dark.png`,
+  "avatar-hover-card": {
+    light: `/preview_images/avatars/avatar-hover-card-light.png`,
+    dark: `/preview_images/avatars/avatar-hover-card-dark.png`,
   },
-  "avatar-basic": {
-    light: `/preview_images/avatars/avatar-basic-light.png`,
-    dark: `/preview_images/avatars/avatar-basic-dark.png`,
+  "avatar-spring-stack": {
+    light: `/preview_images/avatars/avatar-spring-stack-light.png`,
+    dark: `/preview_images/avatars/avatar-spring-stack-dark.png`,
   },
-  "avatar-fallback": {
-    light: `/preview_images/avatars/avatar-fallback-light.png`,
-    dark: `/preview_images/avatars/avatar-fallback-dark.png`,
+  "avatar-quick-actions": {
+    light: `/preview_images/avatars/avatar-quick-actions-light.png`,
+    dark: `/preview_images/avatars/avatar-quick-actions-dark.png`,
   },
-  "avatar-group": {
-    light: `/preview_images/avatars/avatar-group-light.png`,
-    dark: `/preview_images/avatars/avatar-group-dark.png`,
-  },
-  "avatar-group-count": {
-    light: `/preview_images/avatars/avatar-group-count-light.png`,
-    dark: `/preview_images/avatars/avatar-group-count-dark.png`,
-  },
-  "avatar-icon": {
-    light: `/preview_images/avatars/avatar-icon-light.png`,
-    dark: `/preview_images/avatars/avatar-icon-dark.png`,
-  },
-  "avatar-online": {
-    light: `/preview_images/avatars/avatar-online-light.png`,
-    dark: `/preview_images/avatars/avatar-online-dark.png`,
-  },
-  "avatar-status": {
-    light: `/preview_images/avatars/avatar-status-light.png`,
-    dark: `/preview_images/avatars/avatar-status-dark.png`,
-  },
-  "avatar-verified": {
-    light: `/preview_images/avatars/avatar-verified-light.png`,
-    dark: `/preview_images/avatars/avatar-verified-dark.png`,
-  },
-  "avatar-trust-badge": {
-    light: `/preview_images/avatars/avatar-trust-badge-light.png`,
-    dark: `/preview_images/avatars/avatar-trust-badge-dark.png`,
+  "comment-thread": {
+    light: `/preview_images/accordions/comment-thread-light.png`,
+    dark: `/preview_images/accordions/comment-thread-dark.png`,
   },
 };
 
@@ -139,21 +72,9 @@ export const avatarsPreview: ComponentPreviewMap = {
  * Path: /docs/components/[slug]
  */
 export const badgesPreview: ComponentPreviewMap = {
-  "badge-icon": {
-    light: `/preview_images/badges/badge-icon-light.png`,
-    dark: `/preview_images/badges/badge-icon-dark.png`,
-  },
-  "badge-counter": {
-    light: `/preview_images/badges/badge-counter-light.png`,
-    dark: `/preview_images/badges/badge-counter-dark.png`,
-  },
-  "badge-status": {
-    light: `/preview_images/badges/badge-status-light.png`,
-    dark: `/preview_images/badges/badge-status-dark.png`,
-  },
-  "badge-removable": {
-    light: `/preview_images/badges/badge-removable-light.png`,
-    dark: `/preview_images/badges/badge-removable-dark.png`,
+  "badge-morph": {
+    light: `/preview_images/badges/badge-morph-light.png`,
+    dark: `/preview_images/badges/badge-morph-dark.png`,
   },
 };
 
@@ -169,10 +90,6 @@ export const bannersPreview: ComponentPreviewMap = {
   "banner-cookie": {
     light: `/preview_images/banners/banner-cookie-light.png`,
     dark: `/preview_images/banners/banner-cookie-dark.png`,
-  },
-  "banner-promo": {
-    light: `/preview_images/banners/banner-promo-light.png`,
-    dark: `/preview_images/banners/banner-promo-dark.png`,
   },
   "banner-newsletter": {
     light: `/preview_images/banners/banner-newsletter-light.png`,
@@ -443,10 +360,6 @@ export const buttonsPreview: ComponentPreviewMap = {
     light: `/preview_images/buttons/confirmation-button-light.png`,
     dark: `/preview_images/buttons/confirmation-button-dark.png`,
   },
-  "avatar-action-button": {
-    light: `/preview_images/buttons/avatar-action-button-light.png`,
-    dark: `/preview_images/buttons/avatar-action-button-dark.png`,
-  },
   "split-action-button": {
     light: `/preview_images/buttons/split-action-button-light.png`,
     dark: `/preview_images/buttons/split-action-button-dark.png`,
@@ -625,9 +538,9 @@ export const breadcrumbPreview: ComponentPreviewMap = {
  * Path: /docs/components/[slug]
  */
 export const audioMediaPreview: ComponentPreviewMap = {
-  "playlist-carousel": {
-    light: `/preview_images/audio-media/playlist-carousel-light.png`,
-    dark: `/preview_images/audio-media/playlist-carousel-dark.png`,
+  "music-player-card": {
+    light: `/preview_images/audio-media/music-player-card-light.png`,
+    dark: `/preview_images/audio-media/music-player-card-dark.png`,
   },
   "live-waveform": {
     light: `/preview_images/audio-media/live-waveform-light.png`,
@@ -636,10 +549,6 @@ export const audioMediaPreview: ComponentPreviewMap = {
   "visualizer-button": {
     light: `/preview_images/audio-media/visualizer-button-light.png`,
     dark: `/preview_images/audio-media/visualizer-button-dark.png`,
-  },
-  "audio-book-player": {
-    light: `/preview_images/audio-media/audio-book-player-light.png`,
-    dark: `/preview_images/audio-media/audio-book-player-dark.png`,
   },
 };
 
@@ -666,12 +575,7 @@ export const selectPreview: ComponentPreviewMap = {
  * Chat Components - Chat and messaging components
  * Path: /docs/components/[slug]
  */
-export const chatPreview: ComponentPreviewMap = {
-  "ruixen-moon-chat": {
-    light: `${BASE_URL}/popular/ruixen-moon-chat.jpg`,
-    dark: `${BASE_URL}/popular/ruixen-moon-chat.jpg`,
-  },
-};
+export const chatPreview: ComponentPreviewMap = {};
 
 /**
  * Inputs - Form input components
@@ -812,10 +716,6 @@ export const notificationsPreview: ComponentPreviewMap = {
   "notifications-filter": {
     light: `/preview_images/notifications/notifications-filter-light.png`,
     dark: `/preview_images/notifications/notifications-filter-dark.png`,
-  },
-  "avatar-notifications": {
-    light: `/preview_images/notifications/avatar-notifications-light.png`,
-    dark: `/preview_images/notifications/avatar-notifications-dark.png`,
   },
 };
 
@@ -1232,25 +1132,17 @@ export const effectsPreview: ComponentPreviewMap = {
  * Path: /docs/components/[slug]
  */
 export const backgroundsPreview: ComponentPreviewMap = {
-  "wave-background": {
-    light: `/preview_images/component-improvement.png`,
-    dark: `/preview_images/component-improvement.png`,
+  "cloud-background": {
+    light: `/preview_images/backgrounds/cloud-background-light.png`,
+    dark: `/preview_images/backgrounds/cloud-background-dark.png`,
   },
   "ripple-distortion": {
     light: `${BASE_URL}/popular/ripple-distortion-light.jpg`,
     dark: `${BASE_URL}/popular/ripple-distortion-dark.png`,
   },
-  "particle-field": {
-    light: `/preview_images/backgrounds/particle-field-light.png`,
-    dark: `/preview_images/backgrounds/particle-field-dark.png`,
-  },
   "particle-text-dots": {
     light: `/preview_images/backgrounds/particle-text-dots-light.png`,
     dark: `/preview_images/backgrounds/particle-text-dots-dark.png`,
-  },
-  "rain-background": {
-    light: `/preview_images/backgrounds/rain-background-light.png`,
-    dark: `/preview_images/backgrounds/rain-background-dark.png`,
   },
   "dual-tone-rain-background": {
     light: `/preview_images/backgrounds/dual-tone-rain-background-light.png`,
@@ -1403,6 +1295,10 @@ export const aiChatInputsPreview: ComponentPreviewMap = {
     light: `/preview_images/ai-chat-inputs/ai-chat-input-light.png`,
     dark: `/preview_images/ai-chat-inputs/ai-chat-input-dark.png`,
   },
+  "claude-chat-input": {
+    light: `/preview_images/ai-chat-inputs/claude-chat-input-light.png`,
+    dark: `/preview_images/ai-chat-inputs/claude-chat-input-dark.png`,
+  },
 };
 
 /**
@@ -1410,25 +1306,9 @@ export const aiChatInputsPreview: ComponentPreviewMap = {
  * Path: /docs/components/[slug]
  */
 export const chartsPreview: ComponentPreviewMap = {
-  "funnel-chart": {
-    light: `/preview_images/charts/funnel-chart-light.png`,
-    dark: `/preview_images/charts/funnel-chart-dark.png`,
-  },
-  "waterfall-chart": {
-    light: `/preview_images/charts/waterfall-chart-light.png`,
-    dark: `/preview_images/charts/waterfall-chart-dark.png`,
-  },
-  "bubble-chart": {
-    light: `/preview_images/charts/bubble-chart-light.png`,
-    dark: `/preview_images/charts/bubble-chart-dark.png`,
-  },
-  "stream-chart": {
-    light: `/preview_images/charts/stream-chart-light.png`,
-    dark: `/preview_images/charts/stream-chart-dark.png`,
-  },
-  "bullet-chart": {
-    light: `/preview_images/charts/bullet-chart-light.png`,
-    dark: `/preview_images/charts/bullet-chart-dark.png`,
+  "spark-chart": {
+    light: `/preview_images/component-improvement.png`,
+    dark: `/preview_images/component-improvement.png`,
   },
 };
 
@@ -1460,6 +1340,10 @@ export const faqsPreview: ComponentPreviewMap = {
   "compact-accordion": {
     light: `/preview_images/faqs/compact-accordion-light.png`,
     dark: `/preview_images/faqs/compact-accordion-dark.png`,
+  },
+  "faq-chat-accordion": {
+    light: `/preview_images/component-improvement.png`,
+    dark: `/preview_images/component-improvement.png`,
   },
 };
 
@@ -1661,7 +1545,6 @@ export const pricingSectionPreview: ComponentPreviewMap = {
 /** All component previews combined */
 export const allComponentPreviews: ComponentPreviewMap = {
   ...accordionsPreview,
-  ...alertsPreview,
   ...avatarsPreview,
   ...badgesPreview,
   ...bannersPreview,
@@ -1791,7 +1674,6 @@ export function getCategoryPreviews(category: string): ComponentPreviewMap {
   const categoryMap: Record<string, ComponentPreviewMap> = {
     // Components
     accordions: accordionsPreview,
-    alerts: alertsPreview,
     avatars: avatarsPreview,
     badges: badgesPreview,
     banners: bannersPreview,

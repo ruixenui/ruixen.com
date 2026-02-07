@@ -88,11 +88,19 @@ export default async function DocPage({ params }: DocPageProps) {
   // Build BreadcrumbList JSON-LD
   const slugParts = doc.slugAsParams.split("/");
   const breadcrumbItems = [
-    { "@type": "ListItem" as const, position: 1, name: "Docs", item: "https://ruixen.com/docs" },
+    {
+      "@type": "ListItem" as const,
+      position: 1,
+      name: "Docs",
+      item: "https://ruixen.com/docs",
+    },
     ...slugParts.map((part: string, i: number) => ({
       "@type": "ListItem" as const,
       position: i + 2,
-      name: i === slugParts.length - 1 ? doc.title : part.charAt(0).toUpperCase() + part.slice(1),
+      name:
+        i === slugParts.length - 1
+          ? doc.title
+          : part.charAt(0).toUpperCase() + part.slice(1),
       item: `https://ruixen.com/docs/${slugParts.slice(0, i + 1).join("/")}`,
     })),
   ];
@@ -118,7 +126,7 @@ export default async function DocPage({ params }: DocPageProps) {
   };
 
   return (
-    <main className="relative lg:gap-0 xl:grid xl:grid-cols-[minmax(0,1fr)_220px]">
+    <main className="relative xl:grid xl:grid-cols-[minmax(0,1fr)_220px] xl:gap-8">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
@@ -127,7 +135,7 @@ export default async function DocPage({ params }: DocPageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(techArticleJsonLd) }}
       />
-      <div className="mx-auto w-full min-w-0 max-w-4xl py-6 lg:py-8">
+      <div className="mx-auto w-full min-w-0 max-w-4xl px-2 py-6 lg:px-6 lg:py-8">
         <div className="mb-4 flex items-center space-x-1 text-sm text-muted-foreground">
           <div className="truncate">Docs</div>
           <ChevronRightIcon className="size-4" />
@@ -175,7 +183,7 @@ export default async function DocPage({ params }: DocPageProps) {
         <DocPager doc={doc} />
       </div>
       {doc.toc && (
-        <div className="hidden border-l border-border py-6 pl-6 text-sm xl:block">
+        <div className="hidden py-6 pl-6 text-sm xl:block">
           <div className="sticky top-[90px] h-[calc(100vh-3.5rem)] space-y-4">
             <TableOfContents toc={toc} />
             <Contribute doc={doc} />
