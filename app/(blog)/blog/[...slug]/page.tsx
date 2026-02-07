@@ -234,8 +234,18 @@ export default async function BlogPage({
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Blog", item: "https://ruixen.com/blog" },
-      { "@type": "ListItem", position: 2, name: post.title, item: `https://ruixen.com/blog/${postSlug}` },
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Blog",
+        item: "https://ruixen.com/blog",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: post.title,
+        item: `https://ruixen.com/blog/${postSlug}`,
+      },
     ],
   };
 

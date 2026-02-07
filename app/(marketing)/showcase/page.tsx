@@ -255,26 +255,6 @@ const showcaseItems: ShowcaseItem[] = [
     href: "/docs/components/progress-tracker",
   },
 
-  // Charts
-  {
-    id: "funnel-chart",
-    title: "Funnel Chart",
-    imagePath: "charts/funnel-chart",
-    href: "/docs/components/funnel-chart",
-  },
-  {
-    id: "waterfall-chart",
-    title: "Waterfall Chart",
-    imagePath: "charts/waterfall-chart",
-    href: "/docs/components/waterfall-chart",
-  },
-  {
-    id: "bubble-chart",
-    title: "Bubble Chart",
-    imagePath: "charts/bubble-chart",
-    href: "/docs/components/bubble-chart",
-  },
-
   // Tabs
   {
     id: "magnetic-tabs",
@@ -360,12 +340,6 @@ const showcaseItems: ShowcaseItem[] = [
   },
 
   // Audio/Media
-  {
-    id: "audio-book-player",
-    title: "Audio Book Player",
-    imagePath: "audio-media/audio-book-player",
-    href: "/docs/components/audio-book-player",
-  },
   {
     id: "waveform-player",
     title: "Waveform Player",

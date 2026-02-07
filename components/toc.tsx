@@ -11,32 +11,16 @@ interface TocProps {
 }
 
 export function TableOfContents({ toc }: TocProps) {
-  const refinedToc = useMemo(() => {
-    if (!toc.items || toc.items.length === 0) {
-      return toc;
-    }
-
-    const [linksInSteps, ...rest] = toc.items;
-
-    if (linksInSteps.items && linksInSteps.items.length > 0) {
-      return {
-        items: [...linksInSteps.items, ...rest],
-      };
-    }
-
-    return toc;
-  }, [toc]);
-
   const itemIds: string[] = useMemo(
     () =>
-      refinedToc.items
-        ? refinedToc.items
+      toc.items
+        ? toc.items
             .flatMap((item) => [item.url, item?.items?.map((item) => item.url)])
             .flat()
             .filter(Boolean)
             .map((id) => id?.split("#")[1])
         : [],
-    [refinedToc],
+    [toc],
   ) as string[];
 
   const activeHeading = useActiveItem(itemIds);
@@ -49,7 +33,7 @@ export function TableOfContents({ toc }: TocProps) {
   return (
     <div className="space-y-2">
       <p className="font-medium">On This Page</p>
-      <Tree tree={refinedToc} activeItem={activeHeading} />
+      <Tree tree={toc} activeItem={activeHeading} />
     </div>
   );
 }
@@ -99,20 +83,36 @@ function Tree({ tree, level = 1, activeItem }: TreeProps) {
   return tree?.items?.length && level < 3 ? (
     <ul className={cn("m-0 list-none", { "pl-4": level !== 1 })}>
       {tree.items.map((item, index) => {
+        const isActive = item.url === `#${activeItem}`;
+        const hasChildren = !!(item.items && item.items.length > 0);
+
         return (
-          <li key={index} className={cn("mt-0 pt-2")}>
+          <li
+            key={index}
+            className={cn(
+              "mt-0 pt-1",
+              level === 1 && hasChildren && index > 0 && "mt-3",
+            )}
+          >
             <a
               href={item.url}
               className={cn(
                 "inline-block no-underline transition-colors hover:text-foreground",
-                item.url === `#${activeItem}`
-                  ? "font-medium text-foreground"
-                  : "text-muted-foreground",
+                level === 1 && hasChildren && "font-medium text-foreground",
+                level === 1 &&
+                  !hasChildren &&
+                  (isActive
+                    ? "font-medium text-foreground"
+                    : "text-muted-foreground"),
+                level !== 1 &&
+                  (isActive
+                    ? "rounded-md bg-muted px-2 py-1 font-medium text-foreground"
+                    : "text-muted-foreground"),
               )}
             >
               {item.title}
             </a>
-            {item.items?.length ? (
+            {hasChildren ? (
               <Tree tree={item} level={level + 1} activeItem={activeItem} />
             ) : null}
           </li>

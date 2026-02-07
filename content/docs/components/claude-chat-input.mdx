@@ -1,0 +1,116 @@
+---
+title: Claude Chat Input
+date: 2025-06-01
+description: A multi-modal chat input replicating Claude's interface with model selector, extended thinking toggle, suggestion chips, and spring-timed micro-interactions.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="claude-chat-input-demo" category="ai-chat-inputs" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/claude-chat-input"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="claude-chat-input" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Install dependencies</Step>
+
+```bash
+npm install lucide-react
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import ClaudeChatInput from "@/components/ruixen/claude-chat-input";
+
+export default function App() {
+  return <ClaudeChatInput onSubmit={(data) => console.log(data)} />;
+}
+```
+
+## With Greeting
+
+```tsx
+<ClaudeChatInput
+  greeting="Good evening"
+  onSubmit={(data) => console.log(data)}
+/>
+```
+
+## Custom Models
+
+```tsx
+<ClaudeChatInput
+  models={[
+    { id: "gpt-4", name: "GPT-4", description: "OpenAI flagship" },
+    { id: "claude", name: "Claude", description: "Anthropic's best" },
+  ]}
+  defaultModel="claude"
+  onSubmit={(data) => console.log(data)}
+/>
+```
+
+## Props
+
+| Prop           | Type                         | Default                       | Description                               |
+| -------------- | ---------------------------- | ----------------------------- | ----------------------------------------- |
+| `onSubmit`     | `(data: SubmitData) => void` | -                             | Callback with message, files, model, etc. |
+| `placeholder`  | `string`                     | `"How can I help you today?"` | Textarea placeholder text                 |
+| `models`       | `ModelOption[]`              | 3 Claude models               | Available models for the selector         |
+| `defaultModel` | `string`                     | `"opus-4.6"`                  | Initially selected model ID               |
+| `suggestions`  | `SuggestionChip[]`           | 5 default chips               | Quick action suggestion pills             |
+| `greeting`     | `string`                     | -                             | Optional greeting text above input        |
+| `className`    | `string`                     | -                             | Additional CSS classes                    |
+
+## Submit Data
+
+```tsx
+interface SubmitData {
+  message: string;
+  files: AttachedFile[];
+  pastedContent: PastedContent[];
+  model: string;
+  thinking: boolean;
+}
+```
+
+## Features
+
+- **Claude-accurate model selector**: Dropdown with model list, extended thinking toggle, and "More models" option
+- **Extended thinking**: Toggle inside model dropdown for deep reasoning mode
+- **Authentic Claude starburst**: The real Claude AI icon rendered in warm terracotta for the greeting
+- **Suggestion chips**: 5 quick action pills (Code, Write, Learn, Life stuff, Claude's choice)
+- **File upload & preview**: Drag-and-drop or click to attach files with image thumbnails and document cards
+- **Paste detection**: Large text pastes (300+ chars) become content cards instead of inline text
+- **Materializing send**: Warm terracotta button breathes from dormant to full opacity as content appears
+- **Auto-growing textarea**: Expands up to 384px with smooth overflow scrolling
+- **Border warmth**: Container border shifts from 7% to 10% opacity with content, shadow lifts gently
+- **Spring-timed**: All transitions use `cubic-bezier(0.16, 1, 0.3, 1)` easing

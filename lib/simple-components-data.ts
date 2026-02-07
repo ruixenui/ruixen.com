@@ -18,19 +18,8 @@ export const componentsData: ComponentCategory[] = [
   {
     id: "popular",
     name: "Popular Components",
-    viewAllUrl: "/docs/components/ruixen-moon-chat",
+    viewAllUrl: "/docs/components/ai-chat-input",
     components: [
-      {
-        id: "ruixen-moon-chat",
-        title: "Ruixen Moon Chat",
-        summary:
-          "Chat interface with moon-inspired design and smooth animations",
-        url: "/docs/components/ruixen-moon-chat",
-        image_dark:
-          "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/popular/ruixen-moon-chat.jpg",
-        image_light:
-          "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/popular/ruixen-moon-chat.jpg",
-      },
       {
         id: "globe",
         title: "Globe",

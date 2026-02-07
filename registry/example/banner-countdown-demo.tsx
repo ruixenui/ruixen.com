@@ -1,41 +1,50 @@
 "use client";
 
+import { useState, useMemo, useCallback } from "react";
 import BannerCountdown from "@/registry/ruixenui/banner-countdown";
-
-// Helper to create a date that's X hours from now
-const getEndDate = (hoursFromNow: number) => {
-  return new Date(Date.now() + hoursFromNow * 60 * 60 * 1000);
-};
+import { RotateCcw } from "lucide-react";
 
 export default function BannerCountdownDemo() {
+  const [key, setKey] = useState(0);
+  const [dismissed, setDismissed] = useState(false);
+
+  // 2 hours from mount — rolling is visible every second
+  const endDate = useMemo(
+    () => new Date(Date.now() + 2 * 60 * 60 * 1000),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [key],
+  );
+
+  const replay = useCallback(() => {
+    setKey((k) => k + 1);
+    setDismissed(false);
+  }, []);
+
   return (
-    <div className="flex min-h-[450px] w-full flex-col gap-4 p-4">
-      <BannerCountdown
-        variant="default"
-        title="Flash Sale ends in"
-        endDate={getEndDate(2)}
-        ctaLabel="Shop now"
-        ctaHref="#"
-        showDays={false}
-      />
+    <div className="flex min-h-[300px] w-full flex-col">
+      <div className="w-full">
+        <BannerCountdown
+          key={key}
+          title="Flash Sale ends in"
+          endDate={endDate}
+          action={{ label: "Shop now", href: "#" }}
+          onDismiss={() => setDismissed(true)}
+        />
+      </div>
 
-      <BannerCountdown
-        variant="urgent"
-        title="Last chance! Sale ends in"
-        endDate={getEndDate(0.5)}
-        ctaLabel="Buy now"
-        ctaHref="#"
-        showDays={false}
-      />
-
-      <BannerCountdown
-        variant="celebration"
-        title="Product launch in"
-        endDate={getEndDate(72)}
-        ctaLabel="Get notified"
-        ctaHref="#"
-        showDays={true}
-      />
+      <div
+        className={`flex flex-1 items-center justify-center transition-opacity duration-300 ${
+          dismissed ? "opacity-100" : "pointer-events-none opacity-0"
+        }`}
+      >
+        <button
+          onClick={replay}
+          className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+        >
+          <RotateCcw className="size-3.5" />
+          Replay
+        </button>
+      </div>
     </div>
   );
 }

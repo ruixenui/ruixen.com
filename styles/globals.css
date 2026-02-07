@@ -145,6 +145,99 @@
   /* End Animation Variables */
 
   /* Added Keyframes */
+  @keyframes badge-morph-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes spark-draw {
+    from {
+      stroke-dashoffset: 1;
+    }
+  }
+
+  @keyframes banner-shimmer {
+    from {
+      background-position: 100% 50%;
+    }
+    to {
+      background-position: 0% 50%;
+    }
+  }
+
+  @keyframes cookie-enter {
+    from {
+      opacity: 0;
+      transform: translateY(24px) scale(0.96);
+      filter: blur(4px);
+    }
+  }
+
+  @keyframes cookie-leave {
+    to {
+      opacity: 0;
+      transform: translateY(12px) scale(0.96);
+      filter: blur(2px);
+    }
+  }
+
+  /* Inline Morphing — newsletter pill state transitions */
+  @keyframes nl-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes nl-check {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes nl-land {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    40% {
+      transform: scale(1.05);
+    }
+  }
+
+  @keyframes nl-shake {
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(-3px);
+    }
+    75% {
+      transform: translateX(3px);
+    }
+  }
+
+  /* Fluid Numerals — odometer-style digit rolling */
+  @keyframes digit-in {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+      filter: blur(2px);
+    }
+  }
+
+  @keyframes digit-out {
+    to {
+      transform: translateY(-100%);
+      opacity: 0;
+      filter: blur(2px);
+    }
+  }
+
   @keyframes aurora {
     0% {
       background-position: 0% 50%;
@@ -444,13 +537,18 @@
 }
 
 [data-rehype-pretty-code-figure] {
-  @apply relative text-white w-full;
+  @apply relative w-full;
 }
 
 [data-rehype-pretty-code-figure] code {
   @apply grid min-w-full break-words rounded-none border-0 bg-transparent;
   counter-reset: line;
   box-decoration-break: clone;
+}
+
+/* Light mode: invert dark-theme code to appear light */
+:root:not(.dark) [data-rehype-pretty-code-figure] pre {
+  filter: invert(1) hue-rotate(180deg);
 }
 
 [data-rehype-pretty-code-figure] [data-line] {

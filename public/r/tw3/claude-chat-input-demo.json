@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "claude-chat-input-demo",
+  "type": "registry:example",
+  "title": "Claude Chat Input Demo",
+  "description": "Example showing multi-modal chat input with file uploads, model selector, and thinking toggle.",
+  "registryDependencies": [
+    "https://ruixen.com/r/claude-chat-input"
+  ],
+  "files": [
+    {
+      "path": "registry/example/claude-chat-input-demo.tsx",
+      "content": "\"use client\";\n\nimport ClaudeChatInput from \"@/registry/ruixenui/claude-chat-input\";\n\nexport default function ClaudeChatInputDemo() {\n  return (\n    <div className=\"flex min-h-screen w-full flex-col items-center justify-center bg-[#F5F0EA] px-4 py-14 dark:bg-[#2A2520]\">\n      <ClaudeChatInput\n        greeting=\"Good evening, Ruixen\"\n        onSubmit={(data) => console.log(\"submitted:\", data)}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/claude-chat-input-demo.tsx"
+    }
+  ]
+}

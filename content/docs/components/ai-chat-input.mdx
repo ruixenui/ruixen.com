@@ -1,7 +1,7 @@
 ---
 title: AI Chat Input
 date: 2024-06-01
-description: Vanishing placeholder input with rotating prompts and pixel-scatter submit animation.
+description: Vanishing chat input with rotating placeholders, pixel-scatter submit, and spring-timed interactions.
 author: ruixen
 published: true
 ---
@@ -69,7 +69,16 @@ export default function App() {
 
 | Prop           | Type                                         | Default           | Description                   |
 | -------------- | -------------------------------------------- | ----------------- | ----------------------------- |
-| `placeholders` | `string[]`                                   | 6 default prompts | Rotating placeholder strings  |
+| `placeholders` | `string[]`                                   | 5 default prompts | Rotating placeholder strings  |
 | `onSubmit`     | `(value: string) => void`                    | -                 | Callback with submitted value |
 | `onChange`     | `(e: ChangeEvent<HTMLInputElement>) => void` | -                 | Callback on every keystroke   |
 | `className`    | `string`                                     | -                 | Additional CSS classes        |
+
+## Features
+
+- **Pixel-scatter vanish**: On submit, text dissolves into particles that drift upward with coherent velocity and exponential fade
+- **Rotating placeholders**: Cycle every 3s with spring-timed y-slide transitions
+- **Materializing submit**: Arrow button scales from 85%/6% opacity to full as you type
+- **Animated arrow**: SVG stroke draws in as text appears via dash-offset animation
+- **Spring-timed**: All transitions use `cubic-bezier(0.16, 1, 0.3, 1)` easing
+- **Border warmth**: Container border shifts from 8% to 15% opacity with content

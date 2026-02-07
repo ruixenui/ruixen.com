@@ -1,0 +1,102 @@
+---
+title: FAQ Chat Accordion
+date: 2025-05-01
+description: A chat-bubble styled FAQ accordion with emoji stickers, plus/minus toggles, and messenger-like answer bubbles.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="faq-chat-accordion-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/faq-chat-accordion"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="faq-chat-accordion" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import FaqChatAccordion from "@/components/ruixen/faq-chat-accordion";
+
+export default function MyFAQ() {
+  return <FaqChatAccordion className="max-w-[700px]" />;
+}
+```
+
+## Custom Data
+
+```tsx
+const myFaqs = [
+  {
+    id: 1,
+    question: "How do I get started?",
+    answer: "Sign up for a free account and follow the onboarding guide.",
+    icon: "🚀",
+    iconPosition: "right",
+  },
+  {
+    id: 2,
+    question: "Is there a free plan?",
+    answer: "Yes, we offer a generous free tier for individual developers.",
+  },
+];
+
+<FaqChatAccordion data={myFaqs} timestamp="Updated daily" />;
+```
+
+## Props
+
+| Prop                | Type        | Default                | Description                              |
+| ------------------- | ----------- | ---------------------- | ---------------------------------------- |
+| `data`              | `FAQItem[]` | Built-in sample data   | Array of FAQ items to display            |
+| `className`         | `string`    | -                      | Additional CSS classes for the container |
+| `timestamp`         | `string`    | `"Every day, 9:01 AM"` | Timestamp text shown above the accordion |
+| `questionClassName` | `string`    | -                      | Custom classes for question pills        |
+| `answerClassName`   | `string`    | -                      | Custom classes for answer bubbles        |
+
+## FAQ Item Structure
+
+```tsx
+interface FAQItem {
+  id: number;
+  question: string;
+  answer: string;
+  icon?: string; // Emoji sticker (e.g. "❤️", "⭐")
+  iconPosition?: "left" | "right"; // Sticker position
+}
+```
+
+## Features
+
+- **Chat Bubble Answers**: Messenger-style rounded bubbles for answer text
+- **Emoji Stickers**: Optional emoji decorations on question pills
+- **Plus/Minus Toggle**: Animated icon toggle via CSS data-attributes
+- **No JS Animation Library**: Uses native AccordionContent animation
+- **Customizable Styles**: Override question and answer styles via className props

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar-quick-actions-demo",
+  "type": "registry:example",
+  "title": "Avatar Quick Actions Demo",
+  "description": "Example showing a circular avatar button with quick-action icons on hover.",
+  "registryDependencies": [
+    "https://ruixen.com/r/avatar-quick-actions"
+  ],
+  "files": [
+    {
+      "path": "registry/example/avatar-quick-actions-demo.tsx",
+      "content": "import AvatarQuickActions from \"@/registry/ruixenui/avatar-quick-actions\";\nimport { MessageCircle, Phone, UserPlus, Video } from \"lucide-react\";\n\nexport default function AvatarQuickActionsDemo() {\n  return (\n    <div className=\"flex items-center justify-center gap-4 py-10\">\n      <AvatarQuickActions\n        avatarSrc=\"/avatar-images/avatar-01.jpg\"\n        avatarFallback=\"JS\"\n        items={[\n          { icon: <MessageCircle className=\"size-3.5\" />, label: \"Message\" },\n          { icon: <Phone className=\"size-3.5\" />, label: \"Call\" },\n          { icon: <Video className=\"size-3.5\" />, label: \"Video\" },\n          { icon: <UserPlus className=\"size-3.5\" />, label: \"Follow\" },\n        ]}\n      />\n      <AvatarQuickActions\n        avatarSrc=\"/avatar-images/avatar-03.jpg\"\n        avatarFallback=\"AC\"\n        size={36}\n        items={[\n          { icon: <MessageCircle className=\"size-3\" />, label: \"Chat\" },\n          { icon: <Phone className=\"size-3\" />, label: \"Call\" },\n          { icon: <UserPlus className=\"size-3\" />, label: \"Add\" },\n        ]}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/avatar-quick-actions-demo.tsx"
+    }
+  ]
+}

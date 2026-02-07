@@ -4,16 +4,27 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
+type ImageLoadingStatus = "loading" | "loaded" | "error";
+
+const AvatarContext = React.createContext<{
+  status: ImageLoadingStatus;
+  setStatus: (status: ImageLoadingStatus) => void;
+}>({ status: "loading", setStatus: () => {} });
+
 function Avatar({ className, ...props }: React.ComponentProps<"span">) {
+  const [status, setStatus] = React.useState<ImageLoadingStatus>("loading");
+
   return (
-    <span
-      data-slot="avatar"
-      className={cn(
-        "relative flex size-8 shrink-0 overflow-hidden rounded-full",
-        className,
-      )}
-      {...props}
-    />
+    <AvatarContext.Provider value={{ status, setStatus }}>
+      <span
+        data-slot="avatar"
+        className={cn(
+          "relative flex size-8 shrink-0 overflow-hidden rounded-full",
+          className,
+        )}
+        {...props}
+      />
+    </AvatarContext.Provider>
   );
 }
 
@@ -24,21 +35,23 @@ function AvatarImage({
   onLoadingStatusChange,
   ...props
 }: React.ComponentProps<"img"> & {
-  onLoadingStatusChange?: (status: "loading" | "loaded" | "error") => void;
+  onLoadingStatusChange?: (status: ImageLoadingStatus) => void;
 }) {
-  const [status, setStatus] = React.useState<"loading" | "loaded" | "error">(
-    "loading",
-  );
+  const { setStatus } = React.useContext(AvatarContext);
+  const [loaded, setLoaded] = React.useState(false);
 
   React.useEffect(() => {
     if (!src) {
       setStatus("error");
+      onLoadingStatusChange?.("error");
       return;
     }
+    setLoaded(false);
     setStatus("loading");
     const img = new Image();
     img.src = src;
     img.onload = () => {
+      setLoaded(true);
       setStatus("loaded");
       onLoadingStatusChange?.("loaded");
     };
@@ -46,14 +59,14 @@ function AvatarImage({
       setStatus("error");
       onLoadingStatusChange?.("error");
     };
-  }, [src, onLoadingStatusChange]);
+  }, [src, onLoadingStatusChange, setStatus]);
 
-  if (status !== "loaded") return null;
+  if (!loaded) return null;
 
   return (
     <img
       data-slot="avatar-image"
-      className={cn("aspect-square size-full", className)}
+      className={cn("aspect-square size-full object-cover", className)}
       src={src}
       alt={alt}
       {...props}
@@ -67,16 +80,17 @@ function AvatarFallback({
   children,
   ...props
 }: React.ComponentProps<"span"> & { delayMs?: number }) {
-  const [show, setShow] = React.useState(!delayMs);
+  const { status } = React.useContext(AvatarContext);
+  const [delayElapsed, setDelayElapsed] = React.useState(!delayMs);
 
   React.useEffect(() => {
     if (delayMs) {
-      const timer = setTimeout(() => setShow(true), delayMs);
+      const timer = setTimeout(() => setDelayElapsed(true), delayMs);
       return () => clearTimeout(timer);
     }
   }, [delayMs]);
 
-  if (!show) return null;
+  if (status === "loaded" || !delayElapsed) return null;
 
   return (
     <span

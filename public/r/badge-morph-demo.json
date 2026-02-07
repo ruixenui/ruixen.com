@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "badge-morph-demo",
+  "type": "registry:example",
+  "title": "Badge Morph Demo",
+  "description": "Example showing a morphing status badge with an interactive deploy sequence.",
+  "registryDependencies": [
+    "https://ruixen.com/r/badge-morph"
+  ],
+  "files": [
+    {
+      "path": "registry/example/badge-morph-demo.tsx",
+      "content": "\"use client\";\n\nimport { useState, useCallback } from \"react\";\nimport BadgeMorph from \"@/registry/ruixenui/badge-morph\";\n\ntype Status = \"idle\" | \"loading\" | \"success\" | \"error\";\n\nexport default function BadgeMorphDemo() {\n  const [status, setStatus] = useState<Status>(\"idle\");\n  const [isRunning, setIsRunning] = useState(false);\n\n  const deploy = useCallback(() => {\n    if (isRunning) return;\n    setIsRunning(true);\n    setStatus(\"loading\");\n\n    setTimeout(() => {\n      setStatus(\"success\");\n      setTimeout(() => {\n        setStatus(\"idle\");\n        setIsRunning(false);\n      }, 2500);\n    }, 2200);\n  }, [isRunning]);\n\n  return (\n    <div className=\"flex min-h-[320px] w-full flex-col items-center justify-center gap-10 p-6\">\n      {/* Interactive */}\n      <div className=\"flex flex-col items-center gap-5\">\n        <BadgeMorph status={status} />\n        <button\n          onClick={deploy}\n          disabled={isRunning}\n          className=\"inline-flex h-9 items-center gap-2 rounded-full bg-foreground px-4 text-[13px] font-medium text-background transition-all hover:opacity-90 active:scale-[0.97] disabled:pointer-events-none disabled:opacity-40\"\n        >\n          <svg width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" fill=\"none\">\n            <path\n              d=\"M6 1v10M6 1l3.5 3.5M6 1L2.5 4.5\"\n              stroke=\"currentColor\"\n              strokeWidth=\"1.5\"\n              strokeLinecap=\"round\"\n              strokeLinejoin=\"round\"\n            />\n          </svg>\n          Deploy\n        </button>\n      </div>\n\n      {/* Static reference */}\n      <div className=\"flex flex-wrap items-center justify-center gap-3\">\n        <BadgeMorph status=\"idle\" />\n        <BadgeMorph status=\"loading\" label=\"Building\" />\n        <BadgeMorph status=\"success\" />\n        <BadgeMorph status=\"error\" />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/badge-morph-demo.tsx"
+    }
+  ]
+}

@@ -77,77 +77,17 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "funnel-chart",
+    name: "spark-chart",
     type: "registry:ui",
-    title: "Funnel Chart",
+    title: "Spark Chart",
     description:
-      "A versatile funnel chart component for visualizing conversion flows, sales pipelines, and sequential data with multiple variants and tooltip styles.",
-    dependencies: ["recharts"],
+      "An interactive sparkline with path-following indicator, dual-path color reveal, gradient fill, and draw-in animation. Pixel-perfect cursor tracking via binary search on SVG path length.",
+    dependencies: [],
     files: [
       {
-        path: "registry/ruixenui/funnel-chart.tsx",
+        path: "registry/ruixenui/spark-chart.tsx",
         type: "registry:ui",
-        target: "components/ruixen/funnel-chart.tsx",
-      },
-    ],
-  },
-  {
-    name: "waterfall-chart",
-    type: "registry:ui",
-    title: "Waterfall Chart",
-    description:
-      "A versatile waterfall chart component for visualizing cumulative effects, financial changes, and sequential data with multiple variants and tooltip styles.",
-    dependencies: ["recharts"],
-    files: [
-      {
-        path: "registry/ruixenui/waterfall-chart.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/waterfall-chart.tsx",
-      },
-    ],
-  },
-  {
-    name: "bubble-chart",
-    type: "registry:ui",
-    title: "Bubble Chart",
-    description:
-      "A versatile bubble chart component for visualizing three-dimensional data with position (x, y) and size (z) dimensions. Includes multiple variants with labels, legends, grouping, and interactive features.",
-    dependencies: ["recharts"],
-    files: [
-      {
-        path: "registry/ruixenui/bubble-chart.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/bubble-chart.tsx",
-      },
-    ],
-  },
-  {
-    name: "stream-chart",
-    type: "registry:ui",
-    title: "Stream Chart",
-    description:
-      "A versatile stream chart component for visualizing continuous data flows over time. Includes multiple variants: wiggle (streamgraph), silhouette (centered), expanded (100% stacked), stacked (normal), interactive, and legend variants.",
-    dependencies: ["recharts"],
-    files: [
-      {
-        path: "registry/ruixenui/stream-chart.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/stream-chart.tsx",
-      },
-    ],
-  },
-  {
-    name: "bullet-chart",
-    type: "registry:ui",
-    title: "Bullet Chart",
-    description:
-      "A versatile bullet chart component for comparing actual values against targets with qualitative ranges. Includes horizontal, vertical, compact, interactive, legend, and custom color variants.",
-    dependencies: ["recharts"],
-    files: [
-      {
-        path: "registry/ruixenui/bullet-chart.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/bullet-chart.tsx",
+        target: "components/ruixen/spark-chart.tsx",
       },
     ],
   },
@@ -253,6 +193,22 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "faq-chat-accordion",
+    type: "registry:ui",
+    title: "FAQ Chat Accordion",
+    description:
+      "A chat-bubble styled FAQ accordion with emoji stickers, plus/minus toggles, and messenger-like answer bubbles.",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["accordion"],
+    files: [
+      {
+        path: "registry/ruixenui/faq-chat-accordion.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/faq-chat-accordion.tsx",
+      },
+    ],
+  },
+  {
     name: "compact-accordion",
     type: "registry:ui",
     title: "Compact Accordion",
@@ -269,314 +225,81 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "accordion-simple",
+    name: "accordion-editorial",
     type: "registry:ui",
-    title: "Simple Accordion",
+    title: "Editorial Accordion",
     description:
-      "A basic accordion component with clean styling and smooth expand/collapse animations.",
+      "A typographic accordion with oversized uppercase titles, numbered items, and a faded-to-primary color transition on expand.",
     registryDependencies: ["accordion"],
     files: [
       {
-        path: "registry/ruixenui/accordion-simple.tsx",
+        path: "registry/ruixenui/accordion-editorial.tsx",
         type: "registry:ui",
-        target: "components/ruixen/accordion-simple.tsx",
+        target: "components/ruixen/accordion-editorial.tsx",
       },
     ],
   },
   {
-    name: "accordion-bordered",
+    name: "accordion-indexed",
     type: "registry:ui",
-    title: "Bordered Accordion",
+    title: "Indexed Accordion",
     description:
-      "An accordion with bordered card-style items and highlighted open state backgrounds.",
+      "A numbered accordion with zero-padded indices, a boxed plus icon that rotates on hover and transforms on expand.",
+    dependencies: ["lucide-react"],
     registryDependencies: ["accordion"],
     files: [
       {
-        path: "registry/ruixenui/accordion-bordered.tsx",
+        path: "registry/ruixenui/accordion-indexed.tsx",
         type: "registry:ui",
-        target: "components/ruixen/accordion-bordered.tsx",
+        target: "components/ruixen/accordion-indexed.tsx",
       },
     ],
   },
   {
-    name: "accordion-icon",
+    name: "avatar-spring-stack",
     type: "registry:ui",
-    title: "Icon Accordion",
+    title: "Avatar Spring Stack",
     description:
-      "An accordion with leading icons for each item, perfect for categorized content.",
-    registryDependencies: ["accordion"],
-    dependencies: ["lucide-react"],
-    files: [
-      {
-        path: "registry/ruixenui/accordion-icon.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/accordion-icon.tsx",
-      },
-    ],
-  },
-  {
-    name: "accordion-arrow",
-    type: "registry:ui",
-    title: "Arrow Accordion",
-    description:
-      "An accordion with a right-pointing arrow indicator that rotates on expand.",
-    dependencies: ["lucide-react"],
-    files: [
-      {
-        path: "registry/ruixenui/accordion-arrow.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/accordion-arrow.tsx",
-      },
-    ],
-  },
-  {
-    name: "accordion-plus",
-    type: "registry:ui",
-    title: "Plus/Minus Accordion",
-    description:
-      "An accordion with plus/minus toggle icons for expand and collapse states.",
-    dependencies: ["lucide-react"],
-    files: [
-      {
-        path: "registry/ruixenui/accordion-plus.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/accordion-plus.tsx",
-      },
-    ],
-  },
-  {
-    name: "accordion-badge",
-    type: "registry:ui",
-    title: "Badge Accordion",
-    description:
-      "An accordion with optional badges on items for highlighting new, important, or beta content.",
-    registryDependencies: ["accordion", "badge"],
-    files: [
-      {
-        path: "registry/ruixenui/accordion-badge.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/accordion-badge.tsx",
-      },
-    ],
-  },
-  {
-    name: "accordion-nested",
-    type: "registry:ui",
-    title: "Nested Accordion",
-    description:
-      "An accordion that supports nested sub-accordions for hierarchical content organization.",
-    registryDependencies: ["accordion"],
-    files: [
-      {
-        path: "registry/ruixenui/accordion-nested.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/accordion-nested.tsx",
-      },
-    ],
-  },
-  {
-    name: "accordion-minimal",
-    type: "registry:ui",
-    title: "Minimal Accordion",
-    description:
-      "A minimal accordion with show/hide text toggle instead of icons.",
-    dependencies: [],
-    files: [
-      {
-        path: "registry/ruixenui/accordion-minimal.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/accordion-minimal.tsx",
-      },
-    ],
-  },
-  {
-    name: "accordion-animated",
-    type: "registry:ui",
-    title: "Animated Accordion",
-    description:
-      "An accordion with smooth Framer Motion animations for expand/collapse transitions.",
-    dependencies: ["framer-motion", "lucide-react"],
-    files: [
-      {
-        path: "registry/ruixenui/accordion-animated.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/accordion-animated.tsx",
-      },
-    ],
-  },
-  {
-    name: "alert-with-actions",
-    type: "registry:ui",
-    title: "Alert With Actions",
-    description:
-      "A professional alert component with icon, variant support, and action buttons.",
-    dependencies: ["lucide-react"],
-    files: [
-      {
-        path: "registry/ruixenui/alert-with-actions.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/alert-with-actions.tsx",
-      },
-    ],
-  },
-  {
-    name: "animated-alert",
-    type: "registry:ui",
-    title: "Animated Alert",
-    description:
-      "An animated alert with framer-motion enter/exit transitions and auto-dismiss.",
-    dependencies: ["lucide-react", "framer-motion"],
-    files: [
-      {
-        path: "registry/ruixenui/animated-alert.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/animated-alert.tsx",
-      },
-    ],
-  },
-  {
-    name: "avatar-badge",
-    type: "registry:ui",
-    title: "Avatar with Badge",
-    description:
-      "An avatar component with a notification badge showing a count.",
-    registryDependencies: ["avatar", "badge"],
-    files: [
-      {
-        path: "registry/ruixenui/avatar-badge.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/avatar-badge.tsx",
-      },
-    ],
-  },
-  {
-    name: "avatar-basic",
-    type: "registry:ui",
-    title: "Basic Avatar",
-    description: "A basic avatar component with image and fallback support.",
+      "An overlapping avatar stack with spring-animated tooltips that reveal labels on hover, plus a +N overflow counter.",
+    dependencies: ["motion"],
     registryDependencies: ["avatar"],
     files: [
       {
-        path: "registry/ruixenui/avatar-basic.tsx",
+        path: "registry/ruixenui/avatar-spring-stack.tsx",
         type: "registry:ui",
-        target: "components/ruixen/avatar-basic.tsx",
+        target: "components/ruixen/avatar-spring-stack.tsx",
       },
     ],
   },
   {
-    name: "avatar-fallback",
+    name: "avatar-quick-actions",
     type: "registry:ui",
-    title: "Avatar Fallback",
-    description: "An avatar component displaying only fallback text initials.",
-    registryDependencies: ["avatar"],
-    files: [
-      {
-        path: "registry/ruixenui/avatar-fallback.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/avatar-fallback.tsx",
-      },
-    ],
-  },
-  {
-    name: "avatar-group",
-    type: "registry:ui",
-    title: "Avatar Group",
+    title: "Avatar Quick Actions",
     description:
-      "A group of overlapping avatars with hover effects and configurable sizes.",
+      "An orbital action ring that blooms outward from the avatar with staggered spring emergence — hover any action and the rest dim, drawing the eye.",
+    dependencies: ["motion"],
     registryDependencies: ["avatar"],
     files: [
       {
-        path: "registry/ruixenui/avatar-group.tsx",
+        path: "registry/ruixenui/avatar-quick-actions.tsx",
         type: "registry:ui",
-        target: "components/ruixen/avatar-group.tsx",
+        target: "components/ruixen/avatar-quick-actions.tsx",
       },
     ],
   },
   {
-    name: "avatar-group-count",
+    name: "avatar-hover-card",
     type: "registry:ui",
-    title: "Avatar Group with Count",
+    title: "Avatar Hover Card",
     description:
-      "A group of overlapping avatars with a count indicator for remaining members.",
+      "An interactive avatar that reveals a profile card on hover with spring physics, staggered content, and delayed open/close.",
+    dependencies: ["motion"],
     registryDependencies: ["avatar"],
     files: [
       {
-        path: "registry/ruixenui/avatar-group-count.tsx",
+        path: "registry/ruixenui/avatar-hover-card.tsx",
         type: "registry:ui",
-        target: "components/ruixen/avatar-group-count.tsx",
-      },
-    ],
-  },
-  {
-    name: "avatar-icon",
-    type: "registry:ui",
-    title: "Avatar with Icon",
-    description: "An avatar component with a user icon as fallback.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["avatar"],
-    files: [
-      {
-        path: "registry/ruixenui/avatar-icon.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/avatar-icon.tsx",
-      },
-    ],
-  },
-  {
-    name: "avatar-online",
-    type: "registry:ui",
-    title: "Avatar Online",
-    description: "An avatar component with an online status indicator.",
-    registryDependencies: ["avatar"],
-    files: [
-      {
-        path: "registry/ruixenui/avatar-online.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/avatar-online.tsx",
-      },
-    ],
-  },
-  {
-    name: "avatar-status",
-    type: "registry:ui",
-    title: "Avatar with Status",
-    description:
-      "An avatar component with customizable status indicator (online, offline, busy, away).",
-    registryDependencies: ["avatar"],
-    files: [
-      {
-        path: "registry/ruixenui/avatar-status.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/avatar-status.tsx",
-      },
-    ],
-  },
-  {
-    name: "avatar-verified",
-    type: "registry:ui",
-    title: "Verified Avatar",
-    description: "An avatar component with a verified badge indicator.",
-    registryDependencies: ["avatar"],
-    files: [
-      {
-        path: "registry/ruixenui/avatar-verified.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/avatar-verified.tsx",
-      },
-    ],
-  },
-  {
-    name: "avatar-trust-badge",
-    type: "registry:ui",
-    title: "Avatar Trust Badge",
-    description:
-      "A trust badge component with avatar group and customizable count text.",
-    registryDependencies: ["avatar"],
-    files: [
-      {
-        path: "registry/ruixenui/avatar-trust-badge.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/avatar-trust-badge.tsx",
+        target: "components/ruixen/avatar-hover-card.tsx",
       },
     ],
   },
@@ -1903,22 +1626,6 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "avatar-notifications",
-    type: "registry:ui",
-    title: "Avatar Notifications",
-    description:
-      "A notification component that displays user avatars with messages and animated status indicators.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["popover", "button", "avatar"],
-    files: [
-      {
-        path: "registry/ruixenui/avatar-notifications.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/avatar-notifications.tsx",
-      },
-    ],
-  },
-  {
     name: "sign-in-form",
     type: "registry:ui",
     title: "Sign In Form",
@@ -2396,17 +2103,17 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "wave-background",
+    name: "cloud-background",
     type: "registry:ui",
-    title: "Wave Background",
+    title: "Cloud Background",
     description:
-      "A flowing wave background with WebGL shaders and theme support.",
+      "A flowing cloud background with WebGL shaders and theme support.",
     dependencies: ["ogl"],
     files: [
       {
-        path: "registry/ruixenui/wave-background.tsx",
+        path: "registry/ruixenui/cloud-background.tsx",
         type: "registry:ui",
-        target: "components/ruixen/wave-background.tsx",
+        target: "components/ruixen/cloud-background.tsx",
       },
     ],
   },
@@ -2426,20 +2133,6 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "particle-field",
-    type: "registry:ui",
-    title: "Particle Field",
-    description:
-      "An interactive particle field with mouse attraction and connection lines.",
-    files: [
-      {
-        path: "registry/ruixenui/particle-field.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/particle-field.tsx",
-      },
-    ],
-  },
-  {
     name: "particle-text-dots",
     type: "registry:ui",
     title: "Particle Text Dots",
@@ -2450,19 +2143,6 @@ export const ui: Registry["items"] = [
         path: "registry/ruixenui/particle-text-dots.tsx",
         type: "registry:ui",
         target: "components/ruixen/particle-text-dots.tsx",
-      },
-    ],
-  },
-  {
-    name: "rain-background",
-    type: "registry:ui",
-    title: "Rain Background",
-    description: "A neon rain effect with animated streaks and glow orbs.",
-    files: [
-      {
-        path: "registry/ruixenui/rain-background.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/rain-background.tsx",
       },
     ],
   },
@@ -2740,13 +2420,36 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "AI Chat Input",
     description:
-      "Vanishing placeholder input with rotating prompts and pixel-scatter submit animation.",
+      "Vanishing chat input with rotating placeholders, pixel-scatter submit, and spring-timed interactions.",
     dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/ai-chat-input.tsx",
         type: "registry:ui",
         target: "components/ruixen/ai-chat-input.tsx",
+      },
+    ],
+  },
+  {
+    name: "claude-chat-input",
+    type: "registry:ui",
+    title: "Claude Chat Input",
+    description:
+      "Multi-modal chat input with file uploads, model selector, extended thinking toggle, and spring-timed interactions.",
+    dependencies: ["lucide-react"],
+    registryDependencies: [
+      "button",
+      "textarea",
+      "popover",
+      "separator",
+      "switch",
+      "badge",
+    ],
+    files: [
+      {
+        path: "registry/ruixenui/claude-chat-input.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/claude-chat-input.tsx",
       },
     ],
   },
@@ -2864,17 +2567,17 @@ export const ui: Registry["items"] = [
   },
   // Audio & Media Components
   {
-    name: "playlist-carousel",
+    name: "music-player-card",
     type: "registry:ui",
-    title: "Playlist Carousel",
+    title: "Music Player Card",
     description:
-      "A horizontal carousel of playable tracks with album art, progress bars, and embla-carousel navigation.",
-    dependencies: ["lucide-react", "embla-carousel-react"],
+      "A rich music player card with album art, action pills, seekable progress, shuffle, repeat, and full transport controls.",
+    dependencies: ["lucide-react"],
     files: [
       {
-        path: "registry/ruixenui/playlist-carousel.tsx",
+        path: "registry/ruixenui/music-player-card.tsx",
         type: "registry:ui",
-        target: "components/ruixen/playlist-carousel.tsx",
+        target: "components/ruixen/music-player-card.tsx",
       },
     ],
   },
@@ -2905,22 +2608,6 @@ export const ui: Registry["items"] = [
         path: "registry/ruixenui/visualizer-button.tsx",
         type: "registry:ui",
         target: "components/ruixen/visualizer-button.tsx",
-      },
-    ],
-  },
-  {
-    name: "audio-book-player",
-    type: "registry:ui",
-    title: "Audio Book Player",
-    description:
-      "Fixed-position audiobook player with chapter info, speed control, and progress tracking.",
-    dependencies: [],
-    registryDependencies: ["button", "slider"],
-    files: [
-      {
-        path: "registry/ruixenui/audio-book-player.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/audio-book-player.tsx",
       },
     ],
   },
@@ -3157,62 +2844,17 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "badge-icon",
+    name: "badge-morph",
     type: "registry:ui",
-    title: "Badge with Icon",
-    description: "Badge component with customizable icon and position.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["badge"],
-    files: [
-      {
-        path: "registry/ruixenui/badge-icon.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/badge-icon.tsx",
-      },
-    ],
-  },
-  {
-    name: "badge-counter",
-    type: "registry:ui",
-    title: "Badge Counter",
-    description: "Compact circular badge for displaying notification counts.",
-    dependencies: [],
-    files: [
-      {
-        path: "registry/ruixenui/badge-counter.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/badge-counter.tsx",
-      },
-    ],
-  },
-  {
-    name: "badge-status",
-    type: "registry:ui",
-    title: "Badge Status",
+    title: "Badge Morph",
     description:
-      "Status badge with dot or icon indicator for success, pending, warning, and error states.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["badge"],
+      "A morphing status badge that transitions between states with spring-physics micro-interactions.",
+    dependencies: ["motion"],
     files: [
       {
-        path: "registry/ruixenui/badge-status.tsx",
+        path: "registry/ruixenui/badge-morph.tsx",
         type: "registry:ui",
-        target: "components/ruixen/badge-status.tsx",
-      },
-    ],
-  },
-  {
-    name: "badge-removable",
-    type: "registry:ui",
-    title: "Badge Removable",
-    description: "Badge with a remove button for dismissible tags and filters.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["badge"],
-    files: [
-      {
-        path: "registry/ruixenui/badge-removable.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/badge-removable.tsx",
+        target: "components/ruixen/badge-morph.tsx",
       },
     ],
   },
@@ -3236,9 +2878,7 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Banner Cookie",
     description:
-      "A cookie consent banner with accept, decline, and preferences options.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["button"],
+      "A frosted-glass cookie consent card with rise entrance and shrink-drop dismiss.",
     files: [
       {
         path: "registry/ruixenui/banner-cookie.tsx",
@@ -3248,29 +2888,12 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "banner-promo",
-    type: "registry:ui",
-    title: "Banner Promo",
-    description:
-      "A promotional banner with badge, title, and call-to-action button.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["button"],
-    files: [
-      {
-        path: "registry/ruixenui/banner-promo.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/banner-promo.tsx",
-      },
-    ],
-  },
-  {
     name: "banner-newsletter",
     type: "registry:ui",
     title: "Banner Newsletter",
     description:
-      "A newsletter subscription banner with email input and submit button.",
+      "A newsletter banner with Inline Morphing — one pill that reshapes across input, loading, and confirmation.",
     dependencies: ["lucide-react"],
-    registryDependencies: ["button", "input"],
     files: [
       {
         path: "registry/ruixenui/banner-newsletter.tsx",
@@ -3284,9 +2907,8 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Banner Countdown",
     description:
-      "A countdown timer banner for sales, launches, and time-sensitive promotions.",
+      "A countdown banner with Fluid Numerals — odometer-style rolling digits, colon heartbeat, and height-collapse dismiss.",
     dependencies: ["lucide-react"],
-    registryDependencies: ["button"],
     files: [
       {
         path: "registry/ruixenui/banner-countdown.tsx",
@@ -3398,21 +3020,6 @@ export const ui: Registry["items"] = [
         path: "registry/ruixenui/confirmation-button.tsx",
         type: "registry:ui",
         target: "components/ruixen/confirmation-button.tsx",
-      },
-    ],
-  },
-  {
-    name: "avatar-action-button",
-    type: "registry:ui",
-    title: "Avatar Action Button",
-    description: "Button with integrated avatar image for user actions.",
-    dependencies: [],
-    registryDependencies: ["button", "avatar"],
-    files: [
-      {
-        path: "registry/ruixenui/avatar-action-button.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/avatar-action-button.tsx",
       },
     ],
   },
@@ -4451,22 +4058,6 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "ruixen-moon-chat",
-    type: "registry:ui",
-    title: "Ruixen Moon Chat",
-    description:
-      "Modern chat interface with message bubbles, typing indicators, and smooth animations.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["button", "textarea"],
-    files: [
-      {
-        path: "registry/ruixenui/ruixen-moon-chat.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/ruixen-moon-chat.tsx",
-      },
-    ],
-  },
-  {
     name: "globe",
     type: "registry:ui",
     title: "Globe",
@@ -5156,6 +4747,21 @@ export const ui: Registry["items"] = [
         path: "registry/ruixenui/checkbox-tree.tsx",
         type: "registry:ui",
         target: "components/ruixen/checkbox-tree.tsx",
+      },
+    ],
+  },
+  {
+    name: "comment-thread",
+    type: "registry:ui",
+    title: "Comment Thread",
+    description:
+      "Threaded comment component with nested replies, colored avatars, and collapsible reply chains.",
+    registryDependencies: ["accordion"],
+    files: [
+      {
+        path: "registry/ruixenui/comment-thread.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/comment-thread.tsx",
       },
     ],
   },

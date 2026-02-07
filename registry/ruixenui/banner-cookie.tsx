@@ -2,104 +2,72 @@
 
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import { Cookie, X, Settings } from "lucide-react";
-
-type BannerPosition = "bottom" | "top" | "bottom-left" | "bottom-right";
 
 interface BannerCookieProps {
-  title?: string;
   description?: string;
-  acceptLabel?: string;
-  declineLabel?: string;
-  settingsLabel?: string;
-  position?: BannerPosition;
-  showSettings?: boolean;
   onAccept?: () => void;
   onDecline?: () => void;
-  onSettings?: () => void;
   className?: string;
 }
 
-const positionStyles: Record<BannerPosition, string> = {
-  bottom: "fixed inset-x-0 bottom-0",
-  top: "fixed inset-x-0 top-0",
-  "bottom-left": "fixed bottom-4 left-4 max-w-md rounded-xl",
-  "bottom-right": "fixed bottom-4 right-4 max-w-md rounded-xl",
-};
-
 export default function BannerCookie({
-  title = "We value your privacy",
-  description = "We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic. By clicking 'Accept', you consent to our use of cookies.",
-  acceptLabel = "Accept all",
-  declineLabel = "Decline",
-  settingsLabel = "Preferences",
-  position = "bottom",
-  showSettings = true,
+  description = "This site uses cookies to improve your experience.",
   onAccept,
   onDecline,
-  onSettings,
   className,
 }: BannerCookieProps) {
-  const [isVisible, setIsVisible] = React.useState(true);
+  const [leaving, setLeaving] = React.useState(false);
+  const [gone, setGone] = React.useState(false);
 
-  const handleAccept = () => {
-    setIsVisible(false);
-    onAccept?.();
+  const dismiss = (cb?: () => void) => {
+    setLeaving(true);
+    setTimeout(() => {
+      setGone(true);
+      cb?.();
+    }, 300);
   };
 
-  const handleDecline = () => {
-    setIsVisible(false);
-    onDecline?.();
-  };
-
-  if (!isVisible) return null;
-
-  const isFloating = position === "bottom-left" || position === "bottom-right";
+  if (gone) return null;
 
   return (
     <div
       className={cn(
-        "z-50 border bg-background p-4 shadow-lg",
-        positionStyles[position],
-        isFloating ? "border-border" : "border-t",
+        /* ── surface ── */
+        "relative w-full max-w-[340px] overflow-hidden rounded-2xl border border-border bg-card p-5",
+        /* ── depth: outline + tight + ambient ── */
+        "shadow-[0_0_0_0.5px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.06),0_12px_24px_-6px_rgba(0,0,0,0.1)]",
+        /* ── top-edge glass highlight ── */
+        "after:pointer-events-none after:absolute after:inset-x-4 after:top-0 after:h-px after:bg-gradient-to-r after:from-transparent after:via-foreground/[0.06] after:to-transparent",
+        /* ── entrance / exit ── */
+        leaving
+          ? "animate-[cookie-leave_0.25s_ease-out_forwards]"
+          : "animate-[cookie-enter_0.5s_cubic-bezier(0.16,1,0.3,1)_both]",
         className,
       )}
     >
-      <div
-        className={cn(
-          "flex gap-4",
-          isFloating ? "flex-col" : "flex-col md:flex-row md:items-center",
-        )}
-      >
-        <div className="flex flex-1 gap-3">
-          <div className="hidden h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary sm:flex">
-            <Cookie className="size-5" />
-          </div>
-          <div className="space-y-1">
-            <h3 className="font-semibold text-foreground">{title}</h3>
-            <p className="text-sm text-muted-foreground">{description}</p>
-          </div>
-        </div>
-        <div
-          className={cn(
-            "flex shrink-0 gap-2",
-            isFloating ? "flex-col" : "flex-row",
-          )}
+      <p className="text-sm leading-relaxed text-muted-foreground">
+        {description}
+      </p>
+
+      <div className="mt-4 flex items-center justify-end gap-3">
+        {/* ── Decline: ghost + sliding underline reveal ── */}
+        <button
+          type="button"
+          onClick={() => dismiss(onDecline)}
+          className="group relative h-8 px-3 text-sm font-medium text-muted-foreground transition-colors duration-200 hover:text-foreground"
         >
-          {showSettings && (
-            <Button variant="ghost" size="sm" onClick={onSettings}>
-              <Settings className="mr-1.5 size-4" />
-              {settingsLabel}
-            </Button>
-          )}
-          <Button variant="outline" size="sm" onClick={handleDecline}>
-            {declineLabel}
-          </Button>
-          <Button size="sm" onClick={handleAccept}>
-            {acceptLabel}
-          </Button>
-        </div>
+          Decline
+          <span className="absolute inset-x-1 -bottom-px h-px origin-left scale-x-0 bg-current transition-transform duration-200 ease-out group-hover:scale-x-100" />
+        </button>
+
+        {/* ── Accept: pill + shadow elevator + press scale ── */}
+        <button
+          type="button"
+          onClick={() => dismiss(onAccept)}
+          className="h-8 rounded-full bg-primary px-4 text-sm font-medium text-primary-foreground shadow-sm transition-all duration-200 hover:brightness-110 hover:shadow-md active:scale-[0.96]"
+        >
+          Accept
+        </button>
       </div>
     </div>
   );

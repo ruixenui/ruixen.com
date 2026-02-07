@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/ai-chat-input-demo.tsx",
-      "content": "\"use client\";\n\nimport AiChatInput from \"@/registry/ruixenui/ai-chat-input\";\n\nexport default function AiChatInputDemo() {\n  return (\n    <div className=\"flex min-h-[200px] w-full flex-col items-center justify-center px-4\">\n      <AiChatInput\n        placeholders={[\n          \"Ask me anything...\",\n          \"Describe what you need built\",\n          \"Write a function that...\",\n          \"Explain how this works\",\n          \"Debug this error message\",\n        ]}\n        onSubmit={(val) => console.log(\"submitted:\", val)}\n      />\n    </div>\n  );\n}\n",
+      "content": "import AiChatInput from \"@/registry/ruixenui/ai-chat-input\";\n\nexport default function AiChatInputDemo() {\n  return (\n    <div className=\"flex min-h-[200px] w-full flex-col items-center justify-center px-4\">\n      <AiChatInput\n        placeholders={[\n          \"Ask me anything...\",\n          \"Describe what you need built\",\n          \"Write a function that...\",\n          \"Explain how this works\",\n          \"Debug this error message\",\n        ]}\n        onSubmit={(val) => console.log(\"submitted:\", val)}\n      />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/ai-chat-input-demo.tsx"
     }

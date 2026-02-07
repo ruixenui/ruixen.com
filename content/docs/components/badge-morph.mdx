@@ -1,0 +1,72 @@
+---
+title: Badge Morph
+date: 2026-02-07
+description: A Dynamic Island-inspired morphing status pill with spring physics, SVG path drawing, and radiant glow transitions.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="badge-morph-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/badge-morph"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="badge-morph" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import BadgeMorph from "@/components/ruixen/badge-morph";
+
+export default function DeployStatus() {
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
+
+  return <BadgeMorph status={status} />;
+}
+```
+
+## Props
+
+| Prop        | Type                                          | Default | Description                                       |
+| ----------- | --------------------------------------------- | ------- | ------------------------------------------------- |
+| `status`    | `"idle" \| "loading" \| "success" \| "error"` | -       | The current status state (required)               |
+| `label`     | `string`                                      | -       | Override the default label for the current status |
+| `className` | `string`                                      | -       | Additional CSS classes                            |
+
+## Status States
+
+| Status    | Default Label | Icon          | Glow  | Animation                   |
+| --------- | ------------- | ------------- | ----- | --------------------------- |
+| `idle`    | Ready         | Breathing dot | None  | Subtle pulse                |
+| `loading` | Deploying     | Arc spinner   | Blue  | Continuous rotation         |
+| `success` | Live          | Checkmark     | Green | SVG path draw + scale pulse |
+| `error`   | Failed        | X mark        | Red   | SVG path draw               |

@@ -1,5 +1,3 @@
-"use client";
-
 import AiChatInput from "@/registry/ruixenui/ai-chat-input";
 
 export default function AiChatInputDemo() {

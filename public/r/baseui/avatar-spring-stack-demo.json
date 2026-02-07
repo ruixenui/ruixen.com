@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar-spring-stack-demo",
+  "type": "registry:example",
+  "title": "Avatar Spring Stack Demo",
+  "description": "Example showing overlapping avatar stack with spring-animated tooltips on hover.",
+  "registryDependencies": [
+    "https://ruixen.com/r/avatar-spring-stack"
+  ],
+  "files": [
+    {
+      "path": "registry/example/avatar-spring-stack-demo.tsx",
+      "content": "import AvatarSpringStack from \"@/registry/ruixenui/avatar-spring-stack\";\n\nconst avatars = [\n  { src: \"/avatar-images/avatar-01.jpg\", label: \"Jane Smith\" },\n  { src: \"/avatar-images/avatar-02.jpg\", label: \"Liam Patel\" },\n  { src: \"/avatar-images/avatar-03.jpg\", label: \"Alex Chen\" },\n  { src: \"/avatar-images/avatar-04.jpg\", label: \"Sarah Wilson\" },\n  { src: \"/avatar-images/avatar-05.jpg\", label: \"Marcus Lee\" },\n  { src: \"/avatar-images/avatar-01.jpg\", label: \"Emma Davis\" },\n  { src: \"/avatar-images/avatar-02.jpg\", label: \"Noah Kim\" },\n];\n\nexport default function AvatarSpringStackDemo() {\n  return (\n    <div className=\"flex flex-col items-center gap-14 py-10\">\n      <AvatarSpringStack avatars={avatars} />\n      <AvatarSpringStack avatars={avatars} maxVisible={3} size={36} />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/avatar-spring-stack-demo.tsx"
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+---
+title: Avatar Spring Stack
+date: 2025-05-01
+description: An overlapping avatar stack with Magnetic Repulsion — hover any avatar and neighbors spring away proportionally to 1/distance, creating a lens-like spread that follows your cursor.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="avatar-spring-stack-demo" category="avatars" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/avatar-spring-stack"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="avatar-spring-stack" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import AvatarSpringStack from "@/components/ruixen/avatar-spring-stack";
+
+const avatars = [
+  { src: "/avatar-images/avatar-01.jpg", label: "Jane Smith" },
+  { src: "/avatar-images/avatar-02.jpg", label: "Liam Patel" },
+  { src: "/avatar-images/avatar-03.jpg", label: "Alex Chen" },
+];
+
+export default function App() {
+  return <AvatarSpringStack avatars={avatars} />;
+}
+```
+
+## Props
+
+| Prop         | Type                      | Default | Description                     |
+| ------------ | ------------------------- | ------- | ------------------------------- |
+| `avatars`    | `AvatarSpringStackItem[]` | -       | Array of avatar items (required)|
+| `maxVisible` | `number`                  | `5`     | Maximum avatars shown before +N |
+| `size`       | `number`                  | `44`    | Avatar diameter in pixels       |
+| `className`  | `string`                  | -       | Additional CSS classes          |
+
+## Item Structure
+
+```tsx
+interface AvatarSpringStackItem {
+  src: string; // Avatar image URL
+  alt?: string; // Alt text for the image
+  label?: string; // Name shown below avatar on hover
+}
+```
+
+## Features
+
+- **Magnetic Repulsion**: Hovered avatar creates a force field — neighbors displace proportionally to `1/distance`
+- **Emergent Wave**: Moving your cursor across the stack creates a natural wave — no stagger, no keyframes, just spring physics
+- **Focus Dim**: Non-active avatars fade to 65% opacity, drawing the eye to the active avatar
+- **Zero Layout Shift**: Container stays fixed-width; all displacement is GPU-accelerated transforms
+- **Proportional Spacing**: Overlap, step, and spread all derived from `size` — scales at any dimension
+- **Hover Pop**: Active avatar lifts 6px and scales to 1.08x with spring bounce (420/22)
+- **+N Counter**: Overflow badge responds passively to the magnetic field
+- **Fallback Initials**: Shows first letter of label when image fails to load

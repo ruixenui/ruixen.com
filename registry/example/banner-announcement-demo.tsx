@@ -1,45 +1,46 @@
 "use client";
 
+import { useState, useCallback } from "react";
 import BannerAnnouncement from "@/registry/ruixenui/banner-announcement";
-import { Sparkles, Megaphone, Zap } from "lucide-react";
+import { RotateCcw } from "lucide-react";
 
 export default function BannerAnnouncementDemo() {
+  const [key, setKey] = useState(0);
+  const [dismissed, setDismissed] = useState(false);
+
+  const replay = useCallback(() => {
+    setKey((k) => k + 1);
+    setDismissed(false);
+  }, []);
+
   return (
-    <div className="flex min-h-[400px] w-full flex-col gap-4 p-4">
-      <BannerAnnouncement
-        variant="default"
-        icon={<Sparkles className="size-4" />}
-        actionLabel="Learn more"
-        actionHref="#"
-      >
-        Introducing our new feature: Real-time collaboration is now available!
-      </BannerAnnouncement>
+    <div className="flex min-h-[300px] w-full flex-col">
+      <div className="w-full">
+        <BannerAnnouncement
+          key={key}
+          badge="New"
+          action={{ label: "Learn more", href: "#" }}
+          onDismiss={() => setDismissed(true)}
+        >
+          Real-time collaboration is now available for your team.
+        </BannerAnnouncement>
+      </div>
 
-      <BannerAnnouncement
-        variant="gradient"
-        icon={<Megaphone className="size-4" />}
-        actionLabel="Try it now"
-        actionHref="#"
+      <div
+        className={`flex flex-1 items-center justify-center transition-opacity duration-300 ${
+          dismissed
+            ? "opacity-100"
+            : "pointer-events-none opacity-0"
+        }`}
       >
-        Big announcement: We just launched v2.0 with amazing new features.
-      </BannerAnnouncement>
-
-      <BannerAnnouncement
-        variant="minimal"
-        icon={<Zap className="size-4" />}
-        actionLabel="Upgrade"
-        actionHref="#"
-      >
-        Your trial ends in 3 days. Upgrade to continue using all features.
-      </BannerAnnouncement>
-
-      <BannerAnnouncement
-        variant="accent"
-        actionLabel="Get started"
-        actionHref="#"
-      >
-        New: AI-powered suggestions are now available in your dashboard.
-      </BannerAnnouncement>
+        <button
+          onClick={replay}
+          className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+        >
+          <RotateCcw className="size-3.5" />
+          Replay
+        </button>
+      </div>
     </div>
   );
 }

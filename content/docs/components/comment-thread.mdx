@@ -1,0 +1,117 @@
+---
+title: Comment Thread
+date: 2025-05-01
+description: Threaded comment component with nested replies, colored avatars, and collapsible reply chains
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="comment-thread-demo" category="comments" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/comment-thread"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="comment-thread" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import {
+  CommentThread,
+  Comment,
+  CommentAvatar,
+  CommentHeader,
+  CommentBody,
+  CommentToggle,
+  CommentReplies,
+} from "@/components/ruixen/comment-thread";
+
+export default function App() {
+  return (
+    <CommentThread type="multiple" className="w-full max-w-xl">
+      <Comment value="comment-1">
+        <CommentHeader>
+          <CommentAvatar name="Alice" color="bg-violet-500" />
+          <div>
+            <p className="text-sm font-semibold">Alice</p>
+            <CommentBody>Great work on this feature!</CommentBody>
+          </div>
+        </CommentHeader>
+        <CommentToggle>1 reply</CommentToggle>
+        <CommentReplies>
+          <CommentHeader>
+            <CommentAvatar name="Bob" color="bg-emerald-500" />
+            <div>
+              <p className="text-sm font-semibold">Bob</p>
+              <CommentBody>Thanks Alice!</CommentBody>
+            </div>
+          </CommentHeader>
+        </CommentReplies>
+      </Comment>
+    </CommentThread>
+  );
+}
+```
+
+## Features
+
+- **Nested Replies**: Collapsible reply chains with indented threading
+- **Colored Avatars**: Initials-based avatars with customizable colors
+- **Accordion-based**: Built on top of the Accordion primitive for smooth expand/collapse
+- **Thread Lines**: Visual thread indicators using CSS pseudo-elements
+- **Composable**: Mix and match sub-components for custom layouts
+
+## Components
+
+| Component        | Description                              |
+| ---------------- | ---------------------------------------- |
+| `CommentThread`  | Root container, wraps Accordion          |
+| `Comment`        | Single comment item with thread line     |
+| `CommentAvatar`  | Initials avatar with color prop          |
+| `CommentHeader`  | Layout wrapper for avatar + content      |
+| `CommentBody`    | Comment text content                     |
+| `CommentToggle`  | Expand/collapse trigger for replies      |
+| `CommentReplies` | Collapsible container for nested replies |
+
+## Customization
+
+Customize avatar colors per user:
+
+```tsx
+<CommentAvatar name="John Doe" color="bg-blue-500" />
+<CommentAvatar name="Jane Smith" color="bg-pink-500" />
+```
+
+## Use Cases
+
+- **Code Reviews**: Discussion threads on pull requests
+- **Blog Comments**: Nested comment sections
+- **Support Tickets**: Threaded conversation views
+- **Team Discussions**: Internal team communication threads

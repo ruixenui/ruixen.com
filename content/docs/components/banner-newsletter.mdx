@@ -1,7 +1,7 @@
 ---
 title: Banner Newsletter
 date: 2025-01-08
-description: A newsletter subscription banner with email input and submit button.
+description: A newsletter banner with Inline Morphing — one pill that reshapes across input, loading, and confirmation.
 author: ruixen
 published: true
 ---
@@ -45,18 +45,16 @@ npx shadcn@latest add "https://ruixen.com/r/banner-newsletter"
 ```tsx
 import BannerNewsletter from "@/components/ruixen/banner-newsletter";
 
-export default function MyNewsletterBanner() {
-  const handleSubmit = async (email: string) => {
-    // Add your subscription logic here
-    await subscribeToNewsletter(email);
-  };
-
+export default function MyNewsletter() {
   return (
     <BannerNewsletter
-      position="bottom"
       title="Stay in the loop"
-      description="Get the latest updates delivered to your inbox."
-      onSubmit={handleSubmit}
+      onSubscribe={async (email) => {
+        await fetch("/api/subscribe", {
+          method: "POST",
+          body: JSON.stringify({ email }),
+        });
+      }}
     />
   );
 }
@@ -64,23 +62,9 @@ export default function MyNewsletterBanner() {
 
 ## Props
 
-| Prop             | Type                                       | Default                       | Description                     |
-| ---------------- | ------------------------------------------ | ----------------------------- | ------------------------------- |
-| `title`          | `string`                                   | `"Stay in the loop"`          | The banner title                |
-| `description`    | `string`                                   | `"Get the latest updates..."` | Supporting description          |
-| `placeholder`    | `string`                                   | `"Enter your email"`          | Email input placeholder         |
-| `submitLabel`    | `string`                                   | `"Subscribe"`                 | Submit button text              |
-| `successMessage` | `string`                                   | `"Thanks for subscribing!"`   | Message shown on success        |
-| `position`       | `"bottom" \| "top" \| "floating"`          | `"bottom"`                    | Banner position                 |
-| `dismissible`    | `boolean`                                  | `true`                        | Whether banner can be dismissed |
-| `onSubmit`       | `(email: string) => Promise<void> \| void` | -                             | Callback when form submitted    |
-| `onDismiss`      | `() => void`                               | -                             | Callback when dismissed         |
-| `className`      | `string`                                   | -                             | Additional CSS classes          |
-
-## Positions
-
-| Position   | Description                      |
-| ---------- | -------------------------------- |
-| `bottom`   | Fixed to bottom edge, full width |
-| `top`      | Fixed to top edge, full width    |
-| `floating` | Centered floating card at bottom |
+| Prop          | Type                                       | Default              | Description                        |
+| ------------- | ------------------------------------------ | -------------------- | ---------------------------------- |
+| `title`       | `string`                                   | `"Stay in the loop"` | Text displayed before the form     |
+| `onSubscribe` | `(email: string) => Promise<void> \| void` | -                    | Callback with email on form submit |
+| `onDismiss`   | `() => void`                               | -                    | Callback fired after dismiss       |
+| `className`   | `string`                                   | -                    | Additional CSS classes             |
