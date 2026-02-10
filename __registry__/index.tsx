@@ -878,9 +878,9 @@ export const Index: Record<string, any> = {
   "footer-pro": {
     name: "footer-pro",
     description:
-      "A professional footer component with logo, description, contact info, social links, and organized column sections.",
+      "A minimal, typographic footer with brand wordmark, link columns, and quiet social icons.",
     type: "registry:ui",
-    registryDependencies: ["button", "card"],
+    registryDependencies: undefined,
     files: [
       {
         path: "registry/ruixenui/footer-pro.tsx",
@@ -902,9 +902,9 @@ export const Index: Record<string, any> = {
   "corporate-footer": {
     name: "corporate-footer",
     description:
-      "A corporate-style footer with comprehensive navigation and company information.",
+      "A card-based corporate footer with decorative watermark, column navigation, and whisper-quiet typography.",
     type: "registry:ui",
-    registryDependencies: ["button"],
+    registryDependencies: undefined,
     files: [
       {
         path: "registry/ruixenui/corporate-footer.tsx",
@@ -923,36 +923,12 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
-  "footer-extended": {
-    name: "footer-extended",
-    description:
-      "An extended footer layout with multiple sections and comprehensive information.",
-    type: "registry:ui",
-    registryDependencies: undefined,
-    files: [
-      {
-        path: "registry/ruixenui/footer-extended.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/footer-extended.tsx",
-      },
-    ],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/ruixenui/footer-extended.tsx");
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object",
-        ) || item.name;
-      return { default: mod.default || mod[exportName] };
-    }),
-    meta: undefined,
-  },
   "footer-enterprise": {
     name: "footer-enterprise",
     description:
-      "An enterprise-grade footer with advanced features and comprehensive navigation.",
+      "An enterprise-grade footer with three-tier layout, wide column grid, and whisper-quiet typography.",
     type: "registry:ui",
-    registryDependencies: ["button"],
+    registryDependencies: undefined,
     files: [
       {
         path: "registry/ruixenui/footer-enterprise.tsx",
@@ -962,30 +938,6 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/ruixenui/footer-enterprise.tsx");
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object",
-        ) || item.name;
-      return { default: mod.default || mod[exportName] };
-    }),
-    meta: undefined,
-  },
-  "footer-mega": {
-    name: "footer-mega",
-    description:
-      "A mega footer with extensive navigation and multiple content sections.",
-    type: "registry:ui",
-    registryDependencies: undefined,
-    files: [
-      {
-        path: "registry/ruixenui/footer-mega.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/footer-mega.tsx",
-      },
-    ],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/ruixenui/footer-mega.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -7765,29 +7717,6 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
-  "footer-extended-demo": {
-    name: "footer-extended-demo",
-    description: "Example of an extended footer with multiple sections",
-    type: "registry:example",
-    registryDependencies: ["https://www.ruixen.com/r/footer-extended"],
-    files: [
-      {
-        path: "registry/example/footer-extended-demo.tsx",
-        type: "registry:example",
-        target: "components/footer-extended-demo.tsx",
-      },
-    ],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/example/footer-extended-demo.tsx");
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object",
-        ) || item.name;
-      return { default: mod.default || mod[exportName] };
-    }),
-    meta: undefined,
-  },
   "footer-enterprise-demo": {
     name: "footer-enterprise-demo",
     description: "Example of an enterprise-grade footer component",
@@ -7802,29 +7731,6 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/footer-enterprise-demo.tsx");
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object",
-        ) || item.name;
-      return { default: mod.default || mod[exportName] };
-    }),
-    meta: undefined,
-  },
-  "footer-mega-demo": {
-    name: "footer-mega-demo",
-    description: "Example of a mega footer with extensive navigation",
-    type: "registry:example",
-    registryDependencies: ["https://www.ruixen.com/r/footer-mega"],
-    files: [
-      {
-        path: "registry/example/footer-mega-demo.tsx",
-        type: "registry:example",
-        target: "components/footer-mega-demo.tsx",
-      },
-    ],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/example/footer-mega-demo.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>

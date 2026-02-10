@@ -1460,17 +1460,9 @@ export const footerSectionPreview: ComponentPreviewMap = {
     light: `/preview_images/footer-sections/corporate-footer-light.png`,
     dark: `/preview_images/footer-sections/corporate-footer-dark.png`,
   },
-  "footer-extended": {
-    light: `/preview_images/footer-sections/footer-extended-light.png`,
-    dark: `/preview_images/footer-sections/footer-extended-dark.png`,
-  },
   "footer-enterprise": {
     light: `/preview_images/footer-sections/footer-enterprise-light.png`,
     dark: `/preview_images/footer-sections/footer-enterprise-dark.png`,
-  },
-  "footer-mega": {
-    light: `/preview_images/footer-sections/footer-mega-light.png`,
-    dark: `/preview_images/footer-sections/footer-mega-dark.png`,
   },
 };
 

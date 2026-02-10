@@ -557,9 +557,8 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Footer Pro",
     description:
-      "A professional footer component with logo, description, contact info, social links, and organized column sections.",
+      "A minimal, typographic footer with brand wordmark, link columns, and quiet social icons.",
     dependencies: ["lucide-react"],
-    registryDependencies: ["button", "card"],
     files: [
       {
         path: "registry/ruixenui/footer-pro.tsx",
@@ -573,9 +572,7 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Corporate Footer",
     description:
-      "A corporate-style footer with comprehensive navigation and company information.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["button"],
+      "A card-based corporate footer with decorative watermark, column navigation, and whisper-quiet typography.",
     files: [
       {
         path: "registry/ruixenui/corporate-footer.tsx",
@@ -585,48 +582,16 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "footer-extended",
-    type: "registry:ui",
-    title: "Footer Extended",
-    description:
-      "An extended footer layout with multiple sections and comprehensive information.",
-    dependencies: ["lucide-react"],
-    files: [
-      {
-        path: "registry/ruixenui/footer-extended.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/footer-extended.tsx",
-      },
-    ],
-  },
-  {
     name: "footer-enterprise",
     type: "registry:ui",
     title: "Footer Enterprise",
     description:
-      "An enterprise-grade footer with advanced features and comprehensive navigation.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["button"],
+      "An enterprise-grade footer with three-tier layout, wide column grid, and whisper-quiet typography.",
     files: [
       {
         path: "registry/ruixenui/footer-enterprise.tsx",
         type: "registry:ui",
         target: "components/ruixen/footer-enterprise.tsx",
-      },
-    ],
-  },
-  {
-    name: "footer-mega",
-    type: "registry:ui",
-    title: "Footer Mega",
-    description:
-      "A mega footer with extensive navigation and multiple content sections.",
-    dependencies: ["lucide-react"],
-    files: [
-      {
-        path: "registry/ruixenui/footer-mega.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/footer-mega.tsx",
       },
     ],
   },
