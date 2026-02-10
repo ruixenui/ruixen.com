@@ -1886,20 +1886,8 @@ export const docsConfig: DocsConfig = {
               label: "",
             },
             {
-              title: "Footer Extended",
-              href: `/docs/components/footer-extended`,
-              items: [],
-              label: "",
-            },
-            {
               title: "Footer Enterprise",
               href: `/docs/components/footer-enterprise`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Footer Mega",
-              href: `/docs/components/footer-mega`,
               items: [],
               label: "",
             },

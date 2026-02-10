@@ -1,126 +1,143 @@
 "use client";
 
-import Image from "next/image";
+import * as React from "react";
 import Link from "next/link";
-import { Github, Twitter, Linkedin, Youtube, Instagram } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+
+/* ── types ─────────────────────────────────────────────────────── */
+interface FooterLink {
+  label: string;
+  href: string;
+}
+
+interface FooterColumn {
+  title: string;
+  links: FooterLink[];
+}
+
+interface FooterSocial {
+  icon: React.ComponentType<{ className?: string }>;
+  href: string;
+  label?: string;
+}
 
 interface FooterProProps {
+  /** Custom brand mark — any ReactNode (SVG, icon, emoji). Falls back to a default geometric mark. */
+  brandMark?: React.ReactNode;
+  brandName?: string;
   description?: string;
-  logo?: {
-    dark: string;
-    light: string;
-  };
-  contact?: {
-    email: string;
-    phone: string;
-  };
-  socials?: { icon: any; href: string }[];
-  columns?: {
-    title: string;
-    links: { label: string; href: string }[];
-  }[];
+  columns?: FooterColumn[];
+  socials?: FooterSocial[];
+  bottomLinks?: FooterLink[];
+  /** Status text shown with a breathing indicator dot. Pass `undefined` to hide. */
+  statusText?: string;
   copyright?: string;
 }
 
-const defaultProps: FooterProProps = {
+/* ── default brand mark ────────────────────────────────────────── */
+function DefaultMark() {
+  return (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 18 18"
+      fill="none"
+      className="size-[18px]"
+      aria-hidden="true"
+    >
+      <rect width="18" height="18" rx="5" className="fill-foreground" />
+    </svg>
+  );
+}
+
+/* ── defaults ──────────────────────────────────────────────────── */
+const defaults = {
+  brandName: "ruixen ui",
   description:
-    "ruixen ui empowers developers with modern tools, scalable infrastructure, and a vibrant community to build, ship, and grow faster.",
-  logo: {
-    dark: "/ruixen-ui-nw-light.png",
-    light: "/ruixen-ui-nw.png",
-  },
-  contact: {
-    email: "support@ruixen ui",
-    phone: "+1 (555) 123-4567",
-  },
-  socials: [
-    { icon: Github, href: "#" },
-    { icon: Twitter, href: "#" },
-    { icon: Linkedin, href: "#" },
-    { icon: Youtube, href: "#" },
-    { icon: Instagram, href: "#" },
-  ],
+    "Modern, fast, and customizable React components — built with Tailwind CSS, TypeScript, and accessibility in mind.",
   columns: [
     {
-      title: "Company",
+      title: "Product",
       links: [
-        { label: "About Us", href: "#" },
-        { label: "Careers", href: "#" },
-        { label: "Blog", href: "#" },
-        { label: "Events", href: "#" },
-      ],
-    },
-    {
-      title: "Platform",
-      links: [
-        { label: "Features", href: "#" },
-        { label: "Pricing", href: "#" },
-        { label: "Docs", href: "#" },
-        { label: "API Reference", href: "#" },
+        { label: "Components", href: "#" },
+        { label: "Templates", href: "#" },
+        { label: "Pro", href: "#" },
+        { label: "Changelog", href: "#" },
       ],
     },
     {
       title: "Resources",
       links: [
-        { label: "Community", href: "#" },
+        { label: "Documentation", href: "#" },
+        { label: "API Reference", href: "#" },
         { label: "Guides", href: "#" },
-        { label: "Help Center", href: "#" },
+        { label: "Examples", href: "#" },
       ],
     },
-  ],
-  copyright: "© 2024 ruixen ui. All rights reserved.",
+    {
+      title: "Company",
+      links: [
+        { label: "About", href: "#" },
+        { label: "Blog", href: "#" },
+        { label: "Careers", href: "#" },
+        { label: "Contact", href: "#" },
+      ],
+    },
+  ] as FooterColumn[],
+  socials: [] as FooterSocial[],
+  bottomLinks: [
+    { label: "Privacy", href: "#" },
+    { label: "Terms", href: "#" },
+  ] as FooterLink[],
+  statusText: "All systems operational",
+  copyright: `\u00A9 ${new Date().getFullYear()} ruixen ui`,
 };
 
+/* ── component ─────────────────────────────────────────────────── */
 export default function FooterPro(props?: FooterProProps) {
-  const config: FooterProProps = { ...defaultProps, ...props };
-
-  const socials = config.socials ?? [];
-  const columns = config.columns ?? [];
+  const brandMark = props?.brandMark;
+  const brandName = props?.brandName ?? defaults.brandName;
+  const description = props?.description ?? defaults.description;
+  const columns = props?.columns ?? defaults.columns;
+  const socials = props?.socials ?? defaults.socials;
+  const bottomLinks = props?.bottomLinks ?? defaults.bottomLinks;
+  const statusText = props?.statusText ?? defaults.statusText;
+  const copyright = props?.copyright ?? defaults.copyright;
 
   return (
-    <footer className="bg-white dark:bg-black text-black dark:text-white px-6 py-14 border-t border-gray-200 dark:border-gray-800">
-      <div className="max-w-7xl mx-auto">
-        {/* Top Section: Logo + Description */}
-        <div className="mb-12 text-center lg:text-left">
-          {config.logo && (
-            <>
-              <Image
-                src={config.logo.dark}
-                alt="Logo"
-                width={180}
-                height={50}
-                className="hidden dark:block h-auto w-auto"
-              />
-              <Image
-                src={config.logo.light}
-                alt="Logo"
-                width={180}
-                height={50}
-                className="block dark:hidden h-auto w-auto mb-4"
-              />
-            </>
-          )}
-          <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-            {config.description}
-          </p>
-        </div>
+    <footer className="border-t border-foreground/[0.06] bg-background">
+      <div className="mx-auto max-w-6xl px-6 py-12 lg:py-16">
+        {/* ── content: brand + columns ──────────────────────────── */}
+        <div className="flex flex-col gap-10 lg:flex-row lg:gap-16">
+          {/* brand */}
+          <div className="shrink-0 lg:max-w-[280px]">
+            <div className="flex items-center gap-2.5">
+              {brandMark ?? <DefaultMark />}
+              <span className="text-[15px] font-[590] tracking-[-0.015em] text-foreground">
+                {brandName}
+              </span>
+            </div>
+            <p className="mt-4 text-[13px] leading-[1.6] text-foreground/45">
+              {description}
+            </p>
+          </div>
 
-        <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start gap-10">
-          {/* Columns */}
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-8 flex-1">
-            {columns.map((col, idx) => (
-              <div key={idx}>
-                <h3 className="text-sm font-medium mb-3">{col.title}</h3>
-                <ul className="space-y-2">
-                  {col.links?.map((link, i) => (
-                    <li key={i}>
+          {/* columns */}
+          <div className="grid flex-1 grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3 lg:grid-cols-4">
+            {columns.map((col) => (
+              <div key={col.title}>
+                <p className="text-[11px] font-medium uppercase tracking-[0.1em] text-foreground/30">
+                  {col.title}
+                </p>
+                <ul className="mt-4 space-y-2.5">
+                  {col.links.map((link) => (
+                    <li key={link.label}>
                       <Link
                         href={link.href}
-                        className="text-[0.85rem] text-gray-600 dark:text-gray-300 hover:text-blue-500 transition"
+                        className="group/link inline-flex items-center text-[13px] text-foreground/50 transition-colors duration-150 hover:text-foreground"
                       >
-                        {link.label}
+                        <span className="transition-transform duration-150 group-hover/link:translate-x-0.5">
+                          {link.label}
+                        </span>
                       </Link>
                     </li>
                   ))}
@@ -128,53 +145,52 @@ export default function FooterPro(props?: FooterProProps) {
               </div>
             ))}
           </div>
-
-          {/* Right Side: Contact & Socials */}
-          <div className="lg:w-1/4 space-y-4">
-            <Card className="shadow-none border-none">
-              <CardContent className="p-0">
-                <p className="text-sm font-medium mb-2">Get in Touch</p>
-                <Button
-                  variant="default"
-                  className="w-full bg-gray-200 border border-gray-400 text-gray-600 hover:text-white"
-                >
-                  Contact Us
-                </Button>
-                {config.contact && (
-                  <div className="mt-2 text-xs text-gray-500 dark:text-gray-400">
-                    Email: {config.contact.email} <br />
-                    Phone: {config.contact.phone}
-                  </div>
-                )}
-              </CardContent>
-            </Card>
-
-            <Card className="shadow-none border-none">
-              <CardContent className="p-0">
-                <p className="text-sm font-medium mb-2">Follow Us</p>
-                <div className="flex gap-3">
-                  {socials.map(({ icon: Icon, href }, idx) => (
-                    <Link
-                      key={idx}
-                      href={href}
-                      className="text-gray-500 hover:text-blue-500 transition"
-                    >
-                      <Icon className="w-4 h-4" />
-                    </Link>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </div>
         </div>
 
-        {/* Bottom */}
-        <div className="mt-12 pt-6 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 dark:text-gray-400 gap-4">
-          <p>{config.copyright}</p>
-          <div className="flex gap-6">
-            <Link href="#">Privacy</Link>
-            <Link href="#">Terms</Link>
-            <Link href="#">Sitemap</Link>
+        {/* ── bottom ───────────────────────────────────────────── */}
+        <div className="mt-14 border-t border-foreground/[0.06] pt-6">
+          {/* status indicator */}
+          {statusText && (
+            <div className="mb-4 flex items-center gap-2">
+              <span className="relative flex size-1.5">
+                <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-400/60" />
+                <span className="relative inline-flex size-1.5 rounded-full bg-emerald-500" />
+              </span>
+              <span className="text-[11px] text-foreground/30">
+                {statusText}
+              </span>
+            </div>
+          )}
+
+          <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+            <p className="text-[12px] text-foreground/25">{copyright}</p>
+
+            <div className="flex items-center gap-5">
+              {bottomLinks.map((link) => (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className="text-[12px] text-foreground/30 transition-colors duration-150 hover:text-foreground/60"
+                >
+                  {link.label}
+                </Link>
+              ))}
+
+              {socials.length > 0 && bottomLinks.length > 0 && (
+                <div className="h-3 w-px bg-foreground/[0.08]" />
+              )}
+
+              {socials.map(({ icon: Icon, href, label }, idx) => (
+                <Link
+                  key={idx}
+                  href={href}
+                  aria-label={label}
+                  className="text-foreground/30 transition-colors duration-150 hover:text-foreground/60"
+                >
+                  <Icon className="size-3.5" />
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </div>

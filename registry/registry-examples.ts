@@ -420,20 +420,6 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "footer-extended-demo",
-    type: "registry:example",
-    title: "Footer Extended Demo",
-    description: "Example of an extended footer with multiple sections",
-    registryDependencies: ["https://www.ruixen.com/r/footer-extended"],
-    files: [
-      {
-        path: "registry/example/footer-extended-demo.tsx",
-        type: "registry:example",
-        target: "components/footer-extended-demo.tsx",
-      },
-    ],
-  },
-  {
     name: "footer-enterprise-demo",
     type: "registry:example",
     title: "Footer Enterprise Demo",
@@ -444,20 +430,6 @@ export const examples: Registry["items"] = [
         path: "registry/example/footer-enterprise-demo.tsx",
         type: "registry:example",
         target: "components/footer-enterprise-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "footer-mega-demo",
-    type: "registry:example",
-    title: "Footer Mega Demo",
-    description: "Example of a mega footer with extensive navigation",
-    registryDependencies: ["https://www.ruixen.com/r/footer-mega"],
-    files: [
-      {
-        path: "registry/example/footer-mega-demo.tsx",
-        type: "registry:example",
-        target: "components/footer-mega-demo.tsx",
       },
     ],
   },

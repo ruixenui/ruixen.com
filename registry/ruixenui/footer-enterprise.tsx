@@ -1,157 +1,211 @@
 "use client";
 
+import * as React from "react";
 import Link from "next/link";
-import Image from "next/image";
-import Container from "@/components/ui/container";
 
+/* ── types ─────────────────────────────────────────────────────── */
 interface FooterLink {
-  text: string;
+  label: string;
   href: string;
 }
 
-interface FooterSection {
+interface FooterColumn {
   title: string;
   links: FooterLink[];
 }
 
-interface FooterEnterpriseProps {
-  logo?: {
-    srcDark: string;
-    srcLight: string;
-    alt: string;
-  };
-  description?: string;
-  sections?: FooterSection[];
-  copyrightText?: string;
+interface FooterSocial {
+  icon: React.ComponentType<{ className?: string }>;
+  href: string;
+  label?: string;
 }
 
-export const FooterEnterprise: React.FC<FooterEnterpriseProps> = ({
-  logo = {
-    srcDark: "/ruixen_dark.png",
-    srcLight: "/ruixen-ui-nw-light.png",
-    alt: "Ruixen Logo",
-  },
-  description = "Build better UIs faster with Ruixen – the AI-enhanced component library for modern teams.",
-  sections = [
+interface FooterEnterpriseProps {
+  /** Custom brand mark — any ReactNode (SVG, icon, emoji). Falls back to a default geometric mark. */
+  brandMark?: React.ReactNode;
+  brandName?: string;
+  description?: string;
+  columns?: FooterColumn[];
+  socials?: FooterSocial[];
+  bottomLinks?: FooterLink[];
+  copyright?: string;
+}
+
+/* ── default mark ─────────────────────────────────────────────── */
+function DefaultMark() {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      className="size-5"
+      aria-hidden="true"
+    >
+      <rect width="20" height="20" rx="5" className="fill-foreground" />
+      <rect
+        x="5"
+        y="5"
+        width="10"
+        height="10"
+        rx="2.5"
+        className="fill-background"
+      />
+    </svg>
+  );
+}
+
+/* ── defaults ─────────────────────────────────────────────────── */
+const defaults = {
+  brandName: "ruixen ui",
+  description:
+    "Modern, fast, and customizable React components — built with Tailwind CSS, TypeScript, and accessibility in mind.",
+  columns: [
     {
-      title: "Ruixen",
+      title: "Product",
       links: [
-        { text: "Components", href: "#" },
-        { text: "Pricing", href: "#" },
-        { text: "Use Cases", href: "#" },
-        { text: "Language Support", href: "#" },
+        { label: "Components", href: "#" },
+        { label: "Templates", href: "#" },
+        { label: "Pro", href: "#" },
+        { label: "Pricing", href: "#" },
       ],
     },
     {
       title: "Solutions",
       links: [
-        { text: "Developers", href: "#" },
-        { text: "Design Teams", href: "#" },
-        { text: "Startups", href: "#" },
-        { text: "Enterprises", href: "#" },
+        { label: "Startups", href: "#" },
+        { label: "Enterprise", href: "#" },
+        { label: "Developers", href: "#" },
+        { label: "Designers", href: "#" },
+      ],
+    },
+    {
+      title: "Developers",
+      links: [
+        { label: "Documentation", href: "#" },
+        { label: "API Reference", href: "#" },
+        { label: "CLI", href: "#" },
+        { label: "Changelog", href: "#" },
       ],
     },
     {
       title: "Resources",
       links: [
-        { text: "Documentation", href: "#" },
-        { text: "Component Guides", href: "#" },
-        { text: "Support Center", href: "#" },
+        { label: "Guides", href: "#" },
+        { label: "Blog", href: "#" },
+        { label: "Templates", href: "#" },
+        { label: "Community", href: "#" },
       ],
     },
     {
       title: "Company",
       links: [
-        { text: "Our Story", href: "#" },
-        { text: "Privacy Policy", href: "#" },
-        { text: "Terms of Service", href: "#" },
+        { label: "About", href: "#" },
+        { label: "Careers", href: "#" },
+        { label: "Press", href: "#" },
+        { label: "Contact", href: "#" },
       ],
     },
-  ],
-  copyrightText = `© ${new Date().getFullYear()} Ruixen. Built for UI excellence.`,
-}) => {
+  ] as FooterColumn[],
+  socials: [] as FooterSocial[],
+  bottomLinks: [
+    { label: "Privacy", href: "#" },
+    { label: "Terms", href: "#" },
+  ] as FooterLink[],
+  copyright: `\u00A9 ${new Date().getFullYear()} ruixen ui. All rights reserved.`,
+};
+
+/* ── component ────────────────────────────────────────────────── */
+export function FooterEnterprise(props?: FooterEnterpriseProps) {
+  const brandMark = props?.brandMark;
+  const brandName = props?.brandName ?? defaults.brandName;
+  const description = props?.description ?? defaults.description;
+  const columns = props?.columns ?? defaults.columns;
+  const socials = props?.socials ?? defaults.socials;
+  const bottomLinks = props?.bottomLinks ?? defaults.bottomLinks;
+  const copyright = props?.copyright ?? defaults.copyright;
+
   return (
-    <footer className="flex flex-col relative items-center justify-center border-t border-foreground/5 pt-16 pb-8 px-6 lg:px-8 w-full max-w-6xl mx-auto lg:pt-32">
-      <div className="grid gap-8 xl:grid-cols-3 xl:gap-8 w-full">
-        {/* Branding */}
-        <Container>
-          <div className="flex flex-col items-start justify-start md:max-w-[200px]">
-            <div className="flex items-center gap-2">
-              <Image
-                src={logo.srcDark}
-                alt={logo.alt}
-                width={40}
-                height={40}
-                className="rounded-full h-10 w-10 block dark:hidden"
-              />
-              <Image
-                src={logo.srcLight}
-                alt={logo.alt}
-                width={40}
-                height={40}
-                className="rounded-full h-10 w-10 hidden dark:block"
-              />
+    <footer className="border-t border-foreground/[0.06] bg-background">
+      <div className="mx-auto max-w-7xl px-6 py-14 lg:py-20">
+        {/* ── top tier: brand + socials ──────────────────────── */}
+        <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
+          <div className="max-w-sm">
+            <div className="flex items-center gap-2.5">
+              {brandMark ?? <DefaultMark />}
+              <span className="text-[16px] font-[590] tracking-[-0.02em] text-foreground">
+                {brandName}
+              </span>
             </div>
-            <p className="text-muted-foreground mt-4 text-sm text-start">
+            <p className="mt-3 text-[13px] leading-[1.6] text-foreground/40">
               {description}
             </p>
           </div>
-        </Container>
 
-        {/* Sections */}
-        <div className="grid-cols-2 gap-8 grid mt-16 xl:col-span-2 xl:mt-0">
-          <div className="md:grid md:grid-cols-2 md:gap-8">
-            {sections.slice(0, 2).map((section, i) => (
-              <Container key={i} delay={i * 0.1} className="h-auto">
-                <h3 className="text-base font-normal text-foreground">
-                  {section.title}
-                </h3>
-                <ul className="mt-4 text-sm text-gray-500 space-y-4">
-                  {section.links.map((link, idx) => (
-                    <li key={idx}>
-                      <Link
-                        href={link.href}
-                        className="link hover:text-foreground transition-all duration-300"
-                      >
-                        {link.text}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </Container>
-            ))}
-          </div>
+          {socials.length > 0 && (
+            <div className="flex items-center gap-3.5">
+              {socials.map(({ icon: Icon, href, label }, idx) => (
+                <Link
+                  key={idx}
+                  href={href}
+                  aria-label={label}
+                  className="text-foreground/25 transition-colors duration-150 hover:text-foreground/60"
+                >
+                  <Icon className="size-4" />
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
 
-          <div className="md:grid md:grid-cols-2 md:gap-8">
-            {sections.slice(2).map((section, i) => (
-              <Container key={i} delay={(i + 2) * 0.1} className="h-auto">
-                <h3 className="text-base font-normal text-foreground">
-                  {section.title}
-                </h3>
-                <ul className="mt-4 text-sm text-gray-500 space-y-4">
-                  {section.links.map((link, idx) => (
-                    <li key={idx}>
-                      <Link
-                        href={link.href}
-                        className="link hover:text-foreground transition-all duration-300"
-                      >
-                        {link.text}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </Container>
-            ))}
-          </div>
+        {/* ── separator ───────────────────────────────────────── */}
+        <div className="my-10 h-px bg-foreground/[0.06]" />
+
+        {/* ── middle tier: columns ────────────────────────────── */}
+        <div className="grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3 lg:grid-cols-5">
+          {columns.map((col) => (
+            <div key={col.title}>
+              <p className="text-[11px] font-medium uppercase tracking-[0.1em] text-foreground/30">
+                {col.title}
+              </p>
+              <ul className="mt-3.5 space-y-2.5">
+                {col.links.map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
+                      className="text-[13px] text-foreground/45 transition-colors duration-150 hover:text-foreground"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        {/* ── separator ───────────────────────────────────────── */}
+        <div className="mt-14 h-px bg-foreground/[0.06]" />
+
+        {/* ── bottom tier: copyright + legal ──────────────────── */}
+        <div className="mt-5 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+          <p className="text-[11px] text-foreground/20">{copyright}</p>
+
+          {bottomLinks.length > 0 && (
+            <div className="flex items-center gap-5">
+              {bottomLinks.map((link) => (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className="text-[11px] text-foreground/25 transition-colors duration-150 hover:text-foreground/50"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       </div>
-
-      {/* Footer Bottom */}
-      <Container delay={0.5} className="w-full relative mt-12 lg:mt-20">
-        <div className="mt-8 md:flex md:items-center justify-center footer w-full">
-          <p className="text-sm text-gray-500 mt-8 md:mt-0">{copyrightText}</p>
-        </div>
-      </Container>
     </footer>
   );
-};
+}
