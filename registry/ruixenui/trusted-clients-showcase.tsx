@@ -1,134 +1,164 @@
 "use client";
 
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { motion } from "framer-motion";
+import * as React from "react";
+import { cn } from "@/lib/utils";
+
+/* ═══════════════════════════════════════════════════════════
+   Trusted Clients Showcase — Spotlight logo grid.
+
+   Logos enter with a staggered blur-up reveal triggered by
+   IntersectionObserver. At rest, all logos sit at 40% opacity
+   — quiet, confident. Hover any logo and it lifts to full
+   opacity while the rest dim to 20%, creating a theatrical
+   spotlight effect. No framer-motion, no next/image — pure
+   CSS transitions with React state for collective dim.
+
+   Entrance: blur(4px) + translateY(8px) + opacity(0) → clear,
+   staggered 60ms per item, cubic-bezier(0.16, 1, 0.3, 1).
+   After entrance completes, transitions shorten to 250ms
+   for snappy hover feedback.
+   ═══════════════════════════════════════════════════════════ */
 
 export interface LogoItem {
-  src: string;
-  alt: string;
+  name: string;
+  logo?: React.ReactNode;
   href?: string;
-  width?: number;
-  height?: number;
-  className?: string;
 }
 
 export interface TrustedClientsShowcaseProps {
-  logos?: LogoItem[];
-  defaultHeight?: number;
-  defaultWidth?: number;
+  title?: string;
+  clients?: LogoItem[];
+  className?: string;
 }
 
-export const TrustedClientsShowcase: React.FC<TrustedClientsShowcaseProps> = ({
-  logos = [
-    {
-      src: "https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg",
-      alt: "Slack Logo",
-      href: "https://slack.com",
-      width: 54,
-      height: 24,
-    },
-    {
-      src: "https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg",
-      alt: "Amazon Logo",
-      href: "https://amazon.com",
-      width: 54,
-      height: 24,
-    },
-    {
-      src: "https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg",
-      alt: "GitHub Logo",
-      href: "https://github.com",
-      width: 54,
-      height: 24,
-    },
-    {
-      src: "https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg",
-      alt: "PlayStation Logo",
-      href: "https://playstation.com",
-      width: 54,
-      height: 24,
-    },
-    {
-      src: "https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg",
-      alt: "IBM Logo",
-      href: "https://ibm.com",
-      width: 54,
-      height: 24,
-    },
-    {
-      src: "https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg",
-      alt: "Ebay Logo",
-      href: "https://ebay.com",
-      width: 54,
-      height: 24,
-    },
-    {
-      src: "https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg",
-      alt: "Meta Logo",
-      href: "https://meta.com",
-      width: 54,
-      height: 24,
-    },
-    {
-      src: "https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg",
-      alt: "Adobe Logo",
-      href: "https://adobe.com",
-      width: 54,
-      height: 24,
-    },
-  ],
-  defaultHeight = 24,
-  defaultWidth = 60,
-}) => {
-  const containerVariants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
+const defaultClients: LogoItem[] = [
+  { name: "Vercel" },
+  { name: "Linear" },
+  { name: "Stripe" },
+  { name: "Notion" },
+  { name: "Figma" },
+  { name: "Raycast" },
+  { name: "Loom" },
+  { name: "Pitch" },
+];
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 10 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, type: "spring", bounce: 0.3 },
-    },
-  };
+export default function TrustedClientsShowcase({
+  title = "Trusted by industry leaders",
+  clients = defaultClients,
+  className,
+}: TrustedClientsShowcaseProps) {
+  const [hoveredIndex, setHoveredIndex] = React.useState<number | null>(null);
+  const [inView, setInView] = React.useState(false);
+  const [entranceDone, setEntranceDone] = React.useState(false);
+  const sectionRef = React.useRef<HTMLElement>(null);
+
+  // Scroll-triggered entrance via IntersectionObserver
+  React.useEffect(() => {
+    const el = sectionRef.current;
+    if (!el || typeof IntersectionObserver === "undefined") {
+      setInView(true);
+      return;
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  // Switch to snappy hover transitions after entrance stagger completes
+  React.useEffect(() => {
+    if (inView && !entranceDone) {
+      const timer = setTimeout(
+        () => setEntranceDone(true),
+        clients.length * 60 + 600,
+      );
+      return () => clearTimeout(timer);
+    }
+  }, [inView, entranceDone, clients.length]);
+
+  const anyHovered = hoveredIndex !== null;
 
   return (
-    <section className="overflow-hidden bg-background py-16 md:py-32">
-      <div className="relative mx-auto max-w-5xl px-6">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="mx-auto mt-12 grid max-w-2xl grid-cols-4 gap-x-12 gap-y-8 sm:gap-x-16 sm:gap-y-14"
+    <section ref={sectionRef} className={cn("py-16 md:py-24", className)}>
+      <div className="mx-auto max-w-4xl px-6 text-center">
+        {title && (
+          <p className="text-sm font-medium uppercase tracking-wider text-muted-foreground">
+            {title}
+          </p>
+        )}
+        <div
+          className="mt-8 grid grid-cols-2 gap-8 sm:grid-cols-3 sm:gap-10 md:grid-cols-4 md:gap-12"
+          onMouseLeave={() => setHoveredIndex(null)}
         >
-          {logos.map((logo, index) => (
-            <motion.div key={index} className="flex">
-              <Link
-                href={logo.href || "#"}
-                target="_blank"
-                rel="noopener noreferrer"
+          {clients.map((client, i) => {
+            const isHovered = hoveredIndex === i;
+
+            return (
+              <div
+                key={i}
+                className="flex h-12 cursor-default items-center justify-center"
+                onMouseEnter={() => setHoveredIndex(i)}
+                style={{
+                  opacity: inView
+                    ? anyHovered
+                      ? isHovered
+                        ? 1
+                        : 0.2
+                      : 0.4
+                    : 0,
+                  transform: inView
+                    ? isHovered
+                      ? "translateY(-2px)"
+                      : "translateY(0)"
+                    : "translateY(8px)",
+                  filter: inView ? "blur(0px)" : "blur(4px)",
+                  transition: entranceDone
+                    ? "opacity 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)"
+                    : "opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s cubic-bezier(0.16, 1, 0.3, 1)",
+                  transitionDelay: !entranceDone ? `${i * 60}ms` : "0ms",
+                }}
               >
-                <Image
-                  className={`mx-auto object-contain grayscale dark:grayscale-0 ${logo.className || ""}`}
-                  src={logo.src}
-                  alt={logo.alt}
-                  height={logo.height || defaultHeight}
-                  width={logo.width || defaultWidth}
-                  unoptimized={logo.src.startsWith("http")}
-                />
-              </Link>
-            </motion.div>
-          ))}
-        </motion.div>
+                {client.href ? (
+                  <a
+                    href={client.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center"
+                    aria-label={client.name}
+                  >
+                    {client.logo || (
+                      <span className="select-none text-xl font-semibold tracking-tight text-foreground">
+                        {client.name}
+                      </span>
+                    )}
+                  </a>
+                ) : (
+                  <span className="inline-flex items-center">
+                    {client.logo || (
+                      <span className="select-none text-xl font-semibold tracking-tight text-foreground">
+                        {client.name}
+                      </span>
+                    )}
+                  </span>
+                )}
+              </div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
+}
+
+export {
+  TrustedClientsShowcase,
+  type TrustedClientsShowcaseProps,
+  type LogoItem,
 };

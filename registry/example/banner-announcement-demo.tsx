@@ -28,9 +28,7 @@ export default function BannerAnnouncementDemo() {
 
       <div
         className={`flex flex-1 items-center justify-center transition-opacity duration-300 ${
-          dismissed
-            ? "opacity-100"
-            : "pointer-events-none opacity-0"
+          dismissed ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
       >
         <button

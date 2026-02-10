@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scramble-text-demo",
+  "type": "registry:example",
+  "title": "Scramble Text Demo",
+  "description": "Example showing text decode sequence with directional resolve wave.",
+  "registryDependencies": [
+    "https://ruixen.com/r/scramble-text"
+  ],
+  "files": [
+    {
+      "path": "registry/example/scramble-text-demo.tsx",
+      "content": "import ScrambleText from \"@/registry/ruixenui/scramble-text\";\n\nexport default function ScrambleTextDemo() {\n  return (\n    <div className=\"flex flex-col items-center gap-10 py-10\">\n      <ScrambleText as=\"h2\" className=\"text-5xl font-medium tracking-tight\">\n        Scramble Text\n      </ScrambleText>\n      <ScrambleText className=\"text-lg text-muted-foreground tracking-wide\">\n        Hover from either side — the resolve wave follows your entry\n      </ScrambleText>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/scramble-text-demo.tsx"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 ---
 title: Breadcrumb Icon
 date: 2025-01-08
-description: Breadcrumb navigation with icons for each item.
+description: Magnetic pill-tracking breadcrumb with icon support — a soft highlight slides to whichever item you hover, while the icon does a spring micro-bounce for tactile feedback.
 author: ruixen
 published: true
 ---
@@ -73,3 +73,11 @@ export default function MyBreadcrumb() {
 | `label`  | `string`     | Display text for the item |
 | `href`   | `string`     | Optional link URL         |
 | `icon`   | `LucideIcon` | Optional custom icon      |
+
+## Features
+
+- **Magnetic Pill**: A soft rounded highlight (`bg-foreground/[0.06]`) that smoothly slides and resizes to wrap whichever item you hover — the highlight comes to you, items stay perfectly still
+- **Icon Spring-Bounce**: The hovered item's icon scales to 1.18x with spring overshoot `cubic-bezier(0.34, 1.56, 0.64, 1)` — tactile, not decorative
+- **First-Hover Fade-In**: On initial hover the pill fades in at position; subsequent hovers slide with spring overshoot `cubic-bezier(0.33, 1.52, 0.58, 1)`
+- **Minimal Separators**: Ultra-light 12px chevron SVGs at 30% opacity — wayfinding without competing with the pill
+- **Accessibility**: `aria-current="page"` on active item, `aria-hidden` separators, semantic `nav` + `ol` structure

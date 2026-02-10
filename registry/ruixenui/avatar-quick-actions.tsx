@@ -113,11 +113,7 @@ export default function AvatarQuickActions({
               x: open ? tx : 0,
               y: open ? ty : 0,
               scale: open ? (active ? 1.15 : 1) : 0,
-              opacity: open
-                ? activeIdx !== null && !active
-                  ? 0.5
-                  : 1
-                : 0,
+              opacity: open ? (activeIdx !== null && !active ? 0.5 : 1) : 0,
             }}
             transition={{
               x: {

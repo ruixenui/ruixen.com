@@ -6,16 +6,14 @@ import {
   GitHubLogoIcon,
 } from "@radix-ui/react-icons";
 
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import {
   Card,
-  CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { cn } from "@/lib/utils";
 import Image from "next/image";
 
 export const metadata: Metadata = {
@@ -229,44 +227,58 @@ export default function TemplatesPage() {
         </div>
 
         {/* Pro Templates CTA */}
-        <div className="relative overflow-hidden rounded-2xl bg-zinc-900 p-8 md:p-12 text-center text-white dark:bg-zinc-950">
-          <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-5" />
-          <div className="absolute -top-24 -right-24 size-64 rounded-full bg-emerald-500/10 blur-3xl" />
-          <div className="relative space-y-4">
-            <Badge className="bg-emerald-500/20 text-emerald-400 hover:bg-emerald-500/30 border-0">
-              50+ Premium Templates
-            </Badge>
-            <h2 className="text-2xl md:text-3xl font-bold">
-              Unlock All Pro Templates
-            </h2>
-            <p className="text-zinc-400 max-w-md mx-auto">
-              Get access to our complete collection of premium templates,
-              components, and lifetime updates with Ruixen Pro.
+        <div className="relative py-16 md:py-24">
+          <div className="mx-auto max-w-xl text-center">
+            {/* Thin separator */}
+            <div className="mx-auto mb-10 h-px w-10 bg-foreground/15" />
+
+            <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground/50 mb-5">
+              Ruixen Pro
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
+
+            <h2 className="text-[1.75rem] md:text-[2.25rem] font-[590] leading-[1.15] tracking-[-0.025em] text-foreground">
+              Ship faster with
+              <br />
+              premium templates
+            </h2>
+
+            <p className="mt-4 text-[0.95rem] leading-relaxed text-muted-foreground/70 max-w-sm mx-auto">
+              50+ production-ready components, templates, and blocks.
+              Lifetime updates included.
+            </p>
+
+            {/* Price */}
+            <div className="mt-7 flex items-baseline justify-center gap-1.5">
+              <span className="text-3xl font-[580] tracking-tight text-foreground">
+                $59
+              </span>
+              <span className="text-sm text-muted-foreground/50">
+                one-time
+              </span>
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
               <Link
                 href="https://pro.ruixen.com"
                 target="_blank"
-                className={cn(
-                  buttonVariants({ size: "lg" }),
-                  "bg-white text-zinc-900 hover:bg-zinc-100 gap-2",
-                )}
+                className="group inline-flex h-10 items-center gap-2 rounded-full bg-foreground px-6 text-[13px] font-medium text-background transition-all duration-200 hover:opacity-85"
               >
-                Explore Ruixen Pro
-                <ArrowRightIcon className="size-4" />
+                Get Pro Access
+                <ArrowRightIcon className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
               </Link>
               <Link
                 href="https://github.com/ruixenui/ruixen.com"
                 target="_blank"
-                className={cn(
-                  buttonVariants({ variant: "outline", size: "lg" }),
-                  "border-zinc-700 text-zinc-300 hover:bg-zinc-800 gap-2",
-                )}
+                className="group inline-flex h-10 items-center gap-2 rounded-full border border-foreground/[0.12] px-6 text-[13px] font-medium text-muted-foreground transition-all duration-200 hover:border-foreground/25 hover:text-foreground"
               >
+                <GitHubLogoIcon className="size-3.5" />
                 Star on GitHub
-                <GitHubLogoIcon className="size-4" />
               </Link>
             </div>
+
+            {/* Thin separator */}
+            <div className="mx-auto mt-10 h-px w-10 bg-foreground/15" />
           </div>
         </div>
       </div>

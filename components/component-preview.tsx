@@ -5,7 +5,7 @@ import { ComponentWrapper } from "@/components/component-wrapper";
 import Image from "next/image";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
-import { SquareArrowOutUpRight } from "lucide-react";
+import { RotateCcw, SquareArrowOutUpRight } from "lucide-react";
 import * as React from "react";
 
 interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -22,6 +22,7 @@ export function ComponentPreview({
   preview = false,
   ...props
 }: ComponentPreviewProps) {
+  const [replayKey, setReplayKey] = React.useState(0);
   const Codes = React.Children.toArray(children) as React.ReactElement[];
   const Code = Codes[0];
 
@@ -72,6 +73,15 @@ export function ComponentPreview({
               </TabsList>
 
               <div className="flex items-center gap-1.5">
+                <button
+                  type="button"
+                  onClick={() => setReplayKey((k) => k + 1)}
+                  className="inline-flex h-7 w-7 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                  title="Replay animation"
+                >
+                  <RotateCcw className="h-3.5 w-3.5" />
+                </button>
+
                 <a
                   href={`https://v0.dev/chat/api/open?url=https://ruixen.com/r/${name}.json`}
                   target="_blank"
@@ -110,7 +120,10 @@ export function ComponentPreview({
           )}
 
           <TabsContent value="preview" className="mt-0">
-            <ComponentWrapper className="overflow-hidden rounded-t-2xl bg-background">
+            <ComponentWrapper
+              key={replayKey}
+              className="overflow-hidden rounded-t-2xl bg-background"
+            >
               <React.Suspense
                 fallback={
                   <div className="flex min-h-[360px] items-center justify-center">

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "split-feature-showcase-demo",
+  "type": "registry:example",
+  "title": "Split Feature Showcase Demo",
+  "description": "Example of scroll-triggered bento grid with spring animations and integration cards.",
+  "registryDependencies": [
+    "https://ruixen.com/r/split-feature-showcase"
+  ],
+  "files": [
+    {
+      "path": "registry/example/split-feature-showcase-demo.tsx",
+      "content": "\"use client\";\n\nimport SplitFeatureShowcase from \"@/registry/ruixenui/split-feature-showcase\";\n\nexport default function SplitFeatureShowcaseDemo() {\n  return <SplitFeatureShowcase />;\n}\n",
+      "type": "registry:example",
+      "target": "components/split-feature-showcase-demo.tsx"
+    }
+  ]
+}

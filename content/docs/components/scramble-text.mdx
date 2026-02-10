@@ -1,0 +1,77 @@
+---
+title: Scramble Text
+date: 2025-05-01
+description: Hover triggers a decode sequence — characters dissolve into random glyphs then resolve in a directional wave that follows your entry point, each locking in with a spring pop.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="scramble-text-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/scramble-text"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="scramble-text" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import ScrambleText from "@/components/ruixen/scramble-text";
+
+export default function App() {
+  return (
+    <ScrambleText as="h1" className="text-5xl font-medium">
+      Hover to Decode
+    </ScrambleText>
+  );
+}
+```
+
+## Props
+
+| Prop        | Type          | Default | Description                 |
+| ----------- | ------------- | ------- | --------------------------- |
+| `children`  | `string`      | -       | The text content (required) |
+| `as`        | `TextElement` | `"p"`   | The HTML element to render  |
+| `className` | `string`      | -       | Additional CSS classes      |
+
+## Supported Elements
+
+The `as` prop accepts: `p`, `span`, `h1`, `h2`, `h3`, `h4`, `h5`, `h6`.
+
+## Features
+
+- **Entry-Direction-Aware**: The resolve wave follows WHERE you enter — hover from the left and characters decode left-to-right, hover from the right and it sweeps right-to-left. Discovered, not configured.
+- **Glyph Cycling**: During scramble, characters rapidly cycle through random glyphs at 30fps, creating the "cipher decode" visual
+- **Three-Spring Lock-In**: Each character resolves with three coordinated springs — `y` snaps up from below (stiffness 500, damping 20), `scaleY` expands from compressed (600/24), and `opacity` fades in (400/28)
+- **Spring Overshoot**: The `y` spring is underdamped (damping ratio ~0.45) — characters overshoot past baseline before settling, creating a satisfying "plop"
+- **Staggered Wave**: Characters resolve ~42ms apart (1.4 frames × 30ms tick), creating a visible sweep across the text
+- **Compressed Scramble State**: Unresolved characters are vertically compressed (scaleY 0.85), sunk (y +4px), and dimmed (opacity 0.35) — the resolve pop is the transition back to normal
+- **No Cursor Tracking**: Unlike proximity-based text effects, this is trigger-based — the animation plays once per hover, no continuous tracking

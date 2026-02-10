@@ -8,13 +8,6 @@ interface DocsConfig {
 export const docsConfig: DocsConfig = {
   mainNav: [
     {
-      title: "Pro",
-      href: "https://pro.ruixen.com",
-      external: true,
-      event: "pro_nav_clicked",
-      label: "",
-    },
-    {
       title: "Components",
       href: "/docs/components",
     },
@@ -58,12 +51,13 @@ export const docsConfig: DocsConfig = {
       event: "header_cta_clicked",
       label: "",
     },
-    // {
-    //   title: "Supporters",
-    //   href: "/supporters",
-    //   event: "header_cta_clicked",
-    //   label: "New",
-    // },
+    {
+      title: "Pro",
+      href: "https://pro.ruixen.com",
+      external: true,
+      event: "pro_nav_clicked",
+      label: "",
+    },
   ],
   sidebarNav: [
     {
@@ -290,6 +284,18 @@ export const docsConfig: DocsConfig = {
               href: `/docs/components/container-text-scroll`,
               items: [],
               label: "",
+            },
+            {
+              title: "Variable Text",
+              href: `/docs/components/variable-text`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Scramble Text",
+              href: `/docs/components/scramble-text`,
+              items: [],
+              label: "New",
             },
           ],
         },
@@ -1816,12 +1822,6 @@ export const docsConfig: DocsConfig = {
               label: "",
             },
             {
-              title: "Compact Accordion",
-              href: `/docs/sections/compact-accordion`,
-              items: [],
-              label: "",
-            },
-            {
               title: "FAQ Chat Accordion",
               href: `/docs/sections/faq-chat-accordion`,
               items: [],
@@ -1833,68 +1833,26 @@ export const docsConfig: DocsConfig = {
           title: "Featured Section",
           items: [
             {
-              title: "Featured Highlights",
-              href: `/docs/components/featured-highlights`,
+              title: "Product Feature Hero",
+              href: `/docs/sections/product-feature-hero`,
               items: [],
-              label: "",
+              label: "New",
             },
             {
-              title: "Feature Grid Section",
-              href: `/docs/components/feature-grid-section`,
+              title: "Product Card Hero",
+              href: `/docs/sections/product-card-hero`,
               items: [],
-              label: "",
+              label: "New",
             },
             {
-              title: "Feature Tabs Showcase",
-              href: `/docs/components/feature-tabs-showcase`,
+              title: "Split Feature Showcase",
+              href: `/docs/components/split-feature-showcase`,
               items: [],
-              label: "",
+              label: "New",
             },
             {
               title: "Integration And Stats Section",
               href: `/docs/components/integration-and-stats-section`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Tech Orbit Showcase",
-              href: `/docs/components/tech-orbit-showcase`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Partner Integrations Grid",
-              href: `/docs/components/partner-integrations-grid`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Analytics Dashboard Stats",
-              href: `/docs/components/analytics-dashboard-stats`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Ruixen Dashboard Stats",
-              href: `/docs/components/ruixen-dashboard-stats`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Feature Carousel",
-              href: `/docs/components/feature-carousel`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "CRM Insights Panel",
-              href: `/docs/components/crm-insights-panel`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Multi Orbit Semi Circle",
-              href: `/docs/components/multi-orbit-semi-circle`,
               items: [],
               label: "",
             },
@@ -1907,24 +1865,6 @@ export const docsConfig: DocsConfig = {
             {
               title: "Automated Tasks Panel",
               href: `/docs/components/automated-tasks-panel`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Case Studies",
-              href: `/docs/components/case-studies`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Core Value Stats",
-              href: `/docs/components/core-value-stats`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Feature Slide Showcase",
-              href: `/docs/components/feature-slide-showcase`,
               items: [],
               label: "",
             },

@@ -129,7 +129,7 @@ export function ProCTA() {
         <p className="text-xs text-muted-foreground mt-2 mb-3 leading-relaxed">
           Get{" "}
           <span className="font-semibold text-foreground">
-            40+ premium components
+            50+ premium components
           </span>
           , <span className="font-semibold text-foreground">templates</span>,
           and <span className="font-semibold text-foreground">blocks</span> with

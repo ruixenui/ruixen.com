@@ -1,7 +1,7 @@
 ---
 title: Client Carousel Showcase
 date: 2024-08-24
-description: Interactive carousel showcasing client logos with navigation controls
+description: Proximity ribbon marquee — logos drift continuously, pause on hover, and respond to cursor proximity with a smoothstep gaussian field that brightens and lifts nearby logos proportionally.
 author: ruixen
 published: true
 ---
@@ -34,36 +34,70 @@ npx shadcn@latest add "https://ruixen.com/r/client-carousel-showcase"
 
 <Step>Update the import paths to match your project setup.</Step>
 
-<Step>Install required dependencies</Step>
-
-```bash
-npm install embla-carousel-react
-```
-
 </Steps>
 
 </TabsContent>
 
 </Tabs>
 
+## Usage
+
+```tsx
+import ClientCarouselShowcase from "@/components/ruixen/client-carousel-showcase";
+
+// Text-based logos (default)
+<ClientCarouselShowcase />
+
+// With custom logo elements
+const clients = [
+  {
+    name: "GitHub",
+    logo: <img src="/github.svg" alt="" className="h-6 w-auto" />,
+  },
+  {
+    name: "Vercel",
+    logo: <img src="/vercel.svg" alt="" className="h-5 w-auto" />,
+  },
+  { name: "Linear" },
+  { name: "Stripe" },
+];
+
+<ClientCarouselShowcase
+  clients={clients}
+  title="Backed by the best"
+  speed={25}
+/>
+
+// Reverse direction
+<ClientCarouselShowcase reverse />
+```
+
 ## Props
 
-| Prop      | Type       | Default                         | Description             |
-| --------- | ---------- | ------------------------------- | ----------------------- |
-| `title`   | `string`   | `"Trusted by industry leaders"` | Main heading text       |
-| `clients` | `Client[]` | `defaultClients`                | Array of client objects |
+| Prop        | Type                   | Default                      | Description                    |
+| ----------- | ---------------------- | ---------------------------- | ------------------------------ |
+| `title`     | `string`               | `"Trusted by leading teams"` | Heading text above the marquee |
+| `clients`   | `ClientCarouselItem[]` | 8 default company names      | Array of client items          |
+| `speed`     | `number`               | `30`                         | Seconds per full scroll cycle  |
+| `reverse`   | `boolean`              | `false`                      | Reverse scroll direction       |
+| `className` | `string`               | -                            | Additional CSS classes         |
 
-## Client Interface
+### ClientCarouselItem
 
-| Prop   | Type     | Description           |
-| ------ | -------- | --------------------- |
-| `name` | `string` | Client company name   |
-| `logo` | `string` | Client logo image URL |
+| Property | Type              | Description                                        |
+| -------- | ----------------- | -------------------------------------------------- |
+| `name`   | `string`          | Client name (rendered as text if no logo provided) |
+| `logo`   | `React.ReactNode` | Optional custom logo element (SVG, img, component) |
+| `href`   | `string`          | Optional link URL                                  |
 
 ## Features
 
-- Interactive carousel with navigation controls
-- Responsive design with mobile optimization
-- Smooth transitions and hover effects
-- Auto-play functionality
-- Customizable client logos and branding
+- **Infinite Drift**: CSS `@keyframes` translates a doubled track from `0` to `-50%` — seamless loop with no JS timers or carousel libraries
+- **Gradient Edge Masks**: `mask-image: linear-gradient(...)` fades the leading and trailing 8% to transparent — logos emerge from and dissolve into nothing
+- **Pause on Hover**: `animation-play-state: paused` — the track freezes when your cursor enters, resumes when it leaves
+- **Proximity Field**: Unlike binary hover, the cursor creates a 200px gaussian field of influence. Logos respond proportionally to distance — closest gets `scale(1.12)`, `translateY(-4px)`, full opacity. The smoothstep function `t²(3-2t)` ensures zero-derivative at both ends for natural, artifact-free falloff
+- **60fps DOM Updates**: Proximity calculations run via `mousemove` with direct `el.style` mutation — no React state re-renders, no requestAnimationFrame needed. CSS `transition: 0.35s` handles interpolation between frames
+- **Speed & Direction Control**: `speed` prop controls cycle duration; `reverse` flips the drift direction
+- **Text-Based Defaults**: Default clients render as clean semibold text — pass custom `logo` ReactNodes for real brand logos
+- **Zero Dependencies**: No embla-carousel, no framer-motion, no next/image — pure CSS animation + minimal JS proximity math
+- **Accessibility**: Semantic section, `aria-label` on linked logos, keyboard-focusable

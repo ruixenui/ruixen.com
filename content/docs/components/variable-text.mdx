@@ -1,0 +1,78 @@
+---
+title: Variable Text
+date: 2025-05-01
+description: Cursor acts as a focal plane — characters near the pointer sharpen (heavier weight, slight lift, full opacity) while distant characters soften (lighter, smaller, translucent). Depth-of-field for typography.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="variable-text-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/variable-text"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="variable-text" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import VariableText from "@/components/ruixen/variable-text";
+
+export default function App() {
+  return (
+    <VariableText as="h1" className="text-5xl font-medium">
+      Variable Lens
+    </VariableText>
+  );
+}
+```
+
+## Props
+
+| Prop        | Type          | Default | Description                 |
+| ----------- | ------------- | ------- | --------------------------- |
+| `children`  | `string`      | -       | The text content (required) |
+| `as`        | `TextElement` | `"p"`   | The HTML element to render  |
+| `className` | `string`      | -       | Additional CSS classes      |
+
+## Supported Elements
+
+The `as` prop accepts: `p`, `span`, `h1`, `h2`, `h3`, `h4`, `h5`, `h6`.
+
+## Features
+
+- **Variable Font Weight**: Leverages Geist's continuous `wght` axis (100–900) — characters smoothly transition from 250 (far) to 800 (near) with sub-pixel precision
+- **Photographic Depth-of-Field**: Near characters sharpen into focus (bolder, lifted, full opacity); far characters soften (lighter, smaller, translucent)
+- **Single Spring, Four Properties**: One proximity spring per character drives `fontWeight`, `scale`, `y`, and `opacity` simultaneously — no redundant physics
+- **Bidirectional Falloff**: Effect works both ways — near chars get bolder AND far chars get lighter than baseline, creating true focal contrast
+- **Quadratic Proximity**: Quadratic ease creates a tight focal spot with gentle falloff, not linear
+- **Zero Re-Renders**: All animation via `useMotionValue` → `useTransform` → `useSpring` chain — React never re-renders
+- **2D Distance**: Works correctly with multi-line text (X and Y cursor tracking)
+- **Resize-Safe**: Character positions recalculate on window resize

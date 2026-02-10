@@ -168,10 +168,7 @@ export default function BadgeMorph({
         <AnimatePresence mode="wait">
           <motion.span
             key={status}
-            className={cn(
-              "flex items-center justify-center",
-              ACCENT[status],
-            )}
+            className={cn("flex items-center justify-center", ACCENT[status])}
             initial={{ scale: 0.5, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.5, opacity: 0, transition: { duration: 0.08 } }}

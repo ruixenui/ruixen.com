@@ -1,7 +1,7 @@
 ---
 title: Breadcrumb Separator
 date: 2025-01-08
-description: Breadcrumb navigation with customizable separators (chevron, slash, dot, arrow, dash).
+description: Reactive breadcrumb with hover-cascade navigation feedback — items beyond the hovered level fade and shift, separators spring-scale, reinforcing the spatial hierarchy.
 author: ruixen
 published: true
 ---
@@ -80,3 +80,11 @@ export default function MyBreadcrumb() {
 | `dot`     | `·`     |
 | `arrow`   | `→`     |
 | `dash`    | `—`     |
+
+## Features
+
+- **Hover Cascade**: Items beyond the hovered level fade to 40% opacity and shift right 2px — visually "popping" them from the navigation stack
+- **Separator Spring**: The separator adjacent to the hovered item scales up (1.2x) with a spring overshoot curve `cubic-bezier(0.34, 1.56, 0.64, 1)`
+- **Custom SVG Chevron**: Hand-tuned SVG with 1.5px stroke weight — lighter and more precise than icon library chevrons
+- **Smooth Cascade Easing**: Item fade uses `cubic-bezier(0.16, 1, 0.3, 1)` — smooth ease-out without overshoot, distinct from the springy separator
+- **Accessibility**: `aria-current="page"` on the active item, `aria-hidden` on separators, semantic `nav` + `ol` structure

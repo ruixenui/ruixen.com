@@ -1,7 +1,7 @@
 ---
 title: FAQ Scroll Accordion
 date: 2024-06-01
-description: A scroll-triggered FAQ accordion component with smooth GSAP animations and auto-expanding items
+description: Self-contained scroll cascade — items auto-open as they reach the container's center zone
 author: ruixen
 published: true
 ---
@@ -28,12 +28,6 @@ npx shadcn@latest add "https://ruixen.com/r/faq-scroll-accordion"
 
 <Steps>
 
-<Step>Install the required dependencies:</Step>
-
-```bash
-npm install framer-motion @radix-ui/react-accordion lucide-react gsap @gsap/react
-```
-
 <Step>Copy and paste the following code into your project.</Step>
 
 <ComponentSource name="faq-scroll-accordion" />
@@ -49,141 +43,76 @@ npm install framer-motion @radix-ui/react-accordion lucide-react gsap @gsap/reac
 ## Usage
 
 ```tsx
-import FAQScrollAccordion from "@/components/ruixen/faq-scroll-accordion";
+import { FAQScrollAccordion } from "@/components/ruixen/faq-scroll-accordion";
+import type { FAQItem } from "@/components/ruixen/faq-scroll-accordion";
 
-const faqData = [
+const items: FAQItem[] = [
   {
-    id: 1,
-    question: "What is Next.js?",
-    answer:
-      "Next.js is a React framework for building fast and scalable web applications.",
-    icon: "🚀",
-    iconPosition: "left",
+    question: "What is Ruixen UI?",
+    answer: "A curated collection of production-ready components.",
   },
   {
-    id: 2,
-    question: "Does it support TypeScript?",
-    answer: "Yes, Next.js has built-in support for TypeScript.",
-    icon: "📝",
-    iconPosition: "right",
+    question: "Is it open-source?",
+    answer: "Yes, fully open-source under the MIT license.",
   },
 ];
 
 export default function MyFAQ() {
-  return <FAQScrollAccordion data={faqData} />;
+  return <FAQScrollAccordion items={items} />;
 }
 ```
 
 ## Props
 
-| Prop                | Type        | Default       | Description                                 |
-| ------------------- | ----------- | ------------- | ------------------------------------------- |
-| `data`              | `FAQItem[]` | `defaultData` | Array of FAQ items to display               |
-| `className`         | `string`    | -             | Additional CSS classes for the container    |
-| `questionClassName` | `string`    | -             | Additional CSS classes for question styling |
-| `answerClassName`   | `string`    | -             | Additional CSS classes for answer styling   |
+| Prop            | Type             | Default                          | Description                        |
+| --------------- | ---------------- | -------------------------------- | ---------------------------------- |
+| `title`         | `string`         | `"Frequently asked questions"`   | Section heading                    |
+| `subtitle`      | `string`         | `"Everything you need to know."` | Subtitle below heading             |
+| `items`         | `FAQItem[]`      | Built-in defaults                | Array of FAQ items                 |
+| `scrollDriven`  | `boolean`        | `true`                           | Enable scroll-driven auto-open     |
+| `defaultActive` | `number \| null` | `0`                              | Initially open item index          |
+| `className`     | `string`         | —                                | Additional classes on root section |
 
-## FAQ Item Structure
-
-Each FAQ item should have the following structure:
+## FAQItem
 
 ```tsx
 interface FAQItem {
-  id: number; // Unique identifier for the FAQ item
-  question: string; // The question text
-  answer: string; // The answer text
-  icon?: string; // Optional icon (emoji or text)
-  iconPosition?: "left" | "right"; // Position of the icon
+  question: string;
+  answer: string;
 }
 ```
 
-## Features
+## Self-Contained Scroll Container
 
-- **Scroll-Triggered Animation**: Uses GSAP ScrollTrigger to automatically expand items as you scroll
-- **Smooth Animations**: Powered by Framer Motion for smooth expand/collapse transitions
-- **Interactive**: Click to manually expand/collapse items
-- **Customizable Icons**: Add optional icons with left or right positioning
-- **Responsive Design**: Adapts to different screen sizes
-- **Accessible**: Built on Radix UI Accordion for proper accessibility
-- **Dark Mode**: Supports both light and dark themes
+The component creates its own scrollable container (`max-h-80`, `overflow-y-auto`) with the IntersectionObserver scoped to it via `root: scrollContainer`. This means:
 
-## Examples
+- **Page scroll has zero effect** on which item opens — only scrolling within the component's container triggers changes
+- **Works in iframes and previews** — the container IS the scroll context
+- **Gradient masks** at top and bottom (5%) indicate scrollable content
+- **Hidden scrollbar** for clean aesthetics (`scrollbar-width: none`)
 
-### Basic Usage
+The center detection zone is the middle 20% of the container (`rootMargin: "-40% 0px -40% 0px"`). An item must reach this zone to auto-open — slight scrolling won't trigger changes.
 
-```tsx
-<FAQScrollAccordion />
-```
+## Click Behavior
 
-### With Custom Data
+Clicking an item:
 
-```tsx
-const customFAQ = [
-  {
-    id: 1,
-    question: "How does scroll triggering work?",
-    answer:
-      "The component uses GSAP ScrollTrigger to automatically expand FAQ items as you scroll through the page.",
-    icon: "⚡",
-    iconPosition: "left",
-  },
-  {
-    id: 2,
-    question: "Can I customize the styling?",
-    answer:
-      "Yes, you can use the className props to customize the appearance of questions and answers.",
-    icon: "🎨",
-    iconPosition: "right",
-  },
-];
-
-<FAQScrollAccordion data={customFAQ} />;
-```
-
-### With Custom Styling
-
-```tsx
-<FAQScrollAccordion
-  data={faqData}
-  className="bg-gradient-to-b from-blue-50 to-white"
-  questionClassName="bg-blue-100 hover:bg-blue-200"
-  answerClassName="bg-green-400 text-white"
-/>
-```
-
-### Without Icons
-
-```tsx
-const simpleData = [
-  {
-    id: 1,
-    question: "Simple question without icon",
-    answer: "This FAQ item doesn't have an icon.",
-  },
-];
-
-<FAQScrollAccordion data={simpleData} />;
-```
+1. Opens/closes it immediately
+2. **Smooth-scrolls** the container to center the clicked item
+3. **Pauses** scroll-driven behavior for 3 seconds so the observer doesn't override user intent
 
 ## Animation Details
 
-The component creates a scroll-triggered timeline that:
+- **Grid expand** — `grid-template-rows: 0fr → 1fr` for smooth height animation (450ms, expo deceleration)
+- **Answer choreography** — text fades in + slides up with 100ms delay after container opens
+- **Chevron rotation** — inline SVG rotates 180deg with expo easing
+- **Close** is faster — text fades in 150ms, container collapses in 300ms
 
-1. **Pins the container** during scroll
-2. **Auto-expands items** sequentially as you scroll
-3. **Smooth transitions** using Framer Motion
-4. **Manual interaction** remains available at any time
+## Features
 
-The scroll trigger is configured with:
-
-- `scrub: 0.3` for smooth scroll-linked animation
-- Dynamic end point based on number of FAQ items
-- Automatic cleanup on component unmount
-
-## Dependencies
-
-- `framer-motion` - For smooth animations
-- `@radix-ui/react-accordion` - For accessible accordion functionality
-- `lucide-react` - For plus/minus icons
-- `gsap` - For scroll-triggered animations
-- `@gsap/react` - React integration for GSAP
+- Zero dependencies — no GSAP, no framer-motion, no lucide-react
+- Self-contained scroll context — immune to page scroll
+- Click-to-center with scroll pause
+- Proper TypeScript interfaces
+- Theme-aware via CSS custom properties
+- Accessible — semantic buttons, keyboard navigable

@@ -17,7 +17,8 @@ export default function CTASection() {
             </h1>
             <p className="mt-2">Check out Ruixen UI Pro</p>
             <a
-              href="https://ruixen.com/"
+              href="https://pro.ruixen.com"
+              target="_blank"
               className={cn(
                 buttonVariants({
                   size: "lg",

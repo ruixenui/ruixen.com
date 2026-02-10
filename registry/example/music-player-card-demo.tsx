@@ -1,8 +1,6 @@
 "use client";
 
-import MusicPlayerCard, {
-  Track,
-} from "@/registry/ruixenui/music-player-card";
+import MusicPlayerCard, { Track } from "@/registry/ruixenui/music-player-card";
 
 const tracks: Track[] = [
   {

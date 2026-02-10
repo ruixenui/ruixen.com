@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "product-feature-hero-demo",
+  "type": "registry:example",
+  "title": "Product Feature Hero Demo",
+  "description": "Example of a two-column hero with gradient card and feature grid.",
+  "registryDependencies": [
+    "https://ruixen.com/r/product-feature-hero"
+  ],
+  "files": [
+    {
+      "path": "registry/example/product-feature-hero-demo.tsx",
+      "content": "\"use client\";\n\nimport ProductFeatureHero from \"@/registry/ruixenui/product-feature-hero\";\n\nexport default function ProductFeatureHeroDemo() {\n  return <ProductFeatureHero />;\n}\n",
+      "type": "registry:example",
+      "target": "components/product-feature-hero-demo.tsx"
+    }
+  ]
+}

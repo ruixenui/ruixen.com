@@ -1,7 +1,7 @@
 ---
 title: FAQ Chat Accordion
 date: 2025-05-01
-description: A chat-bubble styled FAQ accordion with emoji stickers, plus/minus toggles, and messenger-like answer bubbles.
+description: Conversational FAQ with CSS grid height morphing, typing indicator dots, spring entrance, and natural sibling repositioning
 author: ruixen
 published: true
 ---
@@ -43,60 +43,100 @@ npx shadcn@latest add "https://ruixen.com/r/faq-chat-accordion"
 ## Usage
 
 ```tsx
-import FaqChatAccordion from "@/components/ruixen/faq-chat-accordion";
+import { FAQChatAccordion } from "@/components/ruixen/faq-chat-accordion";
+import type { FAQItem } from "@/components/ruixen/faq-chat-accordion";
 
-export default function MyFAQ() {
-  return <FaqChatAccordion className="max-w-[700px]" />;
-}
-```
-
-## Custom Data
-
-```tsx
-const myFaqs = [
+const items: FAQItem[] = [
   {
-    id: 1,
     question: "How do I get started?",
     answer: "Sign up for a free account and follow the onboarding guide.",
-    icon: "🚀",
-    iconPosition: "right",
   },
   {
-    id: 2,
     question: "Is there a free plan?",
     answer: "Yes, we offer a generous free tier for individual developers.",
   },
 ];
 
-<FaqChatAccordion data={myFaqs} timestamp="Updated daily" />;
+export default function MyFAQ() {
+  return <FAQChatAccordion items={items} />;
+}
 ```
 
 ## Props
 
-| Prop                | Type        | Default                | Description                              |
-| ------------------- | ----------- | ---------------------- | ---------------------------------------- |
-| `data`              | `FAQItem[]` | Built-in sample data   | Array of FAQ items to display            |
-| `className`         | `string`    | -                      | Additional CSS classes for the container |
-| `timestamp`         | `string`    | `"Every day, 9:01 AM"` | Timestamp text shown above the accordion |
-| `questionClassName` | `string`    | -                      | Custom classes for question pills        |
-| `answerClassName`   | `string`    | -                      | Custom classes for answer bubbles        |
+| Prop          | Type        | Default             | Description                                                 |
+| ------------- | ----------- | ------------------- | ----------------------------------------------------------- |
+| `title`       | `string`    | `"Have questions?"` | Section heading                                             |
+| `items`       | `FAQItem[]` | Built-in 5 defaults | Array of FAQ items                                          |
+| `typingDelay` | `number`    | `400`               | Milliseconds to show typing dots before answer. `0` to skip |
+| `className`   | `string`    | —                   | Additional classes on root section                          |
 
-## FAQ Item Structure
+## FAQItem
 
 ```tsx
 interface FAQItem {
-  id: number;
   question: string;
   answer: string;
-  icon?: string; // Emoji sticker (e.g. "❤️", "⭐")
-  iconPosition?: "left" | "right"; // Sticker position
 }
 ```
 
+## Conversational Layout
+
+Questions are right-aligned bubbles (`bg-foreground text-background`, rounded with a `6px` bottom-right tail). Answers are left-aligned bubbles (`bg-muted`, rounded with a `6px` bottom-left tail). This alternating alignment creates the iMessage / WhatsApp conversation pattern — you "sent" the question, the system "replied."
+
+A `Today` date separator sits between the header and the messages, reinforcing the chat metaphor.
+
+## CSS Grid Height Architecture
+
+All height transitions use CSS `grid-template-rows` (`0fr` ↔ `1fr`). Unlike transform-based animations, CSS grid changes **actual DOM height** — siblings follow the transition naturally without FLIP tricks or layout springs. Zero jank. Zero double-shift.
+
+```
+┌─ Outer grid (0fr ↔ 1fr) ─── bubble enter/exit
+│   └─ motion.div (y + opacity) ─── spring entrance feel
+│       └─ Bubble container (bg-muted, rounded)
+│           ├─ Inner grid A (dots: 1fr ↔ 0fr) ─── dots collapse
+│           └─ Inner grid B (text: 0fr ↔ 1fr) ─── text expand
+└─ Siblings follow naturally (real height, not transforms)
+```
+
+### Outer grid — bubble enter/exit
+
+The answer area is always in the DOM. A CSS grid with `grid-template-rows: 0fr` keeps it collapsed. When active, it transitions to `1fr` over 400ms with `cubic-bezier(0.22, 1, 0.36, 1)` (strong expo). Exit is 250ms with `cubic-bezier(0.16, 1, 0.3, 1)`.
+
+### Inner grids — dots→text morph
+
+Inside the bubble, two opposing grids crossfade:
+
+1. **Dots section** — `grid-template-rows: 1fr → 0fr` when answer ready (300ms expo)
+2. **Text section** — `grid-template-rows: 0fr → 1fr` when answer ready (300ms expo)
+
+Because both run simultaneously inside the same container, the bubble's total height morphs smoothly from dot-height to text-height. Text opacity fades in over 200ms with 80ms delay.
+
+### Spring entrance feel
+
+A `motion.div` adds `y: 4→0` with `spring(380, 26)` and opacity fade — purely cosmetic, not affecting layout flow.
+
+## Typing Indicator
+
+Three dots pulse inside the bubble with staggered `animation-delay` (0ms, 150ms, 300ms). Each dot bounces `translateY(-3px)` with a `1.2s` cycle. The dots are part of the bubble itself, not a separate element.
+
+## Tactile Press
+
+Question bubbles use `whileTap={{ scale: 0.98 }}` with `spring(500, 30)` — a precise, subtle press that doesn't distort the text.
+
+## Natural Sibling Repositioning
+
+Because CSS grid changes real DOM height (not CSS transforms), all sibling messages below the expanding bubble follow the height change naturally through normal document flow. No `layout="position"`, no `LayoutGroup`, no FLIP calculations — the browser handles it natively.
+
 ## Features
 
-- **Chat Bubble Answers**: Messenger-style rounded bubbles for answer text
-- **Emoji Stickers**: Optional emoji decorations on question pills
-- **Plus/Minus Toggle**: Animated icon toggle via CSS data-attributes
-- **No JS Animation Library**: Uses native AccordionContent animation
-- **Customizable Styles**: Override question and answer styles via className props
+- CSS grid height transitions — real DOM height, not transforms
+- Dots→text crossfade inside stable bubble container
+- Spring entrance feel (y + opacity only)
+- Natural sibling repositioning via document flow
+- Typing indicator with staggered bouncing dots
+- Right/left bubble alignment (conversational metaphor)
+- iMessage-style bubble tails (asymmetric border-radius)
+- whileTap tactile press on questions
+- Theme-aware via CSS custom properties
+- Accessible — semantic buttons, ARIA expanded, keyboard navigable

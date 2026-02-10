@@ -1,7 +1,7 @@
 ---
 title: Trusted Clients Showcase
 date: 2024-08-24
-description: Showcase trusted clients with logos in a clean grid layout
+description: Spotlight logo grid with staggered blur-up entrance and collective dim hover — logos sit quiet at 40% opacity until you hover one, creating a theatrical spotlight.
 author: ruixen
 published: true
 ---
@@ -40,16 +40,54 @@ npx shadcn@latest add "https://ruixen.com/r/trusted-clients-showcase"
 
 </Tabs>
 
+## Usage
+
+```tsx
+import TrustedClientsShowcase from "@/components/ruixen/trusted-clients-showcase";
+
+// Text-based logos (default)
+<TrustedClientsShowcase />;
+
+// With custom logo elements
+const clients = [
+  {
+    name: "GitHub",
+    logo: <img src="/github.svg" alt="" className="h-6 w-auto" />,
+    href: "#",
+  },
+  {
+    name: "Vercel",
+    logo: <img src="/vercel.svg" alt="" className="h-5 w-auto" />,
+    href: "#",
+  },
+  { name: "Linear" },
+  { name: "Stripe" },
+];
+
+<TrustedClientsShowcase clients={clients} title="Backed by the best" />;
+```
+
 ## Props
 
-| Prop      | Type       | Default                         | Description             |
-| --------- | ---------- | ------------------------------- | ----------------------- |
-| `title`   | `string`   | `"Trusted by industry leaders"` | Main heading text       |
-| `clients` | `Client[]` | `defaultClients`                | Array of client objects |
+| Prop        | Type         | Default                         | Description                 |
+| ----------- | ------------ | ------------------------------- | --------------------------- |
+| `title`     | `string`     | `"Trusted by industry leaders"` | Heading text above the grid |
+| `clients`   | `LogoItem[]` | 8 default company names         | Array of client items       |
+| `className` | `string`     | -                               | Additional CSS classes      |
 
-## Client Interface
+### LogoItem
 
-| Prop   | Type     | Description           |
-| ------ | -------- | --------------------- |
-| `name` | `string` | Client company name   |
-| `logo` | `string` | Client logo image URL |
+| Property | Type              | Description                                        |
+| -------- | ----------------- | -------------------------------------------------- |
+| `name`   | `string`          | Client name (rendered as text if no logo provided) |
+| `logo`   | `React.ReactNode` | Optional custom logo element (SVG, img, component) |
+| `href`   | `string`          | Optional link URL                                  |
+
+## Features
+
+- **Staggered Blur-Up Entrance**: Each logo fades from `blur(4px) + translateY(8px)` to clear, staggered 60ms apart, triggered by IntersectionObserver when the section scrolls into view
+- **Collective Spotlight**: Hover any logo and it lifts to 100% opacity with `translateY(-2px)`. All others dim to 20% — a theatrical spotlight that makes the hovered brand stand out
+- **Dual-Speed Transitions**: Entrance uses 500ms deceleration for drama; hover switches to 250ms for snappy feedback after the entrance completes
+- **Text-Based Defaults**: No placeholder images — default clients render as clean, semibold text. Pass custom `logo` ReactNodes for real brand logos
+- **Zero Dependencies**: No framer-motion, no next/image — pure CSS transitions with IntersectionObserver. Portable to any React framework
+- **Accessibility**: Semantic section with links, `aria-label` on linked logos, keyboard-focusable

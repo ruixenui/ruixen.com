@@ -35,15 +35,15 @@ const footerSections = [
         label: "Animated Theme Toggler",
         href: "/docs/components/animated-theme-toggler",
       },
-      { label: "Feature Carousel", href: "/docs/components/feature-carousel" },
-      { label: "Feature Tabs", href: "/docs/components/feature-tabs-showcase" },
+      { label: "Spark Chart", href: "/docs/components/spark-chart" },
+      { label: "Avatar Hover Card", href: "/docs/components/avatar-hover-card" },
       {
-        label: "Tech Orbit Showcase",
-        href: "/docs/components/tech-orbit-showcase",
+        label: "Banner Announcement",
+        href: "/docs/components/banner-announcement",
       },
       {
-        label: "Multi Orbit Circle",
-        href: "/docs/components/multi-orbit-semi-circle",
+        label: "Badge Morph",
+        href: "/docs/components/badge-morph",
       },
     ],
   },
@@ -84,6 +84,7 @@ const footerSections = [
   {
     heading: "Community & Support",
     links: [
+      { label: "Ruixen Pro", href: "https://pro.ruixen.com" },
       { label: "Documentation", href: "/docs" },
       { label: "Blog", href: "/blog" },
       { label: "Discord Server", href: "https://discord.gg/bYexWzUa6G" },

@@ -174,10 +174,8 @@
       "name": "feature-highlights",
       "type": "registry:ui",
       "title": "Feature Highlights",
-      "description": "A responsive feature highlights component with expandable accordion sections and images.",
-      "dependencies": [
-        "motion"
-      ],
+      "description": "Progressive reveal feature list with sliding accent indicator, grid-template-rows expand, and staggered entrance.",
+      "dependencies": [],
       "files": [
         {
           "path": "registry/ruixenui/feature-highlights.tsx",
@@ -190,13 +188,8 @@
       "name": "faq-scroll-accordion",
       "type": "registry:ui",
       "title": "FAQ Scroll Accordion",
-      "description": "A scroll-triggered FAQ accordion component with smooth GSAP animations and auto-expanding items.",
-      "dependencies": [
-        "framer-motion",
-        "lucide-react",
-        "gsap",
-        "@gsap/react"
-      ],
+      "description": "Scroll-aware FAQ with center-zone detection via IntersectionObserver, auto-cascading open, staggered entrance, and grid-template-rows expand.",
+      "dependencies": [],
       "files": [
         {
           "path": "registry/ruixenui/faq-scroll-accordion.tsx",
@@ -209,9 +202,9 @@
       "name": "faq-auto-accordion",
       "type": "registry:ui",
       "title": "FAQ Auto Accordion",
-      "description": "A scroll-triggered FAQ accordion component with smooth GSAP animations and auto-expanding items.",
-      "registryDependencies": [
-        "accordion"
+      "description": "Spring-driven FAQ with a traveling accent bar (layoutId), spring height animation, blur-deblur text reveal, and layout FLIP repositioning.",
+      "dependencies": [
+        "motion"
       ],
       "files": [
         {
@@ -225,37 +218,15 @@
       "name": "faq-chat-accordion",
       "type": "registry:ui",
       "title": "FAQ Chat Accordion",
-      "description": "A chat-bubble styled FAQ accordion with emoji stickers, plus/minus toggles, and messenger-like answer bubbles.",
+      "description": "Conversational FAQ with right/left message bubbles, typing indicator dots, spring message entrance, and layout FLIP repositioning.",
       "dependencies": [
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "accordion"
+        "motion"
       ],
       "files": [
         {
           "path": "registry/ruixenui/faq-chat-accordion.tsx",
           "type": "registry:ui",
           "target": "components/ruixen/faq-chat-accordion.tsx"
-        }
-      ]
-    },
-    {
-      "name": "compact-accordion",
-      "type": "registry:ui",
-      "title": "Compact Accordion",
-      "description": "A clean and minimal accordion component with icons and smooth animations for organizing content in collapsible sections.",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "accordion"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/compact-accordion.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/compact-accordion.tsx"
         }
       ]
     },
@@ -348,6 +319,55 @@
           "path": "registry/ruixenui/avatar-hover-card.tsx",
           "type": "registry:ui",
           "target": "components/ruixen/avatar-hover-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "variable-text",
+      "type": "registry:ui",
+      "title": "Variable Text",
+      "description": "Cursor acts as a focal plane — characters near the pointer sharpen (heavier weight, slight lift, full opacity) while distant characters soften. Depth-of-field for typography.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/ruixenui/variable-text.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/variable-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scramble-text",
+      "type": "registry:ui",
+      "title": "Scramble Text",
+      "description": "Hover triggers a decode sequence — characters dissolve into random glyphs then resolve in a directional wave that follows your entry point, each locking in with a spring pop.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/ruixenui/scramble-text.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/scramble-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "inflated-text",
+      "type": "registry:ui",
+      "title": "Inflated Text",
+      "description": "3D embossed text with inflated cylindrical strokes, specular highlights, and depth extrusion — pure CSS text-shadows for the depth illusion, SVG filter lighting for the surface sheen.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/ruixenui/inflated-text.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/inflated-text.tsx"
         }
       ]
     },
@@ -478,6 +498,22 @@
           "path": "registry/ruixenui/featured-highlights.tsx",
           "type": "registry:ui",
           "target": "components/ruixen/featured-highlights.tsx"
+        }
+      ]
+    },
+    {
+      "name": "split-feature-showcase",
+      "type": "registry:ui",
+      "title": "Split Feature Showcase",
+      "description": "Scroll-triggered bento grid with spring-animated message preview and integration cards with ambient gradient glow.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/split-feature-showcase.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/split-feature-showcase.tsx"
         }
       ]
     },
@@ -699,7 +735,8 @@
       "name": "trusted-clients-showcase",
       "type": "registry:ui",
       "title": "Trusted Clients Showcase",
-      "description": "Showcase trusted clients with logos in a clean grid layout",
+      "description": "Spotlight logo grid with staggered blur-up entrance and collective dim hover.",
+      "dependencies": [],
       "files": [
         {
           "path": "registry/ruixenui/trusted-clients-showcase.tsx",
@@ -712,10 +749,8 @@
       "name": "client-carousel-showcase",
       "type": "registry:ui",
       "title": "Client Carousel Showcase",
-      "description": "Interactive carousel showcasing client logos with navigation controls",
-      "dependencies": [
-        "embla-carousel-react"
-      ],
+      "description": "Infinite drift marquee with gradient edge masks — logos scroll continuously, pause on hover, and lift with exponential deceleration when focused.",
+      "dependencies": [],
       "files": [
         {
           "path": "registry/ruixenui/client-carousel-showcase.tsx",
@@ -728,24 +763,15 @@
       "name": "auto-scrolling-client-carousel",
       "type": "registry:ui",
       "title": "Auto Scrolling Client Carousel",
-      "description": "Automatically scrolling carousel showcasing client logos with infinite loop",
+      "description": "Dual ribbon with grayscale bloom — two rows scroll in opposite directions, monochrome at rest, color blooms on hover with spring-bounce lift.",
+      "dependencies": [],
       "files": [
         {
           "path": "registry/ruixenui/auto-scrolling-client-carousel.tsx",
           "type": "registry:ui",
           "target": "components/ruixen/auto-scrolling-client-carousel.tsx"
         }
-      ],
-      "css": {
-        "@keyframes scroll": {
-          "from": {
-            "transform": "translateX(0)"
-          },
-          "to": {
-            "transform": "translateX(calc(-100% - var(--gap)))"
-          }
-        }
-      }
+      ]
     },
     {
       "name": "footer-pro",
@@ -3503,14 +3529,9 @@
       "name": "breadcrumb-dropdown",
       "type": "registry:ui",
       "title": "Breadcrumb Dropdown",
-      "description": "Breadcrumb navigation that collapses middle items into a dropdown menu.",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "button",
-        "dropdown-menu"
-      ],
+      "description": "Inline-expanding collapsible breadcrumb with staggered path reveal.",
+      "dependencies": [],
+      "registryDependencies": [],
       "files": [
         {
           "path": "registry/ruixenui/breadcrumb-dropdown.tsx",
@@ -3523,10 +3544,8 @@
       "name": "breadcrumb-boxed",
       "type": "registry:ui",
       "title": "Breadcrumb Boxed",
-      "description": "Breadcrumb navigation wrapped in a styled container with multiple variants.",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "description": "Segmented breadcrumb with relief hover and underline wipe animation.",
+      "dependencies": [],
       "files": [
         {
           "path": "registry/ruixenui/breadcrumb-boxed.tsx",
@@ -5729,7 +5748,7 @@
       "name": "faq-auto-accordion-demo",
       "type": "registry:example",
       "title": "FAQ Auto Accordion Demo",
-      "description": "Example showing a scroll-triggered FAQ accordion component with smooth GSAP animations and auto-expanding items.",
+      "description": "Example showing a materializing card stack FAQ with auto-advance and ghost hover states.",
       "registryDependencies": [
         "https://ruixen.com/r/faq-auto-accordion"
       ],
@@ -5738,22 +5757,6 @@
           "path": "registry/example/faq-auto-accordion-demo.tsx",
           "type": "registry:example",
           "target": "components/faq-auto-accordion-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "compact-accordion-demo",
-      "type": "registry:example",
-      "title": "Compact Accordion Demo",
-      "description": "Example showing a compact accordion component with icons and smooth animations.",
-      "registryDependencies": [
-        "https://ruixen.com/r/compact-accordion"
-      ],
-      "files": [
-        {
-          "path": "registry/example/compact-accordion-demo.tsx",
-          "type": "registry:example",
-          "target": "components/compact-accordion-demo.tsx"
         }
       ]
     },
@@ -5882,6 +5885,22 @@
           "path": "registry/example/featured-highlights-demo.tsx",
           "type": "registry:example",
           "target": "components/featured-highlights-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "split-feature-showcase-demo",
+      "type": "registry:example",
+      "title": "Split Feature Showcase Demo",
+      "description": "Example of scroll-triggered bento grid with spring animations and integration cards.",
+      "registryDependencies": [
+        "https://ruixen.com/r/split-feature-showcase"
+      ],
+      "files": [
+        {
+          "path": "registry/example/split-feature-showcase-demo.tsx",
+          "type": "registry:example",
+          "target": "components/split-feature-showcase-demo.tsx"
         }
       ]
     },
@@ -10305,7 +10324,7 @@
       "name": "faq-chat-accordion-demo",
       "type": "registry:example",
       "title": "FAQ Chat Accordion Demo",
-      "description": "Example showing chat-bubble styled FAQ with emoji stickers and messenger-like answers.",
+      "description": "Example showing conversational FAQ with typing indicator dots and spring message bubbles.",
       "registryDependencies": [
         "https://ruixen.com/r/faq-chat-accordion"
       ],
@@ -10394,6 +10413,54 @@
           "path": "registry/example/avatar-quick-actions-demo.tsx",
           "type": "registry:example",
           "target": "components/avatar-quick-actions-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "variable-text-demo",
+      "type": "registry:example",
+      "title": "Variable Text Demo",
+      "description": "Example showing variable font weight lens effect on hover.",
+      "registryDependencies": [
+        "https://ruixen.com/r/variable-text"
+      ],
+      "files": [
+        {
+          "path": "registry/example/variable-text-demo.tsx",
+          "type": "registry:example",
+          "target": "components/variable-text-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scramble-text-demo",
+      "type": "registry:example",
+      "title": "Scramble Text Demo",
+      "description": "Example showing text decode sequence with directional resolve wave.",
+      "registryDependencies": [
+        "https://ruixen.com/r/scramble-text"
+      ],
+      "files": [
+        {
+          "path": "registry/example/scramble-text-demo.tsx",
+          "type": "registry:example",
+          "target": "components/scramble-text-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "inflated-text-demo",
+      "type": "registry:example",
+      "title": "Inflated Text Demo",
+      "description": "Example showing 3D embossed text with multiple color presets.",
+      "registryDependencies": [
+        "https://ruixen.com/r/inflated-text"
+      ],
+      "files": [
+        {
+          "path": "registry/example/inflated-text-demo.tsx",
+          "type": "registry:example",
+          "target": "components/inflated-text-demo.tsx"
         }
       ]
     },

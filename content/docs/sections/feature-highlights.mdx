@@ -1,7 +1,7 @@
 ---
-title: FeatureHighlights
+title: Feature Highlights
 date: 2024-06-01
-description: A responsive feature highlights component with expandable accordion sections and images
+description: Staged spotlight with rack-focus image crossfade, auto-advancing progress bar, and sliding accent indicator
 author: ruixen
 published: true
 ---
@@ -43,18 +43,24 @@ npx shadcn@latest add "https://ruixen.com/r/feature-highlights"
 ## Usage
 
 ```tsx
-import FeatureHighlights from "@/components/ruixen/feature-highlights";
+import { FeatureHighlights } from "@/components/ruixen/feature-highlights";
+import type { FeatureItem } from "@/components/ruixen/feature-highlights";
 
-const features = [
+const features: FeatureItem[] = [
   {
-    id: "item-1",
     title: "AI-Powered Automation",
-    count: 24,
-    image:
-      "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/dashboard-02.png",
-    description: "Streamline workflows with cutting-edge AI solutions.",
+    description: "Streamline workflows with intelligent automation.",
+    image: (
+      <img src="/dashboard.png" alt="" className="h-full w-full object-cover" />
+    ),
   },
-  // Add more feature items...
+  {
+    title: "Real-Time Analytics",
+    description: "Monitor metrics live with sub-second latency.",
+    image: (
+      <img src="/analytics.png" alt="" className="h-full w-full object-cover" />
+    ),
+  },
 ];
 
 export default function MyFeatures() {
@@ -64,60 +70,40 @@ export default function MyFeatures() {
 
 ## Props
 
-| Prop       | Type            | Default | Description                       |
-| ---------- | --------------- | ------- | --------------------------------- |
-| `features` | `FeatureItem[]` | -       | Array of feature items to display |
+| Prop               | Type            | Default                 | Description                                          |
+| ------------------ | --------------- | ----------------------- | ---------------------------------------------------- |
+| `title`            | `string`        | `"Why we're different"` | Section heading                                      |
+| `features`         | `FeatureItem[]` | Built-in defaults       | Array of feature items                               |
+| `autoPlayInterval` | `number`        | `5`                     | Seconds per feature. Set to `0` to disable auto-play |
+| `defaultActive`    | `number`        | `0`                     | Index of initially open item                         |
+| `className`        | `string`        | —                       | Additional classes on the root section               |
 
-## Feature Item Structure
-
-Each feature item should have the following structure:
+## FeatureItem
 
 ```tsx
 interface FeatureItem {
-  id: string; // Unique identifier for the feature item
-  title: string; // The feature title
-  count: number; // Count or metric associated with the feature
-  image: string; // URL of the feature image
-  description: string; // Description text for the feature
+  title: string;
+  description: string;
+  image?: React.ReactNode;
 }
 ```
 
+The `image` prop accepts any React node — `<img>`, Next.js `<Image>`, gradients, videos, or any JSX. Use `h-full w-full object-cover` on images to fill the stage.
+
+## Animation Details
+
+- **Rack-focus crossfade** — images transition with `blur(6px) + scale(0.94)` creating a cinematic depth-of-field effect
+- **Auto-advancing progress bar** — thin line fills from left to right, auto-advances on completion, pauses on hover
+- **Sliding accent indicator** — ResizeObserver tracks the active item's position and height in real time
+- **Grid expand** — `grid-template-rows: 0fr → 1fr` for smooth description reveal
+- **Description choreography** — 80ms delayed fade + slide after the container opens
+- **Expo deceleration** — `cubic-bezier(0.16, 1, 0.3, 1)` on layout transitions, `0.7s` on image crossfade
+
 ## Features
 
-- **Responsive Design**: Adapts to different screen sizes with a mobile-first approach
-- **Accordion Interface**: Built on shadcn/ui Accordion component for smooth expand/collapse
-- **Image Display**: Shows thumbnail images that expand to full size when opened
-- **Customizable**: All content, images, and styling can be customized
-- **Accessible**: Follows accessibility best practices with proper ARIA attributes
-- **Dark Mode**: Supports both light and dark themes
-
-## Examples
-
-### Basic Usage
-
-```tsx
-<FeatureHighlights features={features} />
-```
-
-### With Custom Features
-
-```tsx
-const customFeatures = [
-  {
-    id: "feature-1",
-    title: "Real-Time Analytics",
-    count: 12,
-    image: "/path/to/analytics-image.png",
-    description: "Monitor metrics live and make instant decisions.",
-  },
-  {
-    id: "feature-2",
-    title: "Seamless Integrations",
-    count: 18,
-    image: "/path/to/integrations-image.png",
-    description: "Connect with tools you already use effortlessly.",
-  },
-];
-
-<FeatureHighlights features={customFeatures} />;
-```
+- Zero dependencies — no shadcn, no framer-motion, no next/image
+- Responsive — side-by-side on desktop, stacked on mobile
+- Auto-play with hover pause
+- Proper TypeScript interfaces
+- Theme-aware via CSS custom properties
+- Accessible — semantic button elements, keyboard navigable

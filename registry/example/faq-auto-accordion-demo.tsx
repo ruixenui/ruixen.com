@@ -1,49 +1,48 @@
 "use client";
 
-import FAQAutoAccordion from "../ruixenui/faq-auto-accordion";
+import { FAQAutoAccordion } from "@/registry/ruixenui/faq-auto-accordion";
+import type { FAQItem } from "@/registry/ruixenui/faq-auto-accordion";
 
-const customSections = [
+const items: FAQItem[] = [
   {
-    title: "Getting Started",
-    items: [
-      {
-        id: "start-1",
-        question: "How do I create an account?",
-        answer: "Simply click the signup button and follow the instructions.",
-      },
-      {
-        id: "start-2",
-        question: "Is there a free trial?",
-        answer:
-          "Yes! We offer a 14-day free trial so you can test all features before committing.",
-      },
-    ],
+    question: "What is the purpose of this platform?",
+    answer:
+      "Our platform simplifies your workflow and saves hours every week using automation and AI-powered tools designed for modern teams.",
   },
   {
-    title: "Security",
-    items: [
-      {
-        id: "sec-1",
-        question: "How secure is my data?",
-        answer:
-          "We use enterprise-grade encryption and comply with GDPR standards.",
-      },
-    ],
+    question: "Is this service available worldwide?",
+    answer:
+      "Yes, we support users across the globe with localized features, multi-currency billing, and regional compliance.",
+  },
+  {
+    question: "Do you offer refunds?",
+    answer:
+      "Yes, we offer a 7-day refund policy. If you're unsatisfied, contact our support within that time frame for a full refund.",
+  },
+  {
+    question: "Can I change my plan later?",
+    answer:
+      "Absolutely! Upgrade or downgrade anytime from your account dashboard. Changes take effect immediately with prorated billing.",
+  },
+  {
+    question: "Does this integrate with other tools?",
+    answer:
+      "We support integrations with Slack, Notion, Zapier, and many more through our extensive plugin ecosystem.",
+  },
+  {
+    question: "Is there an API available?",
+    answer:
+      "Our public REST and GraphQL APIs are available for all Pro users. Full documentation lives in the developer portal.",
   },
 ];
 
 export default function FAQAutoAccordionDemo() {
   return (
-    <main className="min-h-[50vh] dark:bg-black text-gray-900 dark:text-white">
-      {/* Custom data */}
-      <FAQAutoAccordion
-        title="Need Help?"
-        description="Find quick answers below, or contact our support anytime."
-        sections={customSections}
-      />
-
-      {/* Default data (falls back to built-in FAQs) */}
-      <FAQAutoAccordion />
-    </main>
+    <FAQAutoAccordion
+      items={items}
+      title="Have questions?"
+      subtitle="Everything you need to know."
+      className="py-0 md:py-0"
+    />
   );
 }

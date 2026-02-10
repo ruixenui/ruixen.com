@@ -1,222 +1,307 @@
 "use client";
 
 import * as React from "react";
-import { motion } from "framer-motion";
-import { Minus, Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Link from "next/link";
 
-interface FAQItem {
-  id: number;
+/* ═══════════════════════════════════════════════════════════
+   FAQ Scroll Accordion — Self-Contained Scroll Cascade.
+
+   A scroll-aware FAQ inside its OWN scrollable container.
+   The IntersectionObserver is scoped to the container, NOT
+   the page viewport — items only respond to scrolling
+   WITHIN the component, never to the main page scroll.
+
+   Four FAQ paradigms in ruixen, zero overlap:
+     • faq-auto-accordion:   spring traveling accent, motion physics
+     • faq-chat-accordion:   conversational message exchange
+     • staggered-faq:        BlurredStagger text reveal
+     • faq-scroll-accordion: SELF-CONTAINED scroll cascade
+
+   Container architecture:
+     ┌─────────────────────────────────┐
+     │  ░  gradient fade (top 5%)      │
+     │  ─────────────────────────────  │
+     │  Question 1                  ∨  │  ← visible
+     │  Answer text...                 │
+     │  ─────────────────────────────  │
+     │  Question 2                  ∨  │  ← center zone
+     │  ─────────────────────────────  │
+     │  Question 3                  ∨  │  ← visible
+     │  ░  gradient fade (bottom 5%)   │
+     └───── scroll ↕ ─────────────────┘
+
+   IntersectionObserver { root: scrollContainer }
+     rootMargin: "-40% 0px -40% 0px"
+     → center detection zone = middle 20% of container
+     → an item must reach the container's center to trigger
+
+   This means:
+     • Page scroll has ZERO effect on which item opens
+     • Only scrolling WITHIN the container triggers changes
+     • In previews/iframes, the container IS the scroll context
+
+   Scroll UX:
+     Click: opens item + smoothly scrolls container to center
+            it, then pauses scroll-driven for 3s
+     Scroll: items cascade open as they reach center zone
+
+   Visual cues for scrollability:
+     • Gradient masks at top/bottom (5%) — content fades at edges
+     • Hidden scrollbar (scrollbar-width: none + webkit hide)
+     • Items below the fold create implicit scroll affordance
+
+   Zero dependencies. No GSAP, no framer-motion, no lucide.
+   ═══════════════════════════════════════════════════════════ */
+
+export interface FAQItem {
   question: string;
   answer: string;
-  icon?: string;
-  iconPosition?: "left" | "right";
 }
 
-interface FAQScrollAccordionProps {
-  data?: FAQItem[];
+export interface FAQScrollAccordionProps {
+  title?: string;
+  subtitle?: string;
+  items?: FAQItem[];
+  /** Enable scroll-driven auto-open. Default: true. */
+  scrollDriven?: boolean;
+  /** Index of the initially open item. null = all closed. */
+  defaultActive?: number | null;
   className?: string;
-  questionClassName?: string;
-  answerClassName?: string;
 }
 
-const defaultData: FAQItem[] = [
+const defaultItems: FAQItem[] = [
   {
-    id: 1,
     question: "What is Ruixen UI?",
     answer:
-      "Ruixen UI is a sleek and modern UI component library built with React and Tailwind CSS, designed to help developers create beautiful, responsive, and accessible web applications faster.",
+      "A curated collection of beautifully designed, production-ready components built with React and Tailwind CSS. Every component is crafted with animation-first thinking and zero unnecessary dependencies.",
   },
   {
-    id: 2,
-    question: "How do I install Ruixen UI?",
+    question: "How do I install components?",
     answer:
-      "You can install Ruixen UI via your terminal using npm or yarn: `npm install ruixenui` or `yarn add ruixenui`.",
+      "Use the shadcn CLI to add any component directly into your project. Each component lives in your codebase — no node_modules, full ownership, complete customization.",
   },
   {
-    id: 3,
-    question: "Is Ruixen UI open-source?",
+    question: "Is it open-source?",
     answer:
-      "Yes, Ruixen UI is completely open-source and available under the MIT license. You're free to use it in both personal and commercial projects.",
+      "Yes, fully open-source under the MIT license. Use it in personal projects, commercial products, client work — no restrictions.",
   },
   {
-    id: 4,
-    question: "Where can I find the documentation?",
+    question: "Do components work with dark mode?",
     answer:
-      "You can find full documentation, usage examples, and component APIs at our official site: docs.ruixenui.com.",
+      "Every component uses CSS custom properties and theme tokens. They adapt to light and dark modes automatically with no extra configuration.",
   },
   {
-    id: 5,
-    question: "Can I contribute to Ruixen UI?",
+    question: "Can I customize the animations?",
     answer:
-      "Definitely! Ruixen UI thrives on community support. Visit our GitHub repository to explore contribution guidelines, report issues, or submit pull requests.",
+      "Absolutely. All transitions use standard CSS properties — timing, easing, and duration are easy to adjust. No animation library lock-in.",
   },
 ];
 
 export default function FAQScrollAccordion({
-  data = defaultData,
+  title = "Frequently asked questions",
+  subtitle = "Everything you need to know.",
+  items = defaultItems,
+  scrollDriven = true,
+  defaultActive = 0,
   className,
-  questionClassName,
-  answerClassName,
 }: FAQScrollAccordionProps) {
-  const [openItem, setOpenItem] = React.useState<string | null>(null);
-  const containerRef = React.useRef<HTMLDivElement>(null);
-  const accordionRefs = React.useRef<Map<string, HTMLDivElement>>(new Map());
-  const contentRefs = React.useRef<Map<string, HTMLDivElement>>(new Map());
+  const [active, setActive] = React.useState<number | null>(defaultActive);
+  const itemRefs = React.useRef<(HTMLDivElement | null)[]>([]);
+  const scrollPausedRef = React.useRef(false);
+  const pauseTimerRef = React.useRef<ReturnType<typeof setTimeout>>();
 
-  // Register GSAP plugins
+  // Callback ref for the scroll container — triggers re-render
+  // when mounted so the IntersectionObserver effect can use it.
+  const [scrollContainer, setScrollContainer] =
+    React.useState<HTMLDivElement | null>(null);
+
+  // ── Scroll-driven auto-open ────────────────────────────
+  // Scoped to the scroll container, NOT the page viewport.
+  // rootMargin "-40% 0px -40% 0px" = center 20% of container.
   React.useEffect(() => {
-    if (typeof window !== "undefined") {
-      gsap.registerPlugin(ScrollTrigger);
-    }
+    if (!scrollDriven || !scrollContainer) return;
+
+    const observers: IntersectionObserver[] = [];
+
+    itemRefs.current.forEach((el, i) => {
+      if (!el) return;
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (scrollPausedRef.current) return;
+          if (entry.isIntersecting) {
+            setActive(i);
+          }
+        },
+        {
+          root: scrollContainer,
+          rootMargin: "-40% 0px -40% 0px",
+          threshold: 0.5,
+        },
+      );
+
+      observer.observe(el);
+      observers.push(observer);
+    });
+
+    return () => observers.forEach((o) => o.disconnect());
+  }, [scrollDriven, scrollContainer, items]);
+
+  // ── Click handler ──────────────────────────────────────
+  // Opens item, scrolls container to center it, then pauses
+  // scroll-driven behavior for 3s so the observer doesn't
+  // immediately override the user's selection.
+  const toggle = React.useCallback(
+    (i: number) => {
+      scrollPausedRef.current = true;
+      setActive((prev) => {
+        const next = prev === i ? null : i;
+
+        // Smooth-scroll the container to center the clicked item
+        if (next !== null && scrollContainer) {
+          const el = itemRefs.current[next];
+          if (el) {
+            requestAnimationFrame(() => {
+              const scrollTop =
+                el.offsetTop -
+                scrollContainer.clientHeight / 2 +
+                el.offsetHeight / 2;
+              scrollContainer.scrollTo({
+                top: Math.max(0, scrollTop),
+                behavior: "smooth",
+              });
+            });
+          }
+        }
+
+        return next;
+      });
+
+      if (pauseTimerRef.current) clearTimeout(pauseTimerRef.current);
+      pauseTimerRef.current = setTimeout(() => {
+        scrollPausedRef.current = false;
+      }, 3000);
+    },
+    [scrollContainer],
+  );
+
+  React.useEffect(() => {
+    return () => {
+      if (pauseTimerRef.current) clearTimeout(pauseTimerRef.current);
+    };
   }, []);
 
-  // Set up GSAP animations
-  useGSAP(() => {
-    if (!containerRef.current || data.length === 0) return;
-
-    ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top top",
-        end: `+=${data.length * 200}`,
-        scrub: 0.3,
-        pin: true,
-        markers: false,
-      },
-    });
-
-    data.forEach((item, index) => {
-      const contentRef = contentRefs.current.get(item.id.toString());
-      if (contentRef) {
-        tl.add(() => {
-          setOpenItem(item.id.toString());
-        }, index * 2);
-      }
-    });
-
-    return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
-  }, [data]);
-
-  const handleToggle = (value: string) => {
-    setOpenItem(value === openItem ? null : value);
-  };
-
   return (
-    <div
-      ref={containerRef}
-      className={cn("max-w-4xl mx-auto text-center py-16 h-[300vh]", className)}
-    >
-      <h2 className="text-3xl font-bold mb-2">
-        <Link
-          href="https://github.com/ruixenui/ruixen.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:text-blue-400 transition-colors"
-        >
-          Frequently Asked Questions
-        </Link>
-      </h2>
-      <p className="text-gray-600 dark:text-gray-200 mb-6">
-        Find answers to common questions about our graphic assets, components,
-        and licensing.
-      </p>
+    <section className={cn("py-16 md:py-24", className)}>
+      <div className="mx-auto max-w-2xl px-6">
+        {/* ── Header (outside scroll container) ───────── */}
+        {title && (
+          <div className="mb-8 text-center">
+            <h2 className="text-2xl font-semibold tracking-tight text-foreground">
+              {title}
+            </h2>
+            {subtitle && (
+              <p className="mt-2 text-sm text-muted-foreground">{subtitle}</p>
+            )}
+          </div>
+        )}
 
-      <div>
-        {data.map((item) => {
-          const isOpen = openItem === item.id.toString();
-          return (
-            <div key={item.id} className="mb-6">
+        {/* ── Scrollable container ────────────────────── */}
+        <div
+          ref={setScrollContainer}
+          className="relative max-h-80 overflow-y-auto"
+          data-faq-scroll
+          style={{
+            maskImage:
+              "linear-gradient(to bottom, transparent, black 5%, black 95%, transparent)",
+            WebkitMaskImage:
+              "linear-gradient(to bottom, transparent, black 5%, black 95%, transparent)",
+            scrollbarWidth: "none",
+          }}
+        >
+          {items.map((item, i) => {
+            const isActive = i === active;
+
+            return (
               <div
+                key={i}
                 ref={(el) => {
-                  if (el) accordionRefs.current.set(item.id.toString(), el);
+                  itemRefs.current[i] = el;
                 }}
-                data-id={item.id.toString()}
-                className="relative"
+                className={cn("border-b border-border", i === 0 && "border-t")}
               >
                 <button
                   type="button"
-                  onClick={() => handleToggle(item.id.toString())}
-                  className="flex w-full items-center justify-start gap-x-4"
+                  className="flex w-full items-center justify-between py-5 text-left"
+                  onClick={() => toggle(i)}
                 >
-                  <div
-                    className={cn(
-                      "relative flex items-center space-x-2 rounded-xl p-2 transition-colors",
-                      isOpen
-                        ? "bg-primary/20 text-primary"
-                        : "bg-muted hover:bg-primary/10",
-                      questionClassName,
-                    )}
-                  >
-                    {item.icon && (
-                      <span
-                        className={cn(
-                          "absolute bottom-6",
-                          item.iconPosition === "right" ? "right-0" : "left-0",
-                        )}
-                        style={{
-                          transform:
-                            item.iconPosition === "right"
-                              ? "rotate(7deg)"
-                              : "rotate(-4deg)",
-                        }}
-                      >
-                        {item.icon}
-                      </span>
-                    )}
-                    <span className="font-medium">{item.question}</span>
-                  </div>
-
                   <span
-                    className={cn(
-                      "text-gray-600 dark:text-gray-200",
-                      isOpen && "text-primary",
-                    )}
+                    className="pr-4 text-base font-medium transition-opacity duration-300"
+                    style={{ opacity: isActive ? 1 : 0.5 }}
                   >
-                    {isOpen ? (
-                      <Minus className="h-5 w-5" />
-                    ) : (
-                      <Plus className="h-5 w-5" />
-                    )}
+                    {item.question}
                   </span>
+
+                  {/* Chevron — inline SVG, no lucide */}
+                  <svg
+                    className="h-4 w-4 shrink-0 text-muted-foreground"
+                    style={{
+                      transform: isActive ? "rotate(180deg)" : "rotate(0deg)",
+                      transition:
+                        "transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                    }}
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
                 </button>
-                <motion.div
-                  ref={(el) => {
-                    if (el) contentRefs.current.set(item.id.toString(), el);
+
+                {/* ── Expandable answer ───────────────── */}
+                <div
+                  className="grid"
+                  style={{
+                    gridTemplateRows: isActive ? "1fr" : "0fr",
+                    transition:
+                      "grid-template-rows 0.45s cubic-bezier(0.16, 1, 0.3, 1)",
                   }}
-                  initial="collapsed"
-                  animate={isOpen ? "open" : "collapsed"}
-                  variants={{
-                    open: { opacity: 1, height: "auto" },
-                    collapsed: { opacity: 0, height: 0 },
-                  }}
-                  transition={{ duration: 0.4 }}
-                  className="overflow-hidden"
                 >
-                  <div className="flex justify-end ml-7 mt-4 md:ml-16">
-                    <div
-                      className={cn(
-                        "relative max-w-md rounded-2xl px-4 py-2 text-white text-lg !bg-blue-400 dark:!bg-blue-400",
-                        answerClassName,
-                      )}
+                  <div className="overflow-hidden">
+                    <p
+                      className="pb-5 text-sm leading-relaxed text-muted-foreground"
+                      style={{
+                        opacity: isActive ? 1 : 0,
+                        transform: isActive
+                          ? "translateY(0)"
+                          : "translateY(8px)",
+                        transition: isActive
+                          ? "opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1) 0.1s, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1) 0.1s"
+                          : "opacity 0.15s ease, transform 0.15s ease",
+                      }}
                     >
                       {item.answer}
-                    </div>
+                    </p>
                   </div>
-                </motion.div>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
-    </div>
+
+      {/* Hide webkit scrollbar */}
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `[data-faq-scroll]::-webkit-scrollbar{display:none}`,
+        }}
+      />
+    </section>
   );
 }
+
+export { FAQScrollAccordion, type FAQScrollAccordionProps, type FAQItem };
