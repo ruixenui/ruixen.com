@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/spark-chart-demo.tsx",
-      "content": "\"use client\";\n\nimport SparkChart from \"@/registry/ruixenui/spark-chart\";\n\nconst DATA = [\n  8, 10, 14, 12, 15, 14, 18, 24, 22, 30, 36, 34, 42, 48, 44, 52, 56, 54, 62,\n  58, 64,\n];\n\nexport default function SparkChartDemo() {\n  return (\n    <div className=\"flex min-h-[300px] w-full items-center justify-center p-8\">\n      <div className=\"w-full max-w-sm\">\n        <SparkChart\n          data={DATA}\n          height={140}\n          formatValue={(v) => `$${v.toFixed(0)}k`}\n        />\n      </div>\n    </div>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport SparkChart from \"@/registry/ruixenui/spark-chart\";\n\nconst DATA = [\n  8, 10, 14, 12, 15, 14, 18, 24, 22, 30, 36, 34, 42, 48, 44, 52, 56, 54, 62, 58,\n  64,\n];\n\nexport default function SparkChartDemo() {\n  return (\n    <div className=\"flex min-h-[300px] w-full items-center justify-center p-8\">\n      <div className=\"w-full max-w-sm\">\n        <SparkChart\n          data={DATA}\n          height={140}\n          formatValue={(v) => `$${v.toFixed(0)}k`}\n        />\n      </div>\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/spark-chart-demo.tsx"
     }

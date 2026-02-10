@@ -107,6 +107,36 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "product-feature-hero-demo",
+    type: "registry:example",
+    title: "Product Feature Hero Demo",
+    description:
+      "Example of a two-column hero with gradient card and feature grid.",
+    registryDependencies: ["https://ruixen.com/r/product-feature-hero"],
+    files: [
+      {
+        path: "registry/example/product-feature-hero-demo.tsx",
+        type: "registry:example",
+        target: "components/product-feature-hero-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "product-card-hero-demo",
+    type: "registry:example",
+    title: "Product Card Hero Demo",
+    description:
+      "Example of a two-column hero with floating account menu card and feature grid.",
+    registryDependencies: ["https://ruixen.com/r/product-card-hero"],
+    files: [
+      {
+        path: "registry/example/product-card-hero-demo.tsx",
+        type: "registry:example",
+        target: "components/product-card-hero-demo.tsx",
+      },
+    ],
+  },
+  {
     name: "feature-highlights-demo",
     type: "registry:example",
     title: "FeatureHighlights Demo",
@@ -141,28 +171,13 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "FAQ Auto Accordion Demo",
     description:
-      "Example showing a scroll-triggered FAQ accordion component with smooth GSAP animations and auto-expanding items.",
+      "Example showing a materializing card stack FAQ with auto-advance and ghost hover states.",
     registryDependencies: ["https://ruixen.com/r/faq-auto-accordion"],
     files: [
       {
         path: "registry/example/faq-auto-accordion-demo.tsx",
         type: "registry:example",
         target: "components/faq-auto-accordion-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "compact-accordion-demo",
-    type: "registry:example",
-    title: "Compact Accordion Demo",
-    description:
-      "Example showing a compact accordion component with icons and smooth animations.",
-    registryDependencies: ["https://ruixen.com/r/compact-accordion"],
-    files: [
-      {
-        path: "registry/example/compact-accordion-demo.tsx",
-        type: "registry:example",
-        target: "components/compact-accordion-demo.tsx",
       },
     ],
   },
@@ -270,44 +285,17 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "featured-highlights-demo",
+    name: "split-feature-showcase-demo",
     type: "registry:example",
-    title: "Featured Highlights Demo",
-    description: "Example of interactive feature showcase with image preview",
-    registryDependencies: ["https://www.ruixen.com/r/featured-highlights"],
+    title: "Split Feature Showcase Demo",
+    description:
+      "Example of scroll-triggered bento grid with spring animations and integration cards.",
+    registryDependencies: ["https://ruixen.com/r/split-feature-showcase"],
     files: [
       {
-        path: "registry/example/featured-highlights-demo.tsx",
+        path: "registry/example/split-feature-showcase-demo.tsx",
         type: "registry:example",
-        target: "components/featured-highlights-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "feature-grid-section-demo",
-    type: "registry:example",
-    title: "Feature Grid Section Demo",
-    description: "Example of grid layout showcasing features with icons",
-    registryDependencies: ["https://www.ruixen.com/r/feature-grid-section"],
-    files: [
-      {
-        path: "registry/example/feature-grid-section-demo.tsx",
-        type: "registry:example",
-        target: "components/feature-grid-section-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "feature-tabs-showcase-demo",
-    type: "registry:example",
-    title: "Feature Tabs Showcase Demo",
-    description: "Example of interactive tabs with animated background",
-    registryDependencies: ["https://www.ruixen.com/r/feature-tabs-showcase"],
-    files: [
-      {
-        path: "registry/example/feature-tabs-showcase-demo.tsx",
-        type: "registry:example",
-        target: "components/feature-tabs-showcase-demo.tsx",
+        target: "components/split-feature-showcase-demo.tsx",
       },
     ],
   },
@@ -324,110 +312,6 @@ export const examples: Registry["items"] = [
         path: "registry/example/integration-and-stats-section-demo.tsx",
         type: "registry:example",
         target: "components/integration-and-stats-section-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "tech-orbit-showcase-demo",
-    type: "registry:example",
-    title: "Tech Orbit Showcase Demo",
-    description:
-      "Example of animated orbital showcase with rotating tech icons",
-    registryDependencies: ["https://www.ruixen.com/r/tech-orbit-showcase"],
-    files: [
-      {
-        path: "registry/example/tech-orbit-showcase-demo.tsx",
-        type: "registry:example",
-        target: "components/tech-orbit-showcase-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "partner-integrations-grid-demo",
-    type: "registry:example",
-    title: "Partner Integrations Grid Demo",
-    description: "Example of grid showcase with partner integrations",
-    registryDependencies: [
-      "https://www.ruixen.com/r/partner-integrations-grid",
-    ],
-    files: [
-      {
-        path: "registry/example/partner-integrations-grid-demo.tsx",
-        type: "registry:example",
-        target: "components/partner-integrations-grid-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "analytics-dashboard-stats-demo",
-    type: "registry:example",
-    title: "Analytics Dashboard Stats Demo",
-    description: "Example of analytics dashboard with statistics and charts",
-    registryDependencies: [
-      "https://www.ruixen.com/r/analytics-dashboard-stats",
-    ],
-    files: [
-      {
-        path: "registry/example/analytics-dashboard-stats-demo.tsx",
-        type: "registry:example",
-        target: "components/analytics-dashboard-stats-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "ruixen-dashboard-stats-demo",
-    type: "registry:example",
-    title: "Ruixen Dashboard Stats Demo",
-    description: "Example of dashboard stats with animated counter and chart",
-    registryDependencies: ["https://www.ruixen.com/r/ruixen-dashboard-stats"],
-    files: [
-      {
-        path: "registry/example/ruixen-dashboard-stats-demo.tsx",
-        type: "registry:example",
-        target: "components/ruixen-dashboard-stats-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "feature-carousel-demo",
-    type: "registry:example",
-    title: "Feature Carousel Demo",
-    description:
-      "Example of interactive carousel showcasing dashboard features",
-    registryDependencies: ["https://www.ruixen.com/r/feature-carousel"],
-    files: [
-      {
-        path: "registry/example/feature-carousel-demo.tsx",
-        type: "registry:example",
-        target: "components/feature-carousel-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "crm-insights-panel-demo",
-    type: "registry:example",
-    title: "CRM Insights Panel Demo",
-    description: "Example of CRM dashboard with video preview and feature grid",
-    registryDependencies: ["https://www.ruixen.com/r/crm-insights-panel"],
-    files: [
-      {
-        path: "registry/example/crm-insights-panel-demo.tsx",
-        type: "registry:example",
-        target: "components/crm-insights-panel-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "multi-orbit-semi-circle-demo",
-    type: "registry:example",
-    title: "Multi Orbit Semi Circle Demo",
-    description: "Example of multi-layered semi-circular orbit animation",
-    registryDependencies: ["https://www.ruixen.com/r/multi-orbit-semi-circle"],
-    files: [
-      {
-        path: "registry/example/multi-orbit-semi-circle-demo.tsx",
-        type: "registry:example",
-        target: "components/multi-orbit-semi-circle-demo.tsx",
       },
     ],
   },
@@ -458,21 +342,6 @@ export const examples: Registry["items"] = [
         path: "registry/example/automated-tasks-panel-demo.tsx",
         type: "registry:example",
         target: "components/automated-tasks-panel-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "case-studies-demo",
-    type: "registry:example",
-    title: "Case Studies Demo",
-    description:
-      "Example of customer case studies with metrics and testimonials",
-    registryDependencies: ["https://www.ruixen.com/r/case-studies"],
-    files: [
-      {
-        path: "registry/example/case-studies-demo.tsx",
-        type: "registry:example",
-        target: "components/case-studies-demo.tsx",
       },
     ],
   },
@@ -3776,21 +3645,6 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "core-value-stats-demo",
-    type: "registry:example",
-    title: "Core Value Stats Demo",
-    description:
-      "Example showing a responsive stats section showcasing core values with optional images and animated cards.",
-    registryDependencies: ["https://ruixen.com/r/core-value-stats"],
-    files: [
-      {
-        path: "registry/example/core-value-stats-demo.tsx",
-        type: "registry:example",
-        target: "components/core-value-stats-demo.tsx",
-      },
-    ],
-  },
-  {
     name: "hero-section-glass-web-demo",
     type: "registry:example",
     title: "Hero Section Glass Web Demo",
@@ -3862,21 +3716,6 @@ export const examples: Registry["items"] = [
         path: "registry/example/precision-card-demo.tsx",
         type: "registry:example",
         target: "components/precision-card-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "feature-slide-showcase-demo",
-    type: "registry:example",
-    title: "Feature Slide Showcase Demo",
-    description:
-      "Example showing a tabbed feature showcase with image previews and detailed descriptions.",
-    registryDependencies: ["https://ruixen.com/r/feature-slide-showcase"],
-    files: [
-      {
-        path: "registry/example/feature-slide-showcase-demo.tsx",
-        type: "registry:example",
-        target: "components/feature-slide-showcase-demo.tsx",
       },
     ],
   },
@@ -4359,7 +4198,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "FAQ Chat Accordion Demo",
     description:
-      "Example showing chat-bubble styled FAQ with emoji stickers and messenger-like answers.",
+      "Example showing conversational FAQ with typing indicator dots and spring message bubbles.",
     registryDependencies: ["https://ruixen.com/r/faq-chat-accordion"],
     files: [
       {
@@ -4441,6 +4280,35 @@ export const examples: Registry["items"] = [
         path: "registry/example/avatar-quick-actions-demo.tsx",
         type: "registry:example",
         target: "components/avatar-quick-actions-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "variable-text-demo",
+    type: "registry:example",
+    title: "Variable Text Demo",
+    description: "Example showing variable font weight lens effect on hover.",
+    registryDependencies: ["https://ruixen.com/r/variable-text"],
+    files: [
+      {
+        path: "registry/example/variable-text-demo.tsx",
+        type: "registry:example",
+        target: "components/variable-text-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "scramble-text-demo",
+    type: "registry:example",
+    title: "Scramble Text Demo",
+    description:
+      "Example showing text decode sequence with directional resolve wave.",
+    registryDependencies: ["https://ruixen.com/r/scramble-text"],
+    files: [
+      {
+        path: "registry/example/scramble-text-demo.tsx",
+        type: "registry:example",
+        target: "components/scramble-text-demo.tsx",
       },
     ],
   },

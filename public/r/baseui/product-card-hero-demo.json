@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "product-card-hero-demo",
+  "type": "registry:example",
+  "title": "Product Card Hero Demo",
+  "description": "Example of a two-column hero with floating account menu card and feature grid.",
+  "registryDependencies": [
+    "https://ruixen.com/r/product-card-hero"
+  ],
+  "files": [
+    {
+      "path": "registry/example/product-card-hero-demo.tsx",
+      "content": "\"use client\";\n\nimport ProductCardHero from \"@/registry/ruixenui/product-card-hero\";\n\nexport default function ProductCardHeroDemo() {\n  return <ProductCardHero />;\n}\n",
+      "type": "registry:example",
+      "target": "components/product-card-hero-demo.tsx"
+    }
+  ]
+}

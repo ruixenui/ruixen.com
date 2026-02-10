@@ -1,56 +1,69 @@
 "use client";
 
-import React from "react";
-import {
-  ClientCarouselShowcase,
-  LogoItem,
-} from "../ruixenui/client-carousel-showcase";
+import { ClientCarouselShowcase } from "@/registry/ruixenui/client-carousel-showcase";
+import type { ClientCarouselItem } from "@/registry/ruixenui/client-carousel-showcase";
 
-export default function ClientCarouselDemo() {
-  const customLogos: LogoItem[] = [
-    {
-      src: "/google.svg",
-      alt: "Google",
-      href: "https://google.com",
-      width: 80,
-      height: 24,
-    },
-    {
-      src: "/microsoft.svg",
-      alt: "Microsoft",
-      href: "https://microsoft.com",
-      width: 90,
-      height: 24,
-    },
-    {
-      src: "/apple.svg",
-      alt: "Apple",
-      href: "https://apple.com",
-      width: 60,
-      height: 24,
-    },
-    {
-      src: "/netflix.svg",
-      alt: "Netflix",
-      href: "https://netflix.com",
-      width: 80,
-      height: 24,
-    },
-  ];
+const clients: ClientCarouselItem[] = [
+  {
+    name: "React",
+    logo: <img src="/icons/react.svg" alt="" className="h-8 w-auto" />,
+  },
+  {
+    name: "Next.js",
+    logo: (
+      <img src="/icons/nextjs.svg" alt="" className="h-8 w-auto dark:invert" />
+    ),
+  },
+  {
+    name: "TypeScript",
+    logo: <img src="/icons/typescript.svg" alt="" className="h-8 w-auto" />,
+  },
+  {
+    name: "Tailwind CSS",
+    logo: <img src="/icons/tailwindcss.svg" alt="" className="h-6 w-auto" />,
+  },
+  {
+    name: "Framer Motion",
+    logo: (
+      <img
+        src="/icons/framer-motion.svg"
+        alt=""
+        className="h-8 w-auto dark:invert"
+      />
+    ),
+  },
+  {
+    name: "Figma",
+    logo: <img src="/icons/figma.svg" alt="" className="h-8 w-auto" />,
+  },
+  {
+    name: "Radix UI",
+    logo: (
+      <img
+        src="/icons/radix-ui.svg"
+        alt=""
+        className="h-8 w-auto dark:invert"
+      />
+    ),
+  },
+  {
+    name: "shadcn/ui",
+    logo: (
+      <img
+        src="/icons/shadcn-ui.svg"
+        alt=""
+        className="h-8 w-auto dark:invert"
+      />
+    ),
+  },
+];
 
+export default function ClientCarouselShowcaseDemo() {
   return (
-    <main className="bg-background min-h-screen py-16">
-      <h1 className="text-4xl font-bold text-center text-gray-900 dark:text-white mb-12">
-        Client Carousel Showcase
-      </h1>
-
-      {/* Default logos */}
-      <ClientCarouselShowcase />
-
-      {/* Custom logos with slower autoplay */}
-      <div className="mt-20">
-        <ClientCarouselShowcase logos={customLogos} autoPlayInterval={2500} />
-      </div>
-    </main>
+    <ClientCarouselShowcase
+      clients={clients}
+      title="Built with"
+      className="py-0 md:py-0"
+    />
   );
 }

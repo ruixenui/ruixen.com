@@ -172,10 +172,7 @@ export default function SparkChart({
   return (
     <div
       ref={containerRef}
-      className={cn(
-        "relative select-none touch-none cursor-none",
-        className,
-      )}
+      className={cn("relative select-none touch-none cursor-none", className)}
       style={{ height }}
       onPointerEnter={handleEnter}
       onPointerLeave={handleLeave}
@@ -214,10 +211,7 @@ export default function SparkChart({
         </g>
 
         {/* Colored overlay — full at rest, clips to scrub position on hover */}
-        <g
-          ref={revealRef}
-          style={{ clipPath: "inset(0 0% 0 0)" }}
-        >
+        <g ref={revealRef} style={{ clipPath: "inset(0 0% 0 0)" }}>
           <path d={fillD} fill={`url(#${gradColorId})`} />
           <path
             d={pathD}

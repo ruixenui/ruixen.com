@@ -1,7 +1,7 @@
 ---
 title: FAQ Auto Accordion
 date: 2024-06-01
-description: A flexible FAQ accordion component with scroll-triggered auto expansion and customizable content.
+description: Spring-driven FAQ with a traveling accent bar, spring height animation, blur-deblur text reveal, and layout FLIP repositioning
 author: ruixen
 published: true
 ---
@@ -43,87 +43,92 @@ npx shadcn@latest add "https://ruixen.com/r/faq-auto-accordion"
 ## Usage
 
 ```tsx
-import FAQAutoAccordion from "@/components/ruixen/faq-auto-accordion";
+import { FAQAutoAccordion } from "@/components/ruixen/faq-auto-accordion";
+import type { FAQItem } from "@/components/ruixen/faq-auto-accordion";
 
-const faqItems = [
+const items: FAQItem[] = [
   {
-    id: "item-1",
     question: "What is Ruixen UI?",
-    answer:
-      "Ruixen UI is a modern, fully responsive design system that provides pre-built components, utilities, and layouts to help developers build scalable web applications quickly and efficiently.",
+    answer: "A curated collection of production-ready components.",
   },
-  // Add more FAQ items...
+  {
+    question: "Is it open-source?",
+    answer: "Yes, fully open-source under the MIT license.",
+  },
 ];
 
-export default function MyFAQs() {
-  return <FAQAutoAccordion faqItems={faqItems} />;
+export default function MyFAQ() {
+  return <FAQAutoAccordion items={items} />;
 }
 ```
 
 ## Props
 
-| Prop              | Type        | Default                                                  | Description                               |
-| ----------------- | ----------- | -------------------------------------------------------- | ----------------------------------------- |
-| `title`           | `string`    | `"FAQ Auto Accordion"`                                   | The main heading text                     |
-| `description`     | `string`    | `"Everything you need to know about Ruixen UI"`          | The subtitle text below the heading       |
-| `supportText`     | `string`    | `"Can't find what you're looking for? Reach out to our"` | Text shown before the support link        |
-| `supportLink`     | `string`    | `"#"`                                                    | URL for the support link                  |
-| `supportLinkText` | `string`    | `"Ruixen UI support team"`                               | Text for the support link                 |
-| `faqItems`        | `FAQItem[]` | -                                                        | Array of FAQ items to display             |
-| `className`       | `string`    | -                                                        | Additional CSS classes                    |
-| `hideSupport`     | `boolean`   | `false`                                                  | Whether to hide the support text and link |
+| Prop           | Type        | Default                          | Description                                   |
+| -------------- | ----------- | -------------------------------- | --------------------------------------------- |
+| `title`        | `string`    | `"Have questions?"`              | Section heading                               |
+| `subtitle`     | `string`    | `"Everything you need to know."` | Subtitle below heading                        |
+| `items`        | `FAQItem[]` | Built-in 6 defaults              | Flat array of FAQ items                       |
+| `autoInterval` | `number`    | `6`                              | Seconds per item auto-advance. `0` to disable |
+| `className`    | `string`    | —                                | Additional classes on root section            |
 
-## FAQ Item Structure
-
-Each FAQ item should have the following structure:
+## FAQItem
 
 ```tsx
 interface FAQItem {
-  id: string; // Unique identifier for the FAQ item
-  question: string; // The question text
-  answer: string; // The answer text
+  question: string;
+  answer: string;
 }
 ```
 
+## Traveling Accent Bar
+
+A 3px rounded bar sits to the left of the active question. When the active item changes, the bar physically **springs** to the new position using `layoutId` — framer-motion measures the before/after positions and interpolates with `spring(500, 30)`. The bar slightly overshoots and settles, creating a physical feeling that CSS transitions cannot replicate.
+
+## Spring Height Animation
+
+Answers expand and collapse with true spring physics via `AnimatePresence`:
+
+- **Open**: `height: 0 → "auto"` with `spring(300, 30)` — gentle, slightly underdamped
+- **Close**: `height: "auto" → 0` with `spring(400, 35)` — stiffer, snappier
+
+The differential stiffness creates an asymmetry: opening feels leisurely, closing feels decisive.
+
+## Blur-Deblur Text Reveal
+
+Answer text enters with three simultaneous properties:
+
+- **Opacity**: `0 → 1` over 250ms with 40ms delay
+- **Y position**: `6px → 0` with `spring(380, 26)` — slight upward drift
+- **Blur**: `blur(3px) → blur(0px)` over 300ms — text sharpens into focus
+
+On exit, text blurs back to `2px` and fades in 120ms. The blur transition is the signature — content resolves like a camera pulling focus.
+
+## Layout FLIP Repositioning
+
+Each FAQ item uses `layout="position"` — when any item expands or collapses, all siblings smoothly slide to their new positions with `spring(400, 35)`. No CSS transitions, no `top` calculations — framer-motion measures the DOM diff and applies FLIP interpolation.
+
+## Progress Bar
+
+A `1px` bar below the answer fills left-to-right over `autoInterval` seconds. Track: `bg-foreground/[0.06]`. Fill: `bg-foreground/15`. Uses CSS `@keyframes` for linear fill — spring physics would look wrong for a progress indicator.
+
+## Auto-Advance
+
+The active item auto-advances every `autoInterval` seconds (default 6s).
+
+- **Pauses on hover** — progress bar stops, timer pauses
+- **Resets on resume** — both restart from scratch when mouse leaves
+- **Resets on click** — clicking any item restarts the timer
+- **Stops when closed** — if all items are closed, auto-advance pauses
+- Can be **disabled** by setting `autoInterval={0}`
+
 ## Features
 
-- **Responsive Design**: Adapts to different screen sizes with a mobile-first approach
-- **Animated Text**: Uses BlurredStagger component for smooth text animations
-- **Collapsible**: Built on shadcn/ui Accordion component for smooth expand/collapse
-- **Customizable**: All text content, links, and styling can be customized
-- **Accessible**: Follows accessibility best practices with proper ARIA attributes
-- **Dark Mode**: Supports both light and dark themes
-
-## Examples
-
-### Basic Usage
-
-```tsx
-<FAQAutoAccordion faqItems={faqItems} />
-```
-
-### Custom Title and Subtitle
-
-```tsx
-<FAQAutoAccordion
-  title="Help Center"
-  description="Find answers to common questions"
-  faqItems={faqItems}
-/>
-```
-
-### Hide Support Section
-
-```tsx
-<FAQAutoAccordion faqItems={faqItems} hideSupport={true} />
-```
-
-### Custom Support Link
-
-```tsx
-<FAQAutoAccordion
-  faqItems={faqItems}
-  supportText="Need more help? Contact our"
-  supportLink="/contact"
-/>
-```
+- Spring physics via motion — real overshoot and settle
+- Traveling accent bar with layoutId FLIP animation
+- Layout repositioning — siblings slide smoothly
+- Blur-deblur text reveal on answers
+- Auto-advance with progress bar countdown
+- Differential spring stiffness (open vs close)
+- Theme-aware via CSS custom properties
+- Accessible — semantic buttons, ARIA expanded, keyboard navigable

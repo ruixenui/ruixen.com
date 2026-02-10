@@ -1,75 +1,69 @@
 "use client";
 
-import React from "react";
-import {
-  TrustedClientsShowcase,
-  LogoItem,
-} from "../ruixenui/trusted-clients-showcase";
+import { TrustedClientsShowcase } from "@/registry/ruixenui/trusted-clients-showcase";
+import type { LogoItem } from "@/registry/ruixenui/trusted-clients-showcase";
 
-export default function DemoPage() {
-  const customLogos: LogoItem[] = [
-    {
-      src: "/slack.svg",
-      alt: "Slack Logo",
-      href: "https://slack.com",
-      width: 46,
-      height: 24,
-    },
-    {
-      src: "/amazon.svg",
-      alt: "Amazon Logo",
-      href: "https://amazon.com",
-      width: 100,
-      height: 24,
-    },
-    {
-      src: "https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg",
-      alt: "GitHub Logo",
-      href: "https://github.com",
-      width: 54,
-      height: 24,
-    },
-    {
-      src: "/playstation.svg",
-      alt: "PlayStation Logo",
-      href: "https://playstation.com",
-      width: 64,
-      height: 24,
-    },
-    {
-      src: "/ibm.svg",
-      alt: "IBM Logo",
-      href: "https://ibm.com",
-      width: 80,
-      height: 24,
-    },
-    {
-      src: "/ebay.svg",
-      alt: "Ebay Logo",
-      href: "https://ebay.com",
-      width: 80,
-      height: 24,
-    },
-    {
-      src: "/meta.svg",
-      alt: "Meta Logo",
-      href: "https://meta.com",
-      width: 60,
-      height: 24,
-    },
-    {
-      src: "/adobe.svg",
-      alt: "Adobe Logo",
-      href: "https://adobe.com",
-      width: 46,
-      height: 10,
-    },
-  ];
+const clients: LogoItem[] = [
+  {
+    name: "React",
+    logo: <img src="/icons/react.svg" alt="" className="h-8 w-auto" />,
+  },
+  {
+    name: "Next.js",
+    logo: (
+      <img src="/icons/nextjs.svg" alt="" className="h-8 w-auto dark:invert" />
+    ),
+  },
+  {
+    name: "TypeScript",
+    logo: <img src="/icons/typescript.svg" alt="" className="h-8 w-auto" />,
+  },
+  {
+    name: "Tailwind CSS",
+    logo: <img src="/icons/tailwindcss.svg" alt="" className="h-6 w-auto" />,
+  },
+  {
+    name: "Framer Motion",
+    logo: (
+      <img
+        src="/icons/framer-motion.svg"
+        alt=""
+        className="h-8 w-auto dark:invert"
+      />
+    ),
+  },
+  {
+    name: "Figma",
+    logo: <img src="/icons/figma.svg" alt="" className="h-8 w-auto" />,
+  },
+  {
+    name: "Radix UI",
+    logo: (
+      <img
+        src="/icons/radix-ui.svg"
+        alt=""
+        className="h-8 w-auto dark:invert"
+      />
+    ),
+  },
+  {
+    name: "shadcn/ui",
+    logo: (
+      <img
+        src="/icons/shadcn-ui.svg"
+        alt=""
+        className="h-8 w-auto dark:invert"
+      />
+    ),
+  },
+];
 
+export default function TrustedClientsShowcaseDemo() {
   return (
-    <main className="bg-background min-h-screen">
-      {/* Using default logos */}
-      <TrustedClientsShowcase />
-    </main>
+    <TrustedClientsShowcase
+      clients={clients}
+      title="Powered by"
+      className="py-0 md:py-0"
+    />
   );
 }

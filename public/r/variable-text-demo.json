@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "variable-text-demo",
+  "type": "registry:example",
+  "title": "Variable Text Demo",
+  "description": "Example showing variable font weight lens effect on hover.",
+  "registryDependencies": [
+    "https://ruixen.com/r/variable-text"
+  ],
+  "files": [
+    {
+      "path": "registry/example/variable-text-demo.tsx",
+      "content": "import VariableText from \"@/registry/ruixenui/variable-text\";\n\nexport default function VariableTextDemo() {\n  return (\n    <div className=\"flex flex-col items-center gap-10 py-10\">\n      <VariableText as=\"h2\" className=\"text-5xl font-medium tracking-tight\">\n        Variable Lens\n      </VariableText>\n      <VariableText className=\"text-lg text-muted-foreground tracking-wide\">\n        Move your cursor across — watch characters sharpen into focus\n      </VariableText>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/variable-text-demo.tsx"
+    }
+  ]
+}

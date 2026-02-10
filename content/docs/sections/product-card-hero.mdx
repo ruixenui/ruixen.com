@@ -1,0 +1,52 @@
+---
+title: Product Card Hero
+date: 2025-05-15
+description: Two-column hero with floating account menu card, pricing bar, and a four-column feature grid with icons.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="product-card-hero-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/product-card-hero"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="product-card-hero" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop          | Type        | Default                           | Description                         |
+| ------------- | ----------- | --------------------------------- | ----------------------------------- |
+| `title`       | `string`    | `"Power of LLMs\nin Your Editor"` | Hero heading                        |
+| `description` | `string`    | Default description text          | Hero description paragraph          |
+| `ctaText`     | `string`    | `"Learn more"`                    | Call-to-action button label         |
+| `ctaHref`     | `string`    | `"#"`                             | Call-to-action link                 |
+| `features`    | `Feature[]` | 4 default features                | Array of feature items for the grid |
+| `className`   | `string`    | —                                 | Additional CSS classes              |

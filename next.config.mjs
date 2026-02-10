@@ -18,6 +18,11 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: "/pro",
+        destination: "https://pro.ruixen.com",
+        permanent: false,
+      },
+      {
         source: "/discord",
         destination: "https://discord.gg/j9fVZm2D",
         permanent: true,

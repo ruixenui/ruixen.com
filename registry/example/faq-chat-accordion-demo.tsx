@@ -1,5 +1,7 @@
-import FaqChatAccordion from "@/registry/ruixenui/faq-chat-accordion";
+"use client";
 
-export default function FaqChatAccordionDemo() {
-  return <FaqChatAccordion className="max-w-[700px]" />;
+import { FAQChatAccordion } from "@/registry/ruixenui/faq-chat-accordion";
+
+export default function FAQChatAccordionDemo() {
+  return <FAQChatAccordion title="Have questions?" className="py-0 md:py-0" />;
 }

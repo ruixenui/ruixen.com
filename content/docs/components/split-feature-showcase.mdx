@@ -1,0 +1,70 @@
+---
+title: Split Feature Showcase
+date: 2025-05-15
+description: Two-panel feature showcase with spring-animated chat preview and a tapering workflow text list.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="split-feature-showcase-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/split-feature-showcase"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="split-feature-showcase" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop               | Type     | Default                            | Description                          |
+| ------------------ | -------- | ---------------------------------- | ------------------------------------ |
+| `leftTitle`        | `string` | `"Conversations that convert."`    | Heading for the left bento cell      |
+| `leftDescription`  | `string` | Default conversation description   | Description for the left bento cell  |
+| `rightTitle`       | `string` | `"Automate your entire pipeline."` | Heading for the right bento cell     |
+| `rightDescription` | `string` | Default workflow description       | Description for the right bento cell |
+| `className`        | `string` | —                                  | Additional CSS classes               |
+
+## Animation Architecture
+
+### Subgrid Spring Cascade
+
+Both columns use CSS `grid-rows-subgrid` for cross-column row alignment. The grid entrance is orchestrated on mount with staggered spring delays:
+
+- **Cells**: `y: 20→0` with `spring(300, 28)`, 120ms stagger
+- **Avatar**: `scale: 0.6→1` with `spring(440, 26)`, 200ms delay
+- **Message bubble**: `x: -16→0` with `spring(260, 24)`, 350ms delay
+- **Workflow cards**: Center-outward stagger `y: 8→0` with `spring(440, 26)`, 250ms base + 60ms per distance from center
+
+### 3D Perspective Stack
+
+Seven workflow automation cards arranged in a vertical cylinder using `perspective: 800px` with `rotateX` transforms and alternating `transform-origin: bottom` / `transform-origin: top`. Center card is emphasized with larger padding, stronger shadow, and bolder text. Outer rows progressively fade and scale down. A vertical gradient mask fades both edges.
+
+### Hover Micro-Interactions
+
+- **Chat bubble**: Subtle `scale: 1.02` + `y: -1` lift on hover with snappy spring

@@ -1,7 +1,7 @@
 ---
 title: Breadcrumb Dropdown
 date: 2025-01-08
-description: Breadcrumb navigation that collapses middle items into a dropdown menu.
+description: Inline-expanding collapsible breadcrumb — click the trigger and hidden path segments unfold in place with staggered timing, no floating dropdown needed.
 author: ruixen
 published: true
 ---
@@ -61,12 +61,11 @@ export default function MyBreadcrumb() {
 
 ## Props
 
-| Prop           | Type                       | Default  | Description                   |
-| -------------- | -------------------------- | -------- | ----------------------------- |
-| `items`        | `BreadcrumbDropdownItem[]` | -        | Array of breadcrumb items     |
-| `maxVisible`   | `number`                   | `3`      | Max items before collapsing   |
-| `dropdownIcon` | `"dots" \| "folder"`       | `"dots"` | Icon for the dropdown trigger |
-| `className`    | `string`                   | -        | Additional CSS classes        |
+| Prop         | Type                       | Default | Description                 |
+| ------------ | -------------------------- | ------- | --------------------------- |
+| `items`      | `BreadcrumbDropdownItem[]` | -       | Array of breadcrumb items   |
+| `maxVisible` | `number`                   | `3`     | Max items before collapsing |
+| `className`  | `string`                   | -       | Additional CSS classes      |
 
 ### BreadcrumbDropdownItem
 
@@ -74,3 +73,12 @@ export default function MyBreadcrumb() {
 | -------- | -------- | ------------------------- |
 | `label`  | `string` | Display text for the item |
 | `href`   | `string` | Optional link URL         |
+
+## Features
+
+- **Inline Expand**: Hidden path segments unfold directly within the breadcrumb flow — no floating dropdown, no popover, everything stays in the document
+- **Staggered Reveal**: Each hidden item slides in from the left (`translateX(-8px)` to `0`) with 50ms stagger between items — choreographed, not chaotic
+- **Trigger Morph**: The `···` trigger crossfades to a `—` dash when expanded, using scale + rotate animation for a smooth icon transition
+- **Instant Collapse**: Clicking the dash snaps the path closed — the expand is the choreographed moment, the collapse is utility
+- **Material Deceleration**: Uses `cubic-bezier(0.0, 0.0, 0.2, 1)` — no spring overshoot. The stagger choreography provides the motion interest
+- **Accessibility**: `aria-expanded` on trigger, `aria-current="page"` on active item, `aria-hidden` separators, semantic `nav` + `ol` structure

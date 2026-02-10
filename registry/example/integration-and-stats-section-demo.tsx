@@ -4,7 +4,7 @@ import IntegrationAndStatsSection from "../ruixenui/integration-and-stats-sectio
 
 export default function DemoIntegrationPage() {
   return (
-    <main className="bg-background flex flex-col items-center justify-center w-full">
+    <main className="bg-background flex flex-col items-center justify-center w-full scale-[0.7]">
       <IntegrationAndStatsSection />
     </main>
   );

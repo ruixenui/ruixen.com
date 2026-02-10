@@ -87,7 +87,9 @@ export default function AvatarHoverCard({
         className={cn(
           "rounded-full transition-shadow duration-200",
           triggerSizes[size],
-          open ? "ring-[1.5px] ring-foreground/8" : "ring-[1.5px] ring-transparent",
+          open
+            ? "ring-[1.5px] ring-foreground/8"
+            : "ring-[1.5px] ring-transparent",
         )}
       >
         {!open && (

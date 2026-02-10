@@ -10,11 +10,15 @@ export function ProAnnouncementToast() {
 
     if (!hasSeenToast) {
       const timer = setTimeout(() => {
-        toast("Thank you for your love!", {
-          description: "Ruixen Pro is coming very soon. Stay tuned!",
-          duration: 5000,
+        toast("Ruixen Pro is now live!", {
+          description: "50+ premium components, templates & blocks. Get lifetime access.",
+          duration: 6000,
           icon: <Sparkles className="h-5 w-5 text-blue-500" />,
           position: "top-right",
+          action: {
+            label: "Explore Pro",
+            onClick: () => window.open("https://pro.ruixen.com", "_blank"),
+          },
         });
         sessionStorage.setItem("ruixen-pro-toast-seen", "true");
       }, 2000);

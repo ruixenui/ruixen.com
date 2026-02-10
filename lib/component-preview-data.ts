@@ -1117,13 +1117,36 @@ export const videoPlayersPreview: ComponentPreviewMap = {
  * Path: /docs/components/[slug]
  */
 export const effectsPreview: ComponentPreviewMap = {
+  globe: {
+    light: `${BASE_URL}/popular/globe-light.jpg`,
+    dark: `${BASE_URL}/popular/globe-dark.jpg`,
+  },
+};
+
+/**
+ * Text - Text animation and effect components
+ * Path: /docs/components/[slug]
+ */
+export const textsPreview: ComponentPreviewMap = {
+  "rising-glow": {
+    light: `${BASE_URL}/texts/lumina-light.png`,
+    dark: `${BASE_URL}/texts/lumina-dark.png`,
+  },
+  "particle-text-dots": {
+    light: `/preview_images/backgrounds/particle-text-dots-light.png`,
+    dark: `/preview_images/backgrounds/particle-text-dots-dark.png`,
+  },
   "container-text-scroll": {
     light: `/preview_images/effects/container-text-scroll-light.png`,
     dark: `/preview_images/effects/container-text-scroll-dark.png`,
   },
-  globe: {
-    light: `${BASE_URL}/popular/globe-light.jpg`,
-    dark: `${BASE_URL}/popular/globe-dark.jpg`,
+  "variable-text": {
+    light: `/preview_images/texts/variable-text-light.png`,
+    dark: `/preview_images/texts/variable-text-dark.png`,
+  },
+  "scramble-text": {
+    light: `/preview_images/texts/scramble-text-light.png`,
+    dark: `/preview_images/texts/scramble-text-dark.png`,
   },
 };
 
@@ -1140,10 +1163,6 @@ export const backgroundsPreview: ComponentPreviewMap = {
     light: `${BASE_URL}/popular/ripple-distortion-light.jpg`,
     dark: `${BASE_URL}/popular/ripple-distortion-dark.png`,
   },
-  "particle-text-dots": {
-    light: `/preview_images/backgrounds/particle-text-dots-light.png`,
-    dark: `/preview_images/backgrounds/particle-text-dots-dark.png`,
-  },
   "dual-tone-rain-background": {
     light: `/preview_images/backgrounds/dual-tone-rain-background-light.png`,
     dark: `/preview_images/backgrounds/dual-tone-rain-background-dark.png`,
@@ -1151,10 +1170,6 @@ export const backgroundsPreview: ComponentPreviewMap = {
   "mouse-spark": {
     light: `/preview_images/backgrounds/mouse-spark-light.png`,
     dark: `/preview_images/backgrounds/mouse-spark-dark.png`,
-  },
-  "rising-glow": {
-    light: `${BASE_URL}/texts/lumina-light.png`,
-    dark: `${BASE_URL}/texts/lumina-dark.png`,
   },
 };
 
@@ -1307,8 +1322,8 @@ export const aiChatInputsPreview: ComponentPreviewMap = {
  */
 export const chartsPreview: ComponentPreviewMap = {
   "spark-chart": {
-    light: `/preview_images/component-improvement.png`,
-    dark: `/preview_images/component-improvement.png`,
+    light: `/preview_images/charts/spark-chart-light.png`,
+    dark: `/preview_images/charts/spark-chart-dark.png`,
   },
 };
 
@@ -1337,13 +1352,9 @@ export const faqsPreview: ComponentPreviewMap = {
     light: `/preview_images/faqs/faq-auto-accordion-light.png`,
     dark: `/preview_images/faqs/faq-auto-accordion-dark.png`,
   },
-  "compact-accordion": {
-    light: `/preview_images/faqs/compact-accordion-light.png`,
-    dark: `/preview_images/faqs/compact-accordion-dark.png`,
-  },
   "faq-chat-accordion": {
-    light: `/preview_images/component-improvement.png`,
-    dark: `/preview_images/component-improvement.png`,
+    light: `/preview_images/faqs/faq-chat-accordion-light.png`,
+    dark: `/preview_images/faqs/faq-chat-accordion-dark.png`,
   },
 };
 
@@ -1391,49 +1402,21 @@ export const heroSectionsPreview: ComponentPreviewMap = {
  * Path: /docs/components/[slug]
  */
 export const featuredSectionPreview: ComponentPreviewMap = {
-  "featured-highlights": {
-    light: `/preview_images/featured-sections/featured-highlights-light.png`,
-    dark: `/preview_images/featured-sections/featured-highlights-dark.png`,
+  "product-feature-hero": {
+    light: `/preview_images/featured-sections/product-feature-hero-light.png`,
+    dark: `/preview_images/featured-sections/product-feature-hero-dark.png`,
   },
-  "feature-grid-section": {
-    light: `/preview_images/featured-sections/feature-grid-section-light.png`,
-    dark: `/preview_images/featured-sections/feature-grid-section-dark.png`,
+  "product-card-hero": {
+    light: `/preview_images/featured-sections/product-card-hero-light.png`,
+    dark: `/preview_images/featured-sections/product-card-hero-dark.png`,
   },
-  "feature-tabs-showcase": {
-    light: `/preview_images/featured-sections/feature-tabs-showcase-light.png`,
-    dark: `/preview_images/featured-sections/feature-tabs-showcase-dark.png`,
+  "split-feature-showcase": {
+    light: `/preview_images/featured-sections/split-feature-showcase-light.png`,
+    dark: `/preview_images/featured-sections/split-feature-showcase-dark.png`,
   },
   "integration-and-stats-section": {
     light: `/preview_images/featured-sections/integration-and-stats-section-light.png`,
     dark: `/preview_images/featured-sections/integration-and-stats-section-dark.png`,
-  },
-  "tech-orbit-showcase": {
-    light: `/preview_images/featured-sections/tech-orbit-showcase-light.png`,
-    dark: `/preview_images/featured-sections/tech-orbit-showcase-dark.png`,
-  },
-  "partner-integrations-grid": {
-    light: `/preview_images/featured-sections/partner-integrations-grid-light.png`,
-    dark: `/preview_images/featured-sections/partner-integrations-grid-dark.png`,
-  },
-  "analytics-dashboard-stats": {
-    light: `/preview_images/featured-sections/analytics-dashboard-stats-light.png`,
-    dark: `/preview_images/featured-sections/analytics-dashboard-stats-dark.png`,
-  },
-  "ruixen-dashboard-stats": {
-    light: `/preview_images/featured-sections/ruixen-dashboard-stats-light.png`,
-    dark: `/preview_images/featured-sections/ruixen-dashboard-stats-dark.png`,
-  },
-  "feature-carousel": {
-    light: `/preview_images/featured-sections/feature-carousel-light.png`,
-    dark: `/preview_images/featured-sections/feature-carousel-dark.png`,
-  },
-  "crm-insights-panel": {
-    light: `/preview_images/featured-sections/crm-insights-panel-light.png`,
-    dark: `/preview_images/featured-sections/crm-insights-panel-dark.png`,
-  },
-  "multi-orbit-semi-circle": {
-    light: `/preview_images/featured-sections/multi-orbit-semi-circle-light.png`,
-    dark: `/preview_images/featured-sections/multi-orbit-semi-circle-dark.png`,
   },
   "rotating-gradient-right": {
     light: `/preview_images/featured-sections/rotating-gradient-right-light.png`,
@@ -1442,18 +1425,6 @@ export const featuredSectionPreview: ComponentPreviewMap = {
   "automated-tasks-panel": {
     light: `/preview_images/featured-sections/automated-tasks-panel-light.png`,
     dark: `/preview_images/featured-sections/automated-tasks-panel-dark.png`,
-  },
-  "case-studies": {
-    light: `/preview_images/featured-sections/case-studies-light.png`,
-    dark: `/preview_images/featured-sections/case-studies-dark.png`,
-  },
-  "core-value-stats": {
-    light: `/preview_images/featured-sections/core-value-stats-light.png`,
-    dark: `/preview_images/featured-sections/core-value-stats-dark.png`,
-  },
-  "feature-slide-showcase": {
-    light: `/preview_images/featured-sections/feature-slide-showcase-light.png`,
-    dark: `/preview_images/featured-sections/feature-slide-showcase-dark.png`,
   },
 };
 
@@ -1574,6 +1545,7 @@ export const allComponentPreviews: ComponentPreviewMap = {
   ...imageToolsPreview,
   ...videoPlayersPreview,
   ...effectsPreview,
+  ...textsPreview,
   ...backgroundsPreview,
   ...tabsPreview,
   ...paginationPreview,
@@ -1703,6 +1675,7 @@ export function getCategoryPreviews(category: string): ComponentPreviewMap {
     "image-tools": imageToolsPreview,
     "video-players": videoPlayersPreview,
     effects: effectsPreview,
+    text: textsPreview,
     backgrounds: backgroundsPreview,
     tabs: tabsPreview,
     pagination: paginationPreview,

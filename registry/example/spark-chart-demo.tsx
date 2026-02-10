@@ -3,8 +3,8 @@
 import SparkChart from "@/registry/ruixenui/spark-chart";
 
 const DATA = [
-  8, 10, 14, 12, 15, 14, 18, 24, 22, 30, 36, 34, 42, 48, 44, 52, 56, 54, 62,
-  58, 64,
+  8, 10, 14, 12, 15, 14, 18, 24, 22, 30, 36, 34, 42, 48, 44, 52, 56, 54, 62, 58,
+  64,
 ];
 
 export default function SparkChartDemo() {

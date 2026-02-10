@@ -152,8 +152,8 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Feature Highlights",
     description:
-      "A responsive feature highlights component with expandable accordion sections and images.",
-    dependencies: ["motion"],
+      "Progressive reveal feature list with sliding accent indicator, grid-template-rows expand, and staggered entrance.",
+    dependencies: [],
     files: [
       {
         path: "registry/ruixenui/feature-highlights.tsx",
@@ -167,8 +167,8 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "FAQ Scroll Accordion",
     description:
-      "A scroll-triggered FAQ accordion component with smooth GSAP animations and auto-expanding items.",
-    dependencies: ["framer-motion", "lucide-react", "gsap", "@gsap/react"],
+      "Scroll-aware FAQ with center-zone detection via IntersectionObserver, auto-cascading open, staggered entrance, and grid-template-rows expand.",
+    dependencies: [],
     files: [
       {
         path: "registry/ruixenui/faq-scroll-accordion.tsx",
@@ -182,8 +182,8 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "FAQ Auto Accordion",
     description:
-      "A scroll-triggered FAQ accordion component with smooth GSAP animations and auto-expanding items.",
-    registryDependencies: ["accordion"],
+      "Spring-driven FAQ with a traveling accent bar (layoutId), spring height animation, blur-deblur text reveal, and layout FLIP repositioning.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/faq-auto-accordion.tsx",
@@ -197,30 +197,13 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "FAQ Chat Accordion",
     description:
-      "A chat-bubble styled FAQ accordion with emoji stickers, plus/minus toggles, and messenger-like answer bubbles.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["accordion"],
+      "Conversational FAQ with right/left message bubbles, typing indicator dots, spring message entrance, and layout FLIP repositioning.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/faq-chat-accordion.tsx",
         type: "registry:ui",
         target: "components/ruixen/faq-chat-accordion.tsx",
-      },
-    ],
-  },
-  {
-    name: "compact-accordion",
-    type: "registry:ui",
-    title: "Compact Accordion",
-    description:
-      "A clean and minimal accordion component with icons and smooth animations for organizing content in collapsible sections.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["accordion"],
-    files: [
-      {
-        path: "registry/ruixenui/compact-accordion.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/compact-accordion.tsx",
       },
     ],
   },
@@ -300,6 +283,38 @@ export const ui: Registry["items"] = [
         path: "registry/ruixenui/avatar-hover-card.tsx",
         type: "registry:ui",
         target: "components/ruixen/avatar-hover-card.tsx",
+      },
+    ],
+  },
+  {
+    name: "variable-text",
+    type: "registry:ui",
+    title: "Variable Text",
+    description:
+      "Cursor acts as a focal plane — characters near the pointer sharpen (heavier weight, slight lift, full opacity) while distant characters soften. Depth-of-field for typography.",
+    dependencies: ["motion"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "registry/ruixenui/variable-text.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/variable-text.tsx",
+      },
+    ],
+  },
+  {
+    name: "scramble-text",
+    type: "registry:ui",
+    title: "Scramble Text",
+    description:
+      "Hover triggers a decode sequence — characters dissolve into random glyphs then resolve in a directional wave that follows your entry point, each locking in with a spring pop.",
+    dependencies: ["motion"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "registry/ruixenui/scramble-text.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/scramble-text.tsx",
       },
     ],
   },
@@ -400,44 +415,47 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "featured-highlights",
+    name: "split-feature-showcase",
     type: "registry:ui",
-    title: "Featured Highlights",
+    title: "Split Feature Showcase",
     description:
-      "Interactive feature showcase with image preview and hover effects",
-    files: [
-      {
-        path: "registry/ruixenui/featured-highlights.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/featured-highlights.tsx",
-      },
-    ],
-  },
-  {
-    name: "feature-grid-section",
-    type: "registry:ui",
-    title: "Feature Grid Section",
-    description: "Grid layout showcasing features with icons and descriptions",
-    files: [
-      {
-        path: "registry/ruixenui/feature-grid-section.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/feature-grid-section.tsx",
-      },
-    ],
-  },
-  {
-    name: "feature-tabs-showcase",
-    type: "registry:ui",
-    title: "Feature Tabs Showcase",
-    description:
-      "Interactive tabs with animated background and feature showcase",
+      "Scroll-triggered bento grid with spring-animated message preview and integration cards with ambient gradient glow.",
     dependencies: ["motion"],
     files: [
       {
-        path: "registry/ruixenui/feature-tabs-showcase.tsx",
+        path: "registry/ruixenui/split-feature-showcase.tsx",
         type: "registry:ui",
-        target: "components/ruixen/feature-tabs-showcase.tsx",
+        target: "components/ruixen/split-feature-showcase.tsx",
+      },
+    ],
+  },
+  {
+    name: "product-feature-hero",
+    type: "registry:ui",
+    title: "Product Feature Hero",
+    description:
+      "Two-column hero with decorative gradient card and a four-column feature highlights grid.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/ruixenui/product-feature-hero.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/product-feature-hero.tsx",
+      },
+    ],
+  },
+  {
+    name: "product-card-hero",
+    type: "registry:ui",
+    title: "Product Card Hero",
+    description:
+      "Two-column hero with floating account menu card, pricing bar, and a four-column feature grid with icons.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/ruixenui/product-card-hero.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/product-card-hero.tsx",
       },
     ],
   },
@@ -446,118 +464,13 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Integration And Stats Section",
     description:
-      "Integration showcase with testimonials, stats, and card stack",
-    dependencies: ["react-icons"],
+      "Three-column feature cards with chat, analytics, and polling illustrations",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/integration-and-stats-section.tsx",
         type: "registry:ui",
         target: "components/ruixen/integration-and-stats-section.tsx",
-      },
-    ],
-  },
-  {
-    name: "tech-orbit-showcase",
-    type: "registry:ui",
-    title: "Tech Orbit Showcase",
-    description:
-      "Animated orbital showcase with rotating tech icons and call-to-action",
-    dependencies: ["react-icons"],
-    files: [
-      {
-        path: "registry/ruixenui/tech-orbit-showcase.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/tech-orbit-showcase.tsx",
-      },
-    ],
-    css: {
-      "@keyframes spin": {
-        from: { transform: "rotate(0deg)" },
-        to: { transform: "rotate(360deg)" },
-      },
-    },
-  },
-  {
-    name: "partner-integrations-grid",
-    type: "registry:ui",
-    title: "Partner Integrations Grid",
-    description: "Grid showcase of partner integrations with octagonal design",
-    files: [
-      {
-        path: "registry/ruixenui/partner-integrations-grid.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/partner-integrations-grid.tsx",
-      },
-    ],
-  },
-  {
-    name: "analytics-dashboard-stats",
-    type: "registry:ui",
-    title: "Analytics Dashboard Stats",
-    description:
-      "Analytics dashboard with statistics and area chart visualization",
-    dependencies: ["recharts"],
-    files: [
-      {
-        path: "registry/ruixenui/analytics-dashboard-stats.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/analytics-dashboard-stats.tsx",
-      },
-    ],
-  },
-  {
-    name: "ruixen-dashboard-stats",
-    type: "registry:ui",
-    title: "Ruixen Dashboard Stats",
-    description:
-      "Dashboard stats with animated counter and chart visualization",
-    dependencies: ["recharts", "react-countup"],
-    files: [
-      {
-        path: "registry/ruixenui/ruixen-dashboard-stats.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/ruixen-dashboard-stats.tsx",
-      },
-    ],
-  },
-  {
-    name: "feature-carousel",
-    type: "registry:ui",
-    title: "Feature Carousel",
-    description:
-      "Interactive carousel showcasing dashboard features with auto-rotation",
-    dependencies: ["gsap"],
-    files: [
-      {
-        path: "registry/ruixenui/feature-carousel.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/feature-carousel.tsx",
-      },
-    ],
-  },
-  {
-    name: "crm-insights-panel",
-    type: "registry:ui",
-    title: "CRM Insights Panel",
-    description: "CRM dashboard with video preview and feature showcase grid",
-    files: [
-      {
-        path: "registry/ruixenui/crm-insights-panel.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/crm-insights-panel.tsx",
-      },
-    ],
-  },
-  {
-    name: "multi-orbit-semi-circle",
-    type: "registry:ui",
-    title: "Multi Orbit Semi Circle",
-    description: "Multi-layered semi-circular orbit animation with tech icons",
-    files: [
-      {
-        path: "registry/ruixenui/multi-orbit-semi-circle.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/multi-orbit-semi-circle.tsx",
       },
     ],
   },
@@ -595,25 +508,12 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "case-studies",
-    type: "registry:ui",
-    title: "Case Studies",
-    description:
-      "Customer case studies with metrics, testimonials, and success stories",
-    dependencies: ["react-countup"],
-    files: [
-      {
-        path: "registry/ruixenui/case-studies.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/case-studies.tsx",
-      },
-    ],
-  },
-  {
     name: "trusted-clients-showcase",
     type: "registry:ui",
     title: "Trusted Clients Showcase",
-    description: "Showcase trusted clients with logos in a clean grid layout",
+    description:
+      "Spotlight logo grid with staggered blur-up entrance and collective dim hover.",
+    dependencies: [],
     files: [
       {
         path: "registry/ruixenui/trusted-clients-showcase.tsx",
@@ -627,8 +527,8 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Client Carousel Showcase",
     description:
-      "Interactive carousel showcasing client logos with navigation controls",
-    dependencies: ["embla-carousel-react"],
+      "Infinite drift marquee with gradient edge masks — logos scroll continuously, pause on hover, and lift with exponential deceleration when focused.",
+    dependencies: [],
     files: [
       {
         path: "registry/ruixenui/client-carousel-showcase.tsx",
@@ -642,7 +542,8 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Auto Scrolling Client Carousel",
     description:
-      "Automatically scrolling carousel showcasing client logos with infinite loop",
+      "Dual ribbon with grayscale bloom — two rows scroll in opposite directions, monochrome at rest, color blooms on hover with spring-bounce lift.",
+    dependencies: [],
     files: [
       {
         path: "registry/ruixenui/auto-scrolling-client-carousel.tsx",
@@ -650,12 +551,6 @@ export const ui: Registry["items"] = [
         target: "components/ruixen/auto-scrolling-client-carousel.tsx",
       },
     ],
-    css: {
-      "@keyframes scroll": {
-        from: { transform: "translateX(0)" },
-        to: { transform: "translateX(calc(-100% - var(--gap)))" },
-      },
-    },
   },
   {
     name: "footer-pro",
@@ -2951,9 +2846,9 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Breadcrumb Dropdown",
     description:
-      "Breadcrumb navigation that collapses middle items into a dropdown menu.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["button", "dropdown-menu"],
+      "Inline-expanding collapsible breadcrumb with staggered path reveal.",
+    dependencies: [],
+    registryDependencies: [],
     files: [
       {
         path: "registry/ruixenui/breadcrumb-dropdown.tsx",
@@ -2967,8 +2862,8 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Breadcrumb Boxed",
     description:
-      "Breadcrumb navigation wrapped in a styled container with multiple variants.",
-    dependencies: ["lucide-react"],
+      "Segmented breadcrumb with relief hover and underline wipe animation.",
+    dependencies: [],
     files: [
       {
         path: "registry/ruixenui/breadcrumb-boxed.tsx",
@@ -4157,21 +4052,6 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "core-value-stats",
-    type: "registry:ui",
-    title: "Core Value Stats",
-    description:
-      "A responsive stats section component showcasing core values with optional images, animated cards, and customizable content.",
-    dependencies: ["motion"],
-    files: [
-      {
-        path: "registry/ruixenui/core-value-stats.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/core-value-stats.tsx",
-      },
-    ],
-  },
-  {
     name: "hero-section-glass-web",
     type: "registry:ui",
     title: "Hero Section Glass Web",
@@ -4251,21 +4131,6 @@ export const ui: Registry["items"] = [
         path: "registry/ruixenui/precision-card.tsx",
         type: "registry:ui",
         target: "components/ruixen/precision-card.tsx",
-      },
-    ],
-  },
-  {
-    name: "feature-slide-showcase",
-    type: "registry:ui",
-    title: "Feature Slide Showcase",
-    description:
-      "A tabbed feature showcase component with image previews and detailed descriptions for highlighting product features.",
-    dependencies: ["motion"],
-    files: [
-      {
-        path: "registry/ruixenui/feature-slide-showcase.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/feature-slide-showcase.tsx",
       },
     ],
   },

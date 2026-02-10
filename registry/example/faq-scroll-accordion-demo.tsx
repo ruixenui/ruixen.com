@@ -1,33 +1,43 @@
 "use client";
 
-import FAQScrollAccordion from "../ruixenui/faq-scroll-accordion";
+import { FAQScrollAccordion } from "@/registry/ruixenui/faq-scroll-accordion";
+import type { FAQItem } from "@/registry/ruixenui/faq-scroll-accordion";
 
-const customFAQ = [
+const items: FAQItem[] = [
   {
-    id: 1,
-    question: "What is Next.js?",
+    question: "What is Ruixen UI?",
     answer:
-      "Next.js is a React framework for building fast and scalable web applications.",
+      "A curated collection of beautifully designed, production-ready components built with React and Tailwind CSS. Every component is crafted with animation-first thinking and zero unnecessary dependencies.",
   },
   {
-    id: 2,
-    question: "Does it support TypeScript?",
-    answer: "Yes, Next.js has built-in support for TypeScript.",
+    question: "How do I install components?",
+    answer:
+      "Use the shadcn CLI to add any component directly into your project. Each component lives in your codebase — no node_modules, full ownership, complete customization.",
   },
   {
-    id: 3,
-    question: "Can I deploy Next.js apps easily?",
+    question: "Is it open-source?",
     answer:
-      "Yes, you can deploy on Vercel or any Node.js-compatible hosting platform.",
+      "Yes, fully open-source under the MIT license. Use it in personal projects, commercial products, client work — no restrictions.",
+  },
+  {
+    question: "Do components work with dark mode?",
+    answer:
+      "Every component uses CSS custom properties and theme tokens. They adapt to light and dark modes automatically with no extra configuration.",
+  },
+  {
+    question: "Can I customize the animations?",
+    answer:
+      "Absolutely. All transitions use standard CSS properties — timing, easing, and duration are easy to adjust. No animation library lock-in.",
   },
 ];
 
 export default function FAQScrollAccordionDemo() {
   return (
-    <main className="min-h-[50vh] dark:bg-black text-gray-900 dark:text-white p-4">
-      <section className="py-20">
-        <FAQScrollAccordion />
-      </section>
-    </main>
+    <FAQScrollAccordion
+      items={items}
+      title="Frequently asked questions"
+      subtitle="Everything you need to know."
+      className="py-0 md:py-0"
+    />
   );
 }

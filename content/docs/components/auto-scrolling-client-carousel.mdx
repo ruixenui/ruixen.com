@@ -1,7 +1,7 @@
 ---
 title: Auto Scrolling Client Carousel
 date: 2024-08-24
-description: Automatically scrolling carousel showcasing client logos with infinite loop
+description: Dual ribbon with grayscale bloom — two rows of logos scroll in opposite directions at offset speeds, monochrome at rest, color blooms on hover with spring-bounce lift.
 author: ruixen
 published: true
 ---
@@ -34,45 +34,66 @@ npx shadcn@latest add "https://ruixen.com/r/auto-scrolling-client-carousel"
 
 <Step>Update the import paths to match your project setup.</Step>
 
-<Step>Add the required CSS animations</Step>
-
-```css title="app/globals.css" {1-8}
-@keyframes scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(calc(-100% - var(--gap)));
-  }
-}
-```
-
 </Steps>
 
 </TabsContent>
 
 </Tabs>
 
+## Usage
+
+```tsx
+import AutoScrollingClientCarousel from "@/components/ruixen/auto-scrolling-client-carousel";
+
+// Text-based logos (default)
+<AutoScrollingClientCarousel />;
+
+// With custom logo elements
+const clients = [
+  {
+    name: "GitHub",
+    logo: <img src="/github.svg" alt="" className="h-6 w-auto" />,
+  },
+  {
+    name: "Vercel",
+    logo: <img src="/vercel.svg" alt="" className="h-5 w-auto" />,
+  },
+  { name: "Linear" },
+  { name: "Stripe" },
+];
+
+<AutoScrollingClientCarousel
+  clients={clients}
+  title="Backed by the best"
+  speed={25}
+/>;
+```
+
 ## Props
 
-| Prop        | Type       | Default                         | Description                         |
-| ----------- | ---------- | ------------------------------- | ----------------------------------- |
-| `title`     | `string`   | `"Trusted by industry leaders"` | Main heading text                   |
-| `clients`   | `Client[]` | `defaultClients`                | Array of client objects             |
-| `speed`     | `number`   | `20`                            | Animation speed in seconds          |
-| `direction` | `string`   | `"left"`                        | Scroll direction: "left" or "right" |
+| Prop        | Type                          | Default                      | Description                    |
+| ----------- | ----------------------------- | ---------------------------- | ------------------------------ |
+| `title`     | `string`                      | `"Trusted by leading teams"` | Heading text above the ribbons |
+| `clients`   | `AutoScrollingCarouselItem[]` | 8 default company names      | Array of client items          |
+| `speed`     | `number`                      | `35`                         | Seconds per full scroll cycle  |
+| `className` | `string`                      | -                            | Additional CSS classes         |
 
-## Client Interface
+### AutoScrollingCarouselItem
 
-| Prop   | Type     | Description           |
-| ------ | -------- | --------------------- |
-| `name` | `string` | Client company name   |
-| `logo` | `string` | Client logo image URL |
+| Property | Type              | Description                                        |
+| -------- | ----------------- | -------------------------------------------------- |
+| `name`   | `string`          | Client name (rendered as text if no logo provided) |
+| `logo`   | `React.ReactNode` | Optional custom logo element (SVG, img, component) |
+| `href`   | `string`          | Optional link URL                                  |
 
 ## Features
 
-- Infinite auto-scrolling animation
-- Customizable scroll speed and direction
-- Responsive design with mobile optimization
-- Pause on hover functionality
-- Seamless loop without gaps
+- **Dual Ribbon**: Two rows scrolling in opposite directions — row 1 left, row 2 right. The second row uses the client array reversed so logos never align vertically
+- **Speed Polyrhythm**: Row 2 runs at 1.15x the speed of row 1. The slight offset creates a phasing rhythm — logos drift in and out of vertical alignment over time
+- **Grayscale Bloom**: No opacity dimming — logos are always at full opacity. The "muted" state uses `filter: grayscale(1)` (monochrome). On hover, color blooms back with `grayscale(0)` via a smooth 400ms ease. Colored logos get a satisfying desaturation-to-color reveal
+- **Spring Scale Lift**: Hovered logos scale to `1.06` with `translateY(-2px)` using `cubic-bezier(0.34, 1.56, 0.64, 1)` — a spring with slight overshoot, distinct from the other showcases' curves
+- **Always Moving**: Unlike client-carousel-showcase (which pauses on hover), these ribbons never stop. The interaction is purely visual — grayscale and scale, not motion control
+- **Gradient Edge Masks**: Both rows fade to transparent at the 8% and 92% marks via `mask-image`
+- **Text-Based Defaults**: Default clients render as clean semibold text — pass custom `logo` ReactNodes for real brand logos
+- **Zero Dependencies**: No embla-carousel, no framer-motion, no next/image — pure CSS animation with inline keyframes
+- **Accessibility**: Semantic section, `aria-label` on linked logos, keyboard-focusable
