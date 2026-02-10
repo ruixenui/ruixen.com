@@ -1,6 +1,6 @@
 "use client";
 
-import BreadcrumbDropdown from "@/registry/ruixenui/breadcrumb-dropdown";
+import { BreadcrumbDropdown } from "@/registry/ruixenui/breadcrumb-dropdown";
 
 const deepPath = [
   { label: "Home", href: "#" },

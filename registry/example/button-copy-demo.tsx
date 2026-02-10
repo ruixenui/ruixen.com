@@ -1,6 +1,6 @@
 "use client";
 
-import ButtonCopy from "@/registry/ruixenui/button-copy";
+import { ButtonCopy } from "@/registry/ruixenui/button-copy";
 
 export default function ButtonCopyDemo() {
   return (

@@ -36,7 +36,10 @@ const footerSections = [
         href: "/docs/components/animated-theme-toggler",
       },
       { label: "Spark Chart", href: "/docs/components/spark-chart" },
-      { label: "Avatar Hover Card", href: "/docs/components/avatar-hover-card" },
+      {
+        label: "Avatar Hover Card",
+        href: "/docs/components/avatar-hover-card",
+      },
       {
         label: "Banner Announcement",
         href: "/docs/components/banner-announcement",

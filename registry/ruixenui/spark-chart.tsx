@@ -85,7 +85,7 @@ function interpolate(
 
 /* ─── Component ────────────────────────────────────────── */
 
-export default function SparkChart({
+export function SparkChart({
   data,
   color = "hsl(217, 91%, 60%)",
   height = 160,
@@ -263,5 +263,3 @@ export default function SparkChart({
     </div>
   );
 }
-
-export { SparkChart };

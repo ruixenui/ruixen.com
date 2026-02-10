@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import ButtonToggleGroup from "@/registry/ruixenui/button-toggle-group";
+import { ButtonToggleGroup } from "@/registry/ruixenui/button-toggle-group";
 import { AlignLeft, AlignCenter, AlignRight } from "lucide-react";
 
 export default function ButtonToggleGroupDemo() {

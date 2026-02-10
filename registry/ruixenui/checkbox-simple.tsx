@@ -15,7 +15,7 @@ interface CheckboxSimpleProps {
   className?: string;
 }
 
-export default function CheckboxSimple({
+export function CheckboxSimple({
   checked,
   defaultChecked = false,
   onCheckedChange,
@@ -84,5 +84,3 @@ export default function CheckboxSimple({
     </label>
   );
 }
-
-export { CheckboxSimple, type CheckboxSimpleProps };

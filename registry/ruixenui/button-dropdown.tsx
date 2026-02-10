@@ -10,7 +10,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-interface DropdownItem {
+export interface DropdownItem {
   label: string;
   icon?: React.ReactNode;
   onClick?: () => void;
@@ -18,7 +18,7 @@ interface DropdownItem {
   destructive?: boolean;
 }
 
-interface ButtonDropdownProps {
+export interface ButtonDropdownProps {
   label: string;
   items: DropdownItem[];
   variant?: "default" | "outline" | "secondary";
@@ -41,7 +41,7 @@ const sizeStyles = {
   lg: "h-10 px-5 text-base",
 };
 
-export default function ButtonDropdown({
+export function ButtonDropdown({
   label,
   items,
   variant = "default",
@@ -83,5 +83,3 @@ export default function ButtonDropdown({
     </DropdownMenu>
   );
 }
-
-export { ButtonDropdown, type ButtonDropdownProps, type DropdownItem };

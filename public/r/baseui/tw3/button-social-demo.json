@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/button-social-demo.tsx",
-      "content": "\"use client\";\n\nimport ButtonSocial from \"@/registry/ruixenui/button-social\";\n\nexport default function ButtonSocialDemo() {\n  return (\n    <div className=\"flex flex-wrap items-center justify-center gap-4 p-4\">\n      <ButtonSocial provider=\"google\" />\n      <ButtonSocial provider=\"github\" />\n      <ButtonSocial provider=\"twitter\" />\n      <ButtonSocial provider=\"facebook\" />\n      <ButtonSocial provider=\"apple\" />\n    </div>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport { ButtonSocial } from \"@/registry/ruixenui/button-social\";\n\nexport default function ButtonSocialDemo() {\n  return (\n    <div className=\"flex flex-wrap items-center justify-center gap-4 p-4\">\n      <ButtonSocial provider=\"google\" />\n      <ButtonSocial provider=\"github\" />\n      <ButtonSocial provider=\"twitter\" />\n      <ButtonSocial provider=\"facebook\" />\n      <ButtonSocial provider=\"apple\" />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/button-social-demo.tsx"
     }

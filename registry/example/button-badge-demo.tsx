@@ -1,6 +1,6 @@
 "use client";
 
-import ButtonBadge from "@/registry/ruixenui/button-badge";
+import { ButtonBadge } from "@/registry/ruixenui/button-badge";
 import { Bell, Mail, ShoppingCart } from "lucide-react";
 
 export default function ButtonBadgeDemo() {

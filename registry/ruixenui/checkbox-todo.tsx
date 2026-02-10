@@ -15,7 +15,7 @@ interface CheckboxTodoProps {
   className?: string;
 }
 
-export default function CheckboxTodo({
+export function CheckboxTodo({
   checked,
   defaultChecked = false,
   onCheckedChange,
@@ -95,5 +95,3 @@ export default function CheckboxTodo({
     </label>
   );
 }
-
-export { CheckboxTodo, type CheckboxTodoProps };

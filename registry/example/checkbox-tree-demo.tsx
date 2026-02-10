@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import CheckboxTree from "@/registry/ruixenui/checkbox-tree";
+import { CheckboxTree } from "@/registry/ruixenui/checkbox-tree";
 
 export default function CheckboxTreeDemo() {
   const [selected, setSelected] = React.useState<string[]>([

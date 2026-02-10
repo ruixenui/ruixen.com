@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import BannerCookie from "@/registry/ruixenui/banner-cookie";
+import { BannerCookie } from "@/registry/ruixenui/banner-cookie";
 import { RotateCcw } from "lucide-react";
 
 export default function BannerCookieDemo() {

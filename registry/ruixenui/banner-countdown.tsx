@@ -10,7 +10,7 @@ import { ArrowRight, X } from "lucide-react";
    1→0 separately from the ones-place rolling 0→9.
    ═══════════════════════════════════════════════════════════ */
 
-interface BannerCountdownProps {
+export interface BannerCountdownProps {
   title: string;
   endDate: Date;
   action?: { label: string; href: string };
@@ -77,7 +77,7 @@ function Pair({ value }: { value: number }) {
 }
 
 /* ── main banner ── */
-export default function BannerCountdown({
+export function BannerCountdown({
   title,
   endDate,
   action,
@@ -200,5 +200,3 @@ export default function BannerCountdown({
     </div>
   );
 }
-
-export { BannerCountdown, type BannerCountdownProps };

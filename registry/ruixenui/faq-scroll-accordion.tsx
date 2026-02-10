@@ -97,7 +97,7 @@ const defaultItems: FAQItem[] = [
   },
 ];
 
-export default function FAQScrollAccordion({
+export function FAQScrollAccordion({
   title = "Frequently asked questions",
   subtitle = "Everything you need to know.",
   items = defaultItems,
@@ -303,5 +303,3 @@ export default function FAQScrollAccordion({
     </section>
   );
 }
-
-export { FAQScrollAccordion, type FAQScrollAccordionProps, type FAQItem };

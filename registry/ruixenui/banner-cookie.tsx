@@ -3,14 +3,14 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
-interface BannerCookieProps {
+export interface BannerCookieProps {
   description?: string;
   onAccept?: () => void;
   onDecline?: () => void;
   className?: string;
 }
 
-export default function BannerCookie({
+export function BannerCookie({
   description = "This site uses cookies to improve your experience.",
   onAccept,
   onDecline,
@@ -72,5 +72,3 @@ export default function BannerCookie({
     </div>
   );
 }
-
-export { BannerCookie, type BannerCookieProps };

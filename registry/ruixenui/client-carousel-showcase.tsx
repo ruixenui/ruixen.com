@@ -67,7 +67,7 @@ const defaultClients: ClientCarouselItem[] = [
   { name: "Pitch" },
 ];
 
-export default function ClientCarouselShowcase({
+export function ClientCarouselShowcase({
   title = "Trusted by leading teams",
   clients = defaultClients,
   speed = 30,
@@ -222,9 +222,3 @@ export default function ClientCarouselShowcase({
     </section>
   );
 }
-
-export {
-  ClientCarouselShowcase,
-  type ClientCarouselShowcaseProps,
-  type ClientCarouselItem,
-};

@@ -1,6 +1,6 @@
 "use client";
 
-import ButtonRounded from "@/registry/ruixenui/button-rounded";
+import { ButtonRounded } from "@/registry/ruixenui/button-rounded";
 import { ArrowRight, Plus, Heart } from "lucide-react";
 
 export default function ButtonRoundedDemo() {

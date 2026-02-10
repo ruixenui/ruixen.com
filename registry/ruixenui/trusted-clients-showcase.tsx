@@ -42,7 +42,7 @@ const defaultClients: LogoItem[] = [
   { name: "Pitch" },
 ];
 
-export default function TrustedClientsShowcase({
+export function TrustedClientsShowcase({
   title = "Trusted by industry leaders",
   clients = defaultClients,
   className,
@@ -156,9 +156,3 @@ export default function TrustedClientsShowcase({
     </section>
   );
 }
-
-export {
-  TrustedClientsShowcase,
-  type TrustedClientsShowcaseProps,
-  type LogoItem,
-};

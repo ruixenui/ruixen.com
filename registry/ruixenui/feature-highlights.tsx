@@ -81,7 +81,7 @@ const defaultFeatures: FeatureItem[] = [
   },
 ];
 
-export default function FeatureHighlights({
+export function FeatureHighlights({
   title = "Why we're different",
   features = defaultFeatures,
   autoPlayInterval = 5,
@@ -274,5 +274,3 @@ export default function FeatureHighlights({
     </section>
   );
 }
-
-export { FeatureHighlights, type FeatureHighlightsProps, type FeatureItem };

@@ -58,7 +58,7 @@ const DEFAULT_FEATURES = [
   },
 ];
 
-export default function ProductFeatureHero({
+export function ProductFeatureHero({
   title = "Built for how you think",
   description = "An intelligent editor that understands your intent. Completions, refactors, and explanations surface exactly when you need them.",
   secondaryText,
@@ -216,5 +216,3 @@ export default function ProductFeatureHero({
     </section>
   );
 }
-
-export { ProductFeatureHero };

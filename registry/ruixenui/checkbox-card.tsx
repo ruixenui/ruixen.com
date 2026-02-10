@@ -16,7 +16,7 @@ interface CheckboxCardProps {
   className?: string;
 }
 
-export default function CheckboxCard({
+export function CheckboxCard({
   checked,
   defaultChecked = false,
   onCheckedChange,
@@ -91,5 +91,3 @@ export default function CheckboxCard({
     </label>
   );
 }
-
-export { CheckboxCard, type CheckboxCardProps };

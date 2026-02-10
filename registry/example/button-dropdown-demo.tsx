@@ -1,6 +1,6 @@
 "use client";
 
-import ButtonDropdown from "@/registry/ruixenui/button-dropdown";
+import { ButtonDropdown } from "@/registry/ruixenui/button-dropdown";
 
 export default function ButtonDropdownDemo() {
   const items = [

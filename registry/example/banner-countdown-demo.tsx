@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo, useCallback } from "react";
-import BannerCountdown from "@/registry/ruixenui/banner-countdown";
+import { BannerCountdown } from "@/registry/ruixenui/banner-countdown";
 import { RotateCcw } from "lucide-react";
 
 export default function BannerCountdownDemo() {

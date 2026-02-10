@@ -29,12 +29,12 @@ import { cn } from "@/lib/utils";
    chevrons (separator/icon) and slashes (dropdown).
    ═══════════════════════════════════════════════════════════ */
 
-interface BreadcrumbBoxedItem {
+export interface BreadcrumbBoxedItem {
   label: string;
   href?: string;
 }
 
-interface BreadcrumbBoxedProps {
+export interface BreadcrumbBoxedProps {
   items: BreadcrumbBoxedItem[];
   rounded?: "sm" | "md" | "lg" | "full";
   className?: string;
@@ -54,7 +54,7 @@ const segmentRadius: Record<string, string> = {
   full: "rounded-full",
 };
 
-export default function BreadcrumbBoxed({
+export function BreadcrumbBoxed({
   items,
   rounded = "lg",
   className,
@@ -124,5 +124,3 @@ export default function BreadcrumbBoxed({
     </nav>
   );
 }
-
-export { BreadcrumbBoxed, type BreadcrumbBoxedProps, type BreadcrumbBoxedItem };

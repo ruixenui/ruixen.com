@@ -3,9 +3,14 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
-type SocialProvider = "google" | "github" | "twitter" | "facebook" | "apple";
+export type SocialProvider =
+  | "google"
+  | "github"
+  | "twitter"
+  | "facebook"
+  | "apple";
 
-interface ButtonSocialProps
+export interface ButtonSocialProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   provider: SocialProvider;
   showLabel?: boolean;
@@ -80,7 +85,7 @@ const providerConfig: Record<
   },
 };
 
-export default function ButtonSocial({
+export function ButtonSocial({
   provider,
   showLabel = true,
   className,
@@ -103,5 +108,3 @@ export default function ButtonSocial({
     </button>
   );
 }
-
-export { ButtonSocial, type ButtonSocialProps, type SocialProvider };

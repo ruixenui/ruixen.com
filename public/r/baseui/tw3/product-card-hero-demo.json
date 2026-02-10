@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/product-card-hero-demo.tsx",
-      "content": "\"use client\";\n\nimport ProductCardHero from \"@/registry/ruixenui/product-card-hero\";\n\nexport default function ProductCardHeroDemo() {\n  return <ProductCardHero />;\n}\n",
+      "content": "\"use client\";\n\nimport { ProductCardHero } from \"@/registry/ruixenui/product-card-hero\";\n\nexport default function ProductCardHeroDemo() {\n  return <ProductCardHero />;\n}\n",
       "type": "registry:example",
       "target": "components/product-card-hero-demo.tsx"
     }

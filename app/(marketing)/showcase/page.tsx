@@ -48,8 +48,68 @@ const showcaseItems: ShowcaseItem[] = [
     imagePath: "tabs/pill-morph-tabs",
     href: "/docs/components/pill-morph-tabs",
   },
+  {
+    id: "feature-carousel",
+    title: "Feature Carousel",
+    imagePath: "featured-sections/feature-carousel",
+    href: "/docs/components/feature-carousel",
+  },
+  {
+    id: "pricing-tiers",
+    title: "Pricing Tiers",
+    imagePath: "pricing-sections/pricing-tiers",
+    href: "/docs/components/pricing-tiers",
+  },
+  {
+    id: "card-stack",
+    title: "Card Stack",
+    imagePath: "cards/card-stack",
+    href: "/docs/components/card-stack",
+  },
+  {
+    id: "analytics-dashboard-stats",
+    title: "Analytics Dashboard Stats",
+    imagePath: "featured-sections/analytics-dashboard-stats",
+    href: "/docs/components/analytics-dashboard-stats",
+  },
+  {
+    id: "pill-morph-tabs",
+    title: "Pill Morph Tabs",
+    imagePath: "tabs/pill-morph-tabs",
+    href: "/docs/components/pill-morph-tabs",
+  },
 
   // Hero Sections
+  {
+    id: "aurora-hero-section",
+    title: "Aurora Hero Section",
+    imagePath: "hero-sections/aurora-hero-section",
+    href: "/docs/components/aurora-hero-section",
+  },
+  {
+    id: "spectrum-hero-section",
+    title: "Spectrum Hero Section",
+    imagePath: "hero-sections/spectrum-hero-section",
+    href: "/docs/components/spectrum-hero-section",
+  },
+  {
+    id: "gradient-hero-showcase",
+    title: "Gradient Hero Showcase",
+    imagePath: "hero-sections/gradient-hero-showcase",
+    href: "/docs/components/gradient-hero-showcase",
+  },
+  {
+    id: "card-carousel-hero",
+    title: "Card Carousel Hero",
+    imagePath: "hero-sections/card-carousel-hero",
+    href: "/docs/components/card-carousel-hero",
+  },
+  {
+    id: "hero-section-glass-web",
+    title: "Hero Glass Web",
+    imagePath: "hero-sections/hero-section-glass-web",
+    href: "/docs/components/hero-section-glass-web",
+  },
   {
     id: "aurora-hero-section",
     title: "Aurora Hero Section",
@@ -102,8 +162,50 @@ const showcaseItems: ShowcaseItem[] = [
     imagePath: "backgrounds/mouse-spark",
     href: "/docs/components/mouse-spark",
   },
+  {
+    id: "particle-text-dots",
+    title: "Particle Text Dots",
+    imagePath: "backgrounds/particle-text-dots",
+    href: "/docs/components/particle-text-dots",
+  },
+  {
+    id: "mouse-spark",
+    title: "Mouse Spark",
+    imagePath: "backgrounds/mouse-spark",
+    href: "/docs/components/mouse-spark",
+  },
 
   // Event Calendars
+  {
+    id: "calendar-scheduler",
+    title: "Calendar Scheduler",
+    imagePath: "event-calendars/calendar-scheduler",
+    href: "/docs/components/calendar-scheduler",
+  },
+  {
+    id: "calendar-lume",
+    title: "Calendar Lume",
+    imagePath: "event-calendars/calendar-lume",
+    href: "/docs/components/calendar-lume",
+  },
+  {
+    id: "radial-week-view",
+    title: "Radial Week View",
+    imagePath: "event-calendars/radial-week-view",
+    href: "/docs/components/radial-week-view",
+  },
+  {
+    id: "event-aquarium-calendar",
+    title: "Event Aquarium Calendar",
+    imagePath: "event-calendars/event-aquarium-calendar",
+    href: "/docs/components/event-aquarium-calendar",
+  },
+  {
+    id: "heatmap-calendar",
+    title: "Heatmap Calendar",
+    imagePath: "event-calendars/heatmap-calendar",
+    href: "/docs/components/heatmap-calendar",
+  },
   {
     id: "calendar-scheduler",
     title: "Calendar Scheduler",
@@ -154,8 +256,38 @@ const showcaseItems: ShowcaseItem[] = [
     imagePath: "cards/idea-generator-card",
     href: "/docs/components/idea-generator-card",
   },
+  {
+    id: "product-bounce-card",
+    title: "Product Bounce Card",
+    imagePath: "cards/product-bounce-card",
+    href: "/docs/components/product-bounce-card",
+  },
+  {
+    id: "portfolio-card",
+    title: "Portfolio Card",
+    imagePath: "cards/portfolio-card",
+    href: "/docs/components/portfolio-card",
+  },
+  {
+    id: "idea-generator-card",
+    title: "Idea Generator Card",
+    imagePath: "cards/idea-generator-card",
+    href: "/docs/components/idea-generator-card",
+  },
 
   // Featured Sections
+  {
+    id: "tech-orbit-showcase",
+    title: "Tech Orbit Showcase",
+    imagePath: "featured-sections/tech-orbit-showcase",
+    href: "/docs/components/tech-orbit-showcase",
+  },
+  {
+    id: "multi-orbit-semi-circle",
+    title: "Multi Orbit Semi Circle",
+    imagePath: "featured-sections/multi-orbit-semi-circle",
+    href: "/docs/components/multi-orbit-semi-circle",
+  },
   {
     id: "tech-orbit-showcase",
     title: "Tech Orbit Showcase",
@@ -214,8 +346,50 @@ const showcaseItems: ShowcaseItem[] = [
     imagePath: "inputs/action-hub-input",
     href: "/docs/components/action-hub-input",
   },
+  {
+    id: "ai-chat-input",
+    title: "AI Chat Input",
+    imagePath: "ai-chat-inputs/ai-chat-input",
+    href: "/docs/components/ai-chat-input",
+  },
+  {
+    id: "password-strength-input",
+    title: "Password Strength Input",
+    imagePath: "inputs/password-strength-input",
+    href: "/docs/components/password-strength-input",
+  },
+  {
+    id: "color-picker-input",
+    title: "Color Picker Input",
+    imagePath: "inputs/color-picker-input",
+    href: "/docs/components/color-picker-input",
+  },
+  {
+    id: "action-hub-input",
+    title: "Action Hub Input",
+    imagePath: "inputs/action-hub-input",
+    href: "/docs/components/action-hub-input",
+  },
 
   // Tables
+  {
+    id: "flexi-filter-table",
+    title: "Flexi Filter Table",
+    imagePath: "tables/flexi-filter-table",
+    href: "/docs/components/flexi-filter-table",
+  },
+  {
+    id: "inline-analytics-table",
+    title: "Inline Analytics Table",
+    imagePath: "tables/inline-analytics-table",
+    href: "/docs/components/inline-analytics-table",
+  },
+  {
+    id: "comparison-table",
+    title: "Comparison Table",
+    imagePath: "tables/comparison-table",
+    href: "/docs/components/comparison-table",
+  },
   {
     id: "flexi-filter-table",
     title: "Flexi Filter Table",
@@ -268,8 +442,32 @@ const showcaseItems: ShowcaseItem[] = [
     imagePath: "tabs/zoom-depth-tabs",
     href: "/docs/components/zoom-depth-tabs",
   },
+  {
+    id: "magnetic-tabs",
+    title: "Magnetic Tabs",
+    imagePath: "tabs/magnetic-tabs",
+    href: "/docs/components/magnetic-tabs",
+  },
+  {
+    id: "zoom-depth-tabs",
+    title: "Zoom Depth Tabs",
+    imagePath: "tabs/zoom-depth-tabs",
+    href: "/docs/components/zoom-depth-tabs",
+  },
 
   // Pagination
+  {
+    id: "wheel-pagination",
+    title: "Wheel Pagination",
+    imagePath: "pagination/wheel-pagination",
+    href: "/docs/components/wheel-pagination",
+  },
+  {
+    id: "morphing-page-dots",
+    title: "Morphing Page Dots",
+    imagePath: "pagination/morphing-page-dots",
+    href: "/docs/components/morphing-page-dots",
+  },
   {
     id: "wheel-pagination",
     title: "Wheel Pagination",
@@ -296,8 +494,32 @@ const showcaseItems: ShowcaseItem[] = [
     imagePath: "cards/ripple-circles",
     href: "/docs/components/ripple-circles",
   },
+  {
+    id: "solar-loader",
+    title: "Solar Loader",
+    imagePath: "cards/solar-loader",
+    href: "/docs/components/solar-loader",
+  },
+  {
+    id: "ripple-circles",
+    title: "Ripple Circles",
+    imagePath: "cards/ripple-circles",
+    href: "/docs/components/ripple-circles",
+  },
 
   // Notifications
+  {
+    id: "notifications-carousel",
+    title: "Notifications Carousel",
+    imagePath: "notifications/notifications-carousel",
+    href: "/docs/components/notifications-carousel",
+  },
+  {
+    id: "notification-inbox-popover",
+    title: "Notification Inbox Popover",
+    imagePath: "notifications/notification-inbox-popover",
+    href: "/docs/components/notification-inbox-popover",
+  },
   {
     id: "notifications-carousel",
     title: "Notifications Carousel",
@@ -330,8 +552,32 @@ const showcaseItems: ShowcaseItem[] = [
     imagePath: "navbars/luma-bar",
     href: "/docs/components/luma-bar",
   },
+  {
+    id: "floating-navbar",
+    title: "Floating Navbar",
+    imagePath: "navbars/floating-navbar",
+    href: "/docs/components/floating-navbar",
+  },
+  {
+    id: "hover-gradient-navbar",
+    title: "Hover Gradient Navbar",
+    imagePath: "navbars/hover-gradient-navbar",
+    href: "/docs/components/hover-gradient-navbar",
+  },
+  {
+    id: "luma-bar",
+    title: "Luma Bar",
+    imagePath: "navbars/luma-bar",
+    href: "/docs/components/luma-bar",
+  },
 
   // Pricing
+  {
+    id: "pricing-flow",
+    title: "Pricing Flow",
+    imagePath: "pricing-sections/pricing-flow",
+    href: "/docs/components/pricing-flow",
+  },
   {
     id: "pricing-flow",
     title: "Pricing Flow",
@@ -348,6 +594,12 @@ const showcaseItems: ShowcaseItem[] = [
   },
 
   // Video Players
+  {
+    id: "video-player-pro",
+    title: "Video Player Pro",
+    imagePath: "video-players/video-player-pro",
+    href: "/docs/components/video-player-pro",
+  },
   {
     id: "video-player-pro",
     title: "Video Player Pro",
@@ -388,6 +640,9 @@ function ShowcaseCard({ item }: { item: ShowcaseItem }) {
           <h3 className="font-medium text-foreground text-sm mb-3">
             {item.title}
           </h3>
+          <h3 className="font-medium text-foreground text-sm mb-3">
+            {item.title}
+          </h3>
 
           {/* View Component Link */}
           <Link
@@ -425,7 +680,9 @@ export default function ShowcasePage() {
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
               Beautifully crafted, production-ready components built with
-              Next.js, Tailwind CSS, and Framer Motion.
+              Next.js, Tailwind CSS, and Framer Motion. Beautifully crafted,
+              production-ready components built with Next.js, Tailwind CSS, and
+              Framer Motion.
             </p>
             <div className="flex items-center justify-center gap-4">
               <Button asChild size="lg">

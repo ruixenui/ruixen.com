@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import BadgeMorph from "@/registry/ruixenui/badge-morph";
+import { BadgeMorph } from "@/registry/ruixenui/badge-morph";
 
 type Status = "idle" | "loading" | "success" | "error";
 

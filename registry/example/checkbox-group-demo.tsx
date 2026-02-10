@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import CheckboxGroup from "@/registry/ruixenui/checkbox-group";
+import { CheckboxGroup } from "@/registry/ruixenui/checkbox-group";
 
 export default function CheckboxGroupDemo() {
   const [selected, setSelected] = React.useState<string[]>(["react"]);

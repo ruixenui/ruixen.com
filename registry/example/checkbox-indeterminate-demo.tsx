@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import CheckboxIndeterminate from "@/registry/ruixenui/checkbox-indeterminate";
+import { CheckboxIndeterminate } from "@/registry/ruixenui/checkbox-indeterminate";
 
 export default function CheckboxIndeterminateDemo() {
   const [parentChecked, setParentChecked] = React.useState<

@@ -1,6 +1,6 @@
 "use client";
 
-import CheckboxSimple from "@/registry/ruixenui/checkbox-simple";
+import { CheckboxSimple } from "@/registry/ruixenui/checkbox-simple";
 
 export default function CheckboxSimpleDemo() {
   return (

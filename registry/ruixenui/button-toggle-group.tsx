@@ -3,13 +3,13 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
-interface ToggleOption {
+export interface ToggleOption {
   value: string;
   label: string;
   icon?: React.ReactNode;
 }
 
-interface ButtonToggleGroupProps {
+export interface ButtonToggleGroupProps {
   options: ToggleOption[];
   value: string;
   onChange: (value: string) => void;
@@ -24,7 +24,7 @@ const sizeStyles = {
   lg: "h-10 px-4 text-base",
 };
 
-export default function ButtonToggleGroup({
+export function ButtonToggleGroup({
   options,
   value,
   onChange,
@@ -63,5 +63,3 @@ export default function ButtonToggleGroup({
     </div>
   );
 }
-
-export { ButtonToggleGroup, type ButtonToggleGroupProps, type ToggleOption };

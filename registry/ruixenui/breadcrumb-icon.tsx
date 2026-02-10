@@ -22,20 +22,20 @@ import { Home, type LucideIcon } from "lucide-react";
      • Icon pop:   cubic-bezier(0.34, 1.56, 0.64, 1) — tactile bounce
    ═══════════════════════════════════════════════════════════ */
 
-interface BreadcrumbIconItem {
+export interface BreadcrumbIconItem {
   label: string;
   href?: string;
   icon?: LucideIcon;
 }
 
-interface BreadcrumbIconProps {
+export interface BreadcrumbIconProps {
   items: BreadcrumbIconItem[];
   showHomeIcon?: boolean;
   iconOnly?: boolean;
   className?: string;
 }
 
-export default function BreadcrumbIcon({
+export function BreadcrumbIcon({
   items,
   showHomeIcon = true,
   iconOnly = false,
@@ -173,5 +173,3 @@ export default function BreadcrumbIcon({
     </nav>
   );
 }
-
-export { BreadcrumbIcon, type BreadcrumbIconProps, type BreadcrumbIconItem };

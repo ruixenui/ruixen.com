@@ -1,6 +1,6 @@
 "use client";
 
-import BreadcrumbIcon from "@/registry/ruixenui/breadcrumb-icon";
+import { BreadcrumbIcon } from "@/registry/ruixenui/breadcrumb-icon";
 import { Home, Folder, File, Settings, Users } from "lucide-react";
 
 const fileItems = [

@@ -133,7 +133,7 @@ function TreeNodeItem({
   );
 }
 
-export default function CheckboxTree({
+export function CheckboxTree({
   nodes,
   value,
   defaultValue = [],
@@ -175,5 +175,3 @@ export default function CheckboxTree({
     </div>
   );
 }
-
-export { CheckboxTree, type CheckboxTreeProps, type TreeNode };

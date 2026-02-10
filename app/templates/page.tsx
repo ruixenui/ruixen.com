@@ -243,8 +243,8 @@ export default function TemplatesPage() {
             </h2>
 
             <p className="mt-4 text-[0.95rem] leading-relaxed text-muted-foreground/70 max-w-sm mx-auto">
-              50+ production-ready components, templates, and blocks.
-              Lifetime updates included.
+              50+ production-ready components, templates, and blocks. Lifetime
+              updates included.
             </p>
 
             {/* Price */}
@@ -252,9 +252,7 @@ export default function TemplatesPage() {
               <span className="text-3xl font-[580] tracking-tight text-foreground">
                 $59
               </span>
-              <span className="text-sm text-muted-foreground/50">
-                one-time
-              </span>
+              <span className="text-sm text-muted-foreground/50">one-time</span>
             </div>
 
             {/* CTA Buttons */}

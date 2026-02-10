@@ -4,9 +4,9 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import { Upload, Image, File } from "lucide-react";
 
-type UploadType = "file" | "image" | "any";
+export type UploadType = "file" | "image" | "any";
 
-interface ButtonFileUploadProps {
+export interface ButtonFileUploadProps {
   onFileSelect: (files: FileList) => void;
   type?: UploadType;
   accept?: string;
@@ -41,7 +41,7 @@ const typeConfig: Record<
   any: { icon: <Upload className="size-4" />, accept: "*/*" },
 };
 
-export default function ButtonFileUpload({
+export function ButtonFileUpload({
   onFileSelect,
   type = "any",
   accept,
@@ -101,5 +101,3 @@ export default function ButtonFileUpload({
     </>
   );
 }
-
-export { ButtonFileUpload, type ButtonFileUploadProps };

@@ -55,7 +55,7 @@ const colorStyles: Record<CheckboxColor, { checked: string; ring: string }> = {
   },
 };
 
-export default function CheckboxColored({
+export function CheckboxColored({
   checked,
   defaultChecked = false,
   onCheckedChange,
@@ -118,5 +118,3 @@ export default function CheckboxColored({
     </label>
   );
 }
-
-export { CheckboxColored, type CheckboxColoredProps };

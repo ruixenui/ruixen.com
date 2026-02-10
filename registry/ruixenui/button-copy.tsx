@@ -4,7 +4,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import { Copy, Check } from "lucide-react";
 
-interface ButtonCopyProps
+export interface ButtonCopyProps
   extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "children"> {
   value: string;
   variant?: "default" | "outline" | "ghost";
@@ -20,7 +20,7 @@ const variantStyles = {
   ghost: "hover:bg-accent hover:text-accent-foreground",
 };
 
-export default function ButtonCopy({
+export function ButtonCopy({
   value,
   variant = "outline",
   showText = true,
@@ -67,5 +67,3 @@ export default function ButtonCopy({
     </button>
   );
 }
-
-export { ButtonCopy, type ButtonCopyProps };

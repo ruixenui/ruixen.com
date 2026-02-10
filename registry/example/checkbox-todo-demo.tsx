@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import CheckboxTodo from "@/registry/ruixenui/checkbox-todo";
+import { CheckboxTodo } from "@/registry/ruixenui/checkbox-todo";
 
 export default function CheckboxTodoDemo() {
   const [tasks, setTasks] = React.useState([

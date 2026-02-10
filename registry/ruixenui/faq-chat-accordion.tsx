@@ -83,7 +83,7 @@ const defaultItems: FAQItem[] = [
 const EXPO = "cubic-bezier(0.16, 1, 0.3, 1)";
 const EXPO_STRONG = "cubic-bezier(0.22, 1, 0.36, 1)";
 
-export default function FAQChatAccordion({
+export function FAQChatAccordion({
   title = "Have questions?",
   items = defaultItems,
   typingDelay = 400,
@@ -283,5 +283,3 @@ export default function FAQChatAccordion({
     </section>
   );
 }
-
-export { FAQChatAccordion, type FAQChatAccordionProps, type FAQItem };

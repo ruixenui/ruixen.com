@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/checkbox-simple-demo.tsx",
-      "content": "\"use client\";\n\nimport CheckboxSimple from \"@/registry/ruixenui/checkbox-simple\";\n\nexport default function CheckboxSimpleDemo() {\n  return (\n    <div className=\"flex min-h-[350px] w-full items-center justify-center\">\n      <div className=\"flex flex-col gap-4\">\n        <CheckboxSimple label=\"Accept notifications\" />\n        <CheckboxSimple\n          label=\"Subscribe to newsletter\"\n          description=\"Get updates about new features and releases\"\n        />\n        <CheckboxSimple label=\"Disabled option\" disabled />\n        <CheckboxSimple label=\"Checked by default\" defaultChecked />\n      </div>\n    </div>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport { CheckboxSimple } from \"@/registry/ruixenui/checkbox-simple\";\n\nexport default function CheckboxSimpleDemo() {\n  return (\n    <div className=\"flex min-h-[350px] w-full items-center justify-center\">\n      <div className=\"flex flex-col gap-4\">\n        <CheckboxSimple label=\"Accept notifications\" />\n        <CheckboxSimple\n          label=\"Subscribe to newsletter\"\n          description=\"Get updates about new features and releases\"\n        />\n        <CheckboxSimple label=\"Disabled option\" disabled />\n        <CheckboxSimple label=\"Checked by default\" defaultChecked />\n      </div>\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/checkbox-simple-demo.tsx"
     }

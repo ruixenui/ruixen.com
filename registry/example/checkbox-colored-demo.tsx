@@ -1,6 +1,6 @@
 "use client";
 
-import CheckboxColored from "@/registry/ruixenui/checkbox-colored";
+import { CheckboxColored } from "@/registry/ruixenui/checkbox-colored";
 
 export default function CheckboxColoredDemo() {
   return (

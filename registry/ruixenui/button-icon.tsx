@@ -3,10 +3,10 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
-type IconButtonVariant = "default" | "outline" | "ghost" | "destructive";
-type IconButtonSize = "sm" | "md" | "lg";
+export type IconButtonVariant = "default" | "outline" | "ghost" | "destructive";
+export type IconButtonSize = "sm" | "md" | "lg";
 
-interface ButtonIconProps
+export interface ButtonIconProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   icon: React.ReactNode;
   variant?: IconButtonVariant;
@@ -31,7 +31,7 @@ const sizeStyles: Record<IconButtonSize, string> = {
   lg: "h-10 w-10 [&_svg]:size-5",
 };
 
-export default function ButtonIcon({
+export function ButtonIcon({
   icon,
   variant = "default",
   size = "md",
@@ -56,5 +56,3 @@ export default function ButtonIcon({
     </button>
   );
 }
-
-export { ButtonIcon, type ButtonIconProps };

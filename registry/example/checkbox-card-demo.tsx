@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import CheckboxCard from "@/registry/ruixenui/checkbox-card";
+import { CheckboxCard } from "@/registry/ruixenui/checkbox-card";
 import { Zap, Shield, Rocket, Sparkles } from "lucide-react";
 
 export default function CheckboxCardDemo() {

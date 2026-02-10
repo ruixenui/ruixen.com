@@ -1,6 +1,6 @@
 "use client";
 
-import ButtonVariants from "@/registry/ruixenui/button-variants";
+import { ButtonVariants } from "@/registry/ruixenui/button-variants";
 import { Mail, ArrowRight } from "lucide-react";
 
 export default function ButtonVariantsDemo() {

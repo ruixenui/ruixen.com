@@ -36,7 +36,7 @@ interface BreadcrumbDropdownProps {
   className?: string;
 }
 
-export default function BreadcrumbDropdown({
+export function BreadcrumbDropdown({
   items,
   maxVisible = 3,
   className,
@@ -239,8 +239,4 @@ function Sep() {
   );
 }
 
-export {
-  BreadcrumbDropdown,
-  type BreadcrumbDropdownProps,
-  type BreadcrumbDropdownItem,
-};
+export { type BreadcrumbDropdownProps, type BreadcrumbDropdownItem };

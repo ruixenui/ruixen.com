@@ -4,16 +4,16 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import { Loader2 } from "lucide-react";
 
-type ButtonVariant =
+export type ButtonVariant =
   | "primary"
   | "secondary"
   | "destructive"
   | "outline"
   | "ghost"
   | "link";
-type ButtonSize = "sm" | "md" | "lg" | "icon";
+export type ButtonSize = "sm" | "md" | "lg" | "icon";
 
-interface ButtonVariantsProps
+export interface ButtonVariantsProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
   size?: ButtonSize;
@@ -42,7 +42,7 @@ const sizeStyles: Record<ButtonSize, string> = {
   icon: "h-9 w-9 rounded-md",
 };
 
-export default function ButtonVariants({
+export function ButtonVariants({
   variant = "primary",
   size = "md",
   loading = false,
@@ -74,5 +74,3 @@ export default function ButtonVariants({
     </button>
   );
 }
-
-export { ButtonVariants, type ButtonVariantsProps };

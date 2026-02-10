@@ -1,6 +1,6 @@
 "use client";
 
-import ButtonFileUpload from "@/registry/ruixenui/button-file-upload";
+import { ButtonFileUpload } from "@/registry/ruixenui/button-file-upload";
 
 export default function ButtonFileUploadDemo() {
   const handleFileSelect = (files: FileList) => {

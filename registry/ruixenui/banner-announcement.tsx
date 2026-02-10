@@ -4,7 +4,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import { ArrowRight, X } from "lucide-react";
 
-interface BannerAnnouncementProps {
+export interface BannerAnnouncementProps {
   children: React.ReactNode;
   badge?: string;
   action?: { label: string; href: string };
@@ -13,7 +13,7 @@ interface BannerAnnouncementProps {
   className?: string;
 }
 
-export default function BannerAnnouncement({
+export function BannerAnnouncement({
   children,
   badge,
   action,
@@ -95,5 +95,3 @@ export default function BannerAnnouncement({
     </div>
   );
 }
-
-export { BannerAnnouncement, type BannerAnnouncementProps };

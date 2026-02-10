@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import CheckboxTerms from "@/registry/ruixenui/checkbox-terms";
+import { CheckboxTerms } from "@/registry/ruixenui/checkbox-terms";
 
 export default function CheckboxTermsDemo() {
   const [accepted, setAccepted] = React.useState(false);

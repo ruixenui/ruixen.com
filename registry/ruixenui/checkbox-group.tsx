@@ -21,7 +21,7 @@ interface CheckboxGroupProps {
   className?: string;
 }
 
-export default function CheckboxGroup({
+export function CheckboxGroup({
   options,
   value,
   defaultValue = [],
@@ -111,5 +111,3 @@ export default function CheckboxGroup({
     </div>
   );
 }
-
-export { CheckboxGroup, type CheckboxGroupProps, type CheckboxOption };

@@ -1,6 +1,6 @@
 "use client";
 
-import ButtonSocial from "@/registry/ruixenui/button-social";
+import { ButtonSocial } from "@/registry/ruixenui/button-social";
 
 export default function ButtonSocialDemo() {
   return (

@@ -128,7 +128,7 @@ const DEFAULT_FEATURES = [
   },
 ];
 
-export default function ProductCardHero({
+export function ProductCardHero({
   title = "Ship faster\nwith less friction",
   description = "A development platform that removes the gap between writing code and running it. Build, preview, and deploy from one place.",
   ctaText = "Get started",
@@ -242,5 +242,3 @@ export default function ProductCardHero({
     </section>
   );
 }
-
-export { ProductCardHero };

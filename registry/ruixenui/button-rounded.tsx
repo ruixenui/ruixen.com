@@ -3,7 +3,7 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
-interface ButtonRoundedProps
+export interface ButtonRoundedProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "default" | "secondary" | "outline" | "ghost" | "destructive";
   size?: "sm" | "md" | "lg";
@@ -28,7 +28,7 @@ const sizeStyles = {
   lg: "h-10 px-6 text-base gap-2",
 };
 
-export default function ButtonRounded({
+export function ButtonRounded({
   variant = "default",
   size = "md",
   leftIcon,
@@ -53,5 +53,3 @@ export default function ButtonRounded({
     </button>
   );
 }
-
-export { ButtonRounded, type ButtonRoundedProps };

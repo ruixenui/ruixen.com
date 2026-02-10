@@ -37,7 +37,7 @@ const WORKFLOW_ITEMS = [
   "Upsell",
 ];
 
-export default function SplitFeatureShowcase({
+export function SplitFeatureShowcase({
   leftTitle = "Conversations that convert.",
   leftDescription = "Collaborate in real time with threaded messages, presence indicators, and instant reactions every exchange captured in context.",
   rightTitle = "Automate your entire pipeline.",
@@ -266,5 +266,3 @@ export default function SplitFeatureShowcase({
     </section>
   );
 }
-
-export { SplitFeatureShowcase };

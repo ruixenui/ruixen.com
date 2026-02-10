@@ -133,11 +133,7 @@ const ICONS: Record<Status, () => React.JSX.Element> = {
 
 /* ─── Component ───────────────────────────────────────── */
 
-export default function BadgeMorph({
-  status,
-  label,
-  className,
-}: BadgeMorphProps) {
+export function BadgeMorph({ status, label, className }: BadgeMorphProps) {
   const displayLabel = label ?? LABELS[status];
   const Icon = ICONS[status];
 
@@ -199,5 +195,3 @@ export default function BadgeMorph({
     </motion.div>
   );
 }
-
-export { BadgeMorph };

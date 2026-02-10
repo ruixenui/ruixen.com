@@ -76,8 +76,8 @@ export default function Home() {
       />
       <Hero />
       {/* <VideoShowcaseGrid /> */}
-      <InspirationsSection />
-      <WallOfLove />
+      {/* <InspirationsSection /> */}
+      {/* <WallOfLove /> */}
       <FAQSection faqItems={faqItems} className="py-16 md:py-24" />
     </>
   );

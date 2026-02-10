@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/product-feature-hero-demo.tsx",
-      "content": "\"use client\";\n\nimport ProductFeatureHero from \"@/registry/ruixenui/product-feature-hero\";\n\nexport default function ProductFeatureHeroDemo() {\n  return <ProductFeatureHero />;\n}\n",
+      "content": "\"use client\";\n\nimport { ProductFeatureHero } from \"@/registry/ruixenui/product-feature-hero\";\n\nexport default function ProductFeatureHeroDemo() {\n  return <ProductFeatureHero />;\n}\n",
       "type": "registry:example",
       "target": "components/product-feature-hero-demo.tsx"
     }

@@ -10,13 +10,13 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-interface SplitButtonOption {
+export interface SplitButtonOption {
   label: string;
   onClick: () => void;
   icon?: React.ReactNode;
 }
 
-interface ButtonSplitProps {
+export interface ButtonSplitProps {
   label: string;
   onClick: () => void;
   options: SplitButtonOption[];
@@ -39,7 +39,7 @@ const sizeStyles = {
   lg: "h-10 text-base",
 };
 
-export default function ButtonSplit({
+export function ButtonSplit({
   label,
   onClick,
   options,
@@ -92,5 +92,3 @@ export default function ButtonSplit({
     </div>
   );
 }
-
-export { ButtonSplit, type ButtonSplitProps, type SplitButtonOption };

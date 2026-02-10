@@ -1,6 +1,6 @@
 "use client";
 
-import ButtonIcon from "@/registry/ruixenui/button-icon";
+import { ButtonIcon } from "@/registry/ruixenui/button-icon";
 import { Plus, Trash2, Settings, Heart, Star, Share2 } from "lucide-react";
 
 export default function ButtonIconDemo() {

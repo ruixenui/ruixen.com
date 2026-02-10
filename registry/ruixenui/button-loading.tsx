@@ -4,9 +4,9 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import { Loader2, Check } from "lucide-react";
 
-type LoadingButtonState = "idle" | "loading" | "success" | "error";
+export type LoadingButtonState = "idle" | "loading" | "success" | "error";
 
-interface ButtonLoadingProps
+export interface ButtonLoadingProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   state?: LoadingButtonState;
   loadingText?: string;
@@ -31,7 +31,7 @@ const stateStyles: Record<LoadingButtonState, string> = {
   error: "bg-destructive hover:bg-destructive text-destructive-foreground",
 };
 
-export default function ButtonLoading({
+export function ButtonLoading({
   state = "idle",
   loadingText = "Loading...",
   successText = "Success!",
@@ -82,5 +82,3 @@ export default function ButtonLoading({
     </button>
   );
 }
-
-export { ButtonLoading, type ButtonLoadingProps, type LoadingButtonState };

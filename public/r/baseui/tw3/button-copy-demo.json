@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/button-copy-demo.tsx",
-      "content": "\"use client\";\n\nimport ButtonCopy from \"@/registry/ruixenui/button-copy\";\n\nexport default function ButtonCopyDemo() {\n  return (\n    <div className=\"flex flex-wrap items-center justify-center gap-4 p-4\">\n      <ButtonCopy value=\"npm install ruixen-ui\" />\n      <ButtonCopy value=\"Hello World!\" variant=\"outline\" />\n      <ButtonCopy value=\"secret-api-key-12345\" variant=\"ghost\" />\n    </div>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport { ButtonCopy } from \"@/registry/ruixenui/button-copy\";\n\nexport default function ButtonCopyDemo() {\n  return (\n    <div className=\"flex flex-wrap items-center justify-center gap-4 p-4\">\n      <ButtonCopy value=\"npm install ruixen-ui\" />\n      <ButtonCopy value=\"Hello World!\" variant=\"outline\" />\n      <ButtonCopy value=\"secret-api-key-12345\" variant=\"ghost\" />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/button-copy-demo.tsx"
     }

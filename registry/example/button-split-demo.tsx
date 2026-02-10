@@ -1,6 +1,6 @@
 "use client";
 
-import ButtonSplit from "@/registry/ruixenui/button-split";
+import { ButtonSplit } from "@/registry/ruixenui/button-split";
 
 export default function ButtonSplitDemo() {
   const saveOptions = [

@@ -148,7 +148,7 @@ function Ribbon({
 
 /* ── Main component ────────────────────────────────────── */
 
-export default function AutoScrollingClientCarousel({
+export function AutoScrollingClientCarousel({
   title = "Trusted by leading teams",
   clients = defaultClients,
   speed = 35,
@@ -183,9 +183,3 @@ export default function AutoScrollingClientCarousel({
     </section>
   );
 }
-
-export {
-  AutoScrollingClientCarousel,
-  type AutoScrollingClientCarouselProps,
-  type AutoScrollingCarouselItem,
-};

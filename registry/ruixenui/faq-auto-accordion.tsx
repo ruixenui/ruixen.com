@@ -79,7 +79,7 @@ const defaultItems: FAQItem[] = [
   },
 ];
 
-export default function FAQAutoAccordion({
+export function FAQAutoAccordion({
   title = "Have questions?",
   subtitle = "Everything you need to know.",
   items = defaultItems,
@@ -272,5 +272,3 @@ export default function FAQAutoAccordion({
     </section>
   );
 }
-
-export { FAQAutoAccordion, type FAQAutoAccordionProps, type FAQItem };

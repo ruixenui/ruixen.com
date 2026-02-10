@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import BannerAnnouncement from "@/registry/ruixenui/banner-announcement";
+import { BannerAnnouncement } from "@/registry/ruixenui/banner-announcement";
 import { RotateCcw } from "lucide-react";
 
 export default function BannerAnnouncementDemo() {

@@ -18,7 +18,7 @@ interface CheckboxTermsProps {
   className?: string;
 }
 
-export default function CheckboxTerms({
+export function CheckboxTerms({
   checked,
   defaultChecked = false,
   onCheckedChange,
@@ -98,5 +98,3 @@ export default function CheckboxTerms({
     </label>
   );
 }
-
-export { CheckboxTerms, type CheckboxTermsProps };

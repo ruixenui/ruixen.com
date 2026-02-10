@@ -10,14 +10,14 @@ import { ArrowRight, X } from "lucide-react";
    no status message — the pill IS all three states.
    ═══════════════════════════════════════════════════════════ */
 
-interface BannerNewsletterProps {
+export interface BannerNewsletterProps {
   title?: string;
   onSubscribe?: (email: string) => Promise<void> | void;
   onDismiss?: () => void;
   className?: string;
 }
 
-export default function BannerNewsletter({
+export function BannerNewsletter({
   title = "Stay in the loop",
   onSubscribe,
   onDismiss,
@@ -220,5 +220,3 @@ export default function BannerNewsletter({
     </div>
   );
 }
-
-export { BannerNewsletter, type BannerNewsletterProps };

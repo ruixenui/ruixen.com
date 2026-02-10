@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import BannerNewsletter from "@/registry/ruixenui/banner-newsletter";
+import { BannerNewsletter } from "@/registry/ruixenui/banner-newsletter";
 import { RotateCcw } from "lucide-react";
 
 export default function BannerNewsletterDemo() {

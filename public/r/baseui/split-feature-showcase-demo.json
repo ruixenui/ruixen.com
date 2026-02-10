@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/split-feature-showcase-demo.tsx",
-      "content": "\"use client\";\n\nimport SplitFeatureShowcase from \"@/registry/ruixenui/split-feature-showcase\";\n\nexport default function SplitFeatureShowcaseDemo() {\n  return <SplitFeatureShowcase />;\n}\n",
+      "content": "\"use client\";\n\nimport { SplitFeatureShowcase } from \"@/registry/ruixenui/split-feature-showcase\";\n\nexport default function SplitFeatureShowcaseDemo() {\n  return <SplitFeatureShowcase />;\n}\n",
       "type": "registry:example",
       "target": "components/split-feature-showcase-demo.tsx"
     }

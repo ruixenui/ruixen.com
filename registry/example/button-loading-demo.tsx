@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import ButtonLoading from "@/registry/ruixenui/button-loading";
+import { ButtonLoading } from "@/registry/ruixenui/button-loading";
 import type { LoadingButtonState } from "@/registry/ruixenui/button-loading";
 
 export default function ButtonLoadingDemo() {

@@ -16,7 +16,7 @@ interface CheckboxIndeterminateProps {
   className?: string;
 }
 
-export default function CheckboxIndeterminate({
+export function CheckboxIndeterminate({
   checked,
   defaultChecked = false,
   onCheckedChange,
@@ -93,5 +93,3 @@ export default function CheckboxIndeterminate({
     </label>
   );
 }
-
-export { CheckboxIndeterminate, type CheckboxIndeterminateProps };

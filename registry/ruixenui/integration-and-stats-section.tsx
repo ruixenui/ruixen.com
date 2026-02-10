@@ -313,8 +313,8 @@ export default function IntegrationAndStatsSection() {
                 Ship with a prompt.
               </span>{" "}
               <span className="text-muted-foreground">
-                Generate components, refine edge cases, and push to production
-                — let AI handle the heavy lifting.
+                Generate components, refine edge cases, and push to production —
+                let AI handle the heavy lifting.
               </span>
             </p>
           </div>

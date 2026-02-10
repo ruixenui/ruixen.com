@@ -3,7 +3,7 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
-interface ButtonBadgeProps
+export interface ButtonBadgeProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   badge?: number | string;
   badgeVariant?: "default" | "destructive" | "success";
@@ -32,7 +32,7 @@ const badgeVariantStyles = {
   success: "bg-emerald-500 text-white",
 };
 
-export default function ButtonBadge({
+export function ButtonBadge({
   badge,
   badgeVariant = "default",
   variant = "default",
@@ -67,5 +67,3 @@ export default function ButtonBadge({
     </button>
   );
 }
-
-export { ButtonBadge, type ButtonBadgeProps };

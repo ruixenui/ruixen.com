@@ -1,6 +1,6 @@
 "use client";
 
-import BreadcrumbBoxed from "@/registry/ruixenui/breadcrumb-boxed";
+import { BreadcrumbBoxed } from "@/registry/ruixenui/breadcrumb-boxed";
 
 const mainPath = [
   { label: "Home", href: "#" },
