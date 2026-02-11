@@ -4031,6 +4031,34 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "structured-hero-section",
+    type: "registry:ui",
+    title: "Structured Hero Section",
+    description:
+      "A clean hero section with announcement pill, overlapping showcase cards, trusted-by logo strip, and dual CTAs.",
+    files: [
+      {
+        path: "registry/ruixenui/structured-hero-section.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/structured-hero-section.tsx",
+      },
+    ],
+  },
+  {
+    name: "tabbed-hero-section",
+    type: "registry:ui",
+    title: "Tabbed Hero Section",
+    description:
+      "A SaaS hero section with left-aligned headline, tabbed navigation, app screenshot showcase, and trusted-by logo strip.",
+    files: [
+      {
+        path: "registry/ruixenui/tabbed-hero-section.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/tabbed-hero-section.tsx",
+      },
+    ],
+  },
+  {
     name: "interactive-image-gallery",
     type: "registry:ui",
     title: "Interactive Image Gallery",

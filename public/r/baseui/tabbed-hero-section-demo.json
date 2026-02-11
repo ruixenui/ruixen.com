@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tabbed-hero-section-demo",
+  "type": "registry:example",
+  "title": "Tabbed Hero Section Demo",
+  "description": "Example showing a SaaS hero section with tabbed navigation, app screenshot showcase, and trusted-by strip.",
+  "registryDependencies": [
+    "https://ruixen.com/r/tabbed-hero-section"
+  ],
+  "files": [
+    {
+      "path": "registry/example/tabbed-hero-section-demo.tsx",
+      "content": "import { TabbedHeroSection } from \"@/registry/ruixenui/tabbed-hero-section\";\nimport { Globe, BarChart3, Sparkles } from \"lucide-react\";\n\n/* ── demo ─────────────────────────────────────────────────────── */\n\nexport default function TabbedHeroSectionDemo() {\n  return (\n    <TabbedHeroSection\n      title=\"Payments infrastructure built for SaaS that Scales\"\n      description=\"Streamline your team's meetings with our AI-driven assistant, open source and works.\"\n      primaryAction={{ href: \"#\", label: \"Get Started\" }}\n      secondaryAction={{ href: \"#\", label: \"Watch Demo\" }}\n      tabs={[\n        { icon: <Globe />, label: \"Task Management\" },\n        { icon: <BarChart3 />, label: \"Analytics\" },\n        { icon: <Sparkles />, label: \"AI Copilot\" },\n      ]}\n      activeTab={2}\n      trustedBy={{\n        description: (\n          <p>\n            Trusted by leading teams from{\" \"}\n            <span className=\"text-foreground font-medium\">\n              Generative AI Companies,\n            </span>{\" \"}\n            <span className=\"text-foreground font-medium\">\n              Hosting Providers,\n            </span>{\" \"}\n            <span className=\"text-foreground font-medium\">\n              Payments Providers,\n            </span>{\" \"}\n            <span className=\"text-foreground font-medium\">\n              Streaming Providers\n            </span>\n          </p>\n        ),\n        logos: [\n          <span\n            key=\"openai\"\n            className=\"text-[15px] font-semibold tracking-tight whitespace-nowrap\"\n          >\n            OpenAI\n          </span>,\n          <span\n            key=\"bolt\"\n            className=\"text-[15px] font-bold italic tracking-tight whitespace-nowrap\"\n          >\n            bolt\n          </span>,\n          <span\n            key=\"cisco\"\n            className=\"text-[15px] font-semibold tracking-tight whitespace-nowrap uppercase\"\n          >\n            Cisco\n          </span>,\n          <span\n            key=\"hulu\"\n            className=\"text-[15px] font-bold tracking-tight whitespace-nowrap lowercase\"\n          >\n            hulu\n          </span>,\n          <span\n            key=\"spotify\"\n            className=\"text-[15px] font-semibold tracking-tight whitespace-nowrap\"\n          >\n            Spotify\n          </span>,\n        ],\n      }}\n    />\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/tabbed-hero-section-demo.tsx"
+    }
+  ]
+}

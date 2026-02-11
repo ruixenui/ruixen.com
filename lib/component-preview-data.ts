@@ -1395,6 +1395,14 @@ export const heroSectionsPreview: ComponentPreviewMap = {
     light: `/preview_images/hero-sections/hero-section-glass-web-light.png`,
     dark: `/preview_images/hero-sections/hero-section-glass-web-dark.png`,
   },
+  "structured-hero-section": {
+    light: `/preview_images/hero-sections/structured-hero-section-light.png`,
+    dark: `/preview_images/hero-sections/structured-hero-section-dark.png`,
+  },
+  "tabbed-hero-section": {
+    light: `/preview_images/hero-sections/tabbed-hero-section-light.png`,
+    dark: `/preview_images/hero-sections/tabbed-hero-section-dark.png`,
+  },
 };
 
 /**

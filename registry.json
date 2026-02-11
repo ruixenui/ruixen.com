@@ -4745,6 +4745,32 @@
       ]
     },
     {
+      "name": "structured-hero-section",
+      "type": "registry:ui",
+      "title": "Structured Hero Section",
+      "description": "A clean hero section with announcement pill, overlapping showcase cards, trusted-by logo strip, and dual CTAs.",
+      "files": [
+        {
+          "path": "registry/ruixenui/structured-hero-section.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/structured-hero-section.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tabbed-hero-section",
+      "type": "registry:ui",
+      "title": "Tabbed Hero Section",
+      "description": "A SaaS hero section with left-aligned headline, tabbed navigation, app screenshot showcase, and trusted-by logo strip.",
+      "files": [
+        {
+          "path": "registry/ruixenui/tabbed-hero-section.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/tabbed-hero-section.tsx"
+        }
+      ]
+    },
+    {
       "name": "interactive-image-gallery",
       "type": "registry:ui",
       "title": "Interactive Image Gallery",
@@ -9282,6 +9308,38 @@
           "path": "registry/example/hero-section-glass-web-demo.tsx",
           "type": "registry:example",
           "target": "components/hero-section-glass-web-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "structured-hero-section-demo",
+      "type": "registry:example",
+      "title": "Structured Hero Section Demo",
+      "description": "Example showing a clean hero section with announcement pill, overlapping showcase cards, and dual CTAs.",
+      "registryDependencies": [
+        "https://ruixen.com/r/structured-hero-section"
+      ],
+      "files": [
+        {
+          "path": "registry/example/structured-hero-section-demo.tsx",
+          "type": "registry:example",
+          "target": "components/structured-hero-section-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tabbed-hero-section-demo",
+      "type": "registry:example",
+      "title": "Tabbed Hero Section Demo",
+      "description": "Example showing a SaaS hero section with tabbed navigation, app screenshot showcase, and trusted-by strip.",
+      "registryDependencies": [
+        "https://ruixen.com/r/tabbed-hero-section"
+      ],
+      "files": [
+        {
+          "path": "registry/example/tabbed-hero-section-demo.tsx",
+          "type": "registry:example",
+          "target": "components/tabbed-hero-section-demo.tsx"
         }
       ]
     },
