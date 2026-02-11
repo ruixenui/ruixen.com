@@ -3632,6 +3632,36 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "structured-hero-section-demo",
+    type: "registry:example",
+    title: "Structured Hero Section Demo",
+    description:
+      "Example showing a clean hero section with announcement pill, overlapping showcase cards, and dual CTAs.",
+    registryDependencies: ["https://ruixen.com/r/structured-hero-section"],
+    files: [
+      {
+        path: "registry/example/structured-hero-section-demo.tsx",
+        type: "registry:example",
+        target: "components/structured-hero-section-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "tabbed-hero-section-demo",
+    type: "registry:example",
+    title: "Tabbed Hero Section Demo",
+    description:
+      "Example showing a SaaS hero section with tabbed navigation, app screenshot showcase, and trusted-by strip.",
+    registryDependencies: ["https://ruixen.com/r/tabbed-hero-section"],
+    files: [
+      {
+        path: "registry/example/tabbed-hero-section-demo.tsx",
+        type: "registry:example",
+        target: "components/tabbed-hero-section-demo.tsx",
+      },
+    ],
+  },
+  {
     name: "interactive-image-gallery-demo",
     type: "registry:example",
     title: "Interactive Image Gallery Demo",

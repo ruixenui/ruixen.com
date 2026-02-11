@@ -1944,6 +1944,18 @@ export const docsConfig: DocsConfig = {
               items: [],
               label: "",
             },
+            {
+              title: "Structured Hero Section",
+              href: `/docs/components/structured-hero-section`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Tabbed Hero Section",
+              href: `/docs/components/tabbed-hero-section`,
+              items: [],
+              label: "New",
+            },
           ],
         },
         {

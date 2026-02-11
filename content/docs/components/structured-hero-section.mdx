@@ -1,0 +1,129 @@
+---
+title: Structured Hero Section
+date: 2024-11-01
+description: A clean hero section with announcement pill, overlapping showcase cards, trusted-by logo strip, and dual CTAs.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="structured-hero-section-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/structured-hero-section"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="structured-hero-section" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { StructuredHeroSection } from "@/components/ruixen/structured-hero-section";
+
+export default function App() {
+  return (
+    <StructuredHeroSection
+      announcement="600+ Components and Counting"
+      announcementAction={{ label: "Browse", href: "/docs/components" }}
+      title="Modern Components for Every Interface"
+      description="Modern, fast, and customizable React components built with Tailwind CSS, TypeScript, and accessibility in mind."
+      primaryAction={{ href: "/docs", label: "Get Started" }}
+      secondaryAction={{ href: "/pricing", label: "Get Pro Access" }}
+      cards={[
+        {
+          label: "Calendars",
+          imageSrcLight: "/cal-light.png",
+          imageSrcDark: "/cal-dark.png",
+        },
+        { label: "Cards" },
+        { label: "Buttons" },
+      ]}
+      trustedBy={{
+        heading: "Built with the technologies you trust",
+        logos: [<ReactIcon key="react" />, <TailwindIcon key="tw" />],
+      }}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop                 | Type               | Default                   | Description                           |
+| -------------------- | ------------------ | ------------------------- | ------------------------------------- |
+| `announcement`       | `string`           | `"New release available"` | Text inside the announcement pill     |
+| `announcementAction` | `Action`           | -                         | Optional link beside the announcement |
+| `title`              | `ReactNode`        | Required                  | Main headline text                    |
+| `description`        | `string`           | -                         | Subtitle / description paragraph      |
+| `primaryAction`      | `Action`           | -                         | Primary CTA button                    |
+| `secondaryAction`    | `Action`           | -                         | Secondary CTA button                  |
+| `cards`              | `ShowcaseCard[]`   | -                         | Up to 3 overlapping showcase cards    |
+| `trustedBy`          | `TrustedBySection` | -                         | Trusted-by / built-with logo strip    |
+| `className`          | `string`           | -                         | Additional CSS classes                |
+
+### Action Type
+
+```tsx
+type Action = {
+  href: string;
+  label: string;
+};
+```
+
+### ShowcaseCard Type
+
+```tsx
+interface ShowcaseCard {
+  label?: string;
+  imageSrcLight?: string;
+  imageSrcDark?: string;
+}
+```
+
+Cards without images render a skeleton placeholder UI. Provide `imageSrcLight` and/or `imageSrcDark` for theme-aware image cards.
+
+### TrustedBySection Type
+
+```tsx
+interface TrustedBySection {
+  heading?: string;
+  action?: Action;
+  logos: React.ReactNode[];
+}
+```
+
+## Features
+
+- **Announcement Pill**: Clean pill with ring border and optional action link
+- **Overlapping Cards**: Up to 3 cards with rotation and z-index stacking
+- **Dual Card Modes**: Image mode (light/dark) or skeleton placeholder
+- **Trusted-By Strip**: Logo grid with heading and optional action
+- **Dual CTAs**: Primary (filled) and secondary (outlined) action buttons
+- **Responsive**: Stacks cleanly on mobile, full layout on desktop
+- **Semantic Tokens**: Uses foreground/background/primary tokens for theme compatibility
+- **Zero Dependencies**: No external libraries required

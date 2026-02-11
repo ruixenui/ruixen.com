@@ -6111,6 +6111,56 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "structured-hero-section": {
+    name: "structured-hero-section",
+    description:
+      "A clean hero section with announcement pill, overlapping showcase cards, trusted-by logo strip, and dual CTAs.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/structured-hero-section.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/structured-hero-section.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/ruixenui/structured-hero-section.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "tabbed-hero-section": {
+    name: "tabbed-hero-section",
+    description:
+      "A SaaS hero section with left-aligned headline, tabbed navigation, app screenshot showcase, and trusted-by logo strip.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/tabbed-hero-section.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/tabbed-hero-section.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/tabbed-hero-section.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "interactive-image-gallery": {
     name: "interactive-image-gallery",
     description:
@@ -13056,6 +13106,58 @@ export const Index: Record<string, any> = {
     component: React.lazy(async () => {
       const mod = await import(
         "@/registry/example/hero-section-glass-web-demo.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "structured-hero-section-demo": {
+    name: "structured-hero-section-demo",
+    description:
+      "Example showing a clean hero section with announcement pill, overlapping showcase cards, and dual CTAs.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/structured-hero-section"],
+    files: [
+      {
+        path: "registry/example/structured-hero-section-demo.tsx",
+        type: "registry:example",
+        target: "components/structured-hero-section-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/structured-hero-section-demo.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "tabbed-hero-section-demo": {
+    name: "tabbed-hero-section-demo",
+    description:
+      "Example showing a SaaS hero section with tabbed navigation, app screenshot showcase, and trusted-by strip.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/tabbed-hero-section"],
+    files: [
+      {
+        path: "registry/example/tabbed-hero-section-demo.tsx",
+        type: "registry:example",
+        target: "components/tabbed-hero-section-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/tabbed-hero-section-demo.tsx"
       );
       const exportName =
         Object.keys(mod).find(
