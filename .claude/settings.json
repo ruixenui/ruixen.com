@@ -2,6 +2,9 @@
   "permissions": {
     "allow": [
       "WebFetch(domain:coss.com)"
+    ],
+    "additionalDirectories": [
+      "/Users/srisomanaath/Desktop/ruixen_ui/ruixen.com/public/preview_images/forms"
     ]
   }
 }
