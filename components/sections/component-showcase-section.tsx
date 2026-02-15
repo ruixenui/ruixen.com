@@ -23,9 +23,9 @@ export default function ComponentShowcaseSection() {
       {/* Floating Components - Light Mode */}
       <div className="relative z-0 h-[900px] md:h-[1000px] lg:h-[1100px] flex items-center justify-center dark:hidden">
         <div className="relative h-full w-full min-w-[640px] md:min-w-[768px] lg:min-w-0 max-w-7xl px-6">
-          {/* Central Component - Globe */}
+          {/* Central Component - 3D Wall Calendar */}
           <Link
-            href="/docs/components/globe"
+            href="/docs/components/three-dwall-calendar"
             className="absolute left-1/2 top-[35%] h-[160px] w-[240px] md:h-[200px] md:w-[300px] lg:h-[220px] lg:w-[330px] z-20 rounded-xl shadow-lg animate-float-up overflow-hidden cursor-pointer hover:scale-105 hover:z-50 transition-all duration-300"
             style={{
               animationDelay: "0s",
@@ -33,8 +33,8 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/globe-light.webp"
-              alt="Globe Component"
+              src="/landing-page-images/three-dwall-calendar-light.webp"
+              alt="3D Wall Calendar Component"
               fill
               sizes="(max-width: 768px) 240px, (max-width: 1200px) 300px, 330px"
               className="object-cover rounded-xl"
@@ -63,46 +63,6 @@ export default function ComponentShowcaseSection() {
             />
           </Link>
 
-          {/* Elite Plan Card - Right Side (fills gap) */}
-          <Link
-            href="/docs/components/elite-plan-card"
-            className="absolute right-[0%] md:right-[0%] lg:right-[-10%] top-[15%] md:top-[20%] lg:top-[25%] h-[130px] w-[185px] md:h-[150px] md:w-[225px] lg:h-[160px] lg:w-60 z-25 rounded-xl shadow-lg animate-float-up overflow-hidden cursor-pointer hover:scale-105 hover:z-50 transition-all duration-300"
-            style={{
-              animationDelay: "-3.5s",
-              transform: `translate(${mousePosition.x * -1}px, ${mousePosition.y * 0.7}px)`,
-            }}
-          >
-            <Image
-              src="/landing-page-images/elite-plan-card-light.webp"
-              alt="Elite Plan Card"
-              fill
-              sizes="(max-width: 768px) 185px, (max-width: 1200px) 225px, 240px"
-              className="object-cover rounded-xl"
-              loading="lazy"
-              unoptimized
-            />
-          </Link>
-
-          {/* Credit Card Hero - Bottom Right */}
-          <Link
-            href="/docs/components/credit-card-hero"
-            className="absolute right-[0%] md:right-[2%] lg:right-[6%] bottom-[5%] md:bottom-[8%] lg:bottom-[12%] h-[120px] w-[175px] md:h-[140px] md:w-[210px] lg:h-[150px] lg:w-56 z-30 rounded-xl shadow-lg animate-float-up overflow-hidden cursor-pointer hover:scale-105 hover:z-50 transition-all duration-300"
-            style={{
-              animationDelay: "-5.2s",
-              transform: `translate(${mousePosition.x * -0.8}px, ${mousePosition.y * -0.7}px)`,
-            }}
-          >
-            <Image
-              src="/landing-page-images/credit-card-hero-light.webp"
-              alt="Credit Card Hero"
-              fill
-              sizes="(max-width: 768px) 175px, (max-width: 1200px) 210px, 224px"
-              className="object-cover rounded-xl"
-              loading="lazy"
-              unoptimized
-            />
-          </Link>
-
           {/* Input With Select - Left Side */}
           <Link
             href="/docs/components/input-with-select"
@@ -123,26 +83,6 @@ export default function ComponentShowcaseSection() {
             />
           </Link>
 
-          {/* Health Stats Card - Bottom Left */}
-          <Link
-            href="/docs/components/health-stat-card"
-            className="absolute left-[0%] md:left-[-4%] lg:left-[-8%] bottom-[8%] md:bottom-[10%] lg:bottom-[15%] h-[110px] w-[165px] md:h-[130px] md:w-[195px] lg:h-[140px] lg:w-52 z-25 rounded-xl shadow-lg animate-float-up overflow-hidden cursor-pointer hover:scale-105 hover:z-50 transition-all duration-300"
-            style={{
-              animationDelay: "-4.2s",
-              transform: `translate(${mousePosition.x * 0.8}px, ${mousePosition.y * -0.7}px)`,
-            }}
-          >
-            <Image
-              src="/landing-page-images/health-stats-card-light.webp"
-              alt="Health Stats Card"
-              fill
-              sizes="(max-width: 768px) 165px, (max-width: 1200px) 195px, 208px"
-              className="object-cover rounded-xl"
-              loading="lazy"
-              unoptimized
-            />
-          </Link>
-
           {/* Tag Cloud - Top Center Right */}
           <Link
             href="/docs/components/tag-cloud-select"
@@ -157,26 +97,6 @@ export default function ComponentShowcaseSection() {
               alt="Tag Cloud Select"
               fill
               sizes="(max-width: 768px) 130px, (max-width: 1200px) 160px, 176px"
-              className="object-cover rounded-xl"
-              loading="lazy"
-              unoptimized
-            />
-          </Link>
-
-          {/* Shirt Parallax Card - Far Right */}
-          <Link
-            href="/docs/components/shirt-parallax-card"
-            className="absolute right-[-6%] top-[50%] md:top-[58%] lg:top-[60%] h-[110px] w-[165px] md:h-[130px] md:w-[195px] lg:h-[140px] lg:w-52 z-10 rounded-xl shadow-lg animate-float-up overflow-hidden cursor-pointer hover:scale-105 hover:z-50 transition-all duration-300"
-            style={{
-              animationDelay: "-4.8s",
-              transform: `translate(${mousePosition.x * -0.9}px, ${mousePosition.y * 0.5}px)`,
-            }}
-          >
-            <Image
-              src="/landing-page-images/shirt-parallax-card-light.webp"
-              alt="Shirt Parallax Card"
-              fill
-              sizes="(max-width: 768px) 165px, (max-width: 1200px) 195px, 52px"
               className="object-cover rounded-xl"
               loading="lazy"
               unoptimized
@@ -275,26 +195,6 @@ export default function ComponentShowcaseSection() {
             <Image
               src="/landing-page-images/ripple-distortion-light.webp"
               alt="Ripple Distortion"
-              fill
-              sizes="(max-width: 768px) 140px, (max-width: 1200px) 160px, 175px"
-              className="object-cover rounded-xl"
-              loading="lazy"
-              unoptimized
-            />
-          </Link>
-
-          {/* Icon Grid Button - Left Center */}
-          <Link
-            href="/docs/components/icon-grid-button"
-            className="absolute left-[6%] md:left-[8%] lg:left-[10%] top-[5%] md:top-[8%] lg:top-[12%] h-[95px] w-[140px] md:h-[110px] md:w-[160px] lg:h-[120px] lg:w-[175px] z-14 rounded-xl shadow-lg animate-float-up overflow-hidden cursor-pointer hover:scale-105 hover:z-50 transition-all duration-300"
-            style={{
-              animationDelay: "-3.2s",
-              transform: `translate(${mousePosition.x * 0.6}px, ${mousePosition.y * 0.7}px)`,
-            }}
-          >
-            <Image
-              src="/landing-page-images/icon-grid-button-light.webp"
-              alt="Icon Grid Button"
               fill
               sizes="(max-width: 768px) 140px, (max-width: 1200px) 160px, 175px"
               className="object-cover rounded-xl"
@@ -542,55 +442,15 @@ export default function ComponentShowcaseSection() {
               unoptimized
             />
           </Link>
-
-          {/* Countdown Button - NEW */}
-          <Link
-            href="/docs/components/countdown-button"
-            className="absolute left-[9%] md:left-[30%] lg:left-[35%] top-[8%] md:top-[10%] lg:top-[12%] h-[85px] w-[125px] md:h-[100px] md:w-[145px] lg:h-[110px] lg:w-[155px] z-16 rounded-xl shadow-lg animate-float-up overflow-hidden cursor-pointer hover:scale-105 hover:z-50 transition-all duration-300"
-            style={{
-              animationDelay: "-14.8s",
-              transform: `translate(${mousePosition.x * 0.6}px, ${mousePosition.y * 0.4}px)`,
-            }}
-          >
-            <Image
-              src="/landing-page-images/countdown-button-light.webp"
-              alt="Countdown Button"
-              fill
-              sizes="(max-width: 768px) 125px, (max-width: 1200px) 145px, 155px"
-              className="object-cover rounded-xl"
-              loading="lazy"
-              unoptimized
-            />
-          </Link>
-
-          {/* Checklist Button - NEW */}
-          <Link
-            href="/docs/components/checklist-button"
-            className="absolute right-[36%] md:right-[38%] lg:right-[42%] bottom-[38%] md:bottom-[40%] lg:bottom-[42%] h-[85px] w-[125px] md:h-[100px] md:w-[145px] lg:h-[110px] lg:w-[155px] z-16 rounded-xl shadow-lg animate-float-up overflow-hidden cursor-pointer hover:scale-105 hover:z-50 transition-all duration-300"
-            style={{
-              animationDelay: "-15.4s",
-              transform: `translate(${mousePosition.x * -0.5}px, ${mousePosition.y * -0.3}px)`,
-            }}
-          >
-            <Image
-              src="/landing-page-images/checklist-button-light.webp"
-              alt="Checklist Button"
-              fill
-              sizes="(max-width: 768px) 125px, (max-width: 1200px) 145px, 155px"
-              className="object-cover rounded-xl"
-              loading="lazy"
-              unoptimized
-            />
-          </Link>
         </div>
       </div>
 
       {/* Floating Components - Dark Mode */}
       <div className="relative z-0 h-[900px] md:h-[1000px] lg:h-[1100px] flex items-center justify-center hidden dark:flex">
         <div className="relative h-full w-full min-w-[640px] md:min-w-[768px] lg:min-w-0 max-w-7xl px-6">
-          {/* Central Component - Globe Dark */}
+          {/* Central Component - 3D Wall Calendar Dark */}
           <Link
-            href="/docs/components/globe"
+            href="/docs/components/three-dwall-calendar"
             className="absolute left-1/2 top-[35%] h-[160px] w-[240px] md:h-[200px] md:w-[300px] lg:h-[220px] lg:w-[330px] z-20 rounded-xl shadow-lg animate-float-up overflow-hidden cursor-pointer hover:scale-105 hover:z-50 transition-all duration-300"
             style={{
               animationDelay: "0s",
@@ -598,8 +458,8 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/globe-dark.webp"
-              alt="Globe Component"
+              src="/landing-page-images/three-dwall-calendar-dark.webp"
+              alt="3D Wall Calendar Component"
               fill
               sizes="(max-width: 768px) 240px, (max-width: 1200px) 300px, 330px"
               className="object-cover rounded-xl"
@@ -628,46 +488,6 @@ export default function ComponentShowcaseSection() {
             />
           </Link>
 
-          {/* Elite Plan Card - Right Side (fills gap) */}
-          <Link
-            href="/docs/components/elite-plan-card"
-            className="absolute right-[0%] md:-right-[13%] lg:-right-[16%] top-[15%] md:top-[20%] lg:top-[25%] h-[130px] w-[185px] md:h-[150px] md:w-[225px] lg:h-[160px] lg:w-60 z-25 rounded-xl shadow-lg animate-float-up overflow-hidden cursor-pointer hover:scale-105 hover:z-50 transition-all duration-300"
-            style={{
-              animationDelay: "-3.5s",
-              transform: `translate(${mousePosition.x * -1}px, ${mousePosition.y * 0.7}px)`,
-            }}
-          >
-            <Image
-              src="/landing-page-images/elite-plan-card-dark.webp"
-              alt="Elite Plan Card"
-              fill
-              sizes="(max-width: 768px) 185px, (max-width: 1200px) 225px, 60px"
-              className="object-cover rounded-xl"
-              loading="lazy"
-              unoptimized
-            />
-          </Link>
-
-          {/* Credit Card Hero - Bottom Right */}
-          <Link
-            href="/docs/components/credit-card-hero"
-            className="absolute right-[0%] md:right-[2%] lg:right-[6%] bottom-[5%] md:bottom-[8%] lg:bottom-[12%] h-[120px] w-[175px] md:h-[140px] md:w-[210px] lg:h-[150px] lg:w-56 z-30 rounded-xl shadow-lg animate-float-up overflow-hidden cursor-pointer hover:scale-105 hover:z-50 transition-all duration-300"
-            style={{
-              animationDelay: "-5.2s",
-              transform: `translate(${mousePosition.x * -0.8}px, ${mousePosition.y * -0.7}px)`,
-            }}
-          >
-            <Image
-              src="/landing-page-images/credit-card-hero-dark.webp"
-              alt="Credit Card Hero"
-              fill
-              sizes="(max-width: 768px) 175px, (max-width: 1200px) 210px, 56px"
-              className="object-cover rounded-xl"
-              loading="lazy"
-              unoptimized
-            />
-          </Link>
-
           {/* Input With Select - Left Side */}
           <Link
             href="/docs/components/input-with-select"
@@ -688,26 +508,6 @@ export default function ComponentShowcaseSection() {
             />
           </Link>
 
-          {/* Health Stats Card - Bottom Left */}
-          <Link
-            href="/docs/components/health-stat-card"
-            className="absolute left-[-6%] md:left-[-8%] lg:left-[-10%] bottom-[8%] md:bottom-[10%] lg:bottom-[15%] h-[110px] w-[165px] md:h-[130px] md:w-[195px] lg:h-[140px] lg:w-52 z-25 rounded-xl shadow-lg animate-float-up overflow-hidden cursor-pointer hover:scale-105 hover:z-50 transition-all duration-300"
-            style={{
-              animationDelay: "-4.2s",
-              transform: `translate(${mousePosition.x * 0.8}px, ${mousePosition.y * -0.7}px)`,
-            }}
-          >
-            <Image
-              src="/landing-page-images/health-stats-card-dark.webp"
-              alt="Health Stats Card"
-              fill
-              sizes="(max-width: 768px) 165px, (max-width: 1200px) 195px, 52px"
-              className="object-cover rounded-xl"
-              loading="lazy"
-              unoptimized
-            />
-          </Link>
-
           {/* Tag Cloud - Top Center Right */}
           <Link
             href="/docs/components/tag-cloud-select"
@@ -722,26 +522,6 @@ export default function ComponentShowcaseSection() {
               alt="Tag Cloud Select"
               fill
               sizes="(max-width: 768px) 130px, (max-width: 1200px) 160px, 44px"
-              className="object-cover rounded-xl"
-              loading="lazy"
-              unoptimized
-            />
-          </Link>
-
-          {/* Shirt Parallax Card - Far Right */}
-          <Link
-            href="/docs/components/shirt-parallax-card"
-            className="absolute right-[0%] md:-right-[3%] lg:-right-[5%] top-[40%] md:top-[42%] lg:top-[45%] h-[110px] w-[165px] md:h-[130px] md:w-[195px] lg:h-[140px] lg:w-52 z-10 rounded-xl shadow-lg animate-float-up overflow-hidden cursor-pointer hover:scale-105 hover:z-50 transition-all duration-300"
-            style={{
-              animationDelay: "-3.5s",
-              transform: `translate(${mousePosition.x * -0.9}px, ${mousePosition.y * 0.5}px)`,
-            }}
-          >
-            <Image
-              src="/landing-page-images/shirt-parallax-card-light.webp"
-              alt="Shirt Parallax Card"
-              fill
-              sizes="(max-width: 768px) 165px, (max-width: 1200px) 195px, 208px"
               className="object-cover rounded-xl"
               loading="lazy"
               unoptimized
@@ -842,26 +622,6 @@ export default function ComponentShowcaseSection() {
               alt="Ripple Distortion"
               fill
               sizes="(max-width: 768px) 130px, (max-width: 1200px) 160px, 44px"
-              className="object-cover rounded-xl"
-              loading="lazy"
-              unoptimized
-            />
-          </Link>
-
-          {/* Icon Grid Button - Left Center */}
-          <Link
-            href="/docs/components/icon-grid-button"
-            className="absolute left-[8%] md:left-[12%] lg:left-[16%] top-[5%] md:top-[8%] lg:top-[12%] h-[95px] w-[140px] md:h-[110px] md:w-[160px] lg:h-[120px] lg:w-[175px] z-14 rounded-xl shadow-lg animate-float-up overflow-hidden cursor-pointer hover:scale-105 hover:z-50 transition-all duration-300"
-            style={{
-              animationDelay: "-3.2s",
-              transform: `translate(${mousePosition.x * 0.6}px, ${mousePosition.y * 0.7}px)`,
-            }}
-          >
-            <Image
-              src="/landing-page-images/icon-grid-button-dark.webp"
-              alt="Icon Grid Button"
-              fill
-              sizes="(max-width: 768px) 140px, (max-width: 1200px) 160px, 175px"
               className="object-cover rounded-xl"
               loading="lazy"
               unoptimized
@@ -1100,46 +860,6 @@ export default function ComponentShowcaseSection() {
             <Image
               src="/landing-page-images/confetti-button-dark.webp"
               alt="Confetti Button"
-              fill
-              sizes="(max-width: 768px) 125px, (max-width: 1200px) 145px, 155px"
-              className="object-cover rounded-xl"
-              loading="lazy"
-              unoptimized
-            />
-          </Link>
-
-          {/* Countdown Button - NEW DARK */}
-          <Link
-            href="/docs/components/countdown-button"
-            className="absolute left-[9%] md:left-[11%] lg:left-[15%] top-[28%] md:top-[30%] lg:top-[32%] h-[85px] w-[125px] md:h-[100px] md:w-[145px] lg:h-[110px] lg:w-[155px] z-16 rounded-xl shadow-lg animate-float-up overflow-hidden cursor-pointer hover:scale-105 hover:z-50 transition-all duration-300"
-            style={{
-              animationDelay: "-14.8s",
-              transform: `translate(${mousePosition.x * 0.6}px, ${mousePosition.y * 0.4}px)`,
-            }}
-          >
-            <Image
-              src="/landing-page-images/countdown-button-dark.webp"
-              alt="Countdown Button"
-              fill
-              sizes="(max-width: 768px) 125px, (max-width: 1200px) 145px, 155px"
-              className="object-cover rounded-xl"
-              loading="lazy"
-              unoptimized
-            />
-          </Link>
-
-          {/* Checklist Button - NEW DARK */}
-          <Link
-            href="/docs/components/checklist-button"
-            className="absolute right-[36%] md:right-[48%] lg:right-[42%] bottom-[38%] md:bottom-[40%] lg:bottom-[42%] h-[85px] w-[125px] md:h-[100px] md:w-[145px] lg:h-[110px] lg:w-[155px] z-16 rounded-xl shadow-lg animate-float-up overflow-hidden cursor-pointer hover:scale-105 hover:z-50 transition-all duration-300"
-            style={{
-              animationDelay: "-15.4s",
-              transform: `translate(${mousePosition.x * -0.5}px, ${mousePosition.y * -0.3}px)`,
-            }}
-          >
-            <Image
-              src="/landing-page-images/checklist-button-dark.webp"
-              alt="Checklist Button"
               fill
               sizes="(max-width: 768px) 125px, (max-width: 1200px) 145px, 155px"
               className="object-cover rounded-xl"

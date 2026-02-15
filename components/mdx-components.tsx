@@ -19,6 +19,10 @@ import { ComponentSource } from "@/components/component-source";
 import { CopyButton } from "@/components/copy-button";
 import { TemplateOpen } from "@/components/template-open";
 import { SimpleComponentsShowcase } from "@/components/simple-components-showcase";
+import {
+  AllComponentsShowcase,
+  CategoryShowcase,
+} from "@/components/all-components-showcase";
 
 const ComponentGrid = ({ children }: { children: React.ReactNode }) => (
   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 my-8">
@@ -99,6 +103,8 @@ const components = {
   ComponentPreview,
   ComponentSource: (props: any) => <ComponentSource {...props} />,
   SimpleComponentsShowcase,
+  AllComponentsShowcase,
+  CategoryShowcase,
   ComponentGrid,
   ComponentCard,
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (

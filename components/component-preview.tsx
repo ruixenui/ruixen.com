@@ -5,7 +5,12 @@ import { ComponentWrapper } from "@/components/component-wrapper";
 import Image from "next/image";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
-import { RotateCcw, SquareArrowOutUpRight } from "lucide-react";
+import {
+  CheckIcon,
+  ClipboardIcon,
+  RotateCcw,
+  SquareArrowOutUpRight,
+} from "lucide-react";
 import * as React from "react";
 
 interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -23,8 +28,29 @@ export function ComponentPreview({
   ...props
 }: ComponentPreviewProps) {
   const [replayKey, setReplayKey] = React.useState(0);
+  const [hasCopied, setHasCopied] = React.useState(false);
+  const [sourceCode, setSourceCode] = React.useState("");
   const Codes = React.Children.toArray(children) as React.ReactElement[];
   const Code = Codes[0];
+
+  React.useEffect(() => {
+    if (hasCopied) {
+      const t = setTimeout(() => setHasCopied(false), 2000);
+      return () => clearTimeout(t);
+    }
+  }, [hasCopied]);
+
+  React.useEffect(() => {
+    const componentName = name.replace(/-demo$/, "");
+    fetch(`/r/${componentName}.json`)
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (data?.files?.[0]?.content) {
+          setSourceCode(data.files[0].content);
+        }
+      })
+      .catch(() => {});
+  }, [name]);
 
   const Preview = React.useMemo(() => {
     const Component = Index[name]?.component;
@@ -73,6 +99,23 @@ export function ComponentPreview({
               </TabsList>
 
               <div className="flex items-center gap-1.5">
+                {sourceCode && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      navigator.clipboard.writeText(sourceCode);
+                      setHasCopied(true);
+                    }}
+                    className="inline-flex h-7 w-7 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                    title="Copy code"
+                  >
+                    {hasCopied ? (
+                      <CheckIcon className="h-3.5 w-3.5" />
+                    ) : (
+                      <ClipboardIcon className="h-3.5 w-3.5" />
+                    )}
+                  </button>
+                )}
                 <button
                   type="button"
                   onClick={() => setReplayKey((k) => k + 1)}

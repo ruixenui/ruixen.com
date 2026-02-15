@@ -319,22 +319,6 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "aurora-hero-section",
-    type: "registry:ui",
-    title: "Aurora Hero Section",
-    description:
-      "A beautiful hero section with aurora-style background effects and animated elements",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["button"],
-    files: [
-      {
-        path: "registry/ruixenui/aurora-hero-section.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/aurora-hero-section.tsx",
-      },
-    ],
-  },
-  {
     name: "card-carousel-hero",
     type: "registry:ui",
     title: "Card Carousel Hero",
@@ -367,22 +351,6 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "spectrum-hero-section",
-    type: "registry:ui",
-    title: "Spectrum Hero Section",
-    description:
-      "A vibrant hero section with spectrum color effects and dynamic animations",
-    dependencies: ["motion"],
-    registryDependencies: ["button"],
-    files: [
-      {
-        path: "registry/ruixenui/spectrum-hero-section.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/spectrum-hero-section.tsx",
-      },
-    ],
-  },
-  {
     name: "video-hero-showcase",
     type: "registry:ui",
     title: "Video Hero Showcase",
@@ -395,22 +363,6 @@ export const ui: Registry["items"] = [
         path: "registry/ruixenui/video-hero-showcase.tsx",
         type: "registry:ui",
         target: "components/ruixen/video-hero-showcase.tsx",
-      },
-    ],
-  },
-  {
-    name: "visionary-hero-section",
-    type: "registry:ui",
-    title: "Visionary Hero Section",
-    description:
-      "A visionary hero section with elegant design and smooth animations",
-    dependencies: ["motion", "gsap"],
-    registryDependencies: ["button"],
-    files: [
-      {
-        path: "registry/ruixenui/visionary-hero-section.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/visionary-hero-section.tsx",
       },
     ],
   },
@@ -756,9 +708,8 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Slide To Delete Button",
     description:
-      "A draggable button that requires sliding to confirm deletion action.",
-    dependencies: ["framer-motion", "lucide-react"],
-    registryDependencies: ["button"],
+      "iOS 26 liquid-glass slide-to-confirm track with spring-physics draggable thumb.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/slide-to-delete-button.tsx",
@@ -772,9 +723,8 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Glow Link Button",
     description:
-      "A button with a subtle glow effect and animated arrow on hover.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["button"],
+      "iOS 26 liquid-glass link pill with cursor-following radial glow and spring arrow.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/glow-link-button.tsx",
@@ -784,44 +734,12 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "theme-cycle-button",
-    type: "registry:ui",
-    title: "Theme Cycle Button",
-    description:
-      "A button that cycles through different theme modes with smooth transitions.",
-    dependencies: ["lucide-react", "next-themes"],
-    registryDependencies: ["button"],
-    files: [
-      {
-        path: "registry/ruixenui/theme-cycle-button.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/theme-cycle-button.tsx",
-      },
-    ],
-  },
-  {
-    name: "morphing-github-button",
-    type: "registry:ui",
-    title: "Morphing Github Button",
-    description:
-      "A GitHub button that morphs between different states with animations.",
-    dependencies: ["lucide-react", "framer-motion"],
-    registryDependencies: ["button"],
-    files: [
-      {
-        path: "registry/ruixenui/morphing-github-button.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/morphing-github-button.tsx",
-      },
-    ],
-  },
-  {
     name: "circular-stepper-input",
     type: "registry:ui",
     title: "Circular Stepper Input",
     description:
-      "A circular input component with increment/decrement functionality.",
-    dependencies: ["lucide-react"],
+      "iOS 26 liquid-glass circular stepper with draggable ring, spring-animated arc, and haptic sound feedback.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/circular-stepper-input.tsx",
@@ -831,51 +749,17 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "password-strength-input",
-    type: "registry:ui",
-    title: "Password Strength Input",
-    description:
-      "A password input with real-time strength validation and visual feedback.",
-    dependencies: ["lucide-react"],
-    files: [
-      {
-        path: "registry/ruixenui/password-strength-input.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/password-strength-input.tsx",
-      },
-    ],
-  },
-  {
-    name: "otp-input",
-    type: "registry:ui",
-    title: "OTP Input",
-    description:
-      "A one-time password input component with individual digit fields.",
-    files: [
-      {
-        path: "registry/ruixenui/otp-input.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/otp-input.tsx",
-      },
-    ],
-  },
-  {
     name: "color-picker-input",
     type: "registry:ui",
     title: "Color Picker Input",
     description:
-      "A color picker component with opacity control and copy functionality.",
-    dependencies: ["lucide-react"],
+      "iOS 26 liquid-glass color picker with swatch grid, draggable opacity slider, and one-click copy.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/color-picker-input.tsx",
         type: "registry:ui",
         target: "components/ruixen/color-picker-input.tsx",
-      },
-      {
-        path: "hooks/use-copy-to-clipboard.ts",
-        type: "registry:hook",
-        target: "hooks/use-copy-to-clipboard.ts",
       },
     ],
   },
@@ -883,9 +767,9 @@ export const ui: Registry["items"] = [
     name: "gravatar-email-input",
     type: "registry:ui",
     title: "Gravatar Email Input",
-    description: "An email input that displays Gravatar avatar preview.",
-    dependencies: ["md5"],
-    registryDependencies: ["input", "label"],
+    description:
+      "iOS 26 liquid-glass email input with live Gravatar avatar preview and smooth fade-in.",
+    dependencies: ["motion", "md5"],
     files: [
       {
         path: "registry/ruixenui/gravatar-email-input.tsx",
@@ -898,8 +782,9 @@ export const ui: Registry["items"] = [
     name: "correct-number-input",
     type: "registry:ui",
     title: "Correct Number Input",
-    description: "A number input with validation and correction features.",
-    dependencies: ["lucide-react"],
+    description:
+      "iOS 26 liquid-glass number input with floating label, integrated stepper buttons, and haptic sound.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/correct-number-input.tsx",
@@ -912,8 +797,9 @@ export const ui: Registry["items"] = [
     name: "better-time-picker",
     type: "registry:ui",
     title: "Better Time Picker",
-    description: "An enhanced time picker with improved user experience.",
-    dependencies: ["lucide-react"],
+    description:
+      "iOS 26 liquid-glass time picker with column steppers, spring-animated values, and segmented AM/PM toggle.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/better-time-picker.tsx",
@@ -926,8 +812,9 @@ export const ui: Registry["items"] = [
     name: "inline-copy-input",
     type: "registry:ui",
     title: "Inline Copy Input",
-    description: "An input field with inline copy-to-clipboard functionality.",
-    dependencies: ["lucide-react"],
+    description:
+      "iOS 26 liquid-glass copy input with animated clipboard/check icon swap and haptic sound.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/inline-copy-input.tsx",
@@ -941,45 +828,13 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Clean Tag Input",
     description:
-      "A clean and minimal tag input component for adding multiple values.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["label"],
+      "iOS 26 liquid-glass tag input with spring-animated pill chips and keyboard-driven add/remove.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/clean-tag-input.tsx",
         type: "registry:ui",
         target: "components/ruixen/clean-tag-input.tsx",
-      },
-    ],
-  },
-  {
-    name: "search-with-category",
-    type: "registry:ui",
-    title: "Search With Category",
-    description:
-      "A search input component with category filtering functionality.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["button", "input", "label", "select"],
-    files: [
-      {
-        path: "registry/ruixenui/search-with-category.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/search-with-category.tsx",
-      },
-    ],
-  },
-  {
-    name: "advanced-context-menu",
-    type: "registry:ui",
-    title: "Advanced Context Menu",
-    description:
-      "An advanced context menu component with nested items and keyboard navigation.",
-    registryDependencies: ["context-menu"],
-    files: [
-      {
-        path: "registry/ruixenui/advanced-context-menu.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/advanced-context-menu.tsx",
       },
     ],
   },
@@ -1002,9 +857,9 @@ export const ui: Registry["items"] = [
     name: "drawer-inner-content",
     type: "registry:ui",
     title: "Drawer Inner Content",
-    description: "A drawer component with customizable inner content layout.",
+    description:
+      "Gesture-driven bottom sheet — drag to dismiss, spring physics, structured content sections with staggered cascade.",
     dependencies: ["motion"],
-    registryDependencies: ["drawer", "button", "input", "label"],
     files: [
       {
         path: "registry/ruixenui/drawer-inner-content.tsx",
@@ -1018,9 +873,8 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Centered Feedback Drawer",
     description:
-      "A centered drawer component designed for feedback collection.",
+      "Centered feedback panel — three SVG faces, contextual comment, spring selection, auto-dismiss thank-you state.",
     dependencies: ["motion"],
-    registryDependencies: ["drawer", "button", "input", "label", "text-area"],
     files: [
       {
         path: "registry/ruixenui/centered-feedback-drawer.tsx",
@@ -1034,9 +888,8 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Bottom Drawers",
     description:
-      "A bottom drawer component that slides up from the bottom of the screen.",
+      "Snap-point bottom sheet — three snap heights (peek, half, full), drag between them, velocity-aware, progressive content reveal.",
     dependencies: ["motion"],
-    registryDependencies: ["drawer", "button", "input", "label", "text-area"],
     files: [
       {
         path: "registry/ruixenui/bottom-drawers.tsx",
@@ -1046,150 +899,12 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "social-card",
-    type: "registry:ui",
-    title: "Social Card",
-    description:
-      "A social media style card component with engagement features.",
-    dependencies: ["lucide-react"],
-    files: [
-      {
-        path: "registry/ruixenui/social-card.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/social-card.tsx",
-      },
-    ],
-  },
-  {
-    name: "portfolio-card",
-    type: "registry:ui",
-    title: "Portfolio Card",
-    description:
-      "A professional portfolio card component showcasing skills and profile.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["button"],
-    files: [
-      {
-        path: "registry/ruixenui/portfolio-card.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/portfolio-card.tsx",
-      },
-    ],
-  },
-  {
-    name: "goal-tracker-card",
-    type: "registry:ui",
-    title: "Goal Tracker Card",
-    description:
-      "An activity and goal tracking card with progress visualization.",
-    dependencies: ["lucide-react"],
-    files: [
-      {
-        path: "registry/ruixenui/goal-tracker-card.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/goal-tracker-card.tsx",
-      },
-    ],
-  },
-  {
-    name: "environment-card",
-    type: "registry:ui",
-    title: "Environment Card",
-    description:
-      "A smart home environment control card with device management.",
-    dependencies: ["lucide-react"],
-    files: [
-      {
-        path: "registry/ruixenui/environment-card.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/environment-card.tsx",
-      },
-    ],
-  },
-  {
-    name: "schedule-card",
-    type: "registry:ui",
-    title: "Schedule Card",
-    description:
-      "A schedule card component displaying daily events and meetings.",
-    dependencies: ["lucide-react"],
-    files: [
-      {
-        path: "registry/ruixenui/schedule-card.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/schedule-card.tsx",
-      },
-    ],
-  },
-  {
-    name: "showcase-card",
-    type: "registry:ui",
-    title: "Showcase Card",
-    description:
-      "A showcase card component for displaying projects and portfolios.",
-    dependencies: ["lucide-react"],
-    files: [
-      {
-        path: "registry/ruixenui/showcase-card.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/showcase-card.tsx",
-      },
-    ],
-  },
-  {
-    name: "order-summary-card",
-    type: "registry:ui",
-    title: "Order Summary Card",
-    description:
-      "An order summary card component for e-commerce checkout flows.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["button", "card"],
-    files: [
-      {
-        path: "registry/ruixenui/order-summary-card.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/order-summary-card.tsx",
-      },
-    ],
-  },
-  {
-    name: "doctor-profile-card",
-    type: "registry:ui",
-    title: "Doctor Profile Card",
-    description: "A doctor profile card component for healthcare applications.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["button"],
-    files: [
-      {
-        path: "registry/ruixenui/doctor-profile-card.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/doctor-profile-card.tsx",
-      },
-    ],
-  },
-  {
-    name: "idea-generator-card",
-    type: "registry:ui",
-    title: "Idea Generator Card",
-    description:
-      "An AI-powered idea generator card with input and action buttons.",
-    dependencies: ["lucide-react"],
-    files: [
-      {
-        path: "registry/ruixenui/idea-generator-card.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/idea-generator-card.tsx",
-      },
-    ],
-  },
-  {
     name: "input-with-select",
     type: "registry:ui",
     title: "Input With Select",
     description:
-      "A modern input field with an integrated select dropdown for currency or unit selection.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["input", "label", "select"],
+      "iOS 26 liquid-glass amount input with integrated segmented currency/unit selector and spring-animated knob.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/input-with-select.tsx",
@@ -1199,29 +914,12 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "range-slider-input",
-    type: "registry:ui",
-    title: "Range Slider Input",
-    description:
-      "A dual-range slider with numeric inputs and increment/decrement controls.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["input", "label"],
-    files: [
-      {
-        path: "registry/ruixenui/range-slider-input.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/range-slider-input.tsx",
-      },
-    ],
-  },
-  {
     name: "url-input",
     type: "registry:ui",
     title: "URL Input",
     description:
-      "A smart URL input field that automatically displays website favicons.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["input", "label"],
+      "iOS 26 liquid-glass URL input with live favicon preview, protocol hint, and globe fallback icon.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/url-input.tsx",
@@ -1231,77 +929,12 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "floating-input",
-    type: "registry:ui",
-    title: "Floating Input",
-    description:
-      "A modern input field with floating label animation and icon support.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["input", "label"],
-    files: [
-      {
-        path: "registry/ruixenui/floating-input.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/floating-input.tsx",
-      },
-    ],
-  },
-  {
-    name: "time-with-icon",
-    type: "registry:ui",
-    title: "Time With Icon",
-    description:
-      "A time input field with dynamic icons that change based on the selected time.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["input", "label"],
-    files: [
-      {
-        path: "registry/ruixenui/time-with-icon.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/time-with-icon.tsx",
-      },
-    ],
-  },
-  {
-    name: "otp-field",
-    type: "registry:ui",
-    title: "OTP Field",
-    description:
-      "A customizable OTP (One-Time Password) input field with auto-focus and paste support.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["label"],
-    files: [
-      {
-        path: "registry/ruixenui/otp-field.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/otp-field.tsx",
-      },
-    ],
-  },
-  {
-    name: "modern-card-input",
-    type: "registry:ui",
-    title: "Modern Card Input",
-    description:
-      "A sophisticated credit card input with real-time validation and card type detection.",
-    dependencies: ["react-payment-inputs"],
-    registryDependencies: ["input", "label"],
-    files: [
-      {
-        path: "registry/ruixenui/modern-card-input.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/modern-card-input.tsx",
-      },
-    ],
-  },
-  {
     name: "password-field",
     type: "registry:ui",
     title: "Password Field",
     description:
-      "An advanced password input with strength meter, validation checklist, and password generation.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["input", "label", "button"],
+      "iOS 26 liquid-glass password input with animated strength bar, validation checklist, and one-click generation.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/password-field.tsx",
@@ -1311,44 +944,12 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "smart-assist-input",
-    type: "registry:ui",
-    title: "Smart Assist Input",
-    description:
-      "An intelligent input field with history tracking, validation, and quick actions.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["input", "label"],
-    files: [
-      {
-        path: "registry/ruixenui/smart-assist-input.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/smart-assist-input.tsx",
-      },
-    ],
-  },
-  {
-    name: "action-hub-input",
-    type: "registry:ui",
-    title: "Action Hub Input",
-    description:
-      "A versatile input field with customizable action buttons and status indicators.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["input", "label", "button"],
-    files: [
-      {
-        path: "registry/ruixenui/action-hub-input.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/action-hub-input.tsx",
-      },
-    ],
-  },
-  {
     name: "smart-notify-button",
     type: "registry:ui",
     title: "Smart Notify Button",
     description:
-      "A button component that triggers customizable toast notifications with actions and different types.",
-    dependencies: ["sonner", "lucide-react"],
+      "iOS 26 liquid-glass button with inline glass toast notification — no external toast library.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/smart-notify-button.tsx",
@@ -1486,63 +1087,17 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "sign-in-form",
+    name: "glass-form",
     type: "registry:ui",
-    title: "Sign In Form",
+    title: "Glass Form",
     description:
-      "A professional sign-in form with email/password fields and social login options.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["button", "input", "label", "checkbox", "card"],
+      "iOS 26 liquid-glass form system — grouped fields, toggles, segmented controls, and action buttons with backdrop blur.",
+    dependencies: ["motion"],
     files: [
       {
-        path: "registry/ruixenui/sign-in-form.tsx",
+        path: "registry/ruixenui/glass-form.tsx",
         type: "registry:ui",
-        target: "components/ruixen/sign-in-form.tsx",
-      },
-    ],
-  },
-  {
-    name: "create-account-form",
-    type: "registry:ui",
-    title: "Create Account Form",
-    description:
-      "A modern account creation form with validation and terms acceptance.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["button", "input", "label", "card"],
-    files: [
-      {
-        path: "registry/ruixenui/create-account-form.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/create-account-form.tsx",
-      },
-    ],
-  },
-  {
-    name: "newsletter-form",
-    type: "registry:ui",
-    title: "Newsletter Form",
-    description: "A simple newsletter subscription form with success state.",
-    registryDependencies: ["button", "input", "label", "card"],
-    files: [
-      {
-        path: "registry/ruixenui/newsletter-form.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/newsletter-form.tsx",
-      },
-    ],
-  },
-  {
-    name: "sign-in-card",
-    type: "registry:ui",
-    title: "Sign In Card",
-    description:
-      "A Microsoft-inspired sign-in card with clean design and branding.",
-    registryDependencies: ["button", "input", "card"],
-    files: [
-      {
-        path: "registry/ruixenui/sign-in-card.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/sign-in-card.tsx",
+        target: "components/ruixen/glass-form.tsx",
       },
     ],
   },
@@ -1675,36 +1230,6 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "date-time-picker",
-    type: "registry:ui",
-    title: "Date Time Picker",
-    description: "A date and time picker with calendar and time selection.",
-    dependencies: ["date-fns", "lucide-react", "react-day-picker"],
-    registryDependencies: ["popover", "button", "calendar", "select"],
-    files: [
-      {
-        path: "registry/ruixenui/date-time-picker.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/date-time-picker.tsx",
-      },
-    ],
-  },
-  {
-    name: "date-range-picker",
-    type: "registry:ui",
-    title: "Date Range Picker",
-    description: "A date range picker with dual calendar view.",
-    dependencies: ["date-fns", "lucide-react", "react-day-picker"],
-    registryDependencies: ["button", "calendar", "popover"],
-    files: [
-      {
-        path: "registry/ruixenui/date-range-picker.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/date-range-picker.tsx",
-      },
-    ],
-  },
-  {
     name: "monthly-heatmap-calendar",
     type: "registry:ui",
     title: "Monthly Heatmap Calendar",
@@ -1731,16 +1256,8 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Event Scheduler",
     description:
-      "A full-featured event scheduler with event creation and management.",
-    dependencies: ["date-fns", "lucide-react"],
-    registryDependencies: [
-      "button",
-      "calendar",
-      "popover",
-      "select",
-      "input",
-      "card",
-    ],
+      "Inline timeline scheduler — tap a time, type a title, press Enter. Spring animations, sorted list, sound feedback.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/event-scheduler.tsx",
@@ -1750,47 +1267,32 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "daily-timeline-scheduler",
+    name: "glass-image-editor",
     type: "registry:ui",
-    title: "Daily Timeline Scheduler",
-    description: "A timeline-based daily scheduler with time slot management.",
-    dependencies: ["date-fns", "lucide-react"],
-    registryDependencies: ["card", "button", "popover", "input", "select"],
+    title: "Glass Image Editor",
+    description:
+      "iOS 26 liquid-glass image editor with drop zone, zoom/pan canvas, thumbnail strip, and toolbar.",
+    dependencies: ["motion"],
     files: [
       {
-        path: "registry/ruixenui/daily-timeline-scheduler.tsx",
+        path: "registry/ruixenui/glass-image-editor.tsx",
         type: "registry:ui",
-        target: "components/ruixen/daily-timeline-scheduler.tsx",
+        target: "components/ruixen/glass-image-editor.tsx",
       },
     ],
   },
   {
-    name: "image-cropper",
+    name: "glass-image-compare",
     type: "registry:ui",
-    title: "Image Cropper",
-    description: "An image cropping tool with zoom and aspect ratio controls.",
-    dependencies: ["react-easy-crop"],
-    registryDependencies: ["button", "select", "slider", "card", "input"],
+    title: "Glass Image Compare",
+    description:
+      "iOS 26 liquid-glass before/after image comparison slider with drag divider, floating labels, and drop-to-load support.",
+    dependencies: ["motion"],
     files: [
       {
-        path: "registry/ruixenui/image-cropper.tsx",
+        path: "registry/ruixenui/glass-image-compare.tsx",
         type: "registry:ui",
-        target: "components/ruixen/image-cropper.tsx",
-      },
-    ],
-  },
-  {
-    name: "advanced-image-uploader",
-    type: "registry:ui",
-    title: "Advanced Image Uploader",
-    description: "A drag-and-drop image uploader with cropping functionality.",
-    dependencies: ["react-easy-crop", "lucide-react"],
-    registryDependencies: ["card", "button"],
-    files: [
-      {
-        path: "registry/ruixenui/advanced-image-uploader.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/advanced-image-uploader.tsx",
+        target: "components/ruixen/glass-image-compare.tsx",
       },
     ],
   },
@@ -2318,9 +1820,8 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Gooey Dock",
     description:
-      "Dock component with liquid gooey blob effects using SVG filters.",
-    dependencies: ["framer-motion", "lucide-react"],
-    registryDependencies: ["tooltip", "button"],
+      "Horizontal dock with proximity-based magnification — items grow as the cursor approaches, spring physics.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/gooey-dock.tsx",
@@ -2330,34 +1831,17 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "dock-morph",
+    name: "morphing-expandable-menu",
     type: "registry:ui",
-    title: "Dock Morph",
+    title: "Morphing Expandable Menu",
     description:
-      "Morphing dock with glassmorphism bubbles and flexible positioning.",
-    dependencies: ["framer-motion", "lucide-react"],
-    registryDependencies: ["tooltip", "button"],
+      "A spring-animated pill that morphs into a dock, then expands into search, music player, timer, or note panels.",
+    dependencies: ["motion", "lucide-react"],
     files: [
       {
-        path: "registry/ruixenui/dock-morph.tsx",
+        path: "registry/ruixenui/morphing-expandable-menu.tsx",
         type: "registry:ui",
-        target: "components/ruixen/dock-morph.tsx",
-      },
-    ],
-  },
-  {
-    name: "dock",
-    type: "registry:ui",
-    title: "Dock",
-    description:
-      "Classic dock component with floating animation and glow effects.",
-    dependencies: ["framer-motion", "lucide-react"],
-    registryDependencies: ["tooltip", "button"],
-    files: [
-      {
-        path: "registry/ruixenui/dock.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/dock.tsx",
+        target: "components/ruixen/morphing-expandable-menu.tsx",
       },
     ],
   },
@@ -2461,8 +1945,8 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Visualizer Button",
     description:
-      "Compact audio button with canvas-based waveform visualization and play/pause controls.",
-    dependencies: ["lucide-react"],
+      "iOS 26 liquid-glass audio pill with canvas equalizer and Web Audio API integration.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/visualizer-button.tsx",
@@ -2471,74 +1955,14 @@ export const ui: Registry["items"] = [
       },
     ],
   },
-  // Auth/Login Components
-  {
-    name: "flip-card",
-    type: "registry:ui",
-    title: "Flip Card",
-    description:
-      "3D flip card with login form, customizable fields, and success states.",
-    dependencies: ["framer-motion"],
-    files: [
-      {
-        path: "registry/ruixenui/flip-card.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/flip-card.tsx",
-      },
-    ],
-  },
-  {
-    name: "success-login-card",
-    type: "registry:ui",
-    title: "Success Login Card",
-    description:
-      "Animated login card with success states and customizable animation types.",
-    dependencies: ["framer-motion"],
-    files: [
-      {
-        path: "registry/ruixenui/success-login-card.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/success-login-card.tsx",
-      },
-    ],
-  },
-  {
-    name: "step-card",
-    type: "registry:ui",
-    title: "Step Card",
-    description: "Multi-step form card with smooth transitions between steps.",
-    dependencies: ["framer-motion"],
-    files: [
-      {
-        path: "registry/ruixenui/step-card.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/step-card.tsx",
-      },
-    ],
-  },
-  {
-    name: "auth-tabs-card",
-    type: "registry:ui",
-    title: "Auth Tabs Card",
-    description:
-      "Tabbed authentication card with sign-in/sign-up forms and social login options.",
-    dependencies: ["react-icons"],
-    files: [
-      {
-        path: "registry/ruixenui/auth-tabs-card.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/auth-tabs-card.tsx",
-      },
-    ],
-  },
   // Additional Button Components
   {
     name: "hover-preview-button",
     type: "registry:ui",
     title: "Hover Preview Button",
-    description: "Button with hover-triggered preview content display.",
-    dependencies: [],
-    registryDependencies: ["button"],
+    description:
+      "iOS 26 liquid-glass pill with spring-animated hover preview panel.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/hover-preview-button.tsx",
@@ -2548,29 +1972,12 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "segmented-button-group",
-    type: "registry:ui",
-    title: "Segmented Button Group",
-    description:
-      "Group of connected buttons for single selection with smooth animations.",
-    dependencies: [],
-    registryDependencies: ["button"],
-    files: [
-      {
-        path: "registry/ruixenui/segmented-button-group.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/segmented-button-group.tsx",
-      },
-    ],
-  },
-  {
     name: "confetti-button",
     type: "registry:ui",
     title: "Confetti Button",
     description:
-      "Celebration button that triggers animated confetti particles on click.",
-    dependencies: ["framer-motion"],
-    registryDependencies: ["button"],
+      "iOS 26 liquid-glass pill that erupts spring-physics confetti particles on click.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/confetti-button.tsx",
@@ -2580,121 +1987,12 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "swipe-to-confirm-button",
-    type: "registry:ui",
-    title: "Swipe To Confirm Button",
-    description: "Interactive button requiring swipe gesture for confirmation.",
-    dependencies: ["framer-motion"],
-    registryDependencies: ["button"],
-    files: [
-      {
-        path: "registry/ruixenui/swipe-to-confirm-button.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/swipe-to-confirm-button.tsx",
-      },
-    ],
-  },
-  {
-    name: "status-button",
-    type: "registry:ui",
-    title: "Status Button",
-    description:
-      "Button with animated status indicator dot for live/idle/offline states.",
-    dependencies: ["framer-motion"],
-    registryDependencies: ["button"],
-    files: [
-      {
-        path: "registry/ruixenui/status-button.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/status-button.tsx",
-      },
-    ],
-  },
-  {
-    name: "checklist-button",
-    type: "registry:ui",
-    title: "Checklist Button",
-    description: "Toggle button with checkmark animation for task completion.",
-    dependencies: ["framer-motion", "lucide-react"],
-    registryDependencies: ["button"],
-    files: [
-      {
-        path: "registry/ruixenui/checklist-button.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/checklist-button.tsx",
-      },
-    ],
-  },
-  {
-    name: "countdown-button",
-    type: "registry:ui",
-    title: "Countdown Button",
-    description:
-      "Button with countdown timer that disables for specified duration.",
-    dependencies: [],
-    registryDependencies: ["button"],
-    files: [
-      {
-        path: "registry/ruixenui/countdown-button.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/countdown-button.tsx",
-      },
-    ],
-  },
-  {
-    name: "icon-grid-button",
-    type: "registry:ui",
-    title: "Icon Grid Button",
-    description: "Button that reveals a grid of icon options on click.",
-    dependencies: [],
-    registryDependencies: ["button"],
-    files: [
-      {
-        path: "registry/ruixenui/icon-grid-button.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/icon-grid-button.tsx",
-      },
-    ],
-  },
-  {
-    name: "multi-step-button",
-    type: "registry:ui",
-    title: "Multi Step Button",
-    description:
-      "Button that cycles through multiple steps/labels on each click.",
-    dependencies: [],
-    registryDependencies: ["button"],
-    files: [
-      {
-        path: "registry/ruixenui/multi-step-button.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/multi-step-button.tsx",
-      },
-    ],
-  },
-  {
-    name: "tooltip-button",
-    type: "registry:ui",
-    title: "Tooltip Button",
-    description: "Button with integrated tooltip for additional context.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["button", "tooltip"],
-    files: [
-      {
-        path: "registry/ruixenui/tooltip-button.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/tooltip-button.tsx",
-      },
-    ],
-  },
-  {
     name: "badge-button-combo",
     type: "registry:ui",
     title: "Badge Button Combo",
     description:
-      "Button with notification badge for counts or status indicators.",
-    dependencies: [],
-    registryDependencies: ["button", "badge"],
+      "iOS 26 liquid-glass pill with inline chip badge for counts or status labels.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/badge-button-combo.tsx",
@@ -2838,73 +2136,12 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "expandable-content-button",
-    type: "registry:ui",
-    title: "Expandable Content Button",
-    description: "Button that expands to show additional content options.",
-    dependencies: ["lucide-react"],
-    files: [
-      {
-        path: "registry/ruixenui/expandable-content-button.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/expandable-content-button.tsx",
-      },
-    ],
-  },
-  {
-    name: "notification-button",
-    type: "registry:ui",
-    title: "Notification Button",
-    description:
-      "Button with notification badge count for alerts and messages.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["button", "badge"],
-    files: [
-      {
-        path: "registry/ruixenui/notification-button.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/notification-button.tsx",
-      },
-    ],
-  },
-  {
-    name: "confirmation-button",
-    type: "registry:ui",
-    title: "Confirmation Button",
-    description:
-      "Safety button that requires confirmation before executing destructive actions.",
-    dependencies: [],
-    registryDependencies: ["button"],
-    files: [
-      {
-        path: "registry/ruixenui/confirmation-button.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/confirmation-button.tsx",
-      },
-    ],
-  },
-  {
-    name: "split-action-button",
-    type: "registry:ui",
-    title: "Split Action Button",
-    description:
-      "Button with primary action and dropdown for secondary options.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["button", "dropdown"],
-    files: [
-      {
-        path: "registry/ruixenui/split-action-button.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/split-action-button.tsx",
-      },
-    ],
-  },
-  {
     name: "progress-button",
     type: "registry:ui",
     title: "Progress Button",
-    description: "Button with built-in progress feedback for async operations.",
-    dependencies: ["lucide-react"],
+    description:
+      "iOS 26 liquid-glass pill that morphs through idle → loading → done phases.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/progress-button.tsx",
@@ -2918,74 +2155,13 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Icon Label Subtext Button",
     description:
-      "Comprehensive button with icon, main label, and subtext for detailed actions.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["badge", "tooltip"],
+      "iOS 26 liquid-glass card-button with icon circle, label, and subtext.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/icon-label-subtext-button.tsx",
         type: "registry:ui",
         target: "components/ruixen/icon-label-subtext-button.tsx",
-      },
-    ],
-  },
-  // Additional Auth Components
-  {
-    name: "gamified-login-card",
-    type: "registry:ui",
-    title: "Gamified Login Card",
-    description:
-      "Interactive login card with confetti celebration animation on successful login.",
-    dependencies: ["framer-motion"],
-    files: [
-      {
-        path: "registry/ruixenui/gamified-login-card.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/gamified-login-card.tsx",
-      },
-    ],
-  },
-  {
-    name: "social-auth-card",
-    type: "registry:ui",
-    title: "Social Auth Card",
-    description:
-      "Authentication card with social login buttons and traditional form.",
-    dependencies: [],
-    files: [
-      {
-        path: "registry/ruixenui/social-auth-card.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/social-auth-card.tsx",
-      },
-    ],
-  },
-  {
-    name: "login-card",
-    type: "registry:ui",
-    title: "Login Card",
-    description:
-      "Clean and simple login card with customizable inputs and logo support.",
-    dependencies: [],
-    files: [
-      {
-        path: "registry/ruixenui/login-card.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/login-card.tsx",
-      },
-    ],
-  },
-  {
-    name: "multi-step-login",
-    type: "registry:ui",
-    title: "Multi Step Login",
-    description: "Multi-step authentication form with progress indicator.",
-    dependencies: [],
-    files: [
-      {
-        path: "registry/ruixenui/multi-step-login.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/multi-step-login.tsx",
       },
     ],
   },
@@ -3007,63 +2183,12 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "inbox-calendar",
-    type: "registry:ui",
-    title: "Inbox Calendar",
-    description:
-      "Interactive inbox-style calendar with event management and scrollable timeline.",
-    dependencies: ["date-fns", "lucide-react", "uuid"],
-    registryDependencies: [
-      "card",
-      "scroll-area",
-      "separator",
-      "badge",
-      "button",
-      "popover",
-      "input",
-      "textarea",
-      "calendar",
-    ],
-    files: [
-      {
-        path: "registry/ruixenui/inbox-calendar.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/inbox-calendar.tsx",
-      },
-    ],
-  },
-  {
-    name: "event-constellation-calendar",
-    type: "registry:ui",
-    title: "Event Constellation Calendar",
-    description:
-      "Unique starfield-style calendar with constellation connections between events.",
-    dependencies: ["date-fns", "lucide-react", "uuid"],
-    registryDependencies: ["card", "button", "popover", "input"],
-    files: [
-      {
-        path: "registry/ruixenui/event-constellation-calendar.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/event-constellation-calendar.tsx",
-      },
-    ],
-  },
-  {
     name: "three-dwall-calendar",
     type: "registry:ui",
     title: "Three D Wall Calendar",
     description:
-      "Interactive 3D wall-style calendar with tilt/drag controls, event management, and shadcn calendar for seamless date selection.",
-    dependencies: ["date-fns", "lucide-react", "uuid"],
-    registryDependencies: [
-      "card",
-      "button",
-      "popover",
-      "hover-card",
-      "calendar",
-      "dialog",
-      "label",
-    ],
+      "Wall-mounted calendar with physical depth — paper stack layers, page-flip transitions, cells that lift on hover with shadow.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/three-dwall-calendar.tsx",
@@ -3073,100 +2198,12 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "task-orbit-calendar",
-    type: "registry:ui",
-    title: "Task Orbit Calendar",
-    description:
-      "Orbital calendar view with tasks rotating around a central 'Today' hub.",
-    dependencies: ["date-fns", "lucide-react", "uuid"],
-    registryDependencies: ["card", "popover", "button", "input"],
-    files: [
-      {
-        path: "registry/ruixenui/task-orbit-calendar.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/task-orbit-calendar.tsx",
-      },
-    ],
-  },
-  {
-    name: "radial-week-view",
-    type: "registry:ui",
-    title: "Radial Week View",
-    description:
-      "Circular week calendar with radial hour markers and event positioning.",
-    dependencies: ["date-fns", "lucide-react", "uuid"],
-    registryDependencies: ["card", "popover", "button", "input"],
-    files: [
-      {
-        path: "registry/ruixenui/radial-week-view.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/radial-week-view.tsx",
-      },
-    ],
-  },
-  {
-    name: "stacked-bar-calendar",
-    type: "registry:ui",
-    title: "Stacked Bar Calendar",
-    description:
-      "Calendar with stacked bar visualization for event categories and filtering.",
-    dependencies: ["date-fns", "lucide-react", "uuid"],
-    registryDependencies: [
-      "calendar",
-      "popover",
-      "card",
-      "button",
-      "input",
-      "select",
-    ],
-    files: [
-      {
-        path: "registry/ruixenui/stacked-bar-calendar.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/stacked-bar-calendar.tsx",
-      },
-    ],
-  },
-  {
-    name: "heatmap-calendar",
-    type: "registry:ui",
-    title: "Heatmap Calendar",
-    description:
-      "GitHub-style heatmap calendar showing event intensity with color gradients.",
-    dependencies: ["date-fns", "lucide-react", "uuid"],
-    registryDependencies: ["card", "popover", "button", "input"],
-    files: [
-      {
-        path: "registry/ruixenui/heatmap-calendar.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/heatmap-calendar.tsx",
-      },
-    ],
-  },
-  {
-    name: "event-calendar",
-    type: "registry:ui",
-    title: "Event Calendar",
-    description:
-      "Simple and clean event calendar with date selection and event management.",
-    dependencies: ["date-fns", "lucide-react", "uuid"],
-    registryDependencies: ["calendar", "card", "button", "input"],
-    files: [
-      {
-        path: "registry/ruixenui/event-calendar.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/event-calendar.tsx",
-      },
-    ],
-  },
-  {
     name: "calendar-planner",
     type: "registry:ui",
     title: "Calendar Planner",
     description:
-      "A comprehensive calendar planner with month/year view switching and event information display.",
-    dependencies: ["date-fns", "lucide-react"],
-    registryDependencies: ["button"],
+      "Vertical day stream — past fades, today glows, events live inline. Select a day, type, press Enter.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/calendar-planner.tsx",
@@ -3180,9 +2217,8 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Calendar Twin",
     description:
-      "A dual-view calendar component with month and year selection modes.",
-    dependencies: ["date-fns", "lucide-react"],
-    registryDependencies: ["button"],
+      "Dual-month range picker — click start, hover to preview, click end. Continuous band with smart rounding.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/calendar-twin.tsx",
@@ -3196,29 +2232,13 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Chrono Select",
     description:
-      "A date picker with integrated year selection dropdown and calendar view.",
-    dependencies: ["date-fns", "lucide-react"],
-    registryDependencies: ["button", "popover", "calendar", "select"],
+      "Inline date picker — click to expand, spring-animated calendar grid, today shortcut, click-outside dismiss.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/chrono-select.tsx",
         type: "registry:ui",
         target: "components/ruixen/chrono-select.tsx",
-      },
-    ],
-  },
-  {
-    name: "pill-calendar",
-    type: "registry:ui",
-    title: "Pill Calendar",
-    description:
-      "A modern calendar component with pill-shaped date cells and range selection support.",
-    dependencies: ["react-aria-components", "@internationalized/date"],
-    files: [
-      {
-        path: "registry/ruixenui/pill-calendar.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/pill-calendar.tsx",
       },
     ],
   },
@@ -3275,9 +2295,8 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Calendar Lume",
     description:
-      "An animated calendar with year/month/day step navigation and smooth transitions.",
-    dependencies: ["date-fns", "framer-motion"],
-    registryDependencies: ["calendar", "button", "scroll-area"],
+      "A depth-zoom calendar — drill from years to months to days with scale-based transitions and staggered grids.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/calendar-lume.tsx",
@@ -3291,9 +2310,8 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Calendar Scheduler",
     description:
-      "A meeting scheduler with calendar date selection and time slot picker.",
-    dependencies: ["date-fns"],
-    registryDependencies: ["calendar", "button", "card"],
+      "Week-strip scheduler — horizontal day ribbon, vertical time ruler, one-tap booking with spring physics.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/calendar-scheduler.tsx",
@@ -3367,81 +2385,6 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "radio-group-card",
-    type: "registry:ui",
-    title: "Radio Group Card",
-    description:
-      "A radio group with card-style items featuring icons, titles, descriptions, and animated selection indicator.",
-    dependencies: [],
-    files: [
-      {
-        path: "registry/ruixenui/radio-group-card.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/radio-group-card.tsx",
-      },
-    ],
-  },
-  {
-    name: "emoji-radio-group",
-    type: "registry:ui",
-    title: "Emoji Radio Group",
-    description:
-      "A compact radio group with emoji-based options for quick visual feedback selection.",
-    dependencies: [],
-    files: [
-      {
-        path: "registry/ruixenui/emoji-radio-group.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/emoji-radio-group.tsx",
-      },
-    ],
-  },
-  {
-    name: "sentiment-radio-group",
-    type: "registry:ui",
-    title: "Sentiment Radio Group",
-    description:
-      "A radio group with sentiment cards featuring emojis, titles, and descriptions for feedback collection.",
-    dependencies: [],
-    files: [
-      {
-        path: "registry/ruixenui/sentiment-radio-group.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/sentiment-radio-group.tsx",
-      },
-    ],
-  },
-  {
-    name: "rating-scale-group",
-    type: "registry:ui",
-    title: "Rating Scale Group",
-    description:
-      "A horizontal rating scale radio group with numbered items and green indicator dots.",
-    dependencies: [],
-    files: [
-      {
-        path: "registry/ruixenui/rating-scale-group.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/rating-scale-group.tsx",
-      },
-    ],
-  },
-  {
-    name: "review-filter-bars",
-    type: "registry:ui",
-    title: "Review Filter Bars",
-    description:
-      "A radio group for filtering reviews by star rating with progress bars and counts.",
-    dependencies: ["@remixicon/react"],
-    files: [
-      {
-        path: "registry/ruixenui/review-filter-bars.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/review-filter-bars.tsx",
-      },
-    ],
-  },
-  {
     name: "tour-popover",
     type: "registry:ui",
     title: "Tour Popover",
@@ -3478,9 +2421,7 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Credit Card Dialog",
     description:
-      "A credit card activation dialog with animated card display and form input.",
-    dependencies: ["lucide-react", "framer-motion"],
-    registryDependencies: ["button", "dialog", "input"],
+      "Inline payment form — four zones separated by hairlines. Auto-format, auto-advance, brand detection.",
     files: [
       {
         path: "registry/ruixenui/credit-card-dialog.tsx",
@@ -3490,110 +2431,17 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "identity-verification-dialog",
+    name: "verification-input",
     type: "registry:ui",
-    title: "Identity Verification Dialog",
+    title: "Verification Input",
     description:
-      "An identity verification dialog with ID card display and PIN input form.",
-    dependencies: ["lucide-react", "framer-motion"],
-    registryDependencies: ["button", "dialog", "input"],
+      "iOS 26 liquid-glass verification code input — dual-theme cells with spring-animated digit entry and haptic sound.",
+    dependencies: ["motion"],
     files: [
       {
-        path: "registry/ruixenui/identity-verification-dialog.tsx",
+        path: "registry/ruixenui/verification-input.tsx",
         type: "registry:ui",
-        target: "components/ruixen/identity-verification-dialog.tsx",
-      },
-    ],
-  },
-  {
-    name: "verification-card",
-    type: "registry:ui",
-    title: "Verification Card",
-    description:
-      "An animated verification card component with customizable background and content.",
-    dependencies: ["framer-motion"],
-    files: [
-      {
-        path: "registry/ruixenui/verification-card.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/verification-card.tsx",
-      },
-    ],
-  },
-  {
-    name: "credit-card-hero",
-    type: "registry:ui",
-    title: "Credit Card Hero",
-    description:
-      "A 3D interactive hero section with floating credit cards and mouse tilt effects.",
-    dependencies: ["framer-motion"],
-    files: [
-      {
-        path: "registry/ruixenui/credit-card-hero.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/credit-card-hero.tsx",
-      },
-    ],
-  },
-  {
-    name: "order-tracking-parallax-card",
-    type: "registry:ui",
-    title: "Order Tracking Parallax Card",
-    description:
-      "A 3D parallax card for order tracking with delivery status and progress indicator.",
-    dependencies: ["framer-motion"],
-    files: [
-      {
-        path: "registry/ruixenui/order-tracking-parallax-card.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/order-tracking-parallax-card.tsx",
-      },
-    ],
-  },
-  {
-    name: "shirt-parallax-card",
-    type: "registry:ui",
-    title: "Shirt Parallax Card",
-    description:
-      "A product card with 3D parallax effects and floating product image with bounce animation.",
-    dependencies: ["framer-motion"],
-    registryDependencies: ["card", "button"],
-    files: [
-      {
-        path: "registry/ruixenui/shirt-parallax-card.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/shirt-parallax-card.tsx",
-      },
-    ],
-  },
-  {
-    name: "elite-plan-card",
-    type: "registry:ui",
-    title: "Elite Plan Card",
-    description:
-      "A premium plan card with image parallax, highlights, and call-to-action button.",
-    dependencies: ["framer-motion"],
-    registryDependencies: ["button"],
-    files: [
-      {
-        path: "registry/ruixenui/elite-plan-card.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/elite-plan-card.tsx",
-      },
-    ],
-  },
-  {
-    name: "product-bounce-card",
-    type: "registry:ui",
-    title: "Product Bounce Card",
-    description:
-      "An animated product showcase with bouncing and rotating effects plus shadow.",
-    dependencies: ["framer-motion"],
-    files: [
-      {
-        path: "registry/ruixenui/product-bounce-card.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/product-bounce-card.tsx",
+        target: "components/ruixen/verification-input.tsx",
       },
     ],
   },
@@ -3701,6 +2549,139 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "neon-circle-grid",
+    type: "registry:ui",
+    title: "Neon Circle Grid",
+    description:
+      "A decorative SVG background of neon donut-ring circles with directional fade and colour blending.",
+    files: [
+      {
+        path: "registry/ruixenui/neon-circle-grid.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/neon-circle-grid.tsx",
+      },
+    ],
+  },
+  {
+    name: "add-to-cart-button",
+    type: "registry:ui",
+    title: "Add To Cart Button",
+    description:
+      "A morphing add-to-cart button with spring physics, slot-machine quantity flip, and live price updates.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/ruixenui/add-to-cart-button.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/add-to-cart-button.tsx",
+      },
+    ],
+  },
+  {
+    name: "floating-toolbar",
+    type: "registry:ui",
+    title: "Floating Toolbar",
+    description:
+      "A floating toolbar with animated tab switching, cursor glow, and morphing search input.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/ruixenui/floating-toolbar.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/floating-toolbar.tsx",
+      },
+    ],
+  },
+  {
+    name: "fine-tune-slider",
+    type: "registry:ui",
+    title: "Fine Tune Slider",
+    description:
+      "A slider with pull-away precision mode — drag normally, pull away from the track to fine-tune values.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/ruixenui/fine-tune-slider.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/fine-tune-slider.tsx",
+      },
+    ],
+  },
+  {
+    name: "scroll-ruler",
+    type: "registry:ui",
+    title: "Scroll Ruler",
+    description:
+      "A ruler-style input for fractional values — scroll or drag to scrub, spring-animated snapping, gradient-masked edges.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/ruixenui/scroll-ruler.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/scroll-ruler.tsx",
+      },
+    ],
+  },
+  {
+    name: "drum-picker",
+    type: "registry:ui",
+    title: "Drum Picker",
+    description:
+      "A 3D cylindrical drum picker — vertical drag or scroll to cycle, perspective-projected curvature, proximity-scaled brightness, spring snap.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/ruixenui/drum-picker.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/drum-picker.tsx",
+      },
+    ],
+  },
+  {
+    name: "scrub-datetime",
+    type: "registry:ui",
+    title: "Scrub Datetime",
+    description:
+      "An inline date-time picker where the text IS the interface — drag any segment horizontally to scrub, scroll to increment, click AM/PM to toggle.",
+    files: [
+      {
+        path: "registry/ruixenui/scrub-datetime.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/scrub-datetime.tsx",
+      },
+    ],
+  },
+  {
+    name: "range-calendar",
+    type: "registry:ui",
+    title: "Range Calendar",
+    description:
+      "A compact calendar grid for date range selection — continuous capsule highlight, hover preview, spring-animated month transitions, today dot.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/ruixenui/range-calendar.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/range-calendar.tsx",
+      },
+    ],
+  },
+  {
+    name: "share-button",
+    type: "registry:ui",
+    title: "Share Button",
+    description:
+      "A morphing share button with four-phase choreography, staggered cascade transitions, and cursor glow.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/ruixenui/share-button.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/share-button.tsx",
+      },
+    ],
+  },
+  {
     name: "rising-glow",
     type: "registry:ui",
     title: "Rising Glow",
@@ -3716,51 +2697,12 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "project-progress-card",
-    type: "registry:ui",
-    title: "Project Progress Card",
-    description:
-      "Interactive project progress card with milestone tracking and timeline visualization.",
-    dependencies: ["motion", "lucide-react"],
-    registryDependencies: ["card", "button", "separator"],
-    files: [
-      {
-        path: "registry/ruixenui/project-progress-card.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/project-progress-card.tsx",
-      },
-    ],
-  },
-  {
-    name: "cloud-watch-form",
-    type: "registry:ui",
-    title: "Cloud Watch Form",
-    description:
-      "Interactive form with animated cloud character that reacts to user input.",
-    files: [
-      {
-        path: "registry/ruixenui/cloud-watch-form.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/cloud-watch-form.tsx",
-      },
-    ],
-  },
-  {
     name: "add-task-sheet",
     type: "registry:ui",
     title: "Add Task Sheet",
     description:
-      "A comprehensive task creation sheet with form fields for task details, assignee, category, due date, and priority.",
-    dependencies: ["lucide-react"],
-    registryDependencies: [
-      "button",
-      "input",
-      "label",
-      "select",
-      "sheet",
-      "popover",
-      "calendar",
-    ],
+      "Quick-add task dialog — title input, priority pills, Enter to submit. Three zones, two hairlines.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/add-task-sheet.tsx",
@@ -3813,22 +2755,6 @@ export const ui: Registry["items"] = [
         path: "registry/ruixenui/account-menu.tsx",
         type: "registry:ui",
         target: "components/ruixen/account-menu.tsx",
-      },
-    ],
-  },
-  {
-    name: "user-context-menu",
-    type: "registry:ui",
-    title: "User Context Menu",
-    description:
-      "Right-click context menu for user interactions with profile actions and user management options.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["avatar", "context-menu"],
-    files: [
-      {
-        path: "registry/ruixenui/user-context-menu.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/user-context-menu.tsx",
       },
     ],
   },
@@ -3918,44 +2844,6 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "globe",
-    type: "registry:ui",
-    title: "Globe",
-    description:
-      "Animated 3D Earth globe with rotating continents and atmospheric effects.",
-    files: [
-      {
-        path: "registry/ruixenui/globe.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/globe.tsx",
-      },
-    ],
-    cssVars: {
-      theme: {
-        "animate-earth-rotate": "earthRotate 20s linear infinite",
-        "animate-atmosphere-glow": "atmosphereGlow 3s ease-in-out infinite",
-      },
-    },
-    css: {
-      "@keyframes earthRotate": {
-        "0%": {
-          "background-position": "0 0",
-        },
-        "100%": {
-          "background-position": "360px 0",
-        },
-      },
-      "@keyframes atmosphereGlow": {
-        "0%, 100%": {
-          opacity: "0.6",
-        },
-        "50%": {
-          opacity: "0.9",
-        },
-      },
-    },
-  },
-  {
     name: "tag-cloud-select",
     type: "registry:ui",
     title: "Tag Cloud Select",
@@ -4002,35 +2890,6 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "hero-title-slide",
-    type: "registry:ui",
-    title: "Hero Title Slide",
-    description:
-      "An animated hero section component with customizable slide animations and preset effects for creating engaging landing page headers.",
-    dependencies: ["motion"],
-    files: [
-      {
-        path: "registry/ruixenui/hero-title-slide.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/hero-title-slide.tsx",
-      },
-    ],
-  },
-  {
-    name: "hero-section-glass-web",
-    type: "registry:ui",
-    title: "Hero Section Glass Web",
-    description:
-      "A modern hero section with glassmorphism effects, image background, and metadata display for professional landing pages.",
-    files: [
-      {
-        path: "registry/ruixenui/hero-section-glass-web.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/hero-section-glass-web.tsx",
-      },
-    ],
-  },
-  {
     name: "structured-hero-section",
     type: "registry:ui",
     title: "Structured Hero Section",
@@ -4059,40 +2918,31 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "interactive-image-gallery",
+    name: "split-hero-section",
     type: "registry:ui",
-    title: "Interactive Image Gallery",
+    title: "Split Hero Section",
     description:
-      "A responsive image gallery component with hover effects, expandable views, and smooth animations.",
-    dependencies: ["motion"],
-    registryDependencies: ["card"],
+      "A split-layout hero section with left-aligned headline, key metrics, app screenshot showcase, and trusted-by logo strip.",
     files: [
       {
-        path: "registry/ruixenui/interactive-image-gallery.tsx",
+        path: "registry/ruixenui/split-hero-section.tsx",
         type: "registry:ui",
-        target: "components/ruixen/interactive-image-gallery.tsx",
+        target: "components/ruixen/split-hero-section.tsx",
       },
     ],
   },
   {
-    name: "product-image-card",
+    name: "hero-title-animation",
     type: "registry:ui",
-    title: "Product Image Card",
+    title: "Hero Title Animation",
     description:
-      "A product showcase card with scrollable image gallery, color selection, and interactive features for e-commerce applications.",
-    dependencies: ["lucide-react"],
-    registryDependencies: [
-      "button",
-      "card",
-      "scroll-area",
-      "aspect-ratio",
-      "separator",
-    ],
+      "An animated hero title with phased brand reveal, staggered word blur-in, and highlight box sweep effect.",
+    dependencies: ["motion"],
     files: [
       {
-        path: "registry/ruixenui/product-image-card.tsx",
+        path: "registry/ruixenui/hero-title-animation.tsx",
         type: "registry:ui",
-        target: "components/ruixen/product-image-card.tsx",
+        target: "components/ruixen/hero-title-animation.tsx",
       },
     ],
   },
@@ -4112,38 +2962,6 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "precision-card",
-    type: "registry:ui",
-    title: "Precision Card",
-    description:
-      "A detailed information card component with badges, feature lists, and action buttons for showcasing products or services.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["button", "badge", "card"],
-    files: [
-      {
-        path: "registry/ruixenui/precision-card.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/precision-card.tsx",
-      },
-    ],
-  },
-  {
-    name: "health-stat-card",
-    type: "registry:ui",
-    title: "Health Stat Card",
-    description:
-      "An interactive health statistics card with animated progress rings, trend indicators, and detailed metrics display.",
-    dependencies: ["motion", "lucide-react"],
-    registryDependencies: ["tooltip"],
-    files: [
-      {
-        path: "registry/ruixenui/health-stat-card.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/health-stat-card.tsx",
-      },
-    ],
-  },
-  {
     name: "card-stack",
     type: "registry:ui",
     title: "Card Stack",
@@ -4155,6 +2973,51 @@ export const ui: Registry["items"] = [
         path: "registry/ruixenui/card-stack.tsx",
         type: "registry:ui",
         target: "components/ruixen/card-stack.tsx",
+      },
+    ],
+  },
+  {
+    name: "glass-ai-card",
+    type: "registry:ui",
+    title: "Glass AI Card",
+    description:
+      "iOS 26 liquid-glass content card with animated skeleton lines and hue-rotating gradient AI action button.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/ruixenui/glass-ai-card.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/glass-ai-card.tsx",
+      },
+    ],
+  },
+  {
+    name: "glass-shipment-flow",
+    type: "registry:ui",
+    title: "Glass Shipment Flow",
+    description:
+      "iOS 26 liquid-glass shipment flow diagram with animated travelling-light SVG paths connecting stacked order cards.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/ruixenui/glass-shipment-flow.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/glass-shipment-flow.tsx",
+      },
+    ],
+  },
+  {
+    name: "phone-mockup-card",
+    type: "registry:ui",
+    title: "Phone Mockup Card",
+    description:
+      "A minimal phone frame card with pixel-perfect status bar, dynamic island, and typography metrics display.",
+    dependencies: ["motion", "react-icons"],
+    files: [
+      {
+        path: "registry/ruixenui/phone-mockup-card.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/phone-mockup-card.tsx",
       },
     ],
   },
@@ -4328,71 +3191,12 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "button-variants",
-    type: "registry:ui",
-    title: "Button Variants",
-    description:
-      "A versatile button component with multiple variants including primary, secondary, destructive, outline, ghost, and link.",
-    dependencies: ["lucide-react"],
-    files: [
-      {
-        path: "registry/ruixenui/button-variants.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/button-variants.tsx",
-      },
-    ],
-  },
-  {
-    name: "button-icon",
-    type: "registry:ui",
-    title: "Button Icon",
-    description:
-      "Icon-only buttons with multiple variants for toolbar actions and compact UI.",
-    dependencies: ["lucide-react"],
-    files: [
-      {
-        path: "registry/ruixenui/button-icon.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/button-icon.tsx",
-      },
-    ],
-  },
-  {
-    name: "button-loading",
-    type: "registry:ui",
-    title: "Button Loading",
-    description:
-      "A button with loading, success, and error states for async operations.",
-    dependencies: ["lucide-react"],
-    files: [
-      {
-        path: "registry/ruixenui/button-loading.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/button-loading.tsx",
-      },
-    ],
-  },
-  {
-    name: "button-social",
-    type: "registry:ui",
-    title: "Button Social",
-    description:
-      "Social login buttons for Google, GitHub, Twitter, Facebook, and Apple.",
-    files: [
-      {
-        path: "registry/ruixenui/button-social.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/button-social.tsx",
-      },
-    ],
-  },
-  {
     name: "button-copy",
     type: "registry:ui",
     title: "Button Copy",
     description:
-      "A copy-to-clipboard button with visual feedback on copy success.",
-    dependencies: ["lucide-react"],
+      "iOS 26 liquid-glass copy pill with AnimatePresence icon crossfade.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/button-copy.tsx",
@@ -4406,9 +3210,8 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Button Dropdown",
     description:
-      "A button with an integrated dropdown menu for action selection.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["dropdown-menu"],
+      "iOS 26 liquid-glass pill with spring chevron and staggered glass dropdown.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/button-dropdown.tsx",
@@ -4418,24 +3221,12 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "button-toggle-group",
-    type: "registry:ui",
-    title: "Button Toggle Group",
-    description: "A toggle group component for single or multiple selections.",
-    files: [
-      {
-        path: "registry/ruixenui/button-toggle-group.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/button-toggle-group.tsx",
-      },
-    ],
-  },
-  {
     name: "button-file-upload",
     type: "registry:ui",
     title: "Button File Upload",
-    description: "A file upload trigger button with customizable accept types.",
-    dependencies: ["lucide-react"],
+    description:
+      "iOS 26 liquid-glass upload pill with filename reveal and clear action.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/button-file-upload.tsx",
@@ -4449,9 +3240,8 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Button Split",
     description:
-      "A split button with primary action and dropdown for secondary options.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["dropdown-menu"],
+      "iOS 26 liquid-glass two-zone pill with primary action and dropdown options.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/button-split.tsx",
@@ -4465,7 +3255,8 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Button Badge",
     description:
-      "A button with an integrated badge for notifications or counts.",
+      "iOS 26 liquid-glass pill with floating spring-animated notification badge.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/button-badge.tsx",
@@ -4475,26 +3266,12 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "button-rounded",
-    type: "registry:ui",
-    title: "Button Rounded",
-    description:
-      "Pill-shaped buttons with rounded corners for a softer aesthetic.",
-    files: [
-      {
-        path: "registry/ruixenui/button-rounded.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/button-rounded.tsx",
-      },
-    ],
-  },
-  {
     name: "checkbox-simple",
     type: "registry:ui",
     title: "Checkbox Simple",
     description:
       "A simple checkbox component with label and optional description.",
-    dependencies: ["lucide-react"],
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/checkbox-simple.tsx",
@@ -4509,7 +3286,7 @@ export const ui: Registry["items"] = [
     title: "Checkbox Indeterminate",
     description:
       "A checkbox with three states: checked, unchecked, and indeterminate.",
-    dependencies: ["lucide-react"],
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/checkbox-indeterminate.tsx",
@@ -4524,7 +3301,7 @@ export const ui: Registry["items"] = [
     title: "Checkbox Colored",
     description:
       "A checkbox with customizable color themes including blue, green, red, and more.",
-    dependencies: ["lucide-react"],
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/checkbox-colored.tsx",
@@ -4539,7 +3316,7 @@ export const ui: Registry["items"] = [
     title: "Checkbox Todo",
     description:
       "A todo-style checkbox with animated strikethrough effect when checked.",
-    dependencies: ["lucide-react"],
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/checkbox-todo.tsx",
@@ -4554,7 +3331,7 @@ export const ui: Registry["items"] = [
     title: "Checkbox Terms",
     description:
       "A checkbox for accepting terms of service and privacy policy with linked text.",
-    dependencies: ["lucide-react"],
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/checkbox-terms.tsx",
@@ -4569,7 +3346,7 @@ export const ui: Registry["items"] = [
     title: "Checkbox Group",
     description:
       "A group of checkboxes for multi-selection with horizontal or vertical layout.",
-    dependencies: ["lucide-react"],
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/checkbox-group.tsx",
@@ -4579,27 +3356,12 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "checkbox-card",
-    type: "registry:ui",
-    title: "Checkbox Card",
-    description:
-      "A card-style checkbox with icon, title, and description for rich selections.",
-    dependencies: ["lucide-react"],
-    files: [
-      {
-        path: "registry/ruixenui/checkbox-card.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/checkbox-card.tsx",
-      },
-    ],
-  },
-  {
     name: "checkbox-tree",
     type: "registry:ui",
     title: "Checkbox Tree",
     description:
       "A hierarchical tree checkbox for nested selections with expand/collapse.",
-    dependencies: ["lucide-react"],
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/checkbox-tree.tsx",

@@ -488,7 +488,6 @@ Add your component preview to `lib/component-preview-data.ts`:
 | Inputs | `inputsPreview` | `/docs/components/[slug]` |
 | Notifications | `notificationsPreview` | `/docs/components/[slug]` |
 | Menu | `menuPreview` | `/docs/components/[slug]` |
-| Context Menu | `contextMenuPreview` | `/docs/components/[slug]` |
 | Drawer | `drawerPreview` | `/docs/components/[slug]` |
 | Forms | `formsPreview` | `/docs/components/[slug]` |
 | File Management | `fileManagementPreview` | `/docs/components/[slug]` |
@@ -498,7 +497,6 @@ Add your component preview to `lib/component-preview-data.ts`:
 | Event Calendars | `eventCalendarsPreview` | `/docs/components/[slug]` |
 | Image Tools | `imageToolsPreview` | `/docs/components/[slug]` |
 | Video Players | `videoPlayersPreview` | `/docs/components/[slug]` |
-| Effects | `effectsPreview` | `/docs/components/[slug]` |
 | Backgrounds | `backgroundsPreview` | `/docs/components/[slug]` |
 | Tabs | `tabsPreview` | `/docs/components/[slug]` |
 | Pagination | `paginationPreview` | `/docs/components/[slug]` |

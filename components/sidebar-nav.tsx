@@ -2,8 +2,10 @@
 
 import { SidebarNavItem } from "@/types";
 import { ExternalLinkIcon } from "@radix-ui/react-icons";
+import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -77,36 +79,10 @@ export function DocsSidebarNavItems({
       {items.map((item, index) => {
         const hasChildren = item.items && item.items.length > 0;
 
-        // If item has children but no href, it's a category - show with count and link to category page
+        // If item has children but no href, render as collapsible dropdown
         if (hasChildren && !item.href) {
-          const count = countComponents(item.items || []);
-          const categorySlug = generateSlug(item.title);
-          const categoryPath = `/docs/components/category/${categorySlug}`;
-          const isActive =
-            pathname === categoryPath ||
-            (pathname && categoryContainsComponent(item.items || [], pathname));
           return (
-            <Link
-              key={index}
-              href={categoryPath}
-              className={cn(
-                "group relative flex h-9 w-full items-center justify-between rounded-lg px-2 font-normal text-foreground",
-                "transition-all duration-200 hover:bg-accent hover:text-accent-foreground",
-                isActive && "bg-accent font-medium text-accent-foreground",
-              )}
-            >
-              <span className="relative shrink-0 flex items-center gap-1.5">
-                {item.title}
-                {item.label && (
-                  <span className="rounded-md bg-[var(--color-sidebar-label)] px-1.5 py-0.5 text-[0.65rem] leading-none text-[var(--color-sidebar-label-foreground)]">
-                    {item.label}
-                  </span>
-                )}
-              </span>
-              <span className="text-xs text-muted-foreground bg-muted px-2 py-0.5 rounded-full">
-                {count}
-              </span>
-            </Link>
+            <CollapsibleCategory key={index} item={item} pathname={pathname} />
           );
         }
 
@@ -117,8 +93,8 @@ export function DocsSidebarNavItems({
               key={index}
               href={item.href}
               className={cn(
-                "group relative flex h-8 w-full items-center justify-between rounded-lg px-2 font-normal text-foreground",
-                "transition-all duration-200 hover:bg-accent hover:text-accent-foreground",
+                "group relative flex h-8 w-full items-center justify-between rounded-lg px-2 font-normal text-foreground/70",
+                "transition-all duration-150 hover:bg-accent hover:text-accent-foreground",
                 item.disabled && "cursor-not-allowed opacity-60",
                 pathname === item.href &&
                   "bg-accent font-medium text-accent-foreground",
@@ -159,4 +135,139 @@ export function DocsSidebarNavItems({
       })}
     </div>
   ) : null;
+}
+
+// Collapsible category with dropdown behavior
+function CollapsibleCategory({
+  item,
+  pathname,
+}: {
+  item: SidebarNavItem;
+  pathname: string | null;
+}) {
+  const categorySlug = generateSlug(item.title);
+  const categoryHref = `/docs/components/${categorySlug}`;
+  const isExactActive = pathname === categoryHref;
+  const containsActive =
+    isExactActive ||
+    (pathname !== null &&
+      categoryContainsComponent(item.items || [], pathname));
+  const [isOpen, setIsOpen] = React.useState(containsActive);
+  const count = countComponents(item.items || []);
+
+  // Auto-expand when navigating to a child component or category page
+  React.useEffect(() => {
+    if (containsActive && !isOpen) {
+      setIsOpen(true);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [containsActive]);
+
+  return (
+    <div>
+      {/* Category toggle row — chevron toggles, title links to category page */}
+      <div className="flex items-center">
+        <button
+          type="button"
+          onClick={() => setIsOpen((prev) => !prev)}
+          className="flex shrink-0 items-center justify-center size-7 rounded-md hover:bg-accent/50"
+        >
+          <ChevronRight
+            className={cn(
+              "size-3 text-muted-foreground/70 transition-transform duration-200",
+              isOpen && "rotate-90",
+            )}
+          />
+        </button>
+        <Link
+          href={categoryHref}
+          className={cn(
+            "flex h-9 flex-1 items-center justify-between rounded-lg px-1 font-normal text-foreground",
+            "transition-all duration-150 hover:text-accent-foreground",
+            containsActive && "font-medium text-accent-foreground",
+          )}
+        >
+          <span className="flex items-center gap-1.5">
+            {item.title}
+            {item.label && (
+              <span className="rounded-md bg-[var(--color-sidebar-label)] px-1.5 py-0.5 text-[0.65rem] leading-none text-[var(--color-sidebar-label-foreground)]">
+                {item.label}
+              </span>
+            )}
+          </span>
+          <span className="text-xs text-muted-foreground bg-muted px-2 py-0.5 rounded-full">
+            {count}
+          </span>
+        </Link>
+      </div>
+
+      {/* Dropdown content with CSS grid animation */}
+      <div
+        className={cn(
+          "grid transition-[grid-template-rows] duration-200 ease-in-out",
+          isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
+        )}
+      >
+        <div className="overflow-hidden">
+          <div className="relative ml-[17px] border-l border-foreground/[0.08] pl-2.5 pt-0.5 pb-1">
+            {(item.items || []).map((child, idx) => {
+              const childHasChildren =
+                child.items && child.items.length > 0 && !child.href;
+
+              // Nested subcategory - recurse
+              if (childHasChildren) {
+                return (
+                  <CollapsibleCategory
+                    key={idx}
+                    item={child}
+                    pathname={pathname}
+                  />
+                );
+              }
+
+              // Direct link item
+              if (child.href && !child.disabled) {
+                const isActive = pathname === child.href;
+                return (
+                  <Link
+                    key={idx}
+                    href={child.href}
+                    className={cn(
+                      "group relative flex h-8 w-full items-center justify-between rounded-lg px-2 font-normal text-foreground/55",
+                      "transition-all duration-150 hover:bg-accent hover:text-accent-foreground",
+                      isActive &&
+                        "bg-accent font-medium text-foreground before:absolute before:-left-[11px] before:top-1.5 before:h-5 before:w-[2px] before:rounded-full before:bg-foreground",
+                    )}
+                    target={child.external ? "_blank" : ""}
+                    rel={child.external ? "noreferrer" : ""}
+                  >
+                    <span className="relative shrink-0 truncate text-[13px]">
+                      {child.title}
+                    </span>
+                    <div className="flex items-center gap-1 shrink-0">
+                      {child.label && (
+                        <span className="rounded-md bg-[var(--color-sidebar-label)] px-1.5 py-0.5 text-[0.65rem] leading-none text-[var(--color-sidebar-label-foreground)]">
+                          {child.label}
+                        </span>
+                      )}
+                      {child.paid && (
+                        <span className="rounded-md bg-[var(--color-sidebar-label)] px-1.5 py-0.5 text-[0.65rem] leading-none text-[var(--color-sidebar-label-foreground)]">
+                          Pro
+                        </span>
+                      )}
+                      {child.external && (
+                        <ExternalLinkIcon className="size-3" />
+                      )}
+                    </div>
+                  </Link>
+                );
+              }
+
+              return null;
+            })}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }

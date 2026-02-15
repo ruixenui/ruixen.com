@@ -197,78 +197,25 @@ export const navbarsPreview: ComponentPreviewMap = {
  * Path: /docs/components/[slug]
  */
 export const cardsPreview: ComponentPreviewMap = {
-  "precision-card": {
-    light: `${BASE_URL}/cards/precision-card-light.webp`,
-    dark: `${BASE_URL}/cards/precision-card-dark.webp`,
+  "glass-ai-card": {
+    light: `/preview_images/cards/glass-ai-card-light.png`,
+    dark: `/preview_images/cards/glass-ai-card-dark.png`,
   },
-  "social-card": {
-    light: `/preview_images/cards/social-card-light.png`,
-    dark: `/preview_images/cards/social-card-dark.png`,
+  "glass-shipment-flow": {
+    light: `/preview_images/cards/glass-shipment-flow-light.png`,
+    dark: `/preview_images/cards/glass-shipment-flow-dark.png`,
   },
-  "portfolio-card": {
-    light: `/preview_images/cards/portfolio-card-light.png`,
-    dark: `/preview_images/cards/portfolio-card-dark.png`,
+  "phone-mockup-card": {
+    light: `/preview_images/cards/phone-mockup-card-light.png`,
+    dark: `/preview_images/cards/phone-mockup-card-dark.png`,
   },
-  "goal-tracker-card": {
-    light: `/preview_images/cards/goal-tracker-card-light.png`,
-    dark: `/preview_images/cards/goal-tracker-card-dark.png`,
-  },
-  "environment-card": {
-    light: `/preview_images/cards/environment-card-light.png`,
-    dark: `/preview_images/cards/environment-card-dark.png`,
-  },
-  "schedule-card": {
-    light: `/preview_images/cards/schedule-card-light.png`,
-    dark: `/preview_images/cards/schedule-card-dark.png`,
-  },
-  "showcase-card": {
-    light: `/preview_images/cards/showcase-card-light.png`,
-    dark: `/preview_images/cards/showcase-card-dark.png`,
-  },
-  "order-summary-card": {
-    light: `/preview_images/cards/order-summary-card-light.png`,
-    dark: `/preview_images/cards/order-summary-card-dark.png`,
-  },
-  "doctor-profile-card": {
-    light: `/preview_images/cards/doctor-profile-card-light.png`,
-    dark: `/preview_images/cards/doctor-profile-card-dark.png`,
-  },
-  "idea-generator-card": {
-    light: `/preview_images/cards/idea-generator-card-light.png`,
-    dark: `/preview_images/cards/idea-generator-card-dark.png`,
-  },
-  "elite-plan-card": {
-    light: `${BASE_URL}/cards/elite-plan-card-light.jpg`,
-    dark: `${BASE_URL}/cards/elite-plan-card-dark.jpg`,
-  },
-  "shirt-parallax-card": {
-    light: `${BASE_URL}/cards/shirt-parallax-card-light.jpg`,
-    dark: `${BASE_URL}/cards/shirt-parallax-card-dark.jpg`,
-  },
-  "order-tracking-parallax-card": {
-    light: `/preview_images/cards/order-tracking-parallax-card-light.png`,
-    dark: `/preview_images/cards/order-tracking-parallax-card-dark.png`,
-  },
-  "product-bounce-card": {
-    light: `/preview_images/cards/product-bounce-card-light.png`,
-    dark: `/preview_images/cards/product-bounce-card-dark.png`,
-  },
-  "credit-card-hero": {
-    light: `${BASE_URL}/cards/credit-card-hero-light.jpg`,
-    dark: `${BASE_URL}/cards/credit-card-hero-dark.jpg`,
-  },
-  "verification-card": {
-    light: `/preview_images/cards/verification-card-light.png`,
-    dark: `/preview_images/cards/verification-card-dark.png`,
-  },
-  "project-progress-card": {
-    light: `/preview_images/cards/project-progress-card-light.png`,
-    dark: `/preview_images/cards/project-progress-card-dark.png`,
-  },
-  "health-stat-card": {
-    light: `${BASE_URL}/cards/health-stats-card-light.jpg`,
-    dark: `${BASE_URL}/cards/health-stats-card-dark.jpg`,
-  },
+};
+
+/**
+ * Carousels - Carousel and stack components
+ * Path: /docs/components/[slug]
+ */
+export const carouselsPreview: ComponentPreviewMap = {
   "card-stack": {
     light: `/preview_images/cards/card-stack-light.png`,
     dark: `/preview_images/cards/card-stack-dark.png`,
@@ -288,14 +235,6 @@ export const buttonsPreview: ComponentPreviewMap = {
     light: `/preview_images/buttons/glow-link-button-light.png`,
     dark: `/preview_images/buttons/glow-link-button-dark.png`,
   },
-  "theme-cycle-button": {
-    light: `/preview_images/buttons/theme-cycle-button-light.png`,
-    dark: `/preview_images/buttons/theme-cycle-button-dark.png`,
-  },
-  "morphing-github-button": {
-    light: `/preview_images/buttons/morphing-github-button-light.png`,
-    dark: `/preview_images/buttons/morphing-github-button-dark.png`,
-  },
   "multi-state-morph-button": {
     light: `/preview_images/buttons/multi-state-morph-button-light.png`,
     dark: `/preview_images/buttons/multi-state-morph-button-dark.png`,
@@ -308,61 +247,13 @@ export const buttonsPreview: ComponentPreviewMap = {
     light: `/preview_images/buttons/hover-preview-button-light.png`,
     dark: `/preview_images/buttons/hover-preview-button-dark.png`,
   },
-  "segmented-button-group": {
-    light: `/preview_images/buttons/segmented-button-group-light.png`,
-    dark: `/preview_images/buttons/segmented-button-group-dark.png`,
-  },
   "confetti-button": {
     light: `${BASE_URL}/buttons/confetti-button-light.jpg`,
     dark: `${BASE_URL}/buttons/confetti-button-dark.jpg`,
   },
-  "swipe-to-confirm-button": {
-    light: `/preview_images/buttons/swipe-to-confirm-button-light.png`,
-    dark: `/preview_images/buttons/swipe-to-confirm-button-dark.png`,
-  },
-  "status-button": {
-    light: `/preview_images/buttons/status-button-light.png`,
-    dark: `/preview_images/buttons/status-button-dark.png`,
-  },
-  "checklist-button": {
-    light: `${BASE_URL}/buttons/checklist-button-light.jpg`,
-    dark: `${BASE_URL}/buttons/checklist-button-dark.jpg`,
-  },
-  "countdown-button": {
-    light: `${BASE_URL}/buttons/countdown-button-light.jpg`,
-    dark: `${BASE_URL}/buttons/countdown-button-dark.jpg`,
-  },
-  "icon-grid-button": {
-    light: `${BASE_URL}/buttons/icon-grid-button-light.jpg`,
-    dark: `${BASE_URL}/buttons/icon-grid-button-dark.jpg`,
-  },
-  "multi-step-button": {
-    light: `/preview_images/buttons/multi-step-button-light.png`,
-    dark: `/preview_images/buttons/multi-step-button-dark.png`,
-  },
-  "tooltip-button": {
-    light: `/preview_images/buttons/tooltip-button-light.png`,
-    dark: `/preview_images/buttons/tooltip-button-dark.png`,
-  },
   "badge-button-combo": {
     light: `/preview_images/buttons/badge-button-combo-light.png`,
     dark: `/preview_images/buttons/badge-button-combo-dark.png`,
-  },
-  "expandable-content-button": {
-    light: `/preview_images/buttons/expandable-content-button-light.png`,
-    dark: `/preview_images/buttons/expandable-content-button-dark.png`,
-  },
-  "notification-button": {
-    light: `/preview_images/buttons/notification-button-light.png`,
-    dark: `/preview_images/buttons/notification-button-dark.png`,
-  },
-  "confirmation-button": {
-    light: `/preview_images/buttons/confirmation-button-light.png`,
-    dark: `/preview_images/buttons/confirmation-button-dark.png`,
-  },
-  "split-action-button": {
-    light: `/preview_images/buttons/split-action-button-light.png`,
-    dark: `/preview_images/buttons/split-action-button-dark.png`,
   },
   "progress-button": {
     light: `/preview_images/buttons/progress-button-light.png`,
@@ -371,22 +262,6 @@ export const buttonsPreview: ComponentPreviewMap = {
   "icon-label-subtext-button": {
     light: `/preview_images/buttons/icon-label-subtext-button-light.png`,
     dark: `/preview_images/buttons/icon-label-subtext-button-dark.png`,
-  },
-  "button-variants": {
-    light: `/preview_images/buttons/button-variants-light.png`,
-    dark: `/preview_images/buttons/button-variants-dark.png`,
-  },
-  "button-icon": {
-    light: `/preview_images/buttons/button-icon-light.png`,
-    dark: `/preview_images/buttons/button-icon-dark.png`,
-  },
-  "button-loading": {
-    light: `/preview_images/buttons/button-loading-light.png`,
-    dark: `/preview_images/buttons/button-loading-dark.png`,
-  },
-  "button-social": {
-    light: `/preview_images/buttons/button-social-light.png`,
-    dark: `/preview_images/buttons/button-social-dark.png`,
   },
   "button-copy": {
     light: `/preview_images/buttons/button-copy-light.png`,
@@ -407,14 +282,6 @@ export const buttonsPreview: ComponentPreviewMap = {
   "button-file-upload": {
     light: `/preview_images/buttons/button-file-upload-light.png`,
     dark: `/preview_images/buttons/button-file-upload-dark.png`,
-  },
-  "button-rounded": {
-    light: `/preview_images/buttons/button-rounded-light.png`,
-    dark: `/preview_images/buttons/button-rounded-dark.png`,
-  },
-  "button-toggle-group": {
-    light: `/preview_images/buttons/button-toggle-group-light.png`,
-    dark: `/preview_images/buttons/button-toggle-group-dark.png`,
   },
 };
 
@@ -438,10 +305,6 @@ export const checkboxesPreview: ComponentPreviewMap = {
   "checkbox-indeterminate": {
     light: `/preview_images/checkboxes/checkbox-indeterminate-light.png`,
     dark: `/preview_images/checkboxes/checkbox-indeterminate-dark.png`,
-  },
-  "checkbox-card": {
-    light: `/preview_images/checkboxes/checkbox-card-light.png`,
-    dark: `/preview_images/checkboxes/checkbox-card-dark.png`,
   },
   "checkbox-terms": {
     light: `/preview_images/checkboxes/checkbox-terms-light.png`,
@@ -489,9 +352,9 @@ export const dialogsPreview: ComponentPreviewMap = {
     light: `/preview_images/dialogs/credit-card-dialog-light.png`,
     dark: `/preview_images/dialogs/credit-card-dialog-dark.png`,
   },
-  "identity-verification-dialog": {
-    light: `/preview_images/dialogs/identity-verification-dialog-light.png`,
-    dark: `/preview_images/dialogs/identity-verification-dialog-dark.png`,
+  "verification-input": {
+    light: `/preview_images/inputs/verification-input-light.png`,
+    dark: `/preview_images/inputs/verification-input-dark.png`,
   },
   "add-task-sheet": {
     light: `/preview_images/dialogs/add-task-sheet-light.png`,
@@ -586,14 +449,6 @@ export const inputsPreview: ComponentPreviewMap = {
     light: `/preview_images/inputs/circular-stepper-input-light.png`,
     dark: `/preview_images/inputs/circular-stepper-input-dark.png`,
   },
-  "password-strength-input": {
-    light: `/preview_images/inputs/password-strength-input-light.png`,
-    dark: `/preview_images/inputs/password-strength-input-dark.png`,
-  },
-  "otp-input": {
-    light: `${BASE_URL}/inputs/otp-input-light.jpg`,
-    dark: `${BASE_URL}/inputs/otp-input-dark.jpg`,
-  },
   "color-picker-input": {
     light: `/preview_images/inputs/color-picker-input-light.png`,
     dark: `/preview_images/inputs/color-picker-input-dark.png`,
@@ -618,49 +473,17 @@ export const inputsPreview: ComponentPreviewMap = {
     light: `/preview_images/inputs/clean-tag-input-light.png`,
     dark: `/preview_images/inputs/clean-tag-input-dark.png`,
   },
-  "search-with-category": {
-    light: `/preview_images/inputs/search-with-category-light.png`,
-    dark: `/preview_images/inputs/search-with-category-dark.png`,
-  },
   "input-with-select": {
     light: `/preview_images/inputs/input-with-select-light.png`,
     dark: `/preview_images/inputs/input-with-select-dark.png`,
-  },
-  "range-slider-input": {
-    light: `/preview_images/inputs/range-slider-input-light.png`,
-    dark: `/preview_images/inputs/range-slider-input-dark.png`,
   },
   "url-input": {
     light: `/preview_images/inputs/url-input-light.png`,
     dark: `/preview_images/inputs/url-input-dark.png`,
   },
-  "floating-input": {
-    light: `/preview_images/inputs/floating-input-light.png`,
-    dark: `/preview_images/inputs/floating-input-dark.png`,
-  },
-  "time-with-icon": {
-    light: `/preview_images/inputs/time-with-icon-light.png`,
-    dark: `/preview_images/inputs/time-with-icon-dark.png`,
-  },
-  "otp-field": {
-    light: `/preview_images/inputs/otp-field-light.png`,
-    dark: `/preview_images/inputs/otp-field-dark.png`,
-  },
-  "modern-card-input": {
-    light: `/preview_images/inputs/modern-card-input-light.png`,
-    dark: `/preview_images/inputs/modern-card-input-dark.png`,
-  },
   "password-field": {
     light: `/preview_images/inputs/password-field-light.png`,
     dark: `/preview_images/inputs/password-field-dark.png`,
-  },
-  "smart-assist-input": {
-    light: `/preview_images/inputs/smart-assist-input-light.png`,
-    dark: `/preview_images/inputs/smart-assist-input-dark.png`,
-  },
-  "action-hub-input": {
-    light: `/preview_images/inputs/action-hub-input-light.png`,
-    dark: `/preview_images/inputs/action-hub-input-dark.png`,
   },
 };
 
@@ -743,21 +566,6 @@ export const menuPreview: ComponentPreviewMap = {
 };
 
 /**
- * Context Menu - Right-click context menu components
- * Path: /docs/components/[slug]
- */
-export const contextMenuPreview: ComponentPreviewMap = {
-  "advanced-context-menu": {
-    light: `/preview_images/context-menu/advanced-context-menu-light.png`,
-    dark: `/preview_images/context-menu/advanced-context-menu-dark.png`,
-  },
-  "user-context-menu": {
-    light: `/preview_images/context-menu/user-context-menu-light.png`,
-    dark: `/preview_images/context-menu/user-context-menu-dark.png`,
-  },
-};
-
-/**
  * Drawer - Slide-out drawer components
  * Path: /docs/components/[slug]
  */
@@ -781,77 +589,9 @@ export const drawerPreview: ComponentPreviewMap = {
  * Path: /docs/components/[slug]
  */
 export const formsPreview: ComponentPreviewMap = {
-  "sign-in-form": {
-    light: `/preview_images/forms/sign-in-form-light.png`,
-    dark: `/preview_images/forms/sign-in-form-dark.png`,
-  },
-  "create-account-form": {
-    light: `/preview_images/forms/create-account-form-light.png`,
-    dark: `/preview_images/forms/create-account-form-dark.png`,
-  },
-  "newsletter-form": {
-    light: `/preview_images/forms/newsletter-form-light.png`,
-    dark: `/preview_images/forms/newsletter-form-dark.png`,
-  },
-  "sign-in-card": {
-    light: `/preview_images/forms/sign-in-card-light.png`,
-    dark: `/preview_images/forms/sign-in-card-dark.png`,
-  },
-  "flip-card": {
-    light: `/preview_images/forms/flip-card-light.png`,
-    dark: `/preview_images/forms/flip-card-dark.png`,
-  },
-  "success-login-card": {
-    light: `/preview_images/forms/success-login-card-light.png`,
-    dark: `/preview_images/forms/success-login-card-dark.png`,
-  },
-  "step-card": {
-    light: `/preview_images/forms/step-card-light.png`,
-    dark: `/preview_images/forms/step-card-dark.png`,
-  },
-  "radio-group-card": {
-    light: `/preview_images/forms/radio-group-card-light.png`,
-    dark: `/preview_images/forms/radio-group-card-dark.png`,
-  },
-  "emoji-radio-group": {
-    light: `/preview_images/forms/emoji-radio-group-light.png`,
-    dark: `/preview_images/forms/emoji-radio-group-dark.png`,
-  },
-  "sentiment-radio-group": {
-    light: `/preview_images/forms/sentiment-radio-group-light.png`,
-    dark: `/preview_images/forms/sentiment-radio-group-dark.png`,
-  },
-  "rating-scale-group": {
-    light: `/preview_images/forms/rating-scale-group-light.png`,
-    dark: `/preview_images/forms/rating-scale-group-dark.png`,
-  },
-  "review-filter-bars": {
-    light: `/preview_images/forms/review-filter-bars-light.png`,
-    dark: `/preview_images/forms/review-filter-bars-dark.png`,
-  },
-  "auth-tabs-card": {
-    light: `/preview_images/forms/auth-tabs-card-light.png`,
-    dark: `/preview_images/forms/auth-tabs-card-dark.png`,
-  },
-  "gamified-login-card": {
-    light: `/preview_images/forms/gamified-login-card-light.png`,
-    dark: `/preview_images/forms/gamified-login-card-dark.png`,
-  },
-  "social-auth-card": {
-    light: `/preview_images/forms/social-auth-card-light.png`,
-    dark: `/preview_images/forms/social-auth-card-dark.png`,
-  },
-  "login-card": {
-    light: `/preview_images/forms/login-card-light.png`,
-    dark: `/preview_images/forms/login-card-dark.png`,
-  },
-  "multi-step-login": {
-    light: `/preview_images/forms/multi-step-login-light.png`,
-    dark: `/preview_images/forms/multi-step-login-dark.png`,
-  },
-  "cloud-watch-form": {
-    light: `/preview_images/forms/cloud-watch-form-light.png`,
-    dark: `/preview_images/forms/cloud-watch-form-dark.png`,
+  "glass-form": {
+    light: `/preview_images/forms/glass-form-light.png`,
+    dark: `/preview_images/forms/glass-form-dark.png`,
   },
 };
 
@@ -929,16 +669,7 @@ export const tablesPreview: ComponentPreviewMap = {
  * Date Pickers - Date selection components
  * Path: /docs/components/[slug]
  */
-export const datePickersPreview: ComponentPreviewMap = {
-  "date-time-picker": {
-    light: `/preview_images/date-pickers/date-time-picker-light.png`,
-    dark: `/preview_images/date-pickers/date-time-picker-dark.png`,
-  },
-  "date-range-picker": {
-    light: `/preview_images/date-pickers/date-range-picker-light.png`,
-    dark: `/preview_images/date-pickers/date-range-picker-dark.png`,
-  },
-};
+export const datePickersPreview: ComponentPreviewMap = {};
 
 /**
  * Calendars - Calendar display components
@@ -988,65 +719,9 @@ export const eventCalendarsPreview: ComponentPreviewMap = {
     light: `/preview_images/event-calendars/event-scheduler-light.png`,
     dark: `/preview_images/event-calendars/event-scheduler-dark.png`,
   },
-  "daily-timeline-scheduler": {
-    light: `/preview_images/event-calendars/daily-timeline-scheduler-light.png`,
-    dark: `/preview_images/event-calendars/daily-timeline-scheduler-dark.png`,
-  },
-  "inbox-calendar": {
-    light: `/preview_images/event-calendars/inbox-calendar-light.png`,
-    dark: `/preview_images/event-calendars/inbox-calendar-dark.png`,
-  },
-  "event-constellation-calendar": {
-    light: `${BASE_URL}/calendars/event-constellation-calendar-light.jpg`,
-    dark: `${BASE_URL}/calendars/event-constellation-calendar-dark.jpg`,
-  },
   "three-dwall-calendar": {
     light: `${BASE_URL}/popular/three-dwall-calendar-light.jpg`,
     dark: `${BASE_URL}/popular/three-dwall-calendar-dark.jpg`,
-  },
-  "task-orbit-calendar": {
-    light: `/preview_images/event-calendars/task-orbit-calendar-light.png`,
-    dark: `/preview_images/event-calendars/task-orbit-calendar-dark.png`,
-  },
-  "radial-week-view": {
-    light: `/preview_images/event-calendars/radial-week-view-light.png`,
-    dark: `/preview_images/event-calendars/radial-week-view-dark.png`,
-  },
-  "stacked-bar-calendar": {
-    light: `/preview_images/event-calendars/stacked-bar-calendar-light.png`,
-    dark: `/preview_images/event-calendars/stacked-bar-calendar-dark.png`,
-  },
-  "heatmap-calendar": {
-    light: `/preview_images/event-calendars/heatmap-calendar-light.png`,
-    dark: `/preview_images/event-calendars/heatmap-calendar-dark.png`,
-  },
-  "event-calendar": {
-    light: `${BASE_URL}/calendars/event-calendar-light.jpg`,
-    dark: `${BASE_URL}/calendars/event-calendar-dark.jpg`,
-  },
-  "priority-pyramid-calendar": {
-    light: `${BASE_URL}/calendars/priority-pyramid-calendar-light.jpg`,
-    dark: `${BASE_URL}/calendars/priority-pyramid-calendar-dark.jpg`,
-  },
-  "event-path-calendar": {
-    light: `/preview_images/event-calendars/event-path-calendar-light.png`,
-    dark: `/preview_images/event-calendars/event-path-calendar-dark.png`,
-  },
-  "wheel-of-time-calendar": {
-    light: `${BASE_URL}/calendars/wheel-of-time-calendar-light.jpg`,
-    dark: `${BASE_URL}/calendars/wheel-of-time-calendar-dark.jpg`,
-  },
-  "particle-flow-calendar": {
-    light: `/preview_images/event-calendars/particle-flow-calendar-light.png`,
-    dark: `/preview_images/event-calendars/particle-flow-calendar-dark.png`,
-  },
-  "event-aquarium-calendar": {
-    light: `/preview_images/event-calendars/event-aquarium-calendar-light.png`,
-    dark: `/preview_images/event-calendars/event-aquarium-calendar-dark.png`,
-  },
-  "origami-fold-out-calendar": {
-    light: `/preview_images/event-calendars/origami-fold-out-calendar-light.png`,
-    dark: `/preview_images/event-calendars/origami-fold-out-calendar-dark.png`,
   },
   "calendar-planner": {
     light: `/preview_images/event-calendars/calendar-planner-light.png`,
@@ -1059,10 +734,6 @@ export const eventCalendarsPreview: ComponentPreviewMap = {
   "chrono-select": {
     light: `/preview_images/event-calendars/chrono-select-light.png`,
     dark: `/preview_images/event-calendars/chrono-select-dark.png`,
-  },
-  "pill-calendar": {
-    light: `/preview_images/event-calendars/pill-calendar-light.png`,
-    dark: `/preview_images/event-calendars/pill-calendar-dark.png`,
   },
   "calendar-scheduler": {
     light: `/preview_images/event-calendars/calendar-scheduler-light.png`,
@@ -1079,21 +750,13 @@ export const eventCalendarsPreview: ComponentPreviewMap = {
  * Path: /docs/components/[slug]
  */
 export const imageToolsPreview: ComponentPreviewMap = {
-  "image-cropper": {
-    light: `/preview_images/image-tools/image-cropper-light.png`,
-    dark: `/preview_images/image-tools/image-cropper-dark.png`,
+  "glass-image-editor": {
+    light: `/preview_images/image-tools/glass-image-editor-light.png`,
+    dark: `/preview_images/image-tools/glass-image-editor-dark.png`,
   },
-  "advanced-image-uploader": {
-    light: `/preview_images/image-tools/advanced-image-uploader-light.png`,
-    dark: `/preview_images/image-tools/advanced-image-uploader-dark.png`,
-  },
-  "interactive-image-gallery": {
-    light: `${BASE_URL}/images/interactive-image-gallery-light.webp`,
-    dark: `${BASE_URL}/images/interactive-image-gallery-dark.webp`,
-  },
-  "product-image-card": {
-    light: `${BASE_URL}/cards/product-image-card-light.webp`,
-    dark: `${BASE_URL}/cards/product-image-card-dark.webp`,
+  "glass-image-compare": {
+    light: `/preview_images/image-tools/glass-image-compare-light.png`,
+    dark: `/preview_images/image-tools/glass-image-compare-dark.png`,
   },
 };
 
@@ -1109,17 +772,6 @@ export const videoPlayersPreview: ComponentPreviewMap = {
   "hover-play-card": {
     light: `/preview_images/video-players/hover-play-card-light.png`,
     dark: `/preview_images/video-players/hover-play-card-dark.png`,
-  },
-};
-
-/**
- * Effects - Visual effect components
- * Path: /docs/components/[slug]
- */
-export const effectsPreview: ComponentPreviewMap = {
-  globe: {
-    light: `${BASE_URL}/popular/globe-light.jpg`,
-    dark: `${BASE_URL}/popular/globe-dark.jpg`,
   },
 };
 
@@ -1291,14 +943,6 @@ export const docksPreview: ComponentPreviewMap = {
     light: `/preview_images/docks/gooey-dock-light.png`,
     dark: `/preview_images/docks/gooey-dock-dark.png`,
   },
-  "dock-morph": {
-    light: `/preview_images/docks/dock-morph-light.png`,
-    dark: `/preview_images/docks/dock-morph-dark.png`,
-  },
-  dock: {
-    light: `/preview_images/docks/dock-light.png`,
-    dark: `/preview_images/docks/dock-dark.png`,
-  },
 };
 
 /**
@@ -1363,10 +1007,6 @@ export const faqsPreview: ComponentPreviewMap = {
  * Path: /docs/components/[slug]
  */
 export const heroSectionsPreview: ComponentPreviewMap = {
-  "aurora-hero-section": {
-    light: `/preview_images/hero-sections/aurora-hero-section-light.png`,
-    dark: `/preview_images/hero-sections/aurora-hero-section-dark.png`,
-  },
   "card-carousel-hero": {
     light: `/preview_images/hero-sections/card-carousel-hero-light.png`,
     dark: `/preview_images/hero-sections/card-carousel-hero-dark.png`,
@@ -1375,25 +1015,9 @@ export const heroSectionsPreview: ComponentPreviewMap = {
     light: `/preview_images/hero-sections/gradient-hero-showcase-light.png`,
     dark: `/preview_images/hero-sections/gradient-hero-showcase-dark.png`,
   },
-  "spectrum-hero-section": {
-    light: `/preview_images/hero-sections/spectrum-hero-section-light.png`,
-    dark: `/preview_images/hero-sections/spectrum-hero-section-dark.png`,
-  },
   "video-hero-showcase": {
     light: `/preview_images/hero-sections/video-hero-showcase-light.png`,
     dark: `/preview_images/hero-sections/video-hero-showcase-dark.png`,
-  },
-  "visionary-hero-section": {
-    light: `/preview_images/hero-sections/visionary-hero-section-light.png`,
-    dark: `/preview_images/hero-sections/visionary-hero-section-dark.png`,
-  },
-  "hero-title-slide": {
-    light: `/preview_images/hero-sections/hero-title-slide-light.png`,
-    dark: `/preview_images/hero-sections/hero-title-slide-dark.png`,
-  },
-  "hero-section-glass-web": {
-    light: `/preview_images/hero-sections/hero-section-glass-web-light.png`,
-    dark: `/preview_images/hero-sections/hero-section-glass-web-dark.png`,
   },
   "structured-hero-section": {
     light: `/preview_images/hero-sections/structured-hero-section-light.png`,
@@ -1522,6 +1146,7 @@ export const allComponentPreviews: ComponentPreviewMap = {
   ...breadcrumbsPreview,
   ...navbarsPreview,
   ...cardsPreview,
+  ...carouselsPreview,
   ...buttonsPreview,
   ...checkboxesPreview,
   ...loadersPreview,
@@ -1534,7 +1159,6 @@ export const allComponentPreviews: ComponentPreviewMap = {
   ...inputsPreview,
   ...notificationsPreview,
   ...menuPreview,
-  ...contextMenuPreview,
   ...drawerPreview,
   ...formsPreview,
   ...fileManagementPreview,
@@ -1544,7 +1168,6 @@ export const allComponentPreviews: ComponentPreviewMap = {
   ...eventCalendarsPreview,
   ...imageToolsPreview,
   ...videoPlayersPreview,
-  ...effectsPreview,
   ...textsPreview,
   ...backgroundsPreview,
   ...tabsPreview,
@@ -1652,6 +1275,7 @@ export function getCategoryPreviews(category: string): ComponentPreviewMap {
     breadcrumbs: breadcrumbsPreview,
     navbars: navbarsPreview,
     cards: cardsPreview,
+    carousels: carouselsPreview,
     buttons: buttonsPreview,
     checkboxes: checkboxesPreview,
     loaders: loadersPreview,
@@ -1664,7 +1288,6 @@ export function getCategoryPreviews(category: string): ComponentPreviewMap {
     inputs: inputsPreview,
     notifications: notificationsPreview,
     menu: menuPreview,
-    "context-menu": contextMenuPreview,
     drawer: drawerPreview,
     forms: formsPreview,
     "file-management": fileManagementPreview,
@@ -1674,7 +1297,6 @@ export function getCategoryPreviews(category: string): ComponentPreviewMap {
     "event-calendars": eventCalendarsPreview,
     "image-tools": imageToolsPreview,
     "video-players": videoPlayersPreview,
-    effects: effectsPreview,
     text: textsPreview,
     backgrounds: backgroundsPreview,
     tabs: tabsPreview,

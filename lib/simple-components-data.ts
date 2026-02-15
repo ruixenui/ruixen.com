@@ -21,17 +21,6 @@ export const componentsData: ComponentCategory[] = [
     viewAllUrl: "/docs/components/ai-chat-input",
     components: [
       {
-        id: "globe",
-        title: "Globe",
-        summary:
-          "Button with globe animation for global actions and achievements",
-        url: "/docs/components/globe",
-        image_dark:
-          "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/popular/globe-dark.jpg",
-        image_light:
-          "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/popular/globe-light.jpg",
-      },
-      {
         id: "three-dwall-calendar",
         title: "Three D Wall Calendar",
         summary:
@@ -79,16 +68,6 @@ export const componentsData: ComponentCategory[] = [
         image_light: "/preview_images/cards/card-stack-light.png",
       },
       {
-        id: "precision-card",
-        title: "Precision Card",
-        summary: "Precision card with smooth animations and hover effects",
-        url: "/docs/components/precision-card",
-        image_dark:
-          "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/cards/precision-card-dark.webp",
-        image_light:
-          "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/cards/precision-card-light.webp",
-      },
-      {
         id: "rising-text",
         title: "Lumina Text",
         summary:
@@ -100,76 +79,13 @@ export const componentsData: ComponentCategory[] = [
           "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/texts/lumina-light.png",
       },
       {
-        id: "product-image-card",
-        title: "Product Image Card",
+        id: "glass-image-editor",
+        title: "Glass Image Editor",
         summary:
-          "Interactive media card with play button overlay and hover animations",
-        url: "/docs/components/product-image-card",
-        image_dark:
-          "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/cards/product-image-card-dark.webp",
-        image_light:
-          "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/cards/product-image-card-light.webp",
-      },
-      {
-        id: "interactive-image-gallery",
-        title: "Interactive Image Gallery",
-        summary:
-          "Interactive image gallery with smooth animations and hover effects",
-        url: "/docs/components/interactive-image-gallery",
-        image_dark:
-          "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/images/interactive-image-gallery-dark.webp",
-        image_light:
-          "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/images/interactive-image-gallery-light.webp",
-      },
-    ],
-  },
-  {
-    id: "cards",
-    name: "Card Components",
-    viewAllUrl: "/docs/components/elite-plan-card",
-    components: [
-      {
-        id: "elite-plan-card",
-        title: "Elite Plan Card",
-        summary:
-          "Modern card with animated gradient blob background for visual appeal",
-        url: "/docs/components/elite-plan-card",
-        image_dark:
-          "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/cards/elite-plan-card-dark.jpg",
-        image_light:
-          "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/cards/elite-plan-card-light.jpg",
-      },
-      {
-        id: "shirt-parallax-card",
-        title: "Shirt Parallax Card",
-        summary:
-          "Engaging product card with bounce animation and interactive elements",
-        url: "/docs/components/shirt-parallax-card",
-        image_dark:
-          "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/cards/shirt-parallax-card-dark.jpg",
-        image_light:
-          "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/cards/shirt-parallax-card-light.jpg",
-      },
-      {
-        id: "hover-play-card",
-        title: "Hover Play Card",
-        summary:
-          "Interactive media card with play button overlay and hover animations",
-        url: "/docs/components/health-stat-card",
-        image_dark:
-          "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/cards/health-stats-card-dark.jpg",
-        image_light:
-          "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/cards/health-stats-card-light.jpg",
-      },
-      {
-        id: "credit-card-hero",
-        title: "Credit Card Hero",
-        summary: "Credit card hero with smooth animations and hover effects",
-        url: "/docs/components/credit-card-hero",
-        image_dark:
-          "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/cards/credit-card-hero-dark.jpg",
-        image_light:
-          "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/cards/credit-card-hero-light.jpg",
+          "iOS 26 liquid-glass image editor with upload, zoom, rotate, and multi-image support",
+        url: "/docs/components/glass-image-editor",
+        image_dark: "/preview_images/image-tools/glass-image-editor-dark.png",
+        image_light: "/preview_images/image-tools/glass-image-editor-light.png",
       },
     ],
   },
@@ -201,16 +117,6 @@ export const componentsData: ComponentCategory[] = [
           "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/inputs/url-input-light.jpg",
       },
       {
-        id: "otp-input",
-        title: "OTP Input",
-        summary: "OTP input with smooth animations and keyboard shortcuts",
-        url: "/docs/components/otp-input",
-        image_dark:
-          "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/inputs/otp-input-dark.jpg",
-        image_light:
-          "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/inputs/otp-input-light.jpg",
-      },
-      {
         id: "password-field",
         title: "Password Field",
         summary:
@@ -220,17 +126,6 @@ export const componentsData: ComponentCategory[] = [
           "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/inputs/password-field-dark.jpg",
         image_light:
           "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/inputs/password-field-light.jpg",
-      },
-      {
-        id: "modern-card-input",
-        title: "Modern Card Input",
-        summary:
-          "Modern card input with smooth animations and keyboard shortcuts",
-        url: "/docs/components/modern-card-input",
-        image_dark:
-          "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/inputs/modern-card-input-dark.jpg",
-        image_light:
-          "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/inputs/modern-card-input-light.jpg",
       },
     ],
   },
@@ -249,39 +144,6 @@ export const componentsData: ComponentCategory[] = [
           "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/buttons/confetti-button-dark.jpg",
         image_light:
           "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/buttons/confetti-button-light.jpg",
-      },
-      {
-        id: "countdown-button",
-        title: "Countdown Button",
-        summary:
-          "Button with integrated progress indicator for long-running operations",
-        url: "/docs/components/countdown-button",
-        image_dark:
-          "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/buttons/countdown-button-dark.jpg",
-        image_light:
-          "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/buttons/countdown-button-light.jpg",
-      },
-      {
-        id: "checklist-button",
-        title: "Checklist Button",
-        summary:
-          "Versatile button with primary action and dropdown menu for additional options",
-        url: "/docs/components/checklist-button",
-        image_dark:
-          "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/buttons/checklist-button-dark.jpg",
-        image_light:
-          "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/buttons/checklist-button-light.jpg",
-      },
-      {
-        id: "icon-grid-button",
-        title: "Icon Grid Button",
-        summary:
-          "Icon grid button with smooth animations and keyboard shortcuts",
-        url: "/docs/components/icon-grid-button",
-        image_dark:
-          "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/buttons/icon-grid-button-dark.jpg",
-        image_light:
-          "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/components-preview/buttons/icon-grid-button-light.jpg",
       },
     ],
   },
