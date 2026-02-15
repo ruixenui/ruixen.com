@@ -1,40 +1,22 @@
 "use client";
 
-import * as React from "react";
-import EventScheduler, { Event } from "@/registry/ruixenui/event-scheduler";
+import { EventScheduler } from "@/registry/ruixenui/event-scheduler";
 
 export default function EventSchedulerDemo() {
-  const defaultEvents: Event[] = [
-    {
-      id: 1,
-      title: "Team Meeting",
-      date: new Date(new Date().setHours(10, 0, 0)),
-    },
-    {
-      id: 2,
-      title: "Client Call",
-      date: new Date(new Date().setHours(15, 30, 0)),
-    },
-  ];
-
-  const handleAddEvent = (event: Event) => {
-    console.log("Event added:", event);
-  };
-
-  const handleDeleteEvent = (id: number) => {
-    console.log("Event deleted with id:", id);
-  };
-
   return (
-    <div className="p-4 max-w-2xl mx-auto">
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        padding: "24px 16px",
+      }}
+    >
       <EventScheduler
-        defaultEvents={defaultEvents}
-        defaultTitle="New Event"
-        defaultHour="12"
-        defaultMinute="00"
-        defaultAMPM="PM"
-        onAddEvent={handleAddEvent}
-        onDeleteEvent={handleDeleteEvent}
+        events={[
+          { id: "1", title: "Team standup", hour: 10, minute: 0 },
+          { id: "2", title: "Lunch with Alex", hour: 13, minute: 0 },
+          { id: "3", title: "Client review", hour: 15, minute: 30 },
+        ]}
       />
     </div>
   );

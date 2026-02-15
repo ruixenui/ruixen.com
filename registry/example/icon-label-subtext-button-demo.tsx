@@ -1,58 +1,16 @@
 "use client";
 
 import IconLabelSubtextButton from "@/registry/ruixenui/icon-label-subtext-button";
-import { DownloadCloud, Loader2, Check } from "lucide-react";
 
-export default function DemoIconLabelSubtextButton() {
+export default function IconLabelSubtextButtonDemo() {
   return (
-    <div className="flex min-h-[400px] w-full flex-col items-center justify-center gap-4">
-      <div className="flex gap-4 items-center">
-        <IconLabelSubtextButton
-          icon={<DownloadCloud />}
-          label="Download"
-          subtext="File size: 12MB"
-          onClick={() => alert("Downloading...")}
-        />
-
-        <IconLabelSubtextButton
-          icon={<DownloadCloud />}
-          label="Export CSV"
-          subtext="Rows: 12,341"
-          variant="outline"
-          size="lg"
-          badge={"NEW"}
-        />
-
-        <IconLabelSubtextButton
-          icon={<DownloadCloud />}
-          label="Save"
-          subtext="Auto-save enabled"
-          variant="ghost"
-          size="sm"
-          tooltip="Saves your current draft to cloud storage"
-        />
-      </div>
-
-      <div className="flex gap-4 items-center">
-        <IconLabelSubtextButton
-          icon={<DownloadCloud />}
-          label="Upload"
-          subtext=".png, .jpg only"
-          loading
-        />
-        <IconLabelSubtextButton
-          icon={<DownloadCloud />}
-          label="Sent"
-          subtext="Delivered"
-          success
-        />
-      </div>
-
-      <p className="text-sm text-muted-foreground">
-        Use cases: downloads, uploads, attachments, contextual actions (e.g.,
-        "Add — 3 items"), or any place where a short caption helps reduce
-        ambiguity.
-      </p>
+    <div className="flex items-center justify-center min-h-[400px] gap-4">
+      <IconLabelSubtextButton
+        label="Download"
+        subtext="12 MB"
+        onClick={() => console.log("Download")}
+      />
+      <IconLabelSubtextButton label="Export CSV" subtext="12,341 rows" />
     </div>
   );
 }

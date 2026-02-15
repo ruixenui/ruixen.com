@@ -1,11 +1,14 @@
 import ProgressButton from "@/registry/ruixenui/progress-button";
 
-export default function DemoProgressButton() {
+export default function ProgressButtonDemo() {
   return (
-    <div className="flex min-h-[350px] w-full flex-col items-center justify-center gap-6">
+    <div className="flex items-center justify-center min-h-[400px] gap-6">
       <ProgressButton label="Submit" />
-      <ProgressButton label="Pay" loadingLabel="Processing Payment" />
-      <ProgressButton label="Upload" showBar duration={3000} />
+      <ProgressButton
+        label="Upload"
+        loadingLabel="Uploading..."
+        duration={3000}
+      />
     </div>
   );
 }

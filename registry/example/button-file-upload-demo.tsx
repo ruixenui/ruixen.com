@@ -3,27 +3,20 @@
 import { ButtonFileUpload } from "@/registry/ruixenui/button-file-upload";
 
 export default function ButtonFileUploadDemo() {
-  const handleFileSelect = (files: FileList) => {
-    console.log(
-      "Selected files:",
-      Array.from(files).map((f) => f.name),
-    );
-  };
-
   return (
-    <div className="flex flex-wrap items-center justify-center gap-4 p-4">
-      <ButtonFileUpload onFileSelect={handleFileSelect} label="Upload File" />
+    <div className="flex items-center justify-center min-h-[400px] gap-4">
       <ButtonFileUpload
-        variant="outline"
-        type="image"
-        onFileSelect={handleFileSelect}
-        label="Upload Image"
+        onFileSelect={(files) =>
+          console.log(Array.from(files).map((f) => f.name))
+        }
+        label="Upload File"
       />
       <ButtonFileUpload
-        variant="dashed"
-        multiple
-        onFileSelect={handleFileSelect}
-        label="Upload Multiple"
+        onFileSelect={(files) =>
+          console.log(Array.from(files).map((f) => f.name))
+        }
+        accept="image/*"
+        label="Upload Image"
       />
     </div>
   );

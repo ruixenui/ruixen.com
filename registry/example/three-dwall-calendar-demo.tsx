@@ -1,42 +1,33 @@
 "use client";
 
-import * as React from "react";
-import {
-  ThreeDWallCalendar,
-  CalendarEvent,
-} from "@/registry/ruixenui/three-dwall-calendar";
-import { v4 as uuidv4 } from "uuid";
+import { ThreeDWallCalendar } from "@/registry/ruixenui/three-dwall-calendar";
 
-export default function Demo3DWallCalendar() {
-  const [events, setEvents] = React.useState<CalendarEvent[]>([
-    { id: uuidv4(), title: "Sprint Planning", date: new Date().toISOString() },
-    {
-      id: uuidv4(),
-      title: "Design Handoff",
-      date: new Date(new Date().getTime() + 24 * 60 * 60 * 1000).toISOString(),
-    },
-    {
-      id: uuidv4(),
-      title: "Demo",
-      date: new Date(
-        new Date().getTime() + 3 * 24 * 60 * 60 * 1000,
-      ).toISOString(),
-    },
-  ]);
-
-  const addEvent = (ev: CalendarEvent) => setEvents((p) => [...p, ev]);
-  const removeEvent = (id: string) =>
-    setEvents((p) => p.filter((e) => e.id !== id));
+export default function ThreeDWallCalendarDemo() {
+  const now = new Date();
+  const y = now.getFullYear();
+  const m = String(now.getMonth() + 1).padStart(2, "0");
 
   return (
-    <div className="p-6">
-      <h1 className="text-3xl font-bold mb-6 text-center">
-        3D Wall Calendar Demo
-      </h1>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        padding: "24px 16px",
+      }}
+    >
       <ThreeDWallCalendar
-        events={events}
-        onAddEvent={addEvent}
-        onRemoveEvent={removeEvent}
+        events={[
+          { id: "1", title: "Kickoff meeting", date: `${y}-${m}-03` },
+          { id: "2", title: "Design sync", date: `${y}-${m}-05` },
+          { id: "3", title: "Code review", date: `${y}-${m}-05` },
+          { id: "4", title: "Sprint planning", date: `${y}-${m}-10` },
+          { id: "5", title: "Standup", date: `${y}-${m}-11` },
+          { id: "6", title: "Demo day", date: `${y}-${m}-14` },
+          { id: "7", title: "Retro", date: `${y}-${m}-15` },
+          { id: "8", title: "Ship it", date: `${y}-${m}-22` },
+          { id: "9", title: "Offsite", date: `${y}-${m}-25` },
+          { id: "10", title: "Team dinner", date: `${y}-${m}-25` },
+        ]}
       />
     </div>
   );

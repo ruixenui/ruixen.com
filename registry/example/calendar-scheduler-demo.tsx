@@ -2,12 +2,20 @@
 
 import { CalendarScheduler } from "@/registry/ruixenui/calendar-scheduler";
 
-export default function SchedulerDemoPage() {
+export default function CalendarSchedulerDemo() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center p-8">
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: 16,
+        padding: "24px 16px",
+      }}
+    >
       <CalendarScheduler
         onConfirm={(val) => {
-          console.log("Scheduled:", val);
+          console.log("Confirmed:", val);
         }}
       />
     </div>

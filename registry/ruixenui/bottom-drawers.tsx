@@ -1,150 +1,237 @@
 "use client";
 
-import * as React from "react";
-import {
-  Drawer,
-  DrawerContent,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerTrigger,
-  DrawerClose,
-} from "@/components/ui/drawer";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
+import { useRef, useState, type ReactNode } from "react";
+import { motion } from "motion/react";
 
-export default function BottomDrawers() {
+/**
+ * Bottom Drawers — snap-point bottom sheet.
+ *
+ * Three snap heights: peek, half, full. Drag between them.
+ * Velocity-aware — flick to advance one snap. Spring physics.
+ * Backdrop dims progressively. Tap outside to collapse.
+ * Content reveals with opacity crossfades at each level.
+ *
+ * The mechanism IS the experience.
+ */
+
+/* ── Types ── */
+
+export interface BottomDrawersProps {
+  /** Content visible at peek height (always visible) */
+  peek: ReactNode;
+  /** Content visible at half height and above */
+  half?: ReactNode;
+  /** Content visible at full height only */
+  full?: ReactNode;
+  /** Starting snap: 0 = peek, 1 = half, 2 = full */
+  defaultSnap?: 0 | 1 | 2;
+  sound?: boolean;
+}
+
+/* ── Constants ── */
+
+const DRAWER_H = 400;
+const PEEK_H = 96;
+const HALF_H = 240;
+
+/** Y offsets for each snap — higher value = more hidden */
+const SNAPS = [
+  DRAWER_H - PEEK_H, // peek: 304px down, 96px visible
+  DRAWER_H - HALF_H, // half: 160px down, 240px visible
+  0, // full: 0px down, all 400px visible
+];
+
+/* ── Audio ── */
+
+let _ctx: AudioContext | null = null;
+let _buf: AudioBuffer | null = null;
+
+function audioCtx() {
+  if (!_ctx) {
+    _ctx = new (window.AudioContext ||
+      (window as unknown as { webkitAudioContext: typeof AudioContext })
+        .webkitAudioContext)();
+  }
+  if (_ctx.state === "suspended") _ctx.resume();
+  return _ctx;
+}
+
+function ensureBuf(ac: AudioContext): AudioBuffer {
+  if (_buf && _buf.sampleRate === ac.sampleRate) return _buf;
+  const rate = ac.sampleRate;
+  const len = Math.floor(rate * 0.003);
+  const buf = ac.createBuffer(1, len, rate);
+  const ch = buf.getChannelData(0);
+  for (let i = 0; i < len; i++) {
+    const t = i / len;
+    ch[i] = (Math.random() * 2 - 1) * (1 - t) ** 4;
+  }
+  _buf = buf;
+  return buf;
+}
+
+function playTick(last: React.MutableRefObject<number>) {
+  const now = performance.now();
+  if (now - last.current < 80) return;
+  last.current = now;
+  try {
+    const ac = audioCtx();
+    const buf = ensureBuf(ac);
+    const src = ac.createBufferSource();
+    const gain = ac.createGain();
+    src.buffer = buf;
+    src.playbackRate.value = 1.0;
+    gain.gain.value = 0.03;
+    src.connect(gain);
+    gain.connect(ac.destination);
+    src.start();
+  } catch {
+    /* silent */
+  }
+}
+
+/* ── Component ── */
+
+export function BottomDrawers({
+  peek,
+  half,
+  full,
+  defaultSnap = 0,
+  sound = true,
+}: BottomDrawersProps) {
+  const [snap, setSnap] = useState(defaultSnap);
+  const lastSound = useRef(0);
+
+  function goTo(target: 0 | 1 | 2) {
+    if (target !== snap && sound) playTick(lastSound);
+    setSnap(target);
+  }
+
+  function handleDragEnd(
+    _: unknown,
+    info: { offset: { y: number }; velocity: { y: number } },
+  ) {
+    const current = SNAPS[snap] + info.offset.y;
+    const vel = info.velocity.y;
+
+    let target: 0 | 1 | 2;
+    if (vel > 300) {
+      /* Flicking down → collapse toward peek */
+      target = Math.max(snap - 1, 0) as 0 | 1 | 2;
+    } else if (vel < -300) {
+      /* Flicking up → expand toward full */
+      target = Math.min(snap + 1, 2) as 0 | 1 | 2;
+    } else {
+      /* Find nearest snap by distance */
+      target = SNAPS.reduce(
+        (best, sy, i) =>
+          Math.abs(current - sy) < Math.abs(current - SNAPS[best]) ? i : best,
+        0,
+      ) as 0 | 1 | 2;
+    }
+
+    goTo(target);
+  }
+
+  /* Content visibility: peek always, half at snap>=1, full at snap===2 */
+  const showHalf = snap >= 1;
+  const showFull = snap === 2;
+
+  /* Backdrop opacity: 0 at peek, progressive at half & full */
+  const backdropOpacity = snap === 0 ? 0 : snap === 1 ? 0.15 : 0.35;
+
   return (
-    <div className="flex flex-col items-center justify-center py-12 gap-4">
-      <h2 className="text-2xl font-semibold">Bottom Drawers Example</h2>
-      <p className="text-gray-500 text-center max-w-md">
-        Each button opens a drawer from the bottom with different content.
-        Content is compact and centered.
-      </p>
+    <>
+      {/* Backdrop — dims progressively, click to collapse */}
+      <motion.div
+        animate={{ opacity: backdropOpacity }}
+        initial={{ opacity: 0 }}
+        transition={{ duration: 0.25 }}
+        onClick={() => goTo(0)}
+        style={{
+          position: "absolute",
+          inset: 0,
+          background: "black",
+          zIndex: 40,
+          pointerEvents: snap > 0 ? "auto" : "none",
+        }}
+      />
 
-      <div className="flex flex-wrap gap-4">
-        {/* Drawer 1 - Newsletter */}
-        <Drawer>
-          <DrawerTrigger asChild>
-            <Button variant="outline">Subscribe</Button>
-          </DrawerTrigger>
-          <DrawerContent>
-            <div className="flex flex-col items-center text-center py-6 px-4">
-              <DrawerHeader className="space-y-2 max-w-md">
-                <DrawerTitle>Subscribe to Newsletter</DrawerTitle>
-                <DrawerDescription>
-                  Enter your email to receive the latest updates.
-                </DrawerDescription>
-              </DrawerHeader>
-              <div className="w-full max-w-md mt-4">
-                <Label htmlFor="email1">Email</Label>
-                <Input id="email1" type="email" placeholder="you@example.com" />
-              </div>
-              <DrawerFooter className="flex flex-col sm:flex-row gap-3 w-full max-w-md mt-6">
-                <Button className="w-full">Subscribe</Button>
-                <DrawerClose asChild>
-                  <Button variant="outline" className="w-full">
-                    Cancel
-                  </Button>
-                </DrawerClose>
-              </DrawerFooter>
-            </div>
-          </DrawerContent>
-        </Drawer>
+      {/* Drawer */}
+      <motion.div
+        drag="y"
+        dragConstraints={{ top: 0, bottom: SNAPS[0] }}
+        dragElastic={0.05}
+        onDragEnd={handleDragEnd}
+        initial={{ y: SNAPS[defaultSnap] }}
+        animate={{ y: SNAPS[snap] }}
+        transition={{ type: "spring", damping: 32, stiffness: 380 }}
+        style={{
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          height: DRAWER_H,
+          background: "rgba(22,22,24,0.98)",
+          borderTop: "1px solid rgba(255,255,255,0.06)",
+          borderRadius: "14px 14px 0 0",
+          touchAction: "none",
+          zIndex: 50,
+          overflow: "hidden",
+          cursor: "grab",
+        }}
+      >
+        {/* Handle */}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            padding: "10px 0 6px",
+          }}
+        >
+          <div
+            style={{
+              width: 32,
+              height: 3.5,
+              borderRadius: 2,
+              background: "rgba(255,255,255,0.10)",
+            }}
+          />
+        </div>
 
-        {/* Drawer 2 - Feedback */}
-        <Drawer>
-          <DrawerTrigger asChild>
-            <Button variant="outline">Feedback</Button>
-          </DrawerTrigger>
-          <DrawerContent>
-            <div className="flex flex-col items-center text-center py-6 px-4">
-              <DrawerHeader className="space-y-2 max-w-md">
-                <DrawerTitle>Submit Feedback</DrawerTitle>
-                <DrawerDescription>
-                  Let us know your thoughts about our service.
-                </DrawerDescription>
-              </DrawerHeader>
-              <div className="w-full max-w-md mt-4 space-y-4">
-                <div className="grid gap-2 text-left">
-                  <Label htmlFor="name">Name</Label>
-                  <Input id="name" type="text" placeholder="Your name" />
-                </div>
-                <div className="grid gap-2 text-left">
-                  <Label htmlFor="message">Message</Label>
-                  <Textarea
-                    id="message"
-                    placeholder="Your feedback..."
-                    className="min-h-[80px]"
-                  />
-                </div>
-              </div>
-              <DrawerFooter className="flex flex-col sm:flex-row gap-3 w-full max-w-md mt-6">
-                <Button className="w-full">Submit</Button>
-                <DrawerClose asChild>
-                  <Button variant="outline" className="w-full">
-                    Cancel
-                  </Button>
-                </DrawerClose>
-              </DrawerFooter>
-            </div>
-          </DrawerContent>
-        </Drawer>
+        {/* Peek content — always visible */}
+        <div style={{ padding: "0 20px" }}>{peek}</div>
 
-        {/* Drawer 3 - Contact Form */}
-        <Drawer>
-          <DrawerTrigger asChild>
-            <Button variant="outline">Contact</Button>
-          </DrawerTrigger>
-          <DrawerContent>
-            <div className="flex flex-col items-center text-center py-6 px-4">
-              <DrawerHeader className="space-y-2 max-w-md">
-                <DrawerTitle>Contact Us</DrawerTitle>
-                <DrawerDescription>
-                  Fill in your details and we will get back to you.
-                </DrawerDescription>
-              </DrawerHeader>
-              <div className="w-full max-w-md mt-4 space-y-4">
-                <div className="grid gap-2 text-left">
-                  <Label htmlFor="contact-name">Name</Label>
-                  <Input
-                    id="contact-name"
-                    type="text"
-                    placeholder="Your name"
-                  />
-                </div>
-                <div className="grid gap-2 text-left">
-                  <Label htmlFor="contact-email">Email</Label>
-                  <Input
-                    id="contact-email"
-                    type="email"
-                    placeholder="you@example.com"
-                  />
-                </div>
-                <div className="grid gap-2 text-left">
-                  <Label htmlFor="contact-message">Message</Label>
-                  <Textarea
-                    id="contact-message"
-                    placeholder="Your message..."
-                    className="min-h-[80px]"
-                  />
-                </div>
-              </div>
-              <DrawerFooter className="flex flex-col sm:flex-row gap-3 w-full max-w-md mt-6">
-                <Button className="w-full">Send</Button>
-                <DrawerClose asChild>
-                  <Button variant="outline" className="w-full">
-                    Cancel
-                  </Button>
-                </DrawerClose>
-              </DrawerFooter>
-            </div>
-          </DrawerContent>
-        </Drawer>
-      </div>
-    </div>
+        {/* Half content — fades in at half & full */}
+        {half && (
+          <motion.div
+            animate={{ opacity: showHalf ? 1 : 0 }}
+            transition={{ duration: 0.2 }}
+            style={{
+              padding: "0 20px",
+              pointerEvents: showHalf ? "auto" : "none",
+            }}
+          >
+            {half}
+          </motion.div>
+        )}
+
+        {/* Full content — fades in at full only */}
+        {full && (
+          <motion.div
+            animate={{ opacity: showFull ? 1 : 0 }}
+            transition={{ duration: 0.2 }}
+            style={{
+              padding: "0 20px",
+              pointerEvents: showFull ? "auto" : "none",
+            }}
+          >
+            {full}
+          </motion.div>
+        )}
+      </motion.div>
+    </>
   );
 }
+
+export default BottomDrawers;

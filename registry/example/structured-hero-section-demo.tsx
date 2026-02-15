@@ -5,7 +5,7 @@ import { StructuredHeroSection } from "@/registry/ruixenui/structured-hero-secti
 export default function StructuredHeroSectionDemo() {
   return (
     <StructuredHeroSection
-      announcement="600+ Components and Counting"
+      announcement="350+ Components and Counting"
       announcementAction={{ label: "Browse", href: "/docs/components" }}
       title={
         <>

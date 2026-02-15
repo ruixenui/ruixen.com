@@ -94,7 +94,7 @@ export default function LiveWaveform({
     const dpr = window.devicePixelRatio || 1;
 
     const resize = () => {
-      const { width } = wrap.getBoundingClientRect();
+      const width = wrap.offsetWidth;
       cvs.width = Math.round(width * dpr);
       cvs.height = Math.round(height * dpr);
       cvs.style.width = `${width}px`;
@@ -108,7 +108,7 @@ export default function LiveWaveform({
     const t0 = performance.now();
 
     const paint = (now: number) => {
-      const w = wrap.getBoundingClientRect().width;
+      const w = wrap.offsetWidth;
       const h = height;
 
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -116,7 +116,7 @@ export default function LiveWaveform({
       ctx.fillStyle = color();
 
       const step = barWidth + barGap;
-      const count = Math.floor(w / step);
+      const count = Math.ceil(w / step) + 1;
       const t = (now - t0) / 1000;
       const cy = h / 2;
 
@@ -248,7 +248,7 @@ export default function LiveWaveform({
           <Square className="size-3 fill-current" />
         </button>
       )}
-      <div ref={wrapRef} className="flex-1 overflow-hidden">
+      <div ref={wrapRef} className="min-w-0 flex-1 overflow-hidden">
         <canvas
           ref={canvasRef}
           className="block text-foreground"
