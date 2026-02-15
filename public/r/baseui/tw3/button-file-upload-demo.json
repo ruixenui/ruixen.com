@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/button-file-upload-demo.tsx",
-      "content": "\"use client\";\n\nimport { ButtonFileUpload } from \"@/registry/ruixenui/button-file-upload\";\n\nexport default function ButtonFileUploadDemo() {\n  const handleFileSelect = (files: FileList) => {\n    console.log(\n      \"Selected files:\",\n      Array.from(files).map((f) => f.name),\n    );\n  };\n\n  return (\n    <div className=\"flex flex-wrap items-center justify-center gap-4 p-4\">\n      <ButtonFileUpload onFileSelect={handleFileSelect} label=\"Upload File\" />\n      <ButtonFileUpload\n        variant=\"outline\"\n        type=\"image\"\n        onFileSelect={handleFileSelect}\n        label=\"Upload Image\"\n      />\n      <ButtonFileUpload\n        variant=\"dashed\"\n        multiple\n        onFileSelect={handleFileSelect}\n        label=\"Upload Multiple\"\n      />\n    </div>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport { ButtonFileUpload } from \"@/registry/ruixenui/button-file-upload\";\n\nexport default function ButtonFileUploadDemo() {\n  return (\n    <div className=\"flex items-center justify-center min-h-[400px] gap-4\">\n      <ButtonFileUpload\n        onFileSelect={(files) =>\n          console.log(Array.from(files).map((f) => f.name))\n        }\n        label=\"Upload File\"\n      />\n      <ButtonFileUpload\n        onFileSelect={(files) =>\n          console.log(Array.from(files).map((f) => f.name))\n        }\n        accept=\"image/*\"\n        label=\"Upload Image\"\n      />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/button-file-upload-demo.tsx"
     }

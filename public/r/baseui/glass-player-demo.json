@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-player-demo",
+  "type": "registry:example",
+  "title": "Glass Player Demo",
+  "description": "Example showing an iOS 26 liquid-glass Now Playing widget with playback simulation and multi-track support.",
+  "registryDependencies": [
+    "https://ruixen.com/r/glass-player"
+  ],
+  "files": [
+    {
+      "path": "registry/example/glass-player-demo.tsx",
+      "content": "\"use client\";\n\nimport { GlassPlayer } from \"@/registry/ruixenui/glass-player\";\n\nconst tracks = [\n  {\n    title: \"Midnight City\",\n    artist: \"M83\",\n    duration: 243,\n    color: \"#6366f1\",\n  },\n  {\n    title: \"Sunset Drive\",\n    artist: \"Glass Animals\",\n    duration: 198,\n    color: \"#f59e0b\",\n  },\n  {\n    title: \"Northern Lights\",\n    artist: \"Ólafur Arnalds\",\n    duration: 312,\n    color: \"#06b6d4\",\n  },\n];\n\nexport default function GlassPlayerDemo() {\n  return (\n    <div\n      style={{\n        display: \"flex\",\n        flexDirection: \"column\",\n        alignItems: \"center\",\n        padding: \"48px 16px\",\n      }}\n    >\n      <GlassPlayer tracks={tracks} />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/glass-player-demo.tsx"
+    }
+  ]
+}

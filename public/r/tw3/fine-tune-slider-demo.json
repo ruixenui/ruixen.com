@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "fine-tune-slider-demo",
+  "type": "registry:example",
+  "title": "Fine Tune Slider Demo",
+  "description": "Example showing a fine-tune slider with pull-away precision mode.",
+  "registryDependencies": [
+    "https://ruixen.com/r/fine-tune-slider"
+  ],
+  "files": [
+    {
+      "path": "registry/example/fine-tune-slider-demo.tsx",
+      "content": "import { FineTuneSlider } from \"@/registry/ruixenui/fine-tune-slider\";\n\nexport default function FineTuneSliderDemo() {\n  return (\n    <div className=\"flex min-h-[200px] w-full max-w-xl mx-auto items-center justify-center px-6\">\n      <FineTuneSlider />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/fine-tune-slider-demo.tsx"
+    }
+  ]
+}

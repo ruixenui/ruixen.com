@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/button-badge-demo.tsx",
-      "content": "\"use client\";\n\nimport { ButtonBadge } from \"@/registry/ruixenui/button-badge\";\nimport { Bell, Mail, ShoppingCart } from \"lucide-react\";\n\nexport default function ButtonBadgeDemo() {\n  return (\n    <div className=\"flex flex-wrap items-center justify-center gap-4 p-4\">\n      <ButtonBadge badge={3} icon={<Bell className=\"size-4\" />}>\n        Notifications\n      </ButtonBadge>\n      <ButtonBadge\n        badge={12}\n        variant=\"outline\"\n        icon={<Mail className=\"size-4\" />}\n      >\n        Messages\n      </ButtonBadge>\n      <ButtonBadge\n        badge={99}\n        variant=\"secondary\"\n        icon={<ShoppingCart className=\"size-4\" />}\n      >\n        Cart\n      </ButtonBadge>\n      <ButtonBadge badge=\"New\" badgeVariant=\"success\">\n        Features\n      </ButtonBadge>\n    </div>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport { ButtonBadge } from \"@/registry/ruixenui/button-badge\";\n\nexport default function ButtonBadgeDemo() {\n  return (\n    <div className=\"flex items-center justify-center min-h-[400px] gap-6\">\n      <ButtonBadge badge={3}>Notifications</ButtonBadge>\n      <ButtonBadge badge={12}>Messages</ButtonBadge>\n      <ButtonBadge badge=\"New\">Features</ButtonBadge>\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/button-badge-demo.tsx"
     }

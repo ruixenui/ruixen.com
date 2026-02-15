@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "verification-input-demo",
+  "type": "registry:example",
+  "title": "Verification Input Demo",
+  "description": "Example showing an inline verification code input with auto-advance.",
+  "registryDependencies": [
+    "https://ruixen.com/r/verification-input"
+  ],
+  "files": [
+    {
+      "path": "registry/example/verification-input-demo.tsx",
+      "content": "\"use client\";\n\nimport { VerificationInput } from \"@/registry/ruixenui/verification-input\";\n\nexport default function VerificationInputDemo() {\n  return (\n    <div className=\"flex min-h-[200px] w-full items-center justify-center\">\n      <VerificationInput\n        onComplete={(code) => console.log(\"Code:\", code)}\n        onResend={() => console.log(\"Resend requested\")}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/verification-input-demo.tsx"
+    }
+  ]
+}

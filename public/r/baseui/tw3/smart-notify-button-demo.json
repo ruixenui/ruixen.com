@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/smart-notify-button-demo.tsx",
-      "content": "\"use client\";\n\nimport SmartNotifyButton from \"@/registry/ruixenui/smart-notify-button\";\n\nexport default function DemoOne() {\n  const handleUndo = () => {\n    console.log(\"Undo clicked\");\n  };\n\n  return (\n    <div className=\"flex min-h-[400px] w-full flex-col items-center justify-center gap-6\">\n      <div className=\"flex flex-col gap-6\">\n        <SmartNotifyButton />\n\n        <SmartNotifyButton\n          label=\"Save Changes\"\n          message=\"Data saved successfully!\"\n          description=\"Your changes have been stored.\"\n          type=\"success\"\n          actionLabel=\"Undo\"\n          actionCallback={handleUndo}\n          position=\"bottom-left\"\n        />\n\n        <SmartNotifyButton\n          label=\"Delete Item\"\n          message=\"Item could not be deleted\"\n          type=\"error\"\n          variant=\"outline\"\n        />\n      </div>\n    </div>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport SmartNotifyButton from \"@/registry/ruixenui/smart-notify-button\";\n\nexport default function SmartNotifyButtonDemo() {\n  return (\n    <div className=\"flex items-center justify-center min-h-[400px] gap-6\">\n      <SmartNotifyButton\n        label=\"Notify\"\n        message=\"Action completed\"\n        description=\"Your changes have been saved.\"\n        type=\"success\"\n      />\n      <SmartNotifyButton\n        label=\"Alert\"\n        message=\"Something went wrong\"\n        type=\"error\"\n      />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/smart-notify-button-demo.tsx"
     }

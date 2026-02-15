@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "neon-circle-grid-demo",
+  "type": "registry:example",
+  "title": "Neon Circle Grid Demo",
+  "description": "Example showing a neon donut-ring circle grid background with directional fade.",
+  "registryDependencies": [
+    "https://ruixen.com/r/neon-circle-grid"
+  ],
+  "files": [
+    {
+      "path": "registry/example/neon-circle-grid-demo.tsx",
+      "content": "import { NeonCircleGrid } from \"@/registry/ruixenui/neon-circle-grid\";\n\nexport default function NeonCircleGridDemo() {\n  return (\n    <div className=\"relative min-h-[500px] w-full overflow-hidden bg-black\">\n      <NeonCircleGrid\n        color=\"#3ECF8E\"\n        colorBright=\"#D6E8D0\"\n        fadeFrom=\"right\"\n        fadeStart={0.1}\n        colorBlend={0.45}\n        outerRadius={9}\n        innerRadius={3.5}\n        gap={20}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/neon-circle-grid-demo.tsx"
+    }
+  ]
+}

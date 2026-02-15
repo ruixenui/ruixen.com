@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/clean-tag-input-demo.tsx",
-      "content": "import CleanTagInput from \"@/registry/ruixenui/clean-tag-input\";\n\nexport default function CleanTagInputDemo() {\n  return (\n    <div className=\"flex items-center justify-center min-h-screen\">\n      <CleanTagInput />\n    </div>\n  );\n}\n",
+      "content": "import CleanTagInput from \"@/registry/ruixenui/clean-tag-input\";\n\nexport default function CleanTagInputDemo() {\n  return (\n    <div className=\"flex items-center justify-center min-h-[400px]\">\n      <CleanTagInput\n        label=\"Skills\"\n        hint=\"Press Enter to add, Backspace to remove\"\n        defaultTags={[\"React\", \"TypeScript\"]}\n        style={{ width: 360 }}\n      />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/clean-tag-input-demo.tsx"
     }

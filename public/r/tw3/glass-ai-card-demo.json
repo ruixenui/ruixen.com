@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-ai-card-demo",
+  "type": "registry:example",
+  "title": "Glass AI Card Demo",
+  "description": "Example showing an iOS 26 liquid-glass content card with AI action button.",
+  "registryDependencies": [
+    "https://ruixen.com/r/glass-ai-card"
+  ],
+  "files": [
+    {
+      "path": "registry/example/glass-ai-card-demo.tsx",
+      "content": "\"use client\";\n\nimport GlassAICard from \"@/registry/ruixenui/glass-ai-card\";\n\nexport default function GlassAICardDemo() {\n  return (\n    <div className=\"flex items-center justify-center min-h-[400px]\">\n      <GlassAICard onAction={() => console.log(\"Summarize\")} />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/glass-ai-card-demo.tsx"
+    }
+  ]
+}

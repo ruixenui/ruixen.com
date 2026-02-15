@@ -3,14 +3,14 @@
   "name": "add-task-sheet-demo",
   "type": "registry:example",
   "title": "Add Task Sheet Demo",
-  "description": "Example showing a comprehensive task creation sheet with form fields for task details, assignee, category, due date, and priority.",
+  "description": "Example showing a quick-add task dialog with title input and priority pills.",
   "registryDependencies": [
     "https://ruixen.com/r/add-task-sheet"
   ],
   "files": [
     {
       "path": "registry/example/add-task-sheet-demo.tsx",
-      "content": "\"use client\";\n\nimport AddTaskSheet from \"@/registry/ruixenui/add-task-sheet\";\n\nexport default function TaskSheetDemoPage() {\n  return (\n    <div className=\"flex items-center justify-center p-6 min-h-screen\">\n      <AddTaskSheet />\n    </div>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport { useState } from \"react\";\nimport { AddTaskSheet } from \"@/registry/ruixenui/add-task-sheet\";\n\nexport default function AddTaskSheetDemo() {\n  const [open, setOpen] = useState(true);\n\n  return (\n    <div className=\"relative w-full overflow-hidden\" style={{ minHeight: 320 }}>\n      {/* Reopen trigger — appears when dialog is closed */}\n      <div\n        className=\"absolute inset-0 flex items-center justify-center\"\n        style={{\n          opacity: open ? 0 : 1,\n          pointerEvents: open ? \"none\" : \"auto\",\n          transition: \"opacity 0.2s\",\n        }}\n      >\n        <button\n          onClick={() => setOpen(true)}\n          style={{\n            fontSize: 13,\n            fontWeight: 500,\n            color: \"rgba(255,255,255,0.4)\",\n            cursor: \"pointer\",\n            background: \"transparent\",\n            border: \"none\",\n            transition: \"color 0.15s\",\n          }}\n          onMouseEnter={(e) => {\n            e.currentTarget.style.color = \"rgba(255,255,255,0.7)\";\n          }}\n          onMouseLeave={(e) => {\n            e.currentTarget.style.color = \"rgba(255,255,255,0.4)\";\n          }}\n        >\n          + New task\n        </button>\n      </div>\n\n      <AddTaskSheet\n        open={open}\n        onOpenChange={setOpen}\n        onSubmit={(task) => {\n          console.log(\"Task:\", task);\n          setOpen(false);\n        }}\n      />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/add-task-sheet-demo.tsx"
     }

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-image-editor-demo",
+  "type": "registry:example",
+  "title": "Glass Image Editor Demo",
+  "description": "Example showing an iOS 26 liquid-glass image editor with upload, zoom, rotate, and multi-image support.",
+  "registryDependencies": [
+    "https://ruixen.com/r/glass-image-editor"
+  ],
+  "files": [
+    {
+      "path": "registry/example/glass-image-editor-demo.tsx",
+      "content": "\"use client\";\n\nimport {\n  ImageEditor,\n  ImageDropZone,\n  ImageCanvas,\n  ImageStrip,\n  ImageBar,\n} from \"@/registry/ruixenui/glass-image-editor\";\n\nexport default function GlassImageEditorDemo() {\n  return (\n    <div\n      style={{\n        display: \"flex\",\n        flexDirection: \"column\",\n        alignItems: \"center\",\n        padding: \"48px 16px\",\n      }}\n    >\n      <ImageEditor>\n        <ImageDropZone />\n        <ImageCanvas />\n        <ImageStrip />\n        <ImageBar />\n      </ImageEditor>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/glass-image-editor-demo.tsx"
+    }
+  ]
+}

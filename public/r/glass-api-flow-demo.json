@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-api-flow-demo",
+  "type": "registry:example",
+  "title": "Glass API Flow Demo",
+  "description": "Example showing an iOS 26 liquid-glass client–server diagram with travelling-light SVG paths.",
+  "registryDependencies": [
+    "https://ruixen.com/r/glass-api-flow"
+  ],
+  "files": [
+    {
+      "path": "registry/example/glass-api-flow-demo.tsx",
+      "content": "\"use client\";\n\nimport GlassApiFlow from \"@/registry/ruixenui/glass-api-flow\";\n\nexport default function GlassApiFlowDemo() {\n  return (\n    <div className=\"flex items-center justify-center min-h-[400px]\">\n      <GlassApiFlow />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/glass-api-flow-demo.tsx"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "split-hero-section-demo",
+  "type": "registry:example",
+  "title": "Split Hero Section Demo",
+  "description": "Example showing a split-layout hero section with key metrics, app screenshot showcase, and trusted-by logo strip.",
+  "registryDependencies": [
+    "https://ruixen.com/r/split-hero-section"
+  ],
+  "files": [
+    {
+      "path": "registry/example/split-hero-section-demo.tsx",
+      "content": "import { SplitHeroSection } from \"@/registry/ruixenui/split-hero-section\";\n\nexport default function SplitHeroSectionDemo() {\n  return (\n    <SplitHeroSection\n      title=\"The analytics platform for modern teams\"\n      description=\"One tool that does it all. Monitor, analyze, and optimize—right inside your workflow.\"\n      primaryAction={{ href: \"#link\", label: \"Start free trial\" }}\n      secondaryAction={{ href: \"#link\", label: \"Talk to sales\" }}\n      stats={[\n        {\n          value: \"99.9\",\n          unit: \"%\",\n          label: (\n            <>\n              <strong className=\"font-medium text-foreground\">\n                Uptime guarantee\n              </strong>{\" \"}\n              across all regions.\n            </>\n          ),\n        },\n        {\n          value: \"3\",\n          unit: \"ms\",\n          label: (\n            <>\n              <strong className=\"font-medium text-foreground\">\n                Median latency\n              </strong>{\" \"}\n              for real-time queries.\n            </>\n          ),\n        },\n      ]}\n      trustedBy={{\n        logos: [\n          <span\n            key=\"vercel\"\n            className=\"text-[15px] font-semibold tracking-tight whitespace-nowrap\"\n          >\n            Vercel\n          </span>,\n          <span\n            key=\"linear\"\n            className=\"text-[15px] font-semibold tracking-tight whitespace-nowrap\"\n          >\n            Linear\n          </span>,\n          <span\n            key=\"stripe\"\n            className=\"text-[18px] font-bold tracking-tight whitespace-nowrap\"\n          >\n            stripe\n          </span>,\n          <span\n            key=\"notion\"\n            className=\"text-[15px] font-semibold tracking-tight whitespace-nowrap\"\n          >\n            Notion\n          </span>,\n          <span\n            key=\"supabase\"\n            className=\"text-[14px] font-bold tracking-tight whitespace-nowrap\"\n          >\n            Supabase\n          </span>,\n          <span\n            key=\"figma\"\n            className=\"text-[15px] font-semibold tracking-tight whitespace-nowrap\"\n          >\n            Figma\n          </span>,\n          <span\n            key=\"raycast\"\n            className=\"text-[14px] font-semibold tracking-tight whitespace-nowrap\"\n          >\n            Raycast\n          </span>,\n          <span\n            key=\"resend\"\n            className=\"text-[15px] font-semibold tracking-tight whitespace-nowrap\"\n          >\n            Resend\n          </span>,\n        ],\n      }}\n    />\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/split-hero-section-demo.tsx"
+    }
+  ]
+}

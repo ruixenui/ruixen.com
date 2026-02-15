@@ -372,25 +372,6 @@
       ]
     },
     {
-      "name": "aurora-hero-section",
-      "type": "registry:ui",
-      "title": "Aurora Hero Section",
-      "description": "A beautiful hero section with aurora-style background effects and animated elements",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "button"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/aurora-hero-section.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/aurora-hero-section.tsx"
-        }
-      ]
-    },
-    {
       "name": "card-carousel-hero",
       "type": "registry:ui",
       "title": "Card Carousel Hero",
@@ -430,25 +411,6 @@
       ]
     },
     {
-      "name": "spectrum-hero-section",
-      "type": "registry:ui",
-      "title": "Spectrum Hero Section",
-      "description": "A vibrant hero section with spectrum color effects and dynamic animations",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "button"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/spectrum-hero-section.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/spectrum-hero-section.tsx"
-        }
-      ]
-    },
-    {
       "name": "video-hero-showcase",
       "type": "registry:ui",
       "title": "Video Hero Showcase",
@@ -465,26 +427,6 @@
           "path": "registry/ruixenui/video-hero-showcase.tsx",
           "type": "registry:ui",
           "target": "components/ruixen/video-hero-showcase.tsx"
-        }
-      ]
-    },
-    {
-      "name": "visionary-hero-section",
-      "type": "registry:ui",
-      "title": "Visionary Hero Section",
-      "description": "A visionary hero section with elegant design and smooth animations",
-      "dependencies": [
-        "motion",
-        "gsap"
-      ],
-      "registryDependencies": [
-        "button"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/visionary-hero-section.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/visionary-hero-section.tsx"
         }
       ]
     },
@@ -1297,22 +1239,6 @@
           "path": "registry/ruixenui/search-with-category.tsx",
           "type": "registry:ui",
           "target": "components/ruixen/search-with-category.tsx"
-        }
-      ]
-    },
-    {
-      "name": "advanced-context-menu",
-      "type": "registry:ui",
-      "title": "Advanced Context Menu",
-      "description": "An advanced context menu component with nested items and keyboard navigation.",
-      "registryDependencies": [
-        "context-menu"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/advanced-context-menu.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/advanced-context-menu.tsx"
         }
       ]
     },
@@ -2181,53 +2107,6 @@
       ]
     },
     {
-      "name": "date-time-picker",
-      "type": "registry:ui",
-      "title": "Date Time Picker",
-      "description": "A date and time picker with calendar and time selection.",
-      "dependencies": [
-        "date-fns",
-        "lucide-react",
-        "react-day-picker"
-      ],
-      "registryDependencies": [
-        "popover",
-        "button",
-        "calendar",
-        "select"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/date-time-picker.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/date-time-picker.tsx"
-        }
-      ]
-    },
-    {
-      "name": "date-range-picker",
-      "type": "registry:ui",
-      "title": "Date Range Picker",
-      "description": "A date range picker with dual calendar view.",
-      "dependencies": [
-        "date-fns",
-        "lucide-react",
-        "react-day-picker"
-      ],
-      "registryDependencies": [
-        "button",
-        "calendar",
-        "popover"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/date-range-picker.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/date-range-picker.tsx"
-        }
-      ]
-    },
-    {
       "name": "monthly-heatmap-calendar",
       "type": "registry:ui",
       "title": "Monthly Heatmap Calendar",
@@ -2975,48 +2854,6 @@
           "path": "registry/ruixenui/gooey-dock.tsx",
           "type": "registry:ui",
           "target": "components/ruixen/gooey-dock.tsx"
-        }
-      ]
-    },
-    {
-      "name": "dock-morph",
-      "type": "registry:ui",
-      "title": "Dock Morph",
-      "description": "Morphing dock with glassmorphism bubbles and flexible positioning.",
-      "dependencies": [
-        "framer-motion",
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "tooltip",
-        "button"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/dock-morph.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/dock-morph.tsx"
-        }
-      ]
-    },
-    {
-      "name": "dock",
-      "type": "registry:ui",
-      "title": "Dock",
-      "description": "Classic dock component with floating animation and glow effects.",
-      "dependencies": [
-        "framer-motion",
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "tooltip",
-        "button"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/dock.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/dock.tsx"
         }
       ]
     },
@@ -4715,26 +4552,6 @@
       ]
     },
     {
-      "name": "user-context-menu",
-      "type": "registry:ui",
-      "title": "User Context Menu",
-      "description": "Right-click context menu for user interactions with profile actions and user management options.",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "avatar",
-        "context-menu"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/user-context-menu.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/user-context-menu.tsx"
-        }
-      ]
-    },
-    {
       "name": "action-toolbar",
       "type": "registry:ui",
       "title": "Action Toolbar",
@@ -4828,43 +4645,6 @@
       ]
     },
     {
-      "name": "globe",
-      "type": "registry:ui",
-      "title": "Globe",
-      "description": "Animated 3D Earth globe with rotating continents and atmospheric effects.",
-      "files": [
-        {
-          "path": "registry/ruixenui/globe.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/globe.tsx"
-        }
-      ],
-      "cssVars": {
-        "theme": {
-          "animate-earth-rotate": "earthRotate 20s linear infinite",
-          "animate-atmosphere-glow": "atmosphereGlow 3s ease-in-out infinite"
-        }
-      },
-      "css": {
-        "@keyframes earthRotate": {
-          "0%": {
-            "background-position": "0 0"
-          },
-          "100%": {
-            "background-position": "360px 0"
-          }
-        },
-        "@keyframes atmosphereGlow": {
-          "0%, 100%": {
-            "opacity": "0.6"
-          },
-          "50%": {
-            "opacity": "0.9"
-          }
-        }
-      }
-    },
-    {
       "name": "tag-cloud-select",
       "type": "registry:ui",
       "title": "Tag Cloud Select",
@@ -4919,22 +4699,6 @@
       ]
     },
     {
-      "name": "hero-title-slide",
-      "type": "registry:ui",
-      "title": "Hero Title Slide",
-      "description": "An animated hero section component with customizable slide animations and preset effects for creating engaging landing page headers.",
-      "dependencies": [
-        "motion"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/hero-title-slide.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/hero-title-slide.tsx"
-        }
-      ]
-    },
-    {
       "name": "core-value-stats",
       "type": "registry:ui",
       "title": "Core Value Stats",
@@ -4947,19 +4711,6 @@
           "path": "registry/ruixenui/core-value-stats.tsx",
           "type": "registry:ui",
           "target": "components/ruixen/core-value-stats.tsx"
-        }
-      ]
-    },
-    {
-      "name": "hero-section-glass-web",
-      "type": "registry:ui",
-      "title": "Hero Section Glass Web",
-      "description": "A modern hero section with glassmorphism effects, image background, and metadata display for professional landing pages.",
-      "files": [
-        {
-          "path": "registry/ruixenui/hero-section-glass-web.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/hero-section-glass-web.tsx"
         }
       ]
     },
@@ -5777,22 +5528,6 @@
       ]
     },
     {
-      "name": "aurora-hero-section-demo",
-      "type": "registry:example",
-      "title": "Aurora Hero Section Demo",
-      "description": "Example showing a beautiful hero section with aurora-style background effects",
-      "registryDependencies": [
-        "https://www.ruixen.com/r/aurora-hero-section"
-      ],
-      "files": [
-        {
-          "path": "registry/example/aurora-hero-section-demo.tsx",
-          "type": "registry:example",
-          "target": "components/aurora-hero-section-demo.tsx"
-        }
-      ]
-    },
-    {
       "name": "card-carousel-hero-demo",
       "type": "registry:example",
       "title": "Card Carousel Hero Demo",
@@ -5825,22 +5560,6 @@
       ]
     },
     {
-      "name": "spectrum-hero-section-demo",
-      "type": "registry:example",
-      "title": "Spectrum Hero Section Demo",
-      "description": "Example showing a vibrant hero section with spectrum color effects",
-      "registryDependencies": [
-        "https://www.ruixen.com/r/spectrum-hero-section"
-      ],
-      "files": [
-        {
-          "path": "registry/example/spectrum-hero-section-demo.tsx",
-          "type": "registry:example",
-          "target": "components/spectrum-hero-section-demo.tsx"
-        }
-      ]
-    },
-    {
       "name": "video-hero-showcase-demo",
       "type": "registry:example",
       "title": "Video Hero Showcase Demo",
@@ -5853,22 +5572,6 @@
           "path": "registry/example/video-hero-showcase-demo.tsx",
           "type": "registry:example",
           "target": "components/video-hero-showcase-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "visionary-hero-section-demo",
-      "type": "registry:example",
-      "title": "Visionary Hero Section Demo",
-      "description": "Example showing a visionary hero section with elegant design",
-      "registryDependencies": [
-        "https://www.ruixen.com/r/visionary-hero-section"
-      ],
-      "files": [
-        {
-          "path": "registry/example/visionary-hero-section-demo.tsx",
-          "type": "registry:example",
-          "target": "components/visionary-hero-section-demo.tsx"
         }
       ]
     },
@@ -6625,22 +6328,6 @@
       ]
     },
     {
-      "name": "advanced-context-menu-demo",
-      "type": "registry:example",
-      "title": "Advanced Context Menu Demo",
-      "description": "Example showing an advanced context menu component with nested items and keyboard navigation.",
-      "registryDependencies": [
-        "https://www.ruixen.com/r/advanced-context-menu"
-      ],
-      "files": [
-        {
-          "path": "registry/example/advanced-context-menu-demo.tsx",
-          "type": "registry:example",
-          "target": "components/advanced-context-menu-demo.tsx"
-        }
-      ]
-    },
-    {
       "name": "nested-dashboard-menu-demo",
       "type": "registry:example",
       "title": "Nested Dashboard Menu Demo",
@@ -7345,38 +7032,6 @@
       ]
     },
     {
-      "name": "date-time-picker-demo",
-      "type": "registry:example",
-      "title": "Date Time Picker Demo",
-      "description": "Example showing a date and time picker with calendar and time selection.",
-      "registryDependencies": [
-        "https://www.ruixen.com/r/date-time-picker"
-      ],
-      "files": [
-        {
-          "path": "registry/example/date-time-picker-demo.tsx",
-          "type": "registry:example",
-          "target": "components/date-time-picker-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "date-range-picker-demo",
-      "type": "registry:example",
-      "title": "Date Range Picker Demo",
-      "description": "Example showing a date range picker with dual calendar view.",
-      "registryDependencies": [
-        "https://www.ruixen.com/r/date-range-picker"
-      ],
-      "files": [
-        {
-          "path": "registry/example/date-range-picker-demo.tsx",
-          "type": "registry:example",
-          "target": "components/date-range-picker-demo.tsx"
-        }
-      ]
-    },
-    {
       "name": "monthly-heatmap-calendar-demo",
       "type": "registry:example",
       "title": "Monthly Heatmap Calendar Demo",
@@ -7965,38 +7620,6 @@
           "path": "registry/example/gooey-dock-demo.tsx",
           "type": "registry:example",
           "target": "components/gooey-dock-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "dock-morph-demo",
-      "type": "registry:example",
-      "title": "Dock Morph Demo",
-      "description": "Example showing morphing dock with glassmorphism bubbles.",
-      "registryDependencies": [
-        "https://ruixen.com/r/dock-morph"
-      ],
-      "files": [
-        {
-          "path": "registry/example/dock-morph-demo.tsx",
-          "type": "registry:example",
-          "target": "components/dock-morph-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "dock-demo",
-      "type": "registry:example",
-      "title": "Dock Demo",
-      "description": "Example showing classic dock with floating animation.",
-      "registryDependencies": [
-        "https://ruixen.com/r/dock"
-      ],
-      "files": [
-        {
-          "path": "registry/example/dock-demo.tsx",
-          "type": "registry:example",
-          "target": "components/dock-demo.tsx"
         }
       ]
     },
@@ -9521,22 +9144,6 @@
       ]
     },
     {
-      "name": "user-context-menu-demo",
-      "type": "registry:example",
-      "title": "User Context Menu Demo",
-      "description": "Example showing right-click context menu for user interactions with profile actions and user management options.",
-      "registryDependencies": [
-        "https://ruixen.com/r/user-context-menu"
-      ],
-      "files": [
-        {
-          "path": "registry/example/user-context-menu-demo.tsx",
-          "type": "registry:example",
-          "target": "components/user-context-menu-demo.tsx"
-        }
-      ]
-    },
-    {
       "name": "action-toolbar-demo",
       "type": "registry:example",
       "title": "Action Toolbar Demo",
@@ -9601,22 +9208,6 @@
       ]
     },
     {
-      "name": "globe-demo",
-      "type": "registry:example",
-      "title": "Globe Demo",
-      "description": "Example showing animated 3D Earth globe with rotating continents and atmospheric effects.",
-      "registryDependencies": [
-        "https://ruixen.com/r/globe"
-      ],
-      "files": [
-        {
-          "path": "registry/example/globe-demo.tsx",
-          "type": "registry:example",
-          "target": "components/globe-demo.tsx"
-        }
-      ]
-    },
-    {
       "name": "tag-cloud-select-demo",
       "type": "registry:example",
       "title": "Tag Cloud Select Demo",
@@ -9665,22 +9256,6 @@
       ]
     },
     {
-      "name": "hero-title-slide-demo",
-      "type": "registry:example",
-      "title": "Hero Title Slide Demo",
-      "description": "Example showing an animated hero section component with customizable slide animations and preset effects.",
-      "registryDependencies": [
-        "https://ruixen.com/r/hero-title-slide"
-      ],
-      "files": [
-        {
-          "path": "registry/example/hero-title-slide-demo.tsx",
-          "type": "registry:example",
-          "target": "components/hero-title-slide-demo.tsx"
-        }
-      ]
-    },
-    {
       "name": "core-value-stats-demo",
       "type": "registry:example",
       "title": "Core Value Stats Demo",
@@ -9693,22 +9268,6 @@
           "path": "registry/example/core-value-stats-demo.tsx",
           "type": "registry:example",
           "target": "components/core-value-stats-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "hero-section-glass-web-demo",
-      "type": "registry:example",
-      "title": "Hero Section Glass Web Demo",
-      "description": "Example showing a modern hero section with glassmorphism effects and image background for professional landing pages.",
-      "registryDependencies": [
-        "https://ruixen.com/r/hero-section-glass-web"
-      ],
-      "files": [
-        {
-          "path": "registry/example/hero-section-glass-web-demo.tsx",
-          "type": "registry:example",
-          "target": "components/hero-section-glass-web-demo.tsx"
         }
       ]
     },

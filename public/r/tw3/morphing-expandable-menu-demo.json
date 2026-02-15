@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "morphing-expandable-menu-demo",
+  "type": "registry:example",
+  "title": "Morphing Expandable Menu Demo",
+  "description": "Example showing a morphing pill that expands into search, player, timer, and note panels.",
+  "registryDependencies": [
+    "https://ruixen.com/r/morphing-expandable-menu"
+  ],
+  "files": [
+    {
+      "path": "registry/example/morphing-expandable-menu-demo.tsx",
+      "content": "import { MorphingExpandableMenu } from \"@/registry/ruixenui/morphing-expandable-menu\";\n\n/* ── demo ─────────────────────────────────────────────────────── */\n\nexport default function MorphingExpandableMenuDemo() {\n  return (\n    <div className=\"flex min-h-[280px] items-center justify-center\">\n      <MorphingExpandableMenu />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/morphing-expandable-menu-demo.tsx"
+    }
+  ]
+}

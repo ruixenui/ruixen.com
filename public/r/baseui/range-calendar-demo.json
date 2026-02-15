@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "range-calendar-demo",
+  "type": "registry:example",
+  "title": "Range Calendar Demo",
+  "description": "Example showing a compact date range calendar with capsule highlight.",
+  "registryDependencies": [
+    "https://ruixen.com/r/range-calendar"
+  ],
+  "files": [
+    {
+      "path": "registry/example/range-calendar-demo.tsx",
+      "content": "\"use client\";\n\nimport { useState } from \"react\";\nimport {\n  RangeCalendar,\n  type DateRange,\n} from \"@/registry/ruixenui/range-calendar\";\n\nexport default function RangeCalendarDemo() {\n  const [range, setRange] = useState<DateRange | null>(null);\n\n  return (\n    <div className=\"flex min-h-[340px] w-full max-w-xs mx-auto flex-col items-center justify-center gap-4 px-4\">\n      <RangeCalendar value={range} onChange={setRange} />\n\n      <span\n        className=\"text-[12px] tabular-nums tracking-[-0.01em]\"\n        style={{\n          color: \"rgba(255,255,255,0.3)\",\n          opacity: range ? 1 : 0,\n          transition: \"opacity 0.15s\",\n        }}\n      >\n        {range\n          ? `${range.start.toLocaleDateString(\"en-US\", {\n              month: \"short\",\n              day: \"numeric\",\n            })} — ${range.end.toLocaleDateString(\"en-US\", {\n              month: \"short\",\n              day: \"numeric\",\n            })}`\n          : \"\\u00A0\"}\n      </span>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/range-calendar-demo.tsx"
+    }
+  ]
+}

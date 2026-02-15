@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "add-to-cart-button-demo",
+  "type": "registry:example",
+  "title": "Add To Cart Button Demo",
+  "description": "Example showing a morphing add-to-cart button with quantity controls and live price.",
+  "registryDependencies": [
+    "https://ruixen.com/r/add-to-cart-button"
+  ],
+  "files": [
+    {
+      "path": "registry/example/add-to-cart-button-demo.tsx",
+      "content": "import { AddToCartButton } from \"@/registry/ruixenui/add-to-cart-button\";\n\nexport default function AddToCartButtonDemo() {\n  return (\n    <div className=\"flex min-h-[200px] w-full items-center justify-center\">\n      <AddToCartButton price={24.99} currency=\"$\" />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/add-to-cart-button-demo.tsx"
+    }
+  ]
+}

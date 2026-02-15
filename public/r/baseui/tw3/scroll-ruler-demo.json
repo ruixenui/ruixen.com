@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-ruler-demo",
+  "type": "registry:example",
+  "title": "Scroll Ruler Demo",
+  "description": "Example showing a ruler-style input with scroll/drag scrubbing for fractional values.",
+  "registryDependencies": [
+    "https://ruixen.com/r/scroll-ruler"
+  ],
+  "files": [
+    {
+      "path": "registry/example/scroll-ruler-demo.tsx",
+      "content": "\"use client\";\n\nimport { useState } from \"react\";\nimport { ScrollRuler } from \"@/registry/ruixenui/scroll-ruler\";\n\nexport default function ScrollRulerDemo() {\n  const [value, setValue] = useState(0);\n\n  return (\n    <div className=\"flex min-h-[200px] w-full max-w-md mx-auto items-center justify-center px-6\">\n      <ScrollRuler\n        min={-90}\n        max={90}\n        step={1}\n        value={value}\n        suffix=\"°\"\n        sound\n        onChange={setValue}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/scroll-ruler-demo.tsx"
+    }
+  ]
+}

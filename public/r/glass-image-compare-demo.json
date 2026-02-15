@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-image-compare-demo",
+  "type": "registry:example",
+  "title": "Glass Image Compare Demo",
+  "description": "Example showing an iOS 26 liquid-glass before/after image comparison slider.",
+  "registryDependencies": [
+    "https://ruixen.com/r/glass-image-compare"
+  ],
+  "files": [
+    {
+      "path": "registry/example/glass-image-compare-demo.tsx",
+      "content": "\"use client\";\n\nimport { GlassImageCompare } from \"@/registry/ruixenui/glass-image-compare\";\n\nexport default function GlassImageCompareDemo() {\n  return (\n    <div\n      style={{\n        display: \"flex\",\n        flexDirection: \"column\",\n        alignItems: \"center\",\n        padding: \"48px 16px\",\n      }}\n    >\n      <GlassImageCompare\n        before=\"https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&q=60&auto=format\"\n        after=\"https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&q=60&auto=format&sat=-100\"\n        beforeLabel=\"Original\"\n        afterLabel=\"Edited\"\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/glass-image-compare-demo.tsx"
+    }
+  ]
+}

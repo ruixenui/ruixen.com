@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/slide-to-delete-button-demo.tsx",
-      "content": "\"use client\";\n\nimport { Archive } from \"lucide-react\";\nimport SlideToDeleteButton from \"@/registry/ruixenui/slide-to-delete-button\";\n\nexport default function DemoSlideToDelete() {\n  return (\n    <main className=\"flex min-h-[350px] w-full flex-col items-center justify-center gap-8\">\n      <SlideToDeleteButton\n        label=\"Remove Item\"\n        deletedLabel=\"Removed!\"\n        onClick={() => alert(\"Item deleted\")}\n      />\n\n      <SlideToDeleteButton\n        className=\"bg-blue-100 text-blue-700 hover:bg-blue-200\"\n        label=\"Slide to Archive\"\n        deletedLabel=\"Archived\"\n        icon={<Archive className=\"w-5 h-5\" />}\n        handleClassName=\"bg-blue-500 hover:bg-blue-600\"\n      />\n    </main>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport SlideToDeleteButton from \"@/registry/ruixenui/slide-to-delete-button\";\n\nexport default function SlideToDeleteButtonDemo() {\n  return (\n    <div className=\"flex items-center justify-center min-h-[400px]\">\n      <SlideToDeleteButton\n        label=\"Slide to Delete\"\n        onConfirm={() => console.log(\"Deleted\")}\n      />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/slide-to-delete-button-demo.tsx"
     }

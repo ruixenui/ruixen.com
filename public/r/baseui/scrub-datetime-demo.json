@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scrub-datetime-demo",
+  "type": "registry:example",
+  "title": "Scrub Datetime Demo",
+  "description": "Example showing an inline scrubable date-time picker.",
+  "registryDependencies": [
+    "https://ruixen.com/r/scrub-datetime"
+  ],
+  "files": [
+    {
+      "path": "registry/example/scrub-datetime-demo.tsx",
+      "content": "\"use client\";\n\nimport { ScrubDatetime } from \"@/registry/ruixenui/scrub-datetime\";\n\nexport default function ScrubDatetimeDemo() {\n  return (\n    <div className=\"flex min-h-[120px] w-full max-w-sm mx-auto items-center justify-center px-6\">\n      <ScrubDatetime />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/scrub-datetime-demo.tsx"
+    }
+  ]
+}
