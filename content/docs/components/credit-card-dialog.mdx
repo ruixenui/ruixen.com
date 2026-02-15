@@ -1,7 +1,7 @@
 ---
 title: Credit Card Dialog
 date: 2024-06-01
-description: A credit card activation dialog with animated card display and form input.
+description: Inline payment form — four zones separated by hairlines. Auto-format, auto-advance, brand detection. Pay wakes up when all fields are complete.
 author: ruixen
 published: true
 ---
@@ -40,123 +40,10 @@ npx shadcn@latest add "https://ruixen.com/r/credit-card-dialog"
 
 </Tabs>
 
-## Usage
-
-```tsx
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { CreditCardDialog } from "@/components/ruixen/credit-card-dialog";
-
-export default function App() {
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-
-  const handleActivate = async (code: string): Promise<void> => {
-    console.log(`Activating card with code: ${code}`);
-
-    // Simulate API call
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        console.log("✅ Card activated successfully!");
-        setIsDialogOpen(false);
-        resolve();
-      }, 2000);
-    });
-  };
-
-  return (
-    <div>
-      <Button onClick={() => setIsDialogOpen(true)}>Activate Card</Button>
-
-      <CreditCardDialog
-        open={isDialogOpen}
-        onOpenChange={setIsDialogOpen}
-        onActivate={handleActivate}
-        backgroundImage="https://example.com/card-background.jpg"
-      />
-    </div>
-  );
-}
-```
-
 ## Props
 
-| Prop              | Type                              | Default                                                                    | Description                        |
-| ----------------- | --------------------------------- | -------------------------------------------------------------------------- | ---------------------------------- |
-| `open`            | `boolean`                         | -                                                                          | Whether the dialog is open         |
-| `onOpenChange`    | `(open: boolean) => void`         | -                                                                          | Callback when dialog state changes |
-| `onActivate`      | `(code: string) => Promise<void>` | -                                                                          | Async callback for card activation |
-| `backgroundImage` | `string`                          | "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/ruixen_gradient.jpeg" | Background image URL for the card  |
-
-## Features
-
-- **Animated Card Display**: Credit card with smooth entrance animation
-- **Form Validation**: Input validation for activation code
-- **Loading States**: Shows processing state during activation
-- **Custom Background**: Customizable card background image
-- **Responsive Design**: Adapts to different screen sizes
-- **Accessible**: Built with proper ARIA labels and keyboard navigation
-
-## Card Design Elements
-
-The credit card includes:
-
-- **Chip**: Yellow chip element for authenticity
-- **Card Number**: Masked card number display
-- **Cardholder Name**: Customizable name display
-- **Expiry Date**: Expiration date display
-- **Background Overlay**: Semi-transparent overlay for text readability
-
-## Activation Flow
-
-1. User clicks trigger button
-2. Dialog opens with animated card display
-3. User enters activation code
-4. Form validates input
-5. `onActivate` callback is triggered
-6. Loading state shows during processing
-7. Dialog closes on successful activation
-
-## Error Handling
-
-```tsx
-const handleActivate = async (code: string): Promise<void> => {
-  try {
-    const response = await activateCard(code);
-    if (response.success) {
-      setIsDialogOpen(false);
-      showSuccessMessage("Card activated successfully!");
-    }
-  } catch (error) {
-    showErrorMessage("Activation failed. Please try again.");
-    throw error; // Keep dialog open on error
-  }
-};
-```
-
-## Customization
-
-### Custom Card Styling
-
-```tsx
-<CreditCardDialog
-  backgroundImage="https://your-domain.com/premium-card-bg.jpg"
-  onActivate={handleActivate}
-/>
-```
-
-### Custom Card Content
-
-The card displays:
-
-- Card number: `**** **** **** 1234`
-- Cardholder: `RUIXEN UI`
-- Expiry: `12/28`
-- Label: `VIRTUAL CARD`
-
-## Use Cases
-
-- **Banking Apps**: Credit card activation workflows
-- **Fintech**: Virtual card activation and management
-- **E-commerce**: Payment method setup
-- **Subscription Services**: Premium card activation
-- **Digital Wallets**: Adding new payment methods
+| Prop       | Type                       | Default | Description                                  |
+| ---------- | -------------------------- | ------- | -------------------------------------------- |
+| `onSubmit` | `(card: CardData) => void` | -       | Callback with card data on successful submit |
+| `amount`   | `string`                   | `$0.00` | Amount displayed on the pay button           |
+| `sound`    | `boolean`                  | `true`  | Enable soft tick on keystrokes               |

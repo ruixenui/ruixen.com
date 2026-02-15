@@ -1,0 +1,50 @@
+---
+title: Verification Input
+date: 2024-06-01
+description: Inline verification code input — six cells grouped 3+3, auto-advance, paste support, auto-submit on complete.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="verification-input-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/verification-input"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="verification-input" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop         | Type                     | Default | Description                                  |
+| ------------ | ------------------------ | ------- | -------------------------------------------- |
+| `length`     | `number`                 | `6`     | Number of digits in the code                 |
+| `onComplete` | `(code: string) => void` | -       | Fires when all digits are filled             |
+| `onResend`   | `() => void`             | -       | Callback for resend link (hidden if omitted) |
+| `sound`      | `boolean`                | `true`  | Enable soft tick on keystrokes               |

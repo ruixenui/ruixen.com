@@ -1,0 +1,138 @@
+---
+title: Split Hero Section
+date: 2024-11-01
+description: A split-layout hero section with left-aligned headline, key metrics, app screenshot showcase, and trusted-by logo strip.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="split-hero-section-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/split-hero-section"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="split-hero-section" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { SplitHeroSection } from "@/components/ruixen/split-hero-section";
+
+export default function App() {
+  return (
+    <SplitHeroSection
+      title="Payments infrastructure for SaaS"
+      description="One tool that does it all. Search, generate, analyze, and chat."
+      primaryAction={{ href: "/get-started", label: "Start Building" }}
+      secondaryAction={{ href: "/demo", label: "Request demo" }}
+      stats={[
+        {
+          value: "99.9",
+          unit: "%",
+          label: (
+            <>
+              <strong className="font-medium text-foreground">
+                Uptime guarantee
+              </strong>{" "}
+              for all our services.
+            </>
+          ),
+        },
+        {
+          value: "12",
+          unit: "X",
+          label: (
+            <>
+              <strong className="font-medium text-foreground">12X</strong>{" "}
+              faster processing.
+            </>
+          ),
+        },
+      ]}
+      trustedBy={{
+        logos: [
+          <span key="stripe">Stripe</span>,
+          <span key="openai">OpenAI</span>,
+        ],
+      }}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop              | Type               | Default  | Description                       |
+| ----------------- | ------------------ | -------- | --------------------------------- |
+| `title`           | `ReactNode`        | Required | Main headline text (left-aligned) |
+| `description`     | `string`           | -        | Subtitle / description paragraph  |
+| `primaryAction`   | `Action`           | -        | Primary CTA button                |
+| `secondaryAction` | `Action`           | -        | Secondary CTA button              |
+| `stats`           | `Stat[]`           | -        | Key metrics displayed below CTAs  |
+| `trustedBy`       | `TrustedBySection` | -        | Trusted-by logo strip section     |
+| `className`       | `string`           | -        | Additional CSS classes            |
+
+### Action Type
+
+```tsx
+type Action = {
+  href: string;
+  label: string;
+};
+```
+
+### Stat Type
+
+```tsx
+interface Stat {
+  value: string;
+  unit?: string;
+  label: React.ReactNode;
+}
+```
+
+### TrustedBySection Type
+
+```tsx
+interface TrustedBySection {
+  logos: React.ReactNode[];
+}
+```
+
+## Features
+
+- **Split Layout**: Two-column grid with headline on the left, 3D showcase cards on the right
+- **Key Metrics**: Stats section with value, unit, and descriptive label
+- **Overlapping Cards**: Perspective-transformed cards with radial mask and tilt effects
+- **Trusted-By Strip**: Brand logo grid below the fold
+- **Dual CTAs**: Primary (filled) and secondary (outlined) action buttons
+- **Responsive**: Stacks cleanly on mobile, split layout on desktop
+- **Semantic Tokens**: Uses foreground/background/primary tokens for theme compatibility
+- **Zero Dependencies**: No external animation libraries required

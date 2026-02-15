@@ -1,7 +1,7 @@
 ---
 title: Event Scheduler
 date: 2025-10-01
-description: A full-featured event scheduler with event creation and management
+description: Inline timeline scheduler — tap a time, type a title, press Enter. Spring animations, sorted list, sound feedback.
 author: ruixen
 published: true
 ---
@@ -40,25 +40,20 @@ npx shadcn@latest add "https://ruixen.com/r/event-scheduler"
 
 </Tabs>
 
-## Features
-
-- **Two-Panel Layout**: Event creation and event list side-by-side
-- **Date & Time Selection**: Full calendar and time picker
-- **Event Management**: Add and delete events
-- **Event List**: View all scheduled events with timestamps
-- **Form Validation**: Prevents empty events
-- **Auto-Reset**: Form clears after successful creation
-
 ## Props
 
-| Prop            | Type                     | Default | Description                 |
-| --------------- | ------------------------ | ------- | --------------------------- |
-| `defaultEvents` | `Event[]`                | `[]`    | Initial events              |
-| `defaultTitle`  | `string`                 | `""`    | Default event title         |
-| `defaultDate`   | `Date`                   | -       | Default date selection      |
-| `defaultHour`   | `string`                 | `"12"`  | Default hour                |
-| `defaultMinute` | `string`                 | `"00"`  | Default minute              |
-| `defaultAMPM`   | `"AM" \| "PM"`           | `"AM"`  | Default AM/PM               |
-| `onAddEvent`    | `(event: Event) => void` | -       | Callback when event added   |
-| `onDeleteEvent` | `(id: number) => void`   | -       | Callback when event deleted |
-| `disabled`      | `boolean`                | `false` | Disable all interactions    |
+| Prop       | Type                              | Default | Description                       |
+| ---------- | --------------------------------- | ------- | --------------------------------- |
+| `events`   | `SchedulerEvent[]`                | `[]`    | Initial events to display         |
+| `onAdd`    | `(event: SchedulerEvent) => void` | -       | Callback when an event is created |
+| `onRemove` | `(id: string) => void`            | -       | Callback when an event is deleted |
+| `sound`    | `boolean`                         | `true`  | Enable soft tick on interactions  |
+
+### SchedulerEvent
+
+| Property | Type     | Description               |
+| -------- | -------- | ------------------------- |
+| `id`     | `string` | Unique identifier         |
+| `title`  | `string` | Event title               |
+| `hour`   | `number` | Hour in 24h format (0–23) |
+| `minute` | `number` | Minute (0, 15, 30, or 45) |

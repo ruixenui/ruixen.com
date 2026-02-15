@@ -1,7 +1,7 @@
 ---
 title: Drawer Inner Content
 date: 2024-06-01
-description: A drawer component with customizable inner content layout
+description: Gesture-driven bottom sheet — drag to dismiss, spring physics, structured content sections with staggered cascade.
 author: ruixen
 published: true
 ---
@@ -42,9 +42,25 @@ npx shadcn@latest add "https://ruixen.com/r/drawer-inner-content"
 
 ## Props
 
-| Prop       | Type                | Default   | Description                             |
-| ---------- | ------------------- | --------- | --------------------------------------- |
-| `isOpen`   | `boolean`           | `false`   | Whether the drawer is open              |
-| `onClose`  | `function`          | -         | Callback function when drawer is closed |
-| `children` | `ReactNode`         | -         | Content to display inside the drawer    |
-| `position` | `"left" \| "right"` | `"right"` | Position of the drawer                  |
+| Prop           | Type                      | Default | Description                        |
+| -------------- | ------------------------- | ------- | ---------------------------------- |
+| `open`         | `boolean`                 | -       | Whether the drawer is open         |
+| `onOpenChange` | `(open: boolean) => void` | -       | Callback when drawer state changes |
+| `sections`     | `DrawerSection[]`         | -       | Content sections to render         |
+| `sound`        | `boolean`                 | `true`  | Enable soft tick on item tap       |
+
+### DrawerSection
+
+| Property | Type           | Default | Description             |
+| -------- | -------------- | ------- | ----------------------- |
+| `title`  | `string`       | -       | Optional section header |
+| `items`  | `DrawerItem[]` | -       | Items in this section   |
+
+### DrawerItem
+
+| Property  | Type              | Default | Description               |
+| --------- | ----------------- | ------- | ------------------------- |
+| `icon`    | `React.ReactNode` | -       | Icon element to render    |
+| `label`   | `string`          | -       | Label text                |
+| `onClick` | `() => void`      | -       | Click handler             |
+| `danger`  | `boolean`         | `false` | Render in destructive red |

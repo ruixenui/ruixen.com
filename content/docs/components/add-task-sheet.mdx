@@ -1,12 +1,12 @@
 ---
 title: Add Task Sheet
 date: 2024-06-01
-description: A comprehensive task creation sheet with form fields for task details, assignee, category, due date, and priority
+description: Quick-add task dialog — title input, priority pills, Enter to submit. Three zones, two hairlines.
 author: ruixen
 published: true
 ---
 
-<ComponentPreview name="add-task-sheet-demo" category="dialogs" />
+<ComponentPreview name="add-task-sheet-demo" />
 
 ## Installation
 
@@ -40,43 +40,11 @@ npx shadcn@latest add "https://ruixen.com/r/add-task-sheet"
 
 </Tabs>
 
-## Usage
+## Props
 
-```tsx
-import AddTaskSheet from "@/components/ruixen/add-task-sheet";
-
-export default function App() {
-  return (
-    <div className="p-4">
-      <AddTaskSheet />
-    </div>
-  );
-}
-```
-
-## Features
-
-- **Complete Task Form**: Task name, assignee, category, due date, and priority
-- **Date Picker Integration**: Calendar popover for due date selection
-- **Select Components**: Dropdown menus for assignee, category, and priority
-- **Icon Integration**: Lucide icons for visual enhancement
-- **Responsive Design**: Works well on different screen sizes
-- **Sheet Component**: Slide-out panel for better UX
-
-## Form Fields
-
-- **Task Name**: Text input for task description
-- **Assignee**: Select dropdown with user options
-- **Category**: Select dropdown for task categorization
-- **Due Date**: Calendar picker with date selection
-- **Priority**: Select dropdown with priority levels (Low, Medium, High)
-
-## Use Cases
-
-Perfect for:
-
-- **Project Management**: Task creation and assignment
-- **Team Collaboration**: Assigning tasks to team members
-- **Workflow Management**: Organizing tasks by category and priority
-- **Deadline Tracking**: Setting and managing due dates
-- **Task Organization**: Structured task creation process
+| Prop           | Type                       | Default | Description                        |
+| -------------- | -------------------------- | ------- | ---------------------------------- |
+| `open`         | `boolean`                  | -       | Whether the dialog is open         |
+| `onOpenChange` | `(open: boolean) => void`  | -       | Callback when dialog state changes |
+| `onSubmit`     | `(task: TaskData) => void` | -       | Callback with task data on submit  |
+| `sound`        | `boolean`                  | `true`  | Enable soft tick on keystrokes     |

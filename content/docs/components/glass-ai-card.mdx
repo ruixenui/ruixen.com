@@ -1,0 +1,86 @@
+---
+title: Glass AI Card
+date: 2024-12-29
+description: iOS 26 liquid-glass content card with animated skeleton lines and a hue-rotating gradient AI action button.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="glass-ai-card-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/glass-ai-card"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="glass-ai-card" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import GlassAICard from "@/components/ruixen/glass-ai-card";
+
+export default function App() {
+  return (
+    <GlassAICard
+      actionLabel="Summarize"
+      onAction={() => console.log("AI action")}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop          | Type            | Default       | Description                            |
+| ------------- | --------------- | ------------- | -------------------------------------- |
+| `lines`       | `number[][]`    | See below     | Skeleton line widths per group         |
+| `actionLabel` | `string`        | `"Summarize"` | Label for the action button            |
+| `onAction`    | `() => void`    | -             | Callback when the action button clicks |
+| `sound`       | `boolean`       | `true`        | Enable haptic sound on click           |
+| `style`       | `CSSProperties` | -             | Additional styles for the card         |
+
+## Default Lines Layout
+
+```tsx
+const DEFAULT_LINES = [
+  [100], // full-width line
+  [40, 20, 40], // three segments
+  [40, 20], // two segments
+  [20, 80], // two segments
+];
+```
+
+## Features
+
+- **Dual-palette theme** — automatic light/dark with CSS custom properties
+- **Shimmer animation** — skeleton lines sweep with staggered timing
+- **Hue-rotating gradient border** — pink-to-purple animated ring on the action button
+- **Sparkles icon** — inline SVG, no icon library needed
+- **Haptic sound** — 3ms white noise burst on button click
+- **Spring physics** — button scales with spring animation on tap

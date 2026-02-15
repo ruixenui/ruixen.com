@@ -1,7 +1,7 @@
 ---
 title: Bottom Drawers
 date: 2024-06-01
-description: A bottom drawer component that slides up from the bottom of the screen
+description: Snap-point bottom sheet — three snap heights, drag between them, velocity-aware, progressive content reveal.
 author: ruixen
 published: true
 ---
@@ -42,9 +42,10 @@ npx shadcn@latest add "https://ruixen.com/r/bottom-drawers"
 
 ## Props
 
-| Prop       | Type        | Default  | Description                             |
-| ---------- | ----------- | -------- | --------------------------------------- |
-| `isOpen`   | `boolean`   | `false`  | Whether the drawer is open              |
-| `onClose`  | `function`  | -        | Callback function when drawer is closed |
-| `children` | `ReactNode` | -        | Content to display inside the drawer    |
-| `height`   | `string`    | `"auto"` | Height of the drawer                    |
+| Prop          | Type              | Default | Description                                   |
+| ------------- | ----------------- | ------- | --------------------------------------------- |
+| `peek`        | `React.ReactNode` | -       | Content visible at peek height (always shown) |
+| `half`        | `React.ReactNode` | -       | Content visible at half height and above      |
+| `full`        | `React.ReactNode` | -       | Content visible at full height only           |
+| `defaultSnap` | `0 \| 1 \| 2`     | `0`     | Starting snap (0=peek, 1=half, 2=full)        |
+| `sound`       | `boolean`         | `true`  | Enable soft tick on snap transitions          |

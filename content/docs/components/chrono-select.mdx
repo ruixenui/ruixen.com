@@ -1,7 +1,7 @@
 ---
 title: Chrono Select
 date: 2024-06-01
-description: A date picker with integrated year selection dropdown and calendar view
+description: Inline date picker — click to expand, spring-animated calendar grid, today shortcut, click-outside dismiss.
 author: ruixen
 published: true
 ---
@@ -42,29 +42,9 @@ npx shadcn@latest add "https://ruixen.com/r/chrono-select"
 
 ## Props
 
-| Prop          | Type                                | Default         | Description                      |
-| ------------- | ----------------------------------- | --------------- | -------------------------------- |
-| `value`       | `Date`                              | -               | Currently selected date          |
-| `onChange`    | `(date: Date \| undefined) => void` | -               | Callback when date changes       |
-| `placeholder` | `string`                            | `"Pick a date"` | Placeholder text for the trigger |
-| `className`   | `string`                            | -               | Additional CSS classes           |
-| `yearRange`   | `[number, number]`                  | `[1970, 2050]`  | Range of years to display        |
-
-## Usage
-
-```tsx
-import { ChronoSelect } from "@/components/ui/chrono-select";
-
-function MyDatePicker() {
-  const [selectedDate, setSelectedDate] = React.useState<Date | undefined>();
-
-  return (
-    <ChronoSelect
-      value={selectedDate}
-      onChange={setSelectedDate}
-      placeholder="Select a date"
-      yearRange={[2000, 2030]}
-    />
-  );
-}
-```
+| Prop          | Type                             | Default         | Description                      |
+| ------------- | -------------------------------- | --------------- | -------------------------------- |
+| `value`       | `string`                         | -               | Selected date in "YYYY-MM-DD"    |
+| `onChange`    | `(date: string \| null) => void` | -               | Callback when date changes       |
+| `placeholder` | `string`                         | `"Pick a date"` | Placeholder text for the trigger |
+| `sound`       | `boolean`                        | `true`          | Enable soft tick on interactions |

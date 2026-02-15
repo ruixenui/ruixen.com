@@ -1,7 +1,7 @@
 ---
 title: Calendar Lume
 date: 2024-06-01
-description: An animated calendar with year/month/day step navigation and smooth transitions
+description: A depth-zoom calendar with fractal year/month/day drill-down transitions
 author: ruixen
 published: true
 ---
@@ -44,40 +44,18 @@ npx shadcn@latest add "https://ruixen.com/r/calendar-lume"
 
 ```tsx
 import { CalendarLume } from "@/components/ruixen/calendar-lume";
-import { useState } from "react";
 
 export default function App() {
-  const [date, setDate] = useState<Date>();
+  const [date, setDate] = useState<string>();
 
-  return (
-    <CalendarLume
-      initialDate={date}
-      onChange={setDate}
-      startYear={2000}
-      endYear={2030}
-      className="max-w-md"
-    />
-  );
+  return <CalendarLume value={date} onChange={setDate} />;
 }
 ```
 
 ## Props
 
-| Prop                | Type                                | Default | Description                |
-| ------------------- | ----------------------------------- | ------- | -------------------------- |
-| `startYear`         | `number`                            | `1900`  | Minimum selectable year    |
-| `endYear`           | `number`                            | `2100`  | Maximum selectable year    |
-| `initialDate`       | `Date`                              | -       | Initial selected date      |
-| `onChange`          | `(date: Date \| undefined) => void` | -       | Callback when date changes |
-| `className`         | `string`                            | -       | Additional CSS classes     |
-| `showYearSelector`  | `boolean`                           | `true`  | Show year selection step   |
-| `showMonthSelector` | `boolean`                           | `true`  | Show month selection step  |
-
-## Features
-
-- **Step Navigation**: Year → Month → Day progression
-- **Smooth Animations**: Framer Motion powered transitions
-- **Breadcrumb Controls**: Easy navigation between steps
-- **Configurable Range**: Set custom year ranges
-- **Backdrop Blur**: Modern glassmorphism design
-- **Responsive Grid**: Adaptive layout for all screen sizes
+| Prop       | Type                     | Default | Description                                 |
+| ---------- | ------------------------ | ------- | ------------------------------------------- |
+| `value`    | `string`                 | -       | ISO date string "YYYY-MM-DD"                |
+| `onChange` | `(date: string) => void` | -       | Fires with ISO date string on day selection |
+| `sound`    | `boolean`                | `true`  | Enable tick sound                           |

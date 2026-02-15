@@ -1,12 +1,12 @@
 ---
 title: Three D Wall Calendar
 date: 2024-06-01
-description: Interactive 3D wall-style calendar with tilt controls and drag interactions
+description: Wall-mounted calendar with physical depth — paper stack layers, page-flip transitions, cells that lift on hover with shadow.
 author: ruixen
 published: true
 ---
 
-<ComponentPreview name="three-dwall-calendar-demo" category="calendars" />
+<ComponentPreview name="three-dwall-calendar-demo" />
 
 ## Installation
 
@@ -42,48 +42,17 @@ npx shadcn@latest add "https://ruixen.com/r/three-dwall-calendar"
 
 ## Props
 
-| Prop            | Type                             | Default | Description                    |
-| --------------- | -------------------------------- | ------- | ------------------------------ |
-| `events`        | `CalendarEvent[]`                | `[]`    | Array of calendar events       |
-| `onAddEvent`    | `(event: CalendarEvent) => void` | -       | Callback when adding new event |
-| `onRemoveEvent` | `(id: string) => void`           | -       | Callback when removing event   |
-| `panelWidth`    | `number`                         | `160`   | Width of each calendar panel   |
-| `panelHeight`   | `number`                         | `120`   | Height of each calendar panel  |
-| `columns`       | `number`                         | `7`     | Number of columns in the grid  |
+| Prop       | Type                         | Default | Description                       |
+| ---------- | ---------------------------- | ------- | --------------------------------- |
+| `events`   | `WallEvent[]`                | `[]`    | Initial events to display         |
+| `onAdd`    | `(event: WallEvent) => void` | -       | Callback when an event is created |
+| `onRemove` | `(id: string) => void`       | -       | Callback when an event is deleted |
+| `sound`    | `boolean`                    | `true`  | Enable soft tick on interactions  |
 
-## Usage
+### WallEvent
 
-```tsx
-import {
-  ThreeDWallCalendar,
-  CalendarEvent,
-} from "@/components/ui/three-dwall-calendar";
-
-const events: CalendarEvent[] = [
-  {
-    id: "1",
-    title: "Meeting",
-    date: new Date().toISOString(),
-  },
-];
-
-function MyCalendar() {
-  const handleAddEvent = (event: CalendarEvent) => {
-    console.log("New event:", event);
-  };
-
-  const handleRemoveEvent = (id: string) => {
-    console.log("Remove event:", id);
-  };
-
-  return (
-    <ThreeDWallCalendar
-      events={events}
-      onAddEvent={handleAddEvent}
-      onRemoveEvent={handleRemoveEvent}
-      panelWidth={180}
-      panelHeight={140}
-    />
-  );
-}
-```
+| Property | Type     | Description                 |
+| -------- | -------- | --------------------------- |
+| `id`     | `string` | Unique identifier           |
+| `title`  | `string` | Event title                 |
+| `date`   | `string` | Date in "YYYY-MM-DD" format |

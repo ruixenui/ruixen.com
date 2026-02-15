@@ -1,0 +1,52 @@
+---
+title: Scrub Datetime
+date: 2024-06-01
+description: An inline date-time picker where the text IS the interface — drag any segment horizontally to scrub through values, scroll to increment, click AM/PM to toggle.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="scrub-datetime-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/scrub-datetime"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="scrub-datetime" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop           | Type                   | Default | Description                                 |
+| -------------- | ---------------------- | ------- | ------------------------------------------- |
+| `value`        | `Date`                 | -       | Controlled date value (use with `onChange`) |
+| `defaultValue` | `Date`                 | `now`   | Initial date for uncontrolled mode          |
+| `sound`        | `boolean`              | `true`  | Enable soft mechanical tick on each step    |
+| `minYear`      | `number`               | `2015`  | Earliest year available for scrubbing       |
+| `maxYear`      | `number`               | `2035`  | Latest year available for scrubbing         |
+| `onChange`     | `(date: Date) => void` | -       | Callback fired when any segment changes     |

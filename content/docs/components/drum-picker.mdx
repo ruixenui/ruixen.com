@@ -1,0 +1,51 @@
+---
+title: Drum Picker
+date: 2024-06-01
+description: A 3D cylindrical drum picker — vertical drag or scroll to cycle through items, perspective-projected curvature, proximity-scaled brightness, spring snap.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="drum-picker-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/drum-picker"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="drum-picker" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop           | Type                      | Default | Description                                   |
+| -------------- | ------------------------- | ------- | --------------------------------------------- |
+| `items`        | `string[]`                | -       | Array of items to pick from                   |
+| `value`        | `string`                  | -       | Controlled value (use with `onChange`)        |
+| `defaultValue` | `string`                  | -       | Initial value for uncontrolled mode           |
+| `sound`        | `boolean`                 | `true`  | Enable mechanical click sounds on each detent |
+| `onChange`     | `(value: string) => void` | -       | Callback fired when the selected item changes |

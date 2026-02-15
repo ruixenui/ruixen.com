@@ -1,0 +1,83 @@
+---
+title: Phone Mockup Card
+date: 2024-12-29
+description: A minimal phone frame card with pixel-perfect status bar, dynamic island, and typography metrics display.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="phone-mockup-card-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/phone-mockup-card"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="phone-mockup-card" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import PhoneMockupCard from "@/components/ruixen/phone-mockup-card";
+
+export default function App() {
+  return (
+    <PhoneMockupCard
+      title="Studio"
+      bodyText="Motion and layout refined through spatial depth across every surface."
+      highlight="spatial depth"
+      metrics={[
+        { label: "Duration", value: "0.5s" },
+        { label: "Easing", value: "ease" },
+        { label: "Delay", value: "80ms" },
+      ]}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop            | Type                                 | Default    | Description                                        |
+| --------------- | ------------------------------------ | ---------- | -------------------------------------------------- |
+| `title`         | `string`                             | `"Craft"`  | App title shown in the nav bar                     |
+| `bodyText`      | `string`                             | See source | Primary body text — supports a highlighted span    |
+| `highlight`     | `string`                             | See source | Substring within bodyText rendered at full opacity |
+| `secondaryText` | `string`                             | See source | Secondary paragraph below the body text            |
+| `metrics`       | `{ label: string; value: string }[]` | See source | Data points rendered as a three-column grid        |
+| `className`     | `string`                             | -          | Additional className for the outermost wrapper     |
+
+## Features
+
+- **Precision phone frame** — layered bezel with Rauno-style shadow stack and 0.5 px inset screen edge
+- **Dynamic island** — centered pill on the same row as time and status icons
+- **App nav bar** — dot indicator, semibold title, and three-dot menu for app-like realism
+- **Contrast-based highlight** — emphasized text uses full foreground opacity, no decorative gradients
+- **Typography metrics** — three-column data grid anchoring the bottom of the screen
+- **Staggered reveal** — elements enter with blur-to-clear transitions on a cubic-bezier ease
+- **Theme-aware** — explicit neutral palette adapts cleanly to light and dark modes

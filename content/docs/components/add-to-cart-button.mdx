@@ -1,0 +1,50 @@
+---
+title: Add To Cart Button
+date: 2024-06-01
+description: A morphing add-to-cart button with spring physics, slot-machine quantity flip, and live price updates.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="add-to-cart-button-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/add-to-cart-button"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="add-to-cart-button" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop               | Type                         | Default | Description                          |
+| ------------------ | ---------------------------- | ------- | ------------------------------------ |
+| `price`            | `number`                     | `24.99` | Price per item                       |
+| `currency`         | `string`                     | `"$"`   | Currency symbol                      |
+| `maxQuantity`      | `number`                     | `99`    | Maximum allowed quantity             |
+| `onQuantityChange` | `(quantity: number) => void` | -       | Callback fired when quantity changes |
