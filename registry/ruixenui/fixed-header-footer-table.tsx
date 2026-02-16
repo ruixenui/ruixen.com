@@ -1,181 +1,127 @@
 "use client";
 
-import * as React from "react";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableFooter,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+/**
+ * Fixed Header Footer Table — Rauno Freiberg craft.
+ *
+ * Glass container with sticky header and footer.
+ * Scrollable body with hidden scrollbar and edge-fade mask.
+ * Row hover brightening. Status dot indicators.
+ */
 
-export type TableItem = {
+/* ── Types ── */
+
+interface TableItem {
   id: string;
   name: string;
   email: string;
   location: string;
-  status: string;
+  status: "Active" | "Inactive";
   balance: number;
-};
+}
 
-type FixedHeaderFooterTableProps = {
+interface FixedHeaderFooterTableProps {
   items?: TableItem[];
-  footerTotal?: number;
   title?: string;
-};
+}
 
-const defaultItems: TableItem[] = [
-  {
-    id: "1",
-    name: "Arjun Mehta",
-    email: "arjun.mehta@company.com",
-    location: "Bangalore, IN",
-    status: "Active",
-    balance: 1250,
-  },
-  {
-    id: "2",
-    name: "Hannah Park",
-    email: "hannah.park@company.com",
-    location: "Seoul, KR",
-    status: "Active",
-    balance: 600,
-  },
-  {
-    id: "3",
-    name: "Oliver Scott",
-    email: "oliver.scott@company.com",
-    location: "Manchester, UK",
-    status: "Inactive",
-    balance: 650,
-  },
-  {
-    id: "4",
-    name: "Camila Torres",
-    email: "camila.torres@company.com",
-    location: "Bogotá, CO",
-    status: "Active",
-    balance: 0,
-  },
-  {
-    id: "5",
-    name: "Kenji Tanaka",
-    email: "kenji.tanaka@company.com",
-    location: "Osaka, JP",
-    status: "Active",
-    balance: -1000,
-  },
-  {
-    id: "6",
-    name: "Michael Adams",
-    email: "m.adams@company.com",
-    location: "Chicago, US",
-    status: "Active",
-    balance: 1500,
-  },
-  {
-    id: "7",
-    name: "Elena Petrova",
-    email: "elena.petrova@company.com",
-    location: "Moscow, RU",
-    status: "Inactive",
-    balance: 200,
-  },
-  {
-    id: "8",
-    name: "Carlos Mendes",
-    email: "carlos.mendes@company.com",
-    location: "Rio de Janeiro, BR",
-    status: "Active",
-    balance: 1000,
-  },
-  {
-    id: "9",
-    name: "Yuki Sato",
-    email: "yuki.sato@company.com",
-    location: "Nagoya, JP",
-    status: "Active",
-    balance: 500,
-  },
-  {
-    id: "10",
-    name: "Meera Iyer",
-    email: "meera.iyer@company.com",
-    location: "Chennai, IN",
-    status: "Inactive",
-    balance: 300,
-  },
+/* ── Defaults ── */
+
+const DEFAULTS: TableItem[] = [
+  { id: "1", name: "Olivia Martin", email: "olivia@example.com", location: "New York", status: "Active", balance: 1200 },
+  { id: "2", name: "Jackson Lee", email: "jackson@example.com", location: "London", status: "Active", balance: 850 },
+  { id: "3", name: "Isabella Nguyen", email: "isabella@example.com", location: "Paris", status: "Inactive", balance: 320 },
+  { id: "4", name: "William Chen", email: "william@example.com", location: "Tokyo", status: "Active", balance: 2100 },
+  { id: "5", name: "Sofia Rodriguez", email: "sofia@example.com", location: "Madrid", status: "Active", balance: 1750 },
+  { id: "6", name: "Liam O'Brien", email: "liam@example.com", location: "Dublin", status: "Inactive", balance: 430 },
+  { id: "7", name: "Emma Wilson", email: "emma@example.com", location: "Sydney", status: "Active", balance: 980 },
+  { id: "8", name: "Noah Kim", email: "noah@example.com", location: "Seoul", status: "Active", balance: 1540 },
+  { id: "9", name: "Ava Patel", email: "ava@example.com", location: "Mumbai", status: "Active", balance: 670 },
+  { id: "10", name: "James Brown", email: "james@example.com", location: "Toronto", status: "Inactive", balance: 290 },
 ];
 
-export default function FixedHeaderFooterTable({
-  items = defaultItems,
-  footerTotal,
-  title = "Users Table",
+/* ── CSS ── */
+
+const CSS = `.fht{--t-bg:rgba(255,255,255,.72);--t-border:rgba(0,0,0,.06);--t-shadow:0 0 0 .5px rgba(0,0,0,.04),0 2px 4px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.06);--t-ink:0,0,0;--t-row:rgba(0,0,0,.015);--t-ok:#34C759;--t-dim:#FF3B30}.dark .fht,[data-theme="dark"] .fht{--t-bg:rgba(30,30,32,.82);--t-border:rgba(255,255,255,.06);--t-shadow:0 0 0 .5px rgba(255,255,255,.04),0 2px 4px rgba(0,0,0,.2),0 8px 24px rgba(0,0,0,.3);--t-ink:255,255,255;--t-row:rgba(255,255,255,.02);--t-ok:#30D158;--t-dim:#FF453A}.fht-scroll{scrollbar-width:none}.fht-scroll::-webkit-scrollbar{display:none}.fht-row{transition:background .1s}.fht-row:hover{background:rgba(var(--t-ink),.03)}`;
+
+const TH: React.CSSProperties = {
+  padding: "10px 16px", fontSize: 11, fontWeight: 520,
+  color: "rgba(var(--t-ink),.4)", letterSpacing: "0.04em",
+  textTransform: "uppercase", textAlign: "left", whiteSpace: "nowrap",
+  borderBottom: "1px solid var(--t-border)",
+};
+
+const TD: React.CSSProperties = {
+  padding: "10px 16px", fontSize: 13, fontWeight: 420,
+  color: "rgba(var(--t-ink),.7)",
+  borderBottom: "1px solid rgba(var(--t-ink),.03)", whiteSpace: "nowrap",
+};
+
+/* ── Component ── */
+
+export function FixedHeaderFooterTable({
+  items = DEFAULTS,
+  title = "Team Members",
 }: FixedHeaderFooterTableProps) {
-  const totalBalance =
-    footerTotal !== undefined
-      ? footerTotal
-      : items.reduce((acc, item) => acc + item.balance, 0);
+  const total = items.reduce((s, i) => s + i.balance, 0);
 
   return (
-    <div className="bg-background w-full max-w-5xl mx-auto">
-      {title && <h2 className="text-xl font-bold mb-4">{title}</h2>}
+    <div className="fht" style={{
+      width: "100%", maxWidth: 720,
+      background: "var(--t-bg)", border: "1px solid var(--t-border)",
+      boxShadow: "var(--t-shadow)", borderRadius: 14,
+      backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)",
+      overflow: "hidden", display: "flex", flexDirection: "column", maxHeight: 420,
+    }}>
+      <style dangerouslySetInnerHTML={{ __html: CSS }} />
 
-      <div className="h-96 flex flex-col border rounded-lg overflow-hidden">
-        {/* Table header */}
-        <div className="flex-none">
-          <Table className="w-full border-separate border-spacing-0">
-            <TableHeader className="sticky top-0 z-10 bg-background/90 backdrop-blur-sm">
-              <TableRow>
-                <TableHead>Name</TableHead>
-                <TableHead>Email</TableHead>
-                <TableHead>Location</TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead className="text-right">Balance</TableHead>
-              </TableRow>
-            </TableHeader>
-          </Table>
-        </div>
-
-        {/* Scrollable body */}
-        <div className="flex-1 overflow-y-auto">
-          <Table className="w-full border-separate border-spacing-0 [&_td]:border-border [&_tr:not(:last-child)_td]:border-b">
-            <TableBody>
-              {items.map((item) => (
-                <TableRow key={item.id}>
-                  <TableCell className="font-medium">{item.name}</TableCell>
-                  <TableCell>{item.email}</TableCell>
-                  <TableCell>{item.location}</TableCell>
-                  <TableCell>{item.status}</TableCell>
-                  <TableCell className="text-right">{item.balance}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </div>
-
-        {/* Table footer */}
-        <div className="flex-none">
-          <Table className="w-full border-separate border-spacing-0">
-            <TableFooter className="sticky bottom-0 bg-background/90 backdrop-blur-sm">
-              <TableRow>
-                <TableCell colSpan={4} className="font-medium">
-                  Total
-                </TableCell>
-                <TableCell className="text-right font-medium">
-                  ${totalBalance.toLocaleString()}
-                </TableCell>
-              </TableRow>
-            </TableFooter>
-          </Table>
-        </div>
+      <div style={{ padding: "12px 16px 8px", fontSize: 13, fontWeight: 560, color: "rgba(var(--t-ink),.85)", letterSpacing: "-0.01em" }}>
+        {title}
       </div>
 
-      <p className="mt-4 text-center text-sm text-muted-foreground">
-        Table with fixed header & footer, scrollable body
-      </p>
+      <div className="fht-scroll" style={{
+        flex: 1, overflow: "auto",
+        maskImage: "linear-gradient(to bottom, black 0%, black 92%, transparent)",
+        WebkitMaskImage: "linear-gradient(to bottom, black 0%, black 92%, transparent)",
+      }}>
+        <table style={{ width: "100%", borderCollapse: "collapse" }}>
+          <thead>
+            <tr style={{ position: "sticky", top: 0, zIndex: 2, background: "var(--t-bg)", backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)" }}>
+              <th style={TH}>Name</th>
+              <th style={TH}>Email</th>
+              <th style={TH}>Location</th>
+              <th style={TH}>Status</th>
+              <th style={{ ...TH, textAlign: "right" }}>Balance</th>
+            </tr>
+          </thead>
+          <tbody>
+            {items.map((item, i) => (
+              <tr key={item.id} className="fht-row" style={{ background: i % 2 === 1 ? "var(--t-row)" : "transparent" }}>
+                <td style={{ ...TD, fontWeight: 500, color: "rgba(var(--t-ink),.85)" }}>{item.name}</td>
+                <td style={TD}>{item.email}</td>
+                <td style={TD}>{item.location}</td>
+                <td style={TD}>
+                  <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
+                    <span style={{ width: 6, height: 6, borderRadius: "50%", background: item.status === "Active" ? "var(--t-ok)" : "var(--t-dim)" }} />
+                    <span style={{ fontSize: 12, color: "rgba(var(--t-ink),.5)" }}>{item.status}</span>
+                  </span>
+                </td>
+                <td style={{ ...TD, textAlign: "right", fontVariantNumeric: "tabular-nums" }}>${item.balance.toLocaleString()}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div style={{
+        display: "flex", justifyContent: "space-between", padding: "10px 16px",
+        borderTop: "1px solid var(--t-border)", background: "var(--t-bg)",
+        backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)",
+      }}>
+        <span style={{ fontSize: 11, fontWeight: 450, color: "rgba(var(--t-ink),.35)" }}>{items.length} members</span>
+        <span style={{ fontSize: 12, fontWeight: 520, color: "rgba(var(--t-ink),.65)", fontVariantNumeric: "tabular-nums" }}>Total: ${total.toLocaleString()}</span>
+      </div>
     </div>
   );
 }
+
+export default FixedHeaderFooterTable;

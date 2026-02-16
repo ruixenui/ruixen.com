@@ -1,7 +1,7 @@
 ---
 title: Hover Play Card
 date: 2024-10-02
-description: A video card component that automatically plays video on hover and provides manual playback controls with smooth animations.
+description: Video card that breathes — hover to preview muted, click to play with sound. Spring-animated play icon, glass overlay, and progress line.
 author: ruixen
 published: true
 ---
@@ -37,7 +37,7 @@ npx shadcn@latest add "https://ruixen.com/r/hover-play-card"
 <Step>Install required dependencies</Step>
 
 ```bash
-npm install framer-motion
+npm install motion
 ```
 
 </Steps>
@@ -49,16 +49,14 @@ npm install framer-motion
 ## Usage
 
 ```tsx
-import HoverPlayCard from "@/components/ui/hover-play-card";
+import { HoverPlayCard } from "@/components/ruixen/hover-play-card";
 
 export default function MyVideoCard() {
   return (
     <HoverPlayCard
       src="https://example.com/video.mp4"
       poster="https://example.com/thumbnail.jpg"
-      loop={true}
-      mutedOnHover={true}
-      className="w-96 h-64"
+      loop
     />
   );
 }
@@ -70,55 +68,17 @@ export default function MyVideoCard() {
 | -------------- | --------- | ------- | ------------------------------------------- |
 | `src`          | `string`  | -       | **Required.** URL of the video file         |
 | `poster`       | `string`  | -       | Optional thumbnail image URL                |
-| `className`    | `string`  | -       | Additional CSS classes                      |
 | `loop`         | `boolean` | `false` | Whether video should loop                   |
 | `mutedOnHover` | `boolean` | `true`  | Whether to mute video during hover autoplay |
+| `sound`        | `boolean` | `true`  | Enable audio tick feedback on interactions  |
 
 ## Features
 
-- **Hover Autoplay**: Video automatically plays when hovering (muted by default)
-- **Manual Controls**: Click play/pause button for manual control with audio
-- **Smart Muting**: Muted on hover, unmuted on manual play
-- **Poster Support**: Show thumbnail image before video loads
-- **Loop Option**: Configure whether video should loop
-- **Smooth Animations**: Framer Motion powered control animations
-- **State Management**: Tracks hover state vs manual playback state
-- **Audio Policy Compliance**: Respects browser autoplay policies
-- **Visual Feedback**: Play/pause button with smooth transitions
-- **Responsive Design**: Adapts to container size
-
-## Behavior
-
-### Hover Autoplay
-
-- Video plays muted when mouse enters the card
-- Video pauses when mouse leaves (unless manually started)
-- Respects browser autoplay policies by muting audio
-
-### Manual Playback
-
-- Click play button to start video with audio
-- Manual playback continues even when not hovering
-- Play/pause button toggles playback state
-- Audio is enabled for manual playback
-
-### State Management
-
-- **Hover State**: Tracks when mouse is over the card
-- **Playing State**: Tracks current video playback status
-- **User Started**: Distinguishes between hover and manual playback
-- **Mute State**: Manages audio based on interaction type
-
-## Use Cases
-
-- **Video Previews**: Show video previews in card grids
-- **Product Demos**: Hover to preview, click to watch with audio
-- **Media Galleries**: Interactive video thumbnails
-- **Content Cards**: Engaging video content in feeds
-- **Portfolio Items**: Showcase video work with hover previews
-
-## Browser Compatibility
-
-- Modern browsers with HTML5 video support
-- Autoplay policies vary by browser (muted autoplay generally allowed)
-- Requires JavaScript for interactive controls
+- Hover autoplay — video plays muted when cursor enters, pauses on leave
+- Click to unmute and play with sound, click again to pause
+- Spring-animated center play/pause icon with glass circle
+- Progress line at bottom edge — appears on hover/play, tracks position
+- Inline SVG icons — no lucide dependency
+- CSS custom property border that adapts to light/dark theme
+- Audio tick on play/pause interactions
+- Respects browser autoplay policies (muted autoplay)

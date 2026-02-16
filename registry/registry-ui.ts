@@ -131,8 +131,9 @@ export const ui: Registry["items"] = [
     name: "animated-theme-toggler",
     type: "registry:ui",
     title: "Theme Toggler",
-    description: "A component for theme changing animation.",
-    dependencies: ["lucide-react"],
+    description:
+      "Sun↔moon morph toggle with spring physics, SVG mask crescent, and switch-click audio.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/animated-theme-toggler.tsx",
@@ -140,12 +141,6 @@ export const ui: Registry["items"] = [
         target: "components/ruixen/animated-theme-toggler.tsx",
       },
     ],
-    css: {
-      "::view-transition-old(root), ::view-transition-new(root)": {
-        animation: "none",
-        "mix-blend-mode": "normal",
-      },
-    },
   },
   {
     name: "feature-highlights",
@@ -1052,65 +1047,11 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "sortable-table",
-    type: "registry:ui",
-    title: "Sortable Table",
-    description:
-      "A sortable and filterable data table with search functionality.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["table", "input", "button", "badge"],
-    files: [
-      {
-        path: "registry/ruixenui/sortable-table.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/sortable-table.tsx",
-      },
-    ],
-  },
-  {
-    name: "table-edit",
-    type: "registry:ui",
-    title: "Table Edit",
-    description:
-      "An editable table component with inline editing and dropdown menus.",
-    dependencies: ["lucide-react"],
-    registryDependencies: [
-      "table",
-      "checkbox",
-      "badge",
-      "button",
-      "dropdown-menu",
-      "input",
-      "select",
-    ],
-    files: [
-      {
-        path: "registry/ruixenui/table-edit.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/table-edit.tsx",
-      },
-    ],
-  },
-  {
-    name: "table-with-dialog",
-    type: "registry:ui",
-    title: "Table With Dialog",
-    description: "A data table with row details shown in a dialog modal.",
-    registryDependencies: ["table", "checkbox", "button", "dialog", "badge"],
-    files: [
-      {
-        path: "registry/ruixenui/table-with-dialog.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/table-with-dialog.tsx",
-      },
-    ],
-  },
-  {
     name: "fixed-header-footer-table",
     type: "registry:ui",
     title: "Fixed Header Footer Table",
-    description: "A table with fixed header and footer, and scrollable body.",
-    registryDependencies: ["table"],
+    description:
+      "Glass table with sticky header and footer. Scrollable body with hidden scrollbar and edge-fade mask. Row hover brightening. Status dot indicators.",
     files: [
       {
         path: "registry/ruixenui/fixed-header-footer-table.tsx",
@@ -1169,9 +1110,8 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Reorderable Table",
     description:
-      "A feature-rich table with column reordering, visibility toggle, and search functionality.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["table", "button", "checkbox", "popover", "input"],
+      "Glass table with drag-and-drop column reordering, visibility popover, search, and localStorage persistence. Spring animations on reorder.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/reorderable-table.tsx",
@@ -1185,9 +1125,8 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Comparison Table",
     description:
-      "A comparison table with filtering, search, and side-by-side item comparison.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["table", "card", "button", "input", "select"],
+      "Glass table with category filter pills, select up to 2 items for side-by-side comparison. Spring-animated comparison panel with winner highlighting.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/comparison-table.tsx",
@@ -1201,18 +1140,8 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Flexi Filter Table",
     description:
-      "A flexible table with multiple filter options including date range, balance, and location.",
-    dependencies: ["lucide-react"],
-    registryDependencies: [
-      "table",
-      "checkbox",
-      "button",
-      "input",
-      "badge",
-      "dropdown-menu",
-      "calendar",
-      "popover",
-    ],
+      "Glass table with multi-filter bar: search, spring-animated status pills, location dropdown, balance range. Row selection with spring transitions.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/flexi-filter-table.tsx",
@@ -1226,18 +1155,8 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Table Dialog",
     description:
-      "An editable table with dialog-based editing and row selection.",
-    dependencies: ["lucide-react"],
-    registryDependencies: [
-      "table",
-      "checkbox",
-      "badge",
-      "button",
-      "dropdown-menu",
-      "dialog",
-      "input",
-      "select",
-    ],
+      "Glass table with row selection, status dots, three-dot action menu, and spring-animated edit dialog overlay. Inline form fields.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/table-dialog.tsx",
@@ -1251,9 +1170,8 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Minimisable Table",
     description:
-      "A table with collapsible columns that can be minimized to icons.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["table", "button", "dropdown-menu"],
+      "Glass table with columns that minimize to icon-only width. Spring-animated column manager dropdown. Audio tick on toggle.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/minimisable-table.tsx",
@@ -1267,9 +1185,8 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Inline Analytics Table",
     description:
-      "A table with inline analytics including progress bars and trend indicators.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["table", "progress"],
+      "Glass table with spring-animated inline progress bars and trend arrows. Row click selection with audio tick.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/inline-analytics-table.tsx",
@@ -1283,15 +1200,8 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Column Collaboration Table",
     description:
-      "A collaborative table with column-level comments and annotations.",
-    dependencies: ["lucide-react"],
-    registryDependencies: [
-      "table",
-      "button",
-      "popover",
-      "input",
-      "scroll-area",
-    ],
+      "Glass table with per-column comment threads. Spring-animated popovers, inline comment input, comment count badges. Audio tick on add.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/column-collaboration-table.tsx",
@@ -1305,9 +1215,8 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Video Player Pro",
     description:
-      "A professional video player with custom controls, playback speed, and fullscreen support.",
-    dependencies: ["framer-motion", "lucide-react"],
-    registryDependencies: ["button", "popover", "slider"],
+      "Cinema-quality video player with glass control bar, spring physics, custom progress scrubber, inline volume slider, and speed pills with layout-animated indicator.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/video-player-pro.tsx",
@@ -1321,9 +1230,8 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Hover Play Card",
     description:
-      "A video card that plays on hover with manual play/pause controls.",
-    dependencies: ["framer-motion", "lucide-react"],
-    registryDependencies: ["button"],
+      "Video card that breathes — hover to preview muted, click to play with sound. Spring-animated play icon, glass overlay, and progress line.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/hover-play-card.tsx",
@@ -2562,21 +2470,6 @@ export const ui: Registry["items"] = [
         path: "registry/ruixenui/color-emotion-select.tsx",
         type: "registry:ui",
         target: "components/ruixen/color-emotion-select.tsx",
-      },
-    ],
-  },
-  {
-    name: "live-preview-style-select",
-    type: "registry:ui",
-    title: "Live Preview Style Select",
-    description:
-      "A select component with live preview functionality that shows a visual representation of the selected style option.",
-    registryDependencies: ["select"],
-    files: [
-      {
-        path: "registry/ruixenui/live-preview-style-select.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/live-preview-style-select.tsx",
       },
     ],
   },
