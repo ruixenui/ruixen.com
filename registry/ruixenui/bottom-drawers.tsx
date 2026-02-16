@@ -142,6 +142,11 @@ export function BottomDrawers({
 
   return (
     <>
+      <style>{`
+        .bd{--d-ink:0,0,0;--d-bg:rgba(255,255,255,0.98)}
+        .dark .bd,[data-theme="dark"] .bd{--d-ink:255,255,255;--d-bg:rgba(22,22,24,0.98)}
+      `}</style>
+
       {/* Backdrop — dims progressively, click to collapse */}
       <motion.div
         animate={{ opacity: backdropOpacity }}
@@ -159,6 +164,7 @@ export function BottomDrawers({
 
       {/* Drawer */}
       <motion.div
+        className="bd"
         drag="y"
         dragConstraints={{ top: 0, bottom: SNAPS[0] }}
         dragElastic={0.05}
@@ -172,8 +178,8 @@ export function BottomDrawers({
           left: 0,
           right: 0,
           height: DRAWER_H,
-          background: "rgba(22,22,24,0.98)",
-          borderTop: "1px solid rgba(255,255,255,0.06)",
+          background: "var(--d-bg)",
+          borderTop: "1px solid rgba(var(--d-ink),0.06)",
           borderRadius: "14px 14px 0 0",
           touchAction: "none",
           zIndex: 50,
@@ -194,7 +200,7 @@ export function BottomDrawers({
               width: 32,
               height: 3.5,
               borderRadius: 2,
-              background: "rgba(255,255,255,0.10)",
+              background: "rgba(var(--d-ink),0.10)",
             }}
           />
         </div>
