@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-browser-history-demo",
+  "type": "registry:example",
+  "title": "Glass Browser History Demo",
+  "description": "Example showing an iOS 26 liquid-glass browser history carousel with stacked macOS window cards.",
+  "registryDependencies": [
+    "https://ruixen.com/r/glass-browser-history"
+  ],
+  "files": [
+    {
+      "path": "registry/example/glass-browser-history-demo.tsx",
+      "content": "\"use client\";\n\nimport GlassBrowserHistory from \"@/registry/ruixenui/glass-browser-history\";\n\nexport default function GlassBrowserHistoryDemo() {\n  return (\n    <div className=\"flex items-center justify-center min-h-[400px]\">\n      <GlassBrowserHistory />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/glass-browser-history-demo.tsx"
+    }
+  ]
+}

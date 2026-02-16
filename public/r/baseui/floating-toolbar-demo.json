@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "floating-toolbar-demo",
+  "type": "registry:example",
+  "title": "Floating Toolbar Demo",
+  "description": "Example showing a floating toolbar with animated tabs, cursor glow, and search morphing.",
+  "registryDependencies": [
+    "https://ruixen.com/r/floating-toolbar"
+  ],
+  "files": [
+    {
+      "path": "registry/example/floating-toolbar-demo.tsx",
+      "content": "import { FloatingToolbar } from \"@/registry/ruixenui/floating-toolbar\";\n\nexport default function FloatingToolbarDemo() {\n  return (\n    <div className=\"flex min-h-[200px] w-full items-center justify-center\">\n      <FloatingToolbar />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/floating-toolbar-demo.tsx"
+    }
+  ]
+}

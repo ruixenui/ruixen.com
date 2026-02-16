@@ -1,6 +1,6 @@
 ---
 title: Notification
-description: A clean notification popover component with title, description, and timestamp display.
+description: Spring toast stack with drag-to-dismiss, rubber-band physics, and glass morphism.
 component: true
 ---
 
@@ -29,7 +29,7 @@ npx ruixenui@latest add "https://ruixen.com/r/notification"
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install lucide-react
+npm install motion
 ```
 
 <Step>Copy and paste the following code into your project.</Step>
@@ -46,9 +46,11 @@ npm install lucide-react
 
 ## Props
 
-| Prop    | Type                 | Default                | Description                 |
-| ------- | -------------------- | ---------------------- | --------------------------- |
-| `items` | `NotificationItem[]` | `defaultNotifications` | Array of notification items |
+| Prop        | Type                                                  | Default          | Description                       |
+| ----------- | ----------------------------------------------------- | ---------------- | --------------------------------- |
+| `items`     | `NotificationItem[]`                                  | `DEFAULT_ITEMS`  | Array of notification items       |
+| `onDismiss` | `(id: string) => void`                                | `undefined`      | Callback when a toast is swiped   |
+| `sound`     | `boolean`                                             | `true`           | Enable micro noise-burst on dismiss |
 
 ## NotificationItem Interface
 
@@ -56,55 +58,27 @@ npm install lucide-react
 interface NotificationItem {
   id: string;
   title: string;
-  description: string;
+  body: string;
   time: string;
+  type?: "default" | "success" | "error";
 }
 ```
 
 ## Features
 
-- **Clean Design**: Simple and elegant notification layout
-- **Badge Count**: Shows total number of notifications
-- **Hover Effects**: Smooth hover transitions for better UX
-- **Scrollable**: Handles overflow with scrolling for many notifications
-- **Responsive**: Works well on different screen sizes
-- **Customizable**: Easy to modify styling and behavior
+- **Spring Toast Stack**: Newest floats on top, older compress below with diminishing scale and blur
+- **Drag-to-Dismiss**: Swipe the top card right to dismiss with spring exit animation
+- **Rubber-Band Physics**: Resistance when dragging left past the boundary
+- **Glass Morphism**: Backdrop blur with light/dark theme support via CSS custom properties
+- **Audio Feedback**: Soft noise-burst tick on each dismissal
+- **Controlled/Uncontrolled**: Works with or without external state management
 
 ## Usage
 
 ```tsx
-import Notifications from "@/components/ui/notification";
+import { Notification } from "@/components/ruixen/notification";
 
 export default function Example() {
-  const notifications = [
-    {
-      id: "1",
-      title: "New Message",
-      description: "You have a new message from John.",
-      time: "2h ago",
-    },
-    {
-      id: "2",
-      title: "System Alert",
-      description: "Server downtime scheduled at midnight.",
-      time: "5h ago",
-    },
-    {
-      id: "3",
-      title: "Meeting Reminder",
-      description: "Project sync meeting at 3 PM.",
-      time: "1d ago",
-    },
-  ];
-
-  return (
-    <div className="p-6">
-      {/* Default notifications */}
-      <Notifications />
-
-      {/* Custom notifications */}
-      <Notifications items={notifications} />
-    </div>
-  );
+  return <Notification />;
 }
 ```

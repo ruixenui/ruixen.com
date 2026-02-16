@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "navbar-dropdown-demo",
+  "type": "registry:example",
+  "title": "Navbar Dropdown Demo",
+  "description": "Example showing a navigation bar with dropdown menus and mobile responsive layout.",
+  "registryDependencies": [
+    "https://ruixen.com/r/navbar-dropdown"
+  ],
+  "files": [
+    {
+      "path": "registry/example/navbar-dropdown-demo.tsx",
+      "content": "import { NavbarDropdown } from \"@/registry/ruixenui/navbar-dropdown\";\nimport {\n  Sparkles,\n  MonitorSmartphone,\n  ShieldCheck,\n  Headset,\n  ShoppingBag,\n  BookOpen,\n  Plug,\n  Gem,\n  Megaphone,\n  FolderOpen,\n  PenSquare,\n} from \"lucide-react\";\n\n/* ── demo ─────────────────────────────────────────────────────── */\n\nexport default function NavbarDropdownDemo() {\n  return (\n    <NavbarDropdown\n      logo={\n        <span className=\"text-lg font-bold tracking-tight\">tailark</span>\n      }\n      items={[\n        {\n          type: \"features\",\n          label: \"Product\",\n          sectionTitle: \"Features\",\n          items: [\n            {\n              title: \"AI\",\n              description: \"Generate insights and automation\",\n              icon: <Sparkles />,\n              href: \"#\",\n            },\n            {\n              title: \"Performance\",\n              description: \"Lightning-fast load times\",\n              icon: <MonitorSmartphone />,\n              href: \"#\",\n            },\n            {\n              title: \"Security\",\n              description: \"Keep your data safe and secure\",\n              icon: <ShieldCheck />,\n              href: \"#\",\n            },\n            {\n              title: \"Customer Support\",\n              description: \"Get help when you need it\",\n              icon: <Headset />,\n              href: \"#\",\n            },\n          ],\n          footerLink: { label: \"More features\", href: \"#\" },\n        },\n        {\n          type: \"split\",\n          label: \"Solutions\",\n          primary: {\n            title: \"Use Cases\",\n            items: [\n              {\n                title: \"Marketplace\",\n                description: \"Find and buy AI tools\",\n                icon: <ShoppingBag />,\n                href: \"#\",\n              },\n              {\n                title: \"Guides\",\n                description: \"Learn how to use AI tools\",\n                icon: <BookOpen />,\n                href: \"#\",\n              },\n              {\n                title: \"API Integration\",\n                description: \"Integrate AI tools into your app\",\n                icon: <Plug />,\n                href: \"#\",\n              },\n              {\n                title: \"Partnerships\",\n                description: \"Get help when you need it\",\n                icon: <Gem />,\n                href: \"#\",\n              },\n            ],\n          },\n          secondary: {\n            title: \"Content\",\n            items: [\n              { title: \"Announcements\", icon: <Megaphone />, href: \"#\" },\n              { title: \"Resources\", icon: <FolderOpen />, href: \"#\" },\n              { title: \"Blog\", icon: <PenSquare />, href: \"#\" },\n            ],\n          },\n        },\n        { type: \"link\", label: \"Pricing\", href: \"#\" },\n        { type: \"link\", label: \"Company\", href: \"#\" },\n      ]}\n      secondaryAction={{ href: \"#\", label: \"Login\" }}\n      primaryAction={{ href: \"#\", label: \"Get Started\" }}\n    />\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/navbar-dropdown-demo.tsx"
+    }
+  ]
+}

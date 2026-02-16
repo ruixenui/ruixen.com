@@ -1,0 +1,51 @@
+---
+title: Fine Tune Slider
+date: 2024-06-01
+description: A slider with pull-away precision mode — drag normally, pull away from the track to fine-tune values.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="fine-tune-slider-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/fine-tune-slider"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="fine-tune-slider" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop           | Type                      | Default | Description                           |
+| -------------- | ------------------------- | ------- | ------------------------------------- |
+| `min`          | `number`                  | `0`     | Minimum value                         |
+| `max`          | `number`                  | `100`   | Maximum value                         |
+| `step`         | `number`                  | `1`     | Step increment                        |
+| `defaultValue` | `number`                  | `50`    | Initial value                         |
+| `onChange`     | `(value: number) => void` | -       | Callback fired when the value changes |

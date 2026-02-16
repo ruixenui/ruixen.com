@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-form-demo",
+  "type": "registry:example",
+  "title": "Glass Form Demo",
+  "description": "Example showing an iOS 26 liquid-glass form with grouped fields, toggles, and segmented controls.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/glass-form"
+  ],
+  "files": [
+    {
+      "path": "registry/example/glass-form-demo.tsx",
+      "content": "\"use client\";\n\nimport {\n  GlassForm,\n  FormGroup,\n  FormField,\n  FormToggle,\n  FormSegment,\n  FormButton,\n} from \"@/registry/ruixenui/glass-form\";\n\nexport default function GlassFormDemo() {\n  return (\n    <div\n      style={{\n        display: \"flex\",\n        flexDirection: \"column\",\n        alignItems: \"center\",\n        padding: \"48px 16px\",\n      }}\n    >\n      <GlassForm onSubmit={() => console.log(\"submitted\")}>\n        <FormGroup title=\"Account\">\n          <FormField label=\"Name\" placeholder=\"John Appleseed\" />\n          <FormField\n            label=\"Email\"\n            type=\"email\"\n            placeholder=\"john@example.com\"\n          />\n          <FormField label=\"Password\" type=\"password\" placeholder=\"Required\" />\n        </FormGroup>\n\n        <FormGroup\n          title=\"Preferences\"\n          footer=\"Choose how you'd like to receive updates.\"\n        >\n          <FormToggle label=\"Notifications\" defaultChecked />\n          <FormToggle label=\"Marketing\" description=\"Receive product updates\" />\n          <FormSegment\n            label=\"Theme\"\n            options={[\n              { label: \"Light\", value: \"light\" },\n              { label: \"Dark\", value: \"dark\" },\n              { label: \"Auto\", value: \"auto\" },\n            ]}\n            defaultValue=\"dark\"\n          />\n        </FormGroup>\n\n        <FormButton>Create Account</FormButton>\n        <FormButton variant=\"text\">Already have an account? Sign in</FormButton>\n      </GlassForm>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/glass-form-demo.tsx"
+    }
+  ]
+}

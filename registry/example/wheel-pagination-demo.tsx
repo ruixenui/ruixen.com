@@ -1,13 +1,11 @@
-import WheelPagination from "@/registry/ruixenui/wheel-pagination";
+"use client";
 
-export default function DemoOne() {
+import { WheelPagination } from "@/registry/ruixenui/wheel-pagination";
+
+export default function WheelPaginationDemo() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen">
-      <WheelPagination
-        totalPages={50} // Total number of pages
-        visibleCount={7} // Number of pages visible at once
-        className=""
-      />
+    <div className="flex min-h-[420px] w-full items-center justify-center px-4">
+      <WheelPagination totalPages={50} visibleCount={7} />
     </div>
   );
 }

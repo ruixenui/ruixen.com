@@ -1,0 +1,530 @@
+"use client";
+
+import { useRef, useState, useCallback } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import { cn } from "@/lib/utils";
+
+/**
+ * Calendar Crest — dual-month range picker with physical depth.
+ *
+ * Two months sit side by side. Click a day to start a range,
+ * hover to preview, click again to confirm. The selected band
+ * rises off the surface — endpoints crest highest, the range
+ * forms a ridge with proportional shadows. Confirmed ranges
+ * stand taller than previews.
+ *
+ * The ridge IS the selection.
+ */
+
+/* ── Types ── */
+
+export interface CalendarCrestProps {
+  defaultStart?: string;
+  defaultEnd?: string;
+  onRangeChange?: (start: string | null, end: string | null) => void;
+  sound?: boolean;
+}
+
+/* ── Constants ── */
+
+const CELL = 36;
+const DOW = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"];
+
+/* ── Helpers ── */
+
+function pad2(n: number): string {
+  return String(n).padStart(2, "0");
+}
+
+function toKey(y: number, m: number, d: number): string {
+  return `${y}-${pad2(m + 1)}-${pad2(d)}`;
+}
+
+function parseKey(key: string): [number, number, number] {
+  const [y, m, d] = key.split("-").map(Number);
+  return [y, m - 1, d];
+}
+
+function formatDate(key: string): string {
+  const [y, m, d] = parseKey(key);
+  return new Date(y, m, d).toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+  });
+}
+
+function daysBetween(a: string, b: string): number {
+  const [ay, am, ad] = parseKey(a);
+  const [by, bm, bd] = parseKey(b);
+  const da = new Date(ay, am, ad);
+  const db = new Date(by, bm, bd);
+  return Math.round((db.getTime() - da.getTime()) / 86400000) + 1;
+}
+
+function ordered(a: string, b: string): [string, string] {
+  return a <= b ? [a, b] : [b, a];
+}
+
+/* ── Audio ── */
+
+let _ctx: AudioContext | null = null;
+let _buf: AudioBuffer | null = null;
+
+function audioCtx() {
+  if (!_ctx) {
+    _ctx = new (window.AudioContext ||
+      (window as unknown as { webkitAudioContext: typeof AudioContext })
+        .webkitAudioContext)();
+  }
+  if (_ctx.state === "suspended") _ctx.resume();
+  return _ctx;
+}
+
+function ensureBuf(ac: AudioContext): AudioBuffer {
+  if (_buf && _buf.sampleRate === ac.sampleRate) return _buf;
+  const rate = ac.sampleRate;
+  const len = Math.floor(rate * 0.003);
+  const buf = ac.createBuffer(1, len, rate);
+  const ch = buf.getChannelData(0);
+  for (let i = 0; i < len; i++) {
+    const t = i / len;
+    ch[i] = (Math.random() * 2 - 1) * (1 - t) ** 4;
+  }
+  _buf = buf;
+  return buf;
+}
+
+function playTick(last: React.MutableRefObject<number>) {
+  const now = performance.now();
+  if (now - last.current < 80) return;
+  last.current = now;
+  try {
+    const ac = audioCtx();
+    const buf = ensureBuf(ac);
+    const src = ac.createBufferSource();
+    const gain = ac.createGain();
+    src.buffer = buf;
+    src.playbackRate.value = 1.15;
+    gain.gain.value = 0.03;
+    src.connect(gain);
+    gain.connect(ac.destination);
+    src.start();
+  } catch {
+    /* silent */
+  }
+}
+
+/* ── Component ── */
+
+export function CalendarCrest({
+  defaultStart,
+  defaultEnd,
+  onRangeChange,
+  sound = true,
+}: CalendarCrestProps) {
+  const [baseMonth, setBaseMonth] = useState(() => new Date().getMonth());
+  const [baseYear, setBaseYear] = useState(() => new Date().getFullYear());
+  const [rangeStart, setRangeStart] = useState<string | null>(
+    defaultStart ?? null,
+  );
+  const [rangeEnd, setRangeEnd] = useState<string | null>(defaultEnd ?? null);
+  const [hoverDate, setHoverDate] = useState<string | null>(null);
+  const [direction, setDirection] = useState(1);
+  const lastSound = useRef(0);
+
+  function tick() {
+    if (sound) playTick(lastSound);
+  }
+
+  /* ── Effective range (includes hover preview) ── */
+
+  const isConfirmed = rangeStart !== null && rangeEnd !== null;
+  let effStart: string | null = null;
+  let effEnd: string | null = null;
+
+  if (rangeStart) {
+    if (rangeEnd) {
+      [effStart, effEnd] = ordered(rangeStart, rangeEnd);
+    } else if (hoverDate) {
+      [effStart, effEnd] = ordered(rangeStart, hoverDate);
+    } else {
+      effStart = rangeStart;
+    }
+  }
+
+  /* ── Today ── */
+
+  const now = new Date();
+  const todayKey = toKey(now.getFullYear(), now.getMonth(), now.getDate());
+
+  /* ── Day click ── */
+
+  const handleDayClick = useCallback(
+    (dateKey: string) => {
+      tick();
+      if (rangeStart === null || rangeEnd !== null) {
+        setRangeStart(dateKey);
+        setRangeEnd(null);
+        onRangeChange?.(dateKey, null);
+      } else {
+        const [s, e] = ordered(rangeStart, dateKey);
+        setRangeStart(s);
+        setRangeEnd(e);
+        onRangeChange?.(s, e);
+      }
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [rangeStart, rangeEnd, onRangeChange],
+  );
+
+  /* ── Navigation ── */
+
+  function goMonth(delta: number) {
+    tick();
+    setDirection(delta);
+    let m = baseMonth + delta;
+    let y = baseYear;
+    if (m < 0) {
+      m = 11;
+      y--;
+    } else if (m > 11) {
+      m = 0;
+      y++;
+    }
+    setBaseMonth(m);
+    setBaseYear(y);
+  }
+
+  /* ── Second month ── */
+
+  let month2 = baseMonth + 1;
+  let year2 = baseYear;
+  if (month2 > 11) {
+    month2 = 0;
+    year2++;
+  }
+
+  /* ── Render a single month grid ── */
+
+  function renderMonth(y: number, m: number) {
+    const daysInMonth = new Date(y, m + 1, 0).getDate();
+    const firstOffset = (new Date(y, m, 1).getDay() + 6) % 7;
+    const monthLabel = new Date(y, m).toLocaleDateString("en-US", {
+      month: "long",
+    });
+
+    return (
+      <div>
+        {/* Month name */}
+        <div
+          className="text-neutral-700 dark:text-neutral-300"
+          style={{
+            fontSize: 13,
+            fontWeight: 590,
+            textAlign: "center",
+            marginBottom: 10,
+            letterSpacing: "-0.01em",
+          }}
+        >
+          {monthLabel}
+        </div>
+
+        {/* DOW headers */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: `repeat(7, ${CELL}px)`,
+            marginBottom: 4,
+          }}
+        >
+          {DOW.map((d) => (
+            <div
+              key={d}
+              className="text-neutral-300 dark:text-neutral-700"
+              style={{
+                fontSize: 10,
+                fontWeight: 500,
+                textAlign: "center",
+                textTransform: "uppercase",
+                letterSpacing: "0.06em",
+              }}
+            >
+              {d}
+            </div>
+          ))}
+        </div>
+
+        {/* Day grid — no gap for continuous band */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: `repeat(7, ${CELL}px)`,
+          }}
+        >
+          {/* Leading empties */}
+          {Array.from({ length: firstOffset }).map((_, i) => (
+            <div key={`e-${i}`} style={{ width: CELL, height: CELL }} />
+          ))}
+
+          {/* Days */}
+          {Array.from({ length: daysInMonth }).map((_, i) => {
+            const d = i + 1;
+            const dateKey = toKey(y, m, d);
+            const col = (firstOffset + d - 1) % 7;
+            const isToday = dateKey === todayKey;
+
+            /* Range logic */
+            const inRange =
+              effStart !== null &&
+              effEnd !== null &&
+              dateKey >= effStart &&
+              dateKey <= effEnd;
+            const isStart = dateKey === effStart;
+            const isEnd = dateKey === effEnd;
+            const isSingle = isStart && isEnd;
+
+            /* Neighbor checks for band rounding */
+            const leftEmpty = col === 0 || d === 1;
+            const rightEmpty = col === 6 || d === daysInMonth;
+            const prevInRange =
+              !leftEmpty &&
+              effStart !== null &&
+              effEnd !== null &&
+              toKey(y, m, d - 1) >= effStart &&
+              toKey(y, m, d - 1) <= effEnd;
+            const nextInRange =
+              !rightEmpty &&
+              effStart !== null &&
+              effEnd !== null &&
+              toKey(y, m, d + 1) >= effStart &&
+              toKey(y, m, d + 1) <= effEnd;
+
+            const roundLeft = inRange && !prevInRange;
+            const roundRight = inRange && !nextInRange;
+
+            /* Radius */
+            const R = "10px";
+            const Z = "0";
+            const radius = isSingle
+              ? R
+              : `${roundLeft ? R : Z} ${roundRight ? R : Z} ${roundRight ? R : Z} ${roundLeft ? R : Z}`;
+
+            /* ── Elevation ── depth via shadow + scale, no Y displacement */
+            let elevation = 0;
+            if (isStart || isEnd) {
+              elevation = isConfirmed ? 6 : 4;
+            } else if (inRange) {
+              elevation = isConfirmed ? 3 : 1.5;
+            }
+
+            const isHov = dateKey === hoverDate && !inRange;
+            if (isHov) elevation = 1.5;
+
+            /* Shadow — proportional to elevation (deeper to sell the crest) */
+            const shadow =
+              elevation > 0.5
+                ? `0 ${Math.round(elevation * 1.5)}px ${Math.round(elevation * 5)}px rgba(0,0,0,${(0.04 + elevation * 0.012).toFixed(3)})`
+                : "none";
+
+            /* Text color classes */
+            const textCls =
+              isStart || isEnd
+                ? "text-white dark:text-neutral-950"
+                : inRange
+                  ? "text-neutral-700 dark:text-neutral-300"
+                  : isToday
+                    ? "text-neutral-900 dark:text-neutral-100"
+                    : "text-neutral-400 dark:text-neutral-500";
+
+            /* Background classes */
+            const bgCls = inRange
+              ? isStart || isEnd
+                ? "bg-neutral-900 dark:bg-neutral-100"
+                : "bg-neutral-100 dark:bg-neutral-800"
+              : "";
+
+            return (
+              <motion.button
+                key={d}
+                onClick={() => handleDayClick(dateKey)}
+                onMouseEnter={() => setHoverDate(dateKey)}
+                onMouseLeave={() => setHoverDate(null)}
+                animate={{
+                  scale: 1 + elevation * 0.012,
+                }}
+                whileTap={{ scale: 0.9 }}
+                transition={{
+                  type: "spring",
+                  damping: 22,
+                  stiffness: 320,
+                }}
+                className={cn(
+                  "border-none transition-colors duration-100",
+                  bgCls,
+                  !inRange &&
+                    "rounded-[10px] hover:bg-neutral-100 dark:hover:bg-neutral-800",
+                )}
+                style={{
+                  width: CELL,
+                  height: CELL,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  cursor: "pointer",
+                  padding: 0,
+                  position: "relative",
+                  borderRadius: inRange ? radius : undefined,
+                  boxShadow: shadow,
+                }}
+              >
+                <span
+                  className={cn(
+                    "relative z-[1] text-[13px] tabular-nums transition-colors duration-100",
+                    isHov
+                      ? "text-neutral-600 dark:text-neutral-400"
+                      : textCls,
+                  )}
+                  style={{
+                    fontWeight:
+                      isStart || isEnd || isToday ? 650 : inRange ? 500 : 400,
+                    lineHeight: 1,
+                  }}
+                >
+                  {d}
+                </span>
+              </motion.button>
+            );
+          })}
+        </div>
+      </div>
+    );
+  }
+
+  /* ── Range label ── */
+
+  const rangeLabel = (() => {
+    if (effStart && effEnd && effStart !== effEnd) {
+      const count = daysBetween(effStart, effEnd);
+      return `${formatDate(effStart)} – ${formatDate(effEnd)}  ·  ${count} day${count !== 1 ? "s" : ""}`;
+    }
+    if (effStart) {
+      return isConfirmed
+        ? formatDate(effStart)
+        : `${formatDate(effStart)} — select end`;
+    }
+    return null;
+  })();
+
+  return (
+    <div className="w-fit overflow-hidden rounded-[20px] border border-neutral-200 bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-950">
+      {/* Header */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          padding: "22px 24px 14px",
+        }}
+      >
+        <motion.button
+          whileTap={{ scale: 0.85 }}
+          onClick={() => goMonth(-1)}
+          className="text-neutral-400 transition-colors duration-150 hover:bg-neutral-100 hover:text-neutral-600 dark:text-neutral-600 dark:hover:bg-neutral-800 dark:hover:text-neutral-400"
+          style={{
+            background: "transparent",
+            border: "none",
+            cursor: "pointer",
+            fontSize: 16,
+            lineHeight: 1,
+            padding: "6px 10px",
+            borderRadius: 8,
+          }}
+        >
+          ‹
+        </motion.button>
+
+        <span
+          className="text-neutral-900 dark:text-neutral-100"
+          style={{
+            fontSize: 15,
+            fontWeight: 590,
+            letterSpacing: "-0.01em",
+          }}
+        >
+          {baseYear}
+        </span>
+
+        <motion.button
+          whileTap={{ scale: 0.85 }}
+          onClick={() => goMonth(1)}
+          className="text-neutral-400 transition-colors duration-150 hover:bg-neutral-100 hover:text-neutral-600 dark:text-neutral-600 dark:hover:bg-neutral-800 dark:hover:text-neutral-400"
+          style={{
+            background: "transparent",
+            border: "none",
+            cursor: "pointer",
+            fontSize: 16,
+            lineHeight: 1,
+            padding: "6px 10px",
+            borderRadius: 8,
+          }}
+        >
+          ›
+        </motion.button>
+      </div>
+
+      {/* Twin grids */}
+      <div style={{ padding: "0 24px 16px" }}>
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.div
+            key={`${baseYear}-${baseMonth}`}
+            initial={{ opacity: 0, x: direction > 0 ? 12 : -12 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: direction > 0 ? -12 : 12 }}
+            transition={{ duration: 0.18, ease: "easeOut" }}
+            style={{
+              display: "flex",
+              gap: 24,
+            }}
+          >
+            {renderMonth(baseYear, baseMonth)}
+            {renderMonth(year2, month2)}
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* Range info */}
+      <AnimatePresence>
+        {rangeLabel && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+            style={{ overflow: "hidden" }}
+          >
+            <div
+              className={cn(
+                "border-t border-neutral-100 dark:border-neutral-800/50",
+                isConfirmed
+                  ? "text-neutral-500 dark:text-neutral-500"
+                  : "text-neutral-400 dark:text-neutral-600",
+              )}
+              style={{
+                padding: "12px 24px 14px",
+                fontSize: 12,
+                fontWeight: 450,
+                textAlign: "center",
+                fontVariantNumeric: "tabular-nums",
+                letterSpacing: "-0.005em",
+              }}
+            >
+              {rangeLabel}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
+export default CalendarCrest;

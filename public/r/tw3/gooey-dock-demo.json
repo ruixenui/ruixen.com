@@ -3,14 +3,14 @@
   "name": "gooey-dock-demo",
   "type": "registry:example",
   "title": "Gooey Dock Demo",
-  "description": "Example showing dock with liquid gooey blob effects.",
+  "description": "Example showing dock with proximity-based magnification.",
   "registryDependencies": [
     "https://ruixen.com/r/gooey-dock"
   ],
   "files": [
     {
       "path": "registry/example/gooey-dock-demo.tsx",
-      "content": "import GooeyDock from \"@/registry/ruixenui/gooey-dock\";\nimport { Home, Search, Bell, Settings, User } from \"lucide-react\";\n\nexport default function DemoOne() {\n  const dockItems = [\n    {\n      icon: <Home className=\"h-6 w-6\" />,\n      label: \"Home\",\n    },\n    {\n      icon: <Search className=\"h-6 w-6\" />,\n      label: \"Search\",\n    },\n    {\n      icon: <Bell className=\"h-6 w-6\" />,\n      label: \"Notifications\",\n    },\n    {\n      icon: <User className=\"h-6 w-6\" />,\n      label: \"Profile\",\n    },\n    {\n      icon: <Settings className=\"h-6 w-6\" />,\n      label: \"Settings\",\n    },\n  ];\n\n  return (\n    <div className=\"flex min-h-screen justify-center items-center\">\n      <GooeyDock items={dockItems} />\n    </div>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport { GooeyDock } from \"@/registry/ruixenui/gooey-dock\";\nimport {\n  Home,\n  Search,\n  Bell,\n  User,\n  Settings,\n  Music,\n  MessageCircle,\n} from \"lucide-react\";\n\nexport default function GooeyDockDemo() {\n  return (\n    <div className=\"flex min-h-[200px] w-full items-end justify-center pb-8\">\n      <GooeyDock\n        items={[\n          { icon: <Home className=\"h-5 w-5\" />, label: \"Home\", active: true },\n          { icon: <MessageCircle className=\"h-5 w-5\" />, label: \"Messages\" },\n          { icon: <Search className=\"h-5 w-5\" />, label: \"Search\" },\n          { icon: <Music className=\"h-5 w-5\" />, label: \"Music\" },\n          { icon: <Bell className=\"h-5 w-5\" />, label: \"Notifications\" },\n          { icon: <User className=\"h-5 w-5\" />, label: \"Profile\" },\n          { icon: <Settings className=\"h-5 w-5\" />, label: \"Settings\" },\n        ]}\n      />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/gooey-dock-demo.tsx"
     }

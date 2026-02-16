@@ -1,19 +1,14 @@
 import CircularStepperInput from "../ruixenui/circular-stepper-input";
 
 export default function DemoCircularStepper() {
-  const handleChange = (value: number) => {
-    console.log("Current value:", value);
-  };
-
   return (
-    <div className="flex flex-col items-center justify-center gap-6 min-h-screen">
-      {/* <CircularStepperInput onChange={handleChange} /> */}
+    <div className="flex items-center justify-center min-h-[400px]">
       <CircularStepperInput
-        min={10}
-        max={200}
+        min={0}
+        max={100}
         step={5}
         defaultValue={50}
-        size={150}
+        label="Volume"
       />
     </div>
   );

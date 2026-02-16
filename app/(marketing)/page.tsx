@@ -1,4 +1,5 @@
 import Hero from "@/components/sections/hero";
+import { ComponentCategories } from "@/components/sections/component-categories";
 import FAQSection from "@/components/sections/faq-section";
 import { FAQItem } from "@/components/sections/faq-section";
 import WallOfLove from "@/components/sections/wall-of-love";
@@ -53,7 +54,7 @@ export default function Home() {
     operatingSystem: "Web",
     url: "https://ruixen.com",
     description:
-      "600+ free, open-source React components built with Tailwind CSS, TypeScript & Framer Motion. Supports Tailwind v3 + v4, Radix & Base UI primitives.",
+      "350+ free, open-source React components built with Tailwind CSS, TypeScript & Framer Motion. Supports Tailwind v3 + v4, Radix & Base UI primitives.",
     offers: {
       "@type": "Offer",
       price: "0",
@@ -75,6 +76,7 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareAppJsonLd) }}
       />
       <Hero />
+      <ComponentCategories />
       {/* <VideoShowcaseGrid /> */}
       {/* <InspirationsSection /> */}
       {/* <WallOfLove /> */}

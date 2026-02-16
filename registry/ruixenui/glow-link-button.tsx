@@ -1,55 +1,136 @@
 "use client";
 
-import { ArrowUpRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { useState } from "react";
-import Link from "next/link";
+import * as React from "react";
+import { motion } from "motion/react";
 
-interface GlowLinkButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+/* ── sound ── */
+let _a: AudioContext, _b: AudioBuffer;
+const tick = () => {
+  if (typeof window === "undefined") return;
+  if (!_a) {
+    _a = new AudioContext();
+    _b = _a.createBuffer(1, (_a.sampleRate * 0.003) | 0, _a.sampleRate);
+    const d = _b.getChannelData(0);
+    for (let i = 0; i < d.length; i++)
+      d[i] = (Math.random() * 2 - 1) * (1 - i / d.length) ** 4;
+  }
+  const s = _a.createBufferSource();
+  s.buffer = _b;
+  const g = _a.createGain();
+  g.gain.value = 0.08;
+  s.connect(g).connect(_a.destination);
+  s.start();
+};
+
+/* ── theme ── */
+const CSS = `
+.gl{
+  --gl-glass:linear-gradient(180deg,rgba(255,255,255,0.78),rgba(255,255,255,0.62));
+  --gl-border:rgba(0,0,0,0.06);
+  --gl-shadow:0 0 1px rgba(0,0,0,0.04),0 2px 8px rgba(0,0,0,0.04),inset 0 1px 0 rgba(255,255,255,0.8);
+  --gl-hi:rgba(0,0,0,0.88);
+  --gl-dim:rgba(0,0,0,0.42);
+  --gl-glow:rgba(0,0,0,0.03)
+}
+.dark .gl,[data-theme="dark"] .gl{
+  --gl-glass:linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02));
+  --gl-border:rgba(255,255,255,0.07);
+  --gl-shadow:0 1px 3px rgba(0,0,0,0.08),inset 0 1px 0 rgba(255,255,255,0.04);
+  --gl-hi:rgba(255,255,255,0.88);
+  --gl-dim:rgba(255,255,255,0.28);
+  --gl-glow:rgba(255,255,255,0.04)
+}`;
+
+/* ── component ── */
+export interface GlowLinkButtonProps {
   label?: string;
   href?: string;
+  sound?: boolean;
+  style?: React.CSSProperties;
 }
 
 export default function GlowLinkButton({
-  className,
   label = "Explore on GitHub",
-  href = "https://github.com/ruixenui",
-  ...props
+  href = "#",
+  sound = true,
+  style,
 }: GlowLinkButtonProps) {
-  const [hovered, setHovered] = useState(false);
+  const [hovered, setHovered] = React.useState(false);
+  const [glowX, setGlowX] = React.useState(0);
 
   return (
-    <Link href={href} target="_blank" rel="noopener noreferrer">
-      <Button
+    <>
+      <style dangerouslySetInnerHTML={{ __html: CSS }} />
+      <motion.a
+        className="gl"
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={() => sound && tick()}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        className={cn(
-          "relative group px-5 h-11 rounded-full overflow-hidden cursor-pointer",
-          "bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800",
-          "text-zinc-800 dark:text-zinc-100",
-          "transition-all duration-300 ease-out hover:shadow-md",
-          className,
-        )}
-        {...props}
+        onMouseMove={(e) => {
+          const r = e.currentTarget.getBoundingClientRect();
+          setGlowX(e.clientX - r.left);
+        }}
+        whileHover={{ scale: 1.03 }}
+        whileTap={{ scale: 0.97 }}
+        transition={{ type: "spring", stiffness: 500, damping: 30 }}
+        style={{
+          position: "relative",
+          display: "inline-flex",
+          alignItems: "center",
+          gap: 8,
+          padding: "10px 18px",
+          borderRadius: 24,
+          border: "1px solid var(--gl-border)",
+          background: "var(--gl-glass)",
+          boxShadow: "var(--gl-shadow)",
+          backdropFilter: "blur(24px)",
+          WebkitBackdropFilter: "blur(24px)",
+          color: "var(--gl-hi)",
+          fontSize: 14,
+          fontWeight: 500,
+          textDecoration: "none",
+          cursor: "pointer",
+          outline: "none",
+          userSelect: "none",
+          overflow: "hidden",
+          ...style,
+        }}
       >
-        {/* Soft glow on hover */}
-        <span className="absolute inset-0 bg-gradient-to-tr from-transparent via-zinc-100 to-transparent dark:via-zinc-800 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm pointer-events-none rounded-full" />
-
-        {/* Button Content */}
-        <div className="relative flex items-center gap-2 font-medium">
-          <span>{label}</span>
-          <ArrowUpRight
-            className={cn(
-              "w-4 h-4 transition-transform duration-300",
-              hovered
-                ? "translate-x-1 -translate-y-1"
-                : "translate-x-0 translate-y-0",
-            )}
-          />
-        </div>
-      </Button>
-    </Link>
+        {/* cursor glow */}
+        <span
+          style={{
+            position: "absolute",
+            inset: 0,
+            pointerEvents: "none",
+            opacity: hovered ? 1 : 0,
+            transition: "opacity 0.25s",
+            background: `radial-gradient(80px circle at ${glowX}px 50%, var(--gl-glow), transparent)`,
+          }}
+        />
+        <span style={{ position: "relative" }}>{label}</span>
+        <motion.svg
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          style={{ position: "relative", color: "var(--gl-dim)" }}
+          animate={{
+            x: hovered ? 2 : 0,
+            y: hovered ? -2 : 0,
+          }}
+          transition={{ type: "spring", stiffness: 400, damping: 20 }}
+        >
+          <path d="M7 17L17 7" />
+          <path d="M7 7h10v10" />
+        </motion.svg>
+      </motion.a>
+    </>
   );
 }

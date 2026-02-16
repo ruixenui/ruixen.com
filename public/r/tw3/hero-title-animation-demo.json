@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hero-title-animation-demo",
+  "type": "registry:example",
+  "title": "Hero Title Animation Demo",
+  "description": "Example showing an animated hero title with phased brand reveal and highlight box sweep.",
+  "registryDependencies": [
+    "https://ruixen.com/r/hero-title-animation"
+  ],
+  "files": [
+    {
+      "path": "registry/example/hero-title-animation-demo.tsx",
+      "content": "import { HeroTitleAnimation } from \"@/registry/ruixenui/hero-title-animation\";\n\nexport default function HeroTitleAnimationDemo() {\n  return (\n    <div className=\"relative w-full\">\n      <HeroTitleAnimation />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/hero-title-animation-demo.tsx"
+    }
+  ]
+}

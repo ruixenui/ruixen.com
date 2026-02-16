@@ -1,7 +1,7 @@
 ---
 title: Centered Feedback Drawer
 date: 2024-06-01
-description: A centered drawer component designed for feedback collection
+description: Centered feedback panel — three SVG faces, contextual comment, spring physics, auto-dismiss thank-you state.
 author: ruixen
 published: true
 ---
@@ -42,9 +42,17 @@ npx shadcn@latest add "https://ruixen.com/r/centered-feedback-drawer"
 
 ## Props
 
-| Prop       | Type       | Default      | Description                                  |
-| ---------- | ---------- | ------------ | -------------------------------------------- |
-| `isOpen`   | `boolean`  | `false`      | Whether the drawer is open                   |
-| `onClose`  | `function` | -            | Callback function when drawer is closed      |
-| `onSubmit` | `function` | -            | Callback function when feedback is submitted |
-| `title`    | `string`   | `"Feedback"` | Title of the feedback drawer                 |
+| Prop           | Type                               | Default | Description                      |
+| -------------- | ---------------------------------- | ------- | -------------------------------- |
+| `open`         | `boolean`                          | -       | Whether the panel is visible     |
+| `onOpenChange` | `(open: boolean) => void`          | -       | Callback when visibility changes |
+| `onSubmit`     | `(feedback: FeedbackData) => void` | -       | Callback with rating and message |
+| `sound`        | `boolean`                          | `true`  | Enable soft tick on interactions |
+
+### FeedbackData
+
+| Property  | Type     | Description                                |
+| --------- | -------- | ------------------------------------------ |
+| `rating`  | `number` | 1–3 satisfaction score                     |
+| `label`   | `string` | Human label (Not great, Okay, Great)       |
+| `message` | `string` | Optional comment (empty string if skipped) |

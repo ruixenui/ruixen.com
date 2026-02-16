@@ -186,6 +186,7 @@ export default async function DocPage({ params }: DocPageProps) {
         <div className="hidden py-6 pl-6 text-sm xl:block">
           <div className="sticky top-[90px] h-[calc(100vh-3.5rem)] space-y-4">
             <TableOfContents toc={toc} />
+            <div id="dynamic-toc" />
             <Contribute doc={doc} />
             <SidebarCTA />
           </div>

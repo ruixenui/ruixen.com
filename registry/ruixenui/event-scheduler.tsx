@@ -1,251 +1,452 @@
 "use client";
 
-import * as React from "react";
-import { format } from "date-fns";
-import {
-  Calendar as CalendarIcon,
-  Clock,
-  PlusCircle,
-  CalendarDays,
-  Trash2,
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useRef, useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
 import { cn } from "@/lib/utils";
 
-export interface Event {
-  id: number;
+/**
+ * Event Scheduler — inline timeline creation.
+ *
+ * Today's events at a glance. Tap a time, type a title,
+ * press Enter. The event springs into the list. Delete
+ * with a tap. No forms, no modals, no dropdowns.
+ *
+ * The schedule is the interface.
+ */
+
+/* ── Types ── */
+
+export interface SchedulerEvent {
+  id: string;
   title: string;
-  date: Date;
+  hour: number;
+  minute: number;
 }
 
-interface EventSchedulerProps {
-  defaultEvents?: Event[];
-  defaultTitle?: string;
-  defaultDate?: Date;
-  defaultHour?: string;
-  defaultMinute?: string;
-  defaultAMPM?: "AM" | "PM";
-  onAddEvent?: (event: Event) => void;
-  onDeleteEvent?: (id: number) => void;
-  disabled?: boolean;
+export interface EventSchedulerProps {
+  events?: SchedulerEvent[];
+  onAdd?: (event: SchedulerEvent) => void;
+  onRemove?: (id: string) => void;
+  sound?: boolean;
 }
 
-const EventScheduler: React.FC<EventSchedulerProps> = ({
-  defaultEvents = [],
-  defaultTitle = "",
-  defaultDate,
-  defaultHour = "12",
-  defaultMinute = "00",
-  defaultAMPM = "AM",
-  onAddEvent,
-  onDeleteEvent,
-  disabled = false,
-}) => {
-  const [date, setDate] = React.useState<Date | undefined>(defaultDate);
-  const [hour, setHour] = React.useState(defaultHour);
-  const [minute, setMinute] = React.useState(defaultMinute);
-  const [ampm, setAmpm] = React.useState<"AM" | "PM">(defaultAMPM);
-  const [title, setTitle] = React.useState(defaultTitle);
-  const [events, setEvents] = React.useState<Event[]>(defaultEvents);
+/* ── Constants ── */
 
-  const handleAmpmChange = (value: string) => {
-    setAmpm(value as "AM" | "PM");
-  };
+const HOURS = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
+const MINUTES = [0, 15, 30, 45];
 
-  const selectedDateTime = React.useMemo(() => {
-    if (!date) return null;
-    const d = new Date(date);
-    let h = parseInt(hour);
-    if (ampm === "PM" && h < 12) h += 12;
-    if (ampm === "AM" && h === 12) h = 0;
-    d.setHours(h, parseInt(minute), 0, 0);
-    return d;
-  }, [date, hour, minute, ampm]);
+/* ── Helpers ── */
 
-  const handleAddEvent = () => {
-    if (!title || !selectedDateTime) return;
-    const newEvent: Event = { id: Date.now(), title, date: selectedDateTime };
-    setEvents((prev) => [...prev, newEvent]);
-    onAddEvent?.(newEvent);
-    setTitle(defaultTitle);
-    setDate(defaultDate);
-    setHour(defaultHour);
-    setMinute(defaultMinute);
-    setAmpm(defaultAMPM);
-  };
+function fmtHour(h: number): string {
+  if (h === 0 || h === 12) return "12";
+  return h > 12 ? String(h - 12) : String(h);
+}
 
-  const handleDeleteEvent = (id: number) => {
-    setEvents((prev) => prev.filter((ev) => ev.id !== id));
-    onDeleteEvent?.(id);
-  };
+function fmtPeriod(h: number): string {
+  return h >= 12 ? "pm" : "am";
+}
+
+function fmtTime(h: number, m: number): string {
+  return `${fmtHour(h)}:${String(m).padStart(2, "0")} ${fmtPeriod(h)}`;
+}
+
+function sortKey(e: SchedulerEvent): number {
+  return e.hour * 60 + e.minute;
+}
+
+/* ── Audio ── */
+
+let _ctx: AudioContext | null = null;
+let _buf: AudioBuffer | null = null;
+
+function audioCtx() {
+  if (!_ctx) {
+    _ctx = new (window.AudioContext ||
+      (window as unknown as { webkitAudioContext: typeof AudioContext })
+        .webkitAudioContext)();
+  }
+  if (_ctx.state === "suspended") _ctx.resume();
+  return _ctx;
+}
+
+function ensureBuf(ac: AudioContext): AudioBuffer {
+  if (_buf && _buf.sampleRate === ac.sampleRate) return _buf;
+  const rate = ac.sampleRate;
+  const len = Math.floor(rate * 0.003);
+  const buf = ac.createBuffer(1, len, rate);
+  const ch = buf.getChannelData(0);
+  for (let i = 0; i < len; i++) {
+    const t = i / len;
+    ch[i] = (Math.random() * 2 - 1) * (1 - t) ** 4;
+  }
+  _buf = buf;
+  return buf;
+}
+
+function playTick(last: React.MutableRefObject<number>) {
+  const now = performance.now();
+  if (now - last.current < 80) return;
+  last.current = now;
+  try {
+    const ac = audioCtx();
+    const buf = ensureBuf(ac);
+    const src = ac.createBufferSource();
+    const gain = ac.createGain();
+    src.buffer = buf;
+    src.playbackRate.value = 1.15;
+    gain.gain.value = 0.03;
+    src.connect(gain);
+    gain.connect(ac.destination);
+    src.start();
+  } catch {
+    /* silent */
+  }
+}
+
+/* ── Component ── */
+
+export function EventScheduler({
+  events: initialEvents = [],
+  onAdd,
+  onRemove,
+  sound = true,
+}: EventSchedulerProps) {
+  const [events, setEvents] = useState<SchedulerEvent[]>(
+    [...initialEvents].sort((a, b) => sortKey(a) - sortKey(b)),
+  );
+  const [title, setTitle] = useState("");
+  const [selHour, setSelHour] = useState(10);
+  const [selMinute, setSelMinute] = useState(0);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const listRef = useRef<HTMLDivElement>(null);
+  const lastSound = useRef(0);
+
+  function tick() {
+    if (sound) playTick(lastSound);
+  }
+
+  function handleAdd() {
+    const trimmed = title.trim();
+    if (!trimmed) return;
+    tick();
+    const ev: SchedulerEvent = {
+      id: `${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
+      title: trimmed,
+      hour: selHour,
+      minute: selMinute,
+    };
+    setEvents([...events, ev].sort((a, b) => sortKey(a) - sortKey(b)));
+    onAdd?.(ev);
+    setTitle("");
+    inputRef.current?.focus();
+    /* Scroll the new event into view after render */
+    requestAnimationFrame(() => {
+      const el = listRef.current?.querySelector(`[data-eid="${ev.id}"]`);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
+    });
+  }
+
+  function handleRemove(id: string) {
+    tick();
+    setEvents((prev) => prev.filter((e) => e.id !== id));
+    onRemove?.(id);
+  }
+
+  const today = new Date();
+  const dateStr = today.toLocaleDateString("en-US", {
+    weekday: "short",
+    month: "short",
+    day: "numeric",
+  });
 
   return (
-    <div className="grid md:grid-cols-2 gap-4">
-      {/* Event Creation */}
-      <Card className="shadow-md rounded-2xl">
-        <CardHeader className="p-3">
-          <CardTitle className="flex items-center gap-2 text-normal">
-            <CalendarDays className="h-5 w-5 text-primary" />
-            Create Event
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="flex flex-col gap-4 p-3">
-          {/* Title */}
-          <div className="flex flex-col gap-2">
-            <label className="text-sm font-medium">Event Title</label>
-            <Input
-              placeholder="Enter event title"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              disabled={disabled}
-            />
-          </div>
+    <div
+      className="rounded-[14px] border border-neutral-200 bg-neutral-50 overflow-hidden dark:border-neutral-800 dark:bg-neutral-950"
+      style={{
+        maxWidth: 380,
+        width: "100%",
+      }}
+    >
+      {/* Header */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "baseline",
+          padding: "20px 20px 14px",
+        }}
+      >
+        <span
+          className="text-neutral-900 dark:text-neutral-100"
+          style={{
+            fontSize: 15,
+            fontWeight: 590,
+            letterSpacing: "-0.01em",
+          }}
+        >
+          Today
+        </span>
+        <span
+          className="text-neutral-400 dark:text-neutral-600"
+          style={{
+            fontSize: 12,
+          }}
+        >
+          {dateStr}
+        </span>
+      </div>
 
-          {/* Date Picker */}
-          <div className="flex flex-col gap-1 justify-center">
-            <label className="text-sm font-medium">Date</label>
-            <Popover>
-              <PopoverTrigger asChild>
-                <Button
-                  variant="outline"
-                  className={cn(
-                    "w-full justify-start text-left font-normal",
-                    !date && "text-muted-foreground",
-                  )}
-                  disabled={disabled}
-                >
-                  <CalendarIcon className="mr-2 h-4 w-4" />
-                  {date ? format(date, "PPP") : <span>Pick a date</span>}
-                </Button>
-              </PopoverTrigger>
-              <PopoverContent className="p-4" side="bottom" align="start">
-                <Calendar
-                  mode="single"
-                  selected={date}
-                  onSelect={setDate}
-                  initialFocus
-                  disabled={disabled}
-                />
-              </PopoverContent>
-            </Popover>
-          </div>
-
-          {/* Time Picker */}
-          <div className="flex flex-col gap-2">
-            <label className="text-sm font-medium">Time</label>
-            <div className="flex items-center gap-2">
-              <Clock className="h-5 w-5 text-muted-foreground" />
-              <Select value={hour} onValueChange={setHour} disabled={disabled}>
-                <SelectTrigger className="w-[80px]">
-                  <SelectValue placeholder="HH" />
-                </SelectTrigger>
-                <SelectContent>
-                  {Array.from({ length: 12 }, (_, i) => {
-                    const h = i + 1;
-                    return (
-                      <SelectItem key={h} value={h.toString().padStart(2, "0")}>
-                        {h.toString().padStart(2, "0")}
-                      </SelectItem>
-                    );
-                  })}
-                </SelectContent>
-              </Select>
-
-              <span className="font-semibold">:</span>
-
-              <Select
-                value={minute}
-                onValueChange={setMinute}
-                disabled={disabled}
-              >
-                <SelectTrigger className="w-[80px]">
-                  <SelectValue placeholder="MM" />
-                </SelectTrigger>
-                <SelectContent>
-                  {["00", "15", "30", "45"].map((m) => (
-                    <SelectItem key={m} value={m}>
-                      {m}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-
-              <Select
-                value={ampm}
-                onValueChange={handleAmpmChange}
-                disabled={disabled}
-              >
-                <SelectTrigger className="w-[80px]">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="AM">AM</SelectItem>
-                  <SelectItem value="PM">PM</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-          </div>
-
-          {/* Add Button */}
-          <Button
-            onClick={handleAddEvent}
-            disabled={!title || !selectedDateTime || disabled}
-            className="flex items-center gap-2"
+      {/* Event list */}
+      <div
+        ref={listRef}
+        style={{
+          padding: "0 20px",
+          minHeight: 48,
+          maxHeight: 200,
+          overflowY: "auto",
+          scrollbarWidth: "none",
+          maskImage:
+            "linear-gradient(to bottom, transparent, black 8px, black calc(100% - 8px), transparent)",
+          WebkitMaskImage:
+            "linear-gradient(to bottom, transparent, black 8px, black calc(100% - 8px), transparent)",
+        }}
+      >
+        {events.length === 0 && (
+          <div
+            className="text-neutral-300 dark:text-neutral-700"
+            style={{
+              fontSize: 13,
+              padding: "8px 0 14px",
+            }}
           >
-            <PlusCircle className="h-4 w-4" /> Add Event
-          </Button>
-        </CardContent>
-      </Card>
+            Nothing scheduled
+          </div>
+        )}
 
-      {/* Event List */}
-      <Card className="shadow-md rounded-2xl">
-        <CardHeader>
-          <CardTitle>Scheduled Events</CardTitle>
-        </CardHeader>
-        <CardContent className="flex flex-col gap-3">
-          {events.length === 0 && (
-            <p className="text-sm text-muted-foreground">No events scheduled</p>
-          )}
-          {events.map((ev) => (
-            <div
-              key={ev.id}
-              className="flex justify-between items-center border rounded-lg px-3 py-2"
+        <AnimatePresence mode="popLayout">
+          {events.map((event) => (
+            <motion.div
+              key={event.id}
+              data-eid={event.id}
+              layout
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, x: -16 }}
+              transition={{ type: "spring", damping: 25, stiffness: 350 }}
+              className="border-b border-neutral-100 dark:border-neutral-800/50"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 14,
+                padding: "10px 0",
+              }}
             >
-              <div>
-                <span className="font-medium block">{ev.title}</span>
-                <span className="text-sm text-muted-foreground">
-                  {format(ev.date, "PPP p")}
-                </span>
-              </div>
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => handleDeleteEvent(ev.id)}
-                disabled={disabled}
+              {/* Time */}
+              <span
+                className="text-neutral-400 dark:text-neutral-600"
+                style={{
+                  fontSize: 12,
+                  fontWeight: 500,
+                  minWidth: 58,
+                  flexShrink: 0,
+                  fontVariantNumeric: "tabular-nums",
+                }}
               >
-                <Trash2 className="h-4 w-4 text-red-500" />
-              </Button>
-            </div>
+                {fmtTime(event.hour, event.minute)}
+              </span>
+
+              {/* Title */}
+              <span
+                className="text-neutral-600 dark:text-neutral-400"
+                style={{
+                  fontSize: 13,
+                  fontWeight: 450,
+                  flex: 1,
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                {event.title}
+              </span>
+
+              {/* Delete */}
+              <motion.button
+                whileTap={{ scale: 0.85 }}
+                onClick={() => handleRemove(event.id)}
+                className="text-neutral-200 dark:text-neutral-800 hover:text-red-500 dark:hover:text-red-400"
+                style={{
+                  background: "transparent",
+                  border: "none",
+                  cursor: "pointer",
+                  padding: "2px 0",
+                  fontSize: 14,
+                  lineHeight: 1,
+                  transition: "color 0.15s",
+                }}
+              >
+                ×
+              </motion.button>
+            </motion.div>
           ))}
-        </CardContent>
-      </Card>
+        </AnimatePresence>
+      </div>
+
+      {/* Creation zone */}
+      <div
+        className="border-t border-neutral-200 dark:border-neutral-800"
+        style={{
+          marginTop: 4,
+          padding: "14px 20px 16px",
+        }}
+      >
+        {/* Input row */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 10,
+          }}
+        >
+          <input
+            ref={inputRef}
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                e.preventDefault();
+                handleAdd();
+              }
+            }}
+            placeholder="New event…"
+            className="text-neutral-600 dark:text-neutral-400 placeholder:text-neutral-400 dark:placeholder:text-neutral-600"
+            style={{
+              flex: 1,
+              background: "transparent",
+              border: "none",
+              outline: "none",
+              fontSize: 13,
+              fontWeight: 400,
+              fontFamily: "inherit",
+            }}
+          />
+          <motion.button
+            whileTap={{ scale: 0.9 }}
+            onClick={handleAdd}
+            className={cn(
+              "transition-colors duration-150",
+              title.trim()
+                ? "text-neutral-500 dark:text-neutral-500"
+                : "text-neutral-200 dark:text-neutral-800",
+            )}
+            style={{
+              background: "transparent",
+              border: "none",
+              cursor: title.trim() ? "pointer" : "default",
+              fontSize: 13,
+              fontWeight: 500,
+              padding: "4px 0",
+            }}
+          >
+            Add
+          </motion.button>
+        </div>
+
+        {/* Selected time hint */}
+        <div
+          className="text-neutral-300 dark:text-neutral-700"
+          style={{
+            fontSize: 11,
+            marginTop: 10,
+            marginBottom: 6,
+            fontVariantNumeric: "tabular-nums",
+          }}
+        >
+          {fmtTime(selHour, selMinute)}
+        </div>
+
+        {/* Hours */}
+        <div
+          style={{
+            display: "flex",
+            gap: 1,
+            overflowX: "auto",
+            scrollbarWidth: "none",
+          }}
+        >
+          {HOURS.map((h) => (
+            <button
+              key={h}
+              onClick={() => {
+                tick();
+                setSelHour(h);
+              }}
+              className={cn(
+                "transition-colors duration-150",
+                selHour === h
+                  ? "bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300"
+                  : "bg-transparent text-neutral-300 dark:text-neutral-700",
+              )}
+              style={{
+                padding: "5px 7px",
+                borderRadius: 6,
+                fontSize: 11,
+                fontWeight: 500,
+                fontVariantNumeric: "tabular-nums",
+                cursor: "pointer",
+                border: "none",
+                flexShrink: 0,
+                whiteSpace: "nowrap",
+              }}
+            >
+              {fmtHour(h)}
+              <span style={{ fontSize: 9, marginLeft: 1, opacity: 0.6 }}>
+                {fmtPeriod(h)}
+              </span>
+            </button>
+          ))}
+        </div>
+
+        {/* Minutes */}
+        <div
+          style={{
+            display: "flex",
+            gap: 1,
+            marginTop: 3,
+          }}
+        >
+          {MINUTES.map((m) => (
+            <button
+              key={m}
+              onClick={() => {
+                tick();
+                setSelMinute(m);
+              }}
+              className={cn(
+                "transition-colors duration-150",
+                selMinute === m
+                  ? "bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300"
+                  : "bg-transparent text-neutral-300 dark:text-neutral-700",
+              )}
+              style={{
+                padding: "5px 8px",
+                borderRadius: 6,
+                fontSize: 11,
+                fontWeight: 500,
+                fontVariantNumeric: "tabular-nums",
+                cursor: "pointer",
+                border: "none",
+              }}
+            >
+              :{String(m).padStart(2, "0")}
+            </button>
+          ))}
+        </div>
+      </div>
     </div>
   );
-};
+}
 
 export default EventScheduler;

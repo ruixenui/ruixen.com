@@ -3,7 +3,7 @@ export const siteConfig = {
   url: "https://ruixen.com",
   ogImage: "https://ruixen.com/og",
   description:
-    "600+ free, open-source React components built with Tailwind CSS, TypeScript & Framer Motion. Copy-paste into Next.js projects.",
+    "350+ free, open-source React components built with Tailwind CSS, TypeScript & Framer Motion. Copy-paste into Next.js projects.",
   links: {
     twitter: "https://twitter.com/ruixen_ui",
     discord: "https://discord.gg/bYexWzUa6G",

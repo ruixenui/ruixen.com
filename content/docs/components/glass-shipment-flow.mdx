@@ -1,0 +1,67 @@
+---
+title: Glass Shipment Flow
+date: 2024-12-29
+description: iOS 26 liquid-glass shipment flow diagram with animated travelling-light SVG paths connecting stacked order cards showing origin and destination routes.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="glass-shipment-flow-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/glass-shipment-flow"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="glass-shipment-flow" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import GlassShipmentFlow from "@/components/ruixen/glass-shipment-flow";
+
+export default function App() {
+  return <GlassShipmentFlow />;
+}
+```
+
+## Props
+
+| Prop    | Type            | Default | Description                         |
+| ------- | --------------- | ------- | ----------------------------------- |
+| `style` | `CSSProperties` | -       | Additional styles for the container |
+
+## Features
+
+- **Stacked depth cards** — two frosted-glass layers peeking above each card to create a deck-of-cards depth effect
+- **Status badges** — orange "In Progress" pill with pulsing dot, blue "Delivered" pill with solid dot, monospace order IDs
+- **Price display** — large bold amount with inline percentage change and dollar delta metrics
+- **Route visualization** — orange filled origin dot, solid connecting line, hollow destination dot with full street addresses
+- **Timer pill** — bordered pill with stopwatch icon and countdown in the card footer
+- **Travelling lights** — animated SVG dashes with Gaussian blur glow flowing between the two cards
+- **Spring entrance** — cards rise with smooth deceleration easing

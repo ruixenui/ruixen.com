@@ -1,7 +1,7 @@
 ---
 title: Calendar Twin
 date: 2024-06-01
-description: A dual-view calendar component with month and year selection modes
+description: Dual-month range picker — click start, hover to preview, click end. Continuous band with smart rounding.
 author: ruixen
 published: true
 ---
@@ -42,27 +42,9 @@ npx shadcn@latest add "https://ruixen.com/r/calendar-twin"
 
 ## Props
 
-| Prop        | Type                   | Default        | Description                    |
-| ----------- | ---------------------- | -------------- | ------------------------------ |
-| `value`     | `Date`                 | -              | Currently selected date        |
-| `onChange`  | `(date: Date) => void` | -              | Callback when date is selected |
-| `className` | `string`               | -              | Additional CSS classes         |
-| `yearRange` | `[number, number]`     | `[2000, 2035]` | Range of years to display      |
-
-## Usage
-
-```tsx
-import { CalendarTwin } from "@/components/ui/calendar-twin";
-
-function MyCalendar() {
-  const [selectedDate, setSelectedDate] = React.useState<Date>(new Date());
-
-  return (
-    <CalendarTwin
-      value={selectedDate}
-      onChange={setSelectedDate}
-      yearRange={[2020, 2030]}
-    />
-  );
-}
-```
+| Prop            | Type                                                   | Default | Description                         |
+| --------------- | ------------------------------------------------------ | ------- | ----------------------------------- |
+| `defaultStart`  | `string`                                               | -       | Initial range start in "YYYY-MM-DD" |
+| `defaultEnd`    | `string`                                               | -       | Initial range end in "YYYY-MM-DD"   |
+| `onRangeChange` | `(start: string \| null, end: string \| null) => void` | -       | Callback when the range changes     |
+| `sound`         | `boolean`                                              | `true`  | Enable soft tick on interactions    |

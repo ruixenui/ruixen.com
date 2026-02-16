@@ -42,7 +42,7 @@ export default async function PromoSection() {
       aria-label="Ruixen UI Components and Blogs"
     >
       <h2 className="text-xl md:text-2xl font-semibold leading-tight">
-        Explore 300+ free components and website templates
+        Explore 350+ free components and website templates
       </h2>
 
       <p className="text-base md:text-md max-w-xl">

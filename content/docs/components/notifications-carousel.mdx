@@ -1,6 +1,6 @@
 ---
 title: Notifications Carousel
-description: A carousel-style notification component that displays one notification at a time with navigation controls.
+description: Vertical drum carousel with 3D cylinder rotation, proximity brightness, and spring snap.
 component: true
 ---
 
@@ -29,7 +29,7 @@ npx ruixenui@latest add "https://ruixen.com/r/notifications-carousel"
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install lucide-react
+npm install motion
 ```
 
 <Step>Copy and paste the following code into your project.</Step>
@@ -46,72 +46,39 @@ npm install lucide-react
 
 ## Props
 
-| Prop        | Type                                     | Default                | Description                 |
-| ----------- | ---------------------------------------- | ---------------------- | --------------------------- |
-| `items`     | `NotificationItem[]`                     | `defaultNotifications` | Array of notification items |
-| `placement` | `"top" \| "bottom" \| "left" \| "right"` | `"bottom"`             | Popover placement position  |
+| Prop    | Type              | Default         | Description                    |
+| ------- | ----------------- | --------------- | ------------------------------ |
+| `items` | `CarouselItem[]`  | `DEFAULT_ITEMS` | Array of notification items    |
+| `sound` | `boolean`         | `true`          | Enable detent click on scroll  |
 
-## NotificationItem Interface
+## CarouselItem Interface
 
 ```tsx
-interface NotificationItem {
+interface CarouselItem {
   id: string;
   title: string;
-  description: string;
+  body: string;
   time: string;
 }
 ```
 
 ## Features
 
-- **Carousel Navigation**: Navigate through notifications one at a time
-- **Smooth Transitions**: Smooth animation between notifications
-- **Navigation Controls**: Previous and next buttons for easy navigation
-- **Emoji Support**: Rich emoji support in notification titles
-- **Placement Options**: Choose where the popover appears
-- **Responsive Design**: Works well on different screen sizes
+- **3D Cylinder Rotation**: Notifications arranged on a vertical cylinder with perspective projection
+- **Proximity Brightness**: Center item is bright and bold, adjacent items fade with distance
+- **Scroll & Drag**: Vertical drag or scroll wheel to rotate through notifications
+- **Spring Snap**: Snaps to nearest notification with spring physics on release
+- **Rubber-Band Overscroll**: Diminishing drag resistance at list boundaries
+- **CSS Mask Fading**: Edge items fade to transparent via mask-image
+- **Detent Clicks**: Audio tick on each notification crossing
+- **Counter**: Shows current position relative to total
 
 ## Usage
 
 ```tsx
-import NotificationsCarousel from "@/components/ui/notifications-carousel";
+import { NotificationsCarousel } from "@/components/ruixen/notifications-carousel";
 
 export default function Example() {
-  const notifications = [
-    {
-      id: "1",
-      title: "🎉 Welcome",
-      description: "Thanks for checking out the carousel notifications!",
-      time: "just now",
-    },
-    {
-      id: "2",
-      title: "⚡ System Update",
-      description: "A new feature has been rolled out to your account.",
-      time: "1h ago",
-    },
-    {
-      id: "3",
-      title: "⏰ Reminder",
-      description: "Don't forget to complete your profile setup.",
-      time: "3h ago",
-    },
-    {
-      id: "4",
-      title: "📊 Weekly Report",
-      description: "Your weekly report is now available.",
-      time: "1d ago",
-    },
-  ];
-
-  return (
-    <div className="p-6">
-      {/* Default carousel */}
-      <NotificationsCarousel />
-
-      {/* Custom notifications */}
-      <NotificationsCarousel items={notifications} placement="top" />
-    </div>
-  );
+  return <NotificationsCarousel />;
 }
 ```

@@ -1,172 +1,504 @@
 "use client";
 
-import * as React from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useRef, useState, useCallback } from "react";
+import { motion, AnimatePresence } from "motion/react";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import { addMonths, format, startOfYear } from "date-fns";
 
-interface CalendarTwinProps {
-  value?: Date;
-  onChange?: (date: Date) => void;
-  className?: string;
-  yearRange?: [number, number]; // [start, end] years
+/**
+ * Calendar Twin — dual-month range picker.
+ *
+ * Two months sit side by side. Click a day to start
+ * a range, hover to preview, click again to confirm.
+ * A continuous band connects start to end — rounding
+ * at row edges, brightening at endpoints.
+ *
+ * The band IS the selection.
+ */
+
+/* ── Types ── */
+
+export interface CalendarTwinProps {
+  defaultStart?: string;
+  defaultEnd?: string;
+  onRangeChange?: (start: string | null, end: string | null) => void;
+  sound?: boolean;
 }
 
+/* ── Constants ── */
+
+const CELL = 36;
+const DOW = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"];
+
+/* ── Helpers ── */
+
+function pad2(n: number): string {
+  return String(n).padStart(2, "0");
+}
+
+function toKey(y: number, m: number, d: number): string {
+  return `${y}-${pad2(m + 1)}-${pad2(d)}`;
+}
+
+function parseKey(key: string): [number, number, number] {
+  const [y, m, d] = key.split("-").map(Number);
+  return [y, m - 1, d];
+}
+
+function formatDate(key: string): string {
+  const [y, m, d] = parseKey(key);
+  return new Date(y, m, d).toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+  });
+}
+
+function daysBetween(a: string, b: string): number {
+  const [ay, am, ad] = parseKey(a);
+  const [by, bm, bd] = parseKey(b);
+  const da = new Date(ay, am, ad);
+  const db = new Date(by, bm, bd);
+  return Math.round((db.getTime() - da.getTime()) / 86400000) + 1;
+}
+
+function ordered(a: string, b: string): [string, string] {
+  return a <= b ? [a, b] : [b, a];
+}
+
+/* ── Audio ── */
+
+let _ctx: AudioContext | null = null;
+let _buf: AudioBuffer | null = null;
+
+function audioCtx() {
+  if (!_ctx) {
+    _ctx = new (window.AudioContext ||
+      (window as unknown as { webkitAudioContext: typeof AudioContext })
+        .webkitAudioContext)();
+  }
+  if (_ctx.state === "suspended") _ctx.resume();
+  return _ctx;
+}
+
+function ensureBuf(ac: AudioContext): AudioBuffer {
+  if (_buf && _buf.sampleRate === ac.sampleRate) return _buf;
+  const rate = ac.sampleRate;
+  const len = Math.floor(rate * 0.003);
+  const buf = ac.createBuffer(1, len, rate);
+  const ch = buf.getChannelData(0);
+  for (let i = 0; i < len; i++) {
+    const t = i / len;
+    ch[i] = (Math.random() * 2 - 1) * (1 - t) ** 4;
+  }
+  _buf = buf;
+  return buf;
+}
+
+function playTick(last: React.MutableRefObject<number>) {
+  const now = performance.now();
+  if (now - last.current < 80) return;
+  last.current = now;
+  try {
+    const ac = audioCtx();
+    const buf = ensureBuf(ac);
+    const src = ac.createBufferSource();
+    const gain = ac.createGain();
+    src.buffer = buf;
+    src.playbackRate.value = 1.15;
+    gain.gain.value = 0.03;
+    src.connect(gain);
+    gain.connect(ac.destination);
+    src.start();
+  } catch {
+    /* silent */
+  }
+}
+
+/* ── Component ── */
+
 export function CalendarTwin({
-  value,
-  onChange,
-  className,
-  yearRange = [2000, 2035],
+  defaultStart,
+  defaultEnd,
+  onRangeChange,
+  sound = true,
 }: CalendarTwinProps) {
-  const [view, setView] = React.useState<"month" | "year">("month");
-  const [current, setCurrent] = React.useState<Date>(value ?? new Date());
+  const [baseMonth, setBaseMonth] = useState(() => new Date().getMonth());
+  const [baseYear, setBaseYear] = useState(() => new Date().getFullYear());
+  const [rangeStart, setRangeStart] = useState<string | null>(
+    defaultStart ?? null,
+  );
+  const [rangeEnd, setRangeEnd] = useState<string | null>(defaultEnd ?? null);
+  const [hoverDate, setHoverDate] = useState<string | null>(null);
+  const [direction, setDirection] = useState(1);
+  const lastSound = useRef(0);
 
-  const handleSelect = (date: Date) => {
-    onChange?.(date);
-  };
+  function tick() {
+    if (sound) playTick(lastSound);
+  }
 
-  const goPrev = () => {
-    if (view === "month") setCurrent(addMonths(current, -1));
-    if (view === "year") {
-      const prev = new Date(current);
-      prev.setFullYear(prev.getFullYear() - 12);
-      setCurrent(prev);
+  /* ── Effective range (includes hover preview) ── */
+
+  const isConfirmed = rangeStart !== null && rangeEnd !== null;
+  let effStart: string | null = null;
+  let effEnd: string | null = null;
+
+  if (rangeStart) {
+    if (rangeEnd) {
+      [effStart, effEnd] = ordered(rangeStart, rangeEnd);
+    } else if (hoverDate) {
+      [effStart, effEnd] = ordered(rangeStart, hoverDate);
+    } else {
+      effStart = rangeStart;
     }
-  };
+  }
 
-  const goNext = () => {
-    if (view === "month") setCurrent(addMonths(current, 1));
-    if (view === "year") {
-      const next = new Date(current);
-      next.setFullYear(next.getFullYear() + 12);
-      setCurrent(next);
-    }
-  };
+  /* ── Today ── */
 
-  const renderMonth = (month: Date) => {
-    const start = new Date(month.getFullYear(), month.getMonth(), 1);
-    const end = new Date(month.getFullYear(), month.getMonth() + 1, 0);
-    const days: Date[] = [];
-    for (let i = 1; i <= end.getDate(); i++) {
-      days.push(new Date(month.getFullYear(), month.getMonth(), i));
+  const now = new Date();
+  const todayKey = toKey(now.getFullYear(), now.getMonth(), now.getDate());
+
+  /* ── Day click ── */
+
+  const handleDayClick = useCallback(
+    (dateKey: string) => {
+      tick();
+      if (rangeStart === null || rangeEnd !== null) {
+        setRangeStart(dateKey);
+        setRangeEnd(null);
+        onRangeChange?.(dateKey, null);
+      } else {
+        const [s, e] = ordered(rangeStart, dateKey);
+        setRangeStart(s);
+        setRangeEnd(e);
+        onRangeChange?.(s, e);
+      }
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [rangeStart, rangeEnd, onRangeChange],
+  );
+
+  /* ── Navigation ── */
+
+  function goMonth(delta: number) {
+    tick();
+    setDirection(delta);
+    let m = baseMonth + delta;
+    let y = baseYear;
+    if (m < 0) {
+      m = 11;
+      y--;
+    } else if (m > 11) {
+      m = 0;
+      y++;
     }
+    setBaseMonth(m);
+    setBaseYear(y);
+  }
+
+  /* ── Second month ── */
+
+  let month2 = baseMonth + 1;
+  let year2 = baseYear;
+  if (month2 > 11) {
+    month2 = 0;
+    year2++;
+  }
+
+  /* ── Render a single month grid ── */
+
+  function renderMonth(y: number, m: number) {
+    const daysInMonth = new Date(y, m + 1, 0).getDate();
+    const firstOffset = (new Date(y, m, 1).getDay() + 6) % 7;
+    const monthLabel = new Date(y, m).toLocaleDateString("en-US", {
+      month: "long",
+    });
 
     return (
-      <div className="w-full">
-        <div className="mb-2 text-center text-sm font-medium">
-          {format(month, "MMMM yyyy")}
+      <div>
+        {/* Month name */}
+        <div
+          className="text-neutral-700 dark:text-neutral-300"
+          style={{
+            fontSize: 13,
+            fontWeight: 590,
+            textAlign: "center",
+            marginBottom: 10,
+            letterSpacing: "-0.01em",
+          }}
+        >
+          {monthLabel}
         </div>
-        <div className="grid grid-cols-7 text-xs text-muted-foreground">
-          {["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"].map((d) => (
-            <div key={d} className="h-7 flex items-center justify-center">
+
+        {/* DOW headers */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: `repeat(7, ${CELL}px)`,
+            marginBottom: 4,
+          }}
+        >
+          {DOW.map((d) => (
+            <div
+              key={d}
+              className="text-neutral-300 dark:text-neutral-700"
+              style={{
+                fontSize: 10,
+                fontWeight: 500,
+                textAlign: "center",
+                textTransform: "uppercase",
+                letterSpacing: "0.06em",
+              }}
+            >
               {d}
             </div>
           ))}
         </div>
-        <div className="grid grid-cols-7">
-          {Array.from({ length: start.getDay() }).map((_, i) => (
-            <div key={`empty-${i}`} className="h-9" />
+
+        {/* Day grid — no gap for continuous band */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: `repeat(7, ${CELL}px)`,
+          }}
+        >
+          {/* Leading empties */}
+          {Array.from({ length: firstOffset }).map((_, i) => (
+            <div key={`e-${i}`} style={{ width: CELL, height: CELL }} />
           ))}
-          {days.map((day) => {
-            const isSelected =
-              value && day.toDateString() === value.toDateString();
+
+          {/* Days */}
+          {Array.from({ length: daysInMonth }).map((_, i) => {
+            const d = i + 1;
+            const dateKey = toKey(y, m, d);
+            const col = (firstOffset + d - 1) % 7;
+            const isToday = dateKey === todayKey;
+
+            /* Range logic */
+            const inRange =
+              effStart !== null &&
+              effEnd !== null &&
+              dateKey >= effStart &&
+              dateKey <= effEnd;
+            const isStart = dateKey === effStart;
+            const isEnd = dateKey === effEnd;
+            const isSingle = isStart && isEnd;
+
+            /* Neighbor checks for band rounding */
+            const leftEmpty = col === 0 || d === 1;
+            const rightEmpty = col === 6 || d === daysInMonth;
+            const prevInRange =
+              !leftEmpty &&
+              effStart !== null &&
+              effEnd !== null &&
+              toKey(y, m, d - 1) >= effStart &&
+              toKey(y, m, d - 1) <= effEnd;
+            const nextInRange =
+              !rightEmpty &&
+              effStart !== null &&
+              effEnd !== null &&
+              toKey(y, m, d + 1) >= effStart &&
+              toKey(y, m, d + 1) <= effEnd;
+
+            const roundLeft = inRange && !prevInRange;
+            const roundRight = inRange && !nextInRange;
+
+            /* Radius */
+            const R = "10px";
+            const Z = "0";
+            const radius = isSingle
+              ? R
+              : `${roundLeft ? R : Z} ${roundRight ? R : Z} ${roundRight ? R : Z} ${roundLeft ? R : Z}`;
+
+            /* Text color classes */
+            const textCls =
+              isStart || isEnd
+                ? "text-white dark:text-neutral-950"
+                : inRange
+                  ? "text-neutral-700 dark:text-neutral-300"
+                  : isToday
+                    ? "text-neutral-900 dark:text-neutral-100"
+                    : "text-neutral-400 dark:text-neutral-500";
+
+            const isHov = dateKey === hoverDate && !inRange;
+
+            /* Background classes */
+            const bgCls = inRange
+              ? isStart || isEnd
+                ? "bg-neutral-900 dark:bg-neutral-100"
+                : "bg-neutral-100 dark:bg-neutral-800"
+              : "";
+
             return (
-              <button
-                key={day.toISOString()}
-                onClick={() => handleSelect(day)}
+              <motion.button
+                key={d}
+                whileTap={{ scale: 0.9 }}
+                onClick={() => handleDayClick(dateKey)}
+                onMouseEnter={() => setHoverDate(dateKey)}
+                onMouseLeave={() => setHoverDate(null)}
                 className={cn(
-                  "h-9 w-9 m-0.5 flex items-center justify-center rounded-md text-sm transition-colors",
-                  isSelected
-                    ? "bg-primary text-primary-foreground"
-                    : "hover:bg-accent hover:text-foreground",
+                  "border-none transition-colors duration-100",
+                  bgCls,
+                  !inRange && "hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-[10px]",
                 )}
+                style={{
+                  width: CELL,
+                  height: CELL,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  cursor: "pointer",
+                  padding: 0,
+                  position: "relative",
+                  borderRadius: inRange ? radius : undefined,
+                }}
               >
-                {day.getDate()}
-              </button>
+                <span
+                  className={cn(
+                    "relative z-[1] text-[13px] tabular-nums transition-colors duration-100",
+                    isHov ? "text-neutral-600 dark:text-neutral-400" : textCls,
+                  )}
+                  style={{
+                    fontWeight:
+                      isStart || isEnd || isToday ? 650 : inRange ? 500 : 400,
+                    lineHeight: 1,
+                  }}
+                >
+                  {d}
+                </span>
+              </motion.button>
             );
           })}
         </div>
       </div>
     );
-  };
+  }
 
-  const renderYearGrid = () => {
-    const currentYear = current.getFullYear();
-    const start = Math.max(yearRange[0], currentYear - (currentYear % 12));
-    const years = Array.from({ length: 12 }, (_, i) => start + i);
+  /* ── Range label ── */
 
-    return (
-      <div className="p-2">
-        <div className="grid grid-cols-3 gap-2">
-          {years.map((y) => (
-            <button
-              key={y}
-              onClick={() => {
-                const newDate = startOfYear(current);
-                newDate.setFullYear(y);
-                setCurrent(newDate);
-                setView("month");
-              }}
-              className={cn(
-                "h-10 rounded-md text-sm font-medium transition-colors",
-                y === currentYear
-                  ? "bg-primary text-primary-foreground"
-                  : "hover:bg-accent hover:text-foreground",
-              )}
-            >
-              {y}
-            </button>
-          ))}
-        </div>
-      </div>
-    );
-  };
+  const rangeLabel = (() => {
+    if (effStart && effEnd && effStart !== effEnd) {
+      const count = daysBetween(effStart, effEnd);
+      return `${formatDate(effStart)} – ${formatDate(effEnd)}  ·  ${count} day${count !== 1 ? "s" : ""}`;
+    }
+    if (effStart) {
+      return isConfirmed
+        ? formatDate(effStart)
+        : `${formatDate(effStart)} — select end`;
+    }
+    return null;
+  })();
 
   return (
     <div
-      className={cn(
-        "rounded-lg border bg-background p-3 w-[600px] mx-auto",
-        className,
-      )}
+      className="bg-neutral-50 dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-[20px] overflow-hidden w-fit"
     >
-      <div className="flex items-center justify-between mb-2">
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={goPrev}
-          className="h-8 w-8"
+      {/* Header */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          padding: "22px 24px 14px",
+        }}
+      >
+        <motion.button
+          whileTap={{ scale: 0.85 }}
+          onClick={() => goMonth(-1)}
+          className="text-neutral-400 dark:text-neutral-600 hover:text-neutral-600 dark:hover:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors duration-150"
+          style={{
+            background: "transparent",
+            border: "none",
+            cursor: "pointer",
+            fontSize: 16,
+            lineHeight: 1,
+            padding: "6px 10px",
+            borderRadius: 8,
+          }}
         >
-          <ChevronLeft className="h-4 w-4" />
-        </Button>
+          ‹
+        </motion.button>
 
-        <button
-          onClick={() => setView(view === "month" ? "year" : "month")}
-          className="text-sm font-semibold hover:underline"
+        <span
+          className="text-neutral-900 dark:text-neutral-100"
+          style={{
+            fontSize: 15,
+            fontWeight: 590,
+            letterSpacing: "-0.01em",
+          }}
         >
-          {view === "month"
-            ? format(current, "MMMM yyyy")
-            : `${current.getFullYear()}`}
-        </button>
+          {baseYear}
+        </span>
 
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={goNext}
-          className="h-8 w-8"
+        <motion.button
+          whileTap={{ scale: 0.85 }}
+          onClick={() => goMonth(1)}
+          className="text-neutral-400 dark:text-neutral-600 hover:text-neutral-600 dark:hover:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors duration-150"
+          style={{
+            background: "transparent",
+            border: "none",
+            cursor: "pointer",
+            fontSize: 16,
+            lineHeight: 1,
+            padding: "6px 10px",
+            borderRadius: 8,
+          }}
         >
-          <ChevronRight className="h-4 w-4" />
-        </Button>
+          ›
+        </motion.button>
       </div>
 
-      {view === "month" ? (
-        <div className="flex gap-6">
-          {renderMonth(current)}
-          {renderMonth(addMonths(current, 1))}
-        </div>
-      ) : (
-        renderYearGrid()
-      )}
+      {/* Twin grids */}
+      <div style={{ padding: "0 24px 16px" }}>
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.div
+            key={`${baseYear}-${baseMonth}`}
+            initial={{ opacity: 0, x: direction > 0 ? 12 : -12 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: direction > 0 ? -12 : 12 }}
+            transition={{ duration: 0.18, ease: "easeOut" }}
+            style={{
+              display: "flex",
+              gap: 24,
+            }}
+          >
+            {renderMonth(baseYear, baseMonth)}
+            {renderMonth(year2, month2)}
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* Range info */}
+      <AnimatePresence>
+        {rangeLabel && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+            style={{ overflow: "hidden" }}
+          >
+            <div
+              className={cn(
+                "border-t border-neutral-100 dark:border-neutral-800/50",
+                isConfirmed
+                  ? "text-neutral-500 dark:text-neutral-500"
+                  : "text-neutral-400 dark:text-neutral-600",
+              )}
+              style={{
+                padding: "12px 24px 14px",
+                fontSize: 12,
+                fontWeight: 450,
+                textAlign: "center",
+                fontVariantNumeric: "tabular-nums",
+                letterSpacing: "-0.005em",
+              }}
+            >
+              {rangeLabel}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
+
+export default CalendarTwin;

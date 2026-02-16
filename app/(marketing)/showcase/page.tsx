@@ -81,18 +81,6 @@ const showcaseItems: ShowcaseItem[] = [
 
   // Hero Sections
   {
-    id: "aurora-hero-section",
-    title: "Aurora Hero Section",
-    imagePath: "hero-sections/aurora-hero-section",
-    href: "/docs/components/aurora-hero-section",
-  },
-  {
-    id: "spectrum-hero-section",
-    title: "Spectrum Hero Section",
-    imagePath: "hero-sections/spectrum-hero-section",
-    href: "/docs/components/spectrum-hero-section",
-  },
-  {
     id: "gradient-hero-showcase",
     title: "Gradient Hero Showcase",
     imagePath: "hero-sections/gradient-hero-showcase",
@@ -103,42 +91,6 @@ const showcaseItems: ShowcaseItem[] = [
     title: "Card Carousel Hero",
     imagePath: "hero-sections/card-carousel-hero",
     href: "/docs/components/card-carousel-hero",
-  },
-  {
-    id: "hero-section-glass-web",
-    title: "Hero Glass Web",
-    imagePath: "hero-sections/hero-section-glass-web",
-    href: "/docs/components/hero-section-glass-web",
-  },
-  {
-    id: "aurora-hero-section",
-    title: "Aurora Hero Section",
-    imagePath: "hero-sections/aurora-hero-section",
-    href: "/docs/components/aurora-hero-section",
-  },
-  {
-    id: "spectrum-hero-section",
-    title: "Spectrum Hero Section",
-    imagePath: "hero-sections/spectrum-hero-section",
-    href: "/docs/components/spectrum-hero-section",
-  },
-  {
-    id: "gradient-hero-showcase",
-    title: "Gradient Hero Showcase",
-    imagePath: "hero-sections/gradient-hero-showcase",
-    href: "/docs/components/gradient-hero-showcase",
-  },
-  {
-    id: "card-carousel-hero",
-    title: "Card Carousel Hero",
-    imagePath: "hero-sections/card-carousel-hero",
-    href: "/docs/components/card-carousel-hero",
-  },
-  {
-    id: "hero-section-glass-web",
-    title: "Hero Glass Web",
-    imagePath: "hero-sections/hero-section-glass-web",
-    href: "/docs/components/hero-section-glass-web",
   },
 
   // Docks
@@ -670,7 +622,7 @@ export default function ShowcasePage() {
                 <span className="absolute inline-flex size-full animate-ping rounded-full bg-green-400 opacity-75" />
                 <span className="relative inline-flex size-2 rounded-full bg-green-500" />
               </span>
-              <span className="font-semibold">450+ Components</span>
+              <span className="font-semibold">350+ Components</span>
               <span className="text-muted-foreground">•</span>
               <span className="text-muted-foreground">Trusted by</span>
               <span className="font-semibold">2,500+ devs</span>

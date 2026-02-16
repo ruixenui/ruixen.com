@@ -2,3 +2,5 @@ yarn.lock
 node_modules
 .next
 .content-collections
+# Prettier MDX parser bug: non-idempotent trailing newlines after raw JSX
+content/blog/best-nextjs-ui-libraries-templates-2025.mdx

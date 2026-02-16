@@ -4,13 +4,8 @@ import VisualizerButton from "@/registry/ruixenui/visualizer-button";
 
 export default function VisualizerButtonDemo() {
   return (
-    <div className="flex min-h-[350px] w-full flex-col items-center justify-center gap-4 p-8">
+    <div className="flex items-center justify-center min-h-[400px] gap-4">
       <VisualizerButton audioSrc="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" />
-      <VisualizerButton
-        audioSrc="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
-        bars={18}
-        height={24}
-      />
     </div>
   );
 }

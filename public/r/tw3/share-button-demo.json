@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "share-button-demo",
+  "type": "registry:example",
+  "title": "Share Button Demo",
+  "description": "Example showing a morphing share button with choreographed phase transitions.",
+  "registryDependencies": [
+    "https://ruixen.com/r/share-button"
+  ],
+  "files": [
+    {
+      "path": "registry/example/share-button-demo.tsx",
+      "content": "import { ShareButton } from \"@/registry/ruixenui/share-button\";\n\nexport default function ShareButtonDemo() {\n  return (\n    <div className=\"flex min-h-[200px] w-full items-center justify-center\">\n      <ShareButton />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/share-button-demo.tsx"
+    }
+  ]
+}

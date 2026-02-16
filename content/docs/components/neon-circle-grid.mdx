@@ -1,0 +1,55 @@
+---
+title: Neon Circle Grid
+date: 2024-06-01
+description: A decorative SVG background of neon donut-ring circles with directional fade and colour blending.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="neon-circle-grid-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/neon-circle-grid"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="neon-circle-grid" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop          | Type                                                         | Default     | Description                                        |
+| ------------- | ------------------------------------------------------------ | ----------- | -------------------------------------------------- |
+| `outerRadius` | `number`                                                     | `9`         | Outer radius of each donut circle                  |
+| `innerRadius` | `number`                                                     | `3.5`       | Inner radius (the hole) of each donut              |
+| `gap`         | `number`                                                     | `20`        | Center-to-center spacing between circles           |
+| `color`       | `string`                                                     | `"#3ECF8E"` | Colour on the dark / entering side of the fade     |
+| `colorBright` | `string`                                                     | `"#D6E8D0"` | Colour on the bright / exiting side                |
+| `fadeFrom`    | `"left" \| "right" \| "top-left" \| "top-right" \| "center"` | `"right"`   | Which direction the brightness fades from          |
+| `fadeStart`   | `number`                                                     | `0`         | 0-1 — how much stays fully dark before fade begins |
+| `colorBlend`  | `number`                                                     | `0.45`      | 0-1 — where the bright colour starts blending in   |
+| `className`   | `string`                                                     | -           | Additional CSS classes                             |

@@ -1,26 +1,9 @@
-"use client";
-
-import { useState } from "react";
 import PasswordField from "@/registry/ruixenui/password-field";
 
-export default function PasswordDemoPage() {
-  const [password, setPassword] = useState("");
-
+export default function PasswordFieldDemo() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-12 gap-6 space-y-8">
-      <h1 className="text-2xl font-bold">Password Field Demo</h1>
-
-      <PasswordField
-        label="Your Secure Password"
-        placeholder="Enter password"
-        allowGenerate={true}
-        showChecklist={true}
-      />
-
-      <div className="w-full max-w-md p-4 rounded-xl border bg-white dark:bg-black shadow-md">
-        <h2 className="text-lg font-medium mb-2">Current Password Value:</h2>
-        <p className="text-sm text-muted-foreground">{password || "—"}</p>
-      </div>
+    <div className="flex items-center justify-center min-h-[400px]">
+      <PasswordField />
     </div>
   );
 }

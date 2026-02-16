@@ -1,0 +1,56 @@
+---
+title: Scroll Ruler
+date: 2024-06-01
+description: A ruler-style input for fractional values — scroll or drag to scrub, spring-animated snapping, gradient-masked edges.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="scroll-ruler-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/scroll-ruler"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="scroll-ruler" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop            | Type                      | Default | Description                                          |
+| --------------- | ------------------------- | ------- | ---------------------------------------------------- |
+| `min`           | `number`                  | `-90`   | Minimum value                                        |
+| `max`           | `number`                  | `90`    | Maximum value                                        |
+| `step`          | `number`                  | `1`     | Step increment                                       |
+| `value`         | `number`                  | -       | Controlled value (use with `onChange`)               |
+| `defaultValue`  | `number`                  | `0`     | Initial value for uncontrolled mode                  |
+| `suffix`        | `string`                  | `"°"`   | Unit suffix displayed after the value                |
+| `sound`         | `boolean`                 | `true`  | Enable mechanical tick sounds on scrub               |
+| `labelInterval` | `number`                  | `10`    | Interval for labeled ticks (largest, with numbers)   |
+| `majorInterval` | `number`                  | `5`     | Interval for major ticks (medium height, no numbers) |
+| `onChange`      | `(value: number) => void` | -       | Callback fired when the value changes                |

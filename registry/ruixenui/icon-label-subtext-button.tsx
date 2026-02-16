@@ -1,155 +1,156 @@
-import React from "react";
-import { Badge } from "@/components/ui/badge";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { cn } from "@/lib/utils";
-import { DownloadCloud, Loader2, Check } from "lucide-react";
+"use client";
 
-/**
- * IconLabelSubtextButton
- *
- * A compact, accessible, and highly re-usable button for actions that
- * need an icon, a strong primary label and a smaller contextual subtext.
- * Built with shadcn/ui primitives and Tailwind. Includes built-in
- * loading & success states, an optional badge, and an optional tooltip.
- */
+import * as React from "react";
+import { motion } from "motion/react";
 
-type Variant = "default" | "ghost" | "outline";
-type Size = "sm" | "md" | "lg";
+/* ── sound ── */
+let _a: AudioContext, _b: AudioBuffer;
+const tick = () => {
+  if (typeof window === "undefined") return;
+  if (!_a) {
+    _a = new AudioContext();
+    _b = _a.createBuffer(1, (_a.sampleRate * 0.003) | 0, _a.sampleRate);
+    const d = _b.getChannelData(0);
+    for (let i = 0; i < d.length; i++)
+      d[i] = (Math.random() * 2 - 1) * (1 - i / d.length) ** 4;
+  }
+  const s = _a.createBufferSource();
+  s.buffer = _b;
+  const g = _a.createGain();
+  g.gain.value = 0.08;
+  s.connect(g).connect(_a.destination);
+  s.start();
+};
 
-export interface IconLabelSubtextButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  icon?: React.ReactNode; // preferred: lucide-react icon
+/* ── theme ── */
+const CSS = `
+.il{
+  --il-glass:linear-gradient(180deg,rgba(255,255,255,0.78),rgba(255,255,255,0.62));
+  --il-border:rgba(0,0,0,0.06);
+  --il-shadow:0 0 1px rgba(0,0,0,0.04),0 2px 8px rgba(0,0,0,0.04),inset 0 1px 0 rgba(255,255,255,0.8);
+  --il-hi:rgba(0,0,0,0.88);
+  --il-dim:rgba(0,0,0,0.42);
+  --il-icon-bg:rgba(0,0,0,0.04)
+}
+.dark .il,[data-theme="dark"] .il{
+  --il-glass:linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02));
+  --il-border:rgba(255,255,255,0.07);
+  --il-shadow:0 1px 3px rgba(0,0,0,0.08),inset 0 1px 0 rgba(255,255,255,0.04);
+  --il-hi:rgba(255,255,255,0.88);
+  --il-dim:rgba(255,255,255,0.28);
+  --il-icon-bg:rgba(255,255,255,0.06)
+}`;
+
+/* ── component ── */
+export interface IconLabelSubtextButtonProps {
+  icon?: React.ReactNode;
   label: string;
   subtext?: string;
-  badge?: string | number; // small badge shown top-right
-  tooltip?: string; // optional tooltip content
-  variant?: Variant;
-  size?: Size;
-  loading?: boolean;
-  success?: boolean; // briefly show success icon instead of provided icon
-}
-
-function sizeClasses(size: Size) {
-  switch (size) {
-    case "sm":
-      return {
-        padding: "px-3 py-2",
-        icon: "w-4 h-4",
-        label: "text-sm",
-        subtext: "text-xs",
-      };
-    case "lg":
-      return {
-        padding: "px-5 py-3",
-        icon: "w-6 h-6",
-        label: "text-base",
-        subtext: "text-sm",
-      };
-    case "md":
-    default:
-      return {
-        padding: "px-4 py-2.5",
-        icon: "w-5 h-5",
-        label: "text-sm font-medium",
-        subtext: "text-xs",
-      };
-  }
-}
-
-function variantClasses(variant: Variant) {
-  switch (variant) {
-    case "ghost":
-      return "bg-transparent hover:bg-muted/50 border-transparent";
-    case "outline":
-      return "bg-transparent border border-border hover:bg-muted";
-    case "default":
-    default:
-      return "bg-primary text-primary-foreground hover:bg-primary/90";
-  }
+  onClick?: () => void;
+  sound?: boolean;
+  style?: React.CSSProperties;
 }
 
 const IconLabelSubtextButton: React.FC<IconLabelSubtextButtonProps> = ({
   icon,
   label,
   subtext,
-  badge,
-  tooltip,
-  variant = "default",
-  size = "md",
-  loading = false,
-  success = false,
-  className,
-  disabled,
-  ...props
+  onClick,
+  sound = true,
+  style,
 }) => {
-  const s = sizeClasses(size);
-  const v = variantClasses(variant);
-
-  const inner = (
-    <button
-      type="button"
-      className={cn(
-        "relative inline-flex items-center gap-3 rounded-2xl transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ring",
-        s.padding,
-        v,
-        className,
-        disabled && "opacity-60 cursor-not-allowed",
-      )}
-      disabled={disabled || loading}
-      {...props}
+  const defaultIcon = (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     >
-      {/* Icon */}
-      <span
-        className={cn("flex items-center justify-center rounded-md", s.icon)}
-        aria-hidden
-      >
-        {loading ? (
-          <Loader2 className={cn(s.icon, "animate-spin")} />
-        ) : success ? (
-          <Check className={cn(s.icon)} />
-        ) : (
-          (icon ?? <DownloadCloud className={cn(s.icon)} />)
-        )}
-      </span>
-
-      {/* Text column */}
-      <span className="flex flex-col items-start leading-none">
-        <span className={cn(s.label)}>{label}</span>
-        {subtext ? (
-          <span className={cn("text-muted-foreground", s.subtext)}>
-            {subtext}
-          </span>
-        ) : null}
-      </span>
-
-      {/* Optional small badge */}
-      {badge !== undefined ? (
-        <span className="absolute -top-2 -right-2">
-          <Badge className="p-1 min-w-[1.25rem] h-5 text-[0.65rem]">
-            {badge}
-          </Badge>
-        </span>
-      ) : null}
-    </button>
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+      <polyline points="7 10 12 15 17 10" />
+      <line x1="12" y1="15" x2="12" y2="3" />
+    </svg>
   );
 
-  if (tooltip) {
-    return (
-      <TooltipProvider>
-        <Tooltip>
-          <TooltipTrigger asChild>{inner}</TooltipTrigger>
-          <TooltipContent side="top">{tooltip}</TooltipContent>
-        </Tooltip>
-      </TooltipProvider>
-    );
-  }
+  return (
+    <>
+      <style dangerouslySetInnerHTML={{ __html: CSS }} />
+      <motion.button
+        className="il"
+        onClick={() => {
+          onClick?.();
+          if (sound) tick();
+        }}
+        whileHover={{ scale: 1.03 }}
+        whileTap={{ scale: 0.97 }}
+        transition={{ type: "spring", stiffness: 500, damping: 30 }}
+        style={{
+          display: "inline-flex",
+          alignItems: "center",
+          gap: 10,
+          padding: "10px 16px",
+          borderRadius: 12,
+          border: "1px solid var(--il-border)",
+          background: "var(--il-glass)",
+          boxShadow: "var(--il-shadow)",
+          backdropFilter: "blur(24px)",
+          WebkitBackdropFilter: "blur(24px)",
+          cursor: "pointer",
+          outline: "none",
+          userSelect: "none",
+          textAlign: "left" as const,
+          ...style,
+        }}
+      >
+        {/* icon circle */}
+        <span
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            width: 32,
+            height: 32,
+            borderRadius: 8,
+            background: "var(--il-icon-bg)",
+            color: "var(--il-hi)",
+            flexShrink: 0,
+          }}
+        >
+          {icon || defaultIcon}
+        </span>
 
-  return inner;
+        {/* text column */}
+        <span style={{ display: "flex", flexDirection: "column", gap: 1 }}>
+          <span
+            style={{
+              fontSize: 13,
+              fontWeight: 500,
+              color: "var(--il-hi)",
+              lineHeight: 1.3,
+            }}
+          >
+            {label}
+          </span>
+          {subtext && (
+            <span
+              style={{
+                fontSize: 11,
+                fontWeight: 400,
+                color: "var(--il-dim)",
+                lineHeight: 1.3,
+              }}
+            >
+              {subtext}
+            </span>
+          )}
+        </span>
+      </motion.button>
+    </>
+  );
 };
 
 export default IconLabelSubtextButton;

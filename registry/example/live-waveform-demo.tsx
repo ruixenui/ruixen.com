@@ -17,7 +17,7 @@ export default function LiveWaveformDemo() {
 
   return (
     <div className="flex min-h-[350px] w-full items-center justify-center p-8">
-      <div className="w-full max-w-lg space-y-4">
+      <div className="w-full max-w-2xl space-y-4">
         <LiveWaveform
           processing={state === "processing"}
           active={state === "active"}

@@ -4,7 +4,6 @@ const footerSections = [
   {
     heading: "Hero Sections",
     links: [
-      { label: "Aurora Hero", href: "/docs/components/aurora-hero-section" },
       {
         label: "Card Carousel Hero",
         href: "/docs/components/card-carousel-hero",
@@ -13,24 +12,12 @@ const footerSections = [
         label: "Gradient Hero",
         href: "/docs/components/gradient-hero-showcase",
       },
-      {
-        label: "Spectrum Hero",
-        href: "/docs/components/spectrum-hero-section",
-      },
       { label: "Video Hero", href: "/docs/components/video-hero-showcase" },
-      {
-        label: "Visionary Hero",
-        href: "/docs/components/visionary-hero-section",
-      },
     ],
   },
   {
     heading: "Interactive Components",
     links: [
-      {
-        label: "Advanced Context Menu",
-        href: "/docs/components/advanced-context-menu",
-      },
       {
         label: "Animated Theme Toggler",
         href: "/docs/components/animated-theme-toggler",
@@ -53,18 +40,9 @@ const footerSections = [
   {
     heading: "Form & Input Components",
     links: [
-      {
-        label: "Password Strength Input",
-        href: "/docs/components/password-strength-input",
-      },
-      { label: "OTP Input", href: "/docs/components/otp-input" },
       { label: "Color Picker", href: "/docs/components/color-picker-input" },
       { label: "Time Picker", href: "/docs/components/better-time-picker" },
       { label: "Tag Input", href: "/docs/components/clean-tag-input" },
-      {
-        label: "Search with Category",
-        href: "/docs/components/search-with-category",
-      },
     ],
   },
   {

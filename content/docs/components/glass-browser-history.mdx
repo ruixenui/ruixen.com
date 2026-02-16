@@ -1,0 +1,67 @@
+---
+title: Glass Browser History
+date: 2024-12-29
+description: iOS 26 liquid-glass browser history carousel with stacked macOS window cards, abstract wireframe pages, drag-to-navigate gesture, and spring-physics depth transitions.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="glass-browser-history-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/glass-browser-history"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="glass-browser-history" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import GlassBrowserHistory from "@/components/ruixen/glass-browser-history";
+
+export default function App() {
+  return <GlassBrowserHistory />;
+}
+```
+
+## Props
+
+| Prop    | Type            | Default | Description                         |
+| ------- | --------------- | ------- | ----------------------------------- |
+| `style` | `CSSProperties` | -       | Additional styles for the container |
+
+## Features
+
+- **Stacked browser windows** — 3 visible cards with cascading depth, scale, and opacity transitions
+- **macOS window chrome** — traffic light dots (colored when active, gray when behind), centered URL bar with lock icon
+- **Abstract wireframes** — 5 unique page types (Dashboard, Repo, Issues, Design, Notes) rendered as minimal skeleton layouts
+- **Drag navigation** — swipe left/right on the front card to cycle through history entries
+- **Tap to advance** — click the front card or dot indicators to navigate
+- **Spring physics** — smooth deceleration easing on all card transitions
+- **Dual theme** — full light and dark mode support with CSS custom properties
