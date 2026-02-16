@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useCallback, useRef, useEffect } from "react";
 import { AnimatePresence, motion } from "motion/react";
+import { cn } from "@/lib/utils";
 
 /* ── constants ── */
 const MONTHS = [
@@ -29,17 +30,6 @@ const WKFULL = [
   "Friday",
   "Saturday",
 ] as const;
-
-/* ── palette ── */
-const P = {
-  border: "rgba(255,255,255,0.06)",
-  dim: "rgba(255,255,255,0.35)",
-  mid: "rgba(255,255,255,0.55)",
-  bright: "rgba(255,255,255,0.92)",
-  pill: "rgba(255,255,255,0.07)",
-  pillH: "rgba(255,255,255,0.12)",
-  accent: "rgba(255,255,255,0.14)",
-} as const;
 
 /* ── date math ── */
 function dim(y: number, m: number) {
@@ -107,6 +97,28 @@ const stagger = (i: number) => ({
   initial: { opacity: 0, y: 6 } as const,
   animate: { opacity: 1, y: 0, transition: { delay: i * 0.018 } } as const,
 });
+
+/* ── className helpers ── */
+const segClass = (active: boolean, hasValue: boolean) =>
+  cn(
+    "border-none font-light cursor-pointer rounded-[10px] transition-[background_0.2s,color_0.15s] font-[inherit]",
+    active
+      ? "bg-neutral-100 dark:bg-neutral-800"
+      : "bg-transparent border-b border-neutral-200 dark:border-neutral-800",
+    hasValue
+      ? "text-neutral-900 dark:text-neutral-100"
+      : "text-neutral-400 dark:text-neutral-600",
+  );
+
+const cellClass = (selected: boolean, hovered: boolean) =>
+  cn(
+    "border-none cursor-pointer rounded-lg transition-[background_0.12s,color_0.12s] text-center font-[inherit]",
+    selected
+      ? "bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-950 font-semibold"
+      : hovered
+        ? "bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 font-normal"
+        : "bg-transparent text-neutral-600 dark:text-neutral-400 font-normal",
+  );
 
 /* ── component ── */
 function CalendarScheduler({
@@ -218,58 +230,25 @@ function CalendarScheduler({
     [tick, year, day],
   );
 
-  /* shared button base */
-  const seg = (active: boolean, hasValue: boolean): React.CSSProperties => ({
-    background: active ? P.pill : "transparent",
-    border: "none",
-    borderBottom: active ? "none" : `1px solid ${P.border}`,
-    color: hasValue ? P.bright : P.dim,
-    fontSize: 28,
-    fontWeight: 300,
-    fontFamily: "inherit",
-    cursor: "pointer",
-    padding: "2px 10px",
-    borderRadius: 10,
-    transition: "background 0.2s, color 0.15s",
-    lineHeight: 1.3,
-  });
-
-  /* picker item base */
-  const cell = (selected: boolean, hovered: boolean): React.CSSProperties => ({
-    background: selected ? P.accent : hovered ? P.pill : "transparent",
-    border: "none",
-    color: selected ? P.bright : hovered ? P.bright : P.mid,
-    fontSize: 13,
-    fontWeight: selected ? 600 : 400,
-    fontFamily: "inherit",
-    cursor: "pointer",
-    padding: "9px 4px",
-    borderRadius: 8,
-    transition: "background 0.12s, color 0.12s",
-    textAlign: "center" as const,
-  });
-
   return (
     <div
       ref={ref}
+      className="select-none overflow-hidden"
       style={{
         padding: "36px 30px 28px",
         width: 380,
         fontFamily:
           "'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif",
-        color: P.bright,
-        userSelect: "none",
-        overflow: "hidden",
       }}
     >
       {/* ── label ── */}
       <div
+        className="text-neutral-400 dark:text-neutral-600"
         style={{
           fontSize: 10,
           fontWeight: 600,
           letterSpacing: "0.1em",
           textTransform: "uppercase" as const,
-          color: P.dim,
           marginBottom: 28,
         }}
       >
@@ -290,7 +269,13 @@ function CalendarScheduler({
         <motion.button
           onClick={() => toggle("month")}
           whileTap={{ scale: 0.97 }}
-          style={seg(open === "month", true)}
+          className={segClass(open === "month", true)}
+          style={{
+            fontSize: 28,
+            fontWeight: 300,
+            padding: "2px 10px",
+            lineHeight: 1.3,
+          }}
         >
           {MONTHS[month]}
         </motion.button>
@@ -299,17 +284,23 @@ function CalendarScheduler({
         <motion.button
           onClick={() => toggle("day")}
           whileTap={{ scale: 0.97 }}
-          style={seg(open === "day", day !== null)}
+          className={segClass(open === "day", day !== null)}
+          style={{
+            fontSize: 28,
+            fontWeight: 300,
+            padding: "2px 10px",
+            lineHeight: 1.3,
+          }}
         >
-          {day !== null ? day : "——"}
+          {day !== null ? day : "\u2014\u2014"}
         </motion.button>
 
         {/* connector */}
         <span
+          className="text-neutral-400 dark:text-neutral-600"
           style={{
             fontSize: 22,
             fontWeight: 300,
-            color: P.dim,
             padding: "0 2px",
           }}
         >
@@ -320,18 +311,24 @@ function CalendarScheduler({
         <motion.button
           onClick={() => toggle("time")}
           whileTap={{ scale: 0.97 }}
-          style={seg(open === "time", timeIdx !== null)}
+          className={segClass(open === "time", timeIdx !== null)}
+          style={{
+            fontSize: 28,
+            fontWeight: 300,
+            padding: "2px 10px",
+            lineHeight: 1.3,
+          }}
         >
-          {timeIdx !== null ? times[timeIdx] : "—:——"}
+          {timeIdx !== null ? times[timeIdx] : "\u2014:\u2014\u2014"}
         </motion.button>
       </div>
 
       {/* ── weekday / year ── */}
       <div
+        className="text-neutral-400 dark:text-neutral-600"
         style={{
           fontSize: 12,
           fontWeight: 400,
-          color: P.dim,
           marginTop: 10,
           letterSpacing: "0.02em",
         }}
@@ -352,10 +349,8 @@ function CalendarScheduler({
             style={{ overflow: "hidden", marginTop: 22 }}
           >
             <div
-              style={{
-                borderTop: `1px solid ${P.border}`,
-                paddingTop: 18,
-              }}
+              className="border-t border-neutral-200 dark:border-neutral-800"
+              style={{ paddingTop: 18 }}
             >
               {/* year nav */}
               <div
@@ -373,19 +368,18 @@ function CalendarScheduler({
                     tick();
                   }}
                   whileTap={{ scale: 0.85 }}
+                  className="bg-none border-none text-neutral-400 dark:text-neutral-600 cursor-pointer font-[inherit]"
                   style={{
-                    background: "none",
-                    border: "none",
-                    color: P.dim,
-                    cursor: "pointer",
                     fontSize: 15,
-                    fontFamily: "inherit",
                     padding: "2px 8px",
                   }}
                 >
-                  ‹
+                  &#8249;
                 </motion.button>
-                <span style={{ fontSize: 12, fontWeight: 500, color: P.mid }}>
+                <span
+                  className="text-neutral-600 dark:text-neutral-400"
+                  style={{ fontSize: 12, fontWeight: 500 }}
+                >
                   {year}
                 </span>
                 <motion.button
@@ -394,17 +388,13 @@ function CalendarScheduler({
                     tick();
                   }}
                   whileTap={{ scale: 0.85 }}
+                  className="bg-none border-none text-neutral-400 dark:text-neutral-600 cursor-pointer font-[inherit]"
                   style={{
-                    background: "none",
-                    border: "none",
-                    color: P.dim,
-                    cursor: "pointer",
                     fontSize: 15,
-                    fontFamily: "inherit",
                     padding: "2px 8px",
                   }}
                 >
-                  ›
+                  &#8250;
                 </motion.button>
               </div>
 
@@ -432,7 +422,11 @@ function CalendarScheduler({
                       onMouseEnter={() => setHovMonth(i)}
                       onMouseLeave={() => setHovMonth(null)}
                       whileTap={{ scale: 0.94 }}
-                      style={cell(sel, !sel && hov)}
+                      className={cellClass(sel, !sel && hov)}
+                      style={{
+                        fontSize: 13,
+                        padding: "9px 4px",
+                      }}
                     >
                       {m.slice(0, 3)}
                     </motion.button>
@@ -454,10 +448,8 @@ function CalendarScheduler({
             style={{ overflow: "hidden", marginTop: 22 }}
           >
             <div
-              style={{
-                borderTop: `1px solid ${P.border}`,
-                paddingTop: 18,
-              }}
+              className="border-t border-neutral-200 dark:border-neutral-800"
+              style={{ paddingTop: 18 }}
             >
               {/* month nav */}
               <div
@@ -472,35 +464,30 @@ function CalendarScheduler({
                 <motion.button
                   onClick={() => shiftMonth(-1)}
                   whileTap={{ scale: 0.85 }}
+                  className="bg-none border-none text-neutral-400 dark:text-neutral-600 cursor-pointer font-[inherit]"
                   style={{
-                    background: "none",
-                    border: "none",
-                    color: P.dim,
-                    cursor: "pointer",
                     fontSize: 15,
-                    fontFamily: "inherit",
                     padding: "2px 8px",
                   }}
                 >
-                  ‹
+                  &#8249;
                 </motion.button>
-                <span style={{ fontSize: 12, fontWeight: 500, color: P.mid }}>
+                <span
+                  className="text-neutral-600 dark:text-neutral-400"
+                  style={{ fontSize: 12, fontWeight: 500 }}
+                >
                   {MONTHS[month]} {year}
                 </span>
                 <motion.button
                   onClick={() => shiftMonth(1)}
                   whileTap={{ scale: 0.85 }}
+                  className="bg-none border-none text-neutral-400 dark:text-neutral-600 cursor-pointer font-[inherit]"
                   style={{
-                    background: "none",
-                    border: "none",
-                    color: P.dim,
-                    cursor: "pointer",
                     fontSize: 15,
-                    fontFamily: "inherit",
                     padding: "2px 8px",
                   }}
                 >
-                  ›
+                  &#8250;
                 </motion.button>
               </div>
 
@@ -516,11 +503,11 @@ function CalendarScheduler({
                 {WK.map((d) => (
                   <div
                     key={d}
+                    className="text-neutral-400 dark:text-neutral-600"
                     style={{
                       textAlign: "center",
                       fontSize: 10,
                       fontWeight: 500,
-                      color: P.dim,
                       padding: 4,
                     }}
                   >
@@ -557,22 +544,26 @@ function CalendarScheduler({
                       onMouseEnter={() => setHovDay(d)}
                       onMouseLeave={() => setHovDay(null)}
                       whileTap={{ scale: 0.88 }}
-                      style={{
-                        ...cell(sel, hov),
-                        fontWeight: sel ? 600 : td ? 600 : 400,
-                        color: sel
-                          ? P.bright
+                      className={cn(
+                        "border-none cursor-pointer rounded-lg transition-[background_0.12s,color_0.12s] text-center font-[inherit] relative",
+                        sel
+                          ? "bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-950 font-semibold"
                           : hov
-                            ? P.bright
-                            : td
-                              ? P.bright
-                              : P.mid,
+                            ? "bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300"
+                            : "bg-transparent",
+                        !sel && !hov && td && "text-neutral-900 dark:text-neutral-100 font-semibold",
+                        !sel && !hov && !td && "text-neutral-600 dark:text-neutral-400 font-normal",
+                      )}
+                      style={{
+                        fontSize: 13,
+                        padding: "9px 4px",
                         position: "relative",
                       }}
                     >
                       {d}
                       {td && !sel && (
                         <span
+                          className="bg-neutral-400 dark:bg-neutral-600"
                           style={{
                             position: "absolute",
                             bottom: 2,
@@ -581,7 +572,6 @@ function CalendarScheduler({
                             width: 3,
                             height: 3,
                             borderRadius: "50%",
-                            background: P.bright,
                           }}
                         />
                       )}
@@ -604,10 +594,8 @@ function CalendarScheduler({
             style={{ overflow: "hidden", marginTop: 22 }}
           >
             <div
-              style={{
-                borderTop: `1px solid ${P.border}`,
-                paddingTop: 18,
-              }}
+              className="border-t border-neutral-200 dark:border-neutral-800"
+              style={{ paddingTop: 18 }}
             >
               {/* period label */}
               <div
@@ -619,10 +607,10 @@ function CalendarScheduler({
                 }}
               >
                 <span
+                  className="text-neutral-400 dark:text-neutral-600"
                   style={{
                     fontSize: 10,
                     fontWeight: 600,
-                    color: P.dim,
                     letterSpacing: "0.06em",
                   }}
                 >
@@ -655,7 +643,11 @@ function CalendarScheduler({
                       onMouseEnter={() => setHovTime(i)}
                       onMouseLeave={() => setHovTime(null)}
                       whileTap={{ scale: 0.94 }}
-                      style={cell(sel, hov)}
+                      className={cellClass(sel, hov)}
+                      style={{
+                        fontSize: 13,
+                        padding: "9px 4px",
+                      }}
                     >
                       {t}
                     </motion.button>
@@ -675,9 +667,9 @@ function CalendarScheduler({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
             transition={{ type: "spring", stiffness: 350, damping: 26 }}
+            className="border-t border-neutral-200 dark:border-neutral-800"
             style={{
               marginTop: 28,
-              borderTop: `1px solid ${P.border}`,
               paddingTop: 20,
               display: "flex",
               justifyContent: "center",
@@ -687,18 +679,13 @@ function CalendarScheduler({
               onClick={confirm}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.96 }}
+              className="bg-neutral-200 dark:bg-neutral-700 text-neutral-900 dark:text-neutral-100 border-none cursor-pointer font-[inherit] hover:scale-[1.02] transition-[background_0.2s]"
               style={{
-                background: P.pillH,
-                border: "none",
-                color: P.bright,
                 fontSize: 13,
                 fontWeight: 500,
-                fontFamily: "inherit",
-                cursor: "pointer",
                 padding: "11px 40px",
                 borderRadius: 12,
                 letterSpacing: "0.04em",
-                transition: "background 0.2s",
               }}
             >
               Confirm

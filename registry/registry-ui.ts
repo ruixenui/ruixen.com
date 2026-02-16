@@ -944,60 +944,13 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "smart-notify-button",
-    type: "registry:ui",
-    title: "Smart Notify Button",
-    description:
-      "iOS 26 liquid-glass button with inline glass toast notification — no external toast library.",
-    dependencies: ["motion"],
-    files: [
-      {
-        path: "registry/ruixenui/smart-notify-button.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/smart-notify-button.tsx",
-      },
-    ],
-  },
-  {
-    name: "notification-badge",
-    type: "registry:ui",
-    title: "Notification Badge",
-    description:
-      "A notification badge component with animated count display and different notification types.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["button"],
-    files: [
-      {
-        path: "registry/ruixenui/notification-badge.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/notification-badge.tsx",
-      },
-    ],
-  },
-  {
-    name: "notifications-popover",
-    type: "registry:ui",
-    title: "Notifications Popover",
-    description:
-      "A dropdown menu component for displaying notifications with different types and read states.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["dropdown-menu"],
-    files: [
-      {
-        path: "registry/ruixenui/notifications-popover.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/notifications-popover.tsx",
-      },
-    ],
-  },
-  {
     name: "notification",
     type: "registry:ui",
     title: "Notification",
     description:
-      "A clean notification popover component with title, description, and timestamp display.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["popover", "card", "badge"],
+      "Spring toast stack with drag-to-dismiss, rubber-band physics, and glass morphism.",
+    dependencies: ["motion"],
+    registryDependencies: [],
     files: [
       {
         path: "registry/ruixenui/notification.tsx",
@@ -1007,45 +960,13 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "notification-alt",
-    type: "registry:ui",
-    title: "Notification Alt",
-    description:
-      "An enhanced notification component with info tooltips, clickable links, and different notification types.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["popover", "badge", "card", "tooltip"],
-    files: [
-      {
-        path: "registry/ruixenui/notification-alt.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/notification-alt.tsx",
-      },
-    ],
-  },
-  {
-    name: "notifications-with-actions",
-    type: "registry:ui",
-    title: "Notifications With Actions",
-    description:
-      "Interactive notification component with swipe-to-reveal actions like archive and delete.",
-    dependencies: ["lucide-react", "framer-motion"],
-    registryDependencies: ["popover", "badge", "card"],
-    files: [
-      {
-        path: "registry/ruixenui/notifications-with-actions.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/notifications-with-actions.tsx",
-      },
-    ],
-  },
-  {
     name: "notifications-carousel",
     type: "registry:ui",
     title: "Notifications Carousel",
     description:
-      "A carousel-style notification component that displays one notification at a time with navigation controls.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["popover", "badge", "card"],
+      "Vertical drum carousel with 3D cylinder rotation, proximity brightness, and spring snap.",
+    dependencies: ["motion"],
+    registryDependencies: [],
     files: [
       {
         path: "registry/ruixenui/notifications-carousel.tsx",
@@ -1055,29 +976,13 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "notification-toggle",
-    type: "registry:ui",
-    title: "Notification Toggle",
-    description:
-      "A versatile notification component that toggles between carousel and list view modes.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["popover", "badge", "card", "button"],
-    files: [
-      {
-        path: "registry/ruixenui/notification-toggle.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/notification-toggle.tsx",
-      },
-    ],
-  },
-  {
     name: "notifications-filter",
     type: "registry:ui",
     title: "Notifications Filter",
     description:
-      "A notification component with category filtering to organize notifications by type.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["popover", "badge", "button"],
+      "Spring pill bar with layoutId sliding indicator and staggered item transitions.",
+    dependencies: ["motion"],
+    registryDependencies: [],
     files: [
       {
         path: "registry/ruixenui/notifications-filter.tsx",
@@ -1098,21 +1003,6 @@ export const ui: Registry["items"] = [
         path: "registry/ruixenui/glass-form.tsx",
         type: "registry:ui",
         target: "components/ruixen/glass-form.tsx",
-      },
-    ],
-  },
-  {
-    name: "cookie-notice",
-    type: "registry:ui",
-    title: "Cookie Notice",
-    description:
-      "A GDPR-compliant cookie consent notice with customizable preferences.",
-    registryDependencies: ["button", "card"],
-    files: [
-      {
-        path: "registry/ruixenui/cookie-notice.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/cookie-notice.tsx",
       },
     ],
   },
@@ -1226,28 +1116,6 @@ export const ui: Registry["items"] = [
         path: "registry/ruixenui/fixed-header-footer-table.tsx",
         type: "registry:ui",
         target: "components/ruixen/fixed-header-footer-table.tsx",
-      },
-    ],
-  },
-  {
-    name: "monthly-heatmap-calendar",
-    type: "registry:ui",
-    title: "Monthly Heatmap Calendar",
-    description: "A monthly calendar with event heatmap visualization.",
-    dependencies: ["date-fns", "lucide-react"],
-    registryDependencies: [
-      "card",
-      "button",
-      "popover",
-      "input",
-      "select",
-      "badge",
-    ],
-    files: [
-      {
-        path: "registry/ruixenui/monthly-heatmap-calendar.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/monthly-heatmap-calendar.tsx",
       },
     ],
   },
@@ -1655,9 +1523,9 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Wheel Pagination",
     description:
-      "Interactive pagination component with mouse wheel support and animated page numbers.",
-    dependencies: ["framer-motion", "lucide-react"],
-    registryDependencies: ["button"],
+      "Vertical drum pagination with scroll wheel navigation, proximity brightness, and spring physics.",
+    dependencies: ["motion"],
+    registryDependencies: [],
     files: [
       {
         path: "registry/ruixenui/wheel-pagination.tsx",
@@ -1671,9 +1539,9 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Scroll Pagination",
     description:
-      "Minimalist pagination with mouse wheel navigation and animated number carousel.",
-    dependencies: ["framer-motion", "lucide-react"],
-    registryDependencies: ["button"],
+      "Minimal flip-counter pagination with direction-aware vertical flip, progress bar, and spring physics.",
+    dependencies: ["motion"],
+    registryDependencies: [],
     files: [
       {
         path: "registry/ruixenui/scroll-pagination.tsx",
@@ -1687,9 +1555,9 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Icon Pagination",
     description:
-      "Pagination component with colorful icon indicators and tooltip labels.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["tooltip", "button"],
+      "Colorful dot pagination with mouse proximity wave effect, cosine falloff lift, and spring physics.",
+    dependencies: ["motion"],
+    registryDependencies: [],
     files: [
       {
         path: "registry/ruixenui/icon-pagination.tsx",
@@ -1703,9 +1571,9 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Gooey Pagination",
     description:
-      "Pagination component with liquid gooey effects using SVG filters.",
-    dependencies: ["framer-motion", "lucide-react"],
-    registryDependencies: ["button"],
+      "Liquid metaball pagination with SVG gooey filter, sliding active indicator, and spring physics.",
+    dependencies: ["motion"],
+    registryDependencies: [],
     files: [
       {
         path: "registry/ruixenui/gooey-pagination.tsx",
@@ -1719,9 +1587,9 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Stack Pagination",
     description:
-      "3D card stack pagination with flip animations and perspective effects.",
-    dependencies: ["framer-motion"],
-    registryDependencies: ["button", "card"],
+      "Physical card stack pagination with depth compression, diminishing scale, and spring physics.",
+    dependencies: ["motion"],
+    registryDependencies: [],
     files: [
       {
         path: "registry/ruixenui/stack-pagination.tsx",
@@ -1751,8 +1619,8 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Morphing Page Dots",
     description:
-      "Pagination dots that morph in width with ripple effects for the active state.",
-    dependencies: ["framer-motion", "lucide-react"],
+      "Morphing pill dots with spring width animation, horizontal drag scrub, and audio ticks.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/morphing-page-dots.tsx",
@@ -1766,9 +1634,9 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Sliding Pagination",
     description:
-      "Pagination component with sliding underline indicator and smart page grouping.",
-    dependencies: ["framer-motion"],
-    registryDependencies: ["button"],
+      "Page numbers with sliding pill indicator, proximity brightness, wheel navigation, and spring physics.",
+    dependencies: ["motion"],
+    registryDependencies: [],
     files: [
       {
         path: "registry/ruixenui/sliding-pagination.tsx",
@@ -1842,70 +1710,6 @@ export const ui: Registry["items"] = [
         path: "registry/ruixenui/morphing-expandable-menu.tsx",
         type: "registry:ui",
         target: "components/ruixen/morphing-expandable-menu.tsx",
-      },
-    ],
-  },
-  {
-    name: "music-equalizer-upload",
-    type: "registry:ui",
-    title: "Music Equalizer Upload",
-    description:
-      "Upload component with animated equalizer bars for audio files.",
-    dependencies: ["framer-motion", "lucide-react"],
-    registryDependencies: ["card", "button"],
-    files: [
-      {
-        path: "registry/ruixenui/music-equalizer-upload.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/music-equalizer-upload.tsx",
-      },
-    ],
-  },
-  {
-    name: "sketchpad-dropzone",
-    type: "registry:ui",
-    title: "Sketchpad Dropzone",
-    description:
-      "Creative dropzone with sketchpad-style grid background and sticky note file cards.",
-    dependencies: ["framer-motion", "lucide-react"],
-    registryDependencies: ["card", "button"],
-    files: [
-      {
-        path: "registry/ruixenui/sketchpad-dropzone.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/sketchpad-dropzone.tsx",
-      },
-    ],
-  },
-  {
-    name: "stacked-cards-upload",
-    type: "registry:ui",
-    title: "Stacked Cards Upload",
-    description:
-      "Upload component with stacked card layout and progress indicators.",
-    dependencies: ["framer-motion", "lucide-react"],
-    registryDependencies: ["card", "button"],
-    files: [
-      {
-        path: "registry/ruixenui/stacked-cards-upload.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/stacked-cards-upload.tsx",
-      },
-    ],
-  },
-  {
-    name: "timeline-upload",
-    type: "registry:ui",
-    title: "Timeline Upload",
-    description:
-      "Upload component with timeline layout showing upload progress and status.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["card", "button", "progress"],
-    files: [
-      {
-        path: "registry/ruixenui/timeline-upload.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/timeline-upload.tsx",
       },
     ],
   },
@@ -2121,21 +1925,6 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "breadcrumb-boxed",
-    type: "registry:ui",
-    title: "Breadcrumb Boxed",
-    description:
-      "Segmented breadcrumb with relief hover and underline wipe animation.",
-    dependencies: [],
-    files: [
-      {
-        path: "registry/ruixenui/breadcrumb-boxed.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/breadcrumb-boxed.tsx",
-      },
-    ],
-  },
-  {
     name: "progress-button",
     type: "registry:ui",
     title: "Progress Button",
@@ -2243,54 +2032,6 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "multi-month-calendar",
-    type: "registry:ui",
-    title: "Multi Month Calendar",
-    description:
-      "A calendar component that displays multiple months with year/month dropdowns and range selection support.",
-    dependencies: ["react-day-picker", "date-fns", "lucide-react"],
-    registryDependencies: ["select"],
-    files: [
-      {
-        path: "registry/ruixenui/multi-month-calendar.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/multi-month-calendar.tsx",
-      },
-    ],
-  },
-  {
-    name: "calendar-with-presets",
-    type: "registry:ui",
-    title: "Calendar With Presets",
-    description:
-      "A customizable calendar component with preset date ranges and flexible styling options.",
-    dependencies: ["react-day-picker", "lucide-react"],
-    registryDependencies: ["button"],
-    files: [
-      {
-        path: "registry/ruixenui/calendar-with-presets.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/calendar-with-presets.tsx",
-      },
-    ],
-  },
-  {
-    name: "universal-date-picker",
-    type: "registry:ui",
-    title: "Universal Date Picker",
-    description:
-      "A versatile date picker with single/range mode toggle, preset shortcuts, and year selector.",
-    dependencies: ["react-day-picker", "date-fns", "lucide-react"],
-    registryDependencies: ["button", "calendar", "label", "card", "popover"],
-    files: [
-      {
-        path: "registry/ruixenui/universal-date-picker.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/universal-date-picker.tsx",
-      },
-    ],
-  },
-  {
     name: "calendar-lume",
     type: "registry:ui",
     title: "Calendar Lume",
@@ -2321,93 +2062,13 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "multi-select-calendar-card",
-    type: "registry:ui",
-    title: "Multi Select Calendar Card",
-    description:
-      "A calendar card that allows selecting multiple dates with badge display and removal.",
-    dependencies: ["date-fns"],
-    registryDependencies: ["calendar", "button", "badge", "card"],
-    files: [
-      {
-        path: "registry/ruixenui/multi-select-calendar-card.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/multi-select-calendar-card.tsx",
-      },
-    ],
-  },
-  {
-    name: "side-panel-multi-calendar",
-    type: "registry:ui",
-    title: "Side Panel Multi Calendar",
-    description:
-      "A multi-select calendar with a side panel showing grouped selected dates by month.",
-    dependencies: ["date-fns"],
-    registryDependencies: ["calendar", "button", "scroll-area", "card"],
-    files: [
-      {
-        path: "registry/ruixenui/side-panel-multi-calendar.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/side-panel-multi-calendar.tsx",
-      },
-    ],
-  },
-  {
-    name: "dropdown-multi-calendar",
-    type: "registry:ui",
-    title: "Dropdown Multi Calendar",
-    description:
-      "A multi-select calendar with year/month dropdowns and badge-based date display.",
-    dependencies: ["date-fns"],
-    registryDependencies: ["calendar", "button", "badge", "card", "select"],
-    files: [
-      {
-        path: "registry/ruixenui/dropdown-multi-calendar.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/dropdown-multi-calendar.tsx",
-      },
-    ],
-  },
-  {
-    name: "dropdown-range-date-picker",
-    type: "registry:ui",
-    title: "Dropdown Range Date Picker",
-    description:
-      "A range date picker with year/month dropdowns in a popover interface.",
-    dependencies: ["date-fns", "lucide-react"],
-    registryDependencies: ["calendar", "button", "popover", "select"],
-    files: [
-      {
-        path: "registry/ruixenui/dropdown-range-date-picker.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/dropdown-range-date-picker.tsx",
-      },
-    ],
-  },
-  {
-    name: "tour-popover",
-    type: "registry:ui",
-    title: "Tour Popover",
-    description:
-      "A guided tour popover with steps, progress tracking, and navigation controls.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["button", "popover", "progress", "separator"],
-    files: [
-      {
-        path: "registry/ruixenui/tour-popover.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/tour-popover.tsx",
-      },
-    ],
-  },
-  {
     name: "notification-inbox-popover",
     type: "registry:ui",
     title: "Notification Inbox Popover",
     description:
-      "A notification inbox popover with tabs, unread counts, and mark as read functionality.",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["badge", "button", "popover", "tabs"],
+      "Wave-hover inbox with cosine proximity effect, mark all read, and glass morphism.",
+    dependencies: ["motion"],
+    registryDependencies: [],
     files: [
       {
         path: "registry/ruixenui/notification-inbox-popover.tsx",
@@ -2663,6 +2324,36 @@ export const ui: Registry["items"] = [
         path: "registry/ruixenui/range-calendar.tsx",
         type: "registry:ui",
         target: "components/ruixen/range-calendar.tsx",
+      },
+    ],
+  },
+  {
+    name: "calendar-wave",
+    type: "registry:ui",
+    title: "Calendar Wave",
+    description:
+      "A calendar where days rise toward your cursor like water — cosine wave ripple, spring physics, shadow depth.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/ruixenui/calendar-wave.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/calendar-wave.tsx",
+      },
+    ],
+  },
+  {
+    name: "calendar-crest",
+    type: "registry:ui",
+    title: "Calendar Crest",
+    description:
+      "Dual-month range picker with physical depth — selected band rises off the surface, endpoints crest highest, proportional shadows.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/ruixenui/calendar-crest.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/calendar-crest.tsx",
       },
     ],
   },
@@ -3217,21 +2908,6 @@ export const ui: Registry["items"] = [
         path: "registry/ruixenui/button-dropdown.tsx",
         type: "registry:ui",
         target: "components/ruixen/button-dropdown.tsx",
-      },
-    ],
-  },
-  {
-    name: "button-file-upload",
-    type: "registry:ui",
-    title: "Button File Upload",
-    description:
-      "iOS 26 liquid-glass upload pill with filename reveal and clear action.",
-    dependencies: ["motion"],
-    files: [
-      {
-        path: "registry/ruixenui/button-file-upload.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/button-file-upload.tsx",
       },
     ],
   },

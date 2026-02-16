@@ -17,7 +17,7 @@ export default function DrumPickerDemo() {
   return (
     <div className="flex min-h-[420px] w-full max-w-sm mx-auto flex-col items-center justify-center gap-2 px-4">
       {/* Formatted time readout */}
-      <span className="text-[28px] font-[580] tracking-[-0.03em] text-white tabular-nums leading-none">
+      <span className="text-[28px] font-[580] tracking-[-0.03em] text-neutral-900 dark:text-white tabular-nums leading-none">
         {hour}
         <span className="text-neutral-600">:</span>
         {minute}{" "}

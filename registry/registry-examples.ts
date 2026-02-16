@@ -772,51 +772,6 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "smart-notify-button-demo",
-    type: "registry:example",
-    title: "Smart Notify Button Demo",
-    description:
-      "Example showing a button component that triggers customizable toast notifications with actions and different types.",
-    registryDependencies: ["https://www.ruixen.com/r/smart-notify-button"],
-    files: [
-      {
-        path: "registry/example/smart-notify-button-demo.tsx",
-        type: "registry:example",
-        target: "components/smart-notify-button-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "notification-badge-demo",
-    type: "registry:example",
-    title: "Notification Badge Demo",
-    description:
-      "Example showing a notification badge component with animated count display and different notification types.",
-    registryDependencies: ["https://www.ruixen.com/r/notification-badge"],
-    files: [
-      {
-        path: "registry/example/notification-badge-demo.tsx",
-        type: "registry:example",
-        target: "components/notification-badge-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "notifications-popover-demo",
-    type: "registry:example",
-    title: "Notifications Popover Demo",
-    description:
-      "Example showing a dropdown menu component for displaying notifications with different types and read states.",
-    registryDependencies: ["https://www.ruixen.com/r/notifications-popover"],
-    files: [
-      {
-        path: "registry/example/notifications-popover-demo.tsx",
-        type: "registry:example",
-        target: "components/notifications-popover-demo.tsx",
-      },
-    ],
-  },
-  {
     name: "notification-demo",
     type: "registry:example",
     title: "Notification Demo",
@@ -832,38 +787,6 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "notification-alt-demo",
-    type: "registry:example",
-    title: "Notification Alt Demo",
-    description:
-      "Example showing an enhanced notification component with info tooltips, clickable links, and different notification types.",
-    registryDependencies: ["https://www.ruixen.com/r/notification-alt"],
-    files: [
-      {
-        path: "registry/example/notification-alt-demo.tsx",
-        type: "registry:example",
-        target: "components/notification-alt-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "notifications-with-actions-demo",
-    type: "registry:example",
-    title: "Notifications With Actions Demo",
-    description:
-      "Example showing interactive notification component with swipe-to-reveal actions like archive and delete.",
-    registryDependencies: [
-      "https://www.ruixen.com/r/notifications-with-actions",
-    ],
-    files: [
-      {
-        path: "registry/example/notifications-with-actions-demo.tsx",
-        type: "registry:example",
-        target: "components/notifications-with-actions-demo.tsx",
-      },
-    ],
-  },
-  {
     name: "notifications-carousel-demo",
     type: "registry:example",
     title: "Notifications Carousel Demo",
@@ -875,21 +798,6 @@ export const examples: Registry["items"] = [
         path: "registry/example/notifications-carousel-demo.tsx",
         type: "registry:example",
         target: "components/notifications-carousel-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "notification-toggle-demo",
-    type: "registry:example",
-    title: "Notification Toggle Demo",
-    description:
-      "Example showing a versatile notification component that toggles between carousel and list view modes.",
-    registryDependencies: ["https://www.ruixen.com/r/notification-toggle"],
-    files: [
-      {
-        path: "registry/example/notification-toggle-demo.tsx",
-        type: "registry:example",
-        target: "components/notification-toggle-demo.tsx",
       },
     ],
   },
@@ -920,21 +828,6 @@ export const examples: Registry["items"] = [
         path: "registry/example/glass-form-demo.tsx",
         type: "registry:example",
         target: "components/glass-form-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "cookie-notice-demo",
-    type: "registry:example",
-    title: "Cookie Notice Demo",
-    description:
-      "Example showing a GDPR-compliant cookie consent notice with customizable preferences.",
-    registryDependencies: ["https://www.ruixen.com/r/cookie-notice"],
-    files: [
-      {
-        path: "registry/example/cookie-notice-demo.tsx",
-        type: "registry:example",
-        target: "components/cookie-notice-demo.tsx",
       },
     ],
   },
@@ -1042,21 +935,6 @@ export const examples: Registry["items"] = [
         path: "registry/example/fixed-header-footer-table-demo.tsx",
         type: "registry:example",
         target: "components/fixed-header-footer-table-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "monthly-heatmap-calendar-demo",
-    type: "registry:example",
-    title: "Monthly Heatmap Calendar Demo",
-    description:
-      "Example showing a monthly calendar with event heatmap visualization.",
-    registryDependencies: ["https://www.ruixen.com/r/monthly-heatmap-calendar"],
-    files: [
-      {
-        path: "registry/example/monthly-heatmap-calendar-demo.tsx",
-        type: "registry:example",
-        target: "components/monthly-heatmap-calendar-demo.tsx",
       },
     ],
   },
@@ -1585,65 +1463,6 @@ export const examples: Registry["items"] = [
       },
     ],
   },
-  // Upload Component Demos
-  {
-    name: "music-equalizer-upload-demo",
-    type: "registry:example",
-    title: "Music Equalizer Upload Demo",
-    description:
-      "Example showing upload component with animated equalizer bars.",
-    registryDependencies: ["https://ruixen.com/r/music-equalizer-upload"],
-    files: [
-      {
-        path: "registry/example/music-equalizer-upload-demo.tsx",
-        type: "registry:example",
-        target: "components/music-equalizer-upload-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "sketchpad-dropzone-demo",
-    type: "registry:example",
-    title: "Sketchpad Dropzone Demo",
-    description: "Example showing creative dropzone with sketchpad background.",
-    registryDependencies: ["https://ruixen.com/r/sketchpad-dropzone"],
-    files: [
-      {
-        path: "registry/example/sketchpad-dropzone-demo.tsx",
-        type: "registry:example",
-        target: "components/sketchpad-dropzone-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "stacked-cards-upload-demo",
-    type: "registry:example",
-    title: "Stacked Cards Upload Demo",
-    description:
-      "Example showing stacked card upload with progress indicators.",
-    registryDependencies: ["https://ruixen.com/r/stacked-cards-upload"],
-    files: [
-      {
-        path: "registry/example/stacked-cards-upload-demo.tsx",
-        type: "registry:example",
-        target: "components/stacked-cards-upload-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "timeline-upload-demo",
-    type: "registry:example",
-    title: "Timeline Upload Demo",
-    description: "Example showing timeline upload with progress tracking.",
-    registryDependencies: ["https://ruixen.com/r/timeline-upload"],
-    files: [
-      {
-        path: "registry/example/timeline-upload-demo.tsx",
-        type: "registry:example",
-        target: "components/timeline-upload-demo.tsx",
-      },
-    ],
-  },
   {
     name: "music-player-card-demo",
     type: "registry:example",
@@ -1922,20 +1741,6 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "breadcrumb-boxed-demo",
-    type: "registry:example",
-    title: "Breadcrumb Boxed Demo",
-    description: "Example showing boxed breadcrumbs with different variants.",
-    registryDependencies: ["https://ruixen.com/r/breadcrumb-boxed"],
-    files: [
-      {
-        path: "registry/example/breadcrumb-boxed-demo.tsx",
-        type: "registry:example",
-        target: "components/breadcrumb-boxed-demo.tsx",
-      },
-    ],
-  },
-  {
     name: "progress-button-demo",
     type: "registry:example",
     title: "Progress Button Demo",
@@ -1966,51 +1771,6 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "multi-month-calendar-demo",
-    type: "registry:example",
-    title: "Multi Month Calendar Demo",
-    description:
-      "Example showing a multi-month calendar with range and single date selection modes.",
-    registryDependencies: ["https://ruixen.com/r/multi-month-calendar"],
-    files: [
-      {
-        path: "registry/example/multi-month-calendar-demo.tsx",
-        type: "registry:example",
-        target: "components/multi-month-calendar-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "calendar-with-presets-demo",
-    type: "registry:example",
-    title: "Calendar With Presets Demo",
-    description:
-      "Example showing a calendar with preset date ranges and sidebar navigation.",
-    registryDependencies: ["https://ruixen.com/r/calendar-with-presets"],
-    files: [
-      {
-        path: "registry/example/calendar-with-presets-demo.tsx",
-        type: "registry:example",
-        target: "components/calendar-with-presets-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "universal-date-picker-demo",
-    type: "registry:example",
-    title: "Universal Date Picker Demo",
-    description:
-      "Example showing a universal date picker with mode toggle and preset shortcuts.",
-    registryDependencies: ["https://ruixen.com/r/universal-date-picker"],
-    files: [
-      {
-        path: "registry/example/universal-date-picker-demo.tsx",
-        type: "registry:example",
-        target: "components/universal-date-picker-demo.tsx",
-      },
-    ],
-  },
-  {
     name: "calendar-lume-demo",
     type: "registry:example",
     title: "Calendar Lume Demo",
@@ -2037,80 +1797,6 @@ export const examples: Registry["items"] = [
         path: "registry/example/calendar-scheduler-demo.tsx",
         type: "registry:example",
         target: "components/calendar-scheduler-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "multi-select-calendar-card-demo",
-    type: "registry:example",
-    title: "Multi Select Calendar Card Demo",
-    description:
-      "Example showing a multi-select calendar with badge display and removal.",
-    registryDependencies: ["https://ruixen.com/r/multi-select-calendar-card"],
-    files: [
-      {
-        path: "registry/example/multi-select-calendar-card-demo.tsx",
-        type: "registry:example",
-        target: "components/multi-select-calendar-card-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "side-panel-multi-calendar-demo",
-    type: "registry:example",
-    title: "Side Panel Multi Calendar Demo",
-    description:
-      "Example showing a multi-select calendar with side panel grouped by month.",
-    registryDependencies: ["https://ruixen.com/r/side-panel-multi-calendar"],
-    files: [
-      {
-        path: "registry/example/side-panel-multi-calendar-demo.tsx",
-        type: "registry:example",
-        target: "components/side-panel-multi-calendar-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "dropdown-multi-calendar-demo",
-    type: "registry:example",
-    title: "Dropdown Multi Calendar Demo",
-    description:
-      "Example showing a multi-select calendar with year/month dropdowns.",
-    registryDependencies: ["https://ruixen.com/r/dropdown-multi-calendar"],
-    files: [
-      {
-        path: "registry/example/dropdown-multi-calendar-demo.tsx",
-        type: "registry:example",
-        target: "components/dropdown-multi-calendar-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "dropdown-range-date-picker-demo",
-    type: "registry:example",
-    title: "Dropdown Range Date Picker Demo",
-    description:
-      "Example showing a range date picker with year/month dropdowns in popover.",
-    registryDependencies: ["https://ruixen.com/r/dropdown-range-date-picker"],
-    files: [
-      {
-        path: "registry/example/dropdown-range-date-picker-demo.tsx",
-        type: "registry:example",
-        target: "components/dropdown-range-date-picker-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "tour-popover-demo",
-    type: "registry:example",
-    title: "Tour Popover Demo",
-    description: "Example showing a guided tour popover with step navigation.",
-    registryDependencies: ["https://ruixen.com/r/tour-popover"],
-    files: [
-      {
-        path: "registry/example/tour-popover-demo.tsx",
-        type: "registry:example",
-        target: "components/tour-popover-demo.tsx",
       },
     ],
   },
@@ -2335,6 +2021,36 @@ export const examples: Registry["items"] = [
         path: "registry/example/range-calendar-demo.tsx",
         type: "registry:example",
         target: "components/range-calendar-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "calendar-wave-demo",
+    type: "registry:example",
+    title: "Calendar Wave Demo",
+    description:
+      "Example showing a calendar with wave-effect hover interaction.",
+    registryDependencies: ["https://ruixen.com/r/calendar-wave"],
+    files: [
+      {
+        path: "registry/example/calendar-wave-demo.tsx",
+        type: "registry:example",
+        target: "components/calendar-wave-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "calendar-crest-demo",
+    type: "registry:example",
+    title: "Calendar Crest Demo",
+    description:
+      "Example showing a dual-month range picker with elevation-based range highlighting.",
+    registryDependencies: ["https://ruixen.com/r/calendar-crest"],
+    files: [
+      {
+        path: "registry/example/calendar-crest-demo.tsx",
+        type: "registry:example",
+        target: "components/calendar-crest-demo.tsx",
       },
     ],
   },
@@ -2847,20 +2563,6 @@ export const examples: Registry["items"] = [
         path: "registry/example/button-dropdown-demo.tsx",
         type: "registry:example",
         target: "components/button-dropdown-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "button-file-upload-demo",
-    type: "registry:example",
-    title: "Button File Upload Demo",
-    description: "Example showing file upload trigger buttons.",
-    registryDependencies: ["https://ruixen.com/r/button-file-upload"],
-    files: [
-      {
-        path: "registry/example/button-file-upload-demo.tsx",
-        type: "registry:example",
-        target: "components/button-file-upload-demo.tsx",
       },
     ],
   },

@@ -1047,22 +1047,6 @@
       ]
     },
     {
-      "name": "smart-notify-button",
-      "type": "registry:ui",
-      "title": "Smart Notify Button",
-      "description": "iOS 26 liquid-glass button with inline glass toast notification — no external toast library.",
-      "dependencies": [
-        "motion"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/smart-notify-button.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/smart-notify-button.tsx"
-        }
-      ]
-    },
-    {
       "name": "notification-badge",
       "type": "registry:ui",
       "title": "Notification Badge",
@@ -1078,25 +1062,6 @@
           "path": "registry/ruixenui/notification-badge.tsx",
           "type": "registry:ui",
           "target": "components/ruixen/notification-badge.tsx"
-        }
-      ]
-    },
-    {
-      "name": "notifications-popover",
-      "type": "registry:ui",
-      "title": "Notifications Popover",
-      "description": "A dropdown menu component for displaying notifications with different types and read states.",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "dropdown-menu"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/notifications-popover.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/notifications-popover.tsx"
         }
       ]
     },
@@ -1140,28 +1105,6 @@
           "path": "registry/ruixenui/notification-alt.tsx",
           "type": "registry:ui",
           "target": "components/ruixen/notification-alt.tsx"
-        }
-      ]
-    },
-    {
-      "name": "notifications-with-actions",
-      "type": "registry:ui",
-      "title": "Notifications With Actions",
-      "description": "Interactive notification component with swipe-to-reveal actions like archive and delete.",
-      "dependencies": [
-        "lucide-react",
-        "framer-motion"
-      ],
-      "registryDependencies": [
-        "popover",
-        "badge",
-        "card"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/notifications-with-actions.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/notifications-with-actions.tsx"
         }
       ]
     },
@@ -2118,90 +2061,6 @@
       ]
     },
     {
-      "name": "music-equalizer-upload",
-      "type": "registry:ui",
-      "title": "Music Equalizer Upload",
-      "description": "Upload component with animated equalizer bars for audio files.",
-      "dependencies": [
-        "framer-motion",
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "card",
-        "button"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/music-equalizer-upload.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/music-equalizer-upload.tsx"
-        }
-      ]
-    },
-    {
-      "name": "sketchpad-dropzone",
-      "type": "registry:ui",
-      "title": "Sketchpad Dropzone",
-      "description": "Creative dropzone with sketchpad-style grid background and sticky note file cards.",
-      "dependencies": [
-        "framer-motion",
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "card",
-        "button"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/sketchpad-dropzone.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/sketchpad-dropzone.tsx"
-        }
-      ]
-    },
-    {
-      "name": "stacked-cards-upload",
-      "type": "registry:ui",
-      "title": "Stacked Cards Upload",
-      "description": "Upload component with stacked card layout and progress indicators.",
-      "dependencies": [
-        "framer-motion",
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "card",
-        "button"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/stacked-cards-upload.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/stacked-cards-upload.tsx"
-        }
-      ]
-    },
-    {
-      "name": "timeline-upload",
-      "type": "registry:ui",
-      "title": "Timeline Upload",
-      "description": "Upload component with timeline layout showing upload progress and status.",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "card",
-        "button",
-        "progress"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/timeline-upload.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/timeline-upload.tsx"
-        }
-      ]
-    },
-    {
       "name": "music-player-card",
       "type": "registry:ui",
       "title": "Music Player Card",
@@ -2737,28 +2596,6 @@
           "path": "registry/ruixenui/dropdown-range-date-picker.tsx",
           "type": "registry:ui",
           "target": "components/ruixen/dropdown-range-date-picker.tsx"
-        }
-      ]
-    },
-    {
-      "name": "tour-popover",
-      "type": "registry:ui",
-      "title": "Tour Popover",
-      "description": "A guided tour popover with steps, progress tracking, and navigation controls.",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "button",
-        "popover",
-        "progress",
-        "separator"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/tour-popover.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/tour-popover.tsx"
         }
       ]
     },
@@ -3639,22 +3476,6 @@
           "path": "registry/ruixenui/button-dropdown.tsx",
           "type": "registry:ui",
           "target": "components/ruixen/button-dropdown.tsx"
-        }
-      ]
-    },
-    {
-      "name": "button-file-upload",
-      "type": "registry:ui",
-      "title": "Button File Upload",
-      "description": "iOS 26 liquid-glass upload pill with filename reveal and clear action.",
-      "dependencies": [
-        "motion"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/button-file-upload.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/button-file-upload.tsx"
         }
       ]
     },
@@ -4651,22 +4472,6 @@
       ]
     },
     {
-      "name": "smart-notify-button-demo",
-      "type": "registry:example",
-      "title": "Smart Notify Button Demo",
-      "description": "Example showing a button component that triggers customizable toast notifications with actions and different types.",
-      "registryDependencies": [
-        "https://www.ruixen.com/r/smart-notify-button"
-      ],
-      "files": [
-        {
-          "path": "registry/example/smart-notify-button-demo.tsx",
-          "type": "registry:example",
-          "target": "components/smart-notify-button-demo.tsx"
-        }
-      ]
-    },
-    {
       "name": "notification-badge-demo",
       "type": "registry:example",
       "title": "Notification Badge Demo",
@@ -4679,22 +4484,6 @@
           "path": "registry/example/notification-badge-demo.tsx",
           "type": "registry:example",
           "target": "components/notification-badge-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "notifications-popover-demo",
-      "type": "registry:example",
-      "title": "Notifications Popover Demo",
-      "description": "Example showing a dropdown menu component for displaying notifications with different types and read states.",
-      "registryDependencies": [
-        "https://www.ruixen.com/r/notifications-popover"
-      ],
-      "files": [
-        {
-          "path": "registry/example/notifications-popover-demo.tsx",
-          "type": "registry:example",
-          "target": "components/notifications-popover-demo.tsx"
         }
       ]
     },
@@ -4727,22 +4516,6 @@
           "path": "registry/example/notification-alt-demo.tsx",
           "type": "registry:example",
           "target": "components/notification-alt-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "notifications-with-actions-demo",
-      "type": "registry:example",
-      "title": "Notifications With Actions Demo",
-      "description": "Example showing interactive notification component with swipe-to-reveal actions like archive and delete.",
-      "registryDependencies": [
-        "https://www.ruixen.com/r/notifications-with-actions"
-      ],
-      "files": [
-        {
-          "path": "registry/example/notifications-with-actions-demo.tsx",
-          "type": "registry:example",
-          "target": "components/notifications-with-actions-demo.tsx"
         }
       ]
     },
@@ -5531,70 +5304,6 @@
       ]
     },
     {
-      "name": "music-equalizer-upload-demo",
-      "type": "registry:example",
-      "title": "Music Equalizer Upload Demo",
-      "description": "Example showing upload component with animated equalizer bars.",
-      "registryDependencies": [
-        "https://ruixen.com/r/music-equalizer-upload"
-      ],
-      "files": [
-        {
-          "path": "registry/example/music-equalizer-upload-demo.tsx",
-          "type": "registry:example",
-          "target": "components/music-equalizer-upload-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "sketchpad-dropzone-demo",
-      "type": "registry:example",
-      "title": "Sketchpad Dropzone Demo",
-      "description": "Example showing creative dropzone with sketchpad background.",
-      "registryDependencies": [
-        "https://ruixen.com/r/sketchpad-dropzone"
-      ],
-      "files": [
-        {
-          "path": "registry/example/sketchpad-dropzone-demo.tsx",
-          "type": "registry:example",
-          "target": "components/sketchpad-dropzone-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "stacked-cards-upload-demo",
-      "type": "registry:example",
-      "title": "Stacked Cards Upload Demo",
-      "description": "Example showing stacked card upload with progress indicators.",
-      "registryDependencies": [
-        "https://ruixen.com/r/stacked-cards-upload"
-      ],
-      "files": [
-        {
-          "path": "registry/example/stacked-cards-upload-demo.tsx",
-          "type": "registry:example",
-          "target": "components/stacked-cards-upload-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "timeline-upload-demo",
-      "type": "registry:example",
-      "title": "Timeline Upload Demo",
-      "description": "Example showing timeline upload with progress tracking.",
-      "registryDependencies": [
-        "https://ruixen.com/r/timeline-upload"
-      ],
-      "files": [
-        {
-          "path": "registry/example/timeline-upload-demo.tsx",
-          "type": "registry:example",
-          "target": "components/timeline-upload-demo.tsx"
-        }
-      ]
-    },
-    {
       "name": "music-player-card-demo",
       "type": "registry:example",
       "title": "Music Player Card Demo",
@@ -6087,22 +5796,6 @@
           "path": "registry/example/dropdown-range-date-picker-demo.tsx",
           "type": "registry:example",
           "target": "components/dropdown-range-date-picker-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "tour-popover-demo",
-      "type": "registry:example",
-      "title": "Tour Popover Demo",
-      "description": "Example showing a guided tour popover with step navigation.",
-      "registryDependencies": [
-        "https://ruixen.com/r/tour-popover"
-      ],
-      "files": [
-        {
-          "path": "registry/example/tour-popover-demo.tsx",
-          "type": "registry:example",
-          "target": "components/tour-popover-demo.tsx"
         }
       ]
     },
@@ -6903,22 +6596,6 @@
           "path": "registry/example/button-dropdown-demo.tsx",
           "type": "registry:example",
           "target": "components/button-dropdown-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "button-file-upload-demo",
-      "type": "registry:example",
-      "title": "Button File Upload Demo",
-      "description": "Example showing file upload trigger buttons.",
-      "registryDependencies": [
-        "https://ruixen.com/r/button-file-upload"
-      ],
-      "files": [
-        {
-          "path": "registry/example/button-file-upload-demo.tsx",
-          "type": "registry:example",
-          "target": "components/button-file-upload-demo.tsx"
         }
       ]
     },

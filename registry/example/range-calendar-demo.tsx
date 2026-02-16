@@ -14,7 +14,7 @@ export default function RangeCalendarDemo() {
       <RangeCalendar value={range} onChange={setRange} />
 
       <span
-        className="text-[12px] tabular-nums tracking-[-0.01em]"
+        className="text-[12px] tabular-nums tracking-[-0.01em] text-foreground/70"
         style={{
           color: "rgba(255,255,255,0.3)",
           opacity: range ? 1 : 0,

@@ -123,9 +123,9 @@ export default function ComponentShowcaseSection() {
             />
           </Link>
 
-          {/* Multi Month Calendar - NEW */}
+          {/* Range Calendar */}
           <Link
-            href="/docs/components/multi-month-calendar"
+            href="/docs/components/range-calendar"
             className="absolute left-[12%] md:left-[14%] lg:left-[18%] bottom-[58%] md:bottom-[60%] lg:bottom-[62%] h-[95px] w-[140px] md:h-[110px] md:w-[160px] lg:h-[120px] lg:w-[175px] z-14 rounded-xl shadow-lg animate-float-up overflow-hidden cursor-pointer hover:scale-105 hover:z-50 transition-all duration-300"
             style={{
               animationDelay: "-9.2s",
@@ -133,8 +133,8 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/multi-month-calendar-light.webp"
-              alt="Multi Month Calendar"
+              src="/landing-page-images/range-calendar-light.webp"
+              alt="Range Calendar"
               fill
               sizes="(max-width: 768px) 140px, (max-width: 1200px) 160px, 175px"
               className="object-cover rounded-xl"
@@ -548,9 +548,9 @@ export default function ComponentShowcaseSection() {
             />
           </Link>
 
-          {/* Multi Month Calendar - NEW DARK */}
+          {/* Range Calendar DARK */}
           <Link
-            href="/docs/components/multi-month-calendar"
+            href="/docs/components/range-calendar"
             className="absolute left-[12%] md:left-[14%] lg:left-[18%] bottom-[58%] md:bottom-[60%] lg:bottom-[62%] h-[95px] w-[140px] md:h-[110px] md:w-[160px] lg:h-[120px] lg:w-[175px] z-14 rounded-xl shadow-lg animate-float-up overflow-hidden cursor-pointer hover:scale-105 hover:z-50 transition-all duration-300"
             style={{
               animationDelay: "-9.2s",
@@ -558,8 +558,8 @@ export default function ComponentShowcaseSection() {
             }}
           >
             <Image
-              src="/landing-page-images/multi-month-calendar-dark.webp"
-              alt="Multi Month Calendar"
+              src="/landing-page-images/range-calendar-dark.webp"
+              alt="Range Calendar"
               fill
               sizes="(max-width: 768px) 140px, (max-width: 1200px) 160px, 175px"
               className="object-cover rounded-xl"

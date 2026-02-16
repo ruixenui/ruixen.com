@@ -480,7 +480,6 @@ Add your component preview to `lib/component-preview-data.ts`:
 | Buttons | `buttonsPreview` | `/docs/components/[slug]` |
 | Loaders | `loadersPreview` | `/docs/components/[slug]` |
 | Dialogs | `dialogsPreview` | `/docs/components/[slug]` |
-| Upload Components | `uploadPreview` | `/docs/components/[slug]` |
 | Breadcrumb | `breadcrumbPreview` | `/docs/components/[slug]` |
 | Audio & Media | `audioMediaPreview` | `/docs/components/[slug]` |
 | Select Components | `selectPreview` | `/docs/components/[slug]` |

@@ -2,6 +2,7 @@
 
 import { useState, useRef, useCallback, useMemo } from "react";
 import { AnimatePresence, motion } from "motion/react";
+import { cn } from "@/lib/utils";
 
 /**
  * Range Calendar — Rauno Freiberg craft.
@@ -262,19 +263,7 @@ export function RangeCalendar({
       >
         <button
           onClick={goPrev}
-          className="flex items-center justify-center rounded-full"
-          style={{
-            width: 28,
-            height: 28,
-            color: "rgba(255,255,255,0.3)",
-            transition: "color 0.15s",
-          }}
-          onMouseEnter={(e) =>
-            (e.currentTarget.style.color = "rgba(255,255,255,0.6)")
-          }
-          onMouseLeave={(e) =>
-            (e.currentTarget.style.color = "rgba(255,255,255,0.3)")
-          }
+          className="flex h-7 w-7 items-center justify-center rounded-full text-neutral-400 transition-colors duration-150 hover:text-neutral-600 dark:text-neutral-600 dark:hover:text-neutral-400"
         >
           <svg
             width="14"
@@ -290,28 +279,13 @@ export function RangeCalendar({
           </svg>
         </button>
 
-        <span
-          className="text-[13px] font-medium tracking-[-0.01em]"
-          style={{ color: "rgba(255,255,255,0.5)" }}
-        >
+        <span className="text-[13px] font-medium tracking-[-0.01em] text-neutral-500 dark:text-neutral-500">
           {MONTH_NAMES[viewMonth]} {viewYear}
         </span>
 
         <button
           onClick={goNext}
-          className="flex items-center justify-center rounded-full"
-          style={{
-            width: 28,
-            height: 28,
-            color: "rgba(255,255,255,0.3)",
-            transition: "color 0.15s",
-          }}
-          onMouseEnter={(e) =>
-            (e.currentTarget.style.color = "rgba(255,255,255,0.6)")
-          }
-          onMouseLeave={(e) =>
-            (e.currentTarget.style.color = "rgba(255,255,255,0.3)")
-          }
+          className="flex h-7 w-7 items-center justify-center rounded-full text-neutral-400 transition-colors duration-150 hover:text-neutral-600 dark:text-neutral-600 dark:hover:text-neutral-400"
         >
           <svg
             width="14"
@@ -333,16 +307,10 @@ export function RangeCalendar({
         {DAYS.map((d) => (
           <div
             key={d}
-            className="flex items-center justify-center"
+            className="flex select-none items-center justify-center text-[9px] font-medium uppercase tracking-[0.04em] text-neutral-300 dark:text-neutral-700"
             style={{
               width: CELL,
               height: 20,
-              fontSize: 9,
-              fontWeight: 500,
-              letterSpacing: "0.04em",
-              color: "rgba(255,255,255,0.15)",
-              textTransform: "uppercase",
-              userSelect: "none",
             }}
           >
             {d}
@@ -409,15 +377,15 @@ export function RangeCalendar({
                 ? `${roundL ? CELL / 2 : 0}px ${roundR ? CELL / 2 : 0}px ${roundR ? CELL / 2 : 0}px ${roundL ? CELL / 2 : 0}px`
                 : "0";
 
-              /* Text color */
-              const alpha =
+              /* Text color classes */
+              const textCls =
                 isStart || isEnd
-                  ? 0.95
+                  ? "text-white dark:text-neutral-950"
                   : isInRange
-                    ? 0.7
+                    ? "text-neutral-700 dark:text-neutral-300"
                     : isToday
-                      ? 0.65
-                      : 0.4;
+                      ? "text-neutral-600 dark:text-neutral-400"
+                      : "text-neutral-400 dark:text-neutral-500";
 
               return (
                 <div
@@ -440,26 +408,24 @@ export function RangeCalendar({
                   {/* Range highlight background */}
                   {isInRange && (
                     <div
-                      className="absolute inset-0"
-                      style={{
-                        background:
-                          isStart || isEnd
-                            ? "rgba(255,255,255,0.08)"
-                            : "rgba(255,255,255,0.04)",
-                        borderRadius,
-                        transition: "background 0.1s",
-                      }}
+                      className={cn(
+                        "absolute inset-0 transition-colors duration-100",
+                        isStart || isEnd
+                          ? "bg-neutral-900 dark:bg-neutral-100"
+                          : "bg-neutral-100 dark:bg-neutral-800",
+                      )}
+                      style={{ borderRadius }}
                     />
                   )}
 
                   {/* Number */}
                   <span
-                    className="relative text-[13px] tabular-nums"
+                    className={cn(
+                      "relative text-[13px] tabular-nums transition-colors duration-100",
+                      textCls,
+                    )}
                     style={{
-                      color: `rgba(255,255,255,${alpha})`,
                       fontWeight: isStart || isEnd ? 550 : 400,
-                      fontVariantNumeric: "tabular-nums",
-                      transition: "color 0.1s",
                     }}
                   >
                     {dayNum}
@@ -467,18 +433,7 @@ export function RangeCalendar({
 
                   {/* Today dot */}
                   {isToday && (
-                    <div
-                      className="absolute"
-                      style={{
-                        bottom: 4,
-                        left: "50%",
-                        transform: "translateX(-50%)",
-                        width: 3,
-                        height: 3,
-                        borderRadius: "50%",
-                        background: "rgba(255,255,255,0.25)",
-                      }}
-                    />
+                    <div className="absolute bottom-1 left-1/2 h-[3px] w-[3px] -translate-x-1/2 rounded-full bg-neutral-400 dark:bg-neutral-600" />
                   )}
                 </div>
               );
@@ -489,11 +444,9 @@ export function RangeCalendar({
 
       {/* Duration display — always rendered to prevent layout shift */}
       <span
-        className="text-[11px] tracking-[0.02em]"
+        className="text-[11px] tracking-[0.02em] text-neutral-400 transition-opacity duration-150 dark:text-neutral-600"
         style={{
-          color: "rgba(255,255,255,0.25)",
           opacity: days !== null ? 1 : 0,
-          transition: "opacity 0.15s",
         }}
       >
         {days === null

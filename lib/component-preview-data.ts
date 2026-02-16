@@ -118,10 +118,6 @@ export const breadcrumbsPreview: ComponentPreviewMap = {
     light: `/preview_images/breadcrumbs/breadcrumb-dropdown-light.png`,
     dark: `/preview_images/breadcrumbs/breadcrumb-dropdown-dark.png`,
   },
-  "breadcrumb-boxed": {
-    light: `/preview_images/breadcrumbs/breadcrumb-boxed-light.png`,
-    dark: `/preview_images/breadcrumbs/breadcrumb-boxed-dark.png`,
-  },
 };
 
 /**
@@ -279,10 +275,6 @@ export const buttonsPreview: ComponentPreviewMap = {
     light: `/preview_images/buttons/button-badge-light.png`,
     dark: `/preview_images/buttons/button-badge-dark.png`,
   },
-  "button-file-upload": {
-    light: `/preview_images/buttons/button-file-upload-light.png`,
-    dark: `/preview_images/buttons/button-file-upload-dark.png`,
-  },
 };
 
 /**
@@ -362,28 +354,6 @@ export const dialogsPreview: ComponentPreviewMap = {
   },
 };
 
-/**
- * Upload Components - File upload components
- * Path: /docs/components/[slug]
- */
-export const uploadPreview: ComponentPreviewMap = {
-  "music-equalizer-upload": {
-    light: `/preview_images/upload/music-equalizer-upload-light.png`,
-    dark: `/preview_images/upload/music-equalizer-upload-dark.png`,
-  },
-  "sketchpad-dropzone": {
-    light: `/preview_images/upload/sketchpad-dropzone-light.png`,
-    dark: `/preview_images/upload/sketchpad-dropzone-dark.png`,
-  },
-  "stacked-cards-upload": {
-    light: `/preview_images/upload/stacked-cards-upload-light.png`,
-    dark: `/preview_images/upload/stacked-cards-upload-dark.png`,
-  },
-  "timeline-upload": {
-    light: `/preview_images/upload/timeline-upload-light.png`,
-    dark: `/preview_images/upload/timeline-upload-dark.png`,
-  },
-};
 
 /**
  * Breadcrumb - Navigation breadcrumb components
@@ -492,49 +462,17 @@ export const inputsPreview: ComponentPreviewMap = {
  * Path: /docs/components/[slug]
  */
 export const notificationsPreview: ComponentPreviewMap = {
-  "smart-notify-button": {
-    light: `/preview_images/notifications/smart-notify-button-light.png`,
-    dark: `/preview_images/notifications/smart-notify-button-dark.png`,
-  },
-  "cookie-notice": {
-    light: `/preview_images/notifications/cookie-notice-light.png`,
-    dark: `/preview_images/notifications/cookie-notice-dark.png`,
-  },
-  "notification-badge": {
-    light: `/preview_images/notifications/notification-badge-light.png`,
-    dark: `/preview_images/notifications/notification-badge-dark.png`,
-  },
-  "notifications-popover": {
-    light: `/preview_images/notifications/notifications-popover-light.png`,
-    dark: `/preview_images/notifications/notifications-popover-dark.png`,
-  },
   "notification-inbox-popover": {
     light: `/preview_images/notifications/notification-inbox-popover-light.png`,
     dark: `/preview_images/notifications/notification-inbox-popover-dark.png`,
-  },
-  "tour-popover": {
-    light: `/preview_images/notifications/tour-popover-light.png`,
-    dark: `/preview_images/notifications/tour-popover-dark.png`,
   },
   notification: {
     light: `/preview_images/notifications/notification-light.png`,
     dark: `/preview_images/notifications/notification-dark.png`,
   },
-  "notification-alt": {
-    light: `/preview_images/notifications/notification-alt-light.png`,
-    dark: `/preview_images/notifications/notification-alt-dark.png`,
-  },
-  "notifications-with-actions": {
-    light: `/preview_images/notifications/notifications-with-actions-light.png`,
-    dark: `/preview_images/notifications/notifications-with-actions-dark.png`,
-  },
   "notifications-carousel": {
     light: `/preview_images/notifications/notifications-carousel-light.png`,
     dark: `/preview_images/notifications/notifications-carousel-dark.png`,
-  },
-  "notification-toggle": {
-    light: `/preview_images/notifications/notification-toggle-light.png`,
-    dark: `/preview_images/notifications/notification-toggle-dark.png`,
   },
   "notifications-filter": {
     light: `/preview_images/notifications/notifications-filter-light.png`,
@@ -676,37 +614,13 @@ export const datePickersPreview: ComponentPreviewMap = {};
  * Path: /docs/components/[slug]
  */
 export const calendarsPreview: ComponentPreviewMap = {
-  "monthly-heatmap-calendar": {
-    light: `/preview_images/calendars/monthly-heatmap-calendar-light.png`,
-    dark: `/preview_images/calendars/monthly-heatmap-calendar-dark.png`,
+  "calendar-wave": {
+    light: `/preview_images/calendars/calendar-wave-light.png`,
+    dark: `/preview_images/calendars/calendar-wave-dark.png`,
   },
-  "multi-month-calendar": {
-    light: `/preview_images/calendars/multi-month-calendar-light.png`,
-    dark: `/preview_images/calendars/multi-month-calendar-dark.png`,
-  },
-  "calendar-with-presets": {
-    light: `/preview_images/calendars/calendar-with-presets-light.png`,
-    dark: `/preview_images/calendars/calendar-with-presets-dark.png`,
-  },
-  "universal-date-picker": {
-    light: `/preview_images/calendars/universal-date-picker-light.png`,
-    dark: `/preview_images/calendars/universal-date-picker-dark.png`,
-  },
-  "dropdown-range-date-picker": {
-    light: `/preview_images/calendars/dropdown-range-date-picker-light.png`,
-    dark: `/preview_images/calendars/dropdown-range-date-picker-dark.png`,
-  },
-  "dropdown-multi-calendar": {
-    light: `/preview_images/calendars/dropdown-multi-calendar-light.png`,
-    dark: `/preview_images/calendars/dropdown-multi-calendar-dark.png`,
-  },
-  "multi-select-calendar-card": {
-    light: `/preview_images/calendars/multi-select-calendar-card-light.png`,
-    dark: `/preview_images/calendars/multi-select-calendar-card-dark.png`,
-  },
-  "side-panel-multi-calendar": {
-    light: `/preview_images/calendars/side-panel-multi-calendar-light.png`,
-    dark: `/preview_images/calendars/side-panel-multi-calendar-dark.png`,
+  "calendar-crest": {
+    light: `/preview_images/calendars/calendar-crest-light.png`,
+    dark: `/preview_images/calendars/calendar-crest-dark.png`,
   },
 };
 
@@ -1151,7 +1065,6 @@ export const allComponentPreviews: ComponentPreviewMap = {
   ...checkboxesPreview,
   ...loadersPreview,
   ...dialogsPreview,
-  ...uploadPreview,
   ...breadcrumbPreview,
   ...audioMediaPreview,
   ...selectPreview,
@@ -1280,7 +1193,6 @@ export function getCategoryPreviews(category: string): ComponentPreviewMap {
     checkboxes: checkboxesPreview,
     loaders: loadersPreview,
     dialogs: dialogsPreview,
-    "upload-components": uploadPreview,
     breadcrumb: breadcrumbPreview,
     "audio-and-media": audioMediaPreview,
     "select-components": selectPreview,

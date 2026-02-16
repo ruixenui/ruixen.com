@@ -366,12 +366,6 @@ export const docsConfig: DocsConfig = {
               items: [],
               label: "",
             },
-            {
-              title: "Breadcrumb Boxed",
-              href: `/docs/components/breadcrumb-boxed`,
-              items: [],
-              label: "",
-            },
           ],
         },
         {
@@ -386,12 +380,6 @@ export const docsConfig: DocsConfig = {
             {
               title: "Button Dropdown",
               href: `/docs/components/button-dropdown`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Button File Upload",
-              href: `/docs/components/button-file-upload`,
               items: [],
               label: "",
             },
@@ -467,56 +455,20 @@ export const docsConfig: DocsConfig = {
           title: "Calendars",
           items: [
             {
-              title: "Monthly Heatmap Calendar",
-              href: `/docs/components/monthly-heatmap-calendar`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Multi Month Calendar",
-              href: `/docs/components/multi-month-calendar`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Calendar With Presets",
-              href: `/docs/components/calendar-with-presets`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Universal Date Picker",
-              href: `/docs/components/universal-date-picker`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Dropdown Range Date Picker",
-              href: `/docs/components/dropdown-range-date-picker`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Dropdown Multi Calendar",
-              href: `/docs/components/dropdown-multi-calendar`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Multi Select Calendar Card",
-              href: `/docs/components/multi-select-calendar-card`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Side Panel Multi Calendar",
-              href: `/docs/components/side-panel-multi-calendar`,
-              items: [],
-              label: "",
-            },
-            {
               title: "Range Calendar",
               href: `/docs/components/range-calendar`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Calendar Wave",
+              href: `/docs/components/calendar-wave`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Calendar Crest",
+              href: `/docs/components/calendar-crest`,
               items: [],
               label: "New",
             },
@@ -926,38 +878,8 @@ export const docsConfig: DocsConfig = {
           title: "Notifications",
           items: [
             {
-              title: "Smart Notify Button",
-              href: `/docs/components/smart-notify-button`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Cookie Notice",
-              href: `/docs/components/cookie-notice`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Notification Badge",
-              href: `/docs/components/notification-badge`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Notifications Popover",
-              href: `/docs/components/notifications-popover`,
-              items: [],
-              label: "",
-            },
-            {
               title: "Notification Inbox Popover",
               href: `/docs/components/notification-inbox-popover`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Tour Popover",
-              href: `/docs/components/tour-popover`,
               items: [],
               label: "",
             },
@@ -968,26 +890,8 @@ export const docsConfig: DocsConfig = {
               label: "",
             },
             {
-              title: "Notification Alt",
-              href: `/docs/components/notification-alt`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Notifications With Actions",
-              href: `/docs/components/notifications-with-actions`,
-              items: [],
-              label: "",
-            },
-            {
               title: "Notifications Carousel",
               href: `/docs/components/notifications-carousel`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Notification Toggle",
-              href: `/docs/components/notification-toggle`,
               items: [],
               label: "",
             },
@@ -1253,35 +1157,6 @@ export const docsConfig: DocsConfig = {
             {
               title: "Drag And Drop Tabs",
               href: `/docs/components/drag-and-drop-tabs`,
-              items: [],
-              label: "",
-            },
-          ],
-        },
-        {
-          title: "Upload Components",
-          items: [
-            {
-              title: "Music Equalizer Upload",
-              href: `/docs/components/music-equalizer-upload`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Sketchpad Dropzone",
-              href: `/docs/components/sketchpad-dropzone`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Stacked Cards Upload",
-              href: `/docs/components/stacked-cards-upload`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Timeline Upload",
-              href: `/docs/components/timeline-upload`,
               items: [],
               label: "",
             },

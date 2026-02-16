@@ -2,6 +2,7 @@
 
 import { useRef, useState, useMemo, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { cn } from "@/lib/utils";
 
 /**
  * Calendar Planner — a vertical stream of days.
@@ -224,14 +225,8 @@ export function CalendarPlanner({
 
   return (
     <div
-      style={{
-        background: "rgba(18,18,20,0.98)",
-        border: "1px solid rgba(255,255,255,0.06)",
-        borderRadius: 20,
-        overflow: "hidden",
-        maxWidth: 380,
-        width: "100%",
-      }}
+      className="overflow-hidden rounded-[20px] border border-neutral-200 bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-950"
+      style={{ maxWidth: 380, width: "100%" }}
     >
       {/* Header */}
       <div
@@ -245,45 +240,32 @@ export function CalendarPlanner({
         <motion.button
           whileTap={{ scale: 0.85 }}
           onClick={() => goMonth(-1)}
+          className="cursor-pointer rounded-lg border-none bg-transparent text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-neutral-600 dark:text-neutral-600 dark:hover:bg-neutral-800 dark:hover:text-neutral-400"
           style={{
-            background: "transparent",
-            border: "none",
-            cursor: "pointer",
             fontSize: 16,
             lineHeight: 1,
-            color: "rgba(255,255,255,0.3)",
             padding: "6px 10px",
-            borderRadius: 8,
-            transition: "color 0.15s, background 0.15s",
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.color = "rgba(255,255,255,0.7)";
-            e.currentTarget.style.background = "rgba(255,255,255,0.04)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.color = "rgba(255,255,255,0.3)";
-            e.currentTarget.style.background = "transparent";
           }}
         >
-          ‹
+          &#8249;
         </motion.button>
 
         <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
           <span
+            className="text-neutral-900 dark:text-neutral-100"
             style={{
               fontSize: 18,
               fontWeight: 650,
               letterSpacing: "-0.02em",
-              color: "rgba(255,255,255,0.9)",
             }}
           >
             {monthName}
           </span>
           <span
+            className="text-neutral-400 dark:text-neutral-600"
             style={{
               fontSize: 13,
               fontWeight: 400,
-              color: "rgba(255,255,255,0.28)",
             }}
           >
             {year}
@@ -293,35 +275,22 @@ export function CalendarPlanner({
         <motion.button
           whileTap={{ scale: 0.85 }}
           onClick={() => goMonth(1)}
+          className="cursor-pointer rounded-lg border-none bg-transparent text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-neutral-600 dark:text-neutral-600 dark:hover:bg-neutral-800 dark:hover:text-neutral-400"
           style={{
-            background: "transparent",
-            border: "none",
-            cursor: "pointer",
             fontSize: 16,
             lineHeight: 1,
-            color: "rgba(255,255,255,0.3)",
             padding: "6px 10px",
-            borderRadius: 8,
-            transition: "color 0.15s, background 0.15s",
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.color = "rgba(255,255,255,0.7)";
-            e.currentTarget.style.background = "rgba(255,255,255,0.04)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.color = "rgba(255,255,255,0.3)";
-            e.currentTarget.style.background = "transparent";
           }}
         >
-          ›
+          &#8250;
         </motion.button>
       </div>
 
       {/* Separator */}
       <div
+        className="bg-neutral-100 dark:bg-neutral-800/50"
         style={{
           height: 1,
-          background: "rgba(255,255,255,0.05)",
           margin: "0 24px",
         }}
       />
@@ -371,12 +340,12 @@ export function CalendarPlanner({
                   {/* Today micro-label */}
                   {isToday && (
                     <div
+                      className="text-neutral-300 dark:text-neutral-700"
                       style={{
                         fontSize: 9,
                         fontWeight: 600,
                         textTransform: "uppercase",
                         letterSpacing: "0.1em",
-                        color: "rgba(255,255,255,0.22)",
                         padding: "10px 24px 0 16px",
                         marginLeft: 2,
                       }}
@@ -395,23 +364,25 @@ export function CalendarPlanner({
                         setTimeout(() => inputRef.current?.focus(), 200);
                       }
                     }}
+                    className={cn(
+                      "cursor-pointer transition-[background] duration-150",
+                      isSel
+                        ? "bg-neutral-100/50 dark:bg-neutral-800/20"
+                        : isToday
+                          ? "bg-neutral-50 dark:bg-neutral-900/30"
+                          : "bg-transparent",
+                    )}
                     style={{
                       display: "flex",
                       alignItems: "flex-start",
                       padding: `${hasEvents ? 10 : 8}px 24px ${hasEvents ? 10 : 8}px 14px`,
-                      cursor: "pointer",
                       position: "relative",
-                      background: isSel
-                        ? "rgba(255,255,255,0.02)"
-                        : isToday
-                          ? "rgba(255,255,255,0.015)"
-                          : "transparent",
-                      transition: "background 0.15s",
                     }}
                   >
                     {/* Today accent bar */}
                     {isToday && (
                       <div
+                        className="bg-neutral-300 dark:bg-neutral-700"
                         style={{
                           position: "absolute",
                           left: 0,
@@ -419,7 +390,6 @@ export function CalendarPlanner({
                           bottom: 4,
                           width: 2,
                           borderRadius: 1,
-                          background: "rgba(255,255,255,0.22)",
                         }}
                       />
                     )}
@@ -427,6 +397,7 @@ export function CalendarPlanner({
                     {/* Selected accent bar */}
                     {isSel && !isToday && (
                       <div
+                        className="bg-neutral-200 dark:bg-neutral-800"
                         style={{
                           position: "absolute",
                           left: 0,
@@ -434,13 +405,20 @@ export function CalendarPlanner({
                           bottom: 4,
                           width: 2,
                           borderRadius: 1,
-                          background: "rgba(255,255,255,0.1)",
                         }}
                       />
                     )}
 
                     {/* Date number */}
                     <span
+                      className={cn(
+                        "transition-colors duration-150",
+                        isToday
+                          ? "text-neutral-900 dark:text-neutral-100"
+                          : isSel
+                            ? "text-neutral-700 dark:text-neutral-300"
+                            : "text-neutral-500 dark:text-neutral-500",
+                      )}
                       style={{
                         width: 24,
                         textAlign: "right",
@@ -448,14 +426,8 @@ export function CalendarPlanner({
                         fontSize: 13,
                         fontWeight: isToday ? 650 : 400,
                         fontVariantNumeric: "tabular-nums",
-                        color: isToday
-                          ? "rgba(255,255,255,0.95)"
-                          : isSel
-                            ? "rgba(255,255,255,0.7)"
-                            : "rgba(255,255,255,0.45)",
                         lineHeight: "18px",
                         flexShrink: 0,
-                        transition: "color 0.15s",
                       }}
                     >
                       {d}
@@ -463,6 +435,11 @@ export function CalendarPlanner({
 
                     {/* Day abbreviation */}
                     <span
+                      className={cn(
+                        weekend
+                          ? "text-neutral-300 dark:text-neutral-700"
+                          : "text-neutral-400 dark:text-neutral-600",
+                      )}
                       style={{
                         width: 28,
                         marginRight: 14,
@@ -470,9 +447,6 @@ export function CalendarPlanner({
                         fontWeight: 500,
                         textTransform: "uppercase",
                         letterSpacing: "0.04em",
-                        color: weekend
-                          ? "rgba(255,255,255,0.18)"
-                          : "rgba(255,255,255,0.28)",
                         lineHeight: "18px",
                         flexShrink: 0,
                       }}
@@ -484,9 +458,9 @@ export function CalendarPlanner({
                     <div style={{ flex: 1, minWidth: 0 }}>
                       {!hasEvents && (
                         <span
+                          className="text-neutral-200 dark:text-neutral-800"
                           style={{
                             fontSize: 13,
-                            color: "rgba(255,255,255,0.06)",
                             lineHeight: "18px",
                           }}
                         >
@@ -505,23 +479,27 @@ export function CalendarPlanner({
                           }}
                         >
                           <div
+                            className={cn(
+                              "rounded-full",
+                              isToday
+                                ? "bg-neutral-500 dark:bg-neutral-500"
+                                : "bg-neutral-300 dark:bg-neutral-600",
+                            )}
                             style={{
                               width: 4,
                               height: 4,
-                              borderRadius: "50%",
-                              background: isToday
-                                ? "rgba(255,255,255,0.45)"
-                                : "rgba(255,255,255,0.2)",
                               flexShrink: 0,
                             }}
                           />
                           <span
+                            className={cn(
+                              isToday
+                                ? "text-neutral-700 dark:text-neutral-300"
+                                : "text-neutral-600 dark:text-neutral-400",
+                            )}
                             style={{
                               fontSize: 13,
                               fontWeight: 450,
-                              color: isToday
-                                ? "rgba(255,255,255,0.75)"
-                                : "rgba(255,255,255,0.55)",
                               overflow: "hidden",
                               textOverflow: "ellipsis",
                               whiteSpace: "nowrap",
@@ -537,27 +515,15 @@ export function CalendarPlanner({
                               e.stopPropagation();
                               handleRemove(ev.id);
                             }}
+                            className="cursor-pointer border-none bg-transparent text-neutral-200 transition-colors hover:text-red-500 dark:text-neutral-800 dark:hover:text-red-400"
                             style={{
-                              background: "transparent",
-                              border: "none",
-                              cursor: "pointer",
                               fontSize: 14,
-                              color: "rgba(255,255,255,0.08)",
                               lineHeight: 1,
                               padding: "2px 0",
-                              transition: "color 0.15s",
                               flexShrink: 0,
                             }}
-                            onMouseEnter={(e) => {
-                              e.currentTarget.style.color =
-                                "rgba(255,69,58,0.7)";
-                            }}
-                            onMouseLeave={(e) => {
-                              e.currentTarget.style.color =
-                                "rgba(255,255,255,0.08)";
-                            }}
                           >
-                            ×
+                            &times;
                           </motion.button>
                         </div>
                       ))}
@@ -598,13 +564,13 @@ export function CalendarPlanner({
                             }}
                             onClick={(e) => e.stopPropagation()}
                             placeholder="Add event…"
+                            className="text-neutral-600 dark:text-neutral-400"
                             style={{
                               flex: 1,
                               background: "transparent",
                               border: "none",
                               outline: "none",
                               fontSize: 13,
-                              color: "rgba(255,255,255,0.55)",
                               fontFamily: "inherit",
                             }}
                           />
@@ -614,17 +580,16 @@ export function CalendarPlanner({
                               e.stopPropagation();
                               handleAdd();
                             }}
+                            className={cn(
+                              "border-none bg-transparent transition-colors duration-150",
+                              title.trim()
+                                ? "cursor-pointer text-neutral-500 dark:text-neutral-500"
+                                : "cursor-default text-neutral-200 dark:text-neutral-800",
+                            )}
                             style={{
-                              background: "transparent",
-                              border: "none",
-                              cursor: title.trim() ? "pointer" : "default",
                               fontSize: 13,
                               fontWeight: 500,
-                              color: title.trim()
-                                ? "rgba(255,255,255,0.5)"
-                                : "rgba(255,255,255,0.12)",
                               padding: "4px 0",
-                              transition: "color 0.15s",
                             }}
                           >
                             Add
@@ -637,10 +602,10 @@ export function CalendarPlanner({
                   {/* Separator */}
                   {d < daysInMonth && (
                     <div
+                      className="bg-neutral-100/50 dark:bg-neutral-800/30"
                       style={{
                         height: 1,
                         margin: "0 24px 0 14px",
-                        background: "rgba(255,255,255,0.03)",
                       }}
                     />
                   )}

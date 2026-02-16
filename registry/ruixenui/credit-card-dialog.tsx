@@ -31,9 +31,11 @@ export interface CreditCardDialogProps {
 
 /* ── Constants ── */
 
-const SEP = "rgba(255,255,255,0.06)";
 const MONO =
   "ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, monospace";
+
+const CC_CSS = `.cc{--cc-ink:0,0,0;--cc-sep:rgba(0,0,0,0.08)}.dark .cc,[data-theme="dark"] .cc{--cc-ink:255,255,255;--cc-sep:rgba(var(--cc-ink),0.06)}`;
+const SEP = "var(--cc-sep)";
 
 /* ── Audio ── */
 
@@ -246,14 +248,16 @@ export function CreditCardDialog({
 
   return (
     <div
+      className="cc"
       style={{
         width: 360,
         borderRadius: 16,
-        background: "rgba(255,255,255,0.03)",
+        background: "rgba(var(--cc-ink),0.03)",
         border: `1px solid ${SEP}`,
         overflow: "hidden",
       }}
     >
+      <style dangerouslySetInnerHTML={{ __html: CC_CSS }} />
       {/* ── Number ── */}
       <div
         style={{
@@ -273,12 +277,12 @@ export function CreditCardDialog({
           onChange={onNum}
           onFocus={() => setFocused("number")}
           onBlur={() => setFocused(null)}
-          className="placeholder:text-[rgba(255,255,255,0.15)]"
+          className="placeholder:text-[rgba(var(--cc-ink),0.15)]"
           style={{
             ...inp,
             flex: 1,
             width: "100%",
-            color: `rgba(255,255,255,${al("number", number)})`,
+            color: `rgba(var(--cc-ink),${al("number", number)})`,
             fontSize: 15,
             fontFamily: MONO,
             letterSpacing: "0.06em",
@@ -291,7 +295,7 @@ export function CreditCardDialog({
             fontWeight: 500,
             letterSpacing: "0.06em",
             textTransform: "uppercase" as const,
-            color: `rgba(255,255,255,${brand ? 0.3 : 0})`,
+            color: `rgba(var(--cc-ink),${brand ? 0.3 : 0})`,
             transition: "color 0.2s",
             flexShrink: 0,
           }}
@@ -313,11 +317,11 @@ export function CreditCardDialog({
           onChange={onName}
           onFocus={() => setFocused("name")}
           onBlur={() => setFocused(null)}
-          className="placeholder:text-[rgba(255,255,255,0.15)]"
+          className="placeholder:text-[rgba(var(--cc-ink),0.15)]"
           style={{
             ...inp,
             width: "100%",
-            color: `rgba(255,255,255,${al("name", name)})`,
+            color: `rgba(var(--cc-ink),${al("name", name)})`,
             fontSize: 13,
             letterSpacing: "0.01em",
             fontWeight: 450,
@@ -341,11 +345,11 @@ export function CreditCardDialog({
             onChange={onExp}
             onFocus={() => setFocused("expiry")}
             onBlur={() => setFocused(null)}
-            className="placeholder:text-[rgba(255,255,255,0.15)]"
+            className="placeholder:text-[rgba(var(--cc-ink),0.15)]"
             style={{
               ...inp,
               width: "100%",
-              color: `rgba(255,255,255,${al("expiry", expiry)})`,
+              color: `rgba(var(--cc-ink),${al("expiry", expiry)})`,
               fontSize: 13,
               fontFamily: MONO,
               letterSpacing: "0.06em",
@@ -371,11 +375,11 @@ export function CreditCardDialog({
             onChange={onCvc}
             onFocus={() => setFocused("cvc")}
             onBlur={() => setFocused(null)}
-            className="placeholder:text-[rgba(255,255,255,0.15)]"
+            className="placeholder:text-[rgba(var(--cc-ink),0.15)]"
             style={{
               ...inp,
               width: "100%",
-              color: `rgba(255,255,255,${al("cvc", cvc)})`,
+              color: `rgba(var(--cc-ink),${al("cvc", cvc)})`,
               fontSize: 13,
               fontFamily: MONO,
               letterSpacing: "0.1em",
@@ -394,27 +398,27 @@ export function CreditCardDialog({
         style={{
           width: "100%",
           padding: "18px 20px",
-          background: ready ? "rgba(255,255,255,0.04)" : "transparent",
+          background: ready ? "rgba(var(--cc-ink),0.04)" : "transparent",
           border: "none",
           outline: "none",
           fontSize: 13,
           fontWeight: 500,
           letterSpacing: "-0.01em",
-          color: `rgba(255,255,255,${ready ? 0.65 : 0.2})`,
+          color: `rgba(var(--cc-ink),${ready ? 0.65 : 0.2})`,
           cursor: ready ? "pointer" : "default",
           transition: "color 0.3s, background 0.3s",
           textAlign: "center" as const,
         }}
         onMouseEnter={(e) => {
           if (ready) {
-            e.currentTarget.style.color = "rgba(255,255,255,0.9)";
-            e.currentTarget.style.background = "rgba(255,255,255,0.06)";
+            e.currentTarget.style.color = "rgba(var(--cc-ink),0.9)";
+            e.currentTarget.style.background = "rgba(var(--cc-ink),0.06)";
           }
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.style.color = `rgba(255,255,255,${ready ? 0.65 : 0.2})`;
+          e.currentTarget.style.color = `rgba(var(--cc-ink),${ready ? 0.65 : 0.2})`;
           e.currentTarget.style.background = ready
-            ? "rgba(255,255,255,0.04)"
+            ? "rgba(var(--cc-ink),0.04)"
             : "transparent";
         }}
       >

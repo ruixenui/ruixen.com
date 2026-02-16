@@ -104,6 +104,10 @@ function clamp(v: number, lo: number, hi: number) {
   return Math.max(lo, Math.min(hi, v));
 }
 
+/* ── Theme ── */
+
+const DP_CSS = `.dp{--dp-ink:0,0,0}.dark .dp,[data-theme="dark"] .dp{--dp-ink:255,255,255}`;
+
 /* ── Component ── */
 
 export function DrumPicker({
@@ -237,7 +241,8 @@ export function DrumPicker({
   const viewH = ITEM_H * (VISIBLE_HALF * 2 + 1);
 
   return (
-    <div className="flex w-full items-center justify-center">
+    <div className="dp flex w-full items-center justify-center">
+      <style dangerouslySetInnerHTML={{ __html: DP_CSS }} />
       <div
         ref={containerRef}
         className="relative select-none"
@@ -265,7 +270,7 @@ export function DrumPicker({
             top: "50%",
             transform: `translateY(-${ITEM_H / 2}px)`,
             height: 1,
-            background: "rgba(255,255,255,0.06)",
+            background: "rgba(var(--dp-ink),0.06)",
           }}
         />
         <div
@@ -274,7 +279,7 @@ export function DrumPicker({
             top: "50%",
             transform: `translateY(${ITEM_H / 2}px)`,
             height: 1,
-            background: "rgba(255,255,255,0.06)",
+            background: "rgba(var(--dp-ink),0.06)",
           }}
         />
 
@@ -313,7 +318,7 @@ export function DrumPicker({
                 <span
                   className="text-[15px] tracking-[-0.01em] whitespace-nowrap"
                   style={{
-                    color: `rgba(255,255,255,${alpha})`,
+                    color: `rgba(var(--dp-ink),${alpha})`,
                     fontWeight: weight,
                     fontVariantNumeric: "tabular-nums",
                     transition: "color 0.08s, font-weight 0.08s",

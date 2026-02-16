@@ -84,7 +84,7 @@ interface GlassAICardProps {
 
 export default function GlassAICard({
   lines = DEFAULT_LINES,
-  actionLabel = "Summarize",
+  actionLabel = "Generate",
   onAction,
   sound = true,
   style,

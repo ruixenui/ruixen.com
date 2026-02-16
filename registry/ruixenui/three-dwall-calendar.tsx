@@ -2,6 +2,7 @@
 
 import { useRef, useState, useMemo } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { cn } from "@/lib/utils";
 
 /**
  * 3D Wall Calendar — a calendar that hangs on a wall.
@@ -225,6 +226,10 @@ export function ThreeDWallCalendar({
     <div style={{ position: "relative", paddingBottom: 8 }}>
       {/* ── Paper stack layers ── */}
       <div
+        className={cn(
+          "bg-neutral-100 dark:bg-neutral-900",
+          "border border-t-0 border-neutral-100 dark:border-neutral-800/50"
+        )}
         style={{
           position: "absolute",
           bottom: 4,
@@ -232,12 +237,13 @@ export function ThreeDWallCalendar({
           right: 5,
           height: 6,
           borderRadius: "0 0 16px 16px",
-          background: "rgba(20,20,22,0.95)",
-          border: "1px solid rgba(255,255,255,0.035)",
-          borderTop: "none",
         }}
       />
       <div
+        className={cn(
+          "bg-neutral-100 dark:bg-neutral-900",
+          "border border-t-0 border-neutral-100/50 dark:border-neutral-800/30"
+        )}
         style={{
           position: "absolute",
           bottom: 0,
@@ -245,22 +251,21 @@ export function ThreeDWallCalendar({
           right: 10,
           height: 6,
           borderRadius: "0 0 14px 14px",
-          background: "rgba(22,22,24,0.92)",
-          border: "1px solid rgba(255,255,255,0.02)",
-          borderTop: "none",
         }}
       />
 
       {/* ── Main card ── */}
       <div
+        className={cn(
+          "bg-neutral-50 dark:bg-neutral-950",
+          "border border-neutral-200 dark:border-neutral-800",
+          "shadow-xl dark:shadow-[0_16px_40px_rgba(0,0,0,0.35)]"
+        )}
         style={{
           position: "relative",
-          background: "rgba(18,18,20,0.98)",
-          border: "1px solid rgba(255,255,255,0.06)",
           borderRadius: 20,
           overflow: "hidden",
           width: "fit-content",
-          boxShadow: "0 16px 40px rgba(0,0,0,0.35)",
         }}
       >
         {/* Header */}
@@ -275,24 +280,20 @@ export function ThreeDWallCalendar({
           <motion.button
             whileTap={{ scale: 0.85 }}
             onClick={() => goMonth(-1)}
+            className={cn(
+              "text-neutral-400 dark:text-neutral-600",
+              "hover:text-neutral-700 dark:hover:text-neutral-300",
+              "hover:bg-neutral-100 dark:hover:bg-neutral-800/50",
+              "transition-colors duration-150"
+            )}
             style={{
               background: "transparent",
               border: "none",
               cursor: "pointer",
               fontSize: 16,
               lineHeight: 1,
-              color: "rgba(255,255,255,0.3)",
               padding: "6px 10px",
               borderRadius: 8,
-              transition: "color 0.15s, background 0.15s",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.color = "rgba(255,255,255,0.7)";
-              e.currentTarget.style.background = "rgba(255,255,255,0.04)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.color = "rgba(255,255,255,0.3)";
-              e.currentTarget.style.background = "transparent";
             }}
           >
             ‹
@@ -306,20 +307,20 @@ export function ThreeDWallCalendar({
             }}
           >
             <span
+              className="text-neutral-900 dark:text-neutral-100"
               style={{
                 fontSize: 18,
                 fontWeight: 650,
                 letterSpacing: "-0.02em",
-                color: "rgba(255,255,255,0.9)",
               }}
             >
               {monthName}
             </span>
             <span
+              className="text-neutral-400 dark:text-neutral-600"
               style={{
                 fontSize: 13,
                 fontWeight: 400,
-                color: "rgba(255,255,255,0.28)",
               }}
             >
               {year}
@@ -329,24 +330,20 @@ export function ThreeDWallCalendar({
           <motion.button
             whileTap={{ scale: 0.85 }}
             onClick={() => goMonth(1)}
+            className={cn(
+              "text-neutral-400 dark:text-neutral-600",
+              "hover:text-neutral-700 dark:hover:text-neutral-300",
+              "hover:bg-neutral-100 dark:hover:bg-neutral-800/50",
+              "transition-colors duration-150"
+            )}
             style={{
               background: "transparent",
               border: "none",
               cursor: "pointer",
               fontSize: 16,
               lineHeight: 1,
-              color: "rgba(255,255,255,0.3)",
               padding: "6px 10px",
               borderRadius: 8,
-              transition: "color 0.15s, background 0.15s",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.color = "rgba(255,255,255,0.7)";
-              e.currentTarget.style.background = "rgba(255,255,255,0.04)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.color = "rgba(255,255,255,0.3)";
-              e.currentTarget.style.background = "transparent";
             }}
           >
             ›
@@ -391,10 +388,10 @@ export function ThreeDWallCalendar({
                 {DOW.map((d) => (
                   <div
                     key={d}
+                    className="text-neutral-300 dark:text-neutral-700"
                     style={{
                       fontSize: 10,
                       fontWeight: 550,
-                      color: "rgba(255,255,255,0.2)",
                       textAlign: "center",
                       textTransform: "uppercase",
                       letterSpacing: "0.08em",
@@ -411,13 +408,13 @@ export function ThreeDWallCalendar({
                 {Array.from({ length: weeks - 1 }).map((_, i) => (
                   <div
                     key={`wd-${i}`}
+                    className="bg-neutral-100/50 dark:bg-neutral-800/30"
                     style={{
                       position: "absolute",
                       left: 0,
                       width: gridW,
                       top: (i + 1) * STEP - GAP / 2,
                       height: 1,
-                      background: "rgba(255,255,255,0.03)",
                       zIndex: 0,
                     }}
                   />
@@ -448,18 +445,13 @@ export function ThreeDWallCalendar({
                     const count = eventCount(d);
 
                     /* Shadow depth based on state */
-                    let shadow = "none";
-                    if (isSel)
-                      shadow =
-                        "0 6px 20px rgba(0,0,0,0.35), 0 2px 6px rgba(0,0,0,0.25)";
-                    else if (isToday) shadow = "0 3px 10px rgba(0,0,0,0.2)";
-                    else if (isHov) shadow = "0 4px 14px rgba(0,0,0,0.25)";
-
-                    /* Background */
-                    let bg = "transparent";
-                    if (isSel) bg = "rgba(255,255,255,0.1)";
-                    else if (isToday) bg = "rgba(255,255,255,0.05)";
-                    else if (isHov) bg = "rgba(255,255,255,0.035)";
+                    const shadow = isSel
+                      ? "0 6px 20px rgba(0,0,0,0.12), 0 2px 6px rgba(0,0,0,0.08)"
+                      : isToday
+                        ? "0 3px 10px rgba(0,0,0,0.08)"
+                        : isHov
+                          ? "0 4px 14px rgba(0,0,0,0.1)"
+                          : "none";
 
                     return (
                       <motion.button
@@ -480,6 +472,16 @@ export function ThreeDWallCalendar({
                         }}
                         onMouseEnter={() => setHoveredDay(d)}
                         onMouseLeave={() => setHoveredDay(null)}
+                        className={cn(
+                          "transition-colors duration-150",
+                          isSel
+                            ? "bg-neutral-200 dark:bg-neutral-800"
+                            : isToday
+                              ? "bg-neutral-100 dark:bg-neutral-900"
+                              : isHov
+                                ? "bg-neutral-100/70 dark:bg-neutral-800/50"
+                                : "bg-transparent"
+                        )}
                         style={{
                           width: CELL,
                           height: CELL,
@@ -490,30 +492,31 @@ export function ThreeDWallCalendar({
                           justifyContent: "center",
                           cursor: "pointer",
                           border: "none",
-                          background: bg,
                           boxShadow: shadow,
                           transition:
-                            "background 0.15s, box-shadow 0.2s ease-out",
+                            "box-shadow 0.2s ease-out",
                           position: "relative",
                           padding: 0,
                           gap: 1,
                         }}
                       >
                         <span
+                          className={cn(
+                            "transition-colors duration-150",
+                            isSel
+                              ? "text-neutral-900 dark:text-neutral-100"
+                              : isToday
+                                ? "text-neutral-900 dark:text-neutral-100"
+                                : hasEv
+                                  ? "text-neutral-700 dark:text-neutral-300"
+                                  : isHov
+                                    ? "text-neutral-500 dark:text-neutral-500"
+                                    : "text-neutral-400 dark:text-neutral-600"
+                          )}
                           style={{
                             fontSize: 13,
                             fontWeight: isToday ? 650 : hasEv ? 500 : 400,
                             fontVariantNumeric: "tabular-nums",
-                            color: isSel
-                              ? "rgba(255,255,255,0.95)"
-                              : isToday
-                                ? "rgba(255,255,255,0.95)"
-                                : hasEv
-                                  ? "rgba(255,255,255,0.68)"
-                                  : isHov
-                                    ? "rgba(255,255,255,0.5)"
-                                    : "rgba(255,255,255,0.28)",
-                            transition: "color 0.15s",
                             lineHeight: 1,
                           }}
                         >
@@ -535,15 +538,16 @@ export function ThreeDWallCalendar({
                             }).map((_, idx) => (
                               <div
                                 key={idx}
+                                className={cn(
+                                  "transition-colors duration-150",
+                                  isSel || isToday
+                                    ? "bg-neutral-500 dark:bg-neutral-500"
+                                    : "bg-neutral-300 dark:bg-neutral-600"
+                                )}
                                 style={{
                                   width: count === 1 ? 8 : 3,
                                   height: 2,
                                   borderRadius: 1,
-                                  background:
-                                    isSel || isToday
-                                      ? "rgba(255,255,255,0.55)"
-                                      : "rgba(255,255,255,0.22)",
-                                  transition: "background 0.15s",
                                 }}
                               />
                             ))}
@@ -569,18 +573,18 @@ export function ThreeDWallCalendar({
               style={{ overflow: "hidden" }}
             >
               <div
+                className="border-t border-neutral-100 dark:border-neutral-800/50"
                 style={{
-                  borderTop: "1px solid rgba(255,255,255,0.05)",
                   boxShadow: "inset 0 1px 6px rgba(0,0,0,0.2)",
                   padding: "14px 26px 20px",
                 }}
               >
                 {/* Date label */}
                 <div
+                  className="text-neutral-400 dark:text-neutral-600"
                   style={{
                     fontSize: 12,
                     fontWeight: 550,
-                    color: "rgba(255,255,255,0.35)",
                     marginBottom: 10,
                     letterSpacing: "-0.005em",
                   }}
@@ -591,9 +595,9 @@ export function ThreeDWallCalendar({
                 {/* Events */}
                 {selEvents.length === 0 && (
                   <div
+                    className="text-neutral-300 dark:text-neutral-700"
                     style={{
                       fontSize: 13,
-                      color: "rgba(255,255,255,0.18)",
                       padding: "2px 0 8px",
                     }}
                   >
@@ -629,30 +633,30 @@ export function ThreeDWallCalendar({
                           damping: 25,
                           stiffness: 350,
                         }}
+                        className="border-b border-neutral-100 dark:border-neutral-800/40"
                         style={{
                           display: "flex",
                           alignItems: "center",
                           padding: "7px 0",
-                          borderBottom: "1px solid rgba(255,255,255,0.04)",
                           gap: 10,
                         }}
                       >
                         {/* Depth accent — shadow line */}
                         <div
+                          className="bg-neutral-200 dark:bg-neutral-700"
                           style={{
                             width: 2,
                             height: 14,
                             borderRadius: 1,
-                            background: "rgba(255,255,255,0.15)",
                             boxShadow: "1px 0 4px rgba(255,255,255,0.04)",
                             flexShrink: 0,
                           }}
                         />
                         <span
+                          className="text-neutral-600 dark:text-neutral-400"
                           style={{
                             fontSize: 13,
                             fontWeight: 450,
-                            color: "rgba(255,255,255,0.65)",
                             flex: 1,
                             overflow: "hidden",
                             textOverflow: "ellipsis",
@@ -664,23 +668,19 @@ export function ThreeDWallCalendar({
                         <motion.button
                           whileTap={{ scale: 0.85 }}
                           onClick={() => handleRemove(ev.id)}
+                          className={cn(
+                            "text-neutral-200 dark:text-neutral-800",
+                            "hover:text-red-500 dark:hover:text-red-400",
+                            "transition-colors duration-150"
+                          )}
                           style={{
                             background: "transparent",
                             border: "none",
                             cursor: "pointer",
                             fontSize: 14,
-                            color: "rgba(255,255,255,0.12)",
                             lineHeight: 1,
                             padding: "2px 0",
-                            transition: "color 0.15s",
                             flexShrink: 0,
-                          }}
-                          onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "rgba(255,69,58,0.7)";
-                          }}
-                          onMouseLeave={(e) => {
-                            e.currentTarget.style.color =
-                              "rgba(255,255,255,0.12)";
                           }}
                         >
                           ×
@@ -710,30 +710,32 @@ export function ThreeDWallCalendar({
                       }
                     }}
                     placeholder="Add event…"
+                    className="text-neutral-600 dark:text-neutral-400"
                     style={{
                       flex: 1,
                       background: "transparent",
                       border: "none",
                       outline: "none",
                       fontSize: 13,
-                      color: "rgba(255,255,255,0.6)",
                       fontFamily: "inherit",
                     }}
                   />
                   <motion.button
                     whileTap={{ scale: 0.9 }}
                     onClick={handleAdd}
+                    className={cn(
+                      "transition-colors duration-150",
+                      title.trim()
+                        ? "text-neutral-500 dark:text-neutral-500"
+                        : "text-neutral-200 dark:text-neutral-800"
+                    )}
                     style={{
                       background: "transparent",
                       border: "none",
                       cursor: title.trim() ? "pointer" : "default",
                       fontSize: 13,
                       fontWeight: 500,
-                      color: title.trim()
-                        ? "rgba(255,255,255,0.5)"
-                        : "rgba(255,255,255,0.15)",
                       padding: "4px 0",
-                      transition: "color 0.15s",
                     }}
                   >
                     Add

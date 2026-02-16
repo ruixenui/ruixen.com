@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useCallback, useRef } from "react";
 import { AnimatePresence, motion } from "motion/react";
+import { cn } from "@/lib/utils";
 
 /* ── constants ── */
 const MO = [
@@ -42,16 +43,6 @@ const WKFULL = [
   "Friday",
   "Saturday",
 ] as const;
-
-/* ── palette ── */
-const C = {
-  dim: "rgba(255,255,255,0.35)",
-  mid: "rgba(255,255,255,0.55)",
-  bright: "rgba(255,255,255,0.92)",
-  pill: "rgba(255,255,255,0.07)",
-  accent: "rgba(255,255,255,0.14)",
-  border: "rgba(255,255,255,0.06)",
-} as const;
 
 /* ── date math ── */
 function daysIn(y: number, m: number) {
@@ -238,42 +229,16 @@ function CalendarLume({ value, onChange, sound = true }: CalendarLumeProps) {
     [tick, year, month, day],
   );
 
-  /* ── shared styles ── */
-  const cellStyle = (sel: boolean, hov: boolean): React.CSSProperties => ({
-    background: sel ? C.accent : hov ? C.pill : "transparent",
-    border: "none",
-    color: sel ? C.bright : hov ? C.bright : C.mid,
-    fontSize: 13,
-    fontWeight: sel ? 600 : 400,
-    fontFamily: "inherit",
-    cursor: "pointer",
-    padding: "10px 4px",
-    borderRadius: 8,
-    transition: "background 0.12s, color 0.12s",
-    textAlign: "center" as const,
-  });
-
-  const arrowStyle: React.CSSProperties = {
-    background: "none",
-    border: "none",
-    color: C.dim,
-    cursor: "pointer",
-    fontSize: 16,
-    fontFamily: "inherit",
-    padding: "4px 10px",
-  };
-
   const direction = dirRef.current;
 
   return (
     <div
+      className="select-none"
       style={{
         padding: "28px 24px",
         width: 320,
         fontFamily:
           "'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif",
-        color: C.bright,
-        userSelect: "none",
       }}
     >
       {/* ── header: ‹ [scope label] › ── */}
@@ -294,7 +259,15 @@ function CalendarLume({ value, onChange, sound = true }: CalendarLumeProps) {
             else setDecBase((b) => b - 12);
           }}
           whileTap={{ scale: 0.85 }}
-          style={arrowStyle}
+          className="text-neutral-400 hover:text-neutral-600 dark:text-neutral-600 dark:hover:text-neutral-400 transition-colors"
+          style={{
+            background: "none",
+            border: "none",
+            cursor: "pointer",
+            fontSize: 16,
+            fontFamily: "inherit",
+            padding: "4px 10px",
+          }}
         >
           ‹
         </motion.button>
@@ -302,10 +275,10 @@ function CalendarLume({ value, onChange, sound = true }: CalendarLumeProps) {
         {/* scope label */}
         {level === "year" ? (
           <span
+            className="text-neutral-600 dark:text-neutral-400"
             style={{
               fontSize: 12,
               fontWeight: 500,
-              color: C.mid,
               letterSpacing: "0.02em",
             }}
           >
@@ -315,17 +288,16 @@ function CalendarLume({ value, onChange, sound = true }: CalendarLumeProps) {
           <motion.button
             onClick={() => zoomOut(level === "day" ? "month" : "year")}
             whileTap={{ scale: 0.96 }}
+            className="text-neutral-600 dark:text-neutral-400 transition-colors"
             style={{
               background: "none",
               border: "none",
-              color: C.mid,
               fontSize: 12,
               fontWeight: 500,
               fontFamily: "inherit",
               cursor: "pointer",
               padding: "4px 8px",
               borderRadius: 6,
-              transition: "color 0.15s",
               letterSpacing: "0.02em",
             }}
           >
@@ -342,7 +314,15 @@ function CalendarLume({ value, onChange, sound = true }: CalendarLumeProps) {
             else setDecBase((b) => b + 12);
           }}
           whileTap={{ scale: 0.85 }}
-          style={arrowStyle}
+          className="text-neutral-400 hover:text-neutral-600 dark:text-neutral-600 dark:hover:text-neutral-400 transition-colors"
+          style={{
+            background: "none",
+            border: "none",
+            cursor: "pointer",
+            fontSize: 16,
+            fontFamily: "inherit",
+            padding: "4px 10px",
+          }}
         >
           ›
         </motion.button>
@@ -351,10 +331,10 @@ function CalendarLume({ value, onChange, sound = true }: CalendarLumeProps) {
       {/* weekday subtitle at day level */}
       {level === "day" && (
         <div
+          className="text-neutral-400 dark:text-neutral-600"
           style={{
             textAlign: "center",
             fontSize: 11,
-            color: C.dim,
             marginBottom: 16,
             fontWeight: 400,
           }}
@@ -400,7 +380,22 @@ function CalendarLume({ value, onChange, sound = true }: CalendarLumeProps) {
                     onMouseEnter={() => setHovY(y)}
                     onMouseLeave={() => setHovY(null)}
                     whileTap={{ scale: 0.92 }}
-                    style={cellStyle(sel, hov)}
+                    className={cn(
+                      "border-none transition-colors",
+                      sel
+                        ? "bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-950 font-semibold"
+                        : hov
+                          ? "bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300"
+                          : "bg-transparent text-neutral-600 dark:text-neutral-400",
+                    )}
+                    style={{
+                      fontSize: 13,
+                      fontFamily: "inherit",
+                      cursor: "pointer",
+                      padding: "10px 4px",
+                      borderRadius: 8,
+                      textAlign: "center" as const,
+                    }}
                   >
                     {y}
                   </motion.button>
@@ -444,7 +439,22 @@ function CalendarLume({ value, onChange, sound = true }: CalendarLumeProps) {
                     onMouseEnter={() => setHovM(i)}
                     onMouseLeave={() => setHovM(null)}
                     whileTap={{ scale: 0.92 }}
-                    style={cellStyle(sel, hov)}
+                    className={cn(
+                      "border-none transition-colors",
+                      sel
+                        ? "bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-950 font-semibold"
+                        : hov
+                          ? "bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300"
+                          : "bg-transparent text-neutral-600 dark:text-neutral-400",
+                    )}
+                    style={{
+                      fontSize: 13,
+                      fontFamily: "inherit",
+                      cursor: "pointer",
+                      padding: "10px 4px",
+                      borderRadius: 8,
+                      textAlign: "center" as const,
+                    }}
                   >
                     {m}
                   </motion.button>
@@ -477,11 +487,11 @@ function CalendarLume({ value, onChange, sound = true }: CalendarLumeProps) {
               {WK.map((w) => (
                 <div
                   key={w}
+                  className="text-neutral-400 dark:text-neutral-600"
                   style={{
                     textAlign: "center",
                     fontSize: 10,
                     fontWeight: 500,
-                    color: C.dim,
                     padding: 4,
                   }}
                 >
@@ -518,22 +528,29 @@ function CalendarLume({ value, onChange, sound = true }: CalendarLumeProps) {
                     onMouseEnter={() => setHovD(dd)}
                     onMouseLeave={() => setHovD(null)}
                     whileTap={{ scale: 0.88 }}
-                    style={{
-                      ...cellStyle(sel, hov),
-                      fontWeight: sel || td ? 600 : 400,
-                      color: sel
-                        ? C.bright
+                    className={cn(
+                      "relative border-none transition-colors",
+                      sel
+                        ? "bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-950 font-semibold"
                         : hov
-                          ? C.bright
+                          ? "bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300"
                           : td
-                            ? C.bright
-                            : C.mid,
-                      position: "relative",
+                            ? "bg-transparent text-neutral-900 dark:text-neutral-100 font-semibold"
+                            : "bg-transparent text-neutral-600 dark:text-neutral-400",
+                    )}
+                    style={{
+                      fontSize: 13,
+                      fontFamily: "inherit",
+                      cursor: "pointer",
+                      padding: "10px 4px",
+                      borderRadius: 8,
+                      textAlign: "center" as const,
                     }}
                   >
                     {dd}
                     {td && !sel && (
                       <span
+                        className="bg-neutral-400 dark:bg-neutral-600"
                         style={{
                           position: "absolute",
                           bottom: 2,
@@ -542,7 +559,6 @@ function CalendarLume({ value, onChange, sound = true }: CalendarLumeProps) {
                           width: 3,
                           height: 3,
                           borderRadius: "50%",
-                          background: C.bright,
                         }}
                       />
                     )}

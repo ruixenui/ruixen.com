@@ -5,19 +5,20 @@ import { motion, AnimatePresence } from "motion/react";
 import { cn } from "@/lib/utils";
 
 /**
- * Calendar Twin — dual-month range picker.
+ * Calendar Crest — dual-month range picker with physical depth.
  *
- * Two months sit side by side. Click a day to start
- * a range, hover to preview, click again to confirm.
- * A continuous band connects start to end — rounding
- * at row edges, brightening at endpoints.
+ * Two months sit side by side. Click a day to start a range,
+ * hover to preview, click again to confirm. The selected band
+ * rises off the surface — endpoints crest highest, the range
+ * forms a ridge with proportional shadows. Confirmed ranges
+ * stand taller than previews.
  *
- * The band IS the selection.
+ * The ridge IS the selection.
  */
 
 /* ── Types ── */
 
-export interface CalendarTwinProps {
+export interface CalendarCrestProps {
   defaultStart?: string;
   defaultEnd?: string;
   onRangeChange?: (start: string | null, end: string | null) => void;
@@ -115,12 +116,12 @@ function playTick(last: React.MutableRefObject<number>) {
 
 /* ── Component ── */
 
-export function CalendarTwin({
+export function CalendarCrest({
   defaultStart,
   defaultEnd,
   onRangeChange,
   sound = true,
-}: CalendarTwinProps) {
+}: CalendarCrestProps) {
   const [baseMonth, setBaseMonth] = useState(() => new Date().getMonth());
   const [baseYear, setBaseYear] = useState(() => new Date().getFullYear());
   const [rangeStart, setRangeStart] = useState<string | null>(
@@ -308,6 +309,23 @@ export function CalendarTwin({
               ? R
               : `${roundLeft ? R : Z} ${roundRight ? R : Z} ${roundRight ? R : Z} ${roundLeft ? R : Z}`;
 
+            /* ── Elevation ── depth via shadow + scale, no Y displacement */
+            let elevation = 0;
+            if (isStart || isEnd) {
+              elevation = isConfirmed ? 6 : 4;
+            } else if (inRange) {
+              elevation = isConfirmed ? 3 : 1.5;
+            }
+
+            const isHov = dateKey === hoverDate && !inRange;
+            if (isHov) elevation = 1.5;
+
+            /* Shadow — proportional to elevation (deeper to sell the crest) */
+            const shadow =
+              elevation > 0.5
+                ? `0 ${Math.round(elevation * 1.5)}px ${Math.round(elevation * 5)}px rgba(0,0,0,${(0.04 + elevation * 0.012).toFixed(3)})`
+                : "none";
+
             /* Text color classes */
             const textCls =
               isStart || isEnd
@@ -317,8 +335,6 @@ export function CalendarTwin({
                   : isToday
                     ? "text-neutral-900 dark:text-neutral-100"
                     : "text-neutral-400 dark:text-neutral-500";
-
-            const isHov = dateKey === hoverDate && !inRange;
 
             /* Background classes */
             const bgCls = inRange
@@ -330,14 +346,23 @@ export function CalendarTwin({
             return (
               <motion.button
                 key={d}
-                whileTap={{ scale: 0.9 }}
                 onClick={() => handleDayClick(dateKey)}
                 onMouseEnter={() => setHoverDate(dateKey)}
                 onMouseLeave={() => setHoverDate(null)}
+                animate={{
+                  scale: 1 + elevation * 0.012,
+                }}
+                whileTap={{ scale: 0.9 }}
+                transition={{
+                  type: "spring",
+                  damping: 22,
+                  stiffness: 320,
+                }}
                 className={cn(
                   "border-none transition-colors duration-100",
                   bgCls,
-                  !inRange && "hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-[10px]",
+                  !inRange &&
+                    "rounded-[10px] hover:bg-neutral-100 dark:hover:bg-neutral-800",
                 )}
                 style={{
                   width: CELL,
@@ -349,12 +374,15 @@ export function CalendarTwin({
                   padding: 0,
                   position: "relative",
                   borderRadius: inRange ? radius : undefined,
+                  boxShadow: shadow,
                 }}
               >
                 <span
                   className={cn(
                     "relative z-[1] text-[13px] tabular-nums transition-colors duration-100",
-                    isHov ? "text-neutral-600 dark:text-neutral-400" : textCls,
+                    isHov
+                      ? "text-neutral-600 dark:text-neutral-400"
+                      : textCls,
                   )}
                   style={{
                     fontWeight:
@@ -388,9 +416,7 @@ export function CalendarTwin({
   })();
 
   return (
-    <div
-      className="bg-neutral-50 dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-[20px] overflow-hidden w-fit"
-    >
+    <div className="w-fit overflow-hidden rounded-[20px] border border-neutral-200 bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-950">
       {/* Header */}
       <div
         style={{
@@ -403,7 +429,7 @@ export function CalendarTwin({
         <motion.button
           whileTap={{ scale: 0.85 }}
           onClick={() => goMonth(-1)}
-          className="text-neutral-400 dark:text-neutral-600 hover:text-neutral-600 dark:hover:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors duration-150"
+          className="text-neutral-400 transition-colors duration-150 hover:bg-neutral-100 hover:text-neutral-600 dark:text-neutral-600 dark:hover:bg-neutral-800 dark:hover:text-neutral-400"
           style={{
             background: "transparent",
             border: "none",
@@ -431,7 +457,7 @@ export function CalendarTwin({
         <motion.button
           whileTap={{ scale: 0.85 }}
           onClick={() => goMonth(1)}
-          className="text-neutral-400 dark:text-neutral-600 hover:text-neutral-600 dark:hover:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors duration-150"
+          className="text-neutral-400 transition-colors duration-150 hover:bg-neutral-100 hover:text-neutral-600 dark:text-neutral-600 dark:hover:bg-neutral-800 dark:hover:text-neutral-400"
           style={{
             background: "transparent",
             border: "none",
@@ -501,4 +527,4 @@ export function CalendarTwin({
   );
 }
 
-export default CalendarTwin;
+export default CalendarCrest;

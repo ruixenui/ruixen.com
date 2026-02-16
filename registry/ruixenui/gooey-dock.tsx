@@ -101,6 +101,10 @@ function cosineScale(d: number): number {
   return (1 + Math.cos((abs / RADIUS) * Math.PI)) / 2;
 }
 
+/* ── Theme ── */
+
+const GD_CSS = `.gd{--gd-ink:0,0,0}.dark .gd,[data-theme="dark"] .gd{--gd-ink:255,255,255}`;
+
 /* ── Dock Icon ── */
 
 function DockIcon({
@@ -167,7 +171,7 @@ function DockIcon({
         flexShrink: 0,
         backgroundColor: useTransform(
           bgOpacity,
-          (v) => `rgba(255,255,255,${v})`,
+          (v) => `rgba(var(--gd-ink),${v})`,
         ),
       }}
       onClick={onClick}
@@ -194,7 +198,7 @@ function DockIcon({
               fontSize: 11,
               fontWeight: 500,
               letterSpacing: "-0.01em",
-              color: "rgba(255,255,255,0.6)",
+              color: "rgba(var(--gd-ink),0.6)",
               whiteSpace: "nowrap",
               pointerEvents: "none",
               userSelect: "none",
@@ -209,7 +213,7 @@ function DockIcon({
       <motion.div
         style={{
           scale: iconScale,
-          color: `rgba(255,255,255,${hovered ? 0.8 : 0.45})`,
+          color: `rgba(var(--gd-ink),${hovered ? 0.8 : 0.45})`,
           transition: "color 0.15s",
           display: "flex",
           alignItems: "center",
@@ -230,7 +234,7 @@ function DockIcon({
             width: 3,
             height: 3,
             borderRadius: "50%",
-            background: "rgba(255,255,255,0.35)",
+            background: "rgba(var(--gd-ink),0.35)",
           }}
         />
       )}
@@ -246,6 +250,7 @@ export function GooeyDock({ items, sound = true }: GooeyDockProps) {
 
   return (
     <div
+      className="gd"
       onMouseMove={(e) => mouseX.set(e.clientX)}
       onMouseLeave={() => mouseX.set(Infinity)}
       style={{
@@ -254,10 +259,11 @@ export function GooeyDock({ items, sound = true }: GooeyDockProps) {
         gap: 2,
         padding: "8px 12px 10px",
         borderRadius: 18,
-        border: "1px solid rgba(255,255,255,0.06)",
-        background: "rgba(255,255,255,0.02)",
+        border: "1px solid rgba(var(--gd-ink),0.06)",
+        background: "rgba(var(--gd-ink),0.02)",
       }}
     >
+      <style dangerouslySetInnerHTML={{ __html: GD_CSS }} />
       {items.map((item, i) => (
         <DockIcon
           key={i}

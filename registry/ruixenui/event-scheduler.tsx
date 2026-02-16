@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { cn } from "@/lib/utils";
 
 /**
  * Event Scheduler — inline timeline creation.
@@ -162,11 +163,8 @@ export function EventScheduler({
 
   return (
     <div
+      className="rounded-[14px] border border-neutral-200 bg-neutral-50 overflow-hidden dark:border-neutral-800 dark:bg-neutral-950"
       style={{
-        background: "rgba(22,22,24,0.98)",
-        border: "1px solid rgba(255,255,255,0.06)",
-        borderRadius: 14,
-        overflow: "hidden",
         maxWidth: 380,
         width: "100%",
       }}
@@ -181,19 +179,19 @@ export function EventScheduler({
         }}
       >
         <span
+          className="text-neutral-900 dark:text-neutral-100"
           style={{
             fontSize: 15,
             fontWeight: 590,
             letterSpacing: "-0.01em",
-            color: "rgba(255,255,255,0.85)",
           }}
         >
           Today
         </span>
         <span
+          className="text-neutral-400 dark:text-neutral-600"
           style={{
             fontSize: 12,
-            color: "rgba(255,255,255,0.25)",
           }}
         >
           {dateStr}
@@ -217,9 +215,9 @@ export function EventScheduler({
       >
         {events.length === 0 && (
           <div
+            className="text-neutral-300 dark:text-neutral-700"
             style={{
               fontSize: 13,
-              color: "rgba(255,255,255,0.18)",
               padding: "8px 0 14px",
             }}
           >
@@ -237,20 +235,20 @@ export function EventScheduler({
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, x: -16 }}
               transition={{ type: "spring", damping: 25, stiffness: 350 }}
+              className="border-b border-neutral-100 dark:border-neutral-800/50"
               style={{
                 display: "flex",
                 alignItems: "center",
                 gap: 14,
                 padding: "10px 0",
-                borderBottom: "1px solid rgba(255,255,255,0.04)",
               }}
             >
               {/* Time */}
               <span
+                className="text-neutral-400 dark:text-neutral-600"
                 style={{
                   fontSize: 12,
                   fontWeight: 500,
-                  color: "rgba(255,255,255,0.28)",
                   minWidth: 58,
                   flexShrink: 0,
                   fontVariantNumeric: "tabular-nums",
@@ -261,10 +259,10 @@ export function EventScheduler({
 
               {/* Title */}
               <span
+                className="text-neutral-600 dark:text-neutral-400"
                 style={{
                   fontSize: 13,
                   fontWeight: 450,
-                  color: "rgba(255,255,255,0.65)",
                   flex: 1,
                   overflow: "hidden",
                   textOverflow: "ellipsis",
@@ -278,21 +276,15 @@ export function EventScheduler({
               <motion.button
                 whileTap={{ scale: 0.85 }}
                 onClick={() => handleRemove(event.id)}
+                className="text-neutral-200 dark:text-neutral-800 hover:text-red-500 dark:hover:text-red-400"
                 style={{
                   background: "transparent",
                   border: "none",
                   cursor: "pointer",
                   padding: "2px 0",
                   fontSize: 14,
-                  color: "rgba(255,255,255,0.12)",
                   lineHeight: 1,
                   transition: "color 0.15s",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.color = "rgba(255,69,58,0.7)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.color = "rgba(255,255,255,0.12)";
                 }}
               >
                 ×
@@ -304,8 +296,8 @@ export function EventScheduler({
 
       {/* Creation zone */}
       <div
+        className="border-t border-neutral-200 dark:border-neutral-800"
         style={{
-          borderTop: "1px solid rgba(255,255,255,0.06)",
           marginTop: 4,
           padding: "14px 20px 16px",
         }}
@@ -329,6 +321,7 @@ export function EventScheduler({
               }
             }}
             placeholder="New event…"
+            className="text-neutral-600 dark:text-neutral-400 placeholder:text-neutral-400 dark:placeholder:text-neutral-600"
             style={{
               flex: 1,
               background: "transparent",
@@ -336,24 +329,25 @@ export function EventScheduler({
               outline: "none",
               fontSize: 13,
               fontWeight: 400,
-              color: "rgba(255,255,255,0.65)",
               fontFamily: "inherit",
             }}
           />
           <motion.button
             whileTap={{ scale: 0.9 }}
             onClick={handleAdd}
+            className={cn(
+              "transition-colors duration-150",
+              title.trim()
+                ? "text-neutral-500 dark:text-neutral-500"
+                : "text-neutral-200 dark:text-neutral-800",
+            )}
             style={{
               background: "transparent",
               border: "none",
               cursor: title.trim() ? "pointer" : "default",
               fontSize: 13,
               fontWeight: 500,
-              color: title.trim()
-                ? "rgba(255,255,255,0.5)"
-                : "rgba(255,255,255,0.15)",
               padding: "4px 0",
-              transition: "color 0.15s",
             }}
           >
             Add
@@ -362,9 +356,9 @@ export function EventScheduler({
 
         {/* Selected time hint */}
         <div
+          className="text-neutral-300 dark:text-neutral-700"
           style={{
             fontSize: 11,
-            color: "rgba(255,255,255,0.2)",
             marginTop: 10,
             marginBottom: 6,
             fontVariantNumeric: "tabular-nums",
@@ -389,6 +383,12 @@ export function EventScheduler({
                 tick();
                 setSelHour(h);
               }}
+              className={cn(
+                "transition-colors duration-150",
+                selHour === h
+                  ? "bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300"
+                  : "bg-transparent text-neutral-300 dark:text-neutral-700",
+              )}
               style={{
                 padding: "5px 7px",
                 borderRadius: 6,
@@ -397,13 +397,6 @@ export function EventScheduler({
                 fontVariantNumeric: "tabular-nums",
                 cursor: "pointer",
                 border: "none",
-                background:
-                  selHour === h ? "rgba(255,255,255,0.08)" : "transparent",
-                color:
-                  selHour === h
-                    ? "rgba(255,255,255,0.7)"
-                    : "rgba(255,255,255,0.22)",
-                transition: "background 0.15s, color 0.15s",
                 flexShrink: 0,
                 whiteSpace: "nowrap",
               }}
@@ -431,6 +424,12 @@ export function EventScheduler({
                 tick();
                 setSelMinute(m);
               }}
+              className={cn(
+                "transition-colors duration-150",
+                selMinute === m
+                  ? "bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300"
+                  : "bg-transparent text-neutral-300 dark:text-neutral-700",
+              )}
               style={{
                 padding: "5px 8px",
                 borderRadius: 6,
@@ -439,13 +438,6 @@ export function EventScheduler({
                 fontVariantNumeric: "tabular-nums",
                 cursor: "pointer",
                 border: "none",
-                background:
-                  selMinute === m ? "rgba(255,255,255,0.08)" : "transparent",
-                color:
-                  selMinute === m
-                    ? "rgba(255,255,255,0.7)"
-                    : "rgba(255,255,255,0.22)",
-                transition: "background 0.15s, color 0.15s",
               }}
             >
               :{String(m).padStart(2, "0")}
