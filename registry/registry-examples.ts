@@ -877,51 +877,6 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "sortable-table-demo",
-    type: "registry:example",
-    title: "Sortable Table Demo",
-    description:
-      "Example showing a sortable and filterable data table with search functionality.",
-    registryDependencies: ["https://www.ruixen.com/r/sortable-table"],
-    files: [
-      {
-        path: "registry/example/sortable-table-demo.tsx",
-        type: "registry:example",
-        target: "components/sortable-table-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "table-edit-demo",
-    type: "registry:example",
-    title: "Table Edit Demo",
-    description:
-      "Example showing an editable table component with inline editing and dropdown menus.",
-    registryDependencies: ["https://www.ruixen.com/r/table-edit"],
-    files: [
-      {
-        path: "registry/example/table-edit-demo.tsx",
-        type: "registry:example",
-        target: "components/table-edit-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "table-with-dialog-demo",
-    type: "registry:example",
-    title: "Table With Dialog Demo",
-    description:
-      "Example showing a data table with row details shown in a dialog modal.",
-    registryDependencies: ["https://www.ruixen.com/r/table-with-dialog"],
-    files: [
-      {
-        path: "registry/example/table-with-dialog-demo.tsx",
-        type: "registry:example",
-        target: "components/table-with-dialog-demo.tsx",
-      },
-    ],
-  },
-  {
     name: "fixed-header-footer-table-demo",
     type: "registry:example",
     title: "Fixed Header Footer Table Demo",
@@ -2231,21 +2186,6 @@ export const examples: Registry["items"] = [
         path: "registry/example/color-emotion-select-demo.tsx",
         type: "registry:example",
         target: "components/color-emotion-select-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "live-preview-style-select-demo",
-    type: "registry:example",
-    title: "Live Preview Style Select Demo",
-    description:
-      "Example showing a select component with live preview functionality for style options.",
-    registryDependencies: ["https://ruixen.com/r/live-preview-style-select"],
-    files: [
-      {
-        path: "registry/example/live-preview-style-select-demo.tsx",
-        type: "registry:example",
-        target: "components/live-preview-style-select-demo.tsx",
       },
     ],
   },

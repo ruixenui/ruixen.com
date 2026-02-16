@@ -1673,85 +1673,6 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
-  "sortable-table": {
-    name: "sortable-table",
-    description:
-      "A sortable and filterable data table with search functionality.",
-    type: "registry:ui",
-    registryDependencies: ["table", "input", "button", "badge"],
-    files: [
-      {
-        path: "registry/ruixenui/sortable-table.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/sortable-table.tsx",
-      },
-    ],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/ruixenui/sortable-table.tsx");
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object",
-        ) || item.name;
-      return { default: mod.default || mod[exportName] };
-    }),
-    meta: undefined,
-  },
-  "table-edit": {
-    name: "table-edit",
-    description:
-      "An editable table component with inline editing and dropdown menus.",
-    type: "registry:ui",
-    registryDependencies: [
-      "table",
-      "checkbox",
-      "badge",
-      "button",
-      "dropdown-menu",
-      "input",
-      "select",
-    ],
-    files: [
-      {
-        path: "registry/ruixenui/table-edit.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/table-edit.tsx",
-      },
-    ],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/ruixenui/table-edit.tsx");
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object",
-        ) || item.name;
-      return { default: mod.default || mod[exportName] };
-    }),
-    meta: undefined,
-  },
-  "table-with-dialog": {
-    name: "table-with-dialog",
-    description: "A data table with row details shown in a dialog modal.",
-    type: "registry:ui",
-    registryDependencies: ["table", "checkbox", "button", "dialog", "badge"],
-    files: [
-      {
-        path: "registry/ruixenui/table-with-dialog.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/table-with-dialog.tsx",
-      },
-    ],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/ruixenui/table-with-dialog.tsx");
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object",
-        ) || item.name;
-      return { default: mod.default || mod[exportName] };
-    }),
-    meta: undefined,
-  },
   "fixed-header-footer-table": {
     name: "fixed-header-footer-table",
     description: "A table with fixed header and footer, and scrollable body.",
@@ -3922,32 +3843,6 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/ruixenui/color-emotion-select.tsx");
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object",
-        ) || item.name;
-      return { default: mod.default || mod[exportName] };
-    }),
-    meta: undefined,
-  },
-  "live-preview-style-select": {
-    name: "live-preview-style-select",
-    description:
-      "A select component with live preview functionality that shows a visual representation of the selected style option.",
-    type: "registry:ui",
-    registryDependencies: ["select"],
-    files: [
-      {
-        path: "registry/ruixenui/live-preview-style-select.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/live-preview-style-select.tsx",
-      },
-    ],
-    component: React.lazy(async () => {
-      const mod = await import(
-        "@/registry/ruixenui/live-preview-style-select.tsx"
-      );
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -6199,78 +6094,6 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
-  "sortable-table-demo": {
-    name: "sortable-table-demo",
-    description:
-      "Example showing a sortable and filterable data table with search functionality.",
-    type: "registry:example",
-    registryDependencies: ["https://www.ruixen.com/r/sortable-table"],
-    files: [
-      {
-        path: "registry/example/sortable-table-demo.tsx",
-        type: "registry:example",
-        target: "components/sortable-table-demo.tsx",
-      },
-    ],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/example/sortable-table-demo.tsx");
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object",
-        ) || item.name;
-      return { default: mod.default || mod[exportName] };
-    }),
-    meta: undefined,
-  },
-  "table-edit-demo": {
-    name: "table-edit-demo",
-    description:
-      "Example showing an editable table component with inline editing and dropdown menus.",
-    type: "registry:example",
-    registryDependencies: ["https://www.ruixen.com/r/table-edit"],
-    files: [
-      {
-        path: "registry/example/table-edit-demo.tsx",
-        type: "registry:example",
-        target: "components/table-edit-demo.tsx",
-      },
-    ],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/example/table-edit-demo.tsx");
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object",
-        ) || item.name;
-      return { default: mod.default || mod[exportName] };
-    }),
-    meta: undefined,
-  },
-  "table-with-dialog-demo": {
-    name: "table-with-dialog-demo",
-    description:
-      "Example showing a data table with row details shown in a dialog modal.",
-    type: "registry:example",
-    registryDependencies: ["https://www.ruixen.com/r/table-with-dialog"],
-    files: [
-      {
-        path: "registry/example/table-with-dialog-demo.tsx",
-        type: "registry:example",
-        target: "components/table-with-dialog-demo.tsx",
-      },
-    ],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/example/table-with-dialog-demo.tsx");
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object",
-        ) || item.name;
-      return { default: mod.default || mod[exportName] };
-    }),
-    meta: undefined,
-  },
   "fixed-header-footer-table-demo": {
     name: "fixed-header-footer-table-demo",
     description:
@@ -8429,32 +8252,6 @@ export const Index: Record<string, any> = {
     component: React.lazy(async () => {
       const mod = await import(
         "@/registry/example/color-emotion-select-demo.tsx"
-      );
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object",
-        ) || item.name;
-      return { default: mod.default || mod[exportName] };
-    }),
-    meta: undefined,
-  },
-  "live-preview-style-select-demo": {
-    name: "live-preview-style-select-demo",
-    description:
-      "Example showing a select component with live preview functionality for style options.",
-    type: "registry:example",
-    registryDependencies: ["https://ruixen.com/r/live-preview-style-select"],
-    files: [
-      {
-        path: "registry/example/live-preview-style-select-demo.tsx",
-        type: "registry:example",
-        target: "components/live-preview-style-select-demo.tsx",
-      },
-    ],
-    component: React.lazy(async () => {
-      const mod = await import(
-        "@/registry/example/live-preview-style-select-demo.tsx"
       );
       const exportName =
         Object.keys(mod).find(

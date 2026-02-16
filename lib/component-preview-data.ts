@@ -398,10 +398,6 @@ export const selectPreview: ComponentPreviewMap = {
     light: `${BASE_URL}/popular/tag-cloud-select-light.jpg`,
     dark: `${BASE_URL}/popular/tag-cloud-select-dark.jpg`,
   },
-  "live-preview-style-select": {
-    light: `/preview_images/select/live-preview-style-select-light.png`,
-    dark: `/preview_images/select/live-preview-style-select-dark.png`,
-  },
 };
 
 /**
@@ -557,18 +553,6 @@ export const fileManagementPreview: ComponentPreviewMap = {
  * Path: /docs/components/[slug]
  */
 export const tablesPreview: ComponentPreviewMap = {
-  "sortable-table": {
-    light: `/preview_images/tables/sortable-table-light.png`,
-    dark: `/preview_images/tables/sortable-table-dark.png`,
-  },
-  "table-edit": {
-    light: `/preview_images/tables/table-edit-light.png`,
-    dark: `/preview_images/tables/table-edit-dark.png`,
-  },
-  "table-with-dialog": {
-    light: `/preview_images/tables/table-with-dialog-light.png`,
-    dark: `/preview_images/tables/table-with-dialog-dark.png`,
-  },
   "fixed-header-footer-table": {
     light: `/preview_images/tables/fixed-header-footer-table-light.png`,
     dark: `/preview_images/tables/fixed-header-footer-table-dark.png`,

@@ -1024,35 +1024,11 @@ export const docsConfig: DocsConfig = {
               items: [],
               label: "",
             },
-            {
-              title: "Live Preview Style Select",
-              href: `/docs/components/live-preview-style-select`,
-              items: [],
-              label: "",
-            },
           ],
         },
         {
           title: "Tables",
           items: [
-            {
-              title: "Sortable Table",
-              href: `/docs/components/sortable-table`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Table Edit",
-              href: `/docs/components/table-edit`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Table With Dialog",
-              href: `/docs/components/table-with-dialog`,
-              items: [],
-              label: "",
-            },
             {
               title: "Fixed Header Footer Table",
               href: `/docs/components/fixed-header-footer-table`,

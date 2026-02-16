@@ -1260,73 +1260,6 @@
       ]
     },
     {
-      "name": "sortable-table",
-      "type": "registry:ui",
-      "title": "Sortable Table",
-      "description": "A sortable and filterable data table with search functionality.",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "table",
-        "input",
-        "button",
-        "badge"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/sortable-table.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/sortable-table.tsx"
-        }
-      ]
-    },
-    {
-      "name": "table-edit",
-      "type": "registry:ui",
-      "title": "Table Edit",
-      "description": "An editable table component with inline editing and dropdown menus.",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "table",
-        "checkbox",
-        "badge",
-        "button",
-        "dropdown-menu",
-        "input",
-        "select"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/table-edit.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/table-edit.tsx"
-        }
-      ]
-    },
-    {
-      "name": "table-with-dialog",
-      "type": "registry:ui",
-      "title": "Table With Dialog",
-      "description": "A data table with row details shown in a dialog modal.",
-      "registryDependencies": [
-        "table",
-        "checkbox",
-        "button",
-        "dialog",
-        "badge"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/table-with-dialog.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/table-with-dialog.tsx"
-        }
-      ]
-    },
-    {
       "name": "fixed-header-footer-table",
       "type": "registry:ui",
       "title": "Fixed Header Footer Table",
@@ -3104,22 +3037,6 @@
       ]
     },
     {
-      "name": "live-preview-style-select",
-      "type": "registry:ui",
-      "title": "Live Preview Style Select",
-      "description": "A select component with live preview functionality that shows a visual representation of the selected style option.",
-      "registryDependencies": [
-        "select"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/live-preview-style-select.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/live-preview-style-select.tsx"
-        }
-      ]
-    },
-    {
       "name": "structured-hero-section",
       "type": "registry:ui",
       "title": "Structured Hero Section",
@@ -4644,54 +4561,6 @@
           "path": "registry/example/tree-node-tooltip-demo.tsx",
           "type": "registry:example",
           "target": "components/tree-node-tooltip-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "sortable-table-demo",
-      "type": "registry:example",
-      "title": "Sortable Table Demo",
-      "description": "Example showing a sortable and filterable data table with search functionality.",
-      "registryDependencies": [
-        "https://www.ruixen.com/r/sortable-table"
-      ],
-      "files": [
-        {
-          "path": "registry/example/sortable-table-demo.tsx",
-          "type": "registry:example",
-          "target": "components/sortable-table-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "table-edit-demo",
-      "type": "registry:example",
-      "title": "Table Edit Demo",
-      "description": "Example showing an editable table component with inline editing and dropdown menus.",
-      "registryDependencies": [
-        "https://www.ruixen.com/r/table-edit"
-      ],
-      "files": [
-        {
-          "path": "registry/example/table-edit-demo.tsx",
-          "type": "registry:example",
-          "target": "components/table-edit-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "table-with-dialog-demo",
-      "type": "registry:example",
-      "title": "Table With Dialog Demo",
-      "description": "Example showing a data table with row details shown in a dialog modal.",
-      "registryDependencies": [
-        "https://www.ruixen.com/r/table-with-dialog"
-      ],
-      "files": [
-        {
-          "path": "registry/example/table-with-dialog-demo.tsx",
-          "type": "registry:example",
-          "target": "components/table-with-dialog-demo.tsx"
         }
       ]
     },
@@ -6228,22 +6097,6 @@
           "path": "registry/example/color-emotion-select-demo.tsx",
           "type": "registry:example",
           "target": "components/color-emotion-select-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "live-preview-style-select-demo",
-      "type": "registry:example",
-      "title": "Live Preview Style Select Demo",
-      "description": "Example showing a select component with live preview functionality for style options.",
-      "registryDependencies": [
-        "https://ruixen.com/r/live-preview-style-select"
-      ],
-      "files": [
-        {
-          "path": "registry/example/live-preview-style-select-demo.tsx",
-          "type": "registry:example",
-          "target": "components/live-preview-style-select-demo.tsx"
         }
       ]
     },
