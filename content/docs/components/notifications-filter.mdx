@@ -1,6 +1,6 @@
 ---
 title: Notifications Filter
-description: A notification component with category filtering to organize notifications by type.
+description: Spring pill bar with layoutId sliding indicator and staggered item transitions.
 component: true
 ---
 
@@ -29,7 +29,7 @@ npx ruixenui@latest add "https://ruixen.com/r/notifications-filter"
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install lucide-react
+npm install motion
 ```
 
 <Step>Copy and paste the following code into your project.</Step>
@@ -46,77 +46,39 @@ npm install lucide-react
 
 ## Props
 
-| Prop        | Type                                     | Default                | Description                 |
-| ----------- | ---------------------------------------- | ---------------------- | --------------------------- |
-| `items`     | `NotificationItem[]`                     | `defaultNotifications` | Array of notification items |
-| `placement` | `"top" \| "bottom" \| "left" \| "right"` | `"bottom"`             | Popover placement position  |
+| Prop         | Type           | Default              | Description                  |
+| ------------ | -------------- | -------------------- | ---------------------------- |
+| `items`      | `FilterItem[]` | `DEFAULT_ITEMS`      | Array of notification items  |
+| `categories` | `string[]`     | `DEFAULT_CATEGORIES` | Category labels for pills    |
+| `sound`      | `boolean`      | `true`               | Enable audio tick on switch  |
 
-## NotificationItem Interface
+## FilterItem Interface
 
 ```tsx
-interface NotificationItem {
+interface FilterItem {
   id: string;
-  category: "updates" | "alerts" | "reminders";
-  icon: React.ReactNode;
   title: string;
-  description: string;
+  body: string;
   time: string;
+  category: string;
 }
 ```
 
 ## Features
 
-- **Category Filtering**: Filter notifications by updates, alerts, and reminders
-- **Filter Buttons**: Easy-to-use filter buttons for each category
-- **Icon Support**: Each notification displays an appropriate icon
-- **All Filter**: View all notifications regardless of category
-- **Visual Feedback**: Active filter button is highlighted
-- **Empty States**: Shows message when no notifications match filter
+- **Spring Pill Indicator**: Active category pill has a sliding background that spring-animates via layoutId
+- **Staggered Transitions**: Items exit and enter with staggered spring animations on filter change
+- **Customizable Categories**: Pass any category labels as strings
+- **Hover Brightening**: Item text brightens from dim to hi on hover
+- **Glass Morphism**: Backdrop blur with light/dark CSS custom properties
+- **Audio Feedback**: Soft tick on category switch
 
 ## Usage
 
 ```tsx
-import NotificationsFilter, {
-  NotificationItem,
-} from "@/components/ui/notifications-filter";
-import { Info, AlertCircle, Calendar } from "lucide-react";
+import { NotificationsFilter } from "@/components/ruixen/notifications-filter";
 
 export default function Example() {
-  const notifications: NotificationItem[] = [
-    {
-      id: "1",
-      category: "updates",
-      icon: <Info className="h-4 w-4 text-blue-500" />,
-      title: "System Update",
-      description: "A new feature has been deployed.",
-      time: "just now",
-    },
-    {
-      id: "2",
-      category: "alerts",
-      icon: <AlertCircle className="h-4 w-4 text-red-500" />,
-      title: "Security Alert",
-      description: "Suspicious login detected.",
-      time: "1h ago",
-    },
-    {
-      id: "3",
-      category: "reminders",
-      icon: <Calendar className="h-4 w-4 text-green-500" />,
-      title: "Meeting Reminder",
-      description: "Project sync at 3 PM.",
-      time: "2h ago",
-    },
-  ];
-
-  return (
-    <div className="p-6">
-      {/* Default filtered notifications */}
-      <NotificationsFilter />
-
-      {/* Custom notifications */}
-      <NotificationsFilter items={notifications} placement="top" />
-    </div>
-  );
+  return <NotificationsFilter />;
 }
 ```

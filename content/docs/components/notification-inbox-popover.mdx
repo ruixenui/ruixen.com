@@ -1,9 +1,7 @@
 ---
 title: Notification Inbox Popover
-date: 2024-06-01
-description: A notification inbox popover with tabs, unread counts, and mark as read functionality.
-author: ruixen
-published: true
+description: Wave-hover inbox with cosine proximity effect, mark all read, and glass morphism.
+component: true
 ---
 
 <ComponentPreview name="notification-inbox-popover-demo" />
@@ -19,7 +17,7 @@ published: true
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add "https://ruixen.com/r/notification-inbox-popover"
+npx ruixenui@latest add "https://ruixen.com/r/notification-inbox-popover"
 ```
 
 </TabsContent>
@@ -27,6 +25,12 @@ npx shadcn@latest add "https://ruixen.com/r/notification-inbox-popover"
 <TabsContent value="manual">
 
 <Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install motion
+```
 
 <Step>Copy and paste the following code into your project.</Step>
 
@@ -40,157 +44,43 @@ npx shadcn@latest add "https://ruixen.com/r/notification-inbox-popover"
 
 </Tabs>
 
-## Usage
-
-```tsx
-import {
-  NotificationInboxPopover,
-  Notification,
-} from "@/components/ruixen/notification-inbox-popover";
-import { Bell, GitMerge, FileText, MessageSquare } from "lucide-react";
-
-const notifications: Notification[] = [
-  {
-    id: 1,
-    user: "Alice",
-    action: "merged",
-    target: "PR #45",
-    timestamp: "5 mins ago",
-    unread: true,
-    icon: GitMerge,
-  },
-  {
-    id: 2,
-    user: "Bob",
-    action: "uploaded",
-    target: "Project Plan.pdf",
-    timestamp: "1 hour ago",
-    unread: true,
-    icon: FileText,
-  },
-  {
-    id: 3,
-    user: "Carol",
-    action: "commented on",
-    target: "Issue #23",
-    timestamp: "2 hours ago",
-    unread: false,
-    icon: MessageSquare,
-  },
-];
-
-export default function App() {
-  return (
-    <NotificationInboxPopover
-      notifications={notifications}
-      triggerLabel={<Bell size={16} />}
-      onMarkAll={(notifs) => console.log("Marked all as read:", notifs)}
-      onMarkAsRead={(id) => console.log("Marked as read:", id)}
-      onViewAll={() => console.log("View all clicked")}
-    />
-  );
-}
-```
-
 ## Props
 
-| Prop            | Type                                      | Default                                                              | Description                          |
-| --------------- | ----------------------------------------- | -------------------------------------------------------------------- | ------------------------------------ |
-| `notifications` | `Notification[]`                          | -                                                                    | Array of notification objects        |
-| `triggerLabel`  | `string \| React.ReactNode`               | ""                                                                   | Content for the trigger button       |
-| `popoverWidth`  | `string`                                  | "w-[380px]"                                                          | Tailwind width class for popover     |
-| `onMarkAll`     | `(notifications: Notification[]) => void` | -                                                                    | Callback when marking all as read    |
-| `onMarkAsRead`  | `(id: number) => void`                    | -                                                                    | Callback when marking single as read |
-| `onViewAll`     | `() => void`                              | -                                                                    | Callback when "View all" is clicked  |
-| `tabs`          | `{ value: string; label: string }[]`      | `[{value: "all", label: "All"}, {value: "unread", label: "Unread"}]` | Tab configuration                    |
+| Prop             | Type                   | Default         | Description                          |
+| ---------------- | ---------------------- | --------------- | ------------------------------------ |
+| `items`          | `InboxItem[]`          | `DEFAULT_ITEMS` | Array of notification items          |
+| `onMarkRead`     | `(id: string) => void` | `undefined`     | Callback when marking item as read   |
+| `onMarkAllRead`  | `() => void`           | `undefined`     | Callback when marking all as read    |
+| `sound`          | `boolean`              | `true`          | Enable audio tick on interactions    |
 
-## Notification Interface
+## InboxItem Interface
 
 ```tsx
-interface Notification {
-  id: number;
-  user: string;
-  action: string;
-  target: string;
-  timestamp: string;
-  unread: boolean;
-  icon: LucideIcon;
+interface InboxItem {
+  id: string;
+  title: string;
+  body: string;
+  time: string;
+  read?: boolean;
 }
 ```
-
-| Property    | Type         | Description                    |
-| ----------- | ------------ | ------------------------------ |
-| `id`        | `number`     | Unique notification identifier |
-| `user`      | `string`     | User who performed the action  |
-| `action`    | `string`     | Action that was performed      |
-| `target`    | `string`     | Target of the action           |
-| `timestamp` | `string`     | When the action occurred       |
-| `unread`    | `boolean`    | Whether notification is unread |
-| `icon`      | `LucideIcon` | Icon representing the action   |
 
 ## Features
 
-- **Tabbed Interface**: Switch between "All" and "Unread" notifications
-- **Unread Badges**: Visual indicators for unread count
-- **Mark as Read**: Click notifications to mark them as read
-- **Mark All as Read**: Bulk action to mark all notifications as read
-- **Icon Support**: Each notification displays a relevant icon
-- **Responsive Design**: Adapts to different screen sizes
-- **Scroll Support**: Handles large numbers of notifications
+- **Wave-Hover Proximity**: Moving cursor causes nearby items to lift with cosine falloff
+- **Dynamic Typography**: Hovered items gain weight, brightness, and subtle scale
+- **Mark All Read**: Header action to mark all unread notifications as read
+- **Unread Dot Animation**: Dots spring out with AnimatePresence when marked as read
+- **Cosine Falloff**: Smooth mathematical curve for natural proximity effect
+- **Glass Morphism**: Backdrop blur with light/dark CSS custom properties
+- **Controlled/Uncontrolled**: Works with or without external state management
 
-## Tab Configuration
-
-Customize the tabs by passing a custom tabs array:
+## Usage
 
 ```tsx
-const customTabs = [
-  { value: "all", label: "All Notifications" },
-  { value: "unread", label: "Unread Only" },
-  { value: "mentions", label: "Mentions" },
-]
+import { NotificationInboxPopover } from "@/components/ruixen/notification-inbox-popover";
 
-<NotificationInboxPopover
-  notifications={notifications}
-  tabs={customTabs}
-/>
+export default function Example() {
+  return <NotificationInboxPopover />;
+}
 ```
-
-## Event Handlers
-
-### Mark as Read
-
-```tsx
-const handleMarkAsRead = (id: number) => {
-  // Update your state or make API call
-  updateNotificationStatus(id, { unread: false });
-};
-```
-
-### Mark All as Read
-
-```tsx
-const handleMarkAll = (notifications: Notification[]) => {
-  // Bulk update all notifications
-  bulkUpdateNotifications(
-    notifications.map((n) => n.id),
-    { unread: false },
-  );
-};
-```
-
-### View All Notifications
-
-```tsx
-const handleViewAll = () => {
-  // Navigate to full notifications page
-  router.push("/notifications");
-};
-```
-
-## Use Cases
-
-- **Team Collaboration**: Notify about code reviews, merges, and comments
-- **Project Management**: Updates on tasks, deadlines, and assignments
-- **Social Platforms**: Likes, comments, follows, and mentions
-- **E-commerce**: Order updates, shipping notifications, and promotions
-- **System Alerts**: Security alerts, system updates, and maintenance notices
