@@ -1,10 +1,9 @@
 import { AnimatedThemeToggler } from "@/registry/ruixenui/animated-theme-toggler";
 
-function AnimatedThemeTogglerDemo() {
+export default function AnimatedThemeTogglerDemo() {
   return (
-    <div>
+    <div className="flex min-h-[200px] w-full items-center justify-center">
       <AnimatedThemeToggler />
     </div>
   );
 }
-export default AnimatedThemeTogglerDemo;
