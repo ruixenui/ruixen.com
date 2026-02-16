@@ -390,6 +390,20 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "wordmark-footer-demo",
+    type: "registry:example",
+    title: "Wordmark Footer Demo",
+    description: "Example of a half-cut wordmark footer",
+    registryDependencies: ["https://www.ruixen.com/r/wordmark-footer"],
+    files: [
+      {
+        path: "registry/example/wordmark-footer-demo.tsx",
+        type: "registry:example",
+        target: "components/wordmark-footer-demo.tsx",
+      },
+    ],
+  },
+  {
     name: "hover-gradient-navbar-demo",
     type: "registry:example",
     title: "Hover Gradient Navbar Demo",
@@ -877,23 +891,6 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "fixed-header-footer-table-demo",
-    type: "registry:example",
-    title: "Fixed Header Footer Table Demo",
-    description:
-      "Example showing a table with fixed header and footer, and scrollable body.",
-    registryDependencies: [
-      "https://www.ruixen.com/r/fixed-header-footer-table",
-    ],
-    files: [
-      {
-        path: "registry/example/fixed-header-footer-table-demo.tsx",
-        type: "registry:example",
-        target: "components/fixed-header-footer-table-demo.tsx",
-      },
-    ],
-  },
-  {
     name: "event-scheduler-demo",
     type: "registry:example",
     title: "Event Scheduler Demo",
@@ -935,111 +932,6 @@ export const examples: Registry["items"] = [
         path: "registry/example/glass-image-compare-demo.tsx",
         type: "registry:example",
         target: "components/glass-image-compare-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "reorderable-table-demo",
-    type: "registry:example",
-    title: "Reorderable Table Demo",
-    description:
-      "Example showing a table with column reordering and visibility controls.",
-    registryDependencies: ["https://www.ruixen.com/r/reorderable-table"],
-    files: [
-      {
-        path: "registry/example/reorderable-table-demo.tsx",
-        type: "registry:example",
-        target: "components/reorderable-table-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "comparison-table-demo",
-    type: "registry:example",
-    title: "Comparison Table Demo",
-    description:
-      "Example showing a comparison table with filtering and side-by-side comparison.",
-    registryDependencies: ["https://www.ruixen.com/r/comparison-table"],
-    files: [
-      {
-        path: "registry/example/comparison-table-demo.tsx",
-        type: "registry:example",
-        target: "components/comparison-table-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "flexi-filter-table-demo",
-    type: "registry:example",
-    title: "Flexi Filter Table Demo",
-    description:
-      "Example showing a flexible table with multiple filter options.",
-    registryDependencies: ["https://www.ruixen.com/r/flexi-filter-table"],
-    files: [
-      {
-        path: "registry/example/flexi-filter-table-demo.tsx",
-        type: "registry:example",
-        target: "components/flexi-filter-table-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "table-dialog-demo",
-    type: "registry:example",
-    title: "Table Dialog Demo",
-    description: "Example showing an editable table with dialog-based editing.",
-    registryDependencies: ["https://www.ruixen.com/r/table-dialog"],
-    files: [
-      {
-        path: "registry/example/table-dialog-demo.tsx",
-        type: "registry:example",
-        target: "components/table-dialog-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "minimisable-table-demo",
-    type: "registry:example",
-    title: "Minimisable Table Demo",
-    description: "Example showing a table with collapsible columns.",
-    registryDependencies: ["https://www.ruixen.com/r/minimisable-table"],
-    files: [
-      {
-        path: "registry/example/minimisable-table-demo.tsx",
-        type: "registry:example",
-        target: "components/minimisable-table-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "inline-analytics-table-demo",
-    type: "registry:example",
-    title: "Inline Analytics Table Demo",
-    description:
-      "Example showing a table with inline analytics and progress indicators.",
-    registryDependencies: ["https://www.ruixen.com/r/inline-analytics-table"],
-    files: [
-      {
-        path: "registry/example/inline-analytics-table-demo.tsx",
-        type: "registry:example",
-        target: "components/inline-analytics-table-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "column-collaboration-table-demo",
-    type: "registry:example",
-    title: "Column Collaboration Table Demo",
-    description:
-      "Example showing a collaborative table with column-level comments.",
-    registryDependencies: [
-      "https://www.ruixen.com/r/column-collaboration-table",
-    ],
-    files: [
-      {
-        path: "registry/example/column-collaboration-table-demo.tsx",
-        type: "registry:example",
-        target: "components/column-collaboration-table-demo.tsx",
       },
     ],
   },

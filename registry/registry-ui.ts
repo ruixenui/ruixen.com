@@ -543,6 +543,21 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "wordmark-footer",
+    type: "registry:ui",
+    title: "Wordmark Footer",
+    description:
+      "A Rauno-craft half-cut wordmark footer — giant brand text on a full-width dark surface with luminance gradient and hairline divider.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/ruixenui/wordmark-footer.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/wordmark-footer.tsx",
+      },
+    ],
+  },
+  {
     name: "hover-gradient-navbar",
     type: "registry:ui",
     title: "Hover Gradient Navbar",
@@ -1047,20 +1062,6 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "fixed-header-footer-table",
-    type: "registry:ui",
-    title: "Fixed Header Footer Table",
-    description:
-      "Glass table with sticky header and footer. Scrollable body with hidden scrollbar and edge-fade mask. Row hover brightening. Status dot indicators.",
-    files: [
-      {
-        path: "registry/ruixenui/fixed-header-footer-table.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/fixed-header-footer-table.tsx",
-      },
-    ],
-  },
-  {
     name: "event-scheduler",
     type: "registry:ui",
     title: "Event Scheduler",
@@ -1102,111 +1103,6 @@ export const ui: Registry["items"] = [
         path: "registry/ruixenui/glass-image-compare.tsx",
         type: "registry:ui",
         target: "components/ruixen/glass-image-compare.tsx",
-      },
-    ],
-  },
-  {
-    name: "reorderable-table",
-    type: "registry:ui",
-    title: "Reorderable Table",
-    description:
-      "Glass table with drag-and-drop column reordering, visibility popover, search, and localStorage persistence. Spring animations on reorder.",
-    dependencies: ["motion"],
-    files: [
-      {
-        path: "registry/ruixenui/reorderable-table.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/reorderable-table.tsx",
-      },
-    ],
-  },
-  {
-    name: "comparison-table",
-    type: "registry:ui",
-    title: "Comparison Table",
-    description:
-      "Glass table with category filter pills, select up to 2 items for side-by-side comparison. Spring-animated comparison panel with winner highlighting.",
-    dependencies: ["motion"],
-    files: [
-      {
-        path: "registry/ruixenui/comparison-table.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/comparison-table.tsx",
-      },
-    ],
-  },
-  {
-    name: "flexi-filter-table",
-    type: "registry:ui",
-    title: "Flexi Filter Table",
-    description:
-      "Glass table with multi-filter bar: search, spring-animated status pills, location dropdown, balance range. Row selection with spring transitions.",
-    dependencies: ["motion"],
-    files: [
-      {
-        path: "registry/ruixenui/flexi-filter-table.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/flexi-filter-table.tsx",
-      },
-    ],
-  },
-  {
-    name: "table-dialog",
-    type: "registry:ui",
-    title: "Table Dialog",
-    description:
-      "Glass table with row selection, status dots, three-dot action menu, and spring-animated edit dialog overlay. Inline form fields.",
-    dependencies: ["motion"],
-    files: [
-      {
-        path: "registry/ruixenui/table-dialog.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/table-dialog.tsx",
-      },
-    ],
-  },
-  {
-    name: "minimisable-table",
-    type: "registry:ui",
-    title: "Minimisable Table",
-    description:
-      "Glass table with columns that minimize to icon-only width. Spring-animated column manager dropdown. Audio tick on toggle.",
-    dependencies: ["motion"],
-    files: [
-      {
-        path: "registry/ruixenui/minimisable-table.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/minimisable-table.tsx",
-      },
-    ],
-  },
-  {
-    name: "inline-analytics-table",
-    type: "registry:ui",
-    title: "Inline Analytics Table",
-    description:
-      "Glass table with spring-animated inline progress bars and trend arrows. Row click selection with audio tick.",
-    dependencies: ["motion"],
-    files: [
-      {
-        path: "registry/ruixenui/inline-analytics-table.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/inline-analytics-table.tsx",
-      },
-    ],
-  },
-  {
-    name: "column-collaboration-table",
-    type: "registry:ui",
-    title: "Column Collaboration Table",
-    description:
-      "Glass table with per-column comment threads. Spring-animated popovers, inline comment input, comment count badges. Audio tick on add.",
-    dependencies: ["motion"],
-    files: [
-      {
-        path: "registry/ruixenui/column-collaboration-table.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/column-collaboration-table.tsx",
       },
     ],
   },

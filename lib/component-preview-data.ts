@@ -548,44 +548,6 @@ export const fileManagementPreview: ComponentPreviewMap = {
   },
 };
 
-/**
- * Tables - Data table components
- * Path: /docs/components/[slug]
- */
-export const tablesPreview: ComponentPreviewMap = {
-  "fixed-header-footer-table": {
-    light: `/preview_images/tables/fixed-header-footer-table-light.png`,
-    dark: `/preview_images/tables/fixed-header-footer-table-dark.png`,
-  },
-  "reorderable-table": {
-    light: `/preview_images/tables/reorderable-table-light.png`,
-    dark: `/preview_images/tables/reorderable-table-dark.png`,
-  },
-  "comparison-table": {
-    light: `/preview_images/tables/comparison-table-light.png`,
-    dark: `/preview_images/tables/comparison-table-dark.png`,
-  },
-  "flexi-filter-table": {
-    light: `/preview_images/tables/flexi-filter-table-light.png`,
-    dark: `/preview_images/tables/flexi-filter-table-dark.png`,
-  },
-  "table-dialog": {
-    light: `/preview_images/tables/table-dialog-light.png`,
-    dark: `/preview_images/tables/table-dialog-dark.png`,
-  },
-  "minimisable-table": {
-    light: `/preview_images/tables/minimisable-table-light.png`,
-    dark: `/preview_images/tables/minimisable-table-dark.png`,
-  },
-  "inline-analytics-table": {
-    light: `/preview_images/tables/inline-analytics-table-light.png`,
-    dark: `/preview_images/tables/inline-analytics-table-dark.png`,
-  },
-  "column-collaboration-table": {
-    light: `/preview_images/tables/column-collaboration-table-light.png`,
-    dark: `/preview_images/tables/column-collaboration-table-dark.png`,
-  },
-};
 
 /**
  * Date Pickers - Date selection components
@@ -994,6 +956,10 @@ export const footerSectionPreview: ComponentPreviewMap = {
     light: `/preview_images/footer-sections/footer-enterprise-light.png`,
     dark: `/preview_images/footer-sections/footer-enterprise-dark.png`,
   },
+  "wordmark-footer": {
+    light: `/preview_images/footer-sections/wordmark-footer-light.png`,
+    dark: `/preview_images/footer-sections/wordmark-footer-dark.png`,
+  },
 };
 
 /**
@@ -1059,7 +1025,6 @@ export const allComponentPreviews: ComponentPreviewMap = {
   ...drawerPreview,
   ...formsPreview,
   ...fileManagementPreview,
-  ...tablesPreview,
   ...datePickersPreview,
   ...calendarsPreview,
   ...eventCalendarsPreview,
@@ -1187,7 +1152,6 @@ export function getCategoryPreviews(category: string): ComponentPreviewMap {
     drawer: drawerPreview,
     forms: formsPreview,
     "file-management": fileManagementPreview,
-    tables: tablesPreview,
     "date-pickers": datePickersPreview,
     calendars: calendarsPreview,
     "event-calendars": eventCalendarsPreview,

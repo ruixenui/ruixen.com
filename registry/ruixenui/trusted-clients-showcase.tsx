@@ -120,9 +120,8 @@ export function TrustedClientsShowcase({
                     : "translateY(8px)",
                   filter: inView ? "blur(0px)" : "blur(4px)",
                   transition: entranceDone
-                    ? "opacity 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)"
-                    : "opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s cubic-bezier(0.16, 1, 0.3, 1)",
-                  transitionDelay: !entranceDone ? `${i * 60}ms` : "0ms",
+                    ? "opacity 0.25s 0ms ease, transform 0.25s 0ms cubic-bezier(0.16, 1, 0.3, 1)"
+                    : `opacity 0.5s ${i * 60}ms cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s ${i * 60}ms cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ${i * 60}ms cubic-bezier(0.16, 1, 0.3, 1)`,
                 }}
               >
                 {client.href ? (
