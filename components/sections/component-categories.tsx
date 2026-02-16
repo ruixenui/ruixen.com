@@ -3,176 +3,305 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
+import { useTheme } from "next-themes";
 
-interface CategoryItem {
+interface PreviewItem {
+  id: string;
   title: string;
   href: string;
-  image?: string;
-  count: number;
+  media: "video" | "image";
+  basePath: string;
 }
 
-const categories: CategoryItem[] = [
-  { title: "Hero Sections", href: "/docs/components/hero-sections", count: 7 },
-  { title: "Buttons", href: "/docs/components/buttons", count: 31 },
-  { title: "Forms", href: "/docs/components/forms", count: 18 },
-  { title: "Cards", href: "/docs/components/cards", count: 19 },
-  { title: "Tables", href: "/docs/components/tables", count: 11 },
-  { title: "Inputs", href: "/docs/components/inputs", count: 20 },
-  { title: "Navbars", href: "/docs/components/navbars", count: 15 },
-  { title: "Tabs", href: "/docs/components/tabs", count: 9 },
+const previewItems: PreviewItem[] = [
   {
-    title: "Event Calendars",
-    href: "/docs/components/event-calendars",
-    count: 22,
+    id: "split-feature-showcase",
+    title: "Split Feature Showcase",
+    href: "/docs/components/split-feature-showcase",
+    media: "video",
+    basePath: "split-feature-showcase",
   },
-  { title: "Notifications", href: "/docs/components/notifications", count: 12 },
+  {
+    id: "structured-hero-section",
+    title: "Structured Hero Section",
+    href: "/docs/components/structured-hero-section",
+    media: "image",
+    basePath: "structured-hero-section",
+  },
+  {
+    id: "comment-thread",
+    title: "Comment Thread",
+    href: "/docs/components/comment-thread",
+    media: "video",
+    basePath: "comment-thread",
+  },
+  {
+    id: "wordmark-footer",
+    title: "Wordmark Footer",
+    href: "/docs/components/wordmark-footer",
+    media: "video",
+    basePath: "wordmark-footer",
+  },
+  {
+    id: "faq-chat-accordion",
+    title: "FAQ Chat Accordion",
+    href: "/docs/sections/faq-chat-accordion",
+    media: "video",
+    basePath: "faq-chat-accordion",
+  },
+  {
+    id: "rising-glow",
+    title: "Rising Glow",
+    href: "/docs/components/rising-glow",
+    media: "video",
+    basePath: "rising-glow",
+  },
+  {
+    id: "badge-morph",
+    title: "Badge Morph",
+    href: "/docs/components/badge-morph",
+    media: "video",
+    basePath: "badge-morph",
+  },
+  {
+    id: "split-hero-section",
+    title: "Split Hero Section",
+    href: "/docs/components/split-hero-section",
+    media: "image",
+    basePath: "split-hero-section",
+  },
+  {
+    id: "banner-countdown",
+    title: "Banner Countdown",
+    href: "/docs/components/banner-countdown",
+    media: "video",
+    basePath: "banner-countdown",
+  },
+  {
+    id: "integration-and-stats-section",
+    title: "Integration & Stats Section",
+    href: "/docs/components/integration-and-stats-section",
+    media: "video",
+    basePath: "integration-and-stats-section",
+  },
+  {
+    id: "breadcrumb-dropdown",
+    title: "Breadcrumb Dropdown",
+    href: "/docs/components/breadcrumb-dropdown",
+    media: "video",
+    basePath: "breadcrumb-dropdown",
+  },
 ];
 
-function useInView(options?: IntersectionObserverInit) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [inView, setInView] = useState(false);
+function VideoCard({
+  item,
+  theme,
+}: {
+  item: PreviewItem;
+  theme: string;
+}) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        setInView(true);
-        observer.disconnect();
-      }
-    }, options);
-    observer.observe(el);
+    const video = videoRef.current;
+    const card = cardRef.current;
+    if (!video || !card) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      },
+      { rootMargin: "100px" },
+    );
+
+    observer.observe(card);
     return () => observer.disconnect();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  return [ref, inView] as const;
+
+  const src = `/landing-page-previews/${item.basePath}-${theme}.mp4`;
+
+  return (
+    <div ref={cardRef} className="group break-inside-avoid mb-3 md:mb-4">
+      <Link
+        href={item.href}
+        className="block overflow-hidden rounded-2xl border border-foreground/[0.06] bg-foreground/[0.02] transition-colors duration-200 hover:border-foreground/[0.12]"
+      >
+        <div className="relative w-full overflow-hidden bg-foreground/[0.03]">
+          <video
+            ref={videoRef}
+            key={src}
+            src={src}
+            className="w-full h-auto block"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+          />
+        </div>
+        <div className="flex items-center justify-between px-4 py-3">
+          <span className="text-[13px] font-medium text-foreground/60 group-hover:text-foreground transition-colors duration-150">
+            {item.title}
+          </span>
+          <svg
+            className="size-3.5 text-foreground/20 group-hover:text-foreground/50 transition-all duration-150 group-hover:translate-x-0.5"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={2}
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+            />
+          </svg>
+        </div>
+      </Link>
+    </div>
+  );
 }
 
-function CategoryCard({ cat }: { cat: CategoryItem }) {
-  return (
-    <Link
-      href={cat.href}
-      className="group flex flex-col h-full overflow-hidden rounded-2xl border border-foreground/[0.06] bg-foreground/[0.02] transition-colors duration-200 hover:border-foreground/[0.12]"
-    >
-      {/* Image / GIF area — replace image prop with actual GIF per category */}
-      <div className="relative flex-1 min-h-[140px] overflow-hidden bg-foreground/[0.03]">
-        {cat.image ? (
-          <Image
-            src={cat.image}
-            alt={cat.title}
-            fill
-            className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-          />
-        ) : (
-          <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-foreground/[0.06] text-xs font-medium uppercase tracking-wider select-none">
-              Preview
-            </span>
-          </div>
-        )}
-      </div>
+function ImageCard({
+  item,
+  theme,
+}: {
+  item: PreviewItem;
+  theme: string;
+}) {
+  const src = `/landing-page-previews/${item.basePath}-${theme}.png`;
 
-      {/* Label bar */}
-      <div className="flex items-center justify-between px-4 py-3 shrink-0">
-        <span className="text-[13px] font-medium text-foreground/60 group-hover:text-foreground transition-colors duration-150">
-          {cat.title}
-        </span>
-        <span className="text-[11px] tabular-nums text-foreground/25">
-          {cat.count}
-        </span>
-      </div>
-    </Link>
+  return (
+    <div className="group break-inside-avoid mb-3 md:mb-4">
+      <Link
+        href={item.href}
+        className="block overflow-hidden rounded-2xl border border-foreground/[0.06] bg-foreground/[0.02] transition-colors duration-200 hover:border-foreground/[0.12]"
+      >
+        <div className="relative w-full overflow-hidden bg-foreground/[0.03]">
+          <Image
+            src={src}
+            alt={item.title}
+            width={600}
+            height={400}
+            loading="lazy"
+            className="w-full h-auto block transition-transform duration-300 group-hover:scale-[1.02]"
+          />
+        </div>
+        <div className="flex items-center justify-between px-4 py-3">
+          <span className="text-[13px] font-medium text-foreground/60 group-hover:text-foreground transition-colors duration-150">
+            {item.title}
+          </span>
+          <svg
+            className="size-3.5 text-foreground/20 group-hover:text-foreground/50 transition-all duration-150 group-hover:translate-x-0.5"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={2}
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+            />
+          </svg>
+        </div>
+      </Link>
+    </div>
   );
 }
 
 export function ComponentCategories() {
-  /* Arch row: outer boxes tall, inner boxes pushed down → concave silhouette */
-  const archItems = [
-    { cat: categories[0], isCenter: false }, // Hero Sections — tall left
-    { cat: categories[1], isCenter: true }, // Buttons — center-left (lower)
-    { cat: categories[2], isCenter: true }, // Forms — center-right (lower)
-    { cat: categories[3], isCenter: false }, // Cards — tall right
-  ];
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  const [inView, setInView] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
-  const midRow = [categories[4], categories[5], categories[6], categories[7]];
-  const botRow = [categories[8], categories[9]];
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
-  const [archRef, archInView] = useInView({ rootMargin: "-60px" });
-  const [midRef, midInView] = useInView({ rootMargin: "-60px" });
-  const [botRef, botInView] = useInView({ rootMargin: "-60px" });
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "-60px" },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const theme = mounted ? (resolvedTheme ?? "light") : "light";
 
   return (
     <section className="relative z-10 w-full px-4 sm:px-6 md:px-10 lg:px-16 -mt-16 md:-mt-24 lg:-mt-36 pb-16 md:pb-24">
       <div className="mx-auto max-w-[1400px]">
-        {/* Heading — mobile/tablet: above grid; desktop: hidden (placed inside arch) */}
-        <div className="flex justify-center mb-6 md:mb-10 lg:hidden">
+        <div className="flex justify-center mb-6 md:mb-10">
           <span className="text-[11px] font-medium uppercase tracking-[0.15em] text-foreground/35">
             Components
           </span>
         </div>
 
-        <div className="flex flex-col gap-3 md:gap-4">
-          {/* ── Arch row ── */}
+        {/* Grid + bottom fade wrapper */}
+        <div className="relative">
+          {/* Masonry grid */}
           <div
-            ref={archRef}
-            className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4"
+            ref={sectionRef}
+            className="columns-1 sm:columns-2 lg:columns-3 gap-3 md:gap-4 [column-fill:balance]"
           >
-            {/* "COMPONENTS" label in the arch gap — desktop only */}
-            <span className="hidden lg:block absolute top-8 left-1/2 -translate-x-1/2 z-10 text-[11px] font-medium uppercase tracking-[0.15em] text-foreground/35">
-              Components
-            </span>
-
-            {archItems.map(({ cat, isCenter }, i) => (
+            {previewItems.map((item, i) => (
               <div
-                key={cat.title}
-                className={isCenter ? "lg:mt-24" : ""}
+                key={item.id}
                 style={{
-                  opacity: archInView ? 1 : 0,
-                  transform: `translateY(${archInView ? 0 : 24}px)`,
+                  opacity: inView ? 1 : 0,
+                  transform: `translateY(${inView ? 0 : 20}px)`,
                   transition: `opacity 0.5s cubic-bezier(0.25,0.46,0.45,0.94) ${i * 60}ms, transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94) ${i * 60}ms`,
                 }}
               >
-                <CategoryCard cat={cat} />
+                {item.media === "video" ? (
+                  <VideoCard item={item} theme={theme} />
+                ) : (
+                  <ImageCard item={item} theme={theme} />
+                )}
               </div>
             ))}
           </div>
 
-          {/* ── Middle row — 4 equal ── */}
-          <div
-            ref={midRef}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4"
-          >
-            {midRow.map((cat, i) => (
-              <div
-                key={cat.title}
-                style={{
-                  opacity: midInView ? 1 : 0,
-                  transform: `translateY(${midInView ? 0 : 20}px)`,
-                  transition: `opacity 0.45s cubic-bezier(0.25,0.46,0.45,0.94) ${i * 40}ms, transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94) ${i * 40}ms`,
-                }}
-              >
-                <CategoryCard cat={cat} />
-              </div>
-            ))}
-          </div>
+          {/* Bottom fade */}
+          <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-background via-background/60 to-transparent" />
+        </div>
 
-          {/* ── Bottom row — 2 wide ── */}
-          <div
-            ref={botRef}
-            className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4"
+        {/* Explore more */}
+        <div className="relative z-10 flex justify-center -mt-6">
+          <Link
+            href="/docs/components"
+            className="inline-flex items-center gap-1.5 rounded-full border border-foreground/[0.08] bg-foreground/[0.03] px-4 py-2 text-[12px] font-medium text-foreground/50 transition-colors duration-150 hover:border-foreground/[0.15] hover:text-foreground/70"
           >
-            {botRow.map((cat, i) => (
-              <div
-                key={cat.title}
-                style={{
-                  opacity: botInView ? 1 : 0,
-                  transform: `translateY(${botInView ? 0 : 20}px)`,
-                  transition: `opacity 0.45s cubic-bezier(0.25,0.46,0.45,0.94) ${i * 40}ms, transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94) ${i * 40}ms`,
-                }}
-              >
-                <CategoryCard cat={cat} />
-              </div>
-            ))}
-          </div>
+            Explore more
+            <svg
+              className="size-3"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={2}
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+              />
+            </svg>
+          </Link>
         </div>
       </div>
     </section>

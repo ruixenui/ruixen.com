@@ -25,7 +25,7 @@ function Home() {
   return (
     <main className="flex flex-col items-center justify-center w-full overflow-hidden bg-background text-black dark:text-white transition-all duration-300">
       {/* HERO SECTION */}
-      <section className="relative w-full min-h-[calc(100vh-4rem)] flex flex-col items-center justify-center px-4 sm:px-6 md:px-10 lg:px-16">
+      <section className="relative w-full min-h-[calc(100vh-7rem)] flex flex-col items-center justify-center px-4 sm:px-6 md:px-10 lg:px-16">
         <div className="w-full max-w-[1400px] mx-auto">
           {/* Label */}
           <div
