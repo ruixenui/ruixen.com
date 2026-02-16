@@ -1,11 +1,11 @@
 "use client";
 
-import IconPagination from "@/registry/ruixenui/icon-pagination";
+import { IconPagination } from "@/registry/ruixenui/icon-pagination";
 
 export default function IconPaginationDemo() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen">
-      <IconPagination totalPages={200} maxVisible={7} className="mb-10" />
+    <div className="flex min-h-[420px] w-full items-center justify-center px-4">
+      <IconPagination totalPages={12} maxVisible={9} />
     </div>
   );
 }

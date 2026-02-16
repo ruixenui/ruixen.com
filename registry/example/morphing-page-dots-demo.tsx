@@ -1,13 +1,11 @@
 "use client";
 
-import { useState } from "react";
-import MorphingPageDots from "@/registry/ruixenui/morphing-page-dots";
+import { MorphingPageDots } from "@/registry/ruixenui/morphing-page-dots";
 
-export default function DemoPagination() {
-  const [page, setPage] = useState(0);
+export default function MorphingPageDotsDemo() {
   return (
-    <div className="flex justify-center items-center min-h-screen">
-      <MorphingPageDots total={5} initialPage={page} onPageChange={setPage} />
+    <div className="flex min-h-[420px] w-full items-center justify-center px-4">
+      <MorphingPageDots total={7} />
     </div>
   );
 }

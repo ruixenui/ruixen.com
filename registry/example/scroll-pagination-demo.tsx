@@ -1,12 +1,11 @@
 "use client";
 
-import * as React from "react";
-import ScrollPagination from "@/registry/ruixenui/scroll-pagination";
+import { ScrollPagination } from "@/registry/ruixenui/scroll-pagination";
 
 export default function ScrollPaginationDemo() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen">
-      <ScrollPagination totalPages={20} className="mb-10" />
+    <div className="flex min-h-[420px] w-full items-center justify-center px-4">
+      <ScrollPagination totalPages={20} />
     </div>
   );
 }

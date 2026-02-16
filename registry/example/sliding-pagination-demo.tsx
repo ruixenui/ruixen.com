@@ -1,19 +1,11 @@
 "use client";
 
-import SlidingPagination from "@/registry/ruixenui/sliding-pagination";
-import { useState } from "react";
+import { SlidingPagination } from "@/registry/ruixenui/sliding-pagination";
 
-export default function DemoPagination() {
-  const [page, setPage] = useState(1);
-
+export default function SlidingPaginationDemo() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen">
-      <SlidingPagination
-        totalPages={120}
-        currentPage={page}
-        onPageChange={setPage}
-        maxVisiblePages={9} // optional, number of visible buttons
-      />
+    <div className="flex min-h-[420px] w-full items-center justify-center px-4">
+      <SlidingPagination totalPages={30} />
     </div>
   );
 }
