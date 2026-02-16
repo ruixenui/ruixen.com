@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "calendar-wave-demo",
+  "type": "registry:example",
+  "title": "Calendar Wave Demo",
+  "description": "Example showing a calendar with wave-effect hover interaction.",
+  "registryDependencies": [
+    "https://ruixen.com/r/calendar-wave"
+  ],
+  "files": [
+    {
+      "path": "registry/example/calendar-wave-demo.tsx",
+      "content": "\"use client\";\n\nimport { CalendarWave } from \"@/registry/ruixenui/calendar-wave\";\n\nexport default function CalendarWaveDemo() {\n  return (\n    <div className=\"flex min-h-[340px] w-full max-w-xs mx-auto flex-col items-center justify-center gap-4 px-4\">\n      <CalendarWave />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/calendar-wave-demo.tsx"
+    }
+  ]
+}

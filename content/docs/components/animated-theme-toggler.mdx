@@ -1,8 +1,8 @@
 ---
 title: Theme Toggler
-date: 2025-0-17
-description: An Animated theme toggler component, fully customizable using Tailwind CSS.
-author: Nazam Kalsi
+date: 2024-10-02
+description: Sun↔moon morph toggle with spring physics, SVG mask crescent, rotating rays, and switch-click audio feedback.
+author: ruixen
 published: true
 ---
 
@@ -34,14 +34,10 @@ npx shadcn@latest add "https://ruixen.com/r/animated-theme-toggler"
 
 <Step>Update the import paths to match your project setup.</Step>
 
-<Step>Add the required CSS into your index.css</Step>
+<Step>Install required dependencies</Step>
 
-```css title="./index.css"
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation: none;
-  mix-blend-mode: normal;
-}
+```bash
+npm install motion
 ```
 
 </Steps>
@@ -54,18 +50,25 @@ npx shadcn@latest add "https://ruixen.com/r/animated-theme-toggler"
 
 ```tsx
 import { AnimatedThemeToggler } from "@/components/ruixen/animated-theme-toggler";
-```
 
-```tsx
-<AnimatedThemeToggler />
+export default function Header() {
+  return <AnimatedThemeToggler />;
+}
 ```
 
 ## Props
 
-| Prop        | Type     | Default | Description                                     |
-| ----------- | -------- | ------- | ----------------------------------------------- |
-| `className` | `String` | " "     | Additional classes to be added to the component |
+| Prop    | Type      | Default | Description                            |
+| ------- | --------- | ------- | -------------------------------------- |
+| `sound` | `boolean` | `true`  | Enable switch-click audio on toggle    |
 
-## Credits
+## Features
 
-- Credit to [Nazam Kalsi](https://nazam-kalsi-portfolio.vercel.app)
+- Sun↔moon SVG morph — center circle swells while a mask carves the crescent
+- 8 rays shrink and rotate away with spring physics on dark toggle
+- Whole icon rotates 40° during transition for organic feel
+- Spring button scale — hover inflates, tap compresses
+- Switch-click audio — 6ms sine+noise burst for tactile feedback
+- CSS custom property ink adapts to light/dark automatically
+- Unique SVG mask IDs via `useId` — safe for multiple instances
+- No shadcn, no lucide — only `motion/react`

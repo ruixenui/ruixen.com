@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/sliding-pagination-demo.tsx",
-      "content": "\"use client\";\n\nimport SlidingPagination from \"@/registry/ruixenui/sliding-pagination\";\nimport { useState } from \"react\";\n\nexport default function DemoPagination() {\n  const [page, setPage] = useState(1);\n\n  return (\n    <div className=\"flex flex-col items-center justify-center min-h-screen\">\n      <SlidingPagination\n        totalPages={120}\n        currentPage={page}\n        onPageChange={setPage}\n        maxVisiblePages={9} // optional, number of visible buttons\n      />\n    </div>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport { SlidingPagination } from \"@/registry/ruixenui/sliding-pagination\";\n\nexport default function SlidingPaginationDemo() {\n  return (\n    <div className=\"flex min-h-[420px] w-full items-center justify-center px-4\">\n      <SlidingPagination totalPages={30} />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/sliding-pagination-demo.tsx"
     }

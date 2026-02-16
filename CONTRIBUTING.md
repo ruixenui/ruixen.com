@@ -475,9 +475,15 @@ Add your component preview to `lib/component-preview-data.ts`:
 | Category | Object Name | Path |
 |----------|-------------|------|
 | Accordions | `accordionsPreview` | `/docs/components/[slug]` |
-| Alerts | `alertsPreview` | `/docs/components/[slug]` |
+| Avatars | `avatarsPreview` | `/docs/components/[slug]` |
+| Badges | `badgesPreview` | `/docs/components/[slug]` |
+| Banners | `bannersPreview` | `/docs/components/[slug]` |
+| Breadcrumbs | `breadcrumbsPreview` | `/docs/components/[slug]` |
+| Navbars | `navbarsPreview` | `/docs/sections/[slug]` |
 | Cards | `cardsPreview` | `/docs/components/[slug]` |
+| Carousels | `carouselsPreview` | `/docs/components/[slug]` |
 | Buttons | `buttonsPreview` | `/docs/components/[slug]` |
+| Checkboxes | `checkboxesPreview` | `/docs/components/[slug]` |
 | Loaders | `loadersPreview` | `/docs/components/[slug]` |
 | Dialogs | `dialogsPreview` | `/docs/components/[slug]` |
 | Breadcrumb | `breadcrumbPreview` | `/docs/components/[slug]` |
@@ -490,24 +496,25 @@ Add your component preview to `lib/component-preview-data.ts`:
 | Drawer | `drawerPreview` | `/docs/components/[slug]` |
 | Forms | `formsPreview` | `/docs/components/[slug]` |
 | File Management | `fileManagementPreview` | `/docs/components/[slug]` |
-| Tables | `tablesPreview` | `/docs/components/[slug]` |
 | Date Pickers | `datePickersPreview` | `/docs/components/[slug]` |
 | Calendars | `calendarsPreview` | `/docs/components/[slug]` |
 | Event Calendars | `eventCalendarsPreview` | `/docs/components/[slug]` |
 | Image Tools | `imageToolsPreview` | `/docs/components/[slug]` |
 | Video Players | `videoPlayersPreview` | `/docs/components/[slug]` |
+| Text | `textsPreview` | `/docs/components/[slug]` |
 | Backgrounds | `backgroundsPreview` | `/docs/components/[slug]` |
 | Tabs | `tabsPreview` | `/docs/components/[slug]` |
 | Pagination | `paginationPreview` | `/docs/components/[slug]` |
+| Stepper | `stepperPreview` | `/docs/components/[slug]` |
 | Docks | `docksPreview` | `/docs/components/[slug]` |
 | AI Chat Inputs | `aiChatInputsPreview` | `/docs/components/[slug]` |
+| Charts | `chartsPreview` | `/docs/components/[slug]` |
 | FAQs | `faqsPreview` | `/docs/sections/[slug]` |
-| Hero Sections | `heroSectionsPreview` | `/docs/components/[slug]` |
-| Featured Section | `featuredSectionPreview` | `/docs/components/[slug]` |
-| Client Section | `clientSectionPreview` | `/docs/components/[slug]` |
-| Footer Section | `footerSectionPreview` | `/docs/components/[slug]` |
-| Navigation Section | `navigationSectionPreview` | `/docs/components/[slug]` |
-| Pricing Section | `pricingSectionPreview` | `/docs/components/[slug]` |
+| Hero Sections | `heroSectionsPreview` | `/docs/sections/[slug]` |
+| Featured Section | `featuredSectionPreview` | `/docs/sections/[slug]` |
+| Client Section | `clientSectionPreview` | `/docs/sections/[slug]` |
+| Footer Section | `footerSectionPreview` | `/docs/sections/[slug]` |
+| Pricing Section | `pricingSectionPreview` | `/docs/sections/[slug]` |
 
 ## Ask for Help
 

@@ -398,10 +398,6 @@ export const selectPreview: ComponentPreviewMap = {
     light: `${BASE_URL}/popular/tag-cloud-select-light.jpg`,
     dark: `${BASE_URL}/popular/tag-cloud-select-dark.jpg`,
   },
-  "live-preview-style-select": {
-    light: `/preview_images/select/live-preview-style-select-light.png`,
-    dark: `/preview_images/select/live-preview-style-select-dark.png`,
-  },
 };
 
 /**
@@ -552,56 +548,6 @@ export const fileManagementPreview: ComponentPreviewMap = {
   },
 };
 
-/**
- * Tables - Data table components
- * Path: /docs/components/[slug]
- */
-export const tablesPreview: ComponentPreviewMap = {
-  "sortable-table": {
-    light: `/preview_images/tables/sortable-table-light.png`,
-    dark: `/preview_images/tables/sortable-table-dark.png`,
-  },
-  "table-edit": {
-    light: `/preview_images/tables/table-edit-light.png`,
-    dark: `/preview_images/tables/table-edit-dark.png`,
-  },
-  "table-with-dialog": {
-    light: `/preview_images/tables/table-with-dialog-light.png`,
-    dark: `/preview_images/tables/table-with-dialog-dark.png`,
-  },
-  "fixed-header-footer-table": {
-    light: `/preview_images/tables/fixed-header-footer-table-light.png`,
-    dark: `/preview_images/tables/fixed-header-footer-table-dark.png`,
-  },
-  "reorderable-table": {
-    light: `/preview_images/tables/reorderable-table-light.png`,
-    dark: `/preview_images/tables/reorderable-table-dark.png`,
-  },
-  "comparison-table": {
-    light: `/preview_images/tables/comparison-table-light.png`,
-    dark: `/preview_images/tables/comparison-table-dark.png`,
-  },
-  "flexi-filter-table": {
-    light: `/preview_images/tables/flexi-filter-table-light.png`,
-    dark: `/preview_images/tables/flexi-filter-table-dark.png`,
-  },
-  "table-dialog": {
-    light: `/preview_images/tables/table-dialog-light.png`,
-    dark: `/preview_images/tables/table-dialog-dark.png`,
-  },
-  "minimisable-table": {
-    light: `/preview_images/tables/minimisable-table-light.png`,
-    dark: `/preview_images/tables/minimisable-table-dark.png`,
-  },
-  "inline-analytics-table": {
-    light: `/preview_images/tables/inline-analytics-table-light.png`,
-    dark: `/preview_images/tables/inline-analytics-table-dark.png`,
-  },
-  "column-collaboration-table": {
-    light: `/preview_images/tables/column-collaboration-table-light.png`,
-    dark: `/preview_images/tables/column-collaboration-table-dark.png`,
-  },
-};
 
 /**
  * Date Pickers - Date selection components
@@ -1010,6 +956,10 @@ export const footerSectionPreview: ComponentPreviewMap = {
     light: `/preview_images/footer-sections/footer-enterprise-light.png`,
     dark: `/preview_images/footer-sections/footer-enterprise-dark.png`,
   },
+  "wordmark-footer": {
+    light: `/preview_images/footer-sections/wordmark-footer-light.png`,
+    dark: `/preview_images/footer-sections/wordmark-footer-dark.png`,
+  },
 };
 
 /**
@@ -1075,7 +1025,6 @@ export const allComponentPreviews: ComponentPreviewMap = {
   ...drawerPreview,
   ...formsPreview,
   ...fileManagementPreview,
-  ...tablesPreview,
   ...datePickersPreview,
   ...calendarsPreview,
   ...eventCalendarsPreview,
@@ -1203,7 +1152,6 @@ export function getCategoryPreviews(category: string): ComponentPreviewMap {
     drawer: drawerPreview,
     forms: formsPreview,
     "file-management": fileManagementPreview,
-    tables: tablesPreview,
     "date-pickers": datePickersPreview,
     calendars: calendarsPreview,
     "event-calendars": eventCalendarsPreview,

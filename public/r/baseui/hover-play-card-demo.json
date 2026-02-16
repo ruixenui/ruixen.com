@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/hover-play-card-demo.tsx",
-      "content": "import HoverPlayCard from \"@/registry/ruixenui/hover-play-card\";\n\nexport default function HoverPlayCardDemo() {\n  return (\n    <div className=\"min-h-screen flex items-center justify-center bg-background p-4\">\n      <HoverPlayCard\n        src=\"https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4\"\n        poster=\"https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=800&q=80\"\n        loop={true}\n      />\n    </div>\n  );\n}\n",
+      "content": "import { HoverPlayCard } from \"@/registry/ruixenui/hover-play-card\";\n\nexport default function HoverPlayCardDemo() {\n  return (\n    <div className=\"flex min-h-[420px] w-full items-center justify-center px-4\">\n      <HoverPlayCard\n        src=\"https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4\"\n        poster=\"https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=800&q=80\"\n        loop\n      />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/hover-play-card-demo.tsx"
     }

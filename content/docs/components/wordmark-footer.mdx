@@ -1,0 +1,72 @@
+---
+title: Wordmark Footer
+date: 2024-12-29
+description: A Rauno-craft half-cut wordmark footer — giant brand text on a full-width dark surface with a luminance gradient and hairline divider.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="wordmark-footer-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/wordmark-footer"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install dependencies.</Step>
+
+```bash
+npm install motion
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="wordmark-footer" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { WordmarkFooter } from "@/components/ruixen/wordmark-footer";
+```
+
+```tsx
+<WordmarkFooter />
+```
+
+## Props
+
+| Prop        | Type     | Default        | Description                               |
+| ----------- | -------- | -------------- | ----------------------------------------- |
+| `brandName` | `string` | `"Ruixen UI"`  | Brand name displayed next to the triangle |
+
+## Features
+
+- **Half-cut wordmark** — oversized brand text with a vertical luminance gradient that fades from bright to invisible, creating a dramatic cut-off effect
+- **Full viewport width** — edge-to-edge dark surface, no card container
+- **Hairline divider** — positioned at the text midpoint, separating the bright upper portion from the dimming lower portion
+- **Spring entrance** — wordmark slides up with spring physics via IntersectionObserver
+- **CSS custom properties** — scoped `.wf` class with `--wf-bg` and `--wf-line` for theming
+- **Zero dependencies** — only `motion/react`, no Tailwind, no shadcn, no icons, no audio
