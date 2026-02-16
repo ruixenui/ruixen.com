@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/notification-demo.tsx",
-      "content": "\"use client\";\n\nimport Notifications from \"@/registry/ruixenui/notification\";\n\nexport default function NotificationDemo() {\n  const demoItems = [\n    {\n      id: \"1\",\n      title: \"New Message\",\n      description: \"You have a new message from John.\",\n      time: \"2h ago\",\n    },\n    {\n      id: \"2\",\n      title: \"System Alert\",\n      description: \"Server downtime scheduled at midnight.\",\n      time: \"5h ago\",\n    },\n    {\n      id: \"3\",\n      title: \"Meeting Reminder\",\n      description: \"Project sync meeting at 3 PM.\",\n      time: \"1d ago\",\n    },\n    {\n      id: \"4\",\n      title: \"Welcome 🎉\",\n      description: \"Thanks for checking out the notifications component!\",\n      time: \"just now\",\n    },\n  ];\n\n  return (\n    <div className=\"flex flex-col items-center justify-center p-6 gap-6 min-h-screen\">\n      <h1 className=\"text-2xl font-bold\">Notification Demo</h1>\n\n      <Notifications items={demoItems} />\n\n      <p className=\"text-gray-500 text-sm text-center max-w-md\">\n        Click the bell icon to view your notifications. Each notification shows\n        a title, description, and timestamp.\n      </p>\n    </div>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport { Notification } from \"@/registry/ruixenui/notification\";\n\nexport default function NotificationDemo() {\n  return (\n    <div className=\"flex min-h-[420px] w-full items-center justify-center px-4\">\n      <Notification />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/notification-demo.tsx"
     }

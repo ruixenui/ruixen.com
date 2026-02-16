@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "product-table-demo",
+  "type": "registry:example",
+  "title": "Product Table Demo",
+  "description": "Example showing a product table with sorting, pagination, and search.",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/product-table"
+  ],
+  "files": [
+    {
+      "path": "registry/example/product-table-demo.tsx",
+      "content": "\"use client\";\n\nimport { ProductTable } from \"@/registry/ruixenui/product-table\";\n\nexport default function ProductTableDemo() {\n  return (\n    <div className=\"flex min-h-[420px] w-full items-center justify-center px-4\">\n      <ProductTable />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/product-table-demo.tsx"
+    }
+  ]
+}

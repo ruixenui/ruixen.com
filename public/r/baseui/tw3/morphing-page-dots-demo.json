@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/morphing-page-dots-demo.tsx",
-      "content": "\"use client\";\n\nimport { useState } from \"react\";\nimport MorphingPageDots from \"@/registry/ruixenui/morphing-page-dots\";\n\nexport default function DemoPagination() {\n  const [page, setPage] = useState(0);\n  return (\n    <div className=\"flex justify-center items-center min-h-screen\">\n      <MorphingPageDots total={5} initialPage={page} onPageChange={setPage} />\n    </div>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport { MorphingPageDots } from \"@/registry/ruixenui/morphing-page-dots\";\n\nexport default function MorphingPageDotsDemo() {\n  return (\n    <div className=\"flex min-h-[420px] w-full items-center justify-center px-4\">\n      <MorphingPageDots total={7} />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/morphing-page-dots-demo.tsx"
     }

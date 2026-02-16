@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "wordmark-footer-demo",
+  "type": "registry:example",
+  "title": "Wordmark Footer Demo",
+  "description": "Example of a half-cut wordmark footer",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/wordmark-footer"
+  ],
+  "files": [
+    {
+      "path": "registry/example/wordmark-footer-demo.tsx",
+      "content": "\"use client\";\n\nimport { WordmarkFooter } from \"../ruixenui/wordmark-footer\";\n\nexport default function WordmarkFooterDemo() {\n  return <WordmarkFooter />;\n}\n",
+      "type": "registry:example",
+      "target": "components/wordmark-footer-demo.tsx"
+    }
+  ]
+}

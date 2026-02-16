@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/gooey-pagination-demo.tsx",
-      "content": "\"use client\";\n\nimport GooeyPagination from \"@/registry/ruixenui/gooey-pagination\";\n\nexport default function GooeyPaginationDemo() {\n  return (\n    <div className=\"flex flex-col items-center justify-center min-h-screen\">\n      <GooeyPagination totalPages={7} className=\"mb-12\" />\n    </div>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport { GooeyPagination } from \"@/registry/ruixenui/gooey-pagination\";\n\nexport default function GooeyPaginationDemo() {\n  return (\n    <div className=\"flex min-h-[420px] w-full items-center justify-center px-4\">\n      <GooeyPagination totalPages={7} />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/gooey-pagination-demo.tsx"
     }

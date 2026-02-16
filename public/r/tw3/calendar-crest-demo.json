@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "calendar-crest-demo",
+  "type": "registry:example",
+  "title": "Calendar Crest Demo",
+  "description": "Example showing a dual-month range picker with elevation-based range highlighting.",
+  "registryDependencies": [
+    "https://ruixen.com/r/calendar-crest"
+  ],
+  "files": [
+    {
+      "path": "registry/example/calendar-crest-demo.tsx",
+      "content": "\"use client\";\n\nimport { CalendarCrest } from \"@/registry/ruixenui/calendar-crest\";\n\nexport default function CalendarCrestDemo() {\n  return (\n    <div className=\"flex min-h-[400px] w-full mx-auto flex-col items-center justify-center gap-4 px-4\">\n      <CalendarCrest />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/calendar-crest-demo.tsx"
+    }
+  ]
+}

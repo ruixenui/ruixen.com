@@ -152,9 +152,9 @@
       "name": "animated-theme-toggler",
       "type": "registry:ui",
       "title": "Theme Toggler",
-      "description": "A component for theme changing animation.",
+      "description": "Sun↔moon morph toggle with spring physics, SVG mask crescent, and switch-click audio.",
       "dependencies": [
-        "lucide-react"
+        "motion"
       ],
       "files": [
         {
@@ -162,13 +162,7 @@
           "type": "registry:ui",
           "target": "components/ruixen/animated-theme-toggler.tsx"
         }
-      ],
-      "css": {
-        "::view-transition-old(root), ::view-transition-new(root)": {
-          "animation": "none",
-          "mix-blend-mode": "normal"
-        }
-      }
+      ]
     },
     {
       "name": "feature-highlights",
@@ -599,6 +593,22 @@
           "path": "registry/ruixenui/footer-enterprise.tsx",
           "type": "registry:ui",
           "target": "components/ruixen/footer-enterprise.tsx"
+        }
+      ]
+    },
+    {
+      "name": "wordmark-footer",
+      "type": "registry:ui",
+      "title": "Wordmark Footer",
+      "description": "A Rauno-craft half-cut wordmark footer — giant brand text on a full-width dark surface with luminance gradient and hairline divider.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/wordmark-footer.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/wordmark-footer.tsx"
         }
       ]
     },
@@ -1047,37 +1057,14 @@
       ]
     },
     {
-      "name": "notification-badge",
-      "type": "registry:ui",
-      "title": "Notification Badge",
-      "description": "A notification badge component with animated count display and different notification types.",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "button"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/notification-badge.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/notification-badge.tsx"
-        }
-      ]
-    },
-    {
       "name": "notification",
       "type": "registry:ui",
       "title": "Notification",
-      "description": "A clean notification popover component with title, description, and timestamp display.",
+      "description": "Spring toast stack with drag-to-dismiss, rubber-band physics, and glass morphism.",
       "dependencies": [
-        "lucide-react"
+        "motion"
       ],
-      "registryDependencies": [
-        "popover",
-        "card",
-        "badge"
-      ],
+      "registryDependencies": [],
       "files": [
         {
           "path": "registry/ruixenui/notification.tsx",
@@ -1087,40 +1074,14 @@
       ]
     },
     {
-      "name": "notification-alt",
-      "type": "registry:ui",
-      "title": "Notification Alt",
-      "description": "An enhanced notification component with info tooltips, clickable links, and different notification types.",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "popover",
-        "badge",
-        "card",
-        "tooltip"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/notification-alt.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/notification-alt.tsx"
-        }
-      ]
-    },
-    {
       "name": "notifications-carousel",
       "type": "registry:ui",
       "title": "Notifications Carousel",
-      "description": "A carousel-style notification component that displays one notification at a time with navigation controls.",
+      "description": "Vertical drum carousel with 3D cylinder rotation, proximity brightness, and spring snap.",
       "dependencies": [
-        "lucide-react"
+        "motion"
       ],
-      "registryDependencies": [
-        "popover",
-        "badge",
-        "card"
-      ],
+      "registryDependencies": [],
       "files": [
         {
           "path": "registry/ruixenui/notifications-carousel.tsx",
@@ -1130,40 +1091,14 @@
       ]
     },
     {
-      "name": "notification-toggle",
-      "type": "registry:ui",
-      "title": "Notification Toggle",
-      "description": "A versatile notification component that toggles between carousel and list view modes.",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "popover",
-        "badge",
-        "card",
-        "button"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/notification-toggle.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/notification-toggle.tsx"
-        }
-      ]
-    },
-    {
       "name": "notifications-filter",
       "type": "registry:ui",
       "title": "Notifications Filter",
-      "description": "A notification component with category filtering to organize notifications by type.",
+      "description": "Spring pill bar with layoutId sliding indicator and staggered item transitions.",
       "dependencies": [
-        "lucide-react"
+        "motion"
       ],
-      "registryDependencies": [
-        "popover",
-        "badge",
-        "button"
-      ],
+      "registryDependencies": [],
       "files": [
         {
           "path": "registry/ruixenui/notifications-filter.tsx",
@@ -1185,23 +1120,6 @@
           "path": "registry/ruixenui/glass-form.tsx",
           "type": "registry:ui",
           "target": "components/ruixen/glass-form.tsx"
-        }
-      ]
-    },
-    {
-      "name": "cookie-notice",
-      "type": "registry:ui",
-      "title": "Cookie Notice",
-      "description": "A GDPR-compliant cookie consent notice with customizable preferences.",
-      "registryDependencies": [
-        "button",
-        "card"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/cookie-notice.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/cookie-notice.tsx"
         }
       ]
     },
@@ -1260,47 +1178,6 @@
       ]
     },
     {
-      "name": "fixed-header-footer-table",
-      "type": "registry:ui",
-      "title": "Fixed Header Footer Table",
-      "description": "A table with fixed header and footer, and scrollable body.",
-      "registryDependencies": [
-        "table"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/fixed-header-footer-table.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/fixed-header-footer-table.tsx"
-        }
-      ]
-    },
-    {
-      "name": "monthly-heatmap-calendar",
-      "type": "registry:ui",
-      "title": "Monthly Heatmap Calendar",
-      "description": "A monthly calendar with event heatmap visualization.",
-      "dependencies": [
-        "date-fns",
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "card",
-        "button",
-        "popover",
-        "input",
-        "select",
-        "badge"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/monthly-heatmap-calendar.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/monthly-heatmap-calendar.tsx"
-        }
-      ]
-    },
-    {
       "name": "event-scheduler",
       "type": "registry:ui",
       "title": "Event Scheduler",
@@ -1349,180 +1226,12 @@
       ]
     },
     {
-      "name": "reorderable-table",
-      "type": "registry:ui",
-      "title": "Reorderable Table",
-      "description": "A feature-rich table with column reordering, visibility toggle, and search functionality.",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "table",
-        "button",
-        "checkbox",
-        "popover",
-        "input"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/reorderable-table.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/reorderable-table.tsx"
-        }
-      ]
-    },
-    {
-      "name": "comparison-table",
-      "type": "registry:ui",
-      "title": "Comparison Table",
-      "description": "A comparison table with filtering, search, and side-by-side item comparison.",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "table",
-        "card",
-        "button",
-        "input",
-        "select"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/comparison-table.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/comparison-table.tsx"
-        }
-      ]
-    },
-    {
-      "name": "flexi-filter-table",
-      "type": "registry:ui",
-      "title": "Flexi Filter Table",
-      "description": "A flexible table with multiple filter options including date range, balance, and location.",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "table",
-        "checkbox",
-        "button",
-        "input",
-        "badge",
-        "dropdown-menu",
-        "calendar",
-        "popover"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/flexi-filter-table.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/flexi-filter-table.tsx"
-        }
-      ]
-    },
-    {
-      "name": "table-dialog",
-      "type": "registry:ui",
-      "title": "Table Dialog",
-      "description": "An editable table with dialog-based editing and row selection.",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "table",
-        "checkbox",
-        "badge",
-        "button",
-        "dropdown-menu",
-        "dialog",
-        "input",
-        "select"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/table-dialog.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/table-dialog.tsx"
-        }
-      ]
-    },
-    {
-      "name": "minimisable-table",
-      "type": "registry:ui",
-      "title": "Minimisable Table",
-      "description": "A table with collapsible columns that can be minimized to icons.",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "table",
-        "button",
-        "dropdown-menu"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/minimisable-table.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/minimisable-table.tsx"
-        }
-      ]
-    },
-    {
-      "name": "inline-analytics-table",
-      "type": "registry:ui",
-      "title": "Inline Analytics Table",
-      "description": "A table with inline analytics including progress bars and trend indicators.",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "table",
-        "progress"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/inline-analytics-table.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/inline-analytics-table.tsx"
-        }
-      ]
-    },
-    {
-      "name": "column-collaboration-table",
-      "type": "registry:ui",
-      "title": "Column Collaboration Table",
-      "description": "A collaborative table with column-level comments and annotations.",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "table",
-        "button",
-        "popover",
-        "input",
-        "scroll-area"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/column-collaboration-table.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/column-collaboration-table.tsx"
-        }
-      ]
-    },
-    {
       "name": "video-player-pro",
       "type": "registry:ui",
       "title": "Video Player Pro",
-      "description": "A professional video player with custom controls, playback speed, and fullscreen support.",
+      "description": "Cinema-quality video player with glass control bar, spring physics, custom progress scrubber, inline volume slider, and speed pills with layout-animated indicator.",
       "dependencies": [
-        "framer-motion",
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "button",
-        "popover",
-        "slider"
+        "motion"
       ],
       "files": [
         {
@@ -1536,13 +1245,9 @@
       "name": "hover-play-card",
       "type": "registry:ui",
       "title": "Hover Play Card",
-      "description": "A video card that plays on hover with manual play/pause controls.",
+      "description": "Video card that breathes — hover to preview muted, click to play with sound. Spring-animated play icon, glass overlay, and progress line.",
       "dependencies": [
-        "framer-motion",
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "button"
+        "motion"
       ],
       "files": [
         {
@@ -1769,14 +1474,11 @@
       "name": "wheel-pagination",
       "type": "registry:ui",
       "title": "Wheel Pagination",
-      "description": "Interactive pagination component with mouse wheel support and animated page numbers.",
+      "description": "Vertical drum pagination with scroll wheel navigation, proximity brightness, and spring physics.",
       "dependencies": [
-        "framer-motion",
-        "lucide-react"
+        "motion"
       ],
-      "registryDependencies": [
-        "button"
-      ],
+      "registryDependencies": [],
       "files": [
         {
           "path": "registry/ruixenui/wheel-pagination.tsx",
@@ -1789,14 +1491,11 @@
       "name": "scroll-pagination",
       "type": "registry:ui",
       "title": "Scroll Pagination",
-      "description": "Minimalist pagination with mouse wheel navigation and animated number carousel.",
+      "description": "Minimal flip-counter pagination with direction-aware vertical flip, progress bar, and spring physics.",
       "dependencies": [
-        "framer-motion",
-        "lucide-react"
+        "motion"
       ],
-      "registryDependencies": [
-        "button"
-      ],
+      "registryDependencies": [],
       "files": [
         {
           "path": "registry/ruixenui/scroll-pagination.tsx",
@@ -1809,14 +1508,11 @@
       "name": "icon-pagination",
       "type": "registry:ui",
       "title": "Icon Pagination",
-      "description": "Pagination component with colorful icon indicators and tooltip labels.",
+      "description": "Colorful dot pagination with mouse proximity wave effect, cosine falloff lift, and spring physics.",
       "dependencies": [
-        "lucide-react"
+        "motion"
       ],
-      "registryDependencies": [
-        "tooltip",
-        "button"
-      ],
+      "registryDependencies": [],
       "files": [
         {
           "path": "registry/ruixenui/icon-pagination.tsx",
@@ -1829,14 +1525,11 @@
       "name": "gooey-pagination",
       "type": "registry:ui",
       "title": "Gooey Pagination",
-      "description": "Pagination component with liquid gooey effects using SVG filters.",
+      "description": "Liquid metaball pagination with SVG gooey filter, sliding active indicator, and spring physics.",
       "dependencies": [
-        "framer-motion",
-        "lucide-react"
+        "motion"
       ],
-      "registryDependencies": [
-        "button"
-      ],
+      "registryDependencies": [],
       "files": [
         {
           "path": "registry/ruixenui/gooey-pagination.tsx",
@@ -1849,14 +1542,11 @@
       "name": "stack-pagination",
       "type": "registry:ui",
       "title": "Stack Pagination",
-      "description": "3D card stack pagination with flip animations and perspective effects.",
+      "description": "Physical card stack pagination with depth compression, diminishing scale, and spring physics.",
       "dependencies": [
-        "framer-motion"
+        "motion"
       ],
-      "registryDependencies": [
-        "button",
-        "card"
-      ],
+      "registryDependencies": [],
       "files": [
         {
           "path": "registry/ruixenui/stack-pagination.tsx",
@@ -1888,10 +1578,9 @@
       "name": "morphing-page-dots",
       "type": "registry:ui",
       "title": "Morphing Page Dots",
-      "description": "Pagination dots that morph in width with ripple effects for the active state.",
+      "description": "Morphing pill dots with spring width animation, horizontal drag scrub, and audio ticks.",
       "dependencies": [
-        "framer-motion",
-        "lucide-react"
+        "motion"
       ],
       "files": [
         {
@@ -1905,13 +1594,11 @@
       "name": "sliding-pagination",
       "type": "registry:ui",
       "title": "Sliding Pagination",
-      "description": "Pagination component with sliding underline indicator and smart page grouping.",
+      "description": "Page numbers with sliding pill indicator, proximity brightness, wheel navigation, and spring physics.",
       "dependencies": [
-        "framer-motion"
+        "motion"
       ],
-      "registryDependencies": [
-        "button"
-      ],
+      "registryDependencies": [],
       "files": [
         {
           "path": "registry/ruixenui/sliding-pagination.tsx",
@@ -2214,20 +1901,6 @@
       ]
     },
     {
-      "name": "breadcrumb-boxed",
-      "type": "registry:ui",
-      "title": "Breadcrumb Boxed",
-      "description": "Segmented breadcrumb with relief hover and underline wipe animation.",
-      "dependencies": [],
-      "files": [
-        {
-          "path": "registry/ruixenui/breadcrumb-boxed.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/breadcrumb-boxed.tsx"
-        }
-      ]
-    },
-    {
       "name": "progress-button",
       "type": "registry:ui",
       "title": "Progress Button",
@@ -2345,72 +2018,6 @@
       ]
     },
     {
-      "name": "multi-month-calendar",
-      "type": "registry:ui",
-      "title": "Multi Month Calendar",
-      "description": "A calendar component that displays multiple months with year/month dropdowns and range selection support.",
-      "dependencies": [
-        "react-day-picker",
-        "date-fns",
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "select"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/multi-month-calendar.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/multi-month-calendar.tsx"
-        }
-      ]
-    },
-    {
-      "name": "calendar-with-presets",
-      "type": "registry:ui",
-      "title": "Calendar With Presets",
-      "description": "A customizable calendar component with preset date ranges and flexible styling options.",
-      "dependencies": [
-        "react-day-picker",
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "button"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/calendar-with-presets.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/calendar-with-presets.tsx"
-        }
-      ]
-    },
-    {
-      "name": "universal-date-picker",
-      "type": "registry:ui",
-      "title": "Universal Date Picker",
-      "description": "A versatile date picker with single/range mode toggle, preset shortcuts, and year selector.",
-      "dependencies": [
-        "react-day-picker",
-        "date-fns",
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "button",
-        "calendar",
-        "label",
-        "card",
-        "popover"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/universal-date-picker.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/universal-date-picker.tsx"
-        }
-      ]
-    },
-    {
       "name": "calendar-lume",
       "type": "registry:ui",
       "title": "Calendar Lume",
@@ -2443,109 +2050,14 @@
       ]
     },
     {
-      "name": "multi-select-calendar-card",
-      "type": "registry:ui",
-      "title": "Multi Select Calendar Card",
-      "description": "A calendar card that allows selecting multiple dates with badge display and removal.",
-      "dependencies": [
-        "date-fns"
-      ],
-      "registryDependencies": [
-        "calendar",
-        "button",
-        "badge",
-        "card"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/multi-select-calendar-card.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/multi-select-calendar-card.tsx"
-        }
-      ]
-    },
-    {
-      "name": "side-panel-multi-calendar",
-      "type": "registry:ui",
-      "title": "Side Panel Multi Calendar",
-      "description": "A multi-select calendar with a side panel showing grouped selected dates by month.",
-      "dependencies": [
-        "date-fns"
-      ],
-      "registryDependencies": [
-        "calendar",
-        "button",
-        "scroll-area",
-        "card"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/side-panel-multi-calendar.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/side-panel-multi-calendar.tsx"
-        }
-      ]
-    },
-    {
-      "name": "dropdown-multi-calendar",
-      "type": "registry:ui",
-      "title": "Dropdown Multi Calendar",
-      "description": "A multi-select calendar with year/month dropdowns and badge-based date display.",
-      "dependencies": [
-        "date-fns"
-      ],
-      "registryDependencies": [
-        "calendar",
-        "button",
-        "badge",
-        "card",
-        "select"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/dropdown-multi-calendar.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/dropdown-multi-calendar.tsx"
-        }
-      ]
-    },
-    {
-      "name": "dropdown-range-date-picker",
-      "type": "registry:ui",
-      "title": "Dropdown Range Date Picker",
-      "description": "A range date picker with year/month dropdowns in a popover interface.",
-      "dependencies": [
-        "date-fns",
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "calendar",
-        "button",
-        "popover",
-        "select"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/dropdown-range-date-picker.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/dropdown-range-date-picker.tsx"
-        }
-      ]
-    },
-    {
       "name": "notification-inbox-popover",
       "type": "registry:ui",
       "title": "Notification Inbox Popover",
-      "description": "A notification inbox popover with tabs, unread counts, and mark as read functionality.",
+      "description": "Wave-hover inbox with cosine proximity effect, mark all read, and glass morphism.",
       "dependencies": [
-        "lucide-react"
+        "motion"
       ],
-      "registryDependencies": [
-        "badge",
-        "button",
-        "popover",
-        "tabs"
-      ],
+      "registryDependencies": [],
       "files": [
         {
           "path": "registry/ruixenui/notification-inbox-popover.tsx",
@@ -2801,6 +2313,38 @@
           "path": "registry/ruixenui/range-calendar.tsx",
           "type": "registry:ui",
           "target": "components/ruixen/range-calendar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "calendar-wave",
+      "type": "registry:ui",
+      "title": "Calendar Wave",
+      "description": "A calendar where days rise toward your cursor like water — cosine wave ripple, spring physics, shadow depth.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/calendar-wave.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/calendar-wave.tsx"
+        }
+      ]
+    },
+    {
+      "name": "calendar-crest",
+      "type": "registry:ui",
+      "title": "Calendar Crest",
+      "description": "Dual-month range picker with physical depth — selected band rises off the surface, endpoints crest highest, proportional shadows.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/calendar-crest.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/calendar-crest.tsx"
         }
       ]
     },
@@ -3973,6 +3517,22 @@
       ]
     },
     {
+      "name": "wordmark-footer-demo",
+      "type": "registry:example",
+      "title": "Wordmark Footer Demo",
+      "description": "Example of a half-cut wordmark footer",
+      "registryDependencies": [
+        "https://www.ruixen.com/r/wordmark-footer"
+      ],
+      "files": [
+        {
+          "path": "registry/example/wordmark-footer-demo.tsx",
+          "type": "registry:example",
+          "target": "components/wordmark-footer-demo.tsx"
+        }
+      ]
+    },
+    {
       "name": "hover-gradient-navbar-demo",
       "type": "registry:example",
       "title": "Hover Gradient Navbar Demo",
@@ -4389,22 +3949,6 @@
       ]
     },
     {
-      "name": "notification-badge-demo",
-      "type": "registry:example",
-      "title": "Notification Badge Demo",
-      "description": "Example showing a notification badge component with animated count display and different notification types.",
-      "registryDependencies": [
-        "https://www.ruixen.com/r/notification-badge"
-      ],
-      "files": [
-        {
-          "path": "registry/example/notification-badge-demo.tsx",
-          "type": "registry:example",
-          "target": "components/notification-badge-demo.tsx"
-        }
-      ]
-    },
-    {
       "name": "notification-demo",
       "type": "registry:example",
       "title": "Notification Demo",
@@ -4421,22 +3965,6 @@
       ]
     },
     {
-      "name": "notification-alt-demo",
-      "type": "registry:example",
-      "title": "Notification Alt Demo",
-      "description": "Example showing an enhanced notification component with info tooltips, clickable links, and different notification types.",
-      "registryDependencies": [
-        "https://www.ruixen.com/r/notification-alt"
-      ],
-      "files": [
-        {
-          "path": "registry/example/notification-alt-demo.tsx",
-          "type": "registry:example",
-          "target": "components/notification-alt-demo.tsx"
-        }
-      ]
-    },
-    {
       "name": "notifications-carousel-demo",
       "type": "registry:example",
       "title": "Notifications Carousel Demo",
@@ -4449,22 +3977,6 @@
           "path": "registry/example/notifications-carousel-demo.tsx",
           "type": "registry:example",
           "target": "components/notifications-carousel-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "notification-toggle-demo",
-      "type": "registry:example",
-      "title": "Notification Toggle Demo",
-      "description": "Example showing a versatile notification component that toggles between carousel and list view modes.",
-      "registryDependencies": [
-        "https://www.ruixen.com/r/notification-toggle"
-      ],
-      "files": [
-        {
-          "path": "registry/example/notification-toggle-demo.tsx",
-          "type": "registry:example",
-          "target": "components/notification-toggle-demo.tsx"
         }
       ]
     },
@@ -4497,22 +4009,6 @@
           "path": "registry/example/glass-form-demo.tsx",
           "type": "registry:example",
           "target": "components/glass-form-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "cookie-notice-demo",
-      "type": "registry:example",
-      "title": "Cookie Notice Demo",
-      "description": "Example showing a GDPR-compliant cookie consent notice with customizable preferences.",
-      "registryDependencies": [
-        "https://www.ruixen.com/r/cookie-notice"
-      ],
-      "files": [
-        {
-          "path": "registry/example/cookie-notice-demo.tsx",
-          "type": "registry:example",
-          "target": "components/cookie-notice-demo.tsx"
         }
       ]
     },
@@ -4565,38 +4061,6 @@
       ]
     },
     {
-      "name": "fixed-header-footer-table-demo",
-      "type": "registry:example",
-      "title": "Fixed Header Footer Table Demo",
-      "description": "Example showing a table with fixed header and footer, and scrollable body.",
-      "registryDependencies": [
-        "https://www.ruixen.com/r/fixed-header-footer-table"
-      ],
-      "files": [
-        {
-          "path": "registry/example/fixed-header-footer-table-demo.tsx",
-          "type": "registry:example",
-          "target": "components/fixed-header-footer-table-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "monthly-heatmap-calendar-demo",
-      "type": "registry:example",
-      "title": "Monthly Heatmap Calendar Demo",
-      "description": "Example showing a monthly calendar with event heatmap visualization.",
-      "registryDependencies": [
-        "https://www.ruixen.com/r/monthly-heatmap-calendar"
-      ],
-      "files": [
-        {
-          "path": "registry/example/monthly-heatmap-calendar-demo.tsx",
-          "type": "registry:example",
-          "target": "components/monthly-heatmap-calendar-demo.tsx"
-        }
-      ]
-    },
-    {
       "name": "event-scheduler-demo",
       "type": "registry:example",
       "title": "Event Scheduler Demo",
@@ -4641,118 +4105,6 @@
           "path": "registry/example/glass-image-compare-demo.tsx",
           "type": "registry:example",
           "target": "components/glass-image-compare-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "reorderable-table-demo",
-      "type": "registry:example",
-      "title": "Reorderable Table Demo",
-      "description": "Example showing a table with column reordering and visibility controls.",
-      "registryDependencies": [
-        "https://www.ruixen.com/r/reorderable-table"
-      ],
-      "files": [
-        {
-          "path": "registry/example/reorderable-table-demo.tsx",
-          "type": "registry:example",
-          "target": "components/reorderable-table-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "comparison-table-demo",
-      "type": "registry:example",
-      "title": "Comparison Table Demo",
-      "description": "Example showing a comparison table with filtering and side-by-side comparison.",
-      "registryDependencies": [
-        "https://www.ruixen.com/r/comparison-table"
-      ],
-      "files": [
-        {
-          "path": "registry/example/comparison-table-demo.tsx",
-          "type": "registry:example",
-          "target": "components/comparison-table-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "flexi-filter-table-demo",
-      "type": "registry:example",
-      "title": "Flexi Filter Table Demo",
-      "description": "Example showing a flexible table with multiple filter options.",
-      "registryDependencies": [
-        "https://www.ruixen.com/r/flexi-filter-table"
-      ],
-      "files": [
-        {
-          "path": "registry/example/flexi-filter-table-demo.tsx",
-          "type": "registry:example",
-          "target": "components/flexi-filter-table-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "table-dialog-demo",
-      "type": "registry:example",
-      "title": "Table Dialog Demo",
-      "description": "Example showing an editable table with dialog-based editing.",
-      "registryDependencies": [
-        "https://www.ruixen.com/r/table-dialog"
-      ],
-      "files": [
-        {
-          "path": "registry/example/table-dialog-demo.tsx",
-          "type": "registry:example",
-          "target": "components/table-dialog-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "minimisable-table-demo",
-      "type": "registry:example",
-      "title": "Minimisable Table Demo",
-      "description": "Example showing a table with collapsible columns.",
-      "registryDependencies": [
-        "https://www.ruixen.com/r/minimisable-table"
-      ],
-      "files": [
-        {
-          "path": "registry/example/minimisable-table-demo.tsx",
-          "type": "registry:example",
-          "target": "components/minimisable-table-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "inline-analytics-table-demo",
-      "type": "registry:example",
-      "title": "Inline Analytics Table Demo",
-      "description": "Example showing a table with inline analytics and progress indicators.",
-      "registryDependencies": [
-        "https://www.ruixen.com/r/inline-analytics-table"
-      ],
-      "files": [
-        {
-          "path": "registry/example/inline-analytics-table-demo.tsx",
-          "type": "registry:example",
-          "target": "components/inline-analytics-table-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "column-collaboration-table-demo",
-      "type": "registry:example",
-      "title": "Column Collaboration Table Demo",
-      "description": "Example showing a collaborative table with column-level comments.",
-      "registryDependencies": [
-        "https://www.ruixen.com/r/column-collaboration-table"
-      ],
-      "files": [
-        {
-          "path": "registry/example/column-collaboration-table-demo.tsx",
-          "type": "registry:example",
-          "target": "components/column-collaboration-table-demo.tsx"
         }
       ]
     },
@@ -5477,22 +4829,6 @@
       ]
     },
     {
-      "name": "breadcrumb-boxed-demo",
-      "type": "registry:example",
-      "title": "Breadcrumb Boxed Demo",
-      "description": "Example showing boxed breadcrumbs with different variants.",
-      "registryDependencies": [
-        "https://ruixen.com/r/breadcrumb-boxed"
-      ],
-      "files": [
-        {
-          "path": "registry/example/breadcrumb-boxed-demo.tsx",
-          "type": "registry:example",
-          "target": "components/breadcrumb-boxed-demo.tsx"
-        }
-      ]
-    },
-    {
       "name": "progress-button-demo",
       "type": "registry:example",
       "title": "Progress Button Demo",
@@ -5525,54 +4861,6 @@
       ]
     },
     {
-      "name": "multi-month-calendar-demo",
-      "type": "registry:example",
-      "title": "Multi Month Calendar Demo",
-      "description": "Example showing a multi-month calendar with range and single date selection modes.",
-      "registryDependencies": [
-        "https://ruixen.com/r/multi-month-calendar"
-      ],
-      "files": [
-        {
-          "path": "registry/example/multi-month-calendar-demo.tsx",
-          "type": "registry:example",
-          "target": "components/multi-month-calendar-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "calendar-with-presets-demo",
-      "type": "registry:example",
-      "title": "Calendar With Presets Demo",
-      "description": "Example showing a calendar with preset date ranges and sidebar navigation.",
-      "registryDependencies": [
-        "https://ruixen.com/r/calendar-with-presets"
-      ],
-      "files": [
-        {
-          "path": "registry/example/calendar-with-presets-demo.tsx",
-          "type": "registry:example",
-          "target": "components/calendar-with-presets-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "universal-date-picker-demo",
-      "type": "registry:example",
-      "title": "Universal Date Picker Demo",
-      "description": "Example showing a universal date picker with mode toggle and preset shortcuts.",
-      "registryDependencies": [
-        "https://ruixen.com/r/universal-date-picker"
-      ],
-      "files": [
-        {
-          "path": "registry/example/universal-date-picker-demo.tsx",
-          "type": "registry:example",
-          "target": "components/universal-date-picker-demo.tsx"
-        }
-      ]
-    },
-    {
       "name": "calendar-lume-demo",
       "type": "registry:example",
       "title": "Calendar Lume Demo",
@@ -5601,70 +4889,6 @@
           "path": "registry/example/calendar-scheduler-demo.tsx",
           "type": "registry:example",
           "target": "components/calendar-scheduler-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "multi-select-calendar-card-demo",
-      "type": "registry:example",
-      "title": "Multi Select Calendar Card Demo",
-      "description": "Example showing a multi-select calendar with badge display and removal.",
-      "registryDependencies": [
-        "https://ruixen.com/r/multi-select-calendar-card"
-      ],
-      "files": [
-        {
-          "path": "registry/example/multi-select-calendar-card-demo.tsx",
-          "type": "registry:example",
-          "target": "components/multi-select-calendar-card-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "side-panel-multi-calendar-demo",
-      "type": "registry:example",
-      "title": "Side Panel Multi Calendar Demo",
-      "description": "Example showing a multi-select calendar with side panel grouped by month.",
-      "registryDependencies": [
-        "https://ruixen.com/r/side-panel-multi-calendar"
-      ],
-      "files": [
-        {
-          "path": "registry/example/side-panel-multi-calendar-demo.tsx",
-          "type": "registry:example",
-          "target": "components/side-panel-multi-calendar-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "dropdown-multi-calendar-demo",
-      "type": "registry:example",
-      "title": "Dropdown Multi Calendar Demo",
-      "description": "Example showing a multi-select calendar with year/month dropdowns.",
-      "registryDependencies": [
-        "https://ruixen.com/r/dropdown-multi-calendar"
-      ],
-      "files": [
-        {
-          "path": "registry/example/dropdown-multi-calendar-demo.tsx",
-          "type": "registry:example",
-          "target": "components/dropdown-multi-calendar-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "dropdown-range-date-picker-demo",
-      "type": "registry:example",
-      "title": "Dropdown Range Date Picker Demo",
-      "description": "Example showing a range date picker with year/month dropdowns in popover.",
-      "registryDependencies": [
-        "https://ruixen.com/r/dropdown-range-date-picker"
-      ],
-      "files": [
-        {
-          "path": "registry/example/dropdown-range-date-picker-demo.tsx",
-          "type": "registry:example",
-          "target": "components/dropdown-range-date-picker-demo.tsx"
         }
       ]
     },
@@ -5905,6 +5129,38 @@
           "path": "registry/example/range-calendar-demo.tsx",
           "type": "registry:example",
           "target": "components/range-calendar-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "calendar-wave-demo",
+      "type": "registry:example",
+      "title": "Calendar Wave Demo",
+      "description": "Example showing a calendar with wave-effect hover interaction.",
+      "registryDependencies": [
+        "https://ruixen.com/r/calendar-wave"
+      ],
+      "files": [
+        {
+          "path": "registry/example/calendar-wave-demo.tsx",
+          "type": "registry:example",
+          "target": "components/calendar-wave-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "calendar-crest-demo",
+      "type": "registry:example",
+      "title": "Calendar Crest Demo",
+      "description": "Example showing a dual-month range picker with elevation-based range highlighting.",
+      "registryDependencies": [
+        "https://ruixen.com/r/calendar-crest"
+      ],
+      "files": [
+        {
+          "path": "registry/example/calendar-crest-demo.tsx",
+          "type": "registry:example",
+          "target": "components/calendar-crest-demo.tsx"
         }
       ]
     },
