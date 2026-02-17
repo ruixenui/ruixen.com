@@ -30,7 +30,8 @@ function getBuf(ac: AudioContext): AudioBuffer {
   const len = Math.floor(ac.sampleRate * 0.003);
   const buf = ac.createBuffer(1, len, ac.sampleRate);
   const ch = buf.getChannelData(0);
-  for (let i = 0; i < len; i++) ch[i] = (Math.random() * 2 - 1) * (1 - i / len) ** 4;
+  for (let i = 0; i < len; i++)
+    ch[i] = (Math.random() * 2 - 1) * (1 - i / len) ** 4;
   _b = buf;
   return buf;
 }
@@ -47,7 +48,9 @@ function tick(ref: React.MutableRefObject<number>) {
     g.gain.value = 0.06;
     src.connect(g).connect(ac.destination);
     src.start();
-  } catch { /* silent */ }
+  } catch {
+    /* silent */
+  }
 }
 
 /* ── Types ── */
@@ -77,54 +80,84 @@ export function GooeyPagination({
 }: GooeyPaginationProps) {
   const [active, setActive] = useState(0);
   const lastSound = useRef(0);
-  const filterId = useRef(`goo-${Math.random().toString(36).slice(2, 8)}`).current;
+  const filterId = useRef(
+    `goo-${Math.random().toString(36).slice(2, 8)}`,
+  ).current;
 
-  const go = useCallback((next: number) => {
-    if (next < 0 || next >= totalPages || next === active) return;
-    if (sound) tick(lastSound);
-    setActive(next);
-    onChange?.(next);
-  }, [active, totalPages, onChange, sound]);
+  const go = useCallback(
+    (next: number) => {
+      if (next < 0 || next >= totalPages || next === active) return;
+      if (sound) tick(lastSound);
+      setActive(next);
+      onChange?.(next);
+    },
+    [active, totalPages, onChange, sound],
+  );
 
   const totalW = totalPages * DOT_SIZE + (totalPages - 1) * DOT_GAP;
 
   return (
-    <div className="gp" style={{ display: "inline-flex", flexDirection: "column", alignItems: "center", gap: 12 }}>
+    <div
+      className="gp"
+      style={{
+        display: "inline-flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: 12,
+      }}
+    >
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
 
-      <div style={{
-        display: "inline-flex",
-        alignItems: "center",
-        gap: 8,
-        padding: "14px 16px",
-        background: "var(--gp-bg)",
-        border: "1px solid var(--gp-border)",
-        boxShadow: "var(--gp-shadow)",
-        borderRadius: 28,
-        backdropFilter: "blur(16px)",
-        WebkitBackdropFilter: "blur(16px)",
-      }}>
+      <div
+        style={{
+          display: "inline-flex",
+          alignItems: "center",
+          gap: 8,
+          padding: "14px 16px",
+          background: "var(--gp-bg)",
+          border: "1px solid var(--gp-border)",
+          boxShadow: "var(--gp-shadow)",
+          borderRadius: 28,
+          backdropFilter: "blur(16px)",
+          WebkitBackdropFilter: "blur(16px)",
+        }}
+      >
         {/* Prev */}
         <button
           onClick={() => go(active - 1)}
           style={{
-            border: "none", background: "none", padding: 4,
+            border: "none",
+            background: "none",
+            padding: 4,
             cursor: active === 0 ? "default" : "pointer",
             opacity: active === 0 ? 0.15 : 0.4,
-            display: "flex", transition: "opacity .12s",
+            display: "flex",
+            transition: "opacity .12s",
           }}
         >
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-            <path d="M7.5 2.5L4.5 6L7.5 9.5" stroke={`rgba(var(--gp-ink),.6)`} strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+            <path
+              d="M7.5 2.5L4.5 6L7.5 9.5"
+              stroke={`rgba(var(--gp-ink),.6)`}
+              strokeWidth="1.3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
         </button>
 
         {/* Gooey dots */}
-        <div style={{ position: "relative", width: totalW, height: DOT_SIZE + 12 }}>
+        <div
+          style={{ position: "relative", width: totalW, height: DOT_SIZE + 12 }}
+        >
           <svg style={{ position: "absolute", width: 0, height: 0 }}>
             <defs>
               <filter id={filterId}>
-                <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur" />
+                <feGaussianBlur
+                  in="SourceGraphic"
+                  stdDeviation="4"
+                  result="blur"
+                />
                 <feColorMatrix
                   in="blur"
                   mode="matrix"
@@ -136,15 +169,17 @@ export function GooeyPagination({
             </defs>
           </svg>
 
-          <div style={{
-            display: "flex",
-            alignItems: "center",
-            gap: DOT_GAP,
-            position: "relative",
-            height: "100%",
-            filter: `url(#${filterId})`,
-            paddingTop: 6,
-          }}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: DOT_GAP,
+              position: "relative",
+              height: "100%",
+              filter: `url(#${filterId})`,
+              paddingTop: 6,
+            }}
+          >
             {Array.from({ length: totalPages }).map((_, i) => (
               <div
                 key={i}
@@ -182,24 +217,35 @@ export function GooeyPagination({
         <button
           onClick={() => go(active + 1)}
           style={{
-            border: "none", background: "none", padding: 4,
+            border: "none",
+            background: "none",
+            padding: 4,
             cursor: active === totalPages - 1 ? "default" : "pointer",
             opacity: active === totalPages - 1 ? 0.15 : 0.4,
-            display: "flex", transition: "opacity .12s",
+            display: "flex",
+            transition: "opacity .12s",
           }}
         >
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-            <path d="M4.5 2.5L7.5 6L4.5 9.5" stroke={`rgba(var(--gp-ink),.6)`} strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+            <path
+              d="M4.5 2.5L7.5 6L4.5 9.5"
+              stroke={`rgba(var(--gp-ink),.6)`}
+              strokeWidth="1.3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
         </button>
       </div>
 
-      <span style={{
-        fontSize: 11,
-        fontWeight: 450,
-        color: `rgba(var(--gp-ink),.3)`,
-        fontVariantNumeric: "tabular-nums",
-      }}>
+      <span
+        style={{
+          fontSize: 11,
+          fontWeight: 450,
+          color: `rgba(var(--gp-ink),.3)`,
+          fontVariantNumeric: "tabular-nums",
+        }}
+      >
         {active + 1} / {totalPages}
       </span>
     </div>

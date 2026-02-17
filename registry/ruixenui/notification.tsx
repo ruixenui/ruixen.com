@@ -35,7 +35,8 @@ function ensureBuf(ac: AudioContext): AudioBuffer {
   const len = Math.floor(ac.sampleRate * 0.003);
   const buf = ac.createBuffer(1, len, ac.sampleRate);
   const ch = buf.getChannelData(0);
-  for (let i = 0; i < len; i++) ch[i] = (Math.random() * 2 - 1) * (1 - i / len) ** 4;
+  for (let i = 0; i < len; i++)
+    ch[i] = (Math.random() * 2 - 1) * (1 - i / len) ** 4;
   _buf = buf;
   return buf;
 }
@@ -73,10 +74,32 @@ interface NotificationProps {
 /* ── Default data ── */
 
 const DEFAULT_ITEMS: NotificationItem[] = [
-  { id: "1", title: "Deployment complete", body: "Your app has been deployed to production.", time: "2m ago", type: "success" },
-  { id: "2", title: "Payment received", body: "You received $2,400 from Acme Corp.", time: "5m ago" },
-  { id: "3", title: "Build failed", body: "Pipeline #847 failed at test stage.", time: "12m ago", type: "error" },
-  { id: "4", title: "New comment", body: "Sarah left a comment on your pull request.", time: "1h ago" },
+  {
+    id: "1",
+    title: "Deployment complete",
+    body: "Your app has been deployed to production.",
+    time: "2m ago",
+    type: "success",
+  },
+  {
+    id: "2",
+    title: "Payment received",
+    body: "You received $2,400 from Acme Corp.",
+    time: "5m ago",
+  },
+  {
+    id: "3",
+    title: "Build failed",
+    body: "Pipeline #847 failed at test stage.",
+    time: "12m ago",
+    type: "error",
+  },
+  {
+    id: "4",
+    title: "New comment",
+    body: "Sarah left a comment on your pull request.",
+    time: "1h ago",
+  },
 ];
 
 /* ── Scoped CSS ── */
@@ -159,7 +182,10 @@ export function Notification({
               dragConstraints={{ left: 0, right: 0 }}
               dragElastic={{ left: 0.06, right: 0.8 }}
               dragMomentum={false}
-              whileDrag={{ boxShadow: "0 0 0 .5px rgba(var(--nt-ink),.04),0 4px 8px rgba(0,0,0,.08),0 16px 40px rgba(0,0,0,.12)" }}
+              whileDrag={{
+                boxShadow:
+                  "0 0 0 .5px rgba(var(--nt-ink),.04),0 4px 8px rgba(0,0,0,.08),0 16px 40px rgba(0,0,0,.12)",
+              }}
               onDragStart={() => setIsDragging(true)}
               onDragEnd={(_, info) => {
                 setIsDragging(false);

@@ -1030,50 +1030,14 @@ export const docsConfig: DocsConfig = {
           title: "Tabs",
           items: [
             {
-              title: "Nested Tabs",
-              href: `/docs/components/nested-tabs`,
+              title: "Invert Tabs",
+              href: `/docs/components/invert-tabs`,
               items: [],
-              label: "",
-            },
-            {
-              title: "Zoom Depth Tabs",
-              href: `/docs/components/zoom-depth-tabs`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Capsule Tabs",
-              href: `/docs/components/capsule-tabs`,
-              items: [],
-              label: "",
+              label: "New",
             },
             {
               title: "Magnetic Tabs",
               href: `/docs/components/magnetic-tabs`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Fade Slide Tabs",
-              href: `/docs/components/fade-slide-tabs`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Hybrid Tabs",
-              href: `/docs/components/hybrid-tabs`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Pill Morph Tabs",
-              href: `/docs/components/pill-morph-tabs`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Sliding Tabs",
-              href: `/docs/components/sliding-tabs`,
               items: [],
               label: "",
             },

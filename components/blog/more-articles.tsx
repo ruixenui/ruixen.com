@@ -1,4 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
+import { BlogThumbnail } from "@/components/blog/blog-thumbnail";
 import type { Blog } from "content-collections";
 import { allBlogs } from "content-collections";
 import { ArrowRightIcon } from "lucide-react";
@@ -33,28 +33,18 @@ export default function MoreArticles({ currentPost }: { currentPost: Blog }) {
             title={post.title}
             className="group flex flex-col"
           >
-            <div className="relative overflow-hidden rounded-xl border border-border">
-              <img
-                src={post.image}
-                alt={post.title}
-                className="size-full object-contain object-left transition-all duration-300 group-hover:scale-[1.01]"
-              />
-            </div>
-            <div className="mt-4 flex flex-col gap-2">
-              <div className="flex items-center gap-x-2 text-sm text-muted-foreground">
-                <span>{getReadingTime(post.body.raw)} min read</span>
-                {post.tag?.[0] && (
-                  <>
-                    <span>·</span>
-                    <span className="rounded-full border border-border bg-primary/5 px-2.5 py-0.5">
-                      {post.tag}
-                    </span>
-                  </>
-                )}
-              </div>
-              <h3 className="text-lg font-medium tracking-tight underline-offset-4 group-hover:underline">
+            <BlogThumbnail
+              title={post.title}
+              tag={post.tag}
+              className="aspect-[16/10] rounded-xl transition-transform duration-300 group-hover:scale-[1.01]"
+            />
+            <div className="mt-4">
+              <h3 className="mb-1.5 text-lg font-semibold tracking-tight underline-offset-4 group-hover:underline">
                 {post.title}
               </h3>
+              <span className="text-sm text-muted-foreground">
+                {getReadingTime(post.body.raw)} min read
+              </span>
             </div>
           </Link>
         ))}

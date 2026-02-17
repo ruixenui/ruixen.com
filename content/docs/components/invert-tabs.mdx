@@ -1,0 +1,105 @@
+---
+title: Invert Tabs
+date: 2024-06-01
+description: mix-blend-mode exclusion on a white pill — text auto-inverts in both light and dark themes with spring physics and audio tick
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="invert-tabs-demo" category="tabs" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/invert-tabs"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="invert-tabs" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Install dependencies</Step>
+
+```bash
+npm install motion
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { InvertTabs } from "@/components/ruixen/invert-tabs";
+
+export default function App() {
+  return (
+    <InvertTabs
+      items={[
+        { value: "all", label: "All Posts" },
+        { value: "engineering", label: "Engineering" },
+        { value: "community", label: "Community" },
+        { value: "press", label: "Press" },
+        { value: "changelog", label: "Changelog" },
+      ]}
+      defaultValue="engineering"
+      onChange={(value) => console.log(value)}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop           | Type                      | Default       | Description                        |
+| -------------- | ------------------------- | ------------- | ---------------------------------- |
+| `items`        | `InvertTabItem[]`         | Default items | Array of tab items                 |
+| `defaultValue` | `string`                  | First item    | Default active tab value           |
+| `onChange`     | `(value: string) => void` | -             | Callback when active tab changes   |
+| `sound`        | `boolean`                 | `true`        | Enable audio tick on tab selection |
+| `className`    | `string`                  | -             | Additional CSS classes             |
+
+## Features
+
+- **Exclusion Blend Mode**: White pill with `mix-blend-mode: exclusion` automatically inverts text color where it overlaps
+- **Theme Adaptive**: Works in both light and dark themes — dark pill with light text in light mode, light pill with dark text in dark mode
+- **Spring Physics**: Pill slides between tabs with spring animation `{ stiffness: 420, damping: 28 }`
+- **Audio Feedback**: Subtle tick sound on tab selection (configurable via `sound` prop)
+- **Self-Contained**: No external UI dependencies, inline styles with CSS variables
+
+## Types
+
+```tsx
+interface InvertTabItem {
+  value: string;
+  label: string;
+}
+```
+
+## How It Works
+
+The inversion effect uses `mix-blend-mode: exclusion` on a white pill indicator. The exclusion formula is `|backdrop - source|` per channel:
+
+- **Light mode** (bg ~#f0f0f0): `|240 - 255| = 15` — pill appears near-black. Dark text under the pill inverts to light.
+- **Dark mode** (bg ~#1a1a1c): `|26 - 255| = 229` — pill appears near-white. Light text under the pill inverts to dark.
+
+The container uses `isolation: isolate` to prevent the blend mode from leaking to parent elements.

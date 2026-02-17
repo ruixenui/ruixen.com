@@ -13,7 +13,7 @@ export function Analytics() {
           "name": "Ruixen UI",
           "url": "https://ruixen.com",
           "logo": "https://ruixen.com/favicon.ico",
-          "description": "350+ free, open-source React components built with Tailwind CSS, TypeScript & Framer Motion.",
+          "description": "170+ free, open-source React components built with Tailwind CSS, TypeScript & Framer Motion.",
           "sameAs": [
             "https://twitter.com/ruixen_ui",
             "https://github.com/ruixenui/ruixen.com",
@@ -30,7 +30,7 @@ export function Analytics() {
           "@type": "WebSite",
           "name": "Ruixen UI",
           "url": "https://ruixen.com",
-          "description": "350+ free, open-source React components built with Tailwind CSS, TypeScript & Framer Motion. Copy-paste into Next.js projects.",
+          "description": "170+ free, open-source React components built with Tailwind CSS, TypeScript & Framer Motion. Copy-paste into Next.js projects.",
           "publisher": {
             "@type": "Organization",
             "name": "Ruixen UI",

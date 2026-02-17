@@ -31,7 +31,8 @@ function getBuf(ac: AudioContext): AudioBuffer {
   const len = Math.floor(ac.sampleRate * 0.003);
   const buf = ac.createBuffer(1, len, ac.sampleRate);
   const ch = buf.getChannelData(0);
-  for (let i = 0; i < len; i++) ch[i] = (Math.random() * 2 - 1) * (1 - i / len) ** 4;
+  for (let i = 0; i < len; i++)
+    ch[i] = (Math.random() * 2 - 1) * (1 - i / len) ** 4;
   _b = buf;
   return buf;
 }
@@ -48,7 +49,9 @@ function tick(ref: React.MutableRefObject<number>) {
     g.gain.value = 0.06;
     src.connect(g).connect(ac.destination);
     src.start();
-  } catch { /* silent */ }
+  } catch {
+    /* silent */
+  }
 }
 
 /* ── Types ── */
@@ -89,17 +92,20 @@ export function SlidingPagination({
   const scrollAccum = useRef(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const go = useCallback((next: number) => {
-    const c = clamp(next, 0, totalPages - 1);
-    if (c === active) return;
-    if (sound) tick(lastSound);
-    if (extPage !== undefined) {
-      onPageChange?.(c + 1);
-    } else {
-      setInternal(c);
-      onPageChange?.(c + 1);
-    }
-  }, [active, totalPages, onPageChange, sound, extPage]);
+  const go = useCallback(
+    (next: number) => {
+      const c = clamp(next, 0, totalPages - 1);
+      if (c === active) return;
+      if (sound) tick(lastSound);
+      if (extPage !== undefined) {
+        onPageChange?.(c + 1);
+      } else {
+        setInternal(c);
+        onPageChange?.(c + 1);
+      }
+    },
+    [active, totalPages, onPageChange, sound, extPage],
+  );
 
   // Wheel
   useEffect(() => {
@@ -127,7 +133,8 @@ export function SlidingPagination({
     let left = Math.max(active - Math.floor(mid / 2), side);
     let right = Math.min(active + Math.floor(mid / 2), totalPages - 1 - side);
     if (left <= side) right = Math.max(right, side + mid);
-    if (right >= totalPages - 1 - side) left = Math.min(left, totalPages - 1 - side - mid);
+    if (right >= totalPages - 1 - side)
+      left = Math.min(left, totalPages - 1 - side - mid);
     left = Math.max(left, side);
     right = Math.min(right, totalPages - 1 - side);
 
@@ -144,8 +151,14 @@ export function SlidingPagination({
       className="slp"
       tabIndex={0}
       onKeyDown={(e) => {
-        if (e.key === "ArrowRight") { e.preventDefault(); go(active + 1); }
-        if (e.key === "ArrowLeft") { e.preventDefault(); go(active - 1); }
+        if (e.key === "ArrowRight") {
+          e.preventDefault();
+          go(active + 1);
+        }
+        if (e.key === "ArrowLeft") {
+          e.preventDefault();
+          go(active - 1);
+        }
       }}
       style={{
         display: "inline-flex",
@@ -176,7 +189,13 @@ export function SlidingPagination({
         disabled={active === 0}
       >
         <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-          <path d="M7.5 2.5L4.5 6L7.5 9.5" stroke={`rgba(var(--slp-ink),.6)`} strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+          <path
+            d="M7.5 2.5L4.5 6L7.5 9.5"
+            stroke={`rgba(var(--slp-ink),.6)`}
+            strokeWidth="1.3"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
         </svg>
       </button>
 
@@ -254,7 +273,13 @@ export function SlidingPagination({
         disabled={active === totalPages - 1}
       >
         <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-          <path d="M4.5 2.5L7.5 6L4.5 9.5" stroke={`rgba(var(--slp-ink),.6)`} strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+          <path
+            d="M4.5 2.5L7.5 6L4.5 9.5"
+            stroke={`rgba(var(--slp-ink),.6)`}
+            strokeWidth="1.3"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
         </svg>
       </button>
     </div>

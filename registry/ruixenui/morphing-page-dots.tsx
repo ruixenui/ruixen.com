@@ -31,7 +31,8 @@ function getBuf(ac: AudioContext): AudioBuffer {
   const len = Math.floor(ac.sampleRate * 0.003);
   const buf = ac.createBuffer(1, len, ac.sampleRate);
   const ch = buf.getChannelData(0);
-  for (let i = 0; i < len; i++) ch[i] = (Math.random() * 2 - 1) * (1 - i / len) ** 4;
+  for (let i = 0; i < len; i++)
+    ch[i] = (Math.random() * 2 - 1) * (1 - i / len) ** 4;
   _b = buf;
   return buf;
 }
@@ -48,7 +49,9 @@ function tick(ref: React.MutableRefObject<number>) {
     g.gain.value = 0.06;
     src.connect(g).connect(ac.destination);
     src.start();
-  } catch { /* silent */ }
+  } catch {
+    /* silent */
+  }
 }
 
 /* ── Types ── */
@@ -90,61 +93,89 @@ export function MorphingPageDots({
   const startX = useRef(0);
   const startPage = useRef(0);
 
-  const go = useCallback((next: number) => {
-    const c = clamp(next, 0, total - 1);
-    if (c === page) return;
-    if (sound) tick(lastSound);
-    setPage(c);
-    onPageChange?.(c);
-  }, [page, total, onPageChange, sound]);
+  const go = useCallback(
+    (next: number) => {
+      const c = clamp(next, 0, total - 1);
+      if (c === page) return;
+      if (sound) tick(lastSound);
+      setPage(c);
+      onPageChange?.(c);
+    },
+    [page, total, onPageChange, sound],
+  );
 
-  const onPointerDown = useCallback((e: React.PointerEvent) => {
-    (e.target as HTMLElement).setPointerCapture(e.pointerId);
-    dragging.current = true;
-    startX.current = e.clientX;
-    startPage.current = page;
-  }, [page]);
+  const onPointerDown = useCallback(
+    (e: React.PointerEvent) => {
+      (e.target as HTMLElement).setPointerCapture(e.pointerId);
+      dragging.current = true;
+      startX.current = e.clientX;
+      startPage.current = page;
+    },
+    [page],
+  );
 
-  const onPointerMove = useCallback((e: React.PointerEvent) => {
-    if (!dragging.current) return;
-    const dx = e.clientX - startX.current;
-    const step = DOT_W_INACTIVE + DOT_GAP;
-    const delta = Math.round(dx / step);
-    go(startPage.current + delta);
-  }, [go]);
+  const onPointerMove = useCallback(
+    (e: React.PointerEvent) => {
+      if (!dragging.current) return;
+      const dx = e.clientX - startX.current;
+      const step = DOT_W_INACTIVE + DOT_GAP;
+      const delta = Math.round(dx / step);
+      go(startPage.current + delta);
+    },
+    [go],
+  );
 
   const onPointerUp = useCallback(() => {
     dragging.current = false;
   }, []);
 
   return (
-    <div className="mpd" style={{ display: "inline-flex", flexDirection: "column", alignItems: "center", gap: 10 }}>
+    <div
+      className="mpd"
+      style={{
+        display: "inline-flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: 10,
+      }}
+    >
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
 
-      <div style={{
-        display: "inline-flex",
-        alignItems: "center",
-        gap: 6,
-        padding: "12px 16px",
-        background: "var(--mpd-bg)",
-        border: "1px solid var(--mpd-border)",
-        boxShadow: "var(--mpd-shadow)",
-        borderRadius: 24,
-        backdropFilter: "blur(16px)",
-        WebkitBackdropFilter: "blur(16px)",
-      }}>
+      <div
+        style={{
+          display: "inline-flex",
+          alignItems: "center",
+          gap: 6,
+          padding: "12px 16px",
+          background: "var(--mpd-bg)",
+          border: "1px solid var(--mpd-border)",
+          boxShadow: "var(--mpd-shadow)",
+          borderRadius: 24,
+          backdropFilter: "blur(16px)",
+          WebkitBackdropFilter: "blur(16px)",
+        }}
+      >
         {/* Prev arrow */}
         <button
           onClick={() => go(page - 1)}
           style={{
-            border: "none", background: "none", padding: 4,
+            border: "none",
+            background: "none",
+            padding: 4,
             cursor: page === 0 ? "default" : "pointer",
             opacity: page === 0 ? 0.15 : 0.4,
-            display: "flex", transition: "opacity .12s",
+            display: "flex",
+            transition: "opacity .12s",
           }}
         >
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-            <path d="M7.5 2.5L4.5 6L7.5 9.5" stroke={`rgba(var(--mpd-ink),.6)`} strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+            <path
+              d="M7.5 2.5L4.5 6L7.5 9.5"
+              stroke={`rgba(var(--mpd-ink),.6)`}
+              strokeWidth="1.3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
         </button>
 
@@ -167,7 +198,10 @@ export function MorphingPageDots({
             return (
               <motion.div
                 key={i}
-                onClick={(e) => { e.stopPropagation(); go(i); }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  go(i);
+                }}
                 animate={{
                   width: isActive ? DOT_W_ACTIVE : DOT_W_INACTIVE,
                   height: DOT_H,
@@ -211,14 +245,23 @@ export function MorphingPageDots({
         <button
           onClick={() => go(page + 1)}
           style={{
-            border: "none", background: "none", padding: 4,
+            border: "none",
+            background: "none",
+            padding: 4,
             cursor: page === total - 1 ? "default" : "pointer",
             opacity: page === total - 1 ? 0.15 : 0.4,
-            display: "flex", transition: "opacity .12s",
+            display: "flex",
+            transition: "opacity .12s",
           }}
         >
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-            <path d="M4.5 2.5L7.5 6L4.5 9.5" stroke={`rgba(var(--mpd-ink),.6)`} strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+            <path
+              d="M4.5 2.5L7.5 6L4.5 9.5"
+              stroke={`rgba(var(--mpd-ink),.6)`}
+              strokeWidth="1.3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
         </button>
       </div>

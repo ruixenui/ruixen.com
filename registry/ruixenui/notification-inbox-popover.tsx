@@ -33,7 +33,8 @@ function ensureBuf(ac: AudioContext): AudioBuffer {
   const len = Math.floor(ac.sampleRate * 0.003);
   const buf = ac.createBuffer(1, len, ac.sampleRate);
   const ch = buf.getChannelData(0);
-  for (let i = 0; i < len; i++) ch[i] = (Math.random() * 2 - 1) * (1 - i / len) ** 4;
+  for (let i = 0; i < len; i++)
+    ch[i] = (Math.random() * 2 - 1) * (1 - i / len) ** 4;
   _buf = buf;
   return buf;
 }
@@ -72,13 +73,55 @@ interface NotificationInboxPopoverProps {
 /* ── Default data ── */
 
 const SEED: InboxItem[] = [
-  { id: "1", title: "Deployment complete", body: "v2.4.1 deployed to production successfully", time: "2m", read: false },
-  { id: "2", title: "Review requested", body: "Alex requested your review on PR #482", time: "8m", read: false },
-  { id: "3", title: "Build passed", body: "Pipeline #846 completed successfully", time: "24m", read: false },
-  { id: "4", title: "Comment added", body: "Sarah commented on your issue #291", time: "1h", read: true },
-  { id: "5", title: "Invitation", body: "You were invited to join Team Alpha", time: "3h", read: true },
-  { id: "6", title: "Weekly report", body: "Your analytics summary is ready to view", time: "6h", read: true },
-  { id: "7", title: "Security alert", body: "New login detected from unknown device", time: "1d", read: false },
+  {
+    id: "1",
+    title: "Deployment complete",
+    body: "v2.4.1 deployed to production successfully",
+    time: "2m",
+    read: false,
+  },
+  {
+    id: "2",
+    title: "Review requested",
+    body: "Alex requested your review on PR #482",
+    time: "8m",
+    read: false,
+  },
+  {
+    id: "3",
+    title: "Build passed",
+    body: "Pipeline #846 completed successfully",
+    time: "24m",
+    read: false,
+  },
+  {
+    id: "4",
+    title: "Comment added",
+    body: "Sarah commented on your issue #291",
+    time: "1h",
+    read: true,
+  },
+  {
+    id: "5",
+    title: "Invitation",
+    body: "You were invited to join Team Alpha",
+    time: "3h",
+    read: true,
+  },
+  {
+    id: "6",
+    title: "Weekly report",
+    body: "Your analytics summary is ready to view",
+    time: "6h",
+    read: true,
+  },
+  {
+    id: "7",
+    title: "Security alert",
+    body: "New login detected from unknown device",
+    time: "1d",
+    read: false,
+  },
 ];
 
 /* ── Scoped CSS ── */
@@ -203,7 +246,10 @@ export function NotificationInboxPopover({
       el.style.background = "";
       const t = el.querySelector("[data-t]") as HTMLElement | null;
       const b = el.querySelector("[data-b]") as HTMLElement | null;
-      if (t) { t.style.fontWeight = ""; t.style.color = ""; }
+      if (t) {
+        t.style.fontWeight = "";
+        t.style.color = "";
+      }
       if (b) b.style.color = "";
     });
   }, []);
@@ -219,7 +265,9 @@ export function NotificationInboxPopover({
       if (ext) {
         onMarkRead?.(id);
       } else {
-        setInternal((p) => p.map((n) => (n.id === id ? { ...n, read: true } : n)));
+        setInternal((p) =>
+          p.map((n) => (n.id === id ? { ...n, read: true } : n)),
+        );
         onMarkRead?.(id);
       }
     },
@@ -234,7 +282,9 @@ export function NotificationInboxPopover({
       const ids = items.filter((n) => !n.read).map((n) => n.id);
       ids.forEach((id, i) => {
         setTimeout(() => {
-          setInternal((p) => p.map((n) => (n.id === id ? { ...n, read: true } : n)));
+          setInternal((p) =>
+            p.map((n) => (n.id === id ? { ...n, read: true } : n)),
+          );
           if (sound && i > 0) tick();
         }, i * 40);
       });
@@ -366,7 +416,11 @@ export function NotificationInboxPopover({
               layout
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0, transition: { height: { delay: 0.08 } } }}
+              exit={{
+                opacity: 0,
+                height: 0,
+                transition: { height: { delay: 0.08 } },
+              }}
               transition={{ type: "spring", stiffness: 400, damping: 32 }}
             >
               <div
@@ -408,7 +462,11 @@ export function NotificationInboxPopover({
                       <motion.div
                         initial={{ scale: 1, opacity: 1 }}
                         exit={{ scale: 0, opacity: 0 }}
-                        transition={{ type: "spring", stiffness: 500, damping: 28 }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 500,
+                          damping: 28,
+                        }}
                         style={{
                           width: 6,
                           height: 6,

@@ -254,11 +254,13 @@ export function AddTaskSheet({
                       }}
                       onMouseEnter={(e) => {
                         if (!active)
-                          e.currentTarget.style.color = "rgba(var(--d-ink),0.4)";
+                          e.currentTarget.style.color =
+                            "rgba(var(--d-ink),0.4)";
                       }}
                       onMouseLeave={(e) => {
                         if (!active)
-                          e.currentTarget.style.color = "rgba(var(--d-ink),0.2)";
+                          e.currentTarget.style.color =
+                            "rgba(var(--d-ink),0.2)";
                       }}
                     >
                       {p}
@@ -289,7 +291,8 @@ export function AddTaskSheet({
                 onMouseEnter={(e) => {
                   if (ready) {
                     e.currentTarget.style.color = "rgba(var(--d-ink),0.9)";
-                    e.currentTarget.style.background = "rgba(var(--d-ink),0.06)";
+                    e.currentTarget.style.background =
+                      "rgba(var(--d-ink),0.06)";
                   }
                 }}
                 onMouseLeave={(e) => {

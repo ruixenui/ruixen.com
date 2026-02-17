@@ -8,13 +8,13 @@ publishedOn: 2026-02-16T10:00:00.000Z
 featured: true
 ---
 
-Open any web app. Click a button. Watch it change state. Notice how it feels like flipping a light switch — instant, binary, weightless.
+Open any web app. Click a button. Watch it change state. Notice how it feels like flipping a light switch. Instant, binary, weightless.
 
 Now open your phone. Scroll a list. Pull down to refresh. Tap a toggle. Everything has **momentum**, **friction**, **resistance**. Every interaction tells your brain: "this thing has physical properties."
 
 Web UI has none of that. It's a problem we stopped trying to solve.
 
-> **Before reading further**, [try clicking around here with your sound on](https://ruixen.com/docs/components/comparison-table). Feel the difference first, then come back.
+> **Before reading further**, [try clicking around here with your sound on](https://ruixen.com/docs/components/drag-and-drop-tabs). Feel the difference first, then come back.
 
 ---
 
@@ -22,7 +22,7 @@ Web UI has none of that. It's a problem we stopped trying to solve.
 
 CSS gives us `transition: 0.3s ease`. That's not physics. That's a timer with a curve. The element doesn't have mass. It doesn't overshoot. It doesn't settle. It just... moves from A to B in exactly 300 milliseconds, every time, regardless of how far it traveled or how fast you triggered it.
 
-Spring physics is different. A spring has **stiffness** (how hard it pulls toward the target), **damping** (how much friction slows it down), and **mass** (how heavy the object feels). The same spring config produces different motion depending on the distance — a short move is snappy, a long move has momentum. That's how real objects behave.
+Spring physics is different. A spring has **stiffness** (how hard it pulls toward the target), **damping** (how much friction slows it down), and **mass** (how heavy the object feels). The same spring config produces different motion depending on the distance. A short move is snappy, a long move has momentum. That's how real objects behave.
 
 ```tsx
 // CSS: same duration regardless of distance
@@ -32,7 +32,7 @@ transition: transform 0.3s ease;
 transition={{ type: "spring", stiffness: 400, damping: 30 }}
 ```
 
-In practice: click a pagination dot. With CSS, the indicator slides to the new position and stops dead. With a spring, it overshoots by a few pixels, bounces back, and settles — like a ball landing in a groove. Drag a column across a table. CSS snaps it into place. A spring lets it carry momentum past the drop point, then pull back. The motion is never the same twice because it depends on velocity and distance, not a fixed timer.
+In practice: click a pagination dot. With CSS, the indicator slides to the new position and stops dead. With a spring, it overshoots by a few pixels, bounces back, and settles. Like a ball landing in a groove. Drag a column across a table. CSS snaps it into place. A spring lets it carry momentum past the drop point, then pull back. The motion is never the same twice because it depends on velocity and distance, not a fixed timer.
 
 The difference is subtle on screen but immediate in feel. Once you use a spring-based UI, CSS transitions feel dead.
 
@@ -42,7 +42,7 @@ The difference is subtle on screen but immediate in feel. Once you use a spring-
 
 Here's the part people argue about.
 
-I added a sound — a 3ms noise burst — to every interactive state change across 190+ components. Toggles, selections, pagination, table row clicks, drag-and-drop. A tiny audible tick.
+I added a sound (a 3ms noise burst) to every interactive state change across 170+ components. Toggles, selections, pagination, table row clicks, drag-and-drop. A tiny audible tick.
 
 The pattern is 12 lines:
 
@@ -74,11 +74,11 @@ function tick() {
 **How it works:**
 
 - `AudioContext` is created once (singleton). The browser requires a user gesture to start it, so it initializes on first interaction.
-- The buffer is 3 milliseconds of noise, shaped by a `(1 - i/len)^4` envelope — a sharp attack that decays to silence almost instantly. It sounds like a physical click, not a digital beep.
-- Gain is set to `0.06` — about 5% volume. You feel it more than you hear it.
+- The buffer is 3 milliseconds of noise, shaped by a `(1 - i/len)^4` envelope. A sharp attack that decays to silence almost instantly. It sounds like a physical click, not a digital beep.
+- Gain is set to `0.06`, about 5% volume. You feel it more than you hear it.
 - A 25ms throttle prevents rapid-fire ticks from stacking.
 
-**Why noise instead of a sine wave?** A sine wave at any frequency sounds "electronic." Noise shaped by a fast decay sounds like a physical impact — a switch clicking, a button depressing. Your brain interprets it as mechanical, not digital.
+**Why noise instead of a sine wave?** A sine wave at any frequency sounds "electronic." Noise shaped by a fast decay sounds like a physical impact: a switch clicking, a button depressing. Your brain interprets it as mechanical, not digital.
 
 ---
 
@@ -88,14 +88,14 @@ Some of this doesn't work.
 
 **Audio feedback is polarizing.** Some people find it delightful. Others find any web-based sound annoying. Every component accepts a `sound` prop (defaults to `true`) so users can disable it. But the philosophical question remains: should web apps be silent by default?
 
-**Spring physics adds bundle size.** The `motion` library (successor to `framer-motion`) is ~15KB gzipped. That's not nothing. For a landing page that just needs a fade-in, it's overkill. For an interactive dashboard with tables, drag-and-drop, and real-time updates — it's worth it.
+**Spring physics adds bundle size.** The `motion` library (successor to `framer-motion`) is ~15KB gzipped. That's not nothing. For a landing page that just needs a fade-in, it's overkill. For an interactive dashboard with tables, drag-and-drop, and real-time updates, it's worth it.
 
-**Inline styles are verbose.** I chose inline styles over Tailwind for portability. The tradeoff is that components are longer and harder to scan visually, but it means zero styling dependencies — drop a component into any React project and it works.
+**Inline styles are verbose.** I chose inline styles over Tailwind for portability. The tradeoff is that components are longer and harder to scan visually, but it means zero styling dependencies. Drop a component into any React project and it works.
 
 **No CSS transitions means no `prefers-reduced-motion` for free.** With CSS, you get `@media (prefers-reduced-motion: reduce)` automatically. With JS springs, you have to check `window.matchMedia` and swap to instant transitions manually. I handle this, but it's extra work that CSS gives you for free.
 
 ---
 
-I've applied this approach across 190+ React components — tables, paginations, notifications, tabs, inputs, navbars. You can try them at [ruixen.com/docs](https://ruixen.com/docs).
+I've applied this approach across 170+ React components: tables, paginations, notifications, tabs, inputs, navbars. You can try them at [ruixen.com/docs](https://ruixen.com/docs).
 
-Is this the right direction for web UI? I don't know. But after using spring-animated, sound-enabled components for months, going back to CSS transitions feels like switching from a mechanical keyboard to a membrane one. You can type on both. But one of them *feels* like something.
+Is this the right direction for web UI? I don't know. But after using spring-animated, sound-enabled components for months, going back to CSS transitions feels like switching from a mechanical keyboard to a membrane one. You can type on both. But one of them _feels_ like something.

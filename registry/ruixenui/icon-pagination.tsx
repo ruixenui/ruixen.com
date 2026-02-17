@@ -31,7 +31,8 @@ function getBuf(ac: AudioContext): AudioBuffer {
   const len = Math.floor(ac.sampleRate * 0.003);
   const buf = ac.createBuffer(1, len, ac.sampleRate);
   const ch = buf.getChannelData(0);
-  for (let i = 0; i < len; i++) ch[i] = (Math.random() * 2 - 1) * (1 - i / len) ** 4;
+  for (let i = 0; i < len; i++)
+    ch[i] = (Math.random() * 2 - 1) * (1 - i / len) ** 4;
   _b = buf;
   return buf;
 }
@@ -48,7 +49,9 @@ function tick(ref: React.MutableRefObject<number>) {
     g.gain.value = 0.06;
     src.connect(g).connect(ac.destination);
     src.start();
-  } catch { /* silent */ }
+  } catch {
+    /* silent */
+  }
 }
 
 /* ── Types ── */
@@ -66,7 +69,16 @@ const CSS = `.ip{--ip-bg:rgba(255,255,255,.72);--ip-border:rgba(0,0,0,.06);--ip-
 
 /* ── Constants ── */
 
-const COLORS = ["#FF6B6B", "#51CF66", "#339AF0", "#FCC419", "#CC5DE8", "#FF922B", "#20C997", "#F06595"];
+const COLORS = [
+  "#FF6B6B",
+  "#51CF66",
+  "#339AF0",
+  "#FCC419",
+  "#CC5DE8",
+  "#FF922B",
+  "#20C997",
+  "#F06595",
+];
 const PROX_RADIUS = 60;
 const DOT_SIZE = 12;
 const DOT_GAP = 10;
@@ -85,12 +97,15 @@ export function IconPagination({
   const lastSound = useRef(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const go = useCallback((next: number) => {
-    if (next < 0 || next >= totalPages || next === active) return;
-    if (sound) tick(lastSound);
-    setActive(next);
-    onChange?.(next);
-  }, [active, totalPages, onChange, sound]);
+  const go = useCallback(
+    (next: number) => {
+      if (next < 0 || next >= totalPages || next === active) return;
+      if (sound) tick(lastSound);
+      setActive(next);
+      onChange?.(next);
+    },
+    [active, totalPages, onChange, sound],
+  );
 
   const count = Math.min(totalPages, maxVisible);
 
@@ -98,24 +113,42 @@ export function IconPagination({
   const half = Math.floor(count / 2);
   let start = active - half;
   let end = active + (count - half - 1);
-  if (start < 0) { end += -start; start = 0; }
-  if (end >= totalPages) { start -= (end - totalPages + 1); end = totalPages - 1; start = Math.max(0, start); }
+  if (start < 0) {
+    end += -start;
+    start = 0;
+  }
+  if (end >= totalPages) {
+    start -= end - totalPages + 1;
+    end = totalPages - 1;
+    start = Math.max(0, start);
+  }
 
   const visible: number[] = [];
   for (let i = start; i <= end; i++) visible.push(i);
 
-  const onMouseMove = useCallback((e: React.MouseEvent) => {
-    const rect = containerRef.current?.getBoundingClientRect();
-    if (!rect) return;
-    const x = e.clientX - rect.left;
-    const dotW = DOT_SIZE + DOT_GAP;
-    const padL = 34; // arrow + padding
-    const idx = Math.round((x - padL - DOT_SIZE / 2) / dotW);
-    setHoverIdx(idx >= 0 && idx < visible.length ? idx : -1);
-  }, [visible.length]);
+  const onMouseMove = useCallback(
+    (e: React.MouseEvent) => {
+      const rect = containerRef.current?.getBoundingClientRect();
+      if (!rect) return;
+      const x = e.clientX - rect.left;
+      const dotW = DOT_SIZE + DOT_GAP;
+      const padL = 34; // arrow + padding
+      const idx = Math.round((x - padL - DOT_SIZE / 2) / dotW);
+      setHoverIdx(idx >= 0 && idx < visible.length ? idx : -1);
+    },
+    [visible.length],
+  );
 
   return (
-    <div className="ip" style={{ display: "inline-flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
+    <div
+      className="ip"
+      style={{
+        display: "inline-flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: 8,
+      }}
+    >
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
 
       <div
@@ -149,7 +182,13 @@ export function IconPagination({
           }}
         >
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-            <path d="M7.5 2.5L4.5 6L7.5 9.5" stroke={`rgba(var(--ip-ink),.6)`} strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+            <path
+              d="M7.5 2.5L4.5 6L7.5 9.5"
+              stroke={`rgba(var(--ip-ink),.6)`}
+              strokeWidth="1.3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
         </button>
 
@@ -162,7 +201,12 @@ export function IconPagination({
           if (hoverIdx >= 0) {
             const dist = Math.abs(i - hoverIdx);
             if (dist * (DOT_SIZE + DOT_GAP) < PROX_RADIUS) {
-              lift = (1 + Math.cos((dist * (DOT_SIZE + DOT_GAP) / PROX_RADIUS) * Math.PI)) / 2;
+              lift =
+                (1 +
+                  Math.cos(
+                    ((dist * (DOT_SIZE + DOT_GAP)) / PROX_RADIUS) * Math.PI,
+                  )) /
+                2;
             }
           }
 
@@ -186,7 +230,9 @@ export function IconPagination({
                 opacity: isActive ? 1 : 0.45 + lift * 0.35,
                 boxShadow: isActive
                   ? `0 0 0 2px var(--ip-bg), 0 0 0 3.5px ${color}, 0 2px 8px ${color}40`
-                  : lift > 0.3 ? `0 2px 6px ${color}30` : "none",
+                  : lift > 0.3
+                    ? `0 2px 6px ${color}30`
+                    : "none",
                 transition: "opacity .1s, box-shadow .15s",
                 flexShrink: 0,
               }}
@@ -208,19 +254,27 @@ export function IconPagination({
           }}
         >
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-            <path d="M4.5 2.5L7.5 6L4.5 9.5" stroke={`rgba(var(--ip-ink),.6)`} strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+            <path
+              d="M4.5 2.5L7.5 6L4.5 9.5"
+              stroke={`rgba(var(--ip-ink),.6)`}
+              strokeWidth="1.3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
         </button>
       </div>
 
       {/* Page label */}
-      <span style={{
-        fontSize: 11,
-        fontWeight: 450,
-        color: `rgba(var(--ip-ink),.3)`,
-        fontVariantNumeric: "tabular-nums",
-        letterSpacing: "0.02em",
-      }}>
+      <span
+        style={{
+          fontSize: 11,
+          fontWeight: 450,
+          color: `rgba(var(--ip-ink),.3)`,
+          fontVariantNumeric: "tabular-nums",
+          letterSpacing: "0.02em",
+        }}
+      >
         Page {active + 1} of {totalPages}
       </span>
     </div>

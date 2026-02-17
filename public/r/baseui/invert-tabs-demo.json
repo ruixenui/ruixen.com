@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "invert-tabs-demo",
+  "type": "registry:example",
+  "title": "Invert Tabs Demo",
+  "description": "Example showing tabs with mix-blend-mode exclusion color inversion in both light and dark themes.",
+  "registryDependencies": [
+    "https://ruixen.com/r/invert-tabs"
+  ],
+  "files": [
+    {
+      "path": "registry/example/invert-tabs-demo.tsx",
+      "content": "\"use client\";\n\nimport { InvertTabs } from \"@/registry/ruixenui/invert-tabs\";\n\nexport default function InvertTabsDemo() {\n  return (\n    <div\n      style={{\n        display: \"flex\",\n        alignItems: \"center\",\n        justifyContent: \"center\",\n        minHeight: \"50vh\",\n      }}\n    >\n      <InvertTabs defaultValue=\"engineering\" />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/invert-tabs-demo.tsx"
+    }
+  ]
+}

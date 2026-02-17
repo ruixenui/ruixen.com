@@ -1,0 +1,118 @@
+---
+title: "Every CSS transition is a lie. Here's what real motion looks like."
+description: "CSS transitions are timers pretending to be physics. Springs, momentum, and velocity-aware motion tell a different story."
+image: https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/gradients/shade_shiters/shade-shifters-01.png
+author: Ruhith G
+tag: Design Engineering
+publishedOn: 2026-02-14T10:00:00.000Z
+featured: true
+---
+
+`transition: all 0.3s ease`. You've written it a thousand times. It's in every component library, every tutorial, every production app. It's also a lie.
+
+Not a bug. Not broken. A lie, because it pretends to simulate motion while doing nothing of the sort.
+
+---
+
+## What CSS transitions actually do
+
+A CSS transition is a **timer with a curve**. You give it a duration (300ms), an easing function (ease, ease-in-out, cubic-bezier), and it interpolates between two values over that fixed time window.
+
+```css
+.box {
+  transition: transform 0.3s ease;
+}
+.box:hover {
+  transform: translateX(200px);
+}
+```
+
+Move 10 pixels? 300ms. Move 500 pixels? Still 300ms. The same duration regardless of distance. No real object behaves this way.
+
+Drop a ball from 1 meter and it takes about 0.45 seconds to hit the ground. Drop it from 10 meters and it takes about 1.43 seconds. Gravity doesn't care about your `transition-duration`. Physics scales with distance. CSS doesn't.
+
+---
+
+## What springs do differently
+
+A spring simulation has three parameters: **stiffness**, **damping**, and **mass**. There's no duration. The motion emerges from the physics.
+
+```tsx
+// Framer Motion spring
+animate={{ x: targetX }}
+transition={{
+  type: "spring",
+  stiffness: 400,
+  damping: 30,
+  mass: 1
+}}
+```
+
+The same spring config moving 10px produces a quick snap. Moving 500px produces a longer arc with visible momentum. The duration is a _result_, not an input. That's the fundamental difference.
+
+**Stiffness** controls how aggressively the spring pulls toward the target. High stiffness = snappy. Low stiffness = lazy, floaty.
+
+**Damping** controls friction. High damping = the element settles quickly with no overshoot. Low damping = it bounces past the target and oscillates.
+
+**Mass** controls inertia. Heavy objects take longer to accelerate and longer to stop. Light objects respond instantly.
+
+```tsx
+// Snappy toggle
+{ stiffness: 500, damping: 30, mass: 0.5 }
+
+// Heavy drawer sliding open
+{ stiffness: 200, damping: 40, mass: 2 }
+
+// Bouncy notification entering
+{ stiffness: 300, damping: 15, mass: 1 }
+```
+
+Three numbers. Infinite character.
+
+---
+
+## The overshoot problem
+
+CSS easing functions can't overshoot. `ease-in-out` approaches the target and stops. Always. There's no way to express "go past the target, then come back" with a cubic bezier that stays in bounds.
+
+You can hack it with `cubic-bezier(0.34, 1.56, 0.64, 1)`, a bezier that technically overshoots, but it's a fixed curve. It overshoots by the same amount whether you're moving 2px or 200px. That's not how momentum works.
+
+Springs overshoot naturally. The amount of overshoot depends on velocity at the moment the element passes the target. Fast approach = more overshoot. Slow approach = gentle settle. This happens automatically from the physics. You don't have to engineer each case.
+
+---
+
+## Interruption
+
+This is where CSS transitions fall apart completely.
+
+Click a toggle. While it's animating to the right, click again. With CSS transitions, the element **jumps**. It starts a new 300ms transition from its current interpolated position back to the left. The velocity is zero at the start, regardless of how fast it was moving.
+
+With springs, the element **carries its velocity**. If it was moving right at high speed and you reverse it, the spring has to decelerate, stop, and accelerate in the opposite direction. The motion is continuous. No jumps. No discontinuities.
+
+```tsx
+// CSS: interruption = jump
+// Frame 1: moving right at full speed
+// Frame 2: suddenly moving left from zero velocity
+
+// Spring: interruption = continuous
+// Frame 1: moving right at full speed
+// Frame 2: still moving right (decelerating)
+// Frame 3: momentarily stopped
+// Frame 4: moving left (accelerating)
+```
+
+In interactive UIs, where users click, drag, hover, and interrupt constantly, this is the difference between feeling responsive and feeling glitchy.
+
+---
+
+## The cost
+
+Springs aren't free. Framer Motion's `motion` package is ~15KB gzipped. That's real weight for a landing page that just needs a fade-in.
+
+But for interactive applications (dashboards, editors, component libraries) the cost is justified. Users interact with these interfaces for hours. The difference between dead CSS transitions and living spring physics accumulates into something you can't measure with Lighthouse but can absolutely feel with your hands.
+
+Every CSS transition is a fixed timer wearing a physics costume. Springs are the real thing. Once you switch, you can't go back.
+
+---
+
+Try it yourself: drag a pagination indicator, resize a column, toggle a switch at [ruixen.com/docs](https://ruixen.com/docs). Then open any other component library and do the same. You'll feel the difference before you can name it.

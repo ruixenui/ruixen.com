@@ -1,0 +1,101 @@
+---
+title: "Buttons don't need hover states. They need physics."
+description: "Why spring-based press animations make buttons feel more responsive than any CSS hover effect."
+image: https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/gradients/shade_shiters/shade-shifters-01.png
+author: Ruhith G
+tag: Design Engineering
+publishedOn: 2026-02-18T10:00:00.000Z
+featured: false
+---
+
+Every design system ships buttons with three CSS states: default, hover, active. You get a background color swap on hover, maybe a slight darken on press. It works. It's also completely lifeless.
+
+Watch what happens when you press a real button: a keyboard key, a calculator button, a door buzzer. It doesn't change color. It **moves**. It compresses under your finger, then bounces back when you release. The movement confirms the action.
+
+Web buttons don't move. They change color. That's a visual signal, not a physical one.
+
+---
+
+## The problem with hover states
+
+Hover states are a desktop-only concept. On touch devices (where most web traffic comes from) they don't exist. You're designing an entire interaction state for a diminishing use case.
+
+Worse: hover states create a temporal gap. You hover (background changes), then you click (background changes again), then you release (background changes back). Three visual changes for one action. It's noisy.
+
+A spring-based press animation is one interaction: press down, release up. Works identically on desktop and mobile. One motion, one confirmation.
+
+```tsx
+<motion.button
+  whileTap={{ scale: 0.97 }}
+  transition={{ type: "spring", stiffness: 500, damping: 30 }}
+>
+  Submit
+</motion.button>
+```
+
+---
+
+## Why scale, not translateY
+
+Some implementations use `translateY(2px)` to simulate a button press. This breaks layout. The button moves, and surrounding elements shift. It also doesn't feel like pressing; it feels like the button is sinking into quicksand.
+
+`scale(0.97)` compresses the button uniformly. No layout shift. The button shrinks toward its center, which matches how physical buttons compress. They don't move down, they get smaller in the direction of force.
+
+The spring makes the release meaningful. Instead of snapping back to `scale(1)` instantly, the button overshoots slightly to `scale(1.005)` and settles. You've felt this on every mechanical keyboard key. The rebound after release.
+
+---
+
+## Tuning the spring
+
+The wrong spring config makes buttons feel worse than CSS:
+
+```tsx
+// Too bouncy - feels like a toy
+{ stiffness: 200, damping: 10 }
+
+// Too stiff - feels like CSS transition
+{ stiffness: 800, damping: 50 }
+
+// Right - subtle compression, clean release
+{ stiffness: 500, damping: 30 }
+```
+
+**Stiffness 400-600** is the range for buttons. Below 400, the press feels mushy. Above 600, the spring resolves so quickly that it's indistinguishable from a CSS transition.
+
+**Damping 25-35** prevents visible bouncing while preserving the overshoot on release. Lower damping makes the button wobble. Higher damping kills the life.
+
+---
+
+## The audio layer
+
+Add the 3ms tick on press (not release), and the button goes from "visual widget" to "physical control." The sound arrives before the spring animation completes, giving instant confirmation. The spring provides the visual follow-through.
+
+```tsx
+<motion.button
+  whileTap={{ scale: 0.97 }}
+  transition={{ type: "spring", stiffness: 500, damping: 30 }}
+  onTapStart={() => tick()}
+>
+  Submit
+</motion.button>
+```
+
+Sound on press. Motion on release. Two sensory channels confirming one action.
+
+---
+
+## What I removed
+
+After switching to spring-based press animations:
+
+- **Hover background change**: removed. The press animation handles all feedback.
+- **Active state darkening**: removed. Redundant with scale.
+- **Transition duration**: removed. Springs don't have duration.
+
+What remained: focus ring (accessibility), disabled state (functionality), and the spring press. Three states instead of five. Simpler CSS, better feel.
+
+---
+
+The best button interaction is one the user doesn't notice consciously. They press, the button responds physically, they move on. No hover dance, no color choreography. Just physics.
+
+Try it: [ruixen.com/docs/components](https://ruixen.com/docs/components). Click any button with sound on.

@@ -31,7 +31,8 @@ function getBuf(ac: AudioContext): AudioBuffer {
   const len = Math.floor(ac.sampleRate * 0.003);
   const buf = ac.createBuffer(1, len, ac.sampleRate);
   const ch = buf.getChannelData(0);
-  for (let i = 0; i < len; i++) ch[i] = (Math.random() * 2 - 1) * (1 - i / len) ** 4;
+  for (let i = 0; i < len; i++)
+    ch[i] = (Math.random() * 2 - 1) * (1 - i / len) ** 4;
   _b = buf;
   return buf;
 }
@@ -48,7 +49,9 @@ function tick(ref: React.MutableRefObject<number>) {
     g.gain.value = 0.07;
     src.connect(g).connect(ac.destination);
     src.start();
-  } catch { /* silent */ }
+  } catch {
+    /* silent */
+  }
 }
 
 /* ── Types ── */
@@ -70,14 +73,54 @@ interface NotificationsCarouselProps {
 /* ── Defaults ── */
 
 const DEFAULTS: CarouselItem[] = [
-  { id: "1", title: "Deployment complete", body: "v2.4.1 deployed to production successfully", time: "2m ago" },
-  { id: "2", title: "Review requested", body: "Alex requested your review on PR #482", time: "8m ago" },
-  { id: "3", title: "Build passed", body: "Pipeline #846 completed in 3m 42s", time: "24m ago" },
-  { id: "4", title: "New comment", body: "Sarah commented on your pull request", time: "1h ago" },
-  { id: "5", title: "Security alert", body: "New login detected from San Francisco", time: "2h ago" },
-  { id: "6", title: "Invoice paid", body: "Payment of $3,200 received from Acme", time: "4h ago" },
-  { id: "7", title: "Team invitation", body: "You were invited to join Project Alpha", time: "6h ago" },
-  { id: "8", title: "Weekly report", body: "Your weekly analytics summary is ready", time: "1d ago" },
+  {
+    id: "1",
+    title: "Deployment complete",
+    body: "v2.4.1 deployed to production successfully",
+    time: "2m ago",
+  },
+  {
+    id: "2",
+    title: "Review requested",
+    body: "Alex requested your review on PR #482",
+    time: "8m ago",
+  },
+  {
+    id: "3",
+    title: "Build passed",
+    body: "Pipeline #846 completed in 3m 42s",
+    time: "24m ago",
+  },
+  {
+    id: "4",
+    title: "New comment",
+    body: "Sarah commented on your pull request",
+    time: "1h ago",
+  },
+  {
+    id: "5",
+    title: "Security alert",
+    body: "New login detected from San Francisco",
+    time: "2h ago",
+  },
+  {
+    id: "6",
+    title: "Invoice paid",
+    body: "Payment of $3,200 received from Acme",
+    time: "4h ago",
+  },
+  {
+    id: "7",
+    title: "Team invitation",
+    body: "You were invited to join Project Alpha",
+    time: "6h ago",
+  },
+  {
+    id: "8",
+    title: "Weekly report",
+    body: "Your weekly analytics summary is ready",
+    time: "1d ago",
+  },
 ];
 
 /* ── CSS ── */
@@ -104,7 +147,9 @@ export function NotificationsCarousel({
   onSelect,
   sound = true,
 }: NotificationsCarouselProps) {
-  const [internal, setInternal] = useState<CarouselItem[]>(() => ext ?? DEFAULTS);
+  const [internal, setInternal] = useState<CarouselItem[]>(
+    () => ext ?? DEFAULTS,
+  );
   const items = ext ?? internal;
   const [idx, setIdx] = useState(0);
   const prevIdx = useRef(0);
@@ -117,29 +162,35 @@ export function NotificationsCarousel({
   // Keep idx in bounds
   const safeIdx = clamp(idx, 0, items.length - 1);
 
-  const go = useCallback((next: number) => {
-    const c = clamp(next, 0, items.length - 1);
-    if (c !== prevIdx.current && sound) tick(lastSound);
-    prevIdx.current = c;
-    setIdx(c);
-  }, [items.length, sound]);
+  const go = useCallback(
+    (next: number) => {
+      const c = clamp(next, 0, items.length - 1);
+      if (c !== prevIdx.current && sound) tick(lastSound);
+      prevIdx.current = c;
+      setIdx(c);
+    },
+    [items.length, sound],
+  );
 
-  const dismiss = useCallback((id: string) => {
-    if (sound) tick(lastSound);
-    if (ext) {
-      onDismiss?.(id);
-    } else {
-      setInternal(p => {
-        const next = p.filter(n => n.id !== id);
-        // Adjust index if needed
-        const newIdx = Math.min(prevIdx.current, next.length - 1);
-        prevIdx.current = Math.max(0, newIdx);
-        setIdx(Math.max(0, newIdx));
-        return next;
-      });
-      onDismiss?.(id);
-    }
-  }, [ext, onDismiss, sound]);
+  const dismiss = useCallback(
+    (id: string) => {
+      if (sound) tick(lastSound);
+      if (ext) {
+        onDismiss?.(id);
+      } else {
+        setInternal((p) => {
+          const next = p.filter((n) => n.id !== id);
+          // Adjust index if needed
+          const newIdx = Math.min(prevIdx.current, next.length - 1);
+          prevIdx.current = Math.max(0, newIdx);
+          setIdx(Math.max(0, newIdx));
+          return next;
+        });
+        onDismiss?.(id);
+      }
+    },
+    [ext, onDismiss, sound],
+  );
 
   // Wheel navigation
   useEffect(() => {
@@ -160,8 +211,14 @@ export function NotificationsCarousel({
   // Keyboard
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
-      if (e.key === "ArrowDown" || e.key === "ArrowRight") { e.preventDefault(); go(safeIdx + 1); }
-      if (e.key === "ArrowUp" || e.key === "ArrowLeft") { e.preventDefault(); go(safeIdx - 1); }
+      if (e.key === "ArrowDown" || e.key === "ArrowRight") {
+        e.preventDefault();
+        go(safeIdx + 1);
+      }
+      if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
+        e.preventDefault();
+        go(safeIdx - 1);
+      }
     };
     const el = containerRef.current;
     el?.addEventListener("keydown", handler);
@@ -172,9 +229,16 @@ export function NotificationsCarousel({
 
   if (items.length === 0) {
     return (
-      <div className="nc" style={{ width: 360, padding: 32, textAlign: "center" }}>
+      <div
+        className="nc"
+        style={{ width: 360, padding: 32, textAlign: "center" }}
+      >
         <style dangerouslySetInnerHTML={{ __html: CSS }} />
-        <p style={{ fontSize: 13, color: `rgba(var(--nc-ink),.35)`, margin: 0 }}>No notifications</p>
+        <p
+          style={{ fontSize: 13, color: `rgba(var(--nc-ink),.35)`, margin: 0 }}
+        >
+          No notifications
+        </p>
       </div>
     );
   }
@@ -196,27 +260,33 @@ export function NotificationsCarousel({
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
 
       {/* Header */}
-      <div style={{
-        padding: "12px 16px 8px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-      }}>
-        <span style={{
-          fontSize: 11,
-          fontWeight: 500,
-          color: `rgba(var(--nc-ink),.35)`,
-          letterSpacing: "0.04em",
-          textTransform: "uppercase",
-        }}>
+      <div
+        style={{
+          padding: "12px 16px 8px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        <span
+          style={{
+            fontSize: 11,
+            fontWeight: 500,
+            color: `rgba(var(--nc-ink),.35)`,
+            letterSpacing: "0.04em",
+            textTransform: "uppercase",
+          }}
+        >
           Notifications
         </span>
-        <span style={{
-          fontSize: 11,
-          fontWeight: 450,
-          color: `rgba(var(--nc-ink),.3)`,
-          fontVariantNumeric: "tabular-nums",
-        }}>
+        <span
+          style={{
+            fontSize: 11,
+            fontWeight: 450,
+            color: `rgba(var(--nc-ink),.3)`,
+            fontVariantNumeric: "tabular-nums",
+          }}
+        >
           {safeIdx + 1} / {items.length}
         </span>
       </div>
@@ -230,8 +300,10 @@ export function NotificationsCarousel({
           height: viewH,
           width: "100%",
           outline: "none",
-          maskImage: "linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)",
-          WebkitMaskImage: "linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)",
+          maskImage:
+            "linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)",
+          WebkitMaskImage:
+            "linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)",
         }}
         onPointerDown={(e) => {
           dragStartY.current = e.clientY;
@@ -275,12 +347,14 @@ export function NotificationsCarousel({
       </div>
 
       {/* Navigation dots */}
-      <div style={{
-        display: "flex",
-        justifyContent: "center",
-        gap: 4,
-        padding: "8px 16px 12px",
-      }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          gap: 4,
+          padding: "8px 16px 12px",
+        }}
+      >
         {items.map((_, i) => (
           <button
             key={i}
@@ -355,28 +429,34 @@ function CarouselRow({
     }
   }, []);
 
-  const onDown = useCallback((e: React.PointerEvent) => {
-    if (!isFocused) return;
-    e.stopPropagation();
-    (e.target as HTMLElement).setPointerCapture(e.pointerId);
-    startX.current = e.clientX;
-    xRef.current = 0;
-    dragging.current = true;
-    passedRef.current = false;
-  }, [isFocused]);
+  const onDown = useCallback(
+    (e: React.PointerEvent) => {
+      if (!isFocused) return;
+      e.stopPropagation();
+      (e.target as HTMLElement).setPointerCapture(e.pointerId);
+      startX.current = e.clientX;
+      xRef.current = 0;
+      dragging.current = true;
+      passedRef.current = false;
+    },
+    [isFocused],
+  );
 
-  const onMove = useCallback((e: React.PointerEvent) => {
-    if (!dragging.current || !isFocused) return;
-    const dx = e.clientX - startX.current;
-    xRef.current = dx;
-    const row = rowRef.current;
-    if (row) row.style.transform = `translateX(${dx}px)`;
-    paintZone(dx);
-    if (!passedRef.current && Math.abs(dx) > DISMISS_THRESHOLD) {
-      passedRef.current = true;
-      if (sound) tick(soundRef);
-    }
-  }, [isFocused, paintZone, sound, soundRef]);
+  const onMove = useCallback(
+    (e: React.PointerEvent) => {
+      if (!dragging.current || !isFocused) return;
+      const dx = e.clientX - startX.current;
+      xRef.current = dx;
+      const row = rowRef.current;
+      if (row) row.style.transform = `translateX(${dx}px)`;
+      paintZone(dx);
+      if (!passedRef.current && Math.abs(dx) > DISMISS_THRESHOLD) {
+        passedRef.current = true;
+        if (sound) tick(soundRef);
+      }
+    },
+    [isFocused, paintZone, sound, soundRef],
+  );
 
   const onUp = useCallback(() => {
     if (!dragging.current) return;
@@ -389,8 +469,13 @@ function CarouselRow({
       const dir = Math.sign(dx);
       if (row) {
         animate(dx, dir * 400, {
-          type: "spring", stiffness: 300, damping: 30,
-          onUpdate: (v) => { row.style.transform = `translateX(${v}px)`; row.style.opacity = `${1 - Math.abs(v) / 400}`; },
+          type: "spring",
+          stiffness: 300,
+          damping: 30,
+          onUpdate: (v) => {
+            row.style.transform = `translateX(${v}px)`;
+            row.style.opacity = `${1 - Math.abs(v) / 400}`;
+          },
           onComplete: onDismiss,
         });
       } else {
@@ -400,8 +485,12 @@ function CarouselRow({
       // Snap back
       if (row) {
         animate(dx, 0, {
-          type: "spring", stiffness: 500, damping: 30,
-          onUpdate: (v) => { row.style.transform = `translateX(${v}px)`; },
+          type: "spring",
+          stiffness: 500,
+          damping: 30,
+          onUpdate: (v) => {
+            row.style.transform = `translateX(${v}px)`;
+          },
         });
       }
       paintZone(0);
@@ -450,64 +539,75 @@ function CarouselRow({
           borderRadius: 10,
           background: isFocused ? "var(--nc-card-hi)" : "var(--nc-card)",
           border: `1px solid rgba(var(--nc-ink),${isFocused ? 0.06 : 0.03})`,
-          boxShadow: isFocused ? "0 1px 3px rgba(0,0,0,.04), 0 4px 12px rgba(0,0,0,.03)" : "none",
+          boxShadow: isFocused
+            ? "0 1px 3px rgba(0,0,0,.04), 0 4px 12px rgba(0,0,0,.03)"
+            : "none",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
           gap: 3,
           filter: `blur(${Math.max(0, (1 - prox) * 0.8)}px)`,
-          transition: "background .15s, border .15s, box-shadow .15s, filter .15s",
+          transition:
+            "background .15s, border .15s, box-shadow .15s, filter .15s",
           willChange: "transform",
           touchAction: "none",
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-          <span style={{
-            fontSize: 13,
-            fontWeight: weight,
-            color: `rgba(var(--nc-ink),${titleA})`,
-            letterSpacing: "-0.01em",
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-            whiteSpace: "nowrap",
-            flex: 1,
-            transition: "color .1s",
-          }}>
+          <span
+            style={{
+              fontSize: 13,
+              fontWeight: weight,
+              color: `rgba(var(--nc-ink),${titleA})`,
+              letterSpacing: "-0.01em",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              whiteSpace: "nowrap",
+              flex: 1,
+              transition: "color .1s",
+            }}
+          >
             {item.title}
           </span>
-          <span style={{
-            fontSize: 11,
-            fontWeight: 400,
-            color: `rgba(var(--nc-ink),${bodyA})`,
-            flexShrink: 0,
-            fontVariantNumeric: "tabular-nums",
-          }}>
+          <span
+            style={{
+              fontSize: 11,
+              fontWeight: 400,
+              color: `rgba(var(--nc-ink),${bodyA})`,
+              flexShrink: 0,
+              fontVariantNumeric: "tabular-nums",
+            }}
+          >
             {item.time}
           </span>
         </div>
-        <span style={{
-          fontSize: 12,
-          fontWeight: 400,
-          color: `rgba(var(--nc-ink),${bodyA})`,
-          overflow: "hidden",
-          textOverflow: "ellipsis",
-          whiteSpace: "nowrap",
-          transition: "color .1s",
-        }}>
+        <span
+          style={{
+            fontSize: 12,
+            fontWeight: 400,
+            color: `rgba(var(--nc-ink),${bodyA})`,
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap",
+            transition: "color .1s",
+          }}
+        >
           {item.body}
         </span>
 
         {/* Swipe hint for focused */}
         {isFocused && (
-          <div style={{
-            position: "absolute",
-            right: 14,
-            bottom: 6,
-            fontSize: 9,
-            fontWeight: 400,
-            color: `rgba(var(--nc-ink),.18)`,
-            letterSpacing: "0.02em",
-          }}>
+          <div
+            style={{
+              position: "absolute",
+              right: 14,
+              bottom: 6,
+              fontSize: 9,
+              fontWeight: 400,
+              color: `rgba(var(--nc-ink),.18)`,
+              letterSpacing: "0.02em",
+            }}
+          >
             swipe to dismiss
           </div>
         )}

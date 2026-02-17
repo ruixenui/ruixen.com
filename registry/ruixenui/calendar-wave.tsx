@@ -57,12 +57,7 @@ function parseKey(k: string) {
 }
 
 /* ── wave math ── */
-function waveLift(
-  mx: number,
-  my: number,
-  col: number,
-  row: number,
-): number {
+function waveLift(mx: number, my: number, col: number, row: number): number {
   const cx = col * STEP + CELL / 2;
   const cy = row * STEP + CELL / 2;
   const dx = mx - cx;
@@ -70,7 +65,7 @@ function waveLift(
   const dist = Math.sqrt(dx * dx + dy * dy);
   if (dist >= RADIUS) return 0;
   const t = dist / RADIUS;
-  return MAX_LIFT * (1 + Math.cos(Math.PI * t)) / 2;
+  return (MAX_LIFT * (1 + Math.cos(Math.PI * t))) / 2;
 }
 
 /* ── sound ── */
@@ -324,10 +319,7 @@ export function CalendarWave({
             {cells.map((cell, i) => {
               if (cell.day === null) {
                 return (
-                  <div
-                    key={`e-${i}`}
-                    style={{ width: CELL, height: CELL }}
-                  />
+                  <div key={`e-${i}`} style={{ width: CELL, height: CELL }} />
                 );
               }
 
@@ -388,9 +380,7 @@ export function CalendarWave({
                 >
                   {cell.day}
                   {isToday && !isSel && (
-                    <span
-                      className="absolute bottom-1 left-1/2 h-[3px] w-[3px] -translate-x-1/2 rounded-full bg-neutral-400 dark:bg-neutral-600"
-                    />
+                    <span className="absolute bottom-1 left-1/2 h-[3px] w-[3px] -translate-x-1/2 rounded-full bg-neutral-400 dark:bg-neutral-600" />
                   )}
                 </motion.button>
               );

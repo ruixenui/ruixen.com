@@ -18,9 +18,14 @@ let _a: AudioContext | null = null;
 function tick() {
   try {
     if (!_a) _a = new AudioContext();
-    const buf = _a.createBuffer(1, Math.floor(_a.sampleRate * 0.003), _a.sampleRate);
+    const buf = _a.createBuffer(
+      1,
+      Math.floor(_a.sampleRate * 0.003),
+      _a.sampleRate,
+    );
     const d = buf.getChannelData(0);
-    for (let i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * (1 - i / d.length) ** 4;
+    for (let i = 0; i < d.length; i++)
+      d[i] = (Math.random() * 2 - 1) * (1 - i / d.length) ** 4;
     const src = _a.createBufferSource();
     src.buffer = buf;
     const g = _a.createGain();
@@ -53,14 +58,62 @@ interface NotificationsFilterProps {
 const DEFAULT_CATEGORIES = ["All", "Updates", "Alerts", "Messages"];
 
 const DEFAULT_ITEMS: FilterItem[] = [
-  { id: "1", title: "New deployment", body: "v2.4.1 deployed to production", time: "2m", category: "Updates" },
-  { id: "2", title: "Security alert", body: "New login from unknown device", time: "8m", category: "Alerts" },
-  { id: "3", title: "Message from Alex", body: "Hey, can you review my PR?", time: "15m", category: "Messages" },
-  { id: "4", title: "Build passed", body: "Pipeline #846 completed successfully", time: "24m", category: "Updates" },
-  { id: "5", title: "Rate limit warning", body: "API approaching rate limit threshold", time: "1h", category: "Alerts" },
-  { id: "6", title: "Message from Sarah", body: "The design review is scheduled for 3pm", time: "2h", category: "Messages" },
-  { id: "7", title: "Package update", body: "3 dependencies have available updates", time: "4h", category: "Updates" },
-  { id: "8", title: "Downtime alert", body: "Scheduled maintenance at midnight", time: "6h", category: "Alerts" },
+  {
+    id: "1",
+    title: "New deployment",
+    body: "v2.4.1 deployed to production",
+    time: "2m",
+    category: "Updates",
+  },
+  {
+    id: "2",
+    title: "Security alert",
+    body: "New login from unknown device",
+    time: "8m",
+    category: "Alerts",
+  },
+  {
+    id: "3",
+    title: "Message from Alex",
+    body: "Hey, can you review my PR?",
+    time: "15m",
+    category: "Messages",
+  },
+  {
+    id: "4",
+    title: "Build passed",
+    body: "Pipeline #846 completed successfully",
+    time: "24m",
+    category: "Updates",
+  },
+  {
+    id: "5",
+    title: "Rate limit warning",
+    body: "API approaching rate limit threshold",
+    time: "1h",
+    category: "Alerts",
+  },
+  {
+    id: "6",
+    title: "Message from Sarah",
+    body: "The design review is scheduled for 3pm",
+    time: "2h",
+    category: "Messages",
+  },
+  {
+    id: "7",
+    title: "Package update",
+    body: "3 dependencies have available updates",
+    time: "4h",
+    category: "Updates",
+  },
+  {
+    id: "8",
+    title: "Downtime alert",
+    body: "Scheduled maintenance at midnight",
+    time: "6h",
+    category: "Alerts",
+  },
 ];
 
 /* ── CSS ── */
@@ -77,7 +130,8 @@ export function NotificationsFilter({
   const [active, setActive] = useState(categories[0]);
   const [hoveredId, setHoveredId] = useState<string | null>(null);
 
-  const filtered = active === "All" ? items : items.filter((i) => i.category === active);
+  const filtered =
+    active === "All" ? items : items.filter((i) => i.category === active);
 
   const handleCategory = useCallback(
     (cat: string) => {
@@ -106,13 +160,27 @@ export function NotificationsFilter({
 
       {/* Header */}
       <div style={{ padding: "12px 14px 0" }}>
-        <span style={{ fontSize: 13, fontWeight: 560, color: "var(--nf-hi)", letterSpacing: "-0.01em" }}>
+        <span
+          style={{
+            fontSize: 13,
+            fontWeight: 560,
+            color: "var(--nf-hi)",
+            letterSpacing: "-0.01em",
+          }}
+        >
           Notifications
         </span>
       </div>
 
       {/* Pill bar */}
-      <div style={{ display: "flex", gap: 4, padding: "10px 14px 12px", overflowX: "auto" }}>
+      <div
+        style={{
+          display: "flex",
+          gap: 4,
+          padding: "10px 14px 12px",
+          overflowX: "auto",
+        }}
+      >
         {categories.map((cat) => {
           const isActive = cat === active;
           return (
@@ -156,7 +224,14 @@ export function NotificationsFilter({
         })}
       </div>
 
-      <div style={{ height: 0.5, background: "var(--nf-sep)", marginLeft: 14, marginRight: 14 }} />
+      <div
+        style={{
+          height: 0.5,
+          background: "var(--nf-sep)",
+          marginLeft: 14,
+          marginRight: 14,
+        }}
+      />
 
       {/* Items */}
       <div style={{ maxHeight: 320, overflowY: "auto" }}>
@@ -172,7 +247,12 @@ export function NotificationsFilter({
                 initial={{ opacity: 0, scale: 0.95, y: -4 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: -4 }}
-                transition={{ delay: index * 0.03, type: "spring", stiffness: 400, damping: 30 }}
+                transition={{
+                  delay: index * 0.03,
+                  type: "spring",
+                  stiffness: 400,
+                  damping: 30,
+                }}
                 onMouseEnter={() => setHoveredId(item.id)}
                 onMouseLeave={() => setHoveredId(null)}
                 style={{
@@ -183,26 +263,52 @@ export function NotificationsFilter({
                   transition: "background 0.12s",
                 }}
               >
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 2 }}>
-                  <span style={{
-                    fontSize: 13, fontWeight: 520,
-                    color: isHovered ? "var(--nf-hi)" : "var(--nf-dim)",
-                    transition: "color 0.12s",
-                    letterSpacing: "-0.01em",
-                    overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap",
-                    flex: 1,
-                  }}>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    marginBottom: 2,
+                  }}
+                >
+                  <span
+                    style={{
+                      fontSize: 13,
+                      fontWeight: 520,
+                      color: isHovered ? "var(--nf-hi)" : "var(--nf-dim)",
+                      transition: "color 0.12s",
+                      letterSpacing: "-0.01em",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      whiteSpace: "nowrap",
+                      flex: 1,
+                    }}
+                  >
                     {item.title}
                   </span>
-                  <span style={{ fontSize: 11, fontWeight: 400, color: "var(--nf-dim)", flexShrink: 0, marginLeft: 8 }}>
+                  <span
+                    style={{
+                      fontSize: 11,
+                      fontWeight: 400,
+                      color: "var(--nf-dim)",
+                      flexShrink: 0,
+                      marginLeft: 8,
+                    }}
+                  >
                     {item.time}
                   </span>
                 </div>
-                <div style={{
-                  fontSize: 12, fontWeight: 400, color: "var(--nf-dim)",
-                  overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap",
-                  lineHeight: 1.4,
-                }}>
+                <div
+                  style={{
+                    fontSize: 12,
+                    fontWeight: 400,
+                    color: "var(--nf-dim)",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                    lineHeight: 1.4,
+                  }}
+                >
                   {item.body}
                 </div>
               </motion.div>
@@ -211,7 +317,14 @@ export function NotificationsFilter({
         </AnimatePresence>
 
         {filtered.length === 0 && (
-          <div style={{ padding: "32px 14px", textAlign: "center", fontSize: 13, color: "var(--nf-dim)" }}>
+          <div
+            style={{
+              padding: "32px 14px",
+              textAlign: "center",
+              fontSize: 13,
+              color: "var(--nf-dim)",
+            }}
+          >
             No notifications
           </div>
         )}

@@ -1,0 +1,145 @@
+---
+title: "I replaced every CSS animation with a spring. Nothing looked the same."
+description: "A component-by-component breakdown of what changes when you swap CSS transitions for spring physics."
+image: https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/gradients/shade_shiters/shade-shifters-01.png
+author: Ruhith G
+tag: Design Engineering
+publishedOn: 2026-02-08T10:00:00.000Z
+featured: false
+---
+
+I took a component library of 170+ React components, every one using CSS transitions, and replaced every `transition` property with a spring animation. Not selectively. Every single one.
+
+The process took three weeks. Here's what happened to each category.
+
+---
+
+## Toggles and switches
+
+**Before:** `transition: transform 0.2s ease`. The knob slides from left to right in exactly 200ms. Clean. Predictable. Dead.
+
+**After:** `spring({ stiffness: 500, damping: 25 })`. The knob overshoots the target by ~3px, bounces back, and settles. The total duration is about 280ms, but it doesn't feel longer. It feels **satisfying**.
+
+```tsx
+// Before
+<div style={{ transform: on ? 'translateX(20px)' : 'translateX(0)', transition: 'transform 0.2s ease' }} />
+
+// After
+<motion.div animate={{ x: on ? 20 : 0 }} transition={{ type: "spring", stiffness: 500, damping: 25 }} />
+```
+
+The overshoot is key. When you flip a physical switch, it doesn't stop instantly at the target. There's a micro-bounce as the mechanism settles. The spring replicates this without us having to think about it.
+
+---
+
+## Pagination indicators
+
+**Before:** The active dot's background slides to the new position over 300ms. Linear interpolation.
+
+**After:** The indicator stretches as it moves (velocity-based width), overshoots the target dot, and snaps back. It looks like a droplet sliding across a surface.
+
+```tsx
+transition={{
+  type: "spring",
+  stiffness: 400,
+  damping: 30,
+  mass: 0.8
+}}
+```
+
+This was the single biggest visual improvement. CSS pagination indicators feel like a cursor moving in a spreadsheet. Spring-based ones feel like a physical bead on a rail.
+
+---
+
+## Dropdowns and popovers
+
+**Before:** `opacity: 0 → 1` and `transform: translateY(-8px) → translateY(0)` over 150ms. The dropdown fades in and slides down.
+
+**After:** Spring with moderate stiffness, low damping. The dropdown slides in, overshoots by ~2px downward, and settles. Opacity still fades (springs on opacity look wrong, so binary states need linear interpolation).
+
+```tsx
+// Position: spring
+animate={{ y: 0 }}
+initial={{ y: -8 }}
+transition={{ type: "spring", stiffness: 500, damping: 35 }}
+
+// Opacity: linear tween (NOT spring)
+animate={{ opacity: 1 }}
+transition={{ duration: 0.15 }}
+```
+
+**Lesson learned:** Don't spring everything. Opacity, color, and blur should use linear tweens. Springs are for spatial properties: position, size, rotation.
+
+---
+
+## Tables: column reorder
+
+**Before:** Dragged columns snap to their new position with `transition: transform 0.3s ease`.
+
+**After:** Released columns carry their drag velocity into the spring. A fast drag results in overshoot past the drop target. A slow drag settles gently.
+
+This is where **velocity inheritance** matters most. CSS transitions always start from zero velocity. Springs can inherit the velocity from a drag gesture and continue the motion naturally.
+
+```tsx
+onDragEnd={(_, info) => {
+  animate(x, targetX, {
+    type: "spring",
+    stiffness: 300,
+    damping: 30,
+    velocity: info.velocity.x  // carry drag momentum
+  });
+}}
+```
+
+---
+
+## Notifications
+
+**Before:** Slide in from right, 300ms ease-out. Slide out to right, 200ms ease-in.
+
+**After:** Enter with a spring that overshoots by ~5px (the notification pushes past its resting position and bounces back). Exit with a fast spring and high damping (quick, no bounce, because exits should be decisive).
+
+```tsx
+// Enter: playful bounce
+initial={{ x: 100, opacity: 0 }}
+animate={{ x: 0, opacity: 1 }}
+transition={{ type: "spring", stiffness: 400, damping: 25 }}
+
+// Exit: quick and clean
+exit={{ x: 100, opacity: 0 }}
+transition={{ type: "spring", stiffness: 600, damping: 40 }}
+```
+
+**Asymmetry matters.** Entrances can be playful (low damping, visible overshoot). Exits should be fast and decisive (high damping, no bounce). This mirrors how we expect physical objects to behave. Things arrive with energy, things leave with purpose.
+
+---
+
+## What I didn't spring
+
+- **Color transitions**: spring-animated color looks wrong. Colors should tween linearly.
+- **Border radius**: animating border-radius with a spring causes visible jitter at sub-pixel values.
+- **Box shadow**: shadow spring animation is computationally expensive and visually imperceptible.
+- **Font size/weight**: these cause layout reflow per frame. Never animate them.
+
+---
+
+## The numbers
+
+After the migration:
+
+| Metric                   | CSS Transitions | Spring Physics  |
+| ------------------------ | --------------- | --------------- |
+| Bundle size              | 0 KB (native)   | ~15 KB (motion) |
+| Interruption handling    | Jumps           | Continuous      |
+| Duration control         | Fixed           | Emergent        |
+| Overshoot                | Impossible      | Natural         |
+| Velocity inheritance     | No              | Yes             |
+| `prefers-reduced-motion` | Free            | Manual          |
+
+The 15KB cost is the only thing CSS wins on. And in an application with any interactivity beyond hover states, that 15KB buys a fundamentally different experience.
+
+---
+
+Nothing looked the same after the migration. Not because the springs are flashy. Most users can't articulate what changed. But everyone says the same thing: "this feels better."
+
+That's the whole point. Motion isn't decoration. It's communication. And springs communicate something CSS transitions never can: that the things on your screen have weight.

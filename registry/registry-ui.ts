@@ -698,22 +698,6 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "testimonial-tabs",
-    type: "registry:ui",
-    title: "Testimonial Tabs",
-    description:
-      "An interactive testimonial component with tabbed navigation and smooth transitions.",
-    dependencies: ["motion"],
-    registryDependencies: ["tabs"],
-    files: [
-      {
-        path: "registry/ruixenui/testimonial-tabs.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/testimonial-tabs.tsx",
-      },
-    ],
-  },
-  {
     name: "slide-to-delete-button",
     type: "registry:ui",
     title: "Slide To Delete Button",
@@ -1195,130 +1179,17 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "nested-tabs",
-    type: "registry:ui",
-    title: "Nested Tabs",
-    description:
-      "A tab component with nested sub-tabs that expand with smooth animations.",
-    dependencies: ["framer-motion"],
-    registryDependencies: ["tabs"],
-    files: [
-      {
-        path: "registry/ruixenui/nested-tabs.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/nested-tabs.tsx",
-      },
-    ],
-  },
-  {
-    name: "zoom-depth-tabs",
-    type: "registry:ui",
-    title: "Zoom Depth Tabs",
-    description:
-      "A tab component with 3D zoom and depth effects for enhanced visual appeal.",
-    dependencies: ["framer-motion"],
-    registryDependencies: ["tabs"],
-    files: [
-      {
-        path: "registry/ruixenui/zoom-depth-tabs.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/zoom-depth-tabs.tsx",
-      },
-    ],
-  },
-  {
-    name: "capsule-tabs",
-    type: "registry:ui",
-    title: "Capsule Tabs",
-    description:
-      "Scrollable capsule-style tabs with pagination dots and navigation arrows.",
-    dependencies: ["framer-motion", "lucide-react"],
-    registryDependencies: ["button", "tabs"],
-    files: [
-      {
-        path: "registry/ruixenui/capsule-tabs.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/capsule-tabs.tsx",
-      },
-    ],
-  },
-  {
     name: "magnetic-tabs",
     type: "registry:ui",
     title: "Magnetic Tabs",
     description:
-      "Tab component with magnetic hover effects and smooth indicator animations.",
-    dependencies: ["framer-motion"],
-    registryDependencies: ["tabs"],
+      "Glass pill indicator that springs between hovered tabs with magnetic attraction and snappier overshoot on selection.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/magnetic-tabs.tsx",
         type: "registry:ui",
         target: "components/ruixen/magnetic-tabs.tsx",
-      },
-    ],
-  },
-  {
-    name: "fade-slide-tabs",
-    type: "registry:ui",
-    title: "Fade Slide Tabs",
-    description:
-      "Tab component with fade and slide animations for smooth content transitions.",
-    dependencies: ["framer-motion"],
-    registryDependencies: ["tabs"],
-    files: [
-      {
-        path: "registry/ruixenui/fade-slide-tabs.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/fade-slide-tabs.tsx",
-      },
-    ],
-  },
-  {
-    name: "hybrid-tabs",
-    type: "registry:ui",
-    title: "Hybrid Tabs",
-    description:
-      "Tab component that shows icons only by default and expands to show labels on hover.",
-    dependencies: ["framer-motion", "lucide-react"],
-    registryDependencies: ["tabs"],
-    files: [
-      {
-        path: "registry/ruixenui/hybrid-tabs.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/hybrid-tabs.tsx",
-      },
-    ],
-  },
-  {
-    name: "pill-morph-tabs",
-    type: "registry:ui",
-    title: "Pill Morph Tabs",
-    description:
-      "Elegant tab component with morphing pill indicator and glassmorphism effects.",
-    dependencies: ["framer-motion"],
-    registryDependencies: ["tabs"],
-    files: [
-      {
-        path: "registry/ruixenui/pill-morph-tabs.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/pill-morph-tabs.tsx",
-      },
-    ],
-  },
-  {
-    name: "sliding-tabs",
-    type: "registry:ui",
-    title: "Sliding Tabs",
-    description:
-      "Tab component with sliding gradient indicator and keyboard navigation support.",
-    dependencies: ["framer-motion"],
-    registryDependencies: ["button"],
-    files: [
-      {
-        path: "registry/ruixenui/sliding-tabs.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/sliding-tabs.tsx",
       },
     ],
   },
@@ -1760,13 +1631,27 @@ export const ui: Registry["items"] = [
   },
   // Tabs Components
   {
+    name: "invert-tabs",
+    type: "registry:ui",
+    title: "Invert Tabs",
+    description:
+      "mix-blend-mode exclusion on a white pill — text auto-inverts in both light and dark themes. Spring physics. Audio tick.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/ruixenui/invert-tabs.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/invert-tabs.tsx",
+      },
+    ],
+  },
+  {
     name: "drag-and-drop-tabs",
     type: "registry:ui",
     title: "Drag And Drop Tabs",
     description:
-      "Interactive tabs component with drag-and-drop reordering functionality.",
-    dependencies: ["@dnd-kit/core", "@dnd-kit/sortable", "@dnd-kit/utilities"],
-    registryDependencies: ["tabs"],
+      "Reorderable tabs with spring physics on drop, staggered cascade, velocity-aware snap, and audio tick.",
+    dependencies: ["motion", "@dnd-kit/core", "@dnd-kit/sortable"],
     files: [
       {
         path: "registry/ruixenui/drag-and-drop-tabs.tsx",

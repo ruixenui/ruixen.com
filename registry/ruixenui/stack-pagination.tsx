@@ -31,7 +31,8 @@ function getBuf(ac: AudioContext): AudioBuffer {
   const len = Math.floor(ac.sampleRate * 0.003);
   const buf = ac.createBuffer(1, len, ac.sampleRate);
   const ch = buf.getChannelData(0);
-  for (let i = 0; i < len; i++) ch[i] = (Math.random() * 2 - 1) * (1 - i / len) ** 4;
+  for (let i = 0; i < len; i++)
+    ch[i] = (Math.random() * 2 - 1) * (1 - i / len) ** 4;
   _b = buf;
   return buf;
 }
@@ -48,7 +49,9 @@ function tick(ref: React.MutableRefObject<number>) {
     g.gain.value = 0.06;
     src.connect(g).connect(ac.destination);
     src.start();
-  } catch { /* silent */ }
+  } catch {
+    /* silent */
+  }
 }
 
 /* ── Types ── */
@@ -87,13 +90,16 @@ export function StackPagination({
   const [active, setActive] = useState(0);
   const lastSound = useRef(0);
 
-  const go = useCallback((next: number) => {
-    const c = clamp(next, 0, totalPages - 1);
-    if (c === active) return;
-    if (sound) tick(lastSound);
-    setActive(c);
-    onChange?.(c);
-  }, [active, totalPages, onChange, sound]);
+  const go = useCallback(
+    (next: number) => {
+      const c = clamp(next, 0, totalPages - 1);
+      if (c === active) return;
+      if (sound) tick(lastSound);
+      setActive(c);
+      onChange?.(c);
+    },
+    [active, totalPages, onChange, sound],
+  );
 
   const visible: number[] = [];
   for (let i = 0; i < Math.min(MAX_VISIBLE, totalPages); i++) {
@@ -108,8 +114,14 @@ export function StackPagination({
       className="skp"
       tabIndex={0}
       onKeyDown={(e) => {
-        if (e.key === "ArrowRight" || e.key === "ArrowDown") { e.preventDefault(); go(active + 1); }
-        if (e.key === "ArrowLeft" || e.key === "ArrowUp") { e.preventDefault(); go(active - 1); }
+        if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+          e.preventDefault();
+          go(active + 1);
+        }
+        if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+          e.preventDefault();
+          go(active - 1);
+        }
       }}
       style={{
         display: "inline-flex",
@@ -121,12 +133,14 @@ export function StackPagination({
     >
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
 
-      <div style={{
-        position: "relative",
-        width: CARD_W,
-        height: stackH,
-        transition: "height .3s cubic-bezier(.4,0,.2,1)",
-      }}>
+      <div
+        style={{
+          position: "relative",
+          width: CARD_W,
+          height: stackH,
+          transition: "height .3s cubic-bezier(.4,0,.2,1)",
+        }}
+      >
         <AnimatePresence>
           {visible.map((page, index) => {
             const isTop = index === 0;
@@ -139,9 +153,14 @@ export function StackPagination({
                   y: index * DEPTH_Y,
                   scale: 1 - index * DEPTH_SCALE,
                 }}
-                exit={{ opacity: 0, x: 120, rotate: 8, transition: { ...SPRING, opacity: { duration: 0.15 } } }}
+                exit={{
+                  opacity: 0,
+                  x: 120,
+                  rotate: 8,
+                  transition: { ...SPRING, opacity: { duration: 0.15 } },
+                }}
                 transition={SPRING}
-                onClick={() => isTop ? go(active + 1) : go(page)}
+                onClick={() => (isTop ? go(active + 1) : go(page))}
                 style={{
                   position: "absolute",
                   top: 0,
@@ -167,23 +186,27 @@ export function StackPagination({
                   userSelect: "none",
                 }}
               >
-                <span style={{
-                  fontSize: 22,
-                  fontWeight: 600,
-                  color: `rgba(var(--skp-ink),${isTop ? 0.85 : 0.3})`,
-                  fontVariantNumeric: "tabular-nums",
-                  letterSpacing: "-0.02em",
-                  transition: "color .12s",
-                }}>
+                <span
+                  style={{
+                    fontSize: 22,
+                    fontWeight: 600,
+                    color: `rgba(var(--skp-ink),${isTop ? 0.85 : 0.3})`,
+                    fontVariantNumeric: "tabular-nums",
+                    letterSpacing: "-0.02em",
+                    transition: "color .12s",
+                  }}
+                >
                   {page + 1}
                 </span>
                 {isTop && (
-                  <span style={{
-                    fontSize: 10,
-                    fontWeight: 400,
-                    color: `rgba(var(--skp-ink),.3)`,
-                    letterSpacing: "0.02em",
-                  }}>
+                  <span
+                    style={{
+                      fontSize: 10,
+                      fontWeight: 400,
+                      color: `rgba(var(--skp-ink),.3)`,
+                      letterSpacing: "0.02em",
+                    }}
+                  >
                     of {totalPages}
                   </span>
                 )}
@@ -208,20 +231,29 @@ export function StackPagination({
             color: `rgba(var(--skp-ink),.55)`,
             transition: "opacity .12s, background .12s",
           }}
-          onMouseEnter={(e) => { if (active > 0) (e.currentTarget as HTMLElement).style.background = `rgba(var(--skp-ink),.08)`; }}
-          onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = `rgba(var(--skp-ink),.04)`; }}
+          onMouseEnter={(e) => {
+            if (active > 0)
+              (e.currentTarget as HTMLElement).style.background =
+                `rgba(var(--skp-ink),.08)`;
+          }}
+          onMouseLeave={(e) => {
+            (e.currentTarget as HTMLElement).style.background =
+              `rgba(var(--skp-ink),.04)`;
+          }}
         >
           Prev
         </button>
 
-        <span style={{
-          fontSize: 11,
-          fontWeight: 450,
-          color: `rgba(var(--skp-ink),.3)`,
-          fontVariantNumeric: "tabular-nums",
-          minWidth: 36,
-          textAlign: "center",
-        }}>
+        <span
+          style={{
+            fontSize: 11,
+            fontWeight: 450,
+            color: `rgba(var(--skp-ink),.3)`,
+            fontVariantNumeric: "tabular-nums",
+            minWidth: 36,
+            textAlign: "center",
+          }}
+        >
           {active + 1} / {totalPages}
         </span>
 
@@ -239,8 +271,15 @@ export function StackPagination({
             color: `rgba(var(--skp-ink),.55)`,
             transition: "opacity .12s, background .12s",
           }}
-          onMouseEnter={(e) => { if (active < totalPages - 1) (e.currentTarget as HTMLElement).style.background = `rgba(var(--skp-ink),.08)`; }}
-          onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = `rgba(var(--skp-ink),.04)`; }}
+          onMouseEnter={(e) => {
+            if (active < totalPages - 1)
+              (e.currentTarget as HTMLElement).style.background =
+                `rgba(var(--skp-ink),.08)`;
+          }}
+          onMouseLeave={(e) => {
+            (e.currentTarget as HTMLElement).style.background =
+              `rgba(var(--skp-ink),.04)`;
+          }}
         >
           Next
         </button>

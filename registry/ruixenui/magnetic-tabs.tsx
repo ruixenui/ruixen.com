@@ -1,14 +1,64 @@
 "use client";
 
-import * as React from "react";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useState, useRef, useCallback, useEffect } from "react";
 import {
   motion,
   AnimatePresence,
   useMotionValue,
   useSpring,
-} from "framer-motion";
-import { cn } from "@/lib/utils";
+} from "motion/react";
+
+/**
+ * Magnetic Tabs — Rauno Freiberg craft.
+ *
+ * Pill indicator magnetically attracted to hovered tab.
+ * Soft spring on hover, snappier overshoot on selection.
+ * Audio tick on change.
+ */
+
+/* ── Audio singleton ── */
+
+let _a: AudioContext | null = null;
+let _b: AudioBuffer | null = null;
+
+function getCtx(): AudioContext {
+  if (!_a)
+    _a = new (window.AudioContext ||
+      (window as unknown as { webkitAudioContext: typeof AudioContext })
+        .webkitAudioContext)();
+  if (_a.state === "suspended") _a.resume();
+  return _a;
+}
+
+function getBuf(ac: AudioContext): AudioBuffer {
+  if (_b && _b.sampleRate === ac.sampleRate) return _b;
+  const len = Math.floor(ac.sampleRate * 0.003);
+  const buf = ac.createBuffer(1, len, ac.sampleRate);
+  const ch = buf.getChannelData(0);
+  for (let i = 0; i < len; i++)
+    ch[i] = (Math.random() * 2 - 1) * (1 - i / len) ** 4;
+  _b = buf;
+  return buf;
+}
+
+function tick(ref: React.MutableRefObject<number>) {
+  const now = performance.now();
+  if (now - ref.current < 25) return;
+  ref.current = now;
+  try {
+    const ac = getCtx();
+    const src = ac.createBufferSource();
+    const g = ac.createGain();
+    src.buffer = getBuf(ac);
+    g.gain.value = 0.06;
+    src.connect(g).connect(ac.destination);
+    src.start();
+  } catch {
+    /* silent */
+  }
+}
+
+/* ── Types ── */
 
 export interface MagneticTabItem {
   value: string;
@@ -19,147 +69,213 @@ export interface MagneticTabItem {
 interface MagneticTabsProps {
   items?: MagneticTabItem[];
   defaultValue?: string;
+  onChange?: (value: string) => void;
+  sound?: boolean;
   className?: string;
-  indicatorPadding?: number; // padding around tab for indicator
 }
 
-export default function MagneticTabs({
+/* ── CSS ── */
+
+const CSS = `.mt{--mt-bg:rgba(255,255,255,.72);--mt-border:rgba(0,0,0,.06);--mt-shadow:0 0 0 .5px rgba(0,0,0,.04),0 2px 4px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.06);--mt-pill:rgba(0,0,0,.06);--mt-text:rgba(0,0,0,.5);--mt-text-active:rgba(0,0,0,.9);--mt-content-bg:rgba(0,0,0,.02);--mt-content-border:rgba(0,0,0,.06)}.dark .mt,[data-theme="dark"] .mt{--mt-bg:rgba(30,30,32,.82);--mt-border:rgba(255,255,255,.06);--mt-shadow:0 0 0 .5px rgba(255,255,255,.04),0 2px 4px rgba(0,0,0,.2),0 8px 24px rgba(0,0,0,.3);--mt-pill:rgba(255,255,255,.08);--mt-text:rgba(255,255,255,.45);--mt-text-active:rgba(255,255,255,.9);--mt-content-bg:rgba(255,255,255,.03);--mt-content-border:rgba(255,255,255,.06)}`;
+
+/* ── Constants ── */
+
+const HOVER_SPRING = { type: "spring" as const, stiffness: 300, damping: 25 };
+const SELECT_SPRING = { type: "spring" as const, stiffness: 500, damping: 22 };
+const CONTENT_SPRING = {
+  type: "spring" as const,
+  stiffness: 250,
+  damping: 25,
+};
+
+/* ── Component ── */
+
+export function MagneticTabs({
   items = [
-    { value: "overview", label: "Overview", content: "Overview content here." },
-    { value: "activity", label: "Activity", content: "Activity content here." },
-    { value: "settings", label: "Settings", content: "Settings content here." },
+    {
+      value: "overview",
+      label: "Overview",
+      content: "Overview content here.",
+    },
+    {
+      value: "activity",
+      label: "Activity",
+      content: "Activity content here.",
+    },
+    {
+      value: "settings",
+      label: "Settings",
+      content: "Settings content here.",
+    },
     { value: "faq", label: "FAQ", content: "FAQ content here." },
   ],
-  defaultValue = "overview",
+  defaultValue,
+  onChange,
+  sound = true,
   className,
-  indicatorPadding = 6,
 }: MagneticTabsProps) {
-  const [active, setActive] = React.useState(defaultValue);
-  const [hovered, setHovered] = React.useState<string | null>(null);
+  const [active, setActive] = useState(defaultValue || items[0]?.value || "");
+  const [hovered, setHovered] = useState<string | null>(null);
+  const [selectMode, setSelectMode] = useState(false);
+  const lastSound = useRef(0);
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const barRef = useRef<HTMLDivElement | null>(null);
+  const measured = useRef(false);
+  const selectTimer = useRef<ReturnType<typeof setTimeout>>();
 
-  const containerRef = React.useRef<HTMLDivElement | null>(null);
-  const tabRefs = React.useRef<Array<HTMLButtonElement | null>>([]);
-  const indicatorX = useMotionValue(0);
-  const indicatorWidth = useMotionValue(0);
-  const indicatorTop = useMotionValue(0);
-  const indicatorHeight = useMotionValue(0);
+  const pillX = useMotionValue(0);
+  const pillW = useMotionValue(0);
+  const springConfig = selectMode ? SELECT_SPRING : HOVER_SPRING;
+  const springX = useSpring(pillX, springConfig);
+  const springW = useSpring(pillW, springConfig);
 
-  const springConfig = { stiffness: 300, damping: 25 };
-  const springX = useSpring(indicatorX, springConfig);
-  const springW = useSpring(indicatorWidth, springConfig);
-  const springTop = useSpring(indicatorTop, springConfig);
-  const springH = useSpring(indicatorHeight, springConfig);
+  const movePill = useCallback(
+    (value: string) => {
+      const bar = barRef.current;
+      if (!bar) return;
+      const idx = items.findIndex((t) => t.value === value);
+      const btn = tabRefs.current[idx];
+      if (!btn) return;
+      const barRect = bar.getBoundingClientRect();
+      const btnRect = btn.getBoundingClientRect();
+      const x = btnRect.left - barRect.left;
+      const w = btnRect.width;
+      if (!measured.current) {
+        pillX.jump(x);
+        pillW.jump(w);
+        measured.current = true;
+      } else {
+        pillX.set(x);
+        pillW.set(w);
+      }
+    },
+    [items, pillX, pillW],
+  );
 
-  const updateIndicator = (value: string) => {
-    const idx = items.findIndex((item) => item.value === value);
-    const btn = tabRefs.current[idx];
-    const container = containerRef.current;
-    if (btn && container) {
-      const cRect = container.getBoundingClientRect();
-      const tRect = btn.getBoundingClientRect();
-      indicatorX.set(tRect.left - cRect.left - indicatorPadding);
-      indicatorWidth.set(tRect.width + indicatorPadding * 2);
-      indicatorTop.set(tRect.top - cRect.top - indicatorPadding);
-      indicatorHeight.set(tRect.height + indicatorPadding * 2);
-    }
-  };
+  useEffect(() => {
+    movePill(hovered || active);
+    const ro = new ResizeObserver(() => movePill(hovered || active));
+    if (barRef.current) ro.observe(barRef.current);
+    return () => ro.disconnect();
+  }, [active, hovered, movePill]);
 
-  React.useEffect(() => {
-    updateIndicator(active);
-    const ro = new ResizeObserver(() => updateIndicator(active));
-    if (containerRef.current) ro.observe(containerRef.current);
-    tabRefs.current.forEach((el) => el && ro.observe(el));
-    window.addEventListener("resize", () => updateIndicator(active));
-    return () => {
-      ro.disconnect();
-      window.removeEventListener("resize", () => updateIndicator(active));
-    };
-  }, [active, indicatorPadding]);
+  const go = useCallback(
+    (value: string) => {
+      if (value === active) return;
+      setSelectMode(true);
+      if (sound) tick(lastSound);
+      setActive(value);
+      onChange?.(value);
+      clearTimeout(selectTimer.current);
+      selectTimer.current = setTimeout(() => setSelectMode(false), 300);
+    },
+    [active, onChange, sound],
+  );
 
-  React.useEffect(() => {
-    if (hovered) updateIndicator(hovered);
-    else updateIndicator(active);
-  }, [hovered, active, indicatorPadding]);
+  const activeItem = items.find((t) => t.value === active);
 
   return (
-    <div
-      className={cn(
-        "flex flex-col items-center justify-center min-h-[70vh]",
-        className,
-      )}
-    >
-      <Tabs
-        defaultValue={defaultValue}
-        onValueChange={setActive}
-        className="w-full max-w-lg"
+    <div className={`mt${className ? ` ${className}` : ""}`}>
+      <style dangerouslySetInnerHTML={{ __html: CSS }} />
+
+      {/* Tab bar */}
+      <div
+        ref={barRef}
+        style={{
+          position: "relative",
+          display: "inline-flex",
+          alignItems: "center",
+          padding: 4,
+          background: "var(--mt-bg)",
+          border: "1px solid var(--mt-border)",
+          boxShadow: "var(--mt-shadow)",
+          borderRadius: 14,
+          backdropFilter: "blur(16px)",
+          WebkitBackdropFilter: "blur(16px)",
+        }}
+        onMouseLeave={() => setHovered(null)}
       >
-        <TabsList
-          ref={containerRef}
-          className="relative flex justify-center gap-2 p-2 bg-background/60 "
-        >
-          {/* Magnetic Indicator */}
-          <motion.div
-            style={{
-              left: springX,
-              width: springW,
-              top: springTop,
-              height: springH,
+        {/* Pill indicator */}
+        <motion.div
+          style={{
+            position: "absolute",
+            top: 4,
+            left: 0,
+            height: "calc(100% - 8px)",
+            x: springX,
+            width: springW,
+            background: "var(--mt-pill)",
+            borderRadius: 10,
+            pointerEvents: "none",
+            zIndex: 0,
+          }}
+        />
+
+        {/* Tab buttons */}
+        {items.map((item, i) => (
+          <button
+            key={item.value}
+            ref={(el) => {
+              tabRefs.current[i] = el;
             }}
-            className="absolute rounded-lg bg-primary/30 pointer-events-none"
+            onClick={() => go(item.value)}
+            onMouseEnter={() => {
+              setSelectMode(false);
+              clearTimeout(selectTimer.current);
+              setHovered(item.value);
+            }}
+            style={{
+              position: "relative",
+              zIndex: 1,
+              border: "none",
+              background: "none",
+              padding: "8px 18px",
+              fontSize: 14,
+              fontWeight: 500,
+              fontFamily: "inherit",
+              color:
+                active === item.value
+                  ? "var(--mt-text-active)"
+                  : "var(--mt-text)",
+              cursor: "pointer",
+              whiteSpace: "nowrap",
+              lineHeight: 1,
+              transition: "color .15s ease",
+              borderRadius: 10,
+            }}
           >
-            <motion.div
-              className={cn(
-                "absolute inset-0 rounded-lg filter blur-md opacity-40",
-              )}
-              initial={false}
-              animate={{ opacity: 0.4 }}
-            />
-          </motion.div>
+            {item.label}
+          </button>
+        ))}
+      </div>
 
-          {items.map((item, i) => (
-            <TabsTrigger
-              key={item.value}
-              ref={(el) => (tabRefs.current[i] = el)}
-              value={item.value}
-              asChild
-              onMouseEnter={() => setHovered(item.value)}
-              onMouseLeave={() => setHovered(null)}
-            >
-              <motion.button
-                className={cn(
-                  "relative z-10 px-3 py-2 rounded-lg text-sm font-medium transition-colors",
-                  active === item.value ? "text-white" : "text-foreground/80",
-                )}
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 300, damping: 25 }}
-              >
-                {item.label}
-              </motion.button>
-            </TabsTrigger>
-          ))}
-        </TabsList>
-
-        {/* Tab Content */}
-        <div className="mt-4 w-full max-w-lg relative">
+      {/* Content panel */}
+      {activeItem?.content != null && (
+        <div style={{ position: "relative", marginTop: 16, minHeight: 60 }}>
           <AnimatePresence mode="wait">
-            {items.map(
-              (item) =>
-                item.value === active && (
-                  <motion.div
-                    key={item.value}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ type: "spring", stiffness: 250, damping: 25 }}
-                    className="absolute inset-0 p-4 bg-card rounded-lg"
-                  >
-                    {item.content}
-                  </motion.div>
-                ),
-            )}
+            <motion.div
+              key={active}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={CONTENT_SPRING}
+              style={{
+                padding: 20,
+                background: "var(--mt-content-bg)",
+                border: "1px solid var(--mt-content-border)",
+                borderRadius: 12,
+                color: "var(--mt-text-active)",
+                fontSize: 14,
+                lineHeight: 1.6,
+              }}
+            >
+              {activeItem.content}
+            </motion.div>
           </AnimatePresence>
         </div>
-      </Tabs>
+      )}
     </div>
   );
 }
+
+export default MagneticTabs;

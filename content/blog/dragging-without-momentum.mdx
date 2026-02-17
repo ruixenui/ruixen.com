@@ -1,0 +1,127 @@
+---
+title: "Dragging without momentum is broken."
+description: "What happens when you let go of a dragged element and it stops dead. And what happens when you give it physics."
+image: https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/gradients/shade_shiters/shade-shifters-01.png
+author: Ruhith G
+tag: Design Engineering
+publishedOn: 2026-02-28T10:00:00.000Z
+featured: false
+---
+
+Drag a file on your desktop. Release it over a folder. The file icon **slides** into position. It carries the momentum from your drag and decelerates into the drop target.
+
+Now drag a card in a web kanban board. Release it. The card **teleports** to its new position. Zero momentum. No deceleration. It was moving at full speed one frame, stationary the next.
+
+This instant stop is physically impossible. Nothing with mass stops instantaneously. Your brain registers it as a glitch, even if you can't articulate why.
+
+---
+
+## What momentum means in drag-and-drop
+
+When you release a dragged element, two values matter:
+
+1. **Position**: where the element is at the moment of release
+2. **Velocity**: how fast it was moving at the moment of release
+
+Most drag-and-drop libraries use only position. They snap the element from its current position to the drop target. Velocity is discarded.
+
+```tsx
+// Standard: snap to target
+onDragEnd={() => {
+  setPosition(dropTarget);
+}}
+
+// Physics: carry velocity into settlement
+onDragEnd={(_, info) => {
+  animate(position, dropTarget, {
+    type: "spring",
+    stiffness: 300,
+    damping: 30,
+    velocity: info.velocity.x, // this changes everything
+  });
+}}
+```
+
+The `velocity` parameter tells the spring "the element was already moving at this speed, continue from there." A fast fling produces overshoot past the target before settling back. A slow release settles gently. The same spring config, different motion depending on input.
+
+---
+
+## Sortable lists
+
+In a sortable list (drag to reorder), every item that shifts to make room for the dragged element should also animate with springs:
+
+```tsx
+// Items shifting up/down to make room
+<motion.div
+  layout
+  transition={{
+    type: "spring",
+    stiffness: 400,
+    damping: 30,
+  }}
+/>
+```
+
+The `layout` prop handles the position change. The spring handles the motion character. Items don't jump to their new positions. They slide with momentum, creating a cascading wave as each item pushes the next.
+
+The visual effect: dropping a card into a list looks like dropping a stone into water. Items ripple outward from the insertion point. Without springs, items snap. Like a spreadsheet inserting a row.
+
+---
+
+## Snap points with resistance
+
+Some drag interfaces have snap points, positions where the element wants to rest. The standard approach: if the element is closer to snap point A than B, snap to A.
+
+The physics approach: apply **resistance** as the element moves between snap points, and use velocity to determine which snap point wins.
+
+```tsx
+const getNearestSnap = (position: number, velocity: number) => {
+  // Fast velocity overrides proximity
+  if (Math.abs(velocity) > 500) {
+    return velocity > 0 ? nextSnapPoint : prevSnapPoint;
+  }
+  // Slow velocity - use proximity
+  return closestSnapPoint(position);
+};
+```
+
+A fast fling flies past nearby snap points to the next one. A slow drag settles at the nearest. This matches how physical snapping mechanisms work. A strong push overcomes the snap, a weak push doesn't.
+
+---
+
+## Rubber-banding at boundaries
+
+When dragging reaches the edge of a scrollable area, the element shouldn't stop dead. It should **rubber-band**, moving with increasing resistance:
+
+```tsx
+const applyResistance = (offset: number, max: number) => {
+  if (offset <= 0) return offset; // within bounds, no resistance
+  return max * (1 - Math.exp(-offset / max)); // exponential decay
+};
+```
+
+This exponential resistance function means: close to the boundary = normal movement. Far past the boundary = movement slows asymptotically. You can never drag infinitely past the edge, but the limit is soft, not hard.
+
+Release the rubber-banded element and the spring snaps it back to the boundary with velocity proportional to how far it was pulled. A small overscroll = gentle return. A large overscroll = energetic snap.
+
+---
+
+## Performance: transform only
+
+Drag animations must happen on `transform` and `opacity` only. These properties are GPU-composited and don't trigger layout recalculation.
+
+Animating `top`/`left`, `width`/`height`, or `margin` during drag causes layout thrashing. The browser recalculates every element's position every frame. At 60fps, that's 16ms per frame. Layout recalc on a complex DOM easily exceeds that budget.
+
+```tsx
+// Good: GPU composited
+style={{ transform: `translate(${x}px, ${y}px)` }}
+
+// Bad: triggers layout
+style={{ left: `${x}px`, top: `${y}px` }}
+```
+
+Springs make this easier because they naturally operate on numeric values that map cleanly to transforms. The spring animates a number; you apply it as a translate. No layout involved.
+
+---
+
+The next time you implement drag-and-drop, console.log the velocity at release. You'll see numbers. Real momentum data that your current implementation throws away. Keep it. Feed it to a spring. Watch the dead teleport become a living arrival.

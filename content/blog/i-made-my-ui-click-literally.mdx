@@ -1,0 +1,122 @@
+---
+title: "I made my UI click. Literally."
+description: "What happens when you add a 3ms audio tick to every interactive element in a component library."
+image: https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/gradients/shade_shiters/shade-shifters-01.png
+author: Ruhith G
+tag: Design Engineering
+publishedOn: 2026-02-12T10:00:00.000Z
+featured: true
+---
+
+I added a sound to every button, toggle, checkbox, tab, pagination dot, table row, and drag handle in a 170+ component library. Not a WAV file. Not an MP3. A 3-millisecond burst of shaped noise generated in real time by the Web Audio API.
+
+Here's the entire implementation:
+
+```tsx
+let ctx: AudioContext | null = null;
+let buf: AudioBuffer | null = null;
+
+function tick() {
+  if (!ctx) ctx = new AudioContext();
+  if (ctx.state === "suspended") ctx.resume();
+
+  if (!buf) {
+    const len = Math.floor(ctx.sampleRate * 0.003);
+    buf = ctx.createBuffer(1, len, ctx.sampleRate);
+    const ch = buf.getChannelData(0);
+    for (let i = 0; i < len; i++)
+      ch[i] = (Math.random() * 2 - 1) * (1 - i / len) ** 4;
+  }
+
+  const src = ctx.createBufferSource();
+  const gain = ctx.createGain();
+  src.buffer = buf;
+  gain.gain.value = 0.06;
+  src.connect(gain).connect(ctx.destination);
+  src.start();
+}
+```
+
+12 lines. Zero dependencies. No audio files to load. Let me explain why every choice matters.
+
+---
+
+## Why noise, not a tone
+
+A sine wave at any frequency sounds "digital." 440Hz is a tuning fork. 1000Hz is a hearing test. Your brain categorizes pure tones as artificial.
+
+Noise (random samples across all frequencies) shaped by a fast exponential decay sounds like a **physical impact**. A switch clicking. A button being pressed. A latch engaging. Your auditory system interprets broadband transients as mechanical events.
+
+The envelope `(1 - i/len) ** 4` creates a sharp attack that drops to near-silence in under a millisecond. The `**4` exponent makes the decay curve steep enough that you perceive a "click" rather than a "hiss."
+
+---
+
+## Why 3 milliseconds
+
+Shorter than 2ms and the sound has no perceptible body. Your ear can't resolve it. Longer than 5ms and it starts sounding like a static burst. 3ms sits in the sweet spot where the sound registers as a tactile event rather than an audible one.
+
+At `gain.gain.value = 0.06` (roughly 5% volume), most users report "feeling" the click rather than "hearing" it. It operates below conscious attention but above the threshold of perception. Like the click of a mechanical keyboard. You stop noticing it after a few minutes, but remove it and something feels wrong.
+
+---
+
+## The AudioContext singleton pattern
+
+```tsx
+if (!ctx) ctx = new AudioContext();
+if (ctx.state === "suspended") ctx.resume();
+```
+
+Browsers require a user gesture to create or resume an AudioContext (autoplay policy). By initializing lazily on first interaction, we comply without any permission dialogs. The context persists for the entire session. Creating a new one per click would leak memory.
+
+The buffer is also created once and reused. Since it's random noise, every playback sounds slightly different anyway (the randomness is in the generation, and the 3ms duration means slight perceptual variation even from the same buffer).
+
+---
+
+## Where sound works
+
+**Discrete state changes.** Toggle on/off, checkbox check/uncheck, tab switch, pagination page change. These are binary events with clear before/after states. A click confirms the state changed.
+
+**Drag start/end.** Beginning and completing a drag operation: column reorder, item rearrange. The sound bookends the gesture.
+
+**Selection.** Clicking a table row, selecting a list item, choosing from a dropdown. The sound confirms your target was hit.
+
+---
+
+## Where sound doesn't work
+
+**Continuous gestures.** Scrolling, resizing, dragging (the motion itself, not the start/end). Sound during continuous motion is immediately annoying.
+
+**Background state updates.** Data loading, real-time updates, notifications arriving. Sound that fires without user action feels intrusive.
+
+**High-frequency events.** Hovering over a list of items, mousemove tracking. A 25ms throttle prevents ticks from stacking, but the safest approach is to only trigger on explicit user actions (click, keydown), never on passive events (hover, scroll).
+
+---
+
+## The opt-out contract
+
+Every component accepts a `sound` prop that defaults to `true`:
+
+```tsx
+<Toggle sound={false} />
+<Pagination sound={true} />
+```
+
+This is non-negotiable. Audio in web interfaces is polarizing. Some users find it delightful. "It makes the UI feel real." Others find any browser-initiated sound unacceptable. The opt-out must be per-component and trivially accessible.
+
+A global `useSoundPreference` hook checks `prefers-reduced-motion` and a localStorage flag, disabling all ticks for users who prefer silent interfaces.
+
+---
+
+## What I learned
+
+After using sound-enabled components for four months:
+
+1. **You stop hearing it.** Like a mechanical keyboard, the clicks fade below conscious attention within minutes. What remains is a sense of responsiveness.
+
+2. **Removing it feels wrong.** I disabled sound for a week to test. Every interaction felt sluggish, even though the visual response was identical. My brain had mapped the audio tick to "confirmed."
+
+3. **People either love it or reject it immediately.** There is no middle ground. Nobody says "it's okay." They say "this is amazing" or "turn it off."
+
+4. **3ms is the maximum.** I tested 5ms, 10ms, 20ms. Anything over 3ms stops feeling like a click and starts feeling like a sound effect. The distinction matters.
+
+Try it: [ruixen.com/docs/components](https://ruixen.com/docs/components). Turn your sound on. Click around for 60 seconds. Then turn sound off and do the same. Feel the difference.

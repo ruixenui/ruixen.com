@@ -337,7 +337,8 @@ export function CalendarTwin({
                 className={cn(
                   "border-none transition-colors duration-100",
                   bgCls,
-                  !inRange && "hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-[10px]",
+                  !inRange &&
+                    "hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-[10px]",
                 )}
                 style={{
                   width: CELL,
@@ -388,9 +389,7 @@ export function CalendarTwin({
   })();
 
   return (
-    <div
-      className="bg-neutral-50 dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-[20px] overflow-hidden w-fit"
-    >
+    <div className="bg-neutral-50 dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-[20px] overflow-hidden w-fit">
       {/* Header */}
       <div
         style={{

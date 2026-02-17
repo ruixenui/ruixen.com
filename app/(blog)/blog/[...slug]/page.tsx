@@ -1,6 +1,4 @@
-/* eslint-disable jsx-a11y/alt-text */
-/* eslint-disable @next/next/no-img-element */
-
+import { BlogThumbnail } from "@/components/blog/blog-thumbnail";
 import MoreArticles, { getReadingTime } from "@/components/blog/more-articles";
 import { SidebarCTA } from "@/components/sidebar-cta";
 import BlogTableOfContents from "@/components/blog/table-of-contents";
@@ -105,21 +103,30 @@ const components = {
   ),
   pre: ({ children, ...props }: ComponentProps<"pre">) => (
     <pre
-      className="flex h-fit items-center justify-start gap-x-2 overflow-x-auto rounded-md border border-border bg-primary dark:bg-primary/5 px-2 py-1 font-mono text-sm text-secondary-foreground"
+      className="flex h-fit items-center justify-start gap-x-2 overflow-x-auto rounded-xl bg-[#161b22] px-5 py-4 font-mono text-sm leading-relaxed"
       {...props}
     >
       {children}
     </pre>
   ),
-  code: ({ children, ...props }: ComponentProps<"code">) => (
-    <code
-      className="rounded-md bg-primary/5 px-2 py-1 font-mono text-sm text-secondary-foreground"
-      {...props}
-    >
-      {children}
-    </code>
-  ),
-  img: ({ children, ...props }: ComponentProps<"img">) => (
+  code: ({ children, ...props }: ComponentProps<"code">) => {
+    const isBlock = "data-language" in props || "data-theme" in props;
+
+    if (isBlock) {
+      return <code {...props}>{children}</code>;
+    }
+
+    return (
+      <code
+        className="rounded-md bg-neutral-100 px-1.5 py-0.5 font-mono text-[0.85em] text-neutral-800 dark:bg-neutral-800 dark:text-neutral-200"
+        {...props}
+      >
+        {children}
+      </code>
+    );
+  },
+  img: (props: ComponentProps<"img">) => (
+    // eslint-disable-next-line jsx-a11y/alt-text, @next/next/no-img-element
     <img className="my-2 rounded-xl border border-border" {...props} />
   ),
   a: ({ children, ...props }: ComponentProps<"a">) => {
@@ -271,10 +278,11 @@ export default async function BlogPage({
       <article className="mx-auto mt-5 max-w-6xl rounded-xl border border-border">
         <div>
           <div className="relative overflow-hidden rounded-xl p-5 md:p-10">
-            <img
-              src={post.image}
-              alt={post.title}
-              className="size-full rounded-xl border border-border object-cover object-left"
+            <BlogThumbnail
+              title={post.title}
+              tag={post.tag}
+              className="aspect-[16/9] rounded-xl"
+              animated
             />
           </div>
           <div className="mx-auto flex flex-col items-center justify-center gap-y-2 border-y border-border p-5">
@@ -304,9 +312,9 @@ export default async function BlogPage({
             <MDXContent code={post.body.code} components={components} />
           </div>
           <div className="sticky top-16 col-span-2 hidden h-fit w-full flex-col items-start justify-start p-5 text-primary lg:flex ">
-            <SidebarCTA />
+            <BlogTableOfContents headings={headings} />
             <div className="mt-10 w-full">
-              <BlogTableOfContents headings={headings} />
+              <SidebarCTA />
             </div>
           </div>
         </div>

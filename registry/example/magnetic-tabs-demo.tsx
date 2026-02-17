@@ -1,34 +1,37 @@
-import MagneticTabs, {
-  MagneticTabItem,
-} from "@/registry/ruixenui/magnetic-tabs";
+"use client";
 
-const tabItems: MagneticTabItem[] = [
-  {
-    value: "overview",
-    label: "Overview",
-    content: "Overview content goes here.",
-  },
-  {
-    value: "activity",
-    label: "Activity",
-    content: "Activity content goes here.",
-  },
-  {
-    value: "settings",
-    label: "Settings",
-    content: "Settings content goes here.",
-  },
-  { value: "faq", label: "FAQ", content: "FAQ content goes here." },
-];
+import { MagneticTabs } from "@/registry/ruixenui/magnetic-tabs";
 
-export default function Demo() {
+export default function MagneticTabsDemo() {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-background">
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        minHeight: "50vh",
+      }}
+    >
       <MagneticTabs
-        items={tabItems}
+        items={[
+          {
+            value: "overview",
+            label: "Overview",
+            content: "Overview content goes here.",
+          },
+          {
+            value: "activity",
+            label: "Activity",
+            content: "Activity content goes here.",
+          },
+          {
+            value: "settings",
+            label: "Settings",
+            content: "Settings content goes here.",
+          },
+          { value: "faq", label: "FAQ", content: "FAQ content goes here." },
+        ]}
         defaultValue="overview"
-        indicatorPadding={8}
-        className="max-w-xl"
       />
     </div>
   );

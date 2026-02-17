@@ -1,0 +1,181 @@
+---
+title: "Notification timing is an unsolved problem."
+description: "Toast notifications seem simple. Then you stack them, queue them, auto-dismiss them, and realize the timing is all wrong."
+image: https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/gradients/shade_shiters/shade-shifters-01.png
+author: Ruhith G
+tag: Design Engineering
+publishedOn: 2026-03-02T10:00:00.000Z
+featured: false
+---
+
+Show a toast notification. Easy. Show three in sequence. Manageable. Show five simultaneously while the user is interacting with one, auto-dismiss the oldest, and animate the stack reflow.
+
+Now it's hard.
+
+Notification timing is one of those problems that seems solved until you encounter edge cases, which happen constantly in real applications.
+
+---
+
+## The auto-dismiss race condition
+
+Standard auto-dismiss: each toast gets a 5-second timer. After 5 seconds, it fades out.
+
+Problem: the user is reading toast #2 when toast #1 auto-dismisses. The stack shifts. Toast #2 jumps to toast #1's position. The user loses their place.
+
+The fix isn't longer timers. It's **pause-on-hover for the entire stack**:
+
+```tsx
+const [isPaused, setIsPaused] = useState(false);
+
+// Hovering ANY toast pauses ALL timers
+<div
+  onMouseEnter={() => setIsPaused(true)}
+  onMouseLeave={() => setIsPaused(false)}
+>
+  {toasts.map((toast) => (
+    <Toast key={toast.id} paused={isPaused} />
+  ))}
+</div>;
+```
+
+When the cursor leaves the stack, all timers resume from where they paused, not reset. A toast that had 2 seconds remaining still has 2 seconds remaining.
+
+---
+
+## Spring-based stack reflow
+
+When a toast is dismissed, the remaining toasts need to move up (or down, depending on position). CSS transitions handle this with `transition: transform 0.3s ease`. The toasts slide uniformly.
+
+Spring-based reflow adds **stagger**: the toast immediately below the dismissed one moves first, then the next, then the next. A 30ms stagger per toast creates a cascade:
+
+```tsx
+{
+  toasts.map((toast, i) => (
+    <motion.div
+      key={toast.id}
+      layout
+      transition={{
+        type: "spring",
+        stiffness: 400,
+        damping: 30,
+        delay: i * 0.03,
+      }}
+    />
+  ));
+}
+```
+
+The cascade communicates "one thing was removed, and everything adjusted." Without stagger, the whole stack jumps simultaneously, which feels like a glitch rather than a response.
+
+---
+
+## Entrance: where toasts come from
+
+Most toast libraries fade toasts in from the same position. The notification materializes in place.
+
+Better: toasts enter from their edge. Bottom-right toasts slide from the right, top-center toasts slide from the top:
+
+```tsx
+// Bottom-right position
+initial={{ x: 100, opacity: 0 }}
+animate={{ x: 0, opacity: 1 }}
+transition={{
+  type: "spring",
+  stiffness: 500,
+  damping: 30,
+}}
+```
+
+The directional entrance tells the user where notifications live in the spatial model. "Notifications come from the right" is a learnable pattern that helps users build a mental map of the interface.
+
+---
+
+## Exit: swipe-to-dismiss
+
+Auto-dismiss is a tween. The toast fades or slides out on a timer. Manual dismiss should be a **gesture**: swipe the toast in the direction it came from.
+
+The swipe should carry velocity:
+
+```tsx
+const handleDragEnd = (_, info) => {
+  if (Math.abs(info.velocity.x) > 200 || Math.abs(info.offset.x) > 100) {
+    // Dismiss with carried velocity
+    animate(x, info.velocity.x > 0 ? 400 : -400, {
+      type: "spring",
+      stiffness: 300,
+      damping: 30,
+      velocity: info.velocity.x,
+    });
+    onDismiss();
+  } else {
+    // Snap back
+    animate(x, 0, {
+      type: "spring",
+      stiffness: 500,
+      damping: 30,
+    });
+  }
+};
+```
+
+A fast swipe sends the toast flying off-screen. A slow swipe past the threshold dismisses gently. A swipe that doesn't reach the threshold springs the toast back. Three outcomes, all feeling natural.
+
+---
+
+## The queue problem
+
+Five API calls complete simultaneously. Five success toasts are queued. Showing all five at once overwhelms the screen. Showing them sequentially takes 25+ seconds (5 × 5s auto-dismiss).
+
+My approach: **batch + compress**.
+
+```tsx
+// If 3+ toasts arrive within 500ms, batch them
+if (pendingToasts.length >= 3 && timeSinceFirst < 500) {
+  showToast({
+    title: `${pendingToasts.length} actions completed`,
+    // Expandable to see individual items
+  });
+} else {
+  // Show individually with staggered entrance
+  pendingToasts.forEach((toast, i) => {
+    setTimeout(() => showToast(toast), i * 200);
+  });
+}
+```
+
+Under 3 simultaneous toasts: show individually with 200ms stagger. The stagger prevents visual noise while giving each toast its moment.
+
+3 or more: compress into a single summary toast that can expand to show details. No notification avalanche.
+
+---
+
+## Sound and notifications
+
+If any component deserves audio feedback, it's notifications. The toast arriving is an event. Something happened that you should know about.
+
+But the 3ms tick used for button presses is wrong here. Notifications need a gentler sound. A soft chime rather than a sharp click:
+
+```tsx
+// Notification sound: 10ms, softer envelope
+const len = Math.floor(ctx.sampleRate * 0.01);
+const ch = buf.getChannelData(0);
+for (let i = 0; i < len; i++) {
+  ch[i] = Math.sin(i / (ctx.sampleRate / 800)) * (1 - i / len) ** 2;
+}
+// gain: 0.04
+```
+
+800Hz sine wave with a quadratic decay. It's recognizably different from the interaction tick. Softer, longer, tonal instead of noisy. "Something happened" instead of "you did something."
+
+---
+
+## What's still unsolved
+
+- **Priority**: urgent error toasts should interrupt the queue, not wait in line
+- **Persistence**: some notifications shouldn't auto-dismiss (errors, required actions)
+- **Grouping**: related notifications ("3 new messages from Alice") need deduplication logic
+- **Position memory**: if the user has interacted with a toast at position #2, removing position #1 shouldn't shift #2
+
+These aren't animation problems. They're information architecture problems expressed through timing and motion. The springs handle the physical feel. The logic handles the information flow. Both need to be right.
+
+Notification timing is an unsolved problem. But with spring physics handling the motion and velocity-aware gestures handling the interaction, it's at least a _beautiful_ unsolved problem.

@@ -32,7 +32,8 @@ function getBuf(ac: AudioContext): AudioBuffer {
   const len = Math.floor(ac.sampleRate * 0.003);
   const buf = ac.createBuffer(1, len, ac.sampleRate);
   const ch = buf.getChannelData(0);
-  for (let i = 0; i < len; i++) ch[i] = (Math.random() * 2 - 1) * (1 - i / len) ** 4;
+  for (let i = 0; i < len; i++)
+    ch[i] = (Math.random() * 2 - 1) * (1 - i / len) ** 4;
   _b = buf;
   return buf;
 }
@@ -49,7 +50,9 @@ function tick(ref: React.MutableRefObject<number>) {
     g.gain.value = 0.06;
     src.connect(g).connect(ac.destination);
     src.start();
-  } catch { /* silent */ }
+  } catch {
+    /* silent */
+  }
 }
 
 /* ── Types ── */
@@ -76,7 +79,15 @@ function clamp(v: number, lo: number, hi: number) {
 
 /* ── Arrow SVG ── */
 
-function Arrow({ dir, disabled, onClick }: { dir: "up" | "down"; disabled: boolean; onClick: () => void }) {
+function Arrow({
+  dir,
+  disabled,
+  onClick,
+}: {
+  dir: "up" | "down";
+  disabled: boolean;
+  onClick: () => void;
+}) {
   return (
     <button
       onClick={onClick}
@@ -92,8 +103,14 @@ function Arrow({ dir, disabled, onClick }: { dir: "up" | "down"; disabled: boole
         alignItems: "center",
         justifyContent: "center",
       }}
-      onMouseEnter={(e) => { if (!disabled) (e.currentTarget as HTMLElement).style.opacity = "0.7"; }}
-      onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.opacity = disabled ? "0.2" : "0.4"; }}
+      onMouseEnter={(e) => {
+        if (!disabled) (e.currentTarget as HTMLElement).style.opacity = "0.7";
+      }}
+      onMouseLeave={(e) => {
+        (e.currentTarget as HTMLElement).style.opacity = disabled
+          ? "0.2"
+          : "0.4";
+      }}
     >
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
         <path
@@ -122,13 +139,16 @@ export function WheelPagination({
   const containerRef = useRef<HTMLDivElement>(null);
   const prevPage = useRef(0);
 
-  const go = useCallback((next: number) => {
-    const c = clamp(next, 0, totalPages - 1);
-    if (c !== prevPage.current && sound) tick(lastSound);
-    prevPage.current = c;
-    setActive(c);
-    onChange?.(c);
-  }, [totalPages, onChange, sound]);
+  const go = useCallback(
+    (next: number) => {
+      const c = clamp(next, 0, totalPages - 1);
+      if (c !== prevPage.current && sound) tick(lastSound);
+      prevPage.current = c;
+      setActive(c);
+      onChange?.(c);
+    },
+    [totalPages, onChange, sound],
+  );
 
   // Wheel handler
   useEffect(() => {
@@ -146,21 +166,38 @@ export function WheelPagination({
     return () => el.removeEventListener("wheel", handler);
   }, [go]);
 
-  useEffect(() => { prevPage.current = active; }, [active]);
+  useEffect(() => {
+    prevPage.current = active;
+  }, [active]);
 
   // Visible window
   const half = Math.floor(visibleCount / 2);
   let start = active - half;
   let end = active + half;
-  if (start < 0) { end += -start; start = 0; }
-  if (end > totalPages - 1) { start -= end - (totalPages - 1); end = totalPages - 1; start = Math.max(0, start); }
+  if (start < 0) {
+    end += -start;
+    start = 0;
+  }
+  if (end > totalPages - 1) {
+    start -= end - (totalPages - 1);
+    end = totalPages - 1;
+    start = Math.max(0, start);
+  }
   const visible: number[] = [];
   for (let i = start; i <= end; i++) visible.push(i);
 
   const viewH = visibleCount * ITEM_H;
 
   return (
-    <div className="wp" style={{ display: "inline-flex", flexDirection: "column", alignItems: "center", gap: 0 }}>
+    <div
+      className="wp"
+      style={{
+        display: "inline-flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: 0,
+      }}
+    >
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
 
       <Arrow dir="up" disabled={active === 0} onClick={() => go(active - 1)} />
@@ -178,8 +215,10 @@ export function WheelPagination({
           backdropFilter: "blur(16px)",
           WebkitBackdropFilter: "blur(16px)",
           overflow: "hidden",
-          maskImage: "linear-gradient(to bottom, transparent, black 18%, black 82%, transparent)",
-          WebkitMaskImage: "linear-gradient(to bottom, transparent, black 18%, black 82%, transparent)",
+          maskImage:
+            "linear-gradient(to bottom, transparent, black 18%, black 82%, transparent)",
+          WebkitMaskImage:
+            "linear-gradient(to bottom, transparent, black 18%, black 82%, transparent)",
           cursor: "ns-resize",
         }}
       >
@@ -229,7 +268,11 @@ export function WheelPagination({
         </AnimatePresence>
       </div>
 
-      <Arrow dir="down" disabled={active === totalPages - 1} onClick={() => go(active + 1)} />
+      <Arrow
+        dir="down"
+        disabled={active === totalPages - 1}
+        onClick={() => go(active + 1)}
+      />
     </div>
   );
 }
