@@ -51,7 +51,7 @@ export function ProductHuntBanner() {
 export function SiteBanner() {
   const pathname = usePathname();
 
-  if (pathname === "/showcase") {
+  if (pathname === "/showcase" || pathname.startsWith("/blog")) {
     return null;
   }
 

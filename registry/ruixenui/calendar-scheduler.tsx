@@ -551,8 +551,14 @@ function CalendarScheduler({
                           : hov
                             ? "bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300"
                             : "bg-transparent",
-                        !sel && !hov && td && "text-neutral-900 dark:text-neutral-100 font-semibold",
-                        !sel && !hov && !td && "text-neutral-600 dark:text-neutral-400 font-normal",
+                        !sel &&
+                          !hov &&
+                          td &&
+                          "text-neutral-900 dark:text-neutral-100 font-semibold",
+                        !sel &&
+                          !hov &&
+                          !td &&
+                          "text-neutral-600 dark:text-neutral-400 font-normal",
                       )}
                       style={{
                         fontSize: 13,

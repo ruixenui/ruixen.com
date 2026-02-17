@@ -532,20 +532,6 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "testimonial-tabs-demo",
-    type: "registry:example",
-    title: "Testimonial Tabs Demo",
-    description: "Example of interactive testimonial component with tabs",
-    registryDependencies: ["https://www.ruixen.com/r/testimonial-tabs"],
-    files: [
-      {
-        path: "registry/example/testimonial-tabs-demo.tsx",
-        type: "registry:example",
-        target: "components/testimonial-tabs-demo.tsx",
-      },
-    ],
-  },
-  {
     name: "slide-to-delete-button-demo",
     type: "registry:example",
     title: "Slide To Delete Button Demo",
@@ -1025,49 +1011,6 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "nested-tabs-demo",
-    type: "registry:example",
-    title: "Nested Tabs Demo",
-    description: "Example showing nested tabs with expandable sub-tabs.",
-    registryDependencies: ["https://ruixen.com/r/nested-tabs"],
-    files: [
-      {
-        path: "registry/example/nested-tabs-demo.tsx",
-        type: "registry:example",
-        target: "components/nested-tabs-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "zoom-depth-tabs-demo",
-    type: "registry:example",
-    title: "Zoom Depth Tabs Demo",
-    description: "Example showing 3D zoom and depth effects for tabs.",
-    registryDependencies: ["https://ruixen.com/r/zoom-depth-tabs"],
-    files: [
-      {
-        path: "registry/example/zoom-depth-tabs-demo.tsx",
-        type: "registry:example",
-        target: "components/zoom-depth-tabs-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "capsule-tabs-demo",
-    type: "registry:example",
-    title: "Capsule Tabs Demo",
-    description:
-      "Example showing scrollable capsule-style tabs with pagination.",
-    registryDependencies: ["https://ruixen.com/r/capsule-tabs"],
-    files: [
-      {
-        path: "registry/example/capsule-tabs-demo.tsx",
-        type: "registry:example",
-        target: "components/capsule-tabs-demo.tsx",
-      },
-    ],
-  },
-  {
     name: "magnetic-tabs-demo",
     type: "registry:example",
     title: "Magnetic Tabs Demo",
@@ -1078,62 +1021,6 @@ export const examples: Registry["items"] = [
         path: "registry/example/magnetic-tabs-demo.tsx",
         type: "registry:example",
         target: "components/magnetic-tabs-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "fade-slide-tabs-demo",
-    type: "registry:example",
-    title: "Fade Slide Tabs Demo",
-    description: "Example showing tabs with fade and slide animations.",
-    registryDependencies: ["https://ruixen.com/r/fade-slide-tabs"],
-    files: [
-      {
-        path: "registry/example/fade-slide-tabs-demo.tsx",
-        type: "registry:example",
-        target: "components/fade-slide-tabs-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "hybrid-tabs-demo",
-    type: "registry:example",
-    title: "Hybrid Tabs Demo",
-    description: "Example showing icon-first tabs that expand labels on hover.",
-    registryDependencies: ["https://ruixen.com/r/hybrid-tabs"],
-    files: [
-      {
-        path: "registry/example/hybrid-tabs-demo.tsx",
-        type: "registry:example",
-        target: "components/hybrid-tabs-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "pill-morph-tabs-demo",
-    type: "registry:example",
-    title: "Pill Morph Tabs Demo",
-    description: "Example showing tabs with morphing pill indicator.",
-    registryDependencies: ["https://ruixen.com/r/pill-morph-tabs"],
-    files: [
-      {
-        path: "registry/example/pill-morph-tabs-demo.tsx",
-        type: "registry:example",
-        target: "components/pill-morph-tabs-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "sliding-tabs-demo",
-    type: "registry:example",
-    title: "Sliding Tabs Demo",
-    description: "Example showing tabs with sliding gradient indicator.",
-    registryDependencies: ["https://ruixen.com/r/sliding-tabs"],
-    files: [
-      {
-        path: "registry/example/sliding-tabs-demo.tsx",
-        type: "registry:example",
-        target: "components/sliding-tabs-demo.tsx",
       },
     ],
   },
@@ -1603,11 +1490,26 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "invert-tabs-demo",
+    type: "registry:example",
+    title: "Invert Tabs Demo",
+    description:
+      "Example showing tabs with mix-blend-mode exclusion color inversion in both light and dark themes.",
+    registryDependencies: ["https://ruixen.com/r/invert-tabs"],
+    files: [
+      {
+        path: "registry/example/invert-tabs-demo.tsx",
+        type: "registry:example",
+        target: "components/invert-tabs-demo.tsx",
+      },
+    ],
+  },
+  {
     name: "drag-and-drop-tabs-demo",
     type: "registry:example",
     title: "Drag And Drop Tabs Demo",
     description:
-      "Example showing tabs with drag and drop reordering functionality.",
+      "Example showing tabs with spring-animated drag and drop reordering.",
     registryDependencies: ["https://ruixen.com/r/drag-and-drop-tabs"],
     files: [
       {

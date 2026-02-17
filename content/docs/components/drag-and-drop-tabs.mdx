@@ -1,7 +1,7 @@
 ---
 title: Drag And Drop Tabs
 date: 2024-06-01
-description: Interactive tabs component with drag-and-drop reordering functionality
+description: Reorderable tabs with spring physics on drop, staggered cascade, velocity-aware snap, and audio tick on drag, reorder, and drop
 author: ruixen
 published: true
 ---
@@ -37,7 +37,7 @@ npx shadcn@latest add "https://ruixen.com/r/drag-and-drop-tabs"
 <Step>Install required dependencies</Step>
 
 ```bash
-npm install @dnd-kit/core @dnd-kit/sortable @dnd-kit/utilities
+npm install motion @dnd-kit/core @dnd-kit/sortable
 ```
 
 </Steps>
@@ -49,81 +49,47 @@ npm install @dnd-kit/core @dnd-kit/sortable @dnd-kit/utilities
 ## Usage
 
 ```tsx
-import DragAndDropTabs from "@/components/ruixen/drag-and-drop-tabs";
-
-const tabItems = [
-  {
-    value: "overview",
-    label: "Overview",
-    content: <div>Overview content here...</div>,
-  },
-  {
-    value: "analytics",
-    label: "Analytics",
-    content: <div>Analytics dashboard...</div>,
-  },
-  {
-    value: "settings",
-    label: "Settings",
-    content: <div>Settings panel...</div>,
-  },
-];
+import { DragAndDropTabs } from "@/components/ruixen/drag-and-drop-tabs";
 
 export default function App() {
-  return <DragAndDropTabs items={tabItems} defaultValue="overview" />;
+  return (
+    <DragAndDropTabs
+      items={[
+        { value: "tab1", label: "Tab 1", content: "Content for Tab 1." },
+        { value: "tab2", label: "Tab 2", content: "Content for Tab 2." },
+        { value: "tab3", label: "Tab 3", content: "Content for Tab 3." },
+      ]}
+      defaultValue="tab1"
+    />
+  );
 }
 ```
 
 ## Props
 
-| Prop           | Type            | Default         | Description                 |
-| -------------- | --------------- | --------------- | --------------------------- |
-| `items`        | `DragTabItem[]` | Default tabs    | Array of tab configurations |
-| `defaultValue` | `string`        | First tab value | Initially active tab        |
-| `className`    | `string`        | -               | Additional CSS classes      |
+| Prop           | Type                      | Default      | Description                       |
+| -------------- | ------------------------- | ------------ | --------------------------------- |
+| `items`        | `DragTabItem[]`           | Default tabs | Array of tab configurations       |
+| `defaultValue` | `string`                  | First item   | Initially active tab              |
+| `onChange`     | `(value: string) => void` | -            | Callback when active tab changes  |
+| `sound`        | `boolean`                 | `true`       | Enable audio ticks on drag events |
+| `className`    | `string`                  | -            | Additional CSS classes            |
 
 ## Features
 
-- **Drag & Drop**: Reorder tabs by dragging
-- **Touch Support**: Works on mobile devices
-- **Visual Feedback**: Drag indicators and animations
-- **Active State**: Clear visual distinction for active tab
-- **Smooth Transitions**: Animated tab switching
-- **Responsive Design**: Adapts to different screen sizes
+- **Spring-Animated Reorder**: Transforms driven through `motion/react` springs instead of CSS transforms
+- **Audio Feedback**: Tick sound on drag start, reorder (when `over.id` changes), and drop
+- **Dragging State**: Scale up to 1.06 with spring, slight opacity reduction, elevated shadow
+- **Active Indicator Pill**: Spring-animated pill tracks the active tab position
+- **Staggered Cascade**: After reorder, tabs settle with distance-based delay from the drop position — `delay: |index - dropIndex| * 0.025s`
+- **Self-Contained**: No external UI dependencies, inline styles with CSS variables
 
-## Tab Item Type
+## Types
 
-```typescript
-export interface DragTabItem {
+```tsx
+interface DragTabItem {
   value: string;
   label: string;
   content?: React.ReactNode;
 }
 ```
-
-## Drag Behavior
-
-- **Horizontal Sorting**: Tabs reorder horizontally
-- **Visual Indicators**: Active tab highlighted during drag
-- **Snap to Position**: Tabs snap into place when dropped
-- **Collision Detection**: Smart positioning during drag
-- **Pointer Sensor**: Optimized for mouse and touch input
-
-## Styling
-
-The component uses:
-
-- **Active State**: Primary color with shadow
-- **Inactive State**: Muted background and text
-- **Drag State**: Opacity and ring effects
-- **Transitions**: Smooth color and position changes
-
-## Use Cases
-
-Perfect for:
-
-- **Dashboard Tabs**: Reorderable sections
-- **Settings Panels**: Customizable tab order
-- **Content Management**: User-defined layouts
-- **Workflow Tools**: Personalized interfaces
-- **Admin Panels**: Flexible navigation

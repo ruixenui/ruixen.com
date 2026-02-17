@@ -17,11 +17,11 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://ruixen.com"),
   title: {
     default:
-      "Ruixen UI - 350+ Free React & Tailwind CSS Components | Open Source",
+      "Ruixen UI - 170+ Free React & Tailwind CSS Components | Open Source",
     template: "%s | Ruixen UI",
   },
   description:
-    "350+ free, open-source React components built with Tailwind CSS, TypeScript & Framer Motion. Supports Tailwind v3 + v4, Radix & Base UI primitives. Copy-paste into Next.js projects.",
+    "170+ free, open-source React components built with Tailwind CSS, TypeScript & Framer Motion. Supports Tailwind v3 + v4, Radix & Base UI primitives. Copy-paste into Next.js projects.",
   authors: [{ name: "Srinath" }],
   keywords: [
     "react component library",
@@ -55,9 +55,9 @@ export const metadata: Metadata = {
     canonical: "https://ruixen.com",
   },
   openGraph: {
-    title: "Ruixen UI - 350+ Free React & Tailwind CSS Components",
+    title: "Ruixen UI - 170+ Free React & Tailwind CSS Components",
     description:
-      "350+ free, open-source React components built with Tailwind CSS, TypeScript & Framer Motion. Copy-paste into your Next.js projects.",
+      "170+ free, open-source React components built with Tailwind CSS, TypeScript & Framer Motion. Copy-paste into your Next.js projects.",
     url: "https://ruixen.com/",
     siteName: "Ruixen UI",
     images: [
@@ -79,9 +79,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ruixen UI - 350+ Free React & Tailwind CSS Components",
+    title: "Ruixen UI - 170+ Free React & Tailwind CSS Components",
     description:
-      "350+ free, open-source React components built with Tailwind CSS, TypeScript & Framer Motion. Copy-paste into your Next.js projects.",
+      "170+ free, open-source React components built with Tailwind CSS, TypeScript & Framer Motion. Copy-paste into your Next.js projects.",
     creator: "@ruixen_ui",
     images: [
       {

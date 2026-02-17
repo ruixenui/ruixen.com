@@ -354,7 +354,6 @@ export const dialogsPreview: ComponentPreviewMap = {
   },
 };
 
-
 /**
  * Breadcrumb - Navigation breadcrumb components
  * Path: /docs/components/[slug]
@@ -548,7 +547,6 @@ export const fileManagementPreview: ComponentPreviewMap = {
   },
 };
 
-
 /**
  * Date Pickers - Date selection components
  * Path: /docs/components/[slug]
@@ -690,37 +688,13 @@ export const backgroundsPreview: ComponentPreviewMap = {
  * Path: /docs/components/[slug]
  */
 export const tabsPreview: ComponentPreviewMap = {
-  "nested-tabs": {
-    light: `/preview_images/tabs/nested-tabs-light.png`,
-    dark: `/preview_images/tabs/nested-tabs-dark.png`,
-  },
-  "zoom-depth-tabs": {
-    light: `/preview_images/tabs/zoom-depth-tabs-light.png`,
-    dark: `/preview_images/tabs/zoom-depth-tabs-dark.png`,
-  },
-  "capsule-tabs": {
-    light: `/preview_images/tabs/capsule-tabs-light.png`,
-    dark: `/preview_images/tabs/capsule-tabs-dark.png`,
+  "invert-tabs": {
+    light: `/preview_images/tabs/invert-tabs-light.png`,
+    dark: `/preview_images/tabs/invert-tabs-dark.png`,
   },
   "magnetic-tabs": {
     light: `/preview_images/tabs/magnetic-tabs-light.png`,
     dark: `/preview_images/tabs/magnetic-tabs-dark.png`,
-  },
-  "fade-slide-tabs": {
-    light: `/preview_images/tabs/fade-slide-tabs-light.png`,
-    dark: `/preview_images/tabs/fade-slide-tabs-dark.png`,
-  },
-  "hybrid-tabs": {
-    light: `/preview_images/tabs/hybrid-tabs-light.png`,
-    dark: `/preview_images/tabs/hybrid-tabs-dark.png`,
-  },
-  "pill-morph-tabs": {
-    light: `/preview_images/tabs/pill-morph-tabs-light.png`,
-    dark: `/preview_images/tabs/pill-morph-tabs-dark.png`,
-  },
-  "sliding-tabs": {
-    light: `/preview_images/tabs/sliding-tabs-light.png`,
-    dark: `/preview_images/tabs/sliding-tabs-dark.png`,
   },
   "drag-and-drop-tabs": {
     light: `/preview_images/tabs/drag-and-drop-tabs-light.png`,

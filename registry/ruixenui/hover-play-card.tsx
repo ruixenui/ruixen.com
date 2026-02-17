@@ -147,8 +147,7 @@ export function HoverPlayCard({
       setUserStarted(false);
     };
     const onTime = () => {
-      if (v.duration > 0)
-        setProgress((v.currentTime / v.duration) * 100);
+      if (v.duration > 0) setProgress((v.currentTime / v.duration) * 100);
     };
 
     v.addEventListener("play", onPlay);

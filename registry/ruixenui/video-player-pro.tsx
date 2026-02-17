@@ -648,9 +648,7 @@ export function VideoPlayerPro({
                 }}
               >
                 {/* Left: play + volume + time */}
-                <div
-                  style={{ display: "flex", alignItems: "center", gap: 6 }}
-                >
+                <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
                   {/* Play / Pause */}
                   <button
                     onClick={toggle}
@@ -747,11 +745,11 @@ export function VideoPlayerPro({
                 </div>
 
                 {/* Right: speed + fullscreen */}
-                <div
-                  style={{ display: "flex", alignItems: "center", gap: 4 }}
-                >
+                <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
                   {/* Speed pills */}
-                  <div style={{ display: "flex", gap: 1, position: "relative" }}>
+                  <div
+                    style={{ display: "flex", gap: 1, position: "relative" }}
+                  >
                     {SPEEDS.map((s) => (
                       <button
                         key={s}

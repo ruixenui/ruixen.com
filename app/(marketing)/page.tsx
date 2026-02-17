@@ -54,7 +54,7 @@ export default function Home() {
     operatingSystem: "Web",
     url: "https://ruixen.com",
     description:
-      "350+ free, open-source React components built with Tailwind CSS, TypeScript & Framer Motion. Supports Tailwind v3 + v4, Radix & Base UI primitives.",
+      "170+ free, open-source React components built with Tailwind CSS, TypeScript & Framer Motion. Supports Tailwind v3 + v4, Radix & Base UI primitives.",
     offers: {
       "@type": "Offer",
       price: "0",

@@ -93,13 +93,7 @@ const previewItems: PreviewItem[] = [
   },
 ];
 
-function VideoCard({
-  item,
-  theme,
-}: {
-  item: PreviewItem;
-  theme: string;
-}) {
+function VideoCard({ item, theme }: { item: PreviewItem; theme: string }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -167,13 +161,7 @@ function VideoCard({
   );
 }
 
-function ImageCard({
-  item,
-  theme,
-}: {
-  item: PreviewItem;
-  theme: string;
-}) {
+function ImageCard({ item, theme }: { item: PreviewItem; theme: string }) {
   const src = `/landing-page-previews/${item.basePath}-${theme}.png`;
 
   return (

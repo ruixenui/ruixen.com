@@ -43,12 +43,6 @@ const showcaseItems: ShowcaseItem[] = [
     href: "/docs/components/analytics-dashboard-stats",
   },
   {
-    id: "pill-morph-tabs",
-    title: "Pill Morph Tabs",
-    imagePath: "tabs/pill-morph-tabs",
-    href: "/docs/components/pill-morph-tabs",
-  },
-  {
     id: "feature-carousel",
     title: "Feature Carousel",
     imagePath: "featured-sections/feature-carousel",
@@ -72,13 +66,6 @@ const showcaseItems: ShowcaseItem[] = [
     imagePath: "featured-sections/analytics-dashboard-stats",
     href: "/docs/components/analytics-dashboard-stats",
   },
-  {
-    id: "pill-morph-tabs",
-    title: "Pill Morph Tabs",
-    imagePath: "tabs/pill-morph-tabs",
-    href: "/docs/components/pill-morph-tabs",
-  },
-
   // Hero Sections
   {
     id: "gradient-hero-showcase",
@@ -389,22 +376,10 @@ const showcaseItems: ShowcaseItem[] = [
     href: "/docs/components/magnetic-tabs",
   },
   {
-    id: "zoom-depth-tabs",
-    title: "Zoom Depth Tabs",
-    imagePath: "tabs/zoom-depth-tabs",
-    href: "/docs/components/zoom-depth-tabs",
-  },
-  {
     id: "magnetic-tabs",
     title: "Magnetic Tabs",
     imagePath: "tabs/magnetic-tabs",
     href: "/docs/components/magnetic-tabs",
-  },
-  {
-    id: "zoom-depth-tabs",
-    title: "Zoom Depth Tabs",
-    imagePath: "tabs/zoom-depth-tabs",
-    href: "/docs/components/zoom-depth-tabs",
   },
 
   // Pagination
@@ -622,7 +597,7 @@ export default function ShowcasePage() {
                 <span className="absolute inline-flex size-full animate-ping rounded-full bg-green-400 opacity-75" />
                 <span className="relative inline-flex size-2 rounded-full bg-green-500" />
               </span>
-              <span className="font-semibold">350+ Components</span>
+              <span className="font-semibold">170+ Components</span>
               <span className="text-muted-foreground">•</span>
               <span className="text-muted-foreground">Trusted by</span>
               <span className="font-semibold">2,500+ devs</span>

@@ -334,7 +334,9 @@ export function CenteredFeedbackDrawer({
                               value={message}
                               onChange={(e) => setMessage(e.target.value)}
                               placeholder={
-                                rating !== null ? RATINGS[rating].placeholder : ""
+                                rating !== null
+                                  ? RATINGS[rating].placeholder
+                                  : ""
                               }
                               onKeyDown={(e) => {
                                 if (e.key === "Enter" && !e.shiftKey) {

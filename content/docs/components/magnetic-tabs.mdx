@@ -1,7 +1,7 @@
 ---
 title: Magnetic Tabs
 date: 2024-06-01
-description: Tab component with magnetic hover effects and smooth indicator animations
+description: Pill indicator magnetically attracted to hovered tab with soft spring, snappier overshoot on selection, and audio tick
 author: ruixen
 published: true
 ---
@@ -37,7 +37,7 @@ npx shadcn@latest add "https://ruixen.com/r/magnetic-tabs"
 <Step>Install dependencies</Step>
 
 ```bash
-npm install framer-motion
+npm install motion
 ```
 
 </Steps>
@@ -49,21 +49,30 @@ npm install framer-motion
 ## Usage
 
 ```tsx
-import MagneticTabs from "@/components/ruixen/magnetic-tabs";
-
-const tabItems = [
-  { value: "overview", label: "Overview", content: "Overview content here." },
-  { value: "activity", label: "Activity", content: "Activity content here." },
-  { value: "settings", label: "Settings", content: "Settings content here." },
-  { value: "faq", label: "FAQ", content: "FAQ content here." },
-];
+import { MagneticTabs } from "@/components/ruixen/magnetic-tabs";
 
 export default function App() {
   return (
     <MagneticTabs
-      items={tabItems}
+      items={[
+        {
+          value: "overview",
+          label: "Overview",
+          content: "Overview content here.",
+        },
+        {
+          value: "activity",
+          label: "Activity",
+          content: "Activity content here.",
+        },
+        {
+          value: "settings",
+          label: "Settings",
+          content: "Settings content here.",
+        },
+        { value: "faq", label: "FAQ", content: "FAQ content here." },
+      ]}
       defaultValue="overview"
-      indicatorPadding={6}
     />
   );
 }
@@ -71,19 +80,22 @@ export default function App() {
 
 ## Props
 
-| Prop               | Type                | Default       | Description                               |
-| ------------------ | ------------------- | ------------- | ----------------------------------------- |
-| `items`            | `MagneticTabItem[]` | Default items | Array of tab items                        |
-| `defaultValue`     | `string`            | `"overview"`  | Default active tab value                  |
-| `className`        | `string`            | `""`          | Additional CSS classes                    |
-| `indicatorPadding` | `number`            | `6`           | Padding around tab for magnetic indicator |
+| Prop           | Type                      | Default       | Description                        |
+| -------------- | ------------------------- | ------------- | ---------------------------------- |
+| `items`        | `MagneticTabItem[]`       | Default items | Array of tab items                 |
+| `defaultValue` | `string`                  | First item    | Default active tab value           |
+| `onChange`     | `(value: string) => void` | -             | Callback when active tab changes   |
+| `sound`        | `boolean`                 | `true`        | Enable audio tick on tab selection |
+| `className`    | `string`                  | -             | Additional CSS classes             |
 
 ## Features
 
-- **Magnetic Effect**: Indicator follows mouse hover and active state
-- **Smooth Animations**: Spring-based transitions for natural feel
-- **Responsive**: Automatically adjusts to tab size changes
-- **Blur Effect**: Subtle blur effect on the magnetic indicator
+- **Magnetic Attraction**: Pill indicator springs to hovered tab position with soft spring `{ stiffness: 300, damping: 25 }`
+- **Selection Overshoot**: Snappier spring `{ stiffness: 500, damping: 22 }` on click with visible overshoot — spring config switches reactively via state
+- **Audio Feedback**: Subtle tick sound on tab selection (configurable via `sound` prop)
+- **Content Animation**: `AnimatePresence` with spring y-offset transitions between tab content
+- **Self-Contained**: No external UI dependencies, inline styles with CSS variables
+- **Light/Dark Theme**: CSS variables for both themes with backdrop blur container
 
 ## Types
 

@@ -85,7 +85,7 @@ export function ModeToggle() {
 
   const spring = isFirst.current
     ? { duration: 0 }
-    : { type: ("spring" as const), stiffness: 380, damping: 30 };
+    : { type: "spring" as const, stiffness: 380, damping: 30 };
 
   return (
     <motion.button

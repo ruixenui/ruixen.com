@@ -31,7 +31,8 @@ function getBuf(ac: AudioContext): AudioBuffer {
   const len = Math.floor(ac.sampleRate * 0.003);
   const buf = ac.createBuffer(1, len, ac.sampleRate);
   const ch = buf.getChannelData(0);
-  for (let i = 0; i < len; i++) ch[i] = (Math.random() * 2 - 1) * (1 - i / len) ** 4;
+  for (let i = 0; i < len; i++)
+    ch[i] = (Math.random() * 2 - 1) * (1 - i / len) ** 4;
   _b = buf;
   return buf;
 }
@@ -48,7 +49,9 @@ function tick(ref: React.MutableRefObject<number>) {
     g.gain.value = 0.06;
     src.connect(g).connect(ac.destination);
     src.start();
-  } catch { /* silent */ }
+  } catch {
+    /* silent */
+  }
 }
 
 /* ── Types ── */
@@ -84,14 +87,17 @@ export function ScrollPagination({
   const scrollAccum = useRef(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const go = useCallback((next: number) => {
-    const c = clamp(next, 0, totalPages - 1);
-    if (c === active) return;
-    setDir(c > active ? 1 : -1);
-    if (sound) tick(lastSound);
-    setActive(c);
-    onChange?.(c);
-  }, [active, totalPages, onChange, sound]);
+  const go = useCallback(
+    (next: number) => {
+      const c = clamp(next, 0, totalPages - 1);
+      if (c === active) return;
+      setDir(c > active ? 1 : -1);
+      if (sound) tick(lastSound);
+      setActive(c);
+      onChange?.(c);
+    },
+    [active, totalPages, onChange, sound],
+  );
 
   // Wheel
   useEffect(() => {
@@ -140,20 +146,28 @@ export function ScrollPagination({
         disabled={active === 0}
       >
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-          <path d="M8.5 3.5L5.5 7L8.5 10.5" stroke={`rgba(var(--sp-ink),.55)`} strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+          <path
+            d="M8.5 3.5L5.5 7L8.5 10.5"
+            stroke={`rgba(var(--sp-ink),.55)`}
+            strokeWidth="1.4"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
         </svg>
       </button>
 
       {/* Number display */}
-      <div style={{
-        position: "relative",
-        width: 48,
-        height: 32,
-        overflow: "hidden",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}>
+      <div
+        style={{
+          position: "relative",
+          width: 48,
+          height: 32,
+          overflow: "hidden",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
         <AnimatePresence initial={false} mode="popLayout">
           <motion.span
             key={active}
@@ -183,21 +197,29 @@ export function ScrollPagination({
         disabled={active === totalPages - 1}
       >
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-          <path d="M5.5 3.5L8.5 7L5.5 10.5" stroke={`rgba(var(--sp-ink),.55)`} strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+          <path
+            d="M5.5 3.5L8.5 7L5.5 10.5"
+            stroke={`rgba(var(--sp-ink),.55)`}
+            strokeWidth="1.4"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
         </svg>
       </button>
 
       {/* Progress bar */}
-      <div style={{
-        position: "absolute",
-        bottom: 0,
-        left: 6,
-        right: 6,
-        height: 2,
-        borderRadius: 1,
-        background: `rgba(var(--sp-ink),.04)`,
-        overflow: "hidden",
-      }}>
+      <div
+        style={{
+          position: "absolute",
+          bottom: 0,
+          left: 6,
+          right: 6,
+          height: 2,
+          borderRadius: 1,
+          background: `rgba(var(--sp-ink),.04)`,
+          overflow: "hidden",
+        }}
+      >
         <motion.div
           animate={{ width: `${progress * 100}%` }}
           transition={{ type: "spring", stiffness: 400, damping: 30 }}
@@ -210,14 +232,16 @@ export function ScrollPagination({
       </div>
 
       {/* Total label */}
-      <span style={{
-        fontSize: 11,
-        fontWeight: 400,
-        color: `rgba(var(--sp-ink),.3)`,
-        marginLeft: 4,
-        marginRight: 4,
-        fontVariantNumeric: "tabular-nums",
-      }}>
+      <span
+        style={{
+          fontSize: 11,
+          fontWeight: 400,
+          color: `rgba(var(--sp-ink),.3)`,
+          marginLeft: 4,
+          marginRight: 4,
+          fontVariantNumeric: "tabular-nums",
+        }}
+      >
         / {totalPages}
       </span>
     </div>

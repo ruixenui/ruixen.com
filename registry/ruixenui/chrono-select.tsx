@@ -382,11 +382,7 @@ export function ChronoSelect({
                                 height: CELL,
                                 border: "none",
                                 cursor: "pointer",
-                                fontWeight: isSel
-                                  ? 600
-                                  : isToday
-                                    ? 550
-                                    : 400,
+                                fontWeight: isSel ? 600 : isToday ? 550 : 400,
                               }}
                             >
                               {d}

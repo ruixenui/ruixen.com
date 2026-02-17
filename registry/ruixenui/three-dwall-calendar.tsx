@@ -228,7 +228,7 @@ export function ThreeDWallCalendar({
       <div
         className={cn(
           "bg-neutral-100 dark:bg-neutral-900",
-          "border border-t-0 border-neutral-100 dark:border-neutral-800/50"
+          "border border-t-0 border-neutral-100 dark:border-neutral-800/50",
         )}
         style={{
           position: "absolute",
@@ -242,7 +242,7 @@ export function ThreeDWallCalendar({
       <div
         className={cn(
           "bg-neutral-100 dark:bg-neutral-900",
-          "border border-t-0 border-neutral-100/50 dark:border-neutral-800/30"
+          "border border-t-0 border-neutral-100/50 dark:border-neutral-800/30",
         )}
         style={{
           position: "absolute",
@@ -259,7 +259,7 @@ export function ThreeDWallCalendar({
         className={cn(
           "bg-neutral-50 dark:bg-neutral-950",
           "border border-neutral-200 dark:border-neutral-800",
-          "shadow-xl dark:shadow-[0_16px_40px_rgba(0,0,0,0.35)]"
+          "shadow-xl dark:shadow-[0_16px_40px_rgba(0,0,0,0.35)]",
         )}
         style={{
           position: "relative",
@@ -284,7 +284,7 @@ export function ThreeDWallCalendar({
               "text-neutral-400 dark:text-neutral-600",
               "hover:text-neutral-700 dark:hover:text-neutral-300",
               "hover:bg-neutral-100 dark:hover:bg-neutral-800/50",
-              "transition-colors duration-150"
+              "transition-colors duration-150",
             )}
             style={{
               background: "transparent",
@@ -334,7 +334,7 @@ export function ThreeDWallCalendar({
               "text-neutral-400 dark:text-neutral-600",
               "hover:text-neutral-700 dark:hover:text-neutral-300",
               "hover:bg-neutral-100 dark:hover:bg-neutral-800/50",
-              "transition-colors duration-150"
+              "transition-colors duration-150",
             )}
             style={{
               background: "transparent",
@@ -480,7 +480,7 @@ export function ThreeDWallCalendar({
                               ? "bg-neutral-100 dark:bg-neutral-900"
                               : isHov
                                 ? "bg-neutral-100/70 dark:bg-neutral-800/50"
-                                : "bg-transparent"
+                                : "bg-transparent",
                         )}
                         style={{
                           width: CELL,
@@ -493,8 +493,7 @@ export function ThreeDWallCalendar({
                           cursor: "pointer",
                           border: "none",
                           boxShadow: shadow,
-                          transition:
-                            "box-shadow 0.2s ease-out",
+                          transition: "box-shadow 0.2s ease-out",
                           position: "relative",
                           padding: 0,
                           gap: 1,
@@ -511,7 +510,7 @@ export function ThreeDWallCalendar({
                                   ? "text-neutral-700 dark:text-neutral-300"
                                   : isHov
                                     ? "text-neutral-500 dark:text-neutral-500"
-                                    : "text-neutral-400 dark:text-neutral-600"
+                                    : "text-neutral-400 dark:text-neutral-600",
                           )}
                           style={{
                             fontSize: 13,
@@ -542,7 +541,7 @@ export function ThreeDWallCalendar({
                                   "transition-colors duration-150",
                                   isSel || isToday
                                     ? "bg-neutral-500 dark:bg-neutral-500"
-                                    : "bg-neutral-300 dark:bg-neutral-600"
+                                    : "bg-neutral-300 dark:bg-neutral-600",
                                 )}
                                 style={{
                                   width: count === 1 ? 8 : 3,
@@ -671,7 +670,7 @@ export function ThreeDWallCalendar({
                           className={cn(
                             "text-neutral-200 dark:text-neutral-800",
                             "hover:text-red-500 dark:hover:text-red-400",
-                            "transition-colors duration-150"
+                            "transition-colors duration-150",
                           )}
                           style={{
                             background: "transparent",
@@ -727,7 +726,7 @@ export function ThreeDWallCalendar({
                       "transition-colors duration-150",
                       title.trim()
                         ? "text-neutral-500 dark:text-neutral-500"
-                        : "text-neutral-200 dark:text-neutral-800"
+                        : "text-neutral-200 dark:text-neutral-800",
                     )}
                     style={{
                       background: "transparent",
