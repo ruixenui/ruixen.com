@@ -1,0 +1,146 @@
+---
+title: "Dropdowns that respond to intent."
+description: "How velocity-based timing makes menus feel like they're reading your mind instead of following a script."
+image: https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/gradients/shade_shiters/shade-shifters-01.png
+author: Ruhith G
+tag: Design Engineering
+publishedOn: 2026-02-26T10:00:00.000Z
+featured: false
+---
+
+Click a dropdown trigger. Wait 150ms. The menu fades in over 200ms. Total time from click to usable menu: 350ms.
+
+That's the standard. Every component library ships it. And it's wrong, because it treats every click the same.
+
+A fast, decisive click means "I know what I want, show me the menu now." A slow, exploratory click means "I'm not sure, let me see what's here." Same action, different intent. Same animation speed.
+
+---
+
+## Reading velocity from clicks
+
+Every click has measurable properties beyond just "happened":
+
+```tsx
+const handleClick = (e: React.MouseEvent) => {
+  // How long the mouse button was held
+  const pressDuration = e.timeStamp - mouseDownTime;
+
+  // Fast click: < 150ms press
+  // Slow click: > 300ms press
+  const isFastClick = pressDuration < 150;
+};
+```
+
+A fast press-release (under 150ms) indicates decisiveness. The user knows this is a dropdown and wants it open. A long press (over 300ms) indicates uncertainty. They're hovering over the trigger, thinking about whether to engage.
+
+---
+
+## Adaptive entrance timing
+
+```tsx
+const getTransition = (isFastClick: boolean) => ({
+  type: "spring",
+  stiffness: isFastClick ? 700 : 400,
+  damping: isFastClick ? 35 : 30,
+});
+```
+
+Fast click = stiff spring. The menu snaps open in roughly 120ms. No perceptible delay.
+
+Slow click = softer spring. The menu eases in over roughly 250ms. A gentler entrance that matches the exploratory mood.
+
+The user never notices the difference consciously. They just feel like the menu "gets" them.
+
+---
+
+## The hover delay problem
+
+Hover-triggered dropdowns (navigation menus) have a classic problem: the delay. Too short, and menus flash open accidentally as the cursor crosses triggers. Too long, and deliberate hovers feel unresponsive.
+
+Most implementations use a fixed delay: 100-200ms. This is a compromise that satisfies nobody.
+
+**Velocity-based hover intent:**
+
+```tsx
+const handleMouseEnter = (e: React.MouseEvent) => {
+  const speed = Math.sqrt(e.movementX ** 2 + e.movementY ** 2);
+
+  if (speed < 2) {
+    // Slow/stationary cursor - deliberate hover
+    openMenu(50); // 50ms delay
+  } else if (speed > 10) {
+    // Fast cursor - passing through
+    openMenu(250); // 250ms delay
+  } else {
+    // Medium speed - standard delay
+    openMenu(150);
+  }
+};
+```
+
+A cursor that decelerates over the trigger is intentional. A cursor blasting through at high speed is accidental. Adjust the delay accordingly.
+
+---
+
+## Exit: the diagonal problem
+
+The classic dropdown escape problem: the menu is below and to the right of the trigger. Moving the cursor from the trigger to a menu item requires diagonal movement that briefly leaves both the trigger and the menu. The menu closes.
+
+CSS solutions use a "grace area," an invisible triangle between the trigger and menu that keeps the menu open during diagonal movement. This works but it's a spatial hack.
+
+The spring-based solution: **delayed exit with velocity check**.
+
+```tsx
+const handleMouseLeave = (e: React.MouseEvent) => {
+  const movingTowardMenu = e.movementY > 0; // moving downward
+
+  if (movingTowardMenu) {
+    // Moving toward menu - long grace period
+    closeTimer = setTimeout(closeMenu, 300);
+  } else {
+    // Moving away - close quickly
+    closeTimer = setTimeout(closeMenu, 50);
+  }
+};
+```
+
+If the cursor leaves the trigger moving downward (toward the menu), it gets 300ms of grace. If it leaves moving upward or sideways (away from the menu), it closes in 50ms. Direction-aware, not area-aware.
+
+---
+
+## Menu item highlight
+
+Most menus highlight items with a CSS background transition:
+
+```css
+.item:hover {
+  background: rgba(0, 0, 0, 0.05);
+  transition: background 0.1s;
+}
+```
+
+Spring-based highlight with a shared layout animation:
+
+```tsx
+<motion.div
+  layoutId="menu-highlight"
+  className="absolute inset-0 rounded bg-accent"
+  transition={{ type: "spring", stiffness: 500, damping: 35 }}
+/>
+```
+
+The highlight **slides** between items instead of each item independently fading its own background. The highlight is a single element that springs from one item to the next, carrying momentum.
+
+Fast cursor movement through items = the highlight trails behind and catches up. Slow movement = the highlight follows closely. The spring creates a physical relationship between cursor speed and highlight behavior.
+
+---
+
+## Keyboard navigation
+
+Spring animations work for keyboard navigation too. Arrow-down moves the highlight to the next item with the same spring. The motion communicates "you moved one step" more clearly than an instant highlight swap.
+
+Type-ahead (pressing "S" to jump to items starting with S) can use a stiffer spring. The jump is larger and more decisive, so the animation should match.
+
+---
+
+The best dropdown is one that feels like it understands what you're trying to do. Not because it's using AI. Because it's reading the physics of your input and responding proportionally. Speed, direction, duration. Every gesture carries information. Use it.

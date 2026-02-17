@@ -1,0 +1,134 @@
+---
+title: "Modals should slide, not fade."
+description: "Why opacity transitions are the wrong entrance for dialogs, and how velocity-aware springs change the feel."
+image: https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/gradients/shade_shiters/shade-shifters-01.png
+author: Ruhith G
+tag: Design Engineering
+publishedOn: 2026-02-24T10:00:00.000Z
+featured: false
+---
+
+Open a modal on any web app. Watch it fade in. `opacity: 0 → 1` over 200ms. Maybe it scales from `0.95 → 1` for a "subtle" effect.
+
+Now open a drawer on your phone. It slides from the edge with momentum. Flick it up and it snaps open fast. Pull it slowly and it opens slowly. The speed of the entrance matches the speed of the gesture that triggered it.
+
+Web modals don't know how they were opened. They play the same animation every time, at the same speed, regardless of context. That's not animation. That's decoration.
+
+---
+
+## The fade-in problem
+
+Fading changes opacity uniformly across the entire modal surface. There's no directionality. The modal doesn't come _from_ anywhere. It materializes in place, like a ghost appearing.
+
+This violates a basic principle of physical interfaces: **things come from somewhere and go somewhere**. A drawer comes from the edge. A dropdown comes from the trigger button. A notification comes from the top.
+
+Directionless entrance = no spatial model = the user's brain has to work harder to place the modal in the interface hierarchy.
+
+---
+
+## Spring-based slide entrance
+
+```tsx
+<motion.div
+  initial={{ y: 40, opacity: 0 }}
+  animate={{ y: 0, opacity: 1 }}
+  exit={{ y: 20, opacity: 0 }}
+  transition={{
+    type: "spring",
+    stiffness: 500,
+    damping: 35,
+    opacity: { duration: 0.15 },
+  }}
+/>
+```
+
+The `y: 40 → 0` slide tells the user "this came from below." The spring's overshoot (the modal slides past `y: 0` by ~2px and settles back) confirms "this arrived and landed."
+
+Opacity still uses a linear tween. Spring-animated opacity looks wrong because our eyes expect brightness changes to be linear, not spring-based.
+
+---
+
+## Asymmetric exit
+
+The entrance is a spring: energetic, slight overshoot, sense of arrival.
+
+The exit should be different: **fast, decisive, no bounce**.
+
+```tsx
+exit={{ y: 20, opacity: 0 }}
+transition={{
+  type: "spring",
+  stiffness: 600,
+  damping: 40,
+  opacity: { duration: 0.1 },
+}}
+```
+
+Higher stiffness + higher damping = resolves faster with no overshoot. The modal leaves with purpose. It doesn't linger, doesn't bounce, doesn't hesitate.
+
+This asymmetry is critical. Entrances are welcoming (lower damping, visible spring character). Exits are decisive (higher damping, near-instant). You'd never design a physical door that opens slowly and closes slowly in the same way.
+
+---
+
+## Backdrop timing
+
+The backdrop (the dark overlay behind the modal) should animate **before** the modal enters:
+
+```tsx
+// Backdrop: starts first, fast
+<motion.div
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ duration: 0.15 }}
+/>
+
+// Modal: starts 50ms after backdrop
+<motion.div
+  initial={{ y: 40, opacity: 0 }}
+  animate={{ y: 0, opacity: 1 }}
+  transition={{
+    type: "spring",
+    stiffness: 500,
+    damping: 35,
+    delay: 0.05,
+  }}
+/>
+```
+
+The 50ms delay creates a two-beat entrance: the world dims, then the modal arrives. Without this stagger, the backdrop and modal appear simultaneously, which feels like one thing happening. With the stagger, it feels like two connected events. Context change, then content.
+
+---
+
+## Dismissal gesture
+
+On mobile, modals should be dismissible by dragging down. The key: the drag velocity should transfer into the exit animation.
+
+```tsx
+const handleDragEnd = (_, info) => {
+  if (info.velocity.y > 300 || info.offset.y > 100) {
+    // Fast drag or far pull → dismiss
+    onClose();
+  } else {
+    // Snap back to open position
+    animate(y, 0, {
+      type: "spring",
+      stiffness: 500,
+      damping: 30,
+    });
+  }
+};
+```
+
+A fast flick dismisses immediately. A slow pull past the threshold dismisses. A pull that doesn't reach the threshold springs back. Three outcomes from one gesture, each feeling natural because the spring responds to the input velocity.
+
+---
+
+## Scale vs. slide
+
+Some designers prefer `scale(0.95) → scale(1)` for modals. This is better than pure opacity fade, but it has a problem: the content inside the modal also scales, which causes text to be briefly blurry during the transition (sub-pixel rendering).
+
+`translateY` doesn't affect content rendering. The text stays sharp throughout the animation. Slide is cleaner, directional, and less likely to cause rendering artifacts.
+
+---
+
+The next time you implement a modal, ask: where is this coming from? If the answer is "nowhere, it just appears," add a direction. Add a spring. Make it arrive like something real entering a room, not like a PowerPoint slide fading in.

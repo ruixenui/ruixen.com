@@ -1,0 +1,132 @@
+---
+title: "Web apps feel like paper. Native apps feel like objects. I tried to close the gap."
+description: "Why native mobile apps feel tangible while web apps feel flat, and the specific techniques that narrow the gap."
+image: https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/gradients/shade_shiters/shade-shifters-01.png
+author: Ruhith G
+tag: Design Engineering
+publishedOn: 2026-02-06T10:00:00.000Z
+featured: false
+---
+
+Open your phone's Settings app. Scroll a list. The content has **inertia**: it keeps moving after your finger lifts, decelerating naturally. Hit the top or bottom and the list **bounces**, compressing like rubber before springing back. Pull down on a notification and it **stretches**, rubber-banding as you pull further.
+
+Now open a web app. Scroll. It stops the moment you stop scrolling (unless you're on iOS Safari). There's no bounce, no stretch, no sense that the content has physical properties. It feels like dragging a piece of paper across glass.
+
+This isn't a technology limitation. It's a design gap.
+
+---
+
+## What "feeling like an object" means
+
+Native apps feel tangible because every interaction follows three principles:
+
+1. **Momentum**: things in motion stay in motion (inertial scrolling, fling gestures)
+2. **Resistance**: actions have proportional resistance (rubber-banding, pull-to-refresh tension)
+3. **Consequence**: every input produces multi-sensory output (haptics, sound, visual deformation)
+
+Web apps violate all three. Motion is timer-based (no momentum). Interactions are binary (no resistance). Feedback is visual-only (no haptics, no sound).
+
+---
+
+## Technique 1: Velocity-aware animation
+
+The most impactful single change: **carry velocity between gesture and animation**.
+
+When a user finishes dragging a slider, the element shouldn't stop and then animate to the nearest valid position. It should **continue moving** with the drag's momentum, overshoot the target, and spring back.
+
+```tsx
+const handleDragEnd = (_, info) => {
+  animate(position, snapTarget, {
+    type: "spring",
+    stiffness: 400,
+    damping: 30,
+    velocity: info.velocity.x,
+  });
+};
+```
+
+This single property, `velocity`, is what makes native apps feel physical. The momentum from your gesture transfers into the animation. It's continuous. No dead stop, no restart from zero.
+
+CSS transitions can't do this. They always start from zero velocity. The best you can get is `ease-out`, which fakes deceleration but with a fixed curve that doesn't know how fast you were moving.
+
+---
+
+## Technique 2: Proportional resistance
+
+When you pull a native scroll view past its bounds, the resistance increases with distance. Pull a little and it moves easily. Pull far and it fights back, like stretching rubber.
+
+This is **exponential decay** applied to gesture input:
+
+```tsx
+const getResistance = (overscroll: number, max: number) => {
+  return max * (1 - Math.exp(-overscroll / max));
+};
+```
+
+As `overscroll` increases, the return value approaches `max` asymptotically. You can never pull it past the limit, but the closer you get, the harder it resists. This is exactly how a rubber band behaves.
+
+Most web implementations use linear clamping: `Math.min(overscroll, max)`. This feels like hitting a wall. Exponential decay feels like stretching something elastic.
+
+---
+
+## Technique 3: Audio confirmation
+
+Physical objects make sound. Switches click. Buttons depress. Latches engage. Drawers slide.
+
+Web interfaces are silent. Every interaction, no matter how significant, produces zero auditory feedback. Your brain processes this as "nothing happened" until visual evidence arrives, which takes 150-300ms of cognitive processing.
+
+A 3ms noise burst at 5% volume, triggered on user interaction, adds a sub-conscious confirmation layer:
+
+```tsx
+// Shaped noise: fast attack, instant decay
+const ch = buf.getChannelData(0);
+for (let i = 0; i < len; i++)
+  ch[i] = (Math.random() * 2 - 1) * (1 - i / len) ** 4;
+```
+
+This doesn't make the web app "sound like a native app." It makes the web app **respond** like a physical object, with multi-sensory feedback instead of visual-only.
+
+---
+
+## Technique 4: Asymmetric enter/exit
+
+Native animations feel natural partly because **enter and exit motions are different**. A notification slides in with a bounce (energy arriving) and slides out decisively (energy leaving). A modal scales up with a spring and fades out linearly.
+
+Web apps use symmetric animations: `ease-in` to enter, `ease-out` to exit. Or worse, the same curve for both. This feels mechanical because it is. No physical process is perfectly symmetric.
+
+```tsx
+// Enter: bouncy spring (energy)
+initial={{ scale: 0.9, opacity: 0 }}
+animate={{ scale: 1, opacity: 1 }}
+transition={{ type: "spring", stiffness: 400, damping: 25 }}
+
+// Exit: fast tween (decisive)
+exit={{ scale: 0.95, opacity: 0 }}
+transition={{ duration: 0.15, ease: "easeIn" }}
+```
+
+---
+
+## What's still missing
+
+Even with all four techniques, web apps can't match native on one critical dimension: **haptics**.
+
+iOS and Android both expose haptic engines that produce physical vibrations: a light tap for a toggle, a medium impact for a drop, a rigid feedback for an error. This is real tactile sensation, not simulated.
+
+The web has a basic `navigator.vibrate()` API on Android, but it's a blunt instrument. On/off vibration with millisecond timing, no subtlety. iOS Safari doesn't support it at all. Until the Web Haptics API lands (if it ever does), the gap remains.
+
+---
+
+## Closing the gap
+
+The gap between web and native isn't about what's technically possible. It's about what we've normalized. We accept that web apps feel flat because we've always built them that way. But with:
+
+- Spring physics instead of CSS timers
+- Velocity inheritance between gestures and animations
+- Exponential resistance instead of linear clamping
+- Audio confirmation on direct interactions
+- Asymmetric enter/exit motion
+
+...the gap shrinks from "obviously different" to "subtly different." The web app won't feel native. But it'll stop feeling like paper.
+
+Try the components: [ruixen.com/docs/components](https://ruixen.com/docs/components). Drag something. Click something with sound on. Then open any other web UI and do the same. The paper feeling will be obvious.
