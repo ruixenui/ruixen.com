@@ -2,7 +2,7 @@
 
 Welcome to the **Ruixen UI Roadmap**! This document outlines our vision, priorities, milestones, and actionable goals for contributors. Whether you're a first-time contributor or a seasoned developer, this roadmap will help you understand where Ruixen UI is headed and how you can make an impact.
 
-Ruixen UI is a growing collection of **350+ beautifully designed, copy-and-paste React components** built with TypeScript and Tailwind CSS. Our core philosophy centers on **speed and animation** — delivering components that are visually stunning, performant, and delightful to interact with.
+Ruixen UI is a growing collection of **170+ beautifully designed, copy-and-paste React components** built with TypeScript and Tailwind CSS. Our core philosophy centers on **speed and animation** — delivering components that are visually stunning, performant, and delightful to interact with.
 
 ---
 
