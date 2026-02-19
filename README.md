@@ -14,10 +14,10 @@
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Components](https://img.shields.io/badge/Components-170+-8b5cf6.svg)](https://ruixen.com/docs)
-[![Discord](https://img.shields.io/discord/1234567890?color=5865F2&label=Discord&logo=discord&logoColor=white)](https://discord.gg/bYexWzUa6G)
+<!-- [![Discord](https://img.shields.io/discord/1234567890?color=5865F2&label=Discord&logo=discord&logoColor=white)](https://discord.gg/bYexWzUa6G) -->
 [![Twitter Follow](https://img.shields.io/twitter/follow/ruixen_ui?style=social)](https://twitter.com/ruixen_ui)
 
-[Browse Components](https://ruixen.com/docs) &nbsp;&middot;&nbsp; [Quick Start](https://ruixen.com/docs/installation) &nbsp;&middot;&nbsp; [Gradients](https://ruixen.com/gradients) &nbsp;&middot;&nbsp; [Blog](https://ruixen.com/blog) &nbsp;&middot;&nbsp; [Discord](https://discord.gg/bYexWzUa6G)
+[Browse Components](https://ruixen.com/docs) &nbsp;&middot;&nbsp; [Quick Start](https://ruixen.com/docs/installation) &nbsp;&middot;&nbsp; [Gradients](https://ruixen.com/gradients) &nbsp;&middot;&nbsp; [Blog](https://ruixen.com/blog)
 
 </div>
 
@@ -254,9 +254,9 @@ Read the [Contributing Guide](./CONTRIBUTING.md) for the full walkthrough, or st
 ## Community
 
 <p>
-<a href="https://discord.gg/bYexWzUa6G"><img src="https://img.shields.io/badge/Discord-Join%20Server-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord" /></a>&nbsp;
+<!-- <a href="https://discord.gg/bYexWzUa6G"><img src="https://img.shields.io/badge/Discord-Join%20Server-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord" /></a>&nbsp; -->
 <a href="https://twitter.com/ruixen_ui"><img src="https://img.shields.io/badge/Twitter-Follow-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" alt="Twitter" /></a>&nbsp;
-<a href="https://www.instagram.com/ruixen_ui"><img src="https://img.shields.io/badge/Instagram-Follow-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram" /></a>&nbsp;
+<!-- <a href="https://www.instagram.com/ruixen_ui"><img src="https://img.shields.io/badge/Instagram-Follow-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram" /></a>&nbsp; -->
 <a href="https://github.com/ruixenui/ruixen.com"><img src="https://img.shields.io/badge/GitHub-Star-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" /></a>
 </p>
 

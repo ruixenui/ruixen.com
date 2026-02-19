@@ -1,106 +1,38 @@
 ---
-title: Ruixen UI MCP Server
-description: Learn how to use the Model Context Protocol with Ruixen UI.
+title: MCP Server
+description: Give your AI IDE direct access to every Ruixen UI component. Launching soon — completely free.
 date: 2025-04-16
 ---
 
-Ruixen UI now has an official MCP server 🎉.
+## AI-native component installation
 
-[MCP](https://modelcontextprotocol.com/) is an open protocol that standardizes how applications provide context to LLMs.
+The Ruixen UI MCP server gives your AI-assisted IDE direct access to all 170+ components. Your editor understands the full registry — names, props, dependencies, install commands — so it can generate correct code on the first try.
 
-This is useful for Ruixen UI because you can now give your AI-assisted IDE direct access to all Ruixen UI components so that it can generate code with minimal errors.
+No copying docs. No guessing component names. Just ask.
 
-<Tabs defaultValue="cli">
+## Launching soon — completely free
 
-<TabsList>
-  <TabsTrigger value="cli">CLI</TabsTrigger>
-  <TabsTrigger value="manual">Manual</TabsTrigger>
-</TabsList>
+We're building this as a free, open tool for every developer. No paid tiers, no gated features. The full component registry, every variant, every primitive — accessible to any MCP-compatible editor at zero cost.
 
-<TabsContent value="cli">
+The server is in final testing. Follow [@ruixen_ui](https://twitter.com/ruixen_ui) on Twitter to get notified the moment it ships.
 
-<Steps>
+## What it does
 
-<Step>Installation</Step>
+- **Component discovery** — Ask your IDE for any Ruixen UI component by name or description. It finds the right one.
+- **Correct install commands** — The server returns the exact CLI command for your Tailwind version and primitive library.
+- **Prop and usage context** — Your AI gets the full component API, not just a name. It writes working code.
+- **All four registry variants** — Tailwind v4, Tailwind v3, Radix, and Base UI. The server knows which one you need.
 
-<Tabs defaultValue="cursor">
-  <TabsList>
-    <TabsTrigger value="cursor">Cursor</TabsTrigger>
-    <TabsTrigger value="windsurf">Windsurf</TabsTrigger>
-    <TabsTrigger value="claude">Claude</TabsTrigger>
-    <TabsTrigger value="cline">Cline</TabsTrigger>
-    <TabsTrigger value="roo-cline">Roo-Cline</TabsTrigger>
-  </TabsList>
-  <TabsContent value="cursor">
+## Supported editors
 
-    ```bash
-    npx @ruixenui/cli@latest install cursor
-    ```
+The MCP server will work with any editor that supports the [Model Context Protocol](https://modelcontextprotocol.com/):
 
-  </TabsContent>
-  <TabsContent value="windsurf">
-  
-    ```bash
-    npx @ruixenui/cli@latest install windsurf
-    ```
+- Cursor
+- Windsurf
+- Claude Code
+- Cline
+- Roo Code
 
-  </TabsContent>
-  <TabsContent value="claude">
+## Stay in the loop
 
-    ```bash
-    npx @ruixenui/cli@latest install claude
-    ```
-
-  </TabsContent>
-  <TabsContent value="cline">
-
-    ```bash
-    npx @ruixenui/cli@latest install cline
-    ```
-
-  </TabsContent>
-  <TabsContent value="roo-cline">
-  
-    ```bash
-    npx @ruixenui/cli@latest install roo-cline
-    ```
-
-  </TabsContent>
-</Tabs>
-
-<Step>Restart your IDE</Step>
-
-</Steps>
-
-</TabsContent>
-<TabsContent value="manual">
-
-<Steps>
-
-<Step>Add the following to your MCP config file:</Step>
-
-```json
-{
-  "mcpServers": {
-    "@ruixenui/mcp": {
-      "command": "npx",
-      "args": ["-y", "@ruixenui/mcp@latest"]
-    }
-  }
-}
-```
-
-<Step>Restart your IDE</Step>
-
-</Steps>
-
-</TabsContent>
-
-</Tabs>
-
-## Usage
-
-You can now ask your IDE to use any Ruixen UI component. Here are some examples:
-
-- "Add a blur fade text animation"
-- "Add a grid background"
+Follow [@ruixen_ui](https://twitter.com/ruixen_ui) on Twitter for the launch announcement.

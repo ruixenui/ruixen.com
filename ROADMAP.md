@@ -130,16 +130,16 @@ Focus on **ecosystem growth, tooling, and accessibility excellence**:
 - Test across multiple viewports
 - Check animation performance using DevTools
 - Follow existing patterns in similar components
-- Ask questions via GitHub Issues or Discord
+- Ask questions via GitHub Issues or Twitter
 
 ---
 
 ## Community & Support
 
 - **GitHub Issues** — Report bugs and request features
-- **Discord** — [Join our community](https://discord.gg/j9fVZm2D)
+<!-- - **Discord** — [Join our community](https://discord.gg/j9fVZm2D) -->
 - **Twitter** — [@ruixenui](https://twitter.com/ruixenui)
-- **Instagram** — [@ruixenui](https://instagram.com/ruixenui/)
+<!-- - **Instagram** — [@ruixenui](https://instagram.com/ruixenui/) -->
 
 ---
 

@@ -110,6 +110,12 @@ export const docsConfig: DocsConfig = {
           ],
         },
         {
+          title: "MCP",
+          href: "/docs/mcp",
+          items: [],
+          label: "Free",
+        },
+        {
           title: "Dual Tailwind",
           href: "/docs/tailwind-v4",
           items: [],
@@ -121,12 +127,6 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "Radix & Base",
         },
-        // {
-        //   title: "MCP",
-        //   href: "/docs/mcp",
-        //   items: [],
-        //   label: "",
-        // },
       ],
     },
     {

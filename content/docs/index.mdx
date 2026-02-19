@@ -1,27 +1,33 @@
 ---
 title: Introduction
-description: Build faster with Ruixen UI – a collection of re-usable, tunable, and performance-focused components.
+description: 170+ open-source React components built with spring physics, audio feedback, and zero styling dependencies.
 ---
 
-Ruixen UI is a collection of re-usable components that you can copy and paste into your web apps.
+Ruixen UI is an open-source component library where every interaction is driven by spring physics, not CSS timers. Components have mass, momentum, and friction. They overshoot when they arrive. They settle. They respond differently depending on distance and velocity.
 
-It focuses on **speed, easy rendering, reusability, and tunability**, making it simple to create polished landing pages, product sites, and marketing materials with minimal effort.
+This is design engineering — the discipline of making interfaces that behave like physical objects instead of state machines.
 
-## Our Approach
+## Why this exists
 
-**We believe software should not only work fast but also look great while doing so.**  
-Design plays a critical role in establishing trust between you and your users. With Ruixen UI, you don’t just ship features — you ship confidence.
+Most component libraries ship markup with a transition attached. A 300ms ease-in-out that plays the same way every time regardless of context. That works. But it doesn't feel like anything.
 
-Our guiding principles:
+Ruixen UI replaces that layer entirely:
 
-- **Speed first** – Components are optimized for quick rendering and smooth interactions.
-- **Reusability** – Write once, use anywhere. Copy, paste, and customize with ease.
-- **Tunability** – Flexible props and configuration so you can adapt components to your brand.
-- **Developer-friendly** – Clear structure and clean code you can extend without friction.
+- **Spring dynamics over CSS transitions** — Every animation uses `motion/react` springs with stiffness, damping, and mass. A short move snaps. A long move carries momentum and settles. The same config produces different motion depending on distance — because that's how real objects behave.
+- **Audio on every state change** — A 3ms noise burst via Web Audio API plays on interactive events. Shaped with a quartic decay envelope at 6% gain. It sounds mechanical, not digital. Disable it with `sound={false}`.
+- **Single-file, zero dependencies** — Each component is one file with inline styles and CSS variables. No theme provider. No global CSS. Drop it into any React project and it works.
+- **Four registry variants** — Every component ships in Tailwind v4, Tailwind v3, Radix primitives, and Base UI primitives. One codebase, four outputs.
 
-Good design is more than aesthetics — it reflects stability and care.  
-If a product pays attention to small details in design, you can trust that it values its users just as much.
+## What design engineering means here
 
-Ruixen UI carries the same spirit — but with the **goal of helping developers move faster** while still delivering a refined experience.
+Design engineering is the work that happens between a design mockup and production code — where you decide how something *moves*, how it *sounds*, how it *responds* to input. It's the difference between a button that changes color and a button that clicks.
 
-This library is heavily inspired by [shadcn/ui](https://ui.shadcn.com), but with our own twist on **performance, adaptability, and reusability**.
+We don't generate components with AI and ship them. Every component is hand-engineered — the spring configs are tuned by hand, the audio envelopes are shaped intentionally, the interaction patterns are tested across input methods. The output should feel authored, not generated.
+
+If that distinction matters to you, follow the process on [Twitter](https://twitter.com/ruixen_ui) and read the thinking behind it on our [blog](/blog).
+
+## Request a component
+
+Tell us what you need. We'll build it with spring physics and ship it within 48 hours. Free. Open source. Yours to keep.
+
+DM us on [Twitter](https://twitter.com/ruixen_ui) or open a [GitHub issue](https://github.com/ruixenui/ruixen.com/issues) and we'll get it into the registry.

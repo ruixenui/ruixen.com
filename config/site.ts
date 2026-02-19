@@ -6,10 +6,10 @@ export const siteConfig = {
     "170+ free, open-source React components built with Tailwind CSS, TypeScript & Framer Motion. Copy-paste into Next.js projects.",
   links: {
     twitter: "https://twitter.com/ruixen_ui",
-    discord: "https://discord.gg/bYexWzUa6G",
+    // discord: "https://discord.gg/bYexWzUa6G",
     github: "https://github.com/ruixenui/ruixen.com",
-    instagram:
-      "https://www.instagram.com/ruixen_ui?igsh=MTh1aXdnemt1dDF5cg%3D%3D&utm_source=qr",
+    // instagram:
+    //   "https://www.instagram.com/ruixen_ui?igsh=MTh1aXdnemt1dDF5cg%3D%3D&utm_source=qr",
   },
   keywords: [
     "react component library",

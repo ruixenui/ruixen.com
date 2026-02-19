@@ -10,39 +10,39 @@ export default function Home() {
   const faqItems: FAQItem[] = [
     {
       id: "installation",
-      question: "How do I install Ruixen UI in my project?",
+      question: "How do I add a component to my project?",
       answer:
-        "Run `npm i ruixen-ui` or `yarn add ruixen-ui`, wrap your app with the provider, and start importing components. It works seamlessly with Next.js and React.",
+        "Run npx shadcn@latest add with the component URL — for example: npx shadcn@latest add \"https://ruixen.com/r/invert-tabs\". The CLI copies the source file into your project with dependencies resolved. No package to install, no provider to wrap.",
     },
     {
-      id: "customization",
-      question: "Can I customize components and themes?",
+      id: "animations",
+      question: "What makes the animations different from CSS transitions?",
       answer:
-        "Yes. Every component supports easy customization through classNames and tokens. You can also extend or override the theme globally.",
+        "Every component uses spring physics via motion/react instead of fixed-duration CSS transitions. Springs have stiffness, damping, and mass — so a short move snaps while a long move overshoots and settles. The motion adapts to distance naturally, the way physical objects do.",
     },
     {
-      id: "compatibility",
-      question: "Does Ruixen UI work with Next.js and TypeScript?",
+      id: "tailwind",
+      question: "Which Tailwind version do I need?",
       answer:
-        "Yes. Ruixen UI is built for modern stacks — fully typed with TypeScript and optimized for SSR and App Router in Next.js.",
+        "Both are supported. Components default to Tailwind v4. For v3, swap the registry prefix: npx shadcn@latest add \"https://ruixen.com/r/tw3/invert-tabs\". Your selection persists across the docs.",
     },
     {
-      id: "updates",
-      question: "How often are new components added?",
+      id: "primitives",
+      question: "Can I use Radix or Base UI primitives?",
       answer:
-        "We roll out new components and improvements regularly based on developer feedback and trending design patterns.",
+        "Yes. Every component ships in four registry variants — Tailwind v4, Tailwind v3, Radix primitives, and Base UI primitives. Pick the one that matches your stack from the docs sidebar.",
     },
     {
-      id: "usage",
-      question: "Can I use Ruixen UI in commercial projects?",
+      id: "license",
+      question: "Can I use this in commercial projects?",
       answer:
-        "Yes. Ruixen UI is free to use in both personal and commercial projects. No license or subscription required.",
+        "Yes. Ruixen UI is MIT licensed. Use it in personal, commercial, or client projects without restriction. The source is yours once you add it.",
     },
     {
-      id: "future",
-      question: "Is there a Pro version available?",
+      id: "pro",
+      question: "What does Ruixen Pro include?",
       answer:
-        "Yes! Ruixen Pro is now live at pro.ruixen.com with 50+ premium templates, advanced components, and lifetime updates. The core Ruixen UI library will always remain free and open-source.",
+        "Pro adds 50+ premium templates and advanced compositions on top of the free library at pro.ruixen.com. One-time purchase with lifetime updates. The core 170+ components remain free and open-source.",
     },
   ];
 
@@ -81,6 +81,39 @@ export default function Home() {
       {/* <InspirationsSection /> */}
       {/* <WallOfLove /> */}
       <FAQSection faqItems={faqItems} className="py-16 md:py-24" />
+
+      {/* Twitter CTA */}
+      <section className="w-full py-16 md:py-24">
+        <div className="mx-auto max-w-2xl text-center px-4">
+          <p className="text-sm uppercase tracking-[0.15em] text-foreground/30 mb-4">
+            New components every week
+          </p>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-foreground">
+            Follow the build
+          </h2>
+          <p className="mt-4 text-foreground/50 text-base leading-relaxed max-w-lg mx-auto">
+            Spring configs, interaction breakdowns, and new component drops.
+            Everything ships in public.
+          </p>
+          <a
+            href="https://twitter.com/ruixen_ui"
+            target="_blank"
+            rel="noreferrer"
+            className="mt-6 inline-flex h-10 items-center justify-center gap-2 rounded-xl bg-foreground px-6 text-sm font-medium text-background transition-opacity hover:opacity-90"
+          >
+            <svg
+              height="14"
+              viewBox="0 0 1200 1227"
+              width="14"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+            >
+              <path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z" />
+            </svg>
+            @ruixen_ui
+          </a>
+        </div>
+      </section>
     </>
   );
 }

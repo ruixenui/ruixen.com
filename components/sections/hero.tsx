@@ -39,7 +39,13 @@ function Home() {
             <Link
               href="https://pro.ruixen.com"
               target="_blank"
-              className="inline-block text-[11px] font-medium uppercase tracking-[0.15em] text-foreground/35 hover:text-foreground/50 transition-colors duration-150"
+              className="relative inline-block text-[11px] font-medium uppercase tracking-[0.15em] text-transparent bg-clip-text transition-opacity duration-150 hover:opacity-80"
+              style={{
+                backgroundImage:
+                  "linear-gradient(90deg, #3b82f6 0%, #60a5fa 40%, #93c5fd 50%, #60a5fa 60%, #3b82f6 100%)",
+                backgroundSize: "200% 100%",
+                animation: "pro-shine 3s ease-in-out infinite",
+              }}
             >
               Unlock the Full System
             </Link>
@@ -113,6 +119,23 @@ function Home() {
                 }}
               />
               <span className="relative z-10">Quick Start</span>
+            </Link>
+          </div>
+
+          {/* Follow nudge */}
+          <div
+            className="mt-5 flex justify-center"
+            style={{
+              opacity: mounted ? 1 : 0,
+              transition: "opacity 0.5s ease-out 3.3s",
+            }}
+          >
+            <Link
+              href="https://twitter.com/ruixen_ui"
+              target="_blank"
+              className="text-[11px] text-foreground/25 hover:text-foreground/45 transition-colors duration-150"
+            >
+              Follow @ruixen_ui for new components
             </Link>
           </div>
         </div>

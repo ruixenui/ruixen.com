@@ -16,9 +16,7 @@ export function Analytics() {
           "description": "170+ free, open-source React components built with Tailwind CSS, TypeScript & Framer Motion.",
           "sameAs": [
             "https://twitter.com/ruixen_ui",
-            "https://github.com/ruixenui/ruixen.com",
-            "https://discord.gg/bYexWzUa6G",
-            "https://www.instagram.com/ruixen_ui"
+            "https://github.com/ruixenui/ruixen.com"
           ]
         }
       `}</Script>

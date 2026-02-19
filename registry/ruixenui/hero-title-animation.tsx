@@ -25,8 +25,8 @@ export function HeroTitleAnimation({ className }: HeroTitleAnimationProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const timersRef = useRef<NodeJS.Timeout[]>([]);
 
-  const brandWords = ["Built", "for", "Your", "Foundation"];
-  const highlightWords = ["Design", "Engineering"];
+  const brandWords = ["Make", "your", "websites"];
+  const highlightWords = ["feel", "premium", "instantly"];
 
   const titleCx =
     "flex flex-wrap items-baseline justify-center gap-x-[0.1em] gap-y-2 md:gap-y-3 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-foreground leading-[1.15]";
@@ -105,8 +105,7 @@ export function HeroTitleAnimation({ className }: HeroTitleAnimationProps) {
             </span>
           ))}
         </span>
-        <span className="inline-flex items-center gap-x-[0.3em] whitespace-nowrap mt-1 md:mt-2 ml-1 sm:ml-1.5 md:ml-2">
-          <span className="font-medium">of</span>
+        <span className="inline-flex items-center gap-x-[0.3em] whitespace-nowrap mt-1 md:mt-2 ml-2 sm:ml-3 md:ml-4">
           <span className="relative inline-flex items-center gap-x-[0.3em]">
             {highlightWords.map((w, i) => (
               <span key={i} className="font-bold">
@@ -148,7 +147,7 @@ export function HeroTitleAnimation({ className }: HeroTitleAnimationProps) {
 
         {/* "of Design Engineering" — reveals together, only "Design Engineering" gets highlight */}
         <span
-          className="inline-flex items-center gap-x-[0.3em] whitespace-nowrap mt-1 md:mt-2 ml-1 sm:ml-1.5 md:ml-2"
+          className="inline-flex items-center gap-x-[0.3em] whitespace-nowrap mt-1 md:mt-2 ml-2 sm:ml-3 md:ml-4"
           style={{
             opacity: showReveal ? 1 : 0,
             transform: `translateY(${showReveal ? 0 : 14}px)`,
@@ -157,9 +156,7 @@ export function HeroTitleAnimation({ className }: HeroTitleAnimationProps) {
               "opacity 0.5s cubic-bezier(0.25,0.46,0.45,0.94), transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.5s cubic-bezier(0.25,0.46,0.45,0.94)",
           }}
         >
-          <span className="font-medium text-foreground/85">of</span>
-
-          {/* Highlight sub-group — only "Design Engineering" */}
+          {/* Highlight sub-group */}
           <span className="relative inline-flex items-center gap-x-[0.3em]">
             {/* Highlight box sweeps left → right */}
             <span

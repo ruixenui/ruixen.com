@@ -73,7 +73,7 @@ export async function SiteHeader() {
             <CommandMenu />
           </div>
           <nav className="flex items-center gap-1">
-            <Link
+            {/* <Link
               href={siteConfig.links.discord}
               target="_blank"
               rel="noreferrer"
@@ -89,7 +89,7 @@ export async function SiteHeader() {
                 <Icons.discord className="size-5" />
                 <span className="sr-only">Discord</span>
               </div>
-            </Link>
+            </Link> */}
             <Link
               href={siteConfig.links.github}
               target="_blank"
@@ -130,7 +130,7 @@ export async function SiteHeader() {
                 <span className="sr-only">Twitter</span>
               </div>
             </Link>
-            <Link
+            {/* <Link
               href={siteConfig.links.instagram}
               target="_blank"
               rel="noreferrer"
@@ -146,7 +146,7 @@ export async function SiteHeader() {
                 <Icons.instagram className="size-5" />
                 <span className="sr-only">Instagram</span>
               </div>
-            </Link>
+            </Link> */}
             <ModeToggle />
           </nav>
         </div>
