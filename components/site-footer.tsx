@@ -68,13 +68,13 @@ const footerSections = [
       { label: "Ruixen Pro", href: "https://pro.ruixen.com" },
       { label: "Documentation", href: "/docs" },
       { label: "Blog", href: "/blog" },
-      { label: "Discord Server", href: "https://discord.gg/bYexWzUa6G" },
+      // { label: "Discord Server", href: "https://discord.gg/bYexWzUa6G" },
       { label: "GitHub", href: "https://github.com/ruixenui/ruixen.com" },
       { label: "Twitter", href: "https://x.com/ruixen_ui" },
-      {
-        label: "Instagram",
-        href: "https://www.instagram.com/ruixen_ui?igsh=MTh1aXdnemt1dDF5cg%3D%3D&utm_source=qr",
-      },
+      // {
+      //   label: "Instagram",
+      //   href: "https://www.instagram.com/ruixen_ui?igsh=MTh1aXdnemt1dDF5cg%3D%3D&utm_source=qr",
+      // },
     ],
   },
 ];
@@ -129,8 +129,11 @@ export default function SiteFooter() {
           ))}
         </div>
 
-        <div className="border-t border-black/10 dark:border-black/10 pt-4 text-center">
-          © {new Date().getFullYear()} Ruixen UI. All rights reserved.
+        <div className="border-t border-black/10 dark:border-black/10 pt-4 flex flex-col sm:flex-row items-center justify-between gap-2">
+          <span>© {new Date().getFullYear()} Ruixen UI. All rights reserved.</span>
+          <a href="https://twitter.com/ruixen_ui" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
+            Follow the build &rarr; @ruixen_ui
+          </a>
         </div>
       </div>
     </footer>

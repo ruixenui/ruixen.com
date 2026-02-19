@@ -1,4 +1,4 @@
-import { DiscordLogoIcon, InstagramLogoIcon } from "@radix-ui/react-icons";
+// import { DiscordLogoIcon, InstagramLogoIcon } from "@radix-ui/react-icons";
 import {
   AlertTriangle,
   ArrowRight,
@@ -52,8 +52,8 @@ export const Icons = {
   close: X,
   spinner: Loader2,
   chevronLeft: ChevronLeft,
-  discord: DiscordLogoIcon,
-  instagram: InstagramLogoIcon,
+  // discord: DiscordLogoIcon,
+  // instagram: InstagramLogoIcon,
   chevronRight: (props: IconProps) => (
     <svg
       fill="none"

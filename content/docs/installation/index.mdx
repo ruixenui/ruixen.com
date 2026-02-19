@@ -5,7 +5,7 @@ description: How to install dependencies and structure your app.
 
 <Callout>
 
-**Note:** We have the exact same installation process as [shadcn/ui](https://ui.shadcn.com/docs/installation/).
+**Note:** We follow the same installation process as [shadcn/ui](https://ui.shadcn.com/docs/installation/).
 
 </Callout>
 
@@ -24,56 +24,29 @@ npx shadcn@latest init
 You can now start adding components to your project.
 
 ```bash
-npx shadcn@latest add "https://ruixen.com/r/staggeredFaqSection.json"
+npx shadcn@latest add "https://ruixen.com/r/invert-tabs"
 ```
 
-### Import component
+### Import and use
 
-The command above will add the `StaggeredFaqSection` component to your project. You can then import it like this:
+The command copies the component source into your project. Import it directly:
 
-```tsx {1,6} showLineNumbers
-import { StaggeredFAQSection } from "@/components/ui/staggered-faq-section";
+```tsx
+import { InvertTabs } from "@/components/ruixen/invert-tabs";
 
-export default function FAQsDemo() {
-  const faqItems = [
-    {
-      id: "item-1",
-      question: "What is Ruixen UI?",
-      answer:
-        "Ruixen UI is a modern, fully responsive design system that provides pre-built components, utilities, and layouts to help developers build scalable web applications quickly and efficiently.",
-    },
-    {
-      id: "item-2",
-      question: "Which platforms does Ruixen UI support?",
-      answer:
-        "Ruixen UI is built for web applications and works seamlessly with React, Next.js, and other modern JavaScript frameworks. It also supports dark mode and responsive layouts out of the box.",
-    },
-    {
-      id: "item-3",
-      question: "Can I customize Ruixen UI components?",
-      answer:
-        "Yes! All Ruixen UI components are fully customizable via props, CSS classes, and theme configuration. You can easily adapt colors, spacing, typography, and layout to match your brand.",
-    },
-    {
-      id: "item-4",
-      question: "Does Ruixen UI provide integration with third-party tools?",
-      answer:
-        "Absolutely. Ruixen UI includes ready-to-use integrations and patterns for popular tools and services, making it easier to connect your application with analytics, authentication, and workflow platforms.",
-    },
-    {
-      id: "item-5",
-      question: "Is there documentation and support available?",
-      answer:
-        "Yes, Ruixen UI comes with comprehensive documentation, live examples, and tutorials. Additionally, our community and support channels are available to help you implement components and resolve any issues.",
-    },
-  ];
-
-  return (
-    <div className="relative justify-center">
-      <StaggeredFAQSection faqItems={faqItems} />
-    </div>
-  );
+export default function Demo() {
+  return <InvertTabs />;
 }
 ```
 
 </Steps>
+
+---
+
+## Can't find the component you need?
+
+Tell us what you're building. We'll design-engineer it with spring physics, audio feedback, and proper interaction design — and ship it within 48 hours.
+
+Free. Open source. Yours to keep.
+
+**[Request a component on Twitter](https://twitter.com/ruixen_ui)** or open a **[GitHub issue](https://github.com/ruixenui/ruixen.com/issues)**
