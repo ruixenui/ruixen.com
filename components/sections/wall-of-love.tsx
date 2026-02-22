@@ -1,170 +1,213 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Heart, MessageCircle } from "lucide-react";
+import { motion } from "motion/react";
+import { Plus } from "lucide-react";
 import Link from "next/link";
 
-export default function WallOfLove() {
-  const floatingCards = [
-    { id: 1, x: "10%", y: "20%", delay: 0, rotate: -12 },
-    { id: 2, x: "75%", y: "15%", delay: 0.2, rotate: 8 },
-    { id: 3, x: "20%", y: "65%", delay: 0.4, rotate: -6 },
-    { id: 4, x: "80%", y: "60%", delay: 0.6, rotate: 15 },
-    { id: 5, x: "50%", y: "10%", delay: 0.3, rotate: -3 },
-    { id: 6, x: "5%", y: "45%", delay: 0.5, rotate: 10 },
-    { id: 7, x: "90%", y: "40%", delay: 0.1, rotate: -8 },
-  ];
+/* ─── Testimonial data ─── */
+
+type Testimonial = {
+  name: string;
+  handle: string;
+  avatar: string;
+  avatarUrl?: string;
+  text: string;
+  tweetUrl?: string;
+};
+
+const testimonials: Testimonial[] = [
+  {
+    name: "xymox",
+    handle: "@clxymox",
+    avatar: "x",
+    avatarUrl:
+      "https://pbs.twimg.com/profile_images/458868924876984320/lgte0MOh_normal.jpeg",
+    text: "ruixen.com\n\u2B50 84 stars\n\nD\u00E9couvrez ce projet GitHub int\u00E9ressant !\n#GitHub",
+    tweetUrl: "https://x.com/clxymox/status/2012959714628239712",
+  },
+  {
+    name: "Geek Lite",
+    handle: "@QingQ77",
+    avatar: "G",
+    avatarUrl:
+      "https://pbs.twimg.com/profile_images/2004028412730789892/4IFUGOl2_normal.jpg",
+    text: "170+ \u514D\u8D39 SHADCN \u7EC4\u4EF6\uFF0C\u5B8C\u5168\u5F00\u6E90\u3002\n\nRuixen UI \u7EC4\u4EF6\u5E93\u754C\u7684\u9690\u85CF\u5B9D\u77F3\uFF0C\u4E00\u4E2A\u73B0\u4EE3\u3001\u7075\u6D3B\u3001\u53EF\u5B9A\u5236\u7684 React UI \u7EC4\u4EF6\u5E93\uFF0C\u4E3B\u6253\u5F39\u7C27\u7269\u7406\u52A8\u753B\u548C\u89E6\u89C9\u53CD\u9988\uFF0C\u8BA9\u7F51\u9875\u7EC4\u4EF6\u52A8\u8D77\u6765\u50CF\u771F\u5B9E\u7269\u4F53\u3002",
+    tweetUrl: "https://x.com/QingQ77/status/2024805732055392349",
+  },
+  {
+    name: "jaime",
+    handle: "@jaimesolis",
+    avatar: "j",
+    avatarUrl:
+      "https://pbs.twimg.com/profile_images/2016705443394179073/qy6mbrsL_normal.png",
+    text: "\u5F39\u7C27\u52A8\u753B\u52A0\u89E6\u89C9\u53CD\u9988\u8FD9\u5957\u7EC4\u5408\uFF0Cshadcn\u751F\u6001\u91CC\u786E\u5B9E\u6CA1\u51E0\u4E2A\u5728\u505A\u3002170+\u7EC4\u4EF6\u514D\u8D39\u5F00\u6E90\uFF0C\u5BF9\u6BD4\u4ED8\u8D39ui\u5E93\u5212\u5F97\u6765\u3002",
+    tweetUrl: "https://x.com/jaimesolis/status/2024806728081027132",
+  },
+  {
+    name: "Sandeep",
+    handle: "@sandeep_v1404",
+    avatar: "S",
+    avatarUrl:
+      "https://pbs.twimg.com/profile_images/1825276966594854912/8Ganmx0p_normal.jpg",
+    text: "@ruixen_ui stands out because it feels built with intention, not just styled to look good.",
+    tweetUrl: "https://x.com/sandeep_v1404/status/2025562023577457147",
+  },
+];
+
+/* ─── Layout: which cells are testimonials vs empty ─── */
+
+// 4 columns × varying rows.  `null` = empty "+" card, number = testimonial index
+const columns: (number | null)[][] = [
+  [0, null, null, null],
+  [null, 1, null, null],
+  [null, null, 2, null],
+  [3, null, null, null],
+];
+
+/* ─── Twitter share intent ─── */
+
+const TWITTER_SHARE_TEXT = encodeURIComponent(
+  "I tried @ruixen_ui and [share what you built or liked] — check it out at ruixen.com",
+);
+const TWITTER_INTENT_URL = `https://twitter.com/intent/tweet?text=${TWITTER_SHARE_TEXT}`;
+
+/* ─── X logo (inline SVG to avoid dependency) ─── */
+
+function XLogo({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      fill="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    </svg>
+  );
+}
+
+/* ─── Card Components ─── */
+
+function TestimonialCard({ t }: { t: Testimonial }) {
+  const xIcon = (
+    <XLogo className="h-4 w-4 shrink-0 text-muted-foreground/50 transition-colors group-hover/xlink:text-foreground/70" />
+  );
 
   return (
-    <section className="w-full bg-background relative overflow-hidden py-24 px-4">
-      {/* Floating placeholder cards in background */}
-      <div className="absolute inset-0 pointer-events-none">
-        {floatingCards.map((card) => (
-          <motion.div
-            key={card.id}
-            className="absolute w-48 h-32 md:w-56 md:h-36"
-            style={{ left: card.x, top: card.y }}
-            initial={{ opacity: 0, scale: 0.8, rotate: card.rotate }}
-            animate={{
-              opacity: 0.15,
-              scale: 1,
-              rotate: card.rotate,
-              y: [0, -10, 0],
-            }}
-            transition={{
-              opacity: { duration: 0.8, delay: card.delay },
-              scale: { duration: 0.8, delay: card.delay },
-              y: {
-                duration: 4 + card.id * 0.5,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: card.delay,
-              },
-            }}
+    <div className="rounded-2xl border border-border/60 bg-card/50 p-5 backdrop-blur-sm">
+      {/* Header */}
+      <div className="mb-3 flex items-center gap-3">
+        {t.avatarUrl ? (
+          <img
+            src={t.avatarUrl}
+            alt={t.name}
+            className="h-10 w-10 shrink-0 rounded-full object-cover"
+          />
+        ) : (
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-muted text-sm font-semibold text-muted-foreground">
+            {t.avatar}
+          </div>
+        )}
+        <div className="min-w-0 flex-1">
+          <div className="flex items-center gap-1.5">
+            <span className="truncate text-sm font-semibold text-foreground">
+              {t.name}
+            </span>
+            {t.tweetUrl && (
+              <svg
+                className="h-4 w-4 shrink-0 text-blue-500"
+                viewBox="0 0 22 22"
+                fill="currentColor"
+              >
+                <path d="M20.396 11c-.018-.646-.215-1.275-.57-1.816-.354-.54-.852-.972-1.438-1.246.223-.607.27-1.264.14-1.897-.131-.634-.437-1.218-.882-1.687-.47-.445-1.053-.75-1.687-.882-.633-.13-1.29-.083-1.897.14-.273-.587-.704-1.086-1.245-1.44S11.647 1.62 11 1.604c-.646.017-1.273.213-1.813.568s-.969.855-1.24 1.44c-.608-.223-1.267-.272-1.902-.14-.635.13-1.22.436-1.69.882-.445.47-.749 1.055-.878 1.69-.13.633-.08 1.29.144 1.896-.587.274-1.087.705-1.443 1.245-.356.54-.555 1.17-.574 1.817.02.647.218 1.276.574 1.817.356.54.856.972 1.443 1.245-.224.606-.274 1.263-.144 1.896.13.636.433 1.221.878 1.69.47.446 1.055.752 1.69.883.635.13 1.294.083 1.902-.143.271.586.702 1.084 1.24 1.438.54.354 1.167.551 1.813.568.647-.016 1.276-.213 1.817-.567s.972-.854 1.245-1.44c.604.225 1.261.272 1.894.14.634-.131 1.218-.437 1.69-.882.445-.47.749-1.055.878-1.69.13-.634.075-1.294-.148-1.9.586-.272 1.084-.702 1.438-1.241.354-.54.551-1.169.569-1.816zM9.662 14.85l-3.429-3.428 1.293-1.302 2.072 2.072 4.4-4.794 1.347 1.246z" />
+              </svg>
+            )}
+          </div>
+          <p className="text-xs text-muted-foreground">{t.handle}</p>
+        </div>
+        {t.tweetUrl ? (
+          <Link
+            href={t.tweetUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group/xlink"
           >
-            <div className="w-full h-full rounded-2xl border border-border bg-gradient-to-br from-muted/50 to-muted/20 backdrop-blur-sm p-4">
-              <div className="flex items-center gap-2 mb-3">
-                <div className="w-8 h-8 rounded-full bg-muted-foreground/20" />
-                <div className="flex-1 space-y-1">
-                  <div className="h-2 w-16 bg-muted-foreground/20 rounded" />
-                  <div className="h-1.5 w-12 bg-muted-foreground/10 rounded" />
-                </div>
-              </div>
-              <div className="space-y-1.5">
-                <div className="h-2 w-full bg-muted-foreground/15 rounded" />
-                <div className="h-2 w-4/5 bg-muted-foreground/15 rounded" />
-                <div className="h-2 w-3/5 bg-muted-foreground/15 rounded" />
-              </div>
-            </div>
-          </motion.div>
-        ))}
+            {xIcon}
+          </Link>
+        ) : (
+          xIcon
+        )}
       </div>
+      {/* Body */}
+      <p className="whitespace-pre-line text-sm leading-relaxed text-foreground/80">
+        {t.text}
+      </p>
+    </div>
+  );
+}
 
-      {/* Main content */}
-      <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
+function EmptyCard() {
+  return (
+    <Link
+      href={TWITTER_INTENT_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group flex h-28 items-center justify-center rounded-2xl border border-dashed border-border/40 transition-colors duration-200 hover:border-foreground/20 hover:bg-muted/30"
+    >
+      <Plus className="h-6 w-6 text-muted-foreground/30 transition-colors duration-200 group-hover:text-foreground/40" />
+    </Link>
+  );
+}
+
+/* ─── Main Component ─── */
+
+export default function WallOfLove() {
+  return (
+    <section className="w-full bg-background py-24 px-4 sm:px-6 md:px-10 lg:px-16">
+      <div className="mx-auto max-w-6xl">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.5 }}
+          className="mb-14 text-center"
         >
-          <h2 className="text-3xl font-medium tracking-tight text-foreground md:text-4xl lg:text-5xl mb-4">
+          <h2 className="text-3xl font-semibold tracking-tight text-foreground md:text-4xl lg:text-5xl">
             Wall of{" "}
-            <span className="relative inline-block">
-              <span className="relative z-10 bg-gradient-to-r from-pink-500 via-rose-500 to-red-500 bg-clip-text text-transparent">
-                Love
-              </span>
-              <motion.span
-                className="absolute -inset-2 bg-gradient-to-r from-pink-500/20 via-rose-500/20 to-red-500/20 blur-xl rounded-full"
-                animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0.8, 0.5] }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              />
+            <span className="bg-gradient-to-r from-pink-500 via-rose-500 to-red-500 bg-clip-text text-transparent">
+              Love
             </span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-md mx-auto">
-            We&apos;d love to feature your experience here
+          <p className="mt-3 text-muted-foreground text-base md:text-lg">
+            Here&apos;s what people are saying about Ruixen UI.
           </p>
         </motion.div>
 
-        {/* Empty state container */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="relative w-full max-w-lg"
-        >
-          {/* Main card */}
-          <div className="relative bg-background/95 backdrop-blur-xl rounded-3xl border border-border/50 p-8 md:p-12">
-            {/* Empty speech bubbles illustration */}
-            <div className="flex justify-center mb-8">
-              <div className="relative">
-                {/* Main bubble */}
+        {/* Masonry grid — 4 columns on lg, 3 on md, 2 on sm, 1 on xs */}
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          {columns.map((col, colIdx) => (
+            <div key={colIdx} className="flex flex-col gap-4">
+              {col.map((cell, rowIdx) => (
                 <motion.div
-                  className="w-24 h-20 rounded-2xl bg-gradient-to-br from-muted to-muted/50 border border-border flex items-center justify-center"
-                  animate={{ scale: [1, 1.02, 1] }}
+                  key={`${colIdx}-${rowIdx}`}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
                   transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    ease: "easeInOut",
+                    duration: 0.35,
+                    delay: colIdx * 0.06 + rowIdx * 0.04,
                   }}
                 >
-                  <MessageCircle className="w-8 h-8 text-muted-foreground/30" />
+                  {cell !== null ? (
+                    <TestimonialCard t={testimonials[cell]!} />
+                  ) : (
+                    <EmptyCard />
+                  )}
                 </motion.div>
-                {/* Bubble tail */}
-                <div className="absolute -bottom-2 left-4 w-4 h-4 bg-muted border-l border-b border-border rotate-[-45deg]" />
-              </div>
+              ))}
             </div>
-
-            {/* Text content */}
-            <div className="text-center space-y-3 mb-8">
-              <h3 className="text-xl font-semibold text-foreground">
-                Be the first to share
-              </h3>
-              <p className="text-muted-foreground">
-                Share your experience with Ruixen UI and get featured here!
-              </p>
-            </div>
-
-            {/* Share on X button */}
-            <div className="flex justify-center">
-              <Link
-                href="https://twitter.com/intent/tweet?text=I%20tried%20%40ruixen_ui%20and%20%5Byour%20experience%5D%20%E2%80%94%20check%20it%20out%20at%20https%3A%2F%2Fruixen.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-black text-white font-medium hover:bg-black/80 transition-all duration-300"
-              >
-                <svg
-                  className="w-5 h-5"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                </svg>
-                <span>Share on X</span>
-              </Link>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Bottom decorative element */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-12 flex items-center gap-2 text-muted-foreground/50"
-        >
-          <div className="h-px w-12 bg-gradient-to-r from-transparent to-border" />
-          <Heart className="w-4 h-4" fill="currentColor" />
-          <div className="h-px w-12 bg-gradient-to-l from-transparent to-border" />
-        </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

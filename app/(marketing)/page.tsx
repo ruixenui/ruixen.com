@@ -79,7 +79,7 @@ export default function Home() {
       <ComponentCategories />
       {/* <VideoShowcaseGrid /> */}
       {/* <InspirationsSection /> */}
-      {/* <WallOfLove /> */}
+      <WallOfLove />
       <FAQSection faqItems={faqItems} className="py-16 md:py-24" />
 
       {/* Twitter CTA */}
