@@ -2,7 +2,7 @@
 
 import { CheckIcon } from "lucide-react";
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 export default function Pricing_Plans() {
   const [billing, setBilling] = useState<"monthly" | "yearly">("monthly");
