@@ -978,32 +978,14 @@ export const docsConfig: DocsConfig = {
           label: "",
           items: [
             {
-              title: "Step Indicator",
-              href: `/docs/components/step-indicator`,
-              items: [],
-              label: "",
-            },
-            {
               title: "Wizard Stepper",
               href: `/docs/components/wizard-stepper`,
               items: [],
               label: "",
             },
             {
-              title: "Progress Tracker",
-              href: `/docs/components/progress-tracker`,
-              items: [],
-              label: "",
-            },
-            {
               title: "Milestone Stepper",
               href: `/docs/components/milestone-stepper`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Nav Stepper",
-              href: `/docs/components/nav-stepper`,
               items: [],
               label: "",
             },
@@ -1055,12 +1037,6 @@ export const docsConfig: DocsConfig = {
             {
               title: "Video Player Pro",
               href: `/docs/components/video-player-pro`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Hover Play Card",
-              href: `/docs/components/hover-play-card`,
               items: [],
               label: "",
             },

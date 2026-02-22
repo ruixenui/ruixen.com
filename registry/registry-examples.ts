@@ -2,21 +2,6 @@ import { type Registry } from "shadcn/registry";
 
 export const examples: Registry["items"] = [
   {
-    name: "step-indicator-demo",
-    type: "registry:example",
-    title: "Step Indicator Demo",
-    description:
-      "Example showing step indicators with numbered circles and checkmarks in horizontal and vertical layouts.",
-    registryDependencies: ["https://ruixen.com/r/step-indicator"],
-    files: [
-      {
-        path: "registry/example/step-indicator-demo.tsx",
-        type: "registry:example",
-        target: "components/step-indicator-demo.tsx",
-      },
-    ],
-  },
-  {
     name: "wizard-stepper-demo",
     type: "registry:example",
     title: "Wizard Stepper Demo",
@@ -32,21 +17,6 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "progress-tracker-demo",
-    type: "registry:example",
-    title: "Progress Tracker Demo",
-    description:
-      "Example showing progress trackers with segmented bars, continuous progress bar, and dot indicator variants.",
-    registryDependencies: ["https://ruixen.com/r/progress-tracker"],
-    files: [
-      {
-        path: "registry/example/progress-tracker-demo.tsx",
-        type: "registry:example",
-        target: "components/progress-tracker-demo.tsx",
-      },
-    ],
-  },
-  {
     name: "milestone-stepper-demo",
     type: "registry:example",
     title: "Milestone Stepper Demo",
@@ -58,21 +28,6 @@ export const examples: Registry["items"] = [
         path: "registry/example/milestone-stepper-demo.tsx",
         type: "registry:example",
         target: "components/milestone-stepper-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "nav-stepper-demo",
-    type: "registry:example",
-    title: "Nav Stepper Demo",
-    description:
-      "Example showing navigable steppers with previous/next buttons and various indicator styles.",
-    registryDependencies: ["https://ruixen.com/r/nav-stepper"],
-    files: [
-      {
-        path: "registry/example/nav-stepper-demo.tsx",
-        type: "registry:example",
-        target: "components/nav-stepper-demo.tsx",
       },
     ],
   },
@@ -933,20 +888,6 @@ export const examples: Registry["items"] = [
         path: "registry/example/video-player-pro-demo.tsx",
         type: "registry:example",
         target: "components/video-player-pro-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "hover-play-card-demo",
-    type: "registry:example",
-    title: "Hover Play Card Demo",
-    description: "Example showing a video card that plays on hover.",
-    registryDependencies: ["https://www.ruixen.com/r/hover-play-card"],
-    files: [
-      {
-        path: "registry/example/hover-play-card-demo.tsx",
-        type: "registry:example",
-        target: "components/hover-play-card-demo.tsx",
       },
     ],
   },

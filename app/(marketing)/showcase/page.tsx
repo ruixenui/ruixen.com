@@ -361,12 +361,6 @@ const showcaseItems: ShowcaseItem[] = [
     imagePath: "steppers/milestone-stepper",
     href: "/docs/components/milestone-stepper",
   },
-  {
-    id: "progress-tracker",
-    title: "Progress Tracker",
-    imagePath: "steppers/progress-tracker",
-    href: "/docs/components/progress-tracker",
-  },
 
   // Tabs
   {

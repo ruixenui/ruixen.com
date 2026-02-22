@@ -232,7 +232,7 @@ export function ComponentCategories() {
   const theme = mounted ? (resolvedTheme ?? "light") : "light";
 
   return (
-    <section className="relative z-10 w-full px-4 sm:px-6 md:px-10 lg:px-16 -mt-16 md:-mt-24 lg:-mt-36 pb-16 md:pb-24">
+    <section className="relative z-10 w-full px-4 sm:px-6 md:px-10 lg:px-16 pt-16 md:pt-24 pb-16 md:pb-24">
       <div className="mx-auto max-w-[1400px]">
         <div className="flex justify-center mb-6 md:mb-10">
           <span className="text-[11px] font-medium uppercase tracking-[0.15em] text-foreground/35">

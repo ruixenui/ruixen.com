@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { FaArrowRight } from "react-icons/fa";
 import { Poppins } from "next/font/google";
 import { cn } from "@/lib/utils";

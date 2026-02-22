@@ -4,6 +4,9 @@
   "type": "registry:ui",
   "title": "Rotating Gradient Right",
   "description": "Rotating conic gradient animation with centered card content",
+  "dependencies": [
+    "lucide-react"
+  ],
   "files": [
     {
       "path": "registry/ruixenui/rotating-gradient-right.tsx",

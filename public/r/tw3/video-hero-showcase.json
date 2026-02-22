@@ -5,7 +5,8 @@
   "title": "Video Hero Showcase",
   "description": "A dynamic hero section featuring video backgrounds and interactive elements",
   "dependencies": [
-    "motion"
+    "motion",
+    "react-icons"
   ],
   "registryDependencies": [
     "button",

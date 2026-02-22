@@ -6,7 +6,7 @@ import {
   AnimatePresence,
   useReducedMotion,
   type PanInfo,
-} from "framer-motion";
+} from "motion/react";
 import { SquareArrowOutUpRight } from "lucide-react";
 import Link from "next/link";
 

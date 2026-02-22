@@ -25,7 +25,7 @@ function Home() {
   return (
     <main className="flex flex-col items-center justify-center w-full overflow-hidden bg-background text-black dark:text-white transition-all duration-300">
       {/* HERO SECTION */}
-      <section className="relative w-full min-h-[calc(100vh-7rem)] flex flex-col items-center justify-center px-4 sm:px-6 md:px-10 lg:px-16">
+      <section className="relative w-full min-h-[calc(100vh-4rem)] flex flex-col items-center justify-center px-4 sm:px-6 md:px-10 lg:px-16 py-10">
         <div className="w-full max-w-[1400px] mx-auto">
           {/* Label */}
           <div
@@ -138,6 +138,44 @@ function Home() {
               Follow @ruixen_ui for new components
             </Link>
           </div>
+        </div>
+
+        {/* Scroll indicator — right below hero content */}
+        <div
+          className="mt-8 flex flex-col items-center"
+          style={{
+            opacity: mounted ? 1 : 0,
+            transition: "opacity 0.6s ease-out 3.6s",
+          }}
+        >
+          <div className="relative h-8 w-px overflow-hidden">
+            <div
+              className="absolute inset-x-0 h-full w-px"
+              style={{
+                background:
+                  "linear-gradient(to bottom, transparent, #3b82f6 40%, #3b82f6 60%, transparent)",
+                animation: "scroll-line 2s ease-in-out infinite",
+              }}
+            />
+          </div>
+          <style jsx>{`
+            @keyframes scroll-line {
+              0% {
+                transform: translateY(-100%);
+                opacity: 0;
+              }
+              30% {
+                opacity: 1;
+              }
+              70% {
+                opacity: 1;
+              }
+              100% {
+                transform: translateY(100%);
+                opacity: 0;
+              }
+            }
+          `}</style>
         </div>
       </section>
     </main>

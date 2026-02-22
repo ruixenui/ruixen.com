@@ -2,27 +2,12 @@ import { type Registry } from "shadcn/registry";
 
 export const ui: Registry["items"] = [
   {
-    name: "step-indicator",
-    type: "registry:ui",
-    title: "Step Indicator",
-    description:
-      "A clean step indicator component showing numbered circles with checkmarks for completed steps. Supports horizontal and vertical orientations.",
-    dependencies: ["lucide-react"],
-    files: [
-      {
-        path: "registry/ruixenui/step-indicator.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/step-indicator.tsx",
-      },
-    ],
-  },
-  {
     name: "wizard-stepper",
     type: "registry:ui",
     title: "Wizard Stepper",
     description:
       "A full-featured wizard stepper with titles and descriptions. Perfect for multi-step forms, checkout flows, and onboarding sequences.",
-    dependencies: ["lucide-react"],
+    dependencies: ["lucide-react", "motion"],
     files: [
       {
         path: "registry/ruixenui/wizard-stepper.tsx",
@@ -32,47 +17,17 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "progress-tracker",
-    type: "registry:ui",
-    title: "Progress Tracker",
-    description:
-      "A progress tracking component with three variants: segmented bars, continuous progress bar, and dot indicators. Shows step X of Y labels.",
-    dependencies: [],
-    files: [
-      {
-        path: "registry/ruixenui/progress-tracker.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/progress-tracker.tsx",
-      },
-    ],
-  },
-  {
     name: "milestone-stepper",
     type: "registry:ui",
     title: "Milestone Stepper",
     description:
       "A vertical timeline-style stepper for showing milestones, order tracking, or project phases. Supports custom icons and multiple variants.",
-    dependencies: ["lucide-react"],
+    dependencies: ["lucide-react", "motion"],
     files: [
       {
         path: "registry/ruixenui/milestone-stepper.tsx",
         type: "registry:ui",
         target: "components/ruixen/milestone-stepper.tsx",
-      },
-    ],
-  },
-  {
-    name: "nav-stepper",
-    type: "registry:ui",
-    title: "Nav Stepper",
-    description:
-      "A navigable stepper with previous/next buttons. Supports numbered, dot, and bar indicator variants with inline or bottom navigation positioning.",
-    dependencies: ["lucide-react"],
-    files: [
-      {
-        path: "registry/ruixenui/nav-stepper.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/nav-stepper.tsx",
       },
     ],
   },
@@ -97,7 +52,7 @@ export const ui: Registry["items"] = [
     title: "Blurred Stagger Text",
     description:
       "An animated text component with staggered blur reveal effect using Framer Motion.",
-    dependencies: ["framer-motion"],
+    dependencies: ["motion"],
     files: [
       {
         path: "components/ui/blurred-stagger-text.tsx",
@@ -319,7 +274,7 @@ export const ui: Registry["items"] = [
     title: "Card Carousel Hero",
     description:
       "An interactive hero section featuring a card carousel with smooth animations",
-    dependencies: ["motion"],
+    dependencies: ["motion", "gsap"],
     registryDependencies: ["button", "card"],
     files: [
       {
@@ -351,7 +306,7 @@ export const ui: Registry["items"] = [
     title: "Video Hero Showcase",
     description:
       "A dynamic hero section featuring video backgrounds and interactive elements",
-    dependencies: ["motion"],
+    dependencies: ["motion", "react-icons"],
     registryDependencies: ["button", "badge"],
     files: [
       {
@@ -426,6 +381,7 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Rotating Gradient Right",
     description: "Rotating conic gradient animation with centered card content",
+    dependencies: ["lucide-react"],
     files: [
       {
         path: "registry/ruixenui/rotating-gradient-right.tsx",
@@ -445,7 +401,7 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Automated Tasks Panel",
     description: "Animated task panel with scrolling automation features",
-    dependencies: ["motion"],
+    dependencies: ["motion", "lucide-react"],
     files: [
       {
         path: "registry/ruixenui/automated-tasks-panel.tsx",
@@ -563,7 +519,7 @@ export const ui: Registry["items"] = [
     title: "Hover Gradient Navbar",
     description:
       "A navigation bar with gradient hover effects and smooth transitions.",
-    dependencies: ["motion"],
+    dependencies: ["motion", "lucide-react"],
     files: [
       {
         path: "registry/ruixenui/hover-gradient-navbar.tsx",
@@ -578,7 +534,7 @@ export const ui: Registry["items"] = [
     title: "Floating Navbar",
     description:
       "A floating navigation bar that appears on scroll with smooth animations.",
-    dependencies: ["motion"],
+    dependencies: ["motion", "lucide-react"],
     files: [
       {
         path: "registry/ruixenui/floating-navbar.tsx",
@@ -593,7 +549,7 @@ export const ui: Registry["items"] = [
     title: "Luma Bar",
     description:
       "A sleek navigation bar with Luma-inspired design and interactions.",
-    dependencies: ["motion"],
+    dependencies: ["motion", "lucide-react"],
     files: [
       {
         path: "registry/ruixenui/luma-bar.tsx",
@@ -623,7 +579,7 @@ export const ui: Registry["items"] = [
     title: "Pricing Plans",
     description:
       "A comprehensive pricing plans component with multiple tiers and features.",
-    dependencies: ["lucide-react"],
+    dependencies: ["motion", "lucide-react"],
     registryDependencies: ["button", "card"],
     files: [
       {
@@ -671,7 +627,7 @@ export const ui: Registry["items"] = [
     title: "Pricing Flow",
     description:
       "An interactive pricing flow with billing toggles and plan selection.",
-    dependencies: ["lucide-react"],
+    dependencies: ["motion", "lucide-react"],
     registryDependencies: ["button", "card"],
     files: [
       {
@@ -687,7 +643,7 @@ export const ui: Registry["items"] = [
     title: "Pricing with User Scaling",
     description:
       "A pricing component with user-based scaling and dynamic pricing calculations.",
-    dependencies: ["lucide-react"],
+    dependencies: ["motion", "lucide-react", "clsx"],
     registryDependencies: ["button", "card", "slider"],
     files: [
       {
@@ -1006,7 +962,7 @@ export const ui: Registry["items"] = [
     title: "Motion File Tree",
     description:
       "An animated file tree component with smooth expand/collapse transitions.",
-    dependencies: ["framer-motion", "lucide-react"],
+    dependencies: ["motion", "lucide-react"],
     files: [
       {
         path: "registry/ruixenui/motion-file-tree.tsx",
@@ -1021,7 +977,7 @@ export const ui: Registry["items"] = [
     title: "Magic Tree",
     description:
       "A magical file tree with sparkle effects and interactive animations.",
-    dependencies: ["framer-motion", "lucide-react"],
+    dependencies: ["motion", "lucide-react"],
     files: [
       {
         path: "registry/ruixenui/magic-tree.tsx",
@@ -1035,7 +991,7 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Tree Node Tooltip",
     description: "A file tree component with tooltip support for each node.",
-    dependencies: ["framer-motion", "lucide-react"],
+    dependencies: ["motion", "lucide-react"],
     registryDependencies: ["tooltip"],
     files: [
       {
@@ -1102,21 +1058,6 @@ export const ui: Registry["items"] = [
         path: "registry/ruixenui/video-player-pro.tsx",
         type: "registry:ui",
         target: "components/ruixen/video-player-pro.tsx",
-      },
-    ],
-  },
-  {
-    name: "hover-play-card",
-    type: "registry:ui",
-    title: "Hover Play Card",
-    description:
-      "Video card that breathes — hover to preview muted, click to play with sound. Spring-animated play icon, glass overlay, and progress line.",
-    dependencies: ["motion"],
-    files: [
-      {
-        path: "registry/ruixenui/hover-play-card.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/hover-play-card.tsx",
       },
     ],
   },
@@ -1279,7 +1220,7 @@ export const ui: Registry["items"] = [
     title: "Animated Number Flip",
     description:
       "A card component that displays numbers with smooth flip animations.",
-    dependencies: ["framer-motion"],
+    dependencies: ["motion"],
     registryDependencies: ["card"],
     files: [
       {
@@ -2067,7 +2008,7 @@ export const ui: Registry["items"] = [
     title: "Rising Glow",
     description:
       "Text wrapper with animated rising particles and soft glow effect.",
-    dependencies: [],
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/ruixenui/rising-glow.tsx",
@@ -2332,7 +2273,7 @@ export const ui: Registry["items"] = [
     title: "Card Stack",
     description:
       "An interactive 3D card stack carousel with fan-out animation, drag gestures, and auto-advance support.",
-    dependencies: ["framer-motion", "lucide-react"],
+    dependencies: ["motion", "lucide-react"],
     files: [
       {
         path: "registry/ruixenui/card-stack.tsx",

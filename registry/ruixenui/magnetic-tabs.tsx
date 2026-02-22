@@ -136,10 +136,9 @@ export function MagneticTabs({
       const idx = items.findIndex((t) => t.value === value);
       const btn = tabRefs.current[idx];
       if (!btn) return;
-      const barRect = bar.getBoundingClientRect();
-      const btnRect = btn.getBoundingClientRect();
-      const x = btnRect.left - barRect.left;
-      const w = btnRect.width;
+      // Use offsetLeft/offsetWidth — immune to ancestor CSS transforms (e.g. scale)
+      const x = btn.offsetLeft;
+      const w = btn.offsetWidth;
       if (!measured.current) {
         pillX.jump(x);
         pillW.jump(w);

@@ -5,7 +5,8 @@
   "title": "Card Carousel Hero",
   "description": "An interactive hero section featuring a card carousel with smooth animations",
   "dependencies": [
-    "motion"
+    "motion",
+    "gsap"
   ],
   "registryDependencies": [
     "card"
