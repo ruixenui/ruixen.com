@@ -627,10 +627,6 @@ export const videoPlayersPreview: ComponentPreviewMap = {
     light: `/preview_images/video-players/video-player-pro-light.png`,
     dark: `/preview_images/video-players/video-player-pro-dark.png`,
   },
-  "hover-play-card": {
-    light: `/preview_images/video-players/hover-play-card-light.png`,
-    dark: `/preview_images/video-players/hover-play-card-dark.png`,
-  },
 };
 
 /**
@@ -746,25 +742,13 @@ export const paginationPreview: ComponentPreviewMap = {
  * Path: /docs/components/[slug]
  */
 export const stepperPreview: ComponentPreviewMap = {
-  "step-indicator": {
-    light: `/preview_images/steppers/step-indicator-light.png`,
-    dark: `/preview_images/steppers/step-indicator-dark.png`,
-  },
   "wizard-stepper": {
     light: `/preview_images/steppers/wizard-stepper-light.png`,
     dark: `/preview_images/steppers/wizard-stepper-dark.png`,
   },
-  "progress-tracker": {
-    light: `/preview_images/steppers/progress-tracker-light.png`,
-    dark: `/preview_images/steppers/progress-tracker-dark.png`,
-  },
   "milestone-stepper": {
     light: `/preview_images/steppers/milestone-stepper-light.png`,
     dark: `/preview_images/steppers/milestone-stepper-dark.png`,
-  },
-  "nav-stepper": {
-    light: `/preview_images/steppers/nav-stepper-light.png`,
-    dark: `/preview_images/steppers/nav-stepper-dark.png`,
   },
 };
 
