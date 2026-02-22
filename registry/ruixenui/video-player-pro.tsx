@@ -748,7 +748,14 @@ export function VideoPlayerPro({
                 <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
                   {/* Speed pills */}
                   <div
-                    style={{ display: "flex", gap: 1, position: "relative" }}
+                    style={{
+                      display: "flex",
+                      gap: 0,
+                      position: "relative",
+                      background: "rgba(255,255,255,0.06)",
+                      borderRadius: 8,
+                      padding: 2,
+                    }}
                   >
                     {SPEEDS.map((s) => (
                       <button
@@ -761,20 +768,21 @@ export function VideoPlayerPro({
                         }}
                         style={{
                           position: "relative",
-                          fontSize: 10,
+                          fontSize: 11,
                           fontWeight: 500,
                           fontVariantNumeric: "tabular-nums",
-                          padding: "3px 7px",
-                          borderRadius: 5,
+                          padding: "4px 8px",
+                          borderRadius: 6,
                           border: "none",
                           background: "transparent",
                           color:
                             speed === s
-                              ? "rgba(255,255,255,0.85)"
-                              : "rgba(255,255,255,0.25)",
+                              ? "rgba(255,255,255,0.9)"
+                              : "rgba(255,255,255,0.3)",
                           cursor: "pointer",
                           zIndex: 1,
-                          transition: "color 0.12s",
+                          transition: "color 0.15s",
+                          lineHeight: 1,
                         }}
                       >
                         {speed === s && (
@@ -783,8 +791,8 @@ export function VideoPlayerPro({
                             style={{
                               position: "absolute",
                               inset: 0,
-                              background: "rgba(255,255,255,0.1)",
-                              borderRadius: 5,
+                              background: "rgba(255,255,255,0.12)",
+                              borderRadius: 6,
                               zIndex: -1,
                             }}
                             transition={{
@@ -794,7 +802,7 @@ export function VideoPlayerPro({
                             }}
                           />
                         )}
-                        {s}×
+                        {s}x
                       </button>
                     ))}
                   </div>
