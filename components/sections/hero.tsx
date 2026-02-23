@@ -148,7 +148,7 @@ function Home() {
             transition: "opacity 0.6s ease-out 3.6s",
           }}
         >
-          <div className="relative h-8 w-px overflow-hidden">
+          <div className="relative h-16 w-px overflow-hidden">
             <div
               className="absolute inset-x-0 h-full w-px"
               style={{

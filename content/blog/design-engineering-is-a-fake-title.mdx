@@ -1,0 +1,141 @@
+---
+title: "Design engineering is a fake title until you hit these 5 problems"
+description: "Everyone's a design engineer until the spring interrupts, height: auto won't animate, and transforms eat your z-index. Here are the problems that separate the title from the work."
+image: https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/gradients/shade_shiters/shade-shifters-01.png
+author: Sri Somanaath
+tag: Design Engineering
+publishedOn: 2026-02-23T10:00:00.000Z
+featured: false
+---
+
+"Design engineer" is having a moment. It's in bios, job listings, conference talks. It sounds good. It implies you do both. Ship pixels _and_ code. The full stack of feel.
+
+But most people using the title haven't hit the problems that define it. Not the fun problems — the ones where CSS breaks in ways the spec doesn't warn you about, where the browser lies to you, and where the thing that looks trivial in Figma takes three days and a ResizeObserver hack.
+
+Here are five. If you've solved them, you've earned the title. If you haven't seen them yet, you will.
+
+---
+
+## 1. Spring interrupts break your brain
+
+You add a spring animation to a toggle. Stiffness 400, damping 30. It feels great. Ship it.
+
+Then a user clicks the toggle mid-animation. With CSS transitions, the element jumps — it starts a new fixed-duration tween from wherever it is, velocity zero. Ugly, but predictable.
+
+With springs, it's worse. The element is carrying velocity from the first animation. If you naively restart the spring, you get a discontinuity — a visible jerk where the velocity changes direction instantly. No physical object does this.
+
+```tsx
+// The problem: user clicks toggle while it's still moving
+// Frame 1: mass moving right at 800px/s
+// Frame 2: new spring target is left — velocity should carry, not reset
+
+// Wrong: spring restarts from current position, velocity = 0
+// Right: spring inherits current velocity, decelerates, reverses naturally
+```
+
+The fix is velocity-aware animation. Framer Motion and motion/react handle this internally — each spring simulation carries forward the previous frame's velocity when the target changes. But the moment you build a custom gesture (a drawer, a swipe-to-dismiss, a drag-to-reorder), you're managing velocity state yourself. And when two competing springs fight over the same element? Welcome to your weekend.
+
+The deeper issue: duration-based animation doesn't have this problem because it has no concept of velocity. Springs are better _because_ they model physics, but physics is stateful. You can't fire-and-forget a spring the way you can a CSS transition.
+
+---
+
+## 2. `height: auto` is still broken in 2026
+
+You have a collapsible section. The content inside has variable height. You want it to animate open smoothly. This is the most basic interaction pattern on the web and it fundamentally does not work in CSS.
+
+```css
+/* This does nothing. auto is not interpolatable. */
+.panel {
+  transition: height 0.3s ease;
+  height: 0;
+}
+.panel.open {
+  height: auto;
+}
+```
+
+The browser can't interpolate between `0` and `auto` because `auto` isn't a number — it's a layout instruction. So you get a jump cut.
+
+The workarounds are all bad in different ways. You can measure the content with `scrollHeight` and set an explicit pixel value, but that breaks if the content changes while the panel is open. You can use `max-height: 9999px`, but the timing is wrong because the animation runs over the full 9999px range while the visible change is only 200px. You can use a ResizeObserver to track content changes, but that triggers layout recalculation on every frame.
+
+CSS `interpolate-size: allow-keywords` landed in Chrome 129. It lets you transition to and from `auto`. But as of February 2026, Firefox and Safari don't support it. So you're still writing JavaScript to animate a div open.
+
+Every design engineer has a `useAnimatedHeight` hook somewhere in their codebase. It's always 40+ lines. It always has an edge case with padding.
+
+---
+
+## 3. `transform` silently eats your z-index
+
+You add `transform: translateZ(0)` to an element to force GPU compositing. Or `will-change: transform` for a smooth animation. Suddenly, a dropdown menu renders behind a card three sections down. A fixed-position navbar scrolls with the page. A modal backdrop has a hole in it.
+
+The reason: any `transform`, `filter`, `backdrop-filter`, `perspective`, or `will-change` property creates a new **stacking context**. Inside that context, `z-index` values only compete with siblings in the same context. Your `z-index: 9999` modal is trapped inside a `z-index: 1` container that has `transform: scale(1)` for a hover animation you forgot about.
+
+```tsx
+// This breaks:
+<div style={{ transform: "scale(1)" }}>       {/* new stacking context */}
+  <Dropdown style={{ zIndex: 9999 }} />        {/* trapped inside */}
+</div>
+<div style={{ zIndex: 2 }}>                    {/* renders on top */}
+  <Card />
+</div>
+```
+
+There is no warning. No console error. DevTools won't flag it. You just see a dropdown rendering behind a card and spend 45 minutes in the Elements panel before you find the `will-change` on a grandparent three levels up.
+
+This compounds with animation libraries. Framer Motion adds `transform` to every `motion.div` for layout animations. Now every animated element is a potential stacking context bomb. You learn to structure your DOM around it — portaling modals to the document root, avoiding `position: fixed` inside animated containers, never nesting interactive layers inside transformed parents.
+
+It's not a bug. It's the spec working exactly as designed. That's what makes it insidious.
+
+---
+
+## 4. Figma can't spec the thing you're building
+
+A designer hands you a Figma file with a drawer interaction. There's a video prototype attached: the drawer slides up, the background dims, the user scrolls inside it, and it dismisses on a downward swipe.
+
+What the video doesn't tell you:
+
+- What happens when the user swipes down but their finger is still touching? Does the drawer follow the finger or snap to a threshold?
+- What's the velocity threshold for a dismiss vs. a snap-back?
+- If the user is scrolling content inside the drawer and hits the top, does the scroll momentum transfer to a dismiss gesture?
+- What happens when the iOS keyboard opens and pushes the drawer up? Does it resize? Reposition? What about the Android virtual keyboard, which behaves differently?
+- If two fingers touch the drawer simultaneously, which one controls the drag?
+
+Emil Kowalski built [Vaul](https://github.com/emilkowalski/vaul), one of the best drawer components on the web. His [build log](https://emilkowal.ski/ui/building-a-drawer-component) documents every one of these edge cases. The scroll-to-drag handoff alone required a 100ms debounce to prevent high-velocity scrolls from accidentally dismissing the drawer. The Safari address bar doesn't support CSS transitions or semi-transparent colors, so he pre-calculated 50 interpolated color steps with bezier easing to match the drawer's animation curve.
+
+None of this was in any Figma file. It can't be. Figma is a spatial tool, not a behavioral one. The gap between the design and the implementation _is_ the job. A design engineer is the person who fills that gap without filing 30 tickets back to the designer asking "what should happen when...?"
+
+---
+
+## 5. You shipped beautiful animations that make people sick
+
+This one hurts the most because you find out late.
+
+You build a page with parallax scrolling, scale transitions on route changes, and a card stack that fans out with spring physics. It's the best work you've done. Then you learn that over 35% of adults over 40 have experienced vestibular dysfunction — the inner ear condition that makes large-scale motion on screens trigger nausea, dizziness, and migraines.
+
+`prefers-reduced-motion` exists. But "reduced motion" doesn't mean "no motion." Removing all animation breaks spatial relationships. If a modal fades in instead of sliding from its trigger, the user loses context about where it came from.
+
+The real work is building two motion systems: one with full physics for users who want it, and one with restrained alternatives — crossfades instead of slides, opacity instead of scale, instant layout shifts instead of spring-animated repositions — that preserve meaning without triggering symptoms.
+
+```tsx
+const prefersReduced = useReducedMotion();
+
+// Don't just disable animation — replace it
+transition={prefersReduced
+  ? { duration: 0.15, ease: "easeOut" }                // gentle fade
+  : { type: "spring", stiffness: 400, damping: 30 }    // full physics
+}
+```
+
+Rauno Freiberg wrote one of the most-shared articles on interaction design — [Invisible Details of Interaction Design](https://rauno.me/craft/interaction-design). The top Hacker News comment pointed out it didn't respect `prefers-reduced-motion`. An article about interaction craft, undermined by its own implementation.
+
+That's the job. You don't get to just make things feel good. You have to make them feel good for everyone, including the people your animations hurt.
+
+---
+
+## The title isn't the point
+
+None of these problems are glamorous. They don't make good demos. You can't show "I fixed a stacking context bug" in a portfolio the way you can show a glossy animation reel.
+
+But they're the problems that separate people who build production interfaces from people who build prototypes. The title "design engineer" is just words until you've debugged a spring interrupt at 2am, written your third `useAnimatedHeight` hook, or portaled a dropdown out of a transformed parent for the fourth time this quarter.
+
+The work is in the gaps. It always has been.
