@@ -177,9 +177,7 @@ function WizardStepItem({
 
       <div
         className={cn(
-          orientation === "horizontal"
-            ? "mt-2.5 max-w-[100px]"
-            : "pt-0.5 pb-8",
+          orientation === "horizontal" ? "mt-2.5 max-w-[100px]" : "pt-0.5 pb-8",
         )}
       >
         <p

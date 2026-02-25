@@ -18,11 +18,7 @@ export default function WizardStepperDemo() {
 
   return (
     <div className="w-full max-w-xl mx-auto p-8">
-      <WizardStepper
-        steps={steps}
-        currentStep={step}
-        onStepChange={setStep}
-      />
+      <WizardStepper steps={steps} currentStep={step} onStepChange={setStep} />
       <div className="mt-8 flex justify-center gap-3">
         <button
           onClick={() => setStep((s) => Math.max(s - 1, 0))}

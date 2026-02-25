@@ -1,0 +1,95 @@
+---
+title: Profile Card
+date: 2026-02-25
+description: A glassmorphic profile card with two variants — full-bleed image overlay and split half layout. Includes follow button, favorite toggle, and verified badge.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="profile-card-demo" category="cards" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/profile-card"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="profile-card" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { ProfileCard } from "@/components/ruixen/profile-card";
+
+export default function App() {
+  return (
+    <ProfileCard
+      variant="full"
+      image="/photo.jpg"
+      name="Mia Tanaka"
+      bio="Visual storyteller blending minimalism with bold aesthetics."
+      followers={1847}
+      posts={124}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop         | Type                    | Default | Description                              |
+| ------------ | ----------------------- | ------- | ---------------------------------------- |
+| `variant`    | `"full" \| "half"`      | -       | Card layout variant (required)           |
+| `image`      | `string`                | -       | Profile image URL (required)             |
+| `name`       | `string`                | -       | Display name (required)                  |
+| `bio`        | `string`                | -       | Short bio or description (required)      |
+| `followers`  | `number`                | -       | Follower count (required)                |
+| `posts`      | `number`                | -       | Post count (required)                    |
+| `verified`   | `boolean`               | `true`  | Show verified badge                      |
+| `onFollow`   | `() => void`            | -       | Callback when follow button is clicked   |
+| `onFavorite` | `(favorited: boolean) => void` | - | Callback when favorite is toggled        |
+| `className`  | `string`                | -       | Additional CSS classes for the outer shell |
+
+## Variants
+
+### Full
+
+Full-bleed image with a water-glass blur overlay at the bottom. Name, bio, stats, and follow button sit on top of the image with a frosted backdrop. Best for hero-style profile displays.
+
+### Half
+
+Split layout with the image taking ~67% and a clean content area below. Uses theme-aware colors for text and borders. Better suited for lists, grids, or dashboard contexts.
+
+## Features
+
+- **Glassmorphic Blur**: Full variant uses a gradient mask with `backdrop-filter: blur(64px) saturate(1.8)` for a water-glass effect
+- **Favorite Toggle**: Heart icon with press-scale feedback and rose color fill state
+- **Verified Badge**: Twitter-style blue checkmark with white stroke
+- **Hover Zoom**: Subtle 3% image scale on card hover with 500ms ease-out
+- **Press Feedback**: Follow and favorite buttons use `scale(0.96)` / `scale(0.92)` active states
+- **Dark Mode**: Half variant fully adapts with `dark:` tokens for background, text, and borders
+- **Rounded Shell**: 40px outer radius with 28px inner content radius for a soft, modern feel

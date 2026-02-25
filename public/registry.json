@@ -2911,6 +2911,22 @@
       ]
     },
     {
+      "name": "profile-card",
+      "type": "registry:ui",
+      "title": "Profile Card",
+      "description": "A glassmorphic profile card with two variants — full-bleed image overlay and split half layout. Includes follow button, favorite toggle, and verified badge.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/profile-card.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/profile-card.tsx"
+        }
+      ]
+    },
+    {
       "name": "wizard-stepper-demo",
       "type": "registry:example",
       "title": "Wizard Stepper Demo",
@@ -5627,6 +5643,22 @@
           "path": "registry/example/scramble-text-demo.tsx",
           "type": "registry:example",
           "target": "components/scramble-text-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "profile-card-demo",
+      "type": "registry:example",
+      "title": "Profile Card Demo",
+      "description": "Example showing both full and half variants of the glassmorphic profile card.",
+      "registryDependencies": [
+        "https://ruixen.com/r/profile-card"
+      ],
+      "files": [
+        {
+          "path": "registry/example/profile-card-demo.tsx",
+          "type": "registry:example",
+          "target": "components/profile-card-demo.tsx"
         }
       ]
     },

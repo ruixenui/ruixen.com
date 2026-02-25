@@ -117,7 +117,11 @@ function MilestoneItem({
       <div
         className={cn(
           "flex-1 min-w-0",
-          variant === "compact" ? "pb-3" : variant === "detailed" ? "pb-8" : "pb-6",
+          variant === "compact"
+            ? "pb-3"
+            : variant === "detailed"
+              ? "pb-8"
+              : "pb-6",
         )}
       >
         <div className="flex items-start justify-between gap-4">

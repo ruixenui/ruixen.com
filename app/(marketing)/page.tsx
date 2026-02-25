@@ -12,7 +12,7 @@ export default function Home() {
       id: "installation",
       question: "How do I add a component to my project?",
       answer:
-        "Run npx shadcn@latest add with the component URL — for example: npx shadcn@latest add \"https://ruixen.com/r/invert-tabs\". The CLI copies the source file into your project with dependencies resolved. No package to install, no provider to wrap.",
+        'Run npx shadcn@latest add with the component URL — for example: npx shadcn@latest add "https://ruixen.com/r/invert-tabs". The CLI copies the source file into your project with dependencies resolved. No package to install, no provider to wrap.',
     },
     {
       id: "animations",
@@ -24,7 +24,7 @@ export default function Home() {
       id: "tailwind",
       question: "Which Tailwind version do I need?",
       answer:
-        "Both are supported. Components default to Tailwind v4. For v3, swap the registry prefix: npx shadcn@latest add \"https://ruixen.com/r/tw3/invert-tabs\". Your selection persists across the docs.",
+        'Both are supported. Components default to Tailwind v4. For v3, swap the registry prefix: npx shadcn@latest add "https://ruixen.com/r/tw3/invert-tabs". Your selection persists across the docs.',
     },
     {
       id: "primitives",

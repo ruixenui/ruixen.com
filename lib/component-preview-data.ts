@@ -205,6 +205,10 @@ export const cardsPreview: ComponentPreviewMap = {
     light: `/preview_images/cards/phone-mockup-card-light.png`,
     dark: `/preview_images/cards/phone-mockup-card-dark.png`,
   },
+  "profile-card": {
+    light: `/preview_images/cards/profile-card-light.png`,
+    dark: `/preview_images/cards/profile-card-dark.png`,
+  },
 };
 
 /**

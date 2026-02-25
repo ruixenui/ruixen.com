@@ -507,6 +507,12 @@ export const docsConfig: DocsConfig = {
               items: [],
               label: "New",
             },
+            {
+              title: "Profile Card",
+              href: `/docs/components/profile-card`,
+              items: [],
+              label: "New",
+            },
           ],
         },
         {
