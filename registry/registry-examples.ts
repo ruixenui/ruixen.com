@@ -2507,4 +2507,19 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "profile-card-demo",
+    type: "registry:example",
+    title: "Profile Card Demo",
+    description:
+      "Example showing both full and half variants of the glassmorphic profile card.",
+    registryDependencies: ["https://ruixen.com/r/profile-card"],
+    files: [
+      {
+        path: "registry/example/profile-card-demo.tsx",
+        type: "registry:example",
+        target: "components/profile-card-demo.tsx",
+      },
+    ],
+  },
 ];

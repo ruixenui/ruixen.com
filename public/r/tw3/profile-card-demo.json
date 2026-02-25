@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "profile-card-demo",
+  "type": "registry:example",
+  "title": "Profile Card Demo",
+  "description": "Example showing both full and half variants of the glassmorphic profile card.",
+  "registryDependencies": [
+    "https://ruixen.com/r/profile-card"
+  ],
+  "files": [
+    {
+      "path": "registry/example/profile-card-demo.tsx",
+      "content": "\"use client\";\n\nimport { ProfileCard } from \"@/registry/ruixenui/profile-card\";\n\nexport default function ProfileCardDemo() {\n  return (\n    <div className=\"flex flex-col sm:flex-row items-center gap-6 sm:gap-8 w-full sm:justify-center py-8\">\n      {/* Full variant */}\n      <div className=\"flex flex-col items-center gap-3 w-[280px] max-w-full\">\n        <ProfileCard\n          variant=\"full\"\n          image=\"https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&h=800&fit=crop\"\n          name=\"Mia Tanaka\"\n          bio=\"Visual storyteller blending minimalism with bold aesthetics.\"\n          followers={1847}\n          posts={124}\n        />\n        <span className=\"text-[11px] font-mono text-neutral-400 dark:text-neutral-600 tracking-wide\">\n          variant=&quot;full&quot;\n        </span>\n      </div>\n\n      {/* Half variant */}\n      <div className=\"flex flex-col items-center gap-3 w-[280px] max-w-full\">\n        <ProfileCard\n          variant=\"half\"\n          image=\"https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&h=800&fit=crop\"\n          name=\"Mia Tanaka\"\n          bio=\"Visual storyteller blending minimalism with bold aesthetics.\"\n          followers={1847}\n          posts={124}\n        />\n        <span className=\"text-[11px] font-mono text-neutral-400 dark:text-neutral-600 tracking-wide\">\n          variant=&quot;half&quot;\n        </span>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/profile-card-demo.tsx"
+    }
+  ]
+}

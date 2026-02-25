@@ -2926,6 +2926,23 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "profile-card": {
+    name: "profile-card",
+    description: "A glassmorphic profile card with two variants — full-bleed image overlay and split half layout. Includes follow button, favorite toggle, and verified badge.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/ruixenui/profile-card.tsx",
+      type: "registry:ui",
+      target: "components/ruixen/profile-card.tsx"
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/profile-card.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
   "wizard-stepper-demo": {
     name: "wizard-stepper-demo",
     description: "Example showing wizard steppers with titles and descriptions for multi-step forms and checkout flows.",
@@ -5811,6 +5828,23 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/scramble-text-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "profile-card-demo": {
+    name: "profile-card-demo",
+    description: "Example showing both full and half variants of the glassmorphic profile card.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/profile-card"],
+    files: [{
+      path: "registry/example/profile-card-demo.tsx",
+      type: "registry:example",
+      target: "components/profile-card-demo.tsx"
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/profile-card-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),

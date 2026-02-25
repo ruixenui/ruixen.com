@@ -2676,4 +2676,19 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "profile-card",
+    type: "registry:ui",
+    title: "Profile Card",
+    description:
+      "A glassmorphic profile card with two variants — full-bleed image overlay and split half layout. Includes follow button, favorite toggle, and verified badge.",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/profile-card.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/profile-card.tsx",
+      },
+    ],
+  },
 ];

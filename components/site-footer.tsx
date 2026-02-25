@@ -130,8 +130,15 @@ export default function SiteFooter() {
         </div>
 
         <div className="border-t border-black/10 dark:border-black/10 pt-4 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <span>© {new Date().getFullYear()} Ruixen UI. All rights reserved.</span>
-          <a href="https://twitter.com/ruixen_ui" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
+          <span>
+            © {new Date().getFullYear()} Ruixen UI. All rights reserved.
+          </span>
+          <a
+            href="https://twitter.com/ruixen_ui"
+            target="_blank"
+            rel="noreferrer"
+            className="text-muted-foreground hover:text-foreground transition-colors"
+          >
             Follow the build &rarr; @ruixen_ui
           </a>
         </div>
