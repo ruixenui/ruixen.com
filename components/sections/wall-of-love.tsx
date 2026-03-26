@@ -2,6 +2,7 @@
 
 import { motion } from "motion/react";
 import { Plus } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 /* ─── Testimonial data ─── */
@@ -22,7 +23,7 @@ const testimonials: Testimonial[] = [
     avatar: "x",
     avatarUrl:
       "https://pbs.twimg.com/profile_images/458868924876984320/lgte0MOh_normal.jpeg",
-    text: "ruixen.com\n\u2B50 84 stars\n\nD\u00E9couvrez ce projet GitHub int\u00E9ressant !\n#GitHub",
+    text: "ruixen.com\n⭐ 84 stars\n\nDécouvrez ce projet GitHub intéressant !\n#GitHub",
     tweetUrl: "https://x.com/clxymox/status/2012959714628239712",
   },
   {
@@ -31,7 +32,7 @@ const testimonials: Testimonial[] = [
     avatar: "G",
     avatarUrl:
       "https://pbs.twimg.com/profile_images/2004028412730789892/4IFUGOl2_normal.jpg",
-    text: "170+ \u514D\u8D39 SHADCN \u7EC4\u4EF6\uFF0C\u5B8C\u5168\u5F00\u6E90\u3002\n\nRuixen UI \u7EC4\u4EF6\u5E93\u754C\u7684\u9690\u85CF\u5B9D\u77F3\uFF0C\u4E00\u4E2A\u73B0\u4EE3\u3001\u7075\u6D3B\u3001\u53EF\u5B9A\u5236\u7684 React UI \u7EC4\u4EF6\u5E93\uFF0C\u4E3B\u6253\u5F39\u7C27\u7269\u7406\u52A8\u753B\u548C\u89E6\u89C9\u53CD\u9988\uFF0C\u8BA9\u7F51\u9875\u7EC4\u4EF6\u52A8\u8D77\u6765\u50CF\u771F\u5B9E\u7269\u4F53\u3002",
+    text: "170+ 免费 SHADCN 组件，完全开源。\n\nRuixen UI 组件库界的隐藏宝石，一个现代、灵活、可定制的 React UI 组件库，主打弹簧物理动画和触觉反馈，让网页组件动起来像真实物体。",
     tweetUrl: "https://x.com/QingQ77/status/2024805732055392349",
   },
   {
@@ -40,7 +41,7 @@ const testimonials: Testimonial[] = [
     avatar: "j",
     avatarUrl:
       "https://pbs.twimg.com/profile_images/2016705443394179073/qy6mbrsL_normal.png",
-    text: "\u5F39\u7C27\u52A8\u753B\u52A0\u89E6\u89C9\u53CD\u9988\u8FD9\u5957\u7EC4\u5408\uFF0Cshadcn\u751F\u6001\u91CC\u786E\u5B9E\u6CA1\u51E0\u4E2A\u5728\u505A\u3002170+\u7EC4\u4EF6\u514D\u8D39\u5F00\u6E90\uFF0C\u5BF9\u6BD4\u4ED8\u8D39ui\u5E93\u5212\u5F97\u6765\u3002",
+    text: "弹簧动画加触觉反馈这套组合，shadcn生态里确实没几个在做。170+组件免费开源，对比付费ui库划得来。",
     tweetUrl: "https://x.com/jaimesolis/status/2024806728081027132",
   },
   {
@@ -52,16 +53,87 @@ const testimonials: Testimonial[] = [
     text: "@ruixen_ui stands out because it feels built with intention, not just styled to look good.",
     tweetUrl: "https://x.com/sandeep_v1404/status/2025562023577457147",
   },
+  {
+    name: "Simon 何思敏",
+    handle: "@HoSieMun",
+    avatar: "S",
+    avatarUrl:
+      "https://pbs.twimg.com/profile_images/1966488654089797632/SeN8cXwv_normal.jpg",
+    text: "That looks like a fantastic find! The Rising Glow component from Ruixen UI is perfect for adding a high-end feel.",
+    tweetUrl: "https://x.com/HoSieMun/status/2008883470991544746",
+  },
+  {
+    name: "Kukil Kashyap Borgohain",
+    handle: "@kukil_knp2",
+    avatar: "K",
+    avatarUrl:
+      "https://pbs.twimg.com/profile_images/1188858900646248448/l-nitStL_normal.jpg",
+    text: "Just checked the site… this is way bigger than I expected.",
+    tweetUrl: "https://x.com/kukil_knp2/status/1996562163763401042",
+  },
+  {
+    name: "Rich Manyorock",
+    handle: "@Richmanyorock",
+    avatar: "R",
+    avatarUrl:
+      "https://pbs.twimg.com/profile_images/2011465800516030464/T4JLl3t7_normal.jpg",
+    text: "This UI looks clean",
+    tweetUrl: "https://x.com/Richmanyorock/status/2008537569353757053",
+  },
+  {
+    name: "Mr. Block_0x",
+    handle: "@sagaranand1212",
+    avatar: "M",
+    avatarUrl:
+      "https://pbs.twimg.com/profile_images/2036889604213927936/wcibMcIG_normal.jpg",
+    text: "Custom colors + particle count\nBuilt for real UI, not demos",
+    tweetUrl: "https://x.com/sagaranand1212/status/2008880756781887918",
+  },
+  {
+    name: "Blessing Ella",
+    handle: "@blessing_e59788",
+    avatar: "B",
+    avatarUrl:
+      "https://pbs.twimg.com/profile_images/1885706037308628993/OjAqr4SF_normal.jpg",
+    text: "Clean",
+    tweetUrl: "https://x.com/blessing_e59788/status/2008545028202000814",
+  },
+  {
+    name: "na",
+    handle: "@pomufgd",
+    avatar: "n",
+    avatarUrl:
+      "https://pbs.twimg.com/profile_images/2013567617651425281/YnlJLJUU_normal.jpg",
+    text: "アクセシビリティを重視した、UIライブラリかあ\nあとで試したい",
+    tweetUrl: "https://x.com/pomufgd/status/1973951406102159742",
+  },
+  {
+    name: "Byron Jacobs",
+    handle: "@byronpixel",
+    avatar: "B",
+    avatarUrl:
+      "https://pbs.twimg.com/profile_images/2009873016377757696/OU5pg0vH_normal.jpg",
+    text: "These look incredibly clean and well-considered. The focus on real layouts and clear hierarchy is exactly what developers need. Great work on the open-source release.",
+    tweetUrl: "https://x.com/byronpixel/status/2011205376746872871",
+  },
+  {
+    name: "Rahul Krishna",
+    handle: "@RahulKrishnaa28",
+    avatar: "R",
+    avatarUrl:
+      "https://pbs.twimg.com/profile_images/2008606249030721536/2S1LpGJa_normal.jpg",
+    text: "You can tell the components are well thought out, not just designed to look good but to actually be useful in production.",
+  },
 ];
 
 /* ─── Layout: which cells are testimonials vs empty ─── */
 
 // 4 columns × varying rows.  `null` = empty "+" card, number = testimonial index
 const columns: (number | null)[][] = [
-  [0, null, null, null],
-  [null, 1, null, null],
-  [null, null, 2, null],
-  [3, null, null, null],
+  [0, 4, 8, null],
+  [1, 5, 9, null],
+  [null, 2, 6, 10],
+  [3, 7, 11, null],
 ];
 
 /* ─── Twitter share intent ─── */
@@ -93,10 +165,13 @@ function TestimonialCard({ t }: { t: Testimonial }) {
       {/* Header */}
       <div className="mb-3 flex items-center gap-3">
         {t.avatarUrl ? (
-          <img
+          <Image
             src={t.avatarUrl}
             alt={t.name}
+            width={40}
+            height={40}
             className="h-10 w-10 shrink-0 rounded-full object-cover"
+            unoptimized
           />
         ) : (
           <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-muted text-sm font-semibold text-muted-foreground">

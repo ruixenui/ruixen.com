@@ -487,6 +487,21 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "pricing-cards-tooltip-demo",
+    type: "registry:example",
+    title: "Pricing Cards with Tooltips Demo",
+    description:
+      "Example of a clean two-column pricing comparison with feature tooltips",
+    registryDependencies: ["https://www.ruixen.com/r/pricing-cards-tooltip"],
+    files: [
+      {
+        path: "registry/example/pricing-cards-tooltip-demo.tsx",
+        type: "registry:example",
+        target: "components/pricing-cards-tooltip-demo.tsx",
+      },
+    ],
+  },
+  {
     name: "slide-to-delete-button-demo",
     type: "registry:example",
     title: "Slide To Delete Button Demo",

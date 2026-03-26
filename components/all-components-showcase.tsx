@@ -372,12 +372,66 @@ function SidebarToc({
 }
 
 // ---------------------------------------------------------------------------
+// New Arrivals Section
+// ---------------------------------------------------------------------------
+
+function NewArrivalsSection({ items }: { items: FlatItem[] }) {
+  const colCount = useColumnCount();
+  const flatList: FlatEntry[] = items.map((item) => ({ item }));
+  const columns = React.useMemo(
+    () => distributeColumns(flatList, colCount),
+    [flatList, colCount],
+  );
+
+  if (items.length === 0) return null;
+
+  return (
+    <div className="mb-16">
+      <div className="mb-6 flex items-center gap-3">
+        <h2 className="text-2xl font-semibold tracking-tight">New Arrivals</h2>
+        <span className="rounded-md bg-blue-500 px-2.5 py-0.5 text-xs font-medium text-white">
+          {items.length} new
+        </span>
+      </div>
+      <div className="flex gap-5">
+        {columns.map((colItems, colIdx) => (
+          <div key={colIdx} className="flex-1 min-w-0">
+            {colItems.map((entry) => (
+              <LazyPreview key={entry.item.name} item={entry.item} />
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
 // Main showcase (all categories)
 // ---------------------------------------------------------------------------
 
 export function AllComponentsShowcase() {
   const categories = React.useMemo(() => getCategories(), []);
   const flatList = React.useMemo(() => buildFlatList(categories), [categories]);
+
+  // Extract "New" items for the New Arrivals section
+  const newArrivals = React.useMemo(() => {
+    const allItems: FlatItem[] = [];
+    for (const cat of categories) {
+      for (const item of cat.items) {
+        if (item.label === "New") {
+          allItems.push(item);
+        }
+      }
+    }
+    // Sort to put pricing-cards-tooltip first
+    return allItems.sort((a, b) => {
+      if (a.name === "pricing-cards-tooltip") return -1;
+      if (b.name === "pricing-cards-tooltip") return 1;
+      return 0;
+    });
+  }, [categories]);
+
   const slugs = React.useMemo(
     () => categories.map((c) => c.slug),
     [categories],
@@ -393,6 +447,16 @@ export function AllComponentsShowcase() {
     <div>
       {/* Right sidebar TOC (portaled) */}
       <SidebarToc categories={categories} activeSlug={activeSlug} />
+
+      {/* New Arrivals Section */}
+      <NewArrivalsSection items={newArrivals} />
+
+      {/* Components heading */}
+      {newArrivals.length > 0 && (
+        <div className="mb-6">
+          <h2 className="text-2xl font-semibold tracking-tight">Components</h2>
+        </div>
+      )}
 
       {/* Sticky quick-nav pills — visible on mobile/tablet, hidden on xl where sidebar TOC takes over */}
       <div className="sticky top-14 z-30 -mx-1 mb-10 overflow-x-auto bg-background/80 backdrop-blur-sm py-3 xl:hidden">

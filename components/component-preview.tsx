@@ -126,7 +126,7 @@ export function ComponentPreview({
                 </button>
 
                 <a
-                  href={`https://v0.dev/chat/api/open?url=https://ruixen.com/r/${name}.json`}
+                  href={`https://v0.dev/chat/api/open?url=https://ruixen.com/r/${name.replace(/-demo$/, "")}.json`}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex h-7 items-center gap-1 rounded-md bg-black px-2 text-xs font-semibold text-white transition-colors hover:bg-black/80 dark:bg-white dark:text-black dark:hover:bg-white/80"
@@ -150,7 +150,7 @@ export function ComponentPreview({
                 </a>
 
                 <a
-                  href={`https://ruixen.com/r/${name}.json`}
+                  href={`https://ruixen.com/r/${name.replace(/-demo$/, "")}.json`}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex h-7 w-7 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"

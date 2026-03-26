@@ -654,6 +654,22 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "pricing-cards-tooltip",
+    type: "registry:ui",
+    title: "Pricing Cards with Tooltips",
+    description:
+      "A clean two-column pricing comparison with feature tooltips and corner decorations. Inspired by ZippyStarter design.",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["tooltip"],
+    files: [
+      {
+        path: "registry/ruixenui/pricing-cards-tooltip.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/pricing-cards-tooltip.tsx",
+      },
+    ],
+  },
+  {
     name: "slide-to-delete-button",
     type: "registry:ui",
     title: "Slide To Delete Button",
