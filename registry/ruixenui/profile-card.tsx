@@ -1,29 +1,23 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Image from "next/image"
-import {
-  BadgeCheck,
-  UserRound,
-  Images,
-  Heart,
-  Plus,
-} from "lucide-react"
-import { cn } from "@/lib/utils"
+import { useState } from "react";
+import Image from "next/image";
+import { BadgeCheck, UserRound, Images, Heart, Plus } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 /* ── Types ── */
 
 interface ProfileCardProps {
-  variant: "full" | "half"
-  image: string
-  name: string
-  bio: string
-  followers: number
-  posts: number
-  verified?: boolean
-  onFollow?: () => void
-  onFavorite?: (favorited: boolean) => void
-  className?: string
+  variant: "full" | "half";
+  image: string;
+  name: string;
+  bio: string;
+  followers: number;
+  posts: number;
+  verified?: boolean;
+  onFollow?: () => void;
+  onFavorite?: (favorited: boolean) => void;
+  className?: string;
 }
 
 /* ── Constants ── */
@@ -33,10 +27,10 @@ const shell = [
   "bg-white dark:bg-neutral-900",
   "shadow-[0_2px_4px_-1px_rgba(0,0,0,0.06),0_12px_48px_-8px_rgba(0,0,0,0.12)]",
   "dark:shadow-[0_2px_4px_-1px_rgba(0,0,0,0.3),0_12px_48px_-8px_rgba(0,0,0,0.5)]",
-]
+];
 
 const BLUR_MASK =
-  "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.02) 10%, rgba(0,0,0,0.06) 20%, rgba(0,0,0,0.14) 30%, rgba(0,0,0,0.28) 40%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.72) 60%, rgba(0,0,0,0.9) 70%, black 80%)"
+  "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.02) 10%, rgba(0,0,0,0.06) 20%, rgba(0,0,0,0.14) 30%, rgba(0,0,0,0.28) 40%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.72) 60%, rgba(0,0,0,0.9) 70%, black 80%)";
 
 /* ── Component ── */
 
@@ -52,13 +46,13 @@ export function ProfileCard({
   onFavorite,
   className,
 }: ProfileCardProps) {
-  const [favorited, setFavorited] = useState(false)
+  const [favorited, setFavorited] = useState(false);
 
   const toggleFavorite = () => {
-    const next = !favorited
-    setFavorited(next)
-    onFavorite?.(next)
-  }
+    const next = !favorited;
+    setFavorited(next);
+    onFavorite?.(next);
+  };
 
   /* ── Full variant ── */
   if (variant === "full") {
@@ -159,7 +153,7 @@ export function ProfileCard({
           </div>
         </div>
       </div>
-    )
+    );
   }
 
   /* ── Half variant ── */
@@ -202,11 +196,15 @@ export function ProfileCard({
             <div className="flex items-center gap-3 flex-1">
               <span className="inline-flex items-center gap-1 text-[13px] text-neutral-400 dark:text-neutral-500">
                 <UserRound size={13} strokeWidth={1.8} />
-                <span className="font-semibold text-neutral-900 dark:text-white">{followers}</span>
+                <span className="font-semibold text-neutral-900 dark:text-white">
+                  {followers}
+                </span>
               </span>
               <span className="inline-flex items-center gap-1 text-[13px] text-neutral-400 dark:text-neutral-500">
                 <Images size={13} strokeWidth={1.8} />
-                <span className="font-semibold text-neutral-900 dark:text-white">{posts}</span>
+                <span className="font-semibold text-neutral-900 dark:text-white">
+                  {posts}
+                </span>
               </span>
             </div>
 
@@ -231,5 +229,5 @@ export function ProfileCard({
         </div>
       </div>
     </div>
-  )
+  );
 }
