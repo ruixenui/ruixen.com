@@ -1,0 +1,125 @@
+---
+title: Pricing Cards Tooltip
+date: 2024-12-20
+description: A clean two-column pricing comparison with feature tooltips and corner decorations. Inspired by ZippyStarter design.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="pricing-cards-tooltip-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/pricing-cards-tooltip"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="pricing-cards-tooltip" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import PricingCardsTooltip from "@/components/ruixen/pricing-cards-tooltip";
+
+export default function PricingPage() {
+  return <PricingCardsTooltip />;
+}
+```
+
+## Props
+
+| Prop              | Type            | Default | Description                                      |
+| ----------------- | --------------- | ------- | ------------------------------------------------ |
+| `tiers`           | `PricingTier[]` | -       | Array of pricing tier configurations             |
+| `showCornerMarks` | `boolean`       | `true`  | Whether to show decorative corner X marks        |
+| `className`       | `string`        | -       | Additional CSS classes for the section container |
+
+### PricingTier
+
+| Property      | Type               | Description                                      |
+| ------------- | ------------------ | ------------------------------------------------ |
+| `label`       | `string`           | Uppercase label displayed above the price        |
+| `price`       | `string`           | The price to display (e.g., "Free" or "149")     |
+| `priceSuffix` | `string`           | Optional suffix after price (e.g., "USD")        |
+| `cta`         | `string`           | Call-to-action button text                       |
+| `ctaHref`     | `string`           | Link for the CTA button                          |
+| `description` | `string`           | Description text below the CTA                   |
+| `features`    | `PricingFeature[]` | Array of features with optional tooltips         |
+| `highlighted` | `boolean`          | Whether to use highlighted (gradient) CTA button |
+
+### PricingFeature
+
+| Property  | Type     | Description                                |
+| --------- | -------- | ------------------------------------------ |
+| `text`    | `string` | The feature text                           |
+| `tooltip` | `string` | Optional tooltip content for the info icon |
+
+## Examples
+
+### Custom Tiers
+
+```tsx
+import PricingCardsTooltip from "@/components/ruixen/pricing-cards-tooltip";
+
+const customTiers = [
+  {
+    label: "HOBBY",
+    price: "Free",
+    cta: "Get Started",
+    description: "For personal projects",
+    features: [
+      { text: "5 projects", tooltip: "Create up to 5 projects" },
+      { text: "Basic analytics" },
+      { text: "Community support" },
+    ],
+  },
+  {
+    label: "PRO",
+    price: "29",
+    priceSuffix: "/mo",
+    cta: "Upgrade to Pro",
+    description: "For growing teams",
+    highlighted: true,
+    features: [
+      { text: "Unlimited projects", tooltip: "No limits on projects" },
+      { text: "Advanced analytics", tooltip: "Deep insights into your data" },
+      { text: "Priority support", tooltip: "24/7 dedicated support" },
+      { text: "Custom integrations" },
+    ],
+  },
+];
+
+export default function CustomPricing() {
+  return <PricingCardsTooltip tiers={customTiers} />;
+}
+```
+
+### Without Corner Marks
+
+```tsx
+<PricingCardsTooltip showCornerMarks={false} />
+```
