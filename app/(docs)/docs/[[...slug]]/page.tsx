@@ -136,21 +136,26 @@ export default async function DocPage({ params }: DocPageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(techArticleJsonLd) }}
       />
       <div className="mx-auto w-full min-w-0 max-w-4xl px-2 py-6 lg:px-6 lg:py-8">
-        <div className="mb-4 flex items-center space-x-1 text-sm text-muted-foreground">
-          <div className="truncate">Docs</div>
-          <ChevronRightIcon className="size-4" />
-          <div className="font-medium text-foreground">{doc.title}</div>
-        </div>
-        <div className="space-y-2">
-          <h1 className={cn("scroll-m-20 text-4xl font-bold tracking-tight")}>
-            {doc.title}
-          </h1>
-          {doc.description && (
-            <p className="text-balance text-lg text-muted-foreground">
-              {doc.description}
-            </p>
-          )}
-        </div>
+        {doc.slugAsParams !== "components" && (
+          <div className="mb-4 flex items-center space-x-1 text-sm text-muted-foreground">
+            <div className="truncate">Docs</div>
+            <ChevronRightIcon className="size-4" />
+            <div className="font-medium text-foreground">{doc.title}</div>
+          </div>
+        )}
+        {/* Hide title/description for /docs/components - it has its own headings */}
+        {doc.slugAsParams !== "components" && (
+          <div className="space-y-2">
+            <h1 className={cn("scroll-m-20 text-4xl font-bold tracking-tight")}>
+              {doc.title}
+            </h1>
+            {doc.description && (
+              <p className="text-balance text-lg text-muted-foreground">
+                {doc.description}
+              </p>
+            )}
+          </div>
+        )}
         {doc.links ? (
           <div className="flex items-center space-x-2 pt-4">
             {doc.links?.doc && (
