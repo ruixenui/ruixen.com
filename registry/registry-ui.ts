@@ -606,6 +606,22 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "pricing-feature-matrix",
+    type: "registry:ui",
+    title: "Pricing Feature Matrix",
+    description:
+      "A comprehensive pricing comparison matrix with feature categories, plan columns, and tooltips.",
+    dependencies: ["@hugeicons/react", "@hugeicons/core-free-icons"],
+    registryDependencies: ["tooltip"],
+    files: [
+      {
+        path: "registry/ruixenui/pricing-feature-matrix.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/pricing-feature-matrix.tsx",
+      },
+    ],
+  },
+  {
     name: "subscription-plans",
     type: "registry:ui",
     title: "Subscription Plans",

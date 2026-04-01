@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pricing-feature-matrix-demo",
+  "type": "registry:example",
+  "title": "Pricing Feature Matrix Demo",
+  "description": "Example of a comprehensive pricing feature matrix with categories and tooltips",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/pricing-feature-matrix"
+  ],
+  "files": [
+    {
+      "path": "registry/example/pricing-feature-matrix-demo.tsx",
+      "content": "import PricingFeatureMatrix from \"@/registry/ruixenui/pricing-feature-matrix\";\n\nexport default function PricingFeatureMatrixDemo() {\n  return (\n    <div className=\"w-full py-8\">\n      <PricingFeatureMatrix />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/pricing-feature-matrix-demo.tsx"
+    }
+  ]
+}

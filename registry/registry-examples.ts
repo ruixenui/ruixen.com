@@ -443,6 +443,21 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "pricing-feature-matrix-demo",
+    type: "registry:example",
+    title: "Pricing Feature Matrix Demo",
+    description:
+      "Example of a comprehensive pricing feature matrix with categories and tooltips",
+    registryDependencies: ["https://www.ruixen.com/r/pricing-feature-matrix"],
+    files: [
+      {
+        path: "registry/example/pricing-feature-matrix-demo.tsx",
+        type: "registry:example",
+        target: "components/pricing-feature-matrix-demo.tsx",
+      },
+    ],
+  },
+  {
     name: "subscription-plans-demo",
     type: "registry:example",
     title: "Subscription Plans Demo",

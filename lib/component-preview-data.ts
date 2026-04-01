@@ -937,6 +937,10 @@ export const pricingSectionPreview: ComponentPreviewMap = {
     light: `/preview_images/pricing-sections/pricing-comparison-light.png`,
     dark: `/preview_images/pricing-sections/pricing-comparison-dark.png`,
   },
+  "pricing-feature-matrix": {
+    light: `/preview_images/pricing-sections/pricing-feature-matrix-light.png`,
+    dark: `/preview_images/pricing-sections/pricing-feature-matrix-dark.png`,
+  },
   "subscription-plans": {
     light: `/preview_images/pricing-sections/subscription-plans-light.png`,
     dark: `/preview_images/pricing-sections/subscription-plans-dark.png`,
