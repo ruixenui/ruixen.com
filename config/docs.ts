@@ -1339,6 +1339,12 @@ export const docsConfig: DocsConfig = {
               label: "",
             },
             {
+              title: "Pricing Feature Matrix",
+              href: `/docs/components/pricing-feature-matrix`,
+              items: [],
+              label: "New",
+            },
+            {
               title: "Subscription Plans",
               href: `/docs/components/subscription-plans`,
               items: [],

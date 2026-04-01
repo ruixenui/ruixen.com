@@ -970,6 +970,32 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "pricing-feature-matrix": {
+    name: "pricing-feature-matrix",
+    description:
+      "A comprehensive pricing comparison matrix with feature categories, plan columns, and tooltips.",
+    type: "registry:ui",
+    registryDependencies: ["tooltip"],
+    files: [
+      {
+        path: "registry/ruixenui/pricing-feature-matrix.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/pricing-feature-matrix.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/ruixenui/pricing-feature-matrix.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "subscription-plans": {
     name: "subscription-plans",
     description:
@@ -4951,6 +4977,32 @@ export const Index: Record<string, any> = {
     component: React.lazy(async () => {
       const mod = await import(
         "@/registry/example/pricing-comparison-demo.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "pricing-feature-matrix-demo": {
+    name: "pricing-feature-matrix-demo",
+    description:
+      "Example of a comprehensive pricing feature matrix with categories and tooltips",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/pricing-feature-matrix"],
+    files: [
+      {
+        path: "registry/example/pricing-feature-matrix-demo.tsx",
+        type: "registry:example",
+        target: "components/pricing-feature-matrix-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/pricing-feature-matrix-demo.tsx"
       );
       const exportName =
         Object.keys(mod).find(

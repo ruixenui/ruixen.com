@@ -1,0 +1,62 @@
+# Ruixen UI
+
+> A free, open-source React component library with 170+ components featuring spring physics animations and audio feedback.
+
+## Overview
+
+Ruixen UI provides professionally-crafted React components that behave like physical objects with mass, momentum, and friction. Built with motion/react for spring-based animations and Web Audio API for interaction feedback.
+
+- Website: https://ruixen.com
+- GitHub: https://github.com/ruixenui/ruixen.com
+- License: MIT
+
+## Key Features
+
+- Spring physics animations (motion/react) instead of CSS transitions
+- Audio feedback on interactions via Web Audio API
+- Copy-paste installation via shadcn CLI
+- Zero styling dependencies - pure Tailwind CSS
+- Supports Tailwind v3/v4 and Radix UI/Base UI variants
+
+## Installation
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/[component-name]"
+```
+
+## Documentation
+
+- Docs: https://ruixen.com/docs
+- Components: https://ruixen.com/docs/components
+- Installation Guides: https://ruixen.com/docs/installation
+- Blog: https://ruixen.com/blog
+
+## Component Categories
+
+Accordions, AI Chat Inputs, Audio & Media, Avatars, Backgrounds, Text Effects, Badges, Banners, Breadcrumbs, Buttons, Calendars, Charts, Cards, Carousels, Checkboxes, Date Pickers, Dialogs, Docks, Drawers, Event Calendars, File Management, Forms, Image Tools, Inputs, Loaders, Menu, Notifications, Pagination, Sliders, Stepper, Select, Tabs, Video Players
+
+## Section Components
+
+Navbars, Hero Sections, Footer Sections, Client Sections, FAQs, Featured Sections, Pricing Sections
+
+## Resources
+
+- Gradients Collection: https://ruixen.com/gradients (31 premium 4K gradients)
+- Templates: https://ruixen.com/templates
+- CSS Generators: https://ruixen.com/generator/glass-morphism
+
+## Registry Variants
+
+Each component is available in 4 variants:
+- Tailwind v4 + Radix UI: /r/[name]
+- Tailwind v3 + Radix UI: /r/tw3/[name]
+- Tailwind v4 + Base UI: /r/baseui/[name]
+- Tailwind v3 + Base UI: /r/baseui/tw3/[name]
+
+## Tech Stack
+
+Next.js 15, React 19, TypeScript, Tailwind CSS v4, motion/react, Radix UI, Base UI
+
+## Full Documentation
+
+For comprehensive information, see: https://ruixen.com/llms-full.txt

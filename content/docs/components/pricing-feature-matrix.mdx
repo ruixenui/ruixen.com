@@ -1,0 +1,111 @@
+---
+title: Pricing Feature Matrix
+date: 2024-08-24
+description: A comprehensive pricing comparison matrix with feature categories, plan columns, and tooltips.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="pricing-feature-matrix-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/pricing-feature-matrix"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the required dependencies.</Step>
+
+```bash
+npm install @hugeicons/react @hugeicons/core-free-icons
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="pricing-feature-matrix" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+The Pricing Feature Matrix component displays a comprehensive comparison table organized by feature categories. Each feature can show checkmarks, X marks, or custom text values for each pricing plan.
+
+### Features
+
+- **Feature Categories**: Group related features under categories like "Design System", "Developer Tools", etc.
+- **Tooltips**: Hover over the question mark to see feature descriptions
+- **Highlighted Plan**: Set `isHighlighted: true` to emphasize a recommended plan
+- **Flexible Values**: Features can be boolean (checkmark/X) or text (e.g., "50 tokens", "Unlimited")
+- **Sticky Headers**: Plan headers stay visible while scrolling
+
+### Customization
+
+You can customize the component by passing your own `categories` and `plans` props:
+
+```tsx
+import PricingFeatureMatrix from "@/components/ruixen/pricing-feature-matrix";
+import {
+  Rocket01Icon,
+  DiamondIcon,
+  CrownIcon,
+  SparklesIcon,
+} from "@hugeicons/core-free-icons";
+
+const myCategories = [
+  {
+    title: "Core Features",
+    description: "Essential features for all users",
+    icon: SparklesIcon,
+    features: [
+      { name: "Feature 1", description: "Description of feature 1" },
+      { name: "Feature 2", description: "Description of feature 2" },
+    ],
+  },
+];
+
+const myPlans = [
+  {
+    name: "Basic",
+    icon: Rocket01Icon,
+    features: {
+      "Feature 1": true,
+      "Feature 2": "Limited",
+    },
+    cta: { label: "Get Started", href: "#", variant: "outline" },
+  },
+  {
+    name: "Pro",
+    icon: DiamondIcon,
+    isHighlighted: true,
+    features: {
+      "Feature 1": true,
+      "Feature 2": "Unlimited",
+    },
+    cta: { label: "Start Trial", href: "#", variant: "primary" },
+  },
+];
+
+export default function MyPricing() {
+  return <PricingFeatureMatrix categories={myCategories} plans={myPlans} />;
+}
+```

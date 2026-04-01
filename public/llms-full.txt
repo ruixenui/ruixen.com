@@ -1,0 +1,699 @@
+# Ruixen UI - Complete Documentation for AI Crawlers
+
+> A free, open-source React component library featuring 170+ components with spring physics animations and audio feedback.
+
+================================================================================
+## SITE OVERVIEW
+================================================================================
+
+Ruixen UI is a modern React component library that reimagines how UI components should feel. Every component behaves like a physical object with mass, momentum, and friction, using spring physics instead of CSS transitions.
+
+**Core Philosophy:**
+- Components should have weight and momentum
+- Interactions deserve audio feedback
+- Copy-paste simplicity over npm dependencies
+- Design engineering best practices built-in
+
+**Website:** https://ruixen.com
+**Repository:** https://github.com/ruixenui/ruixen.com
+**Twitter:** https://twitter.com/ruixen_ui
+**License:** MIT (free for personal and commercial use)
+
+================================================================================
+## TECHNICAL FOUNDATION
+================================================================================
+
+### Animation System
+- **Library:** motion/react (successor to Framer Motion)
+- **Type:** Spring physics with configurable stiffness, damping, and mass
+- **Behavior:** Components respond to interaction with natural acceleration and deceleration
+- **No CSS transitions:** All animations use spring physics for authentic motion
+
+### Audio Feedback System
+- **Technology:** Web Audio API
+- **Sound:** 3ms noise burst on every interaction
+- **Configuration:** 6% gain with quartic decay curve
+- **Optional:** Can be disabled via `sound={false}` prop
+
+### Styling Architecture
+- **Framework:** Tailwind CSS (v3 and v4 support)
+- **Approach:** Zero external styling dependencies
+- **Method:** Pure Tailwind classes + inline styles
+- **Theming:** CSS variables for light/dark mode
+
+### UI Primitives
+- **Option 1:** Radix UI (default) - robust accessibility primitives
+- **Option 2:** Base UI - alternative primitive library
+- Components can be installed with either primitive library
+
+================================================================================
+## INSTALLATION
+================================================================================
+
+### Quick Install (shadcn CLI)
+```bash
+npx shadcn@latest add "https://ruixen.com/r/[component-name]"
+```
+
+### Registry Variants
+Every component is published in 4 variants:
+
+| Variant | URL Pattern | Description |
+|---------|-------------|-------------|
+| Default | `/r/[name]` | Tailwind v4 + Radix UI |
+| TW3 | `/r/tw3/[name]` | Tailwind v3 + Radix UI |
+| Base UI | `/r/baseui/[name]` | Tailwind v4 + Base UI |
+| Base UI TW3 | `/r/baseui/tw3/[name]` | Tailwind v3 + Base UI |
+
+### Supported Frameworks
+- Next.js (App Router & Pages Router)
+- Vite
+- Remix
+- Astro
+- Gatsby
+- Laravel
+- Manual Installation
+
+**Installation Guides:** https://ruixen.com/docs/installation
+
+================================================================================
+## SITE STRUCTURE & URLS
+================================================================================
+
+### Primary Pages
+- **Homepage:** https://ruixen.com
+- **Documentation:** https://ruixen.com/docs
+- **Components Browser:** https://ruixen.com/docs/components
+- **Blog:** https://ruixen.com/blog
+- **Gradients:** https://ruixen.com/gradients
+- **Templates:** https://ruixen.com/templates
+- **Showcase:** https://ruixen.com/showcase
+
+### Documentation Sections
+- **Introduction:** https://ruixen.com/docs
+- **Installation:** https://ruixen.com/docs/installation
+- **Tailwind v4 Guide:** https://ruixen.com/docs/tailwind-v4
+- **UI Library Guide:** https://ruixen.com/docs/ui-library
+- **MCP Server:** https://ruixen.com/docs/mcp
+
+### Tools & Generators
+- **Glass Morphism Generator:** https://ruixen.com/generator/glass-morphism
+- **Shadow Generator:** https://ruixen.com/generator/shadow-generator
+- **CSS Gradient Generator:** https://ruixen.com/generator/css-generator
+
+### Community
+- **Supporters:** https://ruixen.com/supporters
+- **Pro Version:** https://pro.ruixen.com
+
+================================================================================
+## COMPONENT CATALOG (170+ Components)
+================================================================================
+
+### Accordions
+- Editorial Accordion
+- Indexed Accordion
+- Comments Accordion
+- FAQ Auto Accordion
+- FAQ Chat Accordion
+- FAQ Scroll Accordion
+- Staggered FAQ Section
+
+**URL Pattern:** https://ruixen.com/docs/components/accordions/[name]
+
+### AI Chat Inputs
+- AI Chat Input
+- Claude Chat Input
+
+**URL Pattern:** https://ruixen.com/docs/components/ai-chat-inputs/[name]
+
+### Audio & Media
+- Music Player Card
+- Live Waveform
+- Visualizer Button
+- Video Player Pro
+
+**URL Pattern:** https://ruixen.com/docs/components/audio-media/[name]
+
+### Avatars
+- Avatar Spring Stack
+- Avatar Hover Card
+- Avatar Quick Actions
+
+**URL Pattern:** https://ruixen.com/docs/components/avatars/[name]
+
+### Backgrounds
+- Cloud Background
+- Ripple Distortion
+- Dual Tone Rain
+- Mouse Spark
+- Neon Circle Grid
+
+**URL Pattern:** https://ruixen.com/docs/components/backgrounds/[name]
+
+### Text Effects
+- Rising Glow
+- Particle Text Dots
+- Container Text Scroll
+- Variable Text
+- Scramble Text
+
+**URL Pattern:** https://ruixen.com/docs/components/text-effects/[name]
+
+### Badges
+- Badge Morph
+
+**URL Pattern:** https://ruixen.com/docs/components/badges/[name]
+
+### Banners
+- Banner Announcement
+- Banner Cookie
+- Banner Newsletter
+- Banner Countdown
+
+**URL Pattern:** https://ruixen.com/docs/components/banners/[name]
+
+### Breadcrumbs
+- Breadcrumb Separator
+- Breadcrumb Icon
+- Breadcrumb Dropdown
+
+**URL Pattern:** https://ruixen.com/docs/components/breadcrumbs/[name]
+
+### Buttons (13+ variants)
+- Copy Button
+- Dropdown Button
+- Split Button
+- Badge Combo Button
+- Slide to Delete
+- Glow Link Button
+- Hover Preview Button
+- Confetti Button
+- Badge Button
+- Progress Button
+- Icon Label Subtext Button
+- Add to Cart Button
+- Share Button
+
+**URL Pattern:** https://ruixen.com/docs/components/buttons/[name]
+
+### Calendars
+- Range Calendar
+- Calendar Wave
+- Calendar Crest
+
+**URL Pattern:** https://ruixen.com/docs/components/calendars/[name]
+
+### Cards
+- Glass AI Card
+- Glass Shipment Flow
+- Phone Mockup Card
+- Profile Card
+- Flip Card
+- Success Login Card
+- Step Card
+- Radio Group Card
+
+**URL Pattern:** https://ruixen.com/docs/components/cards/[name]
+
+### Carousels
+- Card Stack Carousel
+
+**URL Pattern:** https://ruixen.com/docs/components/carousels/[name]
+
+### Charts
+- Spark Chart
+
+**URL Pattern:** https://ruixen.com/docs/components/charts/[name]
+
+### Checkboxes (7 variants)
+- Simple Checkbox
+- Indeterminate Checkbox
+- Colored Checkbox
+- Todo Checkbox
+- Terms Checkbox
+- Group Checkbox
+- Tree Checkbox
+
+**URL Pattern:** https://ruixen.com/docs/components/checkboxes/[name]
+
+### Date Pickers
+- Drum Picker
+- Scrub Datetime
+
+**URL Pattern:** https://ruixen.com/docs/components/date-pickers/[name]
+
+### Dialogs
+- Credit Card Dialog
+- Add Task Sheet
+
+**URL Pattern:** https://ruixen.com/docs/components/dialogs/[name]
+
+### Docks
+- Gooey Dock
+- Morphing Expandable Menu
+
+**URL Pattern:** https://ruixen.com/docs/components/docks/[name]
+
+### Drawers
+- Drawer Inner Content
+- Centered Feedback Drawer
+- Bottom Drawers
+
+**URL Pattern:** https://ruixen.com/docs/components/drawers/[name]
+
+### Event Calendars (7 variants)
+- Event Scheduler
+- 3D Wall Calendar
+- Calendar Planner
+- Calendar Twin
+- Chrono Select
+- Calendar Scheduler
+- Calendar Lume
+
+**URL Pattern:** https://ruixen.com/docs/components/event-calendars/[name]
+
+### File Management
+- Motion File Tree
+- Magic Tree
+- Tree Node Tooltip
+
+**URL Pattern:** https://ruixen.com/docs/components/file-management/[name]
+
+### Forms
+- Glass Form
+- Sign In Form
+- Create Account Form
+- Newsletter Form
+- Sign In Card
+- Auth Tabs Card
+- Gamified Login Card
+- Social Auth Card
+- Login Card
+- Multi Step Login
+- Cloud Watch Form
+
+**URL Pattern:** https://ruixen.com/docs/components/forms/[name]
+
+### Image Tools
+- Glass Image Editor
+- Glass Image Compare
+
+**URL Pattern:** https://ruixen.com/docs/components/image-tools/[name]
+
+### Inputs (13+ variants)
+- Circular Stepper
+- Verification Input
+- Color Picker
+- Gravatar Email Input
+- Correct Number Input
+- Better Time Picker
+- Inline Copy Input
+- Clean Tag Input
+- Input With Select
+- URL Input
+- Password Input
+
+**URL Pattern:** https://ruixen.com/docs/components/inputs/[name]
+
+### Loaders
+- Loading Circle
+- Load Ripple
+- Ripple Circles
+- Solar Loader
+
+**URL Pattern:** https://ruixen.com/docs/components/loaders/[name]
+
+### Menus
+- Nested Dashboard Menu
+- App Menu Bar
+- Account Menu
+- Action Toolbar
+- Floating Toolbar
+
+**URL Pattern:** https://ruixen.com/docs/components/menu/[name]
+
+### Notifications (4 variants)
+- Notification Inbox Popover
+- Notification
+- Notifications Carousel
+- Notifications Filter
+
+**URL Pattern:** https://ruixen.com/docs/components/notifications/[name]
+
+### Pagination (8 variants)
+- Wheel Pagination
+- Scroll Pagination
+- Icon Pagination
+- Gooey Pagination
+- Stack Pagination
+- Animated Number Flip
+- Morphing Page Dots
+- Sliding Pagination
+
+**URL Pattern:** https://ruixen.com/docs/components/pagination/[name]
+
+### Sliders
+- Fine Tune Slider
+- Scroll Ruler
+
+**URL Pattern:** https://ruixen.com/docs/components/sliders/[name]
+
+### Steppers
+- Wizard Stepper
+- Milestone Stepper
+
+**URL Pattern:** https://ruixen.com/docs/components/stepper/[name]
+
+### Select Components
+- Color Emotion Select
+- Tag Cloud Select
+
+**URL Pattern:** https://ruixen.com/docs/components/select/[name]
+
+### Tabs
+- Invert Tabs
+- Magnetic Tabs
+- Drag and Drop Tabs
+- Auth Tabs Card
+
+**URL Pattern:** https://ruixen.com/docs/components/tabs/[name]
+
+### Video Players
+- Video Player Pro
+
+**URL Pattern:** https://ruixen.com/docs/components/video-players/[name]
+
+================================================================================
+## SECTION COMPONENTS
+================================================================================
+
+### Navbars (10+ variants)
+- Simple Navbar
+- Centered Navbar
+- Navbar With Search
+- User Menu Navbar
+- Status Navbar
+- Breadcrumb Navbar
+- Floating Navbar
+- Tabs Navbar
+- Minimal Navbar
+- Split Navbar
+- Icon Links Navbar
+- Hover Gradient Navbar
+- Luma Bar
+- Promote Header
+
+**URL Pattern:** https://ruixen.com/docs/sections/[name]
+
+### Hero Sections
+- Card Carousel Hero
+- Gradient Hero
+- Video Hero
+- Structured Hero
+- Tabbed Hero
+- Split Hero
+- Hero Title Animation
+
+**URL Pattern:** https://ruixen.com/docs/sections/[name]
+
+### Footer Sections
+- Footer Pro
+- Corporate Footer
+- Footer Enterprise
+- Wordmark Footer
+
+**URL Pattern:** https://ruixen.com/docs/sections/[name]
+
+### Client Sections
+- Trusted Clients Showcase
+- Client Carousel
+- Auto Scrolling Carousel
+
+**URL Pattern:** https://ruixen.com/docs/sections/[name]
+
+### FAQ Sections
+- Staggered FAQ Section
+- Feature Highlights FAQ
+- FAQ Scroll Accordion
+- FAQ Auto Accordion
+- FAQ Chat Accordion
+
+**URL Pattern:** https://ruixen.com/docs/sections/[name]
+
+### Featured Sections
+- Product Feature Hero
+- Product Card Hero
+- Split Feature Showcase
+- Integration Stats
+- Rotating Gradient
+- Automated Tasks
+
+**URL Pattern:** https://ruixen.com/docs/sections/[name]
+
+### Pricing Sections (8 variants)
+- Pricing Plans
+- Pricing Comparison
+- Subscription Plans
+- Pricing Flow
+- User Scaling Pricing
+- Pricing Tiers
+- Pricing Section Vertical
+- Pricing Cards Tooltip
+
+**URL Pattern:** https://ruixen.com/docs/sections/[name]
+
+================================================================================
+## GRADIENTS COLLECTION
+================================================================================
+
+**URL:** https://ruixen.com/gradients
+
+31 premium gradients at 4K resolution (3840 × 2160 pixels):
+
+### Collections:
+1. **Shade Shifters** - Subtle gradient transitions
+2. **Crimson Aura** - Red and warm tone gradients
+3. **Hero Gradients** - Bold hero section backgrounds
+4. **Hue Flows** - Flowing color transitions
+5. **Moon Backgrounds** - Dark, moody gradients
+6. **Fractional Walls** - Abstract gradient patterns
+
+**Specifications:**
+- Resolution: 3840 × 2160 (4K)
+- Format: PNG
+- Size: 2.4-2.7 MB each
+- License: Free for personal and commercial use
+
+================================================================================
+## BLOG & ARTICLES
+================================================================================
+
+**URL:** https://ruixen.com/blog
+
+14 published articles on design engineering:
+
+1. **Your UI is Silent** - Why audio feedback matters
+2. **Every CSS Transition is a Lie** - The case for spring physics
+3. **Web UI Has No Physics** - Adding real-world behavior
+4. **Buttons Need Physics** - Interaction design principles
+5. **Modals Should Slide** - Animation patterns
+6. **Dropdowns That Respond to Intent** - Intelligent UI
+7. **I Made My UI Click Literally** - Audio implementation
+8. And more technical articles...
+
+**Topics covered:**
+- Design engineering principles
+- CSS animations vs spring physics
+- Audio feedback in UI
+- Motion and physics-based interaction design
+- Web UI interaction patterns
+
+================================================================================
+## TEMPLATES
+================================================================================
+
+**URL:** https://ruixen.com/templates
+
+### Portfolio Template
+A complete portfolio website template featuring:
+- Responsive design
+- Dark mode support
+- Project showcase
+- About section
+- Contact form
+
+**Documentation:** https://ruixen.com/docs/templates/portfolio
+
+================================================================================
+## MCP SERVER (AI Integration)
+================================================================================
+
+**URL:** https://ruixen.com/docs/mcp
+
+Ruixen UI provides a Model Context Protocol (MCP) server for AI IDE integration.
+
+**Supported IDEs:**
+- Cursor
+- Windsurf
+- Claude Code
+- Cline
+- Roo Code
+
+**Features:**
+- Component discovery via AI
+- Auto-correct install commands
+- Support for all 4 registry variants
+- Natural language component search
+
+================================================================================
+## TECH STACK
+================================================================================
+
+### Core Technologies
+- **Framework:** Next.js 15 (App Router)
+- **React:** React 19
+- **Language:** TypeScript 5
+- **Styling:** Tailwind CSS v4
+
+### Animation & Interaction
+- **Animation:** motion/react (Framer Motion successor)
+- **GSAP:** For complex timeline animations
+- **Audio:** Web Audio API
+
+### UI Primitives
+- **Radix UI:** Accessible component primitives
+- **Base UI:** Alternative primitive library
+- **React Aria:** Additional accessibility utilities
+
+### Additional Libraries
+- **@dnd-kit:** Drag and drop functionality
+- **Recharts:** Data visualization
+- **react-hook-form:** Form handling
+- **Jotai:** State management
+- **PostHog:** Analytics
+
+### Build & Development
+- **Package Manager:** pnpm 9+
+- **Node.js:** >=20.6.1
+- **Content:** Content Collections for MDX
+
+================================================================================
+## DESIGN PRINCIPLES
+================================================================================
+
+1. **Self-contained Components**
+   - Single file per component
+   - No external styling dependencies
+   - Copy-paste ready
+
+2. **Spring Physics First**
+   - motion/react springs instead of CSS transitions
+   - Configurable stiffness, damping, and mass
+   - Natural acceleration and deceleration
+
+3. **Audio Feedback**
+   - 3ms noise burst on every interaction
+   - Web Audio API implementation
+   - Optional via `sound` prop
+
+4. **Theme Adaptive**
+   - Light/dark mode via CSS variables
+   - Consistent styling across themes
+   - Easy customization
+
+5. **Multi-variant Registry**
+   - Four outputs from single source
+   - Tailwind v3/v4 support
+   - Radix UI/Base UI options
+
+6. **Accessibility First**
+   - Built on proven accessibility primitives
+   - Keyboard navigation
+   - Screen reader support
+
+7. **Zero Config**
+   - Drop into any React project
+   - No complex setup required
+   - Works out of the box
+
+================================================================================
+## API ENDPOINTS
+================================================================================
+
+### Component Registry
+```
+GET https://ruixen.com/r/[component-name].json
+GET https://ruixen.com/r/tw3/[component-name].json
+GET https://ruixen.com/r/baseui/[component-name].json
+GET https://ruixen.com/r/baseui/tw3/[component-name].json
+```
+
+### Registry Index
+```
+GET https://ruixen.com/r/index.json
+GET https://ruixen.com/registry.json
+```
+
+================================================================================
+## TARGET AUDIENCE
+================================================================================
+
+### Primary Users
+- React developers building modern web applications
+- Teams using Next.js, Vite, or other React frameworks
+- Developers wanting physics-based UI interactions
+- Design-focused engineering teams
+- SaaS and product companies
+
+### Use Cases
+- Landing pages with sophisticated animations
+- Dashboard interfaces
+- Component libraries for design systems
+- Interactive product showcases
+- E-commerce sites
+- Creative portfolios
+- Admin panels
+- Marketing websites
+
+================================================================================
+## GETTING HELP
+================================================================================
+
+- **Documentation:** https://ruixen.com/docs
+- **GitHub Issues:** https://github.com/ruixenui/ruixen.com/issues
+- **Twitter:** https://twitter.com/ruixen_ui
+
+================================================================================
+## LICENSING
+================================================================================
+
+Ruixen UI is released under the MIT License.
+
+**You can:**
+- Use commercially
+- Modify
+- Distribute
+- Use privately
+
+**Requirements:**
+- Include copyright notice
+- Include license
+
+================================================================================
+## SUMMARY
+================================================================================
+
+Ruixen UI is a comprehensive React component library that prioritizes:
+- **Feel:** Spring physics for natural motion
+- **Feedback:** Audio cues for every interaction
+- **Flexibility:** Multiple framework and styling options
+- **Freedom:** MIT license, no restrictions
+
+With 170+ components across 34+ categories, it provides everything needed to build modern, interactive web applications that feel alive.
+
+**Start here:** https://ruixen.com/docs
+**Browse components:** https://ruixen.com/docs/components
+**Install a component:**
+```bash
+npx shadcn@latest add "https://ruixen.com/r/[component-name]"
+```

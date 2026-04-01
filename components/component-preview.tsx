@@ -150,7 +150,7 @@ export function ComponentPreview({
                 </a>
 
                 <a
-                  href={`https://ruixen.com/r/${name.replace(/-demo$/, "")}.json`}
+                  href={`/preview/${name.replace(/-demo$/, "")}`}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex h-7 w-7 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
