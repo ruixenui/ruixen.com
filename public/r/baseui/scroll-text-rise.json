@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-text-rise",
+  "type": "registry:ui",
+  "title": "Scroll Text Rise",
+  "description": "A scroll-driven text reveal — each word fades up from below as you scroll, with staggered opacity and y-translate transforms powered by Framer Motion's useScroll and useTransform hooks.",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/ruixenui/scroll-text-rise.tsx",
+      "content": "\"use client\";\n\nimport { FC, ReactNode, useRef } from \"react\";\nimport { motion, MotionValue, useScroll, useTransform } from \"motion/react\";\n\nimport { cn } from \"@/lib/utils\";\n\ninterface ScrollTextRiseProps {\n  text: string;\n  className?: string;\n  /** Text size classes */\n  textClassName?: string;\n}\n\nconst ScrollTextRise: FC<ScrollTextRiseProps> = ({\n  text,\n  className,\n  textClassName,\n}) => {\n  const containerRef = useRef<HTMLDivElement | null>(null);\n\n  const { scrollYProgress } = useScroll({\n    container: containerRef,\n  });\n\n  const words = text.split(\" \");\n\n  return (\n    <div\n      ref={containerRef}\n      data-scroll-text-rise\n      className={cn(\"relative h-[500px] overflow-y-auto\", className)}\n      style={{ scrollbarWidth: \"none\" }}\n    >\n      <style\n        dangerouslySetInnerHTML={{\n          __html: `[data-scroll-text-rise]::-webkit-scrollbar{display:none}`,\n        }}\n      />\n      {/* 3× container height creates the scroll runway */}\n      <div className=\"h-[300%]\">\n        {/* sticky viewport — calc(100%/3) of the 300% parent = exact container height */}\n        <div className=\"sticky top-0 mx-auto flex h-[calc(100%/3)] max-w-4xl flex-col items-center justify-center\">\n          <p\n            className={cn(\n              \"flex flex-wrap justify-center p-5 text-center text-xl font-medium text-black/20 dark:text-white/20 sm:text-3xl md:p-8 md:text-[2rem] lg:p-10 lg:text-[2.5rem] xl:text-[3.1rem]\",\n              textClassName,\n            )}\n          >\n            {words.map((word, i) => {\n              const start = i / words.length;\n              const end = start + 0.03;\n              return (\n                <RevealWord\n                  key={`${i}-${word}`}\n                  progress={scrollYProgress}\n                  range={[start, end]}\n                >\n                  {word}\n                </RevealWord>\n              );\n            })}\n          </p>\n        </div>\n      </div>\n    </div>\n  );\n};\n\ninterface RevealWordProps {\n  children: ReactNode;\n  progress: MotionValue<number>;\n  range: [number, number];\n}\n\nconst RevealWord: FC<RevealWordProps> = ({ children, progress, range }) => {\n  const opacity = useTransform(progress, range, [0, 1]);\n  const y = useTransform(progress, range, [20, 0]);\n\n  return (\n    <span className=\"relative mx-1 overflow-hidden lg:mx-2.5 xl:mx-3\">\n      <span className=\"absolute opacity-30\">{children}</span>\n      <motion.span\n        style={{ opacity, y }}\n        className=\"inline-block text-black dark:text-white\"\n      >\n        {children}\n      </motion.span>\n    </span>\n  );\n};\n\nexport { ScrollTextRise };\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/scroll-text-rise.tsx"
+    }
+  ]
+}

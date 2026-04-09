@@ -4240,6 +4240,30 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "scroll-text-rise": {
+    name: "scroll-text-rise",
+    description:
+      "A scroll-driven text reveal — each word fades up from below as you scroll, with staggered opacity and y-translate transforms powered by Framer Motion's useScroll and useTransform hooks.",
+    type: "registry:ui",
+    registryDependencies: [],
+    files: [
+      {
+        path: "registry/ruixenui/scroll-text-rise.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/scroll-text-rise.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/scroll-text-rise.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "wizard-stepper-demo": {
     name: "wizard-stepper-demo",
     description:
@@ -8475,6 +8499,30 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/profile-card-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "scroll-text-rise-demo": {
+    name: "scroll-text-rise-demo",
+    description:
+      "Example showing scroll-driven word-by-word text reveal with staggered rise animation.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/scroll-text-rise"],
+    files: [
+      {
+        path: "registry/example/scroll-text-rise-demo.tsx",
+        type: "registry:example",
+        target: "components/scroll-text-rise-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/scroll-text-rise-demo.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-text-rise-demo",
+  "type": "registry:example",
+  "title": "Scroll Text Rise Demo",
+  "description": "Example showing scroll-driven word-by-word text reveal with staggered rise animation.",
+  "registryDependencies": [
+    "https://ruixen.com/r/scroll-text-rise"
+  ],
+  "files": [
+    {
+      "path": "registry/example/scroll-text-rise-demo.tsx",
+      "content": "import { ScrollTextRise } from \"@/registry/ruixenui/scroll-text-rise\";\n\nexport default function ScrollTextRiseDemo() {\n  return (\n    <ScrollTextRise\n      className=\"h-[500px] rounded-xl\"\n      text=\"Built for core web animation, yet open to any prop or pattern your setup requires.\"\n    />\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/scroll-text-rise-demo.tsx"
+    }
+  ]
+}

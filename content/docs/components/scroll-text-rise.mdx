@@ -1,0 +1,73 @@
+---
+title: Scroll Text Rise
+date: 2026-04-09
+description: A scroll-driven text reveal — each word fades up from below as you scroll, with staggered opacity and y-translate transforms powered by Framer Motion's useScroll and useTransform hooks.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="scroll-text-rise-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/scroll-text-rise"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="scroll-text-rise" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { ScrollTextRise } from "@/components/ruixen/scroll-text-rise";
+
+export default function App() {
+  return (
+    <ScrollTextRise
+      className="h-[500px]"
+      text="Built for core web animation, yet open to any prop or pattern your setup requires."
+    />
+  );
+}
+```
+
+## Props
+
+| Prop            | Type     | Default       | Description                                        |
+| --------------- | -------- | ------------- | -------------------------------------------------- |
+| `text`          | `string` | -             | The text content to reveal word by word (required) |
+| `className`     | `string` | `"h-[500px]"` | Additional CSS classes for the scroll container    |
+| `textClassName` | `string` | -             | Additional CSS classes for the text paragraph      |
+
+## Features
+
+- **Self-Contained Scroll**: The component creates its own scrollable container — page scroll has zero effect, works in previews and iframes
+- **Staggered Word Animation**: Each word has its own scroll range, creating a sequential wave effect
+- **Dual Transform**: Words animate both opacity (0→1) and y-translate (20px→0) for a natural rising feel
+- **Ghost Text Underlay**: Faint 30% opacity text stays visible beneath, providing a preview of what's to come
+- **Hidden Scrollbar**: Scrollbar is hidden for a clean visual — scroll affordance comes from the dimmed text
+- **Responsive Typography**: Text scales across breakpoints from `text-xl` to `text-[3.1rem]`

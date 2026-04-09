@@ -2552,4 +2552,19 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "scroll-text-rise-demo",
+    type: "registry:example",
+    title: "Scroll Text Rise Demo",
+    description:
+      "Example showing scroll-driven word-by-word text reveal with staggered rise animation.",
+    registryDependencies: ["https://ruixen.com/r/scroll-text-rise"],
+    files: [
+      {
+        path: "registry/example/scroll-text-rise-demo.tsx",
+        type: "registry:example",
+        target: "components/scroll-text-rise-demo.tsx",
+      },
+    ],
+  },
 ];

@@ -2966,6 +2966,23 @@
       ]
     },
     {
+      "name": "scroll-text-rise",
+      "type": "registry:ui",
+      "title": "Scroll Text Rise",
+      "description": "A scroll-driven text reveal — each word fades up from below as you scroll, with staggered opacity and y-translate transforms powered by Framer Motion's useScroll and useTransform hooks.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/ruixenui/scroll-text-rise.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/scroll-text-rise.tsx"
+        }
+      ]
+    },
+    {
       "name": "wizard-stepper-demo",
       "type": "registry:example",
       "title": "Wizard Stepper Demo",
@@ -5730,6 +5747,22 @@
           "path": "registry/example/profile-card-demo.tsx",
           "type": "registry:example",
           "target": "components/profile-card-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-text-rise-demo",
+      "type": "registry:example",
+      "title": "Scroll Text Rise Demo",
+      "description": "Example showing scroll-driven word-by-word text reveal with staggered rise animation.",
+      "registryDependencies": [
+        "https://ruixen.com/r/scroll-text-rise"
+      ],
+      "files": [
+        {
+          "path": "registry/example/scroll-text-rise-demo.tsx",
+          "type": "registry:example",
+          "target": "components/scroll-text-rise-demo.tsx"
         }
       ]
     },

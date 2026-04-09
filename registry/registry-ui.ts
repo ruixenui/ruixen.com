@@ -2723,4 +2723,20 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "scroll-text-rise",
+    type: "registry:ui",
+    title: "Scroll Text Rise",
+    description:
+      "A scroll-driven text reveal — each word fades up from below as you scroll, with staggered opacity and y-translate transforms powered by Framer Motion's useScroll and useTransform hooks.",
+    dependencies: ["motion"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "registry/ruixenui/scroll-text-rise.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/scroll-text-rise.tsx",
+      },
+    ],
+  },
 ];
