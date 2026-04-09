@@ -274,6 +274,12 @@ export const docsConfig: DocsConfig = {
           title: "Text",
           items: [
             {
+              title: "Scroll Text Rise",
+              href: `/docs/components/scroll-text-rise`,
+              items: [],
+              label: "New",
+            },
+            {
               title: "Rising Glow",
               href: `/docs/components/rising-glow`,
               items: [],
@@ -447,7 +453,7 @@ export const docsConfig: DocsConfig = {
               title: "Share Button",
               href: `/docs/components/share-button`,
               items: [],
-              label: "New",
+              label: "",
             },
           ],
         },

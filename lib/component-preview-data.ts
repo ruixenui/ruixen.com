@@ -638,6 +638,10 @@ export const videoPlayersPreview: ComponentPreviewMap = {
  * Path: /docs/components/[slug]
  */
 export const textsPreview: ComponentPreviewMap = {
+  "scroll-text-rise": {
+    light: `/preview_images/texts/scroll-text-rise-light.png`,
+    dark: `/preview_images/texts/scroll-text-rise-dark.png`,
+  },
   "rising-glow": {
     light: `${BASE_URL}/texts/lumina-light.png`,
     dark: `${BASE_URL}/texts/lumina-dark.png`,
