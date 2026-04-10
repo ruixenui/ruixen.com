@@ -17,6 +17,7 @@ import Link from "next/link";
 import { ComponentPreview } from "@/components/component-preview";
 import { ComponentSource } from "@/components/component-source";
 import { CopyButton } from "@/components/copy-button";
+import { ProInlineCallout } from "@/components/pro-inline-callout";
 import { TemplateOpen } from "@/components/template-open";
 import { SimpleComponentsShowcase } from "@/components/simple-components-showcase";
 import {
@@ -101,7 +102,13 @@ const components = {
   TemplatePreview,
   Image,
   ComponentPreview,
-  ComponentSource: (props: any) => <ComponentSource {...props} />,
+  ComponentSource: (props: any) => (
+    <>
+      <ComponentSource {...props} />
+      {/* Auto-injected Pro upsell — see components/pro-inline-callout.tsx */}
+      <ProInlineCallout slug={props?.name} />
+    </>
+  ),
   SimpleComponentsShowcase,
   AllComponentsShowcase,
   CategoryShowcase,

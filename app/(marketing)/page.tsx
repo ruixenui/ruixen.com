@@ -5,6 +5,7 @@ import { FAQItem } from "@/components/sections/faq-section";
 import WallOfLove from "@/components/sections/wall-of-love";
 import VideoShowcaseGrid from "@/components/sections/video-showcase-grid";
 import InspirationsSection from "@/components/sections/inspirations-section";
+import { ProSection } from "@/components/sections/pro-section";
 
 export default function Home() {
   const faqItems: FAQItem[] = [
@@ -42,7 +43,7 @@ export default function Home() {
       id: "pro",
       question: "What does Ruixen Pro include?",
       answer:
-        "Pro adds 50+ premium templates and advanced compositions on top of the free library at pro.ruixen.com. One-time purchase with lifetime updates. The core 170+ components remain free and open-source.",
+        "Pro adds 50+ premium templates and advanced compositions on top of the free library. One-time purchase — $59 lifetime, no subscription. See full pricing and comparison at ruixen.com/pricing. The core 170+ components remain free and open-source.",
     },
   ];
 
@@ -80,6 +81,7 @@ export default function Home() {
       {/* <VideoShowcaseGrid /> */}
       {/* <InspirationsSection /> */}
       <WallOfLove />
+      <ProSection />
       <FAQSection faqItems={faqItems} className="py-16 md:py-24" />
 
       {/* Twitter CTA */}
