@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { trackEvent } from "@/lib/events";
 
 const footerSections = [
   {
@@ -65,7 +68,10 @@ const footerSections = [
   {
     heading: "Community & Support",
     links: [
-      { label: "Ruixen Pro", href: "https://pro.ruixen.com" },
+      {
+        label: "Ruixen Pro",
+        href: "https://pro.ruixen.com/pricing?ref=oss_footer",
+      },
       { label: "Documentation", href: "/docs" },
       { label: "Blog", href: "/blog" },
       // { label: "Discord Server", href: "https://discord.gg/bYexWzUa6G" },
@@ -118,6 +124,14 @@ export default function SiteFooter() {
                   <li key={j}>
                     <a
                       href={link.href}
+                      onClick={() => {
+                        if (link.label === "Ruixen Pro") {
+                          trackEvent({
+                            name: "oss_pro_cta_clicked",
+                            properties: { surface: "footer" },
+                          });
+                        }
+                      }}
                       className="flex items-center text-muted-foreground hover:text-foreground transition"
                     >
                       {link.label}

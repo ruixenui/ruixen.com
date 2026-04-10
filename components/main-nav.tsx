@@ -9,11 +9,29 @@ import {
 } from "@/components/ui/context-menu";
 import { docsConfig } from "@/config/docs";
 import { siteConfig } from "@/config/site";
+import { trackEvent, type Event } from "@/lib/events";
 import { cn } from "@/lib/utils";
 import { ExternalLinkIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
+
+// Whitelist of nav items that may carry a trackable event. Keeps the cast
+// narrow — every nav-configured event name must exist in the global event
+// enum in lib/events.ts.
+const NAV_EVENTS: readonly Event["name"][] = [
+  "pro_nav_clicked",
+  "header_cta_clicked",
+  "navigation",
+  "view_docs",
+];
+
+function fireNavEvent(eventName: string | undefined) {
+  if (!eventName) return;
+  if ((NAV_EVENTS as readonly string[]).includes(eventName)) {
+    trackEvent({ name: eventName as Event["name"] });
+  }
+}
 
 function copyLogoAsSVG(path: string) {
   fetch(path)
@@ -148,9 +166,16 @@ export function MainNav() {
             return (
               <Link
                 key={item.href}
-                href={item.href!}
+                href="https://pro.ruixen.com/pricing?ref=oss_nav"
                 aria-label={item.title}
                 target="_blank"
+                onClick={() => {
+                  fireNavEvent(item.event);
+                  trackEvent({
+                    name: "oss_pro_cta_clicked",
+                    properties: { surface: "nav" },
+                  });
+                }}
                 className="flex items-center justify-center font-semibold"
               >
                 <span
@@ -174,6 +199,7 @@ export function MainNav() {
               href={item.href!}
               aria-label={item.title}
               target={item.external ? "_blank" : undefined}
+              onClick={() => fireNavEvent(item.event)}
               className={cn(
                 "flex items-center justify-center transition-colors hover:text-foreground/80",
                 isActive ? "text-foreground" : "text-foreground/60",

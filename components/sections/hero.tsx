@@ -4,6 +4,7 @@ import Link from "next/link";
 import React, { useState, useEffect, useCallback } from "react";
 import { Copy, Check } from "lucide-react";
 import { trackCTAClick } from "@/lib/ga-events";
+import { trackEvent } from "@/lib/events";
 import { HeroTitleAnimation } from "@/registry/ruixenui/hero-title-animation";
 
 const CLI_COMMAND = 'npx shadcn@latest add "https://ruixen.com/r/[component]"';
@@ -37,8 +38,14 @@ function Home() {
             }}
           >
             <Link
-              href="https://pro.ruixen.com"
+              href="https://pro.ruixen.com/pricing?ref=oss_hero"
               target="_blank"
+              onClick={() =>
+                trackEvent({
+                  name: "oss_pro_cta_clicked",
+                  properties: { surface: "hero" },
+                })
+              }
               className="relative inline-block text-[11px] font-medium uppercase tracking-[0.15em] text-transparent bg-clip-text transition-opacity duration-150 hover:opacity-80"
               style={{
                 backgroundImage:
