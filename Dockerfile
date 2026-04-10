@@ -22,6 +22,14 @@ COPY . .
 # Uncomment the following line in case you want to disable telemetry during the build.
 ENV NEXT_TELEMETRY_DISABLED 1
 
+# PostHog — NEXT_PUBLIC_* vars are inlined into the client bundle at
+# build time. Must be passed as build args from docker-compose or the
+# `docker build --build-arg` flag. If unset, PostHog stays disabled.
+ARG NEXT_PUBLIC_POSTHOG_API_KEY
+ENV NEXT_PUBLIC_POSTHOG_API_KEY=$NEXT_PUBLIC_POSTHOG_API_KEY
+ARG NEXT_PUBLIC_POSTHOG_HOST=https://us.i.posthog.com
+ENV NEXT_PUBLIC_POSTHOG_HOST=$NEXT_PUBLIC_POSTHOG_HOST
+
 # Build the application
 RUN corepack enable pnpm && pnpm run build
 

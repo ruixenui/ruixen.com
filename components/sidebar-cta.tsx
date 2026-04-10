@@ -4,6 +4,7 @@ import { ChevronRight, Check } from "lucide-react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { useState, useEffect, useRef } from "react";
+import { trackEvent } from "@/lib/events";
 
 // Showcase videos - each has light/dark variants
 const SHOWCASE_VIDEOS = [
@@ -86,8 +87,14 @@ function VideoSlideshow() {
 export function ProCTA() {
   return (
     <Link
-      href="https://pro.ruixen.com"
+      href="https://pro.ruixen.com/pricing?ref=oss_sidebar"
       target="_blank"
+      onClick={() =>
+        trackEvent({
+          name: "oss_pro_cta_clicked",
+          properties: { surface: "sidebar" },
+        })
+      }
       className="group my-6 flex w-full flex-col overflow-hidden rounded-xl bg-card border border-blue-300 dark:border-blue-600/50 cursor-pointer transition-all hover:border-blue-400 dark:hover:border-blue-500 hover:shadow-md"
     >
       {/* Video Slideshow */}

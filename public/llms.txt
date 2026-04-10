@@ -9,6 +9,7 @@ Ruixen UI provides professionally-crafted React components that behave like phys
 - Website: https://ruixen.com
 - GitHub: https://github.com/ruixenui/ruixen.com
 - License: MIT
+- Ruixen Pro: https://pro.ruixen.com — 50+ premium components + production templates, $59 lifetime, one payment, no subscription. See https://ruixen.com/pricing or https://pro.ruixen.com/pricing for details.
 
 ## Key Features
 

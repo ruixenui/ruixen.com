@@ -3,14 +3,21 @@
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { trackEvent } from "@/lib/events";
 
 export function ProBanner() {
   return (
     <div className="group relative top-0 bg-blue-600 py-3 text-white transition-all duration-300 md:py-0">
       <div className="container flex flex-col items-center justify-center gap-4 md:h-12 md:flex-row">
         <Link
-          href="https://pro.ruixen.com"
+          href="https://pro.ruixen.com/pricing?ref=oss_banner"
           target="_blank"
+          onClick={() =>
+            trackEvent({
+              name: "oss_pro_cta_clicked",
+              properties: { surface: "banner" },
+            })
+          }
           className="relative inline-flex text-sm leading-normal md:text-md"
         >
           <span className="text-[1rem] font-semibold">
@@ -51,7 +58,14 @@ export function ProductHuntBanner() {
 export function SiteBanner() {
   const pathname = usePathname();
 
-  if (pathname === "/showcase" || pathname.startsWith("/blog")) {
+  // Banner runs on the homepage + marketing surfaces only. On docs/components
+  // (the 993-user catalog) the sidebar CTA carries the upsell load, so the
+  // banner would compete for attention and dilute both.
+  if (
+    pathname === "/showcase" ||
+    pathname.startsWith("/blog") ||
+    pathname.startsWith("/docs")
+  ) {
     return null;
   }
 

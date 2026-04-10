@@ -3,6 +3,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { SiteBanner } from "@/components/site-banner";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { PHProvider } from "@/components/posthog-provider";
 import { fontMono, fontSans } from "@/lib/fonts";
 import { absoluteUrl, cn } from "@/lib/utils";
 import { Provider as JotaiProvider } from "jotai";
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
     template: "%s | Ruixen UI",
   },
   description:
-    "170+ free, open-source React components built with Tailwind CSS, TypeScript & Framer Motion. Supports Tailwind v3 + v4, Radix & Base UI primitives. Copy-paste into Next.js projects.",
+    "170+ free React components built with Tailwind CSS, TypeScript & Framer Motion. Plus Ruixen Pro: 50+ premium templates with lifetime updates for $59. Supports Tailwind v3 + v4, Radix & Base UI primitives. Copy-paste into Next.js projects.",
   authors: [{ name: "Srinath" }],
   keywords: [
     "react component library",
@@ -117,15 +118,17 @@ export default function RootLayout({
         )}
       >
         <JotaiProvider>
-          <ThemeProvider attribute="class" defaultTheme="light">
-            <TooltipProvider>
-              <SiteBanner />
-              {children}
-              <Toaster />
-              <Analytics />
-              {/* <GitHubStarPopup /> */}
-            </TooltipProvider>
-          </ThemeProvider>
+          <PHProvider>
+            <ThemeProvider attribute="class" defaultTheme="light">
+              <TooltipProvider>
+                <SiteBanner />
+                {children}
+                <Toaster />
+                <Analytics />
+                {/* <GitHubStarPopup /> */}
+              </TooltipProvider>
+            </ThemeProvider>
+          </PHProvider>
         </JotaiProvider>
       </body>
     </html>
