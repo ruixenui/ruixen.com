@@ -11,6 +11,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     {
       url: `${protocol}://${domain}`,
       lastModified: new Date(),
+      priority: 1,
+    },
+    {
+      url: `${protocol}://${domain}/pricing`,
+      lastModified: new Date(),
+      priority: 0.9,
+    },
+    {
+      url: `${protocol}://${domain}/templates`,
+      lastModified: new Date(),
+      priority: 0.8,
     },
     ...allPages.map((post) => ({
       url: `${protocol}://${domain}/${post.slugAsParams}`,

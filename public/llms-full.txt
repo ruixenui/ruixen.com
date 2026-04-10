@@ -106,6 +106,33 @@ Every component is published in 4 variants:
 - **Pro Version:** https://pro.ruixen.com
 
 ================================================================================
+## RUIXEN PRO (Commercial Tier)
+================================================================================
+
+Ruixen Pro is a one-time paid upgrade that sits alongside the free library.
+Everything in the free 170+ component library stays free forever; Pro adds
+a premium tier on top.
+
+### Pricing
+- **$59 USD lifetime** — one payment, no subscription, no renewals
+- 14-day money-back guarantee
+- Commercial license included
+- Unlimited personal and commercial projects
+
+### What's Included
+- 50+ premium components with advanced motion and theming
+- 2 production-ready templates (Intellune AI workspace, Nguyen SaaS)
+- Lifetime updates — every new Pro component included
+- Priority support via Discord
+- Shadcn CLI integration: `npx shadcn@latest add https://pro.ruixen.com/r/[component]`
+- Early access to new releases
+
+### URLs
+- **Pricing:** https://ruixen.com/pricing and https://pro.ruixen.com/pricing
+- **Pro catalog:** https://pro.ruixen.com/docs/components
+- **Pro templates:** https://pro.ruixen.com/templates
+
+================================================================================
 ## COMPONENT CATALOG (170+ Components)
 ================================================================================
 
