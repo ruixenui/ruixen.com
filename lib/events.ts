@@ -1,5 +1,13 @@
 import { z } from "zod";
+import posthog from "posthog-js";
 import { sendGAEvent } from "./ga-events";
+
+// Gate PostHog capture on the same conditions as the provider so local
+// dev never pollutes the production project and `trackEvent` stays a
+// no-op when the key isn't set.
+const POSTHOG_ENABLED =
+  process.env.NODE_ENV === "production" &&
+  Boolean(process.env.NEXT_PUBLIC_POSTHOG_API_KEY);
 
 const eventSchema = z.object({
   name: z.enum([
@@ -36,6 +44,16 @@ const eventSchema = z.object({
 
     // Settings
     "theme_change",
+
+    // OSS → Pro funnel (added by funnel-correction plan)
+    "oss_pro_cta_clicked",
+    "oss_pricing_page_viewed",
+    "oss_template_preview_clicked",
+    "pro_nav_clicked",
+
+    // Header/nav CTA events referenced in config/docs.ts
+    "header_cta_clicked",
+    "gradients_clicked",
   ]),
   // declare type AllowedPropertyValues = string | number | boolean | null
   properties: z
@@ -46,12 +64,27 @@ const eventSchema = z.object({
 export type Event = z.infer<typeof eventSchema>;
 
 /**
- * Track an event to Google Analytics 4
+ * Track an event to both Google Analytics 4 and PostHog.
+ *
+ * GA4 stays wired for historical continuity; PostHog is the
+ * product-analytics source of truth for the funnel-correction plan
+ * (OSS → Pro bridge, price consistency audit, etc.). Using the same
+ * project key as pro.ruixen.com plus cross-subdomain cookies means a
+ * visitor who crosses domains is a single PostHog identity.
  */
 export function trackEvent(input: Event): void {
   const event = eventSchema.parse(input);
-  if (event) {
-    // Send to GA4
-    sendGAEvent(event.name, event.properties || {});
+  if (!event) return;
+
+  // GA4 (legacy)
+  sendGAEvent(event.name, event.properties || {});
+
+  // PostHog (funnel source of truth)
+  if (POSTHOG_ENABLED) {
+    try {
+      posthog.capture(event.name, event.properties);
+    } catch {
+      // Never let an analytics failure break a user interaction
+    }
   }
 }
