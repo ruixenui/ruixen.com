@@ -3468,6 +3468,30 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "pricing-landing-hero": {
+    name: "pricing-landing-hero",
+    description:
+      "A service-style landing hero with scattered preview cards, price block with strike-through, scarcity line, dual CTAs, and trusted-by strip.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/pricing-landing-hero.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/pricing-landing-hero.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/pricing-landing-hero.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "tabbed-hero-section": {
     name: "tabbed-hero-section",
     description:
@@ -7533,6 +7557,32 @@ export const Index: Record<string, any> = {
     component: React.lazy(async () => {
       const mod = await import(
         "@/registry/example/structured-hero-section-demo.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "pricing-landing-hero-demo": {
+    name: "pricing-landing-hero-demo",
+    description:
+      "Example of a service-style landing hero with scattered preview cards, price, scarcity line, and dual CTAs.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/pricing-landing-hero"],
+    files: [
+      {
+        path: "registry/example/pricing-landing-hero-demo.tsx",
+        type: "registry:example",
+        target: "components/pricing-landing-hero-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/pricing-landing-hero-demo.tsx"
       );
       const exportName =
         Object.keys(mod).find(

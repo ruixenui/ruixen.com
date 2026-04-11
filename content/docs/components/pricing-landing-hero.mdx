@@ -1,0 +1,145 @@
+---
+title: Pricing Landing Hero
+date: 2026-04-11
+description: A service-style landing hero with an animated iPhone mockup, price block with strike-through, scarcity line, dual CTAs, and trusted-by strip.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="pricing-landing-hero-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/pricing-landing-hero"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="pricing-landing-hero" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { PricingLandingHero } from "@/components/ruixen/pricing-landing-hero";
+
+export default function App() {
+  return (
+    <PricingLandingHero
+      title={
+        <>
+          Landing pages
+          <br />
+          for startups
+        </>
+      }
+      description="Web & mobile designs delivered in Figma within 3–5 days. No templates, no back-and-forth."
+      phone={{
+        time: "9:41",
+        items: [
+          { title: "Add a Title...", description: "Add a description..." },
+          { title: "Ship on Monday", description: "Final designs ready." },
+        ],
+      }}
+      price={{ current: "$850", original: "$2,000" }}
+      availability="Only 5 spots available"
+      primaryAction={{ label: "Get yours now", href: "/checkout" }}
+      secondaryAction={{ label: "Send a message", href: "/contact" }}
+      trustedBy={{
+        heading: "Trusted by",
+        logos: [<span key="a">AgentMail</span>, <span key="b">dot</span>],
+      }}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop              | Type               | Default | Description                                |
+| ----------------- | ------------------ | ------- | ------------------------------------------ |
+| `title`           | `ReactNode`        | -       | Main headline (required)                   |
+| `description`     | `string`           | -       | Subtitle paragraph                         |
+| `phone`           | `PhoneMockupProps` | -       | Animated iPhone mockup config              |
+| `price`           | `PriceBlock`       | -       | Price display with optional strike-through |
+| `availability`    | `string`           | -       | Scarcity line above the CTAs               |
+| `primaryAction`   | `Action`           | -       | Primary CTA (filled pill)                  |
+| `secondaryAction` | `Action`           | -       | Secondary CTA (outlined pill)              |
+| `trustedBy`       | `TrustedBySection` | -       | Trusted-by heading with a row of logos     |
+| `className`       | `string`           | -       | Additional CSS classes on the root section |
+
+### PhoneMockupProps
+
+```tsx
+interface PhoneMockupProps {
+  /** Time shown in the status bar. */
+  time?: string; // default "9:41"
+  /** Sheet items to cycle through (crossfade with spring). */
+  items?: Array<{ title: string; description: string }>;
+  /** Interval between item transitions (ms). */
+  cycleMs?: number; // default 2800
+}
+```
+
+Pass a single item to render a static sheet. Pass multiple items to get the continuous spring crossfade animation.
+
+### Action Type
+
+```tsx
+type Action = {
+  href: string;
+  label: string;
+};
+```
+
+### PriceBlock Type
+
+```tsx
+interface PriceBlock {
+  current: string;
+  original?: string;
+}
+```
+
+### TrustedBySection Type
+
+```tsx
+interface TrustedBySection {
+  heading?: string;
+  logos: React.ReactNode[];
+}
+```
+
+## Features
+
+- **Animated iPhone Mockup**: Bezel, screen, status bar (signal/wifi/battery), and a sheet that rises from below on mount
+- **Rauno-style Motion**: Sheet content crossfades with a spring easing — translateY + scale + blur transitions
+- **Bottom Mask Fade**: The mockup fades out gracefully into the page background via a CSS mask
+- **Price Block**: Current price with optional strike-through original price
+- **Scarcity Line**: Small availability line above the CTAs for conversion emphasis
+- **Dual CTAs**: Pill-shaped primary (filled) and secondary (outlined) actions
+- **Trusted-By Strip**: Compact logo row under the CTAs
+- **Theme Tokens**: Uses foreground/background/muted tokens for light + dark parity
+- **Zero External Deps**: Plain React, Tailwind, inline SVG icons, and `next/link` only
