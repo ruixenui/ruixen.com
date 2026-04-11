@@ -1215,6 +1215,12 @@ export const docsConfig: DocsConfig = {
               label: "New",
             },
             {
+              title: "Pricing Landing Hero",
+              href: `/docs/components/pricing-landing-hero`,
+              items: [],
+              label: "New",
+            },
+            {
               title: "Tabbed Hero Section",
               href: `/docs/components/tabbed-hero-section`,
               items: [],

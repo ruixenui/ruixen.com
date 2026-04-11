@@ -2242,6 +2242,20 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "pricing-landing-hero",
+    type: "registry:ui",
+    title: "Pricing Landing Hero",
+    description:
+      "A service-style landing hero with scattered preview cards, price block with strike-through, scarcity line, dual CTAs, and trusted-by strip.",
+    files: [
+      {
+        path: "registry/ruixenui/pricing-landing-hero.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/pricing-landing-hero.tsx",
+      },
+    ],
+  },
+  {
     name: "tabbed-hero-section",
     type: "registry:ui",
     title: "Tabbed Hero Section",
