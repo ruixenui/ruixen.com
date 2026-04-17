@@ -2443,6 +2443,19 @@
       ]
     },
     {
+      "name": "pricing-landing-hero",
+      "type": "registry:ui",
+      "title": "Pricing Landing Hero",
+      "description": "A service-style landing hero with scattered preview cards, price block with strike-through, scarcity line, dual CTAs, and trusted-by strip.",
+      "files": [
+        {
+          "path": "registry/ruixenui/pricing-landing-hero.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/pricing-landing-hero.tsx"
+        }
+      ]
+    },
+    {
       "name": "tabbed-hero-section",
       "type": "registry:ui",
       "title": "Tabbed Hero Section",
@@ -5107,6 +5120,22 @@
           "path": "registry/example/structured-hero-section-demo.tsx",
           "type": "registry:example",
           "target": "components/structured-hero-section-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pricing-landing-hero-demo",
+      "type": "registry:example",
+      "title": "Pricing Landing Hero Demo",
+      "description": "Example of a service-style landing hero with scattered preview cards, price, scarcity line, and dual CTAs.",
+      "registryDependencies": [
+        "https://ruixen.com/r/pricing-landing-hero"
+      ],
+      "files": [
+        {
+          "path": "registry/example/pricing-landing-hero-demo.tsx",
+          "type": "registry:example",
+          "target": "components/pricing-landing-hero-demo.tsx"
         }
       ]
     },
