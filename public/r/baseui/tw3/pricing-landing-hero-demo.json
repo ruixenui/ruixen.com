@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pricing-landing-hero-demo",
+  "type": "registry:example",
+  "title": "Pricing Landing Hero Demo",
+  "description": "Example of a service-style landing hero with scattered preview cards, price, scarcity line, and dual CTAs.",
+  "registryDependencies": [
+    "https://ruixen.com/r/pricing-landing-hero"
+  ],
+  "files": [
+    {
+      "path": "registry/example/pricing-landing-hero-demo.tsx",
+      "content": "import { PricingLandingHero } from \"@/registry/ruixenui/pricing-landing-hero\";\n\n/* ── demo ─────────────────────────────────────────────────────── */\n\nexport default function PricingLandingHeroDemo() {\n  return (\n    <PricingLandingHero\n      title={\n        <>\n          Ship your SaaS\n          <br />\n          in a weekend\n        </>\n      }\n      description=\"A production-ready React boilerplate with auth, billing, and email flows. Skip 200 hours of setup and start shipping.\"\n      phone={{\n        time: \"9:41\",\n        items: [\n          {\n            title: \"Stripe billing\",\n            description: \"Subscriptions wired up in minutes.\",\n          },\n          {\n            title: \"Magic link auth\",\n            description: \"Email, OAuth, and sessions handled.\",\n          },\n          {\n            title: \"Live by Monday\",\n            description: \"Your MVP online before the next standup.\",\n          },\n        ],\n      }}\n      price={{ current: \"$149\", original: \"$399\" }}\n      availability=\"Lifetime deal — ends Sunday\"\n      primaryAction={{ label: \"Grab the boilerplate\", href: \"#\" }}\n      secondaryAction={{ label: \"See what's inside\", href: \"#\" }}\n      trustedBy={{\n        heading: \"Used by builders shipping at\",\n        logos: [\n          <span\n            key=\"linear\"\n            className=\"text-base font-semibold tracking-tight whitespace-nowrap\"\n          >\n            Linear\n          </span>,\n          <span\n            key=\"vercel\"\n            className=\"text-base font-semibold tracking-tight whitespace-nowrap\"\n          >\n            ▲ Vercel\n          </span>,\n          <span\n            key=\"raycast\"\n            className=\"text-base font-semibold tracking-tight whitespace-nowrap\"\n          >\n            Raycast\n          </span>,\n        ],\n      }}\n    />\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/pricing-landing-hero-demo.tsx"
+    }
+  ]
+}

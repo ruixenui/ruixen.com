@@ -1970,6 +1970,21 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "pricing-landing-hero-demo",
+    type: "registry:example",
+    title: "Pricing Landing Hero Demo",
+    description:
+      "Example of a service-style landing hero with scattered preview cards, price, scarcity line, and dual CTAs.",
+    registryDependencies: ["https://ruixen.com/r/pricing-landing-hero"],
+    files: [
+      {
+        path: "registry/example/pricing-landing-hero-demo.tsx",
+        type: "registry:example",
+        target: "components/pricing-landing-hero-demo.tsx",
+      },
+    ],
+  },
+  {
     name: "tabbed-hero-section-demo",
     type: "registry:example",
     title: "Tabbed Hero Section Demo",
