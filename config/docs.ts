@@ -508,6 +508,12 @@ export const docsConfig: DocsConfig = {
               label: "",
             },
             {
+              title: "Glass Browser History",
+              href: `/docs/components/glass-browser-history`,
+              items: [],
+              label: "New",
+            },
+            {
               title: "Phone Mockup Card",
               href: `/docs/components/phone-mockup-card`,
               items: [],

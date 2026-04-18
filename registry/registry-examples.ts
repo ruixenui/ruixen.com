@@ -2090,6 +2090,21 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "glass-browser-history-demo",
+    type: "registry:example",
+    title: "Glass Browser History Demo",
+    description:
+      "Example showing an iOS 26 liquid-glass browser history carousel with stacked macOS window cards.",
+    registryDependencies: ["https://ruixen.com/r/glass-browser-history"],
+    files: [
+      {
+        path: "registry/example/glass-browser-history-demo.tsx",
+        type: "registry:example",
+        target: "components/glass-browser-history-demo.tsx",
+      },
+    ],
+  },
+  {
     name: "phone-mockup-card-demo",
     type: "registry:example",
     title: "Phone Mockup Card Demo",
