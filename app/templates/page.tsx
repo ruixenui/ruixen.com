@@ -102,7 +102,6 @@ const templates: Template[] = [
     publishedAt: "2024-08-10",
     category: "Full Templates",
   },
-
 ];
 
 function TemplateCard({ template }: { template: Template }) {
