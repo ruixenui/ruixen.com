@@ -56,8 +56,15 @@ const nextConfig = {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com",
-              "connect-src 'self' https://www.google-analytics.com https://analytics.google.com",
+              // PostHog JS is bundled, but the hosted config endpoint
+              // lives on us-assets.i.posthog.com. GA4 keeps its existing
+              // allow list.
+              "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://us-assets.i.posthog.com",
+              // connect-src must allow both the PostHog ingestion host
+              // (us.i.posthog.com) and the assets host for remote
+              // config fetches. Without us.i.posthog.com every
+              // posthog.capture() call is blocked by the browser.
+              "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://us.i.posthog.com https://us-assets.i.posthog.com",
               "img-src 'self' data: blob: https:",
               "style-src 'self' 'unsafe-inline'",
               "font-src 'self' data:",

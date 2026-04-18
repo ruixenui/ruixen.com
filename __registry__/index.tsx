@@ -3662,6 +3662,30 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "glass-browser-history": {
+    name: "glass-browser-history",
+    description:
+      "iOS 26 liquid-glass browser history carousel with stacked macOS window cards and drag-to-navigate gesture.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/glass-browser-history.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/glass-browser-history.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/glass-browser-history.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "phone-mockup-card": {
     name: "phone-mockup-card",
     description:
@@ -7761,6 +7785,32 @@ export const Index: Record<string, any> = {
     component: React.lazy(async () => {
       const mod = await import(
         "@/registry/example/glass-shipment-flow-demo.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "glass-browser-history-demo": {
+    name: "glass-browser-history-demo",
+    description:
+      "Example showing an iOS 26 liquid-glass browser history carousel with stacked macOS window cards.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/glass-browser-history"],
+    files: [
+      {
+        path: "registry/example/glass-browser-history-demo.tsx",
+        type: "registry:example",
+        target: "components/glass-browser-history-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/glass-browser-history-demo.tsx"
       );
       const exportName =
         Object.keys(mod).find(

@@ -2359,6 +2359,21 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "glass-browser-history",
+    type: "registry:ui",
+    title: "Glass Browser History",
+    description:
+      "iOS 26 liquid-glass browser history carousel with stacked macOS window cards and drag-to-navigate gesture.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/ruixenui/glass-browser-history.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/glass-browser-history.tsx",
+      },
+    ],
+  },
+  {
     name: "phone-mockup-card",
     type: "registry:ui",
     title: "Phone Mockup Card",

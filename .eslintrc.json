@@ -12,11 +12,5 @@
     "next": {
       "rootDir": ["app/*/"]
     }
-  },
-  "overrides": [
-    {
-      "files": ["*.ts", "*.tsx"],
-      "parser": "@typescript-eslint/parser"
-    }
-  ]
+  }
 }
