@@ -251,9 +251,7 @@ export function EmbedDialog(props: EmbedDialogProps) {
             <CodeBlock
               code="npm install @ruixen/extrude"
               label="Terminal"
-              onCopy={() =>
-                handleCopy("npm install @ruixen/extrude", "npm")
-              }
+              onCopy={() => handleCopy("npm install @ruixen/extrude", "npm")}
               copied={copied === "npm"}
               lineNumbers={false}
             />

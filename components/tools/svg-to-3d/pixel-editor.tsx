@@ -140,9 +140,7 @@ export function PixelEditor({ onSvgChange }: PixelEditorProps) {
   const { resolvedTheme } = useTheme();
   const isDark = resolvedTheme === "dark";
   const pixelColor = isDark ? "#fafafa" : "#111115";
-  const gridLineColor = isDark
-    ? "rgba(255,255,255,0.08)"
-    : "rgba(0,0,0,0.08)";
+  const gridLineColor = isDark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.08)";
   const [pixels, setPixels] = useState<boolean[][]>(() => createDefaultGrid());
   const [tool, setTool] = useState<"draw" | "erase">("draw");
   const [isDrawing, setIsDrawing] = useState(false);

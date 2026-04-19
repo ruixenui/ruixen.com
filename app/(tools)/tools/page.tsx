@@ -84,9 +84,9 @@ export default function ToolsLandingPage() {
               Creative tools, built for product teams.
             </h1>
             <p className="mt-5 text-base leading-relaxed text-muted-foreground md:text-lg">
-              A growing collection of focused, no-signup tools for designers
-              and engineers. Generate assets, prototype ideas, and ship faster
-              — all in the browser.
+              A growing collection of focused, no-signup tools for designers and
+              engineers. Generate assets, prototype ideas, and ship faster — all
+              in the browser.
             </p>
           </div>
         </section>
