@@ -23,6 +23,12 @@ export const docsConfig: DocsConfig = {
       event: "gradients_clicked",
       label: "",
     },
+    {
+      title: "Tools",
+      href: "/tools",
+      event: "header_cta_clicked",
+      label: "New",
+    },
     // {
     //   title: "Generator",
     //   href: "/generator",
