@@ -1,8 +1,8 @@
 {
   "mcpServers": {
-    "@ruixenui/mcp": {
+    "ruixen-mcp": {
       "command": "npx",
-      "args": ["-y", "@ruixenui/mcp@latest"]
+      "args": ["-y", "@ruixen/mcp@latest"]
     }
   }
 }

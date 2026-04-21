@@ -1,38 +1,92 @@
 ---
 title: MCP Server
-description: Give your AI IDE direct access to every Ruixen UI component. Launching soon — completely free.
-date: 2025-04-16
+description: Give your AI IDE direct access to every Ruixen UI component. Free, open source, MIT-licensed.
+date: 2026-04-21
 ---
 
 ## AI-native component installation
 
-The Ruixen UI MCP server gives your AI-assisted IDE direct access to all 170+ components. Your editor understands the full registry — names, props, dependencies, install commands — so it can generate correct code on the first try.
+The Ruixen UI MCP server gives your AI-assisted editor direct access to the Ruixen UI registry. Your editor sees every component name, its props, its dependencies, and the exact install command — so it can generate correct code on the first try.
 
 No copying docs. No guessing component names. Just ask.
 
-## Launching soon — completely free
+## Free and open
 
-We're building this as a free, open tool for every developer. No paid tiers, no gated features. The full component registry, every variant, every primitive — accessible to any MCP-compatible editor at zero cost.
+`@ruixen/mcp` is free on npm and MIT-licensed on GitHub. No paid tiers, no gated features, no sign-up. The registry your editor reaches through the server is the same one served at [ruixen.com/registry.json](https://ruixen.com/registry.json) — there is no separate paid catalog.
 
-The server is in final testing. Follow [@ruixen_ui](https://twitter.com/ruixen_ui) on Twitter to get notified the moment it ships.
+- **npm:** [`@ruixen/mcp`](https://www.npmjs.com/package/@ruixen/mcp)
+- **GitHub:** [ruixenui/mcp.ruixen.com](https://github.com/ruixenui/mcp.ruixen.com)
+- **Report an issue:** [github.com/ruixenui/mcp.ruixen.com/issues](https://github.com/ruixenui/mcp.ruixen.com/issues)
 
-## What it does
+## Install
 
-- **Component discovery** — Ask your IDE for any Ruixen UI component by name or description. It finds the right one.
-- **Correct install commands** — The server returns the exact CLI command for your Tailwind version and primitive library.
-- **Prop and usage context** — Your AI gets the full component API, not just a name. It writes working code.
-- **All four registry variants** — Tailwind v4, Tailwind v3, Radix, and Base UI. The server knows which one you need.
+Add this object to your editor's MCP config file. The snippet is identical for every supported editor — only the location of the config file changes.
 
-## Supported editors
+```json
+{
+  "mcpServers": {
+    "ruixen-mcp": {
+      "command": "npx",
+      "args": ["-y", "@ruixen/mcp@latest"]
+    }
+  }
+}
+```
 
-The MCP server will work with any editor that supports the [Model Context Protocol](https://modelcontextprotocol.com/):
+Restart your editor after saving. Three Ruixen tools will appear in your assistant's tool list automatically.
 
-- Cursor
-- Windsurf
-- Claude Code
-- Cline
-- Roo Code
+### Where each editor stores its config
+
+| Editor          | Where to put the config |
+|-----------------|--------------------------|
+| **Cursor**      | Settings → Features → Model Context Protocol → **Add new MCP server**, or edit `~/.cursor/mcp.json` directly |
+| **Claude Desktop** | `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) · `%APPDATA%\Claude\claude_desktop_config.json` (Windows) |
+| **Claude Code** | Run `claude mcp add ruixen-mcp -- npx -y @ruixen/mcp@latest` |
+| **Windsurf**    | Cascade panel → MCP servers → **Add server** |
+| **Cline**       | MCP Servers tab in the Cline extension panel → **Configure MCP Servers** |
+| **Roo Code**    | MCP Servers tab in the Roo Code extension panel |
+| **VS Code**     | Depends on the MCP extension you use — consult its docs |
+
+If your editor prefers a one-line command, point it at `npx -y @ruixen/mcp@latest`. That's the entire server — no separate install step, no global package.
+
+<Callout className="mt-4">
+
+The server has zero local state. Every call reads live from `ruixen.com` over HTTPS, so the moment a new component ships, your AI can reach it.
+
+</Callout>
+
+## Example prompts
+
+Once configured, talk to your assistant the way you already do:
+
+> "Add a marquee of client logos."
+
+> "Give me a blur-fade text animation component."
+
+> "I need a glass card with a hover effect."
+
+> "Build a pricing section with three tiers."
+
+> "Show me every Ruixen button with spring physics."
+
+Your assistant calls the MCP tools behind the scenes, finds matching components, fetches their source, and hands you the exact `npx shadcn@latest add …` command to install them. Because the source is real, the generated code uses the real component API — no hallucinated props.
+
+## What the server exposes
+
+Three tools, intentionally small. Most MCP-aware editors cap how many tools a single server can register; this keeps Ruixen well under every cap.
+
+| Tool                   | What it does |
+|------------------------|--------------|
+| `listRegistryItems`    | Browse the full registry with optional filters for `kind`, `query`, and pagination. |
+| `searchRegistryItems`  | Ranked keyword search across names, titles, descriptions, and registry types. |
+| `getRegistryItem`      | Full detail for a single component — install command, source code, related examples, and dependencies. |
+
+## How it works
+
+The server is a stdio-based MCP implementation that fetches `https://ruixen.com/registry.json` on startup and individual component JSON (`https://ruixen.com/r/<name>.json`) on demand. There's no database, no caching layer to invalidate, and no separate sync job — your assistant always sees what's live on the site.
+
+When it hands your editor an install command, the URL points back to `ruixen.com/r/<name>.json`, which the `shadcn` CLI reads directly. The MCP server isn't a build step; it's a typed lookup layer over the public registry.
 
 ## Stay in the loop
 
-Follow [@ruixen_ui](https://twitter.com/ruixen_ui) on Twitter for the launch announcement.
+Follow [@ruixen_ui](https://twitter.com/ruixen_ui) on Twitter for new components and release notes, or star the [GitHub repo](https://github.com/ruixenui/mcp.ruixen.com) to track issues and pull requests.

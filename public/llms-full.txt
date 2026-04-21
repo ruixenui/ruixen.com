@@ -556,21 +556,44 @@ A complete portfolio website template featuring:
 ================================================================================
 
 **URL:** https://ruixen.com/docs/mcp
+**npm:** https://www.npmjs.com/package/@ruixen/mcp (`@ruixen/mcp`)
+**GitHub:** https://github.com/ruixenui/mcp.ruixen.com
+**License:** MIT — free and open source
 
-Ruixen UI provides a Model Context Protocol (MCP) server for AI IDE integration.
+Ruixen UI publishes an official Model Context Protocol server that gives AI-assisted editors direct access to the live Ruixen UI registry. It is a stdio server that reads from https://ruixen.com/registry.json on demand, so the component list an editor can reach is always in sync with the site.
 
-**Supported IDEs:**
+**Install (universal config, works with every supported editor):**
+
+```json
+{
+  "mcpServers": {
+    "ruixen-mcp": {
+      "command": "npx",
+      "args": ["-y", "@ruixen/mcp@latest"]
+    }
+  }
+}
+```
+
+**Supported editors:**
 - Cursor
+- Claude Desktop
+- Claude Code (`claude mcp add ruixen-mcp -- npx -y @ruixen/mcp@latest`)
 - Windsurf
-- Claude Code
 - Cline
 - Roo Code
+- Any other MCP-compatible editor (VS Code extensions, etc.)
 
-**Features:**
-- Component discovery via AI
-- Auto-correct install commands
-- Support for all 4 registry variants
-- Natural language component search
+**Tools exposed:**
+- `listRegistryItems` — browse the full registry with optional kind/query filters and pagination
+- `searchRegistryItems` — ranked keyword search across names, titles, descriptions, and types
+- `getRegistryItem` — detail for a single component, including install command, source, related examples, and dependencies
+
+**Capabilities:**
+- Natural-language component discovery
+- Correct `npx shadcn@latest add …` install commands emitted directly by the server
+- Generates code against the real component API (no hallucinated props) because the MCP returns the actual component source
+- Zero local state — every call reads live from ruixen.com
 
 ================================================================================
 ## TECH STACK
