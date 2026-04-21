@@ -1,0 +1,61 @@
+---
+title: Calendar Event Composer
+date: 2026-04-20
+description: macOS-style day view — click a time slot to drop an event and edit it inline through a sliding inspector panel.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="calendar-event-composer-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/calendar-event-composer"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="calendar-event-composer" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop             | Type                                | Default         | Description                                           |
+| ---------------- | ----------------------------------- | --------------- | ----------------------------------------------------- |
+| `date`           | `Date`                              | `new Date()`    | Day rendered in the inspector's date field            |
+| `startHour`      | `number`                            | `10`            | First hour shown in the timeline (0–23)               |
+| `endHour`        | `number`                            | `19`            | Last hour shown in the timeline (0–23)                |
+| `initialEvents`  | `ComposerEvent[]`                   | `[]`            | Events pre-populated on first mount                   |
+| `categories`     | `ComposerCategory[]`                | 5 macOS palette | Category options shown in the picker                  |
+| `onEventsChange` | `(events: ComposerEvent[]) => void` | -               | Fires whenever events are created, edited, or resized |
+| `className`      | `string`                            | -               | Extra classes merged onto the outer container         |
+
+## Interactions
+
+- **Click empty timeline** — creates a 60-minute event snapped to the nearest 15-minute mark and opens the inspector focused on the title input.
+- **Click an existing event** — re-opens the inspector with that event's data.
+- **Drag an event** — moves it within the day, snapping to 15-minute intervals.
+- **Drag the bottom edge** — resizes the event's end time (minimum 30 minutes).
+- **Escape** — closes the inspector without deselecting the block.

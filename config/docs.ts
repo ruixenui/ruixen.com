@@ -29,6 +29,12 @@ export const docsConfig: DocsConfig = {
       event: "header_cta_clicked",
       label: "New",
     },
+    {
+      title: "Layouts",
+      href: "/layouts",
+      event: "header_cta_clicked",
+      label: "New",
+    },
     // {
     //   title: "Generator",
     //   href: "/generator",
@@ -709,6 +715,12 @@ export const docsConfig: DocsConfig = {
               href: `/docs/components/calendar-lume`,
               items: [],
               label: "",
+            },
+            {
+              title: "Calendar Event Composer",
+              href: `/docs/components/calendar-event-composer`,
+              items: [],
+              label: "New",
             },
           ],
         },

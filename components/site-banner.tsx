@@ -60,11 +60,16 @@ export function SiteBanner() {
 
   // Banner runs on the homepage + marketing surfaces only. On docs/components
   // (the 993-user catalog) the sidebar CTA carries the upsell load, so the
-  // banner would compete for attention and dilute both.
+  // banner would compete for attention and dilute both. On layout demos
+  // (/layouts/<name>/...) the demo's own header is the whole point — a
+  // Ruixen banner above it breaks the component-preview intent. The hub
+  // page `/layouts` still gets the banner (exact match is not suppressed).
   if (
     pathname === "/showcase" ||
     pathname.startsWith("/blog") ||
-    pathname.startsWith("/docs")
+    pathname.startsWith("/docs") ||
+    pathname.startsWith("/preview") ||
+    pathname.startsWith("/layouts/")
   ) {
     return null;
   }

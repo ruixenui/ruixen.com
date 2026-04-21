@@ -1521,6 +1521,21 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "calendar-event-composer-demo",
+    type: "registry:example",
+    title: "Calendar Event Composer Demo",
+    description:
+      "Example showing a macOS-style day view with click-to-create events and a sliding inspector panel.",
+    registryDependencies: ["https://ruixen.com/r/calendar-event-composer"],
+    files: [
+      {
+        path: "registry/example/calendar-event-composer-demo.tsx",
+        type: "registry:example",
+        target: "components/calendar-event-composer-demo.tsx",
+      },
+    ],
+  },
+  {
     name: "notification-inbox-popover-demo",
     type: "registry:example",
     title: "Notification Inbox Popover Demo",
