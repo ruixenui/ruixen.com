@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "calendar-event-composer-demo",
+  "type": "registry:example",
+  "title": "Calendar Event Composer Demo",
+  "description": "Example showing a macOS-style day view with click-to-create events and a sliding inspector panel.",
+  "registryDependencies": [
+    "https://ruixen.com/r/calendar-event-composer"
+  ],
+  "files": [
+    {
+      "path": "registry/example/calendar-event-composer-demo.tsx",
+      "content": "\"use client\";\n\nimport {\n  CalendarEventComposer,\n  type ComposerEvent,\n} from \"@/registry/ruixenui/calendar-event-composer\";\n\nconst INITIAL: ComposerEvent[] = [\n  {\n    id: \"seed-new-event\",\n    title: \"\",\n    startMin: 16 * 60 + 45,\n    endMin: 17 * 60 + 45,\n    categoryId: \"work\",\n  },\n];\n\nexport default function CalendarEventComposerDemo() {\n  return (\n    <div\n      style={{\n        display: \"flex\",\n        justifyContent: \"center\",\n        padding: \"24px 16px\",\n        width: \"100%\",\n      }}\n    >\n      <CalendarEventComposer\n        date={new Date(2026, 2, 8)}\n        startHour={10}\n        endHour={19}\n        initialEvents={INITIAL}\n        onEventsChange={(events) => {\n          console.log(\"Events:\", events);\n        }}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/calendar-event-composer-demo.tsx"
+    }
+  ]
+}

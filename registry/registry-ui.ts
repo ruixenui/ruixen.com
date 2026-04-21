@@ -1724,6 +1724,21 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "calendar-event-composer",
+    type: "registry:ui",
+    title: "Calendar Event Composer",
+    description:
+      "macOS-style day view — click a time slot to drop an event and edit it inline through a sliding inspector panel.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/ruixenui/calendar-event-composer.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/calendar-event-composer.tsx",
+      },
+    ],
+  },
+  {
     name: "notification-inbox-popover",
     type: "registry:ui",
     title: "Notification Inbox Popover",
@@ -2765,6 +2780,271 @@ export const ui: Registry["items"] = [
         path: "registry/ruixenui/scroll-text-rise.tsx",
         type: "registry:ui",
         target: "components/ruixen/scroll-text-rise.tsx",
+      },
+    ],
+  },
+  // ─── Layouts ───
+  {
+    name: "layouts-scroll-header",
+    type: "registry:block",
+    title: "Scroll Header",
+    description:
+      "Scroll-aware sticky header with fluid animated tab transitions. Ships with home, about, contact, and danger-zone demo pages.",
+    dependencies: ["motion", "lucide-react", "next-themes"],
+    registryDependencies: ["skeleton"],
+    files: [
+      {
+        path: "components/layouts/scroll-header/scroll-header.tsx",
+        type: "registry:component",
+        target: "components/layouts/scroll-header/scroll-header.tsx",
+      },
+      {
+        path: "components/layouts/scroll-header/animated-tabs.tsx",
+        type: "registry:component",
+        target: "components/layouts/scroll-header/animated-tabs.tsx",
+      },
+      {
+        path: "components/layouts/scroll-header/demo-skeleton.tsx",
+        type: "registry:component",
+        target: "components/layouts/scroll-header/demo-skeleton.tsx",
+      },
+      {
+        path: "components/layouts/scroll-header/footer.tsx",
+        type: "registry:component",
+        target: "components/layouts/scroll-header/footer.tsx",
+      },
+      {
+        path: "components/mode-toggle.tsx",
+        type: "registry:component",
+        target: "components/mode-toggle.tsx",
+      },
+      {
+        path: "hooks/layouts/use-tabs.ts",
+        type: "registry:hook",
+        target: "hooks/layouts/use-tabs.ts",
+      },
+      {
+        path: "app/preview/layouts/scroll-header/layout.tsx",
+        type: "registry:page",
+        target: "app/scroll-header/layout.tsx",
+      },
+      {
+        path: "app/preview/layouts/scroll-header/page.tsx",
+        type: "registry:page",
+        target: "app/scroll-header/page.tsx",
+      },
+      {
+        path: "app/preview/layouts/scroll-header/about/page.tsx",
+        type: "registry:page",
+        target: "app/scroll-header/about/page.tsx",
+      },
+      {
+        path: "app/preview/layouts/scroll-header/contact/page.tsx",
+        type: "registry:page",
+        target: "app/scroll-header/contact/page.tsx",
+      },
+      {
+        path: "app/preview/layouts/scroll-header/danger-zone/page.tsx",
+        type: "registry:page",
+        target: "app/scroll-header/danger-zone/page.tsx",
+      },
+    ],
+  },
+  {
+    name: "layouts-calendar",
+    type: "registry:block",
+    title: "Calendar",
+    description:
+      "Full-featured week/day view with event drag + resize, multi-day events, mini-calendar sidebar, command menu, and rich keyboard shortcuts.",
+    dependencies: [
+      "date-fns",
+      "lucide-react",
+      "next-themes",
+      "react-day-picker",
+      "cmdk",
+      "motion",
+    ],
+    files: [
+      // Calendar components
+      {
+        path: "components/layouts/calendar/calendar-event-item.tsx",
+        type: "registry:component",
+        target: "components/layouts/calendar/calendar-event-item.tsx",
+      },
+      {
+        path: "components/layouts/calendar/calendar-popover-context.tsx",
+        type: "registry:component",
+        target: "components/layouts/calendar/calendar-popover-context.tsx",
+      },
+      {
+        path: "components/layouts/calendar/calendars.tsx",
+        type: "registry:component",
+        target: "components/layouts/calendar/calendars.tsx",
+      },
+      {
+        path: "components/layouts/calendar/command-menu.tsx",
+        type: "registry:component",
+        target: "components/layouts/calendar/command-menu.tsx",
+      },
+      {
+        path: "components/layouts/calendar/date-picker.tsx",
+        type: "registry:component",
+        target: "components/layouts/calendar/date-picker.tsx",
+      },
+      {
+        path: "components/layouts/calendar/event-context-menu.tsx",
+        type: "registry:component",
+        target: "components/layouts/calendar/event-context-menu.tsx",
+      },
+      {
+        path: "components/layouts/calendar/event-detail-panel.tsx",
+        type: "registry:component",
+        target: "components/layouts/calendar/event-detail-panel.tsx",
+      },
+      {
+        path: "components/layouts/calendar/event-detail-popover.tsx",
+        type: "registry:component",
+        target: "components/layouts/calendar/event-detail-popover.tsx",
+      },
+      {
+        path: "components/layouts/calendar/nav-favorites.tsx",
+        type: "registry:component",
+        target: "components/layouts/calendar/nav-favorites.tsx",
+      },
+      {
+        path: "components/layouts/calendar/nav-main.tsx",
+        type: "registry:component",
+        target: "components/layouts/calendar/nav-main.tsx",
+      },
+      {
+        path: "components/layouts/calendar/nav-secondary.tsx",
+        type: "registry:component",
+        target: "components/layouts/calendar/nav-secondary.tsx",
+      },
+      {
+        path: "components/layouts/calendar/nav-user.tsx",
+        type: "registry:component",
+        target: "components/layouts/calendar/nav-user.tsx",
+      },
+      {
+        path: "components/layouts/calendar/nav-workspaces.tsx",
+        type: "registry:component",
+        target: "components/layouts/calendar/nav-workspaces.tsx",
+      },
+      {
+        path: "components/layouts/calendar/sidebar-left.tsx",
+        type: "registry:component",
+        target: "components/layouts/calendar/sidebar-left.tsx",
+      },
+      {
+        path: "components/layouts/calendar/sidebar-right.tsx",
+        type: "registry:component",
+        target: "components/layouts/calendar/sidebar-right.tsx",
+      },
+      {
+        path: "components/layouts/calendar/team-switcher.tsx",
+        type: "registry:component",
+        target: "components/layouts/calendar/team-switcher.tsx",
+      },
+      {
+        path: "components/layouts/calendar/view-dropdown.tsx",
+        type: "registry:component",
+        target: "components/layouts/calendar/view-dropdown.tsx",
+      },
+      {
+        path: "components/layouts/calendar/week-view-all-day-row.tsx",
+        type: "registry:component",
+        target: "components/layouts/calendar/week-view-all-day-row.tsx",
+      },
+      {
+        path: "components/layouts/calendar/week-view-day-columns.tsx",
+        type: "registry:component",
+        target: "components/layouts/calendar/week-view-day-columns.tsx",
+      },
+      {
+        path: "components/layouts/calendar/week-view-grid.tsx",
+        type: "registry:component",
+        target: "components/layouts/calendar/week-view-grid.tsx",
+      },
+      {
+        path: "components/layouts/calendar/week-view-time-axis.tsx",
+        type: "registry:component",
+        target: "components/layouts/calendar/week-view-time-axis.tsx",
+      },
+      {
+        path: "components/layouts/calendar/week-view-time-indicator.tsx",
+        type: "registry:component",
+        target: "components/layouts/calendar/week-view-time-indicator.tsx",
+      },
+      {
+        path: "components/layouts/calendar/week-view-types.ts",
+        type: "registry:component",
+        target: "components/layouts/calendar/week-view-types.ts",
+      },
+      {
+        path: "components/layouts/calendar/week-view.tsx",
+        type: "registry:component",
+        target: "components/layouts/calendar/week-view.tsx",
+      },
+      // UI primitives added for this layout
+      {
+        path: "components/ui/kbd.tsx",
+        type: "registry:ui",
+        target: "components/ui/kbd.tsx",
+      },
+      {
+        path: "components/ui/sidebar.tsx",
+        type: "registry:ui",
+        target: "components/ui/sidebar.tsx",
+      },
+      // Shared mode toggle
+      {
+        path: "components/mode-toggle.tsx",
+        type: "registry:component",
+        target: "components/mode-toggle.tsx",
+      },
+      // Hooks
+      {
+        path: "hooks/layouts/use-all-day-resize.ts",
+        type: "registry:hook",
+        target: "hooks/layouts/use-all-day-resize.ts",
+      },
+      {
+        path: "hooks/layouts/use-event-drag.ts",
+        type: "registry:hook",
+        target: "hooks/layouts/use-event-drag.ts",
+      },
+      {
+        path: "hooks/layouts/use-event-resize.ts",
+        type: "registry:hook",
+        target: "hooks/layouts/use-event-resize.ts",
+      },
+      {
+        path: "hooks/layouts/use-horizontal-scroll.ts",
+        type: "registry:hook",
+        target: "hooks/layouts/use-horizontal-scroll.ts",
+      },
+      {
+        path: "hooks/layouts/use-mobile.ts",
+        type: "registry:hook",
+        target: "hooks/layouts/use-mobile.ts",
+      },
+      // Libs
+      {
+        path: "lib/layouts/event-utils.ts",
+        type: "registry:lib",
+        target: "lib/layouts/event-utils.ts",
+      },
+      {
+        path: "lib/layouts/mock-events.ts",
+        type: "registry:lib",
+        target: "lib/layouts/mock-events.ts",
+      },
+      // Page
+      {
+        path: "app/preview/layouts/calendar/page.tsx",
+        type: "registry:page",
+        target: "app/calendar/page.tsx",
       },
     ],
   },
