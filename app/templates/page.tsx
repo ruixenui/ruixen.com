@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRightIcon,
@@ -6,6 +7,13 @@ import {
   GitHubLogoIcon,
 } from "@radix-ui/react-icons";
 
+import type { ProTemplate } from "@/types/pro-templates";
+import {
+  buildProTemplateUrl,
+  formatUsdFromCents,
+  proTemplatesApi,
+} from "@/lib/pro-api";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -13,35 +21,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import Image from "next/image";
 import { TemplateProClickTracker } from "@/components/template-pro-click-tracker";
 
-/**
- * Build the Pro-site preview URL with UTM + ref attribution so we can
- * measure every template-card click in PostHog/GA4. Free templates keep
- * their external vercel/github URLs unchanged.
- */
-function buildPreviewHref(template: Template): string {
-  if (template.price === "free") return template.previewUrl;
-  try {
-    const url = new URL(template.previewUrl);
-    url.searchParams.set("ref", "oss_templates");
-    url.searchParams.set("utm_source", "ruixen");
-    url.searchParams.set("utm_medium", "template_card");
-    url.searchParams.set("utm_campaign", "bridge");
-    url.searchParams.set("slug", template.id);
-    return url.toString();
-  } catch {
-    return template.previewUrl;
-  }
-}
-
-function buildGetProHref(slug: string): string {
-  return `https://pro.ruixen.com/pricing?ref=oss_templates_get_pro&slug=${encodeURIComponent(
-    slug,
-  )}`;
-}
+// Pro catalog lives on pro.ruixen.com and is cached at the edge for 5 minutes.
+export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "Templates",
@@ -49,7 +32,7 @@ export const metadata: Metadata = {
     "Beautiful, responsive templates built with modern web technologies.",
 };
 
-interface Template {
+interface StaticTemplate {
   id: string;
   title: string;
   description: string;
@@ -57,7 +40,7 @@ interface Template {
   video?: string;
   previewUrl: string;
   githubUrl?: string;
-  price: "free" | "pro";
+  price: "free";
   technologies: string[];
   features: string[];
   author: string;
@@ -65,10 +48,8 @@ interface Template {
   category?: string;
 }
 
-const templates: Template[] = [
-  // ============================================
-  // FREE TEMPLATES
-  // ============================================
+// Free templates that ship from this repo (not in the Pro catalog).
+const staticTemplates: StaticTemplate[] = [
   {
     id: "portfolio",
     title: "Creative Portfolio Template",
@@ -104,11 +85,33 @@ const templates: Template[] = [
   },
 ];
 
-function TemplateCard({ template }: { template: Template }) {
+const TECH_STACK_LABELS: Record<string, string> = {
+  react: "React",
+  nextjs: "Next.js",
+  vue: "Vue.js",
+  angular: "Angular",
+  tailwind: "Tailwind CSS",
+  tailwindcss: "Tailwind CSS",
+  typescript: "TypeScript",
+  figma: "Figma",
+  "radix-ui": "Radix UI",
+  "shadcn-ui": "shadcn/ui",
+  "framer-motion": "Framer Motion",
+  "react-hook-form": "React Hook Form",
+  zod: "Zod",
+  html_css: "HTML/CSS",
+  flutter: "Flutter",
+  react_native: "React Native",
+};
+
+function formatTech(tech: string): string {
+  return TECH_STACK_LABELS[tech] ?? tech;
+}
+
+function StaticTemplateCard({ template }: { template: StaticTemplate }) {
   return (
     <Card className="overflow-hidden transition-all duration-300 shadow-none border-0">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-        {/* Left Content */}
         <div className="p-6 space-y-4">
           <CardHeader className="p-0">
             <div className="space-y-1">
@@ -156,34 +159,17 @@ function TemplateCard({ template }: { template: Template }) {
 
           <div className="flex gap-2">
             <Button asChild size="lg" variant="outline" className="gap-2">
-              <Link
-                href={buildPreviewHref(template)}
-                target="_blank"
-                data-pro-template-preview={
-                  template.price === "pro" ? template.id : undefined
-                }
-              >
+              <Link href={template.previewUrl} target="_blank">
                 Live Preview
                 <ExternalLinkIcon className="size-4" />
               </Link>
             </Button>
 
-            {template.price === "free" && template.githubUrl ? (
+            {template.githubUrl && (
               <Button asChild size="lg" variant="default" className="gap-2">
                 <Link href={template.githubUrl} target="_blank">
                   Download
                   <GitHubLogoIcon className="size-4" />
-                </Link>
-              </Button>
-            ) : (
-              <Button asChild size="lg" variant="default" className="gap-2">
-                <Link
-                  href={buildGetProHref(template.id)}
-                  target="_blank"
-                  data-pro-template-get-pro={template.id}
-                >
-                  Get Pro
-                  <ArrowRightIcon className="size-4" />
                 </Link>
               </Button>
             )}
@@ -195,7 +181,6 @@ function TemplateCard({ template }: { template: Template }) {
           </div>
         </div>
 
-        {/* Right Video/Image */}
         <div className="relative hover:shadow-[0_8px_32px_rgba(0,0,0,0.1)] hover:backdrop-blur-sm transition-all duration-300 rounded-3xl cursor-pointer">
           {template.video ? (
             <video
@@ -222,11 +207,8 @@ function TemplateCard({ template }: { template: Template }) {
             </div>
           )}
           <div className="absolute top-4 right-4">
-            <Badge
-              variant={template.price === "free" ? "secondary" : "default"}
-              className="bg-[#bef853]"
-            >
-              {template.price === "free" ? "Free" : "Pro"}
+            <Badge variant="secondary" className="bg-[#bef853]">
+              Free
             </Badge>
           </div>
         </div>
@@ -235,8 +217,199 @@ function TemplateCard({ template }: { template: Template }) {
   );
 }
 
-export default function TemplatesPage() {
-  const freeTemplates = templates.filter((t) => t.price === "free");
+function ProTemplateCard({ template }: { template: ProTemplate }) {
+  const thumbnail =
+    template.images.find((img) => img.is_thumbnail) ?? template.images[0];
+  // Videos are rendered on the client; pick the light variant for server-rendered
+  // HTML and let the video element fall back if it's missing.
+  const videoUrl = template.video_url_light || template.video_url_dark || null;
+  const priceLabel = template.is_free
+    ? "Free"
+    : formatUsdFromCents(template.price_usd_cents);
+  const detailHref = buildProTemplateUrl(template.slug, "oss_templates");
+  const getProHref = buildProTemplateUrl(
+    template.slug,
+    "oss_templates_get_pro",
+  );
+  const previewHref = template.demo_url
+    ? template.demo_url
+    : buildProTemplateUrl(template.slug, "oss_templates_preview");
+
+  return (
+    <Card className="overflow-hidden transition-all duration-300 shadow-none border-0">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+        <div className="p-6 space-y-4">
+          <CardHeader className="p-0">
+            <div className="space-y-1">
+              <div className="flex items-center gap-2">
+                <CardTitle className="text-2xl">
+                  <Link
+                    href={detailHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-pro-template-preview={template.slug}
+                    className="hover:underline"
+                  >
+                    {template.name}
+                  </Link>
+                </CardTitle>
+                {template.category?.name && (
+                  <Badge variant="outline" className="text-[10px] font-normal">
+                    {template.category.name}
+                  </Badge>
+                )}
+              </div>
+              <CardDescription>{template.short_description}</CardDescription>
+            </div>
+          </CardHeader>
+
+          {template.tech_stack && template.tech_stack.length > 0 && (
+            <div className="flex flex-wrap gap-1">
+              {template.tech_stack.slice(0, 4).map((tech) => (
+                <Badge key={tech} variant="outline" className="text-xs">
+                  {formatTech(tech)}
+                </Badge>
+              ))}
+              {template.tech_stack.length > 4 && (
+                <Badge variant="outline" className="text-xs">
+                  +{template.tech_stack.length - 4} more
+                </Badge>
+              )}
+            </div>
+          )}
+
+          {template.highlights && template.highlights.length > 0 && (
+            <div className="space-y-2">
+              <h4 className="text-sm font-medium">Highlights:</h4>
+              <ul className="text-sm text-muted-foreground space-y-1">
+                {template.highlights.slice(0, 3).map((highlight) => (
+                  <li key={highlight} className="flex items-center gap-2">
+                    <div className="size-1.5 rounded-full bg-primary" />
+                    {highlight}
+                  </li>
+                ))}
+                {template.highlights.length > 3 && (
+                  <li className="text-xs text-muted-foreground/70">
+                    +{template.highlights.length - 3} more
+                  </li>
+                )}
+              </ul>
+            </div>
+          )}
+
+          <div className="flex flex-wrap gap-2">
+            <Button asChild size="lg" variant="outline" className="gap-2">
+              <Link
+                href={previewHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-pro-template-preview={template.slug}
+              >
+                Live Preview
+                <ExternalLinkIcon className="size-4" />
+              </Link>
+            </Button>
+
+            <Button asChild size="lg" variant="default" className="gap-2">
+              <Link
+                href={getProHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-pro-template-get-pro={template.slug}
+              >
+                {template.is_free
+                  ? "Get Template"
+                  : `Get Access · ${priceLabel}`}
+                <ArrowRightIcon className="size-4" />
+              </Link>
+            </Button>
+          </div>
+
+          <div className="flex items-center justify-between text-xs text-muted-foreground pt-4 border-t">
+            <span>{priceLabel}</span>
+            <span>
+              {template.version ? `v${template.version}` : "Ruixen Pro"}
+            </span>
+          </div>
+        </div>
+
+        <Link
+          href={detailHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-pro-template-preview={template.slug}
+          className="relative block hover:shadow-[0_8px_32px_rgba(0,0,0,0.1)] hover:backdrop-blur-sm transition-all duration-300 rounded-3xl cursor-pointer"
+        >
+          {videoUrl ? (
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-[26rem] rounded-3xl hover:scale-[1.06] transition-all duration-300 object-cover"
+              src={videoUrl}
+              poster={thumbnail?.image_url}
+            />
+          ) : thumbnail ? (
+            <Image
+              src={thumbnail.image_url}
+              alt={thumbnail.alt_text ?? template.name}
+              width={1200}
+              height={800}
+              className="w-full h-[26rem] rounded-3xl object-cover object-top"
+              unoptimized
+            />
+          ) : (
+            <div
+              aria-hidden
+              className="w-full h-[26rem] rounded-3xl bg-gradient-to-br from-muted to-muted/40 flex items-center justify-center text-muted-foreground text-sm"
+            >
+              {template.name}
+            </div>
+          )}
+          <div className="absolute top-4 right-4">
+            <Badge
+              variant={template.is_free ? "secondary" : "default"}
+              className="bg-[#bef853]"
+            >
+              {template.is_free ? "Free" : "Pro"}
+            </Badge>
+          </div>
+        </Link>
+      </div>
+    </Card>
+  );
+}
+
+async function fetchProTemplates(): Promise<{
+  templates: ProTemplate[];
+  error: string | null;
+}> {
+  try {
+    const response = await proTemplatesApi.getAll({
+      page_size: 50,
+      sort_by: "is_featured",
+      sort_order: "desc",
+    });
+    const templates = (response.items ?? []).filter((t) => t.is_active);
+    return { templates, error: null };
+  } catch (err) {
+    console.error("[templates] failed to fetch pro catalog:", err);
+    return {
+      templates: [],
+      error:
+        err instanceof Error ? err.message : "Failed to load Pro templates",
+    };
+  }
+}
+
+export default async function TemplatesPage() {
+  const { templates: proTemplates, error: proError } =
+    await fetchProTemplates();
+
+  const totalCount = staticTemplates.length + proTemplates.length;
+  const freeCount =
+    staticTemplates.length + proTemplates.filter((t) => t.is_free).length;
 
   return (
     <div className="container py-8 md:py-12 lg:py-16">
@@ -257,17 +430,13 @@ export default function TemplatesPage() {
         {/* Stats */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
           <div className="text-center space-y-2">
-            <div className="text-2xl font-bold text-primary">
-              {templates.length}
-            </div>
+            <div className="text-2xl font-bold text-primary">{totalCount}</div>
             <div className="text-sm text-muted-foreground">
               Templates Available
             </div>
           </div>
           <div className="text-center space-y-2">
-            <div className="text-2xl font-bold text-primary">
-              {freeTemplates.length}
-            </div>
+            <div className="text-2xl font-bold text-primary">{freeCount}</div>
             <div className="text-sm text-muted-foreground">Free Templates</div>
           </div>
           <div className="text-center space-y-2">
@@ -278,22 +447,63 @@ export default function TemplatesPage() {
           </div>
         </div>
 
-        {/* Free Templates */}
-        {freeTemplates.length > 0 && (
+        {/* Free Templates (local) */}
+        {staticTemplates.length > 0 && (
           <div className="mb-16">
             <h2 className="text-2xl font-bold mb-6">Free Templates</h2>
             <div className="space-y-8">
-              {freeTemplates.map((template) => (
-                <TemplateCard key={template.id} template={template} />
+              {staticTemplates.map((template) => (
+                <StaticTemplateCard key={template.id} template={template} />
               ))}
             </div>
+          </div>
+        )}
+
+        {/* Pro Catalog (live from pro.ruixen.com) */}
+        {proTemplates.length > 0 && (
+          <div className="mb-16">
+            <div className="mb-6 flex items-end justify-between gap-4">
+              <div>
+                <h2 className="text-2xl font-bold">Premium Templates</h2>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Production-ready templates from{" "}
+                  <Link
+                    href="https://pro.ruixen.com?ref=oss_templates"
+                    target="_blank"
+                    className="underline underline-offset-4 hover:text-foreground"
+                  >
+                    Ruixen Pro
+                  </Link>
+                  .
+                </p>
+              </div>
+            </div>
+            <div className="space-y-8">
+              {proTemplates.map((template) => (
+                <ProTemplateCard key={template.id} template={template} />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {proError && proTemplates.length === 0 && (
+          <div className="mb-16 rounded-lg border border-destructive/30 bg-destructive/5 p-6 text-sm text-muted-foreground">
+            We couldn&apos;t load the Pro catalog right now. Browse all
+            templates directly at{" "}
+            <Link
+              href="https://pro.ruixen.com/templates?ref=oss_templates_error"
+              target="_blank"
+              className="underline underline-offset-4 hover:text-foreground"
+            >
+              pro.ruixen.com/templates
+            </Link>
+            .
           </div>
         )}
 
         {/* Pro Templates CTA */}
         <div className="relative py-16 md:py-24">
           <div className="mx-auto max-w-xl text-center">
-            {/* Thin separator */}
             <div className="mx-auto mb-10 h-px w-10 bg-foreground/15" />
 
             <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground/50 mb-5">
@@ -311,7 +521,6 @@ export default function TemplatesPage() {
               updates included.
             </p>
 
-            {/* Price */}
             <div className="mt-7 flex items-baseline justify-center gap-1.5">
               <span className="text-3xl font-[580] tracking-tight text-foreground">
                 $59
@@ -319,7 +528,6 @@ export default function TemplatesPage() {
               <span className="text-sm text-muted-foreground/50">one-time</span>
             </div>
 
-            {/* CTA Buttons */}
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
               <Link
                 href="https://pro.ruixen.com/pricing?ref=oss_templates_footer"
@@ -340,7 +548,6 @@ export default function TemplatesPage() {
               </Link>
             </div>
 
-            {/* Thin separator */}
             <div className="mx-auto mt-10 h-px w-10 bg-foreground/15" />
           </div>
         </div>
