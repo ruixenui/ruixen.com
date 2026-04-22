@@ -23,8 +23,9 @@ import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 import { SidebarNavItem } from "@/types";
 
-export function MobileNav() {
+export function MobileNav({ sidebarNav }: { sidebarNav?: SidebarNavItem[] }) {
   const [isOpen, setIsOpen] = React.useState(false);
+  const nav = sidebarNav ?? docsConfig.sidebarNav;
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild>
@@ -87,7 +88,7 @@ export function MobileNav() {
             )}
           </div>
           <div className="flex flex-col gap-y-2">
-            {docsConfig.sidebarNav.map((item, index) => (
+            {nav.map((item, index) => (
               <div key={index} className="flex flex-col gap-y-1.5 pt-6">
                 <h4 className="font-medium">
                   {item.title}

@@ -7,11 +7,13 @@ import { MobileNav } from "@/components/mobile-nav";
 import { ModeToggle } from "@/components/mode-toggle";
 import { buttonVariants } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
+import { getDocsSidebarNav } from "@/lib/docs-nav";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
 export async function SiteHeader() {
   let stars = 300; // Default value
+  const sidebarNav = await getDocsSidebarNav();
 
   try {
     const response = await fetch(
@@ -46,7 +48,7 @@ export async function SiteHeader() {
     >
       <div className="container flex h-16 items-center">
         <MainNav />
-        <MobileNav />
+        <MobileNav sidebarNav={sidebarNav} />
         <div className="flex flex-1 items-center justify-between gap-2 md:justify-end">
           {/* <Link
             className={cn(

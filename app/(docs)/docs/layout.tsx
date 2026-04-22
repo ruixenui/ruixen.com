@@ -1,12 +1,14 @@
 import { DocsSidebarNav } from "@/components/sidebar-nav";
 import { TailwindVersionToggle } from "@/components/tailwind-version-toggle";
-import { docsConfig } from "@/config/docs";
+import { getDocsSidebarNav } from "@/lib/docs-nav";
 
-export default function DocsLayout({
+export default async function DocsLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const sidebarNav = await getDocsSidebarNav();
+
   return (
     <div className="container-wrapper">
       <div className="container flex-1 items-start md:grid md:grid-cols-[200px_minmax(0,1fr)] md:gap-8 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-14">
@@ -18,7 +20,7 @@ export default function DocsLayout({
             <div className="mb-4">
               <TailwindVersionToggle />
             </div>
-            <DocsSidebarNav items={docsConfig.sidebarNav} />
+            <DocsSidebarNav items={sidebarNav} />
           </div>
         </aside>
         {children}
