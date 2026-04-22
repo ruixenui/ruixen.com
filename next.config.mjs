@@ -45,7 +45,7 @@ const nextConfig = {
         source: "/docs/:path*.md",
         destination: "/llm/:path*",
       },
-    ]
+    ];
   },
   async headers() {
     return [
@@ -66,6 +66,9 @@ const nextConfig = {
               // posthog.capture() call is blocked by the browser.
               "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://us.i.posthog.com https://us-assets.i.posthog.com",
               "img-src 'self' data: blob: https:",
+              // Pro template previews (r2.dev) need media-src to load.
+              // Without this, media falls back to default-src 'self'.
+              "media-src 'self' blob: https:",
               "style-src 'self' 'unsafe-inline'",
               "font-src 'self' data:",
               "frame-src 'self'",
