@@ -37,15 +37,15 @@ Restart your editor after saving. Three Ruixen tools will appear in your assista
 
 ### Where each editor stores its config
 
-| Editor          | Where to put the config |
-|-----------------|--------------------------|
-| **Cursor**      | Settings → Features → Model Context Protocol → **Add new MCP server**, or edit `~/.cursor/mcp.json` directly |
+| Editor             | Where to put the config                                                                                                             |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------- |
+| **Cursor**         | Settings → Features → Model Context Protocol → **Add new MCP server**, or edit `~/.cursor/mcp.json` directly                        |
 | **Claude Desktop** | `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) · `%APPDATA%\Claude\claude_desktop_config.json` (Windows) |
-| **Claude Code** | Run `claude mcp add ruixen-mcp -- npx -y @ruixen/mcp@latest` |
-| **Windsurf**    | Cascade panel → MCP servers → **Add server** |
-| **Cline**       | MCP Servers tab in the Cline extension panel → **Configure MCP Servers** |
-| **Roo Code**    | MCP Servers tab in the Roo Code extension panel |
-| **VS Code**     | Depends on the MCP extension you use — consult its docs |
+| **Claude Code**    | Run `claude mcp add ruixen-mcp -- npx -y @ruixen/mcp@latest`                                                                        |
+| **Windsurf**       | Cascade panel → MCP servers → **Add server**                                                                                        |
+| **Cline**          | MCP Servers tab in the Cline extension panel → **Configure MCP Servers**                                                            |
+| **Roo Code**       | MCP Servers tab in the Roo Code extension panel                                                                                     |
+| **VS Code**        | Depends on the MCP extension you use — consult its docs                                                                             |
 
 If your editor prefers a one-line command, point it at `npx -y @ruixen/mcp@latest`. That's the entire server — no separate install step, no global package.
 
@@ -75,11 +75,11 @@ Your assistant calls the MCP tools behind the scenes, finds matching components,
 
 Three tools, intentionally small. Most MCP-aware editors cap how many tools a single server can register; this keeps Ruixen well under every cap.
 
-| Tool                   | What it does |
-|------------------------|--------------|
-| `listRegistryItems`    | Browse the full registry with optional filters for `kind`, `query`, and pagination. |
-| `searchRegistryItems`  | Ranked keyword search across names, titles, descriptions, and registry types. |
-| `getRegistryItem`      | Full detail for a single component — install command, source code, related examples, and dependencies. |
+| Tool                  | What it does                                                                                           |
+| --------------------- | ------------------------------------------------------------------------------------------------------ |
+| `listRegistryItems`   | Browse the full registry with optional filters for `kind`, `query`, and pagination.                    |
+| `searchRegistryItems` | Ranked keyword search across names, titles, descriptions, and registry types.                          |
+| `getRegistryItem`     | Full detail for a single component — install command, source code, related examples, and dependencies. |
 
 ## How it works
 
