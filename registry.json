@@ -1897,22 +1897,6 @@
       ]
     },
     {
-      "name": "calendar-event-composer",
-      "type": "registry:ui",
-      "title": "Calendar Event Composer",
-      "description": "macOS-style day view — click a time slot to drop an event and edit it inline through a sliding inspector panel.",
-      "dependencies": [
-        "motion"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/calendar-event-composer.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/calendar-event-composer.tsx"
-        }
-      ]
-    },
-    {
       "name": "notification-inbox-popover",
       "type": "registry:ui",
       "title": "Notification Inbox Popover",
@@ -4934,22 +4918,6 @@
           "path": "registry/example/calendar-scheduler-demo.tsx",
           "type": "registry:example",
           "target": "components/calendar-scheduler-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "calendar-event-composer-demo",
-      "type": "registry:example",
-      "title": "Calendar Event Composer Demo",
-      "description": "Example showing a macOS-style day view with click-to-create events and a sliding inspector panel.",
-      "registryDependencies": [
-        "https://ruixen.com/r/calendar-event-composer"
-      ],
-      "files": [
-        {
-          "path": "registry/example/calendar-event-composer-demo.tsx",
-          "type": "registry:example",
-          "target": "components/calendar-event-composer-demo.tsx"
         }
       ]
     },

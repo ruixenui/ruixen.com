@@ -716,12 +716,6 @@ export const docsConfig: DocsConfig = {
               items: [],
               label: "",
             },
-            {
-              title: "Calendar Event Composer",
-              href: `/docs/components/calendar-event-composer`,
-              items: [],
-              label: "New",
-            },
           ],
         },
         {

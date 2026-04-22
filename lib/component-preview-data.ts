@@ -605,10 +605,6 @@ export const eventCalendarsPreview: ComponentPreviewMap = {
     light: `/preview_images/event-calendars/calendar-lume-light.png`,
     dark: `/preview_images/event-calendars/calendar-lume-dark.png`,
   },
-  "calendar-event-composer": {
-    light: `/preview_images/event-calendars/calendar-event-composer-light.png`,
-    dark: `/preview_images/event-calendars/calendar-event-composer-dark.png`,
-  },
 };
 
 /**
