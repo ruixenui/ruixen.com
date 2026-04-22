@@ -1724,21 +1724,6 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "calendar-event-composer",
-    type: "registry:ui",
-    title: "Calendar Event Composer",
-    description:
-      "macOS-style day view — click a time slot to drop an event and edit it inline through a sliding inspector panel.",
-    dependencies: ["motion"],
-    files: [
-      {
-        path: "registry/ruixenui/calendar-event-composer.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/calendar-event-composer.tsx",
-      },
-    ],
-  },
-  {
     name: "notification-inbox-popover",
     type: "registry:ui",
     title: "Notification Inbox Popover",

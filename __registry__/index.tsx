@@ -2744,32 +2744,6 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
-  "calendar-event-composer": {
-    name: "calendar-event-composer",
-    description:
-      "macOS-style day view — click a time slot to drop an event and edit it inline through a sliding inspector panel.",
-    type: "registry:ui",
-    registryDependencies: undefined,
-    files: [
-      {
-        path: "registry/ruixenui/calendar-event-composer.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/calendar-event-composer.tsx",
-      },
-    ],
-    component: React.lazy(async () => {
-      const mod = await import(
-        "@/registry/ruixenui/calendar-event-composer.tsx"
-      );
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object",
-        ) || item.name;
-      return { default: mod.default || mod[exportName] };
-    }),
-    meta: undefined,
-  },
   "notification-inbox-popover": {
     name: "notification-inbox-popover",
     description:
@@ -7146,32 +7120,6 @@ export const Index: Record<string, any> = {
     component: React.lazy(async () => {
       const mod = await import(
         "@/registry/example/calendar-scheduler-demo.tsx"
-      );
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object",
-        ) || item.name;
-      return { default: mod.default || mod[exportName] };
-    }),
-    meta: undefined,
-  },
-  "calendar-event-composer-demo": {
-    name: "calendar-event-composer-demo",
-    description:
-      "Example showing a macOS-style day view with click-to-create events and a sliding inspector panel.",
-    type: "registry:example",
-    registryDependencies: ["https://ruixen.com/r/calendar-event-composer"],
-    files: [
-      {
-        path: "registry/example/calendar-event-composer-demo.tsx",
-        type: "registry:example",
-        target: "components/calendar-event-composer-demo.tsx",
-      },
-    ],
-    component: React.lazy(async () => {
-      const mod = await import(
-        "@/registry/example/calendar-event-composer-demo.tsx"
       );
       const exportName =
         Object.keys(mod).find(
