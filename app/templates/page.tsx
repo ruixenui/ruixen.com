@@ -8,11 +8,8 @@ import {
 } from "@radix-ui/react-icons";
 
 import type { ProTemplate } from "@/types/pro-templates";
-import {
-  buildProTemplateUrl,
-  formatUsdFromCents,
-  proTemplatesApi,
-} from "@/lib/pro-api";
+import { COMING_SOON_CATALOG, getProTemplates } from "@/data/pro-catalog";
+import { buildProTemplateUrl, formatUsdFromCents } from "@/lib/pro-api";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -23,8 +20,7 @@ import {
 } from "@/components/ui/card";
 import { TemplateProClickTracker } from "@/components/template-pro-click-tracker";
 
-// Pro catalog lives on pro.ruixen.com and is cached at the edge for 5 minutes.
-export const revalidate = 300;
+// Pro catalog is hardcoded in data/pro-catalog.ts — no runtime fetch.
 
 export const metadata: Metadata = {
   title: "Templates",
@@ -226,14 +222,11 @@ function ProTemplateCard({ template }: { template: ProTemplate }) {
   const priceLabel = template.is_free
     ? "Free"
     : formatUsdFromCents(template.price_usd_cents);
-  const detailHref = buildProTemplateUrl(template.slug, "oss_templates");
-  const getProHref = buildProTemplateUrl(
-    template.slug,
-    "oss_templates_get_pro",
-  );
+  const detailHref = buildProTemplateUrl(template.slug);
+  const getProHref = buildProTemplateUrl(template.slug);
   const previewHref = template.demo_url
     ? template.demo_url
-    : buildProTemplateUrl(template.slug, "oss_templates_preview");
+    : buildProTemplateUrl(template.slug);
 
   return (
     <Card className="overflow-hidden transition-all duration-300 shadow-none border-0">
@@ -381,33 +374,65 @@ function ProTemplateCard({ template }: { template: ProTemplate }) {
   );
 }
 
-async function fetchProTemplates(): Promise<{
-  templates: ProTemplate[];
-  error: string | null;
-}> {
-  try {
-    const response = await proTemplatesApi.getAll({
-      page_size: 50,
-      sort_by: "is_featured",
-      sort_order: "desc",
-    });
-    const templates = (response.items ?? []).filter((t) => t.is_active);
-    return { templates, error: null };
-  } catch (err) {
-    console.error("[templates] failed to fetch pro catalog:", err);
-    return {
-      templates: [],
-      error:
-        err instanceof Error ? err.message : "Failed to load Pro templates",
-    };
-  }
+function ComingSoonTemplateCard({
+  name,
+  description,
+  imageUrl,
+}: {
+  name: string;
+  description: string;
+  imageUrl: string;
+}) {
+  return (
+    <Card className="overflow-hidden opacity-75 shadow-none border-0">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+        <div className="p-6 space-y-4">
+          <Badge
+            variant="outline"
+            className="gap-1 bg-amber-500/10 text-amber-600 border-amber-500/20 dark:text-amber-400"
+          >
+            Coming Soon
+          </Badge>
+          <CardHeader className="p-0">
+            <CardTitle className="text-2xl text-muted-foreground">
+              {name}
+            </CardTitle>
+            <CardDescription className="text-muted-foreground/70">
+              {description}
+            </CardDescription>
+          </CardHeader>
+          <div className="inline-flex h-10 items-center justify-center rounded-md bg-muted px-4 text-sm font-medium text-muted-foreground">
+            Available Soon
+          </div>
+        </div>
+        <div className="relative rounded-3xl overflow-hidden">
+          <Image
+            src={imageUrl}
+            alt={name}
+            width={1200}
+            height={800}
+            className="w-full h-[26rem] rounded-3xl object-cover object-top grayscale-[30%]"
+            unoptimized
+          />
+          <div className="absolute inset-0 flex items-center justify-center bg-background/40 backdrop-blur-[2px] rounded-3xl">
+            <div className="rounded-full bg-background/80 px-4 py-2 text-sm font-medium text-muted-foreground shadow-sm">
+              Coming Very Soon
+            </div>
+          </div>
+        </div>
+      </div>
+    </Card>
+  );
 }
 
-export default async function TemplatesPage() {
-  const { templates: proTemplates, error: proError } =
-    await fetchProTemplates();
+export default function TemplatesPage() {
+  const proTemplates: ProTemplate[] = getProTemplates()
+    .slice()
+    .sort((a, b) => Number(b.is_featured) - Number(a.is_featured));
+  const comingSoonTemplates = COMING_SOON_CATALOG;
 
-  const totalCount = staticTemplates.length + proTemplates.length;
+  const totalCount =
+    staticTemplates.length + proTemplates.length + comingSoonTemplates.length;
   const freeCount =
     staticTemplates.length + proTemplates.filter((t) => t.is_free).length;
 
@@ -482,22 +507,15 @@ export default async function TemplatesPage() {
               {proTemplates.map((template) => (
                 <ProTemplateCard key={template.id} template={template} />
               ))}
+              {comingSoonTemplates.map((template) => (
+                <ComingSoonTemplateCard
+                  key={template.name}
+                  name={template.name}
+                  description={template.description}
+                  imageUrl={template.image_url}
+                />
+              ))}
             </div>
-          </div>
-        )}
-
-        {proError && proTemplates.length === 0 && (
-          <div className="mb-16 rounded-lg border border-destructive/30 bg-destructive/5 p-6 text-sm text-muted-foreground">
-            We couldn&apos;t load the Pro catalog right now. Browse all
-            templates directly at{" "}
-            <Link
-              href="https://pro.ruixen.com/templates?ref=oss_templates_error"
-              target="_blank"
-              className="underline underline-offset-4 hover:text-foreground"
-            >
-              pro.ruixen.com/templates
-            </Link>
-            .
           </div>
         )}
 

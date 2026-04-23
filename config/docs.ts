@@ -126,6 +126,7 @@ export const docsConfig: DocsConfig = {
           href: "/docs/mcp",
           items: [],
           label: "Free",
+          gold: true,
         },
         {
           title: "Dual Tailwind",
@@ -149,6 +150,7 @@ export const docsConfig: DocsConfig = {
           href: `/docs/templates/portfolio`,
           items: [],
           label: "",
+          free: true,
           event: "template_portfolio_clicked",
         },
       ],
