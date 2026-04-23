@@ -14,16 +14,11 @@ import { SidebarCTA } from "@/components/sidebar-cta";
 import { TableOfContents } from "@/components/toc";
 import { Badge, badgeVariants } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
-import {
-  buildProTemplateUrl,
-  formatUsdFromCents,
-  proTemplatesApi,
-} from "@/lib/pro-api";
+import { buildProTemplateUrl, formatUsdFromCents } from "@/lib/pro-api";
+import { getProTemplateBySlug } from "@/data/pro-catalog";
 import { getTableOfContents } from "@/lib/toc";
 import { absoluteUrl, cn } from "@/lib/utils";
 import type { ProTemplate } from "@/types/pro-templates";
-
-export const revalidate = 300;
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -43,13 +38,9 @@ async function resolveTemplate(
   );
   if (mdxDoc) return { kind: "mdx", doc: mdxDoc };
 
-  try {
-    const template = await proTemplatesApi.getBySlug(slug);
-    if (!template.is_active) return null;
-    return { kind: "pro", template };
-  } catch {
-    return null;
-  }
+  const template = getProTemplateBySlug(slug);
+  if (!template) return null;
+  return { kind: "pro", template };
 }
 
 export async function generateMetadata({
@@ -167,12 +158,15 @@ async function MdxDocView({ doc }: { doc: Doc }) {
       {doc.toc && (
         <div className="hidden pl-6 text-sm xl:block">
           <div className="sticky top-16 flex h-[calc(100vh-4rem)] flex-col py-6">
-            <div className="flex-1 min-h-0 space-y-4 overflow-y-auto pr-2">
+            {/* Scrollable: TOC + Contribute. Contribute scrolls with the TOC
+                so the CTA below has enough room to sit at the sidebar bottom. */}
+            <div className="flex-1 min-h-0 space-y-6 overflow-y-auto pr-2">
               <TableOfContents toc={toc} />
               <div id="dynamic-toc" />
-            </div>
-            <div className="shrink-0 space-y-4 pr-2 pt-6">
               <Contribute doc={doc} />
+            </div>
+            {/* Pinned at the sidebar bottom. */}
+            <div className="shrink-0 pr-2 pt-4">
               <SidebarCTA />
             </div>
           </div>
@@ -214,14 +208,11 @@ function ProTemplateView({ template }: { template: ProTemplate }) {
   const priceLabel = template.is_free
     ? "Free"
     : formatUsdFromCents(template.price_usd_cents);
-  const proDetailHref = buildProTemplateUrl(template.slug, "oss_docs_sidebar");
-  const getAccessHref = buildProTemplateUrl(
-    template.slug,
-    "oss_templates_get_pro",
-  );
+  const proDetailHref = buildProTemplateUrl(template.slug);
+  const getAccessHref = buildProTemplateUrl(template.slug);
   const previewHref = template.demo_url
     ? template.demo_url
-    : buildProTemplateUrl(template.slug, "oss_templates_preview");
+    : buildProTemplateUrl(template.slug);
 
   return (
     <main className="relative">
