@@ -2339,6 +2339,22 @@
       ]
     },
     {
+      "name": "progressive-flux-loader",
+      "type": "registry:ui",
+      "title": "Progressive Flux Loader",
+      "description": "A glowing progress bar with phase labels that fly in along the Z-axis and reveal letter by letter.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/progressive-flux-loader.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/progressive-flux-loader.tsx"
+        }
+      ]
+    },
+    {
       "name": "solar-loader",
       "type": "registry:ui",
       "title": "Solar Loader",
@@ -5318,6 +5334,22 @@
           "path": "registry/example/smart-breadcrumb-demo.tsx",
           "type": "registry:example",
           "target": "components/smart-breadcrumb-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "progressive-flux-loader-demo",
+      "type": "registry:example",
+      "title": "Progressive Flux Loader Demo",
+      "description": "Example showing a glowing progress bar with phase labels animating along the Z-axis between phrases.",
+      "registryDependencies": [
+        "https://ruixen.com/r/progressive-flux-loader"
+      ],
+      "files": [
+        {
+          "path": "registry/example/progressive-flux-loader-demo.tsx",
+          "type": "registry:example",
+          "target": "components/progressive-flux-loader-demo.tsx"
         }
       ]
     },

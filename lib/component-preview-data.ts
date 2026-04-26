@@ -337,6 +337,10 @@ export const loadersPreview: ComponentPreviewMap = {
     light: `/preview_images/loaders/solar-loader-light.png`,
     dark: `/preview_images/loaders/solar-loader-dark.png`,
   },
+  "progressive-flux-loader": {
+    light: `/preview_images/loaders/progressive-flux-loader-light.png`,
+    dark: `/preview_images/loaders/progressive-flux-loader-dark.png`,
+  },
 };
 
 /**
