@@ -1,0 +1,88 @@
+---
+title: Progressive Flux Loader
+date: 2026-04-26
+description: A glowing progress bar with phase labels that fly in along the Z-axis and reveal letter by letter.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="progressive-flux-loader-demo" category="loaders" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/progressive-flux-loader"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="progressive-flux-loader" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { ProgressiveFluxLoader } from "@/components/ruixen/progressive-flux-loader";
+
+export default function App() {
+  return <ProgressiveFluxLoader duration={7} loop />;
+}
+```
+
+### Controlled
+
+Drive the loader from real progress. Phase labels switch automatically based on the configured thresholds.
+
+```tsx
+<ProgressiveFluxLoader
+  value={progress}
+  phases={[
+    { at: 0, label: "uploading" },
+    { at: 40, label: "processing" },
+    { at: 80, label: "almost there" },
+    { at: 100, label: "done" },
+  ]}
+/>
+```
+
+## Props
+
+| Prop            | Type                              | Default        | Description                                                                       |
+| --------------- | --------------------------------- | -------------- | --------------------------------------------------------------------------------- |
+| `value`         | `number`                          | `undefined`    | Controlled progress (0–100). When omitted, the loader runs an internal demo loop. |
+| `phases`        | `{ at: number; label: string }[]` | _built-in set_ | Progress thresholds and the label to show once they're reached.                   |
+| `duration`      | `number`                          | `12`           | Seconds for one full sweep when uncontrolled.                                     |
+| `loop`          | `boolean`                         | `true`         | Restart from 0 after reaching 100% (uncontrolled mode).                           |
+| `onComplete`    | `() => void`                      | `undefined`    | Fires once when progress reaches 100%.                                            |
+| `className`     | `string`                          | -              | Wrapper classes.                                                                  |
+| `barClassName`  | `string`                          | -              | Classes for the track.                                                            |
+| `textClassName` | `string`                          | -              | Classes for the phase label.                                                      |
+
+## Features
+
+- **Z-axis text transition** — every label change pushes the old text toward the viewer while the new one zooms in from far away, overshoots forward, then settles.
+- **Letter-by-letter reveal** — each character of the new label cascades in with a soft blur-clear.
+- **iOS-style flux gradient** — multi-stop blue → cyan → blue fill with a moving shine sweep and a gentle glow.
+- **Controlled or autonomous** — drive it with real progress or let it loop on its own as a status indicator.
+- **Theme-aware** — track adapts to light and dark themes via shadcn neutral tokens.

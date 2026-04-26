@@ -2144,6 +2144,21 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "progressive-flux-loader",
+    type: "registry:ui",
+    title: "Progressive Flux Loader",
+    description:
+      "A glowing progress bar with phase labels that fly in along the Z-axis and reveal letter by letter.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/ruixenui/progressive-flux-loader.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/progressive-flux-loader.tsx",
+      },
+    ],
+  },
+  {
     name: "solar-loader",
     type: "registry:ui",
     title: "Solar Loader",

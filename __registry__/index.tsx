@@ -3346,6 +3346,32 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "progressive-flux-loader": {
+    name: "progressive-flux-loader",
+    description:
+      "A glowing progress bar with phase labels that fly in along the Z-axis and reveal letter by letter.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/progressive-flux-loader.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/progressive-flux-loader.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/ruixenui/progressive-flux-loader.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "solar-loader": {
     name: "solar-loader",
     description:
@@ -7728,6 +7754,32 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/smart-breadcrumb-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "progressive-flux-loader-demo": {
+    name: "progressive-flux-loader-demo",
+    description:
+      "Example showing a glowing progress bar with phase labels animating along the Z-axis between phrases.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/progressive-flux-loader"],
+    files: [
+      {
+        path: "registry/example/progressive-flux-loader-demo.tsx",
+        type: "registry:example",
+        target: "components/progressive-flux-loader-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/progressive-flux-loader-demo.tsx"
+      );
       const exportName =
         Object.keys(mod).find(
           (key) =>

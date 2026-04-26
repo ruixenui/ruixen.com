@@ -1895,6 +1895,21 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "progressive-flux-loader-demo",
+    type: "registry:example",
+    title: "Progressive Flux Loader Demo",
+    description:
+      "Example showing a glowing progress bar with phase labels animating along the Z-axis between phrases.",
+    registryDependencies: ["https://ruixen.com/r/progressive-flux-loader"],
+    files: [
+      {
+        path: "registry/example/progressive-flux-loader-demo.tsx",
+        type: "registry:example",
+        target: "components/progressive-flux-loader-demo.tsx",
+      },
+    ],
+  },
+  {
     name: "solar-loader-demo",
     type: "registry:example",
     title: "Solar Loader Demo",

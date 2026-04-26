@@ -869,6 +869,12 @@ export const docsConfig: DocsConfig = {
               items: [],
               label: "",
             },
+            {
+              title: "Progressive Flux Loader",
+              href: `/docs/components/progressive-flux-loader`,
+              items: [],
+              label: "New",
+            },
           ],
         },
         {
