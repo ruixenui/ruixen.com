@@ -173,7 +173,7 @@ export function ProgressiveFluxLoader({
         aria-label={label}
       >
         <motion.div
-          className="relative h-full rounded-full"
+          className="relative h-full overflow-hidden rounded-full"
           style={{
             background: FLUX_GRADIENT,
             boxShadow:
@@ -185,13 +185,12 @@ export function ProgressiveFluxLoader({
         >
           <motion.span
             aria-hidden
-            className="pointer-events-none absolute inset-y-0 left-0 w-1/2 rounded-full"
+            className="pointer-events-none absolute inset-y-0 w-20"
             style={{
               background:
                 "linear-gradient(90deg,transparent 0%,rgba(255,255,255,0.55) 50%,transparent 100%)",
-              mixBlendMode: "screen",
             }}
-            animate={{ x: ["-110%", "210%"] }}
+            animate={{ left: ["-30%", "130%"] }}
             transition={{
               duration: 1.6,
               ease: "linear",
