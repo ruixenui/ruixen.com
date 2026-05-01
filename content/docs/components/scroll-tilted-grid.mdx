@@ -1,0 +1,134 @@
+---
+title: Scroll Tilted Grid
+date: 2026-05-01
+description: An editorial two-column image grid where pairs of stills rise from below tipped forward, settle into focus, then tilt away over the top edge as the page scrolls. Optional infinite loop appends more cycles via IntersectionObserver.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="scroll-tilted-grid-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/scroll-tilted-grid"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="scroll-tilted-grid" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+### Full-page (default)
+
+The component ships with `sectionPadding="20vh"`, so the grid breathes on a
+landing page without any wrapper work — page scroll drives the choreography.
+
+```tsx
+import { ScrollTiltedGrid } from "@/components/ruixen/scroll-tilted-grid";
+
+export default function Page() {
+  return (
+    <main className="relative min-h-screen overflow-x-hidden">
+      <section className="flex min-h-screen flex-col items-center justify-center px-6 text-center">
+        <h1 className="text-3xl font-medium tracking-tight md:text-5xl">
+          A field of stills
+        </h1>
+      </section>
+
+      <ScrollTiltedGrid loop />
+    </main>
+  );
+}
+```
+
+### Inside a bounded container
+
+Pass a ref to a fixed-height self-scrolling ancestor via `container`, and shrink
+`sectionPadding` so the grid fits the smaller frame. `useScroll` and the loop's
+`IntersectionObserver` measure against the ref instead of the viewport.
+
+```tsx
+import { useRef } from "react";
+import { ScrollTiltedGrid } from "@/components/ruixen/scroll-tilted-grid";
+
+export default function Preview() {
+  const ref = useRef<HTMLDivElement>(null);
+  return (
+    <div ref={ref} className="h-[480px] overflow-y-auto rounded-xl">
+      <ScrollTiltedGrid
+        container={ref}
+        loop
+        maxCycles={4}
+        sectionPadding="1rem"
+        maxWidth="md"
+        gap={6}
+      />
+    </div>
+  );
+}
+```
+
+### Custom images
+
+```tsx
+<ScrollTiltedGrid
+  images={[
+    "/gallery/01.jpg",
+    "/gallery/02.jpg",
+    "/gallery/03.jpg",
+    "/gallery/04.jpg",
+  ]}
+/>
+```
+
+## Props
+
+| Prop             | Type                                                       | Default               | Description                                                                                                                             |
+| ---------------- | ---------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| `images`         | `readonly string[]`                                        | `DEFAULT_GRID_IMAGES` | Image URLs to render.                                                                                                                   |
+| `loop`           | `boolean`                                                  | `false`               | Cycle the source list and append more pairs as the user nears the bottom — a perceptually infinite scroll.                              |
+| `initialCycles`  | `number`                                                   | `3`                   | Initial number of cycles to render when `loop` is on.                                                                                   |
+| `aspectRatio`    | `string`                                                   | `"3/4"`               | CSS `aspect-ratio` value applied to each tile (e.g. `"3/4"`, `"2/3"`).                                                                  |
+| `maxWidth`       | `"sm" \| "md" \| "lg" \| "xl" \| "2xl" \| "3xl" \| "none"` | `"lg"`                | Tailwind `max-w-*` token controlling the column width.                                                                                  |
+| `gap`            | `4 \| 6 \| 8 \| 10 \| 12 \| 14`                            | `10`                  | Tailwind `gap-*` token between tiles.                                                                                                   |
+| `perspective`    | `number`                                                   | `900`                 | CSS `perspective` (px) applied to each tile.                                                                                            |
+| `maxTilt`        | `number`                                                   | `70`                  | Maximum `rotateX` magnitude (deg) at the entry and exit poses. Symmetric — entry tilts forward `+maxTilt`, exit tilts back `-maxTilt`.  |
+| `maxBlur`        | `number`                                                   | `8`                   | Maximum blur (px) at the entry and exit poses.                                                                                          |
+| `rounded`        | `string`                                                   | `"0.375rem"`          | CSS `border-radius` for the tile clipping mask. Accepts any CSS length value.                                                           |
+| `container`      | `RefObject<HTMLElement \| null>`                           | -                     | Optional ref to a scrollable ancestor. When set, scroll progress and the loop sentinel are measured against it instead of the viewport. |
+| `maxCycles`      | `number`                                                   | `Infinity`            | Hard cap on total cycles when `loop` is on. Set a finite value to bound DOM growth in long sessions.                                    |
+| `sectionPadding` | `string`                                                   | `"20vh"`              | Vertical breathing room (margin + padding) around the grid. Use `"0"` or a small `rem` value when embedding in a bounded container.     |
+| `className`      | `string`                                                   | -                     | Additional className applied to the outer `<section>`.                                                                                  |
+
+## Features
+
+- **Scroll-driven choreography**: Each tile uses `useScroll` with a `start end → end start` offset so its tilt, blur, and translate are tied directly to its position in the viewport.
+- **Symmetric entry / exit pose**: Tiles tilt forward `+maxTilt` on entry, settle flat at the midpoint, then tilt back `-maxTilt` as they exit over the top edge.
+- **Alternating sides**: Even-indexed tiles drift in from the left, odd-indexed from the right, producing a paired editorial cadence.
+- **Infinite loop (opt-in)**: With `loop`, an IntersectionObserver sentinel appends two more cycles whenever the user gets within ~1500px of the bottom.
+- **Respects `prefers-reduced-motion`**: Tiles render as static stills when the user has reduced motion enabled — no transforms, no filters, no blur.
+- **Composed transforms**: `x`, `y`, `z`, `rotate`, `rotateX`, and `skewX` are applied together via Framer Motion's hardware-accelerated transform pipeline; an inner `scaleY` adds a subtle vertical squash so the tilt reads as physical rather than flat.

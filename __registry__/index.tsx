@@ -4338,6 +4338,30 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "scroll-tilted-grid": {
+    name: "scroll-tilted-grid",
+    description:
+      "An editorial two-column image grid where pairs of stills rise from below tipped forward, settle into focus, then tilt away over the top edge as the page scrolls. Optional infinite loop appends more cycles via IntersectionObserver.",
+    type: "registry:ui",
+    registryDependencies: [],
+    files: [
+      {
+        path: "registry/ruixenui/scroll-tilted-grid.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/scroll-tilted-grid.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/scroll-tilted-grid.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "layouts-scroll-header": {
     name: "layouts-scroll-header",
     description:
@@ -8947,6 +8971,32 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/scroll-text-rise-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "scroll-tilted-grid-demo": {
+    name: "scroll-tilted-grid-demo",
+    description:
+      "Example showing the editorial scroll-tilted image grid with a hero intro, scroll hint, and an infinite loop of cycling tiles.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/scroll-tilted-grid"],
+    files: [
+      {
+        path: "registry/example/scroll-tilted-grid-demo.tsx",
+        type: "registry:example",
+        target: "components/scroll-tilted-grid-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/scroll-tilted-grid-demo.tsx"
+      );
       const exportName =
         Object.keys(mod).find(
           (key) =>
