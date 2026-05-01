@@ -543,6 +543,12 @@ export const docsConfig: DocsConfig = {
           title: "Carousels",
           items: [
             {
+              title: "Scroll Tilted Grid",
+              href: `/docs/components/scroll-tilted-grid`,
+              items: [],
+              label: "New",
+            },
+            {
               title: "Card Stack",
               href: `/docs/components/card-stack`,
               items: [],
@@ -1236,7 +1242,7 @@ export const docsConfig: DocsConfig = {
               title: "Structured Hero Section",
               href: `/docs/components/structured-hero-section`,
               items: [],
-              label: "New",
+              label: "",
             },
             {
               title: "Pricing Landing Hero",

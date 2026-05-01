@@ -3028,6 +3028,23 @@
       ]
     },
     {
+      "name": "scroll-tilted-grid",
+      "type": "registry:ui",
+      "title": "Scroll Tilted Grid",
+      "description": "An editorial two-column image grid where pairs of stills rise from below tipped forward, settle into focus, then tilt away over the top edge as the page scrolls. Optional infinite loop appends more cycles via IntersectionObserver.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/ruixenui/scroll-tilted-grid.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/scroll-tilted-grid.tsx"
+        }
+      ]
+    },
+    {
       "name": "layouts-scroll-header",
       "type": "registry:block",
       "title": "Scroll Header",
@@ -6118,6 +6135,22 @@
           "path": "registry/example/scroll-text-rise-demo.tsx",
           "type": "registry:example",
           "target": "components/scroll-text-rise-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-tilted-grid-demo",
+      "type": "registry:example",
+      "title": "Scroll Tilted Grid Demo",
+      "description": "Example showing the editorial scroll-tilted image grid with a hero intro, scroll hint, and an infinite loop of cycling tiles.",
+      "registryDependencies": [
+        "https://ruixen.com/r/scroll-tilted-grid"
+      ],
+      "files": [
+        {
+          "path": "registry/example/scroll-tilted-grid-demo.tsx",
+          "type": "registry:example",
+          "target": "components/scroll-tilted-grid-demo.tsx"
         }
       ]
     },

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-tilted-grid-demo",
+  "type": "registry:example",
+  "title": "Scroll Tilted Grid Demo",
+  "description": "Example showing the editorial scroll-tilted image grid with a hero intro, scroll hint, and an infinite loop of cycling tiles.",
+  "registryDependencies": [
+    "https://ruixen.com/r/scroll-tilted-grid"
+  ],
+  "files": [
+    {
+      "path": "registry/example/scroll-tilted-grid-demo.tsx",
+      "content": "\"use client\";\n\nimport { useRef } from \"react\";\n\nimport { ScrollTiltedGrid } from \"@/registry/ruixenui/scroll-tilted-grid\";\n\nexport default function ScrollTiltedGridDemo() {\n  const containerRef = useRef<HTMLDivElement>(null);\n\n  return (\n    <div\n      ref={containerRef}\n      data-scroll-tilted-grid-demo\n      className=\"relative h-screen overflow-y-auto overflow-x-hidden rounded-xl bg-background\"\n      style={{ scrollbarWidth: \"none\" }}\n    >\n      <style\n        dangerouslySetInnerHTML={{\n          __html: `[data-scroll-tilted-grid-demo]::-webkit-scrollbar{display:none}`,\n        }}\n      />\n      <ScrollTiltedGrid\n        container={containerRef}\n        loop\n        maxCycles={4}\n        sectionPadding=\"0.75rem\"\n        maxWidth=\"md\"\n        gap={6}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/scroll-tilted-grid-demo.tsx"
+    }
+  ]
+}

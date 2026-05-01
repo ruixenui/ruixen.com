@@ -220,6 +220,10 @@ export const carouselsPreview: ComponentPreviewMap = {
     light: `/preview_images/cards/card-stack-light.png`,
     dark: `/preview_images/cards/card-stack-dark.png`,
   },
+  "scroll-tilted-grid": {
+    light: `/preview_images/carousels/scroll-tilted-grid-light.png`,
+    dark: `/preview_images/carousels/scroll-tilted-grid-dark.png`,
+  },
 };
 
 /**

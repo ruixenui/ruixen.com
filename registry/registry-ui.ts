@@ -2783,6 +2783,22 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "scroll-tilted-grid",
+    type: "registry:ui",
+    title: "Scroll Tilted Grid",
+    description:
+      "An editorial two-column image grid where pairs of stills rise from below tipped forward, settle into focus, then tilt away over the top edge as the page scrolls. Optional infinite loop appends more cycles via IntersectionObserver.",
+    dependencies: ["motion"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "registry/ruixenui/scroll-tilted-grid.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/scroll-tilted-grid.tsx",
+      },
+    ],
+  },
   // ─── Layouts ───
   {
     name: "layouts-scroll-header",

@@ -2612,4 +2612,19 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "scroll-tilted-grid-demo",
+    type: "registry:example",
+    title: "Scroll Tilted Grid Demo",
+    description:
+      "Example showing the editorial scroll-tilted image grid with a hero intro, scroll hint, and an infinite loop of cycling tiles.",
+    registryDependencies: ["https://ruixen.com/r/scroll-tilted-grid"],
+    files: [
+      {
+        path: "registry/example/scroll-tilted-grid-demo.tsx",
+        type: "registry:example",
+        target: "components/scroll-tilted-grid-demo.tsx",
+      },
+    ],
+  },
 ];
