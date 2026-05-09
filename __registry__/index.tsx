@@ -874,6 +874,32 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "expandable-menu-navbar": {
+    name: "expandable-menu-navbar",
+    description:
+      "A monochrome floating navbar that springs open into a stacked menu of grouped, metadata-rich nav items with a status footer and keyboard shortcut.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/expandable-menu-navbar.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/expandable-menu-navbar.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/ruixenui/expandable-menu-navbar.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "luma-bar": {
     name: "luma-bar",
     description:
@@ -5278,6 +5304,32 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/floating-navbar-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "expandable-menu-navbar-demo": {
+    name: "expandable-menu-navbar-demo",
+    description:
+      "Example of a monochrome navbar that springs open into a stacked menu with a status footer",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/expandable-menu-navbar"],
+    files: [
+      {
+        path: "registry/example/expandable-menu-navbar-demo.tsx",
+        type: "registry:example",
+        target: "components/expandable-menu-navbar-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/expandable-menu-navbar-demo.tsx"
+      );
       const exportName =
         Object.keys(mod).find(
           (key) =>

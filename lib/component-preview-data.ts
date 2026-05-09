@@ -178,6 +178,10 @@ export const navbarsPreview: ComponentPreviewMap = {
     light: `/preview_images/navbars/floating-navbar-light.png`,
     dark: `/preview_images/navbars/floating-navbar-dark.png`,
   },
+  "expandable-menu-navbar": {
+    light: `/preview_images/navbars/expandable-menu-navbar-light.png`,
+    dark: `/preview_images/navbars/expandable-menu-navbar-dark.png`,
+  },
   "luma-bar": {
     light: `/preview_images/navbars/luma-bar-light.png`,
     dark: `/preview_images/navbars/luma-bar-dark.png`,

@@ -1354,6 +1354,12 @@ export const docsConfig: DocsConfig = {
               label: "",
             },
             {
+              title: "Expandable Menu Navbar",
+              href: `/docs/sections/expandable-menu-navbar`,
+              items: [],
+              label: "New",
+            },
+            {
               title: "Luma Bar",
               href: `/docs/sections/luma-bar`,
               items: [],
