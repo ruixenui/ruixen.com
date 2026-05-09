@@ -544,6 +544,21 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "expandable-menu-navbar",
+    type: "registry:ui",
+    title: "Expandable Menu Navbar",
+    description:
+      "A monochrome floating navbar that springs open into a stacked menu of grouped, metadata-rich nav items with a status footer and keyboard shortcut.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/ruixenui/expandable-menu-navbar.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/expandable-menu-navbar.tsx",
+      },
+    ],
+  },
+  {
     name: "luma-bar",
     type: "registry:ui",
     title: "Luma Bar",

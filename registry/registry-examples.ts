@@ -387,6 +387,21 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "expandable-menu-navbar-demo",
+    type: "registry:example",
+    title: "Expandable Menu Navbar Demo",
+    description:
+      "Example of a monochrome navbar that springs open into a stacked menu with a status footer",
+    registryDependencies: ["https://www.ruixen.com/r/expandable-menu-navbar"],
+    files: [
+      {
+        path: "registry/example/expandable-menu-navbar-demo.tsx",
+        type: "registry:example",
+        target: "components/expandable-menu-navbar-demo.tsx",
+      },
+    ],
+  },
+  {
     name: "luma-bar-demo",
     type: "registry:example",
     title: "Luma Bar Demo",
