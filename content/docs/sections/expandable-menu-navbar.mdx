@@ -1,0 +1,58 @@
+---
+title: Expandable Menu Navbar
+date: 2026-05-09
+description: A monochrome floating navbar that springs open into a stacked menu of grouped, metadata-rich nav items with a status footer and keyboard shortcut.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="expandable-menu-navbar-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/expandable-menu-navbar"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="expandable-menu-navbar" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+A compact pill renders a wordmark and a `Menu` toggle. Activating the toggle (or pressing `Esc` to dismiss) springs the panel open into a grouped menu — each row pairs a label on the left with a monospace meta token on the right, and reveals a chevron on hover. A live status indicator and version number anchor the bottom of the panel. The component renders in pure theme tokens, so it inherits whatever light/dark palette is active.
+
+## Props
+
+| Prop         | Type               | Default          | Description                                                                   |
+| ------------ | ------------------ | ---------------- | ----------------------------------------------------------------------------- |
+| `brand`      | `ReactNode`        | `<StackedMark/>` | Custom mark rendered on the left of the top bar.                              |
+| `brandLabel` | `string`           | `"Index"`        | Wordmark text rendered next to the mark.                                      |
+| `sections`   | `NavSection[]`     | 3 sample groups  | Grouped nav items: `{ title?, items: { label, meta?, href?, external? }[] }`. |
+| `status`     | `string`           | `"Available"`    | Footer status label rendered next to the live indicator dot.                  |
+| `version`    | `string`           | `"v2.4.1"`       | Footer version string rendered on the right.                                  |
+| `shortcut`   | `string`           | `"M"`            | Glyph rendered inside the `kbd` chip on the top bar.                          |
+| `height`     | `number \| string` | `560`            | Height of the demo container that hosts the navbar.                           |
+| `className`  | `string`           | `undefined`      | Extra classes for the outer container.                                        |
