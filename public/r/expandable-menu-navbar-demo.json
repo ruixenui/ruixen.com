@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "expandable-menu-navbar-demo",
+  "type": "registry:example",
+  "title": "Expandable Menu Navbar Demo",
+  "description": "Example of a monochrome navbar that springs open into a stacked menu with a status footer",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/expandable-menu-navbar"
+  ],
+  "files": [
+    {
+      "path": "registry/example/expandable-menu-navbar-demo.tsx",
+      "content": "import ExpandableMenuNavbar from \"../ruixenui/expandable-menu-navbar\";\n\nexport default function ExpandableMenuNavbarDemo() {\n  return (\n    <main className=\"p-2\">\n      <ExpandableMenuNavbar />\n    </main>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/expandable-menu-navbar-demo.tsx"
+    }
+  ]
+}
