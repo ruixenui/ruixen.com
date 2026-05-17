@@ -8,212 +8,125 @@
 
 # Ruixen UI
 
-**Components that move like objects. Click like switches. Feel like something.**
+**Marketing UI for shadcn — in any stack.**
 
-170+ open-source React components built with spring physics, audio feedback, and zero styling dependencies.
+240+ React sections and components for landing pages. Drop in with one CLI command. Works with Tailwind v3 or v4, Radix or Base UI.
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Components](https://img.shields.io/badge/Components-170+-8b5cf6.svg)](https://ruixen.com/docs)
-<!-- [![Discord](https://img.shields.io/discord/1234567890?color=5865F2&label=Discord&logo=discord&logoColor=white)](https://discord.gg/bYexWzUa6G) -->
+[![Components](https://img.shields.io/badge/Components-240+-8b5cf6.svg)](https://ruixen.com/docs)
+[![Pro](https://img.shields.io/badge/Pro-pro.ruixen.com-000.svg)](https://pro.ruixen.com)
 [![Twitter Follow](https://img.shields.io/twitter/follow/ruixen_ui?style=social)](https://twitter.com/ruixen_ui)
 
-[Browse Components](https://ruixen.com/docs) &nbsp;&middot;&nbsp; [Quick Start](https://ruixen.com/docs/installation) &nbsp;&middot;&nbsp; [Gradients](https://ruixen.com/gradients) &nbsp;&middot;&nbsp; [Blog](https://ruixen.com/blog)
+[Sections](https://ruixen.com/docs) &nbsp;&middot;&nbsp; [Components](https://ruixen.com/docs) &nbsp;&middot;&nbsp; [Pro Templates](https://pro.ruixen.com) &nbsp;&middot;&nbsp; [Gradients](https://ruixen.com/gradients) &nbsp;&middot;&nbsp; [Blog](https://ruixen.com/blog)
 
 </div>
 
 <br />
 
-## The Problem
+## Why Ruixen
 
-Open any web app. Click a button. Watch it change state. The transition takes exactly 300ms, follows a cubic bezier curve, and stops dead. Every time. Regardless of distance, velocity, or intent.
+Ruixen ships across four stacks. Every component is generated into **Tailwind v3, Tailwind v4, Radix, and Base UI** variants from one source codebase at build time. Pick the variant that matches your project. Install with one command.
 
-That's not how physical objects move. Physical objects have **mass**, **momentum**, and **friction**. They overshoot when they arrive. They settle. They respond differently depending on how hard you push them.
-
-Web UI has none of that. Ruixen UI fixes it.
-
-<br />
-
-## CSS Transitions vs Spring Physics
-
-Every component in Ruixen UI replaces CSS timers with spring dynamics:
-
-```tsx
-// CSS: fixed duration, ignores distance and velocity
-transition: transform 0.3s ease;
-
-// Ruixen: spring adapts to distance naturally
-// short moves are snappy, long moves carry momentum
-transition={{ type: "spring", stiffness: 400, damping: 28 }}
-```
-
-A spring has **stiffness** (how hard it pulls toward the target), **damping** (how much friction slows it), and **mass** (how heavy the element feels). The same spring config produces different motion depending on distance — a 20px move is snappy, a 200px move has visible overshoot and settle. That's how real objects behave.
-
-<br />
-
-## Every Click Has a Sound
-
-A 3ms noise burst plays on every interactive state change. Not a WAV. Not an MP3. A shaped noise signal generated in real time:
-
-```tsx
-const len = Math.floor(ctx.sampleRate * 0.003); // 3ms buffer
-const buf = ctx.createBuffer(1, len, ctx.sampleRate);
-const ch = buf.getChannelData(0);
-
-for (let i = 0; i < len; i++)
-  ch[i] = (Math.random() * 2 - 1) * (1 - i / len) ** 4;
-//                                    ^^^^^^^^^^^^^^^^
-//                    quartic decay envelope — sharp attack, instant fade
-
-gain.gain.value = 0.06; // 6% volume — felt more than heard
-```
-
-Why noise instead of a sine wave? A sine wave at any frequency sounds electronic. Noise shaped by a fast decay sounds like a physical impact — a switch clicking, a key depressing. Your brain interprets it as mechanical, not digital.
-
-Every component accepts `sound={false}` to disable it.
-
-<br />
-
-## Components
-
-<table>
-<tr>
-<td width="33%" align="center">
-<video src="https://github.com/ruixenui/ruixen.com/raw/refs/heads/main/public/landing-page-previews/faq-chat-accordion-dark.mp4" width="100%" autoplay loop muted playsinline></video>
-<strong>FAQ Chat Accordion</strong><br /><sub>Conversational FAQ with spring message entrance</sub>
-</td>
-<td width="33%" align="center">
-<video src="https://github.com/ruixenui/ruixen.com/raw/refs/heads/main/public/landing-page-previews/rising-glow-dark.mp4" width="100%" autoplay loop muted playsinline></video>
-<strong>Rising Glow</strong><br /><sub>Animated particles with soft luminance</sub>
-</td>
-<td width="33%" align="center">
-<video src="https://github.com/ruixenui/ruixen.com/raw/refs/heads/main/public/landing-page-previews/comment-thread-dark.mp4" width="100%" autoplay loop muted playsinline></video>
-<strong>Comment Thread</strong><br /><sub>Nested replies with collapsible chains</sub>
-</td>
-</tr>
-<tr>
-<td width="33%" align="center">
-<video src="https://github.com/ruixenui/ruixen.com/raw/refs/heads/main/public/landing-page-previews/badge-morph-dark.mp4" width="100%" autoplay loop muted playsinline></video>
-<strong>Badge Morph</strong><br /><sub>Spring-animated status transitions</sub>
-</td>
-<td width="33%" align="center">
-<video src="https://github.com/ruixenui/ruixen.com/raw/refs/heads/main/public/landing-page-previews/wordmark-footer-dark.mp4" width="100%" autoplay loop muted playsinline></video>
-<strong>Wordmark Footer</strong><br /><sub>Half-cut brand text with luminance gradient</sub>
-</td>
-<td width="33%" align="center">
-<video src="https://github.com/ruixenui/ruixen.com/raw/refs/heads/main/public/landing-page-previews/breadcrumb-dropdown-dark.mp4" width="100%" autoplay loop muted playsinline></video>
-<strong>Breadcrumb Dropdown</strong><br /><sub>Staggered path reveal with spring expand</sub>
-</td>
-</tr>
-</table>
-
-<p align="center">
-<a href="https://ruixen.com/docs"><strong>Browse all 170+ components &rarr;</strong></a>
-</p>
-
-<br />
-
-## Showcase
-
-Interactive templates and sections — full-page compositions built with Ruixen UI components:
-
-<table>
-<tr>
-<td width="50%" align="center">
-<video src="https://github.com/ruixenui/ruixen.com/raw/refs/heads/main/public/showcase/bloom-text-dark.mp4" width="100%" autoplay loop muted playsinline></video>
-<strong>Bloom Text</strong>
-</td>
-<td width="50%" align="center">
-<video src="https://github.com/ruixenui/ruixen.com/raw/refs/heads/main/public/showcase/models-carousel-dark.mp4" width="100%" autoplay loop muted playsinline></video>
-<strong>Models Carousel</strong>
-</td>
-</tr>
-<tr>
-<td width="50%" align="center">
-<video src="https://github.com/ruixenui/ruixen.com/raw/refs/heads/main/public/showcase/project-title-morph-dark.mp4" width="100%" autoplay loop muted playsinline></video>
-<strong>Project Title Morph</strong>
-</td>
-<td width="50%" align="center">
-<video src="https://github.com/ruixenui/ruixen.com/raw/refs/heads/main/public/showcase/instagram-stories-dark.mp4" width="100%" autoplay loop muted playsinline></video>
-<strong>Instagram Stories</strong>
-</td>
-</tr>
-</table>
-
-<p align="center">
-<a href="https://ruixen.com/showcase"><strong>View all showcases &rarr;</strong></a>
-</p>
+Built for teams that don't want to be locked to a single Tailwind version or primitive library — whether you're pinned to Tailwind v3 for legacy compatibility, evaluating Base UI for accessibility or licensing, or running the latest stack.
 
 <br />
 
 ## Quick Start
 
-**Add any component with one command:**
-
 ```bash
-npx shadcn@latest add "https://ruixen.com/r/invert-tabs"
+# Tailwind v4 + Radix (default)
+npx shadcn@latest add "https://ruixen.com/r/staggered-faq-section"
+
+# Tailwind v3 + Radix
+npx shadcn@latest add "https://ruixen.com/r/tw3/staggered-faq-section"
+
+# Tailwind v4 + Base UI
+npx shadcn@latest add "https://ruixen.com/r/baseui/staggered-faq-section"
+
+# Tailwind v3 + Base UI
+npx shadcn@latest add "https://ruixen.com/r/baseui/tw3/staggered-faq-section"
 ```
 
-The component lands in your project with its dependencies resolved. No package to install, no provider to wrap, no global CSS to import.
-
-**Works with any setup:**
-
-```bash
-# Tailwind v4 (default)
-npx shadcn@latest add "https://ruixen.com/r/gooey-pagination"
-
-# Tailwind v3
-npx shadcn@latest add "https://ruixen.com/r/tw3/gooey-pagination"
-
-# Base UI primitives
-npx shadcn@latest add "https://ruixen.com/r/baseui/gooey-pagination"
-
-# Base UI + Tailwind v3
-npx shadcn@latest add "https://ruixen.com/r/baseui/tw3/gooey-pagination"
-```
+The component lands in your project with dependencies resolved. No package to install, no provider to wrap, no global CSS to import.
 
 <br />
 
-## 34 Component Categories
+## Showcase
+
+<table>
+<tr>
+<td width="33%" align="center">
+<video src="https://github.com/ruixenui/ruixen.com/raw/refs/heads/main/public/landing-page-previews/faq-chat-accordion-dark.mp4" width="100%" autoplay loop muted playsinline></video>
+<strong>FAQ Chat Accordion</strong><br /><sub>Conversational FAQ section</sub>
+</td>
+<td width="33%" align="center">
+<video src="https://github.com/ruixenui/ruixen.com/raw/refs/heads/main/public/landing-page-previews/wordmark-footer-dark.mp4" width="100%" autoplay loop muted playsinline></video>
+<strong>Wordmark Footer</strong><br /><sub>Half-cut brand footer with luminance gradient</sub>
+</td>
+<td width="33%" align="center">
+<video src="https://github.com/ruixenui/ruixen.com/raw/refs/heads/main/public/landing-page-previews/split-feature-showcase-dark.mp4" width="100%" autoplay loop muted playsinline></video>
+<strong>Split Feature Showcase</strong><br /><sub>Side-by-side feature highlight section</sub>
+</td>
+</tr>
+<tr>
+<td width="33%" align="center">
+<video src="https://github.com/ruixenui/ruixen.com/raw/refs/heads/main/public/landing-page-previews/integration-and-stats-section-dark.mp4" width="100%" autoplay loop muted playsinline></video>
+<strong>Integration & Stats Section</strong><br /><sub>Logos and metrics block for trust building</sub>
+</td>
+<td width="33%" align="center">
+<video src="https://github.com/ruixenui/ruixen.com/raw/refs/heads/main/public/landing-page-previews/rising-glow-dark.mp4" width="100%" autoplay loop muted playsinline></video>
+<strong>Rising Glow</strong><br /><sub>Animated particles for hero accents</sub>
+</td>
+<td width="33%" align="center">
+<video src="https://github.com/ruixenui/ruixen.com/raw/refs/heads/main/public/landing-page-previews/badge-morph-dark.mp4" width="100%" autoplay loop muted playsinline></video>
+<strong>Badge Morph</strong><br /><sub>Spring-animated status badge</sub>
+</td>
+</tr>
+</table>
+
+<p align="center">
+<a href="https://ruixen.com/docs"><strong>Browse all 240+ components &rarr;</strong></a>
+</p>
+
+<br />
+
+## What's inside
+
+**Sections** &mdash; front-of-website blocks (51)
 
 | | | | |
 |:---|:---|:---|:---|
-| Accordions | AI Chat Inputs | Audio & Media | Avatars |
-| Backgrounds | Badges | Banners | Breadcrumbs |
-| Buttons | Calendars | Cards | Carousels |
-| Checkboxes | Client Sections | Date Pickers | Dialogs |
-| Docks | Drawers | Event Calendars | FAQs |
-| Featured Sections | File Trees | Footers | Forms |
-| Hero Sections | Image Tools | Inputs | Loaders |
-| Menus | Navbars | Notifications | Pagination |
-| Pricing Sections | Select Components | Sliders | Steppers |
-| Tabs | Text Effects | Video Players | |
+| Hero Sections | Pricing | FAQs | Footers |
+| Navbars | Featured Sections | Client Sections | |
+
+**Components** &mdash; primitives and effects for landing pages (88)
+
+| | | | |
+|:---|:---|:---|:---|
+| Buttons | Inputs | Cards | Forms |
+| Accordions | Avatars | Badges | Banners |
+| Backgrounds | Text Effects | Loaders | Carousels |
+| AI Chat Inputs | Audio & Media | Image Tools | Video Players |
+| Checkboxes | Selects | Sliders | Tabs |
+| Charts | Dialogs | Docks | Stepper |
+
+**App UI** &mdash; bonus catalog for app interfaces (39)
+
+| | | | |
+|:---|:---|:---|:---|
+| Calendars | Event Calendars | Date Pickers | Pagination |
+| File Management | Notifications | Drawer | Menu |
+| Breadcrumbs | | | |
 
 <br />
 
-## Design Principles
+## Pro Templates
 
-**Self-contained** — Every component is a single file. Inline styles, CSS variables, no external UI dependencies. Drop it into any React project. It works.
+Need polished, production-grade landing pages?
 
-**Spring physics** — `motion/react` springs instead of CSS `transition`. Elements have stiffness, damping, and mass. Motion adapts to distance and velocity. A short move snaps. A long move overshoots and settles.
+**[Ruixen Pro](https://pro.ruixen.com)** ships 50+ premium components and full landing-page templates with lifetime updates &mdash; **$59 once, no subscription.**
 
-**Audio feedback** — 3ms noise burst via Web Audio API on every state change. Quartic decay envelope, 6% gain. Sounds mechanical, not digital. Configurable via `sound` prop.
-
-**Theme adaptive** — CSS variables for light and dark mode. Scoped with `.dark` and `[data-theme="dark"]` selectors. No global theme provider needed.
-
-**Four registry variants** — Every component ships in Tailwind v4, Tailwind v3, Radix primitives, and Base UI primitives. One codebase, four outputs.
-
-<br />
-
-## Tech Stack
-
-| | |
-|:---|:---|
-| **Framework** | Next.js 15 &middot; React 19 &middot; TypeScript 5 |
-| **Styling** | Tailwind CSS v4 &middot; CSS Variables &middot; Inline Styles |
-| **Animation** | Motion (framer-motion successor) &middot; GSAP &middot; Web Audio API |
-| **Primitives** | Radix UI &middot; Base UI &middot; React Aria |
-| **Registry** | shadcn CLI &middot; JSON-based component registry |
-| **Deployment** | Vercel &middot; Cloudflare R2 |
+Apple Mega Nav &middot; Models Carousel &middot; CTA Meteor &middot; Hero Bars &middot; Bloom Text &middot; Voice Recorder &middot; Testimonials Map &middot; Workflow Bento &middot; and more.
 
 <br />
 
@@ -224,6 +137,27 @@ A curated collection of **31 premium gradients** at 4K resolution (3840 &times; 
 Free for personal and commercial use.
 
 **[Browse gradients &rarr;](https://ruixen.com/gradients)**
+
+<br />
+
+## A note on motion
+
+A subset of components &mdash; buttons, switches, badges, accordions, and a handful of others &mdash; use `motion/react` springs and a 3ms Web Audio click for a more tactile feel. They render fine without it; opt out per-component with `sound={false}`.
+
+It's a flavor on the interactive primitives, not a universal feature of the catalog.
+
+<br />
+
+## Tech Stack
+
+| | |
+|:---|:---|
+| **Framework** | Next.js 15 &middot; React 19 &middot; TypeScript 5 |
+| **Styling** | Tailwind CSS v3 &amp; v4 &middot; CSS Variables |
+| **Animation** | Motion (framer-motion successor) &middot; GSAP &middot; Web Audio API |
+| **Primitives** | Radix UI &amp; Base UI (component code is identical; only the wrapper layer differs) |
+| **Registry** | shadcn CLI &middot; JSON-based component registry |
+| **Build** | One source codebase &rarr; four registry variants generated at build time |
 
 <br />
 
@@ -254,9 +188,7 @@ Read the [Contributing Guide](./CONTRIBUTING.md) for the full walkthrough, or st
 ## Community
 
 <p>
-<!-- <a href="https://discord.gg/bYexWzUa6G"><img src="https://img.shields.io/badge/Discord-Join%20Server-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord" /></a>&nbsp; -->
 <a href="https://twitter.com/ruixen_ui"><img src="https://img.shields.io/badge/Twitter-Follow-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" alt="Twitter" /></a>&nbsp;
-<!-- <a href="https://www.instagram.com/ruixen_ui"><img src="https://img.shields.io/badge/Instagram-Follow-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram" /></a>&nbsp; -->
 <a href="https://github.com/ruixenui/ruixen.com"><img src="https://img.shields.io/badge/GitHub-Star-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" /></a>
 </p>
 
@@ -273,5 +205,5 @@ MIT &mdash; see [LICENSE](LICENSE) for details.
 <div align="center">
 <strong><a href="https://ruixen.com">ruixen.com</a></strong>
 <br />
-<sub>Build interfaces that feel like something.</sub>
+<sub>Marketing UI for shadcn &mdash; in any stack.</sub>
 </div>

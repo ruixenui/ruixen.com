@@ -13,6 +13,7 @@ import {
   formatUsdFromCents,
   proTemplatesApi,
 } from "@/lib/pro-api";
+import { PRO_TEMPLATES_SNAPSHOT } from "@/data/pro-templates";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -22,6 +23,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { TemplateProClickTracker } from "@/components/template-pro-click-tracker";
+import { ThemedTemplateMedia } from "@/components/themed-template-media";
 
 // Pro catalog lives on pro.ruixen.com and is cached at the edge for 5 minutes.
 export const revalidate = 300;
@@ -218,11 +220,6 @@ function StaticTemplateCard({ template }: { template: StaticTemplate }) {
 }
 
 function ProTemplateCard({ template }: { template: ProTemplate }) {
-  const thumbnail =
-    template.images.find((img) => img.is_thumbnail) ?? template.images[0];
-  // Videos are rendered on the client; pick the light variant for server-rendered
-  // HTML and let the video element fall back if it's missing.
-  const videoUrl = template.video_url_light || template.video_url_dark || null;
   const priceLabel = template.is_free
     ? "Free"
     : formatUsdFromCents(template.price_usd_cents);
@@ -340,33 +337,12 @@ function ProTemplateCard({ template }: { template: ProTemplate }) {
           data-pro-template-preview={template.slug}
           className="relative block hover:shadow-[0_8px_32px_rgba(0,0,0,0.1)] hover:backdrop-blur-sm transition-all duration-300 rounded-3xl cursor-pointer"
         >
-          {videoUrl ? (
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-[26rem] rounded-3xl hover:scale-[1.06] transition-all duration-300 object-cover"
-              src={videoUrl}
-              poster={thumbnail?.image_url}
-            />
-          ) : thumbnail ? (
-            <Image
-              src={thumbnail.image_url}
-              alt={thumbnail.alt_text ?? template.name}
-              width={1200}
-              height={800}
-              className="w-full h-[26rem] rounded-3xl object-cover object-top"
-              unoptimized
-            />
-          ) : (
-            <div
-              aria-hidden
-              className="w-full h-[26rem] rounded-3xl bg-gradient-to-br from-muted to-muted/40 flex items-center justify-center text-muted-foreground text-sm"
-            >
-              {template.name}
-            </div>
-          )}
+          <ThemedTemplateMedia
+            template={template}
+            className="w-full h-[26rem] rounded-3xl hover:scale-[1.06] transition-all duration-300 object-cover object-top"
+            width={1200}
+            height={800}
+          />
           <div className="absolute top-4 right-4">
             <Badge
               variant={template.is_free ? "secondary" : "default"}
@@ -385,6 +361,9 @@ async function fetchProTemplates(): Promise<{
   templates: ProTemplate[];
   error: string | null;
 }> {
+  // Static snapshot (data/pro-templates.ts) is the source of truth while the
+  // Pro API isn't publicly reachable. When it comes back online, drop the
+  // snapshot fallback and rely on the live fetch.
   try {
     const response = await proTemplatesApi.getAll({
       page_size: 50,
@@ -392,15 +371,17 @@ async function fetchProTemplates(): Promise<{
       sort_order: "desc",
     });
     const templates = (response.items ?? []).filter((t) => t.is_active);
-    return { templates, error: null };
+    if (templates.length > 0) return { templates, error: null };
   } catch (err) {
-    console.error("[templates] failed to fetch pro catalog:", err);
-    return {
-      templates: [],
-      error:
-        err instanceof Error ? err.message : "Failed to load Pro templates",
-    };
+    console.warn(
+      "[templates] pro catalog fetch failed, using static snapshot:",
+      err instanceof Error ? err.message : err,
+    );
   }
+  const snapshotTemplates = PRO_TEMPLATES_SNAPSHOT.items.filter(
+    (t) => t.is_active,
+  );
+  return { templates: snapshotTemplates, error: null };
 }
 
 export default async function TemplatesPage() {

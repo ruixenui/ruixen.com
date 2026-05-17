@@ -6,7 +6,9 @@ import {
   Droplet,
   Layers,
   Palette,
+  Paintbrush,
   Sparkles,
+  Wand2,
 } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import SiteFooter from "@/components/site-footer";
@@ -38,6 +40,26 @@ const TOOLS: Tool[] = [
     badge: "New",
     icon: Boxes,
     gradient: "from-indigo-500/20 via-violet-500/10 to-fuchsia-500/20",
+  },
+  {
+    href: "/tools/tw-v3-to-v4",
+    title: "Tailwind v3 → v4 Migrator",
+    tagline: "Convert Tailwind CSS v3 source to v4 syntax",
+    description:
+      "Paste v3 CSS or HTML — get v4-ready output. Updates shadcn theme tokens, @tailwind directives, linear gradients, CSS variable arbitrary syntax, and outline accessibility classes.",
+    badge: "New",
+    icon: Wand2,
+    gradient: "from-cyan-500/25 via-teal-500/15 to-emerald-500/25",
+  },
+  {
+    href: "/tools/theme-generator",
+    title: "Shadcn Theme Generator",
+    tagline: "Generate a full shadcn theme from a single color",
+    description:
+      "Pick a primary color and base hue — get all 19 shadcn CSS variables for light and dark modes. Live preview, HSL or OKLCH output, paste straight into globals.css.",
+    badge: "New",
+    icon: Paintbrush,
+    gradient: "from-rose-500/25 via-amber-400/15 to-violet-500/25",
   },
   {
     href: "/generator/css-generator",

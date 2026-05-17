@@ -6,6 +6,7 @@ import WallOfLove from "@/components/sections/wall-of-love";
 import VideoShowcaseGrid from "@/components/sections/video-showcase-grid";
 import InspirationsSection from "@/components/sections/inspirations-section";
 import { ProSection } from "@/components/sections/pro-section";
+import { siteConfig } from "@/config/site";
 
 export default function Home() {
   const faqItems: FAQItem[] = [
@@ -13,25 +14,31 @@ export default function Home() {
       id: "installation",
       question: "How do I add a component to my project?",
       answer:
-        'Run npx shadcn@latest add with the component URL — for example: npx shadcn@latest add "https://ruixen.com/r/invert-tabs". The CLI copies the source file into your project with dependencies resolved. No package to install, no provider to wrap.',
+        'Run npx shadcn@latest add with the component URL — for example: npx shadcn@latest add "https://ruixen.com/r/staggered-faq-section". The CLI copies the source file into your project with dependencies resolved. No package to install, no provider to wrap.',
     },
     {
-      id: "animations",
-      question: "What makes the animations different from CSS transitions?",
+      id: "what-is-ruixen",
+      question: "What is Ruixen UI for?",
       answer:
-        "Every component uses spring physics via motion/react instead of fixed-duration CSS transitions. Springs have stiffness, damping, and mass — so a short move snaps while a long move overshoots and settles. The motion adapts to distance naturally, the way physical objects do.",
+        "Ruixen UI is the multi-stack marketing UI library for shadcn projects. You get sections (hero, pricing, footer, FAQ, navbars), the primitives that go around them (buttons, inputs, cards, text effects), and gradients — all installable with one CLI command. It's built specifically for landing pages and marketing sites.",
     },
     {
       id: "tailwind",
       question: "Which Tailwind version do I need?",
       answer:
-        'Both are supported. Components default to Tailwind v4. For v3, swap the registry prefix: npx shadcn@latest add "https://ruixen.com/r/tw3/invert-tabs". Your selection persists across the docs.',
+        'Both v3 and v4 are supported as first-class targets. Components default to Tailwind v4. For v3, swap the registry prefix: npx shadcn@latest add "https://ruixen.com/r/tw3/staggered-faq-section". Your selection persists across the docs sidebar.',
     },
     {
       id: "primitives",
       question: "Can I use Radix or Base UI primitives?",
       answer:
-        "Yes. Every component ships in four registry variants — Tailwind v4, Tailwind v3, Radix primitives, and Base UI primitives. Pick the one that matches your stack from the docs sidebar.",
+        "Yes. Every component ships in four registry variants — Tailwind v4 + Radix, Tailwind v3 + Radix, Tailwind v4 + Base UI, Tailwind v3 + Base UI — generated from one source codebase at build time. Pick the variant that matches your stack from the docs sidebar.",
+    },
+    {
+      id: "stack-flexibility",
+      question: "What stacks does Ruixen support?",
+      answer:
+        "Tailwind v3, Tailwind v4, Radix primitives, and Base UI primitives — all four combinations. Every component is generated into four registry variants from one source codebase at build time. If your project pins to Tailwind v3 or uses Base UI for accessibility/licensing reasons, Ruixen ships a working build. No need to fork or rewrite.",
     },
     {
       id: "license",
@@ -43,19 +50,18 @@ export default function Home() {
       id: "pro",
       question: "What does Ruixen Pro include?",
       answer:
-        "Pro adds 50+ premium templates and advanced compositions on top of the free library. One-time purchase — $59 lifetime, no subscription. See full pricing and comparison at ruixen.com/pricing. The core 170+ components remain free and open-source.",
+        "Pro adds 50+ premium components and full landing-page templates on top of the free library. One-time purchase — $59 lifetime, no subscription. See full pricing and comparison at ruixen.com/pricing. The free open-source catalog of 240+ components stays free.",
     },
   ];
 
   const softwareAppJsonLd = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    name: "Ruixen UI",
+    name: siteConfig.name,
     applicationCategory: "DeveloperApplication",
     operatingSystem: "Web",
-    url: "https://ruixen.com",
-    description:
-      "170+ free, open-source React components built with Tailwind CSS, TypeScript & Framer Motion. Supports Tailwind v3 + v4, Radix & Base UI primitives.",
+    url: siteConfig.url,
+    description: siteConfig.longDescription,
     offers: {
       "@type": "Offer",
       price: "0",

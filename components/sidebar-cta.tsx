@@ -29,26 +29,43 @@ function VideoSlideshow() {
   const { resolvedTheme } = useTheme();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [mounted, setMounted] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
   useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { threshold: 0 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [mounted]);
+
+  useEffect(() => {
+    if (!isVisible) return;
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % SHOWCASE_VIDEOS.length);
-    }, 4000);
+    }, 8000);
     return () => clearInterval(interval);
-  }, []);
+  }, [isVisible]);
 
-  // Reset video when index changes
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.currentTime = 0;
-      videoRef.current.play().catch(() => {});
+    const video = videoRef.current;
+    if (!video) return;
+    if (isVisible) {
+      video.currentTime = 0;
+      video.play().catch(() => {});
+    } else {
+      video.pause();
     }
-  }, [currentIndex]);
+  }, [currentIndex, isVisible]);
 
   if (!mounted) {
     return (
@@ -60,7 +77,10 @@ function VideoSlideshow() {
   const videoSrc = `/showcase/${SHOWCASE_VIDEOS[currentIndex]}-${themeSuffix}.mp4`;
 
   return (
-    <div className="relative w-full overflow-hidden rounded-md">
+    <div
+      ref={containerRef}
+      className="relative w-full overflow-hidden rounded-md"
+    >
       <video
         ref={videoRef}
         key={videoSrc}
@@ -68,6 +88,7 @@ function VideoSlideshow() {
         loop
         playsInline
         muted
+        preload="metadata"
         src={videoSrc}
         className="w-full aspect-[16/10] object-cover"
       />

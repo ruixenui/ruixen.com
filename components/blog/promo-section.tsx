@@ -42,12 +42,13 @@ export default async function PromoSection() {
       aria-label="Ruixen UI Components and Blogs"
     >
       <h2 className="text-xl md:text-2xl font-semibold leading-tight">
-        Explore 170+ free components and website templates
+        240+ marketing sections and components for shadcn projects
       </h2>
 
       <p className="text-base md:text-md max-w-xl">
-        Browse beautifully designed React components, Tailwind CSS sections, and
-        blog templates. Preview the website or explore the code on GitHub.
+        Drop-in hero blocks, pricing, footers, navbars, and the primitives
+        around them — all in one CLI command. Works with Tailwind v3 or v4,
+        Radix or Base UI.
       </p>
 
       <div className="flex flex-col w-full gap-3 mt-4">

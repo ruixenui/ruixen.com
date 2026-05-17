@@ -1,0 +1,305 @@
+---
+title: "Building marketing pages with shadcn — A 2026 guide"
+description: "How to ship a complete marketing page on the shadcn stack — hero, social proof, features, pricing, FAQ, footer — in any combination of Tailwind v3/v4 and Radix/Base UI."
+author: Ruhith G
+tag: Guides
+publishedOn: 2026-05-14T10:00:00.000Z
+featured: false
+---
+
+Shadcn changed how we ship UIs. Copy-paste primitives, your own code, no runtime dependency. Beautiful.
+
+But shadcn ships **primitives**: buttons, inputs, dialogs, accordions. It doesn't ship a hero section. It doesn't ship a pricing card with the right gradient. It doesn't ship the four-tile bento grid your CEO wants on the homepage by Friday.
+
+So every team rebuilds the same six sections — hero, social proof, features, pricing, FAQ, footer — from scratch every project. Each rebuild is two days of pixel-pushing dressed up as "design work." It's not design. It's friction.
+
+This guide is how I stopped rebuilding marketing pages from scratch — by treating the marketing layer as its own component system on top of shadcn, the same way shadcn sits on top of Radix. Same install pattern (`npx shadcn add ...`), same code-you-own model, same theme tokens. Just one layer up.
+
+---
+
+## What you'll learn
+
+- The 6 sections that make up every modern SaaS landing page, and which 4 actually move conversion
+- How to scaffold a complete marketing page in **under 30 seconds** of CLI time
+- How to ship the same component on Tailwind v3 _or_ v4, Radix _or_ Base UI — without forking the codebase
+- The five places shadcn marketing components silently break (and how to spot it)
+- A reading list of 40+ free Ruixen sections that snap together with `npx shadcn add`
+
+If you're shipping a product landing page on Next.js + shadcn this quarter, this is the guide I wish someone had handed me a year ago.
+
+---
+
+## Quick start (30 seconds)
+
+Five `shadcn` install commands, in your project root:
+
+```bash
+npx shadcn@latest add https://ruixen.com/r/structured-hero-section
+npx shadcn@latest add https://ruixen.com/r/trusted-clients-showcase
+npx shadcn@latest add https://ruixen.com/r/services-bento-grid
+npx shadcn@latest add https://ruixen.com/r/pricing-plans
+npx shadcn@latest add https://ruixen.com/r/footer-section
+```
+
+Each command drops a new file into `components/ruixenui/`. Import them in `app/page.tsx`, stack them in order, and you have a working landing page:
+
+```tsx
+import { StructuredHeroSection } from "@/components/ruixenui/structured-hero-section";
+import { TrustedClientsShowcase } from "@/components/ruixenui/trusted-clients-showcase";
+import { ServicesBentoGrid } from "@/components/ruixenui/services-bento-grid";
+import { PricingPlans } from "@/components/ruixenui/pricing-plans";
+import { FooterSection } from "@/components/ruixenui/footer-section";
+
+export default function HomePage() {
+  return (
+    <>
+      <StructuredHeroSection />
+      <TrustedClientsShowcase />
+      <ServicesBentoGrid />
+      <PricingPlans />
+      <FooterSection />
+    </>
+  );
+}
+```
+
+That's it. Real shadcn components, your own code in your repo, theme tokens already wired up. From here you customize copy, swap components, tune spacing — the same work you'd do anyway, minus the from-scratch part.
+
+---
+
+## The six sections, ranked by conversion impact
+
+Not every section pulls weight. Here's what actually matters and why, ordered by impact-per-pixel.
+
+### 1. Hero — the six-second window
+
+Visitors decide in **six seconds** whether to scroll. The hero gets that decision. Skimp anywhere else, but not here.
+
+Three patterns work:
+
+- **Structured hero** — headline, subheadline, primary + secondary CTA, hero image. Boring. Converts. Use when your audience is enterprise or technical and wants to immediately understand the product.
+- **Tabbed hero** — toggles between use cases ("for engineers" / "for marketers"). Use when your product solves multiple jobs.
+- **Card carousel hero** — animated stack showing product surfaces. Use when your product _is_ the visual (design tools, dashboards, anything UI-heavy).
+
+The mistake: copying a "video hero" from a landing-page library because it looks impressive. Video heroes hurt LCP, fail on slow connections, and rarely move metrics for B2B SaaS.
+
+Browse all 9 hero patterns at [/docs/components/hero-sections](/docs/components/hero-sections).
+
+### 2. Pricing — make the choice obvious
+
+Pricing is where intent becomes revenue. Two formats work:
+
+- **Three-tier ladder** (Starter / Pro / Enterprise) — works for 80% of SaaS. Anchor the middle tier with a "Most popular" badge.
+- **Feature matrix** — works when buyers need to verify a specific capability. Use for enterprise sales motions where procurement teams compare line by line.
+
+Don't ship both. Pick the one that matches your sales motion. The matrix on a self-serve product just intimidates; the ladder on an enterprise product looks unprofessional.
+
+If you're not sure, ship the ladder and let analytics tell you to switch.
+
+Browse all pricing patterns at [/docs/components/pricing-section](/docs/components/pricing-section).
+
+### 3. Features — show the surface, not the spec sheet
+
+Features sections fail when they read like a spec sheet ("256-bit encryption, SOC 2 Type II, 99.99% uptime"). Visitors don't buy specs. They buy outcomes.
+
+Three formats:
+
+- **Bento grid** — 4-6 tiles, mixed sizes. Use for products with visual outputs (design, analytics, dashboards). Each tile is a _moment_, not a feature.
+- **Three-column grid** — icon + title + description. Use for technical products where the feature _is_ the value.
+- **Alternating image + text** — long-scroll deep dive. Use for complex products where each feature needs context.
+
+Bento converts best on most B2B SaaS landing pages because it does work that no other section does: it shows what the product actually looks like. A bento tile with a screenshot of your dashboard is doing more conversion work than three paragraphs of marketing copy ever will.
+
+Browse all featured-section patterns at [/docs/components/featured-section](/docs/components/featured-section).
+
+### 4. Social proof — under the hero, not the footer
+
+The biggest mistake on shadcn landing pages I review: putting the customer logo strip in the _footer_. By the time visitors scroll to the footer they've already decided.
+
+Put logos directly under the hero. Visitor lands → sees value prop → sees five logos they recognize → trust threshold cleared → keeps scrolling.
+
+Two formats:
+
+- **Static grid** — 5-8 logos, evenly spaced. Use when you have notable logos worth pausing on.
+- **Auto-scrolling marquee** — works when you have 12+ logos and want to imply "many more." Don't use when you have only 6 — the loop becomes obvious and looks small.
+
+Browse all client-section patterns at [/docs/components/client-section](/docs/components/client-section).
+
+### 5. FAQ — the conversion safety net
+
+FAQs catch the visitors who _almost_ converted but had one specific objection. They're a safety net, not a feature.
+
+Five questions max. Each one should kill a real objection ("Can I cancel anytime?" "How does pricing work for teams?" "Do you support SSO?"). If a question doesn't kill an objection, cut it.
+
+Two formats:
+
+- **Accordion** — collapsed by default. Use this. Always.
+- **Open list** — every Q&A visible. Don't use this. It clutters the page and visitors skip the section entirely.
+
+Browse FAQ patterns at [/docs/components/faqs](/docs/components/faqs).
+
+### 6. Footer — the underrated SEO surface
+
+Footers don't move conversion. They move SEO.
+
+A "fat" footer with 60+ internal links creates massive internal linking equity across your entire site. Every page footer-links to every other important page. Google indexes everything, ranks everything more highly, and visitors who hit your blog can navigate to your pricing page in one click.
+
+Don't ship a "minimal footer with just the logo." Ship a fat footer with sections for Product, Company, Resources, Legal — even if some sections only have 3 links each.
+
+Browse footer patterns at [/docs/components/footer-section](/docs/components/footer-section).
+
+---
+
+## Stack variants — the same component, four ways
+
+Here's where the shadcn ecosystem still has rough edges. Most copy-paste libraries assume **Tailwind v4 + Radix**. If your project is on v3 (most production projects in 2026 still are), or you swapped Radix for Base UI (a growing pattern), you're stuck.
+
+Ruixen's registry generates four output variants from one source codebase. Same component, four install URLs. Pick the one that matches your stack:
+
+| Stack                                    | Install URL prefix                       |
+| ---------------------------------------- | ---------------------------------------- |
+| **Tailwind v4 + Radix** (shadcn default) | `https://ruixen.com/r/<name>`            |
+| **Tailwind v3 + Radix**                  | `https://ruixen.com/r/tw3/<name>`        |
+| **Tailwind v4 + Base UI**                | `https://ruixen.com/r/baseui/<name>`     |
+| **Tailwind v3 + Base UI**                | `https://ruixen.com/r/baseui/tw3/<name>` |
+
+So the same hero on a Tailwind v3 + Base UI project becomes:
+
+```bash
+npx shadcn@latest add https://ruixen.com/r/baseui/tw3/structured-hero-section
+```
+
+Single command. Right CSS for v3. Right primitives for Base UI. No fork to maintain.
+
+**The why:** Tailwind v4's `@theme` block + OKLCH colors don't compile on v3. Radix's `data-[state=open]` attribute selectors are different in Base UI (they use `data-[open]`). A library that hardcodes either choice excludes a chunk of users. The Ruixen approach: write component code once that's portable, then transform on the way out.
+
+If you're staying on Tailwind v3, also see [the Tailwind v3 stack landing](/tailwind-v3-shadcn). If you're on Base UI, see [the Base UI stack landing](/base-ui-shadcn).
+
+---
+
+## Five places shadcn marketing components silently break
+
+Things I've shipped to prod that broke in ways the type-checker didn't catch:
+
+### 1. Mixed `border` defaults between v3 and v4
+
+In Tailwind v3, `<div class="border">` defaults to `border-color: gray-200`. In v4, it defaults to `currentColor`. So a card with `border bg-card` looks fine in v3 but renders with a near-invisible border in v4.
+
+**Fix:** always pair `border` with an explicit color: `border border-border`.
+
+### 2. Server-component animations
+
+You import a hero with a Framer Motion animation and Next throws _"Functions can not be passed directly to Client Components."_
+
+**Fix:** add `"use client"` at the top of the component file. Or — better — keep the hero shell as a server component and split the animated element into its own client component:
+
+```tsx
+// hero.tsx (server component)
+import { AnimatedHeadline } from "./animated-headline";
+export function Hero() {
+  return (
+    <section>
+      <AnimatedHeadline />
+    </section>
+  );
+}
+
+// animated-headline.tsx
+("use client");
+export function AnimatedHeadline() {
+  /* motion here */
+}
+```
+
+Better hydration cost, smaller client bundle.
+
+### 3. Primary color collisions
+
+You set `--primary: 240 5.9% 10%` (zinc-900) in `globals.css`. Then you drop in a hero with a `from-primary to-primary/40` gradient. The gradient is invisible because `--primary` is near-black.
+
+**Fix:** marketing accent gradients should reference dedicated tokens (`--accent-from`, `--accent-to`) defined per-section, not the global `--primary` token. Or override locally with explicit Tailwind colors (`from-violet-500 to-fuchsia-500`).
+
+### 4. Z-index escalation
+
+Three components each defining their own z-index ladder. The hero uses `z-10` for its CTA, the navbar uses `z-50`, the footer announcement bar uses `z-40`. Then the cookie banner sits at `z-[100]` and you're chasing collisions for an hour.
+
+**Fix:** define a project-wide z-index scale in your tailwind config or globals.css. Three layers is enough: `z-base` (0-10), `z-overlay` (40-50), `z-modal` (100+).
+
+### 5. The radius drift
+
+Half your shadcn primitives use `rounded-md`, half use `rounded-lg`, your hero CTAs use `rounded-full`. The page reads as inconsistent without anyone being able to point to _what's wrong_.
+
+**Fix:** pick one radius scale and apply it everywhere. The shadcn `--radius` token + `rounded-[var(--radius)]` is the right primitive for this. Set it once in `globals.css`, every component inherits.
+
+---
+
+## Theme tokens — the lever that actually controls your brand
+
+Most teams customize shadcn by editing CSS variables in `globals.css`. Three of these tokens do 80% of the work:
+
+- `--background` and `--foreground` — set the entire neutral palette
+- `--primary` — sets every CTA, focus ring, and link
+- `--radius` — sets every rounded corner across all components
+
+Tune these three first. Don't touch anything else until you've shipped.
+
+If you don't want to hand-tune CSS, use the [Shadcn Theme Generator](/tools/theme-generator) — it derives all 19 tokens from a primary color and base hue, and outputs both HSL (v1) and OKLCH (v2+) formats.
+
+---
+
+## What I removed when I stopped rebuilding from scratch
+
+After a year of using a registry-driven marketing layer:
+
+- **Per-project hero rebuilds** — gone. Every project starts with `structured-hero-section` as a baseline, and most projects ship with that baseline plus copy edits.
+- **Custom pricing component design files** — gone. Three pricing components handle 95% of pricing-section needs.
+- **The "footer is just a footer" assumption** — gone. Footers are SEO infrastructure. They get the same care as hero sections.
+- **Manual `border-gray-200` everywhere** — gone. Token-driven `border-border` works in both v3 and v4.
+
+What remained: the actual creative work. Copy. Brand voice. Visual identity. Animation choices. Sound design. The decisions that differentiate one product from another are still my job. Stitching together the _structure_ of a marketing page is no longer my job.
+
+---
+
+## Frequently asked questions
+
+**Can I use Ruixen with the official shadcn CLI?**
+Yes. Every Ruixen component is published as a standard shadcn registry entry. `npx shadcn@latest add https://ruixen.com/r/<name>` works exactly like adding a shadcn primitive.
+
+**Does it work with Next.js 13+ App Router?**
+Yes. All components are written to the App Router conventions — server components by default, `"use client"` only where it's needed.
+
+**Do I need Tailwind v4?**
+No. Use the `/r/tw3/<name>` install URL prefix to get the Tailwind v3 variant. Same component code, transformed at registry-build time to work without the v4-specific syntax.
+
+**Can I use this with vanilla React (no Next.js)?**
+Yes. The shadcn CLI works in any React project. Vite, Remix, Astro, Gatsby — all supported. See the framework-specific install guides under [/docs/installation](/docs/installation).
+
+**Is this a fork of shadcn?**
+No. It's a sibling registry. Ruixen components import from `@/components/ui/*` (the standard shadcn primitive layer), so installing Ruixen first installs the underlying shadcn primitive too if it's missing. Your existing shadcn primitives keep working untouched.
+
+**How do I customize the theme tokens?**
+Edit `app/globals.css` — every component reads from the same `--background`, `--foreground`, `--primary`, etc. tokens. For a guided generator, use the [Theme Generator](/tools/theme-generator).
+
+**What about Base UI?**
+Use the `/r/baseui/<name>` install URL prefix. The same Ruixen component code is rewritten on the way out to use Base UI primitives instead of Radix.
+
+---
+
+## Where to go from here
+
+If you're starting a marketing page today, the path is:
+
+1. **Pick a hero.** Browse [/docs/components/hero-sections](/docs/components/hero-sections), pick one, install it, write your headline.
+2. **Add social proof.** Five client logos under the hero — [/docs/components/client-section](/docs/components/client-section).
+3. **Stack one features section.** Bento for visual products, three-column for technical — [/docs/components/featured-section](/docs/components/featured-section).
+4. **Add pricing.** One ladder — [/docs/components/pricing-section](/docs/components/pricing-section).
+5. **Add FAQ.** Five questions, accordion format — [/docs/components/faqs](/docs/components/faqs).
+6. **Add a fat footer.** [/docs/components/footer-section](/docs/components/footer-section).
+
+If you're on Tailwind v3, see [the v3 stack landing](/tailwind-v3-shadcn) for the install URL prefix you'll use.
+
+If you're on Base UI, see [the Base UI stack landing](/base-ui-shadcn).
+
+If you want a starter that already includes all six sections wired together, see [/templates](/templates) — full-page templates that ship as one install.
+
+The marketing layer doesn't have to be a from-scratch problem every project. It's a solved problem now. Stop rebuilding heroes.

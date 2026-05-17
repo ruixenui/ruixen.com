@@ -2,7 +2,7 @@
 
 Welcome to the **Ruixen UI Roadmap**! This document outlines our vision, priorities, milestones, and actionable goals for contributors. Whether you're a first-time contributor or a seasoned developer, this roadmap will help you understand where Ruixen UI is headed and how you can make an impact.
 
-Ruixen UI is a growing collection of **170+ beautifully designed, copy-and-paste React components** built with TypeScript and Tailwind CSS. Our core philosophy centers on **speed and animation** — delivering components that are visually stunning, performant, and delightful to interact with.
+Ruixen UI is a multi-stack marketing UI library for shadcn projects — **240+ React sections and components** for landing pages, generated into four registry variants (Tailwind v3 or v4, Radix or Base UI) from one source codebase. Our focus is the marketing-page surface area: hero blocks, pricing, footers, navbars, FAQs, and the primitives, effects, and gradients that go around them.
 
 ---
 

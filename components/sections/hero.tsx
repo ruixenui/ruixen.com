@@ -70,10 +70,10 @@ function Home() {
                 "opacity 0.5s ease-out 2.8s, transform 0.5s ease-out 2.8s",
             }}
           >
-            A design-engineered set of production-ready components built for
-            clarity and control. Customize, extend, and scale with confidence.
-            Start with a strong foundation. Make it yours. Open source. Open
-            architecture.
+            Marketing UI for shadcn projects. 240+ React sections and components
+            for landing pages — hero blocks, pricing, footers, navbars, and the
+            primitives around them. Multi-stack: Tailwind v3 or v4, Radix or
+            Base UI. Free catalog plus Pro templates.
           </p>
 
           {/* CLI + Quick Start */}

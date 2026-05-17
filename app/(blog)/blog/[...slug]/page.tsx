@@ -3,6 +3,7 @@ import MoreArticles, { getReadingTime } from "@/components/blog/more-articles";
 import { SidebarCTA } from "@/components/sidebar-cta";
 import BlogTableOfContents from "@/components/blog/table-of-contents";
 import { siteConfig } from "@/config/site";
+import { buildOgImageUrl, getCategoryFromSlug } from "@/lib/og";
 import { absoluteUrl } from "@/lib/utils";
 import { MDXContent } from "@content-collections/mdx/react";
 import { allBlogs } from "content-collections";
@@ -160,6 +161,14 @@ export async function generateMetadata({
     return {};
   }
 
+  const ogImage =
+    post.image ||
+    buildOgImageUrl({
+      title: post.title,
+      description: post.description,
+      category: getCategoryFromSlug(postSlug),
+    });
+
   return {
     title: `${post.title} | ${siteConfig.name}`,
     description: post.description,
@@ -170,7 +179,7 @@ export async function generateMetadata({
       url: absoluteUrl(`/blog/${postSlug}`),
       images: [
         {
-          url: post.image || "",
+          url: ogImage,
           width: 1200,
           height: 630,
         },
@@ -180,7 +189,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: post.title,
       description: post.description,
-      images: [post.image || ""],
+      images: [ogImage],
       creator: "@ruixen_ui",
     },
     alternates: {

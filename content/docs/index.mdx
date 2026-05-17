@@ -1,33 +1,46 @@
 ---
 title: Introduction
-description: 170+ open-source React components built with spring physics, audio feedback, and zero styling dependencies.
+description: Marketing UI for shadcn projects — 240+ React sections and components for landing pages. Multi-stack support across Tailwind v3/v4 and Radix/Base UI.
 ---
 
-Ruixen UI is an open-source component library where every interaction is driven by spring physics, not CSS timers. Components have mass, momentum, and friction. They overshoot when they arrive. They settle. They respond differently depending on distance and velocity.
+Ruixen UI is a multi-stack marketing UI library for shadcn projects. Hero blocks, pricing, footers, navbars, FAQs — plus the primitives, effects, and gradients that go around them. Drop in with one CLI command. Works with Tailwind v3 or v4, Radix or Base UI.
 
-This is design engineering — the discipline of making interfaces that behave like physical objects instead of state machines.
+## What Ruixen is for
 
-## Why this exists
+If you're building a landing page or marketing site on top of shadcn, Ruixen is the catalog you reach for. The Sections group ships full landing-page blocks (hero, pricing, footer, FAQs, navbars). The Components group covers the primitives every landing page needs (buttons, inputs, cards, text effects, AI chat inputs, gradients). Everything installs through the standard shadcn CLI.
 
-Most component libraries ship markup with a transition attached. A 300ms ease-in-out that plays the same way every time regardless of context. That works. But it doesn't feel like anything.
+## Why multi-stack matters
 
-Ruixen UI replaces that layer entirely:
+Ruixen ships across four stacks. Every component is generated into **Tailwind v3, Tailwind v4, Radix, and Base UI** variants from one source codebase at build time. Pick the variant that matches your project and install with one command — whether you're pinned to Tailwind v3 for legacy compatibility, evaluating Base UI for accessibility or licensing, or running the latest stack:
 
-- **Spring dynamics over CSS transitions** — Every animation uses `motion/react` springs with stiffness, damping, and mass. A short move snaps. A long move carries momentum and settles. The same config produces different motion depending on distance — because that's how real objects behave.
-- **Audio on every state change** — A 3ms noise burst via Web Audio API plays on interactive events. Shaped with a quartic decay envelope at 6% gain. It sounds mechanical, not digital. Disable it with `sound={false}`.
-- **Single-file, zero dependencies** — Each component is one file with inline styles and CSS variables. No theme provider. No global CSS. Drop it into any React project and it works.
-- **Four registry variants** — Every component ships in Tailwind v4, Tailwind v3, Radix primitives, and Base UI primitives. One codebase, four outputs.
+```bash
+# Tailwind v4 + Radix (default)
+npx shadcn@latest add "https://ruixen.com/r/staggered-faq-section"
 
-## What design engineering means here
+# Tailwind v3 + Radix
+npx shadcn@latest add "https://ruixen.com/r/tw3/staggered-faq-section"
 
-Design engineering is the work that happens between a design mockup and production code — where you decide how something _moves_, how it _sounds_, how it _responds_ to input. It's the difference between a button that changes color and a button that clicks.
+# Tailwind v4 + Base UI
+npx shadcn@latest add "https://ruixen.com/r/baseui/staggered-faq-section"
 
-We don't generate components with AI and ship them. Every component is hand-engineered — the spring configs are tuned by hand, the audio envelopes are shaped intentionally, the interaction patterns are tested across input methods. The output should feel authored, not generated.
+# Tailwind v3 + Base UI
+npx shadcn@latest add "https://ruixen.com/r/baseui/tw3/staggered-faq-section"
+```
 
-If that distinction matters to you, follow the process on [Twitter](https://twitter.com/ruixen_ui) and read the thinking behind it on our [blog](/blog).
+## What's inside
 
-## Request a component
+- **Sections (51)** — Hero, Pricing, FAQs, Footers, Navbars, Featured, Client. Front-of-website blocks.
+- **Components (88)** — Buttons, Inputs, Cards, Forms, Backgrounds, Text Effects, AI Chat Inputs, Audio & Media, and more. Primitives and effects for landing pages.
+- **App UI (39)** — Calendars, File Management, Pagination, Notifications. A bonus catalog for app interfaces; maintained but not the focus.
 
-Tell us what you need. We'll build it with spring physics and ship it within 48 hours. Free. Open source. Yours to keep.
+## Free + Pro
 
-DM us on [Twitter](https://twitter.com/ruixen_ui) or open a [GitHub issue](https://github.com/ruixenui/ruixen.com/issues) and we'll get it into the registry.
+The free open-source catalog stays free, MIT-licensed. [Ruixen Pro](https://pro.ruixen.com) adds 50+ premium components and full landing-page templates with lifetime updates for **$59 once**.
+
+## A note on motion
+
+A subset of components — buttons, switches, badges, accordions — use `motion/react` springs and a 3ms Web Audio click for a more tactile feel. They render fine without it; opt out per-component with `sound={false}`. It's a flavor on the interactive primitives, not a universal feature.
+
+## Request a section
+
+Need a section we don't have yet? DM us on [Twitter](https://twitter.com/ruixen_ui) or open a [GitHub issue](https://github.com/ruixenui/ruixen.com/issues). We'll add it to the registry.
