@@ -125,7 +125,8 @@ export const docsConfig: DocsConfig = {
           title: "MCP",
           href: "/docs/mcp",
           items: [],
-          label: "",
+          label: "Free",
+          gold: true,
         },
         {
           title: "Dual Tailwind",
@@ -149,6 +150,7 @@ export const docsConfig: DocsConfig = {
           href: `/docs/templates/portfolio`,
           items: [],
           label: "",
+          free: true,
           event: "template_portfolio_clicked",
         },
         {
@@ -1086,6 +1088,12 @@ export const docsConfig: DocsConfig = {
               href: `/docs/components/solar-loader`,
               items: [],
               label: "",
+            },
+            {
+              title: "Progressive Flux Loader",
+              href: `/docs/components/progressive-flux-loader`,
+              items: [],
+              label: "New",
             },
           ],
         },

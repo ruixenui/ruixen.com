@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "progressive-flux-loader-demo",
+  "type": "registry:example",
+  "title": "Progressive Flux Loader Demo",
+  "description": "Example showing a glowing progress bar with phase labels animating along the Z-axis between phrases.",
+  "registryDependencies": [
+    "https://ruixen.com/r/progressive-flux-loader"
+  ],
+  "files": [
+    {
+      "path": "registry/example/progressive-flux-loader-demo.tsx",
+      "content": "\"use client\";\n\nimport { ProgressiveFluxLoader } from \"@/registry/ruixenui/progressive-flux-loader\";\n\nexport default function ProgressiveFluxLoaderDemo() {\n  return (\n    <div className=\"flex min-h-[420px] w-full items-center justify-center px-6 py-16\">\n      <ProgressiveFluxLoader duration={14} loop />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/progressive-flux-loader-demo.tsx"
+    }
+  ]
+}

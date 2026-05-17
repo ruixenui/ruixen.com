@@ -191,12 +191,19 @@ export default async function DocPage({ params }: DocPageProps) {
         <DocPager doc={doc} />
       </div>
       {doc.toc && (
-        <div className="hidden py-6 pl-6 text-sm xl:block">
-          <div className="sticky top-[90px] h-[calc(100vh-3.5rem)] space-y-4">
-            <TableOfContents toc={toc} />
-            <div id="dynamic-toc" />
-            <Contribute doc={doc} />
-            <SidebarCTA />
+        <div className="hidden pl-6 text-sm xl:block">
+          <div className="sticky top-16 flex h-[calc(100vh-4rem)] flex-col py-6">
+            {/* Scrollable: TOC + Contribute. Contribute scrolls with the TOC
+                so the CTA below has enough room to sit at the sidebar bottom. */}
+            <div className="flex-1 min-h-0 space-y-6 overflow-y-auto pr-2">
+              <TableOfContents toc={toc} />
+              <div id="dynamic-toc" />
+              <Contribute doc={doc} />
+            </div>
+            {/* Pinned at the sidebar bottom. */}
+            <div className="shrink-0 pr-2 pt-4">
+              <SidebarCTA />
+            </div>
           </div>
         </div>
       )}

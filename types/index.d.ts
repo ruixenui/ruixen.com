@@ -8,6 +8,8 @@ export interface NavItem {
   icon?: keyof typeof Icons;
   label?: string;
   paid?: boolean;
+  free?: boolean;
+  gold?: boolean;
   event?: string;
 }
 

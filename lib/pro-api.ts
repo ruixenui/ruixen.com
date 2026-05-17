@@ -112,31 +112,8 @@ export const proTemplatesApi = {
   },
 };
 
-/**
- * Build a deep link to the template detail page on pro.ruixen.com with
- * UTM/ref attribution so PostHog can follow the OSS → Pro funnel.
- */
-export function buildProTemplateUrl(
-  slug: string,
-  surface:
-    | "oss_templates"
-    | "oss_templates_get_pro"
-    | "oss_templates_preview"
-    | "oss_templates_footer"
-    | "oss_docs_sidebar" = "oss_templates",
-): string {
-  const base = `${PRO_SITE_URL}/templates/${encodeURIComponent(slug)}`;
-  try {
-    const url = new URL(base);
-    url.searchParams.set("ref", surface);
-    url.searchParams.set("utm_source", "ruixen");
-    url.searchParams.set("utm_medium", "template_card");
-    url.searchParams.set("utm_campaign", "bridge");
-    url.searchParams.set("slug", slug);
-    return url.toString();
-  } catch {
-    return base;
-  }
+export function buildProTemplateUrl(slug: string): string {
+  return `${PRO_SITE_URL}/templates/${encodeURIComponent(slug)}`;
 }
 
 export function formatUsdFromCents(cents: number): string {

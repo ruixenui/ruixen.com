@@ -105,13 +105,25 @@ export function DocsSidebarNavItems({
               <span className="relative shrink-0">{item.title}</span>
               <div className="flex items-center gap-1">
                 {item.label && (
-                  <span className="rounded-md bg-[var(--color-sidebar-label)] px-1.5 py-0.5 text-[0.7rem] leading-none text-[var(--color-sidebar-label-foreground)]">
+                  <span
+                    className={cn(
+                      "rounded-md px-1.5 py-0.5 text-[0.7rem] leading-none",
+                      item.gold
+                        ? "bg-[#bef853] text-black"
+                        : "bg-[var(--color-sidebar-label)] text-[var(--color-sidebar-label-foreground)]",
+                    )}
+                  >
                     {item.label}
                   </span>
                 )}
                 {item.paid && (
-                  <span className="rounded-md bg-[var(--color-sidebar-label)] px-1.5 py-0.5 text-[0.65rem] leading-none text-[var(--color-sidebar-label-foreground)]">
+                  <span className="rounded-md bg-[#bef853] px-1.5 py-0.5 text-[0.65rem] leading-none text-black">
                     Pro
+                  </span>
+                )}
+                {item.free && (
+                  <span className="rounded-md bg-[#2563eb] px-1.5 py-0.5 text-[0.65rem] leading-none text-white">
+                    Free
                   </span>
                 )}
                 {item.external && <ExternalLinkIcon className="size-3" />}
@@ -246,13 +258,25 @@ function CollapsibleCategory({
                     </span>
                     <div className="flex items-center gap-1 shrink-0">
                       {child.label && (
-                        <span className="rounded-md bg-[var(--color-sidebar-label)] px-1.5 py-0.5 text-[0.65rem] leading-none text-[var(--color-sidebar-label-foreground)]">
+                        <span
+                          className={cn(
+                            "rounded-md px-1.5 py-0.5 text-[0.65rem] leading-none",
+                            child.gold
+                              ? "bg-[#bef853] text-black"
+                              : "bg-[var(--color-sidebar-label)] text-[var(--color-sidebar-label-foreground)]",
+                          )}
+                        >
                           {child.label}
                         </span>
                       )}
                       {child.paid && (
-                        <span className="rounded-md bg-[var(--color-sidebar-label)] px-1.5 py-0.5 text-[0.65rem] leading-none text-[var(--color-sidebar-label-foreground)]">
+                        <span className="rounded-md bg-[#bef853] px-1.5 py-0.5 text-[0.65rem] leading-none text-black">
                           Pro
+                        </span>
+                      )}
+                      {child.free && (
+                        <span className="rounded-md bg-[#2563eb] px-1.5 py-0.5 text-[0.65rem] leading-none text-white">
+                          Free
                         </span>
                       )}
                       {child.external && (
