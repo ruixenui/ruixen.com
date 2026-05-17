@@ -591,7 +591,7 @@ export default function ShowcasePage() {
                 <span className="absolute inline-flex size-full animate-ping rounded-full bg-green-400 opacity-75" />
                 <span className="relative inline-flex size-2 rounded-full bg-green-500" />
               </span>
-              <span className="font-semibold">170+ Components</span>
+              <span className="font-semibold">240+ Components</span>
               <span className="text-muted-foreground">•</span>
               <span className="text-muted-foreground">Trusted by</span>
               <span className="font-semibold">2,500+ devs</span>

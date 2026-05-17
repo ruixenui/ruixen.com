@@ -132,13 +132,13 @@ export const docsConfig: DocsConfig = {
           title: "Dual Tailwind",
           href: "/docs/tailwind-v4",
           items: [],
-          label: "v3 + v4",
+          label: "",
         },
         {
           title: "Swap Primitives",
           href: "/docs/ui-library",
           items: [],
-          label: "Radix & Base",
+          label: "",
         },
       ],
     },
@@ -152,6 +152,382 @@ export const docsConfig: DocsConfig = {
           label: "",
           free: true,
           event: "template_portfolio_clicked",
+        },
+        {
+          title: "Nguyen – AI Workspace",
+          href: `/docs/templates/nguyen-one`,
+          items: [],
+          label: "Pro",
+        },
+        {
+          title: "Intellune – AI Agent",
+          href: `/docs/templates/intellune`,
+          items: [],
+          label: "Pro",
+        },
+      ],
+    },
+    {
+      title: "Sections",
+      items: [
+        {
+          title: "Navbars",
+          items: [
+            {
+              title: "Navbar Simple",
+              href: `/docs/sections/navbar-simple`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Navbar Centered",
+              href: `/docs/sections/navbar-centered`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Navbar With Search",
+              href: `/docs/sections/navbar-with-search`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Navbar User Menu",
+              href: `/docs/sections/navbar-user-menu`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Navbar Status",
+              href: `/docs/sections/navbar-status`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Navbar Breadcrumb",
+              href: `/docs/sections/navbar-breadcrumb`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Navbar Floating",
+              href: `/docs/sections/navbar-floating`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Navbar Tabs",
+              href: `/docs/sections/navbar-tabs`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Navbar Minimal",
+              href: `/docs/sections/navbar-minimal`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Navbar Split",
+              href: `/docs/sections/navbar-split`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Navbar Icon Links",
+              href: `/docs/sections/navbar-icon-links`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Hover Gradient Navbar",
+              href: `/docs/sections/hover-gradient-navbar`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Floating Navbar",
+              href: `/docs/sections/floating-navbar`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Expandable Menu Navbar",
+              href: `/docs/sections/expandable-menu-navbar`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Luma Bar",
+              href: `/docs/sections/luma-bar`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Promote Header",
+              href: `/docs/sections/promote-header`,
+              items: [],
+              label: "",
+            },
+          ],
+        },
+        {
+          title: "Hero Sections",
+          items: [
+            {
+              title: "Card Carousel Hero",
+              href: `/docs/components/card-carousel-hero`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Gradient Hero Showcase",
+              href: `/docs/components/gradient-hero-showcase`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Video Hero Showcase",
+              href: `/docs/components/video-hero-showcase`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Structured Hero Section",
+              href: `/docs/components/structured-hero-section`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Grid Frame Hero",
+              href: `/docs/components/grid-frame-hero`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Pricing Landing Hero",
+              href: `/docs/components/pricing-landing-hero`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Tabbed Hero Section",
+              href: `/docs/components/tabbed-hero-section`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Split Hero Section",
+              href: `/docs/components/split-hero-section`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Hero Title Animation",
+              href: `/docs/components/hero-title-animation`,
+              items: [],
+              label: "",
+            },
+          ],
+        },
+        {
+          title: "Client Section",
+          items: [
+            {
+              title: "Trusted Clients Showcase",
+              href: `/docs/components/trusted-clients-showcase`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Client Carousel Showcase",
+              href: `/docs/components/client-carousel-showcase`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Auto Scrolling Client Carousel",
+              href: `/docs/components/auto-scrolling-client-carousel`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Bordered Clients Grid",
+              href: `/docs/components/bordered-clients-grid`,
+              items: [],
+              label: "New",
+            },
+          ],
+        },
+        {
+          title: "Featured Section",
+          items: [
+            {
+              title: "Product Feature Hero",
+              href: `/docs/sections/product-feature-hero`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Product Card Hero",
+              href: `/docs/sections/product-card-hero`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Split Feature Showcase",
+              href: `/docs/components/split-feature-showcase`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Integration And Stats Section",
+              href: `/docs/components/integration-and-stats-section`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Rotating Gradient Right",
+              href: `/docs/components/rotating-gradient-right`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Automated Tasks Panel",
+              href: `/docs/components/automated-tasks-panel`,
+              items: [],
+              label: "",
+            },
+          ],
+        },
+        {
+          title: "Pricing Section",
+          items: [
+            {
+              title: "Pricing Plans",
+              href: `/docs/components/pricing-plans`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Pricing Comparison",
+              href: `/docs/components/pricing-comparison`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Pricing Feature Matrix",
+              href: `/docs/components/pricing-feature-matrix`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Subscription Plans",
+              href: `/docs/components/subscription-plans`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Pricing Flow",
+              href: `/docs/components/pricing-flow`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Pricing with User Scaling",
+              href: `/docs/components/pricing-with-user-scaling`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Pricing Tiers",
+              href: `/docs/components/pricing-tiers`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Pricing Section Vertical",
+              href: `/docs/components/pricing-section-vertical`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Pricing Cards Tooltip",
+              href: `/docs/components/pricing-cards-tooltip`,
+              items: [],
+              label: "New",
+            },
+          ],
+        },
+        {
+          title: "FAQs",
+          items: [
+            {
+              title: "StaggeredFAQSection",
+              href: `/docs/sections/staggered-faq-section`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "FeatureHighlights",
+              href: `/docs/sections/feature-highlights`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "FAQ Scroll Accordion",
+              href: `/docs/sections/faq-scroll-accordion`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "FAQ Auto Accordion",
+              href: `/docs/sections/faq-auto-accordion`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "FAQ Chat Accordion",
+              href: `/docs/sections/faq-chat-accordion`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Grouped FAQ Section",
+              href: `/docs/sections/grouped-faq-section`,
+              items: [],
+              label: "New",
+            },
+          ],
+        },
+        {
+          title: "Footer Section",
+          items: [
+            {
+              title: "Footer Pro",
+              href: `/docs/components/footer-pro`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Corporate Footer",
+              href: `/docs/components/corporate-footer`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Footer Enterprise",
+              href: `/docs/components/footer-enterprise`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Wordmark Footer",
+              href: `/docs/components/wordmark-footer`,
+              items: [],
+              label: "",
+            },
+          ],
         },
       ],
     },
@@ -366,29 +742,6 @@ export const docsConfig: DocsConfig = {
           ],
         },
         {
-          title: "Breadcrumbs",
-          items: [
-            {
-              title: "Breadcrumb Separator",
-              href: `/docs/components/breadcrumb-separator`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Breadcrumb Icon",
-              href: `/docs/components/breadcrumb-icon`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Breadcrumb Dropdown",
-              href: `/docs/components/breadcrumb-dropdown`,
-              items: [],
-              label: "",
-            },
-          ],
-        },
-        {
           title: "Buttons",
           items: [
             {
@@ -472,29 +825,6 @@ export const docsConfig: DocsConfig = {
           ],
         },
         {
-          title: "Calendars",
-          items: [
-            {
-              title: "Range Calendar",
-              href: `/docs/components/range-calendar`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Calendar Wave",
-              href: `/docs/components/calendar-wave`,
-              items: [],
-              label: "New",
-            },
-            {
-              title: "Calendar Crest",
-              href: `/docs/components/calendar-crest`,
-              items: [],
-              label: "",
-            },
-          ],
-        },
-        {
           title: "Charts",
           label: "",
           items: [
@@ -520,12 +850,6 @@ export const docsConfig: DocsConfig = {
               href: `/docs/components/glass-shipment-flow`,
               items: [],
               label: "",
-            },
-            {
-              title: "Glass Browser History",
-              href: `/docs/components/glass-browser-history`,
-              items: [],
-              label: "New",
             },
             {
               title: "Phone Mockup Card",
@@ -606,23 +930,6 @@ export const docsConfig: DocsConfig = {
           ],
         },
         {
-          title: "Date Pickers",
-          items: [
-            {
-              title: "Drum Picker",
-              href: `/docs/components/drum-picker`,
-              items: [],
-              label: "New",
-            },
-            {
-              title: "Scrub Datetime",
-              href: `/docs/components/scrub-datetime`,
-              items: [],
-              label: "",
-            },
-          ],
-        },
-        {
           title: "Dialogs",
           items: [
             {
@@ -651,99 +958,6 @@ export const docsConfig: DocsConfig = {
             {
               title: "Morphing Expandable Menu",
               href: `/docs/components/morphing-expandable-menu`,
-              items: [],
-              label: "",
-            },
-          ],
-        },
-        {
-          title: "Drawer",
-          items: [
-            {
-              title: "Drawer Inner Content",
-              href: `/docs/components/drawer-inner-content`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Centered Feedback Drawer",
-              href: `/docs/components/centered-feedback-drawer`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Bottom Drawers",
-              href: `/docs/components/bottom-drawers`,
-              items: [],
-              label: "",
-            },
-          ],
-        },
-        {
-          title: "Event Calendars",
-          items: [
-            {
-              title: "Event Scheduler",
-              href: `/docs/components/event-scheduler`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Three D Wall Calendar",
-              href: `/docs/components/three-dwall-calendar`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Calendar Planner",
-              href: `/docs/components/calendar-planner`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Calendar Twin",
-              href: `/docs/components/calendar-twin`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Chrono Select",
-              href: `/docs/components/chrono-select`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Calendar Scheduler",
-              href: `/docs/components/calendar-scheduler`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Calendar Lume",
-              href: `/docs/components/calendar-lume`,
-              items: [],
-              label: "",
-            },
-          ],
-        },
-        {
-          title: "File Management",
-          items: [
-            {
-              title: "Motion File Tree",
-              href: `/docs/components/motion-file-tree`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Magic Tree",
-              href: `/docs/components/magic-tree`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Tree Node Tooltip",
-              href: `/docs/components/tree-node-tooltip`,
               items: [],
               label: "",
             },
@@ -884,6 +1098,253 @@ export const docsConfig: DocsConfig = {
           ],
         },
         {
+          title: "Sliders",
+          items: [
+            {
+              title: "Fine Tune Slider",
+              href: `/docs/components/fine-tune-slider`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Scroll Ruler",
+              href: `/docs/components/scroll-ruler`,
+              items: [],
+              label: "",
+            },
+          ],
+        },
+        {
+          title: "Stepper",
+          label: "",
+          items: [
+            {
+              title: "Wizard Stepper",
+              href: `/docs/components/wizard-stepper`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Milestone Stepper",
+              href: `/docs/components/milestone-stepper`,
+              items: [],
+              label: "",
+            },
+          ],
+        },
+        {
+          title: "Select Components",
+          items: [
+            {
+              title: "Color Emotion Select",
+              href: `/docs/components/color-emotion-select`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Tag Cloud Select",
+              href: `/docs/components/tag-cloud-select`,
+              items: [],
+              label: "",
+            },
+          ],
+        },
+        {
+          title: "Tabs",
+          items: [
+            {
+              title: "Invert Tabs",
+              href: `/docs/components/invert-tabs`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Magnetic Tabs",
+              href: `/docs/components/magnetic-tabs`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Drag And Drop Tabs",
+              href: `/docs/components/drag-and-drop-tabs`,
+              items: [],
+              label: "",
+            },
+          ],
+        },
+        {
+          title: "Video Players",
+          items: [
+            {
+              title: "Video Player Pro",
+              href: `/docs/components/video-player-pro`,
+              items: [],
+              label: "",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      title: "App UI",
+      items: [
+        {
+          title: "Breadcrumbs",
+          items: [
+            {
+              title: "Breadcrumb Separator",
+              href: `/docs/components/breadcrumb-separator`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Breadcrumb Icon",
+              href: `/docs/components/breadcrumb-icon`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Breadcrumb Dropdown",
+              href: `/docs/components/breadcrumb-dropdown`,
+              items: [],
+              label: "",
+            },
+          ],
+        },
+        {
+          title: "Calendars",
+          items: [
+            {
+              title: "Range Calendar",
+              href: `/docs/components/range-calendar`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Calendar Wave",
+              href: `/docs/components/calendar-wave`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Calendar Crest",
+              href: `/docs/components/calendar-crest`,
+              items: [],
+              label: "",
+            },
+          ],
+        },
+        {
+          title: "Date Pickers",
+          items: [
+            {
+              title: "Drum Picker",
+              href: `/docs/components/drum-picker`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Scrub Datetime",
+              href: `/docs/components/scrub-datetime`,
+              items: [],
+              label: "",
+            },
+          ],
+        },
+        {
+          title: "Drawer",
+          items: [
+            {
+              title: "Drawer Inner Content",
+              href: `/docs/components/drawer-inner-content`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Centered Feedback Drawer",
+              href: `/docs/components/centered-feedback-drawer`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Bottom Drawers",
+              href: `/docs/components/bottom-drawers`,
+              items: [],
+              label: "",
+            },
+          ],
+        },
+        {
+          title: "Event Calendars",
+          items: [
+            {
+              title: "Event Scheduler",
+              href: `/docs/components/event-scheduler`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Three D Wall Calendar",
+              href: `/docs/components/three-dwall-calendar`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Calendar Planner",
+              href: `/docs/components/calendar-planner`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Calendar Twin",
+              href: `/docs/components/calendar-twin`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Chrono Select",
+              href: `/docs/components/chrono-select`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Calendar Scheduler",
+              href: `/docs/components/calendar-scheduler`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Calendar Lume",
+              href: `/docs/components/calendar-lume`,
+              items: [],
+              label: "",
+            },
+          ],
+        },
+        {
+          title: "File Management",
+          items: [
+            {
+              title: "Motion File Tree",
+              href: `/docs/components/motion-file-tree`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Magic Tree",
+              href: `/docs/components/magic-tree`,
+              items: [],
+              label: "",
+            },
+            {
+              title: "Tree Node Tooltip",
+              href: `/docs/components/tree-node-tooltip`,
+              items: [],
+              label: "",
+            },
+          ],
+        },
+        {
           title: "Menu",
           items: [
             {
@@ -997,438 +1458,6 @@ export const docsConfig: DocsConfig = {
               href: `/docs/components/sliding-pagination`,
               items: [],
               label: "",
-            },
-          ],
-        },
-        {
-          title: "Sliders",
-          items: [
-            {
-              title: "Fine Tune Slider",
-              href: `/docs/components/fine-tune-slider`,
-              items: [],
-              label: "New",
-            },
-            {
-              title: "Scroll Ruler",
-              href: `/docs/components/scroll-ruler`,
-              items: [],
-              label: "",
-            },
-          ],
-        },
-        {
-          title: "Stepper",
-          label: "",
-          items: [
-            {
-              title: "Wizard Stepper",
-              href: `/docs/components/wizard-stepper`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Milestone Stepper",
-              href: `/docs/components/milestone-stepper`,
-              items: [],
-              label: "",
-            },
-          ],
-        },
-        {
-          title: "Select Components",
-          items: [
-            {
-              title: "Color Emotion Select",
-              href: `/docs/components/color-emotion-select`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Tag Cloud Select",
-              href: `/docs/components/tag-cloud-select`,
-              items: [],
-              label: "",
-            },
-          ],
-        },
-        {
-          title: "Tabs",
-          items: [
-            {
-              title: "Invert Tabs",
-              href: `/docs/components/invert-tabs`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Magnetic Tabs",
-              href: `/docs/components/magnetic-tabs`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Drag And Drop Tabs",
-              href: `/docs/components/drag-and-drop-tabs`,
-              items: [],
-              label: "",
-            },
-          ],
-        },
-        {
-          title: "Video Players",
-          items: [
-            {
-              title: "Video Player Pro",
-              href: `/docs/components/video-player-pro`,
-              items: [],
-              label: "",
-            },
-          ],
-        },
-      ],
-    },
-    {
-      title: "Section",
-      items: [
-        {
-          title: "Client Section",
-          items: [
-            {
-              title: "Trusted Clients Showcase",
-              href: `/docs/components/trusted-clients-showcase`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Client Carousel Showcase",
-              href: `/docs/components/client-carousel-showcase`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Auto Scrolling Client Carousel",
-              href: `/docs/components/auto-scrolling-client-carousel`,
-              items: [],
-              label: "",
-            },
-          ],
-        },
-        {
-          title: "FAQs",
-          items: [
-            {
-              title: "StaggeredFAQSection",
-              href: `/docs/sections/staggered-faq-section`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "FeatureHighlights",
-              href: `/docs/sections/feature-highlights`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "FAQ Scroll Accordion",
-              href: `/docs/sections/faq-scroll-accordion`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "FAQ Auto Accordion",
-              href: `/docs/sections/faq-auto-accordion`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "FAQ Chat Accordion",
-              href: `/docs/sections/faq-chat-accordion`,
-              items: [],
-              label: "",
-            },
-          ],
-        },
-        {
-          title: "Featured Section",
-          items: [
-            {
-              title: "Product Feature Hero",
-              href: `/docs/sections/product-feature-hero`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Product Card Hero",
-              href: `/docs/sections/product-card-hero`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Split Feature Showcase",
-              href: `/docs/components/split-feature-showcase`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Integration And Stats Section",
-              href: `/docs/components/integration-and-stats-section`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Rotating Gradient Right",
-              href: `/docs/components/rotating-gradient-right`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Automated Tasks Panel",
-              href: `/docs/components/automated-tasks-panel`,
-              items: [],
-              label: "",
-            },
-          ],
-        },
-        {
-          title: "Footer Section",
-          items: [
-            {
-              title: "Footer Pro",
-              href: `/docs/components/footer-pro`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Corporate Footer",
-              href: `/docs/components/corporate-footer`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Footer Enterprise",
-              href: `/docs/components/footer-enterprise`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Wordmark Footer",
-              href: `/docs/components/wordmark-footer`,
-              items: [],
-              label: "",
-            },
-          ],
-        },
-        {
-          title: "Hero Sections",
-          items: [
-            {
-              title: "Card Carousel Hero",
-              href: `/docs/components/card-carousel-hero`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Gradient Hero Showcase",
-              href: `/docs/components/gradient-hero-showcase`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Video Hero Showcase",
-              href: `/docs/components/video-hero-showcase`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Structured Hero Section",
-              href: `/docs/components/structured-hero-section`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Pricing Landing Hero",
-              href: `/docs/components/pricing-landing-hero`,
-              items: [],
-              label: "New",
-            },
-            {
-              title: "Tabbed Hero Section",
-              href: `/docs/components/tabbed-hero-section`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Split Hero Section",
-              href: `/docs/components/split-hero-section`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Hero Title Animation",
-              href: `/docs/components/hero-title-animation`,
-              items: [],
-              label: "",
-            },
-          ],
-        },
-        {
-          title: "Navbars",
-          items: [
-            {
-              title: "Navbar Simple",
-              href: `/docs/sections/navbar-simple`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Navbar Centered",
-              href: `/docs/sections/navbar-centered`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Navbar With Search",
-              href: `/docs/sections/navbar-with-search`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Navbar User Menu",
-              href: `/docs/sections/navbar-user-menu`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Navbar Status",
-              href: `/docs/sections/navbar-status`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Navbar Breadcrumb",
-              href: `/docs/sections/navbar-breadcrumb`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Navbar Floating",
-              href: `/docs/sections/navbar-floating`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Navbar Tabs",
-              href: `/docs/sections/navbar-tabs`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Navbar Minimal",
-              href: `/docs/sections/navbar-minimal`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Navbar Split",
-              href: `/docs/sections/navbar-split`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Navbar Icon Links",
-              href: `/docs/sections/navbar-icon-links`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Hover Gradient Navbar",
-              href: `/docs/sections/hover-gradient-navbar`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Floating Navbar",
-              href: `/docs/sections/floating-navbar`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Expandable Menu Navbar",
-              href: `/docs/sections/expandable-menu-navbar`,
-              items: [],
-              label: "New",
-            },
-            {
-              title: "Luma Bar",
-              href: `/docs/sections/luma-bar`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Promote Header",
-              href: `/docs/sections/promote-header`,
-              items: [],
-              label: "",
-            },
-          ],
-        },
-        {
-          title: "Pricing Section",
-          items: [
-            {
-              title: "Pricing Plans",
-              href: `/docs/components/pricing-plans`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Pricing Comparison",
-              href: `/docs/components/pricing-comparison`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Pricing Feature Matrix",
-              href: `/docs/components/pricing-feature-matrix`,
-              items: [],
-              label: "New",
-            },
-            {
-              title: "Subscription Plans",
-              href: `/docs/components/subscription-plans`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Pricing Flow",
-              href: `/docs/components/pricing-flow`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Pricing with User Scaling",
-              href: `/docs/components/pricing-with-user-scaling`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Pricing Tiers",
-              href: `/docs/components/pricing-tiers`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Pricing Section Vertical",
-              href: `/docs/components/pricing-section-vertical`,
-              items: [],
-              label: "",
-            },
-            {
-              title: "Pricing Cards Tooltip",
-              href: `/docs/components/pricing-cards-tooltip`,
-              items: [],
-              label: "New",
             },
           ],
         },

@@ -1,6 +1,7 @@
 "use client";
 
 import Script from "next/script";
+import { siteConfig } from "@/config/site";
 
 export function Analytics() {
   return (
@@ -10,14 +11,14 @@ export function Analytics() {
         {
           "@context": "https://schema.org",
           "@type": "Organization",
-          "name": "Ruixen UI",
-          "url": "https://ruixen.com",
-          "logo": "https://ruixen.com/favicon.ico",
-          "description": "170+ free, open-source React components built with Tailwind CSS, TypeScript & Framer Motion.",
+          "name": ${JSON.stringify(siteConfig.name)},
+          "url": ${JSON.stringify(siteConfig.url)},
+          "logo": "${siteConfig.url}/favicon.ico",
+          "description": ${JSON.stringify(siteConfig.longDescription)},
           "sameAs": [
-            "https://twitter.com/ruixen_ui",
-            "https://github.com/ruixenui/ruixen.com",
-            "https://pro.ruixen.com"
+            ${JSON.stringify(siteConfig.links.twitter)},
+            ${JSON.stringify(siteConfig.links.github)},
+            ${JSON.stringify(siteConfig.links.pro)}
           ]
         }
       `}</Script>
@@ -27,17 +28,17 @@ export function Analytics() {
         {
           "@context": "https://schema.org",
           "@type": "WebSite",
-          "name": "Ruixen UI",
-          "url": "https://ruixen.com",
-          "description": "170+ free, open-source React components built with Tailwind CSS, TypeScript & Framer Motion. Copy-paste into Next.js projects.",
+          "name": ${JSON.stringify(siteConfig.name)},
+          "url": ${JSON.stringify(siteConfig.url)},
+          "description": ${JSON.stringify(siteConfig.description)},
           "publisher": {
             "@type": "Organization",
-            "name": "Ruixen UI",
-            "url": "https://ruixen.com"
+            "name": ${JSON.stringify(siteConfig.name)},
+            "url": ${JSON.stringify(siteConfig.url)}
           },
           "potentialAction": {
             "@type": "SearchAction",
-            "target": "https://ruixen.com/docs?search={search_term_string}",
+            "target": "${siteConfig.url}/docs?search={search_term_string}",
             "query-input": "required name=search_term_string"
           }
         }

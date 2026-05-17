@@ -82,16 +82,83 @@ function getCategories(): Category[] {
 interface FlatEntry {
   item: FlatItem;
   categorySlug?: string;
+  categoryTitle?: string;
 }
 
 function buildFlatList(categories: Category[]): FlatEntry[] {
   const list: FlatEntry[] = [];
   for (const cat of categories) {
     cat.items.forEach((item, i) => {
-      list.push({ item, categorySlug: i === 0 ? cat.slug : undefined });
+      list.push({
+        item,
+        categorySlug: i === 0 ? cat.slug : undefined,
+        categoryTitle: cat.title,
+      });
     });
   }
   return list;
+}
+
+// ---------------------------------------------------------------------------
+// Full-width breakouts
+//
+// Section-style components (heroes, navbars, pricing, footers, …) are designed
+// for full viewport width — squeezing them into a 1/3-width masonry column
+// makes them look broken. The showcase interleaves these items as full-width
+// rows that break out of the surrounding masonry while preserving source order.
+//
+// To mark a component as full-width:
+//   - put its top-level category title in FULL_WIDTH_CATEGORIES (default), or
+//   - add its registry name to FULL_WIDTH_COMPONENTS as a per-item override.
+// ---------------------------------------------------------------------------
+
+const FULL_WIDTH_CATEGORIES = new Set<string>([
+  "Navbars",
+  "Hero Sections",
+  "Client Section",
+  "Featured Section",
+  "Pricing Section",
+  "FAQs",
+  "Footer Section",
+  "Banners",
+]);
+
+const FULL_WIDTH_COMPONENTS = new Set<string>([
+  // Per-component overrides — full-width even if their category isn't listed above
+]);
+
+function isFullWidth(entry: FlatEntry): boolean {
+  if (FULL_WIDTH_COMPONENTS.has(entry.item.name)) return true;
+  return entry.categoryTitle
+    ? FULL_WIDTH_CATEGORIES.has(entry.categoryTitle)
+    : false;
+}
+
+type Chunk =
+  | { type: "masonry"; items: FlatEntry[] }
+  | { type: "full"; entry: FlatEntry };
+
+// Walk items in source order, emitting masonry walls separated by full-width
+// breakouts. Each masonry chunk is later round-robin'd into columns on its own,
+// so the visual order across the page stays L→R, top→bottom.
+function chunkByFullWidth(items: FlatEntry[]): Chunk[] {
+  const chunks: Chunk[] = [];
+  let current: FlatEntry[] = [];
+  for (const entry of items) {
+    if (isFullWidth(entry)) {
+      if (current.length > 0) {
+        chunks.push({ type: "masonry", items: current });
+        current = [];
+      }
+      chunks.push({ type: "full", entry });
+    } else {
+      current.push(entry);
+    }
+  }
+  if (current.length > 0) {
+    chunks.push({ type: "masonry", items: current });
+  }
+  return chunks;
 }
 
 // ---------------------------------------------------------------------------
@@ -311,6 +378,50 @@ function LazyPreview({
 }
 
 // ---------------------------------------------------------------------------
+// Masonry renderer with full-width breakouts
+// ---------------------------------------------------------------------------
+
+function MasonryChunks({
+  chunks,
+  colCount,
+}: {
+  chunks: Chunk[];
+  colCount: number;
+}) {
+  return (
+    <>
+      {chunks.map((chunk, ci) => {
+        if (chunk.type === "full") {
+          return (
+            <LazyPreview
+              key={`f-${chunk.entry.item.name}-${ci}`}
+              item={chunk.entry.item}
+              categorySlug={chunk.entry.categorySlug}
+            />
+          );
+        }
+        const cols = distributeColumns(chunk.items, colCount);
+        return (
+          <div key={`m-${ci}`} className="flex gap-5">
+            {cols.map((colItems, colIdx) => (
+              <div key={colIdx} className="flex-1 min-w-0">
+                {colItems.map((entry) => (
+                  <LazyPreview
+                    key={entry.item.name}
+                    item={entry.item}
+                    categorySlug={entry.categorySlug}
+                  />
+                ))}
+              </div>
+            ))}
+          </div>
+        );
+      })}
+    </>
+  );
+}
+
+// ---------------------------------------------------------------------------
 // Right sidebar TOC (portaled into #dynamic-toc)
 // ---------------------------------------------------------------------------
 
@@ -375,33 +486,21 @@ function SidebarToc({
 // New Arrivals Section
 // ---------------------------------------------------------------------------
 
-function NewArrivalsSection({ items }: { items: FlatItem[] }) {
+function NewArrivalsSection({ entries }: { entries: FlatEntry[] }) {
   const colCount = useColumnCount();
-  const flatList: FlatEntry[] = items.map((item) => ({ item }));
-  const columns = React.useMemo(
-    () => distributeColumns(flatList, colCount),
-    [flatList, colCount],
-  );
+  const chunks = React.useMemo(() => chunkByFullWidth(entries), [entries]);
 
-  if (items.length === 0) return null;
+  if (entries.length === 0) return null;
 
   return (
     <div className="mb-16">
       <div className="mb-6 flex items-center gap-3">
         <h2 className="text-2xl font-semibold tracking-tight">New Arrivals</h2>
         <span className="rounded-md bg-blue-500 px-2.5 py-0.5 text-xs font-medium text-white">
-          {items.length} new
+          {entries.length} new
         </span>
       </div>
-      <div className="flex gap-5">
-        {columns.map((colItems, colIdx) => (
-          <div key={colIdx} className="flex-1 min-w-0">
-            {colItems.map((entry) => (
-              <LazyPreview key={entry.item.name} item={entry.item} />
-            ))}
-          </div>
-        ))}
-      </div>
+      <MasonryChunks chunks={chunks} colCount={colCount} />
     </div>
   );
 }
@@ -415,19 +514,19 @@ export function AllComponentsShowcase() {
   const flatList = React.useMemo(() => buildFlatList(categories), [categories]);
 
   // Extract "New" items for the New Arrivals section
-  const newArrivals = React.useMemo(() => {
-    const allItems: FlatItem[] = [];
+  const newArrivals = React.useMemo<FlatEntry[]>(() => {
+    const all: FlatEntry[] = [];
     for (const cat of categories) {
       for (const item of cat.items) {
         if (item.label === "New") {
-          allItems.push(item);
+          all.push({ item, categoryTitle: cat.title });
         }
       }
     }
     // Sort to put pricing-cards-tooltip first
-    return allItems.sort((a, b) => {
-      if (a.name === "pricing-cards-tooltip") return -1;
-      if (b.name === "pricing-cards-tooltip") return 1;
+    return all.sort((a, b) => {
+      if (a.item.name === "pricing-cards-tooltip") return -1;
+      if (b.item.name === "pricing-cards-tooltip") return 1;
       return 0;
     });
   }, [categories]);
@@ -438,10 +537,7 @@ export function AllComponentsShowcase() {
   );
   const activeSlug = useActiveCategory(slugs);
   const colCount = useColumnCount();
-  const columns = React.useMemo(
-    () => distributeColumns(flatList, colCount),
-    [flatList, colCount],
-  );
+  const chunks = React.useMemo(() => chunkByFullWidth(flatList), [flatList]);
 
   return (
     <div>
@@ -449,7 +545,7 @@ export function AllComponentsShowcase() {
       <SidebarToc categories={categories} activeSlug={activeSlug} />
 
       {/* New Arrivals Section */}
-      <NewArrivalsSection items={newArrivals} />
+      <NewArrivalsSection entries={newArrivals} />
 
       {/* Components heading */}
       {newArrivals.length > 0 && (
@@ -479,20 +575,8 @@ export function AllComponentsShowcase() {
         </div>
       </div>
 
-      {/* JS masonry — round-robin columns for L→R order, no row-height gaps */}
-      <div className="flex gap-5">
-        {columns.map((colItems, colIdx) => (
-          <div key={colIdx} className="flex-1 min-w-0">
-            {colItems.map((entry) => (
-              <LazyPreview
-                key={entry.item.name}
-                item={entry.item}
-                categorySlug={entry.categorySlug}
-              />
-            ))}
-          </div>
-        ))}
-      </div>
+      {/* JS masonry with full-width breakouts — preserves source order */}
+      <MasonryChunks chunks={chunks} colCount={colCount} />
     </div>
   );
 }
@@ -507,26 +591,13 @@ export function CategoryShowcase({ category }: { category: string }) {
 
   const flatList: FlatEntry[] = React.useMemo(() => {
     if (!cat) return [];
-    return cat.items.map((item) => ({ item }));
+    return cat.items.map((item) => ({ item, categoryTitle: cat.title }));
   }, [cat]);
 
   const colCount = useColumnCount();
-  const columns = React.useMemo(
-    () => distributeColumns(flatList, colCount),
-    [flatList, colCount],
-  );
+  const chunks = React.useMemo(() => chunkByFullWidth(flatList), [flatList]);
 
   if (!cat) return null;
 
-  return (
-    <div className="flex gap-5">
-      {columns.map((colItems, colIdx) => (
-        <div key={colIdx} className="flex-1 min-w-0">
-          {colItems.map((entry) => (
-            <LazyPreview key={entry.item.name} item={entry.item} />
-          ))}
-        </div>
-      ))}
-    </div>
-  );
+  return <MasonryChunks chunks={chunks} colCount={colCount} />;
 }

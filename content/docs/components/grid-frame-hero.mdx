@@ -1,0 +1,92 @@
+---
+title: Grid Frame Hero
+date: 2026-05-11
+description: Shadcn hero section — a bento-style hero with a framed grid layout, dual feature cards with illustrations, and a trusted-by logo strip. Fully theme-adaptive.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="grid-frame-hero-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/grid-frame-hero"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="grid-frame-hero" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { GridFrameHero } from "@/components/ruixen/grid-frame-hero";
+
+export default function Page() {
+  return (
+    <GridFrameHero
+      title="Modern Solutions for Customer Engagement"
+      description="Our comprehensive analytics and experimentation platform empowers your team to make data-driven decisions."
+      primaryAction={{ href: "/signup", label: "Start Testing for free" }}
+      microcopy="No credit card required!"
+    />
+  );
+}
+```
+
+## Props
+
+| Prop            | Type                                   | Default                              | Description                                              |
+| --------------- | -------------------------------------- | ------------------------------------ | -------------------------------------------------------- |
+| `title`         | `ReactNode`                            | Required                             | Main headline content.                                   |
+| `description`   | `string`                               | -                                    | Subtitle paragraph below the headline.                   |
+| `primaryAction` | `Action`                               | -                                    | Primary CTA — renders as a styled link button.           |
+| `microcopy`     | `string`                               | -                                    | Small line shown under the CTA (e.g. "No card needed!"). |
+| `features`      | `[GridFrameFeature, GridFrameFeature]` | Two default cards with illustrations | A tuple of two feature cards rendered side-by-side.      |
+| `className`     | `string`                               | -                                    | Extra classes appended to the outer `<section>`.         |
+
+### Types
+
+```ts
+type Action = { href: string; label: string };
+
+interface GridFrameFeature {
+  icon?: React.ReactNode;
+  title: string;
+  highlight: string;
+  description: string;
+  illustration?: React.ReactNode;
+}
+```
+
+## Features
+
+- **Framed grid layout** — decorative rows and side columns frame the central content area without external assets.
+- **Theme adaptive** — uses semantic `bg-card`, `bg-border`, `text-foreground`, `text-muted-foreground`, and `bg-primary` so it inverts cleanly between light and dark mode.
+- **CSS dither pattern** — a subtle radial-dot overlay masked with a diagonal gradient adds depth without an image dependency.
+- **Responsive** — outer rails collapse to a slim bar on mobile and the feature cards stack on small screens.
+- **Composable** — both blocks (hero, features) are driven by props; override `features` to replace the default illustrations.
+- **Zero runtime deps** — only `lucide-react` for the default feature icons.

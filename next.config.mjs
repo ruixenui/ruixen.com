@@ -33,8 +33,84 @@ const nextConfig = {
         permanent: true,
       },
       {
+        // Old per-category route retired in favor of MDX index pages
+        // at /docs/components/<slug>. 308 tells Google to consolidate
+        // ranking signals onto the new URL and de-index the old one.
+        source: "/docs/components/category/:slug",
+        destination: "/docs/components/:slug",
+        permanent: true,
+      },
+      {
         source: "/r/:path([^.]*)",
         destination: "/r/:path.json",
+        permanent: true,
+      },
+      // Use-case pages culled 2026-05-15 after pick-overlap audit revealed
+      // 100% pick duplication across these slugs. Redirects consolidate
+      // ranking signals onto the canonical category page.
+      {
+        source: "/sections/pricing/for-ecommerce",
+        destination: "/docs/components/pricing-section",
+        permanent: true,
+      },
+      {
+        source: "/sections/pricing/for-portfolio",
+        destination: "/docs/components/pricing-section",
+        permanent: true,
+      },
+      {
+        source: "/sections/featured/for-ecommerce",
+        destination: "/docs/components/featured-section",
+        permanent: true,
+      },
+      {
+        source: "/sections/featured/for-portfolio",
+        destination: "/docs/components/featured-section",
+        permanent: true,
+      },
+      {
+        source: "/sections/footer/for-agency",
+        destination: "/docs/components/footer-section",
+        permanent: true,
+      },
+      {
+        source: "/sections/footer/for-ecommerce",
+        destination: "/docs/components/footer-section",
+        permanent: true,
+      },
+      {
+        source: "/sections/footer/for-portfolio",
+        destination: "/docs/components/footer-section",
+        permanent: true,
+      },
+      {
+        source: "/sections/faq/for-agency",
+        destination: "/docs/components/faqs",
+        permanent: true,
+      },
+      {
+        source: "/sections/faq/for-ecommerce",
+        destination: "/docs/components/faqs",
+        permanent: true,
+      },
+      {
+        source: "/sections/faq/for-portfolio",
+        destination: "/docs/components/faqs",
+        permanent: true,
+      },
+      {
+        source: "/sections/client/for-agency",
+        destination: "/docs/components/client-section",
+        permanent: true,
+      },
+      {
+        source: "/sections/client/for-ecommerce",
+        destination: "/docs/components/client-section",
+        permanent: true,
+      },
+      {
+        source: "/sections/client/for-portfolio",
+        destination: "/docs/components/client-section",
         permanent: true,
       },
     ];
@@ -73,6 +149,18 @@ const nextConfig = {
               "font-src 'self' data:",
               "frame-src 'self'",
             ].join("; "),
+          },
+        ],
+      },
+      {
+        // If a showcase video is ever overwritten at the same URL,
+        // bump a ?v=N query param — `immutable` tells caches not to
+        // revalidate for a year.
+        source: "/showcase/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
           },
         ],
       },

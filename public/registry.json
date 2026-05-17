@@ -181,6 +181,23 @@
       ]
     },
     {
+      "name": "grouped-faq-section",
+      "type": "registry:ui",
+      "title": "Grouped FAQ Section",
+      "description": "FAQ block organized into named categories. Items collapse with a thin bottom border when closed; on open they lift to a card-style state with ring, shadow, and rounded corners.",
+      "dependencies": [],
+      "registryDependencies": [
+        "accordion"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/grouped-faq-section.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/grouped-faq-section.tsx"
+        }
+      ]
+    },
+    {
       "name": "accordion-editorial",
       "type": "registry:ui",
       "title": "Editorial Accordion",
@@ -485,6 +502,20 @@
           "path": "registry/ruixenui/trusted-clients-showcase.tsx",
           "type": "registry:ui",
           "target": "components/ruixen/trusted-clients-showcase.tsx"
+        }
+      ]
+    },
+    {
+      "name": "bordered-clients-grid",
+      "type": "registry:ui",
+      "title": "Bordered Clients Grid",
+      "description": "Five-column logo grid with subtle dividers, hover-tinted cells, and decorative cross markers at the four corners.",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/ruixenui/bordered-clients-grid.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/bordered-clients-grid.tsx"
         }
       ]
     },
@@ -2475,6 +2506,22 @@
       ]
     },
     {
+      "name": "grid-frame-hero",
+      "type": "registry:ui",
+      "title": "Grid Frame Hero",
+      "description": "A bento-style hero with a framed grid layout and dual feature cards with illustrations.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/grid-frame-hero.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/grid-frame-hero.tsx"
+        }
+      ]
+    },
+    {
       "name": "pricing-landing-hero",
       "type": "registry:ui",
       "title": "Pricing Landing Hero",
@@ -2591,22 +2638,6 @@
           "path": "registry/ruixenui/glass-shipment-flow.tsx",
           "type": "registry:ui",
           "target": "components/ruixen/glass-shipment-flow.tsx"
-        }
-      ]
-    },
-    {
-      "name": "glass-browser-history",
-      "type": "registry:ui",
-      "title": "Glass Browser History",
-      "description": "iOS 26 liquid-glass browser history carousel with stacked macOS window cards and drag-to-navigate gesture.",
-      "dependencies": [
-        "motion"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/glass-browser-history.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/glass-browser-history.tsx"
         }
       ]
     },
@@ -3607,6 +3638,22 @@
           "path": "registry/example/trusted-clients-showcase-demo.tsx",
           "type": "registry:example",
           "target": "components/trusted-clients-showcase-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "bordered-clients-grid-demo",
+      "type": "registry:example",
+      "title": "Bordered Clients Grid Demo",
+      "description": "Example of bordered clients grid with hover-tinted cells and corner cross markers",
+      "registryDependencies": [
+        "https://www.ruixen.com/r/bordered-clients-grid"
+      ],
+      "files": [
+        {
+          "path": "registry/example/bordered-clients-grid-demo.tsx",
+          "type": "registry:example",
+          "target": "components/bordered-clients-grid-demo.tsx"
         }
       ]
     },
@@ -5483,6 +5530,22 @@
       ]
     },
     {
+      "name": "grid-frame-hero-demo",
+      "type": "registry:example",
+      "title": "Grid Frame Hero Demo",
+      "description": "Example of a framed grid hero with headline, CTA, and dual feature cards.",
+      "registryDependencies": [
+        "https://ruixen.com/r/grid-frame-hero"
+      ],
+      "files": [
+        {
+          "path": "registry/example/grid-frame-hero-demo.tsx",
+          "type": "registry:example",
+          "target": "components/grid-frame-hero-demo.tsx"
+        }
+      ]
+    },
+    {
       "name": "pricing-landing-hero-demo",
       "type": "registry:example",
       "title": "Pricing Landing Hero Demo",
@@ -5607,22 +5670,6 @@
           "path": "registry/example/glass-shipment-flow-demo.tsx",
           "type": "registry:example",
           "target": "components/glass-shipment-flow-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "glass-browser-history-demo",
-      "type": "registry:example",
-      "title": "Glass Browser History Demo",
-      "description": "Example showing an iOS 26 liquid-glass browser history carousel with stacked macOS window cards.",
-      "registryDependencies": [
-        "https://ruixen.com/r/glass-browser-history"
-      ],
-      "files": [
-        {
-          "path": "registry/example/glass-browser-history-demo.tsx",
-          "type": "registry:example",
-          "target": "components/glass-browser-history-demo.tsx"
         }
       ]
     },
@@ -6023,6 +6070,22 @@
           "path": "registry/example/faq-chat-accordion-demo.tsx",
           "type": "registry:example",
           "target": "components/faq-chat-accordion-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "grouped-faq-section-demo",
+      "type": "registry:example",
+      "title": "Grouped FAQ Section Demo",
+      "description": "Example of FAQ block with categorized question groups (Installation, Stack Support, Pricing & License) and card-style open state.",
+      "registryDependencies": [
+        "https://ruixen.com/r/grouped-faq-section"
+      ],
+      "files": [
+        {
+          "path": "registry/example/grouped-faq-section-demo.tsx",
+          "type": "registry:example",
+          "target": "components/grouped-faq-section-demo.tsx"
         }
       ]
     },

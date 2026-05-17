@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "grid-frame-hero-demo",
+  "type": "registry:example",
+  "title": "Grid Frame Hero Demo",
+  "description": "Example of a framed grid hero with headline, CTA, and dual feature cards.",
+  "registryDependencies": [
+    "https://ruixen.com/r/grid-frame-hero"
+  ],
+  "files": [
+    {
+      "path": "registry/example/grid-frame-hero-demo.tsx",
+      "content": "import { GridFrameHero } from \"@/registry/ruixenui/grid-frame-hero\";\n\nexport default function GridFrameHeroDemo() {\n  return (\n    <GridFrameHero\n      title={\n        <>\n          Production-ready components{\" \"}\n          <span className=\"max-md:hidden\">for modern React apps</span>\n          <span className=\"md:hidden\">built right</span>\n        </>\n      }\n      description=\"Copy, paste, and ship beautiful interfaces. Ruixen UI gives you a growing library of accessible components built with Tailwind CSS and TypeScript.\"\n      primaryAction={{ href: \"#\", label: \"Browse components\" }}\n      microcopy=\"Open-source. MIT licensed.\"\n    />\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/grid-frame-hero-demo.tsx"
+    }
+  ]
+}

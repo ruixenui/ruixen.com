@@ -32,11 +32,15 @@ const FEATURES = [
 const FREE_VS_PRO = [
   {
     label: "Components",
-    free: "170+ open-source",
-    pro: "170+ free + 50+ premium",
+    free: "240+ open-source",
+    pro: "240+ free + 50+ premium",
   },
   { label: "Templates", free: "1 portfolio", pro: "2 production templates" },
-  { label: "Motion & theming", free: "Basic", pro: "Advanced presets" },
+  {
+    label: "Stack support",
+    free: "TW v3/v4 · Radix · Base UI",
+    pro: "Same — multi-stack",
+  },
   { label: "Updates", free: "Community", pro: "Lifetime, priority" },
   { label: "Commercial license", free: "MIT", pro: "Included" },
   { label: "Support", free: "GitHub", pro: "Discord priority" },
@@ -131,8 +135,8 @@ export function PricingLanding() {
           Free vs Pro
         </h2>
         <p className="mt-2 text-center text-sm text-muted-foreground">
-          The 170+ free components stay free forever. Pro adds the premium tier
-          on top.
+          The 240+ free components stay free forever. Pro adds polished
+          landing-page templates and premium components on top.
         </p>
         <div className="mt-10 overflow-hidden rounded-xl border">
           <table className="w-full text-sm">

@@ -11,6 +11,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { Contribute } from "@/components/contribute";
+import { ProInlineCTA } from "@/components/pro-inline-cta";
 import { SidebarCTA } from "@/components/sidebar-cta";
 import { TableOfContents } from "@/components/toc";
 
@@ -185,6 +186,8 @@ export default async function DocPage({ params }: DocPageProps) {
         <div className="pb-12 pt-8">
           <Mdx code={doc.body.code} />
         </div>
+        {(doc.slugAsParams.startsWith("components/") ||
+          doc.slugAsParams.startsWith("sections/")) && <ProInlineCTA />}
         <DocPager doc={doc} />
       </div>
       {doc.toc && (

@@ -3,7 +3,6 @@ import type { Doc } from "content-collections";
 
 import { ChevronRightIcon, ExternalLinkIcon } from "@radix-ui/react-icons";
 import { allDocs } from "content-collections";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -16,6 +15,7 @@ import { Badge, badgeVariants } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { buildProTemplateUrl, formatUsdFromCents } from "@/lib/pro-api";
 import { getProTemplateBySlug } from "@/data/pro-catalog";
+import { ThemedTemplateMedia } from "@/components/themed-template-media";
 import { getTableOfContents } from "@/lib/toc";
 import { absoluteUrl, cn } from "@/lib/utils";
 import type { ProTemplate } from "@/types/pro-templates";
@@ -202,9 +202,6 @@ const TECH_STACK_LABELS: Record<string, string> = {
 };
 
 function ProTemplateView({ template }: { template: ProTemplate }) {
-  const thumb =
-    template.images.find((img) => img.is_thumbnail) ?? template.images[0];
-  const videoUrl = template.video_url_light || template.video_url_dark || null;
   const priceLabel = template.is_free
     ? "Free"
     : formatUsdFromCents(template.price_usd_cents);
@@ -286,26 +283,12 @@ function ProTemplateView({ template }: { template: ProTemplate }) {
 
         <div className="pt-8">
           <div className="relative w-full overflow-hidden rounded-xl border bg-muted">
-            {videoUrl ? (
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                src={videoUrl}
-                poster={thumb?.image_url}
-                className="w-full object-cover"
-              />
-            ) : thumb ? (
-              <Image
-                src={thumb.image_url}
-                alt={thumb.alt_text ?? template.name}
-                width={1600}
-                height={900}
-                className="w-full object-cover"
-                unoptimized
-              />
-            ) : null}
+            <ThemedTemplateMedia
+              template={template}
+              className="w-full object-cover"
+              width={1600}
+              height={900}
+            />
           </div>
         </div>
 

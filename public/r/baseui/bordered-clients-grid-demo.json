@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "bordered-clients-grid-demo",
+  "type": "registry:example",
+  "title": "Bordered Clients Grid Demo",
+  "description": "Example of bordered clients grid with hover-tinted cells and corner cross markers",
+  "registryDependencies": [
+    "https://www.ruixen.com/r/bordered-clients-grid"
+  ],
+  "files": [
+    {
+      "path": "registry/example/bordered-clients-grid-demo.tsx",
+      "content": "\"use client\";\n\nimport BorderedClientsGrid from \"../ruixenui/bordered-clients-grid\";\n\nconst LOGO_CLS =\n  \"w-auto opacity-65 [filter:brightness(0)] dark:[filter:brightness(0)_invert(1)] transition-opacity hover:opacity-100\";\n\nexport default function BorderedClientsGridDemo() {\n  return (\n    <BorderedClientsGrid\n      logos={[\n        {\n          name: \"Cosmos\",\n          node: (\n            <img\n              src=\"/logos/cosmos.svg\"\n              alt=\"Cosmos\"\n              className={`h-4 ${LOGO_CLS}`}\n            />\n          ),\n        },\n        {\n          name: \"Bitbucket\",\n          node: (\n            <img\n              src=\"/logos/bitbucket.svg\"\n              alt=\"Bitbucket\"\n              className={`h-4 ${LOGO_CLS}`}\n            />\n          ),\n        },\n        {\n          name: \"Gumroad\",\n          node: (\n            <img\n              src=\"/logos/gumroad.svg\"\n              alt=\"Gumroad\"\n              className={`h-4 ${LOGO_CLS}`}\n            />\n          ),\n        },\n        {\n          name: \"Gong\",\n          node: (\n            <img\n              src=\"/logos/gong.svg\"\n              alt=\"Gong\"\n              className={`h-6 ${LOGO_CLS}`}\n            />\n          ),\n        },\n        {\n          name: \"Geckoboard\",\n          node: (\n            <img\n              src=\"/logos/geckoboard.svg\"\n              alt=\"Geckoboard\"\n              className={`h-5 ${LOGO_CLS}`}\n            />\n          ),\n        },\n        {\n          name: \"Coinflect\",\n          node: (\n            <img\n              src=\"/logos/coinflect.svg\"\n              alt=\"Coinflect\"\n              className={`h-5 ${LOGO_CLS}`}\n            />\n          ),\n        },\n        {\n          name: \"Ternary\",\n          node: (\n            <img\n              src=\"/logos/ternary.svg\"\n              alt=\"Ternary\"\n              className={`h-5 ${LOGO_CLS}`}\n            />\n          ),\n        },\n        {\n          name: \"Wyre\",\n          node: (\n            <img\n              src=\"/logos/wyre.svg\"\n              alt=\"Wyre\"\n              className={`h-5 ${LOGO_CLS}`}\n            />\n          ),\n        },\n        {\n          name: \"Percy\",\n          node: (\n            <img\n              src=\"/logos/percy.svg\"\n              alt=\"Percy\"\n              className={`h-5 ${LOGO_CLS}`}\n            />\n          ),\n        },\n        {\n          name: \"Urban\",\n          node: (\n            <img\n              src=\"/logos/urban.svg\"\n              alt=\"Urban\"\n              className={`h-5 ${LOGO_CLS}`}\n            />\n          ),\n        },\n      ]}\n    />\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/bordered-clients-grid-demo.tsx"
+    }
+  ]
+}

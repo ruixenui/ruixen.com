@@ -838,6 +838,10 @@ export const faqsPreview: ComponentPreviewMap = {
     light: `/preview_images/faqs/faq-chat-accordion-light.png`,
     dark: `/preview_images/faqs/faq-chat-accordion-dark.png`,
   },
+  "grouped-faq-section": {
+    light: `/preview_images/faqs/grouped-faq-section-light.png`,
+    dark: `/preview_images/faqs/grouped-faq-section-dark.png`,
+  },
 };
 
 /**
@@ -868,6 +872,10 @@ export const heroSectionsPreview: ComponentPreviewMap = {
   "tabbed-hero-section": {
     light: `/preview_images/hero-sections/tabbed-hero-section-light.png`,
     dark: `/preview_images/hero-sections/tabbed-hero-section-dark.png`,
+  },
+  "grid-frame-hero": {
+    light: `/preview_images/hero-sections/grid-frame-hero-light.png`,
+    dark: `/preview_images/hero-sections/grid-frame-hero-dark.png`,
   },
 };
 
@@ -918,6 +926,10 @@ export const clientSectionPreview: ComponentPreviewMap = {
   "auto-scrolling-client-carousel": {
     light: `/preview_images/client-sections/auto-scrolling-client-carousel-light.png`,
     dark: `/preview_images/client-sections/auto-scrolling-client-carousel-dark.png`,
+  },
+  "bordered-clients-grid": {
+    light: `/preview_images/client-sections/bordered-clients-grid-light.png`,
+    dark: `/preview_images/client-sections/bordered-clients-grid-dark.png`,
   },
 };
 

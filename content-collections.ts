@@ -8,6 +8,7 @@ import remarkGfm from "remark-gfm";
 import { createHighlighter } from "shiki";
 import { visit } from "unist-util-visit";
 
+import { buildOgImageUrl, getCategoryFromSlug } from "./lib/og";
 import { rehypeComponent } from "./lib/rehype-component";
 import { rehypeNpmCommand } from "./lib/rehype-npm-command";
 
@@ -187,9 +188,11 @@ const documents = defineCollection({
     });
     return {
       ...document,
-      image: `${process.env.NEXT_PUBLIC_APP_URL}/og?title=${encodeURI(
-        document.title,
-      )}&description=${encodeURI(document.description)}`,
+      image: buildOgImageUrl({
+        title: document.title,
+        description: document.description,
+        category: getCategoryFromSlug(slugAsParams),
+      }),
       slug: `/docs/${slugAsParams}`,
       slugAsParams: slugAsParams,
       body: {

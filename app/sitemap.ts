@@ -2,6 +2,8 @@ import { allBlogs, allDocs, allPages } from "content-collections";
 import type { MetadataRoute } from "next";
 import { headers } from "next/headers";
 
+import { allUseCasePaths } from "@/lib/use-case-content";
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const headersList = await headers();
   const domain = headersList.get("host") as string;
@@ -23,6 +25,31 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
       priority: 0.8,
     },
+    {
+      url: `${protocol}://${domain}/tailwind-v3-shadcn`,
+      lastModified: new Date(),
+      priority: 0.9,
+    },
+    {
+      url: `${protocol}://${domain}/base-ui-shadcn`,
+      lastModified: new Date(),
+      priority: 0.9,
+    },
+    {
+      url: `${protocol}://${domain}/tools/tw-v3-to-v4`,
+      lastModified: new Date(),
+      priority: 0.8,
+    },
+    {
+      url: `${protocol}://${domain}/tools/theme-generator`,
+      lastModified: new Date(),
+      priority: 0.8,
+    },
+    ...allUseCasePaths().map(({ type, useCase }) => ({
+      url: `${protocol}://${domain}/sections/${type}/${useCase}`,
+      lastModified: new Date(),
+      priority: 0.7,
+    })),
     ...allPages.map((post) => ({
       url: `${protocol}://${domain}/${post.slugAsParams}`,
       lastModified: new Date(),

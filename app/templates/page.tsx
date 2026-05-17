@@ -19,6 +19,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { TemplateProClickTracker } from "@/components/template-pro-click-tracker";
+import { ThemedTemplateMedia } from "@/components/themed-template-media";
 
 // Pro catalog is hardcoded in data/pro-catalog.ts — no runtime fetch.
 
@@ -214,11 +215,6 @@ function StaticTemplateCard({ template }: { template: StaticTemplate }) {
 }
 
 function ProTemplateCard({ template }: { template: ProTemplate }) {
-  const thumbnail =
-    template.images.find((img) => img.is_thumbnail) ?? template.images[0];
-  // Videos are rendered on the client; pick the light variant for server-rendered
-  // HTML and let the video element fall back if it's missing.
-  const videoUrl = template.video_url_light || template.video_url_dark || null;
   const priceLabel = template.is_free
     ? "Free"
     : formatUsdFromCents(template.price_usd_cents);
@@ -333,33 +329,12 @@ function ProTemplateCard({ template }: { template: ProTemplate }) {
           data-pro-template-preview={template.slug}
           className="relative block hover:shadow-[0_8px_32px_rgba(0,0,0,0.1)] hover:backdrop-blur-sm transition-all duration-300 rounded-3xl cursor-pointer"
         >
-          {videoUrl ? (
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-[26rem] rounded-3xl hover:scale-[1.06] transition-all duration-300 object-cover"
-              src={videoUrl}
-              poster={thumbnail?.image_url}
-            />
-          ) : thumbnail ? (
-            <Image
-              src={thumbnail.image_url}
-              alt={thumbnail.alt_text ?? template.name}
-              width={1200}
-              height={800}
-              className="w-full h-[26rem] rounded-3xl object-cover object-top"
-              unoptimized
-            />
-          ) : (
-            <div
-              aria-hidden
-              className="w-full h-[26rem] rounded-3xl bg-gradient-to-br from-muted to-muted/40 flex items-center justify-center text-muted-foreground text-sm"
-            >
-              {template.name}
-            </div>
-          )}
+          <ThemedTemplateMedia
+            template={template}
+            className="w-full h-[26rem] rounded-3xl hover:scale-[1.06] transition-all duration-300 object-cover object-top"
+            width={1200}
+            height={800}
+          />
           <div className="absolute top-4 right-4">
             <Badge
               variant={template.is_free ? "secondary" : "default"}
