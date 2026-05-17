@@ -13,11 +13,11 @@ export default function DemoPage() {
       ]}
       images={[
         {
-          src: "https://tailark.com/_next/image?url=%2Fmail2.png&w=3840&q=75",
+          src: "https://placehold.co/2400x1500/0a0a0a/ffffff/png?text=App+Screen",
           alt: "App screen dark",
         },
         {
-          src: "https://tailark.com/_next/image?url=%2Fmail2-light.png&w=3840&q=75",
+          src: "https://placehold.co/2400x1500/ffffff/0a0a0a/png?text=App+Screen",
           alt: "App screen light",
         },
       ]}

@@ -1,0 +1,118 @@
+---
+title: Grouped FAQ Section
+date: 2026-05-10
+description: Shadcn FAQ section — a FAQ block organized into named categories. Items collapse with a thin bottom border when closed; on open they lift to a card-style.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="grouped-faq-section-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/grouped-faq-section"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="grouped-faq-section" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import GroupedFAQSection from "@/components/ruixen/grouped-faq-section";
+
+// Defaults — Installation / Stack Support / Pricing & License
+<GroupedFAQSection />;
+```
+
+## Custom groups
+
+```tsx
+<GroupedFAQSection
+  title="Help Center"
+  description="Common questions and answers."
+  groups={[
+    {
+      title: "Account",
+      items: [
+        {
+          question: "How do I sign up?",
+          answer: "Visit the signup page at /signup.",
+        },
+        {
+          question: "How do I reset my password?",
+          answer: "Click 'Forgot password' on the login screen.",
+        },
+      ],
+    },
+    {
+      title: "Billing",
+      items: [
+        {
+          question: "When do I get charged?",
+          answer: "On the same day each month, starting from your signup date.",
+        },
+      ],
+    },
+  ]}
+  contactCTA="our team"
+  contactHref="/contact"
+/>
+```
+
+## Props
+
+| Prop            | Type                | Default                                             | Description                                           |
+| :-------------- | :------------------ | :-------------------------------------------------- | :---------------------------------------------------- |
+| `title`         | `string`            | `"Frequently Asked Questions"`                      | Section heading                                       |
+| `description`   | `string`            | Default copy                                        | Subheading paragraph                                  |
+| `groups`        | `GroupedFAQGroup[]` | 3 default groups                                    | Categorized FAQ groups, each with `title` and `items` |
+| `contactPrompt` | `string`            | `"Can't find what you're looking for? Contact our"` | Lead text before the contact link                     |
+| `contactCTA`    | `string`            | `"support team"`                                    | Anchor text                                           |
+| `contactHref`   | `string`            | `"#"`                                               | Anchor href                                           |
+| `className`     | `string`            | —                                                   | Extra classes on the outer `<section>`                |
+
+`GroupedFAQGroup`:
+
+```ts
+interface GroupedFAQGroup {
+  title: string;
+  items: GroupedFAQItem[];
+}
+
+interface GroupedFAQItem {
+  question: string;
+  answer: string;
+}
+```
+
+## Notes
+
+- Built on shadcn's `Accordion` primitive — works seamlessly across **Tailwind v3/v4** and **Radix/Base UI** registry variants.
+- Closed items render a thin bottom border via the trigger. Open items get the card treatment (rounded corners, ring, shadow, tinted background).
+- `type="single"` `collapsible` — only one item open per group at a time.
+- Mobile padding via `max-md:px-6`; on `md+` the groups shift left by `-ml-6` to align with the title's natural padding.

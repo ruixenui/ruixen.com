@@ -272,6 +272,21 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "bordered-clients-grid-demo",
+    type: "registry:example",
+    title: "Bordered Clients Grid Demo",
+    description:
+      "Example of bordered clients grid with hover-tinted cells and corner cross markers",
+    registryDependencies: ["https://www.ruixen.com/r/bordered-clients-grid"],
+    files: [
+      {
+        path: "registry/example/bordered-clients-grid-demo.tsx",
+        type: "registry:example",
+        target: "components/bordered-clients-grid-demo.tsx",
+      },
+    ],
+  },
+  {
     name: "client-carousel-showcase-demo",
     type: "registry:example",
     title: "Client Carousel Showcase Demo",
@@ -1536,21 +1551,6 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "calendar-event-composer-demo",
-    type: "registry:example",
-    title: "Calendar Event Composer Demo",
-    description:
-      "Example showing a macOS-style day view with click-to-create events and a sliding inspector panel.",
-    registryDependencies: ["https://ruixen.com/r/calendar-event-composer"],
-    files: [
-      {
-        path: "registry/example/calendar-event-composer-demo.tsx",
-        type: "registry:example",
-        target: "components/calendar-event-composer-demo.tsx",
-      },
-    ],
-  },
-  {
     name: "notification-inbox-popover-demo",
     type: "registry:example",
     title: "Notification Inbox Popover Demo",
@@ -2000,6 +2000,21 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "grid-frame-hero-demo",
+    type: "registry:example",
+    title: "Grid Frame Hero Demo",
+    description:
+      "Example of a framed grid hero with headline, CTA, and dual feature cards.",
+    registryDependencies: ["https://ruixen.com/r/grid-frame-hero"],
+    files: [
+      {
+        path: "registry/example/grid-frame-hero-demo.tsx",
+        type: "registry:example",
+        target: "components/grid-frame-hero-demo.tsx",
+      },
+    ],
+  },
+  {
     name: "pricing-landing-hero-demo",
     type: "registry:example",
     title: "Pricing Landing Hero Demo",
@@ -2116,21 +2131,6 @@ export const examples: Registry["items"] = [
         path: "registry/example/glass-shipment-flow-demo.tsx",
         type: "registry:example",
         target: "components/glass-shipment-flow-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "glass-browser-history-demo",
-    type: "registry:example",
-    title: "Glass Browser History Demo",
-    description:
-      "Example showing an iOS 26 liquid-glass browser history carousel with stacked macOS window cards.",
-    registryDependencies: ["https://ruixen.com/r/glass-browser-history"],
-    files: [
-      {
-        path: "registry/example/glass-browser-history-demo.tsx",
-        type: "registry:example",
-        target: "components/glass-browser-history-demo.tsx",
       },
     ],
   },
@@ -2490,6 +2490,21 @@ export const examples: Registry["items"] = [
         path: "registry/example/faq-chat-accordion-demo.tsx",
         type: "registry:example",
         target: "components/faq-chat-accordion-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "grouped-faq-section-demo",
+    type: "registry:example",
+    title: "Grouped FAQ Section Demo",
+    description:
+      "Example of FAQ block with categorized question groups (Installation, Stack Support, Pricing & License) and card-style open state.",
+    registryDependencies: ["https://ruixen.com/r/grouped-faq-section"],
+    files: [
+      {
+        path: "registry/example/grouped-faq-section-demo.tsx",
+        type: "registry:example",
+        target: "components/grouped-faq-section-demo.tsx",
       },
     ],
   },

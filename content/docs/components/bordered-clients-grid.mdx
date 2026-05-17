@@ -1,0 +1,144 @@
+---
+title: Bordered Clients Grid
+date: 2026-05-10
+description: Shadcn client logos section — a 5-column wordmark grid with subtle dividers, hover-tinted cells, and decorative cross markers at the four corners. Pure.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="bordered-clients-grid-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/bordered-clients-grid"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="bordered-clients-grid" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import BorderedClientsGrid from "@/components/ruixen/bordered-clients-grid";
+
+// Default — 10 dev-audience wordmarks rendered as styled typography
+<BorderedClientsGrid />;
+```
+
+## Customizing logos
+
+Each logo is a piece of styled typography. You control weight, size, letter-spacing, case, and italic per brand:
+
+```tsx
+<BorderedClientsGrid
+  logos={[
+    {
+      name: "Acme",
+      fontWeight: 800,
+      fontSize: 22,
+      letterSpacing: "-0.04em",
+    },
+    {
+      name: "Globex",
+      label: "globex",
+      fontWeight: 600,
+      fontSize: 20,
+      letterSpacing: "-0.02em",
+    },
+    {
+      name: "Initech",
+      fontWeight: 700,
+      italic: true,
+      fontSize: 22,
+    },
+    // … 7 more for a full 5×2 grid
+  ]}
+/>
+```
+
+## Using SVG wordmarks instead of text
+
+If you want pixel-perfect brand wordmarks (real brand SVGs rather than typography approximations), pass a custom `node`:
+
+```tsx
+<BorderedClientsGrid
+  logos={[
+    {
+      name: "Acme",
+      node: (
+        <img
+          src="/logos/acme-wordmark.svg"
+          alt="Acme"
+          className="h-5 w-auto opacity-65 transition-opacity hover:opacity-100 dark:invert"
+        />
+      ),
+    },
+    // …
+  ]}
+/>
+```
+
+## Props
+
+| Prop        | Type           | Default               | Description                            |
+| :---------- | :------------- | :-------------------- | :------------------------------------- |
+| `logos`     | `ClientLogo[]` | 10 dev-brand defaults | Array of logo entries                  |
+| `className` | `string`       | —                     | Extra classes on the outer `<section>` |
+
+`ClientLogo`:
+
+```ts
+interface ClientLogo {
+  name: string;
+  /** Override the displayed text (e.g., "tailwindcss" for Tailwind CSS). */
+  label?: string;
+  /** Custom font family. Falls back to inherited sans. */
+  fontFamily?: string;
+  /** Font weight (100–900). Defaults to 600. */
+  fontWeight?: number;
+  /** Font size in pixels. Defaults to 18. */
+  fontSize?: number;
+  /** CSS letter-spacing (e.g., "-0.04em"). */
+  letterSpacing?: string;
+  /** Italic typography. */
+  italic?: boolean;
+  /** Uppercase transform. */
+  uppercase?: boolean;
+  /** Optional anchor href. */
+  href?: string;
+  /** Escape hatch — render a custom node (e.g., an SVG) instead of styled text. */
+  node?: React.ReactNode;
+}
+```
+
+## Notes
+
+- **No external dependencies** — wordmarks are pure typography. No CDN, no fetching, no broken images.
+- **Theme-aware** — text uses `text-foreground/65` so it works in both light and dark modes via `currentColor`. No `dark:invert` hack needed.
+- **Each brand styled distinctly** — weight, letter-spacing, case, and italic are tuned per brand to capture its character without claiming to be the official wordmark.
+- **Corner crosses** are decorative `<div>`s — works in Tailwind v3 and v4 without transforms.
+- **Grid** collapses 5 → 4 → 3 columns at `lg → md → sm` breakpoints.

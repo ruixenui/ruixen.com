@@ -158,6 +158,22 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "grouped-faq-section",
+    type: "registry:ui",
+    title: "Grouped FAQ Section",
+    description:
+      "FAQ block organized into named categories. Items collapse with a thin bottom border when closed; on open they lift to a card-style state with ring, shadow, and rounded corners.",
+    dependencies: [],
+    registryDependencies: ["accordion"],
+    files: [
+      {
+        path: "registry/ruixenui/grouped-faq-section.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/grouped-faq-section.tsx",
+      },
+    ],
+  },
+  {
     name: "accordion-editorial",
     type: "registry:ui",
     title: "Editorial Accordion",
@@ -422,6 +438,21 @@ export const ui: Registry["items"] = [
         path: "registry/ruixenui/trusted-clients-showcase.tsx",
         type: "registry:ui",
         target: "components/ruixen/trusted-clients-showcase.tsx",
+      },
+    ],
+  },
+  {
+    name: "bordered-clients-grid",
+    type: "registry:ui",
+    title: "Bordered Clients Grid",
+    description:
+      "Five-column logo grid with subtle dividers, hover-tinted cells, and decorative cross markers at the four corners.",
+    dependencies: [],
+    files: [
+      {
+        path: "registry/ruixenui/bordered-clients-grid.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/bordered-clients-grid.tsx",
       },
     ],
   },
@@ -1739,21 +1770,6 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "calendar-event-composer",
-    type: "registry:ui",
-    title: "Calendar Event Composer",
-    description:
-      "macOS-style day view — click a time slot to drop an event and edit it inline through a sliding inspector panel.",
-    dependencies: ["motion"],
-    files: [
-      {
-        path: "registry/ruixenui/calendar-event-composer.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/calendar-event-composer.tsx",
-      },
-    ],
-  },
-  {
     name: "notification-inbox-popover",
     type: "registry:ui",
     title: "Notification Inbox Popover",
@@ -2272,6 +2288,21 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "grid-frame-hero",
+    type: "registry:ui",
+    title: "Grid Frame Hero",
+    description:
+      "A bento-style hero with a framed grid layout and dual feature cards with illustrations.",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/grid-frame-hero.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/grid-frame-hero.tsx",
+      },
+    ],
+  },
+  {
     name: "pricing-landing-hero",
     type: "registry:ui",
     title: "Pricing Landing Hero",
@@ -2385,21 +2416,6 @@ export const ui: Registry["items"] = [
         path: "registry/ruixenui/glass-shipment-flow.tsx",
         type: "registry:ui",
         target: "components/ruixen/glass-shipment-flow.tsx",
-      },
-    ],
-  },
-  {
-    name: "glass-browser-history",
-    type: "registry:ui",
-    title: "Glass Browser History",
-    description:
-      "iOS 26 liquid-glass browser history carousel with stacked macOS window cards and drag-to-navigate gesture.",
-    dependencies: ["motion"],
-    files: [
-      {
-        path: "registry/ruixenui/glass-browser-history.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/glass-browser-history.tsx",
       },
     ],
   },

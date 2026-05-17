@@ -1,7 +1,7 @@
 import type { SidebarNavItem } from "@/types";
 
 import { docsConfig } from "@/config/docs";
-import { proTemplatesApi } from "@/lib/pro-api";
+import { ProApiError, proTemplatesApi } from "@/lib/pro-api";
 
 const TEMPLATES_SECTION_TITLE = "Templates";
 
@@ -51,7 +51,13 @@ export async function getDocsSidebarNav(): Promise<SidebarNavItem[]> {
         event: "pro_nav_clicked",
       }));
   } catch (error) {
-    console.error("[docs-nav] failed to fetch Pro catalog:", error);
+    if (error instanceof ProApiError) {
+      console.warn(
+        `[docs-nav] Pro catalog unavailable (${error.status}); using static sidebar`,
+      );
+    } else {
+      console.error("[docs-nav] failed to fetch Pro catalog:", error);
+    }
   }
 
   if (proItems.length === 0) return docsConfig.sidebarNav;

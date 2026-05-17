@@ -3,57 +3,76 @@
 import { TrustedClientsShowcase } from "@/registry/ruixenui/trusted-clients-showcase";
 import type { LogoItem } from "@/registry/ruixenui/trusted-clients-showcase";
 
+const LOGO_CLS =
+  "w-auto opacity-65 [filter:brightness(0)] dark:[filter:brightness(0)_invert(1)] transition-opacity hover:opacity-100";
+
 const clients: LogoItem[] = [
   {
-    name: "React",
-    logo: <img src="/icons/react.svg" alt="" className="h-8 w-auto" />,
-  },
-  {
-    name: "Next.js",
+    name: "Percy",
     logo: (
-      <img src="/icons/nextjs.svg" alt="" className="h-8 w-auto dark:invert" />
+      <img src="/logos/percy.svg" alt="Percy" className={`h-5 ${LOGO_CLS}`} />
     ),
   },
   {
-    name: "TypeScript",
-    logo: <img src="/icons/typescript.svg" alt="" className="h-8 w-auto" />,
-  },
-  {
-    name: "Tailwind CSS",
-    logo: <img src="/icons/tailwindcss.svg" alt="" className="h-6 w-auto" />,
-  },
-  {
-    name: "Framer Motion",
+    name: "Bitbucket",
     logo: (
       <img
-        src="/icons/framer-motion.svg"
-        alt=""
-        className="h-8 w-auto dark:invert"
+        src="/logos/bitbucket.svg"
+        alt="Bitbucket"
+        className={`h-4 ${LOGO_CLS}`}
       />
     ),
   },
   {
-    name: "Figma",
-    logo: <img src="/icons/figma.svg" alt="" className="h-8 w-auto" />,
-  },
-  {
-    name: "Radix UI",
+    name: "Gumroad",
     logo: (
       <img
-        src="/icons/radix-ui.svg"
-        alt=""
-        className="h-8 w-auto dark:invert"
+        src="/logos/gumroad.svg"
+        alt="Gumroad"
+        className={`h-4 ${LOGO_CLS}`}
       />
     ),
   },
   {
-    name: "shadcn/ui",
+    name: "Gong",
+    logo: (
+      <img src="/logos/gong.svg" alt="Gong" className={`h-6 ${LOGO_CLS}`} />
+    ),
+  },
+  {
+    name: "Geckoboard",
     logo: (
       <img
-        src="/icons/shadcn-ui.svg"
-        alt=""
-        className="h-8 w-auto dark:invert"
+        src="/logos/geckoboard.svg"
+        alt="Geckoboard"
+        className={`h-5 ${LOGO_CLS}`}
       />
+    ),
+  },
+  {
+    name: "Coinflect",
+    logo: (
+      <img
+        src="/logos/coinflect.svg"
+        alt="Coinflect"
+        className={`h-5 ${LOGO_CLS}`}
+      />
+    ),
+  },
+  {
+    name: "Ternary",
+    logo: (
+      <img
+        src="/logos/ternary.svg"
+        alt="Ternary"
+        className={`h-5 ${LOGO_CLS}`}
+      />
+    ),
+  },
+  {
+    name: "Wyre",
+    logo: (
+      <img src="/logos/wyre.svg" alt="Wyre" className={`h-5 ${LOGO_CLS}`} />
     ),
   },
 ];
@@ -62,7 +81,7 @@ export default function TrustedClientsShowcaseDemo() {
   return (
     <TrustedClientsShowcase
       clients={clients}
-      title="Powered by"
+      title="Trusted by leading teams"
       className="py-0 md:py-0"
     />
   );

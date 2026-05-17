@@ -262,6 +262,30 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "grouped-faq-section": {
+    name: "grouped-faq-section",
+    description:
+      "FAQ block organized into named categories. Items collapse with a thin bottom border when closed; on open they lift to a card-style state with ring, shadow, and rounded corners.",
+    type: "registry:ui",
+    registryDependencies: ["accordion"],
+    files: [
+      {
+        path: "registry/ruixenui/grouped-faq-section.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/grouped-faq-section.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/grouped-faq-section.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "accordion-editorial": {
     name: "accordion-editorial",
     description:
@@ -669,6 +693,30 @@ export const Index: Record<string, any> = {
       const mod = await import(
         "@/registry/ruixenui/trusted-clients-showcase.tsx"
       );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "bordered-clients-grid": {
+    name: "bordered-clients-grid",
+    description:
+      "Five-column logo grid with subtle dividers, hover-tinted cells, and decorative cross markers at the four corners.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/bordered-clients-grid.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/bordered-clients-grid.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/bordered-clients-grid.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -2770,32 +2818,6 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
-  "calendar-event-composer": {
-    name: "calendar-event-composer",
-    description:
-      "macOS-style day view — click a time slot to drop an event and edit it inline through a sliding inspector panel.",
-    type: "registry:ui",
-    registryDependencies: undefined,
-    files: [
-      {
-        path: "registry/ruixenui/calendar-event-composer.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/calendar-event-composer.tsx",
-      },
-    ],
-    component: React.lazy(async () => {
-      const mod = await import(
-        "@/registry/ruixenui/calendar-event-composer.tsx"
-      );
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object",
-        ) || item.name;
-      return { default: mod.default || mod[exportName] };
-    }),
-    meta: undefined,
-  },
   "notification-inbox-popover": {
     name: "notification-inbox-popover",
     description:
@@ -3520,6 +3542,30 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "grid-frame-hero": {
+    name: "grid-frame-hero",
+    description:
+      "A bento-style hero with a framed grid layout and dual feature cards with illustrations.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/grid-frame-hero.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/grid-frame-hero.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/grid-frame-hero.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "pricing-landing-hero": {
     name: "pricing-landing-hero",
     description:
@@ -3705,30 +3751,6 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/ruixenui/glass-shipment-flow.tsx");
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object",
-        ) || item.name;
-      return { default: mod.default || mod[exportName] };
-    }),
-    meta: undefined,
-  },
-  "glass-browser-history": {
-    name: "glass-browser-history",
-    description:
-      "iOS 26 liquid-glass browser history carousel with stacked macOS window cards and drag-to-navigate gesture.",
-    type: "registry:ui",
-    registryDependencies: undefined,
-    files: [
-      {
-        path: "registry/ruixenui/glass-browser-history.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/glass-browser-history.tsx",
-      },
-    ],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/ruixenui/glass-browser-history.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -5110,6 +5132,32 @@ export const Index: Record<string, any> = {
     component: React.lazy(async () => {
       const mod = await import(
         "@/registry/example/trusted-clients-showcase-demo.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "bordered-clients-grid-demo": {
+    name: "bordered-clients-grid-demo",
+    description:
+      "Example of bordered clients grid with hover-tinted cells and corner cross markers",
+    type: "registry:example",
+    registryDependencies: ["https://www.ruixen.com/r/bordered-clients-grid"],
+    files: [
+      {
+        path: "registry/example/bordered-clients-grid-demo.tsx",
+        type: "registry:example",
+        target: "components/bordered-clients-grid-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/bordered-clients-grid-demo.tsx"
       );
       const exportName =
         Object.keys(mod).find(
@@ -7232,32 +7280,6 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
-  "calendar-event-composer-demo": {
-    name: "calendar-event-composer-demo",
-    description:
-      "Example showing a macOS-style day view with click-to-create events and a sliding inspector panel.",
-    type: "registry:example",
-    registryDependencies: ["https://ruixen.com/r/calendar-event-composer"],
-    files: [
-      {
-        path: "registry/example/calendar-event-composer-demo.tsx",
-        type: "registry:example",
-        target: "components/calendar-event-composer-demo.tsx",
-      },
-    ],
-    component: React.lazy(async () => {
-      const mod = await import(
-        "@/registry/example/calendar-event-composer-demo.tsx"
-      );
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object",
-        ) || item.name;
-      return { default: mod.default || mod[exportName] };
-    }),
-    meta: undefined,
-  },
   "notification-inbox-popover-demo": {
     name: "notification-inbox-popover-demo",
     description:
@@ -7991,6 +8013,30 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "grid-frame-hero-demo": {
+    name: "grid-frame-hero-demo",
+    description:
+      "Example of a framed grid hero with headline, CTA, and dual feature cards.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/grid-frame-hero"],
+    files: [
+      {
+        path: "registry/example/grid-frame-hero-demo.tsx",
+        type: "registry:example",
+        target: "components/grid-frame-hero-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/grid-frame-hero-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "pricing-landing-hero-demo": {
     name: "pricing-landing-hero-demo",
     description:
@@ -8185,32 +8231,6 @@ export const Index: Record<string, any> = {
     component: React.lazy(async () => {
       const mod = await import(
         "@/registry/example/glass-shipment-flow-demo.tsx"
-      );
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object",
-        ) || item.name;
-      return { default: mod.default || mod[exportName] };
-    }),
-    meta: undefined,
-  },
-  "glass-browser-history-demo": {
-    name: "glass-browser-history-demo",
-    description:
-      "Example showing an iOS 26 liquid-glass browser history carousel with stacked macOS window cards.",
-    type: "registry:example",
-    registryDependencies: ["https://ruixen.com/r/glass-browser-history"],
-    files: [
-      {
-        path: "registry/example/glass-browser-history-demo.tsx",
-        type: "registry:example",
-        target: "components/glass-browser-history-demo.tsx",
-      },
-    ],
-    component: React.lazy(async () => {
-      const mod = await import(
-        "@/registry/example/glass-browser-history-demo.tsx"
       );
       const exportName =
         Object.keys(mod).find(
@@ -8801,6 +8821,32 @@ export const Index: Record<string, any> = {
     component: React.lazy(async () => {
       const mod = await import(
         "@/registry/example/faq-chat-accordion-demo.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "grouped-faq-section-demo": {
+    name: "grouped-faq-section-demo",
+    description:
+      "Example of FAQ block with categorized question groups (Installation, Stack Support, Pricing & License) and card-style open state.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/grouped-faq-section"],
+    files: [
+      {
+        path: "registry/example/grouped-faq-section-demo.tsx",
+        type: "registry:example",
+        target: "components/grouped-faq-section-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/grouped-faq-section-demo.tsx"
       );
       const exportName =
         Object.keys(mod).find(
