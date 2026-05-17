@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "grouped-faq-section-demo",
+  "type": "registry:example",
+  "title": "Grouped FAQ Section Demo",
+  "description": "Example of FAQ block with categorized question groups (Installation, Stack Support, Pricing & License) and card-style open state.",
+  "registryDependencies": [
+    "https://ruixen.com/r/grouped-faq-section"
+  ],
+  "files": [
+    {
+      "path": "registry/example/grouped-faq-section-demo.tsx",
+      "content": "\"use client\";\n\nimport GroupedFAQSection from \"../ruixenui/grouped-faq-section\";\n\nexport default function GroupedFAQSectionDemo() {\n  return (\n    <GroupedFAQSection\n      contactHref=\"https://github.com/ruixenui/ruixen.com/issues\"\n      contactCTA=\"open a GitHub issue\"\n      className=\"py-0 md:py-0\"\n    />\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/grouped-faq-section-demo.tsx"
+    }
+  ]
+}
