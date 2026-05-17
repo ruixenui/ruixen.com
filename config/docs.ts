@@ -153,18 +153,9 @@ export const docsConfig: DocsConfig = {
           free: true,
           event: "template_portfolio_clicked",
         },
-        {
-          title: "Nguyen – AI Workspace",
-          href: `/docs/templates/nguyen-one`,
-          items: [],
-          label: "Pro",
-        },
-        {
-          title: "Intellune – AI Agent",
-          href: `/docs/templates/intellune`,
-          items: [],
-          label: "Pro",
-        },
+        // Pro templates are appended dynamically by getDocsSidebarNav() from
+        // data/pro-catalog.ts — do not re-list them here or the sidebar will
+        // render each one twice (hardcoded + dynamic).
       ],
     },
     {
