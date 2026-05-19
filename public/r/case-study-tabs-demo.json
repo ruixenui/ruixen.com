@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "case-study-tabs-demo",
+  "type": "registry:example",
+  "title": "Case Study Tabs Demo",
+  "description": "Example of a tabbed case-study testimonial block with Stripe, Hulu, and Bolt brand tabs and an animated underline indicator.",
+  "registryDependencies": [
+    "https://ruixen.com/r/case-study-tabs"
+  ],
+  "files": [
+    {
+      "path": "registry/example/case-study-tabs-demo.tsx",
+      "content": "import {\n  CaseStudyTabs,\n  type CaseStudy,\n} from \"@/registry/ruixenui/case-study-tabs\";\n\nconst LOGO_CLS =\n  \"h-5 w-auto [filter:brightness(0)] dark:[filter:brightness(0)_invert(1)] opacity-70 transition-opacity hover:opacity-100\";\n\nconst cases: CaseStudy[] = [\n  {\n    brand: {\n      id: \"coinflect\",\n      name: \"Coinflect\",\n      logo: (\n        // eslint-disable-next-line @next/next/no-img-element\n        <img src=\"/logos/coinflect.svg\" alt=\"Coinflect\" className={LOGO_CLS} />\n      ),\n    },\n    quote:\n      \"Our customer-facing dashboards needed to ship in two weeks for a launch. The components dropped in without a single override and the audit team had nothing to flag.\",\n    author: {\n      name: \"Priya Raman\",\n      role: \"Engineering Lead, Coinflect\",\n      avatarUrl: \"/avatar-images/avatar-01.jpg\",\n    },\n  },\n  {\n    brand: {\n      id: \"ternary\",\n      name: \"Ternary\",\n      logo: (\n        // eslint-disable-next-line @next/next/no-img-element\n        <img src=\"/logos/ternary.svg\" alt=\"Ternary\" className={LOGO_CLS} />\n      ),\n    },\n    quote:\n      \"We had a half-dozen tables and forms held together with one-off styling. Replacing them with a consistent system cut our design QA queue by a third.\",\n    author: {\n      name: \"Daniel Park\",\n      role: \"Product Manager, Ternary\",\n      avatarUrl: \"/avatar-images/avatar-02.jpg\",\n    },\n  },\n  {\n    brand: {\n      id: \"percy\",\n      name: \"Percy\",\n      logo: (\n        // eslint-disable-next-line @next/next/no-img-element\n        <img src=\"/logos/percy.svg\" alt=\"Percy\" className={LOGO_CLS} />\n      ),\n    },\n    quote:\n      \"Visual regressions used to surface every release. Switching to tokenized components meant our diffs only flag actual change — not theme drift.\",\n    author: {\n      name: \"Elena Voss\",\n      role: \"Head of Design Engineering, Percy\",\n      avatarUrl: \"/avatar-images/avatar-03.jpg\",\n    },\n  },\n];\n\nexport default function CaseStudyTabsDemo() {\n  return <CaseStudyTabs cases={cases} />;\n}\n",
+      "type": "registry:example",
+      "target": "components/case-study-tabs-demo.tsx"
+    }
+  ]
+}

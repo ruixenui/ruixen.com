@@ -39,7 +39,7 @@ export function CategoryUseCases({ type }: CategoryUseCasesProps) {
             <p className="mt-1.5 line-clamp-2 text-xs leading-relaxed text-muted-foreground">
               {entry.lead.split(/(?<=[.!?])\s+/)[0]}
             </p>
-            <div className="mt-3 text-xs font-medium text-foreground/80 transition-colors group-hover:text-foreground">
+            <div className="mt-auto pt-3 text-xs font-medium text-foreground/80 transition-colors group-hover:text-foreground">
               See picks →
             </div>
           </Link>

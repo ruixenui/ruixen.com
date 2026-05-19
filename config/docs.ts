@@ -295,6 +295,12 @@ export const docsConfig: DocsConfig = {
               items: [],
               label: "New",
             },
+            // {
+            //   title: "Floating Cards Hero",
+            //   href: `/docs/components/floating-cards-hero`,
+            //   items: [],
+            //   label: "New",
+            // },
             {
               title: "Pricing Landing Hero",
               href: `/docs/components/pricing-landing-hero`,
@@ -318,6 +324,29 @@ export const docsConfig: DocsConfig = {
               href: `/docs/components/hero-title-animation`,
               items: [],
               label: "",
+            },
+          ],
+        },
+        {
+          title: "Testimonials",
+          items: [
+            {
+              title: "Case Study Tabs",
+              href: `/docs/components/case-study-tabs`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Customer Story Stack",
+              href: `/docs/components/customer-story-stack`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Multi-Media Testimonial",
+              href: `/docs/components/multi-media-testimonial`,
+              items: [],
+              label: "New",
             },
           ],
         },
@@ -445,6 +474,12 @@ export const docsConfig: DocsConfig = {
             {
               title: "Pricing Cards Tooltip",
               href: `/docs/components/pricing-cards-tooltip`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Staged Pricing",
+              href: `/docs/components/staged-pricing`,
               items: [],
               label: "New",
             },

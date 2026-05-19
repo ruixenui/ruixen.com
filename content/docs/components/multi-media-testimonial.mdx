@@ -1,0 +1,107 @@
+---
+title: Multi-Media Testimonial
+date: 2026-05-19
+description: A masonry grid of testimonial cards that mix text-only quotes, image thumbnails, and video clips that open in a fullscreen lightbox — each with an author avatar, role, and headline.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="multi-media-testimonial-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/multi-media-testimonial"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="multi-media-testimonial" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import {
+  MultiMediaTestimonial,
+  type Testimonial,
+} from "@/components/ruixen/multi-media-testimonial";
+
+const testimonials: Testimonial[] = [
+  {
+    name: "Priya Raman",
+    profile: "/avatar-images/avatar-01.jpg",
+    title: "Replaced our in-house UI in a weekend",
+    designation: "Engineering Lead, Coinflect",
+    content:
+      "We had a stale Tailwind kit nobody wanted to touch. Two engineers swapped it out in a single sprint.",
+    mediaUrl: "https://example.com/clip.mp4",
+    thumbnail: "https://example.com/poster.png",
+  },
+  // ...more
+];
+
+export default function Page() {
+  return (
+    <MultiMediaTestimonial
+      heading="Teams ship faster on Ruixen"
+      description="Our clients keep coming back because we go beyond clean design."
+      items={testimonials}
+    />
+  );
+}
+```
+
+## Props
+
+### `MultiMediaTestimonial`
+
+| Prop          | Type            | Default  | Description                                                                |
+| ------------- | --------------- | -------- | -------------------------------------------------------------------------- |
+| `items`       | `Testimonial[]` | Required | Array of testimonial entries rendered into a balanced masonry of 1–3 cols. |
+| `heading`     | `ReactNode`     | —        | Optional centered headline above the grid.                                 |
+| `description` | `ReactNode`     | —        | Optional subheading rendered under the heading.                            |
+| `className`   | `string`        | —        | Extra classes appended to the outer `<section>`.                           |
+
+### `Testimonial`
+
+| Field         | Type     | Description                                                                                |
+| ------------- | -------- | ------------------------------------------------------------------------------------------ |
+| `name`        | `string` | Author display name. First character is used as the avatar fallback.                       |
+| `designation` | `string` | Role / company subtitle rendered under the name.                                           |
+| `title`       | `string` | Optional headline shown at the top of the card.                                            |
+| `profile`     | `string` | Optional avatar image URL.                                                                 |
+| `content`     | `string` | Optional quote body.                                                                       |
+| `mediaUrl`    | `string` | Optional video URL (browser-playable, e.g. MP4). Renders a play-button overlay + lightbox. |
+| `thumbnail`   | `string` | Used as the video poster when `mediaUrl` is set, or as a standalone image otherwise.       |
+
+## Features
+
+- **Three card variants from one type** — a card is text-only, image-only, or video-with-poster based purely on whether `mediaUrl` and `thumbnail` are present. No flag enum to keep in sync with the data.
+- **Lightbox video playback** — clicking a video card opens a wide `Dialog` with native `<video controls>` and `playsInline`. Closing the dialog pauses the clip and rewinds it to `currentTime = 0` so reopens always start fresh.
+- **CSS multi-column masonry** — `columns-1 sm:columns-2 lg:columns-3 [column-fill:_balance]` plus `break-inside-avoid` on each card. Variable card heights pack tightly without a layout library.
+- **Themed surfaces** — `bg-card/60` + `backdrop-blur-sm` + `border-border/60` matches the Ruixen wall-of-love treatment; hover lifts the border and shadow without shifting layout.
+- **Accessible play affordance** — the video trigger is a real `<button>` with a labelled `aria-label`, keyboard focus ring (`focus-visible:ring-2`), and the play icon sits over a translucent foreground scrim so it remains visible on busy thumbnails.
+- **Avatar fallback** — when `profile` is missing, the `Avatar` falls back to the author's first initial via shadcn's `AvatarFallback`, so the card layout never breaks on missing assets.
+- **Quote glyph for text-only cards** — text-only entries get a faint `Quote` icon in place of media, preserving vertical rhythm with image/video cards in the same row.

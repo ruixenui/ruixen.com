@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "customer-story-stack-demo",
+  "type": "registry:example",
+  "title": "Customer Story Stack Demo",
+  "description": "Example of a stacked customer-testimonial carousel with three brand stories, swipe / arrow navigation, and a framed metrics panel that updates per case.",
+  "registryDependencies": [
+    "https://ruixen.com/r/customer-story-stack"
+  ],
+  "files": [
+    {
+      "path": "registry/example/customer-story-stack-demo.tsx",
+      "content": "import {\n  GitPullRequest,\n  LineChart,\n  ShieldCheck,\n  Sparkles,\n  Timer,\n  Users,\n} from \"lucide-react\";\nimport {\n  CustomerStoryStack,\n  type CustomerStoryCase,\n} from \"@/registry/ruixenui/customer-story-stack\";\n\nconst LOGO_CLS =\n  \"h-7 w-auto [filter:brightness(0)] dark:[filter:brightness(0)_invert(1)] opacity-90\";\n\nconst cases: CustomerStoryCase[] = [\n  {\n    id: \"bitbucket\",\n    logo: (\n      // eslint-disable-next-line @next/next/no-img-element\n      <img src=\"/logos/bitbucket.svg\" alt=\"Bitbucket\" className={LOGO_CLS} />\n    ),\n    quote:\n      \"Our pull-request templates and CI pipelines were duct-taped together for years. Migrating to a unified component system finally let us clear the review queue in days, not weeks.\",\n    author: {\n      name: \"Sasha Lee\",\n      role: \"Platform Engineer, Bitbucket\",\n      avatarUrl: \"/avatar-images/avatar-04.jpg\",\n    },\n    metrics: [\n      {\n        icon: <GitPullRequest />,\n        label: \"60% faster PR review cycles, every week\",\n      },\n      {\n        icon: <Timer />,\n        label: \"Eight repos onboarded in the first month\",\n      },\n    ],\n  },\n  {\n    id: \"gumroad\",\n    logo: (\n      // eslint-disable-next-line @next/next/no-img-element\n      <img src=\"/logos/gumroad.svg\" alt=\"Gumroad\" className={LOGO_CLS} />\n    ),\n    quote:\n      \"Creators kept asking why checkout looked different from the dashboard. One library and a weekend later, every surface ships from the same primitives — and the same accessibility floor.\",\n    author: {\n      name: \"Mateo Alvarez\",\n      role: \"Senior Designer, Gumroad\",\n      avatarUrl: \"/avatar-images/avatar-05.jpg\",\n    },\n    metrics: [\n      {\n        icon: <Users />,\n        label: \"12K creators migrated with zero broken links\",\n      },\n      {\n        icon: <ShieldCheck />,\n        label: \"Nine quarters without an a11y regression\",\n      },\n    ],\n  },\n  {\n    id: \"gong\",\n    logo: (\n      // eslint-disable-next-line @next/next/no-img-element\n      <img src=\"/logos/gong.svg\" alt=\"Gong\" className={LOGO_CLS} />\n    ),\n    quote:\n      \"The cost of bespoke UI compounded — every team rebuilt their own tables, toasts and modals. We retired thousands of lines of legacy CSS and the designers got their afternoons back.\",\n    author: {\n      name: \"Jordan Reyes\",\n      role: \"Engineering Manager, Gong\",\n      avatarUrl: \"/avatar-images/avatar-02.jpg\",\n    },\n    metrics: [\n      {\n        icon: <Sparkles />,\n        label: \"3× faster refactors across the platform\",\n      },\n      {\n        icon: <LineChart />,\n        label: \"94% of teams ship the same primitives\",\n      },\n    ],\n  },\n];\n\nexport default function CustomerStoryStackDemo() {\n  return (\n    <CustomerStoryStack\n      cases={cases}\n      readMoreLink={{ label: \"Read more customer stories\", href: \"#\" }}\n    />\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/customer-story-stack-demo.tsx"
+    }
+  ]
+}

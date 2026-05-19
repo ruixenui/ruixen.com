@@ -832,6 +832,60 @@
       ]
     },
     {
+      "name": "staged-pricing",
+      "type": "registry:ui",
+      "title": "Staged Pricing",
+      "description": "Four-tier pricing section framed by decorative grid lines and corner crosshairs, with an animated monthly/annual toggle and a slide-up price swap.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/staged-pricing.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/staged-pricing.tsx"
+        }
+      ]
+    },
+    {
+      "name": "case-study-tabs",
+      "type": "registry:ui",
+      "title": "Case Study Tabs",
+      "description": "A tabbed customer-testimonial block with embossed stars, brand-logo tabs, an animated underline indicator that adopts each brand's accent color, a featured case-study paragraph with CTA, and a pull-quote with author.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "tabs"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/case-study-tabs.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/case-study-tabs.tsx"
+        }
+      ]
+    },
+    {
+      "name": "customer-story-stack",
+      "type": "registry:ui",
+      "title": "Customer Story Stack",
+      "description": "A card-stack customer testimonial carousel with vertical prev/next nav, touch-swipe support, two ghost cards layered behind the active story, and a framed metrics panel with corner crosshair marks that updates per case.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/customer-story-stack.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/customer-story-stack.tsx"
+        }
+      ]
+    },
+    {
       "name": "slide-to-delete-button",
       "type": "registry:ui",
       "title": "Slide To Delete Button",
@@ -2522,6 +2576,27 @@
       ]
     },
     {
+      "name": "multi-media-testimonial",
+      "type": "registry:ui",
+      "title": "Multi-Media Testimonial",
+      "description": "A masonry grid of testimonial cards that mix text-only quotes, image thumbnails, and video clips that open in a fullscreen lightbox — with author avatar, title, and role under each card.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "avatar",
+        "button",
+        "dialog"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/multi-media-testimonial.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/multi-media-testimonial.tsx"
+        }
+      ]
+    },
+    {
       "name": "pricing-landing-hero",
       "type": "registry:ui",
       "title": "Pricing Landing Hero",
@@ -3942,6 +4017,54 @@
           "path": "registry/example/pricing-cards-tooltip-demo.tsx",
           "type": "registry:example",
           "target": "components/pricing-cards-tooltip-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "staged-pricing-demo",
+      "type": "registry:example",
+      "title": "Staged Pricing Demo",
+      "description": "Example of a four-tier pricing section with animated monthly/annual toggle, slide-up price swap, and decorative grid frame.",
+      "registryDependencies": [
+        "https://ruixen.com/r/staged-pricing"
+      ],
+      "files": [
+        {
+          "path": "registry/example/staged-pricing-demo.tsx",
+          "type": "registry:example",
+          "target": "components/staged-pricing-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "case-study-tabs-demo",
+      "type": "registry:example",
+      "title": "Case Study Tabs Demo",
+      "description": "Example of a tabbed case-study testimonial block with Stripe, Hulu, and Bolt brand tabs and an animated underline indicator.",
+      "registryDependencies": [
+        "https://ruixen.com/r/case-study-tabs"
+      ],
+      "files": [
+        {
+          "path": "registry/example/case-study-tabs-demo.tsx",
+          "type": "registry:example",
+          "target": "components/case-study-tabs-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "customer-story-stack-demo",
+      "type": "registry:example",
+      "title": "Customer Story Stack Demo",
+      "description": "Example of a stacked customer-testimonial carousel with three brand stories, swipe / arrow navigation, and a framed metrics panel that updates per case.",
+      "registryDependencies": [
+        "https://ruixen.com/r/customer-story-stack"
+      ],
+      "files": [
+        {
+          "path": "registry/example/customer-story-stack-demo.tsx",
+          "type": "registry:example",
+          "target": "components/customer-story-stack-demo.tsx"
         }
       ]
     },
@@ -5542,6 +5665,22 @@
           "path": "registry/example/grid-frame-hero-demo.tsx",
           "type": "registry:example",
           "target": "components/grid-frame-hero-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "multi-media-testimonial-demo",
+      "type": "registry:example",
+      "title": "Multi-Media Testimonial Demo",
+      "description": "Masonry grid of customer testimonial cards mixing text quotes, image thumbnails, and click-to-play video cards in a fullscreen lightbox.",
+      "registryDependencies": [
+        "https://ruixen.com/r/multi-media-testimonial"
+      ],
+      "files": [
+        {
+          "path": "registry/example/multi-media-testimonial-demo.tsx",
+          "type": "registry:example",
+          "target": "components/multi-media-testimonial-demo.tsx"
         }
       ]
     },

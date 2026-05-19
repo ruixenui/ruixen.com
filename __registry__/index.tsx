@@ -1168,6 +1168,78 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "staged-pricing": {
+    name: "staged-pricing",
+    description:
+      "Four-tier pricing section framed by decorative grid lines and corner crosshairs, with an animated monthly/annual toggle and a slide-up price swap.",
+    type: "registry:ui",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "registry/ruixenui/staged-pricing.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/staged-pricing.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/staged-pricing.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "case-study-tabs": {
+    name: "case-study-tabs",
+    description:
+      "A tabbed customer-testimonial block with embossed stars, brand-logo tabs, an animated underline indicator that adopts each brand's accent color, a featured case-study paragraph with CTA, and a pull-quote with author.",
+    type: "registry:ui",
+    registryDependencies: ["tabs"],
+    files: [
+      {
+        path: "registry/ruixenui/case-study-tabs.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/case-study-tabs.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/case-study-tabs.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "customer-story-stack": {
+    name: "customer-story-stack",
+    description:
+      "A card-stack customer testimonial carousel with vertical prev/next nav, touch-swipe support, two ghost cards layered behind the active story, and a framed metrics panel with corner crosshair marks that updates per case.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/customer-story-stack.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/customer-story-stack.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/customer-story-stack.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "slide-to-delete-button": {
     name: "slide-to-delete-button",
     description:
@@ -3592,6 +3664,32 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "multi-media-testimonial": {
+    name: "multi-media-testimonial",
+    description:
+      "A masonry grid of testimonial cards that mix text-only quotes, image thumbnails, and video clips that open in a fullscreen lightbox — with author avatar, title, and role under each card.",
+    type: "registry:ui",
+    registryDependencies: ["avatar", "button", "dialog"],
+    files: [
+      {
+        path: "registry/ruixenui/multi-media-testimonial.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/multi-media-testimonial.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/ruixenui/multi-media-testimonial.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "pricing-landing-hero": {
     name: "pricing-landing-hero",
     description:
@@ -5624,6 +5722,80 @@ export const Index: Record<string, any> = {
     component: React.lazy(async () => {
       const mod = await import(
         "@/registry/example/pricing-cards-tooltip-demo.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "staged-pricing-demo": {
+    name: "staged-pricing-demo",
+    description:
+      "Example of a four-tier pricing section with animated monthly/annual toggle, slide-up price swap, and decorative grid frame.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/staged-pricing"],
+    files: [
+      {
+        path: "registry/example/staged-pricing-demo.tsx",
+        type: "registry:example",
+        target: "components/staged-pricing-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/staged-pricing-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "case-study-tabs-demo": {
+    name: "case-study-tabs-demo",
+    description:
+      "Example of a tabbed case-study testimonial block with Stripe, Hulu, and Bolt brand tabs and an animated underline indicator.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/case-study-tabs"],
+    files: [
+      {
+        path: "registry/example/case-study-tabs-demo.tsx",
+        type: "registry:example",
+        target: "components/case-study-tabs-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/case-study-tabs-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "customer-story-stack-demo": {
+    name: "customer-story-stack-demo",
+    description:
+      "Example of a stacked customer-testimonial carousel with three brand stories, swipe / arrow navigation, and a framed metrics panel that updates per case.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/customer-story-stack"],
+    files: [
+      {
+        path: "registry/example/customer-story-stack-demo.tsx",
+        type: "registry:example",
+        target: "components/customer-story-stack-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/customer-story-stack-demo.tsx"
       );
       const exportName =
         Object.keys(mod).find(
@@ -8080,6 +8252,32 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/grid-frame-hero-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "multi-media-testimonial-demo": {
+    name: "multi-media-testimonial-demo",
+    description:
+      "Masonry grid of customer testimonial cards mixing text quotes, image thumbnails, and click-to-play video cards in a fullscreen lightbox.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/multi-media-testimonial"],
+    files: [
+      {
+        path: "registry/example/multi-media-testimonial-demo.tsx",
+        type: "registry:example",
+        target: "components/multi-media-testimonial-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/multi-media-testimonial-demo.tsx"
+      );
       const exportName =
         Object.keys(mod).find(
           (key) =>
