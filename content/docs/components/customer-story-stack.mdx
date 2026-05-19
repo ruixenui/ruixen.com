@@ -1,0 +1,116 @@
+---
+title: Customer Story Stack
+date: 2026-05-18
+description: A card-stack customer testimonial carousel with vertical prev/next nav, touch-swipe support, two ghost cards layered behind the active story, and a framed metrics panel with corner crosshair marks that updates per case.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="customer-story-stack-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/customer-story-stack"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="customer-story-stack" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { Star, Zap } from "lucide-react";
+import {
+  CustomerStoryStack,
+  type CustomerStoryCase,
+} from "@/components/ruixen/customer-story-stack";
+
+const cases: CustomerStoryCase[] = [
+  {
+    id: "stripe",
+    logo: <StripeLogo />,
+    quote:
+      "The component library has been a game-changer for our development team.",
+    author: {
+      name: "Bernard Ngandu",
+      role: "Backend Engineer",
+      avatarUrl: "https://avatars.githubusercontent.com/u/31113941?v=4",
+    },
+    metrics: [
+      { icon: <Star />, label: "40% reduction in integration time" },
+      { icon: <Zap />, label: "50% faster onboarding" },
+    ],
+  },
+  // ...more cases
+];
+
+export default function Page() {
+  return (
+    <CustomerStoryStack
+      cases={cases}
+      readMoreLink={{ label: "Read more customer stories", href: "/stories" }}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop             | Type                              | Default  | Description                                                          |
+| ---------------- | --------------------------------- | -------- | -------------------------------------------------------------------- |
+| `cases`          | `CustomerStoryCase[]`             | Required | One card per case. The first case is shown on mount.                 |
+| `readMoreLink`   | `{ label: string; href: string }` | -        | Optional link rendered below the metrics panel.                      |
+| `swipeThreshold` | `number`                          | `50`     | Vertical swipe distance (px) before a touch drag triggers prev/next. |
+| `className`      | `string`                          | -        | Extra classes appended to the outer `<section>`.                     |
+
+### `CustomerStoryCase`
+
+| Field     | Type                                                                          | Description                                                            |
+| --------- | ----------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `id`      | `string`                                                                      | Unique id — drives the React key that retriggers fade-in on case swap. |
+| `logo`    | `ReactNode`                                                                   | Brand logo node, typically an inline SVG sized via `h-7 w-16`.         |
+| `quote`   | `ReactNode`                                                                   | Pull-quote rendered with serif curly-quote pseudo-elements.            |
+| `author`  | `{ name: string; role: string; avatarUrl?: string; avatarFallback?: string }` | Author block with avatar + name + role.                                |
+| `metrics` | `[CustomerStoryMetric, CustomerStoryMetric]`                                  | Optional pair of metrics shown in the framed panel below the card.     |
+
+### `CustomerStoryMetric`
+
+| Field   | Type        | Description                                                                                       |
+| ------- | ----------- | ------------------------------------------------------------------------------------------------- |
+| `icon`  | `ReactNode` | Icon rendered five times. The component overrides `fill`/`stroke` for the embossed light/dark UI. |
+| `label` | `ReactNode` | Caption rendered below the icon row.                                                              |
+
+## Features
+
+- **Card-stack carousel** — the active card sits on top of two ghost cards layered behind via `origin-bottom`, `translate-y-3 scale-95`, and `translate-y-6 scale-90`, giving the impression of a deck.
+- **Vertical chevron nav** — circular outline buttons sit to the left and right of the card on `md+`. Mobile gets a fallback pair below the card so the carousel is operable without swipe gestures.
+- **Native touch-swipe** — a vertical drag past `swipeThreshold` (default 50 px) cycles to the next or previous card. Implemented with raw `touchstart` / `touchend` listeners — no motion library required.
+- **Per-case metrics panel** — two columns × five embossed icons × label, framed by a thin border with four corner crosshair marks. The panel re-fades on case change via React `key`.
+- **Crosshair marks** — `[mask-image:radial-gradient(...)]` fades the cross arms out from the centre, giving the corners a soft `+` shape. Works in both Tailwind v3 and v4.
+- **Embossed icons** — light mode renders icons in `fill-card stroke-card` (effectively white-on-white with a drop-shadow); dark mode switches to `muted-foreground` so they remain legible.
+- **Serif curly pull-quotes** — `before:font-serif before:content-['“']` / `after:font-serif after:content-['”']` gives the quote marks a typographic lift.
+- **Zero external deps** — only `lucide-react`; no shadcn primitives, no motion library, no `next/image`.

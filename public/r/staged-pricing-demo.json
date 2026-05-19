@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "staged-pricing-demo",
+  "type": "registry:example",
+  "title": "Staged Pricing Demo",
+  "description": "Example of a four-tier pricing section with animated monthly/annual toggle, slide-up price swap, and decorative grid frame.",
+  "registryDependencies": [
+    "https://ruixen.com/r/staged-pricing"
+  ],
+  "files": [
+    {
+      "path": "registry/example/staged-pricing-demo.tsx",
+      "content": "import {\n  StagedPricing,\n  type StagedPricingPlan,\n} from \"@/registry/ruixenui/staged-pricing\";\n\nconst plans: StagedPricingPlan[] = [\n  {\n    name: \"Starter\",\n    audience: \"For solo builders prototyping ideas\",\n    monthly: 0,\n    annual: 0,\n    features: [\n      \"10K requests per month\",\n      \"Community Discord access\",\n      \"1 connected project\",\n    ],\n    cta: { label: \"Get started\", href: \"#\" },\n  },\n  {\n    name: \"Studio\",\n    audience: \"For freelancers shipping client work\",\n    monthly: 24,\n    annual: 19,\n    annualSavingsPct: 20,\n    features: [\"Unlimited projects\", \"Custom domains\", \"Email support\"],\n    cta: { label: \"Start with Studio\", href: \"#\" },\n  },\n  {\n    name: \"Team\",\n    audience: \"For product teams that ship every week\",\n    monthly: 72,\n    annual: 58,\n    annualSavingsPct: 20,\n    features: [\n      \"Shared workspaces\",\n      \"Role-based access controls\",\n      \"Slack + GitHub sync\",\n    ],\n    cta: { label: \"Start with Team\", href: \"#\" },\n    highlighted: true,\n  },\n  {\n    name: \"Enterprise\",\n    audience: \"For organizations with strict requirements\",\n    monthly: \"Custom\",\n    annual: \"Custom\",\n    priceCaption: \"Billed annually\",\n    features: [\n      \"SAML SSO and SCIM provisioning\",\n      \"Audit logs and SOC 2 reports\",\n      \"Dedicated success manager\",\n    ],\n    cta: { label: \"Talk to our team\", href: \"#\" },\n  },\n];\n\nexport default function StagedPricingDemo() {\n  return (\n    <StagedPricing\n      title=\"Pricing that grows with you.\"\n      description=\"Pick a plan that fits your team today—level up the moment your usage outgrows it.\"\n      plans={plans}\n    />\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/staged-pricing-demo.tsx"
+    }
+  ]
+}

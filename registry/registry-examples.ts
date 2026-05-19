@@ -547,6 +547,51 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "staged-pricing-demo",
+    type: "registry:example",
+    title: "Staged Pricing Demo",
+    description:
+      "Example of a four-tier pricing section with animated monthly/annual toggle, slide-up price swap, and decorative grid frame.",
+    registryDependencies: ["https://ruixen.com/r/staged-pricing"],
+    files: [
+      {
+        path: "registry/example/staged-pricing-demo.tsx",
+        type: "registry:example",
+        target: "components/staged-pricing-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "case-study-tabs-demo",
+    type: "registry:example",
+    title: "Case Study Tabs Demo",
+    description:
+      "Example of a tabbed case-study testimonial block with Stripe, Hulu, and Bolt brand tabs and an animated underline indicator.",
+    registryDependencies: ["https://ruixen.com/r/case-study-tabs"],
+    files: [
+      {
+        path: "registry/example/case-study-tabs-demo.tsx",
+        type: "registry:example",
+        target: "components/case-study-tabs-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "customer-story-stack-demo",
+    type: "registry:example",
+    title: "Customer Story Stack Demo",
+    description:
+      "Example of a stacked customer-testimonial carousel with three brand stories, swipe / arrow navigation, and a framed metrics panel that updates per case.",
+    registryDependencies: ["https://ruixen.com/r/customer-story-stack"],
+    files: [
+      {
+        path: "registry/example/customer-story-stack-demo.tsx",
+        type: "registry:example",
+        target: "components/customer-story-stack-demo.tsx",
+      },
+    ],
+  },
+  {
     name: "slide-to-delete-button-demo",
     type: "registry:example",
     title: "Slide To Delete Button Demo",
@@ -2026,6 +2071,36 @@ export const examples: Registry["items"] = [
         path: "registry/example/grid-frame-hero-demo.tsx",
         type: "registry:example",
         target: "components/grid-frame-hero-demo.tsx",
+      },
+    ],
+  },
+  // {
+  //   name: "floating-cards-hero-demo",
+  //   type: "registry:example",
+  //   title: "Floating Cards Hero Demo",
+  //   description:
+  //     "Example of a dotted-grid hero framed by scattered tilted cards: bolts, meeting widgets, a social folder stack, and an interview review note around a centered headline.",
+  //   registryDependencies: ["https://ruixen.com/r/floating-cards-hero"],
+  //   files: [
+  //     {
+  //       path: "registry/example/floating-cards-hero-demo.tsx",
+  //       type: "registry:example",
+  //       target: "components/floating-cards-hero-demo.tsx",
+  //     },
+  //   ],
+  // },
+  {
+    name: "multi-media-testimonial-demo",
+    type: "registry:example",
+    title: "Multi-Media Testimonial Demo",
+    description:
+      "Masonry grid of customer testimonial cards mixing text quotes, image thumbnails, and click-to-play video cards in a fullscreen lightbox.",
+    registryDependencies: ["https://ruixen.com/r/multi-media-testimonial"],
+    files: [
+      {
+        path: "registry/example/multi-media-testimonial-demo.tsx",
+        type: "registry:example",
+        target: "components/multi-media-testimonial-demo.tsx",
       },
     ],
   },

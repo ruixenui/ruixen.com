@@ -1,0 +1,114 @@
+---
+title: Case Study Tabs
+date: 2026-05-18
+description: A tabbed customer-testimonial block with embossed stars, brand-logo tabs, an animated underline indicator that adopts each brand's accent color, a featured case-study paragraph with CTA, and a pull-quote with author.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="case-study-tabs-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/case-study-tabs"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="case-study-tabs" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import {
+  CaseStudyTabs,
+  type CaseStudy,
+} from "@/components/ruixen/case-study-tabs";
+
+const cases: CaseStudy[] = [
+  {
+    brand: {
+      id: "stripe",
+      name: "Stripe",
+      logo: <StripeLogo />,
+      accentColor: "#635BFF",
+    },
+    headline:
+      "Stripe leveraged our platform to streamline payment processing workflows, resulting in a 40% reduction in integration time for new merchants.",
+    cta: { label: "Read Case Study", href: "/case-studies/stripe" },
+    quote:
+      "The platform has dramatically improved our payment processing capabilities. The developer experience is exceptional.",
+    author: {
+      name: "Bernard Ngandu",
+      role: "Backend Engineer, Stripe",
+      avatarUrl: "https://avatars.githubusercontent.com/u/31113941?v=4",
+    },
+  },
+  // ...more cases
+];
+
+export default function Page() {
+  return <CaseStudyTabs cases={cases} />;
+}
+```
+
+## Props
+
+| Prop            | Type          | Default       | Description                                                            |
+| --------------- | ------------- | ------------- | ---------------------------------------------------------------------- |
+| `cases`         | `CaseStudy[]` | Required      | One tab per case study. The first case is active by default.           |
+| `defaultCaseId` | `string`      | First case id | Pre-select a specific tab on mount.                                    |
+| `starCount`     | `number`      | `5`           | Embossed white-on-white stars rendered above the tabs. `0` hides them. |
+| `className`     | `string`      | -             | Extra classes appended to the outer `<section>`.                       |
+
+### `CaseStudy`
+
+| Field      | Type                              | Description                                                                    |
+| ---------- | --------------------------------- | ------------------------------------------------------------------------------ |
+| `brand`    | `CaseStudyTabsBrand`              | Tab id, name, logo node, and optional `accentColor`.                           |
+| `headline` | `ReactNode` _(optional)_          | Large featured paragraph for the active case. Omit to render testimonial-only. |
+| `cta`      | `{ label: string; href: string }` | Optional "Read case study" link.                                               |
+| `quote`    | `ReactNode`                       | Pull-quote rendered with curly-quote pseudo-elements.                          |
+| `author`   | `CaseStudyAuthor`                 | Name, role, and `avatarUrl` or `avatarFallback`.                               |
+
+### `CaseStudyTabsBrand`
+
+| Field         | Type        | Description                                                       |
+| ------------- | ----------- | ----------------------------------------------------------------- |
+| `id`          | `string`    | Unique tab id used by Radix Tabs.                                 |
+| `name`        | `string`    | Accessible label for screen readers.                              |
+| `logo`        | `ReactNode` | Logo node — usually an inline SVG sized via `h-auto w-12`.        |
+| `accentColor` | `string`    | CSS color for the animated underline. Defaults to `currentColor`. |
+
+## Features
+
+- **Animated underline indicator** — measures the active tab's `offsetLeft` and `offsetWidth` with a `useLayoutEffect` + `ResizeObserver`, then slides between tabs via a single absolutely-positioned `<span>` with a 300 ms transform/width transition. The line takes on each brand's `accentColor`.
+- **Embossed stars** — white-on-white stars with a soft `drop-shadow` give a subtle "5-star" header. Set `starCount={0}` to hide.
+- **Masked border** — the top/bottom border around the tab bar fades to transparent at both ends using a `linear-gradient` mask. Works in both Tailwind v3 and v4 via arbitrary `[mask-image:...]` syntax.
+- **Brand-tinted active tab** — only the underline carries the brand color; the tab itself stays neutral, keeping the layout calm.
+- **Curly pull-quotes** — the quote paragraph uses `::before` and `::after` pseudo-elements with literal `"` / `"` curly quotes.
+- **Theme adaptive** — uses `bg-background`, `text-foreground`, `text-muted-foreground`, `bg-card`, `border-foreground/10` and friends; light/dark inversion is automatic. Brand logo colors are baked into the SVGs you pass in.
+- **Single shadcn dep** — only `tabs` from `registryDependencies`; `lucide-react` is the only npm dep.

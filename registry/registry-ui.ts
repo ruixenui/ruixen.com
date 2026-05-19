@@ -732,6 +732,53 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "staged-pricing",
+    type: "registry:ui",
+    title: "Staged Pricing",
+    description:
+      "Four-tier pricing section framed by decorative grid lines and corner crosshairs, with an animated monthly/annual toggle and a slide-up price swap.",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "registry/ruixenui/staged-pricing.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/staged-pricing.tsx",
+      },
+    ],
+  },
+  {
+    name: "case-study-tabs",
+    type: "registry:ui",
+    title: "Case Study Tabs",
+    description:
+      "A tabbed customer-testimonial block with embossed stars, brand-logo tabs, an animated underline indicator that adopts each brand's accent color, a featured case-study paragraph with CTA, and a pull-quote with author.",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["tabs"],
+    files: [
+      {
+        path: "registry/ruixenui/case-study-tabs.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/case-study-tabs.tsx",
+      },
+    ],
+  },
+  {
+    name: "customer-story-stack",
+    type: "registry:ui",
+    title: "Customer Story Stack",
+    description:
+      "A card-stack customer testimonial carousel with vertical prev/next nav, touch-swipe support, two ghost cards layered behind the active story, and a framed metrics panel with corner crosshair marks that updates per case.",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/customer-story-stack.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/customer-story-stack.tsx",
+      },
+    ],
+  },
+  {
     name: "slide-to-delete-button",
     type: "registry:ui",
     title: "Slide To Delete Button",
@@ -2314,6 +2361,37 @@ export const ui: Registry["items"] = [
         path: "registry/ruixenui/grid-frame-hero.tsx",
         type: "registry:ui",
         target: "components/ruixen/grid-frame-hero.tsx",
+      },
+    ],
+  },
+  // {
+  //   name: "floating-cards-hero",
+  //   type: "registry:ui",
+  //   title: "Floating Cards Hero",
+  //   description:
+  //     "A dotted-grid framed hero with scattered tilted decoration cards — bolt tiles, meeting widgets, a social-media folder stack and an interview review note — around a centered announcement pill, headline, description and gradient CTA.",
+  //   dependencies: ["lucide-react"],
+  //   files: [
+  //     {
+  //       path: "registry/ruixenui/floating-cards-hero.tsx",
+  //       type: "registry:ui",
+  //       target: "components/ruixen/floating-cards-hero.tsx",
+  //     },
+  //   ],
+  // },
+  {
+    name: "multi-media-testimonial",
+    type: "registry:ui",
+    title: "Multi-Media Testimonial",
+    description:
+      "A masonry grid of testimonial cards that mix text-only quotes, image thumbnails, and video clips that open in a fullscreen lightbox — with author avatar, title, and role under each card.",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["avatar", "button", "dialog"],
+    files: [
+      {
+        path: "registry/ruixenui/multi-media-testimonial.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/multi-media-testimonial.tsx",
       },
     ],
   },

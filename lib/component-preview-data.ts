@@ -877,6 +877,10 @@ export const heroSectionsPreview: ComponentPreviewMap = {
     light: `/preview_images/hero-sections/grid-frame-hero-light.png`,
     dark: `/preview_images/hero-sections/grid-frame-hero-dark.png`,
   },
+  // "floating-cards-hero": {
+  //   light: `/preview_images/hero-sections/floating-cards-hero-light.png`,
+  //   dark: `/preview_images/hero-sections/floating-cards-hero-dark.png`,
+  // },
 };
 
 /**
@@ -907,6 +911,25 @@ export const featuredSectionPreview: ComponentPreviewMap = {
   "automated-tasks-panel": {
     light: `/preview_images/featured-sections/automated-tasks-panel-light.png`,
     dark: `/preview_images/featured-sections/automated-tasks-panel-dark.png`,
+  },
+};
+
+/**
+ * Testimonials - Customer testimonial / case-study components
+ * Path: /docs/components/[slug]
+ */
+export const testimonialsPreview: ComponentPreviewMap = {
+  "case-study-tabs": {
+    light: `/preview_images/testimonials/case-study-tabs-light.png`,
+    dark: `/preview_images/testimonials/case-study-tabs-dark.png`,
+  },
+  "customer-story-stack": {
+    light: `/preview_images/testimonials/customer-story-stack-light.png`,
+    dark: `/preview_images/testimonials/customer-story-stack-dark.png`,
+  },
+  "multi-media-testimonial": {
+    light: `/preview_images/testimonials/multi-media-testimonial-light.png`,
+    dark: `/preview_images/testimonials/multi-media-testimonial-dark.png`,
   },
 };
 
@@ -993,6 +1016,10 @@ export const pricingSectionPreview: ComponentPreviewMap = {
     light: `/preview_images/pricing-sections/pricing-section-vertical-light.png`,
     dark: `/preview_images/pricing-sections/pricing-section-vertical-dark.png`,
   },
+  "staged-pricing": {
+    light: `/preview_images/pricing-sections/staged-pricing-light.png`,
+    dark: `/preview_images/pricing-sections/staged-pricing-dark.png`,
+  },
 };
 
 // ============================================================================
@@ -1044,6 +1071,7 @@ export const allSectionPreviews: ComponentPreviewMap = {
   ...heroSectionsPreview,
   ...featuredSectionPreview,
   ...clientSectionPreview,
+  ...testimonialsPreview,
   ...footerSectionPreview,
   ...pricingSectionPreview,
   ...navbarsPreview,
@@ -1167,6 +1195,7 @@ export function getCategoryPreviews(category: string): ComponentPreviewMap {
     "hero-sections": heroSectionsPreview,
     "featured-section": featuredSectionPreview,
     "client-section": clientSectionPreview,
+    testimonials: testimonialsPreview,
     "footer-section": footerSectionPreview,
     "pricing-section": pricingSectionPreview,
   };

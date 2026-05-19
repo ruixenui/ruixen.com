@@ -1,0 +1,147 @@
+---
+title: Staged Pricing
+date: 2026-05-18
+description: A four-tier pricing section framed by decorative grid lines and corner crosshairs, with an animated monthly/annual toggle and a slide-up price swap.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="staged-pricing-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/staged-pricing"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="staged-pricing" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import {
+  StagedPricing,
+  type StagedPricingPlan,
+} from "@/components/ruixen/staged-pricing";
+
+const plans: StagedPricingPlan[] = [
+  {
+    name: "Free",
+    audience: "For individuals getting started",
+    monthly: 0,
+    annual: 0,
+    features: [
+      "Real-time contact syncing",
+      "Automatic data enrichment",
+      "Up to 3 seats",
+    ],
+    cta: { label: "Start for free", href: "/signup" },
+  },
+  {
+    name: "Plus",
+    audience: "For small teams collaborating",
+    monthly: 36,
+    annual: 29,
+    annualSavingsPct: 20,
+    features: ["Private lists", "Enhanced email sending", "No seat limits"],
+    cta: { label: "Continue with Plus", href: "/signup?plan=plus" },
+  },
+  {
+    name: "Pro",
+    audience: "For growing teams scaling up",
+    monthly: 86,
+    annual: 69,
+    annualSavingsPct: 20,
+    features: [
+      "Call Intelligence & sequences",
+      "Advanced permissions",
+      "Priority support",
+    ],
+    cta: { label: "Continue with Pro", href: "/signup?plan=pro" },
+    highlighted: true,
+  },
+  {
+    name: "Enterprise",
+    audience: "For enterprises needing control",
+    monthly: "Custom",
+    annual: "Custom",
+    priceCaption: "Billed annually",
+    features: [
+      "Unlimited objects",
+      "Unlimited teams",
+      "Advanced security & admin",
+    ],
+    cta: { label: "Talk to sales", href: "/contact" },
+  },
+];
+
+export default function Page() {
+  return (
+    <StagedPricing
+      title="From zero to IPO."
+      description="Designed for every stage of your journey. Start today, no credit card required."
+      plans={plans}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop           | Type                                  | Default               | Description                                                              |
+| -------------- | ------------------------------------- | --------------------- | ------------------------------------------------------------------------ |
+| `title`        | `ReactNode`                           | `"From zero to IPO."` | Section headline.                                                        |
+| `description`  | `ReactNode`                           | -                     | Subtitle paragraph centered under the headline.                          |
+| `plans`        | `StagedPricingPlan[]`                 | Required              | One to four pricing plans. Layout adapts: 1, 2, 3, or 4 columns on `lg`. |
+| `defaultCycle` | `"monthly" \| "annual"`               | `"annual"`            | Which billing cycle is selected initially.                               |
+| `hideToggle`   | `boolean`                             | `false`               | Hide the monthly/annual toggle (locks the section to `defaultCycle`).    |
+| `cycleLabels`  | `{ monthly: string; annual: string }` | English labels        | Override toggle labels (e.g. for localisation).                          |
+| `className`    | `string`                              | -                     | Extra classes appended to the outer `<section>`.                         |
+
+### `StagedPricingPlan`
+
+| Field              | Type                               | Description                                                                      |
+| ------------------ | ---------------------------------- | -------------------------------------------------------------------------------- |
+| `name`             | `string`                           | Plan name shown as the card header.                                              |
+| `audience`         | `string`                           | One-line audience tagline above the feature list.                                |
+| `features`         | `string[]`                         | Short feature bullets (3 is the visual sweet spot).                              |
+| `monthly`          | `number \| string`                 | Monthly price. Numbers get a `$` prefix; strings (e.g. `"Custom"`) render as-is. |
+| `annual`           | `number \| string`                 | Annual price (per user / month). Defaults to `monthly`.                          |
+| `annualSavingsPct` | `number`                           | If set, renders a primary-tinted "Save N%" badge when annual is active.          |
+| `cta`              | `{ label: string; href?: string }` | Action button. With `href`, renders as a `<Link>` inside a shadcn `<Button>`.    |
+| `highlighted`      | `boolean`                          | Marks this card as the featured tier (primary ring + filled CTA).                |
+| `priceCaption`     | `string`                           | Override the price caption. If set, the cycle-aware default is bypassed.         |
+
+## Features
+
+- **Animated cycle toggle** — a single absolutely-positioned pill slides between Monthly and Annual via `translate-x` with a 500 ms ease-out transition. No motion library needed.
+- **Slide-up price swap** — both prices render in the same `inline-grid` cell; the inactive one is translated off-screen and faded out. `overflow-y-hidden` clips it cleanly.
+- **Crossfading caption** — "billed monthly" and "billed annually" are stacked in the same grid cell and crossfade in place.
+- **Decorative grid frame** — two horizontal lines, `N + 1` vertical column-boundary lines, and four corner crosshairs frame the cards on `lg+`. Lines use semantic `var(--color-border)` gradients so they fade at the ends.
+- **Highlight ring** — set `highlighted: true` on any plan to give it a primary `ring-4 ring-primary/10` outline plus the filled `<Button>` variant for its CTA.
+- **Theme adaptive** — every surface uses `bg-card`, `text-foreground`, `text-muted-foreground`, `border-border`, and `primary`, so light/dark inversion is automatic.
+- **Single shadcn dep** — only `button` from `registryDependencies`; `lucide-react` is the only npm dep.
