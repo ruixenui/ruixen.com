@@ -103,7 +103,7 @@ const testimonials: Testimonial[] = [
     handle: "@pomufgd",
     avatar: "n",
     avatarUrl:
-      "https://pbs.twimg.com/profile_images/2013567617651425281/YnlJLJUU_normal.jpg",
+      "https://pbs.twimg.com/profile_images/2038304796986478592/KSZqu8Mx_normal.jpg",
     text: "アクセシビリティを重視した、UIライブラリかあ\nあとで試したい",
     tweetUrl: "https://x.com/pomufgd/status/1973951406102159742",
   },
@@ -124,15 +124,42 @@ const testimonials: Testimonial[] = [
       "https://pbs.twimg.com/profile_images/2008606249030721536/2S1LpGJa_normal.jpg",
     text: "You can tell the components are well thought out, not just designed to look good but to actually be useful in production.",
   },
+  {
+    name: "OrcDev",
+    handle: "@orcdev",
+    avatar: "O",
+    avatarUrl:
+      "https://pbs.twimg.com/profile_images/1756766826736893952/6Gvg6jha_normal.jpg",
+    text: "Just checked your library, impressive stuff, I'll look into it little bit better.",
+    tweetUrl: "https://x.com/orcdev/status/2054235971588096453",
+  },
+  {
+    name: "FrΞΞD ◢ ◤",
+    handle: "@FreedSilas",
+    avatar: "F",
+    avatarUrl:
+      "https://pbs.twimg.com/profile_images/2020330634158436356/togRX7Tz_normal.jpg",
+    text: "This is next level clean for real UIs",
+    tweetUrl: "https://x.com/FreedSilas/status/2008912651842130302",
+  },
+  {
+    name: "Web制作BNブログ",
+    handle: "@WebInfoBNBLOG",
+    avatar: "B",
+    avatarUrl:
+      "https://pbs.twimg.com/profile_images/1943814854965702660/O_ibQ48V_normal.jpg",
+    text: "【最新情報】「WordPressのノーコード化が進んでいる！6.8対応解説書＜WordPressの教本＞」「Reactコンポーネントライブラリ＜Ruixen UI＞」など、4件の情報を追加【Web制作BNブログ】\n\n#Web制作 #Webデザイン #コーディング",
+    tweetUrl: "https://x.com/WebInfoBNBLOG/status/1974942897616359905",
+  },
 ];
 
 /* ─── Layout: which cells are testimonials vs empty ─── */
 
 // 4 columns × varying rows.  `null` = empty "+" card, number = testimonial index
 const columns: (number | null)[][] = [
-  [0, 4, 8, null],
-  [1, 5, 9, null],
-  [null, 2, 6, 10],
+  [0, 4, 8, 13],
+  [1, 5, 9, 14],
+  [12, 2, 6, 10],
   [3, 7, 11, null],
 ];
 

@@ -523,9 +523,7 @@ export function GridFrameHero({
   className,
 }: GridFrameHeroProps) {
   return (
-    <section
-      className={cn("relative overflow-hidden bg-background", className)}
-    >
+    <section className={cn("relative overflow-hidden bg-card", className)}>
       <HeroBlock
         title={title}
         description={description}

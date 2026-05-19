@@ -601,3 +601,35 @@ export function CategoryShowcase({ category }: { category: string }) {
 
   return <MasonryChunks chunks={chunks} colCount={colCount} />;
 }
+
+// ---------------------------------------------------------------------------
+// Use-case showcase — renders a hand-picked list of components by slug,
+// preserving the order the slugs were passed in. Reuses the same masonry +
+// full-width breakout pipeline as the category/all-components views.
+// ---------------------------------------------------------------------------
+
+export function UseCaseShowcase({ slugs }: { slugs: string[] }) {
+  const categories = React.useMemo(() => getCategories(), []);
+
+  const flatList: FlatEntry[] = React.useMemo(() => {
+    const bySlug = new Map<string, { item: FlatItem; categoryTitle: string }>();
+    for (const cat of categories) {
+      for (const item of cat.items) {
+        if (!bySlug.has(item.name)) {
+          bySlug.set(item.name, { item, categoryTitle: cat.title });
+        }
+      }
+    }
+    return slugs
+      .map((slug) => bySlug.get(slug))
+      .filter((x): x is { item: FlatItem; categoryTitle: string } => Boolean(x))
+      .map((x) => ({ item: x.item, categoryTitle: x.categoryTitle }));
+  }, [categories, slugs]);
+
+  const colCount = useColumnCount();
+  const chunks = React.useMemo(() => chunkByFullWidth(flatList), [flatList]);
+
+  if (flatList.length === 0) return null;
+
+  return <MasonryChunks chunks={chunks} colCount={colCount} />;
+}
