@@ -592,6 +592,23 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "featured-portrait-testimonial-demo",
+    type: "registry:example",
+    title: "Featured Portrait Testimonial Demo",
+    description:
+      "Example of the expanding-portrait testimonial carousel with five testimonials, favorite-feature tag rows on the active card, and prev/next controls.",
+    registryDependencies: [
+      "https://ruixen.com/r/featured-portrait-testimonial",
+    ],
+    files: [
+      {
+        path: "registry/example/featured-portrait-testimonial-demo.tsx",
+        type: "registry:example",
+        target: "components/featured-portrait-testimonial-demo.tsx",
+      },
+    ],
+  },
+  {
     name: "slide-to-delete-button-demo",
     type: "registry:example",
     title: "Slide To Delete Button Demo",

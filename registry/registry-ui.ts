@@ -779,6 +779,22 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "featured-portrait-testimonial",
+    type: "registry:ui",
+    title: "Featured Portrait Testimonial",
+    description:
+      "An expanding-portrait testimonial carousel. Inactive cards show a grayscale portrait with a name strip; the active card morphs into a full quote card with author, dashed divider, and a row of favorite-feature tags. Width transitions and content crossfade are choreographed for clean, premium movement.",
+    registryDependencies: ["avatar"],
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/featured-portrait-testimonial.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/featured-portrait-testimonial.tsx",
+      },
+    ],
+  },
+  {
     name: "slide-to-delete-button",
     type: "registry:ui",
     title: "Slide To Delete Button",

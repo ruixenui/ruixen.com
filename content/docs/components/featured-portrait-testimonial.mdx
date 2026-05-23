@@ -1,0 +1,127 @@
+---
+title: Featured Portrait Testimonial
+date: 2026-05-23
+description: An expanding-portrait testimonial carousel where inactive cards show a grayscale portrait with a name strip, and the active card morphs into a full quote card with author, dashed divider, and a row of favorite-feature tags. Width transitions and content crossfade are choreographed for clean, premium movement.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="featured-portrait-testimonial-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/featured-portrait-testimonial"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="featured-portrait-testimonial" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { GitBranch, Workflow, Zap } from "lucide-react";
+import {
+  FeaturedPortraitTestimonial,
+  type FeaturedPortraitItem,
+} from "@/components/ruixen/featured-portrait-testimonial";
+
+const items: FeaturedPortraitItem[] = [
+  {
+    id: "sahil",
+    quote:
+      "Ruixen is the first component library that feels truly modern. It's powerful, flexible, and fast to build with.",
+    author: {
+      name: "Sahil Mansuri",
+      role: "CEO & Head of Finance",
+      avatarUrl: "/avatar-images/avatar-04.jpg",
+    },
+    portraitUrl: "/avatar-images/avatar-04.jpg",
+    company: { name: "Pipeliner", logo: <Workflow /> },
+    favorites: [
+      { icon: <Zap />, label: "Automation" },
+      { icon: <GitBranch />, label: "Pipeline" },
+    ],
+  },
+  // ...more items
+];
+
+export default function Page() {
+  return (
+    <FeaturedPortraitTestimonial
+      eyebrow="Testimonials"
+      heading="Their favorites feature"
+      description="Leverage insights from your business, customer, and product data to drive and enhance your team's performance and success."
+      items={items}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop             | Type                     | Default               | Description                                                       |
+| ---------------- | ------------------------ | --------------------- | ----------------------------------------------------------------- |
+| `items`          | `FeaturedPortraitItem[]` | Required              | One entry per testimonial slide.                                  |
+| `eyebrow`        | `ReactNode`              | -                     | Small pill rendered above the heading (e.g. "Testimonials").      |
+| `heading`        | `ReactNode`              | -                     | Section heading.                                                  |
+| `description`    | `ReactNode`              | -                     | Section description.                                              |
+| `favoritesLabel` | `ReactNode`              | `"Favorites Feature"` | Caption rendered above the favorites tag row in the active card.  |
+| `activeWidth`    | `number`                 | `580`                 | Width of the active (expanded) card in pixels on `lg+` viewports. |
+| `inactiveWidth`  | `number`                 | `280`                 | Width of inactive (portrait) cards in pixels on `lg+` viewports.  |
+| `cardHeight`     | `number`                 | `380`                 | Shared card height in pixels.                                     |
+| `defaultIndex`   | `number`                 | `0`                   | Initial active item.                                              |
+| `className`      | `string`                 | -                     | Extra classes appended to the outer `<section>`.                  |
+
+### `FeaturedPortraitItem`
+
+| Field             | Type                         | Description                                                                               |
+| ----------------- | ---------------------------- | ----------------------------------------------------------------------------------------- |
+| `id`              | `string`                     | Stable React key.                                                                         |
+| `quote`           | `ReactNode`                  | Pull-quote rendered in the active card.                                                   |
+| `author`          | `{ name; role; avatarUrl? }` | Author shown both in the active card body and in the inactive footer strip.               |
+| `portraitUrl`     | `string`                     | Large portrait image rendered when the card is collapsed (recommend `~3:4` aspect).       |
+| `company`         | `{ name?; logo? }`           | Optional inactive-footer subtitle and a tiny logo bubble drawn to the left of the avatar. |
+| `favorites`       | `FeaturedPortraitFavorite[]` | Feature tags rendered below the dashed divider in the active card. Optional.              |
+| `accentClassName` | `string`                     | Tailwind class overriding the soft-lavender active-card background.                       |
+
+### `FeaturedPortraitFavorite`
+
+| Field   | Type        | Description                           |
+| ------- | ----------- | ------------------------------------- |
+| `icon`  | `ReactNode` | Leading icon (e.g. a `lucide-react`). |
+| `label` | `ReactNode` | Tag label.                            |
+
+## Features
+
+- **Expanding portrait** — inactive cards render the testimonial as a grayscale portrait with a small footer strip; the active card morphs into a full quote card with avatar, dashed divider, and favorite-feature tags.
+- **Choreographed crossfade** — portrait fades out, then the quote fades in (250ms stagger). Reversing direction simply mirrors the timing, so consecutive selections never overlap.
+- **Translated row** — the active card always lands at the left of the viewport via `translate3d`, so cards before it scroll out and cards after stay visible to the right.
+- **Click-to-expand** — clicking any inactive card promotes it to the active position. Prev/Next buttons round-trip through the list.
+- **Keyboard navigation** — `ArrowLeft` / `ArrowRight` cycle through items when the carousel viewport is focused.
+- **Responsive widths** — cards scale down at `sm` / `md` so the carousel never overflows awkwardly on narrow screens.
+- **Theme tokens only** — uses `bg-card`, `border-border`, `text-foreground`, etc. The active-card lavender wash is overrideable per item via `accentClassName`.
+- **Zero motion deps** — pure CSS transitions on `width`, `transform`, and `opacity` with a unified `cubic-bezier(0.32, 0.72, 0, 1)` easing.

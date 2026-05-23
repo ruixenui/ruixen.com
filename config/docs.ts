@@ -343,6 +343,12 @@ export const docsConfig: DocsConfig = {
               label: "New",
             },
             {
+              title: "Featured Portrait Testimonial",
+              href: `/docs/components/featured-portrait-testimonial`,
+              items: [],
+              label: "New",
+            },
+            {
               title: "Multi-Media Testimonial",
               href: `/docs/components/multi-media-testimonial`,
               items: [],
