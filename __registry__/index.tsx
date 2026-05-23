@@ -1240,6 +1240,32 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "featured-portrait-testimonial": {
+    name: "featured-portrait-testimonial",
+    description:
+      "An expanding-portrait testimonial carousel. Inactive cards show a grayscale portrait with a name strip; the active card morphs into a full quote card with author, dashed divider, and a row of favorite-feature tags. Width transitions and content crossfade are choreographed for clean, premium movement.",
+    type: "registry:ui",
+    registryDependencies: ["avatar"],
+    files: [
+      {
+        path: "registry/ruixenui/featured-portrait-testimonial.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/featured-portrait-testimonial.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/ruixenui/featured-portrait-testimonial.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "slide-to-delete-button": {
     name: "slide-to-delete-button",
     description:
@@ -5796,6 +5822,34 @@ export const Index: Record<string, any> = {
     component: React.lazy(async () => {
       const mod = await import(
         "@/registry/example/customer-story-stack-demo.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "featured-portrait-testimonial-demo": {
+    name: "featured-portrait-testimonial-demo",
+    description:
+      "Example of the expanding-portrait testimonial carousel with five testimonials, favorite-feature tag rows on the active card, and prev/next controls.",
+    type: "registry:example",
+    registryDependencies: [
+      "https://ruixen.com/r/featured-portrait-testimonial",
+    ],
+    files: [
+      {
+        path: "registry/example/featured-portrait-testimonial-demo.tsx",
+        type: "registry:example",
+        target: "components/featured-portrait-testimonial-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/featured-portrait-testimonial-demo.tsx"
       );
       const exportName =
         Object.keys(mod).find(

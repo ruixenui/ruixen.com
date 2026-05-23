@@ -927,6 +927,10 @@ export const testimonialsPreview: ComponentPreviewMap = {
     light: `/preview_images/testimonials/customer-story-stack-light.png`,
     dark: `/preview_images/testimonials/customer-story-stack-dark.png`,
   },
+  "featured-portrait-testimonial": {
+    light: `/preview_images/testimonials/featured-portrait-testimonial-light.png`,
+    dark: `/preview_images/testimonials/featured-portrait-testimonial-dark.png`,
+  },
   "multi-media-testimonial": {
     light: `/preview_images/testimonials/multi-media-testimonial-light.png`,
     dark: `/preview_images/testimonials/multi-media-testimonial-dark.png`,

@@ -886,6 +886,25 @@
       ]
     },
     {
+      "name": "featured-portrait-testimonial",
+      "type": "registry:ui",
+      "title": "Featured Portrait Testimonial",
+      "description": "An expanding-portrait testimonial carousel. Inactive cards show a grayscale portrait with a name strip; the active card morphs into a full quote card with author, dashed divider, and a row of favorite-feature tags. Width transitions and content crossfade are choreographed for clean, premium movement.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/featured-portrait-testimonial.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/featured-portrait-testimonial.tsx"
+        }
+      ]
+    },
+    {
       "name": "slide-to-delete-button",
       "type": "registry:ui",
       "title": "Slide To Delete Button",
@@ -4065,6 +4084,22 @@
           "path": "registry/example/customer-story-stack-demo.tsx",
           "type": "registry:example",
           "target": "components/customer-story-stack-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "featured-portrait-testimonial-demo",
+      "type": "registry:example",
+      "title": "Featured Portrait Testimonial Demo",
+      "description": "Example of the expanding-portrait testimonial carousel with five testimonials, favorite-feature tag rows on the active card, and prev/next controls.",
+      "registryDependencies": [
+        "https://ruixen.com/r/featured-portrait-testimonial"
+      ],
+      "files": [
+        {
+          "path": "registry/example/featured-portrait-testimonial-demo.tsx",
+          "type": "registry:example",
+          "target": "components/featured-portrait-testimonial-demo.tsx"
         }
       ]
     },
