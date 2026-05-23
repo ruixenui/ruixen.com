@@ -10,7 +10,7 @@
 
 **Marketing UI for shadcn — in any stack.**
 
-240+ React sections and components for landing pages. Drop in with one CLI command. Works with Tailwind v3 or v4, Radix or Base UI.
+The component library for the *page that wraps your app*. 240+ React sections and components for landing pages — hero blocks, pricing tables, FAQs, footers, navbars, and the primitives around them. Generated from a single source codebase into four registry variants (Tailwind v3/v4 · Radix/Base UI) and installed with one CLI command.
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Components](https://img.shields.io/badge/Components-240+-8b5cf6.svg)](https://ruixen.com/docs)
@@ -23,18 +23,31 @@
 
 <br />
 
-## Why Ruixen
+## What Ruixen is for
 
-Ruixen ships across four stacks. Every component is generated into **Tailwind v3, Tailwind v4, Radix, and Base UI** variants from one source codebase at build time. Pick the variant that matches your project. Install with one command.
+shadcn solved primitives. Ruixen solves **the surface that ships when you publish** — the hero that gets the click, the pricing table that converts, the FAQ that closes the deal, the footer customers actually read.
 
-Built for teams that don't want to be locked to a single Tailwind version or primitive library — whether you're pinned to Tailwind v3 for legacy compatibility, evaluating Base UI for accessibility or licensing, or running the latest stack.
+If you've ever opened a fresh Next.js project, scaffolded shadcn, and then realized you still need to design every marketing block from scratch — that's the gap. Ruixen fills it. Sections, components, gradients, and templates that look like they shipped in 2026, not 1995.
 
 <br />
 
-## Quick Start
+## In any stack — really
+
+Every component in the catalog is generated into **four registry variants** from one source codebase at build time:
+
+| | Tailwind v4 | Tailwind v3 |
+|:---|:---|:---|
+| **Radix UI** | `r/<name>` | `r/tw3/<name>` |
+| **Base UI** | `r/baseui/<name>` | `r/baseui/tw3/<name>` |
+
+Pick the URL that matches your stack from the docs sidebar. The CLI does the rest — no peer-dep gymnastics, no provider to wrap, no global CSS to import. Pinned to Tailwind v3 for legacy compatibility? Evaluating Base UI for accessibility or licensing? Running the latest? Ruixen ships for all of you.
+
+<br />
+
+## Quick start
 
 ```bash
-# Tailwind v4 + Radix (default)
+# Tailwind v4 + Radix  (default)
 npx shadcn@latest add "https://ruixen.com/r/staggered-faq-section"
 
 # Tailwind v3 + Radix
@@ -47,7 +60,20 @@ npx shadcn@latest add "https://ruixen.com/r/baseui/staggered-faq-section"
 npx shadcn@latest add "https://ruixen.com/r/baseui/tw3/staggered-faq-section"
 ```
 
-The component lands in your project with dependencies resolved. No package to install, no provider to wrap, no global CSS to import.
+The component lands in your project with dependencies resolved. Just JSX — yours to edit, ship, and refactor.
+
+<br />
+
+## Built with intention
+
+The catalog isn't styled to look good in a screenshot — it's built to feel right in production. Where it matters, components carry weight:
+
+- **Motion as physics, not transitions.** Buttons, switches, badges, and accordions use spring configs from `motion/react` — momentum, overshoot, settling. Not a 300ms ease-out timer pretending to be life.
+- **Audio as feedback.** Interactive primitives ship with a 3ms Web Audio click on press for a tactile feel. Opt out per-component with `sound={false}`.
+- **Tokens, not hex.** Every component reads from shadcn theme tokens (`bg-card`, `border-border`, `text-foreground`). Change one CSS variable, re-skin the catalog.
+- **Identical code, different wrappers.** Switching from Radix to Base UI doesn't change the component file — just the underlying primitive layer. Component logic stays portable.
+
+Most of the catalog is pure render. Physics and audio are a flavor on the interactive primitives, not a tax on everything else.
 
 <br />
 
@@ -71,7 +97,7 @@ The component lands in your project with dependencies resolved. No package to in
 <tr>
 <td width="33%" align="center">
 <video src="https://github.com/ruixenui/ruixen.com/raw/refs/heads/main/public/landing-page-previews/integration-and-stats-section-dark.mp4" width="100%" autoplay loop muted playsinline></video>
-<strong>Integration & Stats Section</strong><br /><sub>Logos and metrics block for trust building</sub>
+<strong>Integration &amp; Stats Section</strong><br /><sub>Logos and metrics block for trust-building</sub>
 </td>
 <td width="33%" align="center">
 <video src="https://github.com/ruixenui/ruixen.com/raw/refs/heads/main/public/landing-page-previews/rising-glow-dark.mp4" width="100%" autoplay loop muted playsinline></video>
@@ -92,59 +118,47 @@ The component lands in your project with dependencies resolved. No package to in
 
 ## What's inside
 
-**Sections** &mdash; front-of-website blocks (51)
+**Sections** &mdash; 59 marketing blocks across 8 categories
 
 | | | | |
 |:---|:---|:---|:---|
-| Hero Sections | Pricing | FAQs | Footers |
-| Navbars | Featured Sections | Client Sections | |
+| Navbars (16) | Hero Sections (9) | Pricing (10) | FAQs (6) |
+| Featured (6) | Testimonials (4) | Clients (4) | Footers (4) |
 
-**Components** &mdash; primitives and effects for landing pages (88)
+**Components** &mdash; primitives and effects across 24 categories
 
-| | | | |
-|:---|:---|:---|:---|
-| Buttons | Inputs | Cards | Forms |
-| Accordions | Avatars | Badges | Banners |
-| Backgrounds | Text Effects | Loaders | Carousels |
-| AI Chat Inputs | Audio & Media | Image Tools | Video Players |
-| Checkboxes | Selects | Sliders | Tabs |
-| Charts | Dialogs | Docks | Stepper |
+Buttons &middot; Inputs &middot; Cards &middot; Forms &middot; Accordions &middot; Avatars &middot; Badges &middot; Banners &middot; Backgrounds &middot; Text Effects &middot; Loaders &middot; Carousels &middot; AI Chat Inputs &middot; Audio &amp; Media &middot; Image Tools &middot; Video Players &middot; Checkboxes &middot; Selects &middot; Sliders &middot; Tabs &middot; Charts &middot; Dialogs &middot; Docks &middot; Stepper
 
-**App UI** &mdash; bonus catalog for app interfaces (39)
+**App UI** &mdash; bonus catalog for product interfaces
 
-| | | | |
-|:---|:---|:---|:---|
-| Calendars | Event Calendars | Date Pickers | Pagination |
-| File Management | Notifications | Drawer | Menu |
-| Breadcrumbs | | | |
+Calendars &middot; Event Calendars &middot; Date Pickers &middot; Pagination &middot; File Management &middot; Notifications &middot; Drawer &middot; Menu &middot; Breadcrumbs
+
+**Gradients** &mdash; 31 hand-tuned 4K gradients (3840 &times; 2160) across 6 collections: Shade Shifters, Crimson Aura, Fractional Walls, Hero Gradients, Hue Flows, Moon Backgrounds. Free for personal and commercial use.
 
 <br />
 
-## Pro Templates
+## Pro
 
-Need polished, production-grade landing pages?
+When the free catalog isn't enough — when you need everything to look like it shipped from a design team that's been working together for a year:
 
-**[Ruixen Pro](https://pro.ruixen.com)** ships 50+ premium components and full landing-page templates with lifetime updates &mdash; **$59 once, no subscription.**
+- **50+ premium components** with motion polish and theme depth beyond the OSS catalog
+- **2 production-ready templates** &mdash; *Intellune* (SaaS) and *Nguyen* (portfolio)
+- **Lifetime updates** &mdash; every new component we ship lands in your project for as long as the project exists
+- **Commercial license** included
+- **Priority Discord support**
+- **14-day money-back guarantee**
 
-Apple Mega Nav &middot; Models Carousel &middot; CTA Meteor &middot; Hero Bars &middot; Bloom Text &middot; Voice Recorder &middot; Testimonials Map &middot; Workflow Bento &middot; and more.
+**$59 once. No subscription.**
 
-<br />
-
-## Gradients
-
-A curated collection of **31 premium gradients** at 4K resolution (3840 &times; 2160) across 6 collections: Shade Shifters, Crimson Aura, Fractional Walls, Hero Gradients, Hue Flows, and Moon Backgrounds.
-
-Free for personal and commercial use.
-
-**[Browse gradients &rarr;](https://ruixen.com/gradients)**
+[ruixen.com/pricing](https://ruixen.com/pricing) &nbsp;&middot;&nbsp; [pro.ruixen.com](https://pro.ruixen.com)
 
 <br />
 
-## A note on motion
+## Ships in public
 
-A subset of components &mdash; buttons, switches, badges, accordions, and a handful of others &mdash; use `motion/react` springs and a 3ms Web Audio click for a more tactile feel. They render fine without it; opt out per-component with `sound={false}`.
+New sections and components every week. Spring configs, interaction breakdowns, and the build itself happens on Twitter — follow [@ruixen_ui](https://twitter.com/ruixen_ui) to see what lands next.
 
-It's a flavor on the interactive primitives, not a universal feature of the catalog.
+The roadmap lives in [ROADMAP.md](./ROADMAP.md).
 
 <br />
 
@@ -153,11 +167,11 @@ It's a flavor on the interactive primitives, not a universal feature of the cata
 | | |
 |:---|:---|
 | **Framework** | Next.js 15 &middot; React 19 &middot; TypeScript 5 |
-| **Styling** | Tailwind CSS v3 &amp; v4 &middot; CSS Variables |
-| **Animation** | Motion (framer-motion successor) &middot; GSAP &middot; Web Audio API |
-| **Primitives** | Radix UI &amp; Base UI (component code is identical; only the wrapper layer differs) |
-| **Registry** | shadcn CLI &middot; JSON-based component registry |
-| **Build** | One source codebase &rarr; four registry variants generated at build time |
+| **Styling** | Tailwind CSS v3 &amp; v4 &middot; CSS Variables &middot; shadcn theme tokens |
+| **Motion** | Motion (framer-motion successor) &middot; GSAP &middot; Web Audio API |
+| **Primitives** | Radix UI &amp; Base UI &mdash; component code is identical; only the wrapper layer differs |
+| **Registry** | shadcn CLI &middot; JSON-based component registry &middot; one source &rarr; four variants at build time |
+| **Content** | Content Collections &middot; MDX docs |
 
 <br />
 
@@ -196,7 +210,7 @@ Read the [Contributing Guide](./CONTRIBUTING.md) for the full walkthrough, or st
 
 ## License
 
-MIT &mdash; see [LICENSE](LICENSE) for details.
+MIT &mdash; see [LICENSE](LICENSE) for details. The free catalog is yours to use in any project, commercial or otherwise.
 
 <br />
 
