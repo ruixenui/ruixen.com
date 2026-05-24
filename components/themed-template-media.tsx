@@ -2,9 +2,9 @@
 
 import * as React from "react";
 import Image from "next/image";
-import { useTheme } from "next-themes";
 
 import type { ProTemplate } from "@/types/pro-templates";
+import { cn } from "@/lib/utils";
 
 interface ThemedTemplateMediaProps {
   template: ProTemplate;
@@ -26,57 +26,86 @@ function pickImages(template: ProTemplate) {
   return { light, dark };
 }
 
+// Renders both light + dark variants and toggles them via Tailwind `dark:` so
+// the correct one is visible on first paint — no SSR/hydration flash, no
+// remount when the theme flips (which would otherwise restart the video).
 export function ThemedTemplateMedia({
   template,
   className,
   width = 1200,
   height = 800,
 }: ThemedTemplateMediaProps) {
-  const { resolvedTheme } = useTheme();
-  const [mounted, setMounted] = React.useState(false);
-  React.useEffect(() => setMounted(true), []);
-
-  // Render light variant on server / before hydration to avoid mismatch;
-  // swap to dark once theme resolves on the client.
-  const isDark = mounted && resolvedTheme === "dark";
-
   const { light: lightImg, dark: darkImg } = pickImages(template);
-  const poster = isDark ? darkImg?.image_url : lightImg?.image_url;
-  const videoUrl = isDark
-    ? template.video_url_dark || template.video_url_light
-    : template.video_url_light || template.video_url_dark;
-  const imgSrc = isDark ? darkImg : lightImg;
+  const lightVideo =
+    template.video_url_light ?? template.video_url_dark ?? null;
+  const darkVideo =
+    template.video_url_dark ?? template.video_url_light ?? null;
 
-  if (videoUrl) {
+  if (lightVideo || darkVideo) {
     return (
-      <video
-        key={videoUrl}
-        autoPlay
-        loop
-        muted
-        playsInline
-        src={videoUrl}
-        poster={poster ?? undefined}
-        className={className}
-      />
+      <>
+        {lightVideo && (
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            src={lightVideo}
+            poster={lightImg?.image_url}
+            className={cn(className, "block dark:hidden")}
+          />
+        )}
+        {darkVideo && (
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            src={darkVideo}
+            poster={darkImg?.image_url}
+            className={cn(className, "hidden dark:block")}
+          />
+        )}
+      </>
     );
   }
-  if (imgSrc) {
+
+  if (lightImg || darkImg) {
     return (
-      <Image
-        src={imgSrc.image_url}
-        alt={imgSrc.alt_text ?? template.name}
-        width={width}
-        height={height}
-        className={className}
-        unoptimized
-      />
+      <>
+        {lightImg && (
+          <Image
+            src={lightImg.image_url}
+            alt={lightImg.alt_text ?? template.name}
+            width={width}
+            height={height}
+            className={cn(className, "block dark:hidden")}
+            unoptimized
+          />
+        )}
+        {darkImg && darkImg !== lightImg && (
+          <Image
+            src={darkImg.image_url}
+            alt={darkImg.alt_text ?? template.name}
+            width={width}
+            height={height}
+            className={cn(className, "hidden dark:block")}
+            unoptimized
+          />
+        )}
+      </>
     );
   }
+
   return (
     <div
       aria-hidden
-      className={`${className ?? ""} flex items-center justify-center bg-gradient-to-br from-muted to-muted/40 text-muted-foreground text-sm`}
+      className={cn(
+        className,
+        "flex items-center justify-center bg-gradient-to-br from-muted to-muted/40 text-muted-foreground text-sm",
+      )}
     >
       {template.name}
     </div>
