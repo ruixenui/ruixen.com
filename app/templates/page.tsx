@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/card";
 import { TemplateProClickTracker } from "@/components/template-pro-click-tracker";
 import { ThemedTemplateMedia } from "@/components/themed-template-media";
+import { cn } from "@/lib/utils";
 
 // Pro catalog is hardcoded in data/pro-catalog.ts — no runtime fetch.
 
@@ -33,8 +34,8 @@ interface StaticTemplate {
   id: string;
   title: string;
   description: string;
-  image?: string;
-  video?: string;
+  videoLight?: string;
+  videoDark?: string;
   previewUrl: string;
   githubUrl?: string;
   price: "free";
@@ -52,8 +53,10 @@ const staticTemplates: StaticTemplate[] = [
     title: "Creative Portfolio Template",
     description:
       "A sleek portfolio template to highlight your creative journey and accomplishments.",
-    image: "/portfolio-preview.jpg",
-    video: "/portfolio.mp4",
+    videoLight:
+      "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/pro_ruixen_products/portfolio/portfolio-light-video.mp4",
+    videoDark:
+      "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/pro_ruixen_products/portfolio/portfolio-dark-video.mp4",
     previewUrl: "https://portfolio-ruixens-projects.vercel.app/",
     githubUrl: "https://github.com/ruixenui/portfolio",
     price: "free",
@@ -178,35 +181,52 @@ function StaticTemplateCard({ template }: { template: StaticTemplate }) {
           </div>
         </div>
 
-        <div className="relative hover:shadow-[0_8px_32px_rgba(0,0,0,0.1)] hover:backdrop-blur-sm transition-all duration-300 rounded-3xl cursor-pointer">
-          {template.video ? (
-            <video
-              autoPlay
-              loop
-              muted
-              className="w-full h-[26rem] rounded-3xl hover:scale-[1.06] transition-all duration-300 object-cover"
-              src={template.video}
-            />
-          ) : template.image ? (
-            <Image
-              src={template.image}
-              alt={template.title}
-              width={800}
-              height={600}
-              className="w-full h-full rounded-lg object-cover"
-            />
-          ) : (
-            <div
-              aria-hidden
-              className="w-full h-[26rem] rounded-3xl bg-gradient-to-br from-muted to-muted/40 flex items-center justify-center text-muted-foreground text-sm"
-            >
-              {template.title}
+        <div className="px-6 pb-6 md:px-0 md:pr-6 md:py-6">
+          <div className="relative overflow-hidden rounded-3xl hover:shadow-[0_8px_32px_rgba(0,0,0,0.1)] hover:backdrop-blur-sm transition-all duration-300 cursor-pointer">
+            {template.videoLight || template.videoDark ? (
+              <>
+                {template.videoLight && (
+                  <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="metadata"
+                    src={template.videoLight}
+                    className={cn(
+                      "w-full h-[26rem] rounded-3xl hover:scale-[1.06] transition-all duration-300 object-cover",
+                      template.videoDark && "block dark:hidden",
+                    )}
+                  />
+                )}
+                {template.videoDark && (
+                  <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="metadata"
+                    src={template.videoDark}
+                    className={cn(
+                      "w-full h-[26rem] rounded-3xl hover:scale-[1.06] transition-all duration-300 object-cover",
+                      template.videoLight && "hidden dark:block",
+                    )}
+                  />
+                )}
+              </>
+            ) : (
+              <div
+                aria-hidden
+                className="w-full h-[26rem] rounded-3xl bg-gradient-to-br from-muted to-muted/40 flex items-center justify-center text-muted-foreground text-sm"
+              >
+                {template.title}
+              </div>
+            )}
+            <div className="absolute top-4 right-4 z-10">
+              <Badge variant="secondary" className="bg-[#bef853]">
+                Free
+              </Badge>
             </div>
-          )}
-          <div className="absolute top-4 right-4">
-            <Badge variant="secondary" className="bg-[#bef853]">
-              Free
-            </Badge>
           </div>
         </div>
       </div>
@@ -322,28 +342,30 @@ function ProTemplateCard({ template }: { template: ProTemplate }) {
           </div>
         </div>
 
-        <Link
-          href={detailHref}
-          target="_blank"
-          rel="noopener noreferrer"
-          data-pro-template-preview={template.slug}
-          className="relative block hover:shadow-[0_8px_32px_rgba(0,0,0,0.1)] hover:backdrop-blur-sm transition-all duration-300 rounded-3xl cursor-pointer"
-        >
-          <ThemedTemplateMedia
-            template={template}
-            className="w-full h-[26rem] rounded-3xl hover:scale-[1.06] transition-all duration-300 object-cover object-top"
-            width={1200}
-            height={800}
-          />
-          <div className="absolute top-4 right-4">
-            <Badge
-              variant={template.is_free ? "secondary" : "default"}
-              className="bg-[#bef853]"
-            >
-              {template.is_free ? "Free" : "Pro"}
-            </Badge>
-          </div>
-        </Link>
+        <div className="px-6 pb-6 md:px-0 md:pr-6 md:py-6">
+          <Link
+            href={detailHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-pro-template-preview={template.slug}
+            className="relative block overflow-hidden rounded-3xl hover:shadow-[0_8px_32px_rgba(0,0,0,0.1)] hover:backdrop-blur-sm transition-all duration-300 cursor-pointer"
+          >
+            <ThemedTemplateMedia
+              template={template}
+              className="w-full h-[26rem] rounded-3xl hover:scale-[1.06] transition-all duration-300 object-cover object-top"
+              width={1200}
+              height={800}
+            />
+            <div className="absolute top-4 right-4 z-10">
+              <Badge
+                variant={template.is_free ? "secondary" : "default"}
+                className="bg-[#bef853]"
+              >
+                {template.is_free ? "Free" : "Pro"}
+              </Badge>
+            </div>
+          </Link>
+        </div>
       </div>
     </Card>
   );
@@ -380,18 +402,20 @@ function ComingSoonTemplateCard({
             Available Soon
           </div>
         </div>
-        <div className="relative rounded-3xl overflow-hidden">
-          <Image
-            src={imageUrl}
-            alt={name}
-            width={1200}
-            height={800}
-            className="w-full h-[26rem] rounded-3xl object-cover object-top grayscale-[30%]"
-            unoptimized
-          />
-          <div className="absolute inset-0 flex items-center justify-center bg-background/40 backdrop-blur-[2px] rounded-3xl">
-            <div className="rounded-full bg-background/80 px-4 py-2 text-sm font-medium text-muted-foreground shadow-sm">
-              Coming Very Soon
+        <div className="px-6 pb-6 md:px-0 md:pr-6 md:py-6">
+          <div className="relative rounded-3xl overflow-hidden">
+            <Image
+              src={imageUrl}
+              alt={name}
+              width={1200}
+              height={800}
+              className="w-full h-[26rem] rounded-3xl object-cover object-top grayscale-[30%]"
+              unoptimized
+            />
+            <div className="absolute inset-0 flex items-center justify-center bg-background/40 backdrop-blur-[2px] rounded-3xl">
+              <div className="rounded-full bg-background/80 px-4 py-2 text-sm font-medium text-muted-foreground shadow-sm">
+                Coming Very Soon
+              </div>
             </div>
           </div>
         </div>

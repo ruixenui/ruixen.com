@@ -11,8 +11,19 @@ published: true
     autoPlay
     loop
     muted
-    src="/portfolio.mp4"
-    className="w-full rounded-xl border"
+    playsInline
+    preload="metadata"
+    src="https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/pro_ruixen_products/portfolio/portfolio-light-video.mp4"
+    className="w-full rounded-xl border block dark:hidden"
+  />
+  <video
+    autoPlay
+    loop
+    muted
+    playsInline
+    preload="metadata"
+    src="https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/pro_ruixen_products/portfolio/portfolio-dark-video.mp4"
+    className="w-full rounded-xl border hidden dark:block"
   />
   <div className="flex w-full flex-col gap-2 sm:flex-row">
     <TemplateOpen url="https://github.com/ruixenui/portfolio" free />
