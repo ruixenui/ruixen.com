@@ -1,10 +1,11 @@
 /**
  * Pro template catalog — hardcoded mirror of the real pro.ruixen.com catalog.
  *
- * Source of truth (both active templates live on pro.ruixen.com):
+ * Source of truth (active templates live on pro.ruixen.com):
  *   - Nguyen   → pro.ruixen.com/backend/scripts/add_nguyen.py
  *   - Intellune → pulled from the live Pro product detail JSON
  *                 (pro.ruixen.com/templates/intellune RSC payload)
+ *   - Folio / Vertex → pro.ruixen.com/backend/scripts/seed_templates.py
  *   - Coming-soon teaser → pro.ruixen.com/frontend/apps/www/app/templates/page.tsx
  *
  * The OSS site used to fetch /api/v1/products from pro.ruixen.com at build time.
@@ -267,16 +268,248 @@ export const PRO_CATALOG: ProTemplate[] = [
       },
     ],
   }),
+  baseTemplate({
+    id: 3,
+    name: "Folio — Open Source Data Intelligence Landing Template",
+    slug: "folio",
+    short_description:
+      "Production-grade Next.js 15 landing template for open-source data intelligence and AI charting products. Hero with dashboard preview, Bento, How-it-Works, FAQ.",
+    long_description:
+      "Folio is a polished, production-ready marketing site for open-source data intelligence, BI, and AI-charting products. Built on Next.js 15 App Router, React 19, Tailwind CSS 4, and shadcn/ui, it ships with a Hero featuring an in-page dashboard preview, a Bento feature grid, animated Feature Tabs, a How-it-Works walkthrough, Testimonials, Customers / logo cloud, Pricing, FAQ, and CTA. Pre-built Pricing, Contact, Privacy, Terms, and a custom 404 page. Light/dark mode via next-themes, type-safe env via @t3-oss/env-nextjs, optional Drizzle + Neon Postgres and Resend + React Email scaffolding, Biome for one-command lint and format. Ideal positioning for OSS-first BI tools and natural-language-to-SQL products.",
+    product_type: "template",
+    category: null,
+    tech_stack: ["nextjs", "react", "tailwind"],
+    features: [
+      "Next.js 15 App Router + Turbopack",
+      "React 19 + TypeScript 5.7",
+      "Tailwind CSS 4 + shadcn/ui + Radix primitives",
+      "Light / Dark mode (next-themes)",
+      "Framer Motion animations",
+      "Hero with in-page dashboard preview",
+      "Bento feature grid + animated Feature Tabs",
+      "How-it-Works walkthrough",
+      "Testimonials, Customers, Pricing, FAQ, CTA",
+      "Pricing, Contact, Privacy, Terms, 404 pages",
+      "SEO: dynamic metadata, sitemap, Open Graph",
+      "Type-safe env with @t3-oss/env-nextjs",
+      "Optional Drizzle ORM + Neon Postgres",
+      "Optional Resend + React Email",
+      "React Hook Form + Zod forms",
+      "Biome lint + format",
+    ],
+    highlights: [
+      "Save 80+ hours of frontend work",
+      "Positioning baked in for OSS / data-intelligence products",
+      "Hero with embedded dashboard preview",
+      "Light + dark mode, fully responsive",
+      "Ship to Vercel in minutes",
+      "Yours to own — unlimited projects, commercial use",
+    ],
+    sections_included: [
+      "Header with mobile menu + theme toggle",
+      "Hero with dashboard preview",
+      "Logo Cloud / Customers carousel",
+      "Bento feature grid",
+      "Feature Tabs (animated)",
+      "How-it-Works walkthrough",
+      "Services",
+      "Product Tabs",
+      "Testimonials",
+      "Quote",
+      "Pricing comparison table",
+      "FAQ accordion",
+      "CTA",
+      "Footer",
+    ],
+    dependencies: {
+      next: "15.5.9",
+      react: "19.0.0",
+      typescript: "5.7.3",
+      tailwindcss: "4.0.4",
+      "framer-motion": "12.23.26",
+      "drizzle-orm": "0.41.0",
+      "better-auth": "1.2.5",
+      resend: "4.2.0",
+    },
+    price_usd_cents: 3900,
+    is_free: false,
+    is_included_in_membership: true,
+    demo_url: "https://folio-topaz-delta.vercel.app",
+    preview_url: "https://folio-topaz-delta.vercel.app",
+    video_url_light: `${R2_BASE}/folio/folio-light-theme.mp4`,
+    video_url_dark: `${R2_BASE}/folio/folio-dark-theme.mp4`,
+    what_is_this:
+      "Folio is a Next.js 15 marketing template built for open-source data intelligence, business-intelligence, and AI-charting products. It bundles a Hero with an embedded dashboard preview, a Bento grid, animated Feature Tabs, and the supporting pages every OSS landing page needs — so you can launch a credible site without rebuilding the same scaffolding.",
+    who_is_this_for:
+      "Founders and maintainers launching an open-source data tool, natural-language-to-SQL product, AI-charting library, or BI platform who need a polished marketing site that signals credibility from the first scroll — without spending weeks on design polish, dark-mode QA, and section assembly.",
+    is_active: true,
+    is_featured: true,
+    coming_soon: false,
+    version: "1.0.0",
+    images: [
+      {
+        id: 1,
+        image_url: `${R2_BASE}/folio/folio-image-01.png`,
+        alt_text: "Folio landing — hero with dashboard preview",
+        display_order: 0,
+        is_thumbnail: true,
+      },
+      {
+        id: 2,
+        image_url: `${R2_BASE}/folio/folio-image-02.png`,
+        alt_text: "Folio landing — bento grid",
+        display_order: 1,
+        is_thumbnail: false,
+      },
+      {
+        id: 3,
+        image_url: `${R2_BASE}/folio/folio-image-03.png`,
+        alt_text: "Folio landing — feature tabs",
+        display_order: 2,
+        is_thumbnail: false,
+      },
+      {
+        id: 4,
+        image_url: `${R2_BASE}/folio/folio-image-04.png`,
+        alt_text: "Folio landing — how it works",
+        display_order: 3,
+        is_thumbnail: false,
+      },
+      {
+        id: 5,
+        image_url: `${R2_BASE}/folio/folio-image-05.png`,
+        alt_text: "Folio landing — testimonials / customers",
+        display_order: 4,
+        is_thumbnail: false,
+      },
+      {
+        id: 6,
+        image_url: `${R2_BASE}/folio/folio-image-06.png`,
+        alt_text: "Folio landing — pricing / CTA",
+        display_order: 5,
+        is_thumbnail: false,
+      },
+    ],
+  }),
+  baseTemplate({
+    id: 4,
+    name: "Vertex — AI Workflow Automation Landing Template",
+    slug: "vertex",
+    short_description:
+      "Production-grade Next.js 15 landing page for AI workflow automation products. 10+ sections, light/dark, SEO-ready.",
+    long_description:
+      "Vertex is a polished, production-ready marketing site for AI workflow automation startups, built on Next.js 15 App Router, React 19, Tailwind CSS 4, and shadcn/ui. It ships with a full landing page composed of 10+ section components (Hero with rotating CRM cards, Features, Services, Product Tabs, Customers, Testimonials, Quote, Pricing comparison, FAQ, CTA), plus pre-built Pricing, Contact, Privacy, Terms, and custom 404 pages. Light/dark mode via next-themes, type-safe env via @t3-oss/env-nextjs, optional Drizzle + Neon Postgres and Resend + React Email scaffolding, and Biome for one-command lint and format.",
+    product_type: "template",
+    category: null,
+    tech_stack: ["nextjs", "react", "tailwind"],
+    features: [
+      "Next.js 15 App Router + Turbopack",
+      "React 19 + TypeScript 5.7",
+      "Tailwind CSS 4 + shadcn/ui + Radix primitives",
+      "Light / Dark mode (next-themes)",
+      "Framer Motion animations",
+      "10+ pre-built landing sections",
+      "Pricing, Contact, Privacy, Terms, 404 pages",
+      "SEO: dynamic metadata, sitemap, Open Graph",
+      "Type-safe env with @t3-oss/env-nextjs",
+      "Optional Drizzle ORM + Neon Postgres",
+      "Optional Resend + React Email",
+      "React Hook Form + Zod forms",
+      "Biome lint + format",
+    ],
+    highlights: [
+      "Save 80+ hours of frontend work",
+      "AI-product positioning baked into copy and layout",
+      "Light + dark mode, fully responsive",
+      "Ship to Vercel in minutes",
+      "Yours to own — unlimited projects, commercial use",
+    ],
+    sections_included: [
+      "Header with mobile menu + theme toggle",
+      "Hero with rotating CRM cards",
+      "Logo Cloud",
+      "Features grid",
+      "Services",
+      "Product Tabs",
+      "Customers",
+      "Testimonials carousel",
+      "Quote",
+      "Pricing comparison table",
+      "FAQ accordion",
+      "CTA",
+      "Footer",
+    ],
+    dependencies: {
+      next: "15.5.9",
+      react: "19.0.0",
+      typescript: "5.7.3",
+      tailwindcss: "4.0.4",
+      "framer-motion": "12.23.26",
+      "drizzle-orm": "0.41.0",
+      "better-auth": "1.2.5",
+      resend: "4.2.0",
+    },
+    price_usd_cents: 3900,
+    is_free: false,
+    is_included_in_membership: true,
+    demo_url: "https://vertex-one-lovat.vercel.app",
+    preview_url: "https://vertex-one-lovat.vercel.app",
+    video_url_light: `${R2_BASE}/vertex/vertex-light-video.mp4`,
+    video_url_dark: `${R2_BASE}/vertex/vertex-dark-video.mp4`,
+    what_is_this:
+      "Vertex is a Next.js 15 marketing template purpose-built for AI workflow automation products. It bundles a complete landing page, supporting pages, and modern tooling so you can launch a credible site without spending weeks on layout, polish, and dark-mode QA.",
+    who_is_this_for:
+      "Founders and indie hackers launching an AI workflow, agents, or automation product who want a polished, conversion-tuned site running in a day — not a sprint of design, copy structure, and section assembly.",
+    is_active: true,
+    is_featured: true,
+    coming_soon: false,
+    version: "1.0.0",
+    images: [
+      {
+        id: 1,
+        image_url: `${R2_BASE}/vertex/vertex-image-01.png`,
+        alt_text: "Vertex landing — hero",
+        display_order: 0,
+        is_thumbnail: true,
+      },
+      {
+        id: 2,
+        image_url: `${R2_BASE}/vertex/vertex-image-02.png`,
+        alt_text: "Vertex landing — features",
+        display_order: 1,
+        is_thumbnail: false,
+      },
+      {
+        id: 3,
+        image_url: `${R2_BASE}/vertex/vertex-image-03.png`,
+        alt_text: "Vertex landing — services / product tabs",
+        display_order: 2,
+        is_thumbnail: false,
+      },
+      {
+        id: 4,
+        image_url: `${R2_BASE}/vertex/vertex-image-04.png`,
+        alt_text: "Vertex landing — pricing",
+        display_order: 3,
+        is_thumbnail: false,
+      },
+      {
+        id: 5,
+        image_url: `${R2_BASE}/vertex/vertex-image-05.png`,
+        alt_text: "Vertex landing — testimonials / CTA",
+        display_order: 4,
+        is_thumbnail: false,
+      },
+    ],
+  }),
 ];
 
-export const COMING_SOON_CATALOG = [
-  {
-    name: "Folio – Win More Clients",
-    description:
-      "Turn visitors into clients. A showcase that makes your work impossible to ignore.",
-    image_url: `${R2_BASE}/dummy-02.png`,
-  },
-] as const;
+// Folio and Vertex shipped as real products — no coming-soon teasers right now.
+export const COMING_SOON_CATALOG: ReadonlyArray<{
+  name: string;
+  description: string;
+  image_url: string;
+}> = [];
 
 export function getProTemplates(): ProTemplate[] {
   return PRO_CATALOG.filter((t) => t.is_active && !t.coming_soon);
