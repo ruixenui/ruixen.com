@@ -295,6 +295,12 @@ export const docsConfig: DocsConfig = {
               items: [],
               label: "New",
             },
+            {
+              title: "Sales AI Hero",
+              href: `/docs/components/sales-ai-hero`,
+              items: [],
+              label: "New",
+            },
             // {
             //   title: "Floating Cards Hero",
             //   href: `/docs/components/floating-cards-hero`,

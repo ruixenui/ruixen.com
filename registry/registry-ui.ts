@@ -2396,6 +2396,21 @@ export const ui: Registry["items"] = [
   //   ],
   // },
   {
+    name: "sales-ai-hero",
+    type: "registry:ui",
+    title: "Sales AI Hero",
+    description:
+      "A SaaS landing hero with floating announcement pill, oversized centered headline, paired square + landscape media tiles, and a divider-flanked trusted-by logo strip.",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/sales-ai-hero.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/sales-ai-hero.tsx",
+      },
+    ],
+  },
+  {
     name: "multi-media-testimonial",
     type: "registry:ui",
     title: "Multi-Media Testimonial",

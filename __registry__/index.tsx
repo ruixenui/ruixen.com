@@ -3690,6 +3690,30 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "sales-ai-hero": {
+    name: "sales-ai-hero",
+    description:
+      "A SaaS landing hero with floating announcement pill, oversized centered headline, paired square + landscape media tiles, and a divider-flanked trusted-by logo strip.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/sales-ai-hero.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/sales-ai-hero.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/sales-ai-hero.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "multi-media-testimonial": {
     name: "multi-media-testimonial",
     description:
@@ -8306,6 +8330,30 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/grid-frame-hero-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "sales-ai-hero-demo": {
+    name: "sales-ai-hero-demo",
+    description:
+      "Example of an oversized centered hero with a floating announcement pill, paired media tiles, and a divider-flanked trusted-by logo strip.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/sales-ai-hero"],
+    files: [
+      {
+        path: "registry/example/sales-ai-hero-demo.tsx",
+        type: "registry:example",
+        target: "components/sales-ai-hero-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/sales-ai-hero-demo.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>
