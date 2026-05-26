@@ -877,6 +877,10 @@ export const heroSectionsPreview: ComponentPreviewMap = {
     light: `/preview_images/hero-sections/grid-frame-hero-light.png`,
     dark: `/preview_images/hero-sections/grid-frame-hero-dark.png`,
   },
+  "sales-ai-hero": {
+    light: `/preview_images/hero-sections/sales-ai-hero-light.png`,
+    dark: `/preview_images/hero-sections/sales-ai-hero-dark.png`,
+  },
   // "floating-cards-hero": {
   //   light: `/preview_images/hero-sections/floating-cards-hero-light.png`,
   //   dark: `/preview_images/hero-sections/floating-cards-hero-dark.png`,

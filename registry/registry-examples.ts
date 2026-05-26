@@ -2107,6 +2107,21 @@ export const examples: Registry["items"] = [
   //   ],
   // },
   {
+    name: "sales-ai-hero-demo",
+    type: "registry:example",
+    title: "Sales AI Hero Demo",
+    description:
+      "Example of an oversized centered hero with a floating announcement pill, paired media tiles, and a divider-flanked trusted-by logo strip.",
+    registryDependencies: ["https://ruixen.com/r/sales-ai-hero"],
+    files: [
+      {
+        path: "registry/example/sales-ai-hero-demo.tsx",
+        type: "registry:example",
+        target: "components/sales-ai-hero-demo.tsx",
+      },
+    ],
+  },
+  {
     name: "multi-media-testimonial-demo",
     type: "registry:example",
     title: "Multi-Media Testimonial Demo",
