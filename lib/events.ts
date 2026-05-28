@@ -54,6 +54,20 @@ const eventSchema = z.object({
     // Header/nav CTA events referenced in config/docs.ts
     "header_cta_clicked",
     "gradients_clicked",
+
+    // Component-preview interactions (high-signal engagement on docs)
+    "preview_code_viewed", // user flipped Preview → Code tab
+    "preview_replayed", // user hit the replay icon
+    "v0_export_clicked", // user opened component in v0
+
+    // Install-flow config toggles (which stack people actually want)
+    "package_manager_changed",
+    "tw_version_changed",
+    "ui_library_changed",
+
+    // pro.ruixen.com paid funnel (captured client + server)
+    "pro_checkout_started",
+    "pro_purchase_completed",
   ]),
   // declare type AllowedPropertyValues = string | number | boolean | null
   properties: z

@@ -17,10 +17,26 @@ const hasApiKey = Boolean(process.env.NEXT_PUBLIC_POSTHOG_API_KEY);
 // keeps the same identity. Without this, the OSS → Pro funnel is
 // invisible in PostHog. Both sites must use the SAME project API key.
 if (typeof window !== "undefined" && isProduction && hasApiKey) {
+  // Always proxy through /ingest in production. If NEXT_PUBLIC_POSTHOG_HOST
+  // is still set to a direct PostHog cloud host (a relic from before the
+  // proxy was wired), we ignore it — the whole point of the proxy is to
+  // bypass ad blockers, which a direct host defeats. The env var can still
+  // be used to point at a custom non-cloud ingest route if ever needed.
+  const envHost = process.env.NEXT_PUBLIC_POSTHOG_HOST;
+  const envHostIsDirectCloud = !!envHost?.match(/\.i\.posthog\.com/);
+  const apiHost = !envHost || envHostIsDirectCloud ? "/ingest" : envHost;
+
   posthog.init(process.env.NEXT_PUBLIC_POSTHOG_API_KEY!, {
-    api_host:
-      process.env.NEXT_PUBLIC_POSTHOG_HOST || "https://us.i.posthog.com",
+    api_host: apiHost,
+    ui_host: "https://us.posthog.com",
     capture_pageview: false, // We capture manually below
+    capture_pageleave: true, // Unlock real bounce rate + session duration
+    capture_performance: {
+      web_vitals: true, // LCP, INP, CLS — Real User Monitoring
+    },
+    // Anon visitors don't create Person profiles; only post-`identify` users
+    // do. Keeps the quota clean and "Persons" view = real, addressable users.
+    person_profiles: "identified_only",
     persistence: "localStorage+cookie",
     cross_subdomain_cookie: true,
     disable_session_recording: true,
@@ -41,6 +57,13 @@ function PostHogPageviewInner(): React.ReactNode {
       posthog.capture("$pageview", {
         $current_url: url,
       });
+      // Manual $pageleave on SPA navigation. PostHog SDK auto-fires this
+      // on pagehide/beforeunload (tab close), but its History-API listener
+      // doesn't always catch Next.js App Router pushState transitions.
+      // Capturing here in the cleanup guarantees one pageleave per pageview.
+      return () => {
+        posthog.capture("$pageleave", { $current_url: url });
+      };
     }
   }, [pathname, searchParams]);
 
