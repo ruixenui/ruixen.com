@@ -4,6 +4,8 @@ import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { trackEvent } from "@/lib/events";
+import { EarlyBirdBanner } from "@/components/early-bird-banner";
+import { isEarlyBirdActive } from "@/lib/early-bird";
 
 export function ProBanner() {
   return (
@@ -58,18 +60,29 @@ export function ProductHuntBanner() {
 export function SiteBanner() {
   const pathname = usePathname();
 
-  // Banner runs on the homepage + marketing surfaces only. On docs/components
-  // (the 993-user catalog) the sidebar CTA carries the upsell load, so the
-  // banner would compete for attention and dilute both. On layout demos
-  // (/layouts/<name>/...) the demo's own header is the whole point — a
-  // Ruixen banner above it breaks the component-preview intent. The hub
-  // page `/layouts` still gets the banner (exact match is not suppressed).
+  // Layout-demo iframes (`/layouts/<name>/...`) keep the banner suppressed
+  // — a Ruixen banner above the rendered template breaks the preview
+  // intent. Everywhere else, including docs/blog/showcase/preview, we
+  // surface the early-bird banner because the campaign is global and the
+  // 10-day window is the most valuable conversion event the site has.
+  // After the campaign ends `<EarlyBirdBanner>` self-hides and we fall
+  // back to the older suppression list + the evergreen ProBanner.
+  if (pathname.startsWith("/layouts/")) {
+    return null;
+  }
+
+  // Early-bird takes priority during the campaign window.
+  if (isEarlyBirdActive()) {
+    return <EarlyBirdBanner />;
+  }
+
+  // Post-campaign: preserve the original suppression so the evergreen
+  // ProBanner doesn't compete with the docs sidebar CTA.
   if (
     pathname === "/showcase" ||
     pathname.startsWith("/blog") ||
     pathname.startsWith("/docs") ||
-    pathname.startsWith("/preview") ||
-    pathname.startsWith("/layouts/")
+    pathname.startsWith("/preview")
   ) {
     return null;
   }
