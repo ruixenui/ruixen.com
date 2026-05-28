@@ -1,0 +1,127 @@
+---
+title: Service Ledger
+date: 2026-05-26
+description: A scroll-spy services section. A sticky tab strip at the top tracks the active entry while the reader scrolls through long-form panels with deliverables, optional preview media, and inline CTAs.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="service-ledger-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/service-ledger"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="service-ledger" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { ServiceLedger } from "@/components/ruixen/service-ledger";
+
+export default function Page() {
+  return (
+    <ServiceLedger
+      title="How we work with you"
+      description="A few ways our studio plugs into your roadmap — from a focused sprint to a long-term partnership."
+      entries={[
+        {
+          code: "01",
+          meta: "4–6 weeks",
+          title: "Brand foundation sprint",
+          description:
+            "Discovery, positioning, and a tight brand system that anchors every surface.",
+          items: [
+            "Stakeholder and audience interviews",
+            "Positioning, voice, and a messaging matrix",
+            "Logo system, type stack, and color tokens",
+          ],
+          image: "/services/brand-foundation.png",
+          cta: { href: "#", label: "See the playbook" },
+        },
+        {
+          code: "02",
+          meta: "Ongoing",
+          title: "Growth and optimization",
+          description:
+            "Embedded design and engineering capacity for the months after launch.",
+          items: [
+            "Quarterly refreshes and net-new pages",
+            "Experiment briefs and A/B test scaffolding",
+            "Onboarding, pricing, and upgrade flows",
+          ],
+        },
+      ]}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop          | Type             | Default    | Description                                               |
+| ------------- | ---------------- | ---------- | --------------------------------------------------------- |
+| `title`       | `string`         | provided   | Section headline rendered as an `<h2>`.                   |
+| `description` | `string`         | provided   | Muted lead paragraph below the headline.                  |
+| `entries`     | `ServiceEntry[]` | 4 defaults | Service rows rendered as a sticky-anchored vertical list. |
+| `className`   | `string`         | -          | Extra classes appended to the outer `<section>`.          |
+
+### Types
+
+```ts
+interface ServiceEntry {
+  code: string;
+  meta?: string;
+  title: string;
+  description: string;
+  items?: string[];
+  /** Preview image (rendered if `video` is not provided) */
+  image?: string;
+  /** Preview video — autoplays muted+loop+playsInline. Takes priority over `image`. */
+  video?: string;
+  /** Poster image shown before the video plays */
+  poster?: string;
+  cta?: {
+    href: string;
+    label: string;
+  };
+}
+```
+
+## Features
+
+- **Sticky tab strip with scroll-spy** — service codes + durations sit at the top of the section and pin to the viewport (`sticky top-0`) as the reader scrolls. A rAF-throttled scroll handler picks the last entry whose top has crossed a reference line (120px from the viewport top) and highlights its tab.
+- **Click to scroll** — each tab is an anchor link with an intercepted click handler that calls `scrollIntoView({ behavior: "smooth", block: "start" })`. Hash deep-links work via the panel `id`s.
+- **Aligned tab underline** — the active tab uses `border-b-2 -mb-px` so its underline overlaps the strip's `border-b`, replacing it pixel-for-pixel and producing a clean tabbed-into-divider look.
+- **Mobile horizontal scroll** — tabs are flex items inside an `overflow-x-auto` track; meta text hides below `sm` so codes stay readable in narrow viewports.
+- **Scroll-margin clearance** — every panel has `scroll-mt-24` so anchor navigation lands the content below the sticky strip, not under it.
+- **Composable rows** — each `ServiceEntry` opts into a deliverables bullet list, a preview image OR video, and a tail CTA independently. Pass only the fields you need.
+- **Inline video showcase** — pass `video: "https://…/clip.mp4"` and the panel renders a `<video autoplay loop muted playsInline>` with `aspect-video` framing, `bg-muted` placeholder, and `ring-1 ring-border/60` for a tile look. `poster` is honoured for fast first paint.
+- **No shadcn primitives** — the component depends only on `lucide-react`. The tab affordance is pure JSX + Tailwind, so it installs cleanly into either Radix or Base UI registry variants.
+- **Theme adaptive** — every surface uses shadcn tokens (`bg-background`, `text-foreground`, `text-muted-foreground`, `border-border`), with a `bg-background/90 backdrop-blur-sm` frosted-glass effect on the sticky strip.
