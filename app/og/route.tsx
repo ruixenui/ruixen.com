@@ -1,7 +1,10 @@
 import { ImageResponse } from "next/og";
 
-import { Icons } from "@/components/icons";
 import { siteConfig } from "@/config/site";
+
+// Note: cannot import `Icons` from "@/components/icons" — that module
+// renders `next/image`, which Next.js 15.5 refuses to dot into from a
+// server-only route handler. We render the wordmark as text instead.
 
 const CATEGORY_VISUALS: Record<
   string,
@@ -48,6 +51,12 @@ const CATEGORY_VISUALS: Record<
     color: "#f43f5e",
     bg: "rgba(244, 63, 94, 0.08)",
     border: "rgba(244, 63, 94, 0.25)",
+  },
+  service: {
+    label: "SERVICE SECTIONS",
+    color: "#8b5cf6",
+    bg: "rgba(139, 92, 246, 0.08)",
+    border: "rgba(139, 92, 246, 0.25)",
   },
 };
 
@@ -116,8 +125,7 @@ export async function GET(request: Request) {
         <div tw="flex border absolute border-neutral-200 inset-x-0 h-[1px] bottom-16" />
         {(title || description) && (
           <div tw="flex absolute flex-row items-center justify-center bottom-24 right-24 text-white">
-            <Icons.logo width={48} height={48} />
-            <div tw="text-black flex text-[32px] font-semibold tracking-tight ml-2">
+            <div tw="text-black flex text-[32px] font-semibold tracking-tight">
               Ruixen UI
             </div>
           </div>
@@ -158,8 +166,7 @@ export async function GET(request: Request) {
           ) : (
             <div tw="flex flex-col items-center justify-center text-center w-full h-full">
               <div tw="flex flex-row items-center justify-center space-x-4 mb-8">
-                <Icons.logo width={56} height={56} />
-                <div tw="text-black flex text-[40px] font-semibold tracking-tight ml-2">
+                <div tw="text-black flex text-[40px] font-semibold tracking-tight">
                   {siteConfig.name}
                 </div>
               </div>
