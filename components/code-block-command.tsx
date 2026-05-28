@@ -7,6 +7,7 @@ import { useConfig } from "@/hooks/use-config";
 import { useMounted } from "@/hooks/use-mounted";
 import { NpmCommands } from "@/types/unist";
 import { trackCopyCommand } from "@/lib/ga-events";
+import { trackEvent } from "@/lib/events";
 import { CheckIcon, ClipboardIcon } from "lucide-react";
 import * as React from "react";
 
@@ -84,11 +85,21 @@ export function CodeBlockCommand({
       return;
     }
 
+    // Parse the registry slug out of the install command so we can answer
+    // "which components are people actually installing" in one query.
+    const slugMatch = command.match(
+      /ruixen\.com\/r\/(?:[a-z]+\/)*([a-z0-9-]+)/,
+    );
+    const componentSlug = slugMatch?.[1] ?? null;
+
     copyToClipboardWithMeta(command, {
       name: "copy_npm_command",
       properties: {
         command,
         pm: packageManager,
+        tw_version: isRuixenInstall ? twVersion : null,
+        ui_library: isRuixenInstall ? uiLibrary : null,
+        component: componentSlug,
       },
     });
 
@@ -112,10 +123,17 @@ export function CodeBlockCommand({
         className="w-full"
         defaultValue={packageManager}
         onValueChange={(value) => {
+          const next = value as "pnpm" | "npm" | "yarn" | "bun";
           setConfig({
             ...config,
-            packageManager: value as "pnpm" | "npm" | "yarn" | "bun",
+            packageManager: next,
           });
+          if (next !== packageManager) {
+            trackEvent({
+              name: "package_manager_changed",
+              properties: { from: packageManager, to: next },
+            });
+          }
         }}
       >
         <div className="flex items-start justify-between border-b border-zinc-200 bg-zinc-200/50 px-3 pt-2.5 w-full dark:border-zinc-800 dark:bg-zinc-800/50">
@@ -139,7 +157,15 @@ export function CodeBlockCommand({
               {/* UI library toggle */}
               <div className="flex items-center gap-1">
                 <button
-                  onClick={() => setConfig({ ...config, uiLibrary: "radix" })}
+                  onClick={() => {
+                    setConfig({ ...config, uiLibrary: "radix" });
+                    if (uiLibrary !== "radix") {
+                      trackEvent({
+                        name: "ui_library_changed",
+                        properties: { from: uiLibrary, to: "radix" },
+                      });
+                    }
+                  }}
                   className={`rounded px-1.5 py-0.5 font-mono text-xs transition-colors ${
                     uiLibrary === "radix"
                       ? "bg-zinc-300 text-zinc-900 dark:bg-zinc-700 dark:text-zinc-50"
@@ -149,7 +175,15 @@ export function CodeBlockCommand({
                   Radix
                 </button>
                 <button
-                  onClick={() => setConfig({ ...config, uiLibrary: "baseui" })}
+                  onClick={() => {
+                    setConfig({ ...config, uiLibrary: "baseui" });
+                    if (uiLibrary !== "baseui") {
+                      trackEvent({
+                        name: "ui_library_changed",
+                        properties: { from: uiLibrary, to: "baseui" },
+                      });
+                    }
+                  }}
                   className={`rounded px-1.5 py-0.5 font-mono text-xs transition-colors ${
                     uiLibrary === "baseui"
                       ? "bg-zinc-300 text-zinc-900 dark:bg-zinc-700 dark:text-zinc-50"
@@ -166,7 +200,15 @@ export function CodeBlockCommand({
               {/* Tailwind version toggle */}
               <div className="flex items-center gap-1">
                 <button
-                  onClick={() => setConfig({ ...config, tailwindVersion: "4" })}
+                  onClick={() => {
+                    setConfig({ ...config, tailwindVersion: "4" });
+                    if (twVersion !== "4") {
+                      trackEvent({
+                        name: "tw_version_changed",
+                        properties: { from: twVersion, to: "4" },
+                      });
+                    }
+                  }}
                   className={`rounded px-1.5 py-0.5 font-mono text-xs transition-colors ${
                     twVersion === "4"
                       ? "bg-zinc-300 text-zinc-900 dark:bg-zinc-700 dark:text-zinc-50"
@@ -176,7 +218,15 @@ export function CodeBlockCommand({
                   v4
                 </button>
                 <button
-                  onClick={() => setConfig({ ...config, tailwindVersion: "3" })}
+                  onClick={() => {
+                    setConfig({ ...config, tailwindVersion: "3" });
+                    if (twVersion !== "3") {
+                      trackEvent({
+                        name: "tw_version_changed",
+                        properties: { from: twVersion, to: "3" },
+                      });
+                    }
+                  }}
                   className={`rounded px-1.5 py-0.5 font-mono text-xs transition-colors ${
                     twVersion === "3"
                       ? "bg-zinc-300 text-zinc-900 dark:bg-zinc-700 dark:text-zinc-50"

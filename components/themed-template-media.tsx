@@ -38,8 +38,7 @@ export function ThemedTemplateMedia({
   const { light: lightImg, dark: darkImg } = pickImages(template);
   const lightVideo =
     template.video_url_light ?? template.video_url_dark ?? null;
-  const darkVideo =
-    template.video_url_dark ?? template.video_url_light ?? null;
+  const darkVideo = template.video_url_dark ?? template.video_url_light ?? null;
 
   if (lightVideo || darkVideo) {
     return (
