@@ -49,43 +49,40 @@ export default function Page() {
   return (
     <SalesAiHero
       announcement={{
-        label: "240+ Marketing Blocks Now Live In v4",
-        href: "https://ruixen.com/docs",
+        label: "New — AI replies that sound like your best rep",
+        href: "#",
       }}
       title={
         <>
-          Ship landing pages <br className="hidden md:block" />
-          that look like 2026.
+          Turn every conversation <br className="hidden md:block" />
+          into your next closed deal.
         </>
       }
-      description="Heroes that earn the click. Pricing tables that close the deal. Footers customers actually read — every block your modern landing page needs, in one place."
+      description="Sales AI that drafts replies, scores intent, and surfaces the next best action — so your team spends time selling, not searching."
       leftMedia={
         <img
           src="/hero/portrait.jpg"
-          alt="Portrait"
+          alt="Customer portrait"
           className="size-full object-cover"
         />
       }
       rightMedia={
         <img
           src="/hero/dashboard.png"
-          alt="Dashboard"
+          alt="Product dashboard"
           className="size-full object-cover"
         />
       }
       trustedBy={{
-        prefix: "Powered By ",
-        highlight: "240+ Sections",
-        suffix: " Across 4 Registry Variants For Every shadcn Stack",
+        prefix: "Trusted by revenue teams at ",
+        highlight: "fast-growing",
+        suffix: " companies",
         logos: [
-          { name: "Cosmos", src: "https://ruixen.com/logos/cosmos.svg" },
-          {
-            name: "Geckoboard",
-            src: "https://ruixen.com/logos/geckoboard.svg",
-          },
-          { name: "Gong", src: "https://ruixen.com/logos/gong.svg" },
-          { name: "Parade", src: "https://ruixen.com/logos/parade.svg" },
-          { name: "Ternary", src: "https://ruixen.com/logos/ternary.svg" },
+          { name: "Northwind" },
+          { name: "Lumina" },
+          { name: "Apex" },
+          { name: "Cobalt" },
+          { name: "Meridian" },
         ],
       }}
     />
@@ -95,15 +92,15 @@ export default function Page() {
 
 ## Props
 
-| Prop           | Type                 | Default  | Description                                                                           |
-| -------------- | -------------------- | -------- | ------------------------------------------------------------------------------------- |
-| `title`        | `ReactNode`          | Required | Centered headline content. Use `<br />` to force a line break on desktop.             |
-| `description`  | `ReactNode`          | -        | Muted subhead rendered under the title.                                               |
-| `announcement` | `Announcement`       | -        | Floating pill above the title. Renders as a link when `href` is provided.             |
-| `leftMedia`    | `ReactNode`          | -        | Content for the left (portrait) media tile. Falls back to a labelled placeholder.     |
-| `rightMedia`   | `ReactNode`          | -        | Content for the right (landscape) media tile with a pink accent placeholder fallback. |
-| `trustedBy`    | `TrustedBy \| false` | -        | Divider-flanked headline plus logo strip below the media. Pass `false` to hide.       |
-| `className`    | `string`             | -        | Extra classes appended to the outer `<section>`.                                      |
+| Prop           | Type                 | Default  | Description                                                                             |
+| -------------- | -------------------- | -------- | --------------------------------------------------------------------------------------- |
+| `title`        | `ReactNode`          | Required | Centered headline content. Use `<br />` to force a line break on desktop.               |
+| `description`  | `ReactNode`          | -        | Muted subhead rendered under the title.                                                 |
+| `announcement` | `Announcement`       | -        | Floating pill above the title. Renders as a link when `href` is provided.               |
+| `leftMedia`    | `ReactNode`          | -        | Content for the left (portrait) media tile. Falls back to a labelled placeholder.       |
+| `rightMedia`   | `ReactNode`          | -        | Content for the right (landscape) media tile with a subtle themed placeholder fallback. |
+| `trustedBy`    | `TrustedBy \| false` | -        | Divider-flanked headline plus logo strip below the media. Pass `false` to hide.         |
+| `className`    | `string`             | -        | Extra classes appended to the outer `<section>`.                                        |
 
 ### Types
 
@@ -133,7 +130,7 @@ interface TrustedBy {
 
 - **Floating announcement pill** — soft elevated card with a lightning glyph, copy, and filled arrow chip; converts to a `Link` when `href` is supplied.
 - **Oversized display headline** — scales from `text-[44px]` on mobile to `text-[88px]` on `lg`, with `tracking-[-0.04em]` and a tight `1.02` line-height to mimic editorial SaaS hero typography.
-- **Paired media tiles** — a 1:3 split: a portrait tile on the left and a 16:9 landscape tile on the right with a built-in pink accent gradient placeholder. Both accept any `ReactNode`, so drop in `<img>`, `<video>`, or a custom inline mock.
+- **Paired media tiles** — a 1:3 split: a portrait tile on the left and a 16:9 landscape tile on the right with a built-in subtle themed gradient placeholder. Both accept any `ReactNode`, so drop in `<img>`, `<video>`, or a custom inline mock.
 - **Divider-flanked trusted-by line** — two `bg-border` rules pinch a centered headline, with a bold highlight slot for stats like "10,000+".
 - **Logo strip with vertical separators** — auto-inserted `h-6 w-px bg-border` rules between logos at `md+`; logos are desaturated with `[filter:brightness(0)_saturate(0)]` (inverted in dark mode) to feel uniform.
 - **Theme adaptive** — every surface uses shadcn tokens (`bg-background`, `bg-card`, `bg-muted`, `text-foreground`, `text-muted-foreground`, `border-border`), so the block inherits your theme without overrides.
