@@ -2411,6 +2411,66 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "scroll-over-hero",
+    type: "registry:ui",
+    title: "Scroll Over Hero",
+    description:
+      "A hero with a pinned, centered title that a product panel rises up and overlaps on scroll. Theme-aware with a reduced-motion stacked fallback.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/ruixenui/scroll-over-hero.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/scroll-over-hero.tsx",
+      },
+    ],
+  },
+  {
+    name: "preview-switch-hero",
+    type: "registry:ui",
+    title: "Preview Switch Hero",
+    description:
+      "A split hero with an icon-rail that switches the product preview, a lead-capture column (badge, ratings, email form, CTAs, avatars), and a full-width logo strip. Responsive and theme-aware.",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/preview-switch-hero.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/preview-switch-hero.tsx",
+      },
+    ],
+  },
+  {
+    name: "arc-reveal-hero",
+    type: "registry:ui",
+    title: "Arc Reveal Hero",
+    description:
+      "A multilingual greeting cycles on a calm white surface, then a curved black curtain rises from below to reveal the landing — the boundary stays a single smooth arc the whole way up, never a flat slide.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/ruixenui/arc-reveal-hero.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/arc-reveal-hero.tsx",
+      },
+    ],
+  },
+  {
+    name: "service-ledger",
+    type: "registry:ui",
+    title: "Service Ledger",
+    description:
+      "A scroll-spy services section with a sticky tab strip at the top. As the reader scrolls past each long-form panel (title, description, deliverables, optional image, inline CTA), the matching tab highlights; clicking a tab smooth-scrolls to that entry.",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/service-ledger.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/service-ledger.tsx",
+      },
+    ],
+  },
+  {
     name: "multi-media-testimonial",
     type: "registry:ui",
     title: "Multi-Media Testimonial",

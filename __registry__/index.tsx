@@ -3714,6 +3714,102 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "scroll-over-hero": {
+    name: "scroll-over-hero",
+    description:
+      "A hero with a pinned, centered title that a product panel rises up and overlaps on scroll. Theme-aware with a reduced-motion stacked fallback.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/scroll-over-hero.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/scroll-over-hero.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/scroll-over-hero.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "preview-switch-hero": {
+    name: "preview-switch-hero",
+    description:
+      "A split hero with an icon-rail that switches the product preview, a lead-capture column (badge, ratings, email form, CTAs, avatars), and a full-width logo strip. Responsive and theme-aware.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/preview-switch-hero.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/preview-switch-hero.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/preview-switch-hero.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "arc-reveal-hero": {
+    name: "arc-reveal-hero",
+    description:
+      "A multilingual greeting cycles on a calm white surface, then a curved black curtain rises from below to reveal the landing — the boundary stays a single smooth arc the whole way up, never a flat slide.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/arc-reveal-hero.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/arc-reveal-hero.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/arc-reveal-hero.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "service-ledger": {
+    name: "service-ledger",
+    description:
+      "A scroll-spy services section with a sticky tab strip at the top. As the reader scrolls past each long-form panel (title, description, deliverables, optional image, inline CTA), the matching tab highlights; clicking a tab smooth-scrolls to that entry.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/service-ledger.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/service-ledger.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/service-ledger.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "multi-media-testimonial": {
     name: "multi-media-testimonial",
     description:
@@ -8354,6 +8450,104 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/sales-ai-hero-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "scroll-over-hero-demo": {
+    name: "scroll-over-hero-demo",
+    description:
+      "Example of a pinned title that a self-contained analytics dashboard rises up and overlaps on scroll.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/scroll-over-hero"],
+    files: [
+      {
+        path: "registry/example/scroll-over-hero-demo.tsx",
+        type: "registry:example",
+        target: "components/scroll-over-hero-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/scroll-over-hero-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "preview-switch-hero-demo": {
+    name: "preview-switch-hero-demo",
+    description:
+      "Example of a split analytics hero with an icon-rail preview switcher, a self-contained phone dashboard mock, lead-capture form, ratings, and a logo strip.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/preview-switch-hero"],
+    files: [
+      {
+        path: "registry/example/preview-switch-hero-demo.tsx",
+        type: "registry:example",
+        target: "components/preview-switch-hero-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/preview-switch-hero-demo.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "arc-reveal-hero-demo": {
+    name: "arc-reveal-hero-demo",
+    description:
+      "Example of a multilingual greeting cycle followed by a curved black curtain rising to reveal a studio-style landing surface.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/arc-reveal-hero"],
+    files: [
+      {
+        path: "registry/example/arc-reveal-hero-demo.tsx",
+        type: "registry:example",
+        target: "components/arc-reveal-hero-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/arc-reveal-hero-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "service-ledger-demo": {
+    name: "service-ledger-demo",
+    description:
+      "Example of a scroll-spy service section: sticky tab strip across the top tracks the active entry as the reader scrolls through four agency-style panels.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/service-ledger"],
+    files: [
+      {
+        path: "registry/example/service-ledger-demo.tsx",
+        type: "registry:example",
+        target: "components/service-ledger-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/service-ledger-demo.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>
