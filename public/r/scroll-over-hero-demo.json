@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-over-hero-demo",
+  "type": "registry:example",
+  "title": "Scroll Over Hero Demo",
+  "description": "Example of a pinned title that a self-contained analytics dashboard rises up and overlaps on scroll.",
+  "registryDependencies": [
+    "https://ruixen.com/r/scroll-over-hero"
+  ],
+  "files": [
+    {
+      "path": "registry/example/scroll-over-hero-demo.tsx",
+      "content": "import { ScrollOverHero } from \"@/registry/ruixenui/scroll-over-hero\";\n\nconst DASHBOARD =\n  \"https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/dashboard-image-01.png\";\n\nexport default function ScrollOverHeroDemo() {\n  return (\n    <ScrollOverHero\n      eyebrow={\n        <span className=\"inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-muted-foreground\">\n          <span className=\"size-1.5 rounded-full bg-emerald-500\" />\n          Real-time analytics\n        </span>\n      }\n      title=\"Every metric that matters, in one view.\"\n      description=\"Real-time dashboards that turn raw events into decisions — no spreadsheets, no waiting on the data team.\"\n      actions={\n        <>\n          <button\n            type=\"button\"\n            className=\"rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-background transition-colors hover:bg-foreground/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background\"\n          >\n            Start free\n          </button>\n          <button\n            type=\"button\"\n            className=\"rounded-full px-5 py-2.5 text-sm font-medium text-foreground ring-1 ring-border transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background\"\n          >\n            Book a demo\n          </button>\n        </>\n      }\n      media={\n        // eslint-disable-next-line @next/next/no-img-element\n        <img\n          src={DASHBOARD}\n          alt=\"Product dashboard\"\n          className=\"aspect-[1826/1007] w-full object-cover\"\n        />\n      }\n    />\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/scroll-over-hero-demo.tsx"
+    }
+  ]
+}
