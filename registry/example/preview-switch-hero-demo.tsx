@@ -1,5 +1,15 @@
 import { PreviewSwitchHero } from "@/registry/ruixenui/preview-switch-hero";
-import { Battery, Signal, Wifi } from "lucide-react";
+import {
+  Battery,
+  Boxes,
+  Gem,
+  Hexagon,
+  Orbit,
+  Signal,
+  Spline,
+  Waypoints,
+  Wifi,
+} from "lucide-react";
 
 /* ── minimal phone mock (iPhone frame + a single line of copy) ──── */
 
@@ -56,71 +66,31 @@ const PANELS = [
   },
 ];
 
-/* ── client logos (monochrome, theme-adaptive) ─────────────────── */
+/* ── client logos ────────────────────────────────────────────────
+ * Fictional brands rendered as icon + wordmark. Self-contained (no
+ * external assets or real third-party marks) and theme-adaptive — the
+ * icon inherits `currentColor`, so it tracks light/dark automatically.
+ */
 
 const LOGO_CLS =
-  "w-auto opacity-65 transition-opacity hover:opacity-100 [filter:brightness(0)] dark:[filter:brightness(0)_invert(1)]";
+  "inline-flex items-center gap-1.5 text-base font-semibold tracking-tight text-muted-foreground";
 
 const CLIENT_LOGOS = [
-  {
-    name: "Percy",
-    logo: (
-      <img src="/logos/percy.svg" alt="Percy" className={`h-5 ${LOGO_CLS}`} />
-    ),
-  },
-  {
-    name: "Bitbucket",
-    logo: (
-      <img
-        src="/logos/bitbucket.svg"
-        alt="Bitbucket"
-        className={`h-4 ${LOGO_CLS}`}
-      />
-    ),
-  },
-  {
-    name: "Gumroad",
-    logo: (
-      <img
-        src="/logos/gumroad.svg"
-        alt="Gumroad"
-        className={`h-4 ${LOGO_CLS}`}
-      />
-    ),
-  },
-  {
-    name: "Gong",
-    logo: (
-      <img src="/logos/gong.svg" alt="Gong" className={`h-6 ${LOGO_CLS}`} />
-    ),
-  },
-  {
-    name: "Geckoboard",
-    logo: (
-      <img
-        src="/logos/geckoboard.svg"
-        alt="Geckoboard"
-        className={`h-5 ${LOGO_CLS}`}
-      />
-    ),
-  },
-  {
-    name: "Ternary",
-    logo: (
-      <img
-        src="/logos/ternary.svg"
-        alt="Ternary"
-        className={`h-5 ${LOGO_CLS}`}
-      />
-    ),
-  },
-  {
-    name: "Wyre",
-    logo: (
-      <img src="/logos/wyre.svg" alt="Wyre" className={`h-5 ${LOGO_CLS}`} />
-    ),
-  },
-];
+  { name: "Hexa", Icon: Hexagon },
+  { name: "Orbital", Icon: Orbit },
+  { name: "Facet", Icon: Gem },
+  { name: "Stackline", Icon: Boxes },
+  { name: "Wayline", Icon: Waypoints },
+  { name: "Curveo", Icon: Spline },
+].map(({ name, Icon }) => ({
+  name,
+  logo: (
+    <span className={LOGO_CLS}>
+      <Icon aria-hidden className="size-5" />
+      {name}
+    </span>
+  ),
+}));
 
 /* ── demo ─────────────────────────────────────────────────────────── */
 
@@ -138,14 +108,13 @@ export default function PreviewSwitchHeroDemo() {
       title="Meetings booked without the back-and-forth"
       description="Share one link, sync every calendar, and let guests pick a time that actually works — no email ping-pong."
       ratings={[
-        { source: "Google", score: "4.6" },
-        { source: "Trustpilot", score: "4.9" },
-        { source: "G2", score: "4.3" },
+        { source: "ease of use", score: "4.9" },
+        { source: "support", score: "4.8" },
+        { source: "value", score: "4.9" },
       ]}
-      emailLabel="Enter email address — free forever plan."
-      emailPlaceholder="you@company.com"
-      primaryCta={{ label: "Get your link" }}
-      secondaryCta={{ label: "See a demo", href: "#" }}
+      showEmail={false}
+      primaryCta={{ label: "Get started", href: "#" }}
+      secondaryCta={{ label: "Book a demo", href: "#" }}
       avatars={[
         { initials: "AK" },
         { initials: "MJ" },

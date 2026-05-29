@@ -3,7 +3,6 @@
 import * as React from "react";
 import Link from "next/link";
 import { ArrowUpRight, Mail, Star } from "lucide-react";
-import { useMotionValueEvent, useReducedMotion, useScroll } from "motion/react";
 import { cn } from "@/lib/utils";
 
 /* ── types ───────────────────────────────────────────────────── */
@@ -45,6 +44,11 @@ export interface PreviewSwitchHeroProps {
   title: React.ReactNode;
   description?: React.ReactNode;
   ratings?: HeroRating[];
+  /**
+   * Show the email-capture field above the CTAs. When `false`, the CTAs render
+   * on their own as plain actions (no form/input). Default `true`.
+   */
+  showEmail?: boolean;
   /** Label above the email field. */
   emailLabel?: React.ReactNode;
   emailPlaceholder?: string;
@@ -59,18 +63,8 @@ export interface PreviewSwitchHeroProps {
   tabs: PreviewTab[];
   /** Logo strip rendered full-width below the split. */
   logos?: HeroLogo[];
-  /**
-   * Scroll-track height when the hero is pinned (md+ / motion on). Taller =
-   * more scroll per tab. Default `"340vh"`.
-   */
-  scrollLength?: string;
   className?: string;
 }
-
-/* ── helpers ─────────────────────────────────────────────────── */
-
-const useIsomorphicLayoutEffect =
-  typeof window !== "undefined" ? React.useLayoutEffect : React.useEffect;
 
 /* ── pieces ──────────────────────────────────────────────────── */
 
@@ -186,6 +180,7 @@ export function PreviewSwitchHero({
   title,
   description,
   ratings,
+  showEmail = true,
   emailLabel = "Enter email address",
   emailPlaceholder = "you@example.com",
   onSubmit,
@@ -195,54 +190,13 @@ export function PreviewSwitchHero({
   socialProof,
   tabs,
   logos,
-  scrollLength = "340vh",
   className,
 }: PreviewSwitchHeroProps) {
-  const prefersReducedMotion = useReducedMotion();
-  const sectionRef = React.useRef<HTMLElement>(null);
   const emailId = React.useId();
   const [active, setActive] = React.useState(0);
 
-  // Scroll-driven only where it makes sense: md+ viewports with motion. On
-  // small screens / reduced-motion the tabs are click-driven and the section
-  // is a normal (un-pinned) hero. Starts off so SSR + first paint match.
-  const [scrollDriven, setScrollDriven] = React.useState(false);
-  useIsomorphicLayoutEffect(() => {
-    if (prefersReducedMotion) {
-      setScrollDriven(false);
-      return;
-    }
-    const mq = window.matchMedia("(min-width: 768px)");
-    const apply = () => setScrollDriven(mq.matches);
-    apply();
-    mq.addEventListener("change", apply);
-    return () => mq.removeEventListener("change", apply);
-  }, [prefersReducedMotion]);
-
-  // Map scroll progress through the pinned track to the active tab index.
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end end"],
-  });
-  useMotionValueEvent(scrollYProgress, "change", (p) => {
-    if (!scrollDriven) return;
-    const n = tabs.length;
-    const i = Math.min(n - 1, Math.max(0, Math.floor(p * n - 1e-6)));
-    setActive((prev) => (prev === i ? prev : i));
-  });
-
-  const handleSelect = (i: number) => {
-    const el = sectionRef.current;
-    if (scrollDriven && el) {
-      // Scroll to the middle of this tab's slice of the track.
-      const top = window.scrollY + el.getBoundingClientRect().top;
-      const range = el.offsetHeight - window.innerHeight;
-      const target = top + ((i + 0.5) / tabs.length) * range;
-      window.scrollTo({ top: Math.max(0, target), behavior: "smooth" });
-    } else {
-      setActive(i);
-    }
-  };
+  // Tabs are click-driven; clicking one swaps the preview in place.
+  const handleSelect = (i: number) => setActive(i);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -252,21 +206,22 @@ export function PreviewSwitchHero({
 
   return (
     <section
-      ref={sectionRef}
       aria-label="Hero"
       className={cn("relative w-full bg-background", className)}
-      style={scrollDriven ? { height: scrollLength } : undefined}
     >
-      <div
-        className={cn(
-          scrollDriven &&
-            "sticky top-0 flex min-h-screen flex-col justify-center",
-        )}
-      >
+      <div>
         <div className="mx-auto w-full max-w-7xl px-6 py-10 lg:py-14">
-          <div className="flex flex-col-reverse justify-center gap-8 md:flex-row md:gap-6 lg:gap-10 xl:gap-[72px]">
+          <div className="flex flex-col-reverse justify-center gap-8 md:flex-row md:items-start md:gap-6 lg:gap-10 xl:gap-[72px]">
             {/* ── left: text-tab rail + switchable preview ─────── */}
-            <div className="flex min-w-0 flex-col gap-5 md:w-[400px] md:shrink-0 md:flex-row md:gap-4 lg:w-[480px] lg:gap-6">
+            <div
+              className={cn(
+                "flex min-w-0 flex-col gap-5 md:w-[400px] md:shrink-0 md:flex-row md:gap-4 lg:w-[480px] lg:gap-6",
+                // When a badge sits above the title, drop the rail + preview by
+                // the badge's footprint (md+) so their tops line up with the
+                // title rather than the badge.
+                badge && "md:mt-11",
+              )}
+            >
               <TabRail tabs={tabs} active={active} onSelect={handleSelect} />
               <PreviewStack tabs={tabs} active={active} />
             </div>
@@ -297,65 +252,78 @@ export function PreviewSwitchHero({
               )}
 
               {ratings && ratings.length > 0 && (
-                <div className="mt-6 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 md:justify-start lg:mt-8">
+                <div className="mt-6 flex flex-wrap items-center justify-center gap-2 md:justify-start lg:mt-8">
                   {ratings.map((r, i) => (
                     <div
                       key={`${r.source}-${i}`}
-                      className={cn(
-                        "flex items-center gap-2",
-                        i < ratings.length - 1 &&
-                          "border-r border-border pr-3 md:border-none md:pr-0",
-                      )}
+                      className="inline-flex items-center gap-1.5 rounded-full border border-border bg-muted/40 py-1 pl-2 pr-3"
                     >
                       {r.icon ?? (
-                        <Star className="size-4 fill-amber-400 text-amber-400" />
+                        <Star className="size-3.5 fill-amber-400 text-amber-400" />
                       )}
-                      <p className="text-sm text-muted-foreground">
-                        <span className="font-medium text-foreground">
-                          {r.score}
-                        </span>{" "}
+                      <span className="text-sm font-semibold text-foreground">
+                        {r.score}
+                      </span>
+                      <span className="text-sm text-muted-foreground">
                         {r.source}
-                      </p>
+                      </span>
                     </div>
                   ))}
                 </div>
               )}
 
-              <form onSubmit={handleSubmit} className="mt-6 lg:mt-8">
-                <div className="mx-auto flex w-full max-w-[420px] flex-col gap-2 md:mx-0">
-                  <label
-                    htmlFor={emailId}
-                    className="text-sm text-muted-foreground"
-                  >
-                    {emailLabel}
-                  </label>
-                  <div className="flex items-center gap-2 rounded-xl border border-border bg-background px-3 shadow-sm transition focus-within:border-foreground focus-within:ring-2 focus-within:ring-ring">
-                    <Mail className="size-5 shrink-0 text-muted-foreground" />
-                    <input
-                      id={emailId}
-                      name="email"
-                      type="email"
-                      placeholder={emailPlaceholder}
-                      className="h-10 w-full bg-transparent text-sm text-foreground outline-none placeholder:text-muted-foreground"
-                    />
-                  </div>
-
-                  {(primaryCta || secondaryCta) && (
-                    <div className="mt-2 flex flex-wrap justify-center gap-3 md:justify-start">
-                      {primaryCta && (
-                        <CtaButton
-                          cta={primaryCta}
-                          variant="primary"
-                          type="submit"
-                        />
-                      )}
-                      {secondaryCta && (
-                        <CtaButton cta={secondaryCta} variant="secondary" />
-                      )}
+              {showEmail ? (
+                <form onSubmit={handleSubmit} className="mt-6 lg:mt-8">
+                  <div className="mx-auto flex w-full max-w-[420px] flex-col gap-2 md:mx-0">
+                    <label
+                      htmlFor={emailId}
+                      className="text-sm text-muted-foreground"
+                    >
+                      {emailLabel}
+                    </label>
+                    <div className="flex items-center gap-2 rounded-xl border border-border bg-background px-3 shadow-sm transition focus-within:border-foreground focus-within:ring-2 focus-within:ring-ring">
+                      <Mail className="size-5 shrink-0 text-muted-foreground" />
+                      <input
+                        id={emailId}
+                        name="email"
+                        type="email"
+                        placeholder={emailPlaceholder}
+                        className="h-10 w-full bg-transparent text-sm text-foreground outline-none placeholder:text-muted-foreground"
+                      />
                     </div>
-                  )}
-                </div>
-              </form>
+
+                    {(primaryCta || secondaryCta) && (
+                      <div className="mt-2 flex flex-wrap justify-center gap-3 md:justify-start">
+                        {primaryCta && (
+                          <CtaButton
+                            cta={primaryCta}
+                            variant="primary"
+                            type="submit"
+                          />
+                        )}
+                        {secondaryCta && (
+                          <CtaButton cta={secondaryCta} variant="secondary" />
+                        )}
+                      </div>
+                    )}
+                  </div>
+                </form>
+              ) : (
+                (primaryCta || secondaryCta) && (
+                  <div className="mt-6 flex flex-wrap justify-center gap-3 md:justify-start lg:mt-8">
+                    {primaryCta && (
+                      <CtaButton
+                        cta={primaryCta}
+                        variant="primary"
+                        type="button"
+                      />
+                    )}
+                    {secondaryCta && (
+                      <CtaButton cta={secondaryCta} variant="secondary" />
+                    )}
+                  </div>
+                )
+              )}
 
               {(avatars?.length || socialProof) && (
                 <div className="mt-6 flex flex-col items-center gap-y-3 md:flex-row">

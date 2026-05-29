@@ -81,6 +81,7 @@ export default function Page() {
 | `badge`        | `object`        | -                       | Pill above the title: `{ tag?, label }`.                            |
 | `description`  | `ReactNode`     | -                       | Muted line under the title.                                         |
 | `ratings`      | `HeroRating[]`  | -                       | Review scores: `{ source, score, icon? }`. Defaults to a star icon. |
+| `showEmail`    | `boolean`       | `true`                  | Show the email-capture field. When `false`, only the CTAs render.   |
 | `emailLabel`   | `ReactNode`     | `"Enter email address"` | Label above the email field.                                        |
 | `onSubmit`     | `(email)=>void` | -                       | Called with the email on submit.                                    |
 | `primaryCta`   | `Cta`           | -                       | Submits the form when no `href`, else renders a link.               |
@@ -88,13 +89,12 @@ export default function Page() {
 | `avatars`      | `HeroAvatar[]`  | -                       | Overlapping avatar stack: `{ initials? , src? }`.                   |
 | `socialProof`  | `ReactNode`     | -                       | Text beside the avatar stack.                                       |
 | `logos`        | `HeroLogo[]`    | -                       | Full-width logo strip below the split.                              |
-| `scrollLength` | `string`        | `"340vh"`               | Scroll-track height when pinned (md+/motion). Taller = slower.      |
 | `className`    | `string`        | -                       | Extra classes on the outer `<section>`.                             |
 
 ## Features
 
-- **Scroll-driven text tabs** — on `md+` the hero pins and scrolling advances the active tab (with the highlight following) while the preview crossfades; clicking a tab smooth-scrolls to it. On mobile / reduced-motion it falls back to a normal, click-driven hero.
-- **Lead-capture column** — badge, headline, review scores, an accessible email form (`<label>` + `<input type="email">`), primary/secondary CTAs, and an avatar social-proof row.
+- **Click-to-switch preview** — the text-tab rail swaps the product preview in place with a crossfade; the hero stays a compact, single-screen section (no scroll hijacking).
+- **Lead-capture column** — badge, headline, review scores, an optional email form (`showEmail`, with `<label>` + `<input type="email">`), primary/secondary CTAs, and an avatar social-proof row.
 - **Bring your own preview** — `tabs[].media` accepts any `ReactNode`, so drop in screenshots, videos, or a custom inline mock; all panels share the active panel's size.
 - **Responsive** — stacks to a single column on mobile (preview below the copy) and splits to two columns from `md`; the logo strip scrolls horizontally on small screens and distributes evenly on `lg`.
 - **Accessible** — `role="tablist"`/`tab`/`tabpanel`, focus-visible rings, and a real labelled email field.
