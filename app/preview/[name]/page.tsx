@@ -112,7 +112,16 @@ export default function PreviewPage() {
       </header>
 
       {/* Component Preview */}
-      <main className="min-h-[calc(100vh-3.5rem)] py-12 px-4 md:px-8 lg:px-12">
+      <main
+        className="min-h-[calc(100vh-3.5rem)] py-12 px-4 md:px-8 lg:px-12"
+        style={
+          {
+            // Tell sticky-strip components (e.g. ServiceLedger) where the
+            // page header ends so they dock below it instead of disappearing.
+            "--ledger-sticky-top": "3.5rem",
+          } as React.CSSProperties
+        }
+      >
         <div className="mx-auto max-w-7xl">
           <React.Suspense
             fallback={

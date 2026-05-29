@@ -2122,6 +2122,66 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "scroll-over-hero-demo",
+    type: "registry:example",
+    title: "Scroll Over Hero Demo",
+    description:
+      "Example of a pinned title that a self-contained analytics dashboard rises up and overlaps on scroll.",
+    registryDependencies: ["https://ruixen.com/r/scroll-over-hero"],
+    files: [
+      {
+        path: "registry/example/scroll-over-hero-demo.tsx",
+        type: "registry:example",
+        target: "components/scroll-over-hero-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "preview-switch-hero-demo",
+    type: "registry:example",
+    title: "Preview Switch Hero Demo",
+    description:
+      "Example of a split analytics hero with an icon-rail preview switcher, a self-contained phone dashboard mock, lead-capture form, ratings, and a logo strip.",
+    registryDependencies: ["https://ruixen.com/r/preview-switch-hero"],
+    files: [
+      {
+        path: "registry/example/preview-switch-hero-demo.tsx",
+        type: "registry:example",
+        target: "components/preview-switch-hero-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "arc-reveal-hero-demo",
+    type: "registry:example",
+    title: "Arc Reveal Hero Demo",
+    description:
+      "Example of a multilingual greeting cycle followed by a curved black curtain rising to reveal a studio-style landing surface.",
+    registryDependencies: ["https://ruixen.com/r/arc-reveal-hero"],
+    files: [
+      {
+        path: "registry/example/arc-reveal-hero-demo.tsx",
+        type: "registry:example",
+        target: "components/arc-reveal-hero-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "service-ledger-demo",
+    type: "registry:example",
+    title: "Service Ledger Demo",
+    description:
+      "Example of a scroll-spy service section: sticky tab strip across the top tracks the active entry as the reader scrolls through four agency-style panels.",
+    registryDependencies: ["https://ruixen.com/r/service-ledger"],
+    files: [
+      {
+        path: "registry/example/service-ledger-demo.tsx",
+        type: "registry:example",
+        target: "components/service-ledger-demo.tsx",
+      },
+    ],
+  },
+  {
     name: "multi-media-testimonial-demo",
     type: "registry:example",
     title: "Multi-Media Testimonial Demo",

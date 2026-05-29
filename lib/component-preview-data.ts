@@ -881,6 +881,10 @@ export const heroSectionsPreview: ComponentPreviewMap = {
     light: `/preview_images/hero-sections/sales-ai-hero-light.png`,
     dark: `/preview_images/hero-sections/sales-ai-hero-dark.png`,
   },
+  "arc-reveal-hero": {
+    light: `/preview_images/hero-sections/arc-reveal-hero-light.png`,
+    dark: `/preview_images/hero-sections/arc-reveal-hero-dark.png`,
+  },
   // "floating-cards-hero": {
   //   light: `/preview_images/hero-sections/floating-cards-hero-light.png`,
   //   dark: `/preview_images/hero-sections/floating-cards-hero-dark.png`,
@@ -938,6 +942,17 @@ export const testimonialsPreview: ComponentPreviewMap = {
   "multi-media-testimonial": {
     light: `/preview_images/testimonials/multi-media-testimonial-light.png`,
     dark: `/preview_images/testimonials/multi-media-testimonial-dark.png`,
+  },
+};
+
+/**
+ * Service Section - Vertical service-list components for agency / consulting pages
+ * Path: /docs/components/[slug]
+ */
+export const serviceSectionPreview: ComponentPreviewMap = {
+  "service-ledger": {
+    light: `/preview_images/service-sections/service-ledger-light.png`,
+    dark: `/preview_images/service-sections/service-ledger-dark.png`,
   },
 };
 
@@ -1080,6 +1095,7 @@ export const allSectionPreviews: ComponentPreviewMap = {
   ...featuredSectionPreview,
   ...clientSectionPreview,
   ...testimonialsPreview,
+  ...serviceSectionPreview,
   ...footerSectionPreview,
   ...pricingSectionPreview,
   ...navbarsPreview,
@@ -1204,6 +1220,7 @@ export function getCategoryPreviews(category: string): ComponentPreviewMap {
     "featured-section": featuredSectionPreview,
     "client-section": clientSectionPreview,
     testimonials: testimonialsPreview,
+    "service-section": serviceSectionPreview,
     "footer-section": footerSectionPreview,
     "pricing-section": pricingSectionPreview,
   };

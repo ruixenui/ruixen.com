@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "floating-cards-hero-demo",
+  "type": "registry:example",
+  "title": "Floating Cards Hero Demo",
+  "description": "Example of a dotted-grid hero framed by scattered tilted cards: bolts, meeting widgets, a social folder stack, and an interview review note around a centered headline.",
+  "registryDependencies": [
+    "https://ruixen.com/r/floating-cards-hero"
+  ],
+  "files": [
+    {
+      "path": "registry/example/floating-cards-hero-demo.tsx",
+      "content": "import { FloatingCardsHero } from \"@/registry/ruixenui/floating-cards-hero\";\n\nexport default function FloatingCardsHeroDemo() {\n  return (\n    <FloatingCardsHero\n      announcement=\"New! Pro blocks just dropped in the registry\"\n      announcementHref=\"#\"\n      title={\n        <>Ship modern UIs. Without rebuilding every component from scratch.</>\n      }\n      description=\"Ruixen UI gives you 200+ shadcn-style components and full-page blocks you can paste into any React project. Themed by your tokens. Accessible by default.\"\n      primaryAction={{ href: \"#\", label: \"Browse the registry\" }}\n    />\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/floating-cards-hero-demo.tsx"
+    }
+  ]
+}

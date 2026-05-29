@@ -238,6 +238,24 @@
     }
   }
 
+  /* One-shot golden light sweep — used to draw the eye to the banner on load */
+  @keyframes banner-shine {
+    0% {
+      transform: translateX(-160%) skewX(-12deg);
+      opacity: 0;
+    }
+    15% {
+      opacity: 1;
+    }
+    85% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(360%) skewX(-12deg);
+      opacity: 0;
+    }
+  }
+
   @keyframes aurora {
     0% {
       background-position: 0% 50%;

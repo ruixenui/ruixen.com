@@ -38,7 +38,7 @@ Accordions, AI Chat Inputs, Audio & Media, Avatars, Backgrounds, Text Effects, B
 
 ## Section Components
 
-Navbars, Hero Sections, Footer Sections, Client Sections, FAQs, Featured Sections, Pricing Sections
+Navbars, Hero Sections, Footer Sections, Client Sections, FAQs, Featured Sections, Pricing Sections, Service Sections
 
 ## Resources
 

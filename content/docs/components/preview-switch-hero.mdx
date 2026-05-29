@@ -1,0 +1,101 @@
+---
+title: Preview Switch Hero
+date: 2026-05-28
+description: A split hero with an icon-rail that switches the product preview, a lead-capture column (badge, ratings, email form, CTAs, avatars), and a full-width logo strip. Responsive and theme-aware.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="preview-switch-hero-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/preview-switch-hero"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="preview-switch-hero" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { PreviewSwitchHero } from "@/components/ruixen/preview-switch-hero";
+
+export default function Page() {
+  return (
+    <PreviewSwitchHero
+      badge={{ tag: "New", label: "All-in-one analytics for growth" }}
+      title="Unify your sales and marketing insights in one place"
+      description="Track product sales, campaign ROI, and customer behavior across every channel."
+      ratings={[
+        { source: "Google", score: "4.6" },
+        { source: "Trustpilot", score: "4.9" },
+        { source: "G2", score: "4.3" },
+      ]}
+      emailLabel="Enter email address — no credit card required."
+      primaryCta={{ label: "Start for free" }}
+      secondaryCta={{ label: "Talk to sales", href: "#" }}
+      avatars={[{ initials: "AK" }, { initials: "MJ" }, { initials: "RP" }]}
+      socialProof="rated 4.8/5 by 200+ happy customers"
+      tabs={[
+        { id: "a", label: "Performance", media: <YourPreview /> },
+        { id: "b", label: "Audience", media: <YourPreview /> },
+        { id: "c", label: "Plans", media: <YourPreview /> },
+      ]}
+      logos={[{ name: "Synergy" }, { name: "Horizon" }, { name: "Catalyst" }]}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop           | Type            | Default                 | Description                                                         |
+| -------------- | --------------- | ----------------------- | ------------------------------------------------------------------- |
+| `title`        | `ReactNode`     | Required                | Main headline.                                                      |
+| `tabs`         | `PreviewTab[]`  | Required                | Text tabs; each has a `label` and a `media` panel.                  |
+| `badge`        | `object`        | -                       | Pill above the title: `{ tag?, label }`.                            |
+| `description`  | `ReactNode`     | -                       | Muted line under the title.                                         |
+| `ratings`      | `HeroRating[]`  | -                       | Review scores: `{ source, score, icon? }`. Defaults to a star icon. |
+| `showEmail`    | `boolean`       | `true`                  | Show the email-capture field. When `false`, only the CTAs render.   |
+| `emailLabel`   | `ReactNode`     | `"Enter email address"` | Label above the email field.                                        |
+| `onSubmit`     | `(email)=>void` | -                       | Called with the email on submit.                                    |
+| `primaryCta`   | `Cta`           | -                       | Submits the form when no `href`, else renders a link.               |
+| `secondaryCta` | `Cta`           | -                       | Secondary action.                                                   |
+| `avatars`      | `HeroAvatar[]`  | -                       | Overlapping avatar stack: `{ initials? , src? }`.                   |
+| `socialProof`  | `ReactNode`     | -                       | Text beside the avatar stack.                                       |
+| `logos`        | `HeroLogo[]`    | -                       | Full-width logo strip below the split.                              |
+| `className`    | `string`        | -                       | Extra classes on the outer `<section>`.                             |
+
+## Features
+
+- **Click-to-switch preview** — the text-tab rail swaps the product preview in place with a crossfade; the hero stays a compact, single-screen section (no scroll hijacking).
+- **Lead-capture column** — badge, headline, review scores, an optional email form (`showEmail`, with `<label>` + `<input type="email">`), primary/secondary CTAs, and an avatar social-proof row.
+- **Bring your own preview** — `tabs[].media` accepts any `ReactNode`, so drop in screenshots, videos, or a custom inline mock; all panels share the active panel's size.
+- **Responsive** — stacks to a single column on mobile (preview below the copy) and splits to two columns from `md`; the logo strip scrolls horizontally on small screens and distributes evenly on `lg`.
+- **Accessible** — `role="tablist"`/`tab`/`tabpanel`, focus-visible rings, and a real labelled email field.
+- **Theme adaptive** — every surface uses shadcn tokens (`bg-background`, `bg-card`, `bg-muted`, `text-foreground`, `text-muted-foreground`, `border-border`, `bg-primary`), so it inherits your theme without overrides.

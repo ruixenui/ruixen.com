@@ -37,12 +37,12 @@ export interface SalesAiHeroProps {
   announcement?: Announcement;
   title: React.ReactNode;
   description?: React.ReactNode;
-  /** Content for the left (square) media tile. Falls back to a placeholder. */
+  /** Content for the left (portrait) media tile. Falls back to a placeholder. */
   leftMedia?: React.ReactNode;
   /** Content for the right (landscape) media tile. Falls back to a placeholder. */
   rightMedia?: React.ReactNode;
-  /** Trusted-by strip rendered below the media. Pass `false` to hide. */
-  trustedBy?: TrustedBy | false;
+  /** Trusted-by strip rendered below the media. Omit to hide. */
+  trustedBy?: TrustedBy;
   className?: string;
 }
 
@@ -109,7 +109,7 @@ function DefaultPlaceholder({ tone }: { tone: "muted" | "accent" }) {
       className={cn(
         "absolute inset-0 flex items-center justify-center",
         tone === "accent" &&
-          "bg-[radial-gradient(120%_80%_at_20%_0%,#ffd6e8_0%,transparent_55%),radial-gradient(120%_80%_at_85%_30%,#f7b8d4_0%,transparent_60%),radial-gradient(140%_90%_at_50%_100%,#fef3f7_0%,transparent_70%)]",
+          "bg-gradient-to-br from-primary/10 via-background to-primary/5",
       )}
     >
       <div className="flex flex-col items-center gap-2 text-muted-foreground/70">
@@ -191,16 +191,13 @@ export function SalesAiHero({
           >
             {leftMedia}
           </MediaTile>
-          <MediaTile
-            aspect="aspect-[5/3] sm:col-span-2 sm:aspect-[5/3]"
-            tone="accent"
-          >
+          <MediaTile aspect="aspect-[5/3] sm:col-span-2" tone="accent">
             {rightMedia}
           </MediaTile>
         </div>
 
         {/* ── trusted-by ────────────────────────────────── */}
-        {trustedBy !== false && trustedBy && (
+        {trustedBy && (
           <div className="mt-14 md:mt-20">
             <div className="flex items-center gap-6">
               <div className="h-px flex-1 bg-border" />
@@ -211,7 +208,7 @@ export function SalesAiHero({
                     {trustedBy.highlight}
                   </span>
                 )}
-                {trustedBy.suffix ?? ""}
+                {trustedBy.suffix}
               </p>
               <div className="h-px flex-1 bg-border" />
             </div>

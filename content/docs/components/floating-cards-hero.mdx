@@ -1,0 +1,86 @@
+---
+title: Floating Cards Hero
+date: 2026-05-18
+description: A dotted-grid framed hero with scattered tilted decoration cards — bolt tiles, meeting widgets, a social-media folder stack and an interview review note — around a centered announcement pill, headline, description and gradient CTA.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="floating-cards-hero-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/floating-cards-hero"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="floating-cards-hero" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { FloatingCardsHero } from "@/components/ruixen/floating-cards-hero";
+
+export default function Page() {
+  return (
+    <FloatingCardsHero
+      announcement="New! Pro blocks just dropped in the registry"
+      announcementHref="/pro"
+      title="Ship modern UIs. Without rebuilding every component from scratch."
+      description="Ruixen UI gives you 200+ shadcn-style components and full-page blocks you can paste into any React project. Themed by your tokens. Accessible by default."
+      primaryAction={{ href: "/docs", label: "Browse the registry" }}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop               | Type                 | Default  | Description                                                                                       |
+| ------------------ | -------------------- | -------- | ------------------------------------------------------------------------------------------------- |
+| `title`            | `ReactNode`          | Required | Main headline content.                                                                            |
+| `description`      | `string`             | -        | Subtitle paragraph below the headline.                                                            |
+| `announcement`     | `string`             | -        | Text shown inside the emerald announcement pill above the headline.                               |
+| `announcementHref` | `string`             | `"#"`    | Optional link target for the announcement pill.                                                   |
+| `primaryAction`    | `Action`             | -        | Primary CTA — rendered as a gradient pill link.                                                   |
+| `decorations`      | `ReactNode \| false` | Defaults | Replace the scattered decoration cards with your own node, or pass `false` to hide them entirely. |
+| `className`        | `string`             | -        | Extra classes appended to the outer `<section>`.                                                  |
+
+### Types
+
+```ts
+type Action = { href: string; label: string };
+```
+
+## Features
+
+- **Dotted-grid frame** — a CSS `radial-gradient` dot pattern paints the background; no images required.
+- **Scattered tilted cards** — six default decorations (two bolt tiles, two meeting widgets, a social-media folder stack, and an interview note) sit at varied rotations and clip naturally at the rounded edge.
+- **Zero asset dependencies** — every decoration is inline JSX + `lucide-react` icons, so the component is self-contained and CDN-free.
+- **Theme adaptive** — structural surfaces use `bg-card`, `bg-background`, `text-foreground`, `text-muted-foreground`, `border-border`; the dotted grid uses `color-mix` so it inverts cleanly between light and dark.
+- **Responsive** — fixed `710px` mobile / `912px` desktop heights keep proportions consistent; some decorations hide below `md` to avoid clutter.
+- **Composable** — pass a custom `decorations` node (or `false`) to drop in your own scenery while keeping the headline, pill, and CTA layout.

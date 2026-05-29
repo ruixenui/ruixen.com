@@ -115,11 +115,26 @@ const nextConfig = {
       },
     ];
   },
+  // `skipTrailingSlashRedirect` is required for the PostHog reverse proxy.
+  // Without it, Next.js issues a 308 from `/ingest/e/` → `/ingest/e` which
+  // breaks `navigator.sendBeacon` (no 308 follow on unload).
+  skipTrailingSlashRedirect: true,
   rewrites() {
     return [
       {
         source: "/docs/:path*.md",
         destination: "/llm/:path*",
+      },
+      // PostHog reverse proxy — routes telemetry through ruixen.com so
+      // ad blockers (very common in our dev audience) can't drop it. The
+      // `static` asset host is split from the ingest host on PostHog Cloud.
+      {
+        source: "/ingest/static/:path*",
+        destination: "https://us-assets.i.posthog.com/static/:path*",
+      },
+      {
+        source: "/ingest/:path*",
+        destination: "https://us.i.posthog.com/:path*",
       },
     ];
   },

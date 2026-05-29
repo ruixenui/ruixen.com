@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "service-ledger-demo",
+  "type": "registry:example",
+  "title": "Service Ledger Demo",
+  "description": "Example of a scroll-spy service section: sticky tab strip across the top tracks the active entry as the reader scrolls through four agency-style panels.",
+  "registryDependencies": [
+    "https://ruixen.com/r/service-ledger"
+  ],
+  "files": [
+    {
+      "path": "registry/example/service-ledger-demo.tsx",
+      "content": "import { ServiceLedger } from \"@/registry/ruixenui/service-ledger\";\n\nconst GRADIENT =\n  \"https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/gradients/shade_shiters\";\n\nexport default function ServiceLedgerDemo() {\n  return (\n    <ServiceLedger\n      title=\"How we work with you\"\n      description=\"Four ways our studio plugs into your roadmap — from a focused sprint to an embedded, long-term partnership.\"\n      entries={[\n        {\n          code: \"01\",\n          meta: \"4–6 weeks\",\n          title: \"Brand foundation sprint\",\n          description:\n            \"Discovery, positioning, and a tight brand system that anchors every surface — from the homepage to the next funding deck.\",\n          items: [\n            \"Stakeholder and audience interviews\",\n            \"Positioning, voice, and a messaging matrix\",\n            \"Logo system, type stack, and core color tokens\",\n            \"Brand guidelines doc and component library\",\n          ],\n          image: `${GRADIENT}/shade-shifters-01.png`,\n          cta: { href: \"#\", label: \"See the playbook\" },\n        },\n        {\n          code: \"02\",\n          meta: \"8–12 weeks\",\n          title: \"Design system engineering\",\n          description:\n            \"A token-driven, accessibility-audited component library your engineers can actually ship with — light and dark out of the box.\",\n          items: [\n            \"Foundations: tokens, spacing scale, type ramp\",\n            \"Primitive and composite component coverage\",\n            \"Theming hooks for light, dark, and brand variants\",\n            \"Searchable docs your whole team can use\",\n          ],\n          image: `${GRADIENT}/shade-shifters-02.png`,\n        },\n        {\n          code: \"03\",\n          meta: \"12–16 weeks\",\n          title: \"Product build-out\",\n          description:\n            \"Full-stack delivery for the first slice of your product — designed, built, instrumented, and live in a quarter.\",\n          items: [\n            \"App Router foundation with edge-ready deploys\",\n            \"Auth, billing, and data layer wiring\",\n            \"Analytics, error tracking, and feature flags\",\n            \"A two-week launch checklist and handoff\",\n          ],\n          image: `${GRADIENT}/shade-shifters-03.png`,\n          cta: { href: \"#\", label: \"Read a case study\" },\n        },\n        {\n          code: \"04\",\n          meta: \"Ongoing\",\n          title: \"Growth and optimization\",\n          description:\n            \"Embedded design and engineering capacity for the months after launch — landing pages, experiments, and lifecycle UI.\",\n          items: [\n            \"Quarterly refreshes and net-new pages\",\n            \"Experiment briefs and A/B test scaffolding\",\n            \"Onboarding, pricing, and upgrade flows\",\n            \"Weekly working sessions with your team\",\n          ],\n          image: `${GRADIENT}/shade-shifters-04.png`,\n        },\n      ]}\n    />\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/service-ledger-demo.tsx"
+    }
+  ]
+}

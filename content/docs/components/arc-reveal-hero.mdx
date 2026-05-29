@@ -1,0 +1,100 @@
+---
+title: Arc Reveal Hero
+date: 2026-05-27
+description: A cycle of short declarative beats — Quiet, Sharp, Calm, Crafted — fades through a calm white surface, then a curved black curtain rises from below to reveal the landing. The boundary stays a single smooth arc the whole way up, never a flat slide.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="arc-reveal-hero-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/arc-reveal-hero"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="arc-reveal-hero" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { ArcRevealHero } from "@/components/ruixen/arc-reveal-hero";
+
+export default function Page() {
+  return (
+    <ArcRevealHero
+      greetings={[
+        { text: "Hello", lang: "en" },
+        { text: "你好", lang: "zh" },
+        { text: "Bonjour", lang: "fr" },
+        { text: "やあ", lang: "ja" },
+        { text: "ਸਤਿ ਸ੍ਰੀ ਅਕਾਲ ਜੀ", lang: "pa" },
+      ]}
+      storageKey="home-intro"
+    >
+      <YourLandingPage />
+    </ArcRevealHero>
+  );
+}
+```
+
+Pass any landing content as `children` — it sits on the dark surface that the
+curtain reveals. The intro plays once per session when `storageKey` is set;
+omit the prop to replay on every mount (handy in dev or for component pages).
+
+## Props
+
+| Prop                | Type                  | Default      | Description                                                           |
+| ------------------- | --------------------- | ------------ | --------------------------------------------------------------------- |
+| `greetings`         | `ArcRevealGreeting[]` | 8 mood words | Words cycled before the reveal — single declarative beats by default. |
+| `greetingHold`      | `number`              | `620`        | Time (ms) each greeting is held on screen.                            |
+| `revealDuration`    | `number`              | `1500`       | Duration (ms) of the curved curtain rise.                             |
+| `storageKey`        | `string`              | -            | When set, the intro plays only once per `sessionStorage` lifetime.    |
+| `className`         | `string`              | -            | Extra classes on the outer `<section>` (the post-reveal surface).     |
+| `introClassName`    | `string`              | -            | Extra classes on the intro overlay (the pre-reveal surface).          |
+| `greetingClassName` | `string`              | -            | Extra classes on the cycled greeting `<span>`.                        |
+| `revealClassName`   | `string`              | -            | Extra classes on the wrapper around `children`.                       |
+
+### Types
+
+```ts
+type ArcRevealGreeting = {
+  text: string;
+  lang?: string;
+};
+```
+
+## Features
+
+- **Single continuous arc** — one quadratic Bézier with a constant concavity translates upward across the viewport, so the top edge of the curtain stays a smooth curve from the first frame to the last. No flat slide, no segmented stages.
+- **Driven entirely by motion values** — the SVG `d` attribute updates via `useTransform` on a single progress value, so the curve runs off React's render loop for genuine 60 fps motion.
+- **Mood-word cycle** — defaults ship with eight short declarative beats (Quiet · Sharp · Calm · Crafted · Considered · Composed · Honest · Ready) to set tone before the reveal. Each fades and lifts with an `[0.22, 1, 0.36, 1]` ease that's snappy without feeling abrupt. Pass your own `greetings` (with optional `lang`) to script anything — brand words, multilingual hellos, a countdown.
+- **Considered easing** — the curtain rises with `[0.85, 0, 0.15, 1]` (strong ease-in-out): a deliberate anticipation at the start, a quick cover, and a soft settle as it locks into place.
+- **Accessibility-aware** — respects `prefers-reduced-motion` (skips straight to the revealed surface), and uses `aria-hidden` on the curtain so screen readers jump straight to the landing content.
+- **Plays once per session** — pass `storageKey` to suppress replays inside the same `sessionStorage` lifetime; omit it to replay on every mount (the default for component pages).
+- **Self-contained overlay** — the intro lives inside the section's own bounding box (`position: absolute`, one viewport tall, `overflow: hidden`), so it never covers a parent layout's nav or sidebar and never locks page scroll. Drop it at the top of any page and the rest of the page keeps scrolling normally.

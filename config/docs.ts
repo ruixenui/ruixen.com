@@ -125,8 +125,7 @@ export const docsConfig: DocsConfig = {
           title: "MCP",
           href: "/docs/mcp",
           items: [],
-          label: "Free",
-          gold: true,
+          free: true,
         },
         {
           title: "Dual Tailwind",
@@ -301,6 +300,24 @@ export const docsConfig: DocsConfig = {
               items: [],
               label: "New",
             },
+            {
+              title: "Scroll Over Hero",
+              href: `/docs/components/scroll-over-hero`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Preview Switch Hero",
+              href: `/docs/components/preview-switch-hero`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Arc Reveal Hero",
+              href: `/docs/components/arc-reveal-hero`,
+              items: [],
+              label: "New",
+            },
             // {
             //   title: "Floating Cards Hero",
             //   href: `/docs/components/floating-cards-hero`,
@@ -357,6 +374,17 @@ export const docsConfig: DocsConfig = {
             {
               title: "Multi-Media Testimonial",
               href: `/docs/components/multi-media-testimonial`,
+              items: [],
+              label: "New",
+            },
+          ],
+        },
+        {
+          title: "Service Sections",
+          items: [
+            {
+              title: "Service Ledger",
+              href: `/docs/components/service-ledger`,
               items: [],
               label: "New",
             },
@@ -899,7 +927,6 @@ export const docsConfig: DocsConfig = {
               title: "Profile Card",
               href: `/docs/components/profile-card`,
               items: [],
-              label: "New",
             },
           ],
         },
@@ -1142,7 +1169,6 @@ export const docsConfig: DocsConfig = {
               title: "Fine Tune Slider",
               href: `/docs/components/fine-tune-slider`,
               items: [],
-              label: "New",
             },
             {
               title: "Scroll Ruler",
@@ -1262,7 +1288,6 @@ export const docsConfig: DocsConfig = {
               title: "Calendar Wave",
               href: `/docs/components/calendar-wave`,
               items: [],
-              label: "New",
             },
             {
               title: "Calendar Crest",
@@ -1279,7 +1304,6 @@ export const docsConfig: DocsConfig = {
               title: "Drum Picker",
               href: `/docs/components/drum-picker`,
               items: [],
-              label: "New",
             },
             {
               title: "Scrub Datetime",

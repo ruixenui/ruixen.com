@@ -5,6 +5,7 @@ import { ComponentWrapper } from "@/components/component-wrapper";
 import Image from "next/image";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
+import { trackEvent } from "@/lib/events";
 import {
   CheckIcon,
   ClipboardIcon,
@@ -17,6 +18,8 @@ interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
   name: string;
   align?: "center" | "start" | "end";
   preview?: boolean;
+  /** Preview iframe height in px — raise it for scroll-driven demos. */
+  height?: number;
 }
 
 export function ComponentPreview({
@@ -25,6 +28,7 @@ export function ComponentPreview({
   className,
   align = "center",
   preview = false,
+  height,
   ...props
 }: ComponentPreviewProps) {
   const [replayKey, setReplayKey] = React.useState(0);
@@ -41,8 +45,10 @@ export function ComponentPreview({
   }, [hasCopied]);
 
   React.useEffect(() => {
-    const componentName = name.replace(/-demo$/, "");
-    fetch(`/r/${componentName}.json`)
+    // Fetch the exact registry item being previewed (no -demo stripping).
+    // This way the copy button mirrors what the reader sees: a demo entry
+    // copies the demo source, a component entry copies the component source.
+    fetch(`/r/${name}.json`)
       .then((res) => (res.ok ? res.json() : null))
       .then((data) => {
         if (data?.files?.[0]?.content) {
@@ -79,7 +85,18 @@ export function ComponentPreview({
       )}
       {...props}
     >
-      <Tabs defaultValue="preview" className="relative mr-auto w-full">
+      <Tabs
+        defaultValue="preview"
+        className="relative mr-auto w-full"
+        onValueChange={(value) => {
+          if (value === "code") {
+            trackEvent({
+              name: "preview_code_viewed",
+              properties: { component: name },
+            });
+          }
+        }}
+      >
         <div className="overflow-hidden rounded-2xl border">
           {!preview && (
             <div className="flex items-center justify-between bg-muted/50 px-4">
@@ -105,6 +122,14 @@ export function ComponentPreview({
                     onClick={() => {
                       navigator.clipboard.writeText(sourceCode);
                       setHasCopied(true);
+                      trackEvent({
+                        name: "copy_source_code",
+                        properties: {
+                          component: name,
+                          surface: "preview_toolbar",
+                          chars: sourceCode.length,
+                        },
+                      });
                     }}
                     className="inline-flex h-7 w-7 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
                     title="Copy code"
@@ -118,7 +143,13 @@ export function ComponentPreview({
                 )}
                 <button
                   type="button"
-                  onClick={() => setReplayKey((k) => k + 1)}
+                  onClick={() => {
+                    setReplayKey((k) => k + 1);
+                    trackEvent({
+                      name: "preview_replayed",
+                      properties: { component: name },
+                    });
+                  }}
                   className="inline-flex h-7 w-7 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
                   title="Replay animation"
                 >
@@ -129,6 +160,12 @@ export function ComponentPreview({
                   href={`https://v0.dev/chat/api/open?url=https://ruixen.com/r/${name.replace(/-demo$/, "")}.json`}
                   target="_blank"
                   rel="noreferrer"
+                  onClick={() =>
+                    trackEvent({
+                      name: "v0_export_clicked",
+                      properties: { component: name },
+                    })
+                  }
                   className="inline-flex h-7 items-center gap-1 rounded-md bg-black px-2 text-xs font-semibold text-white transition-colors hover:bg-black/80 dark:bg-white dark:text-black dark:hover:bg-white/80"
                   title="Open in v0"
                 >
@@ -165,6 +202,7 @@ export function ComponentPreview({
           <TabsContent value="preview" className="mt-0">
             <ComponentWrapper
               key={replayKey}
+              previewHeight={height}
               className="overflow-hidden rounded-t-2xl bg-background"
             >
               <React.Suspense

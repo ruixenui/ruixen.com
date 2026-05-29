@@ -1,0 +1,94 @@
+---
+title: Scroll Over Hero
+date: 2026-05-28
+description: A hero with a pinned, centered title that a product panel rises up and overlaps as the page scrolls. Theme-aware, with a reduced-motion stacked fallback.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="scroll-over-hero-demo" height={760} />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/scroll-over-hero"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="scroll-over-hero" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { ScrollOverHero } from "@/components/ruixen/scroll-over-hero";
+
+export default function Page() {
+  return (
+    <ScrollOverHero
+      title="Every metric that matters, in one view."
+      description="Real-time dashboards that turn raw events into decisions."
+      actions={
+        <>
+          <button className="rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-background">
+            Start free
+          </button>
+          <button className="rounded-full px-5 py-2.5 text-sm font-medium text-foreground ring-1 ring-border">
+            Book a demo
+          </button>
+        </>
+      }
+      media={
+        <img
+          src="/dashboard.png"
+          alt="Product dashboard"
+          className="aspect-video w-full object-cover"
+        />
+      }
+    />
+  );
+}
+```
+
+## Props
+
+| Prop           | Type        | Default   | Description                                                                  |
+| -------------- | ----------- | --------- | ---------------------------------------------------------------------------- |
+| `title`        | `ReactNode` | Required  | Centered headline that stays pinned while the media rises over it.           |
+| `description`  | `ReactNode` | -         | Muted supporting line under the title.                                       |
+| `eyebrow`      | `ReactNode` | -         | Small pill or label rendered above the title.                                |
+| `actions`      | `ReactNode` | -         | Row of CTA buttons / actions below the title.                                |
+| `media`        | `ReactNode` | -         | Panel that rises and overlaps the title. Falls back to a themed placeholder. |
+| `scrollLength` | `string`    | `"220vh"` | Total scroll height of the pinned section. Taller = slower overlap.          |
+| `className`    | `string`    | -         | Extra classes appended to the outer `<section>`.                             |
+
+## Features
+
+- **Pinned title, rising panel** — the title is pinned with `position: sticky` while the media panel translates up on scroll and overlaps it via a higher `z-index`, all driven by a single scroll progress value.
+- **No layout jank** — the panel and title are both absolutely positioned inside one `h-screen` stage, so the overlap is pure transform work with nothing reflowing.
+- **Reduced-motion fallback** — when `prefers-reduced-motion` is set, the component renders a calm, stacked hero (title then panel) with no scroll-driven motion.
+- **Bring your own media** — `media` accepts any `ReactNode`, so drop in an `<img>`, a `<video>`, or a custom inline mock; an empty state shows a themed placeholder.
+- **Tunable pacing** — `scrollLength` controls how much scrolling the overlap takes, so you can make it quick and punchy or long and cinematic.
+- **Theme adaptive** — every surface uses shadcn tokens (`bg-background`, `bg-card`, `bg-muted`, `text-foreground`, `text-muted-foreground`, `border-border`), so the block inherits your theme without overrides.
