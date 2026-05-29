@@ -133,12 +133,16 @@ function IFramePortal({
 
 /* --------------------------------- Wrapper --------------------------------- */
 
-interface ComponentWrapperProps extends React.HTMLAttributes<HTMLDivElement> {}
+interface ComponentWrapperProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Preview iframe height in px. Taller for scroll-driven demos. Default 500. */
+  previewHeight?: number;
+}
 
 /** ComponentWrapper renders the preview area with drag-to-resize. */
 export const ComponentWrapper = ({
   className,
   children,
+  previewHeight = 500,
 }: ComponentWrapperProps) => {
   type PreviewWidth = number | "auto";
 
@@ -246,7 +250,11 @@ export const ComponentWrapper = ({
             willChange: dragging ? "width" : undefined,
           }}
         >
-          <IFramePortal width={width} height={500} className="bg-background">
+          <IFramePortal
+            width={width}
+            height={previewHeight}
+            className="bg-background"
+          >
             {children}
           </IFramePortal>
 

@@ -18,6 +18,8 @@ interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
   name: string;
   align?: "center" | "start" | "end";
   preview?: boolean;
+  /** Preview iframe height in px — raise it for scroll-driven demos. */
+  height?: number;
 }
 
 export function ComponentPreview({
@@ -26,6 +28,7 @@ export function ComponentPreview({
   className,
   align = "center",
   preview = false,
+  height,
   ...props
 }: ComponentPreviewProps) {
   const [replayKey, setReplayKey] = React.useState(0);
@@ -199,6 +202,7 @@ export function ComponentPreview({
           <TabsContent value="preview" className="mt-0">
             <ComponentWrapper
               key={replayKey}
+              previewHeight={height}
               className="overflow-hidden rounded-t-2xl bg-background"
             >
               <React.Suspense

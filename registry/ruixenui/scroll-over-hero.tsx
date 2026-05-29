@@ -3,8 +3,8 @@
 import * as React from "react";
 import {
   motion,
+  useMotionValue,
   useReducedMotion,
-  useScroll,
   useTransform,
 } from "motion/react";
 import { cn } from "@/lib/utils";
@@ -104,10 +104,15 @@ export function ScrollOverHero({
   const prefersReducedMotion = useReducedMotion();
   const sectionRef = React.useRef<HTMLElement>(null);
   const titleRef = React.useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end start"],
-  });
+
+  // Scroll progress (0 → 1) of the section through its *own* scroll context.
+  // We compute it by hand against the section's owner window rather than
+  // motion's `useScroll`, because that always binds to the global `window`.
+  // When this component is portaled into another document (e.g. the docs
+  // preview iframe) that global is the *outer* page — so the effect would
+  // never respond to the container it actually lives in. Reading the owner
+  // window makes it work in the top page and inside the iframe alike.
+  const scrollYProgress = useMotionValue(0);
 
   // Measure the real title height so the panel starts *just below it* on every
   // viewport — that's what keeps the CTAs clear of the panel at rest and lets
@@ -125,11 +130,12 @@ export function ScrollOverHero({
       setState({ mode: "stacked", peek: 0 });
       return;
     }
+    const win = sectionRef.current?.ownerDocument.defaultView ?? window;
     const measure = () => {
       const el = titleRef.current;
       if (!el) return;
       const titleBottom = TITLE_PT + el.offsetHeight;
-      if (titleBottom > window.innerHeight - MIN_PEEK) {
+      if (titleBottom > win.innerHeight - MIN_PEEK) {
         setState((s) =>
           s.mode === "stacked" ? s : { mode: "stacked", peek: 0 },
         );
@@ -143,9 +149,37 @@ export function ScrollOverHero({
       }
     };
     measure();
-    window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
+    win.addEventListener("resize", measure);
+    return () => win.removeEventListener("resize", measure);
   }, [prefersReducedMotion]);
+
+  // Drive `scrollYProgress` from the section's owner window. Mirrors motion's
+  // ["start start", "end start"] offset: 0 when the section top hits the
+  // viewport top, 1 when its bottom does (rect.top === -height).
+  useIsomorphicLayoutEffect(() => {
+    if (state.mode !== "overlap") return;
+    const el = sectionRef.current;
+    if (!el) return;
+    const win = el.ownerDocument.defaultView ?? window;
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const rect = el.getBoundingClientRect();
+      const denom = rect.height || 1;
+      scrollYProgress.set(Math.min(1, Math.max(0, -rect.top / denom)));
+    };
+    const onScroll = () => {
+      if (!raf) raf = win.requestAnimationFrame(update);
+    };
+    update();
+    win.addEventListener("scroll", onScroll, { passive: true });
+    win.addEventListener("resize", onScroll);
+    return () => {
+      win.removeEventListener("scroll", onScroll);
+      win.removeEventListener("resize", onScroll);
+      if (raf) win.cancelAnimationFrame(raf);
+    };
+  }, [state.mode, scrollYProgress]);
 
   // The title fades and lifts away early; the media rises from its peek to fully
   // cover it. Both finish before the pin releases, so nothing snaps.
@@ -167,7 +201,9 @@ export function ScrollOverHero({
       style={state.mode === "overlap" ? { height: scrollLength } : undefined}
     >
       {state.mode === "overlap" ? (
-        <div className="sticky top-0 h-screen overflow-hidden">
+        // Soft bottom fade so the rising panel dissolves into the page instead
+        // of ending on a hard clip line at the viewport edge.
+        <div className="sticky top-0 h-screen overflow-hidden [mask-image:linear-gradient(to_bottom,black_82%,transparent)]">
           {/* Pinned title — fades and lifts as the media rises over it. */}
           <motion.div
             style={{ opacity: titleOpacity, scale: titleScale, y: titleY }}
