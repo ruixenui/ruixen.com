@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import { EARLY_BIRD_END, formatRemaining, msRemaining } from "@/lib/early-bird";
+import { EARLY_BIRD_END, formatRemaining } from "@/lib/early-bird";
 
 /* ── types ───────────────────────────────────────────────────── */
 
@@ -13,6 +13,8 @@ export interface EarlyBirdTimerProps {
   variant?: "labelled" | "compact";
   /** Render this when the timer hits zero. Default: nothing. */
   expiredFallback?: React.ReactNode;
+  /** Instant to count down to. Default: the campaign end. */
+  deadline?: Date;
   className?: string;
 }
 
@@ -22,21 +24,23 @@ export function EarlyBirdTimer({
   size = "sm",
   variant = "labelled",
   expiredFallback = null,
+  deadline = EARLY_BIRD_END,
   className,
 }: EarlyBirdTimerProps) {
-  // Start with the deterministic deadline diff so SSR + first client render
-  // agree (avoids hydration mismatch). The interval below then keeps the
-  // value live once we're in the browser.
-  const [ms, setMs] = React.useState<number>(() =>
-    typeof window === "undefined" ? msRemaining() : msRemaining(),
+  // Diff against `deadline`. Starting from the same computation on SSR + first
+  // client render keeps hydration agreeing; the interval keeps it live after.
+  const msTo = React.useCallback(
+    () => Math.max(0, deadline.getTime() - Date.now()),
+    [deadline],
   );
+  const [ms, setMs] = React.useState<number>(msTo);
 
   React.useEffect(() => {
-    const tick = () => setMs(msRemaining());
+    const tick = () => setMs(msTo());
     tick();
     const id = window.setInterval(tick, 1000);
     return () => window.clearInterval(id);
-  }, []);
+  }, [msTo]);
 
   if (ms <= 0) return <>{expiredFallback}</>;
 
@@ -45,7 +49,7 @@ export function EarlyBirdTimer({
   if (variant === "compact") {
     return (
       <time
-        dateTime={EARLY_BIRD_END.toISOString()}
+        dateTime={deadline.toISOString()}
         className={cn(
           "font-mono tabular-nums tracking-tight",
           size === "lg" ? "text-2xl md:text-3xl" : "text-sm",
