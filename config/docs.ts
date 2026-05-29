@@ -125,8 +125,7 @@ export const docsConfig: DocsConfig = {
           title: "MCP",
           href: "/docs/mcp",
           items: [],
-          label: "Free",
-          gold: true,
+          free: true,
         },
         {
           title: "Dual Tailwind",
@@ -928,7 +927,6 @@ export const docsConfig: DocsConfig = {
               title: "Profile Card",
               href: `/docs/components/profile-card`,
               items: [],
-              label: "New",
             },
           ],
         },
@@ -1171,7 +1169,6 @@ export const docsConfig: DocsConfig = {
               title: "Fine Tune Slider",
               href: `/docs/components/fine-tune-slider`,
               items: [],
-              label: "New",
             },
             {
               title: "Scroll Ruler",
@@ -1291,7 +1288,6 @@ export const docsConfig: DocsConfig = {
               title: "Calendar Wave",
               href: `/docs/components/calendar-wave`,
               items: [],
-              label: "New",
             },
             {
               title: "Calendar Crest",
@@ -1308,7 +1304,6 @@ export const docsConfig: DocsConfig = {
               title: "Drum Picker",
               href: `/docs/components/drum-picker`,
               items: [],
-              label: "New",
             },
             {
               title: "Scrub Datetime",
