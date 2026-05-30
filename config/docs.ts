@@ -940,6 +940,12 @@ export const docsConfig: DocsConfig = {
               label: "New",
             },
             {
+              title: "Scroll Portrait Wall",
+              href: `/docs/components/scroll-portrait-wall`,
+              items: [],
+              label: "New",
+            },
+            {
               title: "Card Stack",
               href: `/docs/components/card-stack`,
               items: [],
