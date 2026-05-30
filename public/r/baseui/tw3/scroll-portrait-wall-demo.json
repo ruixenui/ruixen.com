@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-portrait-wall-demo",
+  "type": "registry:example",
+  "title": "Scroll Portrait Wall Demo",
+  "description": "A sticky mix-blend-exclusion title over a scattered portrait grid that scales each photo in and out on scroll.",
+  "registryDependencies": [
+    "https://ruixen.com/r/scroll-portrait-wall"
+  ],
+  "files": [
+    {
+      "path": "registry/example/scroll-portrait-wall-demo.tsx",
+      "content": "import {\n  ScrollPortraitWall,\n  type Speaker,\n} from \"@/registry/ruixenui/scroll-portrait-wall\";\n\n// 5 avatars on the CDN, cycled across the speakers.\nconst speakers: Speaker[] = [\n  { name: \"Naomi Adeyemi\", role: \"Keynote · Design Systems\" },\n  { name: \"Hugo Marchetti\", role: \"Principal Engineer, Vercel\" },\n  { name: \"Priya Nair\", role: \"Head of AI, Loomstack\" },\n  { name: \"Sebastian Cole\", role: \"Creative Director\" },\n  { name: \"Mei-Ling Zhao\", role: \"Staff Designer, Linear\" },\n  { name: \"Idris Calloway\", role: \"Founder, Northwind\" },\n  { name: \"Clara Boström\", role: \"VP Product, Figma\" },\n  { name: \"Rafael Ortega\", role: \"Motion Lead\" },\n  { name: \"Hannah Whitfield\", role: \"DX Engineer, Stripe\" },\n  { name: \"Yusuf Demir\", role: \"Research, DeepMind\" },\n].map((s, i) => ({\n  ...s,\n  src: `https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/avatar-images/avatar-${String((i % 5) + 1).padStart(2, \"0\")}.jpg`,\n}));\n\nexport default function ScrollPortraitWallDemo() {\n  return (\n    <ScrollPortraitWall\n      title=\"The Lineup\"\n      hint=\"scroll to meet the lineup\"\n      date=\"Sep 18, 2026\"\n      speakers={speakers}\n      showCaptions={false}\n    />\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/scroll-portrait-wall-demo.tsx"
+    }
+  ]
+}

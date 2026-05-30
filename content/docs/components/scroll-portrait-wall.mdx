@@ -1,0 +1,65 @@
+---
+title: Scroll Portrait Wall
+date: 2026-05-30
+description: A scroll-driven portrait wall with a sticky mix-blend-exclusion title. GSAP ScrollTrigger scrubs each portrait from scale 0 to 1 and back as its row crosses the viewport.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="scroll-portrait-wall-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/scroll-portrait-wall"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the dependencies</Step>
+
+```bash
+npm install gsap @gsap/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="scroll-portrait-wall" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Notes
+
+- The section uses shadcn theme tokens (`bg-background` / `text-foreground`) so it adapts to light and dark; the `mix-blend-exclusion` title inverts against whatever portrait sits behind it. Override via `className`.
+- The default `speakers` use remote CDN portraits so the component renders without local assets. Pass your own `speakers` with real `src` paths in production.
+- Honors `prefers-reduced-motion`: when reduced, every portrait renders at full scale with no scroll scrubbing.
+
+## Props
+
+| Prop           | Type        | Default                       | Description                                                         |
+| -------------- | ----------- | ----------------------------- | ------------------------------------------------------------------- |
+| `title`        | `ReactNode` | `"Speakers"`                  | Big sticky title rendered with `mix-blend-exclusion`.               |
+| `date`         | `ReactNode` | `"Oct 22, 2025"`              | Small line under the title.                                         |
+| `hint`         | `ReactNode` | `"scroll down to see effect"` | Top-of-section hint with the gradient tail.                         |
+| `speakers`     | `Speaker[]` | built-in demo set             | People to scatter across the wall. `Speaker = { name, role, src }`. |
+| `columns`      | `number`    | `4`                           | Grid columns the portraits are scattered across.                    |
+| `showCaptions` | `boolean`   | `true`                        | Show the name / role caption under each portrait.                   |
+| `className`    | `string`    | `undefined`                   | Extra classes merged onto the root `<section>`.                     |

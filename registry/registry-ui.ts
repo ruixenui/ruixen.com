@@ -301,6 +301,21 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "scroll-portrait-wall",
+    type: "registry:ui",
+    title: "Scroll Portrait Wall",
+    description:
+      "A scroll-driven portrait wall with a sticky mix-blend-exclusion title; GSAP ScrollTrigger scrubs each portrait from scale 0 to 1 and back as its row crosses the viewport.",
+    dependencies: ["gsap", "@gsap/react"],
+    files: [
+      {
+        path: "registry/ruixenui/scroll-portrait-wall.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/scroll-portrait-wall.tsx",
+      },
+    ],
+  },
+  {
     name: "gradient-hero-showcase",
     type: "registry:ui",
     title: "Gradient Hero Showcase",
@@ -2475,9 +2490,14 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Multi-Media Testimonial",
     description:
-      "A masonry grid of testimonial cards that mix text-only quotes, image thumbnails, and video clips that open in a fullscreen lightbox — with author avatar, title, and role under each card.",
+      "A masonry grid of testimonial cards that mix text-only quotes, image thumbnails, and video clips that open in a mobile-framed lightbox powered by Video Player Pro — with author avatar, title, and role under each card.",
     dependencies: ["lucide-react"],
-    registryDependencies: ["avatar", "button", "dialog"],
+    registryDependencies: [
+      "avatar",
+      "button",
+      "dialog",
+      "https://ruixen.com/r/video-player-pro",
+    ],
     files: [
       {
         path: "registry/ruixenui/multi-media-testimonial.tsx",

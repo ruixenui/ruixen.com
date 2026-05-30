@@ -46,6 +46,7 @@ const eventSchema = z.object({
     "theme_change",
 
     // OSS → Pro funnel (added by funnel-correction plan)
+    "early_bird_banner_viewed", // banner impression — pairs with oss_pro_cta_clicked for CTR
     "oss_pro_cta_clicked",
     "oss_pricing_page_viewed",
     "oss_template_preview_clicked",

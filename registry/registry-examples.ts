@@ -2197,6 +2197,21 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "scroll-portrait-wall-demo",
+    type: "registry:example",
+    title: "Scroll Portrait Wall Demo",
+    description:
+      "A sticky mix-blend-exclusion title over a scattered portrait grid that scales each photo in and out on scroll.",
+    registryDependencies: ["https://ruixen.com/r/scroll-portrait-wall"],
+    files: [
+      {
+        path: "registry/example/scroll-portrait-wall-demo.tsx",
+        type: "registry:example",
+        target: "components/scroll-portrait-wall-demo.tsx",
+      },
+    ],
+  },
+  {
     name: "pricing-landing-hero-demo",
     type: "registry:example",
     title: "Pricing Landing Hero Demo",
