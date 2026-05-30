@@ -345,6 +345,23 @@
       ]
     },
     {
+      "name": "scroll-portrait-wall",
+      "type": "registry:ui",
+      "title": "Scroll Portrait Wall",
+      "description": "A scroll-driven portrait wall with a sticky mix-blend-exclusion title; GSAP ScrollTrigger scrubs each portrait from scale 0 to 1 and back as its row crosses the viewport.",
+      "dependencies": [
+        "gsap",
+        "@gsap/react"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/scroll-portrait-wall.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/scroll-portrait-wall.tsx"
+        }
+      ]
+    },
+    {
       "name": "gradient-hero-showcase",
       "type": "registry:ui",
       "title": "Gradient Hero Showcase",
@@ -2678,14 +2695,15 @@
       "name": "multi-media-testimonial",
       "type": "registry:ui",
       "title": "Multi-Media Testimonial",
-      "description": "A masonry grid of testimonial cards that mix text-only quotes, image thumbnails, and video clips that open in a fullscreen lightbox — with author avatar, title, and role under each card.",
+      "description": "A masonry grid of testimonial cards that mix text-only quotes, image thumbnails, and video clips that open in a mobile-framed lightbox powered by Video Player Pro — with author avatar, title, and role under each card.",
       "dependencies": [
         "lucide-react"
       ],
       "registryDependencies": [
         "avatar",
         "button",
-        "dialog"
+        "dialog",
+        "https://ruixen.com/r/video-player-pro"
       ],
       "files": [
         {
@@ -5876,6 +5894,22 @@
           "path": "registry/example/multi-media-testimonial-demo.tsx",
           "type": "registry:example",
           "target": "components/multi-media-testimonial-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-portrait-wall-demo",
+      "type": "registry:example",
+      "title": "Scroll Portrait Wall Demo",
+      "description": "A sticky mix-blend-exclusion title over a scattered portrait grid that scales each photo in and out on scroll.",
+      "registryDependencies": [
+        "https://ruixen.com/r/scroll-portrait-wall"
+      ],
+      "files": [
+        {
+          "path": "registry/example/scroll-portrait-wall-demo.tsx",
+          "type": "registry:example",
+          "target": "components/scroll-portrait-wall-demo.tsx"
         }
       ]
     },
