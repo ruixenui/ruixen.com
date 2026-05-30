@@ -478,6 +478,30 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "scroll-portrait-wall": {
+    name: "scroll-portrait-wall",
+    description:
+      "A scroll-driven portrait wall with a sticky mix-blend-exclusion title; GSAP ScrollTrigger scrubs each portrait from scale 0 to 1 and back as its row crosses the viewport.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/scroll-portrait-wall.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/scroll-portrait-wall.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/scroll-portrait-wall.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "gradient-hero-showcase": {
     name: "gradient-hero-showcase",
     description:
@@ -3813,9 +3837,14 @@ export const Index: Record<string, any> = {
   "multi-media-testimonial": {
     name: "multi-media-testimonial",
     description:
-      "A masonry grid of testimonial cards that mix text-only quotes, image thumbnails, and video clips that open in a fullscreen lightbox — with author avatar, title, and role under each card.",
+      "A masonry grid of testimonial cards that mix text-only quotes, image thumbnails, and video clips that open in a mobile-framed lightbox powered by Video Player Pro — with author avatar, title, and role under each card.",
     type: "registry:ui",
-    registryDependencies: ["avatar", "button", "dialog"],
+    registryDependencies: [
+      "avatar",
+      "button",
+      "dialog",
+      "https://ruixen.com/r/video-player-pro",
+    ],
     files: [
       {
         path: "registry/ruixenui/multi-media-testimonial.tsx",
@@ -8573,6 +8602,32 @@ export const Index: Record<string, any> = {
     component: React.lazy(async () => {
       const mod = await import(
         "@/registry/example/multi-media-testimonial-demo.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "scroll-portrait-wall-demo": {
+    name: "scroll-portrait-wall-demo",
+    description:
+      "A sticky mix-blend-exclusion title over a scattered portrait grid that scales each photo in and out on scroll.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/scroll-portrait-wall"],
+    files: [
+      {
+        path: "registry/example/scroll-portrait-wall-demo.tsx",
+        type: "registry:example",
+        target: "components/scroll-portrait-wall-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/scroll-portrait-wall-demo.tsx"
       );
       const exportName =
         Object.keys(mod).find(
