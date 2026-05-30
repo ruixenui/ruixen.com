@@ -227,6 +227,24 @@ export function VideoPlayerPro({
   const [err, setErr] = useState<string | null>(null);
   const [scrubbing, setScrubbing] = useState(false);
   const [barHover, setBarHover] = useState(false);
+  const [width, setWidth] = useState(0);
+
+  /* ── Track container width so the control bar can adapt ── */
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el || typeof ResizeObserver === "undefined") return;
+    const ro = new ResizeObserver((entries) => {
+      setWidth(entries[0].contentRect.width);
+    });
+    ro.observe(el);
+    setWidth(el.clientWidth);
+    return () => ro.disconnect();
+  }, []);
+
+  // Narrow containers (e.g. a phone-width lightbox) can't fit every control
+  // on one row, so progressively drop the lowest-priority pieces.
+  const compact = width > 0 && width < 480; // hide the inline volume slider
+  const tiny = width > 0 && width < 360; // also hide the speed pills
 
   /* ── Reset on src change ── */
   useEffect(() => {
@@ -694,36 +712,38 @@ export function VideoPlayerPro({
                     >
                       <VolIco />
                     </button>
-                    <div
-                      onMouseDown={(e) => {
-                        const rect = e.currentTarget.getBoundingClientRect();
-                        const x = Math.max(
-                          0,
-                          Math.min(e.clientX - rect.left, rect.width),
-                        );
-                        setVideoVol(x / rect.width);
-                      }}
-                      style={{
-                        width: 52,
-                        height: 3,
-                        background: "rgba(255,255,255,0.12)",
-                        borderRadius: 2,
-                        cursor: "pointer",
-                        position: "relative",
-                      }}
-                    >
+                    {!compact && (
                       <div
-                        style={{
-                          position: "absolute",
-                          top: 0,
-                          left: 0,
-                          height: "100%",
-                          width: `${vol * 100}%`,
-                          background: "rgba(255,255,255,0.5)",
-                          borderRadius: 2,
+                        onMouseDown={(e) => {
+                          const rect = e.currentTarget.getBoundingClientRect();
+                          const x = Math.max(
+                            0,
+                            Math.min(e.clientX - rect.left, rect.width),
+                          );
+                          setVideoVol(x / rect.width);
                         }}
-                      />
-                    </div>
+                        style={{
+                          width: 52,
+                          height: 3,
+                          background: "rgba(255,255,255,0.12)",
+                          borderRadius: 2,
+                          cursor: "pointer",
+                          position: "relative",
+                        }}
+                      >
+                        <div
+                          style={{
+                            position: "absolute",
+                            top: 0,
+                            left: 0,
+                            height: "100%",
+                            width: `${vol * 100}%`,
+                            background: "rgba(255,255,255,0.5)",
+                            borderRadius: 2,
+                          }}
+                        />
+                      </div>
+                    )}
                   </div>
 
                   {/* Time */}
@@ -747,65 +767,67 @@ export function VideoPlayerPro({
                 {/* Right: speed + fullscreen */}
                 <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
                   {/* Speed pills */}
-                  <div
-                    style={{
-                      display: "flex",
-                      gap: 0,
-                      position: "relative",
-                      background: "rgba(255,255,255,0.06)",
-                      borderRadius: 8,
-                      padding: 2,
-                    }}
-                  >
-                    {SPEEDS.map((s) => (
-                      <button
-                        key={s}
-                        onClick={() => {
-                          const v = videoRef.current;
-                          if (v) v.playbackRate = s;
-                          setSpeed(s);
-                          if (sound) tick(lastSnd);
-                        }}
-                        style={{
-                          position: "relative",
-                          fontSize: 11,
-                          fontWeight: 500,
-                          fontVariantNumeric: "tabular-nums",
-                          padding: "4px 8px",
-                          borderRadius: 6,
-                          border: "none",
-                          background: "transparent",
-                          color:
-                            speed === s
-                              ? "rgba(255,255,255,0.9)"
-                              : "rgba(255,255,255,0.3)",
-                          cursor: "pointer",
-                          zIndex: 1,
-                          transition: "color 0.15s",
-                          lineHeight: 1,
-                        }}
-                      >
-                        {speed === s && (
-                          <motion.div
-                            layoutId="vp-speed"
-                            style={{
-                              position: "absolute",
-                              inset: 0,
-                              background: "rgba(255,255,255,0.12)",
-                              borderRadius: 6,
-                              zIndex: -1,
-                            }}
-                            transition={{
-                              type: "spring",
-                              stiffness: 500,
-                              damping: 35,
-                            }}
-                          />
-                        )}
-                        {s}x
-                      </button>
-                    ))}
-                  </div>
+                  {!tiny && (
+                    <div
+                      style={{
+                        display: "flex",
+                        gap: 0,
+                        position: "relative",
+                        background: "rgba(255,255,255,0.06)",
+                        borderRadius: 8,
+                        padding: 2,
+                      }}
+                    >
+                      {SPEEDS.map((s) => (
+                        <button
+                          key={s}
+                          onClick={() => {
+                            const v = videoRef.current;
+                            if (v) v.playbackRate = s;
+                            setSpeed(s);
+                            if (sound) tick(lastSnd);
+                          }}
+                          style={{
+                            position: "relative",
+                            fontSize: 11,
+                            fontWeight: 500,
+                            fontVariantNumeric: "tabular-nums",
+                            padding: "4px 8px",
+                            borderRadius: 6,
+                            border: "none",
+                            background: "transparent",
+                            color:
+                              speed === s
+                                ? "rgba(255,255,255,0.9)"
+                                : "rgba(255,255,255,0.3)",
+                            cursor: "pointer",
+                            zIndex: 1,
+                            transition: "color 0.15s",
+                            lineHeight: 1,
+                          }}
+                        >
+                          {speed === s && (
+                            <motion.div
+                              layoutId="vp-speed"
+                              style={{
+                                position: "absolute",
+                                inset: 0,
+                                background: "rgba(255,255,255,0.12)",
+                                borderRadius: 6,
+                                zIndex: -1,
+                              }}
+                              transition={{
+                                type: "spring",
+                                stiffness: 500,
+                                damping: 35,
+                              }}
+                            />
+                          )}
+                          {s}x
+                        </button>
+                      ))}
+                    </div>
+                  )}
 
                   {/* Fullscreen */}
                   <button
