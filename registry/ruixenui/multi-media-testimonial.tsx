@@ -11,6 +11,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { VideoPlayerPro } from "@/components/ruixen/video-player-pro";
 import { cn } from "@/lib/utils";
 
 export interface Testimonial {
@@ -239,19 +240,7 @@ export function MultiMediaTestimonialCard({
   const { name, profile, title, designation, content, mediaUrl, thumbnail } =
     testimonial;
 
-  const videoRef = React.useRef<HTMLVideoElement | null>(null);
   const [open, setOpen] = React.useState(false);
-
-  React.useEffect(() => {
-    const v = videoRef.current;
-    if (!v) return;
-    if (open) {
-      v.play().catch(() => {});
-    } else {
-      v.pause();
-      v.currentTime = 0;
-    }
-  }, [open]);
 
   const initial = name.charAt(0).toUpperCase();
 
@@ -303,24 +292,17 @@ export function MultiMediaTestimonialCard({
             </button>
           </DialogTrigger>
 
+          {/* Mobile-dimensioned lightbox: the testimonial clips are portrait,
+              so the pro player is framed at phone width and lets the video's
+              intrinsic aspect ratio drive its height. */}
           <DialogContent
-            className="block w-fit max-w-[95vw] gap-0 overflow-hidden border-0 bg-black p-0 text-white shadow-none sm:max-w-[min(95vw,1280px)]"
+            className="block w-[min(88vw,360px)] max-w-[88vw] gap-0 overflow-hidden border-0 bg-transparent p-0 shadow-none"
             onOpenAutoFocus={(e) => e.preventDefault()}
           >
             <DialogTitle className="sr-only">
               Video testimonial from {name}
             </DialogTitle>
-            <video
-              ref={videoRef}
-              controls
-              playsInline
-              preload="metadata"
-              poster={thumbnail}
-              className="block h-auto max-h-[90vh] w-auto max-w-[95vw] bg-black"
-            >
-              <source src={mediaUrl} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+            <VideoPlayerPro src={mediaUrl} poster={thumbnail} />
           </DialogContent>
         </Dialog>
       ) : thumbnail ? (
