@@ -85,6 +85,22 @@ export function EarlyBirdBanner() {
     return () => window.clearInterval(id);
   }, []);
 
+  // Fire one impression per page load the first second the banner is live,
+  // so `oss_pro_cta_clicked` clicks have a denominator (view → click CTR).
+  // Guarded by a ref because the 1s `setNow` tick re-renders this component.
+  const impressionFired = React.useRef(false);
+  React.useEffect(() => {
+    if (impressionFired.current || !isEarlyBirdActive(now)) return;
+    impressionFired.current = true;
+    trackEvent({
+      name: "early_bird_banner_viewed",
+      properties: {
+        surface: "early_bird_banner",
+        price: getActivePrice(now).display,
+      },
+    });
+  }, [now]);
+
   if (!isEarlyBirdActive(now)) return null;
 
   const current = getActivePrice(now);
