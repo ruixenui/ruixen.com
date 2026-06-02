@@ -1440,6 +1440,12 @@ export const docsConfig: DocsConfig = {
               label: "",
             },
             {
+              title: "Toolbar Dock",
+              href: `/docs/components/toolbar-dock`,
+              items: [],
+              label: "",
+            },
+            {
               title: "Floating Toolbar",
               href: `/docs/components/floating-toolbar`,
               items: [],

@@ -15,6 +15,30 @@ export const Index: Record<string, any> = {
     component: null,
     meta: undefined,
   },
+  "toolbar-dock": {
+    name: "toolbar-dock",
+    description:
+      "A Vercel-style floating icon dock with a single tooltip rail that slides and clip-path reveals each label above the hovered button. Spring-driven movement, an options bar that wipes open from a trigger, keyboard shortcut chips, notification dots, and fully configurable items.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/toolbar-dock.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/toolbar-dock.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/toolbar-dock.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "wizard-stepper": {
     name: "wizard-stepper",
     description:
@@ -8255,6 +8279,30 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/action-toolbar-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "toolbar-dock-demo": {
+    name: "toolbar-dock-demo",
+    description:
+      "Example showing a floating icon dock with a sliding tooltip rail, keyboard shortcut chips, and notification dots.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/toolbar-dock"],
+    files: [
+      {
+        path: "registry/example/toolbar-dock-demo.tsx",
+        type: "registry:example",
+        target: "components/toolbar-dock-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/toolbar-dock-demo.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>

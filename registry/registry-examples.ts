@@ -1972,6 +1972,21 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "toolbar-dock-demo",
+    type: "registry:example",
+    title: "Toolbar Dock Demo",
+    description:
+      "Example showing a floating icon dock with a sliding tooltip rail, keyboard shortcut chips, and notification dots.",
+    registryDependencies: ["https://ruixen.com/r/toolbar-dock"],
+    files: [
+      {
+        path: "registry/example/toolbar-dock-demo.tsx",
+        type: "registry:example",
+        target: "components/toolbar-dock-demo.tsx",
+      },
+    ],
+  },
+  {
     name: "smart-breadcrumb-demo",
     type: "registry:example",
     title: "Smart Breadcrumb Demo",

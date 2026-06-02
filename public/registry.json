@@ -17,6 +17,24 @@
       "cssVars": {}
     },
     {
+      "name": "toolbar-dock",
+      "type": "registry:ui",
+      "title": "Toolbar Dock",
+      "description": "A Vercel-style floating icon dock with a single tooltip rail that slides and clip-path reveals each label above the hovered button. Spring-driven movement, an options bar that wipes open from a trigger, keyboard shortcut chips, notification dots, and fully configurable items.",
+      "dependencies": [
+        "@hugeicons/react",
+        "@hugeicons/core-free-icons",
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/toolbar-dock.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/toolbar-dock.tsx"
+        }
+      ]
+    },
+    {
       "name": "wizard-stepper",
       "type": "registry:ui",
       "title": "Wizard Stepper",
@@ -5670,6 +5688,22 @@
           "path": "registry/example/action-toolbar-demo.tsx",
           "type": "registry:example",
           "target": "components/action-toolbar-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "toolbar-dock-demo",
+      "type": "registry:example",
+      "title": "Toolbar Dock Demo",
+      "description": "Example showing a floating icon dock with a sliding tooltip rail, keyboard shortcut chips, and notification dots.",
+      "registryDependencies": [
+        "https://ruixen.com/r/toolbar-dock"
+      ],
+      "files": [
+        {
+          "path": "registry/example/toolbar-dock-demo.tsx",
+          "type": "registry:example",
+          "target": "components/toolbar-dock-demo.tsx"
         }
       ]
     },

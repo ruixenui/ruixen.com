@@ -512,6 +512,10 @@ export const menuPreview: ComponentPreviewMap = {
     light: `/preview_images/menu/action-toolbar-light.png`,
     dark: `/preview_images/menu/action-toolbar-dark.png`,
   },
+  "toolbar-dock": {
+    light: `/preview_images/menu/toolbar-dock-light.png`,
+    dark: `/preview_images/menu/toolbar-dock-dark.png`,
+  },
 };
 
 /**
