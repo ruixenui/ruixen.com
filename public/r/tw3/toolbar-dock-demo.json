@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toolbar-dock-demo",
+  "type": "registry:example",
+  "title": "Toolbar Dock Demo",
+  "description": "Example showing a floating icon dock with a sliding tooltip rail, keyboard shortcut chips, and notification dots.",
+  "registryDependencies": [
+    "https://ruixen.com/r/toolbar-dock"
+  ],
+  "files": [
+    {
+      "path": "registry/example/toolbar-dock-demo.tsx",
+      "content": "import { ToolbarDock } from \"@/registry/ruixenui/toolbar-dock\";\n\nexport default function ToolbarDockDemo() {\n  return (\n    <div className=\"flex min-h-[320px] w-full items-center justify-center\">\n      <ToolbarDock />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/toolbar-dock-demo.tsx"
+    }
+  ]
+}

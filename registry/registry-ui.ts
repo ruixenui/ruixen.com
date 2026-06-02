@@ -2,6 +2,21 @@ import { type Registry } from "shadcn/registry";
 
 export const ui: Registry["items"] = [
   {
+    name: "toolbar-dock",
+    type: "registry:ui",
+    title: "Toolbar Dock",
+    description:
+      "A Vercel-style floating icon dock with a single tooltip rail that slides and clip-path reveals each label above the hovered button. Spring-driven movement, an options bar that wipes open from a trigger, keyboard shortcut chips, notification dots, and fully configurable items.",
+    dependencies: ["@hugeicons/react", "@hugeicons/core-free-icons", "motion"],
+    files: [
+      {
+        path: "registry/ruixenui/toolbar-dock.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/toolbar-dock.tsx",
+      },
+    ],
+  },
+  {
     name: "wizard-stepper",
     type: "registry:ui",
     title: "Wizard Stepper",

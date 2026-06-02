@@ -1,0 +1,152 @@
+---
+title: Toolbar Dock
+date: 2026-06-02
+description: React menu component — a Vercel-style floating icon dock with a single tooltip rail that slides and clip-path reveals each label above the hovered button.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="toolbar-dock-demo" category="menu" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/toolbar-dock"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="toolbar-dock" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { ToolbarDock } from "@/components/ruixen/toolbar-dock";
+
+export default function App() {
+  return (
+    <div className="flex items-center justify-center p-10">
+      <ToolbarDock />
+    </div>
+  );
+}
+```
+
+## Customization
+
+Pass your own `items` to control the icons, labels, shortcut chips, and
+notification dots. Each label is rendered into the shared tooltip rail and
+slides into place above the hovered button.
+
+```tsx
+import { ToolbarDock } from "@/components/ruixen/toolbar-dock";
+import { HugeiconsIcon } from "@hugeicons/react";
+import {
+  BubbleChatIcon,
+  InboxIcon,
+  Menu01Icon,
+} from "@hugeicons/core-free-icons";
+
+export default function App() {
+  return (
+    <ToolbarDock
+      items={[
+        {
+          id: "comment",
+          label: "Comment",
+          icon: (
+            <HugeiconsIcon icon={BubbleChatIcon} className="h-full w-full" />
+          ),
+          shortcut: ["C"],
+          onClick: () => console.log("comment"),
+        },
+        {
+          id: "inbox",
+          label: "Inbox",
+          icon: <HugeiconsIcon icon={InboxIcon} className="h-full w-full" />,
+          badge: true,
+        },
+        {
+          id: "menu",
+          label: "Menu",
+          icon: <HugeiconsIcon icon={Menu01Icon} className="h-full w-full" />,
+          badge: true,
+          toggle: true,
+        },
+      ]}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop               | Type                | Default         | Description                                        |
+| ------------------ | ------------------- | --------------- | -------------------------------------------------- |
+| `items`            | `ToolbarDockItem[]` | 6 default items | The icon buttons rendered in the dock.             |
+| `defaultCollapsed` | `boolean`           | `false`         | Start collapsed — only the toggle button is shown. |
+| `className`        | `string`            | -               | Extra classes for the dock wrapper.                |
+
+### `ToolbarDockItem`
+
+| Field      | Type              | Description                                                             |
+| ---------- | ----------------- | ----------------------------------------------------------------------- |
+| `id`       | `string`          | Stable identifier.                                                      |
+| `label`    | `string`          | Accessible label, shown in the tooltip rail.                            |
+| `icon`     | `React.ReactNode` | Icon node rendered inside the circular button.                          |
+| `shortcut` | `string[]`        | Keyboard hint chips, e.g. `["⌘", "K"]` (use `⌘` for the command glyph). |
+| `badge`    | `boolean`         | Show a small notification dot on the button.                            |
+| `toggle`   | `boolean`         | Marks this button as the collapse/expand toggle for the dock.           |
+| `onClick`  | `() => void`      | Click handler for the button (ignored when `toggle` is set).            |
+
+## Collapse toggle
+
+Mark one item with `toggle: true`. Clicking it **collapses the dock down to just
+that button** — the other icons fade and the pill width springs shut — and
+clicking again expands them back. There's no menu or popover; only the dock
+itself.
+
+```tsx
+import { HugeiconsIcon } from "@hugeicons/react";
+import { Menu01Icon } from "@hugeicons/core-free-icons";
+
+{
+  id: "menu",
+  label: "Menu",
+  icon: <HugeiconsIcon icon={Menu01Icon} className="h-full w-full" />,
+  badge: true,
+  toggle: true,
+}
+```
+
+## Features
+
+- **Single tooltip rail**: One surface slides and clip-paths so the active label glides between buttons.
+- **Transform-independent geometry**: Positions are read from layout (`offsetLeft` / `offsetWidth`), so the tooltip never fights an in-flight transition.
+- **Collapse toggle**: One button collapses the dock to itself and back — the icons fade and the pill width springs. No menu, no popover.
+- **Keyboard shortcut chips**: Inline `⌘`-aware chips per item.
+- **Notification dots**: Optional blue badge that blends with the dock and hover states.
+- **Accessible**: `sr-only` labels, `aria-expanded` on the toggle, and keyboard focus reveal the tooltip.
+- **Fully configurable**: Bring your own icons, labels, shortcuts, and handlers.
