@@ -77,7 +77,7 @@ const FAQS = [
   },
   {
     q: "Is Tailwind v3 support free?",
-    a: "Yes. The full 240+ component catalog is MIT-licensed and free across all four stack variants (Tailwind v3 or v4, Radix or Base UI). Ruixen Pro is a separate one-time $59 purchase for premium components and landing-page templates.",
+    a: "Yes. The full 240+ component catalog is MIT-licensed and free across all four stack variants (Tailwind v3 or v4, Radix or Base UI). Ruixen Pro is a separate one-time $69 purchase for premium components and landing-page templates.",
   },
 ];
 

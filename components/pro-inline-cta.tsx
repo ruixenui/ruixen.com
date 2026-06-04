@@ -25,7 +25,7 @@ export function ProInlineCTA() {
               Ruixen Pro adds 50+ premium components and full templates with
               lifetime updates —{" "}
               <span className="font-medium text-foreground">
-                $59 once, no subscription.
+                $69 once, no subscription.
               </span>
             </p>
           </div>

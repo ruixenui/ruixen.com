@@ -64,7 +64,7 @@ export function ProSection() {
             onClick={() => handleCta("homepage_section")}
             className="inline-flex items-center gap-2 rounded-xl bg-foreground px-5 py-2.5 text-sm font-semibold text-background hover:opacity-90"
           >
-            Get Lifetime — $59
+            Get Lifetime — $69
             <ChevronRight className="size-4" />
           </Link>
           <Link
