@@ -81,7 +81,7 @@ const FAQS = [
   },
   {
     q: "Is Base UI support free?",
-    a: "Yes. The full 240+ component catalog is MIT-licensed and free across all four stack variants (Tailwind v3 or v4, Radix or Base UI). Ruixen Pro is a separate one-time $59 purchase for premium components and templates — all available in Base UI variants too.",
+    a: "Yes. The full 240+ component catalog is MIT-licensed and free across all four stack variants (Tailwind v3 or v4, Radix or Base UI). Ruixen Pro is a separate one-time $69 purchase for premium components and templates — all available in Base UI variants too.",
   },
 ];
 
