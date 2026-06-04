@@ -50,7 +50,7 @@ export default function Home() {
       id: "pro",
       question: "What does Ruixen Pro include?",
       answer:
-        "Pro adds 50+ premium components and full landing-page templates on top of the free library. One-time purchase — $59 lifetime, no subscription. See full pricing and comparison at ruixen.com/pricing. The free open-source catalog of 240+ components stays free.",
+        "Pro adds 50+ premium components and full landing-page templates on top of the free library. One-time purchase — $69 lifetime, no subscription. See full pricing and comparison at ruixen.com/pricing. The free open-source catalog of 240+ components stays free.",
     },
   ];
 

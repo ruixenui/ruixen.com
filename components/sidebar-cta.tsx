@@ -187,7 +187,7 @@ export function ProCTA() {
 
         {/* Price */}
         <div className="flex items-baseline gap-1.5 mb-3">
-          <span className="text-2xl font-bold text-foreground">$59</span>
+          <span className="text-2xl font-bold text-foreground">$69</span>
           <span className="text-xs text-muted-foreground">once</span>
         </div>
 
