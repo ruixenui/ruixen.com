@@ -5,12 +5,7 @@ import Link from "next/link";
 import { Check, ChevronRight, Sparkles } from "lucide-react";
 
 import { trackEvent } from "@/lib/events";
-import { EarlyBirdTimer } from "@/components/early-bird-timer";
-import {
-  EARLY_BIRD_PRICE,
-  POST_EARLY_BIRD_PRICE,
-  isEarlyBirdActive,
-} from "@/lib/early-bird";
+import { PRO_PRICE } from "@/lib/early-bird";
 
 interface PricingSnapshot {
   amountCents: number;
@@ -19,9 +14,9 @@ interface PricingSnapshot {
 }
 
 const FALLBACK: PricingSnapshot = {
-  amountCents: EARLY_BIRD_PRICE.amountCents,
-  display: EARLY_BIRD_PRICE.display,
-  currency: EARLY_BIRD_PRICE.currency,
+  amountCents: PRO_PRICE.amountCents,
+  display: PRO_PRICE.display,
+  currency: PRO_PRICE.currency,
 };
 
 const FEATURES = [
@@ -54,11 +49,6 @@ const FREE_VS_PRO = [
 
 export function PricingLanding() {
   const [price, setPrice] = useState<PricingSnapshot>(FALLBACK);
-  // Recompute on each render — once the deadline crosses, the price card
-  // swaps from "$59 was $79" to a clean "$79" display without a reload.
-  const [earlyBird, setEarlyBird] = useState<boolean>(() =>
-    isEarlyBirdActive(),
-  );
 
   useEffect(() => {
     trackEvent({ name: "oss_pricing_page_viewed" });
@@ -72,16 +62,8 @@ export function PricingLanding() {
         // Keep the fallback
       });
 
-    // Re-check the early-bird gate every minute so the page transitions
-    // automatically when the campaign ends mid-session.
-    const id = window.setInterval(
-      () => setEarlyBird(isEarlyBirdActive()),
-      60_000,
-    );
-
     return () => {
       cancelled = true;
-      window.clearInterval(id);
     };
   }, []);
 
@@ -110,30 +92,6 @@ export function PricingLanding() {
         </p>
       </section>
 
-      {/* Early-bird timer — only while the campaign is active */}
-      {earlyBird && (
-        <section className="container mx-auto max-w-md px-4">
-          <div className="rounded-2xl border border-blue-300/60 bg-blue-50/40 dark:border-blue-500/30 dark:bg-blue-950/20 p-5 text-center">
-            <p className="text-xs font-semibold uppercase tracking-wider text-blue-600 dark:text-blue-400">
-              Early-bird ends in
-            </p>
-            <div className="mt-3 flex justify-center">
-              <EarlyBirdTimer size="lg" variant="labelled" />
-            </div>
-            <p className="mt-3 text-xs text-muted-foreground">
-              Lock in{" "}
-              <span className="font-semibold text-foreground">
-                {EARLY_BIRD_PRICE.display}
-              </span>{" "}
-              lifetime before it goes to{" "}
-              <span className="font-semibold text-foreground">
-                {POST_EARLY_BIRD_PRICE.display}
-              </span>
-            </p>
-          </div>
-        </section>
-      )}
-
       {/* Price card */}
       <section className="container mx-auto max-w-md px-4 py-12 md:py-16">
         <div className="rounded-2xl border bg-card p-6 shadow-sm">
@@ -142,16 +100,9 @@ export function PricingLanding() {
               {price.display}
             </span>
             <span className="text-muted-foreground">{price.currency}</span>
-            {earlyBird && (
-              <span className="text-2xl font-medium text-muted-foreground/70 line-through">
-                {POST_EARLY_BIRD_PRICE.display}
-              </span>
-            )}
           </div>
           <p className="mt-1 text-sm text-muted-foreground">
-            {earlyBird
-              ? `Early-bird price · goes to ${POST_EARLY_BIRD_PRICE.display} when the timer ends`
-              : "One-time payment, lifetime access"}
+            One-time payment, lifetime access
           </p>
 
           <ul className="mt-6 space-y-3">
