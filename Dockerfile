@@ -1,5 +1,5 @@
 # Production Dockerfile for Ruixen UI
-FROM node:18-alpine AS base
+FROM node:22-alpine AS base
 
 # Install dependencies only when needed
 FROM base AS deps
@@ -9,7 +9,7 @@ WORKDIR /app
 
 # Install dependencies based on the preferred package manager
 COPY package.json pnpm-lock.yaml* ./
-RUN corepack enable pnpm && pnpm i --frozen-lockfile
+RUN corepack enable && corepack prepare pnpm@9 --activate && pnpm i --no-frozen-lockfile
 
 # Rebuild the source code only when needed
 FROM base AS builder
@@ -31,7 +31,7 @@ ARG NEXT_PUBLIC_POSTHOG_HOST=https://us.i.posthog.com
 ENV NEXT_PUBLIC_POSTHOG_HOST=$NEXT_PUBLIC_POSTHOG_HOST
 
 # Build the application
-RUN corepack enable pnpm && pnpm run build
+RUN corepack enable && corepack prepare pnpm@9 --activate && pnpm run build
 
 # Production image, copy all the files and run next
 FROM base AS runner
