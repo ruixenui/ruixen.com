@@ -27,6 +27,8 @@ import {
   getGradientsByCategory,
   type Gradient,
 } from "@/lib/gradients-data";
+import { GeneratorCta } from "@/components/generator/generator-cta";
+import { RelatedTools } from "@/components/generator/related-tools";
 
 export default function GradientsPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
@@ -340,6 +342,9 @@ export default function GradientsPage() {
           </div>
         )}
       </div>
+
+      <GeneratorCta tool="gradients" />
+      <RelatedTools current="gradients" />
     </div>
   );
 }

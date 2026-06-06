@@ -45,6 +45,26 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
       priority: 0.8,
     },
+    {
+      url: `${protocol}://${domain}/generator/glass-morphism`,
+      lastModified: new Date(),
+      priority: 0.8,
+    },
+    {
+      url: `${protocol}://${domain}/generator/css-generator`,
+      lastModified: new Date(),
+      priority: 0.8,
+    },
+    {
+      url: `${protocol}://${domain}/generator/shadow-generator`,
+      lastModified: new Date(),
+      priority: 0.8,
+    },
+    {
+      url: `${protocol}://${domain}/gradients`,
+      lastModified: new Date(),
+      priority: 0.8,
+    },
     ...allUseCasePaths().map(({ type, useCase }) => ({
       url: `${protocol}://${domain}/sections/${type}/${useCase}`,
       lastModified: new Date(),
