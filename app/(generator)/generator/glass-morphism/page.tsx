@@ -1,12 +1,13 @@
 // app/glass/page.tsx
 import GlassGeneratorPage from "@/components/generator/glass/glass-generator-page";
+import { GeneratorCta } from "@/components/generator/generator-cta";
+import { RelatedTools } from "@/components/generator/related-tools";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title:
-    "Glassmorphism Generator – Free CSS & Tailwind Tool (2025) | Ruixen UI",
+  title: "Glassmorphism Generator — Free CSS & Tailwind",
   description:
-    "Generate beautiful glassmorphism UI instantly. Customize blur, transparency, borders, shadows and gradients. Export CSS & Tailwind. 100% free, modern, fast and easy.",
+    "Generate glassmorphism UI instantly — tune blur, transparency, borders and gradients with a live preview. Copy production-ready CSS & Tailwind. Free, no signup.",
   keywords: [
     "glassmorphism generator",
     "css glass generator",
@@ -22,12 +23,18 @@ export const metadata: Metadata = {
     title: "Glassmorphism Generator – Free CSS & Tailwind Tool | Ruixen UI",
     description:
       "Create beautiful frosted glass UI with real-time preview. Blur, transparency, borders, gradients and export-ready CSS & Tailwind.",
-    url: "https://www.ruixen.com/tools/glass",
+    url: "/generator/glass-morphism",
     type: "website",
   },
-  alternates: { canonical: "https://www.ruixen.com/tools/glass" },
+  alternates: { canonical: "/generator/glass-morphism" },
 };
 
 export default function Page() {
-  return <GlassGeneratorPage />;
+  return (
+    <>
+      <GlassGeneratorPage />
+      <GeneratorCta tool="glass-morphism" />
+      <RelatedTools current="glass-morphism" />
+    </>
+  );
 }

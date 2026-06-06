@@ -9,6 +9,8 @@ import { PresetsGrid } from "@/components/generator/css/presets-grid";
 import { ExportButtons } from "@/components/generator/css/export-buttons";
 import FAQSection from "@/components/sections/faq-section";
 import { FAQItem } from "@/registry/ruixenui/staggered-faq-section";
+import { GeneratorCta } from "@/components/generator/generator-cta";
+import { RelatedTools } from "@/components/generator/related-tools";
 
 const faqItems: FAQItem[] = [
   {
@@ -143,6 +145,9 @@ export default function GradientGeneratorPage() {
           <SeoArticle />
         </section>
       </div>
+
+      <GeneratorCta tool="css-generator" />
+      <RelatedTools current="css-generator" />
     </main>
   );
 }

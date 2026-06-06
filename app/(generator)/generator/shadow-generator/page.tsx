@@ -1,10 +1,12 @@
 import ShadowGeneratorPage from "@/components/generator/shadow/shadow-generator-page";
+import { GeneratorCta } from "@/components/generator/generator-cta";
+import { RelatedTools } from "@/components/generator/related-tools";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Shadow Generator — Beautiful Shadows in Seconds | Ruixen UI (2025)",
+  title: "Tailwind Shadow Generator — CSS Box-Shadow Tool",
   description:
-    "Generate beautiful modern UI shadows for cards, buttons, modals and components. Build layered, soft, hard, inset, neumorphism and elevation shadows. Export CSS and Tailwind instantly.",
+    "Create soft, layered and neumorphic box-shadows with a live preview. Build elevation and inset shadows, then copy CSS & Tailwind instantly. Free, no signup.",
   keywords: [
     "shadow generator",
     "css box-shadow generator",
@@ -20,12 +22,18 @@ export const metadata: Metadata = {
     title: "Shadow Generator — Create Beautiful Shadows in Seconds | Ruixen UI",
     description:
       "Professional real-time shadow builder with presets, layers, and instant export to CSS & Tailwind.",
-    url: "https://www.ruixen.com/tools/shadow",
+    url: "/generator/shadow-generator",
     type: "website",
   },
-  alternates: { canonical: "https://www.ruixen.com/tools/shadow" },
+  alternates: { canonical: "/generator/shadow-generator" },
 };
 
 export default function Page() {
-  return <ShadowGeneratorPage />;
+  return (
+    <>
+      <ShadowGeneratorPage />
+      <GeneratorCta tool="shadow-generator" />
+      <RelatedTools current="shadow-generator" />
+    </>
+  );
 }

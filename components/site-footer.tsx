@@ -302,6 +302,9 @@ const resourceColumns: FooterColumn[] = [
     heading: "Tools",
     links: [
       { label: "All Tools", href: "/tools" },
+      { label: "Glassmorphism Generator", href: "/generator/glass-morphism" },
+      { label: "CSS Gradient Generator", href: "/generator/css-generator" },
+      { label: "Shadow Generator", href: "/generator/shadow-generator" },
       { label: "Gradient Gallery", href: "/gradients" },
       { label: "Extrude", href: "/tools/extrude" },
       { label: "Blog", href: "/blog" },
