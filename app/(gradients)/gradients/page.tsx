@@ -102,11 +102,12 @@ export default function GradientsPage() {
         <div className="container mx-auto px-4 py-16 md:py-24">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
-              Gradient Collection
+              UI Gradients — Free 4K Backgrounds
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground">
-              A curated collection of beautiful gradients for your next project.
-              Free to download and use in your designs.
+              A curated collection of free UI gradient backgrounds for hero
+              sections, cards and wallpapers. Copy the CSS or download the 4K
+              PNG — free to use in any project.
             </p>
           </div>
         </div>

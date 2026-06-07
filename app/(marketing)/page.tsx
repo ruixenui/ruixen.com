@@ -6,6 +6,7 @@ import WallOfLove from "@/components/sections/wall-of-love";
 import VideoShowcaseGrid from "@/components/sections/video-showcase-grid";
 import InspirationsSection from "@/components/sections/inspirations-section";
 import { ProSection } from "@/components/sections/pro-section";
+import { FreeTools } from "@/components/sections/free-tools";
 import { siteConfig } from "@/config/site";
 
 export default function Home() {
@@ -86,6 +87,7 @@ export default function Home() {
       <ComponentCategories />
       {/* <VideoShowcaseGrid /> */}
       {/* <InspirationsSection /> */}
+      <FreeTools />
       <WallOfLove />
       <ProSection />
       <FAQSection faqItems={faqItems} className="py-16 md:py-24" />

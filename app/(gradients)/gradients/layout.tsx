@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
+import { ToolJsonLd } from "@/components/generator/tool-json-ld";
+
 export const metadata: Metadata = {
   title: "UI Gradients — Free 4K Gradient Backgrounds",
   description:
@@ -25,5 +27,14 @@ export const metadata: Metadata = {
 };
 
 export default function Layout({ children }: { children: ReactNode }) {
-  return children;
+  return (
+    <>
+      <ToolJsonLd
+        name="UI Gradients"
+        description="Free 4K gradient backgrounds for UIs, hero sections and wallpapers — copy the CSS or download the PNG in one click."
+        path="/gradients"
+      />
+      {children}
+    </>
+  );
 }

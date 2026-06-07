@@ -2,6 +2,7 @@
 import GlassGeneratorPage from "@/components/generator/glass/glass-generator-page";
 import { GeneratorCta } from "@/components/generator/generator-cta";
 import { RelatedTools } from "@/components/generator/related-tools";
+import { ToolJsonLd } from "@/components/generator/tool-json-ld";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -32,6 +33,11 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <>
+      <ToolJsonLd
+        name="Glassmorphism Generator"
+        description="Free in-browser glassmorphism generator — tune blur, transparency, borders and gradients with a live preview and copy production-ready CSS & Tailwind."
+        path="/generator/glass-morphism"
+      />
       <GlassGeneratorPage />
       <GeneratorCta tool="glass-morphism" />
       <RelatedTools current="glass-morphism" />
