@@ -36,6 +36,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     },
     {
+      url: `${protocol}://${domain}/tools`,
+      lastModified: new Date(),
+      priority: 0.8,
+    },
+    {
       url: `${protocol}://${domain}/tools/tw-v3-to-v4`,
       lastModified: new Date(),
       priority: 0.8,

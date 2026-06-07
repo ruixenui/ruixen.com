@@ -1,6 +1,7 @@
 import ShadowGeneratorPage from "@/components/generator/shadow/shadow-generator-page";
 import { GeneratorCta } from "@/components/generator/generator-cta";
 import { RelatedTools } from "@/components/generator/related-tools";
+import { ToolJsonLd } from "@/components/generator/tool-json-ld";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -31,6 +32,11 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <>
+      <ToolJsonLd
+        name="Tailwind Shadow Generator"
+        description="Free CSS box-shadow generator — build soft, layered, inset and neumorphic shadows with a live preview and copy CSS & Tailwind instantly."
+        path="/generator/shadow-generator"
+      />
       <ShadowGeneratorPage />
       <GeneratorCta tool="shadow-generator" />
       <RelatedTools current="shadow-generator" />
