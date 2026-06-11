@@ -9,7 +9,7 @@
     "dev:cli": "pnpm prefix:cli dev",
     "build:cli": "pnpm prefix:cli build",
     "release:cli": "pnpm prefix:cli release",
-    "preinstall": "npx only-allow pnpm",
+    "preinstall": "npx only-allow pnpm && node scripts/setup.mjs",
     "dev": "next dev",
     "prebuild": "pnpm build:registry",
     "build": "next build",
