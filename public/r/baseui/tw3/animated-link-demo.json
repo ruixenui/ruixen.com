@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "animated-link-demo",
+  "type": "registry:example",
+  "title": "Animated Link Demo",
+  "description": "Example showing animated links whose underline reveals from the left, the right, or grows from the center on hover.",
+  "registryDependencies": [
+    "https://ruixen.com/r/animated-link"
+  ],
+  "files": [
+    {
+      "path": "registry/example/animated-link-demo.tsx",
+      "content": "import AnimatedLink from \"@/registry/ruixenui/animated-link\";\n\nconst AnimatedLinkDemo = () => {\n  return (\n    <div className=\"flex h-full w-full flex-col items-center justify-center gap-8 py-16 text-lg\">\n      {/* underline reveals from the left */}\n      <AnimatedLink href=\"#\" variant=\"left\">\n        Hover over me\n      </AnimatedLink>\n\n      {/* underline reveals from the right */}\n      <AnimatedLink href=\"#\" variant=\"right\">\n        Hover over me\n      </AnimatedLink>\n\n      {/* underline grows from the center */}\n      <AnimatedLink href=\"#\" variant=\"center\">\n        Hover over me\n      </AnimatedLink>\n    </div>\n  );\n};\n\nexport default AnimatedLinkDemo;\n",
+      "type": "registry:example",
+      "target": "components/animated-link-demo.tsx"
+    }
+  ]
+}

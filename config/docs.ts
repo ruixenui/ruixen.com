@@ -245,7 +245,7 @@ export const docsConfig: DocsConfig = {
               title: "Expandable Menu Navbar",
               href: `/docs/sections/expandable-menu-navbar`,
               items: [],
-              label: "New",
+              label: "",
             },
             {
               title: "Luma Bar",
@@ -328,7 +328,7 @@ export const docsConfig: DocsConfig = {
               title: "Pricing Landing Hero",
               href: `/docs/components/pricing-landing-hero`,
               items: [],
-              label: "New",
+              label: "",
             },
             {
               title: "Tabbed Hero Section",
@@ -386,7 +386,7 @@ export const docsConfig: DocsConfig = {
               title: "Service Ledger",
               href: `/docs/components/service-ledger`,
               items: [],
-              label: "New",
+              label: "",
             },
           ],
         },
@@ -479,7 +479,7 @@ export const docsConfig: DocsConfig = {
               title: "Pricing Feature Matrix",
               href: `/docs/components/pricing-feature-matrix`,
               items: [],
-              label: "New",
+              label: "",
             },
             {
               title: "Subscription Plans",
@@ -515,7 +515,7 @@ export const docsConfig: DocsConfig = {
               title: "Pricing Cards Tooltip",
               href: `/docs/components/pricing-cards-tooltip`,
               items: [],
-              label: "New",
+              label: "",
             },
             {
               title: "Staged Pricing",
@@ -562,7 +562,7 @@ export const docsConfig: DocsConfig = {
               title: "Grouped FAQ Section",
               href: `/docs/sections/grouped-faq-section`,
               items: [],
-              label: "New",
+              label: "",
             },
           ],
         },
@@ -729,6 +729,12 @@ export const docsConfig: DocsConfig = {
         {
           title: "Text",
           items: [
+            {
+              title: "Animated Link",
+              href: `/docs/components/animated-link`,
+              items: [],
+              label: "New",
+            },
             {
               title: "Scroll Text Rise",
               href: `/docs/components/scroll-text-rise`,
@@ -921,7 +927,7 @@ export const docsConfig: DocsConfig = {
               title: "Phone Mockup Card",
               href: `/docs/components/phone-mockup-card`,
               items: [],
-              label: "New",
+              label: "",
             },
             {
               title: "Profile Card",
@@ -1164,7 +1170,7 @@ export const docsConfig: DocsConfig = {
               title: "Progressive Flux Loader",
               href: `/docs/components/progressive-flux-loader`,
               items: [],
-              label: "New",
+              label: "",
             },
           ],
         },

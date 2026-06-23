@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "animated-link",
+  "type": "registry:ui",
+  "title": "Animated Link",
+  "description": "A zero-dependency animated link whose underline reveals from the left, the right, or grows from the center on hover, with an optional diagonal arrow that lifts into view. Pure CSS and fully theme-aware.",
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/ruixenui/animated-link.tsx",
+      "content": "import * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\ntype AnimatedLinkVariant = \"left\" | \"right\" | \"center\";\n\nconst underlineVariants: Record<AnimatedLinkVariant, string> = {\n  // underline wipes in from the left edge\n  left: \"before:origin-right before:scale-x-0 hover:before:origin-left hover:before:scale-x-100\",\n  // underline wipes in from the right edge\n  right:\n    \"before:origin-left before:scale-x-0 hover:before:origin-right hover:before:scale-x-100\",\n  // underline grows outward from the center\n  center: \"before:origin-center before:scale-x-0 hover:before:scale-x-100\",\n};\n\nexport interface AnimatedLinkProps extends React.ComponentPropsWithoutRef<\"a\"> {\n  /** Direction the underline reveals from on hover. */\n  variant?: AnimatedLinkVariant;\n  /** Show the diagonal arrow that lifts in on hover. */\n  showArrow?: boolean;\n}\n\nconst AnimatedLink = ({\n  variant = \"left\",\n  showArrow = true,\n  className,\n  children,\n  ...props\n}: AnimatedLinkProps) => {\n  return (\n    <a\n      className={cn(\n        \"group relative inline-flex w-fit items-center text-foreground\",\n        \"before:pointer-events-none before:absolute before:left-0 before:top-[1.5em] before:h-[0.05em] before:w-full before:bg-current before:content-['']\",\n        \"before:transition-transform before:duration-300 before:ease-[cubic-bezier(0.4,0,0.2,1)] motion-reduce:before:transition-none\",\n        underlineVariants[variant],\n        className,\n      )}\n      {...props}\n    >\n      {children}\n      {showArrow && (\n        <svg\n          className=\"ml-[0.3em] size-[0.55em] transition-none\"\n          fill=\"none\"\n          viewBox=\"0 0 10 10\"\n          xmlns=\"http://www.w3.org/2000/svg\"\n          aria-hidden=\"true\"\n        >\n          <path\n            d=\"M1.004 9.166 9.337.833m0 0v8.333m0-8.333H1.004\"\n            stroke=\"currentColor\"\n            strokeWidth=\"1.25\"\n            strokeLinecap=\"round\"\n            strokeLinejoin=\"round\"\n            className=\"[stroke-dasharray:32] [stroke-dashoffset:32] transition-[stroke-dashoffset] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:[stroke-dashoffset:0] motion-reduce:transition-none\"\n          />\n        </svg>\n      )}\n    </a>\n  );\n};\n\nexport { AnimatedLink };\nexport default AnimatedLink;\n",
+      "type": "registry:ui",
+      "target": "components/ruixen/animated-link.tsx"
+    }
+  ]
+}

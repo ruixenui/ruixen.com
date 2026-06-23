@@ -15,6 +15,30 @@ export const Index: Record<string, any> = {
     component: null,
     meta: undefined,
   },
+  "animated-link": {
+    name: "animated-link",
+    description:
+      "A zero-dependency animated link whose underline reveals from the left, the right, or grows from the center on hover, with an optional diagonal arrow that lifts into view. Pure CSS and fully theme-aware.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/animated-link.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/animated-link.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/animated-link.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "toolbar-dock": {
     name: "toolbar-dock",
     description:
@@ -4996,6 +5020,30 @@ export const Index: Record<string, any> = {
       const mod = await import(
         "@/components/layouts/calendar/calendar-event-item.tsx"
       );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "animated-link-demo": {
+    name: "animated-link-demo",
+    description:
+      "Example showing animated links whose underline reveals from the left, the right, or grows from the center on hover.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/animated-link"],
+    files: [
+      {
+        path: "registry/example/animated-link-demo.tsx",
+        type: "registry:example",
+        target: "components/animated-link-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/animated-link-demo.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>

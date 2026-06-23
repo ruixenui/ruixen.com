@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/progressive-flux-loader-demo.tsx",
-      "content": "\"use client\";\n\nimport { ProgressiveFluxLoader } from \"@/registry/ruixenui/progressive-flux-loader\";\n\nexport default function ProgressiveFluxLoaderDemo() {\n  return (\n    <div className=\"flex min-h-[420px] w-full items-center justify-center px-6 py-16\">\n      <ProgressiveFluxLoader duration={14} loop />\n    </div>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\n\nimport { ProgressiveFluxLoader } from \"@/registry/ruixenui/progressive-flux-loader\";\n\nconst PHASES = [\n  { at: 0, label: \"uploading\" },\n  { at: 40, label: \"processing\" },\n  { at: 75, label: \"finalizing\" },\n  { at: 100, label: \"complete\" },\n];\n\nexport default function ProgressiveFluxLoaderDemo() {\n  // Drive the loader from simulated upload progress so the fill, phase labels,\n  // and completion are all visible in the preview.\n  const [progress, setProgress] = React.useState(0);\n\n  React.useEffect(() => {\n    const id = setInterval(() => {\n      setProgress((p) => (p >= 100 ? 0 : Math.min(100, p + 2)));\n    }, 200);\n    return () => clearInterval(id);\n  }, []);\n\n  return (\n    <div className=\"flex min-h-[420px] w-full items-center justify-center px-6 py-16\">\n      <ProgressiveFluxLoader value={progress} phases={PHASES} />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/progressive-flux-loader-demo.tsx"
     }

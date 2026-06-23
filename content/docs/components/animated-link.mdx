@@ -1,0 +1,80 @@
+---
+title: Animated Link
+date: 2026-06-17
+description: React animated link — Hover reveals an underline that wipes in from the left, the right, or grows from the center, while a diagonal arrow lifts into view.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="animated-link-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/animated-link"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="animated-link" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import AnimatedLink from "@/components/ruixen/animated-link";
+
+export default function App() {
+  return (
+    <AnimatedLink href="mailto:hello@ruixen.com" variant="left">
+      hello@ruixen.com
+    </AnimatedLink>
+  );
+}
+```
+
+## Props
+
+| Prop        | Type                            | Default  | Description                                    |
+| ----------- | ------------------------------- | -------- | ---------------------------------------------- |
+| `href`      | `string`                        | -        | The link destination (required)                |
+| `variant`   | `"left" \| "right" \| "center"` | `"left"` | Direction the underline reveals from on hover  |
+| `showArrow` | `boolean`                       | `true`   | Show the diagonal arrow that lifts in on hover |
+| `className` | `string`                        | -        | Additional CSS classes                         |
+
+All other native anchor (`<a>`) props are forwarded.
+
+## Variants
+
+- **`left`** — the underline wipes in from the left edge.
+- **`right`** — the underline wipes in from the right edge.
+- **`center`** — the underline grows outward from the center.
+
+## Features
+
+- **Pure CSS**: No JavaScript or animation library — the reveal runs entirely on CSS transitions, so it works in any React tree (server or client) with zero dependencies.
+- **Theme-Aware**: The underline uses `bg-current`, inheriting the text color so it adapts to light and dark themes automatically.
+- **Directional Underline**: Three transform-origin variants control whether the line enters from the left, the right, or expands from the center.
+- **Lift-In Arrow**: An optional diagonal arrow fades up into place on hover, signalling an outbound or actionable link.
+- **Reduced-Motion Friendly**: Transitions are disabled for users who prefer reduced motion.

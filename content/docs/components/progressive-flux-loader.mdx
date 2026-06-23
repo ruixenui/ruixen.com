@@ -66,23 +66,44 @@ Drive the loader from real progress. Phase labels switch automatically based on 
 />
 ```
 
+### Custom fill
+
+The bar ships with a vivid blue → cyan flux fill. Recolor it without touching the component by setting the `--flux-from` / `--flux-to` CSS variables.
+
+```tsx
+// Tweak the two flux colors
+<ProgressiveFluxLoader className="[--flux-from:#7c3aed] [--flux-to:#e879f9]" />
+
+// Or point them at your theme's primary so the bar follows the theme
+<ProgressiveFluxLoader className="[--flux-from:hsl(var(--primary))] [--flux-to:hsl(var(--primary))]" />
+```
+
+For full control, pass the `gradient` prop to replace the fill background entirely:
+
+```tsx
+<ProgressiveFluxLoader gradient="linear-gradient(90deg, #f97316 0%, #facc15 55%, #f97316 100%)" />
+```
+
 ## Props
 
-| Prop            | Type                              | Default        | Description                                                                       |
-| --------------- | --------------------------------- | -------------- | --------------------------------------------------------------------------------- |
-| `value`         | `number`                          | `undefined`    | Controlled progress (0–100). When omitted, the loader runs an internal demo loop. |
-| `phases`        | `{ at: number; label: string }[]` | _built-in set_ | Progress thresholds and the label to show once they're reached.                   |
-| `duration`      | `number`                          | `12`           | Seconds for one full sweep when uncontrolled.                                     |
-| `loop`          | `boolean`                         | `true`         | Restart from 0 after reaching 100% (uncontrolled mode).                           |
-| `onComplete`    | `() => void`                      | `undefined`    | Fires once when progress reaches 100%.                                            |
-| `className`     | `string`                          | -              | Wrapper classes.                                                                  |
-| `barClassName`  | `string`                          | -              | Classes for the track.                                                            |
-| `textClassName` | `string`                          | -              | Classes for the phase label.                                                      |
+| Prop            | Type                              | Default                | Description                                                                        |
+| --------------- | --------------------------------- | ---------------------- | ---------------------------------------------------------------------------------- |
+| `value`         | `number`                          | `undefined`            | Controlled progress (0–100). When omitted, the loader runs its own looping sweep.  |
+| `phases`        | `{ at: number; label: string }[]` | _built-in set_         | Progress thresholds and the label to show once each is reached.                    |
+| `duration`      | `number`                          | `12`                   | Seconds for one full sweep when uncontrolled.                                      |
+| `loop`          | `boolean`                         | `true`                 | Restart from 0 after reaching 100% (uncontrolled mode).                            |
+| `showLabel`     | `boolean`                         | `true`                 | Show the animated phase label above the bar.                                       |
+| `gradient`      | `string`                          | vivid blue → cyan flux | CSS background for the bar fill. Pass any gradient/color to restyle it.            |
+| `onComplete`    | `() => void`                      | `undefined`            | Fires once when progress reaches 100% — in both controlled and uncontrolled modes. |
+| `className`     | `string`                          | -                      | Wrapper classes.                                                                   |
+| `barClassName`  | `string`                          | -                      | Classes for the track.                                                             |
+| `textClassName` | `string`                          | -                      | Classes for the phase label.                                                       |
 
 ## Features
 
 - **Z-axis text transition** — every label change pushes the old text toward the viewer while the new one zooms in from far away, overshoots forward, then settles.
 - **Letter-by-letter reveal** — each character of the new label cascades in with a soft blur-clear.
-- **iOS-style flux gradient** — multi-stop blue → cyan → blue fill with a moving shine sweep and a gentle glow.
-- **Controlled or autonomous** — drive it with real progress or let it loop on its own as a status indicator.
-- **Theme-aware** — track adapts to light and dark themes via shadcn neutral tokens.
+- **Signature flux fill** — a vivid blue → cyan gradient with a moving sheen and colored glow. Recolor it via the `--flux-from` / `--flux-to` CSS variables (or the `gradient` prop) — point them at `--primary` to follow your theme. The track and label use shadcn tokens, so the loader still adapts to light and dark.
+- **Controlled or autonomous** — drive it with real progress (with an `onComplete` callback) or let it loop on its own as a status indicator.
+- **Accessible** — exposes a `progressbar` role with live `aria-valuenow` / `aria-valuetext`; the decorative animated label is hidden from assistive tech.
+- **Reduced-motion aware** — respects `prefers-reduced-motion`, dropping the fly-in, letter cascade, and looping sheen for a calm static render.
