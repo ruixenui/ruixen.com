@@ -17,6 +17,20 @@
       "cssVars": {}
     },
     {
+      "name": "animated-link",
+      "type": "registry:ui",
+      "title": "Animated Link",
+      "description": "A zero-dependency animated link whose underline reveals from the left, the right, or grows from the center on hover, with an optional diagonal arrow that lifts into view. Pure CSS and fully theme-aware.",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/ruixenui/animated-link.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/animated-link.tsx"
+        }
+      ]
+    },
+    {
       "name": "toolbar-dock",
       "type": "registry:ui",
       "title": "Toolbar Dock",
@@ -3560,6 +3574,22 @@
           "path": "app/preview/layouts/calendar/page.tsx",
           "type": "registry:page",
           "target": "app/calendar/page.tsx"
+        }
+      ]
+    },
+    {
+      "name": "animated-link-demo",
+      "type": "registry:example",
+      "title": "Animated Link Demo",
+      "description": "Example showing animated links whose underline reveals from the left, the right, or grows from the center on hover.",
+      "registryDependencies": [
+        "https://ruixen.com/r/animated-link"
+      ],
+      "files": [
+        {
+          "path": "registry/example/animated-link-demo.tsx",
+          "type": "registry:example",
+          "target": "components/animated-link-demo.tsx"
         }
       ]
     },

@@ -2,6 +2,21 @@ import { type Registry } from "shadcn/registry";
 
 export const ui: Registry["items"] = [
   {
+    name: "animated-link",
+    type: "registry:ui",
+    title: "Animated Link",
+    description:
+      "A zero-dependency animated link whose underline reveals from the left, the right, or grows from the center on hover, with an optional diagonal arrow that lifts into view. Pure CSS and fully theme-aware.",
+    dependencies: [],
+    files: [
+      {
+        path: "registry/ruixenui/animated-link.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/animated-link.tsx",
+      },
+    ],
+  },
+  {
     name: "toolbar-dock",
     type: "registry:ui",
     title: "Toolbar Dock",

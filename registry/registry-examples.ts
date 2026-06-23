@@ -2,6 +2,21 @@ import { type Registry } from "shadcn/registry";
 
 export const examples: Registry["items"] = [
   {
+    name: "animated-link-demo",
+    type: "registry:example",
+    title: "Animated Link Demo",
+    description:
+      "Example showing animated links whose underline reveals from the left, the right, or grows from the center on hover.",
+    registryDependencies: ["https://ruixen.com/r/animated-link"],
+    files: [
+      {
+        path: "registry/example/animated-link-demo.tsx",
+        type: "registry:example",
+        target: "components/animated-link-demo.tsx",
+      },
+    ],
+  },
+  {
     name: "wizard-stepper-demo",
     type: "registry:example",
     title: "Wizard Stepper Demo",
