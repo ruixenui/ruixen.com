@@ -2,12 +2,13 @@ import { z } from "zod";
 import posthog from "posthog-js";
 import { sendGAEvent } from "./ga-events";
 
-// Gate PostHog capture on the same conditions as the provider so local
-// dev never pollutes the production project and `trackEvent` stays a
-// no-op when the key isn't set.
-const POSTHOG_ENABLED =
-  process.env.NODE_ENV === "production" &&
-  Boolean(process.env.NEXT_PUBLIC_POSTHOG_API_KEY);
+// Gate PostHog capture on production only. The provider
+// (components/posthog-provider.tsx) falls back to the public project key
+// when NEXT_PUBLIC_POSTHOG_API_KEY is unset at build time, so we must NOT
+// re-gate on that env var here — doing so silently dropped all custom
+// events on any build missing it (the VPS analytics regression). If init
+// somehow didn't run, posthog.capture() is a safe no-op.
+const POSTHOG_ENABLED = process.env.NODE_ENV === "production";
 
 const eventSchema = z.object({
   name: z.enum([
