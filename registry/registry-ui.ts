@@ -1486,6 +1486,22 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "gradient-chat-input",
+    type: "registry:ui",
+    title: "Gradient Chat Input",
+    description:
+      "Minimal chat input that streams animated message bubbles, plays synthesized send/receive sounds, and reveals a blurred spectrum glow once a conversation starts.",
+    dependencies: ["lucide-react", "motion"],
+    registryDependencies: ["button", "input"],
+    files: [
+      {
+        path: "registry/ruixenui/gradient-chat-input.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/gradient-chat-input.tsx",
+      },
+    ],
+  },
+  {
     name: "gooey-dock",
     type: "registry:ui",
     title: "Gooey Dock",

@@ -1651,6 +1651,27 @@
       ]
     },
     {
+      "name": "gradient-chat-input",
+      "type": "registry:ui",
+      "title": "Gradient Chat Input",
+      "description": "Minimal chat input that streams animated message bubbles, plays synthesized send/receive sounds, and reveals a blurred spectrum glow once a conversation starts.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "button",
+        "input"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/gradient-chat-input.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/gradient-chat-input.tsx"
+        }
+      ]
+    },
+    {
       "name": "gooey-dock",
       "type": "registry:ui",
       "title": "Gooey Dock",
@@ -4918,6 +4939,22 @@
           "path": "registry/example/claude-chat-input-demo.tsx",
           "type": "registry:example",
           "target": "components/claude-chat-input-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "gradient-chat-input-demo",
+      "type": "registry:example",
+      "title": "Gradient Chat Input Demo",
+      "description": "Example showing the gradient chat input with animated bubbles and a spectrum reveal.",
+      "registryDependencies": [
+        "https://ruixen.com/r/gradient-chat-input"
+      ],
+      "files": [
+        {
+          "path": "registry/example/gradient-chat-input-demo.tsx",
+          "type": "registry:example",
+          "target": "components/gradient-chat-input-demo.tsx"
         }
       ]
     },

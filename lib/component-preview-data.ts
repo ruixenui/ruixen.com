@@ -800,6 +800,10 @@ export const aiChatInputsPreview: ComponentPreviewMap = {
     light: `/preview_images/ai-chat-inputs/claude-chat-input-light.png`,
     dark: `/preview_images/ai-chat-inputs/claude-chat-input-dark.png`,
   },
+  "gradient-chat-input": {
+    light: `/preview_images/ai-chat-inputs/gradient-chat-input-light.png`,
+    dark: `/preview_images/ai-chat-inputs/gradient-chat-input-dark.png`,
+  },
 };
 
 /**

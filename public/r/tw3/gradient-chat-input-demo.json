@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gradient-chat-input-demo",
+  "type": "registry:example",
+  "title": "Gradient Chat Input Demo",
+  "description": "Example showing the gradient chat input with animated bubbles and a spectrum reveal.",
+  "registryDependencies": [
+    "https://ruixen.com/r/gradient-chat-input"
+  ],
+  "files": [
+    {
+      "path": "registry/example/gradient-chat-input-demo.tsx",
+      "content": "\"use client\";\n\nimport GradientChatInput from \"@/registry/ruixenui/gradient-chat-input\";\n\nexport default function GradientChatInputDemo() {\n  return (\n    <div className=\"relative flex h-[600px] w-full items-center justify-center overflow-hidden bg-muted p-8\">\n      <GradientChatInput\n        placeholder=\"Send Message\"\n        autoReply=\"Got it — looking into that now ✨\"\n        onSend={(message) => console.log(\"sent:\", message)}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/gradient-chat-input-demo.tsx"
+    }
+  ]
+}

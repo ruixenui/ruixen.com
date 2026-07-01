@@ -1247,6 +1247,21 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "gradient-chat-input-demo",
+    type: "registry:example",
+    title: "Gradient Chat Input Demo",
+    description:
+      "Example showing the gradient chat input with animated bubbles and a spectrum reveal.",
+    registryDependencies: ["https://ruixen.com/r/gradient-chat-input"],
+    files: [
+      {
+        path: "registry/example/gradient-chat-input-demo.tsx",
+        type: "registry:example",
+        target: "components/gradient-chat-input-demo.tsx",
+      },
+    ],
+  },
+  {
     name: "gooey-dock-demo",
     type: "registry:example",
     title: "Gooey Dock Demo",
