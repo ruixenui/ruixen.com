@@ -116,12 +116,12 @@ interface ServiceEntry {
 
 ## Features
 
-- **Sticky tab strip with scroll-spy** — service codes + durations sit at the top of the section and pin to the viewport (`sticky top-0`) as the reader scrolls. A rAF-throttled scroll handler picks the last entry whose top has crossed a reference line (120px from the viewport top) and highlights its tab.
+- **Sticky tab strip with scroll-spy** — service codes + durations sit at the top of the section and pin to the viewport (`sticky`, with a configurable `--ledger-sticky-top` offset that defaults to `0`) as the reader scrolls. A rAF-throttled scroll handler picks the last entry whose top has crossed a reference line derived from the strip's own rendered bottom — so it stays correct under in-page navbars and varying strip heights — and works whether the page or a docs-preview iframe is the scroll container.
 - **Click to scroll** — each tab is an anchor link with an intercepted click handler that calls `scrollIntoView({ behavior: "smooth", block: "start" })`. Hash deep-links work via the panel `id`s.
 - **Aligned tab underline** — the active tab uses `border-b-2 -mb-px` so its underline overlaps the strip's `border-b`, replacing it pixel-for-pixel and producing a clean tabbed-into-divider look.
 - **Mobile horizontal scroll** — tabs are flex items inside an `overflow-x-auto` track; meta text hides below `sm` so codes stay readable in narrow viewports.
-- **Scroll-margin clearance** — every panel has `scroll-mt-24` so anchor navigation lands the content below the sticky strip, not under it.
+- **Scroll-margin clearance** — every panel sets its `scroll-margin-top` to the live strip height plus the sticky offset (published as `--ledger-strip-h`), so tab clicks and `#hash` navigation land the content just below the sticky strip — not under it — regardless of strip height.
 - **Composable rows** — each `ServiceEntry` opts into a deliverables bullet list, a preview image OR video, and a tail CTA independently. Pass only the fields you need.
-- **Inline video showcase** — pass `video: "https://…/clip.mp4"` and the panel renders a `<video autoplay loop muted playsInline>` with `aspect-video` framing, `bg-muted` placeholder, and `ring-1 ring-border/60` for a tile look. `poster` is honoured for fast first paint.
+- **Inline video showcase** — pass `video: "https://…/clip.mp4"` and the panel renders a `<video loop muted playsInline>` with `aspect-video` framing, `bg-muted` placeholder, and `ring-1 ring-border/60` for a tile look. It autoplays by default, but honours `prefers-reduced-motion` — visitors with that preference get a paused poster with native playback controls instead. `poster` is honoured for fast first paint.
 - **No shadcn primitives** — the component depends only on `lucide-react`. The tab affordance is pure JSX + Tailwind, so it installs cleanly into either Radix or Base UI registry variants.
 - **Theme adaptive** — every surface uses shadcn tokens (`bg-background`, `text-foreground`, `text-muted-foreground`, `border-border`), with a `bg-background/90 backdrop-blur-sm` frosted-glass effect on the sticky strip.
