@@ -2361,6 +2361,30 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "gradient-chat-input": {
+    name: "gradient-chat-input",
+    description:
+      "Minimal chat input that streams animated message bubbles, plays synthesized send/receive sounds, and reveals a blurred spectrum glow once a conversation starts.",
+    type: "registry:ui",
+    registryDependencies: ["button", "input"],
+    files: [
+      {
+        path: "registry/ruixenui/gradient-chat-input.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/gradient-chat-input.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/gradient-chat-input.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "gooey-dock": {
     name: "gooey-dock",
     description:
@@ -7109,6 +7133,32 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/claude-chat-input-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "gradient-chat-input-demo": {
+    name: "gradient-chat-input-demo",
+    description:
+      "Example showing the gradient chat input with animated bubbles and a spectrum reveal.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/gradient-chat-input"],
+    files: [
+      {
+        path: "registry/example/gradient-chat-input-demo.tsx",
+        type: "registry:example",
+        target: "components/gradient-chat-input-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/gradient-chat-input-demo.tsx"
+      );
       const exportName =
         Object.keys(mod).find(
           (key) =>

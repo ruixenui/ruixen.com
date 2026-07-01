@@ -106,9 +106,24 @@ export function ServiceLedger({
   className,
 }: ServiceLedgerProps) {
   const [activeIndex, setActiveIndex] = React.useState(0);
+  const [prefersReducedMotion, setPrefersReducedMotion] = React.useState(false);
   const sectionRef = React.useRef<HTMLElement | null>(null);
   const entryRefs = React.useRef<Array<HTMLDivElement | null>>([]);
   const tabsRef = React.useRef<HTMLDivElement | null>(null);
+
+  /* Honor the visitor's reduced-motion preference. Resolve matchMedia from the
+     section's ownerWindow so it stays correct when the component is portaled
+     into a docs-preview iframe. Drives smooth-scroll fallbacks and video
+     autoplay below. */
+  React.useEffect(() => {
+    const ownerWindow =
+      sectionRef.current?.ownerDocument?.defaultView ?? window;
+    const mq = ownerWindow.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setPrefersReducedMotion(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
 
   /* Scroll-spy. Two things to get right here:
 
@@ -208,8 +223,11 @@ export function ServiceLedger({
     const tRect = tab.getBoundingClientRect();
     const delta =
       tRect.left - cRect.left - (container.clientWidth - tab.clientWidth) / 2;
-    container.scrollBy({ left: delta, behavior: "smooth" });
-  }, [activeIndex]);
+    container.scrollBy({
+      left: delta,
+      behavior: prefersReducedMotion ? "auto" : "smooth",
+    });
+  }, [activeIndex, prefersReducedMotion]);
 
   const handleTabClick = (
     event: React.MouseEvent<HTMLAnchorElement>,
@@ -218,7 +236,10 @@ export function ServiceLedger({
     event.preventDefault();
     const target = entryRefs.current[index];
     if (target) {
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
+      target.scrollIntoView({
+        behavior: prefersReducedMotion ? "auto" : "smooth",
+        block: "start",
+      });
     }
   };
 
@@ -265,14 +286,7 @@ export function ServiceLedger({
                   >
                     <span className="font-semibold">{entry.code}</span>
                     {entry.meta && (
-                      <span
-                        className={cn(
-                          "hidden text-xs sm:inline",
-                          isActive
-                            ? "text-muted-foreground"
-                            : "text-muted-foreground/70",
-                        )}
-                      >
+                      <span className="hidden text-xs text-muted-foreground sm:inline">
                         {entry.meta}
                       </span>
                     )}
@@ -321,7 +335,8 @@ export function ServiceLedger({
                 <video
                   src={entry.video}
                   poster={entry.poster}
-                  autoPlay
+                  autoPlay={!prefersReducedMotion}
+                  controls={prefersReducedMotion}
                   loop
                   muted
                   playsInline

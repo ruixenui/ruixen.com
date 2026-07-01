@@ -1,0 +1,122 @@
+---
+title: Gradient Chat Input
+date: 2026-06-30
+description: React AI chat input — a minimal message field that streams animated chat bubbles and reveals a blurred spectrum glow once a conversation starts.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="gradient-chat-input-demo" category="ai-chat-inputs" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/gradient-chat-input"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="gradient-chat-input" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Install dependencies</Step>
+
+```bash
+npm install lucide-react motion
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import GradientChatInput from "@/components/ruixen/gradient-chat-input";
+
+export default function App() {
+  return <GradientChatInput onSend={(message) => console.log(message)} />;
+}
+```
+
+## Custom Reply
+
+```tsx
+<GradientChatInput
+  placeholder="Ask anything…"
+  autoReply="On it — give me a sec ✨"
+  autoReplyDelay={900}
+  onSend={(message) => console.log(message)}
+/>
+```
+
+## Custom Spectrum
+
+```tsx
+<GradientChatInput
+  gradientColors={["#6EE7B7", "#3B82F6", "#9333EA", "#EC4899", "#F59E0B"]}
+  onSend={(message) => console.log(message)}
+/>
+```
+
+## Disable Auto-Reply
+
+Pass `null` to keep the field one-sided — bubbles still stream, but nothing replies.
+
+```tsx
+<GradientChatInput
+  autoReply={null}
+  onSend={(message) => console.log(message)}
+/>
+```
+
+## Mute Sounds
+
+Send and receive sounds are synthesized with the Web Audio API — no audio files
+to ship. Set `sound={false}` to silence them.
+
+```tsx
+<GradientChatInput sound={false} onSend={(message) => console.log(message)} />
+```
+
+## Props
+
+| Prop             | Type                        | Default                               | Description                                       |
+| ---------------- | --------------------------- | ------------------------------------- | ------------------------------------------------- |
+| `placeholder`    | `string`                    | `"Send Message"`                      | Placeholder shown inside the text field           |
+| `autoReply`      | `string \| null`            | `"Got it — looking into that now ✨"` | Reply pushed back after a message; `null` to skip |
+| `autoReplyDelay` | `number`                    | `650`                                 | Delay in ms before the auto-reply lands           |
+| `maxVisible`     | `number`                    | `4`                                   | Max number of bubbles kept on screen              |
+| `sound`          | `boolean`                   | `true`                                | Play synthesized send / receive sounds            |
+| `gradientColors` | `string[]`                  | 5-stop spectrum                       | Colors for the reveal glow (top → bottom)         |
+| `onSend`         | `(message: string) => void` | -                                     | Fired whenever the user submits a message         |
+| `className`      | `string`                    | -                                     | Additional CSS classes                            |
+
+## Features
+
+- **Spectrum reveal**: A blurred, multi-column gradient glides up and fades in the moment the first message is sent
+- **Synthesized sound**: Subtle two-note send and receive chimes generated with the Web Audio API — zero audio assets, mutable via `sound`
+- **Spring bubbles**: Messages pop in with `motion` spring physics — user replies right, responses left, each with a tucked corner
+- **Light & dark**: Built entirely on shadcn CSS variables (`background`, `primary`, `border`) — themes out of the box
+- **shadcn primitives**: Composed from the shadcn `Button` and `Input` for consistent focus rings and accessibility
+- **Active send state**: lucide `Plus` and `Send` icons; the send button tints from muted to the theme `primary` the moment there's text to send
+- **Auto-reply**: Configurable canned response with adjustable delay, or disable it entirely with `null`
+- **Rolling window**: Only the latest `maxVisible` bubbles stay mounted, keeping the stack tidy
+- **Keyboard ready**: Press <kbd>Enter</kbd> to send; the field clears and keeps focus for the next message, even when the send button is clicked

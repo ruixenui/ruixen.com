@@ -643,6 +643,12 @@ export const docsConfig: DocsConfig = {
               items: [],
               label: "",
             },
+            {
+              title: "Gradient Chat Input",
+              href: `/docs/components/gradient-chat-input`,
+              items: [],
+              label: "New",
+            },
           ],
         },
         {
