@@ -1,0 +1,191 @@
+---
+title: Animated Highlight Text
+date: 2026-07-03
+description: React animated text component — inline highlights whose SVG icons draw themselves in on hover, with a pointer cursor and an image tooltip per word.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="animated-highlight-text-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/animated-highlight-text"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="animated-highlight-text" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Install dependencies</Step>
+
+```bash
+npm install motion
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+Compose a paragraph out of plain text and `<Highlight>` nodes. Each highlight
+gets a pointer cursor, redraws its icon on hover / focus, and can pop an image
+tooltip. Leave `color` off for a neutral bold accent; set it only where you want
+a splash — like the red heart.
+
+```tsx
+import AnimatedHighlightText, {
+  HeartIcon,
+  Highlight,
+  MousePointerClickIcon,
+} from "@/components/ruixen/animated-highlight-text";
+
+export default function App() {
+  return (
+    <AnimatedHighlightText>
+      We help you{" "}
+      <Highlight
+        icon={<MousePointerClickIcon />}
+        image="https://ruixen.com/card-slides/card-slide-01.jpg"
+      >
+        design
+      </Highlight>{" "}
+      products that{" "}
+      <Highlight
+        icon={<HeartIcon />}
+        color="#ef4444"
+        image="https://ruixen.com/card-slides/card-slide-02.jpg"
+      >
+        delight
+      </Highlight>{" "}
+      to use.
+    </AnimatedHighlightText>
+  );
+}
+```
+
+## Image Tooltip
+
+Pass an `image` URL and a preview appears just above the word, **tracking the
+cursor's horizontal position** as you move across it, or centered on keyboard
+focus. It's anchored in the highlight's own coordinate space, so it lands
+correctly no matter how the component is nested. The word gets a marker
+highlight underneath.
+
+```tsx
+<Highlight
+  icon={<SparklesIcon />}
+  image="https://ruixen.com/card-slides/card-slide-03.jpg"
+  imageAlt="Taste"
+>
+  taste
+</Highlight>
+```
+
+## Animated Icons
+
+Four self-contained icons ship with the component. Instead of moving or scaling,
+each one **draws its own strokes in** — the line paints on, plays once, and
+stops. Multi-stroke icons draw stroke-by-stroke.
+
+| Icon                    | Draw                                                   |
+| ----------------------- | ------------------------------------------------------ |
+| `HeartIcon`             | Outline strokes in, then the fill washes back over it  |
+| `SparklesIcon`          | The big star draws, then the two glints flick in       |
+| `MousePointerClickIcon` | The cursor draws, then the click ticks paint outward   |
+| `RocketIcon`            | Body draws, fins follow, the exhaust flame paints last |
+
+The icons draw their color from the highlight's `color` (via `currentColor`)
+and scale in `em`, so they track the surrounding font size.
+
+## Neutral vs. Accent
+
+Loud per-word colors get noisy fast. The recommended default is to leave
+`color` unset — the word stays bold `foreground` — and reserve a color for a
+single emphatic word.
+
+```tsx
+// neutral — bold foreground, no color
+<Highlight icon={<RocketIcon />}>edge</Highlight>
+
+// accent — reserve color for one emphatic word
+<Highlight icon={<HeartIcon />} color="#ef4444">delight</Highlight>
+```
+
+## Always Playing
+
+Set `autoPlay` to draw the icon once on mount instead of waiting for hover.
+
+```tsx
+<Highlight icon={<HeartIcon />} color="#ef4444" autoPlay>
+  loved
+</Highlight>
+```
+
+## Custom Element
+
+`AnimatedHighlightText` renders a `<p>` by default. Use `as` for a heading or
+any other tag.
+
+```tsx
+<AnimatedHighlightText
+  as="h2"
+  className="text-3xl font-semibold text-foreground"
+>
+  Ship with <Highlight icon={<SparklesIcon />}>taste</Highlight>
+</AnimatedHighlightText>
+```
+
+## Props
+
+### AnimatedHighlightText
+
+| Prop        | Type                | Default | Description                         |
+| ----------- | ------------------- | ------- | ----------------------------------- |
+| `children`  | `React.ReactNode`   | -       | Copy mixed with `<Highlight>` nodes |
+| `as`        | `React.ElementType` | `"p"`   | Element to render as                |
+| `className` | `string`            | -       | Additional CSS classes              |
+
+### Highlight
+
+| Prop           | Type                  | Default      | Description                                     |
+| -------------- | --------------------- | ------------ | ----------------------------------------------- |
+| `children`     | `React.ReactNode`     | -            | The word(s) that light up                       |
+| `icon`         | `React.ReactNode`     | -            | An animated icon component, emoji, or any node  |
+| `color`        | `string`              | `foreground` | Accent color for the text and icon              |
+| `iconPosition` | `"before" \| "after"` | `"before"`   | Icon side relative to the text                  |
+| `image`        | `string`              | -            | Image URL shown in a tooltip on hover / focus   |
+| `imageAlt`     | `string`              | `""`         | Alt text for the tooltip image                  |
+| `autoPlay`     | `boolean`             | `false`      | Draw the icon once on mount instead of on hover |
+| `className`    | `string`              | -            | Additional CSS classes                          |
+
+## Features
+
+- **Draw-on icons**: Four hand-built SVG icons paint their strokes in on hover, play once, and stop — no looping, shaking, or moving the icon
+- **Cursor-tracking tooltip**: The image preview sits above the word and tracks the pointer's x as you move across it; on keyboard focus it centers above the word
+- **Marker highlight**: The word gets a soft accent (or neutral) wash on hover, plus a `cursor-pointer`, to signal it's interactive
+- **Neutral by default**: Words stay bold `foreground` unless you opt into an accent `color`, keeping dense copy calm
+- **Optical alignment**: Icons are `inline-block` with a tuned `vertical-align` and `em` sizing, so they stay centered beside the word at any font size
+- **Self-contained**: No animated-icon dependency — the icons ship inside the component and only need `motion`
+- **Reduced motion**: Honors `prefers-reduced-motion` — the draw and tooltip animations are skipped for users who opt out
+- **Accessible**: Highlights are focusable with `aria-describedby` wired to the tooltip; the draw and preview fire on `Tab` focus too, and structural colors use theme tokens for light and dark
