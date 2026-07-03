@@ -1651,6 +1651,23 @@
       ]
     },
     {
+      "name": "animated-highlight-text",
+      "type": "registry:ui",
+      "title": "Animated Highlight Text",
+      "description": "Typographic block that mixes plain copy with inline highlights carrying bespoke animated SVG icons — a heart that beats a real lub-dub, twinkling sparkles, a clicking cursor, a launching rocket — that come alive on hover or focus.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/ruixenui/animated-highlight-text.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/animated-highlight-text.tsx"
+        }
+      ]
+    },
+    {
       "name": "gradient-chat-input",
       "type": "registry:ui",
       "title": "Gradient Chat Input",
@@ -4939,6 +4956,22 @@
           "path": "registry/example/claude-chat-input-demo.tsx",
           "type": "registry:example",
           "target": "components/claude-chat-input-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "animated-highlight-text-demo",
+      "type": "registry:example",
+      "title": "Animated Highlight Text Demo",
+      "description": "Example showing inline highlights whose icons animate on hover — a wiggling cursor, a beating heart, a pulsing sparkle, and a bouncing rocket.",
+      "registryDependencies": [
+        "https://ruixen.com/r/animated-highlight-text"
+      ],
+      "files": [
+        {
+          "path": "registry/example/animated-highlight-text-demo.tsx",
+          "type": "registry:example",
+          "target": "components/animated-highlight-text-demo.tsx"
         }
       ]
     },

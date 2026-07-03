@@ -678,6 +678,10 @@ export const textsPreview: ComponentPreviewMap = {
     light: `/preview_images/texts/scramble-text-light.png`,
     dark: `/preview_images/texts/scramble-text-dark.png`,
   },
+  "animated-highlight-text": {
+    light: `/preview_images/texts/animated-highlight-text-light.png`,
+    dark: `/preview_images/texts/animated-highlight-text-dark.png`,
+  },
 };
 
 /**

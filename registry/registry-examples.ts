@@ -1247,6 +1247,21 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "animated-highlight-text-demo",
+    type: "registry:example",
+    title: "Animated Highlight Text Demo",
+    description:
+      "Example showing inline highlights whose icons animate on hover — a wiggling cursor, a beating heart, a pulsing sparkle, and a bouncing rocket.",
+    registryDependencies: ["https://ruixen.com/r/animated-highlight-text"],
+    files: [
+      {
+        path: "registry/example/animated-highlight-text-demo.tsx",
+        type: "registry:example",
+        target: "components/animated-highlight-text-demo.tsx",
+      },
+    ],
+  },
+  {
     name: "gradient-chat-input-demo",
     type: "registry:example",
     title: "Gradient Chat Input Demo",

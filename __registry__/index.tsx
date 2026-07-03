@@ -2361,6 +2361,32 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "animated-highlight-text": {
+    name: "animated-highlight-text",
+    description:
+      "Typographic block that mixes plain copy with inline highlights carrying bespoke animated SVG icons — a heart that beats a real lub-dub, twinkling sparkles, a clicking cursor, a launching rocket — that come alive on hover or focus.",
+    type: "registry:ui",
+    registryDependencies: [],
+    files: [
+      {
+        path: "registry/ruixenui/animated-highlight-text.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/animated-highlight-text.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/ruixenui/animated-highlight-text.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "gradient-chat-input": {
     name: "gradient-chat-input",
     description:
@@ -7133,6 +7159,32 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/claude-chat-input-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "animated-highlight-text-demo": {
+    name: "animated-highlight-text-demo",
+    description:
+      "Example showing inline highlights whose icons animate on hover — a wiggling cursor, a beating heart, a pulsing sparkle, and a bouncing rocket.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/animated-highlight-text"],
+    files: [
+      {
+        path: "registry/example/animated-highlight-text-demo.tsx",
+        type: "registry:example",
+        target: "components/animated-highlight-text-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/animated-highlight-text-demo.tsx"
+      );
       const exportName =
         Object.keys(mod).find(
           (key) =>
