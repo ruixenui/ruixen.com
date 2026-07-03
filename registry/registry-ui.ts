@@ -1486,6 +1486,22 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "animated-highlight-text",
+    type: "registry:ui",
+    title: "Animated Highlight Text",
+    description:
+      "Typographic block that mixes plain copy with inline highlights carrying bespoke animated SVG icons — a heart that beats a real lub-dub, twinkling sparkles, a clicking cursor, a launching rocket — that come alive on hover or focus.",
+    dependencies: ["motion"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "registry/ruixenui/animated-highlight-text.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/animated-highlight-text.tsx",
+      },
+    ],
+  },
+  {
     name: "gradient-chat-input",
     type: "registry:ui",
     title: "Gradient Chat Input",
