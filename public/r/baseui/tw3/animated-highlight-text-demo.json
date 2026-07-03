@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "animated-highlight-text-demo",
+  "type": "registry:example",
+  "title": "Animated Highlight Text Demo",
+  "description": "Example showing inline highlights whose icons animate on hover — a wiggling cursor, a beating heart, a pulsing sparkle, and a bouncing rocket.",
+  "registryDependencies": [
+    "https://ruixen.com/r/animated-highlight-text"
+  ],
+  "files": [
+    {
+      "path": "registry/example/animated-highlight-text-demo.tsx",
+      "content": "\"use client\";\n\nimport AnimatedHighlightText, {\n  HeartIcon,\n  Highlight,\n  MousePointerClickIcon,\n  SparklesIcon,\n} from \"@/registry/ruixenui/animated-highlight-text\";\n\nconst CDN = \"https://ruixen.com/card-slides\";\n\nexport default function AnimatedHighlightTextDemo() {\n  return (\n    <div className=\"flex min-h-[420px] w-full items-center justify-center px-8 py-20\">\n      <AnimatedHighlightText className=\"text-center\">\n        Every interface deserves thoughtful craft: effortlessly{\" \"}\n        <Highlight\n          icon={<MousePointerClickIcon />}\n          image={`${CDN}/card-slide-01.jpg`}\n          imageAlt=\"Built\"\n        >\n          built\n        </Highlight>\n        , truly{\" \"}\n        <Highlight\n          icon={<HeartIcon />}\n          color=\"#ef4444\"\n          image={`${CDN}/card-slide-02.jpg`}\n          imageAlt=\"Loved\"\n        >\n          loved\n        </Highlight>\n        , beautifully{\" \"}\n        <Highlight\n          icon={<SparklesIcon />}\n          image={`${CDN}/card-slide-03.jpg`}\n          imageAlt=\"Polished\"\n        >\n          polished\n        </Highlight>\n        .\n      </AnimatedHighlightText>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/animated-highlight-text-demo.tsx"
+    }
+  ]
+}
