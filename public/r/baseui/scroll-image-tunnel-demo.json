@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-image-tunnel-demo",
+  "type": "registry:example",
+  "title": "Scroll Image Tunnel Demo",
+  "description": "Example of a pinned photo stage cycling through five images, each growing from a small point in the center into full clarity as you scroll.",
+  "registryDependencies": [
+    "https://ruixen.com/r/scroll-image-tunnel"
+  ],
+  "files": [
+    {
+      "path": "registry/example/scroll-image-tunnel-demo.tsx",
+      "content": "\"use client\";\n\nimport { useRef } from \"react\";\n\nimport { ScrollImageTunnel } from \"@/registry/ruixenui/scroll-image-tunnel\";\n\nconst IMAGES = [\n  {\n    src: \"https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/stock-images/767d99bb371a54d0d36751e8cecae43c.jpg\",\n    alt: \"Surreal illustration of a diver silhouetted inside a sunset seascape shaped like a profile\",\n  },\n  {\n    src: \"https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/stock-images/821d815affa6496c39cbdeeec7a84603.jpg\",\n    alt: \"Double-exposure portrait of a profile blended with a city skyline at dusk\",\n  },\n  {\n    src: \"https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/stock-images/937438c560ada1c83317f2c11b3454b0.jpg\",\n    alt: \"Motion-blurred side-profile portrait against a deep orange backdrop\",\n  },\n  {\n    src: \"https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/stock-images/98f89cb9994f5c382ab964062c4039db.jpg\",\n    alt: \"Illustration of a figure holding a racket that dissolves into a swirling colorful cloud at dusk\",\n  },\n  {\n    src: \"https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/stock-images/ddcbee38be8b7274e19e132d7ab35b53.jpg\",\n    alt: \"Black-and-white photo of a hand gesture with a colorful cutout of a bird flying through the fingers\",\n  },\n];\n\nexport default function ScrollImageTunnelDemo() {\n  const containerRef = useRef<HTMLDivElement>(null);\n\n  return (\n    <div\n      ref={containerRef}\n      data-scroll-image-tunnel-demo\n      className=\"relative w-full h-screen overflow-y-auto overflow-x-hidden\"\n      style={{ scrollbarWidth: \"none\" }}\n    >\n      <style\n        dangerouslySetInnerHTML={{\n          __html: `[data-scroll-image-tunnel-demo]::-webkit-scrollbar{display:none}`,\n        }}\n      />\n      <ScrollImageTunnel\n        images={IMAGES}\n        container={containerRef}\n        stepHeight=\"150vh\"\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/scroll-image-tunnel-demo.tsx"
+    }
+  ]
+}
