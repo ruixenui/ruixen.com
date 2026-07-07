@@ -1262,6 +1262,21 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "scroll-image-tunnel-demo",
+    type: "registry:example",
+    title: "Scroll Image Tunnel Demo",
+    description:
+      "Example of a pinned photo stage cycling through five images, each growing from a small point in the center into full clarity as you scroll.",
+    registryDependencies: ["https://ruixen.com/r/scroll-image-tunnel"],
+    files: [
+      {
+        path: "registry/example/scroll-image-tunnel-demo.tsx",
+        type: "registry:example",
+        target: "components/scroll-image-tunnel-demo.tsx",
+      },
+    ],
+  },
+  {
     name: "gradient-chat-input-demo",
     type: "registry:example",
     title: "Gradient Chat Input Demo",

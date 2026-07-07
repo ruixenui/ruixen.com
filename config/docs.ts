@@ -952,6 +952,12 @@ export const docsConfig: DocsConfig = {
           title: "Carousels",
           items: [
             {
+              title: "Scroll Image Tunnel",
+              href: `/docs/components/scroll-image-tunnel`,
+              items: [],
+              label: "New",
+            },
+            {
               title: "Scroll Tilted Grid",
               href: `/docs/components/scroll-tilted-grid`,
               items: [],
