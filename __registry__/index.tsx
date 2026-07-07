@@ -2387,6 +2387,30 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "scroll-image-tunnel": {
+    name: "scroll-image-tunnel",
+    description:
+      "A pinned photo stage where each image grows from a small point in the center, developing from an oversaturated, high-contrast state into the true image as it settles, cycling through the set as the page scrolls.",
+    type: "registry:ui",
+    registryDependencies: [],
+    files: [
+      {
+        path: "registry/ruixenui/scroll-image-tunnel.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/scroll-image-tunnel.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/scroll-image-tunnel.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "gradient-chat-input": {
     name: "gradient-chat-input",
     description:
@@ -7184,6 +7208,32 @@ export const Index: Record<string, any> = {
     component: React.lazy(async () => {
       const mod = await import(
         "@/registry/example/animated-highlight-text-demo.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "scroll-image-tunnel-demo": {
+    name: "scroll-image-tunnel-demo",
+    description:
+      "Example of a pinned photo stage cycling through five images, each growing from a small point in the center into full clarity as you scroll.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/scroll-image-tunnel"],
+    files: [
+      {
+        path: "registry/example/scroll-image-tunnel-demo.tsx",
+        type: "registry:example",
+        target: "components/scroll-image-tunnel-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/scroll-image-tunnel-demo.tsx"
       );
       const exportName =
         Object.keys(mod).find(

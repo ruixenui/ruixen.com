@@ -1,0 +1,112 @@
+---
+title: Scroll Image Tunnel
+date: 2026-07-07
+description: A pinned photo stage where each scroll-linked image grows from a small point in the center, developing from an oversaturated, high-contrast state into the true image as it settles.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="scroll-image-tunnel-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/scroll-image-tunnel"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="scroll-image-tunnel" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Install dependencies</Step>
+
+```bash
+npm install motion
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { ScrollImageTunnel } from "@/components/ruixen/scroll-image-tunnel";
+
+export default function Page() {
+  return (
+    <ScrollImageTunnel
+      images={[
+        { src: "/photos/01.jpg", alt: "Digital architecture" },
+        { src: "/photos/02.jpg", alt: "Horizon beyond" },
+        { src: "/photos/03.jpg", alt: "Sound wave circuit" },
+        { src: "/photos/04.jpg", alt: "Light writer" },
+        { src: "/photos/05.jpg", alt: "Star explorer" },
+      ]}
+    />
+  );
+}
+```
+
+The section pins for `images.length * stepHeight` of scroll. Each photo owns an
+even slice of that scroll range: it's invisible until its own slice begins,
+then grows from a small point in the center out to the full frame. Never
+blurred — instead it starts punchy and oversaturated, like an overdeveloped
+print, and grades down into the true, correctly balanced image as it finishes
+growing. Photos that haven't reached their slice yet stay fully hidden, so
+nothing lingers behind the one currently in view.
+
+### Inside a bounded container
+
+Pass a ref to a fixed-height self-scrolling ancestor via `container`, and shrink
+`stepHeight` to match — scroll progress is measured against that ref instead of
+the page.
+
+```tsx
+import { useRef } from "react";
+import { ScrollImageTunnel } from "@/components/ruixen/scroll-image-tunnel";
+
+export default function Preview() {
+  const ref = useRef<HTMLDivElement>(null);
+  return (
+    <div ref={ref} className="h-[600px] overflow-y-auto rounded-xl">
+      <ScrollImageTunnel images={images} container={ref} stepHeight="150vh" />
+    </div>
+  );
+}
+```
+
+## Notes
+
+- The pinned stage uses `bg-background`, so it adapts to light and dark theme
+  like the rest of the site. Override via `className` for a different backdrop.
+- Honors `prefers-reduced-motion`: renders a plain static stack of the photos
+  with no pinning or scroll-driven transforms.
+
+## Props
+
+| Prop         | Type                             | Default                              | Description                                                                          |
+| ------------ | -------------------------------- | ------------------------------------ | ------------------------------------------------------------------------------------ |
+| `images`     | `{ src: string; alt: string }[]` | -                                    | Photos shown in sequence, one per scroll segment.                                    |
+| `hint`       | `ReactNode`                      | `"Scroll down to reveal the images"` | Hint shown above the pinned stage before the user starts scrolling.                  |
+| `stepHeight` | `string`                         | `"200vh"`                            | Scroll distance dedicated to each photo. Taller = slower reveal.                     |
+| `container`  | `RefObject<HTMLElement \| null>` | -                                    | Scrollable ancestor to track instead of the page — for embedding in a bounded panel. |
+| `className`  | `string`                         | -                                    | Extra classes merged onto the root container.                                        |

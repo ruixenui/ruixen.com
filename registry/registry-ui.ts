@@ -1502,6 +1502,22 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "scroll-image-tunnel",
+    type: "registry:ui",
+    title: "Scroll Image Tunnel",
+    description:
+      "A pinned photo stage where each image grows from a small point in the center, developing from an oversaturated, high-contrast state into the true image as it settles, cycling through the set as the page scrolls.",
+    dependencies: ["motion"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "registry/ruixenui/scroll-image-tunnel.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/scroll-image-tunnel.tsx",
+      },
+    ],
+  },
+  {
     name: "gradient-chat-input",
     type: "registry:ui",
     title: "Gradient Chat Input",
