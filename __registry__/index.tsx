@@ -2411,6 +2411,30 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "chapter-scrubber": {
+    name: "chapter-scrubber",
+    description:
+      "A vertical rail of uniform ticks that magnify toward the cursor like a dock — the lines nearest the pointer rise on a spring-driven wave and a preview card describes the crest chapter, inspired by the OpenAI Codex chapters minimap.",
+    type: "registry:ui",
+    registryDependencies: [],
+    files: [
+      {
+        path: "registry/ruixenui/chapter-scrubber.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/chapter-scrubber.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/chapter-scrubber.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "gradient-chat-input": {
     name: "gradient-chat-input",
     description:
@@ -7235,6 +7259,30 @@ export const Index: Record<string, any> = {
       const mod = await import(
         "@/registry/example/scroll-image-tunnel-demo.tsx"
       );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "chapter-scrubber-demo": {
+    name: "chapter-scrubber-demo",
+    description:
+      "Example of a coding agent's task chapters as a vertical rail — hover or arrow over a line to reveal that chapter's preview card.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/chapter-scrubber"],
+    files: [
+      {
+        path: "registry/example/chapter-scrubber-demo.tsx",
+        type: "registry:example",
+        target: "components/chapter-scrubber-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/chapter-scrubber-demo.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>

@@ -1,0 +1,179 @@
+---
+title: Chapter Scrubber
+date: 2026-07-10
+description: A vertical rail of uniform ticks that magnify toward the cursor like a dock. The lines nearest the pointer rise on a spring-driven wave and a preview card describes the crest chapter — a minimap for a long task, transcript, or agent run.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="chapter-scrubber-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/chapter-scrubber"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="chapter-scrubber" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Install dependencies</Step>
+
+```bash
+npm install motion
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import {
+  ChapterScrubber,
+  type Chapter,
+} from "@/components/ruixen/chapter-scrubber";
+
+const chapters: Chapter[] = [
+  {
+    id: "clone",
+    title: "clone the repo",
+    description: "Mapped the workspace.",
+    meta: "00:00",
+  },
+  {
+    id: "repro",
+    title: "reproduce the bug",
+    description: "Confirmed the flicker.",
+    meta: "00:14",
+  },
+  {
+    id: "patch",
+    title: "shape the falloff",
+    description: "Raised-cosine wave, no seams.",
+    meta: "00:52",
+  },
+  {
+    id: "ship",
+    title: "open the PR",
+    description: "Opened #11148 and requested review.",
+    meta: "02:55",
+  },
+];
+
+export default function Page() {
+  return <ChapterScrubber chapters={chapters} />;
+}
+```
+
+At rest, every chapter is the same small tick — a quiet, uniform spine. As the
+pointer moves down the rail, each tick reads its distance from the cursor and
+**rises**: the line under the pointer reaches full length while its neighbours
+taper off along a raised-cosine wave. A preview card tracks the crest and
+describes that chapter.
+
+## How the motion works
+
+The whole rail is driven by a **single** spring-backed pointer value, not
+per-line state. Each tick derives its length, weight, and opacity from its
+distance to that one value, so the wave stays perfectly coherent and cheap —
+there is no React re-render on pointer move, only motion values updating.
+
+- **Pointer spring** — tight and near-critically damped, so the crest stays
+  glued to the cursor with no lag and no overshoot.
+- **Strength spring** — softer, so the wave _swells_ in when you arrive and
+  _settles_ back down when you leave, rather than snapping.
+- **Raised-cosine falloff** — zero slope at both ends of the `radius`, which is
+  what removes the seams and gives the rise its buttery edge.
+
+## Tuning the wave
+
+```tsx
+<ChapterScrubber
+  chapters={chapters}
+  restLength={12} // resting tick length — keep it small
+  peakLength={64} // length at the crest of the wave
+  radius={5} // how many rows the rise reaches, each side
+  rowHeight={10} // gap between ticks — smaller is denser
+/>
+```
+
+## Reacting to activity
+
+`onActiveChange` fires as the crest chapter changes; `onSelect` fires on click,
+`Enter` or `Space`. Wire them to scroll a transcript, seek a recording, or
+replay an agent step.
+
+```tsx
+<ChapterScrubber
+  chapters={chapters}
+  onActiveChange={(chapter) => setPreview(chapter)}
+  onSelect={(chapter) => scrollTo(chapter.id)}
+/>
+```
+
+## Accessibility
+
+- The rail is a `listbox` and each tick an `option`; the accessible name of
+  each option is its title plus description, so screen readers get the full
+  chapter without depending on the visual card.
+- Roving `tabindex` keeps a single tick tabbable. `↑`/`↓` (and `←`/`→`) walk
+  the rail, `Home`/`End` jump to the ends, and focus raises the wave over the
+  focused tick — keyboard gets the same magnification as the pointer.
+- Honors `prefers-reduced-motion`: the spatial wave still conveys position, but
+  the springs are dropped so the rise is instant instead of eased.
+
+## Notes
+
+- The card is `position: absolute` and overflows the rail's box, so give the
+  component room on the side it opens toward. It auto-flips to the roomier side
+  when it would run past the viewport edge.
+- Colors come from shadcn theme tokens (`bg-foreground`, `bg-primary`,
+  `bg-popover`, `border-border`), so it adapts to light and dark out of the box.
+- Set `currentIndex` to mark a persistent "you are here" tick — it rests in the
+  primary color even when nothing is hovered.
+
+## Props
+
+| Prop             | Type                                                | Default      | Description                                                             |
+| ---------------- | --------------------------------------------------- | ------------ | ----------------------------------------------------------------------- |
+| `chapters`       | `Chapter[]`                                         | -            | Chapters rendered top-to-bottom, one uniform tick each.                 |
+| `side`           | `"left" \| "right"`                                 | `"right"`    | Side the preview card opens toward. Auto-flips near a viewport edge.    |
+| `peakLength`     | `number`                                            | `56`         | Length a tick reaches at the crest of the wave, in pixels.              |
+| `restLength`     | `number`                                            | `14`         | Resting length of every tick, in pixels.                                |
+| `rowHeight`      | `number`                                            | `10`         | Height of each row in pixels; the gap between ticks (smaller = denser). |
+| `radius`         | `number`                                            | `4`          | Radius of the wave, in rows — how far the rise reaches.                 |
+| `currentIndex`   | `number`                                            | -            | Marks one chapter as the persistent "current" tick.                     |
+| `onActiveChange` | `(chapter: Chapter \| null, index: number) => void` | -            | Fires when the crest (hovered/focused) chapter changes.                 |
+| `onSelect`       | `(chapter: Chapter, index: number) => void`         | -            | Fires when a chapter is chosen via click, Enter or Space.               |
+| `label`          | `string`                                            | `"Chapters"` | Accessible name for the rail.                                           |
+| `className`      | `string`                                            | -            | Extra classes merged onto the root container.                           |
+
+### Chapter
+
+| Field         | Type        | Default | Description                                                          |
+| ------------- | ----------- | ------- | -------------------------------------------------------------------- |
+| `id`          | `string`    | -       | Stable, unique identifier for the chapter.                           |
+| `title`       | `string`    | -       | Bold heading shown at the top of the preview card.                   |
+| `description` | `ReactNode` | -       | Supporting copy under the title (clamped to three lines).            |
+| `meta`        | `ReactNode` | -       | Small muted label above the title (e.g. a timestamp or step number). |

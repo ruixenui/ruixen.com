@@ -1518,6 +1518,22 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "chapter-scrubber",
+    type: "registry:ui",
+    title: "Chapter Scrubber",
+    description:
+      "A vertical rail of uniform ticks that magnify toward the cursor like a dock — the lines nearest the pointer rise on a spring-driven wave and a preview card describes the crest chapter, inspired by the OpenAI Codex chapters minimap.",
+    dependencies: ["motion"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "registry/ruixenui/chapter-scrubber.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/chapter-scrubber.tsx",
+      },
+    ],
+  },
+  {
     name: "gradient-chat-input",
     type: "registry:ui",
     title: "Gradient Chat Input",

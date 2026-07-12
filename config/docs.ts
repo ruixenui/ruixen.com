@@ -1227,6 +1227,17 @@ export const docsConfig: DocsConfig = {
           ],
         },
         {
+          title: "Timelines",
+          items: [
+            {
+              title: "Chapter Scrubber",
+              href: `/docs/components/chapter-scrubber`,
+              items: [],
+              label: "New",
+            },
+          ],
+        },
+        {
           title: "Select Components",
           items: [
             {

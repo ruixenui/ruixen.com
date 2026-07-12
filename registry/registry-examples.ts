@@ -1277,6 +1277,21 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "chapter-scrubber-demo",
+    type: "registry:example",
+    title: "Chapter Scrubber Demo",
+    description:
+      "Example of a coding agent's task chapters as a vertical rail — hover or arrow over a line to reveal that chapter's preview card.",
+    registryDependencies: ["https://ruixen.com/r/chapter-scrubber"],
+    files: [
+      {
+        path: "registry/example/chapter-scrubber-demo.tsx",
+        type: "registry:example",
+        target: "components/chapter-scrubber-demo.tsx",
+      },
+    ],
+  },
+  {
     name: "gradient-chat-input-demo",
     type: "registry:example",
     title: "Gradient Chat Input Demo",
