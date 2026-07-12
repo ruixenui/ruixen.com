@@ -1685,6 +1685,23 @@
       ]
     },
     {
+      "name": "chapter-scrubber",
+      "type": "registry:ui",
+      "title": "Chapter Scrubber",
+      "description": "A vertical rail of uniform ticks that magnify toward the cursor like a dock — the lines nearest the pointer rise on a spring-driven wave and a preview card describes the crest chapter, inspired by the OpenAI Codex chapters minimap.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/ruixenui/chapter-scrubber.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/chapter-scrubber.tsx"
+        }
+      ]
+    },
+    {
       "name": "gradient-chat-input",
       "type": "registry:ui",
       "title": "Gradient Chat Input",
@@ -5005,6 +5022,22 @@
           "path": "registry/example/scroll-image-tunnel-demo.tsx",
           "type": "registry:example",
           "target": "components/scroll-image-tunnel-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "chapter-scrubber-demo",
+      "type": "registry:example",
+      "title": "Chapter Scrubber Demo",
+      "description": "Example of a coding agent's task chapters as a vertical rail — hover or arrow over a line to reveal that chapter's preview card.",
+      "registryDependencies": [
+        "https://ruixen.com/r/chapter-scrubber"
+      ],
+      "files": [
+        {
+          "path": "registry/example/chapter-scrubber-demo.tsx",
+          "type": "registry:example",
+          "target": "components/chapter-scrubber-demo.tsx"
         }
       ]
     },
