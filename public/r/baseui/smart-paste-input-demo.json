@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "smart-paste-input-demo",
+  "type": "registry:example",
+  "title": "Smart Paste Input Demo",
+  "description": "Example of a chat composer holding a pasted spec as an attachment card — click it to edit the text in an overlay, then save or remove it.",
+  "registryDependencies": [
+    "https://ruixen.com/r/smart-paste-input"
+  ],
+  "files": [
+    {
+      "path": "registry/example/smart-paste-input-demo.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport {\n  SmartPasteInput,\n  type PasteAttachment,\n} from \"@/registry/ruixenui/smart-paste-input\";\n\nconst SPEC = `# Command menu spec\n\nA single entry point for everything: navigation, actions, and search. It should feel instant, never animated on open, and always predictable.\n\n## Behavior\n\n- Opens with cmd+k from anywhere in the app\n- Results are ranked by recency first, then fuzzy match score\n- Arrow keys move the selection, enter runs it, escape closes\n- The input keeps focus for as long as the menu is open\n\n## Sections\n\nRecent, Actions, Navigation, then Help — always in that order. A section disappears entirely when it has no results, and group headers are never focusable.\n\n## Empty state\n\nShow the three most common actions instead of a blank panel. Never show a spinner: if a source is slow, render what has already arrived and fill the rest in as it lands.\n\n## Out of scope\n\nNested menus, drag to reorder, and per-user pinned commands. Revisit all three after the first release ships.`;\n\nconst INITIAL: PasteAttachment[] = [{ id: \"spec\", content: SPEC }];\n\nexport default function SmartPasteInputDemo() {\n  const [sent, setSent] = React.useState<string | null>(null);\n\n  return (\n    <div className=\"flex min-h-[420px] w-full flex-col items-center justify-center gap-5 bg-background px-6 py-12\">\n      <SmartPasteInput\n        defaultAttachments={INITIAL}\n        onSubmit={({ text, attachments }) =>\n          setSent(\n            `Sent${text ? ` \"${text}\"` : \"\"} with ${attachments.length} attachment${\n              attachments.length === 1 ? \"\" : \"s\"\n            }`,\n          )\n        }\n      />\n\n      <p className=\"text-sm text-muted-foreground\">\n        {sent ??\n          \"Click the card to edit it, or paste a long block of text to attach one.\"}\n      </p>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/smart-paste-input-demo.tsx"
+    }
+  ]
+}

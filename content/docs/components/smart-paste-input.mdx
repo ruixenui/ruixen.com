@@ -1,0 +1,199 @@
+---
+title: Smart Paste Input
+date: 2026-07-14
+description: A chat composer that catches long pastes and files them away as an attachment card instead of flooding the input. Click the card to open a full editor — live character count, edit in place, then Save or Remove.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="smart-paste-input-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/smart-paste-input"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="smart-paste-input" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Install dependencies</Step>
+
+```bash
+npm install lucide-react
+```
+
+<Step>
+  This component builds on the shadcn `button`, `dialog` and `textarea`
+  primitives. Add them if your project does not have them yet.
+</Step>
+
+```bash
+npx shadcn@latest add button dialog textarea
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { SmartPasteInput } from "@/components/ruixen/smart-paste-input";
+
+export default function Page() {
+  return (
+    <SmartPasteInput
+      onSubmit={({ text, attachments }) => {
+        send({ text, attachments });
+      }}
+    />
+  );
+}
+```
+
+Paste a wall of text into the input — a spec, a stack trace, a log — and it
+never lands in the box. It becomes a card above the input, titled with the first
+line of what you pasted. The input stays a one-liner you can still type into.
+
+## Editing a paste
+
+Click the card (or focus it and press `Enter`) and the full text opens in an
+overlay: monospace, scrollable, and **editable**, with a character count that
+tracks every keystroke.
+
+- **Save** writes the edit back to the attachment. The card's title re-derives
+  from the new first line.
+- **Remove** deletes the attachment outright.
+- **Escape** or a click on the backdrop closes without saving — the draft is
+  local until you commit it.
+- **⌘/Ctrl + Enter** saves without reaching for the mouse.
+
+Pass `editable={false}` to turn the overlay into a read-only viewer; the primary
+button becomes **Close** and the textarea stops accepting input.
+
+## When a paste becomes an attachment
+
+Two independent triggers, either of which is enough — a 400-character paragraph
+attaches, and so does a short 10-line stack trace.
+
+```tsx
+<SmartPasteInput
+  pasteThreshold={320} // characters
+  pasteLineThreshold={8} // lines
+  maxAttachments={4}
+/>
+```
+
+Past `maxAttachments`, paste falls back to normal inline behavior rather than
+silently swallowing the text.
+
+## Controlled
+
+Drive both the text and the attachments from your own state — useful when a
+message is restored from a draft, or when attachments arrive from somewhere
+other than the clipboard.
+
+```tsx
+const [text, setText] = React.useState("");
+const [attachments, setAttachments] = React.useState<PasteAttachment[]>([]);
+
+<SmartPasteInput
+  value={text}
+  onValueChange={setText}
+  attachments={attachments}
+  onAttachmentsChange={setAttachments}
+  onSubmit={({ text, attachments }) => send({ text, attachments })}
+/>;
+```
+
+`onSubmit` fires on the send button and on `Enter` (`Shift + Enter` inserts a
+newline). The composer clears itself afterwards, calling `onValueChange("")` and
+`onAttachmentsChange([])` so controlled parents stay in sync.
+
+## Reskinning the accent
+
+Out of the box the send and save buttons follow your theme's `--primary`, so the
+component inherits whatever palette your app already uses — no hardcoded brand
+color, and dark mode works with no extra styling. Everything else is theme
+tokens too (`bg-card`, `text-foreground`, `border-border`, `bg-muted`).
+
+To paint them a specific color, `accentClassName` is the single knob:
+
+```tsx
+// the blue send + save buttons from the original design
+<SmartPasteInput accentClassName="bg-blue-600 text-white hover:bg-blue-700" />
+```
+
+## Accessibility
+
+- The editor is a shadcn `Dialog`, so the focus trap, `Escape` handling, scroll
+  lock, focus restore and portal all come from the primitive rather than from
+  hand-rolled listeners.
+- Focus lands on the text with the caret at the **top** of the paste, not at the
+  end where a textarea would normally put it.
+- Cards are buttons: they are reachable by keyboard, name themselves after the
+  attachment they hold, and carry a separate labelled remove button.
+
+## Notes
+
+- Built on the shadcn `button`, `dialog` and `textarea` primitives, so it
+  inherits your theme, your dark mode and your focus styles. Installing the
+  component pulls them in automatically.
+- The dialog's default corner `✕` is hidden: `Remove` and `Save` are the two
+  ways out, and `Escape` still closes.
+- The fades at the top and bottom of the editor are driven by scroll position,
+  not baked in — they disappear at the ends of the text so the caret is never
+  hidden behind a gradient.
+- The composer's padding is symmetric and the input is exactly as tall as the
+  send button, so the button is centered in the row with no nudging.
+
+## Props
+
+| Prop                  | Type                                         | Default             | Description                                                        |
+| --------------------- | -------------------------------------------- | ------------------- | ------------------------------------------------------------------ |
+| `value`               | `string`                                     | -                   | Controlled input text. Pair with `onValueChange`.                  |
+| `defaultValue`        | `string`                                     | `""`                | Initial text when uncontrolled.                                    |
+| `onValueChange`       | `(value: string) => void`                    | -                   | Fires on every keystroke, and with `""` after a submit.            |
+| `attachments`         | `PasteAttachment[]`                          | -                   | Controlled attachments. Pair with `onAttachmentsChange`.           |
+| `defaultAttachments`  | `PasteAttachment[]`                          | `[]`                | Initial attachments when uncontrolled.                             |
+| `onAttachmentsChange` | `(attachments: PasteAttachment[]) => void`   | -                   | Fires when an attachment is captured, edited or removed.           |
+| `onSubmit`            | `(payload: SmartPasteSubmitPayload) => void` | -                   | Fires on send, or `Enter` without `Shift`.                         |
+| `placeholder`         | `string`                                     | `"Ask anything..."` | Input placeholder.                                                 |
+| `pasteThreshold`      | `number`                                     | `320`               | A paste this long (characters) becomes an attachment.              |
+| `pasteLineThreshold`  | `number`                                     | `8`                 | A paste with this many lines becomes an attachment, however short. |
+| `maxAttachments`      | `number`                                     | `4`                 | Cap on attachments; pastes past it fall back to inline text.       |
+| `editable`            | `boolean`                                    | `true`              | Whether the overlay can write back. `false` makes it a viewer.     |
+| `disabled`            | `boolean`                                    | `false`             | Disables the input, the send button and paste capture.             |
+| `maxInputHeight`      | `number`                                     | `160`               | Tallest the input grows before it scrolls, in pixels.              |
+| `accentClassName`     | `string`                                     | `bg-primary`        | Classes for the send + save buttons.                               |
+| `label`               | `string`                                     | `"Message"`         | Accessible name for the composer.                                  |
+| `className`           | `string`                                     | -                   | Extra classes merged onto the root container.                      |
+
+### PasteAttachment
+
+| Field     | Type     | Default         | Description                                                 |
+| --------- | -------- | --------------- | ----------------------------------------------------------- |
+| `id`      | `string` | -               | Stable, unique identifier. Generated on paste.              |
+| `content` | `string` | -               | Full text of the attachment — what the editor reads/writes. |
+| `title`   | `string` | first line      | Card heading. Derived from `content` when omitted.          |
+| `label`   | `string` | `"Pasted text"` | Heading shown at the top of the expanded editor.            |

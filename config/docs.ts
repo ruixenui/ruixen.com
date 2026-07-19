@@ -649,6 +649,12 @@ export const docsConfig: DocsConfig = {
               items: [],
               label: "New",
             },
+            {
+              title: "Smart Paste Input",
+              href: `/docs/components/smart-paste-input`,
+              items: [],
+              label: "New",
+            },
           ],
         },
         {

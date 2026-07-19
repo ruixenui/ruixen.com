@@ -2435,6 +2435,30 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "smart-paste-input": {
+    name: "smart-paste-input",
+    description:
+      "A chat composer that catches long pastes and turns them into an attachment card instead of flooding the input — click the card to open a full-screen editor with a live character count, edit the text in place, then Save or Remove.",
+    type: "registry:ui",
+    registryDependencies: ["button", "dialog", "textarea"],
+    files: [
+      {
+        path: "registry/ruixenui/smart-paste-input.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/smart-paste-input.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/smart-paste-input.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "gradient-chat-input": {
     name: "gradient-chat-input",
     description:
@@ -7283,6 +7307,30 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/chapter-scrubber-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "smart-paste-input-demo": {
+    name: "smart-paste-input-demo",
+    description:
+      "Example of a chat composer holding a pasted spec as an attachment card — click it to edit the text in an overlay, then save or remove it.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/smart-paste-input"],
+    files: [
+      {
+        path: "registry/example/smart-paste-input-demo.tsx",
+        type: "registry:example",
+        target: "components/smart-paste-input-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/smart-paste-input-demo.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>
