@@ -1292,6 +1292,21 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "smart-paste-input-demo",
+    type: "registry:example",
+    title: "Smart Paste Input Demo",
+    description:
+      "Example of a chat composer holding a pasted spec as an attachment card — click it to edit the text in an overlay, then save or remove it.",
+    registryDependencies: ["https://ruixen.com/r/smart-paste-input"],
+    files: [
+      {
+        path: "registry/example/smart-paste-input-demo.tsx",
+        type: "registry:example",
+        target: "components/smart-paste-input-demo.tsx",
+      },
+    ],
+  },
+  {
     name: "gradient-chat-input-demo",
     type: "registry:example",
     title: "Gradient Chat Input Demo",

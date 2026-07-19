@@ -1534,6 +1534,22 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "smart-paste-input",
+    type: "registry:ui",
+    title: "Smart Paste Input",
+    description:
+      "A chat composer that catches long pastes and turns them into an attachment card instead of flooding the input — click the card to open a full-screen editor with a live character count, edit the text in place, then Save or Remove.",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["button", "dialog", "textarea"],
+    files: [
+      {
+        path: "registry/ruixenui/smart-paste-input.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/smart-paste-input.tsx",
+      },
+    ],
+  },
+  {
     name: "gradient-chat-input",
     type: "registry:ui",
     title: "Gradient Chat Input",
