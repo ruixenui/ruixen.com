@@ -736,6 +736,12 @@ export const docsConfig: DocsConfig = {
               items: [],
               label: "",
             },
+            {
+              title: "Ruixen Gradient Footer",
+              href: `/docs/components/ruixen-gradient-footer`,
+              items: [],
+              label: "New",
+            },
           ],
         },
         {

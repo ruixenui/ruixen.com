@@ -1550,6 +1550,22 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "ruixen-gradient-footer",
+    type: "registry:ui",
+    title: "Ruixen Gradient Footer",
+    description:
+      "A normal-height footer with a blurred rainbow pinned to the bottom of the viewport, stretching up from the floor over the last stretch of scroll. Gradient inspired by Dia Browser. One inline SVG, no dependencies.",
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: "registry/ruixenui/ruixen-gradient-footer.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/ruixen-gradient-footer.tsx",
+      },
+    ],
+  },
+  {
     name: "gradient-chat-input",
     type: "registry:ui",
     title: "Gradient Chat Input",
