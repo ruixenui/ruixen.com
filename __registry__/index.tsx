@@ -2459,6 +2459,32 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "ruixen-gradient-footer": {
+    name: "ruixen-gradient-footer",
+    description:
+      "A normal-height footer with a blurred rainbow pinned to the bottom of the viewport, stretching up from the floor over the last stretch of scroll. Gradient inspired by Dia Browser. One inline SVG, no dependencies.",
+    type: "registry:ui",
+    registryDependencies: [],
+    files: [
+      {
+        path: "registry/ruixenui/ruixen-gradient-footer.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/ruixen-gradient-footer.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/ruixenui/ruixen-gradient-footer.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "gradient-chat-input": {
     name: "gradient-chat-input",
     description:
@@ -7331,6 +7357,32 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/smart-paste-input-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "ruixen-gradient-footer-demo": {
+    name: "ruixen-gradient-footer-demo",
+    description:
+      "Grab the handle and drag up to stretch the footer open and reveal the rainbow glow.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/ruixen-gradient-footer"],
+    files: [
+      {
+        path: "registry/example/ruixen-gradient-footer-demo.tsx",
+        type: "registry:example",
+        target: "components/ruixen-gradient-footer-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/ruixen-gradient-footer-demo.tsx"
+      );
       const exportName =
         Object.keys(mod).find(
           (key) =>

@@ -1307,6 +1307,21 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "ruixen-gradient-footer-demo",
+    type: "registry:example",
+    title: "Ruixen Gradient Footer Demo",
+    description:
+      "Grab the handle and drag up to stretch the footer open and reveal the rainbow glow.",
+    registryDependencies: ["https://ruixen.com/r/ruixen-gradient-footer"],
+    files: [
+      {
+        path: "registry/example/ruixen-gradient-footer-demo.tsx",
+        type: "registry:example",
+        target: "components/ruixen-gradient-footer-demo.tsx",
+      },
+    ],
+  },
+  {
     name: "gradient-chat-input-demo",
     type: "registry:example",
     title: "Gradient Chat Input Demo",

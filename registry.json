@@ -1723,6 +1723,21 @@
       ]
     },
     {
+      "name": "ruixen-gradient-footer",
+      "type": "registry:ui",
+      "title": "Ruixen Gradient Footer",
+      "description": "A normal-height footer with a blurred rainbow pinned to the bottom of the viewport, stretching up from the floor over the last stretch of scroll. Gradient inspired by Dia Browser. One inline SVG, no dependencies.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/ruixenui/ruixen-gradient-footer.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/ruixen-gradient-footer.tsx"
+        }
+      ]
+    },
+    {
       "name": "gradient-chat-input",
       "type": "registry:ui",
       "title": "Gradient Chat Input",
@@ -5075,6 +5090,22 @@
           "path": "registry/example/smart-paste-input-demo.tsx",
           "type": "registry:example",
           "target": "components/smart-paste-input-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ruixen-gradient-footer-demo",
+      "type": "registry:example",
+      "title": "Ruixen Gradient Footer Demo",
+      "description": "Grab the handle and drag up to stretch the footer open and reveal the rainbow glow.",
+      "registryDependencies": [
+        "https://ruixen.com/r/ruixen-gradient-footer"
+      ],
+      "files": [
+        {
+          "path": "registry/example/ruixen-gradient-footer-demo.tsx",
+          "type": "registry:example",
+          "target": "components/ruixen-gradient-footer-demo.tsx"
         }
       ]
     },

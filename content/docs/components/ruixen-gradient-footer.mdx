@@ -1,0 +1,128 @@
+---
+title: Ruixen Gradient Footer
+date: 2026-07-20
+description: A footer that shows its content first, then stretches a tall, blurred rainbow up from the floor as you scroll to the bottom of the page. Gradient inspired by Dia Browser — one inline SVG, no dependencies.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="ruixen-gradient-footer-demo" height={560} />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/ruixen-gradient-footer"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="ruixen-gradient-footer" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+Drop it at the bottom of a page — it's a normal-height footer, no giant scroll
+spacer. The content reads first; the blurred rainbow is pinned to the bottom of
+the viewport as a thin, flat strip, and over the last stretch of scroll it
+stretches up from the floor, hitting full height as you reach the end of the
+page. Set `minReveal={0}` to keep it hidden until then instead.
+
+```tsx
+import { RuixenGradientFooter } from "@/components/ruixen/ruixen-gradient-footer";
+
+export default function Page() {
+  return (
+    <>
+      {/* ...page... */}
+      <RuixenGradientFooter>
+        <MyFooterColumns />
+      </RuixenGradientFooter>
+    </>
+  );
+}
+```
+
+The glow is a row of bell-curve columns (short at the edges, tall in the middle)
+revealed with a `scaleY` that follows scroll — so the pyramid silhouette stays
+intact as it grows, instead of squashing flat.
+
+Because the band is `position: fixed`, it never scrolls past: it grows in place
+at the bottom edge of the screen. A transformed or filtered ancestor would
+capture it, so keep the footer out of one.
+
+The footer ships no content of its own — links, wordmark and copyright are
+whatever you pass as `children`, so it inherits your typography and spacing.
+
+## Tuning the reveal
+
+`gradientHeight` does three jobs at once: the height of the glow, the scroll
+distance the reveal takes, and the room the footer reserves under its content
+for the glow to land in. Bigger = a taller glow and a longer reveal.
+
+```tsx
+<RuixenGradientFooter gradientHeight="80vh" />
+```
+
+The reveal binds to the footer's own window (`ownerDocument.defaultView`), so it
+tracks the right scroll context whether it's on the page or inside a scrolling
+panel like this docs preview.
+
+## Recolouring
+
+The rainbow is just the default. Pass your own vertical gradient stops (offset
+`0` = floor, `1` = top):
+
+```tsx
+<RuixenGradientFooter
+  stops={[
+    { offset: 0, color: "#0B1020" },
+    { offset: 0.5, color: "#6366F1" },
+    { offset: 1, color: "#22D3EE00" },
+  ]}
+/>
+```
+
+## Props
+
+| Prop             | Type                                  | Default        | Description                                       |
+| ---------------- | ------------------------------------- | -------------- | ------------------------------------------------- |
+| `children`       | `ReactNode`                           | -              | Footer content, shown above the glow.             |
+| `gradientHeight` | `string`                              | `"65vh"`       | Glow height, reveal distance, and reserved room.  |
+| `minReveal`      | `number`                              | `0.045`        | Resting height as a fraction of the band.         |
+| `bars`           | `number`                              | `9`            | Number of blurred columns.                        |
+| `blur`           | `number`                              | `15`           | Blur in viewBox units.                            |
+| `peak`           | `number`                              | `0.98`         | Peak height as a fraction of the viewBox.         |
+| `valley`         | `number`                              | `0.55`         | Edge height as a fraction of the peak (`0..1`).   |
+| `stops`          | `{ offset: number; color: string }[]` | Ruixen rainbow | Vertical gradient stops, floor (`0`) → top (`1`). |
+| `className`      | `string`                              | -              | Classes merged onto the `<footer>`.               |
+| `style`          | `CSSProperties`                       | -              | Inline styles merged onto the `<footer>`.         |
+
+## Notes
+
+- The glow is one `<svg>` with a single `feGaussianBlur`, revealed with a
+  transform — no animation loop, cheap to leave on screen.
+- The reveal is `(bandHeight - scrollLeftToPageEnd) / bandHeight`, read from
+  `offsetHeight` so the band's own transform never feeds back into the maths.
+- Everything is theme tokens, so light and dark mode work with no extra styling.
+- The glow design is inspired by [Dia Browser](https://www.diabrowser.com).
