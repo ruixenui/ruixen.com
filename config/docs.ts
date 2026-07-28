@@ -748,6 +748,12 @@ export const docsConfig: DocsConfig = {
           title: "Text",
           items: [
             {
+              title: "Perspective Text",
+              href: `/docs/components/perspective-text`,
+              items: [],
+              label: "New",
+            },
+            {
               title: "Animated Highlight Text",
               href: `/docs/components/animated-highlight-text`,
               items: [],

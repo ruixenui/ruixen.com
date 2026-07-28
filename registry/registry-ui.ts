@@ -2,6 +2,20 @@ import { type Registry } from "shadcn/registry";
 
 export const ui: Registry["items"] = [
   {
+    name: "perspective-text",
+    type: "registry:ui",
+    title: "Perspective Text",
+    description:
+      "A display headline projected onto the ground plane. Letters read wide at the cap line and taper to the baseline, fanning out from a vanishing point below — painted-on-the-road lettering, in plain CSS transforms.",
+    files: [
+      {
+        path: "registry/ruixenui/perspective-text.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/perspective-text.tsx",
+      },
+    ],
+  },
+  {
     name: "animated-link",
     type: "registry:ui",
     title: "Animated Link",

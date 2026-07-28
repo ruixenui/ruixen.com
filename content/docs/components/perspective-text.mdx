@@ -1,0 +1,187 @@
+---
+title: Perspective Text
+date: 2026-07-26
+description: A display headline projected onto the ground plane. Letters read wide at the cap line and taper to the baseline, fanning out from a vanishing point below.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="perspective-text-demo" height={420} />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/perspective-text"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="perspective-text" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { PerspectiveText } from "@/components/ruixen/perspective-text";
+
+export default function Page() {
+  return <PerspectiveText as="h1" className="text-8xl" text="FOLLOWERS" />;
+}
+```
+
+It renders inline text and nothing else — no wrapper, no background, no box.
+Give it a size and a colour and it inherits them.
+
+## How it works
+
+Two things stack, and neither one touches individual letters.
+
+**The curve is a real path.** The word is set on an SVG `<textPath>` following a
+circular arc, so the browser places every glyph along it — correct advance
+widths, correct kerning, each letter rotated tangent to the curve, all sitting
+on one continuous baseline. Rotating letters individually in a flat row cannot
+do this: the baseline comes out kinked and the spacing goes ragged, because a
+glyph tilted in place does not move along anything.
+
+The arc is built from the two numbers you actually care about — the word's width
+(the chord) and how far it bows (the sagitta) — with the radius solved from them:
+
+```
+radius = (width² + 4 · sagitta²) / (8 · sagitta)
+```
+
+The path then carries on well past the box at that same radius, and the text is
+anchored to its midpoint. That is what makes the component font-agnostic. A
+glyph that falls off the end of a `textPath` is **not drawn at all**, so a path
+cut to the box would silently drop the first and last letters of any face wider
+than expected. Running the path long costs nothing — it is never stroked — and
+because curvature depends only on the radius, extending it does not change the
+bow.
+
+Anchoring the middle of the string to the middle of the arc also centres the
+headline by construction, for any typeface and any string, with no measuring.
+
+**The taper is one 3D transform** on the SVG as a whole:
+
+```css
+transform: perspective(2.8em) rotateX(-30deg) scaleY(1.35);
+transform-origin: 50% 50%;
+```
+
+A negative `rotateX` brings the cap line toward the viewer and pushes the
+baseline away, so every stroke reads wide at the top and narrow at the bottom.
+The origin sits at `50% 50%` so the projection grows evenly above and below the
+layout box — hinge it on the baseline instead and all of that extra height goes
+upward, leaving the box sitting under the artwork.
+
+Every length — the SVG's own width and height, and the perspective distance — is
+expressed in `em`, so the whole construction scales off whatever `font-size`
+lands on the wrapper. Mixing units here is what makes 3D-transformed SVG blow up
+at some sizes and not others.
+
+`scaleY` runs before the tilt. A `rotateX` of θ foreshortens height by `cos θ`,
+so some vertical scale is needed just to get back to the apparent height you
+started with — `stretch` covers that and then exaggerates past it.
+
+## Tuning
+
+```tsx
+<PerspectiveText curve={0.08} stretch={1.35} text="FOLLOWERS" tilt={30} />
+```
+
+- `curve` is how far the arc bows, as a fraction of the word's width. `0` is a
+  perfectly flat baseline, `0.08` is the poster bow, `0.18` starts to read as a
+  badge or a seal. It is a ratio, so the shape holds at any length or size.
+- `tilt` is the ground-plane angle in degrees. `0` is flat type with no taper at
+  all; `20` is a subtle lean; `30`–`40` is the poster look; past `55` the
+  baseline collapses and the word stops being readable.
+- `stretch` is the vertical scale applied before the tilt. Below `1 / cos(tilt)`
+  the letters look squashed, above it they stand up tall.
+
+The arc is symmetric. For a lopsided, hand-painted look — flat on the left,
+falling away to the right — rotate the whole element rather than reaching for
+another prop, since `rotate-*` is already in Tailwind:
+
+```tsx
+<PerspectiveText className="rotate-[5deg]" text="FOLLOWERS" />
+```
+
+## Typeface
+
+The effect needs a heavy condensed face — the projection thins every stroke
+toward the baseline, and a normal-width or light weight simply disappears down
+there. The component defaults to a stack built on **Impact**, the one heavy
+condensed face that ships on both macOS and Windows, so it works with no webfont
+and no dependency.
+
+```tsx
+<PerspectiveText fontFamily='"Anton", Impact, sans-serif' text="FOLLOWERS" />
+```
+
+`fontFamily` is a plain prop rather than something you have to win a CSS
+specificity fight over. Anton, Oswald Heavy, Archivo Black, and Bebas Neue all
+hold up well; avoid anything under about 700 weight. Any face works — wide
+faces included — because the path is not cut to a guessed width.
+
+## Theming
+
+Colour comes from `currentColor`, so `text-foreground` or any token you set
+carries through in both light and dark mode. Nothing is hardcoded.
+
+## Accessibility
+
+- Real text on a path, not an image, a mask, or one span per letter. It stays
+  selectable, searchable, and translatable, and screen readers get the word once
+  rather than spelled out.
+- The SVG carries `role="img"` and `aria-label`, so the headline announces as a
+  single label regardless of how a given screen reader handles SVG text.
+- Pass `as` to render a real heading rather than a `<span>`.
+
+## Notes
+
+- A 3D transform paints outside the layout box, and the SVG is set to
+  `overflow: visible` so the projection is never clipped. Give the headline
+  generous padding, or put it in an `overflow-hidden` parent.
+- It centres with ordinary `flex`/`text-align` because the projection pivots on
+  the middle of the box and the box is trimmed to the ink. Hinging on the
+  baseline instead would throw the extra height upward and leave the layout box
+  sitting under the artwork.
+- The word's width is estimated from its character count only to size the layout
+  box. The type is never scaled to match that guess, so letterforms keep their
+  natural widths and kerning. A face much wider than the estimate simply paints
+  a little outside its box.
+- Some browsers rasterise 3D-transformed content at its pre-transform size,
+  which can soften the enlarged top edge on low-DPI screens.
+
+## Props
+
+| Prop         | Type                | Default      | Description                                                 |
+| ------------ | ------------------- | ------------ | ----------------------------------------------------------- |
+| `text`       | `string`            | -            | The headline. Also the accessible name.                     |
+| `curve`      | `number`            | `0.08`       | Arc depth as a fraction of the word's width. `0` is flat.   |
+| `tilt`       | `number`            | `30`         | Degrees the plane tips toward the viewer. `0` is flat type. |
+| `stretch`    | `number`            | `1.35`       | Vertical scale applied before the tilt.                     |
+| `fontFamily` | `string`            | Impact stack | Typeface for the headline.                                  |
+| `as`         | `React.ElementType` | `"span"`     | Element to render. Use a heading on a real page.            |
+| `className`  | `string`            | -            | Size, colour, and any extra rotation go here.               |

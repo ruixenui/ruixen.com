@@ -2,6 +2,21 @@ import { type Registry } from "shadcn/registry";
 
 export const examples: Registry["items"] = [
   {
+    name: "perspective-text-demo",
+    type: "registry:example",
+    title: "Perspective Text Demo",
+    description:
+      "Example of the perspective headline: a heavy condensed wordmark tapering into a ground plane.",
+    registryDependencies: ["https://ruixen.com/r/perspective-text"],
+    files: [
+      {
+        path: "registry/example/perspective-text-demo.tsx",
+        type: "registry:example",
+        target: "components/perspective-text-demo.tsx",
+      },
+    ],
+  },
+  {
     name: "animated-link-demo",
     type: "registry:example",
     title: "Animated Link Demo",
