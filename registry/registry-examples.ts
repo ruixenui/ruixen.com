@@ -2,6 +2,66 @@ import { type Registry } from "shadcn/registry";
 
 export const examples: Registry["items"] = [
   {
+    name: "drilldown-menu-demo",
+    type: "registry:example",
+    title: "Drilldown Menu Demo",
+    description:
+      "Example of the drilldown menu: a design-system tree you walk into and back out of, in place.",
+    registryDependencies: ["https://ruixen.com/r/drilldown-menu"],
+    files: [
+      {
+        path: "registry/example/drilldown-menu-demo.tsx",
+        type: "registry:example",
+        target: "components/drilldown-menu-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "perspective-text-demo",
+    type: "registry:example",
+    title: "Perspective Text Demo",
+    description:
+      "Example of the perspective headline: a heavy condensed wordmark tapering into a ground plane.",
+    registryDependencies: ["https://ruixen.com/r/perspective-text"],
+    files: [
+      {
+        path: "registry/example/perspective-text-demo.tsx",
+        type: "registry:example",
+        target: "components/perspective-text-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "image-card-fan-demo",
+    type: "registry:example",
+    title: "Image Card Fan Demo",
+    description:
+      "Example of the image card fan: five artwork cards, the active one lifted out with its title and description flanking the hand.",
+    registryDependencies: ["https://ruixen.com/r/image-card-fan"],
+    files: [
+      {
+        path: "registry/example/image-card-fan-demo.tsx",
+        type: "registry:example",
+        target: "components/image-card-fan-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "deploy-region-globe-demo",
+    type: "registry:example",
+    title: "Region Globe Demo",
+    description:
+      "Example of the region card: click a region, the globe flies to it, then confirm the selected region.",
+    registryDependencies: ["https://ruixen.com/r/deploy-region-globe"],
+    files: [
+      {
+        path: "registry/example/deploy-region-globe-demo.tsx",
+        type: "registry:example",
+        target: "components/deploy-region-globe-demo.tsx",
+      },
+    ],
+  },
+  {
     name: "animated-link-demo",
     type: "registry:example",
     title: "Animated Link Demo",

@@ -1,0 +1,208 @@
+---
+title: Drilldown Menu
+date: 2026-07-28
+description: A list that drills into itself. The row you click stays put, fades to a grey breadcrumb with a return arrow, and its children arrive one indent deeper — no sliding panels.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="drilldown-menu-demo" height={520} />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/drilldown-menu"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="drilldown-menu" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { DrilldownMenu } from "@/components/ruixen/drilldown-menu";
+
+export default function Page() {
+  return (
+    <DrilldownMenu
+      items={[
+        {
+          id: "gestures",
+          label: "Gestures",
+          items: [
+            { id: "tap", label: "Tap" },
+            { id: "drag", label: "Drag" },
+          ],
+        },
+      ]}
+      onSelect={(item) => console.log(item.id)}
+    />
+  );
+}
+```
+
+A row with `items` drills in. A row without is a leaf: it fires `onSelect` and
+nothing moves. Nesting goes as deep as you like.
+
+`items` is required and there is no built-in tree — the component holds the
+behaviour, your code holds the content.
+
+## How it works
+
+Everything here is about _not_ moving. The list is a tree walk, not a slideshow.
+
+**Rows are placed absolutely, by index, on a fixed grid.** That is the whole
+trick. A row that leaves takes no space with it, so nothing behind it reflows.
+Leave the rows in normal flow and a leaving row holds its slot for a frame — the
+arriving rows lay out around it, then the entire list has to spring back
+together from wherever that put it. Measured on the flow version of this
+component, going back one level moved `Components` 176px and every other row by
+30–90px, for a change that should read as a crossfade. On the grid it is 11px,
+which is just the block re-centring.
+
+**Rows are one flat list keyed by id.** Breadcrumbs and choices are siblings in
+the same container, so the row you click is the same element before and after
+and simply travels. Split them into two arrays and keys are scoped per array:
+React tears the row down on one side and rebuilds it on the other, so it fades
+and reappears instead of moving, and anything mid-flight inside it is stranded.
+
+**Nothing moves sideways.** Indent is a function of the depth an item lives at,
+not of what is open, so becoming a breadcrumb is a pure vertical move and the
+label never slides out from under the cursor that just clicked it.
+
+**Arriving rows do not travel at all.** They are born at their final slot. The
+transition they get is the text itself.
+
+## The text transition
+
+Each label is set one `motion.span` per character. The characters scale up and
+unblur into place on a 15ms stagger, and reverse out back-to-front at 8ms:
+
+```tsx
+const CHAR_VARIANTS = {
+  hidden: { opacity: 0, scale: 0, filter: "blur(4px)" },
+  visible: { opacity: 1, scale: 1, filter: "blur(0px)" },
+};
+```
+
+In is a spring, out is a tween. A spring's tail keeps a row mounted long after
+it is invisible — swapping to a 160ms tween on the way out cut the time a
+leaving row lingers in the DOM from 610ms to 360ms, and leaving _should_ feel
+quicker than arriving.
+
+The row drives its own removal through `usePresence`, which is what lets the
+exit run per character instead of collapsing the row in one step:
+
+```tsx
+const [isPresent, safeToRemove] = usePresence();
+```
+
+## Where the animation is not Motion
+
+Two things are deliberately CSS, both for the same reason: Motion re-resolves an
+animation when its _label_ changes, not when values inside an unchanged label
+change. Both of these flip while the row stays mounted and stays `visible`.
+
+- **The return arrow.** Written as `opacity: isTrail ? 1 : 0` inside a variant,
+  it strands itself: click back out of a branch and the row that stops being a
+  breadcrumb keeps its arrow, at full opacity, forever. Expressed as a class
+  list it is recomputed every render and cannot get stuck.
+- **The block height.** It is the one thing here authored in `em`, and CSS
+  interpolates units natively where an animation library has to re-read them in
+  px — the same mismatch silently drops a row's move when its offset passes
+  through zero.
+
+Row movement is `layout="position"` for the same reason: it measures boxes
+rather than interpolating authored values, so it does not care that the grid is
+written in `em`.
+
+## Motion
+
+One spring for rows, near-critically damped:
+
+```tsx
+{ type: "spring", stiffness: 520, damping: 46, mass: 0.9 }
+```
+
+It settles in about 300ms with no overshoot. Overshoot is wrong here: every row
+is carrying a word someone is reading, and a bouncing list has to be re-read.
+Characters get a livelier spring, because a character travels a few pixels
+rather than a few rows.
+
+Under `prefers-reduced-motion: reduce` the layout animation, the character
+stagger, and the height transition are all switched off; the menu still drills,
+it just cuts.
+
+## Sizing
+
+Every measurement is in `em`, so the whole menu scales off one font size:
+
+```tsx
+<DrilldownMenu className="text-xl" />
+<DrilldownMenu className="text-4xl" />
+```
+
+Indent is `0.9em`, the row grid `1.85em`, the arrow `0.9em` with a `0.6em`
+gutter, the hover plate `0.22em` of horizontal padding. The default is `text-3xl` — this is a menu meant
+to be the page, not a dropdown in a corner.
+
+`min-h-[20rem]` on the container is what gives the column something to centre
+inside. Override it for taller trees.
+
+## Theming
+
+- Choices are `text-foreground`, breadcrumbs `text-muted-foreground`, both at
+  `font-medium`. Size and weight are identical either way, deliberately: a breadcrumb is the same word,
+  greyed. Drop its weight as well and the label reflows its own width the moment
+  you click it, which is visible right where you are looking.
+- The hover plate is `bg-muted` and overhangs the text slightly, so it reads as
+  a target rather than a highlight on the word.
+
+## Accessibility
+
+- Every row is a real `<button>`, reachable and operable by keyboard.
+- Keyboard focus survives a drill. The row you activate is the one that becomes
+  the breadcrumb — the same element, never unmounted — so focus stays on it
+  instead of falling back to the document.
+- A row on its way out is `pointer-events-none` and removed as soon as its exit
+  finishes, with a timeout backstop — an invisible row left mounted would still
+  be in the tab order.
+- Breadcrumbs announce as "Back to Gestures" rather than repeating the label, so
+  the two roles a word can have are distinguishable without sight of the arrow.
+- The arrow is `aria-hidden` — it is decoration for the label beside it.
+- Focus is visible on every row via `focus-visible:ring-2`.
+
+## Props
+
+| Prop          | Type                    | Default | Description                                        |
+| ------------- | ----------------------- | ------- | -------------------------------------------------- |
+| `items`       | `DrilldownMenuItem[]`   | —       | Required. The tree, nested as deep as you like.    |
+| `defaultPath` | `string[]`              | -       | Ids of the branches to open on mount.              |
+| `onSelect`    | `(item, trail) => void` | -       | Fires when a leaf is chosen, with the trail to it. |
+| `className`   | `string`                | -       | Font size, width, and min-height go here.          |
+
+`DrilldownMenuItem` is `{ id, label, items?, onSelect? }`. `id` only has to be
+unique among its siblings.

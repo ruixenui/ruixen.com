@@ -748,6 +748,12 @@ export const docsConfig: DocsConfig = {
           title: "Text",
           items: [
             {
+              title: "Perspective Text",
+              href: `/docs/components/perspective-text`,
+              items: [],
+              label: "New",
+            },
+            {
               title: "Animated Highlight Text",
               href: `/docs/components/animated-highlight-text`,
               items: [],
@@ -935,6 +941,18 @@ export const docsConfig: DocsConfig = {
         {
           title: "Cards",
           items: [
+            {
+              title: "Image Card Fan",
+              href: `/docs/components/image-card-fan`,
+              items: [],
+              label: "New",
+            },
+            {
+              title: "Region Globe",
+              href: `/docs/components/deploy-region-globe`,
+              items: [],
+              label: "New",
+            },
             {
               title: "Glass AI Card",
               href: `/docs/components/glass-ai-card`,
@@ -1462,6 +1480,12 @@ export const docsConfig: DocsConfig = {
         {
           title: "Menu",
           items: [
+            {
+              title: "Drilldown Menu",
+              href: `/docs/components/drilldown-menu`,
+              items: [],
+              label: "New",
+            },
             {
               title: "Nested Dashboard Menu",
               href: `/docs/components/nested-dashboard-menu`,

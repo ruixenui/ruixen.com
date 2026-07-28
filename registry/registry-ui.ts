@@ -2,6 +2,65 @@ import { type Registry } from "shadcn/registry";
 
 export const ui: Registry["items"] = [
   {
+    name: "drilldown-menu",
+    type: "registry:ui",
+    title: "Drilldown Menu",
+    description:
+      "A list that drills into itself. The row you click stays put, fades to a grey breadcrumb with a return arrow, and its children arrive one indent deeper — one layout animation, no sliding panels.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/ruixenui/drilldown-menu.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/drilldown-menu.tsx",
+      },
+    ],
+  },
+  {
+    name: "perspective-text",
+    type: "registry:ui",
+    title: "Perspective Text",
+    description:
+      "A display headline projected onto the ground plane. Letters read wide at the cap line and taper to the baseline, fanning out from a vanishing point below — painted-on-the-road lettering, in plain CSS transforms.",
+    files: [
+      {
+        path: "registry/ruixenui/perspective-text.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/perspective-text.tsx",
+      },
+    ],
+  },
+  {
+    name: "image-card-fan",
+    type: "registry:ui",
+    title: "Image Card Fan",
+    description:
+      "A fanned hand of large image cards. Click one and it lifts out of the hand while its title and description settle in on either side — one card out at a time.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/ruixenui/image-card-fan.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/image-card-fan.tsx",
+      },
+    ],
+  },
+  {
+    name: "deploy-region-globe",
+    type: "registry:ui",
+    title: "Region Globe",
+    description:
+      "A card with an interactive globe over a region list. Pick a region, the camera flies to it and the latency caption updates, then confirm.",
+    dependencies: ["cobe", "lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/deploy-region-globe.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/deploy-region-globe.tsx",
+      },
+    ],
+  },
+  {
     name: "animated-link",
     type: "registry:ui",
     title: "Animated Link",

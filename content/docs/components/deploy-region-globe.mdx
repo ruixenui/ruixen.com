@@ -1,0 +1,153 @@
+---
+title: Region Globe
+date: 2026-07-23
+description: A card with an interactive globe over a region list. Pick a region, the camera flies to it and the latency caption updates, then confirm.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="deploy-region-globe-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/deploy-region-globe"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="deploy-region-globe" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Install dependencies</Step>
+
+```bash
+npm install cobe lucide-react
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { DeployRegionGlobe } from "@/components/ruixen/deploy-region-globe";
+
+export default function Page() {
+  return <DeployRegionGlobe onConfirm={(region) => setRegion(region.code)} />;
+}
+```
+
+Every region in the list is a marker on the globe. Click one and the camera
+_flies_ to it: an eased `easeInOutCubic` rotation paired with a zoom that pulls
+back at mid-flight and settles in on arrival — the further the hop, the deeper
+the pull-back. The caption swaps to the region's city and p50 latency and its
+row highlights. The rotation and zoom run in the globe's render loop, so there's
+no re-mount and picking a new region mid-flight just re-bases from wherever the
+camera is — never a snap.
+
+## Custom content
+
+Set your own heading, regions, and button copy. Each region carries
+`[latitude, longitude]` coordinates and a `latency` number for the caption — a
+measured p50, a static estimate, anything.
+
+```tsx
+<DeployRegionGlobe
+  title="Edge network"
+  subtitle="12 points of presence"
+  selectLabel="Nearest node"
+  actionLabel="Connect"
+  defaultRegionId="fra"
+  regions={[
+    {
+      id: "fra",
+      name: "Frankfurt",
+      code: "eu-central-1",
+      city: "Frankfurt, Germany",
+      location: [50.11, 8.68],
+      latency: 74,
+    },
+    {
+      id: "iad",
+      name: "N. Virginia",
+      code: "us-east-1",
+      city: "Ashburn, USA",
+      location: [38.95, -77.45],
+      latency: 41,
+    },
+  ]}
+  onRegionChange={(r) => console.log("previewing", r.code)}
+  onConfirm={(r) => connect(r.code)}
+/>
+```
+
+## Theming
+
+The card is pure theme tokens (`bg-card`, `text-foreground`, `border-border`,
+`bg-muted`), so it inherits your palette and dark mode with no extra styling.
+The globe itself swaps to a dark sphere when `next-themes` resolves to dark.
+
+The accent — the globe markers and the selected row's dot — is one prop,
+`markerColor`, given as RGB in the `0–1` range the globe expects:
+
+```tsx
+// emerald markers instead of the default blue
+<DeployRegionGlobe markerColor={[0.13, 0.77, 0.51]} />
+```
+
+## Notes
+
+- The globe is built once; each selection just re-bases the active flight from
+  the camera's current angle, so a rapid series of region clicks chases the
+  latest target instead of queuing up spins.
+- A `ResizeObserver` defers the first render until the canvas has a real width,
+  which keeps it from initialising to a zero-size sphere inside a tab or an
+  accordion that mounts hidden.
+- Rendering pauses and the globe is destroyed on unmount, so the card is safe to
+  mount and unmount repeatedly (e.g. inside a dialog).
+
+## Props
+
+| Prop              | Type                       | Default                          | Description                                                     |
+| ----------------- | -------------------------- | -------------------------------- | --------------------------------------------------------------- |
+| `title`           | `string`                   | `"Global regions"`               | Heading at the top of the card.                                 |
+| `subtitle`        | `string`                   | `"Fastest region to your users"` | Sub-line under the heading.                                     |
+| `regions`         | `Region[]`                 | 9 example regions                | Regions listed and marked on the globe.                         |
+| `defaultRegionId` | `string`                   | first region                     | Initially selected region id.                                   |
+| `onRegionChange`  | `(region: Region) => void` | -                                | Fires when the selected region changes.                         |
+| `onConfirm`       | `(region: Region) => void` | -                                | Fires when the confirm button is pressed.                       |
+| `selectLabel`     | `string`                   | `"Region"`                       | Label to the left of the selected region code.                  |
+| `actionLabel`     | `string`                   | `"Select region"`                | Text of the confirm button.                                     |
+| `markerColor`     | `[number, number, number]` | `[0.23, 0.51, 0.96]`             | Globe marker + accent dot color, RGB in `0–1`.                  |
+| `zoom`            | `number`                   | `1.5`                            | Globe zoom (globe `scale`). `1` = full sphere, `~2` = close-up. |
+| `className`       | `string`                   | -                                | Extra classes on the card.                                      |
+
+### Region
+
+| Field      | Type               | Description                               |
+| ---------- | ------------------ | ----------------------------------------- |
+| `id`       | `string`           | Stable, unique identifier.                |
+| `name`     | `string`           | Short name, e.g. `"Tokyo"`.               |
+| `code`     | `string`           | Region code, e.g. `"ap-northeast-1"`.     |
+| `city`     | `string`           | Caption city, e.g. `"Tokyo, Japan"`.      |
+| `location` | `[number, number]` | `[latitude, longitude]` in degrees.       |
+| `latency`  | `number`           | p50 latency in ms, shown under the globe. |
