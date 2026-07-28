@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "drilldown-menu-demo",
+  "type": "registry:example",
+  "title": "Drilldown Menu Demo",
+  "description": "Example of the drilldown menu: a design-system tree you walk into and back out of, in place.",
+  "registryDependencies": [
+    "https://ruixen.com/r/drilldown-menu"
+  ],
+  "files": [
+    {
+      "path": "registry/example/drilldown-menu-demo.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport {\n  DrilldownMenu,\n  type DrilldownMenuItem,\n} from \"@/registry/ruixenui/drilldown-menu\";\n\nconst SETTINGS: DrilldownMenuItem[] = [\n  {\n    id: \"account\",\n    label: \"Account\",\n    items: [\n      { id: \"profile\", label: \"Profile\" },\n      { id: \"emails\", label: \"Email Addresses\" },\n      { id: \"password\", label: \"Password\" },\n      { id: \"sessions\", label: \"Active Sessions\" },\n      { id: \"close\", label: \"Close Account\" },\n    ],\n  },\n  {\n    id: \"workspace\",\n    label: \"Workspace\",\n    items: [\n      { id: \"general\", label: \"General\" },\n      {\n        id: \"members\",\n        label: \"Members\",\n        items: [\n          { id: \"invite\", label: \"Invite People\" },\n          { id: \"roles\", label: \"Roles\" },\n          { id: \"pending\", label: \"Pending Invites\" },\n          { id: \"guests\", label: \"Guest Access\" },\n          { id: \"requests\", label: \"Access Requests\" },\n        ],\n      },\n      { id: \"billing\", label: \"Billing\" },\n      { id: \"limits\", label: \"Usage Limits\" },\n      { id: \"integrations\", label: \"Integrations\" },\n    ],\n  },\n  {\n    id: \"notifications\",\n    label: \"Notifications\",\n    items: [\n      { id: \"digest\", label: \"Email Digest\" },\n      {\n        id: \"push\",\n        label: \"Push\",\n        items: [\n          { id: \"dms\", label: \"Direct Messages\" },\n          { id: \"mentions\", label: \"Mentions\" },\n          { id: \"replies\", label: \"Comment Replies\" },\n          { id: \"assignments\", label: \"Task Assignments\" },\n          { id: \"summary\", label: \"Weekly Summary\" },\n        ],\n      },\n      { id: \"in-app\", label: \"In-App\" },\n      { id: \"quiet\", label: \"Quiet Hours\" },\n    ],\n  },\n  {\n    id: \"appearance\",\n    label: \"Appearance\",\n    items: [\n      { id: \"theme\", label: \"Theme\" },\n      { id: \"density\", label: \"Density\" },\n      { id: \"accent\", label: \"Accent Color\" },\n      { id: \"typeface\", label: \"Typeface\" },\n    ],\n  },\n  {\n    id: \"advanced\",\n    label: \"Advanced\",\n    items: [\n      { id: \"keys\", label: \"API Keys\" },\n      { id: \"webhooks\", label: \"Webhooks\" },\n      { id: \"audit\", label: \"Audit Log\" },\n      { id: \"export\", label: \"Data Export\" },\n    ],\n  },\n];\n\nexport default function DrilldownMenuDemo() {\n  const [chosen, setChosen] = React.useState<string | null>(null);\n\n  return (\n    <div className=\"flex w-full flex-col items-center gap-4 px-6 py-10\">\n      <DrilldownMenu\n        className=\"w-full max-w-sm\"\n        items={SETTINGS}\n        onSelect={(item, trail) =>\n          setChosen([...trail, item].map((step) => step.label).join(\" / \"))\n        }\n      />\n      <p className=\"h-5 text-sm text-muted-foreground\">{chosen}</p>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/drilldown-menu-demo.tsx"
+    }
+  ]
+}

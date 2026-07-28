@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "image-card-fan-demo",
+  "type": "registry:example",
+  "title": "Image Card Fan Demo",
+  "description": "Example of the image card fan: five artwork cards, the active one lifted out with its title and description flanking the hand.",
+  "registryDependencies": [
+    "https://ruixen.com/r/image-card-fan"
+  ],
+  "files": [
+    {
+      "path": "registry/example/image-card-fan-demo.tsx",
+      "content": "\"use client\";\n\nimport {\n  ImageCardFan,\n  type FanCardItem,\n} from \"@/registry/ruixenui/image-card-fan\";\n\nconst cards: FanCardItem[] = [\n  {\n    id: \"deep-field\",\n    src: \"https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/stock-images/767d99bb371a54d0d36751e8cecae43c.jpg\",\n    title: \"Deep Field\",\n    description:\n      \"A diver held inside a sunset horizon, the seascape cut to the shape of a profile. Printed at 300gsm on uncoated stock.\",\n  },\n  {\n    id: \"city-exposure\",\n    src: \"https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/stock-images/821d815affa6496c39cbdeeec7a84603.jpg\",\n    title: \"City Exposure\",\n    description:\n      \"Double exposure of a portrait and a skyline at dusk, where the streetlights read as freckles across the jaw.\",\n  },\n  {\n    id: \"motion-study\",\n    src: \"https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/stock-images/937438c560ada1c83317f2c11b3454b0.jpg\",\n    title: \"Motion Study\",\n    description:\n      \"One long exposure, one turn of the head. The orange backdrop stays still while everything in front of it smears.\",\n  },\n  {\n    id: \"kinetic-bloom\",\n    src: \"https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/stock-images/98f89cb9994f5c382ab964062c4039db.jpg\",\n    title: \"Kinetic Bloom\",\n    description:\n      \"A racket dissolving mid-swing into a cloud of colour, drawn the moment the follow-through leaves the frame.\",\n  },\n  {\n    id: \"paper-flight\",\n    src: \"https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/stock-images/ddcbee38be8b7274e19e132d7ab35b53.jpg\",\n    title: \"Paper Flight\",\n    description:\n      \"A cut-paper bird threaded between two fingers, the only colour in an otherwise black and white plate.\",\n  },\n];\n\nexport default function ImageCardFanDemo() {\n  return (\n    <div className=\"flex w-full items-center justify-center bg-background px-6 py-10\">\n      <ImageCardFan cards={cards} className=\"max-w-5xl\" />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/image-card-fan-demo.tsx"
+    }
+  ]
+}

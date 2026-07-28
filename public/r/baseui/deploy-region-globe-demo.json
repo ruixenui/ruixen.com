@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "deploy-region-globe-demo",
+  "type": "registry:example",
+  "title": "Region Globe Demo",
+  "description": "Example of the region card: click a region, the globe flies to it, then confirm the selected region.",
+  "registryDependencies": [
+    "https://ruixen.com/r/deploy-region-globe"
+  ],
+  "files": [
+    {
+      "path": "registry/example/deploy-region-globe-demo.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { DeployRegionGlobe } from \"@/registry/ruixenui/deploy-region-globe\";\n\nexport default function DeployRegionGlobeDemo() {\n  const [picked, setPicked] = React.useState<string | null>(null);\n\n  return (\n    <div className=\"flex min-h-[560px] w-full flex-col items-center justify-center gap-5 bg-background px-6 py-12\">\n      <DeployRegionGlobe\n        onConfirm={(region) => setPicked(`${region.name} (${region.code})`)}\n      />\n      <p className=\"font-mono text-xs text-muted-foreground\">\n        {picked\n          ? `Selected ${picked}`\n          : \"Pick a region — the globe flies to it — then confirm.\"}\n      </p>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/deploy-region-globe-demo.tsx"
+    }
+  ]
+}

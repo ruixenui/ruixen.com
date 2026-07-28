@@ -15,6 +15,102 @@ export const Index: Record<string, any> = {
     component: null,
     meta: undefined,
   },
+  "drilldown-menu": {
+    name: "drilldown-menu",
+    description:
+      "A list that drills into itself. The row you click stays put, fades to a grey breadcrumb with a return arrow, and its children arrive one indent deeper — one layout animation, no sliding panels.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/drilldown-menu.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/drilldown-menu.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/drilldown-menu.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "perspective-text": {
+    name: "perspective-text",
+    description:
+      "A display headline projected onto the ground plane. Letters read wide at the cap line and taper to the baseline, fanning out from a vanishing point below — painted-on-the-road lettering, in plain CSS transforms.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/perspective-text.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/perspective-text.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/perspective-text.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "image-card-fan": {
+    name: "image-card-fan",
+    description:
+      "A fanned hand of large image cards. Click one and it lifts out of the hand while its title and description settle in on either side — one card out at a time.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/image-card-fan.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/image-card-fan.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/image-card-fan.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "deploy-region-globe": {
+    name: "deploy-region-globe",
+    description:
+      "A card with an interactive globe over a region list. Pick a region, the camera flies to it and the latency caption updates, then confirm.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/deploy-region-globe.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/deploy-region-globe.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/deploy-region-globe.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "animated-link": {
     name: "animated-link",
     description:
@@ -5167,6 +5263,104 @@ export const Index: Record<string, any> = {
     component: React.lazy(async () => {
       const mod = await import(
         "@/components/layouts/calendar/calendar-event-item.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "drilldown-menu-demo": {
+    name: "drilldown-menu-demo",
+    description:
+      "Example of the drilldown menu: a design-system tree you walk into and back out of, in place.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/drilldown-menu"],
+    files: [
+      {
+        path: "registry/example/drilldown-menu-demo.tsx",
+        type: "registry:example",
+        target: "components/drilldown-menu-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/drilldown-menu-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "perspective-text-demo": {
+    name: "perspective-text-demo",
+    description:
+      "Example of the perspective headline: a heavy condensed wordmark tapering into a ground plane.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/perspective-text"],
+    files: [
+      {
+        path: "registry/example/perspective-text-demo.tsx",
+        type: "registry:example",
+        target: "components/perspective-text-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/perspective-text-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "image-card-fan-demo": {
+    name: "image-card-fan-demo",
+    description:
+      "Example of the image card fan: five artwork cards, the active one lifted out with its title and description flanking the hand.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/image-card-fan"],
+    files: [
+      {
+        path: "registry/example/image-card-fan-demo.tsx",
+        type: "registry:example",
+        target: "components/image-card-fan-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/image-card-fan-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "deploy-region-globe-demo": {
+    name: "deploy-region-globe-demo",
+    description:
+      "Example of the region card: click a region, the globe flies to it, then confirm the selected region.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/deploy-region-globe"],
+    files: [
+      {
+        path: "registry/example/deploy-region-globe-demo.tsx",
+        type: "registry:example",
+        target: "components/deploy-region-globe-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/deploy-region-globe-demo.tsx"
       );
       const exportName =
         Object.keys(mod).find(

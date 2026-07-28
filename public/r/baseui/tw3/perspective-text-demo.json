@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "perspective-text-demo",
+  "type": "registry:example",
+  "title": "Perspective Text Demo",
+  "description": "Example of the perspective headline: a heavy condensed wordmark tapering into a ground plane.",
+  "registryDependencies": [
+    "https://ruixen.com/r/perspective-text"
+  ],
+  "files": [
+    {
+      "path": "registry/example/perspective-text-demo.tsx",
+      "content": "import { PerspectiveText } from \"@/registry/ruixenui/perspective-text\";\n\nexport default function PerspectiveTextDemo() {\n  return (\n    <div className=\"flex w-full items-center justify-center overflow-hidden px-6 py-24\">\n      <PerspectiveText\n        as=\"h2\"\n        className=\"text-[clamp(2rem,9vw,6rem)] text-foreground\"\n        text=\"FOLLOWERS\"\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/perspective-text-demo.tsx"
+    }
+  ]
+}
