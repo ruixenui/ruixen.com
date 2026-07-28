@@ -32,6 +32,21 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "image-card-fan-demo",
+    type: "registry:example",
+    title: "Image Card Fan Demo",
+    description:
+      "Example of the image card fan: five artwork cards, the active one lifted out with its title and description flanking the hand.",
+    registryDependencies: ["https://ruixen.com/r/image-card-fan"],
+    files: [
+      {
+        path: "registry/example/image-card-fan-demo.tsx",
+        type: "registry:example",
+        target: "components/image-card-fan-demo.tsx",
+      },
+    ],
+  },
+  {
     name: "animated-link-demo",
     type: "registry:example",
     title: "Animated Link Demo",

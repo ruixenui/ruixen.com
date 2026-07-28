@@ -1,0 +1,177 @@
+---
+title: Image Card Fan
+date: 2026-07-24
+description: A fanned hand of large image cards. Click one and it lifts out of the hand while its title and description settle in on either side — one card out at a time.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="image-card-fan-demo" height={620} />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/image-card-fan"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="image-card-fan" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Install dependencies</Step>
+
+```bash
+npm install motion
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { ImageCardFan } from "@/components/ruixen/image-card-fan";
+
+export default function Page() {
+  return (
+    <ImageCardFan
+      cards={[
+        {
+          id: "deep-field",
+          src: "/art/deep-field.jpg",
+          title: "Deep Field",
+          description: "A diver held inside a sunset horizon.",
+        },
+        {
+          id: "city-exposure",
+          src: "/art/city-exposure.jpg",
+          title: "City Exposure",
+          description: "A portrait and a skyline at dusk, one plate.",
+        },
+      ]}
+    />
+  );
+}
+```
+
+The component lays out its own three columns — title on the left, the fan in the
+middle, description on the right — and stacks them on narrow screens. Give it a
+width; it sizes its own height from the cards.
+
+## How it reads
+
+Exactly one card is out at any moment, and it starts that way: the first card is
+already lifted on mount, so there is no empty state to design around. The rest
+sit in an arc below it, riding at 72% scale — the size difference is what makes
+the lifted card read as the subject rather than as one more card in a pile. The
+angle step shrinks as the hand grows and a `ResizeObserver` clamps the spread, so
+the outermost cards never clip the column.
+
+Click a card — or flick it upward, past half its height or fast enough — and it
+takes the lifted slot. The card that was out drops back into the hand, which
+re-fans around it. The side text is keyed to the active card, so the counter,
+title, and description cross-fade as the swap happens.
+
+Cards carry no text of their own. The image is the whole face, cropped to 5:7.
+
+## Controlled selection
+
+Pass `activeId` to drive the fan from outside — from a route, a scroll position,
+an autoplay timer.
+
+```tsx
+const [activeId, setActiveId] = React.useState("deep-field");
+
+<ImageCardFan
+  cards={cards}
+  activeId={activeId}
+  onSelect={(card) => setActiveId(card.id)}
+/>;
+```
+
+Omit it and the fan tracks the selection internally, starting at
+`defaultActiveId` or the first card. `onSelect` fires either way, and only when
+the selection actually changes — re-clicking the lifted card is a no-op.
+
+## Sizing
+
+`cardWidth` drives everything. Card height, the bottom tuck, the hover lift, how
+far the active card rises, the fan spacing, the drag threshold, and the block's
+own height are all derived from it.
+
+```tsx
+<ImageCardFan cards={cards} cardWidth={280} />
+```
+
+It is a maximum, not a fixed size. Each card is capped at 55% of the middle
+column's width, so the same hand that reads as five large cards on a desktop
+shrinks to fit a phone instead of spilling out of it. Nothing ever hangs outside
+the block's own box either, which matters in preview panes and anywhere else
+`overflow-hidden` is in play.
+
+## Theming
+
+Every surface is a shadcn theme variable — `text-foreground`,
+`text-muted-foreground`, `border-border`, `bg-muted`, `ring-ring` — so the block
+picks up your palette and switches with light and dark mode on its own. There
+are no hardcoded colors to override.
+
+## Accessibility
+
+- Each card is a real `<button>` with `aria-pressed`, so the set reads as a
+  group of toggles with one pressed. <kbd>Tab</kbd> reaches them and
+  <kbd>Enter</kbd> or <kbd>Space</kbd> selects. Focusing a card in the hand
+  lifts it, giving keyboard users the same peek as hover.
+- `title` is the accessible name. Images are `alt=""`, since the button label
+  and the text beside the fan already carry it.
+- The description sits in an `aria-live="polite"` region, so a screen reader
+  hears the new card's copy after a swap.
+- With `prefers-reduced-motion`, the springs give way to a 160ms ease and the
+  text cross-fades without travel. The layout is unchanged.
+
+## Notes
+
+- A drag that falls short of the threshold snaps back without selecting: the
+  trailing click browsers fire after a pointer drag is swallowed, so only a real
+  click or key press counts.
+- Images are plain `<img>` tags, so remote URLs need no `next.config` changes.
+  Use portrait sources; anything else is cropped to the 5:7 frame.
+
+## Props
+
+| Prop              | Type                          | Default      | Description                                                        |
+| ----------------- | ----------------------------- | ------------ | ------------------------------------------------------------------ |
+| `cards`           | `FanCardItem[]`               | -            | Cards in the hand, in fan order.                                   |
+| `activeId`        | `string`                      | uncontrolled | Active card id. Pass to control the selection yourself.            |
+| `defaultActiveId` | `string`                      | first card   | Initially active card.                                             |
+| `cardWidth`       | `number`                      | `224`        | Max card width in px. Height follows 5:7; shrinks in tight widths. |
+| `onSelect`        | `(card: FanCardItem) => void` | -            | Fires when a different card is picked.                             |
+| `className`       | `string`                      | -            | Extra classes on the outer row.                                    |
+
+### FanCardItem
+
+| Field         | Type     | Description                                                  |
+| ------------- | -------- | ------------------------------------------------------------ |
+| `id`          | `string` | Stable, unique identifier.                                   |
+| `src`         | `string` | Image URL rendered as the card face.                         |
+| `title`       | `string` | Shown left of the fan while active, and the accessible name. |
+| `description` | `string` | Shown right of the fan while active.                         |

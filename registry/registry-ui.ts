@@ -31,6 +31,21 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "image-card-fan",
+    type: "registry:ui",
+    title: "Image Card Fan",
+    description:
+      "A fanned hand of large image cards. Click one and it lifts out of the hand while its title and description settle in on either side — one card out at a time.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/ruixenui/image-card-fan.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/image-card-fan.tsx",
+      },
+    ],
+  },
+  {
     name: "animated-link",
     type: "registry:ui",
     title: "Animated Link",

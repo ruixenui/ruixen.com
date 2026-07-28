@@ -942,6 +942,12 @@ export const docsConfig: DocsConfig = {
           title: "Cards",
           items: [
             {
+              title: "Image Card Fan",
+              href: `/docs/components/image-card-fan`,
+              items: [],
+              label: "New",
+            },
+            {
               title: "Glass AI Card",
               href: `/docs/components/glass-ai-card`,
               items: [],
