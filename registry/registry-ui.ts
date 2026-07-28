@@ -46,6 +46,21 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "deploy-region-globe",
+    type: "registry:ui",
+    title: "Region Globe",
+    description:
+      "A card with an interactive globe over a region list. Pick a region, the camera flies to it and the latency caption updates, then confirm.",
+    dependencies: ["cobe", "lucide-react"],
+    files: [
+      {
+        path: "registry/ruixenui/deploy-region-globe.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/deploy-region-globe.tsx",
+      },
+    ],
+  },
+  {
     name: "animated-link",
     type: "registry:ui",
     title: "Animated Link",

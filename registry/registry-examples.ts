@@ -47,6 +47,21 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "deploy-region-globe-demo",
+    type: "registry:example",
+    title: "Region Globe Demo",
+    description:
+      "Example of the region card: click a region, the globe flies to it, then confirm the selected region.",
+    registryDependencies: ["https://ruixen.com/r/deploy-region-globe"],
+    files: [
+      {
+        path: "registry/example/deploy-region-globe-demo.tsx",
+        type: "registry:example",
+        target: "components/deploy-region-globe-demo.tsx",
+      },
+    ],
+  },
+  {
     name: "animated-link-demo",
     type: "registry:example",
     title: "Animated Link Demo",

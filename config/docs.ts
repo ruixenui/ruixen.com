@@ -948,6 +948,12 @@ export const docsConfig: DocsConfig = {
               label: "New",
             },
             {
+              title: "Region Globe",
+              href: `/docs/components/deploy-region-globe`,
+              items: [],
+              label: "New",
+            },
+            {
               title: "Glass AI Card",
               href: `/docs/components/glass-ai-card`,
               items: [],
