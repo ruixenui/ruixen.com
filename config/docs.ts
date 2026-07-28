@@ -1469,6 +1469,12 @@ export const docsConfig: DocsConfig = {
           title: "Menu",
           items: [
             {
+              title: "Drilldown Menu",
+              href: `/docs/components/drilldown-menu`,
+              items: [],
+              label: "New",
+            },
+            {
               title: "Nested Dashboard Menu",
               href: `/docs/components/nested-dashboard-menu`,
               items: [],

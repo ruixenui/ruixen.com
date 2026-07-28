@@ -2,6 +2,21 @@ import { type Registry } from "shadcn/registry";
 
 export const ui: Registry["items"] = [
   {
+    name: "drilldown-menu",
+    type: "registry:ui",
+    title: "Drilldown Menu",
+    description:
+      "A list that drills into itself. The row you click stays put, fades to a grey breadcrumb with a return arrow, and its children arrive one indent deeper — one layout animation, no sliding panels.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/ruixenui/drilldown-menu.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/drilldown-menu.tsx",
+      },
+    ],
+  },
+  {
     name: "perspective-text",
     type: "registry:ui",
     title: "Perspective Text",

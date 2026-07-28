@@ -2,6 +2,21 @@ import { type Registry } from "shadcn/registry";
 
 export const examples: Registry["items"] = [
   {
+    name: "drilldown-menu-demo",
+    type: "registry:example",
+    title: "Drilldown Menu Demo",
+    description:
+      "Example of the drilldown menu: a design-system tree you walk into and back out of, in place.",
+    registryDependencies: ["https://ruixen.com/r/drilldown-menu"],
+    files: [
+      {
+        path: "registry/example/drilldown-menu-demo.tsx",
+        type: "registry:example",
+        target: "components/drilldown-menu-demo.tsx",
+      },
+    ],
+  },
+  {
     name: "perspective-text-demo",
     type: "registry:example",
     title: "Perspective Text Demo",
