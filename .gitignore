@@ -75,3 +75,4 @@ logs/
 
 # Registry submissions queue
 .submissions/
+.gstack/
