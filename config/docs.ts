@@ -748,6 +748,12 @@ export const docsConfig: DocsConfig = {
           title: "Text",
           items: [
             {
+              title: "Receding Text Plane",
+              href: `/docs/components/receding-text-plane`,
+              items: [],
+              label: "New",
+            },
+            {
               title: "Perspective Text",
               href: `/docs/components/perspective-text`,
               items: [],
@@ -1074,6 +1080,12 @@ export const docsConfig: DocsConfig = {
         {
           title: "Docks",
           items: [
+            {
+              title: "Social Preview Dock",
+              href: `/docs/components/social-preview-dock`,
+              items: [],
+              label: "New",
+            },
             {
               title: "Gooey Dock",
               href: `/docs/components/gooey-dock`,

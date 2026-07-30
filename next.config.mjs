@@ -155,7 +155,10 @@ const nextConfig = {
               // (us.i.posthog.com) and the assets host for remote
               // config fetches. Without us.i.posthog.com every
               // posthog.capture() call is blocked by the browser.
-              "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://us.i.posthog.com https://us-assets.i.posthog.com",
+              // api.github.com + the contributions mirror are fetched client
+              // side by social-preview-dock's live GitHub card. Without them
+              // the card silently falls back to its static heatmap.
+              "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://us.i.posthog.com https://us-assets.i.posthog.com https://api.github.com https://github-contributions-api.jogruber.de",
               "img-src 'self' data: blob: https:",
               // Pro template previews (r2.dev) need media-src to load.
               // Without this, media falls back to default-src 'self'.

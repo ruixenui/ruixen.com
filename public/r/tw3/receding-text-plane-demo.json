@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "receding-text-plane-demo",
+  "type": "registry:example",
+  "title": "Receding Text Plane Demo",
+  "description": "Example of the receding text plane: a paragraph raked into depth, held at its opening frame.",
+  "registryDependencies": [
+    "https://ruixen.com/r/receding-text-plane"
+  ],
+  "files": [
+    {
+      "path": "registry/example/receding-text-plane-demo.tsx",
+      "content": "\"use client\";\n\nimport { RecedingTextPlane } from \"@/registry/ruixenui/receding-text-plane\";\n\nexport default function RecedingTextPlaneDemo() {\n  return (\n    <RecedingTextPlane className=\"h-[600px]\">\n      Type is a plane in space before it is a message on a page. Rake that plane\n      away from the eye and every line finds a depth of its own.\n    </RecedingTextPlane>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/receding-text-plane-demo.tsx"
+    }
+  ]
+}

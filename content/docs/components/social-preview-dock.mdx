@@ -1,0 +1,247 @@
+---
+title: Social Preview Dock
+date: 2026-07-30
+description: A row of social links sharing one preview card. One panel owns the card surface and resizes itself between profiles while the contents cross-fade inside, so moving between icons reads as a single card growing and travelling. The GitHub card pulls a live contribution graph.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="social-preview-dock-demo" height={500} />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/social-preview-dock"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="social-preview-dock" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+The component ships no content. Everything is a prop, so the same dock renders
+anyone's profile:
+
+```tsx
+import { SocialPreviewDock } from "@/components/ruixen/social-preview-dock";
+
+export default function Page() {
+  return (
+    <SocialPreviewDock
+      email="hello@example.com"
+      profile={{
+        username: "sam-rivers",
+        xHandle: "samrivers",
+        name: "Sam Rivers",
+        headline: "Full-Stack Engineer",
+        location: "Lisbon, Portugal",
+        bio: "Building small tools for the web",
+        links: {
+          github: "https://github.com/sam-rivers",
+          linkedin: "https://linkedin.com/in/sam-rivers",
+          x: "https://x.com/samrivers",
+        },
+      }}
+    />
+  );
+}
+```
+
+Every field is optional and each card drops what it isn't given — pass only
+`links.github` and you get a one-icon dock. `username` is both the handle shown
+on the GitHub card and the key live data is fetched with.
+
+## Live data
+
+The GitHub card is real. On mount the component fetches
+`api.github.com/users/<username>` for the avatar and a public contributions
+mirror for the heatmap, then renders the actual year: real levels, real total,
+and a tooltip on every tile giving that day's count and date.
+
+Both endpoints are public, unauthenticated and send
+`access-control-allow-origin: *`, so this needs no token and no server route.
+GitHub allows 60 requests/hour per visitor IP, which one lookup per page view
+stays far under. The two calls are independent — a rate-limited profile lookup
+still leaves you the heatmap, and vice versa.
+
+When live data is off or unavailable the card falls back to the `contributions`
+and `levels` you passed, and failing that draws an empty year with no total. A
+blank graph is honest; an invented streak is not.
+
+If your site sends a `Content-Security-Policy`, add both hosts to `connect-src`
+or the browser blocks the fetch and you silently get the fallback:
+
+```
+connect-src 'self' https://api.github.com https://github-contributions-api.jogruber.de
+```
+
+X and LinkedIn have no public, tokenless API, so those two cards are copy you
+control — `name`, `headline`, `location` and `bio` are never overwritten. The
+avatar is shared across all three cards and does come from GitHub.
+
+```tsx
+<SocialPreviewDock
+  profile={{
+    username: "sam-rivers",
+    links: { github: "https://github.com/sam-rivers" },
+  }}
+/>
+```
+
+Pass `live={false}` to skip both requests and render only what you passed.
+
+## One card, resizing
+
+There is one panel. It owns the card surface — border, background, rounding,
+shadow — and resizes itself between profiles, the way a navigation menu viewport
+does. Hovering an icon measures that card's natural box and springs the panel's
+width, height and x onto it while the contents cross-fade inside, so moving
+between icons reads as a single card growing and travelling rather than as two
+cards sliding past each other.
+
+The measurement runs before paint, so the panel never shows a frame at the wrong
+size. It can measure a card the panel is currently too small to show because the
+card is absolutely positioned inside an `overflow-hidden` panel: its own box is
+its natural one whatever the panel currently is. That is also what makes the
+resize free — the incoming card is simply revealed by a box that is still
+growing. No layout animation, nothing to keep in sync.
+
+Travel is a touch livelier than the resize, so the panel arrives at the new icon
+just before it finishes growing. Both springs are near-critically damped; a card
+that overshoots its own size looks like a bug rather than like motion. The first
+open jumps into place instead of springing, or the panel flies in from wherever
+it happened to be last.
+
+Only the card on screen is mounted, so nothing renders or animates behind a
+closed panel.
+
+## Reaching the card
+
+The card is hoverable. The gap between it and the row is the panel wrapper's
+bottom padding rather than a margin, so the pointer crosses it on the way up
+instead of leaving the dock, and `mouseleave` sits on the outer wrapper — the
+panel is a DOM child of it, so moving onto the card never counts as leaving.
+While nothing is revealed the panel takes no pointer events at all, because an
+`opacity: 0` element is still a hit target and would swallow clicks meant for
+the page above.
+
+That is what makes the heatmap worth hovering: each tile reports its own day and
+count. It is one tooltip node moved by event delegation, not 364 hover handlers
+and 364 mounted chips — positioned from the tile's own offsets and clamped so it
+can't run past the card edge, where the panel would clip it. Dates are parsed as
+local rather than UTC, so a timezone behind GMT doesn't shift every tile back a
+day.
+
+## Banners
+
+The LinkedIn and X banners are mesh gradients: four colors blended by inverse
+distance to four anchors drifting on their own orbits, over a domain-warped
+field. The warp is what turns four blobs into a mesh — without it you get four
+circles.
+
+It is about 60 lines of WebGL living in the component rather than a package, so
+there is no dependency to add, nothing to keep in version sync, and no second
+copy of a renderer if your app already ships one. A machine without WebGL keeps
+the CSS gradient painted behind the canvas, and `prefers-reduced-motion` holds
+the gradient still rather than removing it.
+
+Colors are CSS custom properties by default, so the banners follow a palette
+swap and light/dark on their own. A shader needs numbers rather than tokens, so
+they are resolved through a canvas 2D context, which normalises anything the
+browser can parse — including the `oklch()` shadcn emits under Tailwind v4 —
+down to hex. Pass `bannerColors` to art-direct a card instead:
+
+```tsx
+<SocialPreviewDock
+  bannerColors={{
+    linkedin: ["#e0f2fe", "#7dd3fc", "#3b82f6", "#1d4ed8"],
+    x: ["#fde68a", "#fbbf24", "#fb923c", "#fb7185"],
+  }}
+/>
+```
+
+Give the X card a `cover` image and it uses that instead. One consequence worth
+knowing if you restyle these cards: the banner is a positioned element, so the
+avatar overlapping it needs `relative z-10` or it paints underneath and loses
+its top half.
+
+## Placement
+
+The cards are wider than the row, so a card centred on its icon would hang off
+the page. Each reveal clamps the panel against the viewport with a 12px margin;
+if a card is wider than the viewport the left edge wins, so the avatar and name
+survive and the right edge is cut instead.
+
+That means the row is safe anywhere — a footer, a sidebar, hard against the left
+gutter. It renders `inline-flex`, so the wrapper is only as wide as the row
+itself.
+
+## Custom links
+
+Pass `items` to replace the links and their cards outright. Each item is an
+icon, an href and whatever card you want revealed:
+
+```tsx
+<SocialPreviewDock
+  email="hello@example.com"
+  items={[
+    {
+      id: "dribbble",
+      label: "Dribbble",
+      href: "https://dribbble.com/example",
+      icon: <DribbbleIcon />,
+      card: <div className="w-[320px] rounded-2xl border bg-card p-4">…</div>,
+    },
+  ]}
+/>
+```
+
+Give every card a fixed width. The panel measures a card once, when it is
+revealed, so a card that reflows mid-hover leaves the panel at the old size.
+
+## Copy pill
+
+The email button cross-fades and blurs between its two labels rather than
+swapping text, so the pill never changes width mid-transition. It falls back to
+a `mailto:` link when the clipboard is unavailable — an insecure origin, or a
+browser that refuses the permission — and resets after three seconds.
+
+Pass `email={null}` to drop the pill and ship the icons alone.
+
+## Accessibility
+
+The links are real anchors with `aria-label`, and `onFocus` reveals the same
+card `onMouseEnter` does, so the previews are reachable by keyboard; Escape
+dismisses one. Focus rings are on the icons and the copy pill, and the buttons
+inside the cards are taken out of the tab order — they point at the same
+profiles the icons already do, so tabbing through them twice is noise.
+
+The heatmap is one `role="img"` with the total as its label rather than 364
+announced tiles, and only the revealed card is exposed to assistive tech. The
+copy pill reports its result through an `aria-live` region.
+
+Colors come from theme tokens throughout, so contrast is whatever your theme
+guarantees rather than a palette hardcoded here.

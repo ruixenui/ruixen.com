@@ -2,6 +2,36 @@ import { type Registry } from "shadcn/registry";
 
 export const examples: Registry["items"] = [
   {
+    name: "social-preview-dock-demo",
+    type: "registry:example",
+    title: "Social Preview Dock Demo",
+    description:
+      "Example of the social preview dock: three brand links and one panel that resizes itself between the profile cards.",
+    registryDependencies: ["https://ruixen.com/r/social-preview-dock"],
+    files: [
+      {
+        path: "registry/example/social-preview-dock-demo.tsx",
+        type: "registry:example",
+        target: "components/social-preview-dock-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "receding-text-plane-demo",
+    type: "registry:example",
+    title: "Receding Text Plane Demo",
+    description:
+      "Example of the receding text plane: a paragraph raked into depth, held at its opening frame.",
+    registryDependencies: ["https://ruixen.com/r/receding-text-plane"],
+    files: [
+      {
+        path: "registry/example/receding-text-plane-demo.tsx",
+        type: "registry:example",
+        target: "components/receding-text-plane-demo.tsx",
+      },
+    ],
+  },
+  {
     name: "drilldown-menu-demo",
     type: "registry:example",
     title: "Drilldown Menu Demo",
