@@ -15,6 +15,54 @@ export const Index: Record<string, any> = {
     component: null,
     meta: undefined,
   },
+  "social-preview-dock": {
+    name: "social-preview-dock",
+    description:
+      "A row of social links sharing one preview card. One panel owns the card surface and resizes itself between profiles while the contents cross-fade inside, so moving between icons reads as a single card growing and travelling. The GitHub card pulls a live contribution graph.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/social-preview-dock.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/social-preview-dock.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/social-preview-dock.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "receding-text-plane": {
+    name: "receding-text-plane",
+    description:
+      "A slab of copy raked away from the viewer on a short lens. Near lines swell past the frame edges, far lines fold toward a horizon that was never drawn — no scroll, no animation, one CSS transform.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/receding-text-plane.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/receding-text-plane.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/receding-text-plane.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "drilldown-menu": {
     name: "drilldown-menu",
     description:
@@ -5263,6 +5311,58 @@ export const Index: Record<string, any> = {
     component: React.lazy(async () => {
       const mod = await import(
         "@/components/layouts/calendar/calendar-event-item.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "social-preview-dock-demo": {
+    name: "social-preview-dock-demo",
+    description:
+      "Example of the social preview dock: three brand links and one panel that resizes itself between the profile cards.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/social-preview-dock"],
+    files: [
+      {
+        path: "registry/example/social-preview-dock-demo.tsx",
+        type: "registry:example",
+        target: "components/social-preview-dock-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/social-preview-dock-demo.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "receding-text-plane-demo": {
+    name: "receding-text-plane-demo",
+    description:
+      "Example of the receding text plane: a paragraph raked into depth, held at its opening frame.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/receding-text-plane"],
+    files: [
+      {
+        path: "registry/example/receding-text-plane-demo.tsx",
+        type: "registry:example",
+        target: "components/receding-text-plane-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/receding-text-plane-demo.tsx"
       );
       const exportName =
         Object.keys(mod).find(

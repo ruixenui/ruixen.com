@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "social-preview-dock-demo",
+  "type": "registry:example",
+  "title": "Social Preview Dock Demo",
+  "description": "Example of the social preview dock: three brand links and one panel that resizes itself between the profile cards.",
+  "registryDependencies": [
+    "https://ruixen.com/r/social-preview-dock"
+  ],
+  "files": [
+    {
+      "path": "registry/example/social-preview-dock-demo.tsx",
+      "content": "import { SocialPreviewDock } from \"@/registry/ruixenui/social-preview-dock\";\n\nexport default function SocialPreviewDockDemo() {\n  return (\n    <div className=\"flex min-h-[480px] w-full items-end justify-center px-6 pb-16\">\n      <SocialPreviewDock\n        email=\"govindalapudisrinath@gmail.com\"\n        profile={{\n          username: \"SriSomanaath\",\n          xHandle: \"SriNath693\",\n          name: \"Sri Somanaath\",\n          headline: \"AI Software Engineer\",\n          location: \"Bengaluru, India\",\n          bio: \"Engineer\",\n          links: {\n            github: \"https://github.com/SriSomanaath\",\n            linkedin: \"https://www.linkedin.com/in/srisomanaath-g693/\",\n            x: \"https://x.com/SriNath693\",\n          },\n        }}\n        /* Art direction per card. Leave this off and the banners run on theme\n           tokens instead, following whatever palette the site is using. */\n        bannerColors={{\n          linkedin: [\"#e0f2fe\", \"#7dd3fc\", \"#3b82f6\", \"#1d4ed8\"],\n          x: [\"#fde68a\", \"#fbbf24\", \"#fb923c\", \"#fb7185\"],\n        }}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/social-preview-dock-demo.tsx"
+    }
+  ]
+}

@@ -17,6 +17,35 @@
       "cssVars": {}
     },
     {
+      "name": "social-preview-dock",
+      "type": "registry:ui",
+      "title": "Social Preview Dock",
+      "description": "A row of social links sharing one preview card. One panel owns the card surface and resizes itself between profiles while the contents cross-fade inside, so moving between icons reads as a single card growing and travelling. The GitHub card pulls a live contribution graph.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/social-preview-dock.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/social-preview-dock.tsx"
+        }
+      ]
+    },
+    {
+      "name": "receding-text-plane",
+      "type": "registry:ui",
+      "title": "Receding Text Plane",
+      "description": "A slab of copy raked away from the viewer on a short lens. Near lines swell past the frame edges, far lines fold toward a horizon that was never drawn — no scroll, no animation, one CSS transform.",
+      "files": [
+        {
+          "path": "registry/ruixenui/receding-text-plane.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/receding-text-plane.tsx"
+        }
+      ]
+    },
+    {
       "name": "drilldown-menu",
       "type": "registry:ui",
       "title": "Drilldown Menu",
@@ -3744,6 +3773,38 @@
           "path": "app/preview/layouts/calendar/page.tsx",
           "type": "registry:page",
           "target": "app/calendar/page.tsx"
+        }
+      ]
+    },
+    {
+      "name": "social-preview-dock-demo",
+      "type": "registry:example",
+      "title": "Social Preview Dock Demo",
+      "description": "Example of the social preview dock: three brand links and one panel that resizes itself between the profile cards.",
+      "registryDependencies": [
+        "https://ruixen.com/r/social-preview-dock"
+      ],
+      "files": [
+        {
+          "path": "registry/example/social-preview-dock-demo.tsx",
+          "type": "registry:example",
+          "target": "components/social-preview-dock-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "receding-text-plane-demo",
+      "type": "registry:example",
+      "title": "Receding Text Plane Demo",
+      "description": "Example of the receding text plane: a paragraph raked into depth, held at its opening frame.",
+      "registryDependencies": [
+        "https://ruixen.com/r/receding-text-plane"
+      ],
+      "files": [
+        {
+          "path": "registry/example/receding-text-plane-demo.tsx",
+          "type": "registry:example",
+          "target": "components/receding-text-plane-demo.tsx"
         }
       ]
     },
