@@ -1,0 +1,130 @@
+---
+title: Receding Text Plane
+date: 2026-07-29
+description: A slab of copy raked away from the viewer on a short lens. Near lines swell past the frame edges, far lines fold toward a horizon that was never drawn — no scroll, no animation, one CSS transform.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="receding-text-plane-demo" height={620} />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/receding-text-plane"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="receding-text-plane" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { RecedingTextPlane } from "@/components/ruixen/receding-text-plane";
+
+export default function Page() {
+  return (
+    <RecedingTextPlane>
+      Type is a plane in space long before it is a message on a page. Rake that
+      plane away from the eye and every line picks up a depth of its own.
+    </RecedingTextPlane>
+  );
+}
+```
+
+Give it copy long enough to wrap several times. The effect is the depth gap
+between one line and the next, so a single line has nothing to read against.
+
+## How it reads
+
+Three transforms, applied right to left. The slab is lifted 10px off the plane,
+slid `offset` pixels down it, and only then raked `angle` degrees away from the
+viewer — so `offset` moves the type along the ground rather than across the
+screen.
+
+Everything below the pivot travels toward the eye and magnifies; everything
+above it falls away and shrinks. With the default 200px lens that ramp is steep:
+consecutive lines differ by roughly 1.4x, which is what opens the counters and
+pushes the near lines off both edges. The 10px of Z keeps the near edge off the
+plane itself, so the bottom line never clips through the vanishing point.
+
+Nothing animates. There is no scroll listener, no smooth-scroll library, and no
+motion dependency — the whole component is one `transform` string and an
+`overflow-hidden` frame to crop it.
+
+## Framing
+
+`offset` is the knob you will actually touch. It picks which depth slice lands
+inside the frame, and it is a hand-tuned constant rather than a measured one —
+change the copy, the type size, or the block height and it needs a nudge by eye.
+
+```tsx
+<RecedingTextPlane offset={520} className="h-[600px]">
+  {copy}
+</RecedingTextPlane>
+```
+
+Lower values pull the far, folded lines into view. Higher values push the near,
+blown-out ones in.
+
+## Lens and rake
+
+`perspective` is viewer distance in pixels — smaller is a wider lens and a
+harder ramp. `angle` is how far the plane tips away. They trade against each
+other: a long lens with a steep rake reads closer to an ordinary tilt than to
+depth.
+
+```tsx
+<RecedingTextPlane angle={22} perspective={340}>
+  {copy}
+</RecedingTextPlane>
+```
+
+## Type and color
+
+Heavy tracked-in display type in `text-chart-2` on `bg-muted` — both shadcn
+theme variables, so light and dark are handled by the theme rather than by a
+second set of hardcoded values here. The type scale steps from `text-4xl` up to
+`text-6xl`, which keeps the cascade legible on a phone.
+
+All of it is `className`, so pass your own and `tailwind-merge` drops the
+defaults:
+
+```tsx
+<RecedingTextPlane className="bg-background text-primary">
+  {copy}
+</RecedingTextPlane>
+```
+
+Heavy condensed faces hold up best. The rake thins strokes as they recede, and a
+light weight disappears entirely at the far end.
+
+## Accessibility
+
+The copy stays real, selectable text in a single `<p>` — assistive tech reads it
+undistorted, and it survives with transforms disabled. The near lines are not
+meant to be read on screen, so treat the plane as display typography and keep
+anything load-bearing somewhere else on the page.

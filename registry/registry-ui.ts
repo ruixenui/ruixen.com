@@ -2,6 +2,20 @@ import { type Registry } from "shadcn/registry";
 
 export const ui: Registry["items"] = [
   {
+    name: "receding-text-plane",
+    type: "registry:ui",
+    title: "Receding Text Plane",
+    description:
+      "A slab of copy raked away from the viewer on a short lens. Near lines swell past the frame edges, far lines fold toward a horizon that was never drawn — no scroll, no animation, one CSS transform.",
+    files: [
+      {
+        path: "registry/ruixenui/receding-text-plane.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/receding-text-plane.tsx",
+      },
+    ],
+  },
+  {
     name: "drilldown-menu",
     type: "registry:ui",
     title: "Drilldown Menu",

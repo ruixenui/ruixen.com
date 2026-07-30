@@ -748,6 +748,12 @@ export const docsConfig: DocsConfig = {
           title: "Text",
           items: [
             {
+              title: "Receding Text Plane",
+              href: `/docs/components/receding-text-plane`,
+              items: [],
+              label: "New",
+            },
+            {
               title: "Perspective Text",
               href: `/docs/components/perspective-text`,
               items: [],
