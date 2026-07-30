@@ -1081,6 +1081,12 @@ export const docsConfig: DocsConfig = {
           title: "Docks",
           items: [
             {
+              title: "Social Preview Dock",
+              href: `/docs/components/social-preview-dock`,
+              items: [],
+              label: "New",
+            },
+            {
               title: "Gooey Dock",
               href: `/docs/components/gooey-dock`,
               items: [],

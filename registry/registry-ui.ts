@@ -2,6 +2,21 @@ import { type Registry } from "shadcn/registry";
 
 export const ui: Registry["items"] = [
   {
+    name: "social-preview-dock",
+    type: "registry:ui",
+    title: "Social Preview Dock",
+    description:
+      "A row of social links sharing one preview card. One panel owns the card surface and resizes itself between profiles while the contents cross-fade inside, so moving between icons reads as a single card growing and travelling. The GitHub card pulls a live contribution graph.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/ruixenui/social-preview-dock.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/social-preview-dock.tsx",
+      },
+    ],
+  },
+  {
     name: "receding-text-plane",
     type: "registry:ui",
     title: "Receding Text Plane",
