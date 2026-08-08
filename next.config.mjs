@@ -113,6 +113,53 @@ const nextConfig = {
         destination: "/docs/components/client-section",
         permanent: true,
       },
+      // Commit e10a453 (2026-02-17) deleted blog posts and tab components
+      // without redirects. PostHog (30d, Aug 2026) shows these dead URLs still
+      // take ~83% of ALL Google organic — Google never stopped ranking them, so
+      // 4/5 search visitors hit a 404. The two posts that carry real volume are
+      // restored under their original slugs instead; the rest 301 to the nearest
+      // live page so the remaining ranking signal is consolidated, not dropped.
+      {
+        // Renamed generator; still the #2 Google landing page (232 people/30d).
+        source: "/tools/glass",
+        destination: "/generator/glass-morphism",
+        permanent: true,
+      },
+      {
+        source: "/blog/react-anim-framer-spring",
+        destination: "/blog/replaced-css-animation-with-spring",
+        permanent: true,
+      },
+      {
+        source: "/blog/motion-design-tokens",
+        destination: "/blog/every-css-transition-is-a-lie",
+        permanent: true,
+      },
+      {
+        source: "/blog/ux-micro-interactions-for-devs",
+        destination: "/blog/i-made-my-ui-click-literally",
+        permanent: true,
+      },
+      {
+        source: "/blog/ui-animation",
+        destination: "/blog/web-ui-has-no-physics",
+        permanent: true,
+      },
+      {
+        source: "/docs/components/capsule-tabs",
+        destination: "/docs/components/tabs",
+        permanent: true,
+      },
+      {
+        source: "/docs/components/auth-tabs-card",
+        destination: "/docs/components/tabs",
+        permanent: true,
+      },
+      {
+        source: "/docs/components/comments",
+        destination: "/docs/components",
+        permanent: true,
+      },
     ];
   },
   // `skipTrailingSlashRedirect` is required for the PostHog reverse proxy.
