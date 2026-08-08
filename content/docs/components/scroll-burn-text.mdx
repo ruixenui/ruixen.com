@@ -1,0 +1,184 @@
+---
+title: Scroll Burn Text
+date: 2026-08-06
+description: A manifesto that comes at the reader and burns off. Each block grows toward the lens, splits into red and cyan at the edges and is eaten away glyph by glyph from the middle out, uncovering the next block standing behind it.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="scroll-burn-text-demo" height={700} />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/scroll-burn-text"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="scroll-burn-text" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+Copy goes in as whole blocks — one string each, nothing else. Every block gets a
+slot of the runway to itself: it comes up out of the dark, holds long enough to
+be read, then burns off and leaves the next one standing where it was.
+
+```tsx
+import { ScrollBurnText } from "@/components/ruixen/scroll-burn-text";
+
+const SECTIONS = [
+  "Every interface worth using begins as a list of things it refuses to do. Cut the first idea and the second, and keep cutting until what is left cannot lose another piece and still stand up.",
+  "Type, colour and motion are not a coat of paint you roll on at the end. They are the material the thing is made of, and the only honest way to learn how they behave is to build with them.",
+];
+
+export default function Page() {
+  return <ScrollBurnText sections={SECTIONS} />;
+}
+```
+
+Each block wraps by itself inside the column, so write it as prose and leave the
+breaks alone — the burn is laid out over wherever the words land, and it is
+re-laid whenever they land somewhere else. Fifty to sixty words is the size that
+fills the frame at reading distance; much less and the block is lost in the
+middle of it, much more and it is already cropped by the time it is legible.
+
+## How it burns
+
+The dissolve is a threshold, one per glyph, against a single number that climbs
+as the block passes. A glyph holds until the block's burn reaches its own
+threshold and then goes out over the next 9% of it.
+
+Both halves of that live in CSS. The threshold is baked onto each glyph as a
+custom property, the burn is one property on the block, and the comparison
+between them is a `calc()` on `opacity` that the engine resolves for all of
+them at once. The scroll handler writes one value per frame, not one per letter.
+
+The thresholds themselves are measured, not counted. Where a glyph sits in the
+block is a fact about where the copy wrapped, so each one is read off the layout
+after mount and turned into a threshold from two things:
+
+- **The middle goes first.** Distance from the centre of the block carries most
+  of the weight, so the copy is eaten from the inside out the way paper takes a
+  flame, and the outer lines are the last to go.
+- **Blobs, not static.** Two crossed sine waves ride over that, at a frequency
+  that puts their blobs at the scale of a few glyphs. Without them the burn is a
+  clean expanding circle; with them it eats a word here and half of one there.
+
+## The lens
+
+A block's size is one over its distance, and the distance closes at a steady
+rate. That is the whole depth model, and it is the part that has to be right: a
+block creeps while it is still far off, and the last stretch — the one where it
+passes you — happens in a fraction of the scroll it took to cross the rest of
+the room. Anything approaching at a constant speed grows on exactly that curve.
+
+Doubling in size at a fixed rate per slot is the obvious alternative and it is
+the wrong one. It reads as a flat zoom, because nothing physical grows that way.
+The difference is not subtle at the near end: a block is born a quarter of
+reading size and leaves at four times it, and the last of that is covered in the
+final tenth of its slot.
+
+## The stack
+
+Blocks are laid on top of each other and the whole stack is always mounted, so a
+block already burning and the one arriving behind it are on the frame together —
+which is the point, since the holes in the front block are how you first see the
+next one. A block that has not arrived yet is skipped rather than drawn, and only
+the block actually burning has its progress rewritten, so the hundreds of glyph
+opacities that are not moving cost nothing.
+
+## Aberration and grain
+
+Chromatic aberration is two `text-shadow` copies of the type, one red and one
+cyan, rather than two more copies of the DOM. Its width rides that block's own
+burn, so the type comes apart optically at the moment it comes apart physically
+and the block arriving behind it stays clean.
+
+Grain over the top is one tiled `feTurbulence`, with a gamma pushed onto its
+alpha channel. Raw turbulence averages half opaque, which lands as a grey wash
+over the frame in either theme rather than specks on it; the gamma leaves the
+bright end alone and drops the floor to nothing, so the frame keeps its own
+background and only the specks are added.
+
+## Props
+
+```tsx
+<ScrollBurnText
+  sections={SECTIONS}
+  hint="scroll down"
+  runway="170vh"
+  className="bg-background"
+/>
+```
+
+`sections` is a plain `string[]`, one block of copy each. A counter in the bottom
+corner tracks which one is up front, and it never scales with a block.
+
+`hint` is the line on the opening frame. It is there because the first block
+opens at the far end of the room, too small and too faint to be an instruction on
+its own, and a pinned frame that has not moved yet gives the reader nothing to
+act on. It goes out over the first 8% of the runway, well before that block is
+close enough to read. Pass `hint={null}` to drop it.
+
+`runway` is the scroll distance **each** block gets, so the whole piece is that
+times the number of blocks. Taller is slower.
+
+By default the component tracks the page. To pin inside a bounded scrolling
+panel, pass that panel's ref:
+
+```tsx
+const panel = useRef<HTMLDivElement>(null);
+
+<div ref={panel} className="h-screen overflow-y-auto">
+  <ScrollBurnText sections={SECTIONS} container={panel} />
+</div>;
+```
+
+Native scroll drives it and there is no animation library involved, so it
+composes with whatever the host page already uses — Lenis included — instead of
+claiming the page's scroll for itself.
+
+## Type and color
+
+Display type in `text-foreground` on `bg-background` with the counter in
+`text-muted-foreground`, all shadcn theme variables, so light and dark come from
+the theme and the frame carries no colour of its own. The red and cyan of the
+fringe are the one pair of literal colors: an RGB split is red and cyan by
+definition, and pulling them from the palette would stop it reading as one.
+
+`className` lands on the outer frame, so `tailwind-merge` drops the defaults —
+swap `bg-background` for a fixed dark if the section should stay dark in both
+themes.
+
+## Accessibility
+
+The visible copy is split to the glyph, which assistive tech reads as loose
+letters, so the whole piece is carried once more intact in a screen-reader-only
+paragraph and the split layer is hidden from it. Under `prefers-reduced-motion`
+there is no scroll listener, no burn and no aberration: the blocks render as a
+plain stack of paragraphs. Mid-burn the copy is by definition unreadable,
+so treat this as display typography and keep anything load-bearing elsewhere on
+the page.

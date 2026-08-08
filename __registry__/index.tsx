@@ -15,6 +15,54 @@ export const Index: Record<string, any> = {
     component: null,
     meta: undefined,
   },
+  "scroll-burn-text": {
+    name: "scroll-burn-text",
+    description:
+      "A manifesto that comes at the reader and burns off. Each block grows toward the lens, splits into red and cyan at the edges and is eaten away glyph by glyph from the middle out, uncovering the next block standing behind it. Film grain over the whole frame, no animation library.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/scroll-burn-text.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/scroll-burn-text.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/scroll-burn-text.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "coverflow-carousel": {
+    name: "coverflow-carousel",
+    description:
+      "A rack of square covers with the perspective reversed. The centre card sits square to the viewer while the ones beside it swing their outer edges forward, so the rack opens toward you instead of folding away. Drag, throw, snap and infinite looping are all hand-rolled in the one file — no carousel library — and an optional caption underneath follows whichever card is centred.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/coverflow-carousel.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/coverflow-carousel.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/coverflow-carousel.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "social-preview-dock": {
     name: "social-preview-dock",
     description:
@@ -5311,6 +5359,56 @@ export const Index: Record<string, any> = {
     component: React.lazy(async () => {
       const mod = await import(
         "@/components/layouts/calendar/calendar-event-item.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "scroll-burn-text-demo": {
+    name: "scroll-burn-text-demo",
+    description:
+      "Example of the scroll burn text: a three part manifesto, each block coming forward and burning off the frame to uncover the next.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/scroll-burn-text"],
+    files: [
+      {
+        path: "registry/example/scroll-burn-text-demo.tsx",
+        type: "registry:example",
+        target: "components/scroll-burn-text-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/scroll-burn-text-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "coverflow-carousel-demo": {
+    name: "coverflow-carousel-demo",
+    description:
+      "Example of the coverflow carousel: twelve square covers on a looping rack, raked into depth with a caption block underneath.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/coverflow-carousel"],
+    files: [
+      {
+        path: "registry/example/coverflow-carousel-demo.tsx",
+        type: "registry:example",
+        target: "components/coverflow-carousel-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/coverflow-carousel-demo.tsx"
       );
       const exportName =
         Object.keys(mod).find(

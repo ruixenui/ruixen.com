@@ -2,6 +2,36 @@ import { type Registry } from "shadcn/registry";
 
 export const examples: Registry["items"] = [
   {
+    name: "scroll-burn-text-demo",
+    type: "registry:example",
+    title: "Scroll Burn Text Demo",
+    description:
+      "Example of the scroll burn text: a three part manifesto, each block coming forward and burning off the frame to uncover the next.",
+    registryDependencies: ["https://ruixen.com/r/scroll-burn-text"],
+    files: [
+      {
+        path: "registry/example/scroll-burn-text-demo.tsx",
+        type: "registry:example",
+        target: "components/scroll-burn-text-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "coverflow-carousel-demo",
+    type: "registry:example",
+    title: "Coverflow Carousel Demo",
+    description:
+      "Example of the coverflow carousel: twelve square covers on a looping rack, raked into depth with a caption block underneath.",
+    registryDependencies: ["https://ruixen.com/r/coverflow-carousel"],
+    files: [
+      {
+        path: "registry/example/coverflow-carousel-demo.tsx",
+        type: "registry:example",
+        target: "components/coverflow-carousel-demo.tsx",
+      },
+    ],
+  },
+  {
     name: "social-preview-dock-demo",
     type: "registry:example",
     title: "Social Preview Dock Demo",

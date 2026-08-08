@@ -2,6 +2,34 @@ import { type Registry } from "shadcn/registry";
 
 export const ui: Registry["items"] = [
   {
+    name: "scroll-burn-text",
+    type: "registry:ui",
+    title: "Scroll Burn Text",
+    description:
+      "A manifesto that comes at the reader and burns off. Each block grows toward the lens, splits into red and cyan at the edges and is eaten away glyph by glyph from the middle out, uncovering the next block standing behind it. Film grain over the whole frame, no animation library.",
+    files: [
+      {
+        path: "registry/ruixenui/scroll-burn-text.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/scroll-burn-text.tsx",
+      },
+    ],
+  },
+  {
+    name: "coverflow-carousel",
+    type: "registry:ui",
+    title: "Coverflow Carousel",
+    description:
+      "A rack of square covers with the perspective reversed. The centre card sits square to the viewer while the ones beside it swing their outer edges forward, so the rack opens toward you instead of folding away. Drag, throw, snap and infinite looping are all hand-rolled in the one file — no carousel library — and an optional caption underneath follows whichever card is centred.",
+    files: [
+      {
+        path: "registry/ruixenui/coverflow-carousel.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/coverflow-carousel.tsx",
+      },
+    ],
+  },
+  {
     name: "social-preview-dock",
     type: "registry:ui",
     title: "Social Preview Dock",

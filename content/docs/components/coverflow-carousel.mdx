@@ -1,0 +1,181 @@
+---
+title: Coverflow Carousel
+date: 2026-08-03
+description: A rack of square covers with the perspective reversed. The centre card sits square to the viewer while the ones beside it swing their outer edges forward, so the rack opens toward you instead of folding away. Drag it and the caption underneath follows.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="coverflow-carousel-demo" height={620} />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/coverflow-carousel"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="coverflow-carousel" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { CoverflowCarousel } from "@/components/ruixen/coverflow-carousel";
+
+const slides = [
+  { src: "/covers/01.jpg", alt: "Tidewater" },
+  { src: "/covers/02.jpg", alt: "Nightshift" },
+  { src: "/covers/03.jpg", alt: "Overexposed" },
+];
+
+export default function Page() {
+  return <CoverflowCarousel slides={slides} />;
+}
+```
+
+Give it ten or more covers. The rack runs edge to edge, so a short list leaves
+the far ends bare on a wide screen.
+
+No carousel library. The drag, the throw, the snap and the looping are all in
+the one file, which is about a hundred lines of behaviour on top of the
+transform maths.
+
+## How it reads
+
+The whole component is driven by one number: `pos`, the fractional card index
+sitting at the centre. Dragging moves it, a flick throws it, and releasing eases
+it to the nearest whole card.
+
+Every card then asks the same question — how many cards away from the centre am
+I? That is just `index - pos`. Multiply it by `rotate` for the Y-rotation, which
+flips sign across the centre so the two sides lean opposite ways. Take its
+absolute value, multiply by `depth`, and you get how far the card is pushed back.
+The centre card reads zero on both and sits flat.
+
+The sign is the whole character. An ordinary coverflow turns each card's _inner_
+edge toward you and folds the outer edge away, so the rack closes like a book.
+This one is negated: the _outer_ edge swings forward and the inner edge falls
+back toward the centre. The rack opens outward, the neighbours project wider, and
+the gaps beside the centre card pull tight instead of splaying.
+
+## The falloff
+
+Both the tilt and the recession run through `Math.pow(distance, falloff)` rather
+than straight multiplication. At the default `0.56`, the second card out gets
+about one and a half times the first card's tilt instead of double it.
+
+That exponent is doing real work. On a linear ramp the second card is already
+folded past readability and the third is edge-on, which collapses the rack into a
+spiral. Easing it off keeps the far cards as legible parallel slats receding into
+the distance — the shape the whole effect depends on. Raise it toward `1` for a
+tighter, more aggressive spiral; drop it toward `0.3` and the rack flattens into
+a near-parallel stack.
+
+```tsx
+<CoverflowCarousel slides={slides} rotate={44} falloff={0.56} depth={0.6} />
+```
+
+The tilt is capped just short of edge-on, so a far card never turns its back no
+matter how many are on screen.
+
+## Sizing and the lens
+
+`cardWidth` takes any CSS length and everything else is derived from it —
+`depth` and `perspective` are multiples of the card, not pixel values. Change one
+number and the whole rake scales with it, which is what keeps the effect intact
+from a phone to a wide desktop.
+
+```tsx
+<CoverflowCarousel
+  slides={slides}
+  cardWidth="clamp(148px, 22vw, 260px)"
+  perspective={3}
+/>
+```
+
+The default resolves to roughly three cards on a phone and nine on a wide screen,
+with the centre card always about a fifth of the frame. `perspective` is viewer
+distance in card-widths — smaller is a wider lens and a harder falloff.
+
+## Caption
+
+Give a slide a `title`, `subtitle`, or `meta` list and turn on `showCaption` to
+get the block underneath. It reads from whichever card is centred and fades on
+each change.
+
+```tsx
+const slides = [
+  {
+    src: "/covers/01.jpg",
+    alt: "Tidewater",
+    title: "Tidewater",
+    subtitle: "Long Player",
+    meta: [
+      { label: "Year", value: "2019" },
+      { label: "Producer", value: "Ada Ferrow" },
+      { label: "Length", value: "3:42" },
+    ],
+  },
+];
+
+<CoverflowCarousel slides={slides} showCaption />;
+```
+
+Every field is optional. Without a `title` the block does not render at all.
+
+## Controls
+
+`showPagination` puts a row of dots underneath; `showNavigation` overlays
+previous and next buttons on the frame. Both are off by default and both are real
+buttons, so keyboard and screen reader users get them too. Dots take the shorter
+way round the ring rather than unwinding through every card in between.
+
+The rack itself is focusable, so arrow keys work whether or not either control is
+shown. Each press steps from wherever the current settle is headed, not from
+where the cards happen to be mid-flight, so a fast run of presses lands on the
+card you counted rather than dropping half of them.
+
+## The loop
+
+`index - pos` is folded into the shorter way round the ring, so a card three
+places past the end reappears three places before the start. Nothing is cloned
+and nothing moves in the DOM — the card simply reports a different offset and
+lands where it belongs.
+
+The one thing that has to be handled is the seam. A card is teleported across the
+ring at exactly half a turn out, so it fades to nothing just before it gets there
+and the jump is never visible. With enough covers the seam sits well off screen;
+with too few it creeps into view as an edge fade rather than a pop.
+
+Turn `loop` off and the fold is skipped: the rack stops at the first and last
+card, still centred rather than flush to the edge.
+
+## Accessibility
+
+Cards are plain `<img>` elements with the `alt` you pass, so the carousel reads
+as a list of images with transforms disabled. The drag surface uses `touch-pan-y`,
+which leaves vertical page scrolling to the browser on touch devices, and the
+caption is real text rather than baked into the artwork.

@@ -748,6 +748,12 @@ export const docsConfig: DocsConfig = {
           title: "Text",
           items: [
             {
+              title: "Scroll Burn Text",
+              href: `/docs/components/scroll-burn-text`,
+              items: [],
+              label: "New",
+            },
+            {
               title: "Receding Text Plane",
               href: `/docs/components/receding-text-plane`,
               items: [],
@@ -987,6 +993,12 @@ export const docsConfig: DocsConfig = {
         {
           title: "Carousels",
           items: [
+            {
+              title: "Coverflow Carousel",
+              href: `/docs/components/coverflow-carousel`,
+              items: [],
+              label: "New",
+            },
             {
               title: "Scroll Image Tunnel",
               href: `/docs/components/scroll-image-tunnel`,
