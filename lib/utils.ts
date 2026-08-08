@@ -1,4 +1,4 @@
-import { env } from "@/env.mjs";
+import { siteConfig } from "@/config/site";
 import clsx, { ClassValue } from "clsx";
 import { Metadata } from "next";
 import { twMerge } from "tailwind-merge";
@@ -50,8 +50,15 @@ export function formatDate(input: string | number): string {
   });
 }
 
+// Every caller of this is building a PUBLIC absolute URL — canonical tags,
+// og:url, JSON-LD @id, sitemap entries. Those must always be the live origin,
+// never whatever the build box had in NEXT_PUBLIC_APP_URL. That env var is
+// `http://localhost:3000` in .env for local dev, and because the same file is
+// used on the VPS the production build shipped ~209 docs pages + every blog
+// post canonicalising to http://localhost:3000 — invisible to Google.
+// siteConfig.url is a constant, so a missing/wrong build env can't break SEO.
 export function absoluteUrl(path: string) {
-  return `${env.NEXT_PUBLIC_APP_URL}${path}`;
+  return `${siteConfig.url}${path}`;
 }
 
 export function constructMetadata({

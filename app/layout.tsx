@@ -36,7 +36,12 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: siteConfig.url,
+    // "./" resolves against metadataBase + the CURRENT pathname, so every page
+    // that doesn't set its own canonical gets a correct self-canonical.
+    // A literal siteConfig.url here was inherited by every such page
+    // (/templates, /tools, /blog, /layouts, …), telling Google each one was a
+    // duplicate of the homepage.
+    canonical: "./",
   },
   openGraph: {
     title: "Ruixen UI — Marketing UI for shadcn",

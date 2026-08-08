@@ -1,6 +1,6 @@
 # Ruixen UI
 
-> A free, open-source React component library with 170+ components featuring spring physics animations and audio feedback.
+> A free, open-source React component library with 200+ components featuring spring physics animations and audio feedback.
 
 ## Overview
 

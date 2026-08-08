@@ -1,6 +1,6 @@
 # Ruixen UI - Complete Documentation for AI Crawlers
 
-> A free, open-source React component library featuring 170+ components with spring physics animations and audio feedback.
+> A free, open-source React component library featuring 200+ components with spring physics animations and audio feedback.
 
 ================================================================================
 ## SITE OVERVIEW
@@ -110,7 +110,7 @@ Every component is published in 4 variants:
 ================================================================================
 
 Ruixen Pro is a one-time paid upgrade that sits alongside the free library.
-Everything in the free 170+ component library stays free forever; Pro adds
+Everything in the free 200+ component library stays free forever; Pro adds
 a premium tier on top.
 
 ### Pricing
@@ -133,7 +133,7 @@ a premium tier on top.
 - **Pro templates:** https://pro.ruixen.com/templates
 
 ================================================================================
-## COMPONENT CATALOG (170+ Components)
+## COMPONENT CATALOG (200+ Components)
 ================================================================================
 
 ### Accordions
@@ -739,7 +739,7 @@ Ruixen UI is a comprehensive React component library that prioritizes:
 - **Flexibility:** Multiple framework and styling options
 - **Freedom:** MIT license, no restrictions
 
-With 170+ components across 34+ categories, it provides everything needed to build modern, interactive web applications that feel alive.
+With 200+ components across 40+ categories, it provides everything needed to build modern, interactive web applications that feel alive.
 
 **Start here:** https://ruixen.com/docs
 **Browse components:** https://ruixen.com/docs/components
