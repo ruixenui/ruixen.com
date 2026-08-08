@@ -1,5 +1,3 @@
-import { env } from "@/env.mjs";
-
 import { Mdx } from "@/components/mdx-components";
 import { siteConfig } from "@/config/site";
 import { absoluteUrl } from "@/lib/utils";
@@ -35,9 +33,7 @@ export async function generateMetadata({
     return {};
   }
 
-  const url = env.NEXT_PUBLIC_APP_URL;
-
-  const ogUrl = new URL(`${url}/og`);
+  const ogUrl = new URL(absoluteUrl("/og"));
   ogUrl.searchParams.set("heading", page.title);
   ogUrl.searchParams.set("type", siteConfig.name);
   ogUrl.searchParams.set("mode", "light");

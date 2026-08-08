@@ -96,7 +96,10 @@ export async function generateMetadata({
       creator: "@ruixen_ui",
     },
     alternates: {
-      canonical: absoluteUrl(doc.slug),
+      // content/docs/index.mdx yields slug "/docs/index", but the page is also
+      // served at "/docs" — canonicalise onto the short URL so the two aren't
+      // competing duplicates.
+      canonical: absoluteUrl(doc.slug.replace(/\/index$/, "")),
     },
   };
 }
