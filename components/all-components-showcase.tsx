@@ -14,6 +14,14 @@ import { cn } from "@/lib/utils";
 // Helpers
 // ---------------------------------------------------------------------------
 
+// Registry insertion order — newest component first (see newArrivals below).
+const REGISTRY_ORDER = Object.keys(Index);
+
+// How many of the newest components lead New Arrivals in recency order before
+// the list falls back to A→Z. Size it to a typical release batch: raise it if
+// you ship more than this at once and want the whole batch to read as new.
+const PINNED_COUNT = 6;
+
 function generateSlug(title: string): string {
   return title
     .toLowerCase()
@@ -513,7 +521,15 @@ export function AllComponentsShowcase() {
   const categories = React.useMemo(() => getCategories(), []);
   const flatList = React.useMemo(() => buildFlatList(categories), [categories]);
 
-  // Extract "New" items for the New Arrivals section
+  // Extract "New" items for the New Arrivals section.
+  // The most recent PINNED_COUNT components lead, newest first; everything
+  // else below them is A→Z. Recency is read off the generated registry index,
+  // whose key order mirrors registry/registry-ui.ts — new entries are
+  // prepended there, so the lowest index is the newest. Nothing to maintain
+  // by hand. Pinning a whole batch rather than a single component matters
+  // because releases ship several at once: with one pin, the second component
+  // of a two-component release fell into the alphabetical pile and read as
+  // old (Coverflow Carousel landed under "C", seven rows down).
   const newArrivals = React.useMemo<FlatEntry[]>(() => {
     const all: FlatEntry[] = [];
     for (const cat of categories) {
@@ -523,12 +539,22 @@ export function AllComponentsShowcase() {
         }
       }
     }
-    // Sort to put pricing-cards-tooltip first
-    return all.sort((a, b) => {
-      if (a.item.name === "pricing-cards-tooltip") return -1;
-      if (b.item.name === "pricing-cards-tooltip") return 1;
-      return 0;
-    });
+    const rank = (e: FlatEntry) => {
+      const i = REGISTRY_ORDER.indexOf(e.item.name);
+      return i === -1 ? Infinity : i;
+    };
+    // Only registry-backed entries can be ranked, so only those get pinned —
+    // an unranked item would otherwise take a pin slot with a bogus Infinity.
+    const pinned = all
+      .filter((e) => rank(e) !== Infinity)
+      .sort((a, b) => rank(a) - rank(b))
+      .slice(0, PINNED_COUNT);
+    return [
+      ...pinned,
+      ...all
+        .filter((e) => !pinned.includes(e))
+        .sort((a, b) => a.item.title.localeCompare(b.item.title)),
+    ];
   }, [categories]);
 
   const slugs = React.useMemo(
