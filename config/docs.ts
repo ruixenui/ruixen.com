@@ -318,6 +318,12 @@ export const docsConfig: DocsConfig = {
               items: [],
               label: "New",
             },
+            {
+              title: "Image Stream Hero",
+              href: `/docs/components/image-stream-hero`,
+              items: [],
+              label: "New",
+            },
             // {
             //   title: "Floating Cards Hero",
             //   href: `/docs/components/floating-cards-hero`,
@@ -1294,6 +1300,12 @@ export const docsConfig: DocsConfig = {
         {
           title: "Select Components",
           items: [
+            {
+              title: "Arc Wheel Select",
+              href: `/docs/components/arc-wheel-select`,
+              items: [],
+              label: "New",
+            },
             {
               title: "Color Emotion Select",
               href: `/docs/components/color-emotion-select`,

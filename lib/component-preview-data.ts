@@ -405,6 +405,10 @@ export const audioMediaPreview: ComponentPreviewMap = {
  * Path: /docs/components/[slug]
  */
 export const selectPreview: ComponentPreviewMap = {
+  "arc-wheel-select": {
+    light: `/preview_images/select/arc-wheel-select-light.png`,
+    dark: `/preview_images/select/arc-wheel-select-dark.png`,
+  },
   "color-emotion-select": {
     light: `/preview_images/select/color-emotion-select-light.png`,
     dark: `/preview_images/select/color-emotion-select-dark.png`,
@@ -896,6 +900,10 @@ export const heroSectionsPreview: ComponentPreviewMap = {
   "arc-reveal-hero": {
     light: `/preview_images/hero-sections/arc-reveal-hero-light.png`,
     dark: `/preview_images/hero-sections/arc-reveal-hero-dark.png`,
+  },
+  "image-stream-hero": {
+    light: `/preview_images/hero-sections/image-stream-hero-light.png`,
+    dark: `/preview_images/hero-sections/image-stream-hero-dark.png`,
   },
   // "floating-cards-hero": {
   //   light: `/preview_images/hero-sections/floating-cards-hero-light.png`,

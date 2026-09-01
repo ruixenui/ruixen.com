@@ -1,0 +1,171 @@
+---
+title: Image Stream Hero
+date: 2026-08-10
+description: Two rails of images ride out of the vanishing point at the centre and sweep to both edges, growing and turning as they approach. Perspective does the sweep and the growth at once, and the loop never stops.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="image-stream-hero-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/image-stream-hero"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="image-stream-hero" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { ImageStreamHero } from "@/components/ruixen/image-stream-hero";
+
+const IMAGES = [
+  { src: "/img/one.jpg", alt: "" },
+  { src: "/img/two.jpg", alt: "" },
+  // …
+];
+
+export default function Page() {
+  return (
+    <ImageStreamHero images={IMAGES} className="h-[560px] w-full">
+      <div className="relative z-10 flex h-full items-start justify-center pt-12">
+        <h1 className="text-5xl font-medium tracking-tight">Your work.</h1>
+      </div>
+    </ImageStreamHero>
+  );
+}
+```
+
+## How it works
+
+Two rails of cards ride from far behind the screen toward the viewer. What looks
+like two animations is really one: under a perspective projection, position and
+size scale by the same factor, so as a card's `z` grows it gets bigger **and**
+its screen `x` sweeps outward from the vanishing point. Nothing animates `x`.
+
+Three things shape the corridor, and each one exists to kill a specific artefact:
+
+1. **Depth is authored as apparent size, geometrically.** Each card is a constant
+   ratio bigger than the one behind it, all the way out. Spreading a straight
+   `z` range evenly instead makes the near cards tear apart from each other as
+   the projection blows up — the ribbon splits open near the frame edge.
+2. **The rails open hard, then hold** (`fan` > 1). That opening cancels the still-
+   slow growth back at the waist, so the ribbon leaves the centre as a flat band,
+   bends once, and only then runs out on the diagonal. Parallel rails project to
+   a straight cone with no bend at all.
+3. **Neither end of the loop is on screen.** A card dies with its inner edge past
+   `50cqw`, clear of the container. And it is born _across_ the axis —
+   `railBirth` is negative, so the newest card starts on the far side and sweeps
+   back through the centre. That plugs the throat: the axis stays covered at
+   every instant, and a newborn lands behind cards that already cover it, so it
+   needs no fade in. Birthing on its own side leaves a hole at dead centre that
+   blinks open once per cycle.
+
+Each card also **turns on its own Y axis**, from a few degrees at birth to a
+steep angle at the exit — rotation narrows width without touching height, which
+is what keeps the outer cards portrait.
+
+The motion is pure CSS `@keyframes` — no JS runs per frame. The path is curved,
+so the keyframes are sampled at 24 stops rather than interpolated between two,
+and each card gets a negative `animation-delay` so the corridor is already full
+on the first frame instead of filling up from empty.
+
+Every length is expressed in `cqw`, a percentage of the container's width, so
+the corridor keeps its proportions at any size.
+
+## Props
+
+| Prop        | Type              | Default     | Description                                                 |
+| ----------- | ----------------- | ----------- | ----------------------------------------------------------- |
+| `images`    | `StreamImage[]`   | —           | Images cycled onto the rails; both rails run the same order |
+| `cards`     | `number`          | `9`         | Cards on each rail at once — density, not speed             |
+| `speed`     | `number`          | `18`        | Seconds for one card to travel the whole corridor           |
+| `axis`      | `number`          | `55`        | Vertical placement of the corridor's axis, as a % of height |
+| `path`      | `CorridorPath`    | `{}`        | Corridor geometry, merged over the defaults                 |
+| `children`  | `React.ReactNode` | `undefined` | Content rendered above the corridor                         |
+| `className` | `string`          | `undefined` | Additional classes on the container                         |
+
+`StreamImage` is `{ src: string; alt?: string }`. The corridor is `aria-hidden`,
+so `alt` is only read if you strip that treatment.
+
+## Tuning
+
+`cards` and `speed` are independent and safe to touch on their own — `cards` is
+density, `speed` is pace. Everything about the corridor's _shape_ lives in
+`path`, and every field is optional and merged over the defaults:
+
+| `path` field  | Default | What it does                                                |
+| ------------- | ------- | ----------------------------------------------------------- |
+| `perspective` | `30`    | Projection strength; lower is wider-angle and more violent  |
+| `cardWidth`   | `18`    | Card width in world units                                   |
+| `cardHeight`  | `25`    | Card height in world units                                  |
+| `cardRadius`  | `0.4`   | Corner radius on each card                                  |
+| `birthHeight` | `2.6`   | On-screen card height at the waist                          |
+| `exitHeight`  | `46`    | On-screen card height as a card leaves the frame            |
+| `railBirth`   | `-11`   | Lateral offset at birth; negative starts it across the axis |
+| `railExit`    | `44`    | Lateral offset once the rails have opened                   |
+| `fan`         | `3.3`   | How front-loaded the opening is — this is the bend          |
+| `turnBirth`   | `6`     | Y-rotation at birth, degrees                                |
+| `turnExit`    | `28`    | Y-rotation at exit, degrees                                 |
+| `stops`       | `24`    | Keyframe stops tracing the curve                            |
+
+```tsx
+<ImageStreamHero
+  images={IMAGES}
+  cards={12}
+  speed={26}
+  path={{ turnExit: 40, railExit: 52, cardWidth: 15 }}
+/>
+```
+
+The defaults were fitted numerically against a reference recording's card-height
+and edge-position profile, so they move together. The one invariant worth
+keeping: the ribbon is only solid while consecutive cards still overlap, and
+each card is `(exitHeight / birthHeight) ** (1 / cards)` bigger than the one
+behind it. Raising `exitHeight`, cutting `cards`, or pulling `railExit` inward
+all push that ratio up, and past roughly `1.45` the ribbon tears open near the
+frame edge.
+
+## Notes
+
+- The corridor layer is `aria-hidden` and `pointer-events-none`. It is
+  decoration; put the real content in `children` with `relative z-10`.
+- Under `prefers-reduced-motion: reduce` the animation pauses rather than being
+  removed. Every card is already dropped mid-flight by its negative delay, so it
+  freezes as a finished still instead of collapsing onto the axis.
+- Images are `object-cover` on a portrait card, so tall crops read best. They
+  are `loading="lazy"`, but the first screenful is on-screen immediately —
+  preload the first few if the hero is above the fold.
+- The container needs a height. It has no intrinsic one.
+
+## Use cases
+
+- Product and platform heroes that need to show breadth at a glance
+- Gallery, studio, and portfolio landings
+- Launch pages where the imagery is the argument

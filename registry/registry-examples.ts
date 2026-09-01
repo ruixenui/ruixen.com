@@ -2272,6 +2272,21 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "arc-wheel-select-demo",
+    type: "registry:example",
+    title: "Arc Wheel Select Demo",
+    description:
+      "Example of an arc-curved icon rail — twelve hand-written SVG icons that animate themselves with their own CSS keyframes, riding a circle as you scroll.",
+    registryDependencies: ["https://ruixen.com/r/arc-wheel-select"],
+    files: [
+      {
+        path: "registry/example/arc-wheel-select-demo.tsx",
+        type: "registry:example",
+        target: "components/arc-wheel-select-demo.tsx",
+      },
+    ],
+  },
+  {
     name: "tag-cloud-select-demo",
     type: "registry:example",
     title: "Tag Cloud Select Demo",
@@ -2403,6 +2418,21 @@ export const examples: Registry["items"] = [
         path: "registry/example/arc-reveal-hero-demo.tsx",
         type: "registry:example",
         target: "components/arc-reveal-hero-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "image-stream-hero-demo",
+    type: "registry:example",
+    title: "Image Stream Hero Demo",
+    description:
+      "Example of a hero with images streaming out of the centre to both edges on a continuous loop.",
+    registryDependencies: ["https://ruixen.com/r/image-stream-hero"],
+    files: [
+      {
+        path: "registry/example/image-stream-hero-demo.tsx",
+        type: "registry:example",
+        target: "components/image-stream-hero-demo.tsx",
       },
     ],
   },
