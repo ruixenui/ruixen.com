@@ -5,7 +5,8 @@ import Link from "next/link";
 import { Check, ChevronRight, Sparkles } from "lucide-react";
 
 import { trackEvent } from "@/lib/events";
-import { PRO_PRICE } from "@/lib/early-bird";
+import { PRICE_DEADLINE, PRO_PRICE } from "@/lib/early-bird";
+import { PriceCountdown } from "@/components/price-countdown";
 
 interface PricingSnapshot {
   amountCents: number;
@@ -103,6 +104,14 @@ export function PricingLanding() {
           </div>
           <p className="mt-1 text-sm text-muted-foreground">
             One-time payment, lifetime access
+          </p>
+
+          {/* The deadline is the reason to buy today, so it sits with the
+              price rather than only in the banner. Countdown is client-only
+              and the line still reads without it. */}
+          <p className="mt-3 inline-flex items-center gap-2 rounded-full border border-amber-500/40 bg-amber-500/15 px-3 py-1 text-xs font-medium text-amber-700 dark:text-amber-400">
+            {PRICE_DEADLINE.nextPrice} after {PRICE_DEADLINE.long}
+            <PriceCountdown className="font-semibold" />
           </p>
 
           <ul className="mt-6 space-y-3">
