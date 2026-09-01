@@ -4,7 +4,8 @@ import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { trackEvent } from "@/lib/events";
-import { PRO_PRICE } from "@/lib/early-bird";
+import { PRICE_DEADLINE, PRO_PRICE } from "@/lib/early-bird";
+import { PriceCountdown } from "@/components/price-countdown";
 
 export function ProBanner() {
   return (
@@ -22,11 +23,12 @@ export function ProBanner() {
           className="relative inline-flex text-sm leading-normal md:text-md"
         >
           <span className="text-[1rem] font-semibold">
-            Prices go up September 3 — Ruixen Pro is {PRO_PRICE.display} lifetime until then.
+            Ruixen Pro goes {PRO_PRICE.display} → {PRICE_DEADLINE.nextPrice}{" "}
+            lifetime after {PRICE_DEADLINE.long}. Templates rise too.
           </span>
-          <span className="text-[1rem] ml-2">
-            Templates rise too. Lock in today&apos;s price.
-          </span>
+          {/* Client-only, so it is absent on first paint and after the
+              deadline — the copy above has to carry the date on its own. */}
+          <PriceCountdown className="ml-2 rounded-full bg-black/15 px-2 text-[1rem] font-semibold" />
           <ChevronRight className="ml-2 mt-[5px] hidden size-4 transition-all duration-300 ease-out group-hover:translate-x-1 lg:inline-block" />
         </Link>
       </div>

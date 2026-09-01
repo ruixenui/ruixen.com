@@ -5,6 +5,8 @@ import Link from "next/link";
 import { useTheme } from "next-themes";
 import { useState, useEffect, useRef } from "react";
 import { trackEvent } from "@/lib/events";
+import { PRICE_DEADLINE } from "@/lib/early-bird";
+import { PriceCountdown } from "@/components/price-countdown";
 
 // Showcase videos - each has light/dark variants
 const SHOWCASE_VIDEOS = [
@@ -132,8 +134,9 @@ export function ProCTA() {
             <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500" />
           </span>
           <span className="text-[10px] font-semibold uppercase tracking-wider text-amber-600 dark:text-amber-400">
-            Price goes up Sep 3
+            {PRICE_DEADLINE.nextPrice} after {PRICE_DEADLINE.short}
           </span>
+          <PriceCountdown className="text-[10px] font-semibold tracking-wider text-amber-600 dark:text-amber-400" />
         </div>
 
         {/* Title */}
