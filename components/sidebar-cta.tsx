@@ -128,11 +128,11 @@ export function ProCTA() {
         {/* Limited Time Badge */}
         <div className="flex items-center gap-2 mb-2">
           <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500" />
           </span>
-          <span className="text-[10px] font-semibold uppercase tracking-wider text-green-600 dark:text-green-400">
-            Limited Time Offer
+          <span className="text-[10px] font-semibold uppercase tracking-wider text-amber-600 dark:text-amber-400">
+            Price goes up Sep 3
           </span>
         </div>
 
