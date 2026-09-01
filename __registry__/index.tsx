@@ -4004,6 +4004,30 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "arc-wheel-select": {
+    name: "arc-wheel-select",
+    description:
+      "An icon rail whose tiles ride a circle instead of a straight line — scroll, click or arrow through self-animating SVG icons. One spring swings x, y and scale together, so the icons turn like a wheel while each one animates itself.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/arc-wheel-select.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/arc-wheel-select.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/arc-wheel-select.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "tag-cloud-select": {
     name: "tag-cloud-select",
     description:
@@ -4189,6 +4213,30 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/ruixenui/arc-reveal-hero.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "image-stream-hero": {
+    name: "image-stream-hero",
+    description:
+      "Two rails of images ride out of the vanishing point at the centre and sweep to both edges, growing and turning as they approach. Perspective does the sweep and the growth at once; the loop never stops.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/image-stream-hero.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/image-stream-hero.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/image-stream-hero.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -9152,6 +9200,30 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "arc-wheel-select-demo": {
+    name: "arc-wheel-select-demo",
+    description:
+      "Example of an arc-curved icon rail — twelve hand-written SVG icons that animate themselves with their own CSS keyframes, riding a circle as you scroll.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/arc-wheel-select"],
+    files: [
+      {
+        path: "registry/example/arc-wheel-select-demo.tsx",
+        type: "registry:example",
+        target: "components/arc-wheel-select-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/arc-wheel-select-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "tag-cloud-select-demo": {
     name: "tag-cloud-select-demo",
     description:
@@ -9341,6 +9413,30 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/arc-reveal-hero-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "image-stream-hero-demo": {
+    name: "image-stream-hero-demo",
+    description:
+      "Example of a hero with images streaming out of the centre to both edges on a continuous loop.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/image-stream-hero"],
+    files: [
+      {
+        path: "registry/example/image-stream-hero-demo.tsx",
+        type: "registry:example",
+        target: "components/image-stream-hero-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/image-stream-hero-demo.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>

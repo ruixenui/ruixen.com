@@ -2578,6 +2578,21 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "arc-wheel-select",
+    type: "registry:ui",
+    title: "Arc Wheel Select",
+    description:
+      "An icon rail whose tiles ride a circle instead of a straight line — scroll, click or arrow through self-animating SVG icons. One spring swings x, y and scale together, so the icons turn like a wheel while each one animates itself.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/ruixenui/arc-wheel-select.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/arc-wheel-select.tsx",
+      },
+    ],
+  },
+  {
     name: "tag-cloud-select",
     type: "registry:ui",
     title: "Tag Cloud Select",
@@ -2709,6 +2724,20 @@ export const ui: Registry["items"] = [
         path: "registry/ruixenui/arc-reveal-hero.tsx",
         type: "registry:ui",
         target: "components/ruixen/arc-reveal-hero.tsx",
+      },
+    ],
+  },
+  {
+    name: "image-stream-hero",
+    type: "registry:ui",
+    title: "Image Stream Hero",
+    description:
+      "Two rails of images ride out of the vanishing point at the centre and sweep to both edges, growing and turning as they approach. Perspective does the sweep and the growth at once; the loop never stops.",
+    files: [
+      {
+        path: "registry/ruixenui/image-stream-hero.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/image-stream-hero.tsx",
       },
     ],
   },

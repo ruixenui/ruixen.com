@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "image-stream-hero-demo",
+  "type": "registry:example",
+  "title": "Image Stream Hero Demo",
+  "description": "Example of a hero with images streaming out of the centre to both edges on a continuous loop.",
+  "registryDependencies": [
+    "https://ruixen.com/r/image-stream-hero"
+  ],
+  "files": [
+    {
+      "path": "registry/example/image-stream-hero-demo.tsx",
+      "content": "import { ImageStreamHero } from \"@/registry/ruixenui/image-stream-hero\";\n\nconst CDN = \"https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev\";\n\nconst IMAGES = [\n  {\n    src: `${CDN}/stock-images/767d99bb371a54d0d36751e8cecae43c.jpg`,\n    alt: \"Diver silhouetted inside a sunset seascape shaped like a profile\",\n  },\n  {\n    src: `${CDN}/gradients/hero_gradient/hero-gradients-01.png`,\n    alt: \"Soft multi-tone gradient wash\",\n  },\n  {\n    src: `${CDN}/stock-images/821d815affa6496c39cbdeeec7a84603.jpg`,\n    alt: \"Double-exposure portrait blended with a city skyline at dusk\",\n  },\n  {\n    src: `${CDN}/gradients/crimson_aura/crimson-aura-02.png`,\n    alt: \"Crimson aura gradient\",\n  },\n  {\n    src: `${CDN}/stock-images/937438c560ada1c83317f2c11b3454b0.jpg`,\n    alt: \"Motion-blurred side-profile portrait against a deep orange backdrop\",\n  },\n  {\n    src: `${CDN}/gradients/hue-flow/hue-flow-01.png`,\n    alt: \"Flowing hue gradient\",\n  },\n  {\n    src: `${CDN}/stock-images/98f89cb9994f5c382ab964062c4039db.jpg`,\n    alt: \"Figure holding a racket that dissolves into a swirling colourful cloud\",\n  },\n  {\n    src: `${CDN}/gradients/moon/moon-grade-03.png`,\n    alt: \"Moon-toned gradient\",\n  },\n  {\n    src: `${CDN}/stock-images/ddcbee38be8b7274e19e132d7ab35b53.jpg`,\n    alt: \"Hand gesture with a colourful cutout of a bird flying through the fingers\",\n  },\n  {\n    src: `${CDN}/gradients/hero_gradient/hero-gradients-03.png`,\n    alt: \"Layered hero gradient\",\n  },\n  {\n    src: `${CDN}/gradients/hue-flow/hue-flow-02.png`,\n    alt: \"Second flowing hue gradient\",\n  },\n  {\n    src: `${CDN}/gradients/moon/moon-grade-05.png`,\n    alt: \"Deep moon-toned gradient\",\n  },\n];\n\nexport default function ImageStreamHeroDemo() {\n  return (\n    <ImageStreamHero\n      images={IMAGES}\n      className=\"h-[560px] w-full rounded-lg border border-border bg-background\"\n    >\n      <div className=\"relative z-10 flex h-full flex-col items-center justify-between py-12 text-center\">\n        <div className=\"px-6\">\n          <h1 className=\"text-balance text-4xl font-medium tracking-tight text-foreground sm:text-5xl\">\n            Your work,\n            <br />\n            front and centre.\n          </h1>\n        </div>\n        <p className=\"max-w-md text-balance px-6 text-sm text-muted-foreground\">\n          A hero that leads with the images instead of describing them. Swap in\n          your own and the corridor rebuilds around them.\n        </p>\n      </div>\n    </ImageStreamHero>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/image-stream-hero-demo.tsx"
+    }
+  ]
+}

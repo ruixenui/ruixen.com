@@ -1,0 +1,219 @@
+---
+title: Arc Wheel Select
+date: 2026-08-12
+description: An icon rail whose tiles ride a circle instead of a straight line, carrying SVG icons that animate themselves. One spring swings x, y and scale together, so the icons turn like a wheel rather than sliding like a list — and the wheel never touches the icons.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="arc-wheel-select-demo" height={700} />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/arc-wheel-select"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="arc-wheel-select" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import {
+  ArcWheelSelect,
+  type ArcWheelItem,
+} from "@/components/ruixen/arc-wheel-select";
+
+// The icon owns its animation. `transform-box: view-box` makes
+// `transform-origin` mean viewBox coordinates, so the needle turns about the
+// dial's centre and not about its own bounding box.
+const CSS = `
+.spin-needle {
+  transform-box: view-box;
+  transform-origin: 12px 12px;
+  animation: sweep 4.5s ease-in-out infinite;
+}
+@keyframes sweep {
+  0%, 100% { transform: rotate(-34deg); }
+  50% { transform: rotate(34deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .spin-needle { animation: none; }
+}
+`;
+
+const Compass = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75}>
+    <circle cx="12" cy="12" r="9" />
+    <path className="spin-needle" d="M14.9 9.1l-2.2 5.8-5.6 2.2 2.2-5.8z" />
+  </svg>
+);
+
+const TOOLS: ArcWheelItem[] = [
+  { value: "explore", label: "Explore", icon: <Compass /> },
+  // ...
+];
+
+export default function Page() {
+  const [tool, setTool] = React.useState("explore");
+
+  return (
+    <>
+      <style>{CSS}</style>
+      <ArcWheelSelect
+        items={TOOLS}
+        value={tool}
+        onValueChange={setTool}
+        aria-label="Pick a tool"
+      />
+    </>
+  );
+}
+```
+
+## How it works
+
+Every tile is placed on a circle whose centre sits off to the right of the rail.
+Tile `i` is `(i - selected) × step` degrees around that circle, and the whole
+thing is drawn relative to the selected tile:
+
+```
+x = radius × (1 − cos θ)
+y = radius × sin θ
+```
+
+The selected tile is the only one at `θ = 0`, so it is the only one still on the
+axis — everything else bows out to the right as it fans away vertically. Because
+`x`, `y` and `scale` are handed to a **single** spring, they arrive together and
+the stack reads as one wheel turning. Springing them separately, or easing `y`
+alone, makes the same geometry look like a list sliding behind a mask.
+
+The two constants are not interchangeable: degrees buy curve, radius buys
+flatness. `radius × sin(step)` is the vertical rhythm and
+`radius × (1 − cos(d × step))` is how far tile `d` bows out, so the defaults
+(220 / 18°) hold a 68px rhythm while bowing about 100px at the edge of the band.
+The old 300 / 12° pairing had the same rhythm and half the bow, which read as
+drift rather than a wheel once there was no text to carry the eye.
+
+Tiles past `visible` fade to zero and become `pointer-events-none`, but they stay
+mounted and keep being repositioned, so they are already where they belong by the
+time they swing back into view and nothing pops. Past `visible + 1` they stop
+springing and simply jump — invisible tiles do not need to travel, and that is
+what keeps the cost of a step flat as the list grows.
+
+Scrolling accumulates `deltaY` and moves **one** tile each time it crosses a 40px
+threshold — never several, and the surplus is dropped rather than banked. Both
+halves of that matter: a single hard flick used to hand the spring a target three
+tiles out and the whole wheel lurched to catch it, and a banked surplus keeps
+firing steps after your fingers have stopped. At either end of the list the wheel
+event is left alone entirely, so the page scrolls on past the component instead of
+the widget swallowing it.
+
+## The icons
+
+**The icons animate themselves.** Each one is an SVG that carries its own
+keyframes — a bell that swings, a compass needle that sweeps, a flame that
+flickers, an ECG line that redraws itself — and the wheel does not drive any of
+it. The tile holding the icon has no animation at all: it changes colour to show
+the selection and that is the end of its involvement. A wrapper scaling an icon up
+and down is not an animated icon, it is an animated wrapper, and it fights whatever
+the icon is already doing.
+
+That also means the motion does not stop when a tile loses the selection. Every
+icon on the rail is running on its own clock, at its own period, which is what
+stops the whole column from pulsing in lockstep.
+
+The animation belongs to the icon, so the `prefers-reduced-motion` guard belongs
+to the icon too — that is the reason the demo uses CSS keyframes rather than SMIL
+`<animate>` elements. SMIL cannot see the media query; CSS can turn itself off in
+one rule. The demo does exactly that at the bottom of its style block.
+
+Two details make hand-writing them tractable: `transform-box: view-box` so
+`transform-origin: 12px 12px` means the same point in every icon (a needle can
+then rotate about the dial's centre rather than its own bounding box), and
+`[&_svg]:size-8` on the tile so nothing needs a size prop.
+
+There are no words on the rail and no image behind it — nothing to load, nothing
+to scrim, and the whole thing is transparent, so it sits on whatever background
+you put it on. That is also why every tile carries an `aria-label`: with the text
+gone, the label is the only accessible name the option has.
+
+## Props
+
+| Prop            | Type                      | Default     | Description                                         |
+| --------------- | ------------------------- | ----------- | --------------------------------------------------- |
+| `items`         | `ArcWheelItem[]`          | —           | Tiles on the wheel                                  |
+| `value`         | `string`                  | `undefined` | Controlled selection                                |
+| `defaultValue`  | `string`                  | first item  | Uncontrolled starting selection                     |
+| `onValueChange` | `(value: string) => void` | `undefined` | Fires when the selection actually changes           |
+| `radius`        | `number`                  | `220`       | Arc radius in px — larger is flatter                |
+| `step`          | `number`                  | `18`        | Degrees between tiles — larger fans them out harder |
+| `visible`       | `number`                  | `3`         | Tiles kept visible either side of the selection     |
+| `className`     | `string`                  | `undefined` | Additional classes on the rail                      |
+
+`ArcWheelItem` is `{ value, label, icon }`. `label` is never rendered — it is the
+tile's accessible name.
+
+## Accessibility
+
+- The rail is a `role="listbox"` with a single tab stop and
+  `aria-activedescendant`; tiles are `role="option"` with `aria-selected` and an
+  `aria-label` from `label`. The centring wrapper between them is
+  `role="presentation"`, so the listbox still owns its options directly.
+- <kbd>↑</kbd> / <kbd>↓</kbd> move one tile, <kbd>Home</kbd> / <kbd>End</kbd>
+  jump to either end.
+- Give every item a real `label`. An icon-only control with no label is invisible
+  to a screen reader, and here there is no text fallback to save you.
+- Under `prefers-reduced-motion: reduce` the springs collapse to instant moves.
+  The icons are on their own there: guard their keyframes in their own CSS, the
+  way the demo does.
+
+## Notes
+
+- The width (`w-[184px]`) is the arc, not taste: it has to hold
+  `radius × (1 − cos(visible × step))` plus the tile. It is also the
+  wheel-capture area, so it must not be wider than the rail — an invisible
+  full-width box that eats page scroll is a trap.
+- Height is `h-[420px] sm:h-[520px]`. Shrink it without pulling `radius` in and
+  the outer tiles ride off the edge.
+- Row height is fixed at 72px in the source. It has to be: the arc spacing is
+  `radius × sin(step)`, so a row that grew with its content would start colliding
+  with its neighbours.
+- Everything is on the shadcn tokens — tile, border, icon colour — so it follows
+  your theme in both modes with nothing to configure.
+- The wheel only springs the tiles you can see, so a long list costs the same per
+  step as a short one. The icons are the exception: their keyframes keep running
+  even at zero opacity, because they are the icons' own CSS. With a dozen
+  compositor-only animations that is free; with hundreds, pause them yourself.
+- There is no touch drag: on a phone the tiles are tappable and the wheel steps
+  one at a time.
+
+## Use cases
+
+- Tool, mode and workspace switchers where the icon is the whole label
+- Brand or integration pickers built from logos
+- Compact vertical docks and rails where a straight list would look inert
