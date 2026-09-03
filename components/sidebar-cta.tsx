@@ -5,8 +5,7 @@ import Link from "next/link";
 import { useTheme } from "next-themes";
 import { useState, useEffect, useRef } from "react";
 import { trackEvent } from "@/lib/events";
-import { PRICE_DEADLINE } from "@/lib/early-bird";
-import { PriceCountdown } from "@/components/price-countdown";
+import { PRO_PRICE } from "@/lib/early-bird";
 
 // Showcase videos - each has light/dark variants
 const SHOWCASE_VIDEOS = [
@@ -127,18 +126,6 @@ export function ProCTA() {
 
       {/* Content */}
       <div className="p-3">
-        {/* Limited Time Badge */}
-        <div className="flex items-center gap-2 mb-2">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500" />
-          </span>
-          <span className="text-[10px] font-semibold uppercase tracking-wider text-amber-600 dark:text-amber-400">
-            {PRICE_DEADLINE.nextPrice} after {PRICE_DEADLINE.short}
-          </span>
-          <PriceCountdown className="text-[10px] font-semibold tracking-wider text-amber-600 dark:text-amber-400" />
-        </div>
-
         {/* Title */}
         <h3 className="text-base font-bold text-foreground leading-tight">
           Build{" "}
@@ -190,7 +177,9 @@ export function ProCTA() {
 
         {/* Price */}
         <div className="flex items-baseline gap-1.5 mb-3">
-          <span className="text-2xl font-bold text-foreground">$69</span>
+          <span className="text-2xl font-bold text-foreground">
+            {PRO_PRICE.display}
+          </span>
           <span className="text-xs text-muted-foreground">once</span>
         </div>
 

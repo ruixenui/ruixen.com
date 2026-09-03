@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Sparkles, ArrowRight } from "lucide-react";
 import { trackEvent } from "@/lib/events";
+import { PRO_PRICE } from "@/lib/early-bird";
 
 /**
  * Inline Pro upgrade callout shown at the bottom of component and section
@@ -25,7 +26,7 @@ export function ProInlineCTA() {
               Ruixen Pro adds 50+ premium components and full templates with
               lifetime updates —{" "}
               <span className="font-medium text-foreground">
-                $69 once, no subscription.
+                {PRO_PRICE.display} once, no subscription.
               </span>
             </p>
           </div>

@@ -21,6 +21,7 @@ import {
 import { TemplateProClickTracker } from "@/components/template-pro-click-tracker";
 import { ThemedTemplateMedia } from "@/components/themed-template-media";
 import { cn } from "@/lib/utils";
+import { PRO_PRICE } from "@/lib/early-bird";
 
 // Pro catalog is hardcoded in data/pro-catalog.ts — no runtime fetch.
 
@@ -540,7 +541,7 @@ export default function TemplatesPage() {
 
             <div className="mt-7 flex items-baseline justify-center gap-1.5">
               <span className="text-3xl font-[580] tracking-tight text-foreground">
-                $69
+                {PRO_PRICE.display}
               </span>
               <span className="text-sm text-muted-foreground/50">one-time</span>
             </div>

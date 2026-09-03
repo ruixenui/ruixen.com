@@ -5,8 +5,8 @@ import { NextResponse } from "next/server";
 export const revalidate = 3600;
 
 const FALLBACK = {
-  amountCents: 6900,
-  display: "$69",
+  amountCents: 9900,
+  display: "$99",
   currency: "USD",
 };
 
