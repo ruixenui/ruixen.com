@@ -7,6 +7,7 @@ import { siteConfig } from "@/config/site";
 import { CopyButton } from "@/components/copy-button";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { PRO_PRICE } from "@/lib/early-bird";
 
 const INSTALL_COMMAND =
   "pnpm dlx shadcn@latest add https://ruixen.com/r/tw3/gradient-hero-showcase.json";
@@ -77,7 +78,7 @@ const FAQS = [
   },
   {
     q: "Is Tailwind v3 support free?",
-    a: "Yes. The full 240+ component catalog is MIT-licensed and free across all four stack variants (Tailwind v3 or v4, Radix or Base UI). Ruixen Pro is a separate one-time $69 purchase for premium components and landing-page templates.",
+    a: `Yes. The full 240+ component catalog is MIT-licensed and free across all four stack variants (Tailwind v3 or v4, Radix or Base UI). Ruixen Pro is a separate one-time ${PRO_PRICE.display} purchase for premium components and landing-page templates.`,
   },
 ];
 

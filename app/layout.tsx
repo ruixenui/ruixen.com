@@ -1,6 +1,6 @@
+import { SiteBanner } from "@/components/site-banner";
 import { Analytics } from "@/components/analytics";
 import { ThemeProvider } from "@/components/theme-provider";
-import { SiteBanner } from "@/components/site-banner";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { PHProvider } from "@/components/posthog-provider";
