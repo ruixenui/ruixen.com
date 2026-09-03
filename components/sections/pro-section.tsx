@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Sparkles, ChevronRight, Check } from "lucide-react";
 
 import { trackEvent } from "@/lib/events";
+import { PRO_PRICE } from "@/lib/early-bird";
 
 const FEATURES = [
   "50+ premium components with motion and theming",
@@ -64,7 +65,7 @@ export function ProSection() {
             onClick={() => handleCta("homepage_section")}
             className="inline-flex items-center gap-2 rounded-xl bg-foreground px-5 py-2.5 text-sm font-semibold text-background hover:opacity-90"
           >
-            Get Lifetime — $69
+            Get Lifetime — {PRO_PRICE.display}
             <ChevronRight className="size-4" />
           </Link>
           <Link

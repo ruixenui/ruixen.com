@@ -8,6 +8,7 @@ import InspirationsSection from "@/components/sections/inspirations-section";
 import { ProSection } from "@/components/sections/pro-section";
 import { FreeTools } from "@/components/sections/free-tools";
 import { siteConfig } from "@/config/site";
+import { PRO_PRICE } from "@/lib/early-bird";
 
 export default function Home() {
   const faqItems: FAQItem[] = [
@@ -51,7 +52,7 @@ export default function Home() {
       id: "pro",
       question: "What does Ruixen Pro include?",
       answer:
-        "Pro adds 50+ premium components and full landing-page templates on top of the free library. One-time purchase — $69 lifetime, no subscription. See full pricing and comparison at ruixen.com/pricing. The free open-source catalog of 240+ components stays free.",
+        `Pro adds 50+ premium components and full landing-page templates on top of the free library. One-time purchase — ${PRO_PRICE.display} lifetime, no subscription. See full pricing and comparison at ruixen.com/pricing. The free open-source catalog of 240+ components stays free.`,
     },
   ];
 
