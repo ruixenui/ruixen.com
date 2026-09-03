@@ -1,3 +1,4 @@
+import { SiteBanner } from "@/components/site-banner";
 import { Analytics } from "@/components/analytics";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
@@ -100,6 +101,7 @@ export default function RootLayout({
           <PHProvider>
             <ThemeProvider attribute="class" defaultTheme="light">
               <TooltipProvider>
+                <SiteBanner />
                 {children}
                 <Toaster />
                 <Analytics />
