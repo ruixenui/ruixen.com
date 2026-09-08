@@ -2,6 +2,21 @@ import { type Registry } from "shadcn/registry";
 
 export const ui: Registry["items"] = [
   {
+    name: "halo-reel",
+    type: "registry:ui",
+    title: "Halo Reel",
+    description:
+      "Image cards riding an ellipse — cos θ places each card, sizes it and stacks it, so the near side of the ring is large and the far side small. It turns on its own, pauses under the pointer, and you can drag it round.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/ruixenui/halo-reel.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/halo-reel.tsx",
+      },
+    ],
+  },
+  {
     name: "scroll-burn-text",
     type: "registry:ui",
     title: "Scroll Burn Text",
@@ -2574,21 +2589,6 @@ export const ui: Registry["items"] = [
         path: "registry/ruixenui/container-text-scroll.tsx",
         type: "registry:ui",
         target: "components/ruixen/container-text-scroll.tsx",
-      },
-    ],
-  },
-  {
-    name: "arc-wheel-select",
-    type: "registry:ui",
-    title: "Arc Wheel Select",
-    description:
-      "An icon rail whose tiles ride a circle instead of a straight line — scroll, click or arrow through self-animating SVG icons. One spring swings x, y and scale together, so the icons turn like a wheel while each one animates itself.",
-    dependencies: ["motion"],
-    files: [
-      {
-        path: "registry/ruixenui/arc-wheel-select.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/arc-wheel-select.tsx",
       },
     ],
   },

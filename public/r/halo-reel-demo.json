@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "halo-reel-demo",
+  "type": "registry:example",
+  "title": "Halo Reel Demo",
+  "description": "Example of an image ring that turns on its own, pauses on hover, and spins under a drag.",
+  "registryDependencies": [
+    "https://ruixen.com/r/halo-reel"
+  ],
+  "files": [
+    {
+      "path": "registry/example/halo-reel-demo.tsx",
+      "content": "\"use client\";\n\nimport { HaloReel, type HaloReelItem } from \"@/registry/ruixenui/halo-reel\";\n\nconst CDN = \"https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev\";\n\nconst CARDS: HaloReelItem[] = [\n  {\n    src: `${CDN}/stock-images/767d99bb371a54d0d36751e8cecae43c.jpg`,\n    alt: \"Diver silhouetted inside a sunset seascape shaped like a profile\",\n  },\n  {\n    src: `${CDN}/gradients/hero_gradient/hero-gradients-01.png`,\n    alt: \"Soft multi-tone gradient wash\",\n  },\n  {\n    src: `${CDN}/stock-images/821d815affa6496c39cbdeeec7a84603.jpg`,\n    alt: \"Double-exposure portrait blended with a city skyline at dusk\",\n  },\n  {\n    src: `${CDN}/gradients/moon/moon-grade-03.png`,\n    alt: \"Moon-toned gradient\",\n  },\n  {\n    src: `${CDN}/stock-images/937438c560ada1c83317f2c11b3454b0.jpg`,\n    alt: \"Motion-blurred side-profile portrait against a deep orange backdrop\",\n  },\n  {\n    src: `${CDN}/gradients/shade_shiters/shade-shifters-05.png`,\n    alt: \"Shifting shade gradient\",\n  },\n  {\n    src: `${CDN}/stock-images/98f89cb9994f5c382ab964062c4039db.jpg`,\n    alt: \"Figure holding a racket that dissolves into a swirling colourful cloud\",\n  },\n  {\n    src: `${CDN}/gradients/shade_shiters/shade-shifters-09.png`,\n    alt: \"Shifting shade gradient\",\n  },\n  {\n    src: `${CDN}/stock-images/ddcbee38be8b7274e19e132d7ab35b53.jpg`,\n    alt: \"Hand gesture with a colourful cutout of a bird flying through the fingers\",\n  },\n  {\n    src: `${CDN}/gradients/moon/moon-grade-06.png`,\n    alt: \"Moon-toned gradient\",\n  },\n];\n\nexport default function HaloReelDemo() {\n  return (\n    <HaloReel\n      items={CARDS}\n      aria-label=\"Recent work\"\n      centerLabel={\n        <span className=\"text-[3.4vw] font-medium tracking-tight text-foreground\">\n          Selected works\n        </span>\n      }\n      cardWidth={130}\n      cardHeight={180}\n      minScale={0.4}\n      radiusYRatio={0.36}\n      holdDuration={1000}\n      stepDuration={700}\n      className=\"h-[560px] bg-muted/40\"\n    />\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/halo-reel-demo.tsx"
+    }
+  ]
+}

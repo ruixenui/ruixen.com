@@ -15,6 +15,30 @@ export const Index: Record<string, any> = {
     component: null,
     meta: undefined,
   },
+  "halo-reel": {
+    name: "halo-reel",
+    description:
+      "Image cards riding an ellipse — cos θ places each card, sizes it and stacks it, so the near side of the ring is large and the far side small. It turns on its own, pauses under the pointer, and you can drag it round.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/halo-reel.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/halo-reel.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/halo-reel.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "scroll-burn-text": {
     name: "scroll-burn-text",
     description:
@@ -4004,30 +4028,6 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
-  "arc-wheel-select": {
-    name: "arc-wheel-select",
-    description:
-      "An icon rail whose tiles ride a circle instead of a straight line — scroll, click or arrow through self-animating SVG icons. One spring swings x, y and scale together, so the icons turn like a wheel while each one animates itself.",
-    type: "registry:ui",
-    registryDependencies: undefined,
-    files: [
-      {
-        path: "registry/ruixenui/arc-wheel-select.tsx",
-        type: "registry:ui",
-        target: "components/ruixen/arc-wheel-select.tsx",
-      },
-    ],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/ruixenui/arc-wheel-select.tsx");
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object",
-        ) || item.name;
-      return { default: mod.default || mod[exportName] };
-    }),
-    meta: undefined,
-  },
   "tag-cloud-select": {
     name: "tag-cloud-select",
     description:
@@ -5408,6 +5408,30 @@ export const Index: Record<string, any> = {
       const mod = await import(
         "@/components/layouts/calendar/calendar-event-item.tsx"
       );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "halo-reel-demo": {
+    name: "halo-reel-demo",
+    description:
+      "Example of an image ring that turns on its own, pauses on hover, and spins under a drag.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/halo-reel"],
+    files: [
+      {
+        path: "registry/example/halo-reel-demo.tsx",
+        type: "registry:example",
+        target: "components/halo-reel-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/halo-reel-demo.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -9191,30 +9215,6 @@ export const Index: Record<string, any> = {
       const mod = await import(
         "@/registry/example/container-text-scroll-demo.tsx"
       );
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object",
-        ) || item.name;
-      return { default: mod.default || mod[exportName] };
-    }),
-    meta: undefined,
-  },
-  "arc-wheel-select-demo": {
-    name: "arc-wheel-select-demo",
-    description:
-      "Example of an arc-curved icon rail — twelve hand-written SVG icons that animate themselves with their own CSS keyframes, riding a circle as you scroll.",
-    type: "registry:example",
-    registryDependencies: ["https://ruixen.com/r/arc-wheel-select"],
-    files: [
-      {
-        path: "registry/example/arc-wheel-select-demo.tsx",
-        type: "registry:example",
-        target: "components/arc-wheel-select-demo.tsx",
-      },
-    ],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/example/arc-wheel-select-demo.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>
