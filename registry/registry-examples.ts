@@ -2,6 +2,21 @@ import { type Registry } from "shadcn/registry";
 
 export const examples: Registry["items"] = [
   {
+    name: "halo-reel-demo",
+    type: "registry:example",
+    title: "Halo Reel Demo",
+    description:
+      "Example of an image ring that turns on its own, pauses on hover, and spins under a drag.",
+    registryDependencies: ["https://ruixen.com/r/halo-reel"],
+    files: [
+      {
+        path: "registry/example/halo-reel-demo.tsx",
+        type: "registry:example",
+        target: "components/halo-reel-demo.tsx",
+      },
+    ],
+  },
+  {
     name: "scroll-burn-text-demo",
     type: "registry:example",
     title: "Scroll Burn Text Demo",
@@ -2268,21 +2283,6 @@ export const examples: Registry["items"] = [
         path: "registry/example/container-text-scroll-demo.tsx",
         type: "registry:example",
         target: "components/container-text-scroll-demo.tsx",
-      },
-    ],
-  },
-  {
-    name: "arc-wheel-select-demo",
-    type: "registry:example",
-    title: "Arc Wheel Select Demo",
-    description:
-      "Example of an arc-curved icon rail — twelve hand-written SVG icons that animate themselves with their own CSS keyframes, riding a circle as you scroll.",
-    registryDependencies: ["https://ruixen.com/r/arc-wheel-select"],
-    files: [
-      {
-        path: "registry/example/arc-wheel-select-demo.tsx",
-        type: "registry:example",
-        target: "components/arc-wheel-select-demo.tsx",
       },
     ],
   },

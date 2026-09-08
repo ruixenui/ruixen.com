@@ -1,0 +1,206 @@
+---
+title: Halo Reel
+date: 2026-09-06
+description: Image cards riding an ellipse. cos θ places each card, sizes it and stacks it, so the near side of the ring is large and the far side small — one number, three properties, always in agreement. It turns on its own, and you can drag it.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="halo-reel-demo" height={700} />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/halo-reel"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="halo-reel" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { HaloReel, type HaloReelItem } from "@/components/ruixen/halo-reel";
+
+const CARDS: HaloReelItem[] = [
+  { src: "/work/01.jpg", alt: "Studio portrait" },
+  { src: "/work/02.jpg", alt: "Product still" },
+  // ...
+];
+
+export default function Page() {
+  return (
+    <HaloReel
+      items={CARDS}
+      aria-label="Recent work"
+      centerLabel={
+        <span className="text-[3.4vw] font-medium tracking-tight text-foreground">
+          Recent work
+        </span>
+      }
+    />
+  );
+}
+```
+
+An item with no `src` falls back to a text face — pass `title`, `subtitle`,
+`bgColor` and `textColor` instead of an image and the card renders those.
+
+## How it works
+
+Every card sits on an ellipse centred in the stage. Card `i` is at
+`θ = i × step + rotation`, where `step` is `2π / items.length`:
+
+```
+x     = centerX + radiusX × cos θ
+y     = radiusY × sin θ
+scale = minScale + (1 − minScale) × (cos θ + 1) / 2
+```
+
+`cos θ` does all the work. It places the card horizontally, sizes it, and —
+through `Math.round(scale × 1000)` — stacks it. One number driving three
+properties is why the stacking can never disagree with the perspective: a card
+that looks nearer is nearer, by construction. There is no separate depth model
+to keep in sync.
+
+The whole ring is a single `rotation` motion value. Each card derives its
+transform from it with `useTransform`, so a spin runs off React's render loop
+entirely — the ring turns at 60 fps whether it is autoplaying, being dragged or
+settling onto a snap. Rotating N cards costs one animating value, not N.
+
+Three things move it:
+
+- **Autoplay** holds a card at the front for `holdDuration`, then eases one step
+  forward over `stepDuration`. Each step schedules the next rather than running
+  on an interval, so a tick paused by a hover or a held pointer costs a re-check
+  and nothing else.
+- **Drag** converts the pointer position into an angle about the ellipse centre,
+  normalising by the radii first so a drag along the flat side turns the ring by
+  the same amount as one along the tall side. Deltas wrap into `(−π, π]`, so
+  crossing the seam behind the ring is one small step and not a full turn
+  backwards. On release the ring settles onto the nearest card — it never rests
+  between two.
+- **Arrow keys** step one card in either direction, from the nearest snap rather
+  than from wherever a drag left the rotation.
+
+By default the ellipse is centred on the **left edge** (`centerXRatio: 0`), so
+the far half of the ring is clipped away and the cards sweep out of that edge
+rather than orbiting the middle of the stage. That is also why `centerLabel`
+moves to the right: the free space is on the other side of the arc. Set
+`centerXRatio` to `0.5` for a full ring centred in the stage, and the label
+returns to the middle.
+
+**The ring is sized by the stage and filled by repeating the items.** That is
+the one way a wide ring and close cards can both be true: neighbours sit
+`radius × step` apart, so at a fixed card count a wider ring can only mean
+bigger gaps. Instead the radii come from `radiusXRatio` / `radiusYRatio`, and
+the number of slots is derived from them:
+
+```
+slots = 2π × max(radiusX / (cardWidth × spread), radiusY / (cardHeight × spread))
+```
+
+Item `i % items.length` fills slot `i`, capped at `maxCards`. Widen the ring and
+it takes on more cards rather than pulling apart; pass enough distinct images and
+nothing repeats.
+
+Card size then shrinks continuously to fit the box it is given
+(`min(w / ringWidth, h / ringHeight)`, floored at `0.45`) rather than stepping at
+a breakpoint — a ring that jumps at 768px reads as broken on every width either
+side of it. `centerLabel` is positioned the same way: it is parked in whatever
+space the ring leaves, so it can never end up underneath the cards.
+
+## Props
+
+| Prop              | Type             | Default     | Description                                                                  |
+| ----------------- | ---------------- | ----------- | ---------------------------------------------------------------------------- |
+| `items`           | `HaloReelItem[]` | —           | Cards on the ring                                                            |
+| `cardWidth`       | `number`         | `130`       | Card width in px at the front of the ring                                    |
+| `cardHeight`      | `number`         | `180`       | Card height in px at the front of the ring                                   |
+| `minScale`        | `number`         | `0.4`       | Scale of the card at the far side of the ring                                |
+| `radiusXRatio`    | `number`         | `0.45`      | Horizontal radius as a fraction of the stage width                           |
+| `centerXRatio`    | `number`         | `0`         | Where the ellipse is centred across the stage — `0` pins it to the left edge |
+| `radiusYRatio`    | `number`         | `0.36`      | Vertical radius as a fraction of the stage height                            |
+| `autoPlay`        | `boolean`        | `true`      | Rotate one card forward on a timer                                           |
+| `holdDuration`    | `number`         | `1000`      | Time (ms) a card is held at the front between steps                          |
+| `stepDuration`    | `number`         | `700`       | Duration (ms) of one step                                                    |
+| `pauseOnHover`    | `boolean`        | `true`      | Hold the autoplay while a pointer rests on a card                            |
+| `draggable`       | `boolean`        | `true`      | Spin the ring by dragging it                                                 |
+| `dragSensitivity` | `number`         | `1`         | Multiplier on the drag rotation                                              |
+| `centerLabel`     | `ReactNode`      | `undefined` | Node parked in the middle of the ring, behind the cards                      |
+| `showCenterLabel` | `boolean`        | `true`      | Render `centerLabel`                                                         |
+| `className`       | `string`         | `undefined` | Additional classes on the stage                                              |
+
+### Types
+
+```ts
+type HaloReelItem = {
+  src?: string;
+  alt?: string;
+  // Text face, used when there is no `src`
+  bgColor?: string;
+  textColor?: string;
+  title?: string;
+  subtitle?: string;
+};
+```
+
+## Accessibility
+
+- The stage is a `role="region"` with `aria-roledescription="carousel"` and a
+  single tab stop. Pass an `aria-label` describing what the ring holds.
+- <kbd>←</kbd> / <kbd>→</kbd> step one card. There is no scroll hijack — the
+  page keeps scrolling past the component.
+- Give every image a real `alt`. A decorative ring can pass `alt=""`, but a ring
+  of work samples is content.
+- Under `prefers-reduced-motion: reduce` the autoplay never starts and every
+  move lands instantly instead of easing.
+
+## Notes
+
+- The stage is `h-[100dvh]` by default — this is a full-viewport piece. Override
+  it with `className` for anything smaller; the radii are fractions of the box,
+  so the ring rescales with whatever height you give it.
+- `cardWidth` / `cardHeight` are the size at the **front** of the ring. Every
+  other card is that box scaled by `cos θ`, so nothing reflows as it turns.
+- The stage is transparent. Put it on whatever background you like — the demo
+  uses `bg-muted/40` so both themes have something to sit on.
+- Images are plain `<img>`, so a remote host needs nothing configured. Cards are
+  cheap; the images are not — serve them at roughly `cardWidth × 2` and let the
+  ring do the rest.
+- `centerLabel` sits at `z-0`, behind every card, and is `pointer-events-none`,
+  so it never intercepts a drag.
+- One dependency: `motion`. Everything else is the shadcn tokens — the stage is
+  transparent, and a text card (an item with no `src`) falls back to `bg-card` /
+  `text-card-foreground`, so both faces theme themselves in light and dark.
+- The ring repeats `items` to stay dense, so only the first pass is exposed to a
+  screen reader — the copies are `aria-hidden` with an empty `alt`.
+
+## Use cases
+
+- Portfolio and case-study reels on a landing hero
+- Product, template or theme galleries
+- Photo walls where a grid would read as inventory rather than as work

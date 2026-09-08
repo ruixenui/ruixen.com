@@ -405,9 +405,9 @@ export const audioMediaPreview: ComponentPreviewMap = {
  * Path: /docs/components/[slug]
  */
 export const selectPreview: ComponentPreviewMap = {
-  "arc-wheel-select": {
-    light: `/preview_images/select/arc-wheel-select-light.png`,
-    dark: `/preview_images/select/arc-wheel-select-dark.png`,
+  "halo-reel": {
+    light: `/preview_images/select/halo-reel-light.png`,
+    dark: `/preview_images/select/halo-reel-dark.png`,
   },
   "color-emotion-select": {
     light: `/preview_images/select/color-emotion-select-light.png`,

@@ -17,6 +17,22 @@
       "cssVars": {}
     },
     {
+      "name": "halo-reel",
+      "type": "registry:ui",
+      "title": "Halo Reel",
+      "description": "Image cards riding an ellipse — cos θ places each card, sizes it and stacks it, so the near side of the ring is large and the far side small. It turns on its own, pauses under the pointer, and you can drag it round.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/halo-reel.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/halo-reel.tsx"
+        }
+      ]
+    },
+    {
       "name": "scroll-burn-text",
       "type": "registry:ui",
       "title": "Scroll Burn Text",
@@ -2802,22 +2818,6 @@
       ]
     },
     {
-      "name": "arc-wheel-select",
-      "type": "registry:ui",
-      "title": "Arc Wheel Select",
-      "description": "An icon rail whose tiles ride a circle instead of a straight line — scroll, click or arrow through self-animating SVG icons. One spring swings x, y and scale together, so the icons turn like a wheel while each one animates itself.",
-      "dependencies": [
-        "motion"
-      ],
-      "files": [
-        {
-          "path": "registry/ruixenui/arc-wheel-select.tsx",
-          "type": "registry:ui",
-          "target": "components/ruixen/arc-wheel-select.tsx"
-        }
-      ]
-    },
-    {
       "name": "tag-cloud-select",
       "type": "registry:ui",
       "title": "Tag Cloud Select",
@@ -3828,6 +3828,22 @@
           "path": "app/preview/layouts/calendar/page.tsx",
           "type": "registry:page",
           "target": "app/calendar/page.tsx"
+        }
+      ]
+    },
+    {
+      "name": "halo-reel-demo",
+      "type": "registry:example",
+      "title": "Halo Reel Demo",
+      "description": "Example of an image ring that turns on its own, pauses on hover, and spins under a drag.",
+      "registryDependencies": [
+        "https://ruixen.com/r/halo-reel"
+      ],
+      "files": [
+        {
+          "path": "registry/example/halo-reel-demo.tsx",
+          "type": "registry:example",
+          "target": "components/halo-reel-demo.tsx"
         }
       ]
     },
@@ -6276,22 +6292,6 @@
           "path": "registry/example/container-text-scroll-demo.tsx",
           "type": "registry:example",
           "target": "components/container-text-scroll-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "arc-wheel-select-demo",
-      "type": "registry:example",
-      "title": "Arc Wheel Select Demo",
-      "description": "Example of an arc-curved icon rail — twelve hand-written SVG icons that animate themselves with their own CSS keyframes, riding a circle as you scroll.",
-      "registryDependencies": [
-        "https://ruixen.com/r/arc-wheel-select"
-      ],
-      "files": [
-        {
-          "path": "registry/example/arc-wheel-select-demo.tsx",
-          "type": "registry:example",
-          "target": "components/arc-wheel-select-demo.tsx"
         }
       ]
     },

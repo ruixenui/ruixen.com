@@ -1301,8 +1301,8 @@ export const docsConfig: DocsConfig = {
           title: "Select Components",
           items: [
             {
-              title: "Arc Wheel Select",
-              href: `/docs/components/arc-wheel-select`,
+              title: "Halo Reel",
+              href: `/docs/components/halo-reel`,
               items: [],
               label: "New",
             },
