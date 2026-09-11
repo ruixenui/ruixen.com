@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "phone-scroll-hero-demo",
+  "type": "registry:example",
+  "title": "Phone Scroll Hero Demo",
+  "description": "Example of a tilted phone mockup playing a looping video that straightens and rises over the headline on scroll.",
+  "registryDependencies": [
+    "https://ruixen.com/r/phone-scroll-hero"
+  ],
+  "files": [
+    {
+      "path": "registry/example/phone-scroll-hero-demo.tsx",
+      "content": "\"use client\";\n\nimport { PhoneScrollHero } from \"@/registry/ruixenui/phone-scroll-hero\";\n\nconst SCREEN_VIDEO =\n  \"https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/landscape-videos/old-money-lookbook.mp4\";\n\nexport default function PhoneScrollHeroDemo() {\n  return (\n    <PhoneScrollHero\n      titleComponent={\n        <>\n          <p className=\"text-[0.7rem] font-medium uppercase tracking-[0.25em] text-muted-foreground\">\n            Autumn / Winter lookbook\n          </p>\n          <h1 className=\"mt-3 text-3xl font-semibold text-foreground md:text-4xl\">\n            The whole collection,\n            <br />\n            <span className=\"mt-1 block text-5xl font-bold leading-none tracking-tight md:text-[6rem]\">\n              in your pocket\n            </span>\n          </h1>\n        </>\n      }\n    >\n      {/* Landscape source in a portrait screen — object-cover crops to the\n          centre of the frame, which is what a phone-shot feed looks like. */}\n      <video\n        src={SCREEN_VIDEO}\n        autoPlay\n        muted\n        loop\n        playsInline\n        preload=\"metadata\"\n        aria-label=\"Autumn/winter lookbook film playing on the phone screen\"\n        className=\"h-full w-full object-cover\"\n      />\n    </PhoneScrollHero>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/phone-scroll-hero-demo.tsx"
+    }
+  ]
+}

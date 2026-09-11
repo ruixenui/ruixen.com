@@ -2917,6 +2917,22 @@
       ]
     },
     {
+      "name": "phone-scroll-hero",
+      "type": "registry:ui",
+      "title": "Phone Scroll Hero",
+      "description": "A hero whose 3D-tilted phone mockup flattens and climbs up over the headline as the page scrolls. Theme-aware with a reduced-motion fallback.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/ruixenui/phone-scroll-hero.tsx",
+          "type": "registry:ui",
+          "target": "components/ruixen/phone-scroll-hero.tsx"
+        }
+      ]
+    },
+    {
       "name": "preview-switch-hero",
       "type": "registry:ui",
       "title": "Preview Switch Hero",
@@ -6388,6 +6404,22 @@
           "path": "registry/example/scroll-over-hero-demo.tsx",
           "type": "registry:example",
           "target": "components/scroll-over-hero-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "phone-scroll-hero-demo",
+      "type": "registry:example",
+      "title": "Phone Scroll Hero Demo",
+      "description": "Example of a tilted phone mockup playing a looping video that straightens and rises over the headline on scroll.",
+      "registryDependencies": [
+        "https://ruixen.com/r/phone-scroll-hero"
+      ],
+      "files": [
+        {
+          "path": "registry/example/phone-scroll-hero-demo.tsx",
+          "type": "registry:example",
+          "target": "components/phone-scroll-hero-demo.tsx"
         }
       ]
     },

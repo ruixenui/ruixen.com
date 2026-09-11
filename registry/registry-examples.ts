@@ -2392,6 +2392,21 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "phone-scroll-hero-demo",
+    type: "registry:example",
+    title: "Phone Scroll Hero Demo",
+    description:
+      "Example of a tilted phone mockup playing a looping video that straightens and rises over the headline on scroll.",
+    registryDependencies: ["https://ruixen.com/r/phone-scroll-hero"],
+    files: [
+      {
+        path: "registry/example/phone-scroll-hero-demo.tsx",
+        type: "registry:example",
+        target: "components/phone-scroll-hero-demo.tsx",
+      },
+    ],
+  },
+  {
     name: "preview-switch-hero-demo",
     type: "registry:example",
     title: "Preview Switch Hero Demo",

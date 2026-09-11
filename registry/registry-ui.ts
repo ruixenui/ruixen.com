@@ -2698,6 +2698,21 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "phone-scroll-hero",
+    type: "registry:ui",
+    title: "Phone Scroll Hero",
+    description:
+      "A hero whose 3D-tilted phone mockup flattens and climbs up over the headline as the page scrolls. Theme-aware with a reduced-motion fallback.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/ruixenui/phone-scroll-hero.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/phone-scroll-hero.tsx",
+      },
+    ],
+  },
+  {
     name: "preview-switch-hero",
     type: "registry:ui",
     title: "Preview Switch Hero",

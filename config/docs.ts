@@ -307,6 +307,12 @@ export const docsConfig: DocsConfig = {
               label: "New",
             },
             {
+              title: "Phone Scroll Hero",
+              href: `/docs/components/phone-scroll-hero`,
+              items: [],
+              label: "New",
+            },
+            {
               title: "Preview Switch Hero",
               href: `/docs/components/preview-switch-hero`,
               items: [],
