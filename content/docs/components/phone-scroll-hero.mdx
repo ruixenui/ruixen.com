@@ -1,0 +1,105 @@
+---
+title: Phone Scroll Hero
+date: 2026-09-11
+description: A hero whose 3D-tilted phone mockup flattens and climbs up over the headline as the page scrolls. Theme-aware, with a reduced-motion fallback.
+author: ruixen
+published: true
+---
+
+<ComponentPreview name="phone-scroll-hero-demo" height={760} />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ruixen.com/r/phone-scroll-hero"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="phone-scroll-hero" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { PhoneScrollHero } from "@/components/ruixen/phone-scroll-hero";
+
+export default function Page() {
+  return (
+    <PhoneScrollHero
+      titleComponent={
+        <h1 className="text-4xl font-semibold text-foreground">
+          Every account,
+          <br />
+          <span className="mt-1 block text-5xl font-bold leading-none md:text-[6rem]">
+            in your pocket
+          </span>
+        </h1>
+      }
+    >
+      <video
+        src="/app-screen.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="h-full w-full object-cover"
+      />
+    </PhoneScrollHero>
+  );
+}
+```
+
+## Props
+
+| Prop             | Type        | Default  | Description                                                                    |
+| ---------------- | ----------- | -------- | ------------------------------------------------------------------------------ |
+| `titleComponent` | `ReactNode` | Required | Headline block. Renders behind the phone so the phone can climb over it.       |
+| `children`       | `ReactNode` | -        | Screen content. Falls back to a themed placeholder.                            |
+| `overlap`        | `number`    | `20`     | How far the phone climbs into the title, as a % of its own height.             |
+| `tilt`           | `number`    | `22`     | Backward tilt of the phone in degrees at the start of the scroll.              |
+| `className`      | `string`    | -        | Extra classes on the section — use `h-[…]` to change how long the scroll runs. |
+
+## Features
+
+- **Tilt that resolves on scroll** — the phone starts rotated back on the X axis inside a `1200px` perspective and straightens to flat as the section scrolls through, so the device appears to stand up.
+- **Overlaps the headline** — the phone starts tucked under the title with a negative margin, lifts faster than the title (which only drifts `-24px`) and sits on a higher `z-index`, so the gap closes and the device ends up covering the lower part of the letters.
+- **Overlap scales itself** — the lift is a percentage of the phone's own height rather than a pixel value, so the effect is proportionally identical on a `13rem` phone and a `17rem` one. No resize listener, no `isMobile` state.
+- **Works inside any scroller** — progress is measured against the section's own `ownerDocument.defaultView`, so it responds to the real scroll container (including this iframe preview), not just the top-level window.
+- **Reduced-motion fallback** — with `prefers-reduced-motion` set, the phone renders flat and untransformed below the title, with no scroll listener attached.
+- **Bring your own screen** — `children` renders inside the screen cutout, so drop in a `<video>`, a screenshot, or an inline mock built from your own components.
+- **Theme adaptive** — the chassis, buttons, screen and placeholder are all shadcn tokens (`bg-muted`, `bg-background`, `border-border`, `bg-muted-foreground/30`, `text-muted-foreground`), so the device follows your theme in light and dark. The camera island is the one deliberate exception: it stays black, because it is a hole in the glass, not a themed surface.
+- **Semantics and a11y** — renders as a labelled `<section>`, every chassis decoration is `aria-hidden`, nothing is keyboard-focusable that shouldn't be, and the motion is gated behind `prefers-reduced-motion`.
+
+## Tuning the scroll length
+
+The section is `h-[60rem] md:h-[80rem]` by default — the tilt resolves over the
+distance between the section entering and leaving the viewport. Pass a taller
+height for a slower, more cinematic straighten:
+
+```tsx
+<PhoneScrollHero className="h-[80rem] md:h-[110rem]" titleComponent={…}>
+  …
+</PhoneScrollHero>
+```

@@ -4174,6 +4174,30 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "phone-scroll-hero": {
+    name: "phone-scroll-hero",
+    description:
+      "A hero whose 3D-tilted phone mockup flattens and climbs up over the headline as the page scrolls. Theme-aware with a reduced-motion fallback.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/ruixenui/phone-scroll-hero.tsx",
+        type: "registry:ui",
+        target: "components/ruixen/phone-scroll-hero.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/ruixenui/phone-scroll-hero.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "preview-switch-hero": {
     name: "preview-switch-hero",
     description:
@@ -9363,6 +9387,30 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/scroll-over-hero-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "phone-scroll-hero-demo": {
+    name: "phone-scroll-hero-demo",
+    description:
+      "Example of a tilted phone mockup playing a looping video that straightens and rises over the headline on scroll.",
+    type: "registry:example",
+    registryDependencies: ["https://ruixen.com/r/phone-scroll-hero"],
+    files: [
+      {
+        path: "registry/example/phone-scroll-hero-demo.tsx",
+        type: "registry:example",
+        target: "components/phone-scroll-hero-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/phone-scroll-hero-demo.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>
